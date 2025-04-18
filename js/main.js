@@ -1,3 +1,2 @@
-
-// Reserved for future scroll logic
-console.log("Facepass scroll logic loaded.");
+// Reserved for future scroll logic.
+console.log('Facepass scroll logic engaged.');
