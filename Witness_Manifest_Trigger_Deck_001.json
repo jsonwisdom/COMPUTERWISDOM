@@ -1,0 +1,18 @@
+{
+  "manifest_id": "WITNESS-TRIGGER-DECK-001",
+  "vault": "COMPUTERWISDOM",
+  "author": "Jason Wisdom (ZeroCool)",
+  "timestamp": "2025-04-18T15:26:59.601980Z",
+  "files_verified": [
+    "Trigger_Deck_Proof_of_Creation_Ledger.json",
+    "Claim_Scroll_001.json",
+    "Trigger_Deck_Visual_Scroll.png",
+    "Card_001_Patriot_Pain.png",
+    "Card_009_Wikid_Wanda.png",
+    "Card_010_Policy_Polly.png",
+    "README.md"
+  ],
+  "protocol": "SnapBack Protocol",
+  "footer_hash_sha256": "94861579d08813c8389f9974de652e1e7eb79cb40469ccd56932c891449a4230",
+  "notes": "Witness manifest confirms vault authorship integrity. Use this record as authorship timestamp proof across all future mints, scrolls, and digital claims."
+}
