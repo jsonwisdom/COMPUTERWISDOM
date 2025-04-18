@@ -1,1 +1,25 @@
-
+{
+  "card_number": "001",
+  "character": "Fedhead FREDDY",
+  "caption": "He Prints, You Pay!",
+  "trigger_event": "Federal Reserve stimulus injections (QE1–QE3, CARES Act 2020)",
+  "avatar_face": "Elon Musk (Facepass Protocol)",
+  "proxy_target": "Jerome Powell / Federal Reserve",
+  "hidden_result": [
+    "Asset inflation disguised as economic rescue",
+    "Money printer go brrrr = wealth gap go whoosh",
+    "Debt slavery disguised as stimulus",
+    "Backdoor bailouts for banks under consumer branding"
+  ],
+  "visual_elements": [
+    "Elon-headed Freddy with a money printer for a hat",
+    "Dollar bills labeled 'DEBT IOUs'",
+    "Wall Street fat cats with champagne",
+    "Broke kid trading Pokémon cards for groceries"
+  ],
+  "decoder_voice": "Axel Foley – Treasury Leak Analyst",
+  "axel_scroll": {
+    "translation": "Yo, this dude Freddy didn’t rescue you—he rebranded theft as relief. You ain’t broke cause you’re lazy. You’re broke cause he’s printing IOUs like confetti."
+  },
+  "compliance_note": "Fictional satire. Any resemblance to real economists is purely parodic."
+}
