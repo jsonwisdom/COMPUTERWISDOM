@@ -1,0 +1,13 @@
+
+body {
+  font-family: monospace;
+  background-color: #111;
+  color: #0ff;
+  padding: 2em;
+}
+.card {
+  border: 1px solid #0ff;
+  margin: 1em 0;
+  padding: 1em;
+  background: #222;
+}
