@@ -1,0 +1,50 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Snapback Diagnostic Interface</title>
+  <style>
+    body { font-family: monospace; background: #111; color: #0ff; padding: 2em; }
+    .card { border: 1px solid #0ff; margin: 1em 0; padding: 1em; background: #222; }
+  </style>
+</head>
+<body>
+  <h1>SNAPBACK DIAGNOSTIC MODE</h1>
+  <div id="deck-container">Scanning for deck.json...</div>
+
+  <script>
+    const paths = [
+      "deck.json",
+      "snapback/deck.json",
+      "assets/deck.json",
+      "computerwisdom/deck.json"
+    ];
+
+    function tryPaths(index) {
+      if (index >= paths.length) {
+        document.getElementById("deck-container").innerHTML = "deck.json not found in known paths.";
+        return;
+      }
+
+      fetch(paths[index])
+        .then(res => {
+          if (!res.ok) throw new Error("Not found");
+          return res.json();
+        })
+        .then(data => {
+          document.getElementById("deck-container").innerHTML = `<p>Loaded from: <strong>${paths[index]}</strong></p>`;
+          data.cards.forEach(card => {
+            const el = document.createElement("div");
+            el.className = "card";
+            el.innerHTML = `<h2>${card.title}</h2><p>${card.caption}</p><pre>${JSON.stringify(card, null, 2)}</pre>`;
+            document.getElementById("deck-container").appendChild(el);
+          });
+        })
+        .catch(() => tryPaths(index + 1));
+    }
+
+    tryPaths(0);
+  </script>
+</body>
+</html>
