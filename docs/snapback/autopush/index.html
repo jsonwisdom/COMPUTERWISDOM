@@ -1,1 +1,43 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Snapback AutoPush Portal v0.1</title>
+  <style>
+    body { font-family: monospace; background-color: #0f0f0f; color: #fff; text-align: center; padding: 2em; }
+    h1 { color: #00ffcc; }
+    input, button { margin: 1em 0; padding: 0.5em; font-family: monospace; }
+    #dropzone {
+      border: 2px dashed #ffcc00;
+      padding: 2em;
+      margin: 2em auto;
+      width: 80%;
+      background: #1a1a1a;
+    }
+  </style>
+</head>
+<body>
+  <h1>SNAPBACK AUTOPUSH v0.1</h1>
+  <p>This is your mobile-friendly GitHub sync interface. Drop a file. Paste a token. Trigger the Drop.</p>
+
+  <div id="dropzone" contenteditable="true">
+    <strong>Drop files here</strong><br>or tap to open file picker
+    <input type="file" id="fileInput" multiple />
+  </div>
+
+  <input type="text" id="tokenInput" placeholder="Enter GitHub Token Here (will not be stored)" size="40" />
+  <br />
+  <button onclick="pushToGitHub()">EXECUTE DROP</button>
+
+  <p id="status">Drop queue is idle...</p>
+
+  <script>
+    function pushToGitHub() {
+      const token = document.getElementById('tokenInput').value;
+      const files = document.getElementById('fileInput').files;
+      document.getElementById('status').innerText = "Simulating push... (offline preview only)";
+    }
+  </script>
+</body>
+</html>
