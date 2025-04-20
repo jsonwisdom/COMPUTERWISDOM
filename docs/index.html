@@ -1,0 +1,76 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Computer Wisdom – Documentation</title>
+  <style>
+    body {
+      background-color: #111;
+      color: #0ff;
+      font-family: monospace;
+      padding: 2em;
+      line-height: 1.6;
+    }
+    h1 {
+      text-align: center;
+      color: #00ffff;
+    }
+    h2 {
+      margin-top: 2em;
+      color: #00cccc;
+    }
+    code {
+      background-color: #222;
+      padding: 0.2em 0.4em;
+      border-radius: 4px;
+      color: #0f0;
+    }
+    a {
+      color: #0ff;
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <h1>Computer Wisdom Docs</h1>
+
+  <p>This page hosts the evolving documentation and protocols for the Trigger Deck, Snapback renderer, and eJSON governance layers. All information here is considered part of the <strong>Quantum Governance Index</strong>.</p>
+
+  <h2>Folder Structure</h2>
+  <pre><code>
+/COMPUTERWISDOM/
+├── index.html
+├── snapback/
+│   ├── index.html
+│   ├── deck.json
+│   ├── QUANTUM_WISDOMRenderer.js
+├── docs/
+│   └── index.html
+│
+├── foil/
+│   └── (Coming Soon)
+  </code></pre>
+
+  <h2>Trigger Deck Standard</h2>
+  <ul>
+    <li>Each card uses unique <code>TD###</code> ID</li>
+    <li>Two-layer visual protocol: <code>_front.png</code> and <code>_back.png</code></li>
+    <li>eJSON file required per card with all metadata</li>
+    <li>Snapback renderer loads and flips on click</li>
+  </ul>
+
+  <h2>Deployment Guidelines</h2>
+  <ul>
+    <li>Upload new cards to <code>snapback/images/</code></li>
+    <li>Update <code>deck.json</code> with metadata and ID list</li>
+    <li>Back-layer files should include logo and standard footer text</li>
+  </ul>
+
+  <h2>Live Links</h2>
+  <ul>
+    <li><a href="../index.html">Return to Quantum Portal</a></li>
+    <li><a href="../snapback/index.html">Open Snapback Renderer</a></li>
+  </ul>
+</body>
+</html>
