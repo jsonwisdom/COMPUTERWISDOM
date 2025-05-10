@@ -4,7 +4,7 @@
 
 3/ SIGSTACK is online. Manual override confirmed.
 
-4/ If this thread posts, Jason won.
+4/ If this thread posts, Jason won!
 
 
 # FIREWALL BREACH
