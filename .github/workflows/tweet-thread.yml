@@ -3,63 +3,76 @@ name: Post Tweet Thread
 on:
   push:
     paths:
-      - "tweets/**"
+      - 'tweets/*.md'
 
 jobs:
   tweet-thread:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repo
+        uses: actions/checkout@v3
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
 
-    - name: Install dependencies
-      run: pip install tweepy markdown
+      - name: Install tweepy
+        run: pip install tweepy
 
-    - name: Parse and post tweet thread with image support
-      env:
-        TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
-        TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
-        TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-        TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
-      run: |
-        import os
-        import tweepy
-        import glob
+      - name: Parse and post tweet thread
+        env:
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
+        run: |
+          import os
+          import tweepy
 
-        key = os.environ['TWITTER_API_KEY']
-        secret = os.environ['TWITTER_API_SECRET']
-        token = os.environ['TWITTER_ACCESS_TOKEN']
-        token_secret = os.environ['TWITTER_ACCESS_SECRET']
+          tweet_dir = 'tweets'
+          files = [f for f in os.listdir(tweet_dir) if f.endswith('.md')]
+          files.sort(key=lambda f: os.path.getmtime(os.path.join(tweet_dir, f)), reverse=True)
 
-        auth = tweepy.OAuth1UserHandler(key, secret, token, token_secret)
-        api = tweepy.API(auth)
+          if not files:
+              print("No tweet thread markdown files found.")
+              exit(0)
 
-        md_files = sorted(glob.glob("tweets/*.md"), key=os.path.getmtime, reverse=True)
-        if not md_files:
-            print("No markdown files found.")
-            exit(0)
+          thread_path = os.path.join(tweet_dir, files[0])
+          with open(thread_path, 'r') as file:
+              content = file.read()
 
-        thread_file = md_files[0]
-        with open(thread_file, "r") as f:
-            lines = [line.strip() for line in f if line.strip() and not line.startswith("#")]
+          tweets = [t.strip() for t in content.split('\n\n') if t.strip()]
+          if not tweets:
+              print("No content to tweet.")
+              exit(0)
 
-        image_files = sorted(glob.glob("tweets/*.[pj][pn]g"), key=os.path.getmtime, reverse=True)
-        image_path = image_files[0] if image_files else None
+          # Image pairing
+          base = os.path.splitext(os.path.basename(thread_path))[0]
+          image_path = None
+          for ext in ['.png', '.jpg', '.jpeg']:
+              possible = os.path.join(tweet_dir, f"{base}{ext}")
+              if os.path.exists(possible):
+                  image_path = possible
+                  break
 
-        print(f"Tweet file: {thread_file}")
-        print(f"Attached image: {image_path if image_path else 'None'}")
+          auth = tweepy.OAuth1UserHandler(
+              os.environ['TWITTER_API_KEY'],
+              os.environ['TWITTER_API_SECRET'],
+              os.environ['TWITTER_ACCESS_TOKEN'],
+              os.environ['TWITTER_ACCESS_SECRET']
+          )
+          api = tweepy.API(auth)
 
-        if image_path:
-            first_tweet = api.update_status_with_media(status=lines[0], filename=image_path)
-        else:
-            first_tweet = api.update_status(lines[0])
+          media_id = None
+          if image_path:
+              media = api.media_upload(image_path)
+              media_id = media.media_id_string
 
-        reply_to = first_tweet.id
-        for tweet in lines[1:]:
-            reply_to = api.update_status(status=tweet, in_reply_to_status_id=reply_to, auto_populate_reply_metadata=True).id
+          tweet = api.update_status(status=tweets[0], media_ids=[media_id] if media_id else None)
+          reply_to = tweet.id
+
+          for t in tweets[1:]:
+              tweet = api.update_status(status=t, in_reply_to_status_id=reply_to, auto_populate_reply_metadata=True)
+              reply_to = tweet.id
