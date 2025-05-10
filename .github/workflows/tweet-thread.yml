@@ -10,38 +10,46 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout repository
+        uses: actions/checkout@v3
 
-    - name: Parse and post tweet thread
-      env:
-        TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
-        TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
-        TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-        TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
-      run: |
-        pip install tweepy markdown
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
 
-        CHANGED_FILES=$(git diff --name-only HEAD^ HEAD | grep "^tweets/.*\.md$")
+      - name: Install dependencies
+        run: |
+          pip install tweepy markdown
 
-        for FILE in $CHANGED_FILES; do
-          echo "Processing $FILE"
-          THREAD=$(cat $FILE | sed -n '/^$/!p' | sed '/^#/d')
+      - name: Parse and post tweet thread
+        env:
+          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
+        run: |
+          CHANGED_FILES=$(git diff --name-only HEAD^ HEAD | grep "^tweets/.*\.md$" || true)
 
-          python - <<EOF
+          for FILE in $CHANGED_FILES; do
+            echo "Processing $FILE"
+            THREAD=$(sed -e '/^#/d' -e '/^$/d' "$FILE")
+
+            python3 - <<EOF
 import tweepy
+import os
 
 auth = tweepy.OAuth1UserHandler(
-    "${{ secrets.TWITTER_API_KEY }}",
-    "${{ secrets.TWITTER_API_SECRET }}",
-    "${{ secrets.TWITTER_ACCESS_TOKEN }}",
-    "${{ secrets.TWITTER_ACCESS_SECRET }}"
+    os.environ['TWITTER_API_KEY'],
+    os.environ['TWITTER_API_SECRET'],
+    os.environ['TWITTER_ACCESS_TOKEN'],
+    os.environ['TWITTER_ACCESS_SECRET']
 )
 api = tweepy.API(auth)
 
-tweets = """$THREAD""".split("\\n\\n")
-first_tweet = api.update_status(tweets[0])
+tweets = """${THREAD}""".split("\\n\\n")
+first = api.update_status(tweets[0])
 for tweet in tweets[1:]:
-    first_tweet = api.update_status(tweet, in_reply_to_status_id=first_tweet.id)
+    first = api.update_status(status=tweet, in_reply_to_status_id=first.id)
 EOF
-        done
+          done
