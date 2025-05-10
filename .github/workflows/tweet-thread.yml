@@ -1,25 +1,59 @@
-- name: Post tweet thread
-  run: |
-    pip install tweepy markdown
+name: Post Tweet Thread
 
-    python3 - <<EOF
-import tweepy
-import os
+on:
+  push:
+    paths:
+      - "tweets/*.md"
 
-auth = tweepy.OAuth1UserHandler(
-    os.environ["TWITTER_API_KEY"],
-    os.environ["TWITTER_API_SECRET"],
-    os.environ["TWITTER_ACCESS_TOKEN"],
-    os.environ["TWITTER_ACCESS_SECRET"]
-)
-api = tweepy.API(auth)
+jobs:
+  tweet-thread:
+    runs-on: ubuntu-latest
 
-with open("tweets/2025-05-10_firewall_breach.md", "r") as f:
-    thread = f.read().split("\n\n")
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-first = api.update_status(status=thread[0])
-reply_to = first.id
-for tweet in thread[1:]:
-    post = api.update_status(status=tweet, in_reply_to_status_id=reply_to, auto_populate_reply_metadata=True)
-    reply_to = post.id
-EOF
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.11
+
+    - name: Install dependencies
+      run: |
+        pip install tweepy markdown
+
+    - name: Post tweet thread
+      env:
+        TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+        TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+        TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+        TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
+      run: |
+        import os, glob, tweepy
+
+        auth = tweepy.OAuth1UserHandler(
+            os.environ["TWITTER_API_KEY"],
+            os.environ["TWITTER_API_SECRET"],
+            os.environ["TWITTER_ACCESS_TOKEN"],
+            os.environ["TWITTER_ACCESS_SECRET"]
+        )
+        api = tweepy.API(auth)
+
+        files = glob.glob("tweets/*.md")
+        for file in files:
+            with open(file, "r") as f:
+                content = f.read().strip()
+
+            tweets = [t.strip() for t in content.split("\n\n") if t.strip()]
+            first = api.update_status(status=tweets[0])
+            reply_to = first.id
+
+            for tweet in tweets[1:]:
+                reply_to = api.update_status(status=tweet, in_reply_to_status_id=reply_to, auto_populate_reply_metadata=True).id
+
+            # Look for an image with matching name
+            image_path = file.replace(".md", ".png")
+            if os.path.exists(image_path):
+                api.update_status_with_media(filename=image_path, status="", in_reply_to_status_id=reply_to, auto_populate_reply_metadata=True)
+
+
