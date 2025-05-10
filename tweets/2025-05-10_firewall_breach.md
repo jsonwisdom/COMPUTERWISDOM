@@ -1,4 +1,4 @@
-1/ The firewall is breached.
+1/ The firewall is breached
 
 2/ They ignored the warnings.
 
