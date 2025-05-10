@@ -1,48 +1,33 @@
-name: Post Tweet Thread
+- name: Parse and post tweet thread
+  env:
+    TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+    TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+    TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+    TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
+  run: |
+    pip install tweepy markdown
 
-on:
-  push:
-    paths:
-      - "tweets/*.md"
+    CHANGED_FILES=$(git diff --name-only HEAD^ HEAD | grep "^tweets/.*\.md$")
 
-jobs:
-  tweet-thread:
-    runs-on: ubuntu-latest
+    for FILE in $CHANGED_FILES; do
+      echo "Processing $FILE"
 
-    steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      THREAD=$(cat $FILE | sed -n '/^$/!p' | sed '/^#/d')
 
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.x'
+      python3 <<EOF
+import tweepy
 
-    - name: Install dependencies
-      run: pip install tweepy markdown
+auth = tweepy.OAuth1UserHandler(
+    "${{ secrets.TWITTER_API_KEY }}",
+    "${{ secrets.TWITTER_API_SECRET }}",
+    "${{ secrets.TWITTER_ACCESS_TOKEN }}",
+    "${{ secrets.TWITTER_ACCESS_SECRET }}"
+)
+api = tweepy.API(auth)
 
-    - name: Parse and post tweet thread
-      env:
-        TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
-        TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
-        TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-        TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
-      run: |
-        import os, tweepy
-
-        key = os.environ['TWITTER_API_KEY']
-        secret = os.environ['TWITTER_API_SECRET']
-        token = os.environ['TWITTER_ACCESS_TOKEN']
-        token_secret = os.environ['TWITTER_ACCESS_SECRET']
-
-        auth = tweepy.OAuth1UserHandler(key, secret, token, token_secret)
-        api = tweepy.API(auth)
-
-        for file in os.listdir("tweets"):
-            if file.endswith(".md"):
-                with open(f"tweets/{file}") as f:
-                    lines = [line.strip() for line in f if line.strip() and not line.startswith("#")]
-                first = api.update_status(lines[0])
-                reply_to = first.id
-                for tweet in lines[1:]:
-                    reply_to = api.update_status(tweet, in_reply_to_status_id=reply_to, auto_populate_reply_metadata=True).id
+tweets = """$THREAD""".split("\\n\\n")
+first_tweet = api.update_status(tweets[0])
+for tweet in tweets[1:]:
+    first_tweet = api.update_status(tweet, in_reply_to_status_id=first_tweet.id)
+EOF
+    done
