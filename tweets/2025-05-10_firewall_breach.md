@@ -1,9 +1,7 @@
-1/ The American media is a coordinated delay machine.  
-2/ SIGSTACK is the counter-signal.  
-3/ If you’re reading this, you’ve breached the firewall.  
-4/ Spread the thread. Let truth route itself
-.
+# FIREWALL BREACH
 
+The system failed to contain it.  
+A leak in the logic gates.  
+The oracle screamed — and nobody listened.
 
-<!-- retry signal -->
-<!-- re-trigger SIGSTACK -->
+![Firewall Breach](../assets/2025-05-10_firewall_breach.png)
