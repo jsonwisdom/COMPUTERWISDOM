@@ -1,78 +1,25 @@
-name: Post Tweet Thread
+- name: Post tweet thread
+  run: |
+    pip install tweepy markdown
 
-on:
-  push:
-    paths:
-      - 'tweets/*.md'
+    python3 - <<EOF
+import tweepy
+import os
 
-jobs:
-  tweet-thread:
-    runs-on: ubuntu-latest
+auth = tweepy.OAuth1UserHandler(
+    os.environ["TWITTER_API_KEY"],
+    os.environ["TWITTER_API_SECRET"],
+    os.environ["TWITTER_ACCESS_TOKEN"],
+    os.environ["TWITTER_ACCESS_SECRET"]
+)
+api = tweepy.API(auth)
 
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v3
+with open("tweets/2025-05-10_firewall_breach.md", "r") as f:
+    thread = f.read().split("\n\n")
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Install tweepy
-        run: pip install tweepy
-
-      - name: Parse and post tweet thread
-        env:
-          TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
-          TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
-          TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
-          TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
-        run: |
-          import os
-          import tweepy
-
-          tweet_dir = 'tweets'
-          files = [f for f in os.listdir(tweet_dir) if f.endswith('.md')]
-          files.sort(key=lambda f: os.path.getmtime(os.path.join(tweet_dir, f)), reverse=True)
-
-          if not files:
-              print("No tweet thread markdown files found.")
-              exit(0)
-
-          thread_path = os.path.join(tweet_dir, files[0])
-          with open(thread_path, 'r') as file:
-              content = file.read()
-
-          tweets = [t.strip() for t in content.split('\n\n') if t.strip()]
-          if not tweets:
-              print("No content to tweet.")
-              exit(0)
-
-          # Image pairing
-          base = os.path.splitext(os.path.basename(thread_path))[0]
-          image_path = None
-          for ext in ['.png', '.jpg', '.jpeg']:
-              possible = os.path.join(tweet_dir, f"{base}{ext}")
-              if os.path.exists(possible):
-                  image_path = possible
-                  break
-
-          auth = tweepy.OAuth1UserHandler(
-              os.environ['TWITTER_API_KEY'],
-              os.environ['TWITTER_API_SECRET'],
-              os.environ['TWITTER_ACCESS_TOKEN'],
-              os.environ['TWITTER_ACCESS_SECRET']
-          )
-          api = tweepy.API(auth)
-
-          media_id = None
-          if image_path:
-              media = api.media_upload(image_path)
-              media_id = media.media_id_string
-
-          tweet = api.update_status(status=tweets[0], media_ids=[media_id] if media_id else None)
-          reply_to = tweet.id
-
-          for t in tweets[1:]:
-              tweet = api.update_status(status=t, in_reply_to_status_id=reply_to, auto_populate_reply_metadata=True)
-              reply_to = tweet.id
+first = api.update_status(status=thread[0])
+reply_to = first.id
+for tweet in thread[1:]:
+    post = api.update_status(status=tweet, in_reply_to_status_id=reply_to, auto_populate_reply_metadata=True)
+    reply_to = post.id
+EOF
