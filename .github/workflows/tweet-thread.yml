@@ -1,0 +1,47 @@
+name: Post Tweet Thread
+
+on:
+  push:
+    paths:
+      - "tweets/*.md"
+
+jobs:
+  tweet-thread:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    - name: Parse and post tweet thread
+      env:
+        TWITTER_API_KEY: ${{ secrets.TWITTER_API_KEY }}
+        TWITTER_API_SECRET: ${{ secrets.TWITTER_API_SECRET }}
+        TWITTER_ACCESS_TOKEN: ${{ secrets.TWITTER_ACCESS_TOKEN }}
+        TWITTER_ACCESS_SECRET: ${{ secrets.TWITTER_ACCESS_SECRET }}
+      run: |
+        pip install tweepy markdown
+
+        CHANGED_FILES=$(git diff --name-only HEAD^ HEAD | grep "^tweets/.*\.md$")
+
+        for FILE in $CHANGED_FILES; do
+          echo "Processing $FILE"
+          THREAD=$(cat $FILE | sed -n '/^$/!p' | sed '/^#/d')
+
+          python - <<EOF
+import tweepy
+
+auth = tweepy.OAuth1UserHandler(
+    "${{ secrets.TWITTER_API_KEY }}",
+    "${{ secrets.TWITTER_API_SECRET }}",
+    "${{ secrets.TWITTER_ACCESS_TOKEN }}",
+    "${{ secrets.TWITTER_ACCESS_SECRET }}"
+)
+api = tweepy.API(auth)
+
+tweets = """$THREAD""".split("\\n\\n")
+first_tweet = api.update_status(tweets[0])
+for tweet in tweets[1:]:
+    first_tweet = api.update_status(tweet, in_reply_to_status_id=first_tweet.id)
+EOF
+        done
