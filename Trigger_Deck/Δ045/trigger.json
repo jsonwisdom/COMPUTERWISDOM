@@ -1,0 +1,24 @@
+{
+  "version": "1.0",
+  "author": "Zero Cool",
+  "chain": "Zora",
+  "category": "Governance/OS",
+  "trigger_conditions": {
+    "action": "mint_proposal",
+    "platform": "Zora",
+    "fallback": "mirror_to_github_pages"
+  },
+  "payload": {
+    "media_type": "image/pdf hybrid",
+    "linked_assets": [
+      "https://jsonwisdom.github.io/COMPUTERWISDOM/assets/scroll.png",
+      "https://jsonwisdom.github.io/COMPUTERWISDOM/assets/stubborn.png"
+    ],
+    "metadata": {
+      "AI_Module": "Trigger-based",
+      "Interface": "Browser-first",
+      "Governance": "Decentralized",
+      "License": "Open Source – MIT"
+    }
+  }
+}
