@@ -1,0 +1,27 @@
+{
+  "name": "@reputation-kernel/ts",
+  "version": "0.1.0",
+  "description": "TypeScript SDK and Hardhat tasks for Reputation Kernel",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "hardhat test",
+    "deploy:local": "hardhat run scripts/deploy.ts --network localhost",
+    "seed:demo": "hardhat run scripts/seed.ts --network localhost",
+    "test:ens": "hardhat run scripts/test-ens.ts --network localhost",
+    "compile": "hardhat compile",
+    "clean": "hardhat clean"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^4.0.0",
+    "@types/node": "^20.0.0",
+    "hardhat": "^2.19.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@ethersproject/contracts": "^5.7.0",
+    "@ethersproject/providers": "^5.7.0",
+    "ethers": "^6.8.0"
+  }
+}
