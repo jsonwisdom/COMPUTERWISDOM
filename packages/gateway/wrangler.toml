@@ -1,0 +1,15 @@
+name = "reputation-kernel-gateway"
+main = "src/index.ts"
+compatibility_date = "2023-12-01"
+
+[env.development]
+name = "reputation-kernel-gateway-dev"
+
+[vars]
+ENVIRONMENT = "development"
+
+[[env.development.vars]]
+ETHEREUM_RPC_URL = "http://localhost:9545"
+BASE_RPC_URL = "http://localhost:8545"
+REPUTATION_REGISTRY_ADDRESS = "0x0000000000000000000000000000000000000000"
+ROOT_NOTARY_ADDRESS = "0x0000000000000000000000000000000000000000"
