@@ -1,0 +1,14 @@
+{
+  "leaf_id": "JWC-003",
+  "move_id": "MRS_COUNSEL",
+  "player": "MRS",
+  "timestamp": "2026-04-17T19:05:00Z",
+  "pattern_governance": "Anchored Expansion: Scaling the decision network via the JWC-001 Merkle Root.",
+  "positional_relevance": "Finality proof. Validation of the Watcher's permission logic.",
+  "evidence_anchor": "0x5f3e...b412",
+  "historical_context": "The Ghost Queen is redeemed through Infrastructure alignment.",
+  "metadata": {
+    "status": "UNVERIFIED",
+    "67WARNOW": "0.00"
+  }
+}
