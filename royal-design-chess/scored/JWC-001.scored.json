@@ -1,0 +1,21 @@
+{
+  "scored_id": "S-JWC-001",
+  "leaf_ref": "royal-design-chess/leaves/JWC-001.leaf.json",
+  "move_id": "MR_MEASURE",
+  "audit_meta": {
+    "bluehammer_status": "PASS",
+    "verified_by": "LAPIS_AUDITOR_v1",
+    "scored_at": "2026-04-17T18:38:12Z",
+    "integrity_score": "1.0"
+  },
+  "position_state": {
+    "classification": "VALIDATED_BASELINE",
+    "board_drift": "0.01",
+    "structural_integrity": "STABLE",
+    "verdict": "BASELINE_ESTABLISHED"
+  },
+  "merkle_confirmation": {
+    "anchor": "0x5f3e...b412",
+    "state_root": "VERIFIED_L0"
+  }
+}
