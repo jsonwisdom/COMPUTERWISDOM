@@ -1,0 +1,9 @@
+{
+  "alignment_id": "ALIGNMENT-001",
+  "measure_ref": "S-JWC-001",
+  "counsel_ref": "S-JWC-002",
+  "anchor_match": true,
+  "bluehammer_dual_pass": true,
+  "alignment_status": "MEASURE_COUNSEL_ALIGNMENT_CONFIRMED",
+  "eligible_for_verdict_67": true
+}
