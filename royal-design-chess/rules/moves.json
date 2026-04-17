@@ -1,0 +1,48 @@
+{
+  "protocol": "JAYS_WISDOM_CHESS_RULES",
+  "version": "1.2.0",
+  "board_jurisdiction": "COMPUTERWISDOM_REPO",
+  "moves": {
+    "MR_MEASURE": {
+      "player": "MR",
+      "type": "STABILITY",
+      "logic_gate": "STRICT_CALCULATION",
+      "required_fields": [
+        "reasoning_chain",
+        "logic_path",
+        "infra_impact_assessment",
+        "merkle_anchor_ref"
+      ],
+      "fail_state": {
+        "id": "COLD_KING",
+        "description": "Calculation is present but lacks strategic context or narrative pattern."
+      }
+    },
+    "MRS_COUNSEL": {
+      "player": "MRS",
+      "type": "DIRECTIONAL_PRESSURE",
+      "logic_gate": "PATTERN_RECOGNITION",
+      "required_fields": [
+        "pattern_governance",
+        "positional_relevance",
+        "evidence_anchor",
+        "historical_context"
+      ],
+      "fail_state": {
+        "id": "GHOST_QUEEN",
+        "description": "Pattern is present but lacks infrastructure support or logical grounding."
+      }
+    },
+    "VERDICT_67": {
+      "player": "SYSTEM",
+      "type": "FINALITY_EVENT",
+      "trigger": "MEASURE_COUNSEL_ALIGNMENT",
+      "requirements": {
+        "sync_check": "MR_MEASURE.merkle_anchor == MRS_COUNSEL.evidence_anchor",
+        "consensus": "TRUE"
+      },
+      "result": "SETTLED_ON_BASE"
+    }
+  },
+  "enforcement_level": "BLOCK_ON_FAIL"
+}
