@@ -1,0 +1,15 @@
+{
+  "leaf_id": "JWC-001",
+  "move_id": "MR_MEASURE",
+  "player": "MR",
+  "timestamp": "2026-04-17T18:35:47Z",
+  "reasoning_chain": "Establish foundational state-root for ComputerWisdom repo by notarizing the Royal Design stack.",
+  "logic_path": "Define Manifesto -> Map Ontology -> Initialize Rules -> Hardwire BlueHammer -> Commit Leaf.",
+  "infra_impact_assessment": "Low compute cost; high structural impact. Initializes directory tree and enforcement protocols in jsonwisdom/COMPUTERWISDOM.",
+  "merkle_anchor_ref": "0x5f3e...b412",
+  "metadata": {
+    "status": "UNVERIFIED",
+    "67WARNOW": "0.01",
+    "67NEWSTURBO": "1.0"
+  }
+}
