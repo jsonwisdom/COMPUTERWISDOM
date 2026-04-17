@@ -1,0 +1,16 @@
+{
+  "leaf_id": "JWC-002",
+  "move_id": "MRS_COUNSEL",
+  "player": "MRS",
+  "timestamp": "2026-04-17T18:42:10Z",
+  "pattern_governance": "Sovereign Intelligence Convergence: Moving from static data-hosting to an active, pattern-aware decision network.",
+  "position_state_ref": "JWC-001",
+  "positional_relevance": "Infrastructure established in JWC-001 is hollow without a sovereign directive. Counsel provides the 'Why' for the 'What'.",
+  "evidence_anchor": "0x5f3e...b412",
+  "historical_context": "Following the JayWisdom doctrine: Structure must support judgment. We are transitioning the ecosystem from Repo to Oracle.",
+  "metadata": {
+    "status": "UNVERIFIED",
+    "67WARNOW": "0.00",
+    "67NEWSTURBO": "1.2"
+  }
+}
