@@ -1,0 +1,39 @@
+name: 🔵🔨 BLUEHAMMER WATCHER
+
+on:
+  push:
+    branches: [ master, main ]
+    paths:
+      - 'royal-design-chess/**'
+      - '.github/workflows/bluehammer.yml'
+  pull_request:
+    branches: [ master, main ]
+    paths:
+      - 'royal-design-chess/**'
+      - '.github/workflows/bluehammer.yml'
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Sovereign Code
+        uses: actions/checkout@v4
+
+      - name: Install jq
+        run: sudo apt-get update && sudo apt-get install -y jq
+
+      - name: Set Permission
+        run: chmod +x royal-design-chess/infrastructure/bluehammer.sh
+
+      - name: Execute BlueHammer Audit
+        run: |
+          set -euo pipefail
+          found=0
+          while IFS= read -r -d '' leaf; do
+            found=1
+            ./royal-design-chess/infrastructure/bluehammer.sh "$leaf"
+          done < <(find royal-design-chess/leaves -type f -name '*.json' -print0)
+
+          if [ "$found" -eq 0 ]; then
+            echo "No leaf files found under royal-design-chess/leaves"
+          fi
