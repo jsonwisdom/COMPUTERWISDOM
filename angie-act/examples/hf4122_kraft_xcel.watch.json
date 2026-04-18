@@ -1,0 +1,27 @@
+{
+  "claim_id": "ANGIE-HF4122-001",
+  "bill_or_action": "HF 4122 - Thermal energy network plan requirements",
+  "member": "Rep. Larry Kraft",
+  "entity_x": "Xcel Energy Employees PAC",
+  "date_submitted": "2026-04-18",
+  "overall_verdict": "watch",
+  "amy_flag": false,
+  "audit_notes": "Baseline case with alignment and sector benefit but no dated contribution evidence tying money to bill timing.",
+  "filters": {
+    "alignment": {"score": 2, "explanation": "Energy sector alignment with committee relevance."},
+    "norm": {"score": 1, "explanation": "No abnormal contribution timing identified."},
+    "gain": {"score": 2, "explanation": "Bill creates regulatory pathway benefiting large utilities."},
+    "integrity": {"score": 1, "explanation": "No clear coordination signal in timing."},
+    "evidence": {
+      "score": 1,
+      "explanation": "Bill text and sector alignment present but no dated contribution record.",
+      "claim_type": "minnesota_state",
+      "sources_used": ["Revisor", "CFB", "MN DEED"]
+    }
+  },
+  "source_links": [
+    {"source_name": "Revisor HF4122", "url": "https://www.revisor.mn.gov/bills/94/2026/0/HF/4122/", "accessed_date": "2026-04-18"},
+    {"source_name": "CFB", "url": "https://cfb.mn.gov", "accessed_date": "2026-04-18"},
+    {"source_name": "MN DEED", "url": "https://mn.gov/deed", "accessed_date": "2026-04-18"}
+  ]
+}
