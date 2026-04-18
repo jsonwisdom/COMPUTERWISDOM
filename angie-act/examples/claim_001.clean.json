@@ -1,0 +1,55 @@
+{
+  "claim_id": "ANGIE-EX-001",
+  "bill_or_action": "HF 1000 - Fictional Minnesota Transparency Act",
+  "member": "Rep. Alex North",
+  "entity_x": "Minnesota Civic Builders Association",
+  "date_submitted": "2026-04-18",
+  "overall_verdict": "clean",
+  "amy_flag": false,
+  "audit_notes": "Fictional training example with sufficient evidence and no integrity concerns.",
+  "filters": {
+    "alignment": {
+      "score": 2,
+      "explanation": "The donor group has a clear Minnesota footprint and the bill is squarely within state committee relevance."
+    },
+    "norm": {
+      "score": 2,
+      "explanation": "Contribution behavior and legislative alignment are consistent with peer patterns."
+    },
+    "gain": {
+      "score": 1,
+      "explanation": "The bill benefits a named Minnesota sector, but the benefit is moderate rather than exceptional."
+    },
+    "integrity": {
+      "score": 2,
+      "explanation": "No suspicious timing cluster or coordination signal appears in the fictional record."
+    },
+    "evidence": {
+      "score": 2,
+      "explanation": "Primary records include a Minnesota bill reference, a state finance source, and a Minnesota agency source.",
+      "claim_type": "minnesota_state",
+      "sources_used": [
+        "Minnesota Campaign Finance Board",
+        "Minnesota Revisor of Statutes",
+        "MN DEED"
+      ]
+    }
+  },
+  "source_links": [
+    {
+      "source_name": "Minnesota Campaign Finance Board",
+      "url": "https://cfb.mn.gov",
+      "accessed_date": "2026-04-18"
+    },
+    {
+      "source_name": "Minnesota Revisor of Statutes",
+      "url": "https://www.revisor.mn.gov",
+      "accessed_date": "2026-04-18"
+    },
+    {
+      "source_name": "MN DEED",
+      "url": "https://mn.gov/deed",
+      "accessed_date": "2026-04-18"
+    }
+  ]
+}
