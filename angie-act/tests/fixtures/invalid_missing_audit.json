@@ -1,0 +1,27 @@
+{
+  "claim_id": "ANGIE-TST-INVALID-004",
+  "bill_or_action": "HF 4122 - Missing Audit Notes",
+  "member": "Rep. Larry Kraft",
+  "entity_x": "Xcel Energy Employees PAC",
+  "date_submitted": "2026-04-18",
+  "overall_verdict": "influence_flagged",
+  "amy_flag": true,
+  "audit_notes": "",
+  "filters": {
+    "alignment": {"score": 2, "explanation": "Valid alignment"},
+    "norm": {"score": 2, "explanation": "Valid norm"},
+    "gain": {"score": 2, "explanation": "Valid gain"},
+    "integrity": {"score": 0, "explanation": "Valid integrity drop"},
+    "evidence": {
+      "score": 2,
+      "explanation": "Enough sources but missing audit notes for amy_flag.",
+      "claim_type": "minnesota_state",
+      "sources_used": ["CFB", "Revisor", "DEED"]
+    }
+  },
+  "source_links": [
+    {"source_name": "CFB", "url": "https://cfb.mn.gov", "accessed_date": "2026-04-18"},
+    {"source_name": "Revisor", "url": "https://www.revisor.mn.gov", "accessed_date": "2026-04-18"},
+    {"source_name": "DEED", "url": "https://mn.gov/deed", "accessed_date": "2026-04-18"}
+  ]
+}
