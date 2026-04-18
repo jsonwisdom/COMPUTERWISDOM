@@ -1,0 +1,27 @@
+{
+  "claim_id": "ANGIE-TST-INVALID-005",
+  "bill_or_action": "HF 4122 - Fictional Bad URL Case",
+  "member": "Rep. Larry Kraft",
+  "entity_x": "Xcel Energy Employees PAC",
+  "date_submitted": "2026-04-18",
+  "overall_verdict": "watch",
+  "amy_flag": false,
+  "audit_notes": "Fixture intentionally tests invalid source URL handling.",
+  "filters": {
+    "alignment": { "score": 2, "explanation": "Sector and committee alignment are present." },
+    "norm": { "score": 1, "explanation": "No abnormal contribution pattern is proven." },
+    "gain": { "score": 2, "explanation": "The fictional bill would materially benefit the named donor sector." },
+    "integrity": { "score": 1, "explanation": "Timing is notable, but direct coordination is not proven." },
+    "evidence": {
+      "score": 1,
+      "explanation": "Fixture intentionally uses an invalid URL while otherwise looking normal.",
+      "claim_type": "minnesota_state",
+      "sources_used": ["Minnesota Campaign Finance Board", "Minnesota Revisor of Statutes", "MN DEED"]
+    }
+  },
+  "source_links": [
+    { "source_name": "Minnesota Campaign Finance Board", "url": "cfb.mn.gov", "accessed_date": "2026-04-18" },
+    { "source_name": "Minnesota Revisor of Statutes", "url": "https://www.revisor.mn.gov", "accessed_date": "2026-04-18" },
+    { "source_name": "MN DEED", "url": "https://mn.gov/deed", "accessed_date": "2026-04-18" }
+  ]
+}
