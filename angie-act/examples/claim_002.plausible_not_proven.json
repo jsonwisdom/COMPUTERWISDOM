@@ -1,0 +1,26 @@
+{
+  "claim_id": "ANGIE-EX-002",
+  "bill_or_action": "H.R. 9999 - Fictional Federal Influence Case",
+  "member": "Rep. Jordan Vale",
+  "entity_x": "National Example PAC",
+  "date_submitted": "2026-04-18",
+  "overall_verdict": "plausible_not_proven",
+  "amy_flag": true,
+  "audit_notes": "Fictional example flagged for review because the timing pattern is suggestive but not dispositive.",
+  "filters": {
+    "alignment": {"score": 2, "explanation": "The donor sector aligns with the member's district and committee responsibilities."},
+    "norm": {"score": 1, "explanation": "The funding pattern is somewhat elevated compared with prior cycles."},
+    "gain": {"score": 2, "explanation": "The bill would clearly benefit the named sector through direct regulatory relief."},
+    "integrity": {"score": 1, "explanation": "The timing is notable, but the record does not prove direct coordination."},
+    "evidence": {
+      "score": 1,
+      "explanation": "The evidence package supports concern but does not close the causation gap.",
+      "claim_type": "federal",
+      "sources_used": ["FEC", "Congress.gov"]
+    }
+  },
+  "source_links": [
+    {"source_name": "FEC", "url": "https://www.fec.gov", "accessed_date": "2026-04-18"},
+    {"source_name": "Congress.gov", "url": "https://www.congress.gov", "accessed_date": "2026-04-18"}
+  ]
+}
