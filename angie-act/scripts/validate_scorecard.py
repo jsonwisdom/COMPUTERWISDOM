@@ -40,7 +40,7 @@ def validate_file(path: Path):
         return False
 
     # Rule 4
-    if data["amy_flag"] and len(data.get("audit_notes", "")) < 20:
+    if data["amy_flag"] and len(data.get("audit_notes", "").strip()) < 20:
         print("INVALID: amy_flag is true but audit_notes is empty or <20 chars")
         return False
 
