@@ -1,0 +1,58 @@
+---
+name: Refresh Delta JSON
+
+"on":
+  # Run daily at midnight UTC
+  schedule:
+    - cron: '0 0 * * *'
+
+  # Allow manual triggering for testing
+  workflow_dispatch:
+
+# Minimal permissions needed
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  refresh-delta:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update delta.json with current timestamp
+        run: |
+          # Create/update delta.json with current timestamp
+          cat > docs/delta.json << EOF
+          {
+            "last_updated": "$(date -u +"%Y-%m-%dT%H:%M:%S.%3NZ")",
+            "status": "refreshed",
+            "refresh_source": "github_action_cron"
+          }
+          EOF
+
+          # Show what was written
+          echo "Updated delta.json content:"
+          cat docs/delta.json
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          # Check if there are changes
+          if git diff --quiet docs/delta.json; then
+            echo "No changes to delta.json, forcing update anyway"
+            echo "to prevent data_age_color drift"
+            # Touch the file to update its modification time
+            touch docs/delta.json
+          fi
+
+          git add docs/delta.json
+          # Automated delta.json refresh [skip ci]
+          msg="Automated delta.json refresh [skip ci]"
+          git commit -m "$msg" || echo "No changes to commit"
+          git push || echo "Nothing to push"
