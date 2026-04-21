@@ -1,0 +1,20 @@
+{
+  "system": "scaling-solutions",
+  "version": "0.1.0",
+  "owner_ens": "jaywisdom.base.eth",
+  "identity_root": "os.jaywisdom.eth",
+  "vault": "data.jaywisdom.eth",
+  "gateway": "app.jaywisdom.eth",
+  "settlement": "jaywisdom.base.eth",
+  "agents": [],
+  "receipts": [],
+  "last_merkle_root": null,
+  "last_updated": null,
+  "policy": {
+    "kms_required": true,
+    "receipts_required": true,
+    "merkle_batching": true,
+    "human_approval_required_for_first_live_trade": true,
+    "default_max_spend_per_agent_usd": 25
+  }
+}
