@@ -1,0 +1,24 @@
+{
+  "namespace": "@laafb",
+  "audit_type": "SELF_AUDIT_BASE_LEVEL",
+  "version": "v1",
+  "anchor": "jaywisdom.base.eth",
+  "status": "USER_DECLARED",
+  "layers": {
+    "l0": {
+      "description": "Repository and canonical JSON storage",
+      "state": "ACTIVE"
+    },
+    "l2": {
+      "description": "ENS/Base settlement target",
+      "state": "STAGED"
+    }
+  },
+  "controls": [
+    "source_bound_entries_only",
+    "sha256_required_for_verification",
+    "public_records_only_for_external_claims",
+    "no_unverified_claims_marked_verified"
+  ],
+  "notes": "Base-level self audit anchored by Jay. Status remains USER_DECLARED until independently verified and settled."
+}
