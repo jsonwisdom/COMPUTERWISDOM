@@ -1,49 +1,92 @@
 import os
+import sys
 import json
 import subprocess
 from pathlib import Path
 from web3 import Web3
 
-RPC_URL = os.getenv("BASE_SEPOLIA_RPC")
-WALLET_KEY = os.getenv("ANCHOR_WALLET_KEY")
-CONTRACT_ADDR = os.getenv("ANCHOR_REGISTRY_ADDR")
 STATE_PATH = Path("_truth/state.json")
-
 ABI = '[{"inputs":[{"internalType":"bytes32","name":"merkleRoot","type":"bytes32"}],"name":"anchor","outputs":[],"stateMutability":"nonpayable","type":"function"}]'
+
+
+def validate_env():
+    required = ["BASE_RPC_URL", "ANCHOR_WALLET_KEY", "ANCHOR_REGISTRY_ADDR", "CHAIN_ID"]
+    missing = [k for k in required if not os.getenv(k)]
+    if missing:
+        print(f"FATAL: missing env vars: {missing}")
+        sys.exit(1)
+
+
+def load_state():
+    with open(STATE_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def save_state(state):
+    with open(STATE_PATH, "w", encoding="utf-8") as f:
+        json.dump(state, f, indent=2)
 
 
 def run_audit():
     result = subprocess.run(["./verify.sh"], capture_output=True, text=True)
     if result.returncode != 0:
-        print(f"AUDIT FAILED: {result.stdout}")
+        print(f"AUDIT FAILED: {result.stdout}{result.stderr}")
         return False
     return True
 
 
+def estimate_fees(w3):
+    latest = w3.eth.get_block("latest")
+    base_fee = latest.get("baseFeePerGas", w3.eth.gas_price)
+    priority = w3.to_wei("0.1", "gwei")
+    max_fee = int(base_fee * 2 + priority)
+    return max_fee, priority
+
+
 def submit_root():
-    if not run_audit():
+    validate_env()
+    state = load_state()
+
+    current_root = state.get("last_merkle_root")
+    anchored_root = state.get("anchored_root")
+    status = state.get("anchor_status")
+
+    if status == "pending":
+        print("ABORT: anchor in-flight")
         return
 
-    w3 = Web3(Web3.HTTPProvider(RPC_URL))
-    acct = w3.eth.account.from_key(WALLET_KEY)
+    if current_root and current_root == anchored_root and status == "settled":
+        print("SKIP: current root already settled on-chain")
+        return
 
-    with open(STATE_PATH) as f:
-        state = json.load(f)
-
-    root = state.get("last_merkle_root")
-    if not root:
+    if not current_root:
         print("No merkle root. Abort.")
         return
 
-    contract = w3.eth.contract(address=CONTRACT_ADDR, abi=ABI)
+    if not run_audit():
+        return
 
-    tx = contract.functions.anchor(Web3.to_bytes(hexstr=root)).build_transaction({
+    rpc_url = os.getenv("BASE_RPC_URL")
+    wallet_key = os.getenv("ANCHOR_WALLET_KEY")
+    contract_addr = os.getenv("ANCHOR_REGISTRY_ADDR")
+    chain_id = int(os.getenv("CHAIN_ID"))
+
+    w3 = Web3(Web3.HTTPProvider(rpc_url))
+    if not w3.is_connected():
+        print("FATAL: RPC unreachable")
+        sys.exit(1)
+
+    acct = w3.eth.account.from_key(wallet_key)
+    contract = w3.eth.contract(address=contract_addr, abi=ABI)
+    max_fee, priority_fee = estimate_fees(w3)
+
+    tx = contract.functions.anchor(Web3.to_bytes(hexstr=current_root)).build_transaction({
         "from": acct.address,
         "nonce": w3.eth.get_transaction_count(acct.address),
         "gas": 100000,
-        "maxFeePerGas": w3.to_wei("1.5", "gwei"),
-        "maxPriorityFeePerGas": w3.to_wei("0.1", "gwei"),
-        "chainId": 84532
+        "maxFeePerGas": max_fee,
+        "maxPriorityFeePerGas": priority_fee,
+        "chainId": chain_id,
     })
 
     signed = w3.eth.account.sign_transaction(tx, acct.key)
@@ -51,9 +94,8 @@ def submit_root():
 
     state["last_anchor_tx"] = tx_hash.hex()
     state["anchor_status"] = "pending"
-
-    with open(STATE_PATH, "w") as f:
-        json.dump(state, f, indent=2)
+    state["anchoring_root"] = current_root
+    save_state(state)
 
     print(f"Anchored: {tx_hash.hex()}")
 
