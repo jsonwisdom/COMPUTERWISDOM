@@ -5,7 +5,7 @@
   "subject": {
     "label": "Aviano Italy",
     "location": ["Italy"],
-    "status": "USER_DECLARED"
+    "status": "ABANDONED_DUE_TO_SOURCE_ACCESS_FRICTION"
   },
   "anchor": "jaywisdom.base.eth",
   "mode": "MACHINE_SPEED_JSON_HARVEST",
@@ -21,7 +21,7 @@
       "claim_id": "aviano-0001",
       "entity": "PUBLIC_FILINGS",
       "claim": "GAO decision B-294747 documents a denied protest involving RFP No. N33191-02-R-1076 concerning airplane parking areas and schedule compliance.",
-      "status": "SOURCE_CONFIRMED_PENDING_HASH_PARITY",
+      "status": "ABANDONED_DUE_TO_SOURCE_ACCESS_FRICTION",
       "sources": [
         {
           "document_type": "GAO Decision",
@@ -30,7 +30,13 @@
           "source_url": "https://www.gao.gov/products/b-294747",
           "document_sha256": "e9b09f159c2c2be7847a463196432cdb8c74e2bd7873cd2f16a8debe19c680f1"
         }
-      ]
+      ],
+      "audit_trail": {
+        "initiation": "2026-04-21",
+        "closure": "2026-04-21",
+        "reason": "Retrieval cost and source-access friction exceeded signal value. Node closed without settlement."
+      },
+      "notes": "Source-access friction prevented a clean reproducible retrieval loop in the chosen environment. Ramstein pattern retained; Aviano closed cleanly."
     }
   ],
   "report_to": "Jay"
