@@ -16,6 +16,23 @@
     "no_claim_verified_without_source_hash_date",
     "user_asserted_until_verified"
   ],
-  "intake": [],
+  "intake": [
+    {
+      "claim_id": "aviano-0001",
+      "entity": "PUBLIC_FILINGS",
+      "claim": "GAO decision B-294747 documents a denied protest involving RFP No. N33191-02-R-1076 concerning airplane parking areas and schedule compliance, not an Aviano power upgrade procurement.",
+      "status": "USER_ASSERTED_WITH_PROVIDED_HASH",
+      "sources": [
+        {
+          "document_type": "GAO Decision",
+          "document_id": "B-294747",
+          "event_date": "2004-10-15",
+          "source_url": "https://www.gao.gov/products/b-294747",
+          "document_sha256": "e9b09f159c2c2be7847a463196432cdb8c74e2bd7873cd2f16a8debe19c680f1"
+        }
+      ],
+      "notes": "Initial candidate claim about Aviano power upgrades was rejected due to source mismatch. This intake preserves the document-supported claim and provided hash while awaiting independent recomputation for VERIFIED status."
+    }
+  ],
   "report_to": "Jay"
 }
