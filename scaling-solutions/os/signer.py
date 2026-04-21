@@ -1,23 +1,15 @@
 #!/usr/bin/env python3
-import base64
-import hashlib
-import json
-import os
 from pathlib import Path
-from typing import Any, Dict
+from typing import Dict
+
+from nacl.encoding import HexEncoder
+from nacl.exceptions import BadSignatureError
+from nacl.signing import SigningKey, VerifyKey
 
 ROOT = Path(__file__).resolve().parents[1]
 KEY_DIR = ROOT / ".keys"
-PRIVATE_KEY_PATH = KEY_DIR / "local_signing_key.txt"
-PUBLIC_KEY_PATH = KEY_DIR / "local_signing_key.pub.txt"
-
-
-def canon(value: Any) -> str:
-    return json.dumps(value, sort_keys=True, separators=(",", ":"), ensure_ascii=False)
-
-
-def _derive_public_from_private(private_key: str) -> str:
-    return hashlib.sha256(("pub:" + private_key).encode("utf-8")).hexdigest()
+PRIVATE_KEY_PATH = KEY_DIR / "ed25519_seed.hex"
+PUBLIC_KEY_PATH = KEY_DIR / "ed25519_pub.hex"
 
 
 def ensure_local_keypair() -> Dict[str, str]:
@@ -28,33 +20,32 @@ def ensure_local_keypair() -> Dict[str, str]:
             "public_key": PUBLIC_KEY_PATH.read_text(encoding="utf-8").strip(),
         }
 
-    seed = base64.b64encode(os.urandom(32)).decode("utf-8")
-    public_key = _derive_public_from_private(seed)
-    PRIVATE_KEY_PATH.write_text(seed + "\n", encoding="utf-8")
+    signing_key = SigningKey.generate()
+    private_key = signing_key.encode(encoder=HexEncoder).decode("utf-8")
+    public_key = signing_key.verify_key.encode(encoder=HexEncoder).decode("utf-8")
+    PRIVATE_KEY_PATH.write_text(private_key + "\n", encoding="utf-8")
     PUBLIC_KEY_PATH.write_text(public_key + "\n", encoding="utf-8")
-    return {"private_key": seed, "public_key": public_key}
+    return {"private_key": private_key, "public_key": public_key}
 
 
 def sign_receipt_hash(receipt_hash: str) -> Dict[str, str]:
-    # Placeholder local signer. This is NOT Ed25519.
-    # It provides deterministic non-production signing until KMS or a real Ed25519 library is wired.
     keypair = ensure_local_keypair()
-    private_key = keypair["private_key"]
-    public_key = keypair["public_key"]
-    signature = hashlib.sha256((private_key + ":" + receipt_hash).encode("utf-8")).hexdigest()
+    signing_key = SigningKey(keypair["private_key"], encoder=HexEncoder)
+    signature = signing_key.sign(receipt_hash.encode("utf-8")).signature.hex()
     return {
-        "signing_scheme": "local_sha256_placeholder",
+        "signing_scheme": "ed25519",
         "signer": "os.jaywisdom.eth",
-        "public_key": public_key,
+        "public_key": keypair["public_key"],
         "signature": signature,
     }
 
 
 def verify_receipt_hash(receipt_hash: str, signature_bundle: Dict[str, str]) -> bool:
-    if signature_bundle.get("signing_scheme") != "local_sha256_placeholder":
+    try:
+        if signature_bundle.get("signing_scheme") != "ed25519":
+            return False
+        verify_key = VerifyKey(signature_bundle["public_key"], encoder=HexEncoder)
+        verify_key.verify(receipt_hash.encode("utf-8"), bytes.fromhex(signature_bundle["signature"]))
+        return True
+    except (BadSignatureError, KeyError, ValueError):
         return False
-    if not PRIVATE_KEY_PATH.exists():
-        return False
-    private_key = PRIVATE_KEY_PATH.read_text(encoding="utf-8").strip()
-    expected = hashlib.sha256((private_key + ":" + receipt_hash).encode("utf-8")).hexdigest()
-    return expected == signature_bundle.get("signature")
