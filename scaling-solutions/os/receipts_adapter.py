@@ -94,7 +94,7 @@ def main() -> int:
         "result_hash": sha256_hex_text(canon(result_payload))
     }
     receipt["receipt_hash"] = sha256_hex_text(canon(receipt))
-    receipt["signature"] = sign_receipt_hash(receipt["receipt_hash"])
+    receipt["signature"] = sign_receipt_hash(args.agent, receipt["receipt_hash"])
 
     receipts = state.setdefault("receipts", [])
     receipts.append(receipt)
