@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
+import json
 import os
 from pathlib import Path
-from typing import Dict
+from typing import Dict, Optional
 
 from nacl.encoding import HexEncoder
 from nacl.exceptions import BadSignatureError
@@ -11,7 +12,28 @@ ROOT = Path(__file__).resolve().parents[1]
 KEY_DIR = ROOT / ".keys"
 PRIVATE_KEY_PATH = KEY_DIR / "ed25519_seed.hex"
 PUBLIC_KEY_PATH = KEY_DIR / "ed25519_pub.hex"
+INVENTORY_PATH = ROOT / "os" / "agent_inventory.json"
 SIGNER_MODE = os.getenv("SIGNER_MODE", "local")
+
+
+def load_inventory() -> Dict:
+    return json.loads(INVENTORY_PATH.read_text(encoding="utf-8"))
+
+
+def get_agent_key_config(agent_id: str) -> Optional[Dict[str, str]]:
+    inventory = load_inventory()
+    for group_name, agents in inventory.get("agents", {}).items():
+        for agent in agents:
+            if agent.get("id") == agent_id:
+                cfg = {
+                    "mode": "kms" if SIGNER_MODE == "kms" and group_name == "treasury" else "local"
+                }
+                if group_name == "treasury":
+                    env_key_suffix = agent_id.split(".")[0].replace("-", "_").upper()
+                    cfg["kms_key_version"] = os.getenv(f"KMS_PATH_{env_key_suffix}")
+                    cfg["public_key_hex"] = os.getenv(f"KMS_PUBLIC_KEY_{env_key_suffix}")
+                return cfg
+    return None
 
 
 def ensure_local_keypair() -> Dict[str, str]:
@@ -42,11 +64,8 @@ def _ed25519_sign(receipt_hash: str) -> Dict[str, str]:
     }
 
 
-def _kms_sign(receipt_hash: str) -> Dict[str, str]:
+def _kms_sign(receipt_hash: str, key_version_name: str, public_key_hex: str) -> Dict[str, str]:
     from google.cloud import kms_v1
-
-    key_version_name = os.environ["KMS_KEY_VERSION"]
-    public_key_hex = os.environ["KMS_PUBLIC_KEY_HEX"]
 
     client = kms_v1.KeyManagementServiceClient()
     digest = bytes.fromhex(receipt_hash)
@@ -65,9 +84,16 @@ def _kms_sign(receipt_hash: str) -> Dict[str, str]:
     }
 
 
-def sign_receipt_hash(receipt_hash: str) -> Dict[str, str]:
-    if SIGNER_MODE == "kms":
-        return _kms_sign(receipt_hash)
+def sign_receipt_hash(agent_id: str, receipt_hash: str) -> Dict[str, str]:
+    cfg = get_agent_key_config(agent_id)
+    if not cfg:
+        raise ValueError(f"Unknown agent: {agent_id}")
+
+    if cfg["mode"] == "kms":
+        if not cfg.get("kms_key_version") or not cfg.get("public_key_hex"):
+            raise ValueError(f"Missing KMS config for agent: {agent_id}")
+        return _kms_sign(receipt_hash, cfg["kms_key_version"], cfg["public_key_hex"])
+
     return _ed25519_sign(receipt_hash)
 
 
@@ -94,5 +120,5 @@ def verify_receipt_hash(receipt_hash: str, signature_bundle: Dict[str, str]) -> 
             return True
 
         return False
-    except (BadSignatureError, KeyError, ValueError, Exception):
+    except (BadSignatureError, KeyError, ValueError):
         return False
