@@ -1,0 +1,45 @@
+{
+  "version": "1.0",
+  "chainId": "8453",
+  "meta": {
+    "name": "Lapis Multi-Agent Policy",
+    "description": "Shard-isolated permissions for Treasury-01. Enforces a $25 limit per transaction.",
+    "scp": "https://github.com/jsonwisdom/COMPUTERWISDOM/scaling-solutions/os"
+  },
+  "roles": [
+    {
+      "roleId": "treasury-01-role",
+      "members": [
+        "0xYOUR_KMS_AGENT_ADDRESS_HERE"
+      ],
+      "targets": [
+        {
+          "address": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+          "label": "Base USDC",
+          "functions": [
+            {
+              "signature": "approve(address,uint256)",
+              "rules": [
+                {
+                  "paramIndex": 1,
+                  "operator": "lte",
+                  "value": "25000000"
+                }
+              ]
+            },
+            {
+              "signature": "transfer(address,uint256)",
+              "rules": [
+                {
+                  "paramIndex": 1,
+                  "operator": "lte",
+                  "value": "25000000"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
