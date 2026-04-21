@@ -1,0 +1,50 @@
+{
+  "batch": "01",
+  "status": "staged",
+  "agents": {
+    "research": [
+      {
+        "id": "sentiment.os.jaywisdom.eth",
+        "status": "active",
+        "permissions": ["vault_read","vault_write_receipts","gateway_submit"],
+        "autonomy": "human_on_loop"
+      }
+    ],
+    "compliance": [
+      {
+        "id": "audit.os.jaywisdom.eth",
+        "status": "active",
+        "permissions": ["vault_read"],
+        "autonomy": "human_on_loop"
+      }
+    ],
+    "comms": [
+      {
+        "id": "mcp.os.jaywisdom.eth",
+        "status": "active",
+        "permissions": ["gateway_submit","vault_write_receipts"],
+        "autonomy": "human_in_loop"
+      }
+    ],
+    "treasury": [
+      {
+        "id": "treasury-01.os.jaywisdom.eth",
+        "pair": "USDC/ETH",
+        "status": "paused",
+        "cap_usd": 25
+      },
+      {
+        "id": "treasury-02.os.jaywisdom.eth",
+        "pair": "USDC/cbBTC",
+        "status": "paused",
+        "cap_usd": 25
+      },
+      {
+        "id": "treasury-03.os.jaywisdom.eth",
+        "pair": "USDC/AERO",
+        "status": "paused",
+        "cap_usd": 25
+      }
+    ]
+  }
+}
