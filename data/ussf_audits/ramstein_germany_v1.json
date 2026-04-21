@@ -1,0 +1,21 @@
+{
+  "namespace": "@ussf_audits",
+  "audit_type": "PUBLIC_RECORDS_INTAKE",
+  "version": "v1",
+  "subject": {
+    "label": "Ramstein Germany",
+    "location": ["Germany"],
+    "status": "USER_DECLARED"
+  },
+  "anchor": "jaywisdom.base.eth",
+  "mode": "MACHINE_SPEED_JSON_HARVEST",
+  "rules": [
+    "public_records_only",
+    "no_private_material",
+    "no_leaks",
+    "no_claim_verified_without_source_hash_date",
+    "user_asserted_until_verified"
+  ],
+  "intake": [],
+  "report_to": "Jay"
+}
