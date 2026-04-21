@@ -1,0 +1,37 @@
+{
+  "namespace": "@ussf_audits",
+  "audit_type": "PUBLIC_RECORDS_INTAKE",
+  "version": "v1",
+  "subject": {
+    "label": "Aviano Italy",
+    "location": ["Italy"],
+    "status": "USER_DECLARED"
+  },
+  "anchor": "jaywisdom.base.eth",
+  "mode": "MACHINE_SPEED_JSON_HARVEST",
+  "rules": [
+    "public_records_only",
+    "no_private_material",
+    "no_leaks",
+    "no_claim_verified_without_source_hash_date",
+    "user_asserted_until_verified"
+  ],
+  "intake": [
+    {
+      "claim_id": "aviano-0001",
+      "entity": "PUBLIC_FILINGS",
+      "claim": "GAO decision B-294747 documents a denied protest involving RFP No. N33191-02-R-1076 concerning airplane parking areas and schedule compliance.",
+      "status": "SOURCE_CONFIRMED_PENDING_HASH_PARITY",
+      "sources": [
+        {
+          "document_type": "GAO Decision",
+          "document_id": "B-294747",
+          "event_date": "2004-10-15",
+          "source_url": "https://www.gao.gov/products/b-294747",
+          "document_sha256": "e9b09f159c2c2be7847a463196432cdb8c74e2bd7873cd2f16a8debe19c680f1"
+        }
+      ]
+    }
+  ],
+  "report_to": "Jay"
+}
