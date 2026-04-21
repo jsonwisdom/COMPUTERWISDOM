@@ -1,83 +1,106 @@
 #!/usr/bin/env python3
-"""Nitro Enclave Attestation Verifier for ZTWS"""
+"""ZTWS Nitro measurement verifier.
+
+This verifier checks enclave measurement consistency against known-good PCRs.
+It does NOT claim full AWS certificate-chain attestation validation.
+"""
 
 import argparse
-import base64
 import json
 import sys
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.asymmetric import ec
-from cryptography.hazmat.primitives.serialization import load_pem_public_key
-import requests
+from pathlib import Path
 
-EXPECTED_PCRS = {
-    "PCR0": "0x3a2b1c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a",
-    "PCR8": "0x2b1c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b"
-}
+REQUIRED_PCRS = ["PCR0", "PCR8"]
+
+
+def load_expected(path: Path) -> dict:
+    data = json.loads(path.read_text())
+    profile = data.get("ztws_verifier_v1", {})
+    pcrs = profile.get("pcrs", {})
+    if not pcrs:
+        raise ValueError("missing expected PCR set in measurements.json")
+    return pcrs
+
 
 def parse_attestation(attestation_doc: dict) -> dict:
-    """Extract PCRs and signature from AWS Nitro attestation document"""
-    pcr_values = {}
-    for pcr in ["PCR0", "PCR1", "PCR2", "PCR3", "PCR4", "PCR5", "PCR6", "PCR7", "PCR8"]:
-        if pcr in attestation_doc.get("pcrs", {}):
-            pcr_values[pcr] = attestation_doc["pcrs"][pcr]
+    pcrs = attestation_doc.get("pcrs")
+    if not isinstance(pcrs, dict):
+        raise ValueError("attestation doc missing pcrs map")
+
+    user_data = attestation_doc.get("user_data")
+    if user_data is None:
+        raise ValueError("attestation doc missing user_data")
 
     return {
-        "pcrs": pcr_values,
-        "signature": attestation_doc.get("signature"),
-        "certificate": attestation_doc.get("certificate"),
-        "user_data": attestation_doc.get("user_data"),
+        "pcrs": pcrs,
+        "user_data": user_data,
         "timestamp": attestation_doc.get("timestamp")
     }
 
-def verify_signature(attestation_doc: dict, public_key_pem: str) -> bool:
-    """Verify the attestation signature against AWS public key"""
-    pub_key = load_pem_public_key(public_key_pem.encode())
-    signature = base64.b64decode(attestation_doc["signature"])
-    message = json.dumps(attestation_doc["pcrs"], sort_keys=True).encode()
 
-    try:
-        pub_key.verify(signature, message, ec.ECDSA(hashes.SHA256()))
-        return True
-    except Exception:
-        return False
+def check_enclave_id(user_data, enclave_id: str) -> bool:
+    if isinstance(user_data, str):
+        return enclave_id in user_data
+    if isinstance(user_data, list):
+        return enclave_id in user_data
+    return enclave_id in str(user_data)
 
-def check_pcrs(pcr_values: dict) -> bool:
-    """Verify PCRs match expected ZTWS enclave measurements"""
-    for pcr, expected in EXPECTED_PCRS.items():
-        actual = pcr_values.get(pcr)
+
+def check_pcrs(actual_pcrs: dict, expected_pcrs: dict) -> bool:
+    ok = True
+    for pcr in REQUIRED_PCRS:
+        expected = expected_pcrs.get(pcr)
+        actual = actual_pcrs.get(pcr)
+        if expected is None:
+            print(f"❌ {pcr}: expected value missing from measurements.json")
+            ok = False
+            continue
         if actual != expected:
             print(f"❌ {pcr}: {actual} != {expected}")
-            return False
+            ok = False
+            continue
         print(f"✅ {pcr}: MATCH")
-    return True
+    return ok
 
-def main():
-    parser = argparse.ArgumentParser(description="Verify Nitro Enclave attestation")
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description="Verify Nitro enclave measurement consistency")
     parser.add_argument("--attestation-file", required=True, help="JSON attestation document")
     parser.add_argument("--enclave-id", required=True, help="Expected enclave ID")
+    parser.add_argument(
+        "--measurements-file",
+        default=str(Path(__file__).with_name("measurements.json")),
+        help="Path to known-good measurements.json"
+    )
     args = parser.parse_args()
 
-    with open(args.attestation_file) as f:
-        attestation = json.load(f)
+    try:
+        attestation = json.loads(Path(args.attestation_file).read_text())
+        expected_pcrs = load_expected(Path(args.measurements_file))
+        parsed = parse_attestation(attestation)
+    except Exception as exc:
+        print(f"❌ verifier setup failed: {exc}")
+        return 1
 
-    parsed = parse_attestation(attestation)
+    print("📡 Verifying ZTWS enclave measurement...")
 
-    print("📡 Verifying ZTWS enclave attestation...")
-
-    user_data = parsed.get("user_data", "")
-    if args.enclave_id not in user_data:
-        print(f"❌ Enclave ID mismatch: {args.enclave_id} not in {user_data}")
-        sys.exit(1)
+    if not check_enclave_id(parsed["user_data"], args.enclave_id):
+        print(f"❌ Enclave ID mismatch: {args.enclave_id} not present in user_data")
+        return 1
     print(f"✅ Enclave ID: {args.enclave_id}")
 
-    if not check_pcrs(parsed["pcrs"]):
-        print("❌ PCR verification failed")
-        sys.exit(1)
+    if not check_pcrs(parsed["pcrs"], expected_pcrs):
+        print("❌ Measurement verification failed")
+        return 1
 
-    print("\n⚡ Attestation: VALID")
-    print(json.dumps({"status": "attestation_valid", "enclave": args.enclave_id}, indent=2))
-    sys.exit(0)
+    print("\n⚡ Measurement: VALID")
+    print(json.dumps({
+        "status": "measurement_valid",
+        "enclave": args.enclave_id,
+        "required_pcrs": REQUIRED_PCRS
+    }, indent=2))
+    return 0
+
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
