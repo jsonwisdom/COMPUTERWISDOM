@@ -9,5 +9,31 @@
   ],
   "status": "WARRANT_ISSUED",
   "score": 9,
-  "ens": "jaywisdom.base.eth"
+  "ens": "jaywisdom.base.eth",
+  "identity_nodes": [
+    {
+      "email": "Jason.wisdom@laafb.af.mil",
+      "domain": "laafb.af.mil",
+      "label": "USSF_JAYWALKER",
+      "version": "LFG67",
+      "status": "UNVERIFIED_CLAIM"
+    }
+  ],
+  "capability_claims": [
+    {
+      "name": "ai_systems",
+      "value": "FULL_SEND",
+      "status": "USER_ASSERTED"
+    },
+    {
+      "name": "l0_direct_fiber_infrastructure",
+      "value": "FULL_SEND",
+      "status": "USER_ASSERTED"
+    },
+    {
+      "name": "locality_support_and_defenses_in_ai_hybrid_warfare_live",
+      "value": "FULL_SEND",
+      "status": "USER_ASSERTED"
+    }
+  ]
 }
