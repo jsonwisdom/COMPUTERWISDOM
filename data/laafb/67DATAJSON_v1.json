@@ -1,0 +1,13 @@
+{
+  "namespace": "@laafb",
+  "mode": "SNOOP_DISPATCH",
+  "version": "67DATAJSON_v1",
+  "geo_nodes": [
+    { "name": "Compton", "type": "origin_node" },
+    { "name": "Long Beach", "type": "anchor_node" },
+    { "name": "Los Angeles", "type": "fusion_hub" }
+  ],
+  "status": "WARRANT_ISSUED",
+  "score": 9,
+  "ens": "jaywisdom.base.eth"
+}
