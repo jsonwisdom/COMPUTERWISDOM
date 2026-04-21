@@ -1,0 +1,23 @@
+name: Lapis CI
+
+on:
+  push:
+    paths:
+      - 'scaling-solutions/**'
+  pull_request:
+    paths:
+      - 'scaling-solutions/**'
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y jq coreutils python3
+      - name: Verify
+        run: |
+          chmod +x scaling-solutions/verify.sh
+          ./scaling-solutions/verify.sh
