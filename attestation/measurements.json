@@ -1,0 +1,12 @@
+{
+  "ztws_verifier_v1": {
+    "description": "ZTWS predicate verifier enclave",
+    "pcrs": {
+      "PCR0": "0x3a2b1c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a",
+      "PCR8": "0x2b1c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b"
+    },
+    "measurement": "0x3a2b1c4d5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a",
+    "timestamp": "2026-04-20T00:00:00Z",
+    "source": "ZTWS deployment commit d223e2a"
+  }
+}
