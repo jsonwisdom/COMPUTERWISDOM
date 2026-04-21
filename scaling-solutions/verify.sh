@@ -37,13 +37,14 @@ jq -c '.receipts[]?' "$STATE" | while read -r r; do
   fi
 done
 
-# 5) Signature integrity (Ed25519)
+# 5) Signature integrity (router-aware)
+cd "$ROOT"
 python3 - <<'PY'
 import json
 import sys
 from pathlib import Path
 
-root = Path.cwd() / "scaling-solutions"
+root = Path.cwd()
 sys.path.insert(0, str(root / "os"))
 from signer import verify_receipt_hash
 
