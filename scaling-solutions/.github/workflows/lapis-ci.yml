@@ -24,7 +24,7 @@ jobs:
       - name: Install deps
         run: |
           python -m pip install --upgrade pip
-          pip install pynacl
+          pip install pynacl cryptography google-cloud-kms
 
       - name: Run verifier
         run: |
