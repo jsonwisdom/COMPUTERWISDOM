@@ -6,6 +6,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
 
+from signer import sign_receipt_hash
+
 ROOT = Path(__file__).resolve().parents[1]
 STATE_PATH = ROOT / "_truth" / "state.json"
 INVENTORY_PATH = ROOT / "os" / "agent_inventory.json"
@@ -17,10 +19,6 @@ def canon(value: Any) -> str:
 
 def sha256_hex_text(text: str) -> str:
     return hashlib.sha256(text.encode("utf-8")).hexdigest()
-
-
-def sha256_hex_bytes(data: bytes) -> str:
-    return hashlib.sha256(data).hexdigest()
 
 
 def merkle_root_hex(leaves: List[str]) -> str | None:
@@ -78,40 +76,38 @@ def main() -> int:
         raise SystemExit(f"unknown agent: {args.agent}")
 
     expected_pair = pair_for_agent(inventory, args.agent)
-    if expected_pair is not None:
-        if args.scope != expected_pair:
-            raise SystemExit(f"scope mismatch for {args.agent}: expected {expected_pair}, got {args.scope}")
+    if expected_pair is not None and args.scope != expected_pair:
+        raise SystemExit(f"scope mismatch for {args.agent}: expected {expected_pair}, got {args.scope}")
 
     now = datetime.now(timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
     input_payload = {"text": args.input, "scope": args.scope}
     result_payload = {"text": args.result}
 
     receipt = {
-        "receipt_version": "0.1.0",
+        "receipt_version": "0.2.0",
         "mode": args.mode,
         "owner_ens": state.get("owner_ens"),
         "agent_id": args.agent,
         "scope": args.scope,
         "created_at": now,
         "input_hash": sha256_hex_text(canon(input_payload)),
-        "result_hash": sha256_hex_text(canon(result_payload)),
+        "result_hash": sha256_hex_text(canon(result_payload))
     }
     receipt["receipt_hash"] = sha256_hex_text(canon(receipt))
+    receipt["signature"] = sign_receipt_hash(receipt["receipt_hash"])
 
     receipts = state.setdefault("receipts", [])
     receipts.append(receipt)
-    leaf_hashes = [r["receipt_hash"] for r in receipts]
-    state["last_merkle_root"] = merkle_root_hex(leaf_hashes)
+    state["last_merkle_root"] = merkle_root_hex([r["receipt_hash"] for r in receipts])
     state["last_updated"] = now
-
-    agent_ids = sorted(allowed_agent_ids(inventory))
-    state["agents"] = agent_ids
+    state["agents"] = sorted(allowed_agent_ids(inventory))
 
     save_json(STATE_PATH, state)
     print(json.dumps({
         "status": "ok",
         "agent_id": args.agent,
         "receipt_hash": receipt["receipt_hash"],
+        "signing_scheme": receipt["signature"]["signing_scheme"],
         "last_merkle_root": state["last_merkle_root"],
         "receipts_count": len(receipts)
     }, indent=2))
