@@ -1,0 +1,36 @@
+{
+  "name": "reputation-kernel",
+  "version": "0.1.0",
+  "description": "Full-stack monorepo for reputation kernel project with Ethereum contracts, Hardhat tasks, CCIP-Read gateway, and Docker Compose configurations",
+  "private": true,
+  "scripts": {
+    "install": "pnpm install",
+    "build": "pnpm -r build",
+    "test": "pnpm -r test",
+    "clean": "pnpm -r clean && rm -rf node_modules",
+    "fork:base": "cd ops && docker-compose up base-fork -d",
+    "fork:eth": "cd ops && docker-compose up eth-fork -d",
+    "fork:stop": "cd ops && docker-compose down",
+    "deploy:local": "pnpm --filter @reputation-kernel/ts deploy:local",
+    "seed:demo": "pnpm --filter @reputation-kernel/ts seed:demo",
+    "gateway:dev": "pnpm --filter @reputation-kernel/gateway dev",
+    "test:ens": "pnpm --filter @reputation-kernel/ts test:ens",
+    "contracts:compile": "cd packages/contracts && forge compile",
+    "contracts:test": "cd packages/contracts && forge test",
+    "contracts:deploy": "cd packages/contracts && forge script script/DeployLocal.s.sol --rpc-url http://localhost:8545 --private-key $PRIVATE_KEY --broadcast",
+    "setup:dev": "pnpm install && pnpm fork:base && pnpm fork:eth && sleep 10 && pnpm deploy:local && pnpm seed:demo",
+    "dev": "pnpm setup:dev && pnpm gateway:dev"
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.15.0"
+}

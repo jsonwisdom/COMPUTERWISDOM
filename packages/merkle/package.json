@@ -1,0 +1,21 @@
+{
+  "name": "@reputation-kernel/merkle",
+  "version": "0.1.0",
+  "description": "Merkle tree utilities for reputation data",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.0.0",
+    "@types/node": "^20.0.0",
+    "jest": "^29.0.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "merkletreejs": "^0.3.10",
+    "keccak256": "^1.0.6"
+  }
+}

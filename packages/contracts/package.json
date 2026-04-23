@@ -1,0 +1,14 @@
+{
+  "name": "@reputation-kernel/contracts",
+  "version": "0.1.0",
+  "description": "Solidity contracts for Reputation Kernel using Foundry",
+  "scripts": {
+    "build": "forge build",
+    "test": "forge test",
+    "deploy:local": "forge script script/DeployLocal.s.sol --rpc-url http://localhost:8545 --private-key $PRIVATE_KEY --broadcast",
+    "clean": "forge clean",
+    "install": "../../../scripts/setup-foundry.sh"
+  },
+  "devDependencies": {},
+  "dependencies": {}
+}
