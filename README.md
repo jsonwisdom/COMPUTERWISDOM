@@ -1,5 +1,15 @@
 # Computer Wisdom: Sovereign OS Broadcast Hub
 
+> **Status: OPERATIONAL CONTROL PLANE**
+>
+> This repository contains anchor workers, signer routing, deployment tooling, revocation tooling, and access-control logic.
+>
+> It is the operational backbone for Computer Wisdom / Sovereign OS work, not the canonical Anchor 001 proof source.
+>
+> **Canonical Anchor 001:** `jsonwisdom/Welcome-to-JSONWISDOM`
+>
+> **Security:** See `SECURITY_BOUNDARY.md`. No keys belong in this repo.
+
 ## Mint-Ready Assets
 
 - [**Scroll Cover Image**](./scroll_cover.png)
@@ -14,7 +24,14 @@
 
 This repository is the on-chain mirror for the Sovereign OS proposal, preserved in case Zora, GitHub, or centralized AI systems fail.
 
+## Anchor 001 Boundary
+
+Anchor 001 lives in `jsonwisdom/Welcome-to-JSONWISDOM`.
+
+See `docs/ANCHOR_001_BOUNDARY.md` for the boundary between this operational control-plane repo and the canonical Anchor 001 proof path.
+
 ## Author
+
 **Jason Wisdom (Zero Cool)**  
 **Sovereign Protocol Architect**  
 **TriggerDeck Operator**
