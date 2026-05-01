@@ -1,0 +1,39 @@
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Local signing material
+.keys/
+*.pem
+*.key
+*.keystore
+*.p12
+*.pfx
+
+# Secret-like files
+*secret*
+*secrets*
+service-account*.json
+*service_account*.json
+credentials*.json
+*credential*.json
+
+# Wallet exports
+wallet*.json
+*walletexport*
+
+# Local build/cache artifacts
+node_modules/
+__pycache__/
+*.pyc
+.DS_Store
+
+# Foundry / Solidity local output
+cache/
+out/
+broadcast/
+
+# Local logs
+*.log
+logs/
