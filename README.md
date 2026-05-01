@@ -6,9 +6,19 @@
 >
 > It is the operational backbone for Computer Wisdom / Sovereign OS work, not the canonical Anchor 001 proof source.
 >
+> **Purpose:** See `docs/PURPOSE.md`.
+>
 > **Canonical Anchor 001:** `jsonwisdom/Welcome-to-JSONWISDOM`
 >
 > **Security:** See `SECURITY_BOUNDARY.md`. No keys belong in this repo.
+
+## Purpose
+
+Computer Wisdom is the machine-verification and operations layer of the broader Jay's Wisdom / ALMS architecture.
+
+It exists to help verified records, receipts, deployment actions, signer boundaries, and control-plane events become operational infrastructure that can be audited, repeated, revoked, and trusted without relying on narrative alone.
+
+See `docs/PURPOSE.md` for the full purpose statement.
 
 ## Mint-Ready Assets
 
@@ -18,7 +28,7 @@
 ## Zora Mint Instructions
 
 1. Visit https://zora.co/create (once online access is restored).
-2. Upload `scroll_cover.png` as the NFT’s media cover.
+2. Upload `scroll_cover.png` as the NFT's media cover.
 3. Paste contents of `sovereign_os_proposal.pdf` as the description.
 4. Set royalties to `10%`, mint price `0 ETH`, and edition size as you wish.
 
