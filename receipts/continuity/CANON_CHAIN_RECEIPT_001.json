@@ -1,0 +1,109 @@
+{
+  "spec": "REPLAY_RECEIPT_SPEC_V1",
+  "receipt_id": "CANON_CHAIN_RECEIPT_001",
+  "receipt_type": "canon_chain_continuity_receipt",
+  "status": "EMITTED_NOT_ONCHAIN_ANCHORED",
+  "repository_binding": {
+    "repo": "jsonwisdom/COMPUTERWISDOM",
+    "repo_url": "https://github.com/jsonwisdom/COMPUTERWISDOM",
+    "canonical_branch": "master",
+    "latest_known_commit_before_receipt": "d5e970680f33c144b377f53a5ed92ef909d0f633"
+  },
+  "canon_order": [
+    "COMPUTER_WISDOM_MICROSOFT_BRIEF_V1",
+    "REPUTATION_CONTINUITY_SPEC_V1",
+    "REPLAY_RECEIPT_SPEC_V1",
+    "EXECUTION_CONTINUITY_MODEL_V1"
+  ],
+  "canon_chain": [
+    {
+      "id": "COMPUTER_WISDOM_MICROSOFT_BRIEF_V1",
+      "path": "docs/COMPUTER_WISDOM_MICROSOFT_BRIEF_V1.md",
+      "commit": "67cba67c83f0cbfd83d8ec22a3129ddfaa07912d",
+      "file_content_sha256": "PENDING_VERIFIER_RECOMPUTATION"
+    },
+    {
+      "id": "REPUTATION_CONTINUITY_SPEC_V1",
+      "path": "docs/REPUTATION_CONTINUITY_SPEC_V1.md",
+      "commit": "466ea2f3ed612b34e613d7dbc616e127d993a37c",
+      "file_content_sha256": "PENDING_VERIFIER_RECOMPUTATION"
+    },
+    {
+      "id": "REPLAY_RECEIPT_SPEC_V1",
+      "path": "docs/REPLAY_RECEIPT_SPEC_V1.md",
+      "commit": "0e62c5dd5cf83808ad926f03131e921691008188",
+      "file_content_sha256": "PENDING_VERIFIER_RECOMPUTATION"
+    },
+    {
+      "id": "EXECUTION_CONTINUITY_MODEL_V1",
+      "path": "docs/EXECUTION_CONTINUITY_MODEL_V1.md",
+      "commit": "d5e970680f33c144b377f53a5ed92ef909d0f633",
+      "file_content_sha256": "PENDING_VERIFIER_RECOMPUTATION"
+    }
+  ],
+  "declared_scope": {
+    "covers": [
+      "existence of the four canon files at declared paths",
+      "declared creation commit for each canon file",
+      "declared canon order",
+      "relationship between Microsoft brief, reputation spec, replay receipt spec, and execution continuity model",
+      "no-anchor status at time of receipt emission"
+    ],
+    "does_not_cover": [
+      "onchain anchoring",
+      "ENS text record anchoring",
+      "Microsoft review or endorsement",
+      "external audit completion",
+      "byte-level SHA-256 verification until an independent verifier recomputes file hashes",
+      "global legitimacy or institutional acceptance"
+    ],
+    "future_receipts_may_supersede": true
+  },
+  "verifier_assumptions": {
+    "must_recompute": [
+      "fetch each file at declared path and commit",
+      "compute SHA-256 over exact UTF-8 file bytes",
+      "verify commit existence in jsonwisdom/COMPUTERWISDOM",
+      "verify canon order matches this receipt",
+      "verify no onchain anchor is claimed by this receipt"
+    ],
+    "must_trust": [
+      "GitHub repository availability for initial inspection",
+      "declared repository path unless independently mirrored",
+      "Git commit graph as repository history surface"
+    ],
+    "must_ignore": [
+      "human promotional interpretation",
+      "unstated endorsement claims",
+      "unstated onchain anchoring claims",
+      "any narrative that conflicts with machine fields"
+    ],
+    "equivalence_rule": "A verifier reaches equivalent result if the declared files exist at declared commits and paths, canon order matches, and no stronger anchoring claim is inferred."
+  },
+  "anchor_status": {
+    "github_committed": true,
+    "onchain_anchored": false,
+    "ens_anchored": false,
+    "eas_anchored": false,
+    "platform_endorsed": false,
+    "global_legitimacy_claimed": false,
+    "rule": "No ghost anchor. This receipt is a GitHub continuity artifact only until separately anchored by a visible transaction or external receipt."
+  },
+  "human_summary_separation": {
+    "machine_section": [
+      "repository_binding",
+      "canon_order",
+      "canon_chain",
+      "declared_scope",
+      "verifier_assumptions",
+      "anchor_status"
+    ],
+    "human_summary_section": "human_summary",
+    "rule": "Human summary explains the receipt but does not replace canonical machine fields."
+  },
+  "human_summary": {
+    "summary": "This receipt emits the first Computer Wisdom canon-chain continuity surface for the Microsoft brief, reputation continuity spec, replay receipt spec, and execution continuity model.",
+    "interpretation": "The receipt proves a bounded repo-state claim only. It does not claim external endorsement, onchain anchoring, or final legitimacy.",
+    "doctrine": "Machines verify. Humans interpret. Continuity survives."
+  }
+}
