@@ -1,0 +1,43 @@
+{
+  "spec": "EAS_SCHEMA_AND_ATTESTATION_ENTRIES_V1",
+  "receipt_id": "EAS_SCHEMA_AND_ATTESTATION_ENTRIES_001",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "status": "SCHEMA_AND_ENTRIES_PREPARED_NOT_REGISTERED_NOT_SUBMITTED",
+  "network": "Base Sepolia",
+  "recommended_option": "REGISTER_NEW_SCHEMA",
+  "schema_registration": {
+    "schema_string": "string subject, bytes32 anchorInputSha256, string repo, string releaseTag, string sourceReceiptPath, string ciRunId, string artifactId, string scope, string antiClaims",
+    "resolver": "0x0000000000000000000000000000000000000000",
+    "revocable": true,
+    "registration_url": "https://sepolia.easscan.org/schema/register"
+  },
+  "attestation_entries": {
+    "subject": "COMPUTERWISDOM_CANON_CHAIN_CI_VERIFIED_PASS_001",
+    "anchorInputSha256": "0x102e70b50594e412b8f15d311cc4e04f5126a4405fb3b1d02652e3d11afeaf5b",
+    "repo": "jsonwisdom/COMPUTERWISDOM",
+    "releaseTag": "cw-anchor-ready-v1",
+    "sourceReceiptPath": "receipts/anchor/EAS_ATTESTATION_PAYLOAD_001.json",
+    "ciRunId": "25956278044",
+    "artifactId": "7031618397",
+    "scope": "GitHub receipt chain, CI verifier PASS, and anchor payload hash only",
+    "antiClaims": "[\"not Microsoft endorsed\",\"not global legitimacy\",\"not semantic truth beyond declared verifier scope\",\"not ENS anchored yet\"]"
+  },
+  "fallback_option": {
+    "schema_string": "string payloadJson",
+    "payloadJson": "{\"subject\":\"COMPUTERWISDOM_CANON_CHAIN_CI_VERIFIED_PASS_001\",\"anchorInputSha256\":\"0x102e70b50594e412b8f15d311cc4e04f5126a4405fb3b1d02652e3d11afeaf5b\",\"repo\":\"jsonwisdom/COMPUTERWISDOM\",\"releaseTag\":\"cw-anchor-ready-v1\",\"sourceReceiptPath\":\"receipts/anchor/EAS_ATTESTATION_PAYLOAD_001.json\",\"ciRunId\":\"25956278044\",\"artifactId\":\"7031618397\",\"scope\":\"GitHub receipt chain, CI verifier PASS, and anchor payload hash only\",\"antiClaims\":\"not Microsoft endorsed | not global legitimacy | not semantic truth beyond declared verifier scope | not ENS anchored yet\"}"
+  },
+  "boundary": {
+    "schema_registered": false,
+    "schema_uid": null,
+    "attestation_submitted": false,
+    "transaction_hash": null,
+    "attestation_uid": null,
+    "ens_record_created": false
+  },
+  "next_required_human_outputs": {
+    "schema_uid": "0x...",
+    "transaction_hash": "0x...",
+    "attestation_uid": "0x..."
+  },
+  "next_transition": "REGISTER_EAS_SCHEMA"
+}
