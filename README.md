@@ -12,6 +12,37 @@
 >
 > **Security:** See `SECURITY_BOUNDARY.md`. No keys belong in this repo.
 
+## Constitutional Anchor Topology
+
+Canonical Reference Frozen:
+
+- [**FINAL_ANCHOR_TOPOLOGY_v1.md**](./FINAL_ANCHOR_TOPOLOGY_v1.md)
+- Branch Pointer: `anchor-topology-v1`
+- Frozen Commit: `3dbb071633cb1844d2cf1f6c4bb12a52a8ef83bf`
+- Root Hash: `0x102e70b50594e412b8f15d311cc4e04f5126a4405fb3b1d02652e3d11afeaf5b`
+- EAS Schema UID: `0x244c84adef25091c97090e6e3f0b1bb932fc7022b913b7546406f4213a202cab`
+- EAS Attestation UID: `0x23b3b97514fa232cfdbcdee7a5031ff11a5fcd36aa874a5f4067805cd0ad6c84`
+- EAS Transaction Hash: `0x4cef493d67d8744d2458fd82c169aa872b14cfe2ecaf13f03329b57bd93acc35`
+
+This document defines the constitutional topology, Layer Law, separation of authority surfaces, and zero-drift invariants governing the COMPUTERWISDOM anchor system.
+
+Layer Law:
+
+```text
+Replay verifies.
+GitHub contextualizes.
+EAS witnesses.
+ENS discovers.
+```
+
+Boundary:
+
+```text
+GitHub pointer != truth surface
+EAS witness != global legitimacy
+ENS discovery != authority
+```
+
 ## Purpose
 
 Computer Wisdom is the machine-verification and operations layer of the broader Jay's Wisdom / ALMS architecture.
