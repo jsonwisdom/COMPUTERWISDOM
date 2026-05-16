@@ -1,0 +1,54 @@
+{
+  "spec": "REPLAY_RECEIPT_SPEC_V1",
+  "receipt_id": "VERIFIER_RUN_RECEIPT_001",
+  "receipt_type": "observer_local_verifier_run_receipt",
+  "status": "FAIL_EXPECTED_PENDING_HASHES",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "verifier": {
+    "path": "scripts/verify_canon_chain_receipt_001.ts",
+    "commit": "f056d9bdc522d30746684a498324939d7c54a207",
+    "version": "manual_observer_v1"
+  },
+  "receipt_under_test": {
+    "path": "receipts/continuity/CANON_CHAIN_RECEIPT_001.json",
+    "commit": "a9c229f2f9bac0ec0a2b7111c939828c5ad5d7dd",
+    "known_condition": "file_content_sha256 fields are PENDING_VERIFIER_RECOMPUTATION"
+  },
+  "expected_verdict": "FAIL",
+  "expected_failure_reason": "PENDING_HASH fields are unresolved and must not be treated as proof.",
+  "computed_hashes": "PENDING_LOCAL_OR_CI_EXECUTION",
+  "mismatches": [
+    "PENDING_HASH:COMPUTER_WISDOM_MICROSOFT_BRIEF_V1",
+    "PENDING_HASH:REPUTATION_CONTINUITY_SPEC_V1",
+    "PENDING_HASH:REPLAY_RECEIPT_SPEC_V1",
+    "PENDING_HASH:EXECUTION_CONTINUITY_MODEL_V1"
+  ],
+  "replay_environment": {
+    "execution_mode": "not_executed_by_connector",
+    "reason": "GitHub connector can create and inspect files but does not execute repository scripts in this session.",
+    "required_next_execution": "Run `npx ts-node scripts/verify_canon_chain_receipt_001.ts` or equivalent from repository root."
+  },
+  "anchor_status": {
+    "github_committed": true,
+    "onchain_anchored": false,
+    "ens_anchored": false,
+    "eas_anchored": false,
+    "platform_endorsed": false,
+    "global_legitimacy_claimed": false
+  },
+  "human_summary_separation": {
+    "machine_fields": [
+      "verifier",
+      "receipt_under_test",
+      "expected_verdict",
+      "expected_failure_reason",
+      "mismatches",
+      "replay_environment",
+      "anchor_status"
+    ],
+    "human_summary_field": "human_summary",
+    "rule": "Human summary does not replace execution output."
+  },
+  "human_summary": "This receipt records the expected first verifier state. The verifier exists, but the canon receipt intentionally contains pending SHA-256 placeholders. A legitimate first run should fail until exact file hashes are recomputed and written into a superseding or updated receipt.",
+  "next_transition": "LOCAL_OR_CI_VERIFIER_EXECUTION_TO_COMPUTE_HASHES"
+}
