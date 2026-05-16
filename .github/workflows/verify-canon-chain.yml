@@ -1,0 +1,37 @@
+name: Verify Canon Chain Receipt
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  verify-canon-chain:
+    name: Run canon-chain replay verifier
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install TypeScript runner
+        run: npm install --no-save ts-node typescript @types/node
+
+      - name: Run canon-chain verifier
+        run: |
+          npx ts-node scripts/verify_canon_chain_receipt_001.ts | tee verifier-result.json
+
+      - name: Upload verifier result artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: canon-chain-verifier-result
+          path: verifier-result.json
