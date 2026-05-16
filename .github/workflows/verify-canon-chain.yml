@@ -28,9 +28,10 @@ jobs:
 
       - name: Run canon-chain verifier
         run: |
-          npx ts-node scripts/verify_canon_chain_receipt_001.ts | tee verifier-result.json
+          npx ts-node --compiler-options '{"module":"CommonJS"}' scripts/verify_canon_chain_receipt_001.ts | tee verifier-result.json
 
       - name: Upload verifier result artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: canon-chain-verifier-result
