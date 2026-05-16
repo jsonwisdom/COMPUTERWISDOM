@@ -1,0 +1,126 @@
+name: Constitutional Checks
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, reopened, labeled, unlabeled, ready_for_review]
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: read
+
+jobs:
+  constitutional-checks:
+    name: Validate constitutional merge boundary
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Validate PR body and labels
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+          PR_TITLE: ${{ github.event.pull_request.title }}
+          PR_LABELS: ${{ toJson(github.event.pull_request.labels) }}
+        run: |
+          set -euo pipefail
+
+          fail() {
+            echo "::error::$1"
+            exit 1
+          }
+
+          warn() {
+            echo "::warning::$1"
+          }
+
+          echo "Running COMPUTERWISDOM constitutional checks..."
+
+          if [ -z "${PR_BODY:-}" ]; then
+            fail "PR body is empty. Use the constitutional PR template."
+          fi
+
+          echo "$PR_BODY" | grep -q "Constitutional Drift Classification" || fail "Missing Constitutional Drift Classification section."
+          echo "$PR_BODY" | grep -q "Required Boundary Checks" || fail "Missing Required Boundary Checks section."
+          echo "$PR_BODY" | grep -q "Receipt / Evidence" || fail "Missing Receipt / Evidence section."
+          echo "$PR_BODY" | grep -q "Rollback / Revocation Path" || fail "Missing Rollback / Revocation Path section."
+          echo "$PR_BODY" | grep -q "This PR preserves replay, lineage, and bounded authority" || fail "Missing closing constitutional assertion."
+
+          if echo "$PR_BODY" | grep -q "- \[x\] AUTHORITY_DRIFT\|- \[X\] AUTHORITY_DRIFT\|- \[x\] ANCHOR_DRIFT\|- \[X\] ANCHOR_DRIFT\|- \[x\] SECURITY_DRIFT\|- \[X\] SECURITY_DRIFT"; then
+            echo "$PR_LABELS" | grep -q "constitutional-review" || fail "High-risk drift selected but constitutional-review label is missing."
+          fi
+
+          if echo "$PR_BODY" | grep -q "Observer Authority Transfer: PRESENT"; then
+            fail "Observer authority transfer is present. Constitutional amendment required before merge."
+          fi
+
+          if echo "$PR_BODY" | grep -qi "mainnet anchor\|mainnet anchoring\|ENS record written\|ENS write complete\|production deployed\|globally legitimate"; then
+            echo "$PR_BODY" | grep -qi "Receipt Evidence" || fail "Authority/anchor claim detected without Receipt Evidence section."
+            warn "Anchor/production legitimacy language detected. Review receipts manually."
+          fi
+
+      - name: Scan changed files for forbidden secret-shaped text
+        run: |
+          set -euo pipefail
+
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+
+          git fetch --no-tags --depth=2 origin "$BASE_SHA" || true
+          CHANGED_FILES=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" || true)
+
+          if [ -z "$CHANGED_FILES" ]; then
+            echo "No changed files detected."
+            exit 0
+          fi
+
+          echo "$CHANGED_FILES" > /tmp/changed_files.txt
+
+          while IFS= read -r file; do
+            [ -f "$file" ] || continue
+
+            if grep -Eiq "(PRIVATE_KEY|MNEMONIC|SECRET_ACCESS_KEY|SERVICE_ACCOUNT|BEGIN RSA PRIVATE KEY|BEGIN PRIVATE KEY|DEPLOYER_PRIVATE_KEY|OWNER_PRIVATE_KEY)" "$file"; then
+              echo "::error file=$file::Forbidden secret-shaped text found. Rotate if real; remove from PR."
+              exit 1
+            fi
+          done < /tmp/changed_files.txt
+
+          echo "Secret-shaped text scan passed."
+
+      - name: Scan changed files for ghost-anchor claims
+        run: |
+          set -euo pipefail
+
+          BASE_SHA="${{ github.event.pull_request.base.sha }}"
+          HEAD_SHA="${{ github.event.pull_request.head.sha }}"
+          CHANGED_FILES=$(git diff --name-only "$BASE_SHA" "$HEAD_SHA" || true)
+
+          [ -n "$CHANGED_FILES" ] || exit 0
+          echo "$CHANGED_FILES" > /tmp/changed_files.txt
+
+          while IFS= read -r file; do
+            [ -f "$file" ] || continue
+
+            if grep -Eiq "(ENS record written|ENS write complete|mainnet anchor complete|globally legitimate|production truth|final authority)" "$file"; then
+              echo "::error file=$file::Possible ghost-anchor or authority claim detected. Provide receipt evidence or revise wording."
+              exit 1
+            fi
+          done < /tmp/changed_files.txt
+
+          echo "Ghost-anchor scan passed."
+
+      - name: Constitutional status
+        run: |
+          cat <<'EOF'
+          COMPUTERWISDOM constitutional checks passed.
+
+          Layer law:
+          Replay verifies.
+          GitHub contextualizes.
+          EAS witnesses.
+          ENS discovers.
+
+          Merge rule:
+          Merge only what preserves replay, lineage, and bounded authority.
+          EOF
