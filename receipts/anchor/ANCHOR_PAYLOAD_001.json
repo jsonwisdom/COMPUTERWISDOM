@@ -1,0 +1,51 @@
+{
+  "spec": "ANCHOR_PAYLOAD_V1",
+  "payload_id": "ANCHOR_PAYLOAD_001",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "status": "PREPARED_NOT_SUBMITTED",
+  "anchor_subject": "COMPUTERWISDOM_CANON_CHAIN_CI_VERIFIED_PASS_001",
+  "source_receipt": {
+    "path": "receipts/continuity/CI_VERIFIED_PASS_RECEIPT_001.json",
+    "commit": "216765992f19fcca03864140e38122cd19715f96",
+    "status": "CI_VERIFIED_PASS"
+  },
+  "canon_receipts": [
+    "receipts/continuity/CANON_CHAIN_RECEIPT_001.json",
+    "receipts/continuity/CI_VERIFIER_FAILURE_RECEIPT_001.json",
+    "receipts/continuity/CI_VERIFIED_PASS_RECEIPT_001.json"
+  ],
+  "canon_files": {
+    "COMPUTER_WISDOM_MICROSOFT_BRIEF_V1": "e189240a54fbe5fa36332513d788105bf099d2ca90a53586d7640040ac453c3d",
+    "REPUTATION_CONTINUITY_SPEC_V1": "15231bf62547899a3f597e1930677cff7ef05890685162997004aaaf305f3a30",
+    "REPLAY_RECEIPT_SPEC_V1": "647cba6264740b03b986e67ce617bcd6e4a1dd398d26ab5a7fd97238e6603b04",
+    "EXECUTION_CONTINUITY_MODEL_V1": "1e64af0c47d9d6120bdd4e875b6bce908a648338be114f5f441c4642944f7696"
+  },
+  "ci_witness": {
+    "workflow": "Verify Canon Chain Receipt",
+    "run_id": "25956278044",
+    "artifact_id": "7031618397",
+    "trigger_commit": "2d160dc27508b72e73c64163ce9c69671bd95e49",
+    "repair_commit": "2cf998686cc177d7360ae0f93a3731fc4723454b",
+    "verifier_result": "PASS",
+    "hash_mismatches": [],
+    "errors": []
+  },
+  "anchor_claim": {
+    "claim": "COMPUTERWISDOM canon chain reached MULTI_OBSERVER_STABLE within a GitHub-only, not-onchain boundary after CI verifier PASS.",
+    "does_not_claim": [
+      "Microsoft endorsement",
+      "global legitimacy",
+      "ENS anchoring",
+      "EAS attestation",
+      "onchain submission already occurred"
+    ]
+  },
+  "submission_status": {
+    "prepared": true,
+    "submitted_onchain": false,
+    "transaction_hash": null,
+    "attestation_uid": null,
+    "chain": null
+  },
+  "next_transition": "COMPUTE_ANCHOR_PAYLOAD_HASH"
+}
