@@ -1,0 +1,40 @@
+{
+  "spec": "REPLAY_RECEIPT_SPEC_V1",
+  "receipt_id": "CI_VERIFIER_FAILURE_RECEIPT_001",
+  "receipt_type": "ci_verifier_failure_receipt",
+  "status": "CI_VERIFIER_EXECUTION_FAILED_REPAIRED",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "workflow": "Verify Canon Chain Receipt",
+  "workflow_run": {
+    "run_id": "25956105368",
+    "artifact_id": "7031563016",
+    "artifact_zip_sha256": "895367cb91249bafd1950e28a16a2a5c245d3006388514b411e0917094ab9a1b",
+    "runner_version": "2.334.0",
+    "runner_image": "ubuntu-24.04",
+    "node": "v20.20.2",
+    "npm": "10.8.2"
+  },
+  "failure": {
+    "class": "RUNTIME_DRIFT",
+    "message": "TypeError: Unknown file extension .ts",
+    "code": "ERR_UNKNOWN_FILE_EXTENSION",
+    "verifier_executed": false,
+    "hashes_recomputed": false,
+    "ci_verified_pass": false
+  },
+  "repair": {
+    "commit": "2cf998686cc177d7360ae0f93a3731fc4723454b",
+    "change": "Run ts-node with CommonJS compiler options and preserve artifact upload with if: always().",
+    "command": "npx ts-node --compiler-options '{\"module\":\"CommonJS\"}' scripts/verify_canon_chain_receipt_001.ts | tee verifier-result.json"
+  },
+  "anchor_status": {
+    "github_committed": true,
+    "onchain_anchored": false,
+    "ens_anchored": false,
+    "eas_anchored": false,
+    "platform_endorsed": false,
+    "global_legitimacy_claimed": false
+  },
+  "human_summary": "The first CI run uploaded an artifact but did not execute the verifier successfully. The pipeline green state must not be treated as replay success. The workflow has been repaired and requires a rerun before CI_VERIFIED_PASS can be claimed.",
+  "next_transition": "RERUN_VERIFY_CANON_CHAIN_RECEIPT_AFTER_REPAIR"
+}
