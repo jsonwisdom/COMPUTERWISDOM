@@ -1,0 +1,34 @@
+{
+  "name": "@jsonwisdom/cw-report-client",
+  "version": "1.0.0",
+  "description": "Public zero-trust replay verifier for Computer Wisdom receipts.",
+  "type": "module",
+  "bin": {
+    "cw-report-client": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "verify": "node dist/index.js verify",
+    "prepublish-check": "ts-node scripts/prepublish-check.ts",
+    "build-release-manifest": "ts-node scripts/build-release-manifest.ts",
+    "prepublishOnly": "npm run prepublish-check && npm run build"
+  },
+  "dependencies": {
+    "ethers": "6.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.30",
+    "ts-node": "10.9.2",
+    "typescript": "5.4.5"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "RELEASE_MANIFEST.v1.0.0.json",
+    "npm-provenance.md"
+  ]
+}
