@@ -1,0 +1,32 @@
+{
+  "receipt_id": "DEEP_SEEK_SESSION_002",
+  "status": "PENDING_EXACT_CAPTURE",
+  "module": "Power Proof Deep Seek",
+  "session_rule": "exact_prompt_capture_first",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "PENDING",
+  "topic": "Compute Wisdom Claim Parser Badge — KP-001 candidate design",
+  "prompt": {
+    "file": "receipts/deep_seek_session_002_prompt_exact.txt",
+    "hash_sha256": "PENDING_AFTER_CAPTURE"
+  },
+  "output": {
+    "file": "receipts/deep_seek_session_002_output_exact.md",
+    "hash_sha256": "PENDING_AFTER_CAPTURE"
+  },
+  "verification_method": "MANUAL_REVIEW | HASH_CHECK",
+  "previous_receipt_links": [
+    "receipts/deep_seek_session_001_verdict.json",
+    "receipts/confucius_deep_seek_session_001_reward_artifact_receipt.json"
+  ],
+  "expected_artifact": "Claim Parser Badge HTML/CSS (candidate)",
+  "public_badge_granted": false,
+  "portal_html_mutated": false,
+  "badge_status": "CANDIDATE_ONLY — not public",
+  "risk_notes": [
+    "No live attestation",
+    "No portal mutation",
+    "No public badge claim",
+    "Exact prompt captured first"
+  ]
+}
