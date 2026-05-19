@@ -1,23 +1,53 @@
 {
   "unit_id": "AR-TW-0001",
-  "status": "CANDIDATE",
-  "claim_summary": "First atomic recursion time-waste unit template. No verified claim yet.",
-  "action_attempted": "PENDING_INPUT",
-  "system_or_surface": "PENDING_INPUT",
+  "status": "CANDIDATE_TEMPLATE_VERIFIED_PUBLIC",
+  "claim_summary": "First atomic recursion time-waste unit template. Template and capture prompt are publicly committed. No specific time-waste event has been supplied yet.",
+  "action_attempted": "N/A — no single concrete event provided for AR-TW-0001 atomic unit",
+  "system_or_surface": "Chess Court governance / COMPUTERWISDOM repo (receipts/candidate/ directory)",
   "time_or_event_marker": {
-    "timestamp_utc": "PENDING_INPUT",
-    "event_reference": "PENDING_INPUT",
-    "source_timezone": "PENDING_INPUT"
+    "timestamp_utc": "2026-05-19 (commit timestamps only; no event-specific UTC available)",
+    "event_reference": "Template creation commit b2b57ec836a1207cdb76d8d8805f93926b84e491 + capture prompt commit b5b59149d06f196e918b8aeef4c4cb165959e0f1",
+    "source_timezone": "CDT"
   },
-  "evidence_available": [],
-  "receipt_status": "NO_RECEIPT",
+  "evidence_available": [
+    {
+      "type": "commit",
+      "path_or_url": "https://github.com/jsonwisdom/COMPUTERWISDOM/commit/b2b57ec836a1207cdb76d8d8805f93926b84e491",
+      "hash_or_commit": "b2b57ec836a1207cdb76d8d8805f93926b84e491",
+      "availability": "PUBLIC"
+    },
+    {
+      "type": "commit",
+      "path_or_url": "https://github.com/jsonwisdom/COMPUTERWISDOM/commit/b5b59149d06f196e918b8aeef4c4cb165959e0f1",
+      "hash_or_commit": "b5b59149d06f196e918b8aeef4c4cb165959e0f1",
+      "availability": "PUBLIC"
+    },
+    {
+      "type": "receipt",
+      "path_or_url": "https://raw.githubusercontent.com/jsonwisdom/COMPUTERWISDOM/master/receipts/candidate/atomic_recursion_time_waste_unit_AR-TW-0001_candidate.json",
+      "hash_or_commit": "PENDING_REHASH_AFTER_UPDATE",
+      "availability": "PUBLIC"
+    },
+    {
+      "type": "receipt",
+      "path_or_url": "https://raw.githubusercontent.com/jsonwisdom/COMPUTERWISDOM/master/receipts/candidate/atomic_recursion_AR-TW-0001_capture_prompt.txt",
+      "hash_or_commit": "b5b59149d06f196e918b8aeef4c4cb165959e0f1",
+      "availability": "PUBLIC"
+    },
+    {
+      "type": "receipt",
+      "path_or_url": "receipts/counters/grok_atomic_recursion_AR-TW-0001_template_review_2026_05_19.json",
+      "hash_or_commit": "df9284812f3e1f46930d66d00fc34b523a4d4f6e",
+      "availability": "PUBLIC"
+    }
+  ],
+  "receipt_status": "CANDIDATE_TEMPLATE_VERIFIED_PUBLIC",
   "claim_tag": "HELD",
   "next_proof_needed": [
-    "Exact action attempted",
-    "System or surface involved",
-    "Timestamp or event marker",
-    "Evidence artifact path, URL, screenshot, log, commit, or receipt",
-    "Hash or commit if available"
+    "Exact single event description (one action attempted by one individual)",
+    "Specific system/surface involved",
+    "Precise timestamp_utc or event_reference",
+    "Evidence artifact (screenshot, log, commit hash, receipt URL, etc.)"
   ],
   "boundaries": {
     "legal_claim_made": false,
@@ -28,9 +58,9 @@
   "governance_state": {
     "schema": "receipts/candidate/atomic_recursion_time_waste_unit_schema.json",
     "schema_commit": "858eeec4c6e2f89bb1e1b79ecfb34cff073a2537",
-    "grok_review_commit": "925642534700de9fcfccc3daae47f9cdca18d506",
+    "grok_review_commit": "df9284812f3e1f46930d66d00fc34b523a4d4f6e",
     "badge_candidate_allowed": false,
     "time_waste_claim_verified": false
   },
-  "canon_line": "Atomic unit created as a blank receipt container. Evidence must fill the unit before any claim advances."
+  "canon_line": "AR-TW-0001 template verified public. Unit remains HELD — evidence must fill before any time-waste claim advances."
 }
