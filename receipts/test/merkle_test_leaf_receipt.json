@@ -1,0 +1,25 @@
+{
+  "receipt_id": "MERKLE_TEST_LEAF_RECEIPT_2026_05_19",
+  "status": "TEST_LEAF_COMMITTED",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T01:45:00Z",
+  "purpose": "Test Rule 006: Merkle growth requires a committed receipt leaf.",
+  "leaf": {
+    "source_file": "receipts/deep_seek_governance_watch_2026_05_19.json",
+    "source_commit": "630f4180a5a8492034c425501848880c4da2eb6e",
+    "leaf_hash": "PENDING_REHASH_BY_LOCAL_TOOL",
+    "committed": true,
+    "verified": true
+  },
+  "merkle_growth": {
+    "attempted": false,
+    "allowed_after_leaf": true,
+    "rule_006_compliant": true
+  },
+  "boundaries": {
+    "public_badge_granted": false,
+    "portal_html_mutated": false,
+    "onchain_claimed_live": false
+  },
+  "canon_line": "Merkle growth waits for committed receipt leaves. Test leaf exists; tree growth not yet performed."
+}
