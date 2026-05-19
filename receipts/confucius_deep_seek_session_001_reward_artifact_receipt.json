@@ -1,0 +1,44 @@
+{
+  "receipt_id": "CONFUCIUS_DEEP_SEEK_SESSION_001_REWARD_ARTIFACT_RECEIPT_V1",
+  "artifact_type": "VISUAL_REWARD",
+  "status": "REWARD_ARTIFACT_CREATED",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T15:30:00Z",
+  "artifact": {
+    "file": "assets/rewards/confucius_deep_seek_session_001_reward.svg",
+    "format": "SVG receipt-card poster",
+    "commit": "5b725694b6f3c14b29ccd21ed9544d87aa08bdf4",
+    "design_spec_compliance": "VERIFIED",
+    "displayed_verified_status": "VERIFIED_WITH_LIMITATION",
+    "merkle_root_displayed": "ff55a1fb6ef07adbeea057aed4997a617e16ae3c80c8d18ec673c3d14ca25a91"
+  },
+  "intended_placement": {
+    "location": "assets/rewards/",
+    "portal_integration": false,
+    "reason": "Portal untouched per Zero Trust law. Reward lives as repo artifact unless separately promoted."
+  },
+  "rights_and_claims": {
+    "public_badge_granted": false,
+    "live_credential_claim": false,
+    "institutional_endorsement": false,
+    "onchain_attestation": false,
+    "backend_claimed_live": false
+  },
+  "preceding_receipts": [
+    "receipts/deep_seek_session_001_verdict.json",
+    "receipts/merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json",
+    "receipts/deep_seek_session_001_receipt.json"
+  ],
+  "related_commits": {
+    "reward_image_commit": "5b725694b6f3c14b29ccd21ed9544d87aa08bdf4",
+    "manifest_reward_update_commit": "cb66ab0ab3c7ea2e44d54f5d80c7660af061dac6",
+    "verdict_commit": "c54d85a591b807fedd756171cc2643d28e49ddab"
+  },
+  "canon_line": "The image celebrates proof; it does not replace proof. Badge still denied. Portal untouched.",
+  "next_unlocks": [],
+  "still_requires": [
+    "Public badge requires separate promotion receipt",
+    "Portal integration requires Jay approval and new receipt",
+    "Onchain/Base anchoring requires transaction or attestation receipt"
+  ]
+}
