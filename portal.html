@@ -14,6 +14,7 @@
     .status { color:#9fe6a0; font-weight:700; }
     .warn { color:#ffd166; }
     .note { color:#cbd5e1; line-height:1.45; }
+    .hash { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:0.75rem; color:#cbd5e1; word-break:break-all; }
     .wisdom-badge { display:inline-flex; align-items:center; gap:0.4rem; font-size:0.75rem; line-height:1; padding:0.25rem 0.5rem; border:1px solid currentColor; border-radius:4px; font-family:ui-monospace,SFMono-Regular,Menlo,monospace; opacity:0.9; }
     .wisdom-badge span, .wisdom-badge strong { white-space:nowrap; }
     .wisdom-badge strong { font-weight:600; }
@@ -45,12 +46,38 @@
   </section>
 
   <section class="card">
+    <h2>Compute Wisdom Layers</h2>
+    <a href="services/layer-index/COMPUTE_WISDOM_L0_L5_INDEX.md">L0-L5 Layer Index</a>
+    <a href="services/reputation-layer/REPUTATION_LAYER_L1_CANDIDATE.md">L1 Reputation Layer</a>
+    <a href="services/byte-verification/README.md">L4 Byte Verification Epochs</a>
+    <a href="services/grok-batch-receipts/README.md">Grok Batch Receipt Shortcuts</a>
+    <p class="note">L0 proves the surface. L1 grades reviewers. L2 trains Base/Zora rails. L3 batches receipts. L4 checks bytes. L5 indexes epochs.</p>
+  </section>
+
+  <section class="card">
     <h2>Evidence Spine</h2>
     <a href="receipts/">Receipts</a>
     <a href="attestation/">Attestation</a>
     <a href="test-vectors/">Test Vectors</a>
     <a href="FINAL_ANCHOR_TOPOLOGY_v1.md">Final Anchor Topology</a>
     <a href="SECURITY_BOUNDARY.md">Security Boundary</a>
+  </section>
+
+  <section class="card">
+    <h2>Weekly Byte Verification</h2>
+    <a href="receipts/byte-verification/weekly_public_page_byte_manifest_2026_05_20.json">Weekly Public Page Byte Manifest</a>
+    <a href="receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_final_court_lock_confirmation.json">05-20 Final Court Lock</a>
+    <a href="receipts/daily/art_of_war_2026_daily_ledger_2026_05_21_candidate.json">05-21 Daily Candidate</a>
+    <p class="hash">Pre-update portal blob: c41bde783e09902951534eb935fe1b7b448955f7</p>
+    <p class="note">Public page updates are weekly byte-verified and mutation-receipted before display.</p>
+  </section>
+
+  <section class="card">
+    <h2>Grok Evidence</h2>
+    <a href="receipts/counters/grok_batch_final_review_art_of_war_2026_05_20.json">Grok Batch Final Review 05-20</a>
+    <a href="receipts/counters/grok_05_20_commit_pinned_snapshot_review_2026_05_19.json">Grok Commit-Pinned Snapshot Review</a>
+    <a href="receipts/batch/grok_batch_packet_art_of_war_2026_05_20_v1.json">Grok Batch Packet 05-20</a>
+    <p class="note">Grok evidence appears here only as receipt-backed review artifacts with hashes, commits, and boundary flags.</p>
   </section>
 
   <section class="card">
