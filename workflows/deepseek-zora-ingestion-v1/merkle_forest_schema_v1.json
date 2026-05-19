@@ -1,0 +1,90 @@
+{
+  "schema_id": "MERKLE_FOREST_SCHEMA_V1",
+  "schema_version": "v1.0",
+  "forest_id": "COMPUTER_WISDOM_MERKLE_FOREST_V1",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "workflow/deepseek-zora-ingestion-v1",
+  "forest_root": "PENDING_HASH",
+  "forest_state": "CANDIDATE",
+  "tree_roots": [
+    {
+      "tree_id": "TREE_WORKFLOWS_DEEPSEEK_ZORA_INGESTION_V1",
+      "tree_type": "WORKFLOW_TREE",
+      "path": "workflows/deepseek-zora-ingestion-v1",
+      "tree_root": "PENDING_HASH",
+      "last_observed_commit": "PENDING_HASH",
+      "state": "CANDIDATE"
+    },
+    {
+      "tree_id": "TREE_RECEIPTS",
+      "tree_type": "RECEIPT_VAULT_TREE",
+      "path": "receipts",
+      "tree_root": "PENDING_HASH",
+      "last_observed_commit": "PENDING_HASH",
+      "state": "CANDIDATE"
+    },
+    {
+      "tree_id": "TREE_SERVICES",
+      "tree_type": "ARTIFACT_FAMILY_TREE",
+      "path": "services",
+      "tree_root": "PENDING_HASH",
+      "last_observed_commit": "PENDING_HASH",
+      "state": "CANDIDATE"
+    },
+    {
+      "tree_id": "TREE_AUDITS",
+      "tree_type": "CONTRADICTION_LOG_TREE",
+      "path": "audits",
+      "tree_root": "PENDING_HASH",
+      "last_observed_commit": "PENDING_HASH",
+      "state": "CANDIDATE"
+    },
+    {
+      "tree_id": "TREE_CANDIDATES",
+      "tree_type": "ARTIFACT_FAMILY_TREE",
+      "path": "candidates",
+      "tree_root": "PENDING_HASH",
+      "last_observed_commit": "PENDING_HASH",
+      "state": "CANDIDATE"
+    }
+  ],
+  "grove_roots": [
+    {
+      "grove_id": "GROVE_PROTOCOL",
+      "member_tree_ids": [
+        "TREE_WORKFLOWS_DEEPSEEK_ZORA_INGESTION_V1"
+      ],
+      "grove_root": "PENDING_HASH",
+      "state": "CANDIDATE"
+    },
+    {
+      "grove_id": "GROVE_RECEIPTS_AND_AUDITS",
+      "member_tree_ids": [
+        "TREE_RECEIPTS",
+        "TREE_AUDITS"
+      ],
+      "grove_root": "PENDING_HASH",
+      "state": "CANDIDATE"
+    },
+    {
+      "grove_id": "GROVE_PUBLIC_ARTIFACTS",
+      "member_tree_ids": [
+        "TREE_SERVICES",
+        "TREE_CANDIDATES"
+      ],
+      "grove_root": "PENDING_HASH",
+      "state": "CANDIDATE"
+    }
+  ],
+  "bridge_receipts": [],
+  "timestamp_utc": "PENDING",
+  "operator": "jaywisdom.base.eth",
+  "replay_rule": "Recompute ordered tree roots, then ordered grove roots, then forest_root from genesis using only append-only receipts and deterministic ordering.",
+  "canonical_states": [
+    "CANDIDATE",
+    "HELD",
+    "REJECTED",
+    "VERIFIED_RECEIPT",
+    "CANON"
+  ]
+}

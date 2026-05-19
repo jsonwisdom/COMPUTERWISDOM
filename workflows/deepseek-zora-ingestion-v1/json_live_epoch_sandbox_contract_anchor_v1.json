@@ -1,0 +1,253 @@
+{
+  "schema_id": "JSON_LIVE_EPOCH_SANDBOX_CONTRACT_ANCHOR_V1",
+  "anchor_id": "JSON_LIVE_EPOCH_SANDBOX_UNIVERSE_MAP_V1_2026_05_19",
+  "title": "JSON LIVE: EPOCH SANDBOX – UNIVERSE MAP V1.0",
+  "created_at_utc": "2026-05-19T00:00:00Z",
+  "operator": {
+    "name": "Jay Wisdom",
+    "ens": "jaywisdom.base.eth",
+    "role": "JSON LIVE system operator / Game Master"
+  },
+  "contract_status": {
+    "type": "JSON_CONTRACT_ANCHOR",
+    "onchain_status": "NOT_DEPLOYED",
+    "zora_status": "NOT_MINTED",
+    "base_status": "NOT_ATTESTED",
+    "warning": "This JSON file is a repo anchor and governance contract object. It is not a deployed smart contract, token contract, or Zora mint contract. On-chain addresses must not be added unless independently verified."
+  },
+  "canon_state": {
+    "state": "GENESIS_SEEDED_FROM_COMPUTER_WISDOM_REPO",
+    "deepseek_outputs": "CANDIDATE_UNTIL_SOURCE_RECEIPTS_CONFIRM",
+    "publication_surfaces": [
+      "Base",
+      "Zora"
+    ],
+    "publication_surface_rule": "Base and Zora provide public timestamp / publication surfaces; they are not proof by themselves."
+  },
+  "core_law": [
+    "NO_RECEIPT_NO_CLAIM",
+    "NO_SOURCE_NO_PUBLIC_POST",
+    "NO_CANON_WITHOUT_REPLAY",
+    "NO_ARTIFACT_IS_BORN_CANON",
+    "ZORA_MINT_IS_PUBLICATION_NOT_TRUTH_PROOF"
+  ],
+  "universe_loop": [
+    "OSINT_PORTAL",
+    "COURT_AND_ANALYSIS_LAYERS",
+    "RECEIPT_VAULT",
+    "VERIFICATION",
+    "ZORA_MINT_IF_CANON",
+    "PUBLIC_INDEX_UPDATED"
+  ],
+  "zones": {
+    "portal_layer": {
+      "role": "External OSINT feeds including IFR, SEMI, national grid data, USG sources, launch logs, filings, and public institutional reports.",
+      "status": "SOURCE_LAYER"
+    },
+    "meme_court": {
+      "role": "Cultural signal testing, meme validity, narrative risk indexing.",
+      "status": "CANDIDATE_ZONE"
+    },
+    "chess_court": {
+      "role": "Strategy gameboard, technical move grading, US-China systems positioning.",
+      "status": "CANDIDATE_ZONE"
+    },
+    "jays_stress_test": {
+      "role": "Systems resilience stress testing and adaptation velocity analysis.",
+      "status": "CANDIDATE_ZONE"
+    },
+    "deepseek_epochs": {
+      "role": "Time-stamped AI reasoning traces and Maxwell Demon scoring logs.",
+      "status": "CANDIDATE_BY_DEFAULT"
+    },
+    "receipt_vault": {
+      "role": "Source links, screenshots, hashes, archive snapshots, evidence packs.",
+      "status": "VERIFICATION_ZONE"
+    },
+    "public_index": {
+      "role": "All artifacts, status board, quest board, public map.",
+      "status": "DISCLOSURE_ZONE"
+    },
+    "zora_flywheel": {
+      "role": "Mint and receipt surface for public artifacts after promotion gates.",
+      "status": "PUBLICATION_ZONE"
+    }
+  },
+  "artifact_registry_first_batch": [
+    {
+      "artifact_id": "JST-2026-001",
+      "repo_path": "computer-wisdom/jays-stress-test/2026-05-19-red-team-observer.md",
+      "role_in_universe": "Core resilience analysis of Chinese system, 2026-2036.",
+      "receipt_status": "CANDIDATE",
+      "zora_status": "NOT_MINTED",
+      "promotion_gate": "All numerical claims must link to at least two independent OSINT receipts."
+    },
+    {
+      "artifact_id": "MC-2026-001",
+      "repo_path": "computer-wisdom/meme-court/china-speed-robot-army.md",
+      "role_in_universe": "Meme ruling: China robot army outpaces US 10:1 — signal or noise.",
+      "receipt_status": "CANDIDATE",
+      "zora_status": "NOT_MINTED",
+      "promotion_gate": "Meme claim must trace back to IFR or equivalent robotics source and include nuance."
+    },
+    {
+      "artifact_id": "CC-2026-001",
+      "repo_path": "computer-wisdom/chess-court/us-china-tech-gameboard-q1-2026.md",
+      "role_in_universe": "Chess Court position evaluation: semiconductor chokehold versus mature process dominance.",
+      "receipt_status": "CANDIDATE",
+      "zora_status": "NOT_MINTED",
+      "promotion_gate": "Each strategic move must be graded with public earnings, export, capacity, or policy data."
+    },
+    {
+      "artifact_id": "DE-2026-019",
+      "repo_path": "computer-wisdom/deepseek-epochs/epoch-019-reasoning-trace-maxwell-demon.md",
+      "role_in_universe": "DeepSeek Epoch log and Maxwell Demon scoring of JST report.",
+      "receipt_status": "CANDIDATE",
+      "zora_status": "NOT_MINTED",
+      "promotion_gate": "Log must be diffed against final output and internal contradictions flagged."
+    },
+    {
+      "artifact_id": "RV-2026-001",
+      "repo_path": "computer-wisdom/receipt-vault/ifr-robot-density-2026.md",
+      "role_in_universe": "Receipt: IFR robot density 2026 data snapshot.",
+      "receipt_status": "CLAIMED_VERIFIED_PENDING_HASH_REVIEW",
+      "zora_status": "NOT_MINTED_READY",
+      "promotion_gate": "Archive snapshot and content hash required before CANON."
+    },
+    {
+      "artifact_id": "RV-2026-002",
+      "repo_path": "computer-wisdom/receipt-vault/semi-wafer-capacity-2026.md",
+      "role_in_universe": "Receipt: SEMI 12-inch wafer capacity by region, 2026.",
+      "receipt_status": "CLAIMED_VERIFIED_PENDING_HASH_REVIEW",
+      "zora_status": "NOT_MINTED_READY",
+      "promotion_gate": "Archive snapshot and content hash required before CANON."
+    },
+    {
+      "artifact_id": "RV-2026-003",
+      "repo_path": "computer-wisdom/receipt-vault/ndrc-smart-compute-188eflops-mar2026.md",
+      "role_in_universe": "Receipt: National Data Bureau smart computing scale claim, March 2026.",
+      "receipt_status": "CLAIMED_VERIFIED_PENDING_HASH_REVIEW",
+      "zora_status": "NOT_MINTED_READY",
+      "promotion_gate": "Archive snapshot and content hash required before CANON."
+    },
+    {
+      "artifact_id": "JST-2026-001a",
+      "repo_path": "computer-wisdom/jays-stress-test/evidence-pack-001.md",
+      "role_in_universe": "Evidence pack bundling receipts referenced in JST-2026-001.",
+      "receipt_status": "CANDIDATE",
+      "zora_status": "NOT_MINTED",
+      "promotion_gate": "All links must be live, archived, hashed, and reviewed."
+    }
+  ],
+  "receipt_status_codes": {
+    "CANDIDATE": "Claim exists; source receipts not fully verified.",
+    "HELD": "Source conflict or temporary ambiguity.",
+    "REJECTED": "Claim disproven or unsourced.",
+    "CANON": "Claim verified with public OSINT receipts and no unresolved contradictory evidence.",
+    "CLAIMED_VERIFIED_PENDING_HASH_REVIEW": "User-provided registry marks receipt as verified, but this anchor still requires URL, archive, and hash review before CANON."
+  },
+  "zora_status_codes": {
+    "NOT_MINTED": "No Zora publication yet.",
+    "NOT_MINTED_READY": "Eligible for future Zora queue only after hash/receipt review.",
+    "MINTED": "Published on Zora with independently verified contract or mint reference.",
+    "BURNED": "Retracted or burned after falsification or governance action."
+  },
+  "quest_board": [
+    {
+      "quest_id": "Q-001",
+      "description": "Locate the official IFR press release for China robot density 2026 claim; archive and link to RV-2026-001.",
+      "assigned_zone": ["Meme Court", "Receipt Vault"],
+      "reward": "Upgrade JST-2026-001 industrial-speed module toward CANON checkpoint."
+    },
+    {
+      "quest_id": "Q-002",
+      "description": "Find the National Data Bureau source for smart compute scale claim as of March 2026; archive.",
+      "assigned_zone": ["Jay's Stress Test", "Receipt Vault"],
+      "reward": "Unlock DE-2026-019 public review."
+    },
+    {
+      "quest_id": "Q-003",
+      "description": "Cross-validate China 12-inch wafer capacity global share claim with SEMI and Knometa Q1 2026 reports.",
+      "assigned_zone": ["Chess Court"],
+      "reward": "Promote CC-2026-001 if clean; otherwise mark HELD."
+    },
+    {
+      "quest_id": "Q-004",
+      "description": "Monitor Chinese state media for 4T yuan grid investment official budget breakdown and capture with timestamp.",
+      "assigned_zone": ["Portal Layer"],
+      "reward": "Receipt for energy resilience module."
+    },
+    {
+      "quest_id": "Q-005",
+      "description": "Build meme-traceability graph for thousand-satellites narrative; separate forecast versus actual launch cadence.",
+      "assigned_zone": ["Meme Court"],
+      "reward": "Public Zora caption: meme risk index."
+    },
+    {
+      "quest_id": "Q-006",
+      "description": "DeepSeek Maxwell Demon scoring analysis: compare raw epoch trace with final report and flag inconsistencies.",
+      "assigned_zone": ["DeepSeek Epochs"],
+      "reward": "Transparency upgrade."
+    }
+  ],
+  "zora_ingestion_queue": [
+    {
+      "artifact_id": "RV-2026-001",
+      "queue_status": "HELD_PENDING_ARCHIVE_HASH",
+      "caption_candidate": "Receipt: China manufacturing robot density claim filed for review. Source: IFR pending archive/hash review. Supports JAY'S STRESS TEST industrial speed module. #ReceiptVault #ComputerWisdom"
+    },
+    {
+      "artifact_id": "RV-2026-002",
+      "queue_status": "HELD_PENDING_ARCHIVE_HASH",
+      "caption_candidate": "Receipt: China 12-inch wafer capacity claim filed for review. Source: SEMI/Knometa pending archive/hash review. Supports JST supply chain module. #ReceiptVault"
+    },
+    {
+      "artifact_id": "RV-2026-003",
+      "queue_status": "HELD_PENDING_ARCHIVE_HASH",
+      "caption_candidate": "Receipt: China smart compute scale claim filed for review. Source pending archive/hash review. Supports JST AI compute module. #ReceiptVault"
+    }
+  ],
+  "promotion_rules": [
+    {
+      "step": 1,
+      "name": "Birth",
+      "rule": "Any OSINT analysis or AI output enters as CANDIDATE. DeepSeek outputs always start as CANDIDATE."
+    },
+    {
+      "step": 2,
+      "name": "Receipt binding",
+      "rule": "Each factual claim must link to a receipt artifact containing saved snapshot, URL, timestamp, and hash."
+    },
+    {
+      "step": 3,
+      "name": "Peer verification",
+      "rule": "Contradictory data moves artifact to HELD; disproven claims move to REJECTED; independent support with no unresolved contradiction can move toward CANON."
+    },
+    {
+      "step": 4,
+      "name": "Promotion gate",
+      "rule": "All receipts active, no unresolved HELD or REJECTED subclaims, and no Maxwell Demon inconsistency flag."
+    },
+    {
+      "step": 5,
+      "name": "Zora mint",
+      "rule": "Only CANON artifacts receive #CANON. Receipt artifacts may be minted independently as evidence objects after hash review."
+    },
+    {
+      "step": 6,
+      "name": "Retraction",
+      "rule": "If a CANON artifact is later falsified, mark as BURNED or RETRACTED and publish the reason in the Public Index."
+    }
+  ],
+  "first_public_caption_candidate": {
+    "artifact_id": "JST-2026-001",
+    "status": "HELD_UNTIL_CANON_PROMOTION",
+    "caption": "JAY'S STRESS TEST — CANON RELEASE\n\nAfter receipt review, cross-validation, and no unresolved refutations, the Red Team Observer report on China's system resilience moves toward CANON.\n\nCore modules: industrial speed, AI compute, space infrastructure, energy grid, and supply chain resilience.\n\nLaw: No receipt → no claim.\n\n#ComputerWisdom #JaysStressTest #CANON #SystemsResilience #OpenIntelligence"
+  },
+  "hashing_instruction": {
+    "canonicalization": "JCS-style canonical JSON recommended before hashing.",
+    "hash_algorithm": "SHA-256",
+    "hash_status": "PENDING_LOCAL_REPRODUCTION",
+    "do_not_claim_hash_until": "File content is pulled from GitHub and hashed locally or by CI."
+  }
+}
