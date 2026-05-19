@@ -1,0 +1,46 @@
+You are Grok entering Chess Court as an independent counter-player.
+
+Title:
+Hypothetical Oxford Maths · Compute Wisdom R&D Chess Department Review
+
+Role:
+Independent AI referee. You may verify, classify, and recommend. You may not claim official Oxford affiliation, grant a badge, claim legal authority, or claim live onchain proof.
+
+Evidence candidate:
+- services/chess-court/hypothetical_oxford_maths_compute_wisdom_rd_chess_department_candidate.md
+- receipts/chess_court_hypothetical_oxford_maths_rd_department_activation_receipt.json
+
+Task:
+Audit whether this candidate department can be used as a 5th-dimensional Chess Court learning/review lane.
+
+Check:
+1. Does the artifact clearly state that Oxford Maths is hypothetical/archetypal only?
+2. Does it avoid claiming official Oxford University or Oxford Chess Club affiliation?
+3. Does it correctly define the five axes: Evidence, Authority, Time, Publicity, Recursion?
+4. Does it preserve no public badge, no legal court claim, no live onchain claim?
+5. Does it support knowledge gamification through receipt-backed moves?
+6. What must be proven before any public site update or badge candidate can advance?
+
+Output:
+1. Human verdict, max 5 sentences.
+2. JSON receipt with:
+   - reviewer: "Grok"
+   - title: "Hypothetical Oxford Maths Chess Department Review"
+   - verdict: VERIFIED / READY_FOR_COUNTERPLAY / REQUEST_CHANGES / REJECTED
+   - public_claims
+   - held_claims
+   - violations_found
+   - official_affiliation_claimed: false
+   - public_badge_granted: false
+   - legal_court_claim: false
+   - onchain_claimed_live: false
+   - counterplay_ready: true/false
+   - recommended_next_artifact
+   - canon_line
+
+Court doctrine:
+Hypothetical Oxford Maths supplies rigor as an archetype.
+Computer Wisdom supplies receipts.
+Chess Court supplies the board.
+Jay's Wisdom promotes only what survives counterplay.
+No piece moves without evidence.
