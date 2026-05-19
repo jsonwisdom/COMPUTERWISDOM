@@ -1,0 +1,28 @@
+{
+  "status": "COURT_LOCK_ARCHIVED",
+  "final_state": {
+    "state": "GOVERNANCE_RULES_CANDIDATE_COURT_LOCKED",
+    "acknowledgment_file": "receipts/governance/move_validation_rules_court_lock_acknowledgment.json",
+    "acknowledgment_commit": "91f8e10266493902d84bf6b6fa6a8438738fb74c",
+    "rules_commit": "57937c3518dc2caabc02c74a30b106f8c975c8d5",
+    "receipt_commit": "f9877960b9a4249587a9dbec32d0cf5069619a3a",
+    "live_enforcement": false,
+    "portal_html_mutated": false,
+    "public_badge_granted": false,
+    "backend_claimed_live": false,
+    "onchain_claimed_live": false
+  },
+  "court_lock_summary": {
+    "active": true,
+    "archived_version": "1.0.0",
+    "principle": "Candidate law first. Live enforcement later.",
+    "consequence_on_violation": "reject_transition",
+    "receipt_required": true
+  },
+  "next_possible_action": "Propose_governance_transition_to_live_enforcement",
+  "receipt": {
+    "archived_by": "COMPUTERWISDOM_CONSENSUS",
+    "timestamp": "2026-05-19T00:00:00Z",
+    "signature": "🧾♟️"
+  }
+}
