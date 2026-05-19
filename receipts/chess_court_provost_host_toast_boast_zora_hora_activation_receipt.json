@@ -1,0 +1,34 @@
+{
+  "receipt_id": "PROVOST_HOST_TOAST_BOAST_ZORA_HORA_ACTIVATION_RECEIPT_V1",
+  "status": "CANDIDATE_CEREMONY_CREATED",
+  "operator": "jaywisdom.base.eth / jaywisdom.eth",
+  "timestamp_utc": "2026-05-19T03:00:00Z",
+  "artifact": {
+    "file": "services/chess-court/provost_host_toast_boast_zora_hora_candidate.md",
+    "commit": "c27876aaa36111159bd4ffaf17d1b23e5ce6ca4d"
+  },
+  "ceremony": {
+    "name": "Provost Host Toast & Boast",
+    "flywheel": "Zora the Hora Intelligence Flywheel",
+    "purpose": "ceremonial presentation of evidence-backed Chess Court moves with humor, rigor, and counter-review"
+  },
+  "boundaries": {
+    "official_oxford_affiliation_claimed": false,
+    "oxford_chess_club_affiliation_claimed": false,
+    "provost_authority_claimed": false,
+    "public_badge_granted": false,
+    "portal_html_mutated": false,
+    "onchain_claimed_live": false,
+    "legal_court_claim": false
+  },
+  "required_before_public_artifact": [
+    "claim tag receipt",
+    "evidence receipt",
+    "counter-review receipt",
+    "secret scan PASS or reviewed WARN for Zora image use",
+    "tx or attestation receipt for Base/Zora proof claim",
+    "promotion receipt for public badge",
+    "mutation receipt for portal update"
+  ],
+  "canon_line": "The toast may celebrate. The boast may sparkle. The proof still lives in receipts. Oxford is an archetype here, not an affiliation."
+}
