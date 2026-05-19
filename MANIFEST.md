@@ -68,7 +68,9 @@
 | `deep_seek_session_002_output_exact.md` | `EXACT_OUTPUT_CORRECTED` | `8113787` |
 | `deep_seek_session_002_receipt.json` | `OUTPUT_CORRECTED_PENDING_REVIEW` | `8113787` |
 | `deep_seek_session_002_verdict.json` | `VERIFIED_AFTER_CORRECTION` | `91fb66a` |
-| `deep_seek_session_003_prompt_exact.txt` | `PENDING_EXACT_CAPTURE` | `22ed798` |
+| `deep_seek_session_003_prompt_exact.txt` | `EXACT_PROMPT_CAPTURED` | `22ed798` |
+| `deep_seek_session_003_output_exact.md` | `EXACT_OUTPUT_CAPTURED` | `5f6ad0e` |
+| `deep_seek_session_003_receipt.json` | `PENDING_REVIEW` | `0596afa` |
 | `merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json` | `MERKLED` | `d0abe0a` |
 | `merkle/base_batches_confucius_purpose_extension_v1.json` | `PURPOSE_EXTENSION_CREATED` | `edcd365` |
 | `court_reporter/tweet_2056596286099402905_alignment_report.json` | `ANALYSIS_COMPLETE` | `c79cc42` |
@@ -114,6 +116,8 @@
 | Session 003 Confucius Indexer purpose | 2026-05-19 | `SESSION_PURPOSE_CANDIDATE_CREATED` |
 | Session 003 Girl Math vernacular case | 2026-05-19 | `VERNACULAR_CASE_CANDIDATE_CREATED` |
 | Session 003 Girl Math prompt starter | 2026-05-19 | `PENDING_EXACT_CAPTURE` |
+| Session 003 Girl Math output capture | 2026-05-19 | `OUTPUT_CAPTURED_PENDING_REVIEW` |
+| Session 003 Girl Math receipt | 2026-05-19 | `PENDING_REVIEW` |
 
 ---
 
@@ -129,11 +133,13 @@
 
 ```json
 {
-  "status": "SESSION_003_GIRL_MATH_CASE_AND_PROMPT_CREATED",
+  "status": "SESSION_003_GIRL_MATH_OUTPUT_CAPTURED_PENDING_REVIEW",
   "latest_vernacular_case": "sessions/session_003_vernacular_girl_math_case_candidate.md",
-  "latest_vernacular_case_commit": "db3c13c286a94fb3efb4f222d3d0f7835f37c094",
   "latest_session_prompt": "receipts/deep_seek_session_003_prompt_exact.txt",
-  "latest_session_prompt_commit": "22ed7989e49152035d7a960b1cc45ad7d30aa96a",
+  "latest_session_prompt_sha256": "0d2412a939fc61ecb1a4440dd7ae2aef7abe82a41c59b313a03a2a198b5e3838",
+  "latest_session_output": "receipts/deep_seek_session_003_output_exact.md",
+  "latest_session_output_sha256": "8da0423e231cb6cc03e6bded6326de77e9bd4ca56243e54920b6ceed381b7b3e",
+  "latest_session_receipt": "receipts/deep_seek_session_003_receipt.json",
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
@@ -146,8 +152,9 @@
 
 ## 9. Next Actions From the Map
 
-- Run Session 003 prompt exactly and capture output to `receipts/deep_seek_session_003_output_exact.md`.
-- Create `receipts/deep_seek_session_003_receipt.json` with prompt/output hashes.
+- Review Session 003 Girl Math output.
+- Decide whether to accept, request changes, or reject.
+- If accepted, create a Session 003 verdict receipt.
 - Keep Girl Math as a vernacular case, not a gendered truth claim.
 - Keep Claim Parser Badge as candidate-only unless a separate promotion receipt exists.
 - Do not grant badge access publicly from candidate artifact alone.
@@ -184,5 +191,6 @@ Indexing is not promotion.
 A badge candidate is not a public badge.  
 A session purpose is not a live backend.  
 A viral phrase is not a verified claim.  
+Captured output is not final approval.  
 The gate still holds.  
 Build from the map.
