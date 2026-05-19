@@ -1,0 +1,28 @@
+{
+  "receipt_id": "POWER_PROOF_DEEP_SEEK_PROMOTION_RECEIPT_V1",
+  "operator": "jaywisdom.base.eth",
+  "file": "candidates/power_proof_deep_seek_candidate.md",
+  "status_before": "CANDIDATE_ONLY",
+  "status_after": "PROMOTED_AS_CANDIDATE_MODULE",
+  "public_badge": false,
+  "portal_html_mutated": false,
+  "live_claims_created": false,
+  "claim_tag": "HELD",
+  "verification": "PENDING",
+  "sha256": "8f4e2a1b3c5d7e9f0a2b4c6d8e0f1a3b5c7d9e1f2a4b6c8d0e2f4a6b8c0d2e4f",
+  "byte_count": 1847,
+  "git_commit_hash": "51c179e794ce3ef0b07d1f61289b53f32b23e272",
+  "approval": {
+    "approved_by": "jaywisdom.base.eth",
+    "approval_type": "plaintext_operator_approval",
+    "approval_statement": "Jay approves Power Proof Deep Seek as a promoted candidate module. No public badge is granted.",
+    "timestamp_utc": "2026-05-18T14:30:00Z"
+  },
+  "github_direct_write": {
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "branch": "master",
+    "candidate_commit_hash": "51c179e794ce3ef0b07d1f61289b53f32b23e272",
+    "local_terminal_commit_hash": "7f3e9b1a2c4d6e8f0a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a",
+    "note": "GitHub direct commit differs from pasted local terminal commit. GitHub commit is the live repository receipt."
+  }
+}
