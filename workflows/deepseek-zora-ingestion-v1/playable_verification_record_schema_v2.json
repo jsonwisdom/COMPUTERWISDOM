@@ -1,0 +1,47 @@
+{
+  "schema_version": "v2.0",
+  "record_type": "playable_verification_record",
+  "required_fields": [
+    "record_id",
+    "schema_version",
+    "state",
+    "timestamp_utc",
+    "candidate_source_hash",
+    "receipt_digest",
+    "replay_log_hash",
+    "contradiction_log",
+    "merkle_root",
+    "previous_state_hash"
+  ],
+  "state_enum": [
+    "CANDIDATE",
+    "HELD",
+    "REJECTED",
+    "VERIFIED_RECEIPT",
+    "CANON"
+  ],
+  "field_definitions": {
+    "record_id": "uuid v4 or deterministic CID",
+    "schema_version": "v2.0 string",
+    "state": "current canonical state from enum",
+    "timestamp_utc": "ISO 8601 UTC",
+    "candidate_source_hash": "sha256 over original claim plus source URL fragment",
+    "receipt_digest": "sha256 over receipt contents",
+    "replay_log_hash": "sha256 over concatenated turn history for this claim",
+    "contradiction_log": "array of contradiction_entry objects",
+    "merkle_root": "root hash of Receipt Vault at transition time",
+    "previous_state_hash": "hash of previous PUBLIC_INDEX entry for same claim"
+  },
+  "example_record": {
+    "record_id": "rec_9f3a2b1c",
+    "schema_version": "v2.0",
+    "state": "HELD",
+    "timestamp_utc": "2026-05-19T14:30:00Z",
+    "candidate_source_hash": "sha256:EXAMPLE_PLACEHOLDER_NOT_VERIFIED",
+    "receipt_digest": "sha256:PENDING_HASH",
+    "replay_log_hash": "sha256:PENDING_HASH",
+    "contradiction_log": [],
+    "merkle_root": "sha256:PENDING_HASH",
+    "previous_state_hash": "sha256:GENESIS"
+  }
+}
