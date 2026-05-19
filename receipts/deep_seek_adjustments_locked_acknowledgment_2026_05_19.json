@@ -1,0 +1,62 @@
+{
+  "status": "DEEP_SEEK_ADJUSTMENTS_LOCKED_IN",
+  "receipt_chain": {
+    "portal_mutation": {
+      "file": "receipts/portal_active_courts_mutation_receipt_2026_05_19.json",
+      "commit": "006fb9336ce92d0f913718684fa1e031bcd63b27",
+      "verified": true
+    },
+    "portal_html": {
+      "file": "portal.html",
+      "commit": "96ded6e5e5ce15014729fe9b0cefdac73102f71b",
+      "changes": [
+        "Added Active Courts card",
+        "Added Chess Court candidate link",
+        "Added public referee log pointer",
+        "Added Active Constraints card",
+        "Added Base/Zora evidence statement",
+        "Added official-authority boundary to Operating Rule"
+      ],
+      "rule_002_compliant": true,
+      "mutation_receipt_attached": true
+    },
+    "governance_watch": {
+      "file": "receipts/deep_seek_governance_watch_2026_05_19.json",
+      "commit": "630f4180a5a8492034c425501848880c4da2eb6e",
+      "violations_found": [],
+      "rules_checked": ["001", "002", "003", "004", "005", "006"],
+      "rules_version": "1.0.0"
+    },
+    "merkle_test_leaf": {
+      "file": "receipts/test/merkle_test_leaf_receipt.json",
+      "commit": "364dc7dc16518503b29cda57beca98f9298aae7d",
+      "status": "TEST_LEAF_COMMITTED",
+      "rule_006_compliant": true
+    }
+  },
+  "governance_invariants": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_court_claim": false,
+    "portal_html_mutated_only_with_receipt": true
+  },
+  "portal_public_state": {
+    "url": "https://jsonwisdom.github.io/COMPUTERWISDOM/portal.html",
+    "now_shows": [
+      "Active Courts -> Chess Court candidate + referee log",
+      "Active Constraints -> Base/Zora evidence rule",
+      "Operating Rule -> official authority boundary"
+    ]
+  },
+  "court_lock_doctrine_updated": {
+    "sequence": "Mutation receipt first. Portal update second. Governance watch third. Merkle test leaf fourth.",
+    "mantra": "Evidence leads. Portal now shows the active court path.",
+    "signature": "receipt-gear",
+    "timestamp": "2026-05-19T00:00:00Z"
+  },
+  "next_recommended_actions": [
+    "Continue daily governance watch receipts",
+    "Accept counters in /candidates/ from other AIs",
+    "If transitioning to live onchain claim, attach tx or attestation receipt"
+  ]
+}
