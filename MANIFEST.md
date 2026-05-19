@@ -17,6 +17,7 @@
 | `PENDING_REVIEW` | Awaiting Jay decision |
 | `MERKLED` | Anchored in Merkle receipt |
 | `REWARD_ARTIFACT` | Visual/format reward generated after eligible verification |
+| `REWARD_RECEIPT` | Receipt recording a reward artifact and its boundaries |
 | `HOLD` | Deliberately paused |
 
 ---
@@ -45,6 +46,7 @@
 | `deep_seek_session_001_output.md` | `FULLY_ACCEPTED` | `29cd633` |
 | `deep_seek_session_001_court_ruling.json` | `REQUEST_ALTERNATIVE_EVIDENCE` | `6ce06f5` |
 | `deep_seek_session_001_verdict.json` | `VERIFIED_WITH_LIMITATION` | `c54d85a` |
+| `confucius_deep_seek_session_001_reward_artifact_receipt.json` | `REWARD_RECEIPT` | `2b77059` |
 | `merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json` | `MERKLED` | `d0abe0a` |
 | `merkle/base_batches_confucius_purpose_extension_v1.json` | `PURPOSE_EXTENSION_CREATED` | `edcd365` |
 | `court_reporter/tweet_2056596286099402905_alignment_report.json` | `ANALYSIS_COMPLETE` | `c79cc42` |
@@ -81,6 +83,7 @@
 | Widget placement and Merkle key | 2026-05-19 | `MERKLED` |
 | Tweet alignment analysis | 2026-05-19 | `PUBLIC_STATEMENT_ALIGNS_WITH_CANDIDATE_WORK` |
 | Reward SVG creation | 2026-05-19 | `REWARD_ARTIFACT_CREATED` |
+| Reward artifact receipt | 2026-05-19 | `REWARD_RECEIPT_CREATED` |
 
 ---
 
@@ -96,9 +99,11 @@
 
 ```json
 {
-  "status": "SESSION_001_REWARD_ARTIFACT_CREATED",
+  "status": "SESSION_001_REWARD_ARTIFACT_RECEIPTED",
   "latest_reward_artifact": "assets/rewards/confucius_deep_seek_session_001_reward.svg",
   "latest_reward_commit": "5b725694b6f3c14b29ccd21ed9544d87aa08bdf4",
+  "latest_reward_receipt": "receipts/confucius_deep_seek_session_001_reward_artifact_receipt.json",
+  "latest_reward_receipt_commit": "2b77059615ae86aabd055f117ecfcecd8571e170",
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
@@ -111,7 +116,7 @@
 
 ## 8. Next Actions From the Map
 
-- Create a reward artifact receipt that records the SVG hash and intended placement.
+- Consider Deep Seek Session 002 with exact prompt capture discipline.
 - Candidate badge design may begin, but no public badge is granted.
 - Confucius Compute Wisdom may later move from `CANDIDATE` to `PROMOTED_CANDIDATE` only by receipt.
 - `portal.html` remains untouched unless explicitly promoted by separate receipt.
@@ -146,6 +151,7 @@ Build continues.
 Image created.  
 Badge still denied.  
 Portal untouched.  
+Receipt records the reward.  
 The image celebrates proof; it does not replace proof.
 
 ---
@@ -155,6 +161,7 @@ The image celebrates proof; it does not replace proof.
 A manifest is not a badge.  
 Indexing is not promotion.  
 Verification with limitation is not a live backend claim.  
-Image eligibility is not public badge eligibility.  
+A reward image is not a badge.  
+A receipt for the reward is not a public credential claim.  
 The gate still holds.  
 Build from the map.
