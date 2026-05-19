@@ -1,0 +1,33 @@
+{
+  "verdict_id": "DEEP_SEEK_SESSION_001_VERDICT",
+  "receipt_type": "FINAL_SESSION_VERDICT",
+  "session_receipt": "receipts/deep_seek_session_001_receipt.json",
+  "court_ruling": "receipts/deep_seek_session_001_court_ruling.json",
+  "status": "VERIFIED_WITH_LIMITATION",
+  "reviewer": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T14:00:00Z",
+  "evidence_acceptance": {
+    "output_capture": "FULLY_ACCEPTED",
+    "prompt_capture": "ACCEPTED_WITH_LIMITATION",
+    "limitation_note": "Exact prompt capture was blocked by platform safety constraints. Normalized prompt was archived as best available evidence.",
+    "verification_standard": "Good faith effort plus reproducible output plus repaired receipt chain plus disclosed limitation"
+  },
+  "next_unlocks": [
+    "Image generation eligibility per services/confucius-compute-wisdom/visual_reward_spec.md",
+    "Candidate badge design only",
+    "Session 001 may serve as a reference proof for the AI_OPS skill track"
+  ],
+  "does_not_unlock": [
+    "Public badge on portal",
+    "Portal mutation",
+    "Live backend claim",
+    "Onchain/Base claim",
+    "Legal, audit, or security certification claim"
+  ],
+  "portal_html_mutated": false,
+  "public_badge_granted": false,
+  "backend_claimed_live": false,
+  "onchain_claimed_live": false,
+  "image_generation_unlocked": true,
+  "canon_line": "Verified with limitation. Truth preserved. Build continues."
+}
