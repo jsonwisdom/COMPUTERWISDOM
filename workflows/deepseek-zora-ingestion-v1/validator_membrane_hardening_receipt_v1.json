@@ -1,0 +1,22 @@
+{
+  "schema": "VALIDATOR_MEMBRANE_RECEIPT_V1",
+  "schema_version": "2026-05",
+  "receipt_type": "BRIDGE_RESOLUTION_RECEIPT",
+  "receipt_id": "membrane-hardening-002",
+  "timestamp_utc": "PENDING",
+  "previous_vault_merkle_root": "PENDING_HASH",
+  "tree_path": "jsonwisdom/forest/membrane",
+  "original_contradiction_log_hash": "PENDING_HASH",
+  "resolution_summary": {
+    "new_failure_mode": "INTEGRITY_ERROR_MEMBRANE_VIOLATION",
+    "membrane_definition": "The membrane is a constraint set, not an agent.",
+    "drift_preventions": [
+      "replay engines drift into governors",
+      "indexes drift into authority",
+      "automation drifts into orchestration",
+      "mirrors drift into proof"
+    ]
+  },
+  "enforcement_rule": "Any validator implementation violating the allowed/forbidden behaviors triggers INTEGRITY_ERROR_MEMBRANE_VIOLATION and forces HALTED state.",
+  "new_vault_merkle_root": "PENDING_HASH"
+}
