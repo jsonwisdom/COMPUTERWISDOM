@@ -181,7 +181,7 @@
     <div class="kp-badge"
          data-badge-name="Compute Wisdom Claim Parser"
          data-badge-version="KP-001-candidate"
-         data-status="VERIFIED"
+         data-status="PENDING_REVIEW"
          data-proof-hash="PENDING_VERIFICATION"
          data-proof-link="HELD"
          data-issuer="jaywisdom.base.eth"
@@ -194,7 +194,7 @@
             </div>
             <div class="badge-sub">Compute Wisdom · Knowledge Proof Module</div>
             <div class="status-row">
-                <span class="status-badge status-verified">VERIFIED (CANDIDATE PROOF)</span>
+                <span class="status-badge status-pending">PENDING REVIEW · CANDIDATE ONLY</span>
                 <span class="proof-link">📎 Proof: HELD_PENDING_RECEIPT</span>
             </div>
         </div>
@@ -210,7 +210,7 @@
             <div class="badge-data">
                 <strong>📋 Machine-readable claims</strong><br>
                 badge_name: Compute_Wisdom_Claim_Parser<br>
-                status: VERIFIED_WITH_LIMITATION<br>
+                status: PENDING_REVIEW<br>
                 proof_required: true<br>
                 linked_proof: receipts/deep_seek_session_002_receipt.json <span class="claim-tag">HELD</span><br>
                 portal_mutation: false<br>

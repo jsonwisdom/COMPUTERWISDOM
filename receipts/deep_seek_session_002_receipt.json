@@ -1,11 +1,11 @@
 {
   "receipt_id": "DEEP_SEEK_SESSION_002",
-  "status": "OUTPUT_CAPTURED_PENDING_REVIEW",
+  "status": "OUTPUT_CORRECTED_PENDING_REVIEW",
   "module": "Power Proof Deep Seek",
   "session_rule": "exact_prompt_capture_first",
   "operator": "jaywisdom.base.eth",
   "timestamp_utc": "2026-05-19T16:00:00Z",
-  "topic": "Compute Wisdom Claim Parser Badge — KP-001 candidate design",
+  "topic": "Compute Wisdom Claim Parser Badge \u2014 KP-001 candidate design",
   "prompt": {
     "file": "receipts/deep_seek_session_002_prompt_exact.txt",
     "commit": "99e3d7b6a6bb83bd02f47d330aff4f26c580aedc",
@@ -15,7 +15,7 @@
   "output": {
     "file": "receipts/deep_seek_session_002_output_exact.md",
     "commit": "0b76ad33324b2ab6a4018b48c9cb0b4d2a613055",
-    "hash_sha256": "31301fb0034d24f292fdab4335f15de08866747f3bd89e0c68c6b8c07837dda3",
+    "hash_sha256": "82d2e7161520cd373ac8b5036061369dca282269324f6477f9c637e8ea81be88",
     "capture_type": "EXACT_OUTPUT_CAPTURE"
   },
   "verification_method": "MANUAL_REVIEW | HASH_CHECK",
@@ -36,6 +36,7 @@
     "Exact prompt captured first",
     "Output captured exactly before review"
   ],
-  "review_status": "READY_FOR_JAY_REVIEW",
-  "canon_line": "Prompt captured exactly. Output captured exactly. Hashes recorded. Badge still candidate. Portal untouched."
+  "review_status": "READY_FOR_JAY_REVIEW_AFTER_STATUS_CORRECTION",
+  "canon_line": "Prompt captured exactly. Output captured exactly. Hashes recorded. Badge still candidate. Portal untouched.",
+  "correction_note": "Changed badge display from VERIFIED to PENDING_REVIEW because candidate badge cannot claim verification before Jay review."
 }
