@@ -1,0 +1,33 @@
+{
+  "receipt_id": "DEEP_SEEK_SESSION_001_COURT_RULING",
+  "court": "Jay's Wisdom Court",
+  "case": "DEEP_SEEK_SESSION_001",
+  "operator": "jaywisdom.base.eth",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "master",
+  "ruling_timestamp_utc": "2026-05-18T15:30:00Z",
+  "prior_session_receipt": "receipts/deep_seek_session_001_receipt.json",
+  "prior_session_status": "EVIDENCE_CHAIN_REPAIRED_PENDING_FINAL_REVIEW",
+  "verdict": "REQUEST_ALTERNATIVE_EVIDENCE",
+  "session_status_after_ruling": "PARTIAL_PASS",
+  "verification_status_after_ruling": "PARTIAL_PASS_PENDING_ALTERNATIVE_EVIDENCE",
+  "public_badge": false,
+  "portal_html_mutated": false,
+  "live_claims_created": false,
+  "findings": [
+    "Session 001 is real and reviewable.",
+    "Evidence chain files are present after repair.",
+    "Normalized prompt capture is useful context but not equal to exact prompt proof.",
+    "Exact prompt fidelity remains incomplete.",
+    "Badge remains denied until stronger evidence or a clean Session 002 exists."
+  ],
+  "required_next_evidence": [
+    "screenshot of original prompt and output if available",
+    "terminal or API log if available",
+    "manual Jay attestation that normalized prompt is faithful enough",
+    "or Session 002 with exact prompt and output capture discipline from the start"
+  ],
+  "allowed_next_status": "EVIDENCE_ACCEPTED_BY_OPERATOR",
+  "forbidden_next_status": "VERIFIED_WITHOUT_DISCLOSING_PROMPT_LIMITATION",
+  "canon_line": "Honesty wins the hearing. Proof wins the badge."
+}
