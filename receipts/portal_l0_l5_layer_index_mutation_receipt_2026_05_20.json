@@ -1,0 +1,42 @@
+{
+  "receipt_id": "PORTAL_L0_L5_LAYER_INDEX_MUTATION_RECEIPT_2026_05_20",
+  "status": "MUTATION_RECEIPT_CREATED",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-20T01:00:00Z",
+  "target_file": "portal.html",
+  "pre_update_blob_sha": "c41bde783e09902951534eb935fe1b7b448955f7",
+  "intended_changes": [
+    "Add Compute Wisdom L0-L5 Index link",
+    "Add Reputation Layer L1 link",
+    "Add Byte Verification Epochs link",
+    "Add Grok Batch Receipts link",
+    "Expose weekly/public byte verification path with hashes and receipts"
+  ],
+  "source_files": {
+    "l0_l5_index": {
+      "file": "services/layer-index/COMPUTE_WISDOM_L0_L5_INDEX.md",
+      "commit": "3ded4d0f27fbbe94a89557b4d6fa162e8ede753f"
+    },
+    "l1_reputation": {
+      "file": "services/reputation-layer/REPUTATION_LAYER_L1_CANDIDATE.md",
+      "commit": "83b2fc21b77863b42e9f920f21552d392f67317a"
+    },
+    "byte_verification": {
+      "file": "services/byte-verification/README.md",
+      "commit": "d132eb262c6dd59a2c71d61afec5d055dab18d7d"
+    },
+    "grok_batch_receipts": {
+      "file": "services/grok-batch-receipts/README.md",
+      "commit": "f97fbd64af9754fd8842f4cdf83d46c6b40a0739"
+    }
+  },
+  "boundaries": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false
+  },
+  "canon_line": "L0-L5 index may appear on the public page only through mutation receipt first."
+}
