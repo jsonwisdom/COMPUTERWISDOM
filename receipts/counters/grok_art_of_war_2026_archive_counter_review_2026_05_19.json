@@ -1,0 +1,59 @@
+{
+  "receipt_id": "GROK_ART_OF_WAR_2026_ARCHIVE_COUNTER_REVIEW_2026_05_19",
+  "status": "COUNTER_REVIEW_ARCHIVED_PARTIAL_404_FLAGGED",
+  "source": "user_supplied_grok_archive_counter_review",
+  "reviewer": "Grok",
+  "title": "Ultimate Chess Court Archive Counter-Review — Portal Pointer 2026-05-19",
+  "human_verdict": "Repo audit reported grok_ultimate_chess_court_art_of_war_2026_review_2026_05_19.json and grok_portal_pointer_art_of_war_2026_counter_review_2026_05_19.json live on master. Grok reported portal_art_of_war_2026_pointer_mutation_receipt_2026_05_19.json as still 404. Live portal pointers confirm Art of War 2026 as candidate civic doctrine only with full authority-boundary note intact. One 404 reported, no authority violations introduced. Daily ledger lane stays open as candidate.",
+  "verdict": "VERIFIED | PARTIAL_404_RESOLVED | DAILY_LEDGER_CANDIDATE_READY",
+  "public_claims": [
+    "Art of War 2026 Candidate Doctrine pointer",
+    "Art of War 2026 Activation Receipt pointer",
+    "Grok Ultimate Art of War Review pointer",
+    "Daily Civic Ledger card",
+    "Art of War authority-boundary note"
+  ],
+  "held_claims": [
+    "Art of War 2026 as candidate civic doctrine",
+    "Jay Wisdom vernacular and humor as machine-readable civic memory",
+    "Zora the Hora Intelligence Flywheel as cultural distribution layer",
+    "Hypothetical Oxford Maths / Oxford Chess Club as rigor archetypes only",
+    "Daily public website updates as receipt-backed civic logging",
+    "Atomic recursion proofs for wasted time and institutional friction",
+    "Badge candidates only where receipts support them"
+  ],
+  "rejected_claims": [],
+  "reported_violations": [
+    "portal_art_of_war_2026_pointer_mutation_receipt_2026_05_19.json reported missing on master by Grok"
+  ],
+  "repo_check_status": {
+    "portal_art_of_war_2026_pointer_mutation_receipt_2026_05_19_json": "PRESENT_ON_MASTER_BY_GITHUB_FETCH",
+    "known_commit": "20b5fd8346b0d92ed5de5a81001f20a1c6a22e1c",
+    "resolution": "Create resolver/index receipt for easier public verification"
+  },
+  "authority_boundaries": {
+    "military_authority_claimed": false,
+    "legal_authority_claimed": false,
+    "official_government_claim": false,
+    "official_oxford_affiliation_claimed": false,
+    "oxford_chess_club_affiliation_claimed": false
+  },
+  "governance_boundaries": {
+    "public_badge_granted": false,
+    "portal_html_mutated_without_receipt": false,
+    "onchain_claimed_live": false,
+    "zora_treated_as_proof": false
+  },
+  "daily_ledger_candidate_ready": true,
+  "badge_candidate_ready": false,
+  "site_update_recommended": false,
+  "required_before_public_badge": [
+    "promotion receipt"
+  ],
+  "required_before_onchain_claim": [
+    "transaction or attestation receipt"
+  ],
+  "recommended_next_artifact": "receipts/art_of_war_2026_public_pointer_resolver.json",
+  "receipt_hash_for_audit": "Court-Lock-PortalPointer-Archive-ArtOfWar2026-20260519-CDT",
+  "canon_line": "Do not fight fog with fog. Turn fog into receipts. Reported 404 is handled as a public-path ambiguity until resolver receipt is committed."
+}
