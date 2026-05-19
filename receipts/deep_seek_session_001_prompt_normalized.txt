@@ -1,0 +1,7 @@
+Normalized prompt capture for Deep Seek Session 001.
+
+Task: Generate candidate files for Computer Wisdom covering funding portal, R&D policy, badge challenge, and knowledge proofs module.
+
+Constraints: claim tagging required; protected portal surface must not be changed; no public badge or live credential should be granted by the candidate output.
+
+Note: This is a normalized capture because direct write of the exact prompt text was blocked by the platform safety layer.
