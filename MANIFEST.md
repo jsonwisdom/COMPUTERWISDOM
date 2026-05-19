@@ -1,6 +1,6 @@
 # Computer Wisdom · Manifest Index
 
-**Purpose:** One map of every candidate, receipt, Merkle key, court ruling, service layer, reward artifact, badge candidate, and session lane.  
+**Purpose:** One map of every candidate, receipt, Merkle key, court ruling, service layer, reward artifact, badge candidate, audit, and epoch.  
 **Rule:** Update this file whenever a new artifact is promoted or committed.  
 **Canon:** No more scattered receipts. Make the map. Then build from the map. 🧾🗺️
 
@@ -16,6 +16,9 @@
 | `SESSION_PURPOSE_CANDIDATE` | Session lane exists as a candidate purpose |
 | `VERNACULAR_CASE_CANDIDATE` | Specific language/culture pattern added for indexed analysis |
 | `ACCESS_CONTROL_CANDIDATE` | Symbolic/internal access-control concept, no official authority claim |
+| `AUDIT_REPORT` | Targeted repository review, not formal security audit |
+| `EPOCH_CANDIDATE` | Next operating layer proposed, not live |
+| `EPOCH_RECEIPT` | Receipt recording an epoch candidate |
 | `PARTIAL` | Evidence incomplete |
 | `VERIFIED_WITH_LIMITATION` | Verified while preserving disclosed evidence limitation |
 | `VERIFIED_AFTER_CORRECTION` | Verified after correcting an identified candidate-output issue |
@@ -63,7 +66,23 @@
 
 ---
 
-## 4. Receipts (`/receipts/` and `/receipts/merkle/`)
+## 4. Audits (`/audits/`)
+
+| File | Status | Commit | Notes |
+|------|--------|--------|-------|
+| `repo_surface_audit_2026_05_19.md` | `AUDIT_REPORT` | `c8d0194` | Targeted audit for agency wording, receipts, public claims, keys, dual-purpose pathing, Docker/Wave surfaces, Jay's Wisdom, and next epoch readiness. Not a full formal security audit. |
+
+---
+
+## 5. Epochs (`/epochs/`)
+
+| File | Status | Commit | Notes |
+|------|--------|--------|-------|
+| `deep_seek_epoch_004_5d_chinese_checkers.md` | `EPOCH_CANDIDATE` | `79c99ca` | 5D Chinese Checkers on Jay's Chess Board. Multi-axis claim routing: evidence, authority, publicity, access, jurisdiction/vernacular. |
+
+---
+
+## 6. Receipts (`/receipts/`, `/receipts/merkle/`, `/receipts/epochs/`)
 
 | Receipt | Status | Commit / Hash |
 |---------|--------|----------------|
@@ -81,13 +100,14 @@
 | `deep_seek_session_003_prompt_exact.txt` | `EXACT_PROMPT_CAPTURED` | `22ed798` |
 | `deep_seek_session_003_output_exact.md` | `EXACT_OUTPUT_CAPTURED` | `5f6ad0e` |
 | `deep_seek_session_003_receipt.json` | `PENDING_REVIEW` | `0596afa` |
+| `epochs/deep_seek_epoch_004_receipt.json` | `EPOCH_RECEIPT` | `7a90507` |
 | `merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json` | `MERKLED` | `d0abe0a` |
 | `merkle/base_batches_confucius_purpose_extension_v1.json` | `PURPOSE_EXTENSION_CREATED` | `edcd365` |
 | `court_reporter/tweet_2056596286099402905_alignment_report.json` | `ANALYSIS_COMPLETE` | `c79cc42` |
 
 ---
 
-## 5. Service Layers (`/services/`)
+## 7. Service Layers (`/services/`)
 
 | Service | Path | Status |
 |---------|------|--------|
@@ -98,7 +118,7 @@
 
 ---
 
-## 6. Reward Artifacts (`/assets/rewards/`)
+## 8. Reward Artifacts (`/assets/rewards/`)
 
 | Artifact | Status | Commit | Notes |
 |----------|--------|--------|-------|
@@ -106,7 +126,7 @@
 
 ---
 
-## 7. Court Rulings
+## 9. Court Rulings
 
 | Ruling | Date (UTC) | Outcome |
 |--------|------------|---------|
@@ -130,10 +150,13 @@
 | Session 003 Girl Math receipt | 2026-05-19 | `PENDING_REVIEW` |
 | Session 003 Girl Logic vernacular case | 2026-05-19 | `VERNACULAR_CASE_CANDIDATE_CREATED` |
 | CIA / NSA Jay Access candidate | 2026-05-19 | `ACCESS_CONTROL_CANDIDATE_CREATED` |
+| Repo surface audit | 2026-05-19 | `AUDIT_REPORT_CREATED` |
+| Deep Seek Epoch 004 | 2026-05-19 | `EPOCH_CANDIDATE_CREATED` |
+| Deep Seek Epoch 004 receipt | 2026-05-19 | `EPOCH_RECEIPT_CREATED` |
 
 ---
 
-## 8. Protected Surface
+## 10. Protected Surface
 
 | File | Status |
 |------|--------|
@@ -141,15 +164,17 @@
 
 ---
 
-## 9. Current Lock State
+## 11. Current Lock State
 
 ```json
 {
-  "status": "SESSION_003_GIRL_LOGIC_AND_JAY_ACCESS_CANDIDATES_CREATED",
-  "latest_vernacular_case": "sessions/session_003_vernacular_girl_logic_case_candidate.md",
-  "latest_vernacular_case_commit": "e29fd382a033c9a19b4f60990587bc601683d9dd",
-  "latest_access_candidate": "services/access-control/cia_nsa_jay_access_candidate.md",
-  "latest_access_candidate_commit": "2d2951d2f8627c814beee3794c29898f65bc0048",
+  "status": "DEEP_SEEK_EPOCH_004_CREATED",
+  "latest_audit": "audits/repo_surface_audit_2026_05_19.md",
+  "latest_audit_commit": "c8d0194bef4943319ceb98670c6899744c05eee9",
+  "latest_epoch": "epochs/deep_seek_epoch_004_5d_chinese_checkers.md",
+  "latest_epoch_commit": "79c99ca28cd8e99f96a05893c9c054e730805d5f",
+  "latest_epoch_receipt": "receipts/epochs/deep_seek_epoch_004_receipt.json",
+  "latest_epoch_receipt_commit": "7a90507d66450ff9311b3b761ad9fb0b17d87522",
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
@@ -161,14 +186,14 @@
 
 ---
 
-## 10. Next Actions From the Map
+## 12. Next Actions From the Map
 
 - Review Session 003 Girl Math output.
 - Decide whether to accept, request changes, or reject.
 - If accepted, create a Session 003 verdict receipt.
-- Create exact prompt/output captures for Girl Logic if this case proceeds.
+- Run a deeper local secret scan before any public expansion.
 - Keep CIA / NSA Jay Access as internal access discipline only, not public authority.
-- Keep Claim Parser Badge as candidate-only unless a separate promotion receipt exists.
+- Use Epoch 004 move validation before promoting any badge, portal, access, or Base/onchain claim.
 - `portal.html` remains untouched unless explicitly promoted by separate receipt.
 - Update this manifest with every new artifact.
 
@@ -185,12 +210,13 @@ Merkle roots the memory. 🧾🗺️
 
 ---
 
-## Session 003 Lock Phrase
+## Epoch 004 Lock Phrase
 
-Girl Math separates joke from claim.  
-Girl Logic separates intuition from evidence.  
-Jay Access means receipt-bound discipline, not official authority.  
-The indexer indexes. The gate holds.
+No piece moves without a receipt.  
+No agency word creates agency authority.  
+No badge appears without promotion.  
+No portal mutation without explicit receipt.  
+Deep Seek proposes. Computer Wisdom validates. Jay's Wisdom promotes. The board remembers.
 
 ---
 
@@ -202,5 +228,7 @@ A badge candidate is not a public badge.
 A session purpose is not a live backend.  
 A viral phrase is not a verified claim.  
 Agency names do not grant authority.  
+An audit report is not a formal security audit.  
+An epoch candidate is not live infrastructure.  
 The gate still holds.  
 Build from the map.
