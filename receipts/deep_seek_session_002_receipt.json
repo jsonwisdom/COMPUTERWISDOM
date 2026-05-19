@@ -1,18 +1,22 @@
 {
   "receipt_id": "DEEP_SEEK_SESSION_002",
-  "status": "PENDING_EXACT_CAPTURE",
+  "status": "OUTPUT_CAPTURED_PENDING_REVIEW",
   "module": "Power Proof Deep Seek",
   "session_rule": "exact_prompt_capture_first",
   "operator": "jaywisdom.base.eth",
-  "timestamp_utc": "PENDING",
+  "timestamp_utc": "2026-05-19T16:00:00Z",
   "topic": "Compute Wisdom Claim Parser Badge — KP-001 candidate design",
   "prompt": {
     "file": "receipts/deep_seek_session_002_prompt_exact.txt",
-    "hash_sha256": "PENDING_AFTER_CAPTURE"
+    "commit": "99e3d7b6a6bb83bd02f47d330aff4f26c580aedc",
+    "hash_sha256": "b310599652e74a9af29d5f81746a988c29dca253d8330ec9b3d135285e9b9877",
+    "capture_type": "EXACT_PROMPT_CAPTURE"
   },
   "output": {
     "file": "receipts/deep_seek_session_002_output_exact.md",
-    "hash_sha256": "PENDING_AFTER_CAPTURE"
+    "commit": "0b76ad33324b2ab6a4018b48c9cb0b4d2a613055",
+    "hash_sha256": "31301fb0034d24f292fdab4335f15de08866747f3bd89e0c68c6b8c07837dda3",
+    "capture_type": "EXACT_OUTPUT_CAPTURE"
   },
   "verification_method": "MANUAL_REVIEW | HASH_CHECK",
   "previous_receipt_links": [
@@ -22,11 +26,16 @@
   "expected_artifact": "Claim Parser Badge HTML/CSS (candidate)",
   "public_badge_granted": false,
   "portal_html_mutated": false,
-  "badge_status": "CANDIDATE_ONLY — not public",
+  "backend_claimed_live": false,
+  "onchain_claimed_live": false,
+  "badge_status": "CANDIDATE_ONLY_NOT_PUBLIC",
   "risk_notes": [
     "No live attestation",
     "No portal mutation",
     "No public badge claim",
-    "Exact prompt captured first"
-  ]
+    "Exact prompt captured first",
+    "Output captured exactly before review"
+  ],
+  "review_status": "READY_FOR_JAY_REVIEW",
+  "canon_line": "Prompt captured exactly. Output captured exactly. Hashes recorded. Badge still candidate. Portal untouched."
 }
