@@ -1,6 +1,6 @@
 # Computer Wisdom · Manifest Index
 
-**Purpose:** One map of every candidate, receipt, Merkle key, court ruling, service layer, and reward artifact.  
+**Purpose:** One map of every candidate, receipt, Merkle key, court ruling, service layer, reward artifact, badge candidate, and session lane.  
 **Rule:** Update this file whenever a new artifact is promoted or committed.  
 **Canon:** No more scattered receipts. Make the map. Then build from the map. 🧾🗺️
 
@@ -12,6 +12,8 @@
 |-----|---------|
 | `CANDIDATE` | Proposed, not live |
 | `PROMOTED_CANDIDATE` | Approved as module, still not live |
+| `BADGE_CANDIDATE` | Badge artifact exists, no public badge granted |
+| `SESSION_PURPOSE_CANDIDATE` | Session lane exists as a candidate purpose |
 | `PARTIAL` | Evidence incomplete |
 | `VERIFIED_WITH_LIMITATION` | Verified while preserving disclosed evidence limitation |
 | `VERIFIED_AFTER_CORRECTION` | Verified after correcting an identified candidate-output issue |
@@ -37,10 +39,19 @@
 | `power_proof_deep_seek_candidate.md` | `PROMOTED_CANDIDATE` | First training-session proof object. |
 | `confucius_compute_wisdom_service_candidate.md` | `CANDIDATE` | Service spec. DeepSeek as analysis engine. |
 | `confucius_compute_wisdom_widget_candidate.html` | `CANDIDATE` | Public mockup. No backend. |
+| `claim_parser_badge_candidate.html` | `BADGE_CANDIDATE` | Created from Session 002. No public badge granted. |
 
 ---
 
-## 2. Receipts (`/receipts/` and `/receipts/merkle/`)
+## 2. Sessions (`/sessions/`)
+
+| Session File | Status | Commit | Notes |
+|--------------|--------|--------|-------|
+| `session_003_confucius_indexer_purpose_candidate.md` | `SESSION_PURPOSE_CANDIDATE` | `b910158` | Confucius Indexer lane for global/local vernacular investigative Wisdom. No backend, no portal mutation, no public badge. |
+
+---
+
+## 3. Receipts (`/receipts/` and `/receipts/merkle/`)
 
 | Receipt | Status | Commit / Hash |
 |---------|--------|----------------|
@@ -61,7 +72,7 @@
 
 ---
 
-## 3. Service Layers (`/services/`)
+## 4. Service Layers (`/services/`)
 
 | Service | Path | Status |
 |---------|------|--------|
@@ -72,7 +83,7 @@
 
 ---
 
-## 4. Reward Artifacts (`/assets/rewards/`)
+## 5. Reward Artifacts (`/assets/rewards/`)
 
 | Artifact | Status | Commit | Notes |
 |----------|--------|--------|-------|
@@ -80,7 +91,7 @@
 
 ---
 
-## 5. Court Rulings
+## 6. Court Rulings
 
 | Ruling | Date (UTC) | Outcome |
 |--------|------------|---------|
@@ -96,10 +107,12 @@
 | Session 002 exact output capture | 2026-05-19 | `OUTPUT_CAPTURED_PENDING_REVIEW` |
 | Session 002 status correction | 2026-05-19 | `OUTPUT_CORRECTED_PENDING_REVIEW` |
 | Session 002 final verdict | 2026-05-19 | `VERIFIED_AFTER_CORRECTION` |
+| Claim Parser Badge candidate | 2026-05-19 | `BADGE_CANDIDATE_CREATED` |
+| Session 003 Confucius Indexer purpose | 2026-05-19 | `SESSION_PURPOSE_CANDIDATE_CREATED` |
 
 ---
 
-## 6. Protected Surface
+## 7. Protected Surface
 
 | File | Status |
 |------|--------|
@@ -107,18 +120,15 @@
 
 ---
 
-## 7. Current Lock State
+## 8. Current Lock State
 
 ```json
 {
-  "status": "SESSION_002_VERIFIED_AFTER_CORRECTION",
-  "latest_session": "DEEP_SEEK_SESSION_002",
-  "session_002_topic": "Compute Wisdom Claim Parser Badge — KP-001 candidate design",
-  "session_002_prompt_commit": "99e3d7b6a6bb83bd02f47d330aff4f26c580aedc",
-  "session_002_prompt_sha256": "b310599652e74a9af29d5f81746a988c29dca253d8330ec9b3d135285e9b9877",
-  "session_002_correction_commit": "8113787cc8479d34ed2f17ef44020ebb01bee498",
-  "session_002_output_sha256": "82d2e7161520cd373ac8b5036061369dca282269324f6477f9c637e8ea81be88",
-  "session_002_verdict_commit": "91fb66a7c74a06757f31295a8ffbd66b56db9dcb",
+  "status": "SESSION_003_CONFUCIUS_INDEXER_PURPOSE_CREATED",
+  "latest_badge_candidate": "candidates/claim_parser_badge_candidate.html",
+  "latest_badge_candidate_commit": "a31db66c2fe32204e8afdda5c112c262c0ef0d90",
+  "latest_session_lane": "sessions/session_003_confucius_indexer_purpose_candidate.md",
+  "latest_session_lane_commit": "b910158f4111ef9ad57c78c6785f0a5a481f058f",
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
@@ -129,11 +139,11 @@
 
 ---
 
-## 8. Next Actions From the Map
+## 9. Next Actions From the Map
 
-- Candidate badge design may proceed as a reviewed candidate artifact.
-- No public badge is granted.
-- A Session 002 reward artifact may be designed if desired.
+- Build Session 003 exact-capture prompt for Confucius Indexer.
+- Keep Claim Parser Badge as candidate-only unless a separate promotion receipt exists.
+- Do not grant badge access publicly from candidate artifact alone.
 - `portal.html` remains untouched unless explicitly promoted by separate receipt.
 - Update this manifest with every new artifact.
 
@@ -150,34 +160,12 @@ Merkle roots the memory. 🧾🗺️
 
 ---
 
-## Verdict Lock Phrase
+## Session 003 Lock Phrase
 
-Verified with limitation.  
-Truth preserved.  
-Image unlocked.  
-Badge still denied.  
-Portal untouched.  
-Build continues.
-
----
-
-## Reward Lock Phrase
-
-Image created.  
-Badge still denied.  
-Portal untouched.  
-Receipt records the reward.  
-The image celebrates proof; it does not replace proof.
-
----
-
-## Session 002 Lock Phrase
-
-Exact capture succeeded.  
-Overclaim corrected.  
-Session verified after correction.  
-Badge still candidate.  
-Portal untouched.
+Session 001 proved the chain.  
+Session 002 proved exact capture.  
+Session 003 starts the indexer.  
+Global/local vernacular becomes Wisdom only when every claim stays tied to evidence.
 
 ---
 
@@ -185,12 +173,8 @@ Portal untouched.
 
 A manifest is not a badge.  
 Indexing is not promotion.  
-Verification with limitation is not a live backend claim.  
-A reward image is not a badge.  
-A receipt for the reward is not a public credential claim.  
-A starter file is not a verified session.  
-Captured output is not final approval.  
-Corrected output is still pending review until verdict.  
+A badge candidate is not a public badge.  
+A session purpose is not a live backend.  
 A verified session is not a public badge grant.  
 The gate still holds.  
 Build from the map.
