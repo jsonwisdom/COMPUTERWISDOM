@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Claim Parser Badge · Candidate Artifact</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Courier New', monospace;
+            background: #fef9e8;
+            color: #1a1a1a;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .badge-card {
+            max-width: 500px;
+            width: 100%;
+            background: #ffffff;
+            border-left: 8px solid #d97706;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+        .candidate-stamp {
+            font-size: 0.7rem;
+            background: #fffbeb;
+            border: 1px solid #fcd34d;
+            padding: 0.25rem 0.75rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-family: monospace;
+        }
+        h1 { font-size: 1.5rem; margin-bottom: 0.5rem; }
+        .sub {
+            color: #5a5a5a;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 0.75rem;
+            font-size: 0.85rem;
+        }
+        .badge-visual {
+            background: #1a1a1a;
+            color: #f5e6d3;
+            padding: 1rem;
+            text-align: center;
+            margin: 1.5rem 0;
+            font-family: monospace;
+            border-left: 4px solid #f5a623;
+        }
+        .badge-visual .emoji { font-size: 2rem; display: block; margin-bottom: 0.5rem; }
+        .badge-visual .title { font-weight: bold; font-size: 1.1rem; }
+        .badge-visual .issuer { font-size: 0.75rem; opacity: 0.8; }
+        .claim-row {
+            font-size: 0.85rem;
+            margin: 0.75rem 0;
+            padding: 0.5rem;
+            background: #f7f7f5;
+        }
+        .tag {
+            font-size: 0.7rem;
+            background: #e2e3e5;
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .footer-note {
+            margin-top: 1.5rem;
+            font-size: 0.7rem;
+            color: #666;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+        .receipt-link { font-family: monospace; font-size: 0.7rem; word-break: break-all; }
+    </style>
+</head>
+<body>
+<div class="badge-card">
+    <div class="candidate-stamp">CANDIDATE ONLY · NOT LIVE · NO BADGE GRANTED</div>
+    <h1>Claim Parser Badge</h1>
+    <div class="sub">Skill: Identify claims and tag as PUBLIC / HELD / PENDING / REJECTED</div>
+
+    <div class="badge-visual">
+        <div class="emoji">🏷️🧾</div>
+        <div class="title">Claim Parser</div>
+        <div class="issuer">jaywisdom.base.eth · Computer Wisdom</div>
+        <div style="font-size:0.7rem; margin-top:0.5rem;">[CANDIDATE · AWAITING PROMOTION]</div>
+    </div>
+
+    <div class="claim-row">
+        <strong>Badge Claims (all HELD/PENDING — not live):</strong><br>
+        - Issuer: <span class="tag">PUBLIC</span> jaywisdom.base.eth<br>
+        - Skill demonstrated: Claim parsing <span class="tag">HELD</span><br>
+        - Session verified: Session 002 <span class="tag">VERIFIED_AFTER_CORRECTION</span><br>
+        - Badge granted: <span class="tag">PENDING</span> (no live badge)<br>
+        - Portal mutation: <span class="tag">PUBLIC</span> false
+    </div>
+
+    <div class="claim-row">
+        <strong>Verified Session Receipt:</strong><br>
+        <div class="receipt-link">Commit: 91fb66a7c74a06757f31295a8ffbd66b56db9dcb</div>
+        <div class="receipt-link">Output hash: 82d2e7161520cd373ac8b5036061369dca282269324f6477f9c637e8ea81be88</div>
+    </div>
+
+    <div class="footer-note">
+        <strong>Zero Trust Checkpoint:</strong><br>
+        This is a candidate badge artifact. Not displayed on portal.html.<br>
+        No public badge granted. No backend claimed. No on-chain attestation.<br>
+        Promotion requires Jay approval + promotion receipt.<br>
+        <strong>Canon:</strong> Skill is not asserted. Skill is proven. Badge follows verification.
+    </div>
+</div>
+</body>
+</html>
