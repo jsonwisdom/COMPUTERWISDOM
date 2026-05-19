@@ -1,0 +1,28 @@
+{
+  "receipt_id": "ZORA_FACTORY_001",
+  "status": "CANDIDATE",
+  "zora_drop": {
+    "chain": "base",
+    "contract_address": "0x829adfedbe565f9885a7ea6bc78912acaef055e2",
+    "token_id": "42",
+    "drop_title": "Confucius Says: Receipts",
+    "drop_description": "A visual Merkle tree on warm gold paper",
+    "mint_tx_hash": "0x0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  "receipt_anchor": {
+    "sha256_of_metadata": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "merkle_root": "ff55a1fb6ef07adbeea057aed4997a617e16ae3c80c8d18ec673c3d14ca25a91",
+    "previous_receipt_hash": "7a90507d66450ff9311b3b761ad9fb0b17d87522"
+  },
+  "claim_tags": {
+    "ownership_claim": "HELD",
+    "authorship_claim": "PUBLIC",
+    "receipt_integrity": "HELD"
+  },
+  "verification": {
+    "reviewer": "jaywisdom.base.eth",
+    "timestamp_utc": "2026-05-19T12:00:00Z",
+    "promotion_receipt_hash": "PENDING"
+  },
+  "canon_line": "The factory mints receipts, not delusions."
+}
