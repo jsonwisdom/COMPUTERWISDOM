@@ -1,0 +1,32 @@
+{
+  "receipt_id": "ART_OF_WAR_2026_05_20_PARENT_CANDIDATE_COMMIT_SNAPSHOT",
+  "status": "COMMIT_PINNED_PARENT_SNAPSHOT_CREATED",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-20T00:20:00Z",
+  "purpose": "Resolve master/raw-cache ambiguity by pinning the 05-20 parent candidate to the exact commit that contains the replacement evidence.",
+  "target": {
+    "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+    "branch_context": "master",
+    "commit": "18dbb7c4087ee70b252ecb63a7c5ffaddfe5bb06",
+    "blob_sha": "bf8491748d6683605a340a4776e8ea16990b1619",
+    "status": "DAILY_LEDGER_CANDIDATE_EVIDENCE_REPLACED_PENDING_FINAL_REVIEW"
+  },
+  "verified_fields": {
+    "daily_entry.evidence[3]": "AOW-2026-05-20-EVIDENCE-001: receipt-backed process move creating the 05-20 specific evidence intake layer; not proof of an external fog vector.",
+    "daily_entry.counter_review": "EVIDENCE_ITEM_READY_TO_REPLACE_PLACEHOLDER",
+    "boundaries.external_fog_vector_proven": false,
+    "boundaries.public_badge_granted": false,
+    "boundaries.onchain_claimed_live": false,
+    "boundaries.legal_authority_claimed": false,
+    "boundaries.military_authority_claimed": false,
+    "boundaries.official_government_claim": false,
+    "boundaries.external_affiliation_claimed": false
+  },
+  "review_method_rule": "For final workflow review, Grok must inspect the commit-pinned target, not a floating raw master cache.",
+  "resolution": {
+    "floating_master_cache_risk": true,
+    "commit_pinned_snapshot_required": true,
+    "workflow_status": "RECONCILABLE_BY_COMMIT_PINNED_TRACE"
+  },
+  "canon_line": "Floating master can lag. Commit-pinned receipts settle the board."
+}
