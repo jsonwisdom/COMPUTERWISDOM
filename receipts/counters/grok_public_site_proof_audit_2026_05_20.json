@@ -1,0 +1,76 @@
+{
+  "receipt_id": "GROK_PUBLIC_SITE_PROOF_AUDIT_2026_05_20",
+  "status": "GROK_PUBLIC_SITE_AUDIT_ARCHIVED",
+  "source": "user_supplied_grok_public_site_audit_output",
+  "reviewer": "Grok",
+  "title": "Compute Wisdom Public Site Proof Audit",
+  "verdict": "PUBLIC_SITE_VERIFIED_WITH_PROOF",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "public_site": "https://jsonwisdom.github.io/COMPUTERWISDOM/portal.html",
+  "evidence_checked": [
+    "Grok Evidence",
+    "L0-L5 Index",
+    "L1 Reputation",
+    "L4 Byte Verification",
+    "Active Constraints",
+    "Daily Ledger"
+  ],
+  "sections_verified": [
+    "Compute Wisdom Layers",
+    "Evidence Spine",
+    "Weekly Byte Verification",
+    "Grok Evidence",
+    "Active Constraints",
+    "Daily Civic Ledger"
+  ],
+  "hashes_verified": [
+    "54e8a3702d182cdf2936031a6233336c86643632",
+    "0acd4553137be6a0d9c16e43f2e38f605d0feb1b",
+    "3ded4d0f27fbbe94a89557b4d6fa162e8ede753f",
+    "eecfd3052eef28aabb666524bbf7f4f7afa66064",
+    "83b2fc21b77863b42e9f920f21552d392f67317a",
+    "fd59910d99c79b2a3002913c870372dd050821bd",
+    "836c958b2abdb71e2c5b9f967f14ca2bf7325c44",
+    "0bc34dfe792fc51751b84306271018563abf6fa8",
+    "d132eb262c6dd59a2c71d61afec5d055dab18d7d",
+    "fe644dfb4d04873ae12b841eeae487d09608a8c5"
+  ],
+  "evidence_table_summary": [
+    {
+      "claim": "Grok Evidence is visible on portal and linked to receipts/counters artifacts.",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "L0-L5 Layer Index is linked from the public portal.",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "L1 Reputation Layer is visible and bounded as candidate.",
+      "claim_tag": "PUBLIC_CANDIDATE"
+    },
+    {
+      "claim": "L4 Byte Verification is visible with manifest and pre-update hash.",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Active Constraints and Daily Civic Ledger remain candidate-only and receipt-linked.",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Public Verifier Report is committed and public.",
+      "claim_tag": "PUBLIC"
+    }
+  ],
+  "held_items": [],
+  "violations_found": [],
+  "boundary_check": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false,
+    "zora_treated_as_proof": false
+  },
+  "canon_line": "Public proof, not public overclaim. Compute Wisdom verifies byte by byte."
+}
