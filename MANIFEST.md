@@ -1,6 +1,6 @@
 # Computer Wisdom · Manifest Index
 
-**Purpose:** One map of every candidate, receipt, Merkle key, court ruling, and service layer.  
+**Purpose:** One map of every candidate, receipt, Merkle key, court ruling, service layer, and reward artifact.  
 **Rule:** Update this file whenever a new artifact is promoted or committed.  
 **Canon:** No more scattered receipts. Make the map. Then build from the map. 🧾🗺️
 
@@ -16,6 +16,7 @@
 | `VERIFIED_WITH_LIMITATION` | Verified while preserving disclosed evidence limitation |
 | `PENDING_REVIEW` | Awaiting Jay decision |
 | `MERKLED` | Anchored in Merkle receipt |
+| `REWARD_ARTIFACT` | Visual/format reward generated after eligible verification |
 | `HOLD` | Deliberately paused |
 
 ---
@@ -61,7 +62,15 @@
 
 ---
 
-## 4. Court Rulings
+## 4. Reward Artifacts (`/assets/rewards/`)
+
+| Artifact | Status | Commit | Notes |
+|----------|--------|--------|-------|
+| `confucius_deep_seek_session_001_reward.svg` | `REWARD_ARTIFACT` | `5b72569` | SVG receipt-card poster. Celebrates `VERIFIED_WITH_LIMITATION`; badge still denied; portal untouched. |
+
+---
+
+## 5. Court Rulings
 
 | Ruling | Date (UTC) | Outcome |
 |--------|------------|---------|
@@ -71,10 +80,11 @@
 | Deep Seek Session 001 final verdict | 2026-05-19 | `VERIFIED_WITH_LIMITATION` |
 | Widget placement and Merkle key | 2026-05-19 | `MERKLED` |
 | Tweet alignment analysis | 2026-05-19 | `PUBLIC_STATEMENT_ALIGNS_WITH_CANDIDATE_WORK` |
+| Reward SVG creation | 2026-05-19 | `REWARD_ARTIFACT_CREATED` |
 
 ---
 
-## 5. Protected Surface
+## 6. Protected Surface
 
 | File | Status |
 |------|--------|
@@ -82,13 +92,13 @@
 
 ---
 
-## 6. Current Lock State
+## 7. Current Lock State
 
 ```json
 {
-  "status": "SESSION_001_VERIFIED_WITH_LIMITATION",
-  "latest_receipt": "deep_seek_session_001_verdict.json",
-  "latest_receipt_commit": "c54d85a591b807fedd756171cc2643d28e49ddab",
+  "status": "SESSION_001_REWARD_ARTIFACT_CREATED",
+  "latest_reward_artifact": "assets/rewards/confucius_deep_seek_session_001_reward.svg",
+  "latest_reward_commit": "5b725694b6f3c14b29ccd21ed9544d87aa08bdf4",
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
@@ -99,10 +109,9 @@
 
 ---
 
-## 7. Next Actions From the Map
+## 8. Next Actions From the Map
 
-- Generate image reward candidate under `services/confucius-compute-wisdom/` or `assets/rewards/`.
-- Image may celebrate Session 001, but must disclose `VERIFIED_WITH_LIMITATION`.
+- Create a reward artifact receipt that records the SVG hash and intended placement.
 - Candidate badge design may begin, but no public badge is granted.
 - Confucius Compute Wisdom may later move from `CANDIDATE` to `PROMOTED_CANDIDATE` only by receipt.
 - `portal.html` remains untouched unless explicitly promoted by separate receipt.
@@ -129,6 +138,15 @@ Image unlocked.
 Badge still denied.  
 Portal untouched.  
 Build continues.
+
+---
+
+## Reward Lock Phrase
+
+Image created.  
+Badge still denied.  
+Portal untouched.  
+The image celebrates proof; it does not replace proof.
 
 ---
 
