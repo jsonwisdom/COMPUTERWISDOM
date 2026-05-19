@@ -1,6 +1,6 @@
 # Computer Wisdom · Manifest Index
 
-**Purpose:** One map of every candidate, receipt, Merkle key, court ruling, service layer, reward artifact, badge candidate, audit, and epoch.  
+**Purpose:** One map of every candidate, receipt, Merkle key, court ruling, service layer, reward artifact, badge candidate, audit, epoch, and Zora/repo-chain index lane.  
 **Rule:** Update this file whenever a new artifact is promoted or committed.  
 **Canon:** No more scattered receipts. Make the map. Then build from the map. 🧾🗺️
 
@@ -19,6 +19,9 @@
 | `AUDIT_REPORT` | Targeted repository review, not formal security audit |
 | `EPOCH_CANDIDATE` | Next operating layer proposed, not live |
 | `EPOCH_RECEIPT` | Receipt recording an epoch candidate |
+| `ZORA_ADAPTER_CANDIDATE` | Candidate adapter for Zora visual/flywheel output, not proof by itself |
+| `REPO_CHAIN_INDEX_CANDIDATE` | Public pointer map for repo/Zora/portal indexing, not proof by itself |
+| `SECRET_SCAN_RECEIPT_TEMPLATE` | Receipt template requiring local scan before unlock |
 | `PARTIAL` | Evidence incomplete |
 | `VERIFIED_WITH_LIMITATION` | Verified while preserving disclosed evidence limitation |
 | `VERIFIED_AFTER_CORRECTION` | Verified after correcting an identified candidate-output issue |
@@ -66,7 +69,16 @@
 
 ---
 
-## 4. Audits (`/audits/`)
+## 4. Zora Flywheel (`/services/zora-flywheel/`)
+
+| File | Status | Commit | Notes |
+|------|--------|--------|-------|
+| `secret_scan_zora_image_adapter_candidate.md` | `ZORA_ADAPTER_CANDIDATE` | `2dc8852` | Allows random or purpose-bound Zora image output only after secret scan PASS or reviewed WARN. Image is not proof. |
+| `repo_chain_public_index_candidate.md` | `REPO_CHAIN_INDEX_CANDIDATE` | `8b942c0` | Double-back map for `jsonwisdom/jay-zora-portal`, `jsonwisdom/AL`, `jsonwisdom/COMPUTERWISDOM`, Zora profile, and Zora wallet pointer. |
+
+---
+
+## 5. Audits (`/audits/`)
 
 | File | Status | Commit | Notes |
 |------|--------|--------|-------|
@@ -74,7 +86,7 @@
 
 ---
 
-## 5. Epochs (`/epochs/`)
+## 6. Epochs (`/epochs/`)
 
 | File | Status | Commit | Notes |
 |------|--------|--------|-------|
@@ -82,7 +94,7 @@
 
 ---
 
-## 6. Receipts (`/receipts/`, `/receipts/merkle/`, `/receipts/epochs/`)
+## 7. Receipts (`/receipts/`, `/receipts/merkle/`, `/receipts/epochs/`)
 
 | Receipt | Status | Commit / Hash |
 |---------|--------|----------------|
@@ -100,6 +112,7 @@
 | `deep_seek_session_003_prompt_exact.txt` | `EXACT_PROMPT_CAPTURED` | `22ed798` |
 | `deep_seek_session_003_output_exact.md` | `EXACT_OUTPUT_CAPTURED` | `5f6ad0e` |
 | `deep_seek_session_003_receipt.json` | `PENDING_REVIEW` | `0596afa` |
+| `secret_scan_epoch_004_receipt.json` | `SECRET_SCAN_RECEIPT_TEMPLATE` | `7f4dd2b` |
 | `epochs/deep_seek_epoch_004_receipt.json` | `EPOCH_RECEIPT` | `7a90507` |
 | `merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json` | `MERKLED` | `d0abe0a` |
 | `merkle/base_batches_confucius_purpose_extension_v1.json` | `PURPOSE_EXTENSION_CREATED` | `edcd365` |
@@ -107,7 +120,7 @@
 
 ---
 
-## 7. Service Layers (`/services/`)
+## 8. Service Layers (`/services/`)
 
 | Service | Path | Status |
 |---------|------|--------|
@@ -118,7 +131,7 @@
 
 ---
 
-## 8. Reward Artifacts (`/assets/rewards/`)
+## 9. Reward Artifacts (`/assets/rewards/`)
 
 | Artifact | Status | Commit | Notes |
 |----------|--------|--------|-------|
@@ -126,7 +139,7 @@
 
 ---
 
-## 9. Court Rulings
+## 10. Court Rulings
 
 | Ruling | Date (UTC) | Outcome |
 |--------|------------|---------|
@@ -153,10 +166,13 @@
 | Repo surface audit | 2026-05-19 | `AUDIT_REPORT_CREATED` |
 | Deep Seek Epoch 004 | 2026-05-19 | `EPOCH_CANDIDATE_CREATED` |
 | Deep Seek Epoch 004 receipt | 2026-05-19 | `EPOCH_RECEIPT_CREATED` |
+| Zora secret-scan image adapter | 2026-05-19 | `ZORA_ADAPTER_CANDIDATE_CREATED` |
+| Secret scan Epoch 004 receipt template | 2026-05-19 | `SECRET_SCAN_RECEIPT_TEMPLATE_CREATED` |
+| Repo chain public index candidate | 2026-05-19 | `REPO_CHAIN_INDEX_CANDIDATE_CREATED` |
 
 ---
 
-## 10. Protected Surface
+## 11. Protected Surface
 
 | File | Status |
 |------|--------|
@@ -164,17 +180,22 @@
 
 ---
 
-## 11. Current Lock State
+## 12. Current Lock State
 
 ```json
 {
-  "status": "DEEP_SEEK_EPOCH_004_CREATED",
-  "latest_audit": "audits/repo_surface_audit_2026_05_19.md",
-  "latest_audit_commit": "c8d0194bef4943319ceb98670c6899744c05eee9",
-  "latest_epoch": "epochs/deep_seek_epoch_004_5d_chinese_checkers.md",
-  "latest_epoch_commit": "79c99ca28cd8e99f96a05893c9c054e730805d5f",
-  "latest_epoch_receipt": "receipts/epochs/deep_seek_epoch_004_receipt.json",
-  "latest_epoch_receipt_commit": "7a90507d66450ff9311b3b761ad9fb0b17d87522",
+  "status": "REPO_CHAIN_PUBLIC_INDEX_CANDIDATE_CREATED",
+  "latest_repo_chain_index": "services/zora-flywheel/repo_chain_public_index_candidate.md",
+  "latest_repo_chain_index_commit": "8b942c07a8fef366339dd73f9db6edc7d3b13a5b",
+  "confirmed_public_surfaces": {
+    "zora_profile": "https://zora.co/@jaywisdom",
+    "zora_wallet": "0x829adfedbe565f9885a7ea6bc78912acaef055e2",
+    "zora_portal_repo": "jsonwisdom/jay-zora-portal",
+    "zora_portal_default_branch": "live-zora-ingestion",
+    "al_repo": "jsonwisdom/AL",
+    "computerwisdom_repo": "jsonwisdom/COMPUTERWISDOM"
+  },
+  "zora_image_lane_unlocked": false,
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
@@ -186,12 +207,13 @@
 
 ---
 
-## 12. Next Actions From the Map
+## 13. Next Actions From the Map
 
-- Review Session 003 Girl Math output.
-- Decide whether to accept, request changes, or reject.
-- If accepted, create a Session 003 verdict receipt.
-- Run a deeper local secret scan before any public expansion.
+- Run local secret scan across `jsonwisdom/AL`, `jsonwisdom/COMPUTERWISDOM`, and optionally `jsonwisdom/jay-zora-portal`.
+- Update `receipts/secret_scan_epoch_004_receipt.json` with PASS / WARN / FAIL.
+- If PASS or reviewed WARN, choose Zora mode: `RANDOM_ZORA_ARTIFACT` or `PURPOSE_BOUND_ZORA_ARTIFACT`.
+- Do not treat a Zora image as proof.
+- Do not expose secrets in image metadata.
 - Keep CIA / NSA Jay Access as internal access discipline only, not public authority.
 - Use Epoch 004 move validation before promoting any badge, portal, access, or Base/onchain claim.
 - `portal.html` remains untouched unless explicitly promoted by separate receipt.
@@ -207,6 +229,16 @@ Then build from the map.
 Portal untouched.  
 Badge waits for proof.  
 Merkle roots the memory. 🧾🗺️
+
+---
+
+## Zora Flywheel Lock Phrase
+
+Secret scan first.  
+Repo chain check second.  
+Zora image third.  
+Public claim last, if ever.  
+Public pointers can index the chain. They do not prove the chain.
 
 ---
 
@@ -230,5 +262,7 @@ A viral phrase is not a verified claim.
 Agency names do not grant authority.  
 An audit report is not a formal security audit.  
 An epoch candidate is not live infrastructure.  
+A Zora image is not a secret-scan proof.  
+A public pointer is not proof by itself.  
 The gate still holds.  
 Build from the map.
