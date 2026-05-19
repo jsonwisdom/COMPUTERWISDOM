@@ -1,0 +1,39 @@
+{
+  "receipt_id": "ZORA_FACTORY_CANDIDATE_IMPLEMENTATION_RECEIPT_V1",
+  "status": "FACTORY_CANDIDATE_IMPLEMENTED",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T18:30:00Z",
+  "implemented_files": [
+    {
+      "file": "services/zora-flywheel/factory_receipt_schema_candidate.json",
+      "commit": "2394a2e93869a6a02f476fd5408d4f0171082c98"
+    },
+    {
+      "file": "receipts/zora_factory/example_mint_receipt_candidate.json",
+      "commit": "28f30ae49de61468eb76f47c677acc1111d22004"
+    },
+    {
+      "file": "services/zora-flywheel/factory_crawler_spec_candidate.md",
+      "commit": "d09c0fc310ab9de3f1503880baa65fb93ff5a6be"
+    },
+    {
+      "file": "receipts/deep_seek_epoch_004_prompt_exact.txt",
+      "commit": "90fe3f5f1a4e93bd9ec3948ae2a3542ac9436f80"
+    }
+  ],
+  "source_context": [
+    "audits/meme_court_zora_base_repo_audit_2026_05_19.md",
+    "services/meme-court/open_court_zora_base_candidate.md",
+    "services/zora-flywheel/repo_chain_public_index_candidate.md",
+    "epochs/deep_seek_epoch_004_5d_chinese_checkers.md"
+  ],
+  "boundaries": {
+    "portal_html_mutated": false,
+    "public_badge_granted": false,
+    "backend_claimed_live": false,
+    "onchain_claimed_live": false,
+    "official_authority_claim": false
+  },
+  "next_action": "Run Deep Seek Epoch 004 prompt and capture output for Compute Wisdom Direct.",
+  "canon_line": "Compute Wisdom Direct turns the repo into a receipt machine. Factory files exist. Prompt waits for execution."
+}
