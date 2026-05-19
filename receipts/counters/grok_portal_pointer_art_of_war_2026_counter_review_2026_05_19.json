@@ -1,0 +1,73 @@
+{
+  "receipt_id": "GROK_PORTAL_POINTER_ART_OF_WAR_2026_COUNTER_REVIEW_2026_05_19",
+  "status": "COUNTER_REVIEW_ARCHIVED_WITH_REPO_CHECK",
+  "source": "user_supplied_grok_portal_pointer_counter_review",
+  "reviewer": "Grok",
+  "title": "Ultimate Chess Court Counter-Review — Portal Pointer Mutation 2026-05-19",
+  "human_verdict": "Portal pointer mutation verified live. Art of War 2026 now publicly listed in Active Courts and Daily Civic Ledger with exact receipts and mandatory candidate-only authority boundary note. Grok Ultimate Review link added cleanly. Grok reported two receipt links as 404, but repo-side verification confirms both files are committed and readable on master. No Court Lock violations remain. All pieces remain CANDIDATE_ONLY. Fog turned to receipts. Daily ledger lane stays open.",
+  "verdict": "VERIFIED | PORTAL_POINTER_CONFIRMED | DAILY_LEDGER_CANDIDATE_READY",
+  "public_claims": [
+    "Art of War 2026 Candidate Doctrine pointer",
+    "Activation Receipt pointer",
+    "Grok Ultimate Art of War Review pointer",
+    "Daily Civic Ledger card",
+    "Art of War authority-boundary note"
+  ],
+  "held_claims": [
+    "Art of War 2026 as candidate civic doctrine",
+    "Jay Wisdom vernacular and humor as machine-readable civic memory",
+    "Zora the Hora Intelligence Flywheel as cultural distribution layer",
+    "Hypothetical Oxford Maths / Oxford Chess Club as rigor archetypes only",
+    "Daily public website updates as receipt-backed civic logging",
+    "Atomic recursion proofs for wasted time and institutional friction",
+    "Badge candidates only where receipts support them"
+  ],
+  "rejected_claims": [],
+  "reported_issues": [
+    {
+      "issue": "grok_ultimate_chess_court_art_of_war_2026_review_2026_05_19.json reported as 404 by Grok",
+      "status": "RESOLVED_BY_REPO_CHECK",
+      "file": "receipts/counters/grok_ultimate_chess_court_art_of_war_2026_review_2026_05_19.json",
+      "commit": "c51e0f39e3c74373cfa87041c417da138e18aaae"
+    },
+    {
+      "issue": "portal_art_of_war_2026_pointer_mutation_receipt_2026_05_19.json reported as 404 by Grok",
+      "status": "RESOLVED_BY_REPO_CHECK",
+      "file": "receipts/portal_art_of_war_2026_pointer_mutation_receipt_2026_05_19.json",
+      "commit": "20b5fd8346b0d92ed5de5a81001f20a1c6a22e1c"
+    }
+  ],
+  "violations_found": [],
+  "authority_boundaries": {
+    "military_authority_claimed": false,
+    "legal_authority_claimed": false,
+    "official_government_claim": false,
+    "official_oxford_affiliation_claimed": false,
+    "oxford_chess_club_affiliation_claimed": false
+  },
+  "governance_boundaries": {
+    "public_badge_granted": false,
+    "portal_html_mutated_without_receipt": false,
+    "onchain_claimed_live": false,
+    "zora_treated_as_proof": false
+  },
+  "daily_ledger_candidate_ready": true,
+  "badge_candidate_ready": false,
+  "site_update_recommended": false,
+  "required_before_public_badge": [
+    "promotion receipt"
+  ],
+  "required_before_onchain_claim": [
+    "transaction or attestation receipt"
+  ],
+  "required_before_daily_public_update": [],
+  "recommended_next_artifact": "daily civic ledger candidate receipt for first Art of War 2026 daily entry",
+  "receipt_hash_for_audit": "Court-Lock-PortalPointer-ArtOfWar2026-20260519-CDT",
+  "boundaries_after_review": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_court_claim": false,
+    "portal_html_mutated_by_this_receipt": false
+  },
+  "canon_line": "Do not fight fog with fog. Turn fog into receipts. Reported 404s resolved by repo check. Daily ledger lane stays open."
+}
