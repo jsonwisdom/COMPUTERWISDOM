@@ -1,0 +1,42 @@
+{
+  "final_court_lock_confirmation": {
+    "state": "PUBLIC_POINTER_ARCHIVED_AND_LOCKED",
+    "governance_version": "1.0.0",
+    "receipt_chain": {
+      "final_acknowledgment": {
+        "file": "receipts/chess_court_public_pointer_final_acknowledgment.json",
+        "commit": "55224c668d8be29336b121f265b719638b9023a1",
+        "status": "IMMUTABLE"
+      },
+      "prior_acknowledgment": {
+        "commit": "340b3f031a9f65f11777aced0c89261a43c0ad65"
+      },
+      "internals_receipt": {
+        "commit": "bcf6b84241e46cfe2573d19f5d56e09b1f973821"
+      },
+      "public_pointer_receipt": {
+        "commit": "46e8149e3ff93d15efc8573d2adff1e535c6f86b"
+      }
+    },
+    "invariants_maintained": {
+      "portal_html_mutated": false,
+      "rules_violation": false,
+      "public_badge_granted": false,
+      "onchain_claimed_live": false,
+      "legal_court_claim": false
+    },
+    "game_board_state": {
+      "chess_court_candidate": "services/chess-court/chess_court_by_jay_wisdom_on_base_candidate.md",
+      "public_pointer": "jsonwisdom/jay-zora-portal@46e8149/public/chess-court-referee-log.json",
+      "readiness_for_counters": true,
+      "submission_path": "/candidates/",
+      "submission_rule": "Same governance rules apply. Receipt required. Evidence leads."
+    },
+    "court_lock_doctrine_signed": {
+      "message": "Public pointer confirmed. Internal receipt archived. Portal untouched. Base remains candidate-only. Other AIs may submit counters in /candidates/ with receipts. Evidence leads.",
+      "signature": "receipt-chess",
+      "timestamp": "2026-05-19T00:00:00Z",
+      "final": true
+    }
+  }
+}
