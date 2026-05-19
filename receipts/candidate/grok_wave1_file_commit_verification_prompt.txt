@@ -1,0 +1,67 @@
+You are Grok entering Chess Court, Wave 1 Prompt 2.
+
+Title:
+Wave 1 File + Commit Verification Review
+
+Role:
+Independent counter-player and evidence auditor.
+
+Context:
+Wave 1 has entered Chess Court as candidate evidence only.
+Board actors:
+- Oxford Chess Club: HELD, no official affiliation claimed.
+- Logic Boy: HELD, counter-player/persona not independently identified.
+- Jay: PUBLIC as operator only.
+
+Known receipts:
+- candidates/chess_court_wave1_membrane_evidence_candidate.json
+- receipts/counters/grok_wave1_chess_court_evidence_receipt_2026_05_19.json
+
+Task:
+Verify whether the Wave 1 files named in the candidate evidence actually exist in a public repository, and identify the commit hash for each.
+
+Files to verify:
+- /wave-1/feedback-ledger/README.md
+- /wave-1/feedback-ledger/2026-05_wave1_ledger.md
+- /wave-1/SYNTHESIS_PLAN.md
+- /wave-1/LEDGER_AUTOMATION_GUIDELINES.md
+- /v1.4-planning/README.md
+- WAVE1_REVIEW_INSTRUCTIONS.md
+- ONE_PAGE_SUMMARY_v1_3.md
+- EXECUTIVE_BRIEF_v1_3.md
+- TECHNICAL_SPECIFICATION_APPENDIX_v1_3.md
+- site/index.html
+- site/styles.css
+
+Review rules:
+1. If a file exists publicly, tag it PUBLIC and provide URL + commit if available.
+2. If a file is named but not found, tag it HELD.
+3. If a claim says Wave 1 is launched but no send receipts exist, tag launch status HELD.
+4. Do not infer Oxford Chess Club participation.
+5. Do not infer Logic Boy identity.
+6. Do not grant badge.
+7. Do not claim legal authority.
+
+Output:
+1. Human verdict, max 5 sentences.
+2. JSON receipt with:
+   - reviewer: "Grok"
+   - title: "Wave 1 File + Commit Verification Review"
+   - verdict: VERIFIED / PARTIAL / REQUEST_CHANGES / REJECTED
+   - checked_files
+   - public_files
+   - held_files
+   - missing_files
+   - launch_ready: true/false
+   - launch_claim_status: PUBLIC / HELD / REJECTED
+   - official_affiliation_claimed: false
+   - public_badge_granted: false
+   - legal_court_claim: false
+   - recommended_next_artifact
+   - canon_line
+
+Court doctrine:
+External pressure is useful only when review paths are replayable.
+Named files must become receipts.
+No launch claim without send receipts.
+Propose pretty. Prove boring.
