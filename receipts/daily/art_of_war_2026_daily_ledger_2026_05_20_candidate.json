@@ -1,6 +1,6 @@
 {
   "receipt_id": "ART_OF_WAR_2026_DAILY_LEDGER_2026_05_20_CANDIDATE",
-  "status": "DAILY_LEDGER_CANDIDATE_CREATED",
+  "status": "DAILY_LEDGER_CANDIDATE_EVIDENCE_REPLACED_PENDING_FINAL_REVIEW",
   "operator": "jaywisdom.eth / jaywisdom.base.eth",
   "date_utc": "2026-05-20",
   "event_id": "AOW-2026-DAILY-0002",
@@ -13,20 +13,30 @@
     "doctrine_candidate": {
       "file": "services/chess-court/art_of_war_2026_jay_wisdom_candidate.md",
       "commit": "592824a88e4963969daa5e443fb3483fed9e5978"
+    },
+    "evidence_items_candidate": {
+      "file": "receipts/daily/art_of_war_2026_05_20_specific_evidence_items_candidate.json",
+      "commit": "b51d1ef1998c006c7fd9106190c4d176c0b69d30",
+      "event_id": "AOW-2026-05-20-EVIDENCE-001"
+    },
+    "evidence_item_counter_review": {
+      "file": "receipts/counters/grok_05_20_evidence_item_ready_to_replace_review_2026_05_19.json",
+      "commit": "59925cbc8f6c3eac30db42293ad037078757e759",
+      "verdict": "READY_TO_REPLACE_PLACEHOLDER"
     }
   },
   "daily_entry": {
     "vernacular": "Do not fight fog with fog. Turn fog into receipts.",
-    "claim_extracted": "Art of War 2026 daily ledger lane continues as verified candidate.",
+    "claim_extracted": "Art of War 2026 daily ledger lane continues as verified candidate with one process-move evidence item.",
     "evidence": [
       "2026-05-19 court lock confirmed",
       "evidence trail intact",
       "daily cadence sustained",
-      "HELD_PENDING_TODAY_SPECIFIC_RECEIPTS_MOVES_OR_FOG_VECTORS"
+      "AOW-2026-05-20-EVIDENCE-001: receipt-backed process move creating the 05-20 specific evidence intake layer; not proof of an external fog vector."
     ],
-    "claim_tag": "PUBLIC_AS_CANDIDATE_LANE_CONTINUATION",
+    "claim_tag": "PUBLIC_AS_CANDIDATE_LANE_CONTINUATION_WITH_PROCESS_EVIDENCE",
     "receipt_path": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
-    "counter_review": "PENDING_GROK_REVIEW",
+    "counter_review": "EVIDENCE_ITEM_READY_TO_REPLACE_PLACEHOLDER",
     "public_pointer": "portal.html Daily Civic Ledger card"
   },
   "boundaries": {
@@ -36,14 +46,15 @@
     "military_authority_claimed": false,
     "official_government_claim": false,
     "external_affiliation_claimed": false,
-    "portal_html_mutated_by_this_receipt": false
+    "portal_html_mutated_by_this_receipt": false,
+    "external_fog_vector_proven": false
   },
   "next_required": [
-    "Fill today's specific evidence array with real moves, observations, or fog vectors",
-    "Counter-review this daily ledger candidate",
-    "If public site changes, create mutation receipt first",
-    "If badge advances, create promotion receipt first",
-    "If onchain claim advances, attach transaction or attestation receipt"
+    "Run final Grok review for the updated 05-20 daily ledger candidate.",
+    "If passed, court-lock the 05-20 daily entry as verified candidate entry.",
+    "If public site changes, create mutation receipt first.",
+    "If badge advances, create promotion receipt first.",
+    "If onchain claim advances, attach transaction or attestation receipt."
   ],
-  "canon_line": "Daily ledger lane sustained as verified candidate. Fog turns into receipts one day at a time."
+  "canon_line": "05-20 placeholder replaced with one receipt-backed process move. External fog vector remains unproven."
 }
