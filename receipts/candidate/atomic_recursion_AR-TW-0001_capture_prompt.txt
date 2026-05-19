@@ -1,0 +1,32 @@
+You are reviewing Atomic Recursion Time-Waste Unit AR-TW-0001.
+
+Task:
+Fill the unit only with evidence-backed facts.
+
+Schema:
+receipts/candidate/atomic_recursion_time_waste_unit_schema.json
+
+Unit template:
+receipts/candidate/atomic_recursion_time_waste_unit_AR-TW-0001_candidate.json
+
+Rules:
+1. Do not claim damages.
+2. Do not claim legal liability.
+3. Do not claim official misconduct unless public evidence proves it.
+4. Do not grant a badge.
+5. Do not treat frustration as proof.
+6. Convert one event into one atomic proof unit.
+
+Required fields:
+- action_attempted
+- system_or_surface
+- timestamp_utc or event_reference
+- evidence_available: screenshot/log/commit/receipt/url/etc.
+- receipt_status
+- claim_tag: PUBLIC / HELD / PENDING / REJECTED
+- next_proof_needed
+
+Output JSON only.
+
+Canon:
+Pain is signal. Receipts are structure. Atomic units beat narrative fog. One event, one unit, one receipt.
