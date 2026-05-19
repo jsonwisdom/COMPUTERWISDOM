@@ -1,0 +1,23 @@
+{
+  "receipt_id": "GROK_05_20_WORKFLOW_MISMATCH_REVIEW_2026_05_19",
+  "status": "COUNTER_REVIEW_ARCHIVED_REQUEST_CHANGES_STALE_PARENT_TRACE",
+  "source": "user_supplied_grok_court_lock_batch_workflow_review",
+  "reviewer": "Grok",
+  "title": "Art of War 2026 — 05-20 Court Lock + Batch Workflow Review",
+  "verdict": "REQUEST_CHANGES",
+  "reported_issue": "Grok reported that current master parent candidate still showed old placeholder, creating a mismatch with court lock reference.",
+  "reported_parent_file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+  "reported_parent_commit": "18dbb7c4087ee70b252ecb63a7c5ffaddfe5bb06",
+  "reported_missing_field": "Parent candidate update confirmation at referenced commit",
+  "reported_workflow_connected": false,
+  "boundary_check": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false
+  },
+  "repo_reconciliation_required": true,
+  "canon_line": "Grok flagged a parent trace mismatch. Reconciliation must fetch current master and compare live parent content before accepting or rejecting the lock."
+}
