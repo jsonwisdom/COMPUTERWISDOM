@@ -14,6 +14,7 @@
 | `PROMOTED_CANDIDATE` | Approved as module, still not live |
 | `BADGE_CANDIDATE` | Badge artifact exists, no public badge granted |
 | `SESSION_PURPOSE_CANDIDATE` | Session lane exists as a candidate purpose |
+| `VERNACULAR_CASE_CANDIDATE` | Specific language/culture pattern added for indexed analysis |
 | `PARTIAL` | Evidence incomplete |
 | `VERIFIED_WITH_LIMITATION` | Verified while preserving disclosed evidence limitation |
 | `VERIFIED_AFTER_CORRECTION` | Verified after correcting an identified candidate-output issue |
@@ -48,6 +49,7 @@
 | Session File | Status | Commit | Notes |
 |--------------|--------|--------|-------|
 | `session_003_confucius_indexer_purpose_candidate.md` | `SESSION_PURPOSE_CANDIDATE` | `b910158` | Confucius Indexer lane for global/local vernacular investigative Wisdom. No backend, no portal mutation, no public badge. |
+| `session_003_vernacular_girl_math_case_candidate.md` | `VERNACULAR_CASE_CANDIDATE` | `db3c13c` | Girl Math case. Indexed as viral vernacular pattern, not gender-essential truth. |
 
 ---
 
@@ -66,6 +68,7 @@
 | `deep_seek_session_002_output_exact.md` | `EXACT_OUTPUT_CORRECTED` | `8113787` |
 | `deep_seek_session_002_receipt.json` | `OUTPUT_CORRECTED_PENDING_REVIEW` | `8113787` |
 | `deep_seek_session_002_verdict.json` | `VERIFIED_AFTER_CORRECTION` | `91fb66a` |
+| `deep_seek_session_003_prompt_exact.txt` | `PENDING_EXACT_CAPTURE` | `22ed798` |
 | `merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json` | `MERKLED` | `d0abe0a` |
 | `merkle/base_batches_confucius_purpose_extension_v1.json` | `PURPOSE_EXTENSION_CREATED` | `edcd365` |
 | `court_reporter/tweet_2056596286099402905_alignment_report.json` | `ANALYSIS_COMPLETE` | `c79cc42` |
@@ -109,6 +112,8 @@
 | Session 002 final verdict | 2026-05-19 | `VERIFIED_AFTER_CORRECTION` |
 | Claim Parser Badge candidate | 2026-05-19 | `BADGE_CANDIDATE_CREATED` |
 | Session 003 Confucius Indexer purpose | 2026-05-19 | `SESSION_PURPOSE_CANDIDATE_CREATED` |
+| Session 003 Girl Math vernacular case | 2026-05-19 | `VERNACULAR_CASE_CANDIDATE_CREATED` |
+| Session 003 Girl Math prompt starter | 2026-05-19 | `PENDING_EXACT_CAPTURE` |
 
 ---
 
@@ -124,11 +129,11 @@
 
 ```json
 {
-  "status": "SESSION_003_CONFUCIUS_INDEXER_PURPOSE_CREATED",
-  "latest_badge_candidate": "candidates/claim_parser_badge_candidate.html",
-  "latest_badge_candidate_commit": "a31db66c2fe32204e8afdda5c112c262c0ef0d90",
-  "latest_session_lane": "sessions/session_003_confucius_indexer_purpose_candidate.md",
-  "latest_session_lane_commit": "b910158f4111ef9ad57c78c6785f0a5a481f058f",
+  "status": "SESSION_003_GIRL_MATH_CASE_AND_PROMPT_CREATED",
+  "latest_vernacular_case": "sessions/session_003_vernacular_girl_math_case_candidate.md",
+  "latest_vernacular_case_commit": "db3c13c286a94fb3efb4f222d3d0f7835f37c094",
+  "latest_session_prompt": "receipts/deep_seek_session_003_prompt_exact.txt",
+  "latest_session_prompt_commit": "22ed7989e49152035d7a960b1cc45ad7d30aa96a",
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
@@ -141,7 +146,9 @@
 
 ## 9. Next Actions From the Map
 
-- Build Session 003 exact-capture prompt for Confucius Indexer.
+- Run Session 003 prompt exactly and capture output to `receipts/deep_seek_session_003_output_exact.md`.
+- Create `receipts/deep_seek_session_003_receipt.json` with prompt/output hashes.
+- Keep Girl Math as a vernacular case, not a gendered truth claim.
 - Keep Claim Parser Badge as candidate-only unless a separate promotion receipt exists.
 - Do not grant badge access publicly from candidate artifact alone.
 - `portal.html` remains untouched unless explicitly promoted by separate receipt.
@@ -165,7 +172,8 @@ Merkle roots the memory. 🧾🗺️
 Session 001 proved the chain.  
 Session 002 proved exact capture.  
 Session 003 starts the indexer.  
-Global/local vernacular becomes Wisdom only when every claim stays tied to evidence.
+Girl Math becomes Wisdom only when the joke is separated from the claim.  
+Humor can travel globally. Receipts decide what survives locally.
 
 ---
 
@@ -175,6 +183,6 @@ A manifest is not a badge.
 Indexing is not promotion.  
 A badge candidate is not a public badge.  
 A session purpose is not a live backend.  
-A verified session is not a public badge grant.  
+A viral phrase is not a verified claim.  
 The gate still holds.  
 Build from the map.
