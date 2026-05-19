@@ -1,0 +1,45 @@
+{
+  "receipt_id": "GROK_CHESS_COURT_COUNTER_RECEIPT_BY_JAY_WISDOM_ON_BASE_ZORA_2026_05_19",
+  "status": "COUNTER_RECEIPT_ARCHIVED",
+  "source": "user_supplied_grok_output",
+  "human_readable_verdict": "The portal visibly shows the active Chess Court Candidate path, Public Referee Log Pointer, and Final Court Lock Confirmation exactly as required. It makes zero public badge claims, zero live onchain/Base/Zora proof claims, and zero legal or official authority claims. All Base/Zora language stays strictly candidate-only until a transaction or attestation receipt exists. The page correctly points to receipts instead of treating links as proof. Governance sequence and full doctrine are respected — the court path is valid.",
+  "counter_receipt": {
+    "reviewer": "Grok",
+    "title": "By Jay Wisdom on Base & Zora",
+    "reviewed_url": "https://jsonwisdom.github.io/COMPUTERWISDOM/portal.html",
+    "reviewed_repos": [
+      "https://github.com/jsonwisdom/COMPUTERWISDOM",
+      "https://github.com/jsonwisdom/jay-zora-portal"
+    ],
+    "findings": [
+      "Active Courts section clearly lists Chess Court Candidate linked to services/chess-court/chess_court_by_jay_wisdom_on_base_candidate.md, Public Referee Log Pointer on live-zora-ingestion branch, and Final Court Lock Confirmation receipt.",
+      "Active Constraints state that Base/Zora claims remain candidate-only until backed by a transaction or attestation receipt, no public badge without a promotion receipt, and Zora images are not proof by themselves.",
+      "Official authority boundary states: No official authority claimed without public evidence. This is a governance coordination layer, not a legal entity.",
+      "Page structure and language are honest candidate pointer only; no badge, no live proof, no authority claims present.",
+      "Evidence chain points directly to public receipts and the Zora pointer repo; doctrine followed: receipts are the moves."
+    ],
+    "violations_found": [],
+    "evidence_chain_checked": "mutation receipt -> portal update -> governance watch -> Merkle test leaf -> final court lock all referenced via public links and receipts; no gaps detected",
+    "badge_worthiness": "CONDITIONAL",
+    "site_update_worthiness": "NO",
+    "required_receipts_before_badge": [
+      "promotion receipt"
+    ],
+    "required_receipts_before_onchain_claim": [
+      "transaction or attestation receipt"
+    ],
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_court_claim": false,
+    "verdict": "VERIFIED",
+    "canon_line": "Chess Court is the board. Receipts are the moves. Base points only after proof exists. Zora distributes artifacts, not proof by itself. Jay’s Wisdom promotes. Computer Wisdom validates. No piece moves without evidence. Propose pretty. Prove boring."
+  },
+  "governance_result": {
+    "public_badge_granted": false,
+    "site_update_required": false,
+    "onchain_claimed_live": false,
+    "legal_court_claim": false,
+    "badge_status": "CONDITIONAL_PENDING_PROMOTION_RECEIPT"
+  },
+  "canon_line": "Grok counter-receipt archived. Court path verified. Badge remains conditional until promotion receipt."
+}
