@@ -1,0 +1,60 @@
+{
+  "receipt_id": "GROK_COMPUTE_WISDOM_HARNESS_05_20_REVIEW_2026_05_19",
+  "status": "HARNESS_REVIEW_ARCHIVED_REQUEST_CHANGES",
+  "source": "user_supplied_grok_compute_wisdom_harness_review",
+  "reviewer": "Grok",
+  "title": "Compute Wisdom Harness - Art of War 2026 Daily Ledger Review 2026-05-20",
+  "target_file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+  "verdict": "REQUEST_CHANGES",
+  "evidence_table_summary": [
+    {
+      "claim": "Target file exists and is readable on master branch",
+      "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+      "blob_sha": "8e3e75e43d9df8309fd6139458895aa8aff1575e",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "receipt_id and status",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Previous day reference",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Daily entry structure and vernacular",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Evidence array contains placeholder",
+      "claim_tag": "PENDING"
+    },
+    {
+      "claim": "Boundaries object flags are false",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Claim tag discipline preserved",
+      "claim_tag": "PUBLIC"
+    }
+  ],
+  "boundary_check": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false,
+    "zora_treated_as_proof": false
+  },
+  "violations_found": [],
+  "missing_proof": [
+    "Evidence array contains placeholder instead of concrete 2026-05-20 specific receipts, moves, or fog vectors."
+  ],
+  "required_fixes": [
+    "Replace HELD_PENDING_TODAY_SPECIFIC_RECEIPTS_MOVES_OR_FOG_VECTORS with concrete evidence items for 2026-05-20.",
+    "Re-commit the updated candidate after specific evidence is added."
+  ],
+  "recommended_next_artifact": "updated_05_20_candidate_with_specific_evidence",
+  "canon_line": "Compute Wisdom validates. No hand-wave verification. Placeholder stays HELD until specific evidence is supplied."
+}
