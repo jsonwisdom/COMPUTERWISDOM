@@ -1,0 +1,14 @@
+Generate a candidate badge design (HTML/CSS only, no images) for "Compute Wisdom Claim Parser" — the first badge from the Knowledge Proofs module (KP-001).
+
+Requirements:
+
+1. Badge must display ONLY if linked to a Knowledge Proof (visual indicator of proof linkage)
+2. Include machine-readable data attributes (data-badge-name, data-status, data-proof-hash, etc.)
+3. Show status options: PENDING / HELD / VERIFIED / REJECTED (design should accommodate all four)
+4. Do NOT claim live attestation, EAS, ENS, or on-chain verification
+5. Do NOT mutate portal.html — badge is for candidate display only
+6. Include explicit claim tags (PUBLIC/HELD/PENDING/REJECTED) as visual elements
+7. Design aesthetic: cybernetic courtroom, warm gold paper, black monospace, Merkle branch motif
+8. Output: HTML/CSS snippet only. No JavaScript backend claims. No fake sponsorship.
+
+The badge is a CANDIDATE. It will not be displayed on portal.html without Jay approval + promotion receipt.
