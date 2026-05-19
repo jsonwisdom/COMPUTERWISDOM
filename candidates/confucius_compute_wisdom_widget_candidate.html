@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confucius Compute Wisdom · Widget Mockup (Candidate)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Courier New', monospace;
+            background: #fef9e8;
+            color: #1a1a1a;
+            padding: 2rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .widget {
+            max-width: 800px;
+            width: 100%;
+            background: #ffffff;
+            border-left: 8px solid #d97706;
+            box-shadow: 8px 8px 0 rgba(0,0,0,0.1);
+            padding: 2rem;
+        }
+        .badge-candidate {
+            font-size: 0.75rem;
+            background: #fffbeb;
+            border: 1px solid #fcd34d;
+            padding: 0.25rem 0.75rem;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-family: monospace;
+        }
+        h1 {
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .sub {
+            color: #5a5a5a;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid #e5e5e5;
+            padding-bottom: 0.75rem;
+        }
+        textarea {
+            width: 100%;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            padding: 1rem;
+            border: 1px solid #ccc;
+            background: #fefaf5;
+            margin: 1rem 0;
+            resize: vertical;
+        }
+        button {
+            background: #1a1a1a;
+            color: #f5e6d3;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        button:hover {
+            opacity: 0.85;
+        }
+        .output-area {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: #f7f7f5;
+            border: 1px dashed #aaa;
+            font-size: 0.9rem;
+        }
+        .tag {
+            font-size: 0.7rem;
+            background: #e2e3e5;
+            padding: 0.1rem 0.4rem;
+            border-radius: 4px;
+            font-family: monospace;
+        }
+        .footer-note {
+            margin-top: 2rem;
+            font-size: 0.75rem;
+            color: #666;
+            border-top: 1px solid #eee;
+            padding-top: 1rem;
+        }
+        .claim-row {
+            margin: 0.5rem 0;
+        }
+    </style>
+</head>
+<body>
+<div class="widget">
+    <div class="badge-candidate">CANDIDATE · NOT LIVE · CONFUCIUS COMPUTE WISDOM</div>
+    <h1>Slap in code. Get Wisdom back.</h1>
+    <div class="sub">Analyze claims · Tag statements · Suggest repairs · Generate receipt stub</div>
+
+    <label for="codeInput">Paste code, spec, or claim block:</label>
+    <textarea id="codeInput" rows="8" placeholder='Example:
+function distributeRewards(user) {
+    // This contract is audited and safe
+    return user.balance * 1.05;
+}'></textarea>
+
+    <button id="analyzeBtn">Analyze with Wisdom</button>
+
+    <div class="output-area" id="outputArea">
+        <strong>Wisdom Report (mockup — no real analysis)</strong>
+        <div class="claim-row" id="mockClaim1"><span class="tag">PENDING</span> “This contract is audited and safe” — Claim tag: <strong>HELD</strong> (no receipt)</div>
+        <div class="claim-row" id="mockClaim2">Repair path: Add audit receipt hash or mark as PENDING/REJECTED.</div>
+        <div class="claim-row" id="mockClaim3">Candidate receipt stub: <code>HELD_PENDING_SESSION</code></div>
+        <div class="claim-row"><em>This is a candidate mockup. Live analysis requires backend + Jay approval.</em></div>
+    </div>
+
+    <div class="footer-note">
+        <strong>Zero Trust Checkpoint:</strong> No live claims. No backend. No badge issuance. <br>
+        Confucius Compute Wisdom → DeepSeek as analysis engine · Jay approval required · Receipts beat vibes.
+    </div>
+</div>
+
+<script>
+    // Pure mockup — no real analysis. This just demonstrates UI.
+    const btn = document.getElementById('analyzeBtn');
+    const output = document.getElementById('outputArea');
+    const textarea = document.getElementById('codeInput');
+
+    btn.addEventListener('click', () => {
+        const inputText = textarea.value.trim();
+        if (!inputText) {
+            output.innerHTML = `<strong>Wisdom Report</strong><br>No code or claims provided. Slap something in.`;
+            return;
+        }
+
+        // Fake analysis for demonstration
+        output.innerHTML = `
+            <strong>Wisdom Report (candidate mockup)</strong>
+            <div class="claim-row"><span class="tag">PENDING</span> Analyzed input length: ${inputText.length} chars</div>
+            <div class="claim-row">Detected potential claims: <strong>HELD</strong> (requires human review)</div>
+            <div class="claim-row">Suggested repair: Break claims into PUBLIC / HELD / PENDING / REJECTED tags.</div>
+            <div class="claim-row">Candidate receipt stub: <code>CONFUCIUS_ANALYSIS_${Date.now()}_HELD</code></div>
+            <div class="claim-row"><em>Mockup only. No backend. No live verification. Jay approval required for real service.</em></div>
+        `;
+    });
+</script>
+</body>
+</html>
