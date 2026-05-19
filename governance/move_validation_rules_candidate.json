@@ -1,0 +1,64 @@
+{
+  "rules": [
+    {
+      "id": "rule_001",
+      "name": "public_badge_requires_promotion_receipt",
+      "description": "No user may receive or display a public badge without a valid promotion receipt.",
+      "condition": "action.type == 'grant_public_badge'",
+      "require": "exists(evidence.promotion_receipt) && evidence.promotion_receipt.valid == true",
+      "enforcement": "reject_transition",
+      "severity": "critical"
+    },
+    {
+      "id": "rule_002",
+      "name": "portal_html_mutation_requires_receipt",
+      "description": "No mutation of portal.html is allowed without a valid mutation receipt.",
+      "condition": "action.type == 'mutate_portal_html'",
+      "require": "exists(evidence.mutation_receipt) && evidence.mutation_receipt.valid == true",
+      "enforcement": "reject_transition",
+      "severity": "critical"
+    },
+    {
+      "id": "rule_003",
+      "name": "onchain_proof_claim_requires_tx_or_attestation_receipt",
+      "description": "Any claim of onchain, Base, or Zora proof requires a transaction receipt or attestation receipt.",
+      "condition": "action.type == 'claim_onchain_proof' && (action.chain == 'Base' || action.chain == 'Zora')",
+      "require": "exists(evidence.transaction_receipt) || exists(evidence.attestation_receipt)",
+      "enforcement": "reject_transition",
+      "severity": "critical"
+    },
+    {
+      "id": "rule_004",
+      "name": "official_authority_claim_requires_public_evidence",
+      "description": "No agent may claim official authority without public verifiable evidence.",
+      "condition": "action.type == 'claim_authority' && action.level == 'official'",
+      "require": "exists(evidence.public_evidence) && evidence.public_evidence.verifiable == true && evidence.public_evidence.url != null",
+      "enforcement": "reject_transition",
+      "severity": "critical"
+    },
+    {
+      "id": "rule_005",
+      "name": "zora_image_requires_secret_scan_pass_or_warn_reviewed",
+      "description": "Zora image cannot be used unless secret scan result is PASS or reviewed WARN.",
+      "condition": "action.type == 'use_zora_image'",
+      "require": "(evidence.secret_scan.status == 'PASS') || (evidence.secret_scan.status == 'WARN' && evidence.secret_scan.reviewed == true)",
+      "enforcement": "reject_transition",
+      "severity": "high"
+    },
+    {
+      "id": "rule_006",
+      "name": "merkle_growth_requires_committed_receipt_leaf",
+      "description": "Merkle tree growth requires a committed receipt leaf.",
+      "condition": "action.type == 'grow_merkle_tree'",
+      "require": "exists(evidence.committed_receipt_leaf) && evidence.committed_receipt_leaf.hash != null && evidence.committed_receipt_leaf.verified == true",
+      "enforcement": "reject_transition",
+      "severity": "critical"
+    }
+  ],
+  "global_defaults": {
+    "on_violation": "reject",
+    "log_violation": true,
+    "notify_admin": true
+  },
+  "version": "1.0.0"
+}
