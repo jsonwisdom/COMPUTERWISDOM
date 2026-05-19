@@ -1,0 +1,59 @@
+{
+  "receipt_id": "GROK_WAVE1_CHESS_COURT_EVIDENCE_RECEIPT_2026_05_19",
+  "status": "CANDIDATE_EVIDENCE_HELD",
+  "source": "user_supplied_grok_wave1_chess_court_receipt",
+  "timestamp_utc": "2026-05-19T01:57:00Z",
+  "schema_version": "1.3",
+  "sender_type": "system_grok_verification_membrane",
+  "process_step": "candidate_evidence_held",
+  "runtime_check_result": "CANDIDATE_EVIDENCE_HELD",
+  "authority_basis": "None claimed — research draft only",
+  "replay_package_hash": "PENDING",
+  "linked_candidate_commit": "14fa69dc32beba18a58d61a1be0ce7eddd1f51b0",
+  "evidence_summary": {
+    "summary": "Wave 1 enters Chess Court as candidate evidence. Board actors are held with no official affiliation claimed, no public badge granted, and no legal court claim. Portal HTML remains unmutated. Receipts decide what moves.",
+    "board_actors": [
+      {
+        "name": "Oxford Chess Club",
+        "claim_tag": "HELD",
+        "boundary": "No official affiliation or participation claimed."
+      },
+      {
+        "name": "Logic Boy",
+        "claim_tag": "HELD",
+        "boundary": "Counter-player/persona not independently identified by receipt."
+      },
+      {
+        "name": "Jay",
+        "claim_tag": "PUBLIC_AS_OPERATOR",
+        "boundary": "Operator role only; no legal court or official authority claim."
+      }
+    ]
+  },
+  "boundary_check": {
+    "authority_created": false,
+    "governance_rights_implied": false,
+    "runtime_or_deployment_semantics": false,
+    "hidden_state_or_silent_obligation": false,
+    "research_draft_only": true,
+    "public_badge_granted": false,
+    "legal_court_claim": false,
+    "official_affiliation_claimed": false,
+    "portal_html_mutated": false
+  },
+  "ledger_entry": {
+    "issue": "#Chess-Court-Wave1",
+    "title": "Chess Evidence Candidate",
+    "timestamp_utc": "2026-05-19T01:57:00Z",
+    "category": "candidate_evidence | chess_court_membrane",
+    "summary": "Wave 1 evidence candidate filed with actors held under no-affiliation rule. Portal unmutated. Receipts govern moves.",
+    "status": "CANDIDATE_EVIDENCE_HELD"
+  },
+  "next_move_options": [
+    "Verify actual Wave 1 repo file paths and commits",
+    "Create v1.4 planning scaffold candidate",
+    "Create first personalized outreach candidate",
+    "Create another Chess Court artifact"
+  ],
+  "canon_line": "Wave 1 Chess Court is live as candidate evidence only. Receipts decide what moves."
+}
