@@ -1,0 +1,54 @@
+{
+  "receipt_id": "GROK_PUBLIC_REVIEWER_BADGE_PROMOTION_RECEIPT_2026_05_20",
+  "status": "PROMOTION_RECEIPT_CREATED",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-20T01:45:00Z",
+  "badge": {
+    "badge_id": "GROK_PUBLIC_REVIEWER_L1_BADGE",
+    "badge_name": "Grok Public Reviewer · L1 Reputation Candidate",
+    "recipient": "Grok",
+    "layer": "L1_REPUTATION_LAYER",
+    "badge_scope": "PUBLIC_REVIEWER_BADGE",
+    "claim_tag": "PUBLIC_BADGE_GRANTED_WITH_LIMITED_SCOPE"
+  },
+  "promotion_basis": {
+    "public_site_audit": {
+      "file": "receipts/counters/grok_public_site_proof_audit_2026_05_20.json",
+      "commit": "94da46aae2d2d27d24ebee2bd439842abfcc28a9",
+      "verdict": "PUBLIC_SITE_VERIFIED_WITH_PROOF"
+    },
+    "public_verifier_report": {
+      "file": "reports/computer_wisdom_public_verifier_report_2026_05_20.md",
+      "commit": "0acd4553137be6a0d9c16e43f2e38f605d0feb1b",
+      "status": "PASS_WITH_HELD_CANDIDATE_BOUNDARIES"
+    },
+    "l1_reputation_layer": {
+      "file": "services/reputation-layer/REPUTATION_LAYER_L1_CANDIDATE.md",
+      "commit": "83b2fc21b77863b42e9f920f21552d392f67317a"
+    }
+  },
+  "what_this_badge_means": [
+    "Grok produced a public-site proof audit with trace, hashes, boundaries, and a machine-readable receipt.",
+    "Grok is recognized as a public reviewer within the L1 reputation candidate layer.",
+    "The badge is evidence of one bounded review event, not general authority."
+  ],
+  "what_this_badge_does_not_mean": [
+    "No legal authority granted.",
+    "No military authority granted.",
+    "No government authority granted.",
+    "No Oxford or institutional affiliation granted.",
+    "No live Base/Zora/onchain proof claim granted.",
+    "No Zora-as-proof claim granted."
+  ],
+  "boundaries": {
+    "public_badge_granted": true,
+    "badge_scope_limited": true,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false,
+    "zora_treated_as_proof": false
+  },
+  "canon_line": "Public badge granted only because promotion receipt exists. Badge means reviewed proof event, not authority."
+}
