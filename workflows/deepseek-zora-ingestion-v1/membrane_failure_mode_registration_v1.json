@@ -1,0 +1,15 @@
+{
+  "schema": "MEMBRANE_FAILURE_MODE_REGISTRATION_V1",
+  "schema_version": "2026-05",
+  "failure_mode": {
+    "code": "INTEGRITY_ERROR_MEMBRANE_VIOLATION",
+    "description": "Validator, automation, index, or mirror attempted to declare truth, override receipts, mutate silently, or bypass replay. Membrane breached."
+  },
+  "classification": {
+    "severity": "CRITICAL",
+    "halt_required": true,
+    "replay_visible": true
+  },
+  "boundary_rule": "The membrane is a constraint set, not an agent.",
+  "new_vault_merkle_root": "PENDING_HASH"
+}
