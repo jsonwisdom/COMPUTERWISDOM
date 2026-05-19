@@ -1,0 +1,27 @@
+{
+  "schema": "VALIDATOR_MEMBRANE_RECEIPT_V1",
+  "schema_version": "2026-05",
+  "receipt_type": "BRIDGE_RESOLUTION_RECEIPT",
+  "receipt_id": "membrane-definition-001",
+  "timestamp_utc": "PENDING",
+  "previous_vault_merkle_root": "PENDING_HASH",
+  "tree_path": "jsonwisdom/forest/membrane",
+  "original_contradiction_log_hash": null,
+  "resolution_summary": {
+    "allowed": [
+      "validates",
+      "replays",
+      "detects",
+      "logs",
+      "halts"
+    ],
+    "forbidden": [
+      "declares truth by itself",
+      "overrides receipts",
+      "mutates canon silently",
+      "bypasses replay"
+    ]
+  },
+  "description": "This distinction is the membrane keeping the whole forest lawful.",
+  "new_vault_merkle_root": "PENDING_HASH"
+}
