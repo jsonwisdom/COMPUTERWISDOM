@@ -13,6 +13,7 @@
 | `CANDIDATE` | Proposed, not live |
 | `PROMOTED_CANDIDATE` | Approved as module, still not live |
 | `PARTIAL` | Evidence incomplete |
+| `VERIFIED_WITH_LIMITATION` | Verified while preserving disclosed evidence limitation |
 | `PENDING_REVIEW` | Awaiting Jay decision |
 | `MERKLED` | Anchored in Merkle receipt |
 | `HOLD` | Deliberately paused |
@@ -38,10 +39,11 @@
 | Receipt | Status | Commit / Hash |
 |---------|--------|----------------|
 | `power_proof_deep_seek_promotion_receipt_v1.json` | `PROMOTED_CANDIDATE` | `b15158a1` |
-| `deep_seek_session_001_receipt.json` | `PARTIAL_PASS_PENDING_FINAL_REVIEW` | `e2dd1b2` |
-| `deep_seek_session_001_prompt_normalized.txt` | `PARTIAL_EVIDENCE` | `814a1d0` |
-| `deep_seek_session_001_output.md` | `CAPTURED` | `29cd633` |
+| `deep_seek_session_001_receipt.json` | `EVIDENCE_CHAIN_REPAIRED` | `e2dd1b2` |
+| `deep_seek_session_001_prompt_normalized.txt` | `ACCEPTED_WITH_LIMITATION` | `814a1d0` |
+| `deep_seek_session_001_output.md` | `FULLY_ACCEPTED` | `29cd633` |
 | `deep_seek_session_001_court_ruling.json` | `REQUEST_ALTERNATIVE_EVIDENCE` | `6ce06f5` |
+| `deep_seek_session_001_verdict.json` | `VERIFIED_WITH_LIMITATION` | `c54d85a` |
 | `merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json` | `MERKLED` | `d0abe0a` |
 | `merkle/base_batches_confucius_purpose_extension_v1.json` | `PURPOSE_EXTENSION_CREATED` | `edcd365` |
 | `court_reporter/tweet_2056596286099402905_alignment_report.json` | `ANALYSIS_COMPLETE` | `c79cc42` |
@@ -66,6 +68,7 @@
 | Power Proof Deep Seek promotion | 2026-05-18 | `PROMOTED_AS_CANDIDATE_MODULE` |
 | Deep Seek Session 001 review | 2026-05-18 | `REQUEST_CHANGES` to `PARTIAL_PASS` |
 | Deep Seek Session 001 court ruling | 2026-05-18 | `REQUEST_ALTERNATIVE_EVIDENCE` |
+| Deep Seek Session 001 final verdict | 2026-05-19 | `VERIFIED_WITH_LIMITATION` |
 | Widget placement and Merkle key | 2026-05-19 | `MERKLED` |
 | Tweet alignment analysis | 2026-05-19 | `PUBLIC_STATEMENT_ALIGNS_WITH_CANDIDATE_WORK` |
 
@@ -83,13 +86,14 @@
 
 ```json
 {
-  "status": "OK_ACKNOWLEDGED_WITH_MANIFEST",
-  "latest_receipt": "MANIFEST_INDEX_CREATED",
+  "status": "SESSION_001_VERIFIED_WITH_LIMITATION",
+  "latest_receipt": "deep_seek_session_001_verdict.json",
+  "latest_receipt_commit": "c54d85a591b807fedd756171cc2643d28e49ddab",
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
   "onchain_claimed_live": false,
-  "image_generation_unlocked": false
+  "image_generation_unlocked": true
 }
 ```
 
@@ -97,8 +101,9 @@
 
 ## 7. Next Actions From the Map
 
-- Jay reviews `DEEP_SEEK_SESSION_001` for final `VERIFIED`, `REJECTED`, or continued `REQUEST_ALTERNATIVE_EVIDENCE`.
-- If verified, image generation becomes eligible under `visual_reward_spec.md`.
+- Generate image reward candidate under `services/confucius-compute-wisdom/` or `assets/rewards/`.
+- Image may celebrate Session 001, but must disclose `VERIFIED_WITH_LIMITATION`.
+- Candidate badge design may begin, but no public badge is granted.
 - Confucius Compute Wisdom may later move from `CANDIDATE` to `PROMOTED_CANDIDATE` only by receipt.
 - `portal.html` remains untouched unless explicitly promoted by separate receipt.
 - Update this manifest with every new artifact.
@@ -116,9 +121,22 @@ Merkle roots the memory. 🧾🗺️
 
 ---
 
+## Verdict Lock Phrase
+
+Verified with limitation.  
+Truth preserved.  
+Image unlocked.  
+Badge still denied.  
+Portal untouched.  
+Build continues.
+
+---
+
 ## Manifest Boundary
 
 A manifest is not a badge.  
 Indexing is not promotion.  
+Verification with limitation is not a live backend claim.  
+Image eligibility is not public badge eligibility.  
 The gate still holds.  
 Build from the map.
