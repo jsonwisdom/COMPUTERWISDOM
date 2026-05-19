@@ -1,6 +1,6 @@
 # Computer Wisdom · Manifest Index
 
-**Purpose:** One map of every candidate, receipt, Merkle key, court ruling, service layer, reward artifact, badge candidate, audit, epoch, and Zora/repo-chain index lane.  
+**Purpose:** One map of every candidate, receipt, Merkle key, court ruling, service layer, reward artifact, badge candidate, audit, epoch, and court-opening lane.  
 **Rule:** Update this file whenever a new artifact is promoted or committed.  
 **Canon:** No more scattered receipts. Make the map. Then build from the map. 🧾🗺️
 
@@ -21,6 +21,8 @@
 | `EPOCH_RECEIPT` | Receipt recording an epoch candidate |
 | `ZORA_ADAPTER_CANDIDATE` | Candidate adapter for Zora visual/flywheel output, not proof by itself |
 | `REPO_CHAIN_INDEX_CANDIDATE` | Public pointer map for repo/Zora/portal indexing, not proof by itself |
+| `OPEN_COURT_CANDIDATE` | Candidate court workflow path, not legal authority |
+| `OPEN_COURT_RECEIPT` | Receipt recording candidate court opening |
 | `SECRET_SCAN_RECEIPT_TEMPLATE` | Receipt template requiring local scan before unlock |
 | `PARTIAL` | Evidence incomplete |
 | `VERIFIED_WITH_LIMITATION` | Verified while preserving disclosed evidence limitation |
@@ -78,15 +80,24 @@
 
 ---
 
-## 5. Audits (`/audits/`)
+## 5. Meme Court (`/services/meme-court/`)
+
+| File | Status | Commit | Notes |
+|------|--------|--------|-------|
+| `open_court_zora_base_candidate.md` | `OPEN_COURT_CANDIDATE` | `749ae8d` | Opens Meme Court as candidate workflow to Zora cards and Base pointers. Not legal authority, not public badge. |
+
+---
+
+## 6. Audits (`/audits/`)
 
 | File | Status | Commit | Notes |
 |------|--------|--------|-------|
 | `repo_surface_audit_2026_05_19.md` | `AUDIT_REPORT` | `c8d0194` | Targeted audit for agency wording, receipts, public claims, keys, dual-purpose pathing, Docker/Wave surfaces, Jay's Wisdom, and next epoch readiness. Not a full formal security audit. |
+| `meme_court_zora_base_repo_audit_2026_05_19.md` | `AUDIT_REPORT` | `3a3bb2d` | Cross-repo audit of AL Meme Court, Zora portal, Base website game, and Computer Wisdom court opening path. |
 
 ---
 
-## 6. Epochs (`/epochs/`)
+## 7. Epochs (`/epochs/`)
 
 | File | Status | Commit | Notes |
 |------|--------|--------|-------|
@@ -94,7 +105,7 @@
 
 ---
 
-## 7. Receipts (`/receipts/`, `/receipts/merkle/`, `/receipts/epochs/`)
+## 8. Receipts (`/receipts/`, `/receipts/merkle/`, `/receipts/epochs/`)
 
 | Receipt | Status | Commit / Hash |
 |---------|--------|----------------|
@@ -113,6 +124,7 @@
 | `deep_seek_session_003_output_exact.md` | `EXACT_OUTPUT_CAPTURED` | `5f6ad0e` |
 | `deep_seek_session_003_receipt.json` | `PENDING_REVIEW` | `0596afa` |
 | `secret_scan_epoch_004_receipt.json` | `SECRET_SCAN_RECEIPT_TEMPLATE` | `7f4dd2b` |
+| `meme_court_open_zora_base_receipt.json` | `OPEN_COURT_RECEIPT` | `552daef` |
 | `epochs/deep_seek_epoch_004_receipt.json` | `EPOCH_RECEIPT` | `7a90507` |
 | `merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json` | `MERKLED` | `d0abe0a` |
 | `merkle/base_batches_confucius_purpose_extension_v1.json` | `PURPOSE_EXTENSION_CREATED` | `edcd365` |
@@ -120,7 +132,7 @@
 
 ---
 
-## 8. Service Layers (`/services/`)
+## 9. Service Layers (`/services/`)
 
 | Service | Path | Status |
 |---------|------|--------|
@@ -131,7 +143,7 @@
 
 ---
 
-## 9. Reward Artifacts (`/assets/rewards/`)
+## 10. Reward Artifacts (`/assets/rewards/`)
 
 | Artifact | Status | Commit | Notes |
 |----------|--------|--------|-------|
@@ -139,7 +151,7 @@
 
 ---
 
-## 10. Court Rulings
+## 11. Court Rulings
 
 | Ruling | Date (UTC) | Outcome |
 |--------|------------|---------|
@@ -169,10 +181,13 @@
 | Zora secret-scan image adapter | 2026-05-19 | `ZORA_ADAPTER_CANDIDATE_CREATED` |
 | Secret scan Epoch 004 receipt template | 2026-05-19 | `SECRET_SCAN_RECEIPT_TEMPLATE_CREATED` |
 | Repo chain public index candidate | 2026-05-19 | `REPO_CHAIN_INDEX_CANDIDATE_CREATED` |
+| Meme Court Zora Base audit | 2026-05-19 | `AUDIT_REPORT_CREATED` |
+| Meme Court Open Zora Base candidate | 2026-05-19 | `OPEN_COURT_CANDIDATE_CREATED` |
+| Meme Court Open Zora Base receipt | 2026-05-19 | `OPEN_COURT_RECEIPT_CREATED` |
 
 ---
 
-## 11. Protected Surface
+## 12. Protected Surface
 
 | File | Status |
 |------|--------|
@@ -180,42 +195,36 @@
 
 ---
 
-## 12. Current Lock State
+## 13. Current Lock State
 
 ```json
 {
-  "status": "REPO_CHAIN_PUBLIC_INDEX_CANDIDATE_CREATED",
-  "latest_repo_chain_index": "services/zora-flywheel/repo_chain_public_index_candidate.md",
-  "latest_repo_chain_index_commit": "8b942c07a8fef366339dd73f9db6edc7d3b13a5b",
-  "confirmed_public_surfaces": {
-    "zora_profile": "https://zora.co/@jaywisdom",
-    "zora_wallet": "0x829adfedbe565f9885a7ea6bc78912acaef055e2",
-    "zora_portal_repo": "jsonwisdom/jay-zora-portal",
-    "zora_portal_default_branch": "live-zora-ingestion",
-    "al_repo": "jsonwisdom/AL",
-    "computerwisdom_repo": "jsonwisdom/COMPUTERWISDOM"
-  },
-  "zora_image_lane_unlocked": false,
+  "status": "MEME_COURT_OPEN_TO_ZORA_BASE_CANDIDATE",
+  "latest_meme_court_audit": "audits/meme_court_zora_base_repo_audit_2026_05_19.md",
+  "latest_meme_court_audit_commit": "3a3bb2d9a5b4880024173346249e911d41c6f0d0",
+  "latest_open_court_candidate": "services/meme-court/open_court_zora_base_candidate.md",
+  "latest_open_court_candidate_commit": "749ae8d5dff554d0d329a23b8e24b2d0a09df5cb",
+  "latest_open_court_receipt": "receipts/meme_court_open_zora_base_receipt.json",
+  "latest_open_court_receipt_commit": "552daef0b4e9408d74bba3d0dc985e2d64dbf2d8",
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
   "onchain_claimed_live": false,
-  "official_agency_claim": false,
-  "classified_access_claim": false
+  "official_authority_claim": false,
+  "legal_court_claim": false
 }
 ```
 
 ---
 
-## 13. Next Actions From the Map
+## 14. Next Actions From the Map
 
-- Run local secret scan across `jsonwisdom/AL`, `jsonwisdom/COMPUTERWISDOM`, and optionally `jsonwisdom/jay-zora-portal`.
-- Update `receipts/secret_scan_epoch_004_receipt.json` with PASS / WARN / FAIL.
-- If PASS or reviewed WARN, choose Zora mode: `RANDOM_ZORA_ARTIFACT` or `PURPOSE_BOUND_ZORA_ARTIFACT`.
-- Do not treat a Zora image as proof.
-- Do not expose secrets in image metadata.
-- Keep CIA / NSA Jay Access as internal access discipline only, not public authority.
-- Use Epoch 004 move validation before promoting any badge, portal, access, or Base/onchain claim.
+- Review and approve/reject Session 003 Girl Math output.
+- Run local secret scan across `jsonwisdom/AL`, `jsonwisdom/COMPUTERWISDOM`, and `jsonwisdom/jay-zora-portal`.
+- Implement Zora Factory schema/crawler candidate from uploaded factory spec.
+- Create Base Court pointer schema.
+- Keep Meme Court as candidate court unless a separate promotion receipt exists.
+- Do not treat Zora cards or Base pointers as proof by themselves.
 - `portal.html` remains untouched unless explicitly promoted by separate receipt.
 - Update this manifest with every new artifact.
 
@@ -232,6 +241,18 @@ Merkle roots the memory. 🧾🗺️
 
 ---
 
+## Meme Court Lock Phrase
+
+Meme Court opens as candidate.  
+Zora distributes cards.  
+Base points to evidence.  
+Computer Wisdom records receipts.  
+AL preserves court memory.  
+Open court does not mean open authority.  
+Receipts decide what leaves the floor.
+
+---
+
 ## Zora Flywheel Lock Phrase
 
 Secret scan first.  
@@ -242,16 +263,6 @@ Public pointers can index the chain. They do not prove the chain.
 
 ---
 
-## Epoch 004 Lock Phrase
-
-No piece moves without a receipt.  
-No agency word creates agency authority.  
-No badge appears without promotion.  
-No portal mutation without explicit receipt.  
-Deep Seek proposes. Computer Wisdom validates. Jay's Wisdom promotes. The board remembers.
-
----
-
 ## Manifest Boundary
 
 A manifest is not a badge.  
@@ -259,10 +270,8 @@ Indexing is not promotion.
 A badge candidate is not a public badge.  
 A session purpose is not a live backend.  
 A viral phrase is not a verified claim.  
-Agency names do not grant authority.  
-An audit report is not a formal security audit.  
-An epoch candidate is not live infrastructure.  
 A Zora image is not a secret-scan proof.  
 A public pointer is not proof by itself.  
+Open court does not mean legal authority.  
 The gate still holds.  
 Build from the map.
