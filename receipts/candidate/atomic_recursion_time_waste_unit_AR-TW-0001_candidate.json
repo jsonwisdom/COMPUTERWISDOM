@@ -1,0 +1,36 @@
+{
+  "unit_id": "AR-TW-0001",
+  "status": "CANDIDATE",
+  "claim_summary": "First atomic recursion time-waste unit template. No verified claim yet.",
+  "action_attempted": "PENDING_INPUT",
+  "system_or_surface": "PENDING_INPUT",
+  "time_or_event_marker": {
+    "timestamp_utc": "PENDING_INPUT",
+    "event_reference": "PENDING_INPUT",
+    "source_timezone": "PENDING_INPUT"
+  },
+  "evidence_available": [],
+  "receipt_status": "NO_RECEIPT",
+  "claim_tag": "HELD",
+  "next_proof_needed": [
+    "Exact action attempted",
+    "System or surface involved",
+    "Timestamp or event marker",
+    "Evidence artifact path, URL, screenshot, log, commit, or receipt",
+    "Hash or commit if available"
+  ],
+  "boundaries": {
+    "legal_claim_made": false,
+    "damages_claim_made": false,
+    "official_misconduct_claim_verified": false,
+    "public_badge_granted": false
+  },
+  "governance_state": {
+    "schema": "receipts/candidate/atomic_recursion_time_waste_unit_schema.json",
+    "schema_commit": "858eeec4c6e2f89bb1e1b79ecfb34cff073a2537",
+    "grok_review_commit": "925642534700de9fcfccc3daae47f9cdca18d506",
+    "badge_candidate_allowed": false,
+    "time_waste_claim_verified": false
+  },
+  "canon_line": "Atomic unit created as a blank receipt container. Evidence must fill the unit before any claim advances."
+}
