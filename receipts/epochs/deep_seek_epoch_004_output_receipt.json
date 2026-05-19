@@ -1,0 +1,43 @@
+{
+  "receipt_id": "DEEP_SEEK_EPOCH_004_OUTPUT_RECEIPT",
+  "status": "OUTPUT_CAPTURED_PENDING_REVIEW",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T18:45:00Z",
+  "prompt": {
+    "file": "receipts/deep_seek_epoch_004_prompt_exact.txt",
+    "commit": "90fe3f5f1a4e93bd9ec3948ae2a3542ac9436f80"
+  },
+  "output": {
+    "file": "receipts/deep_seek_epoch_004_output.md",
+    "commit": "cfc0fe606d21f74a0f79f3f0d30da055334af70f",
+    "hash_sha256": "c439a2ea8359dcb314dd3f12c08bf0c6d9d84ad43afcf5831d1ff8e283861617"
+  },
+  "topic": "Compute Wisdom Direct · Repo-Native Receipt Machine",
+  "captures": [
+    "purpose statement",
+    "directory map",
+    "input types",
+    "processing stages",
+    "gate rules",
+    "Zora Factory integration",
+    "Meme Court integration",
+    "secret scan integration",
+    "Epoch 004 move validation",
+    "next artifact list"
+  ],
+  "boundaries": {
+    "portal_html_mutated": false,
+    "public_badge_granted": false,
+    "backend_claimed_live": false,
+    "onchain_claimed_live": false,
+    "official_authority_claim": false
+  },
+  "next_required": [
+    "Create Compute Wisdom Direct manifest candidate",
+    "Create move-validation rule candidate if missing",
+    "Run local secret scan",
+    "Review Session 003 Girl Math output",
+    "Choose first actual Zora drop receipt only after scan gate"
+  ],
+  "canon_line": "Compute Wisdom Direct turns the repo into a receipt machine. Output captured. Review next."
+}
