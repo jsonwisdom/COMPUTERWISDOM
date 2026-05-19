@@ -1,0 +1,51 @@
+{
+  "receipt_id": "ART_OF_WAR_2026_DAILY_LEDGER_2026_05_20_FINAL_COURT_LOCK_CONFIRMATION",
+  "status": "DAILY_LEDGER_ENTRY_FINAL_COURT_LOCK_CONFIRMED",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-20T00:30:00Z",
+  "entry_id": "AOW-2026-DAILY-0002",
+  "verified_entry": {
+    "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+    "commit": "18dbb7c4087ee70b252ecb63a7c5ffaddfe5bb06",
+    "blob_sha": "bf8491748d6683605a340a4776e8ea16990b1619",
+    "status": "DAILY_LEDGER_CANDIDATE_EVIDENCE_REPLACED_PENDING_FINAL_REVIEW",
+    "final_verdict": "VERIFIED_AS_CANDIDATE_ENTRY"
+  },
+  "commit_pinned_snapshot": {
+    "file": "receipts/snapshots/art_of_war_2026_05_20_parent_candidate_commit_snapshot.json",
+    "commit": "0a789b73823e1a6eba54b2e806bc934fe20863d2",
+    "status": "COMMIT_PINNED_PARENT_SNAPSHOT_CREATED"
+  },
+  "snapshot_counter_review": {
+    "file": "receipts/counters/grok_05_20_commit_pinned_snapshot_review_2026_05_19.json",
+    "commit": "b984ec72480dae7fb3ab43ef2a21088559f223da",
+    "verdict": "WORKFLOW_RECONCILED_BY_COMMIT_PIN"
+  },
+  "batch_packet": {
+    "file": "receipts/batch/grok_batch_packet_art_of_war_2026_05_20_v1.json",
+    "commit": "0176de4399726c2647299eed84c1abbbd5bb45b2"
+  },
+  "batch_final_review": {
+    "file": "receipts/counters/grok_batch_final_review_art_of_war_2026_05_20.json",
+    "commit": "cd5851b570adfbd8322273a637749509c2c250f3",
+    "verdict": "VERIFIED_AS_CANDIDATE_ENTRY"
+  },
+  "claim_tag": "PUBLIC_AS_VERIFIED_CANDIDATE_ENTRY_COMMIT_PINNED",
+  "replacement_scope": "PROCESS_MOVE_ONLY",
+  "external_fog_vector_proven": false,
+  "floating_master_cache_risk_closed": true,
+  "boundaries": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false
+  },
+  "next_cadence": {
+    "next_entry": "AOW-2026-DAILY-0003",
+    "standard_path": "candidate -> batch packet -> commit-pinned snapshot -> counter-review -> final court-lock",
+    "note": "Use commit-pinned targets for Grok review whenever floating master ambiguity appears."
+  },
+  "canon_line": "05-20 daily ledger final court-lock confirmed by commit-pinned trace. Floating master ambiguity closed."
+}
