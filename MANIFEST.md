@@ -14,6 +14,7 @@
 | `PROMOTED_CANDIDATE` | Approved as module, still not live |
 | `PARTIAL` | Evidence incomplete |
 | `VERIFIED_WITH_LIMITATION` | Verified while preserving disclosed evidence limitation |
+| `VERIFIED_AFTER_CORRECTION` | Verified after correcting an identified candidate-output issue |
 | `PENDING_REVIEW` | Awaiting Jay decision |
 | `PENDING_EXACT_CAPTURE` | Session staged with exact-capture discipline before model run |
 | `OUTPUT_CAPTURED_PENDING_REVIEW` | Exact prompt and output captured, hashes recorded, awaiting review |
@@ -53,6 +54,7 @@
 | `deep_seek_session_002_prompt_exact.txt` | `EXACT_PROMPT_CAPTURED` | `99e3d7b` |
 | `deep_seek_session_002_output_exact.md` | `EXACT_OUTPUT_CORRECTED` | `8113787` |
 | `deep_seek_session_002_receipt.json` | `OUTPUT_CORRECTED_PENDING_REVIEW` | `8113787` |
+| `deep_seek_session_002_verdict.json` | `VERIFIED_AFTER_CORRECTION` | `91fb66a` |
 | `merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json` | `MERKLED` | `d0abe0a` |
 | `merkle/base_batches_confucius_purpose_extension_v1.json` | `PURPOSE_EXTENSION_CREATED` | `edcd365` |
 | `court_reporter/tweet_2056596286099402905_alignment_report.json` | `ANALYSIS_COMPLETE` | `c79cc42` |
@@ -93,6 +95,7 @@
 | Session 002 starter files | 2026-05-19 | `PENDING_EXACT_CAPTURE` |
 | Session 002 exact output capture | 2026-05-19 | `OUTPUT_CAPTURED_PENDING_REVIEW` |
 | Session 002 status correction | 2026-05-19 | `OUTPUT_CORRECTED_PENDING_REVIEW` |
+| Session 002 final verdict | 2026-05-19 | `VERIFIED_AFTER_CORRECTION` |
 
 ---
 
@@ -108,14 +111,14 @@
 
 ```json
 {
-  "status": "SESSION_002_OUTPUT_CORRECTED_PENDING_REVIEW",
+  "status": "SESSION_002_VERIFIED_AFTER_CORRECTION",
   "latest_session": "DEEP_SEEK_SESSION_002",
   "session_002_topic": "Compute Wisdom Claim Parser Badge — KP-001 candidate design",
   "session_002_prompt_commit": "99e3d7b6a6bb83bd02f47d330aff4f26c580aedc",
   "session_002_prompt_sha256": "b310599652e74a9af29d5f81746a988c29dca253d8330ec9b3d135285e9b9877",
   "session_002_correction_commit": "8113787cc8479d34ed2f17ef44020ebb01bee498",
   "session_002_output_sha256": "82d2e7161520cd373ac8b5036061369dca282269324f6477f9c637e8ea81be88",
-  "session_002_receipt_commit": "8113787cc8479d34ed2f17ef44020ebb01bee498",
+  "session_002_verdict_commit": "91fb66a7c74a06757f31295a8ffbd66b56db9dcb",
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
@@ -128,10 +131,9 @@
 
 ## 8. Next Actions From the Map
 
-- Review Session 002 corrected output for claim discipline.
-- Decide whether to accept, request further changes, or reject.
-- If accepted, create a Session 002 verdict receipt.
-- Candidate badge design may proceed, but no public badge is granted.
+- Candidate badge design may proceed as a reviewed candidate artifact.
+- No public badge is granted.
+- A Session 002 reward artifact may be designed if desired.
 - `portal.html` remains untouched unless explicitly promoted by separate receipt.
 - Update this manifest with every new artifact.
 
@@ -171,13 +173,11 @@ The image celebrates proof; it does not replace proof.
 
 ## Session 002 Lock Phrase
 
-Prompt captured exactly.  
-Output captured exactly.  
+Exact capture succeeded.  
 Overclaim corrected.  
-Hash updated.  
+Session verified after correction.  
 Badge still candidate.  
-Portal untouched.  
-Review next.
+Portal untouched.
 
 ---
 
@@ -190,6 +190,7 @@ A reward image is not a badge.
 A receipt for the reward is not a public credential claim.  
 A starter file is not a verified session.  
 Captured output is not final approval.  
-Corrected output is still pending review.  
+Corrected output is still pending review until verdict.  
+A verified session is not a public badge grant.  
 The gate still holds.  
 Build from the map.
