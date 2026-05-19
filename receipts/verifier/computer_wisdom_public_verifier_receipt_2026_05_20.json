@@ -1,0 +1,54 @@
+{
+  "receipt_id": "COMPUTER_WISDOM_PUBLIC_VERIFIER_RECEIPT_2026_05_20",
+  "status": "PUBLIC_VERIFIER_REPORT_COMMITTED",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-20T01:20:00Z",
+  "repository": {
+    "name": "jsonwisdom/COMPUTERWISDOM",
+    "visibility": "public",
+    "default_branch": "master"
+  },
+  "public_site": {
+    "url": "https://jsonwisdom.github.io/COMPUTERWISDOM/portal.html",
+    "source_file": "portal.html",
+    "source_blob_sha": "54e8a3702d182cdf2936031a6233336c86643632"
+  },
+  "public_report": {
+    "file": "reports/computer_wisdom_public_verifier_report_2026_05_20.md",
+    "commit": "0acd4553137be6a0d9c16e43f2e38f605d0feb1b",
+    "status": "PASS_WITH_HELD_CANDIDATE_BOUNDARIES"
+  },
+  "verified_surfaces": {
+    "l0_l5_index": {
+      "file": "services/layer-index/COMPUTE_WISDOM_L0_L5_INDEX.md",
+      "commit": "3ded4d0f27fbbe94a89557b4d6fa162e8ede753f",
+      "blob_sha": "eecfd3052eef28aabb666524bbf7f4f7afa66064"
+    },
+    "l1_reputation_layer": {
+      "file": "services/reputation-layer/REPUTATION_LAYER_L1_CANDIDATE.md",
+      "commit": "83b2fc21b77863b42e9f920f21552d392f67317a",
+      "blob_sha": "fd59910d99c79b2a3002913c870372dd050821bd"
+    },
+    "l3_batch_schema": {
+      "file": "services/grok-batch-receipts/grok_batch_packet_schema_v1.json",
+      "commit": "836c958b2abdb71e2c5b9f967f14ca2bf7325c44",
+      "blob_sha": "0bc34dfe792fc51751b84306271018563abf6fa8"
+    },
+    "l4_byte_verification": {
+      "file": "services/byte-verification/README.md",
+      "commit": "d132eb262c6dd59a2c71d61afec5d055dab18d7d",
+      "blob_sha": "fe644dfb4d04873ae12b841eeae487d09608a8c5"
+    }
+  },
+  "boundary_verdict": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false,
+    "zora_treated_as_proof": false
+  },
+  "verdict": "PASS_WITH_HELD_CANDIDATE_BOUNDARIES",
+  "canon_line": "Byte by byte. Receipt by receipt. Public link by public link. Compute Wisdom verifies the surface without inflating the claim."
+}
