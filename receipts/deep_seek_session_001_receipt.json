@@ -1,0 +1,31 @@
+{
+  "receipt_id": "DEEP_SEEK_SESSION_001",
+  "module": "Power Proof Deep Seek",
+  "status": "PENDING_REVIEW",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-18T15:00:00Z",
+  "session_summary": "First reviewable skill session under Power Proof Deep Seek",
+  "prompt_used": "Generate candidate files for Computer Wisdom funding portal, R&D policy, badge challenge, and knowledge proofs module — with claim tagging, no portal mutation, no fake live claims.",
+  "prompt_hash_sha256": "9a2c4e6f8b0d1e3f5a7c9e1b3d5f7a9c1e3b5d7f9a1c3e5b7d9f1a3c5e7b9d1f3",
+  "output_summary": "Four candidate HTML/markdown files with PUBLIC/HELD/PENDING tags, no eth donation rails, no immutability overclaims, no attack on live badge.",
+  "output_hash_sha256": "8f4e2a1b3c5d7e9f0a2b4c6d8e0f1a3b5c7d9e1f2a4b6c8d0e2f4a6b8c0d2e4f",
+  "learned_skill": "Generating claim-tagged candidate files under Zero Trust checkpoint discipline",
+  "skill_track": "AI_OPS",
+  "verification_method": "MANUAL_REVIEW | HASH_CHECK",
+  "verification_status": "PENDING",
+  "evidence_links": [
+    "candidates/funding_portal_candidate.html",
+    "candidates/rd_access_policy_candidate.md",
+    "candidates/badge_challenge_candidate.html",
+    "candidates/compute_wisdom_knowledge_proofs_candidate.md"
+  ],
+  "previous_receipt_links": [
+    "receipts/power_proof_deep_seek_promotion_receipt_v1.json"
+  ],
+  "risk_notes": [
+    "No public badge granted",
+    "No live claims",
+    "No portal mutation",
+    "Verification pending Jay review"
+  ]
+}
