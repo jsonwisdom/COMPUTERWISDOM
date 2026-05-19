@@ -1,0 +1,50 @@
+{
+  "receipt_id": "PORTAL_PUBLIC_PROOF_AUDIT_2026_05_19",
+  "status": "PUBLIC_PORTAL_AUDITED_FOR_PROOF",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T01:25:00Z",
+  "audited_url": "https://jsonwisdom.github.io/COMPUTERWISDOM/portal.html",
+  "repo_source": {
+    "repo": "jsonwisdom/COMPUTERWISDOM",
+    "file": "portal.html",
+    "branch": "master",
+    "blob_sha": "ccd4e167dc9a817af08af8aadbe80c489c4dde14"
+  },
+  "visual_match": {
+    "title": "Computer Wisdom",
+    "status_line": "Recovered archive. Receipt-backed navigation. Evidence first.",
+    "cards_visible": [
+      "Start Here",
+      "Core Specs",
+      "Evidence Spine",
+      "Systems",
+      "Recovery Ledger",
+      "Operating Rule"
+    ],
+    "operating_rule_visible": "No deletion. No rename. No movement without receipt-backed review."
+  },
+  "proof_surfaces_linked": [
+    "README.md",
+    "receipts/",
+    "attestation/",
+    "test-vectors/",
+    "FINAL_ANCHOR_TOPOLOGY_v1.md",
+    "SECURITY_BOUNDARY.md"
+  ],
+  "proof_findings": {
+    "github_contextual_archive": true,
+    "eas_witness_values_declared": true,
+    "security_boundary_declared": true,
+    "receipt_directory_linked": true,
+    "portal_html_mutated_by_this_audit": false,
+    "public_badge_granted": false,
+    "onchain_claimed_live_by_this_audit": false
+  },
+  "limitations": [
+    "This audit confirms visible portal-to-repo consistency and linked proof surfaces.",
+    "It does not independently verify every linked receipt file.",
+    "It does not claim new onchain proof or mutate portal.html."
+  ],
+  "verdict": "PASS_WITH_LIMITATIONS",
+  "canon_line": "The portal points to proof surfaces. The proof still lives in receipts, topology, replay, and witness records."
+}
