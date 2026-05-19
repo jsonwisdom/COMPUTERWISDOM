@@ -1,0 +1,32 @@
+{
+  "schema": "CONVERGENCE_RECEIPTS_V1",
+  "schema_version": "2026-05",
+  "trigger_receipt": {
+    "schema": "CONVERGENCE_TRIGGER_RECEIPT_V1",
+    "receipt_type": "CONVERGENCE_TRIGGER_RECEIPT",
+    "receipt_id": "convergence-trigger-001",
+    "timestamp_utc": "PENDING",
+    "previous_vault_merkle_root": "PENDING_HASH",
+    "requested_groves": "all | specific array",
+    "new_vault_merkle_root": "PENDING_HASH"
+  },
+  "result_receipt": {
+    "schema": "CONVERGENCE_RESULT_RECEIPT_V1",
+    "receipt_type": "CONVERGENCE_RESULT_RECEIPT",
+    "receipt_id": "convergence-result-001",
+    "timestamp_utc": "PENDING",
+    "previous_vault_merkle_root": "PENDING_HASH",
+    "validator_output_hash": "PENDING_HASH",
+    "converged_paths": "array of tree_paths",
+    "non_converged_paths": "array of tree_paths with reasons",
+    "final_forest_root": "PENDING_HASH",
+    "status": "CANDIDATE",
+    "new_vault_merkle_root": "PENDING_HASH"
+  },
+  "rules": {
+    "receipt_trigger_required": true,
+    "silent_convergence_forbidden": true,
+    "halt_on_integrity_error": true,
+    "public_index_is_mirror_only": true
+  }
+}
