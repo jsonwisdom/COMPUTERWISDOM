@@ -1,0 +1,35 @@
+{
+  "schema_id": "MANIC_REPLAY_RECEIPT_V1",
+  "receipt_id": "replay_receipt:1111111111111111111111111111111111111111111111111111111111111111",
+  "created_at": "2026-05-21T07:10:00Z",
+  "protocol": "MANIC",
+  "protocol_version": "0.1",
+  "replay_cycle": "MANIC_REPLAY_CYCLE_001_PCLOB_702",
+  "root_source": {
+    "root_id": "ROOT_SOURCE_PCLOB_001",
+    "receipt_id": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+    "source_type": "PCLOB_2026_S702_REPORT"
+  },
+  "validator_set": [
+    {
+      "name": "validate_replay.js",
+      "commit_sha": "f7f1286cdc21df4544b60635d858cf6d26196815"
+    },
+    {
+      "name": "validate_all.js",
+      "commit_sha": "971c2c3f2369746b5c1dae45dda03f666e472aca"
+    }
+  ],
+  "replay_nodes": [
+    {
+      "node_id": "RPL-001-PCLOB-00001",
+      "path": "docs/protocols/manic/replay/branches/RPL-001-PCLOB-00001.json",
+      "commit_sha": "53202def0805469edcf3c8edbf40bb0c89a4ac96",
+      "result": "PASSED"
+    }
+  ],
+  "result_code": "REPLAY_VALIDATED",
+  "continuity_flag": "COHERENTLY_INVALID_UNTIL_REPLAYED",
+  "authority_claim": "NONE",
+  "truth_adjudication": "NOT_PERFORMED"
+}
