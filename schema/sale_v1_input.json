@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AL_Sale_V1_Input_Schema",
+  "description": "Deterministic field constraints for the Step-1 unanchored commerce substrate.",
+  "type": "object",
+  "required": [
+    "payer",
+    "payee",
+    "amount",
+    "currency",
+    "payment_method",
+    "timestamp",
+    "external_ref"
+  ],
+  "properties": {
+    "payer": {
+      "type": "string",
+      "description": "The cryptographic identity, ENS domain, or system identifier of the originating asset sender."
+    },
+    "payee": {
+      "type": "string",
+      "description": "The target identity, ENS domain, or system wallet receiving the asset transfer."
+    },
+    "amount": {
+      "type": "string",
+      "description": "The exact transaction value expressed as a string to prevent floating-point precision loss."
+    },
+    "currency": {
+      "type": "string",
+      "description": "The ISO currency code or network-native token ticker symbol."
+    },
+    "payment_method": {
+      "type": "string",
+      "description": "The rails used to settle the state transfer."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The ISO 8601 UTC timestamp of the state initiation."
+    },
+    "external_ref": {
+      "type": "string",
+      "description": "The external reference identifier tracking the settlement layer."
+    }
+  },
+  "additionalProperties": false
+}
