@@ -1,0 +1,16 @@
+./_control/maps/STATE_006_BUSINESS_NAVIGATION_MAP.md:61:| Trigger_Deck/*.PNG | Trigger Deck primary images | PRESERVE |
+./portal.html:116:    <a href="Trigger_Deck/">Trigger Deck</a>
+./README.md:78:**TriggerDeck Operator**
+./docs/index.html:38:  <p>This page hosts the evolving documentation and protocols for the Trigger Deck, Snapback renderer, and eJSON governance layers. All information here is considered part of the <strong>Quantum Governance Index</strong>.</p>
+./docs/index.html:55:  <h2>Trigger Deck Standard</h2>
+./Trigger_Deck/README.md:3:This is the Sovereign Trigger Deck...
+./Trigger_Deck_Proof_of_Creation_Ledger.json:11:    "series": "Trigger Deck \u2013 Forbidden Parody Edition"
+./Trigger_Deck_Proof_of_Creation_Ledger.json:22:    "series": "Trigger Deck \u2013 Forbidden Parody Edition"
+./Trigger_Deck_Proof_of_Creation_Ledger.json:33:    "series": "Trigger Deck \u2013 Forbidden Parody Edition"
+./Trigger_Deck_Proof_of_Creation_Ledger.json:44:    "series": "Trigger Deck \u2013 Forbidden Parody Edition"
+./Trigger_Deck_Proof_of_Creation_Ledger.json:55:    "series": "Trigger Deck \u2013 Forbidden Parody Edition"
+./Trigger_Deck_Proof_of_Creation_Ledger.json:66:    "series": "Trigger Deck \u2013 Forbidden Parody Edition"
+./Trigger_Deck_Proof_of_Creation_Ledger.json:77:    "series": "Trigger Deck \u2013 Forbidden Parody Edition"
+./Trigger_Deck_Proof_of_Creation_Ledger.json:88:    "series": "Trigger Deck \u2013 Forbidden Parody Edition"
+./Trigger_Deck_Proof_of_Creation_Ledger.json:99:    "series": "Trigger Deck \u2013 Forbidden Parody Edition"
+./Trigger_Deck_Proof_of_Creation_Ledger.json:110:    "series": "Trigger Deck \u2013 Forbidden Parody Edition"
