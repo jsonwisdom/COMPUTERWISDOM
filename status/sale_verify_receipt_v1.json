@@ -1,0 +1,21 @@
+{
+  "receipt_metadata": {
+    "version": "v1.0.0",
+    "protocol": "SALE_VERIFY_STEP1",
+    "lifecycle_state": "PENDING_LIVE_VALUES",
+    "system_integrity_lock": false
+  },
+  "sale_v1_payload": {
+    "payer": null,
+    "payee": null,
+    "amount": null,
+    "currency": null,
+    "payment_method": null,
+    "timestamp": null,
+    "external_ref": null
+  },
+  "cryptographic_signatures": {
+    "hashed_unanchored_sha256": null,
+    "eas_attestation_uid": null
+  }
+}
