@@ -1,0 +1,32 @@
+{
+  "schema_id": "MANIC_ALMS_REFERENCE_RECEIPT_V1",
+  "receipt_id": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+  "protocol": "MANIC",
+  "protocol_version": "0.1",
+  "object_type": "CLAIM_NODE",
+  "created_at": "2026-05-21T06:55:00Z",
+  "created_by": "jsonwisdom",
+  "public_source_refs": [
+    "https://documents.pclob.gov/prod/Documents/OversightReport/315fe19c-07f3-4cc6-986a-ff199ce5b616/Unclassified%20PCLOB%20702%20Report%202026.pdf"
+  ],
+  "source_tiers": ["T2"],
+  "constitutional_tags": ["OBSERVED", "INTERPRETED"],
+  "confidence": {
+    "value": 0.9,
+    "qualifier": "High confidence that the cited PCLOB public report functions as a public oversight anchor for later MANIC replay decomposition; no claim is made about the truth of any downstream interpretation.",
+    "ceiling_basis": "source_tier"
+  },
+  "parent_receipts": [
+    "sha256:9999999999999999999999999999999999999999999999999999999999999999"
+  ],
+  "supersedes": [],
+  "disputes": [],
+  "content_hash": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+  "replay_requirements": {
+    "public_source_only": true,
+    "append_only": true,
+    "forkable": true,
+    "full_chain_reconstructable": true
+  },
+  "status": "COHERENTLY_INVALID_UNTIL_REPLAYED"
+}
