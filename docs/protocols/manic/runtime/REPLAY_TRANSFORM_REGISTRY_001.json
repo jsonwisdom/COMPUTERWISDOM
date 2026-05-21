@@ -1,0 +1,44 @@
+{
+  "schema_id": "MANIC_REPLAY_TRANSFORM_REGISTRY_001",
+  "version": "0.1",
+  "status": "COHERENTLY_INVALID_UNTIL_REPLAYED",
+  "core_invariant": "A transform is admissible only if its rules are public, deterministic, and replayable.",
+  "transforms": [
+    {
+      "id": "STRUCTURAL_SPLIT",
+      "purpose": "Decomposition of source into atomic structural parts",
+      "allow_interpretation": false,
+      "network_access": false,
+      "allowed_inputs": ["ROOT_SOURCE", "REPLAY_NODE"],
+      "allowed_outputs": ["REPLAY_NODE"],
+      "refusal_codes": ["ERR_INFERENCE_DETECTED", "ERR_SOURCE_MIXING", "ERR_INTERPRETIVE_OUTPUT"]
+    },
+    {
+      "id": "CONTENT_HASH",
+      "purpose": "Verification of content integrity",
+      "allow_interpretation": false,
+      "network_access": false,
+      "allowed_inputs": ["BYTE_STREAM", "CANONICALIZED_NODE_CONTENT"],
+      "allowed_outputs": ["SHA256_DIGEST"],
+      "refusal_codes": ["ERR_NON_DETERMINISTIC_HASH", "ERR_TRUNCATION", "ERR_HASH_FORMAT"]
+    },
+    {
+      "id": "LOCATOR_CAPTURE",
+      "purpose": "Identification of source coordinates",
+      "allow_interpretation": false,
+      "network_access": false,
+      "allowed_inputs": ["URI", "PAGE_NUMBER", "SECTION_ID", "TABLE_ID", "FOOTNOTE_ID", "TIMESTAMP", "BYTE_OFFSET"],
+      "allowed_outputs": ["QUALIFIED_COORDINATE_OBJECT"],
+      "refusal_codes": ["ERR_INVALID_COORDINATE", "ERR_INTERPRETIVE_METADATA", "ERR_OFFSET_UNAVAILABLE"]
+    },
+    {
+      "id": "SCHEMA_VALIDATE",
+      "purpose": "Enforcement of structural integrity",
+      "allow_interpretation": false,
+      "network_access": false,
+      "allowed_inputs": ["JSON_ARTIFACT", "CANONICAL_SCHEMA"],
+      "allowed_outputs": ["PASS_FAIL_RESULT"],
+      "refusal_codes": ["ERR_SCHEMA_DRIFT", "ERR_INCOMPLETE_VALIDATION", "ERR_SOFT_FAIL"]
+    }
+  ]
+}
