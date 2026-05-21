@@ -3,9 +3,11 @@ const path = require('path');
 const { validateReceipt } = require('./validate_receipt');
 const { validateOpacityRelease } = require('./validate_opacity_release');
 const { validateReplay } = require('../replay/validate_replay');
+const { validateDeterministicReceipt } = require('./validate_deterministic_receipt');
 
 const EXAMPLES_DIR = path.join(__dirname, '..', 'examples');
 const REPLAY_BRANCHES_DIR = path.join(__dirname, '..', 'replay', 'branches');
+const REPLAY_RECEIPTS_DIR = path.join(__dirname, '..', 'replay', 'receipts');
 
 function listJsonFiles(dir) {
   if (!fs.existsSync(dir)) {
@@ -36,6 +38,13 @@ function runAll() {
   const replayFiles = listJsonFiles(REPLAY_BRANCHES_DIR);
   for (const filePath of replayFiles) {
     results.push(runValidator('replay', filePath, validateReplay));
+  }
+
+  const deterministicReceiptFiles = listJsonFiles(REPLAY_RECEIPTS_DIR)
+    .filter((filePath) => path.basename(filePath).startsWith('RCP-'));
+
+  for (const filePath of deterministicReceiptFiles) {
+    results.push(runValidator('deterministic_receipt', filePath, validateDeterministicReceipt));
   }
 
   const exampleFiles = listJsonFiles(EXAMPLES_DIR);
