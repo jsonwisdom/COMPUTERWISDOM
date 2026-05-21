@@ -1,0 +1,16 @@
+{
+  "schema_id": "MANIC_DETERMINISTIC_REPLAY_RECEIPT_V1",
+  "receipt_id": "RCP-RPL-001-PCLOB-00002",
+  "target_node": "RPL-001-PCLOB-00002",
+  "node_version_hash": "sha256:1212121212121212121212121212121212121212121212121212121212121212",
+  "registry_version": "REPLAY_TRANSFORM_REGISTRY_001",
+  "enforcement_gates": [
+    "SCHEMA_GATE",
+    "REGISTRY_GATE",
+    "REPLAY_GATE"
+  ],
+  "status": "PROVEN_REPLAYABLE",
+  "authority_claim": "NONE",
+  "truth_adjudication": "NOT_PERFORMED",
+  "continuity_flag": "COHERENTLY_INVALID_UNTIL_REPLAYED"
+}
