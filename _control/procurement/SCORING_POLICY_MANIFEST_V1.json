@@ -1,0 +1,18 @@
+{
+  "criteria_manifest_hash": "5e74d29c9e3e1ce9b844601572fa6c4080e2e382f621144c5cc92147135d3bb3",
+  "manifest_id": "SCORING_POLICY_MANIFEST_V1",
+  "policy_components": {
+    "evaluation_metrics": [
+      "COST_EFFICIENCY",
+      "DELIVERY_TIMELINE",
+      "TECHNICAL_COMPLIANCE"
+    ],
+    "scoring_algorithm": "WEIGHTED_DETERMINISTIC",
+    "weighting_distribution": {
+      "cost": 0.4,
+      "technical": 0.3,
+      "timeline": 0.3
+    }
+  },
+  "rule": "NO_BID_ACCEPTANCE_WITHOUT_SCORING_POLICY_HASH"
+}
