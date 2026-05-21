@@ -1,12 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-
-const ALLOWED_TRANSFORMS = new Set([
-  'STRUCTURAL_SPLIT',
-  'CONTENT_HASH',
-  'LOCATOR_CAPTURE',
-  'SCHEMA_VALIDATE'
-]);
+const { validateTransform } = require('../validators/validate_transform');
 
 function fail(message, extra = null) {
   console.error(`❌ REPLAY DRIFT: ${message}`);
@@ -54,19 +48,10 @@ function validateReplay(filePath) {
     fail('Invalid content_hash format', { content_hash: node.content_hash });
   }
 
-  if (!ALLOWED_TRANSFORMS.has(node.transform_id)) {
-    fail('UNAUTHORIZED_TRANSFORM', { transform_id: node.transform_id });
-  }
+  validateTransform(node);
 
   if (!Array.isArray(node.constitutional_tags) || !node.constitutional_tags.includes('OBSERVED')) {
     fail('Initial replay node must include OBSERVED tag', { constitutional_tags: node.constitutional_tags });
-  }
-
-  const forbiddenTags = ['INTERPRETED', 'SYNTHESIZED', 'DISPUTED', 'SUPERSEDED'];
-  const foundForbidden = node.constitutional_tags.filter((tag) => forbiddenTags.includes(tag));
-
-  if (foundForbidden.length > 0) {
-    fail('INTERPRETATION_ATTEMPTED', { forbidden_tags: foundForbidden });
   }
 
   if (!node.source_locator || typeof node.source_locator !== 'object') {
