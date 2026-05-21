@@ -1,0 +1,10 @@
+{
+  "anchor_type": "SALE_VERIFY_0001_ZORA_EAS_BINDING_CANDIDATE",
+  "sale_id": "SALE-VERIFY-0001",
+  "sale_receipt_sha256": "c5ab91ff915792232b195107561a867013c42bd15221b68c322c9e225e116293",
+  "router_commit": "b99df6610a17818d74d1a80cca83ab63a9314d48",
+  "eas_status": "PENDING_REAL_UID",
+  "zora_status": "PENDING_REAL_MINT_OR_COLLECTION_ID",
+  "payment_status": "NOT_ROUTED",
+  "boundary": "candidate envelope only; no on-chain claim until real EAS UID/Zora ID exists"
+}
