@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jsonwisdom/COMPUTERWISDOM/docs/protocols/manic/schemas/manic_reference_receipt.v1.schema.json",
+  "title": "MANIC Reference Receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id",
+    "receipt_id",
+    "protocol",
+    "protocol_version",
+    "object_type",
+    "created_at",
+    "created_by",
+    "public_source_refs",
+    "source_tiers",
+    "constitutional_tags",
+    "confidence",
+    "parent_receipts",
+    "supersedes",
+    "disputes",
+    "content_hash",
+    "replay_requirements",
+    "status"
+  ],
+  "properties": {
+    "schema_id": { "const": "MANIC_ALMS_REFERENCE_RECEIPT_V1" },
+    "receipt_id": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "protocol": { "const": "MANIC" },
+    "protocol_version": { "type": "string", "pattern": "^0\\.1$" },
+    "object_type": {
+      "type": "string",
+      "enum": [
+        "ROOT_SOURCE",
+        "CLAIM_NODE",
+        "CORRECTION_NODE",
+        "DISPUTED_BRANCH",
+        "SYNTHESIS_NODE",
+        "OPACITY_INDEX_RELEASE"
+      ]
+    },
+    "created_at": { "type": "string", "format": "date-time" },
+    "created_by": { "type": "string", "minLength": 1 },
+    "public_source_refs": {
+      "type": "array",
+      "items": { "type": "string", "format": "uri" }
+    },
+    "source_tiers": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["T1", "T2", "T3", "T4", "T5"] }
+    },
+    "constitutional_tags": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "enum": ["OBSERVED", "INTERPRETED", "SYNTHESIZED", "DISPUTED", "SUPERSEDED"]
+      }
+    },
+    "confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "qualifier", "ceiling_basis"],
+      "properties": {
+        "value": { "type": ["number", "null"], "minimum": 0, "maximum": 1 },
+        "qualifier": { "type": "string", "minLength": 1 },
+        "ceiling_basis": { "type": "string", "enum": ["source_tier", "explicit_support", "not_applicable"] }
+      }
+    },
+    "parent_receipts": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+    },
+    "supersedes": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+    },
+    "disputes": {
+      "type": "array",
+      "items": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" }
+    },
+    "content_hash": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "replay_requirements": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["public_source_only", "append_only", "forkable", "full_chain_reconstructable"],
+      "properties": {
+        "public_source_only": { "const": true },
+        "append_only": { "const": true },
+        "forkable": { "const": true },
+        "full_chain_reconstructable": { "const": true }
+      }
+    },
+    "status": { "const": "COHERENTLY_INVALID_UNTIL_REPLAYED" }
+  }
+}
