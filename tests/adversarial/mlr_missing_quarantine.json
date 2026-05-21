@@ -1,0 +1,29 @@
+{
+  "registry_id": "MLR-CORE-001",
+  "registry_type": "MULTI_LINEAGE_REGISTRY",
+  "status": "ACTIVE",
+  "entries": [
+    {
+      "lineage_id": "triggerdeck-canon-v1",
+      "domain": "Trigger Deck",
+      "status": "FROZEN_CANON",
+      "terminal_anchor": "dcbd862c3501dfcd349aa878180fb13114c7d039",
+      "tag": "triggerdeck-canon-v1",
+      "authority_class": "ARCHIVAL_ONLY"
+    },
+    {
+      "lineage_id": "mirrorstorm-genesis-v0",
+      "domain": "Mirrorstorm",
+      "status": "CLEANROOM_GENESIS",
+      "genesis_commit": "1a1289b8d8245b83b98daf1c88f96d67ecfff24a",
+      "root_hash": "fef6d2489d75d995884dfe26437167002c8d62a29c5b2e01c4d2ad7f93d9b78d",
+      "authority_class": "SOVEREIGN_EVOLVING"
+    }
+  ],
+  "invariants": [
+    "Registry indexes lineage; it does not merge lineage.",
+    "Archival canon cannot become parent authority for evolving domains.",
+    "Quarantine artifacts require explicit reclassification before use.",
+    "Discovery surfaces are read-only interpretive membranes."
+  ]
+}
