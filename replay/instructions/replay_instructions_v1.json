@@ -1,0 +1,12 @@
+{
+  "instruction_metadata": {
+    "version": "v1.0.0",
+    "protocol": "Replay-Court-Step0",
+    "description": "Deterministic instruction parameters for verifying pure-function computation state."
+  },
+  "invariant_assertions": {
+    "allow_state_drift": false,
+    "require_exact_match": true,
+    "execution_mode": "STRICT_REPLAY"
+  }
+}
