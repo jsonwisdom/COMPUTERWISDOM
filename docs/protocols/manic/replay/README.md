@@ -52,6 +52,43 @@ Every replay node must include:
 
 The initial replay node tag must be `OBSERVED` unless a later interpretive schema explicitly authorizes derived tags.
 
+## Operational Enforcement
+
+The batch validator now executes replay validation before derivative validations.
+
+```text
+REPLAY VALIDATION
+  → RECEIPT VALIDATION
+    → OPACITY VALIDATION
+```
+
+This ordering is constitutional:
+
+- lineage precedes claim surfaces
+- structure precedes interpretation
+- replay fidelity precedes synthesis
+- failed replay prevents downstream confidence
+
+## Active Gate
+
+Replay validation is enforced by:
+
+```text
+../validators/validate_all.js
+validate_replay.js
+```
+
+The replay gate checks:
+
+- deterministic replay node ID format
+- `ROOT_SOURCE_*` parent linkage
+- SHA-256 parent hash format
+- SHA-256 content hash format
+- whitelisted transform IDs
+- `OBSERVED` initial replay tag
+- absence of interpretive tags during replay
+- non-empty structural source locator
+
 ## Failure Behavior
 
 Replay validation must fail loudly when it detects:
@@ -62,6 +99,8 @@ Replay validation must fail loudly when it detects:
 - non-observed initial replay tag
 - missing content hash
 - attempted interpretation
+- disconnected root source
+- malformed hash reference
 
 ## Core Rule
 
