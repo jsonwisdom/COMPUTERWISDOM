@@ -1,0 +1,15 @@
+{
+  "receipt_type": "AL_STOREFRONT_DISCOVERY_BRIDGE",
+  "control_plane": "jsonwisdom/COMPUTERWISDOM",
+  "proof_inventory_repo": "jsonwisdom/AL",
+  "identity_roots": ["jaywisdom.eth", "jaywisdom.base.eth"],
+  "commerce_status": "DISCOVERED_EXISTING_SURFACE",
+  "detected_surfaces": [
+    "_truth/anchors/alms_checkpoint_latest.json",
+    "_truth/meta/public_exports/verify.html",
+    "_truth/anchors/leaf008/ENS_GITHUB_DIRECT_ANCHOR.canonical.json",
+    "receipts/agent_income_demo_alpha.json",
+    "receipts/agent_income_demo_beta.json"
+  ],
+  "rule": "Do not duplicate AL. Index it from COMPUTERWISDOM."
+}
