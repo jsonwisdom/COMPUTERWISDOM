@@ -4,6 +4,10 @@
 import json
 import os
 import hashlib
+from pathlib import Path
+
+
+OUTPUT_PATH = "status/master_coordination_frame_v2.json"
 
 
 def get_canonical_bytes(obj: dict) -> bytes:
@@ -31,12 +35,20 @@ def build_coordination_frame(instructions_path: str, payload_path: str) -> dict:
     return master_frame
 
 
+def write_coordination_frame(frame: dict, output_path: str = OUTPUT_PATH) -> None:
+    path = Path(output_path)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(frame, sort_keys=True, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+
+
 if __name__ == "__main__":
     try:
         frame = build_coordination_frame(
             "replay/instructions/replay_instructions_v1.json",
             "public_coordination/eas_anchor_payload.json",
         )
-        print("Master Coordination Frame Compiled via AL-Pattern.")
+        write_coordination_frame(frame)
+        print(f"Master Coordination Frame Written: {OUTPUT_PATH}")
     except Exception as e:
         print(f"Compilation Blocked: {str(e)}")
+        raise
