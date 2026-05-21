@@ -1,0 +1,45 @@
+{
+  "receipt_id": "MANIC_REPLAY_SURFACE_001",
+  "created_at": "2026-05-21T07:05:00Z",
+  "protocol": "MANIC",
+  "protocol_version": "0.1",
+  "surface_status": "LIVE_REPLAY_SURFACE_INITIALIZED",
+  "cycle_type": "SOURCE_CLAIM_DISPUTE_PRESERVED_AMBIGUITY",
+  "root_source": {
+    "label": "PCLOB 702 public report",
+    "receipt_id": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+    "path": "docs/protocols/manic/ingestion/receipts/ROOT_SOURCE_PCLOB_001.json",
+    "commit_sha": "e07f50d527810b66b359d4347e164352c4004867"
+  },
+  "replay_thread": {
+    "label": "MANIC_BRANCH_001 PCLOB 702 replay thread",
+    "thread_id": "thread:7027027027027027027027027027027027027027027027027027027027027027",
+    "path": "docs/protocols/manic/ingestion/branches/MANIC_BRANCH_001_PCLOB_702_REPLAY_THREAD.json",
+    "commit_sha": "d140c55a2782bfafe9b18efde79b3008233f330e"
+  },
+  "claim_node": {
+    "label": "public oversight anchor",
+    "receipt_id": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "path": "docs/protocols/manic/ingestion/claims/CLAIM_NODE_PCLOB_001_PUBLIC_OVERSIGHT_ANCHOR.json",
+    "commit_sha": "1ed4dd4209c83ea638c10cf1e4600bbea116e7f2"
+  },
+  "disputed_branch": {
+    "label": "oversight anchor has replayability limits",
+    "receipt_id": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "path": "docs/protocols/manic/ingestion/disputes/DISPUTED_BRANCH_PCLOB_001_OVERSIGHT_LIMITATION.json",
+    "commit_sha": "33cc1809495511149ec179211d0907fab3ddd488"
+  },
+  "result": "DISAGREEMENT_PRESERVED",
+  "preserved_properties": [
+    "SOURCE_INTEGRITY",
+    "BOUNDED_INTERPRETATION",
+    "NON_DESTRUCTIVE_DISPUTE",
+    "CONFIDENCE_METADATA",
+    "APPEND_ONLY_CHRONOLOGY",
+    "PUBLIC_SOURCE_DISCIPLINE"
+  ],
+  "authority_claim": "NONE",
+  "truth_adjudication": "NOT_PERFORMED",
+  "continuity_flag": "COHERENTLY_INVALID_UNTIL_REPLAYED",
+  "disclaimer": "Every map is incomplete. This receipt records a replayable disagreement surface, not final truth."
+}
