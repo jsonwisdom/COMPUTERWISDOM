@@ -2,9 +2,9 @@ name: Verify Federal AI Observers
 
 on:
   push:
-    branches: [main, anchor]
+    branches: [master, main, anchor]
   pull_request:
-    branches: [main, anchor]
+    branches: [master, main, anchor]
 
 jobs:
   verify:
