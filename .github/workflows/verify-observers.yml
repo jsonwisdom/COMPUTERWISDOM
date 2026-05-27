@@ -50,52 +50,11 @@ jobs:
             exit 1
           fi
 
-      - name: Refuse unproven authority claims
+      - name: Enforce federal observer membrane
         run: |
           set -euo pipefail
-          echo "Scanning protected claim surface..." >> "$GITHUB_STEP_SUMMARY"
-
-          python3 - <<'PY'
-          import pathlib, re, sys
-
-          scan_roots = [
-              pathlib.Path("COMPUTERWISDOM/federal/white-house-ai"),
-              pathlib.Path("badges"),
-              pathlib.Path("attestation"),
-              pathlib.Path("docs"),
-          ]
-          include = {".md", ".json"}
-          protected = re.compile(r"\b(federal|government|official|authority|authorized|compliant|observer registry|Federal AI Observer)\b", re.I)
-          proof = re.compile(r"\b(receipt|receipts|attestation|attestations|vc|credential|sigstore|hash|sha256|source_url|evidence|proof|authority\s*[:=]\s*[\"']?none|is_federal_authority\s*[:=]\s*false|REGISTRY_IS_NOT_GOVERNMENT_AUTHORITY|OBSERVER_IS_NOT_OFFICE|READ_ONLY_PUBLIC_OBSERVER|APPEND_ONLY_RECEIPTS|PROCESS_VERIFIED_NOT_GOVERNMENT_AUTHORITY)\b", re.I)
-
-          failures = []
-          for root in scan_roots:
-              if not root.exists():
-                  continue
-              for path in root.rglob("*"):
-                  if not path.is_file() or path.suffix not in include:
-                      continue
-                  text = path.read_text(errors="ignore")
-                  if not protected.search(text):
-                      continue
-                  if proof.search(text):
-                      continue
-                  first_claim = ""
-                  for idx, line in enumerate(text.splitlines(), 1):
-                      if protected.search(line):
-                          first_claim = f"{path}:{idx}: {line.strip()[:240]}"
-                          break
-                  failures.append(first_claim or str(path))
-
-          if failures:
-              print("❌ Files contain protected authority claims without file-level proof context:")
-              for item in failures:
-                  print(item)
-              print("Authority claims must resolve somewhere in the same file to VC, receipt, attestation, hash/source/evidence proof, or explicit NONE boundary.")
-              sys.exit(1)
-
-          print("✅ Protected claim files contain proof context or explicit boundaries.")
-          PY
+          python3 scripts/verify_federal_observer_membrane.py .
+          echo "Federal observer membrane verified." >> "$GITHUB_STEP_SUMMARY"
 
       - name: Generate CI badge artifact
         if: success()
