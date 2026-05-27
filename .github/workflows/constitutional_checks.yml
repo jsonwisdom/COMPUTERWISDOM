@@ -47,7 +47,7 @@ jobs:
           echo "$PR_BODY" | grep -q "Rollback / Revocation Path" || fail "Missing Rollback / Revocation Path section."
           echo "$PR_BODY" | grep -q "This PR preserves replay, lineage, and bounded authority" || fail "Missing closing constitutional assertion."
 
-          if echo "$PR_BODY" | grep -q "- \[x\] AUTHORITY_DRIFT\|- \[X\] AUTHORITY_DRIFT\|- \[x\] ANCHOR_DRIFT\|- \[X\] ANCHOR_DRIFT\|- \[x\] SECURITY_DRIFT\|- \[X\] SECURITY_DRIFT"; then
+          if echo "$PR_BODY" | grep -Eq -- "- \[[xX]\] (AUTHORITY_DRIFT|ANCHOR_DRIFT|SECURITY_DRIFT)"; then
             echo "$PR_LABELS" | grep -q "constitutional-review" || fail "High-risk drift selected but constitutional-review label is missing."
           fi
 
@@ -56,7 +56,7 @@ jobs:
           fi
 
           if echo "$PR_BODY" | grep -qi "mainnet anchor\|mainnet anchoring\|ENS record written\|ENS write complete\|production deployed\|globally legitimate"; then
-            echo "$PR_BODY" | grep -qi "Receipt Evidence" || fail "Authority/anchor claim detected without Receipt Evidence section."
+            echo "$PR_BODY" | grep -qi "Receipt / Evidence" || fail "Authority/anchor claim detected without Receipt / Evidence section."
             warn "Anchor/production legitimacy language detected. Review receipts manually."
           fi
 

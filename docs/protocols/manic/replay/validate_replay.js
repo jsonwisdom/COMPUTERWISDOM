@@ -1,6 +1,6 @@
 const fs = require('fs');
 const path = require('path');
-const Ajv = require('ajv');
+const Ajv2020 = require('ajv/dist/2020');
 const ajv = new Ajv();
 
 const schema = require('../schemas/replay_node.v1.schema.json');
