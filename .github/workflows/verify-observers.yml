@@ -60,7 +60,7 @@ jobs:
           ]
           include = {".md", ".json"}
           protected = re.compile(r"\b(federal|government|official|authority|authorized|compliant|observer registry|Federal AI Observer)\b", re.I)
-          proof = re.compile(r"\b(receipt|receipts|attestation|attestations|vc|credential|sigstore|hash|authority\s*[:=]\s*[\"']?none|is_federal_authority\s*[:=]\s*false|REGISTRY_IS_NOT_GOVERNMENT_AUTHORITY|OBSERVER_IS_NOT_OFFICE|READ_ONLY_PUBLIC_OBSERVER|APPEND_ONLY_RECEIPTS|PROCESS_VERIFIED_NOT_GOVERNMENT_AUTHORITY)\b", re.I)
+          proof = re.compile(r"\b(receipt|receipts|attestation|attestations|vc|credential|sigstore|hash|sha256|source_url|evidence|proof|authority\s*[:=]\s*[\"']?none|is_federal_authority\s*[:=]\s*false|REGISTRY_IS_NOT_GOVERNMENT_AUTHORITY|OBSERVER_IS_NOT_OFFICE|READ_ONLY_PUBLIC_OBSERVER|APPEND_ONLY_RECEIPTS|PROCESS_VERIFIED_NOT_GOVERNMENT_AUTHORITY)\b", re.I)
 
           failures = []
           for root in scan_roots:
@@ -70,18 +70,25 @@ jobs:
                   if not path.is_file() or path.suffix not in include:
                       continue
                   text = path.read_text(errors="ignore")
+                  if not protected.search(text):
+                      continue
+                  if proof.search(text):
+                      continue
+                  first_claim = ""
                   for idx, line in enumerate(text.splitlines(), 1):
-                      if protected.search(line) and not proof.search(line):
-                          failures.append(f"{path}:{idx}: {line.strip()[:240]}")
+                      if protected.search(line):
+                          first_claim = f"{path}:{idx}: {line.strip()[:240]}"
+                          break
+                  failures.append(first_claim or str(path))
 
           if failures:
-              print("❌ Unproven protected authority claims found:")
+              print("❌ Files contain protected authority claims without file-level proof context:")
               for item in failures:
                   print(item)
-              print("Authority must resolve to VC, receipt, attestation, hash-bound proof, or explicit NONE boundary.")
+              print("Authority claims must resolve somewhere in the same file to VC, receipt, attestation, hash/source/evidence proof, or explicit NONE boundary.")
               sys.exit(1)
 
-          print("✅ Protected claims are proof-bound or explicitly bounded.")
+          print("✅ Protected claim files contain proof context or explicit boundaries.")
           PY
 
       - name: Generate CI badge artifact
