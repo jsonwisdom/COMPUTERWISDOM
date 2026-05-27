@@ -1,0 +1,71 @@
+{
+  "mission_id": "GLOBAL_GOVERNANCE_ROLE_COLLAPSE_GUARD_MANIFEST_V1",
+  "version": "1.0.0",
+  "status": "PROPOSED",
+  "origin_repo": "COMPUTERWISDOM",
+  "linked_issue": "https://github.com/jsonwisdom/COMPUTERWISDOM/issues/24",
+  "mission": "Deploy a global governance role-collapse guard for mission-validation and control-plane reasoning.",
+  "intent": "Prevent candidates, nominees, likely successors, and successors-elect from being promoted into current officeholder status without temporal and source-bounded proof.",
+  "purpose": "Protect civic and governance reasoning from temporal authority drift across all jurisdictions modeled by JSONWisdom systems.",
+  "scope": {
+    "jurisdictions": "GLOBAL",
+    "initial_surface": "50_US_STATES_PLUS_FEDERAL_OFFICES",
+    "office_types": [
+      "executive",
+      "legislative",
+      "judicial",
+      "agency",
+      "board",
+      "commission",
+      "county",
+      "municipal"
+    ]
+  },
+  "required_claim_fields": [
+    "jurisdiction",
+    "office",
+    "person",
+    "role_status",
+    "as_of",
+    "sources",
+    "boundary"
+  ],
+  "role_status_enum": [
+    "CURRENT_OFFICE_HOLDER",
+    "CANDIDATE",
+    "NOMINEE",
+    "SUCCESSOR_ELECT",
+    "FORMER_OFFICE_HOLDER",
+    "UNKNOWN"
+  ],
+  "forbidden_promotions": [
+    "CANDIDATE_TO_CURRENT_OFFICE_HOLDER",
+    "NOMINEE_TO_CURRENT_OFFICE_HOLDER",
+    "LIKELY_SUCCESSOR_TO_CURRENT_OFFICE_HOLDER",
+    "SUCCESSOR_ELECT_TO_CURRENT_OFFICE_HOLDER_BEFORE_ASSUMPTION_OF_OFFICE",
+    "SEARCH_SNIPPET_TO_OFFICEHOLDER_STATUS",
+    "ELECTION_TRAJECTORY_TO_EXECUTIVE_AUTHORITY"
+  ],
+  "bound_commits": {
+    "schema_structure": "f578ddfee6388b384a1512e13a5f7b765e8e9208",
+    "doctrine_boundary": "ae1656b789cfb0600d0c38b7be4b935884562d5e",
+    "mechanical_enforcement": "74a58ffe03bbdb7b7e2ecc13d277470b15af5673",
+    "hash_proof_receipt": "75e11d58579a52a1b6050563e8e9ce23ae886409"
+  },
+  "bound_artifacts": [
+    "schemas/governance/GLOBAL_GOVERNANCE_ROLE_ANCHOR_V1.schema.json",
+    "docs/governance/GLOBAL_GOVERNANCE_ROLE_COLLAPSE_GUARD_V1.md",
+    "scripts/validate_global_governance_role_anchor.py",
+    "receipts/governance/GLOBAL_GOVERNANCE_ROLE_COLLAPSE_GUARD_HASH_PROOF_V1.json"
+  ],
+  "game_plan": [
+    "Require governance identity anchors for missions that reference current officeholders, candidates, nominees, succession, appointments, elections, or official authority.",
+    "Validate governance role anchors before mission canonicalization.",
+    "Reject role-collapse language inside CURRENT_OFFICE_HOLDER records.",
+    "Require election_date for CANDIDATE, NOMINEE, and SUCCESSOR_ELECT states.",
+    "Preserve all guard decisions as commit evidence until AL admission and replay sealing."
+  ],
+  "authority_boundary": "MISSION_MANIFEST_IS_CONTROL_PLANE_EVIDENCE_NOT_FINAL_ADJUDICATION",
+  "promotion_rule": "NO_CANONICAL_PROMOTION_WITHOUT_REPLAY_AND_AL_ACCEPTANCE",
+  "replay_status": "NOT_REPLAYED"
+}
