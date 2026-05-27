@@ -1,14 +1,14 @@
 # COMPUTERWISDOM Repo Size Audit
 
-Generated: 2026-05-27T08:57:50Z
-Commit: 75e11d58579a52a1b6050563e8e9ce23ae886409
+Generated: 2026-05-27T09:00:30Z
+Commit: 6be2361d7bb8b8af1a750a65f0c892a186f2d2bb
 
 ## Repository Size
 ```text
 200M	.
 count: 0
 size: 0 bytes
-in-pack: 576
+in-pack: 578
 packs: 1
 size-pack: 70.26 MiB
 prune-packable: 0
@@ -18,7 +18,6 @@ size-garbage: 0 bytes
 
 ## Top-Level Folder Sizes
 ```text
-4.0K	./Trigger_Deck_Cards_Upload.zip
 4.0K	./Trigger_Deck_GitHub_Final_Push.zip
 4.0K	./Witness_Manifest_Trigger_Deck_001.json
 4.0K	./debug-tweepy-thread.md
@@ -44,6 +43,7 @@ size-garbage: 0 bytes
 8.0K	./css
 8.0K	./governance
 8.0K	./js
+8.0K	./missions
 8.0K	./portal.html
 8.0K	./public_coordination
 8.0K	./reports
@@ -206,41 +206,41 @@ size-garbage: 0 bytes
 
 ## Files Over 1MB
 ```text
--rw-r--r-- 1 runner runner 1.3M May 27 08:57 ./tweets/9FC2AE3D-761E-4EE2-BF4C-E01E9654350A.png
--rw-r--r-- 1 runner runner 2.3M May 27 08:57 ./Cards/IMG_3208.PNG
--rw-r--r-- 1 runner runner 3.1M May 27 08:57 ./Cards/D724FC85-8940-41AC-A51F-4D0E70A746EF.PNG
--rw-r--r-- 1 runner runner 3.1M May 27 08:57 ./cards/D724FC85-8940-41AC-A51F-4D0E70A746EF.png
--rw-r--r-- 1 runner runner 3.2M May 27 08:57 ./B44DB7E5-88D6-4D3B-88F5-FBF0B688DDDF.png
--rw-r--r-- 1 runner runner 3.2M May 27 08:57 ./Cards/B44DB7E5-88D6-4D3B-88F5-FBF0B688DDDF.PNG
--rw-r--r-- 1 runner runner 3.2M May 27 08:57 ./cards/B44DB7E5-88D6-4D3B-88F5-FBF0B688DDDF.png
--rw-r--r-- 1 runner runner 3.3M May 27 08:57 ./Cards/Debtin_DEBBIE_Card_002.png
--rw-r--r-- 1 runner runner 3.4M May 27 08:57 ./2A17509A-A1CC-4873-9BFC-61B5A2B4A420.png
--rw-r--r-- 1 runner runner 3.4M May 27 08:57 ./Cards/2A17509A-A1CC-4873-9BFC-61B5A2B4A420.PNG
--rw-r--r-- 1 runner runner 3.4M May 27 08:57 ./Trigger_Deck/2ACDBD4F-98BB-4BEF-BD0E-F8E17F4ADAEC.PNG
--rw-r--r-- 1 runner runner 3.4M May 27 08:57 ./cards/2A17509A-A1CC-4873-9BFC-61B5A2B4A420.png
--rw-r--r-- 1 runner runner 3.5M May 27 08:57 ./2E0B6482-B85C-4087-B65B-619060F59E8E.png
--rw-r--r-- 1 runner runner 3.5M May 27 08:57 ./CE9A814F-BBD0-4273-826F-E9E2EEEB8FDA.png
--rw-r--r-- 1 runner runner 3.5M May 27 08:57 ./Cards/2E0B6482-B85C-4087-B65B-619060F59E8E.PNG
--rw-r--r-- 1 runner runner 3.5M May 27 08:57 ./Cards/CE9A814F-BBD0-4273-826F-E9E2EEEB8FDA.PNG
--rw-r--r-- 1 runner runner 3.5M May 27 08:57 ./Cards/D328E2F9-14B5-4301-B025-A2A46D4C3470.PNG
--rw-r--r-- 1 runner runner 3.5M May 27 08:57 ./D328E2F9-14B5-4301-B025-A2A46D4C3470.png
--rw-r--r-- 1 runner runner 3.5M May 27 08:57 ./Trigger_Deck/50CC6BA7-447F-456C-970E-BE01D631F204.PNG
--rw-r--r-- 1 runner runner 3.5M May 27 08:57 ./cards/2E0B6482-B85C-4087-B65B-619060F59E8E.png
--rw-r--r-- 1 runner runner 3.5M May 27 08:57 ./cards/CE9A814F-BBD0-4273-826F-E9E2EEEB8FDA.png
--rw-r--r-- 1 runner runner 3.5M May 27 08:57 ./cards/D328E2F9-14B5-4301-B025-A2A46D4C3470.png
--rw-r--r-- 1 runner runner 3.6M May 27 08:57 ./09B020C1-C522-4E0F-9CD0-B57BD8DC94D7.png
--rw-r--r-- 1 runner runner 3.6M May 27 08:57 ./62B2FF44-E125-4B2F-93ED-DC2D344C2F44.png
--rw-r--r-- 1 runner runner 3.6M May 27 08:57 ./Cards/09B020C1-C522-4E0F-9CD0-B57BD8DC94D7.PNG
--rw-r--r-- 1 runner runner 3.6M May 27 08:57 ./Cards/62B2FF44-E125-4B2F-93ED-DC2D344C2F44.PNG
--rw-r--r-- 1 runner runner 3.6M May 27 08:57 ./Trigger_Deck/97EFCD41-6558-4BEC-BFF9-172DBD7D6319.PNG
--rw-r--r-- 1 runner runner 3.6M May 27 08:57 ./cards/09B020C1-C522-4E0F-9CD0-B57BD8DC94D7.png
--rw-r--r-- 1 runner runner 3.6M May 27 08:57 ./cards/62B2FF44-E125-4B2F-93ED-DC2D344C2F44.png
--rw-r--r-- 1 runner runner 3.7M May 27 08:57 ./Trigger_Deck/463B1C0A-2869-44F2-B660-5BF9F315FE4A.PNG
--rw-r--r-- 1 runner runner 3.7M May 27 08:57 ./Trigger_Deck/595159BA-4696-49AC-B0EC-9BDB231B1830.PNG
--rw-r--r-- 1 runner runner 3.7M May 27 08:57 ./Trigger_Deck/F14EA01B-B938-4892-AB31-FA7D68483AD0.PNG
--rw-r--r-- 1 runner runner 3.8M May 27 08:57 ./Trigger_Deck/4234BB82-CF71-4BAE-B0CF-361553E4DB6E.PNG
--rw-r--r-- 1 runner runner 3.8M May 27 08:57 ./Trigger_Deck/C93E6346-6D21-4A9E-97FE-39BF6B8FF95F.PNG
--rw-r--r-- 1 runner runner 4.0M May 27 08:57 ./Trigger_Deck/C1CF6FDC-54BC-4CD3-8416-F32CB02915B4.PNG
+-rw-r--r-- 1 runner runner 1.3M May 27 09:00 ./tweets/9FC2AE3D-761E-4EE2-BF4C-E01E9654350A.png
+-rw-r--r-- 1 runner runner 2.3M May 27 09:00 ./Cards/IMG_3208.PNG
+-rw-r--r-- 1 runner runner 3.1M May 27 09:00 ./Cards/D724FC85-8940-41AC-A51F-4D0E70A746EF.PNG
+-rw-r--r-- 1 runner runner 3.1M May 27 09:00 ./cards/D724FC85-8940-41AC-A51F-4D0E70A746EF.png
+-rw-r--r-- 1 runner runner 3.2M May 27 09:00 ./B44DB7E5-88D6-4D3B-88F5-FBF0B688DDDF.png
+-rw-r--r-- 1 runner runner 3.2M May 27 09:00 ./Cards/B44DB7E5-88D6-4D3B-88F5-FBF0B688DDDF.PNG
+-rw-r--r-- 1 runner runner 3.2M May 27 09:00 ./cards/B44DB7E5-88D6-4D3B-88F5-FBF0B688DDDF.png
+-rw-r--r-- 1 runner runner 3.3M May 27 09:00 ./Cards/Debtin_DEBBIE_Card_002.png
+-rw-r--r-- 1 runner runner 3.4M May 27 09:00 ./2A17509A-A1CC-4873-9BFC-61B5A2B4A420.png
+-rw-r--r-- 1 runner runner 3.4M May 27 09:00 ./Cards/2A17509A-A1CC-4873-9BFC-61B5A2B4A420.PNG
+-rw-r--r-- 1 runner runner 3.4M May 27 09:00 ./Trigger_Deck/2ACDBD4F-98BB-4BEF-BD0E-F8E17F4ADAEC.PNG
+-rw-r--r-- 1 runner runner 3.4M May 27 09:00 ./cards/2A17509A-A1CC-4873-9BFC-61B5A2B4A420.png
+-rw-r--r-- 1 runner runner 3.5M May 27 09:00 ./2E0B6482-B85C-4087-B65B-619060F59E8E.png
+-rw-r--r-- 1 runner runner 3.5M May 27 09:00 ./CE9A814F-BBD0-4273-826F-E9E2EEEB8FDA.png
+-rw-r--r-- 1 runner runner 3.5M May 27 09:00 ./Cards/2E0B6482-B85C-4087-B65B-619060F59E8E.PNG
+-rw-r--r-- 1 runner runner 3.5M May 27 09:00 ./Cards/CE9A814F-BBD0-4273-826F-E9E2EEEB8FDA.PNG
+-rw-r--r-- 1 runner runner 3.5M May 27 09:00 ./Cards/D328E2F9-14B5-4301-B025-A2A46D4C3470.PNG
+-rw-r--r-- 1 runner runner 3.5M May 27 09:00 ./D328E2F9-14B5-4301-B025-A2A46D4C3470.png
+-rw-r--r-- 1 runner runner 3.5M May 27 09:00 ./Trigger_Deck/50CC6BA7-447F-456C-970E-BE01D631F204.PNG
+-rw-r--r-- 1 runner runner 3.5M May 27 09:00 ./cards/2E0B6482-B85C-4087-B65B-619060F59E8E.png
+-rw-r--r-- 1 runner runner 3.5M May 27 09:00 ./cards/CE9A814F-BBD0-4273-826F-E9E2EEEB8FDA.png
+-rw-r--r-- 1 runner runner 3.5M May 27 09:00 ./cards/D328E2F9-14B5-4301-B025-A2A46D4C3470.png
+-rw-r--r-- 1 runner runner 3.6M May 27 09:00 ./09B020C1-C522-4E0F-9CD0-B57BD8DC94D7.png
+-rw-r--r-- 1 runner runner 3.6M May 27 09:00 ./62B2FF44-E125-4B2F-93ED-DC2D344C2F44.png
+-rw-r--r-- 1 runner runner 3.6M May 27 09:00 ./Cards/09B020C1-C522-4E0F-9CD0-B57BD8DC94D7.PNG
+-rw-r--r-- 1 runner runner 3.6M May 27 09:00 ./Cards/62B2FF44-E125-4B2F-93ED-DC2D344C2F44.PNG
+-rw-r--r-- 1 runner runner 3.6M May 27 09:00 ./Trigger_Deck/97EFCD41-6558-4BEC-BFF9-172DBD7D6319.PNG
+-rw-r--r-- 1 runner runner 3.6M May 27 09:00 ./cards/09B020C1-C522-4E0F-9CD0-B57BD8DC94D7.png
+-rw-r--r-- 1 runner runner 3.6M May 27 09:00 ./cards/62B2FF44-E125-4B2F-93ED-DC2D344C2F44.png
+-rw-r--r-- 1 runner runner 3.7M May 27 09:00 ./Trigger_Deck/463B1C0A-2869-44F2-B660-5BF9F315FE4A.PNG
+-rw-r--r-- 1 runner runner 3.7M May 27 09:00 ./Trigger_Deck/595159BA-4696-49AC-B0EC-9BDB231B1830.PNG
+-rw-r--r-- 1 runner runner 3.7M May 27 09:00 ./Trigger_Deck/F14EA01B-B938-4892-AB31-FA7D68483AD0.PNG
+-rw-r--r-- 1 runner runner 3.8M May 27 09:00 ./Trigger_Deck/4234BB82-CF71-4BAE-B0CF-361553E4DB6E.PNG
+-rw-r--r-- 1 runner runner 3.8M May 27 09:00 ./Trigger_Deck/C93E6346-6D21-4A9E-97FE-39BF6B8FF95F.PNG
+-rw-r--r-- 1 runner runner 4.0M May 27 09:00 ./Trigger_Deck/C1CF6FDC-54BC-4CD3-8416-F32CB02915B4.PNG
 ```
 
 ## Media / Archive / Database Candidates
