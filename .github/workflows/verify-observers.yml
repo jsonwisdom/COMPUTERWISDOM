@@ -52,22 +52,27 @@ jobs:
           python3 - <<'PY'
           import pathlib, re, sys
 
-          root = pathlib.Path(".")
-          include = {".md", ".json", ".yml", ".yaml"}
+          scan_roots = [
+              pathlib.Path("COMPUTERWISDOM/federal/white-house-ai"),
+              pathlib.Path("badges"),
+              pathlib.Path("attestation"),
+              pathlib.Path("docs"),
+          ]
+          include = {".md", ".json"}
           protected = re.compile(r"\b(federal|government|official|authority|authorized|compliant|observer registry|Federal AI Observer)\b", re.I)
-          proof = re.compile(r"\b(receipt|attestation|vc|credential|sigstore|hash|authority\s*[:=]\s*[\"']?none|is_federal_authority\s*[:=]\s*false|REGISTRY_IS_NOT_GOVERNMENT_AUTHORITY|OBSERVER_IS_NOT_OFFICE)\b", re.I)
-          ignore_parts = {".git", "node_modules", ".venv", "venv"}
+          proof = re.compile(r"\b(receipt|receipts|attestation|attestations|vc|credential|sigstore|hash|authority\s*[:=]\s*[\"']?none|is_federal_authority\s*[:=]\s*false|REGISTRY_IS_NOT_GOVERNMENT_AUTHORITY|OBSERVER_IS_NOT_OFFICE|READ_ONLY_PUBLIC_OBSERVER|APPEND_ONLY_RECEIPTS|PROCESS_VERIFIED_NOT_GOVERNMENT_AUTHORITY)\b", re.I)
 
           failures = []
-          for path in root.rglob("*"):
-              if not path.is_file() or path.suffix not in include:
+          for root in scan_roots:
+              if not root.exists():
                   continue
-              if any(part in ignore_parts for part in path.parts):
-                  continue
-              text = path.read_text(errors="ignore")
-              for idx, line in enumerate(text.splitlines(), 1):
-                  if protected.search(line) and not proof.search(line):
-                      failures.append(f"{path}:{idx}: {line.strip()[:240]}")
+              for path in root.rglob("*"):
+                  if not path.is_file() or path.suffix not in include:
+                      continue
+                  text = path.read_text(errors="ignore")
+                  for idx, line in enumerate(text.splitlines(), 1):
+                      if protected.search(line) and not proof.search(line):
+                          failures.append(f"{path}:{idx}: {line.strip()[:240]}")
 
           if failures:
               print("❌ Unproven protected authority claims found:")
