@@ -6,6 +6,12 @@ on:
   pull_request:
     branches: [master, main, anchor]
 
+permissions:
+  contents: read
+  actions: read
+  id-token: write
+  attestations: write
+
 jobs:
   verify:
     runs-on: ubuntu-latest
@@ -106,6 +112,12 @@ jobs:
             "claim_boundary": "PROCESS_VERIFIED_NOT_GOVERNMENT_AUTHORITY"
           }
           EOF
+
+      - name: Attest CI badge artifact provenance
+        if: success()
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: .ci-badges/federal-ai-observer-ci.json
 
       - name: Upload CI badge artifact
         if: success()
