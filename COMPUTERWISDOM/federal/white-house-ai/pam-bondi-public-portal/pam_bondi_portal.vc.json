@@ -16,7 +16,7 @@
     "registry": {
       "id": "JAYWISDOM_MCP_REGISTRY_V1",
       "registry_path": "../JAYWISDOM_MCP_REGISTRY_V1.json",
-      "registry_hash": "REPLACE_WITH_SHA256_OF_REGISTRY_JSON"
+      "registry_hash": "ef889b0942bb4e7c9267688353d02268153224f0f01345f10102a76a6be31677"
     },
     "delegation": {
       "from": "did:ethr:jaywisdom.base.eth",
