@@ -1,4 +1,4 @@
-<!-- Observer Compliance badge pending first passing CI run -->
+![Observer Compliance](https://github.com/jsonwisdom/AL/actions/workflows/verify-observers.yml/badge.svg)
 
 # REGISTRY_README_V1
 
