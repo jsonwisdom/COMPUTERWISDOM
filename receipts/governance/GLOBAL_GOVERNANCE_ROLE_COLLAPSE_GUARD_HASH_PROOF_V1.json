@@ -1,0 +1,33 @@
+{
+  "receipt_id": "GLOBAL_GOVERNANCE_ROLE_COLLAPSE_GUARD_HASH_PROOF_V1",
+  "status": "COMMIT_PROOF_ONLY",
+  "generated_at": "2026-05-27T00:00:00Z",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "boundary": "CANDIDATE_NOMINEE_SUCCESSOR_ELECT_NOT_CURRENT_OFFICE_HOLDER",
+  "claim": "Global governance identity claims require jurisdiction, office, person, role_status, as_of, and source before they may enter control-plane reasoning.",
+  "artifacts": [
+    {
+      "path": "schemas/governance/GLOBAL_GOVERNANCE_ROLE_ANCHOR_V1.schema.json",
+      "commit": "f578ddfee6388b384a1512e13a5f7b765e8e9208",
+      "role": "schema_structure"
+    },
+    {
+      "path": "docs/governance/GLOBAL_GOVERNANCE_ROLE_COLLAPSE_GUARD_V1.md",
+      "commit": "ae1656b789cfb0600d0c38b7be4b935884562d5e",
+      "role": "doctrine_boundary"
+    },
+    {
+      "path": "scripts/validate_global_governance_role_anchor.py",
+      "commit": "74a58ffe03bbdb7b7e2ecc13d277470b15af5673",
+      "role": "mechanical_enforcement"
+    }
+  ],
+  "invariants": [
+    "CURRENT_OFFICE_HOLDER != CANDIDATE",
+    "CURRENT_OFFICE_HOLDER != NOMINEE",
+    "CURRENT_OFFICE_HOLDER != SUCCESSOR_ELECT",
+    "search_snippet != officeholder_status",
+    "election_trajectory != executive_authority"
+  ],
+  "authority_boundary": "HASH_PROOF_IS_COMMIT_EVIDENCE_NOT_FINAL_ADJUDICATION"
+}
