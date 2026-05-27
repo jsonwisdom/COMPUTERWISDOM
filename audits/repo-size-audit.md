@@ -1,14 +1,14 @@
 # COMPUTERWISDOM Repo Size Audit
 
-Generated: 2026-05-27T09:15:15Z
-Commit: f9ead24ee041eab90d1fb3a9076e5549fdd950d0
+Generated: 2026-05-27T09:15:32Z
+Commit: ac0a814dff2e1e9d61d42bf483c9f5e16ce810ce
 
 ## Repository Size
 ```text
 200M	.
 count: 0
 size: 0 bytes
-in-pack: 582
+in-pack: 584
 packs: 1
 size-pack: 70.27 MiB
 prune-packable: 0
@@ -18,7 +18,6 @@ size-garbage: 0 bytes
 
 ## Top-Level Folder Sizes
 ```text
-4.0K	./Witness_Manifest_Trigger_Deck_001.json
 4.0K	./debug-tweepy-thread.md
 4.0K	./deck.json
 4.0K	./index 4.html
@@ -42,6 +41,7 @@ size-garbage: 0 bytes
 8.0K	./css
 8.0K	./executive
 8.0K	./js
+8.0K	./judicial
 8.0K	./missions
 8.0K	./portal.html
 8.0K	./public_coordination
