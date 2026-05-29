@@ -1,0 +1,32 @@
+{
+  "artifact": "POST_MERGE_STACK_RECEIPT_PR_65_V0_1",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "pull_request": 65,
+  "merged": true,
+  "merged_into": "master",
+  "reported_master_commit": "1b56d45fe5e3be3a1c165cdd63bfd9873ef71821",
+  "source_branch": "feature/constitutional-caseflow-v0-1",
+  "runtime_parity": "CONFIRMED",
+  "runtime_parity_observation_mode": "OPERATOR_REPORTED_POST_PULL_VERIFICATION",
+  "hash_lineage_status": "NO_DRIFT_DETECTED_OPERATOR_REPORTED",
+  "authority": false,
+  "legal_effect": false,
+  "court_status": {
+    "goblin": "MERGED_WITHOUT_CROWN",
+    "meme": "GAME_STACK_FULLY_LANDED",
+    "clown": "NO_AUTHORITY_UPGRADE"
+  },
+  "landed_stack": [
+    "CONSTITUTIONAL_CASEFLOW_V0_1",
+    "GROK_GOBLIN_EXTERNAL_WITNESS_V0_1",
+    "WITNESS_REGISTRY_V0_1",
+    "OBSERVER_REGISTRY_V0_1",
+    "EXTERNAL_AI_WITNESS_INPUT_REQUIREMENTS_V0_1",
+    "GROK_AGENT_L2_INTERFACE_V0_1",
+    "BASE_MCP_AGENT_ECOLOGY_V0_1",
+    "REPLAY_REPUTATION_BASE_AGENT_GAME_V0_1"
+  ],
+  "core_invariant": "Observers surface. Witnesses report. Agents play. Verifiers gate. Courts translate. Receipts replay. Humans merge. Authority remains false.",
+  "next_gate": "prepare_v0_2_planning_issue",
+  "receipt_boundary": "This receipt records operator-reported post-merge verification and does not independently claim universal truth, legal authority, ENS completion, Base anchoring, or external runtime authority."
+}
