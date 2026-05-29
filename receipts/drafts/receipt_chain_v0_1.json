@@ -9,14 +9,20 @@
       "title": "Classical State Preparation for Variational Quantum Algorithms via Reinforcement Learning",
       "arxiv_id": "2605.23138v1",
       "hash": "65fb435a2f43225097a40c3e495453cc24f62fd333691d35927c13b43721089c",
-      "verification": "assistant_observed_source_and_claims"
+      "verification": "assistant_observed_source_and_claims",
+      "hash_algorithm": "SHA-256",
+      "hash_basis": "raw_arxiv_pdf_bytes",
+      "hash_status": "pending_local_recompute"
     },
     {
       "artifact_id": "joy://2026-05-29/arxiv-2605.01574-001",
       "title": "Hybrid Quantum Reinforcement Learning with QAOA for Improved Vehicle Routing Optimization",
       "arxiv_id": "2605.01574v1",
       "hash": "903d92f593b0ef82adaa19b05e2a72bfc917e5b24e587c90d6692df562888460",
-      "verification": "assistant_verified_abstract"
+      "verification": "assistant_verified_abstract",
+      "hash_algorithm": "SHA-256",
+      "hash_basis": "raw_arxiv_pdf_bytes",
+      "hash_status": "pending_local_recompute"
     }
   ],
   "steps": [
@@ -59,5 +65,13 @@
     "cognitive_security": "Receipts at each boundary prevent narrative drift"
   },
   "status": "provisional",
-  "notes": "Architectural synthesis only. No authority upgrade. No policy weight."
+  "notes": "Architectural synthesis only. No authority upgrade. No policy weight.",
+  "hash_protocol": {
+    "algorithm": "SHA-256",
+    "basis": "raw_arxiv_pdf_bytes",
+    "normalization": "NONE",
+    "verification_method": "local_sha256sum",
+    "status": "pending_local_recompute",
+    "authority": false
+  }
 }
