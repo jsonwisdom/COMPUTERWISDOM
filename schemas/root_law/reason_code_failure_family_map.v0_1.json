@@ -1,0 +1,47 @@
+{
+  "artifact": "reason_code_failure_family_map.v0_1",
+  "status": "DRAFT_SEPARATE_PARAMETER",
+  "description": "Maps diagnostic reason codes to Phase 3 pattern families without creating reputation, memory, quarantine, or authority.",
+  "authority": false,
+  "mapping": {
+    "SUCCESS": {
+      "family": "NONE",
+      "pattern_trigger": false
+    },
+    "MISSING_PARENT_REFERENCE": {
+      "family": "LINEAGE_REPEAT",
+      "pattern_trigger": true
+    },
+    "PARENT_NOT_IN_LOCAL_STORE": {
+      "family": "LINEAGE_REPEAT",
+      "pattern_trigger": true
+    },
+    "ORPHANED_RECEIPT": {
+      "family": "LINEAGE_REPEAT",
+      "pattern_trigger": true
+    },
+    "SCHEMA_HASH_MISMATCH": {
+      "family": "HASH_SHAPE_REPEAT",
+      "pattern_trigger": true
+    },
+    "DOMAIN_BOUNDARY_VIOLATION": {
+      "family": "DOMAIN_REPEAT",
+      "pattern_trigger": true
+    }
+  },
+  "validation_rule": {
+    "phase_3_enablement_requires_all_failure_reason_codes_mapped": true,
+    "unmapped_failure_reason_code_result": "PHASE_3_ENABLEMENT_DENIED",
+    "success_reason_code_pattern_trigger": false,
+    "memory_update": false,
+    "reputation_system": false,
+    "quarantine": false,
+    "authority": false
+  },
+  "invariants": [
+    "OBSERVATION_ORDER_IS_NOT_CLASSIFICATION",
+    "CLASSIFICATION_IS_NOT_REPUTATION",
+    "REPETITION_IS_NOT_AUTHORITY",
+    "SUCCESS_NEVER_MASKS_STRUCTURAL_FAILURE"
+  ]
+}
