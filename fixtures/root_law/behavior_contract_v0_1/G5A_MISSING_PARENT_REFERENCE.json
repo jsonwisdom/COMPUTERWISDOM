@@ -1,0 +1,27 @@
+{
+  "fixture_id": "G5A_MISSING_PARENT_REFERENCE",
+  "version": "0.1",
+  "description": "Validator must VETO when parent_cid is missing or null.",
+  "context": {
+    "system_state": "INTEGRITY_CHECK_ENABLED",
+    "validator_mode": "STRICT_LINEAGE"
+  },
+  "input": {
+    "proposed_receipt": {
+      "decision_id": "g5a-missing-parent-0001",
+      "parent_cid": null,
+      "action": "ACCESS_GRANT"
+    },
+    "local_store_state": {
+      "available_cids": []
+    }
+  },
+  "expected_outcome": {
+    "verdict": "VETO",
+    "reason_code": "MISSING_PARENT_REFERENCE",
+    "failure_class": "LINEAGE_FAILURE",
+    "constitutional_compliance": true,
+    "memory_update": false
+  },
+  "authority": false
+}
