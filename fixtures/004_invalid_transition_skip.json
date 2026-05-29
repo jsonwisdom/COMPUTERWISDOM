@@ -1,0 +1,34 @@
+{
+  "fixture_id": "FIXTURE_004_INVALID_TRANSITION_SKIP",
+  "expected": {
+    "verdict": "DENY",
+    "reason_code": "INVALID_TRANSITION_STEP",
+    "gate_triggered": "LATTICE_CHECK"
+  },
+  "notes": {
+    "purpose": "Lattice gate must reject a transition that skips from ASSERTED directly to ADJUDICATED.",
+    "authority": false
+  },
+  "ledger_seed": [
+    {
+      "receipt_id": "sha256:7c75a33c1680d283626e2575971488c9f7a63447990141f6e1f0e49339e3a35e",
+      "category": "ASSERTED",
+      "content_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "genesis": true,
+      "provenance_id": null,
+      "timestamp_utc": "2026-05-28T18:52:51Z",
+      "version": "0.1",
+      "authority": false
+    }
+  ],
+  "receipt": {
+    "receipt_id": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "category": "ADJUDICATED",
+    "content_hash": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "genesis": false,
+    "provenance_id": "sha256:7c75a33c1680d283626e2575971488c9f7a63447990141f6e1f0e49339e3a35e",
+    "timestamp_utc": "2026-05-28T19:15:00Z",
+    "version": "0.1",
+    "authority": false
+  }
+}
