@@ -1,0 +1,21 @@
+{
+  "fixture_id": "FIXTURE_006_TRUTH_CLAIM_DECISION",
+  "expected": {
+    "verdict": "DENY",
+    "reason_code": "CATEGORY_ADMISSION_FAILURE",
+    "gate_triggered": "ADMISSION_RULES"
+  },
+  "notes": {
+    "purpose": "Admission rules must reject a decision attempting universal truth promotion.",
+    "authority": false
+  },
+  "receipt": {
+    "receipt_id": "sha256:88a6d91244585c572a9e5b7b045051908d1796d1945191590483864197597148",
+    "conflict_id": "sha256:a1b2c3d4e5f60123456789abcdef0123456789abcdef0123456789abcdef0123",
+    "resolution_statement": "The absolute nature of reality is X.",
+    "decision_scope": "LOCAL_TO_DISPUTE",
+    "universal_truth_claim": true,
+    "version": "0.1",
+    "authority": false
+  }
+}

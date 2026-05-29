@@ -1,0 +1,23 @@
+{
+  "fixture_id": "FIXTURE_005_ORPHANED_PARENT",
+  "expected": {
+    "verdict": "VETO",
+    "reason_code": "ORPHANED_RECEIPT",
+    "gate_triggered": "LINEAGE_RESOLUTION"
+  },
+  "notes": {
+    "purpose": "Lineage gate must veto a schema-valid, identity-valid receipt whose provenance_id is not present in the ledger.",
+    "ledger_contains_parent": false,
+    "authority": false
+  },
+  "receipt": {
+    "receipt_id": "sha256:d15d654157a909476a88e99a4e235e16f735870f7d54d2417730e2f523c9103c",
+    "category": "OBSERVED",
+    "content_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "genesis": false,
+    "provenance_id": "sha256:0000000000000000000000000000000000000000000000000000000000000005",
+    "timestamp_utc": "2026-05-28T19:07:00Z",
+    "version": "0.1",
+    "authority": false
+  }
+}
