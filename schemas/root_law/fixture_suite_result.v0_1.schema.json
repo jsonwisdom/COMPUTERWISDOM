@@ -1,0 +1,100 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "FixtureSuiteResult",
+  "version": "0.1",
+  "description": "Draft receipt schema for Root Law fixture suite execution results.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact",
+    "suite_id",
+    "runner_state",
+    "timestamp_utc",
+    "fixture_results",
+    "suite_result",
+    "constitutional_lock",
+    "authority"
+  ],
+  "properties": {
+    "artifact": {
+      "type": "string",
+      "const": "fixture_suite_result.v0_1"
+    },
+    "suite_id": {
+      "type": "string",
+      "const": "ROOT_LAW_BEHAVIOR_FIXTURES_G1"
+    },
+    "runner_state": {
+      "type": "string",
+      "enum": [
+        "DRAFT_G5_ONLY",
+        "DRAFT_G1_G6",
+        "LOCK_CANDIDATE"
+      ]
+    },
+    "timestamp_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "fixture_results": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "fixture_id",
+          "path",
+          "expected",
+          "actual",
+          "pass",
+          "authority"
+        ],
+        "properties": {
+          "fixture_id": { "type": "string" },
+          "path": { "type": "string" },
+          "expected": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["verdict", "reason_code"],
+            "properties": {
+              "verdict": {
+                "type": "string",
+                "enum": ["ALLOW", "DENY", "STEP_UP", "VETO"]
+              },
+              "reason_code": { "type": "string" },
+              "constitutional_compliance": { "type": "boolean" }
+            }
+          },
+          "actual": {
+            "type": "object",
+            "additionalProperties": true,
+            "required": ["verdict", "reason_code"],
+            "properties": {
+              "verdict": {
+                "type": "string",
+                "enum": ["ALLOW", "DENY", "STEP_UP", "VETO"]
+              },
+              "reason_code": { "type": "string" },
+              "constitutional_compliance": { "type": "boolean" }
+            }
+          },
+          "pass": { "type": "boolean" },
+          "authority": { "type": "boolean", "const": false }
+        }
+      }
+    },
+    "suite_result": {
+      "type": "string",
+      "enum": ["PASS", "FAIL"]
+    },
+    "constitutional_lock": {
+      "type": "boolean",
+      "const": false
+    },
+    "authority": {
+      "type": "boolean",
+      "const": false
+    }
+  }
+}
