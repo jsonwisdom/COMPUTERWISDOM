@@ -1,5 +1,8 @@
+class RejectionError(Exception):
+    pass
+
+
 class Executor:
-    def execute(self, request_text, model_id, decision, receipt_hash):
-        if receipt_hash is None:
-            raise ValueError('receipt_hash required')
-        return {'status': 'allowed', 'model_id': model_id}
+    def execute(self, request: dict) -> None:
+        if 'receipt_hash' not in request:
+            raise RejectionError('missing receipt_hash')
