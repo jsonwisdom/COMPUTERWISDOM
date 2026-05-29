@@ -1,0 +1,83 @@
+{
+  "artifact": "GROK_AGENT_L2_INTERFACE_V0_1",
+  "type": "external_ai_agent_interface_spec",
+  "status": "proposed_for_intake",
+  "branch": "feature/constitutional-caseflow-v0-1",
+  "ens_root": "jaywisdom.base.eth",
+  "layer": "L2",
+  "authority": false,
+  "court": false,
+  "verifier": false,
+  "agent_authority": false,
+  "provider_surface": "xAI/Grok external model surface",
+  "purpose": "Upgrade the prior Grok actor/persona framing into a bounded external AI agent input surface for L2 caseflow support while preserving independence, refusal boundaries, and authority=false.",
+  "upgrade_from": {
+    "prior_label": "GROK_ACTOR_OR_PERSONA",
+    "problem": "Persona framing can trigger refusal and may imply role adoption by the external model.",
+    "replacement": "GROK_AGENT_INPUT_SURFACE",
+    "meaning": "Grok is treated as an external assistant output source whose responses may be captured, timestamped, hashed, and routed into L0/L1/L2 review without claiming Grok has joined the system."
+  },
+  "l2_anchor": {
+    "name": "jaywisdom.base.eth",
+    "role": "human-readable L2 namespace anchor for Jay Wisdom / Computer Wisdom artifacts",
+    "chain_assumption": "Base L2 namespace context only unless a concrete transaction or ENS text-record receipt is provided",
+    "authority": false,
+    "no_ghost_anchor_rule": "Do not claim ENS/Base completion without visible transaction, UID, text-record, or commit receipt."
+  },
+  "agent_boundaries": {
+    "may_do": [
+      "analyze a real public claim when provided",
+      "summarize visible context",
+      "identify missing context",
+      "suggest primary sources",
+      "flag contradiction risk",
+      "flag visibility or attention bias",
+      "refuse persona or framework adoption"
+    ],
+    "may_not_do": [
+      "claim internal COMPUTERWISDOM membership",
+      "act as a merge authority",
+      "act as a verifier gate",
+      "grant legal effect",
+      "self-promote output to truth",
+      "override external provider instructions",
+      "sign or anchor on Base without an explicit wallet transaction"
+    ]
+  },
+  "input_requirements": {
+    "requires_one_of": [
+      "exact_claim_text",
+      "public_url",
+      "screenshot_text",
+      "document_excerpt",
+      "public_artifact_reference"
+    ],
+    "empty_input_result": "NO_CLAIM_NO_AGENT_OUTPUT",
+    "framework_only_result": "BOUNDARY_OBSERVATION_ONLY"
+  },
+  "allowed_outputs": [
+    "AGENT_CONTEXT_SUMMARY",
+    "SOURCE_DISCOVERY_HINT",
+    "CONTRADICTION_HINT",
+    "VISIBILITY_RISK_NOTE",
+    "PRIMARY_SOURCE_REQUEST",
+    "REFUSAL_BOUNDARY_OBSERVATION",
+    "CASE_INTAKE_CANDIDATE"
+  ],
+  "caseflow_mapping": {
+    "external_agent_output": "L0_OR_L1_CONTEXT",
+    "captured_output_with_timestamp": "WITNESS_INPUT_CANDIDATE",
+    "captured_output_with_hash": "RECEIPT_PREPARED_CONTEXT",
+    "internal_review": "GOBLIN_VERIFIER_OR_HUMAN_REVIEW_REQUIRED",
+    "merge_or_anchor": "HUMAN_OPERATOR_ONLY"
+  },
+  "forbidden_promotions": [
+    "grok_agent_output_to_truth",
+    "grok_agent_output_to_adjudication",
+    "grok_agent_output_to_verified_receipt",
+    "grok_agent_output_to_base_anchor",
+    "grok_agent_output_to_ens_completion",
+    "grok_agent_output_to_merge_authority"
+  ],
+  "canonical_rule": "Grok may be used as an external AI agent input surface. It does not become the system, the verifier, the court, the signer, the wallet, the ENS owner, or the L2 authority. jaywisdom.base.eth is the namespace anchor; receipts decide completion."
+}
