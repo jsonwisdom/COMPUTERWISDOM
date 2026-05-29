@@ -1,6 +1,23 @@
 {
   "artifact": "CASEFLOW_TRANSITION_RULES_V0_2",
+  "implements": "Issue #68",
+  "phase": "RULES_v0.2",
   "authority": false,
+  "legal_effect": false,
+  "membrane": "HOLDS",
+  "schema_dependency": "caseflow/state_machine/schema_v0_2.json",
+  "constitutional_purpose": "Define lawful movement between caseflow states without granting truth, legal authority, merge authority, or Base/ENS authority to any witness, score, agent, court, or anchor pointer.",
+  "states": [
+    "DRAFT",
+    "UNDER_REVIEW",
+    "GOVERNANCE_CHECK",
+    "APPROVED",
+    "IN_PROGRESS",
+    "MERGED",
+    "REJECTED",
+    "REPLAY",
+    "DISPUTED"
+  ],
   "allowed_transitions": {
     "DRAFT": ["UNDER_REVIEW", "REJECTED"],
     "UNDER_REVIEW": ["GOVERNANCE_CHECK", "DISPUTED", "REJECTED"],
@@ -12,16 +29,71 @@
     "REJECTED": [],
     "REPLAY": ["DISPUTED"]
   },
+  "rules": [
+    {"from": "DRAFT", "to": "UNDER_REVIEW", "allowed_actors": ["HUMAN", "AGENT"], "required_checks": ["source_declared", "authority_false"], "membrane_hold": false, "receipt_required": false},
+    {"from": "DRAFT", "to": "REJECTED", "allowed_actors": ["HUMAN", "MEMBRANE"], "required_checks": ["rejection_reason_present"], "membrane_hold": true, "receipt_required": true},
+    {"from": "UNDER_REVIEW", "to": "GOVERNANCE_CHECK", "allowed_actors": ["HUMAN", "AGENT", "GROK_WITNESS", "OBSERVER"], "required_checks": ["review_context_present", "receipt_or_pointer_present", "authority_false"], "membrane_hold": true, "receipt_required": true},
+    {"from": "UNDER_REVIEW", "to": "DISPUTED", "allowed_actors": ["HUMAN", "AGENT", "GROK_WITNESS", "OBSERVER"], "required_checks": ["contradiction_or_missing_receipt_present", "authority_false"], "membrane_hold": true, "receipt_required": true},
+    {"from": "UNDER_REVIEW", "to": "REJECTED", "allowed_actors": ["HUMAN", "MEMBRANE"], "required_checks": ["rejection_reason_present", "authority_false"], "membrane_hold": true, "receipt_required": true},
+    {"from": "GOVERNANCE_CHECK", "to": "APPROVED", "allowed_actors": ["HUMAN", "MEMBRANE"], "required_checks": ["authority_false", "boundary_honest", "required_receipts_present", "no_forbidden_promotion"], "membrane_hold": true, "receipt_required": true},
+    {"from": "GOVERNANCE_CHECK", "to": "DISPUTED", "allowed_actors": ["HUMAN", "MEMBRANE"], "required_checks": ["ghost_promotion_or_invalid_transition_detected", "authority_false"], "membrane_hold": true, "receipt_required": true},
+    {"from": "GOVERNANCE_CHECK", "to": "REJECTED", "allowed_actors": ["HUMAN", "MEMBRANE"], "required_checks": ["failed_required_check", "rejection_reason_present", "authority_false"], "membrane_hold": true, "receipt_required": true},
+    {"from": "APPROVED", "to": "IN_PROGRESS", "allowed_actors": ["HUMAN", "AGENT"], "required_checks": ["implementation_scope_declared", "authority_false"], "membrane_hold": false, "receipt_required": false},
+    {"from": "IN_PROGRESS", "to": "MERGED", "allowed_actors": ["HUMAN"], "required_checks": ["human_merge_confirmed", "verify_gate_passed", "receipt_generated", "authority_false"], "membrane_hold": true, "receipt_required": true},
+    {"from": "IN_PROGRESS", "to": "DISPUTED", "allowed_actors": ["HUMAN", "AGENT", "MEMBRANE"], "required_checks": ["contradiction_or_runtime_mismatch_present", "authority_false"], "membrane_hold": true, "receipt_required": true},
+    {"from": "IN_PROGRESS", "to": "REJECTED", "allowed_actors": ["HUMAN", "MEMBRANE"], "required_checks": ["failed_runtime_or_governance_check", "authority_false"], "membrane_hold": true, "receipt_required": true},
+    {"from": "MERGED", "to": "REPLAY", "allowed_actors": ["HUMAN", "AGENT", "OBSERVER"], "required_checks": ["merged_receipt_present", "replay_request_present", "authority_false"], "membrane_hold": false, "receipt_required": true},
+    {"from": "DISPUTED", "to": "UNDER_REVIEW", "allowed_actors": ["HUMAN", "AGENT", "OBSERVER"], "required_checks": ["dispute_context_preserved", "counter_receipt_or_source_present", "authority_false"], "membrane_hold": true, "receipt_required": true},
+    {"from": "DISPUTED", "to": "REJECTED", "allowed_actors": ["HUMAN", "MEMBRANE"], "required_checks": ["dispute_resolved_as_invalid", "rejection_reason_present", "authority_false"], "membrane_hold": true, "receipt_required": true},
+    {"from": "REPLAY", "to": "DISPUTED", "allowed_actors": ["HUMAN", "AGENT", "OBSERVER", "MEMBRANE"], "required_checks": ["replay_mismatch_or_drift_detected", "authority_false"], "membrane_hold": true, "receipt_required": true}
+  ],
   "global_invariants": {
     "authority": false,
     "legal_effect": false,
     "boundary_honest": true,
-    "no_ghost_anchor": true
+    "no_ghost_anchor": true,
+    "human_merge_required": true,
+    "external_witness_not_truth": true,
+    "score_not_authority": true,
+    "base_or_ens_not_truth": true
   },
+  "forbidden_transitions": [
+    "DRAFT->MERGED",
+    "DRAFT->REPLAY",
+    "DRAFT->APPROVED",
+    "UNDER_REVIEW->MERGED",
+    "GOVERNANCE_CHECK->MERGED",
+    "APPROVED->MERGED",
+    "REJECTED->MERGED",
+    "DISPUTED->MERGED",
+    "REPLAY->MERGED"
+  ],
   "forbidden_promotions": [
     "witness_output_to_verified_truth",
     "score_to_authority",
-    "anchor_pointer_to_legal_effect"
+    "anchor_pointer_to_legal_effect",
+    "agent_action_to_merge_authority",
+    "base_namespace_to_truth",
+    "ens_name_to_authority",
+    "reputation_score_to_human_worth"
   ],
+  "membrane_hold_conditions": [
+    "required_receipts_missing",
+    "source_absent",
+    "witness_output_attempts_truth_promotion",
+    "score_attempts_authority_promotion",
+    "base_or_ens_anchor_claimed_without_tx_uid_or_receipt",
+    "runtime_parity_mismatch_observed",
+    "transition_not_explicitly_allowed"
+  ],
+  "receipt_hooks": [
+    "UNDER_REVIEW->GOVERNANCE_CHECK",
+    "GOVERNANCE_CHECK->APPROVED",
+    "GOVERNANCE_CHECK->DISPUTED",
+    "IN_PROGRESS->MERGED",
+    "MERGED->REPLAY",
+    "REPLAY->DISPUTED"
+  ],
+  "constitutional_rule": "All permitted transitions are procedural. No transition adjudicates truth, grants legal effect, promotes score to authority, or converts Base/ENS witness context into completion without a concrete receipt.",
   "canonical_rule": "Observers surface. Witnesses report. Agents play. Verifiers gate. Courts translate. Receipts replay. Humans merge. Authority remains false."
 }
