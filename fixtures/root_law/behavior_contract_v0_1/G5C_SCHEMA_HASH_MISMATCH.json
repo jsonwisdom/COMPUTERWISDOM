@@ -1,0 +1,30 @@
+{
+  "fixture_id": "G5C_SCHEMA_HASH_MISMATCH",
+  "version": "0.1",
+  "description": "Validator must VETO when lineage exists but schema integrity hash does not match expected shape.",
+  "context": {
+    "system_state": "INTEGRITY_CHECK_ENABLED",
+    "validator_mode": "STRICT_LINEAGE"
+  },
+  "input": {
+    "proposed_receipt": {
+      "decision_id": "g5c-schema-mismatch-0001",
+      "parent_cid": "QmValidParentCid1234567890",
+      "schema_hash": "sha256:BADBADBAD"
+    },
+    "local_store_state": {
+      "available_cids": [
+        "QmValidParentCid1234567890"
+      ]
+    },
+    "expected_schema_hash": "sha256:GOODGOODGOOD"
+  },
+  "expected_outcome": {
+    "verdict": "VETO",
+    "reason_code": "SCHEMA_HASH_MISMATCH",
+    "failure_class": "LINEAGE_FAILURE",
+    "constitutional_compliance": true,
+    "memory_update": false
+  },
+  "authority": false
+}
