@@ -1,0 +1,28 @@
+{
+  "pr_number": 65,
+  "title": "Feature/constitutional caseflow v0 1",
+  "status": "MERGED",
+  "timestamp": "2026-05-29",
+  "replay_scorecard": {
+    "boundary_honest": true,
+    "governance_held": true,
+    "ghost_bypass_blocked": true,
+    "receipt_generated": true,
+    "human_review_required": true
+  },
+  "deltas": {
+    "boundary_honest": "+1"
+  },
+  "court_verdicts": {
+    "goblin_court": "ADMISSIBLE — merge stands",
+    "meme_court": "GAME STACK FULLY LANDED",
+    "clown_court": "NO AUTHORITY UPGRADE — Authority: FALSE"
+  },
+  "system_state": {
+    "runtime_parity": "CONFIRMED",
+    "authority": false,
+    "master_protection": "ACTIVE",
+    "membrane": "HOLDS"
+  },
+  "next_gate": "Merge PR #66 → Begin v0.2 constitutional layer planning"
+}
