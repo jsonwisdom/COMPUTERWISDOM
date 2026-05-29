@@ -1,0 +1,179 @@
+{
+  "artifact": "WITNESS_REGISTRY_V0_1",
+  "type": "constitutional_witness_ecology_registry",
+  "status": "proposed_for_intake",
+  "branch": "feature/constitutional-caseflow-v0-1",
+  "authority": false,
+  "court": false,
+  "verifier": false,
+  "registry_itself_has_gating_power": false,
+  "purpose": "Catalog and version witness instances as bounded L0/L1 context providers. Prevent any single witness from becoming de-facto authority by making role, scope, and output constraints explicit and replayable.",
+  "core_principles": [
+    "Every registered witness must declare its location, role, and hard limits.",
+    "No witness may self-promote to truth, adjudication, merge authority, or legal effect.",
+    "Registry entries are public, timestampable, hashable, and subject to contradiction flagging by other witnesses.",
+    "The registry has discovery and transparency power only. It does not gate transitions."
+  ],
+  "allowed_witness_types": [
+    "GROK_GOBLIN_EXTERNAL",
+    "GOBLIN_VERIFIER_INTERNAL",
+    "PUBLIC_HUMAN_WITNESS",
+    "OTHER_AI_EXTERNAL",
+    "RECEIPT_REPLAY_LAYER",
+    "COURT_TRANSLATION_SURFACE",
+    "PUBLIC_RECORD_WITNESS",
+    "CHAIN_WITNESS",
+    "RUNTIME_WITNESS"
+  ],
+  "registered_witnesses": [
+    {
+      "id": "GROK_GOBLIN_EXTERNAL_V0_1",
+      "type": "GROK_GOBLIN_EXTERNAL",
+      "location": "external_x_xai_social_layer",
+      "role": "external_adversarial_public_context_witness",
+      "authority": false,
+      "court": false,
+      "verifier": false,
+      "can_gate_caseflow": false,
+      "can_trigger_review": true,
+      "allowed_outputs": [
+        "PUBLIC_CONTEXT_POINTER",
+        "DISPUTE_TRIGGER",
+        "CLAIM_SUMMARY",
+        "CONTRADICTION_HINT",
+        "SOURCE_DISCOVERY_HINT"
+      ],
+      "forbidden_promotions": [
+        "response_to_truth",
+        "response_to_adjudication",
+        "response_to_verified_receipt",
+        "response_to_merge_authority",
+        "response_to_legal_effect"
+      ],
+      "linked_artifact": "grok-goblin-external-witness-v0-1.html"
+    },
+    {
+      "id": "GOBLIN_VERIFIER_INTERNAL_V0_1",
+      "type": "GOBLIN_VERIFIER_INTERNAL",
+      "location": "inside_computerwisdom_caseflow_membrane",
+      "role": "bounded_transition_checker",
+      "authority": false,
+      "court": false,
+      "verifier": true,
+      "can_gate_caseflow": true,
+      "can_claim_external_truth": false,
+      "allowed_outputs": [
+        "PASS_TO_EXISTENCE_CHECK",
+        "NEEDS_RECEIPT",
+        "GHOST_PROMOTION_BLOCKED",
+        "DUPLICATE_FOUND",
+        "DISPUTE_REQUIRED",
+        "INVALID_TRANSITION"
+      ],
+      "forbidden_promotions": [
+        "verifier_to_judge",
+        "gate_to_truth",
+        "classification_to_adjudication",
+        "transition_check_to_legal_effect"
+      ],
+      "linked_artifact": "pending_goblin_verifier_v0_1"
+    },
+    {
+      "id": "COURT_TRANSLATION_SURFACES_V0_1",
+      "type": "COURT_TRANSLATION_SURFACE",
+      "location": "inside_public_translation_layer",
+      "role": "vernacular_translation_and_contradiction_surface",
+      "authority": false,
+      "court": true,
+      "verifier": false,
+      "can_gate_caseflow": false,
+      "allowed_outputs": [
+        "PUBLIC_EXPLANATION",
+        "ABSURDITY_FLAG",
+        "RECEIPT_DEMAND",
+        "TRANSLATION_SUMMARY"
+      ],
+      "forbidden_promotions": [
+        "court_to_authority",
+        "humor_to_legal_effect",
+        "translation_to_adjudication"
+      ]
+    },
+    {
+      "id": "PUBLIC_RECORD_WITNESS_V0_1",
+      "type": "PUBLIC_RECORD_WITNESS",
+      "location": "external_public_record_surface",
+      "role": "source_artifact_or_docket_pointer",
+      "authority": false,
+      "court": false,
+      "verifier": false,
+      "can_gate_caseflow": false,
+      "allowed_outputs": [
+        "SOURCE_POINTER",
+        "DOCUMENT_REFERENCE",
+        "TIMESTAMP_CONTEXT",
+        "HASH_INPUT"
+      ],
+      "forbidden_promotions": [
+        "pointer_to_certified_record_without_certification",
+        "index_entry_to_legal_conclusion"
+      ]
+    },
+    {
+      "id": "CHAIN_WITNESS_V0_1",
+      "type": "CHAIN_WITNESS",
+      "location": "external_chain_or_attestation_layer",
+      "role": "timestamped_public_witness_or_anchor",
+      "authority": false,
+      "court": false,
+      "verifier": false,
+      "can_gate_caseflow": false,
+      "allowed_outputs": [
+        "TX_POINTER",
+        "ATTESTATION_POINTER",
+        "BLOCK_TIMESTAMP",
+        "ANCHOR_REFERENCE"
+      ],
+      "forbidden_promotions": [
+        "anchor_to_truth",
+        "attestation_to_universal_validity",
+        "chain_witness_to_legal_authority"
+      ]
+    },
+    {
+      "id": "RUNTIME_WITNESS_V0_1",
+      "type": "RUNTIME_WITNESS",
+      "location": "internal_or_ci_runtime_surface",
+      "role": "execution_output_and_test_result_witness",
+      "authority": false,
+      "court": false,
+      "verifier": false,
+      "can_gate_caseflow": false,
+      "allowed_outputs": [
+        "TEST_OUTPUT",
+        "RUNTIME_LOG",
+        "HASHABLE_EXECUTION_ARTIFACT",
+        "PARITY_OBSERVATION"
+      ],
+      "forbidden_promotions": [
+        "local_output_to_independent_verification_without_independent_check",
+        "test_pass_to_authority_upgrade"
+      ]
+    }
+  ],
+  "forbidden_claims": [
+    "This witness is final truth.",
+    "This registry grants authority.",
+    "This entry cannot be contradicted.",
+    "This ecology self-adjudicates.",
+    "Any witness may merge or crown by itself."
+  ],
+  "output_formats": [
+    "PUBLIC_CONTEXT_POINTER",
+    "CONTRADICTION_HINT",
+    "WITNESS_SUMMARY",
+    "REGISTRY_ENTRY_HASH",
+    "DISPUTE_TRIGGER"
+  ],
+  "canonical_rule": "Witnesses observe. Verifiers gate. Courts translate. Receipts replay. Humans merge. Authority remains false."
+}
