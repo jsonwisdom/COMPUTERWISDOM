@@ -23,8 +23,8 @@ class Executor:
 
         if decision == 'ALLOW_WITH_GATES':
             safeguards = request.get('safeguards')
-            if not isinstance(safeguards, dict):
-                raise RejectionError('safeguards must be a dict for ALLOW_WITH_GATES')
+            if not isinstance(safeguards, dict) or not safeguards:
+                raise RejectionError('non-empty safeguards dict required for ALLOW_WITH_GATES')
             return {'status': 'SUCCESS', 'mode': 'PROTECTED'}
 
         if decision == 'ALLOW':
