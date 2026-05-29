@@ -1,0 +1,30 @@
+{
+  "artifact": "RUNTIME_PARITY_ENVIRONMENT_DECLARATION_V0_2",
+  "verification_cycle": "RUNTIME_PARITY_VERIFICATION_V0_1",
+  "authority": false,
+  "runtime_parity": "PENDING",
+  "witness_claim": false,
+  "production_claim": false,
+  "execution_environment": {
+    "hostname": "cs-332381401257-default",
+    "operating_system": "Linux cs-332381401257-default 6.6.137+ #1 SMP PREEMPT_DYNAMIC Wed May 20 08:46:38 UTC 2026 x86_64 x86_64 x86_64 GNU/Linux",
+    "runtime": "node",
+    "runtime_version": "v24.16.0",
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "branch": "master",
+    "commit_sha": "4f41b812de2d52acb541b2e6583ec437bb866d15"
+  },
+  "input_receipts": [
+    "COURT_SURFACE_HASH_RECEIPT_V0_1"
+  ],
+  "expected_artifacts": [
+    "_truth/clown_court/docket.jsonl",
+    "_truth/goblin_court/docket.jsonl",
+    "_truth/meme_court/docket.jsonl",
+    "docs/meme-court/MEME_COURT_CONSTITUTION_v1.md",
+    "schemas/meme_court_case_v1.schema.json",
+    "scripts/recompute_court_artifact_hashes.sh"
+  ],
+  "status": "ENVIRONMENT_CAPTURED_NOT_EXECUTED",
+  "verdict": "UNDETERMINED"
+}
