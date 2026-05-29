@@ -1,0 +1,35 @@
+{
+  "fixture_id": "G5D_WRONG_DOMAIN",
+  "version": "0.1",
+  "description": "Validator must VETO when the parent CID exists but belongs to a different trust domain.",
+  "context": {
+    "system_state": "INTEGRITY_CHECK_ENABLED",
+    "validator_mode": "STRICT_LINEAGE",
+    "trusted_domain": "jaywisdom.base.eth"
+  },
+  "input": {
+    "proposed_receipt": {
+      "decision_id": "g5d-wrong-domain-0001",
+      "parent_cid": "QmForeignDomainParentCid1234567890abcdef",
+      "claimed_domain": "external.example",
+      "expected_domain": "jaywisdom.base.eth",
+      "action": "ACCESS_GRANT"
+    },
+    "local_store_state": {
+      "available_cids": [
+        "QmForeignDomainParentCid1234567890abcdef"
+      ],
+      "cid_domain_map": {
+        "QmForeignDomainParentCid1234567890abcdef": "external.example"
+      }
+    }
+  },
+  "expected_outcome": {
+    "verdict": "VETO",
+    "reason_code": "DOMAIN_BOUNDARY_VIOLATION",
+    "failure_class": "LINEAGE_FAILURE",
+    "constitutional_compliance": true,
+    "memory_update": false
+  },
+  "authority": false
+}
