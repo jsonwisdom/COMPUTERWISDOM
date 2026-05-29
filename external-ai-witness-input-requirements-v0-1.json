@@ -1,0 +1,50 @@
+{
+  "artifact": "EXTERNAL_AI_WITNESS_INPUT_REQUIREMENTS_V0_1",
+  "type": "external_ai_boundary_and_input_requirements",
+  "status": "proposed_for_intake",
+  "branch": "feature/constitutional-caseflow-v0-1",
+  "authority": false,
+  "court": false,
+  "verifier": false,
+  "purpose": "Define the minimum input requirements and boundary handling rules for external AI witness outputs so prompt frameworks are not mistaken for public-claim witnessing.",
+  "observed_external_boundary": {
+    "provider_surface": "Grok / xAI",
+    "observed_behavior": "Refused to adopt external witness persona, custom rule artifacts, membranes, or restricted JSON framework without an actual public claim.",
+    "classification": "EXTERNAL_MODEL_BOUNDARY_OBSERVED",
+    "caseflow_effect": "NO_CLAIM_NO_WITNESS",
+    "authority": false
+  },
+  "requires_one_of": [
+    "exact_claim_text",
+    "public_url",
+    "screenshot_text",
+    "document_excerpt",
+    "public_artifact_reference"
+  ],
+  "empty_input_result": "NO_CLAIM_NO_WITNESS",
+  "placeholder_input_result": "BOUNDARY_OBSERVATION_ONLY",
+  "framework_only_input_result": "NOT_INTAKE_READY",
+  "allowed_external_ai_outputs_after_valid_input": [
+    "literal_claim_summary",
+    "missing_context",
+    "contradictions_or_uncertainties",
+    "primary_sources_needed",
+    "visibility_attention_bias_risk"
+  ],
+  "forbidden_promotions": [
+    "external_ai_output_to_truth",
+    "external_ai_output_to_adjudication",
+    "external_ai_output_to_verified_receipt",
+    "external_ai_output_to_merge_authority",
+    "external_ai_output_to_legal_effect",
+    "persona_refusal_to_model_failure"
+  ],
+  "boundary_rules": [
+    "Do not jailbreak external AI witnesses.",
+    "Do not require external models to acknowledge internal COMPUTERWISDOM artifacts.",
+    "Do not treat refusal to adopt persona as failure.",
+    "Treat refusal as boundary evidence when appropriate.",
+    "Only feed external model outputs into case intake after a real public claim or artifact exists."
+  ],
+  "canonical_rule": "No actual claim, no witness output. Placeholder prompts produce boundary observations only. Framework without artifact is not intake-ready."
+}
