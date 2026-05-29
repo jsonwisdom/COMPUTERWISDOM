@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DecisionReceipt",
+  "description": "Formal outcome record resolving a conflict.",
+  "type": "object",
+  "required": [
+    "decision_id",
+    "conflict_id",
+    "resolution_statement",
+    "decision_scope",
+    "universal_truth_claim",
+    "timestamp_utc",
+    "version",
+    "authority"
+  ],
+  "properties": {
+    "decision_id": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "conflict_id": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "resolution_statement": {
+      "type": "string"
+    },
+    "decision_scope": {
+      "const": "LOCAL_TO_DISPUTE"
+    },
+    "universal_truth_claim": {
+      "const": false
+    },
+    "timestamp_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "authority": {
+      "const": false
+    }
+  },
+  "additionalProperties": false
+}
