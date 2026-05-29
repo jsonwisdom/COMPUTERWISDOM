@@ -5,11 +5,15 @@ Root Law behavior fixture runner scaffold.
 Status: draft scaffold.
 Authority: false.
 
-This runner currently materializes the G5 orphaned-parent gate and emits a
+This runner currently materializes the G5 orphaned-parent gate and prints a
 fixture_suite_result draft receipt. Full JCS hashing and full G1-G6 coverage
 must be added before constitutional lock.
+
+By default this script does not write generated receipts to the working tree.
+Use --write-receipt when an explicit local receipt artifact is desired.
 """
 
+import argparse
 import json
 from datetime import datetime, timezone
 from pathlib import Path
@@ -74,12 +78,12 @@ def run_fixture(path: Path) -> dict:
     }
 
 
-def main() -> int:
+def build_receipt() -> dict:
     fixture_paths = [FIXTURE_DIR / "G5_ORPHANED_PARENT.json"]
     results = [run_fixture(path) for path in fixture_paths]
     suite_pass = all(result["pass"] for result in results)
 
-    receipt = {
+    return {
         "artifact": "fixture_suite_result.v0_1",
         "suite_id": "ROOT_LAW_BEHAVIOR_FIXTURES_G1",
         "runner_state": "DRAFT_G5_ONLY",
@@ -90,12 +94,34 @@ def main() -> int:
         "authority": False,
     }
 
+
+def write_receipt(receipt: dict) -> Path:
     RECEIPT_DIR.mkdir(parents=True, exist_ok=True)
     receipt_path = RECEIPT_DIR / "fixture_suite_result.v0_1.json"
     receipt_path.write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    return receipt_path
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Run Root Law behavior fixtures.")
+    parser.add_argument(
+        "--write-receipt",
+        action="store_true",
+        help="Write fixture_suite_result.v0_1.json into receipts/root_law/fixture_runs/.",
+    )
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    receipt = build_receipt()
+
+    if args.write_receipt:
+        receipt_path = write_receipt(receipt)
+        receipt["written_receipt_path"] = str(receipt_path.relative_to(ROOT))
 
     print(json.dumps(receipt, indent=2, sort_keys=True))
-    return 0 if suite_pass else 1
+    return 0 if receipt["suite_result"] == "PASS" else 1
 
 
 if __name__ == "__main__":
