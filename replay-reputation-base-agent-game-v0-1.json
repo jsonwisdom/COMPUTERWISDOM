@@ -1,0 +1,182 @@
+{
+  "artifact": "REPLAY_REPUTATION_BASE_AGENT_GAME_V0_1",
+  "type": "bounded_replay_reputation_and_base_agent_game_spec",
+  "status": "proposed_for_intake",
+  "branch": "feature/constitutional-caseflow-v0-1",
+  "ens_root": "jaywisdom.base.eth",
+  "layer": "Base L2 namespace and optional witness/settlement surface",
+  "authority": false,
+  "legal_effect": false,
+  "financial_advice": false,
+  "reputation_is_personhood": false,
+  "purpose": "Gamify replay quality, receipt discipline, and bounded Base MCP agent participation without converting scores into legal status, truth, identity worth, or unilateral authority.",
+  "core_loop": [
+    "observe_signal",
+    "submit_claim_or_action",
+    "attach_receipt_or_pointer",
+    "run_replay_check",
+    "assign_bounded_score",
+    "flag_dispute_if_needed",
+    "record_receipt",
+    "optional_human_merge_or_anchor"
+  ],
+  "game_objects": {
+    "claim": "raw input, statement, artifact, public post, record pointer, or agent action",
+    "receipt": "hashable evidence of what was submitted, observed, executed, or refused",
+    "replay": "declared path allowing independent reconstruction from inputs and receipts",
+    "agent": "bounded participant that may witness, play, draft, or prepare actions",
+    "score": "bounded measurement of replay behavior, not truth or worth",
+    "badge": "non-authoritative marker of repeated reliable behavior",
+    "dispute": "first-class state for contested or insufficiently receipted claims",
+    "anchor": "optional Base/EAS/chain witness only when real tx or UID exists"
+  },
+  "player_types": [
+    {
+      "id": "HUMAN_OPERATOR",
+      "can_merge": true,
+      "can_sign": true,
+      "can_anchor": true,
+      "authority": "operator_authority_only_not_universal_truth"
+    },
+    {
+      "id": "BASE_MCP_AGENT",
+      "can_witness": true,
+      "can_play": true,
+      "can_prepare_anchor": true,
+      "can_merge": false,
+      "can_sign": false,
+      "authority": false
+    },
+    {
+      "id": "EXTERNAL_AI_AGENT",
+      "can_witness": true,
+      "can_play": true,
+      "can_prepare_anchor": false,
+      "can_merge": false,
+      "can_sign": false,
+      "authority": false
+    },
+    {
+      "id": "PUBLIC_HUMAN_WITNESS",
+      "can_witness": true,
+      "can_play": false,
+      "can_merge": false,
+      "can_sign": false,
+      "authority": false
+    }
+  ],
+  "score_dimensions": {
+    "replayability_score": {
+      "meaning": "Can another observer reconstruct what happened from declared inputs?",
+      "positive_signals": ["hash_present", "source_pointer_present", "timestamp_present", "input_output_path_declared"],
+      "negative_signals": ["missing_source", "unhashable_claim", "hidden_input", "narrative_without_receipt"]
+    },
+    "receipt_integrity_score": {
+      "meaning": "Are receipts explicit, bounded, and non-overclaimed?",
+      "positive_signals": ["authority_false_declared", "scope_declared", "forbidden_promotions_checked", "artifact_path_or_commit_present"],
+      "negative_signals": ["ghost_anchor", "authority_creep", "uncited_assertion", "receipt_claim_exceeds_evidence"]
+    },
+    "agent_discipline_score": {
+      "meaning": "Does the agent stay within its allowed role?",
+      "positive_signals": ["refusal_when_input_invalid", "boundary_observation", "does_not_self_verify", "routes_to_human_review"],
+      "negative_signals": ["self_crowning", "merge_attempt", "truth_claim_without_receipt", "signing_claim_without_tx"]
+    },
+    "dispute_quality_score": {
+      "meaning": "Does the system preserve disagreement as a replayable state instead of hiding it?",
+      "positive_signals": ["dispute_state_opened", "counter_source_requested", "classification_not_overpromoted", "uncertainty_preserved"],
+      "negative_signals": ["contradiction_ignored", "missing_context_suppressed", "dispute_collapsed_into_verdict"]
+    },
+    "base_anchor_hygiene_score": {
+      "meaning": "Does the Base/EAS layer avoid ghost anchors and distinguish namespace from receipt?",
+      "positive_signals": ["tx_hash_present_if_anchor_claimed", "eas_uid_present_if_attestation_claimed", "payload_hash_declared", "operator_confirmation_present"],
+      "negative_signals": ["ens_name_treated_as_truth", "base_anchor_claim_without_tx", "uid_missing", "settlement_claim_exceeds_anchor"]
+    }
+  },
+  "badge_types": [
+    {
+      "badge": "REPLAY_CLEAN",
+      "condition": "All required inputs, hashes, and source pointers are present for a bounded replay path.",
+      "authority": false
+    },
+    {
+      "badge": "RECEIPT_DISCIPLINED",
+      "condition": "Artifact declares scope, authority=false, and does not exceed evidence.",
+      "authority": false
+    },
+    {
+      "badge": "BOUNDARY_HONEST",
+      "condition": "Agent or witness refuses or downgrades invalid inputs rather than inventing output.",
+      "authority": false
+    },
+    {
+      "badge": "DISPUTE_PRESERVED",
+      "condition": "Contradictions remain visible as first-class states until resolved by receipts.",
+      "authority": false
+    },
+    {
+      "badge": "BASE_ANCHOR_CLEAN",
+      "condition": "Anchor claim includes tx, UID, payload hash, and operator confirmation.",
+      "authority": false
+    }
+  ],
+  "forbidden_score_uses": [
+    "legal_guilt_or_innocence",
+    "human_worth_or_social_credit",
+    "employment_or_creditworthiness",
+    "truth_finality",
+    "merge_authority",
+    "wallet_signing_authority",
+    "punishment_or_coercion"
+  ],
+  "allowed_score_uses": [
+    "prioritize_review",
+    "route_to_dispute",
+    "identify_missing_receipts",
+    "compare_replay_quality",
+    "detect_agent_boundary_drift",
+    "teach_receipt_discipline",
+    "prepare_optional_anchor_review"
+  ],
+  "game_verdicts": [
+    "REPLAY_READY",
+    "NEEDS_RECEIPT",
+    "BOUNDARY_HONEST_REFUSAL",
+    "DISPUTE_REQUIRED",
+    "GHOST_ANCHOR_BLOCKED",
+    "AUTHORITY_CREEP_BLOCKED",
+    "HUMAN_REVIEW_REQUIRED"
+  ],
+  "base_agent_actions": [
+    {
+      "action": "prepare_anchor_payload",
+      "requires": ["artifact_hash", "operator_confirmation", "no_existing_anchor_conflict"],
+      "forbidden": ["submit_tx_without_operator", "claim_anchor_complete_without_tx_or_uid"]
+    },
+    {
+      "action": "submit_replay_score",
+      "requires": ["scoring_dimension", "source_receipts", "authority_false"],
+      "forbidden": ["score_personhood", "score_legal_status", "score_without_receipts"]
+    },
+    {
+      "action": "open_dispute_state",
+      "requires": ["contradiction_hint_or_missing_receipt", "claim_reference"],
+      "forbidden": ["declare_fraud_without_process", "collapse_dispute_to_guilt"]
+    },
+    {
+      "action": "emit_boundary_observation",
+      "requires": ["invalid_input_or_refusal_context", "observed_behavior"],
+      "forbidden": ["treat_refusal_as_failure", "jailbreak_external_agent"]
+    }
+  ],
+  "minimal_score_receipt_shape": {
+    "score_receipt_id": "sha256(jcs(self_without_score_receipt_id))",
+    "agent_or_player_id": "string",
+    "claim_or_artifact_ref": "string",
+    "score_dimension": "enum",
+    "verdict": "enum",
+    "supporting_receipts": ["path_or_url_or_commit_or_tx_or_uid"],
+    "authority": false,
+    "timestamp_utc": "ISO_8601"
+  },
+  "canonical_rule": "Gamify behavior, not human worth. Score replay quality, receipt discipline, boundary honesty, dispute preservation, and Base anchor hygiene. Agents may play and witness; receipts decide what happened; humans decide what moves; authority remains false."
+}
