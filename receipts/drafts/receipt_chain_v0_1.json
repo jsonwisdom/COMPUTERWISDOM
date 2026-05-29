@@ -1,0 +1,63 @@
+{
+  "receipt_chain_version": "v0.1",
+  "pattern_id": "joy://pattern/crisp-qaoa-qrl-2026",
+  "created_utc": "2026-05-29T12:24:00Z",
+  "authority": false,
+  "sources": [
+    {
+      "artifact_id": "joy://2026-05-29/arxiv-2605.23138-001",
+      "title": "Classical State Preparation for Variational Quantum Algorithms via Reinforcement Learning",
+      "arxiv_id": "2605.23138v1",
+      "hash": "65fb435a2f43225097a40c3e495453cc24f62fd333691d35927c13b43721089c",
+      "verification": "assistant_observed_source_and_claims"
+    },
+    {
+      "artifact_id": "joy://2026-05-29/arxiv-2605.01574-001",
+      "title": "Hybrid Quantum Reinforcement Learning with QAOA for Improved Vehicle Routing Optimization",
+      "arxiv_id": "2605.01574v1",
+      "hash": "903d92f593b0ef82adaa19b05e2a72bfc917e5b24e587c90d6692df562888460",
+      "verification": "assistant_verified_abstract"
+    }
+  ],
+  "steps": [
+    {
+      "step": 1,
+      "name": "crisp_initialization",
+      "description": "Neural-Guided MCTS selects Clifford prefix gates for VQA warm start",
+      "joy_primitive": "witness_ingest",
+      "output": "classical_anchor_hash",
+      "risk_boundary": "Do not promote beyond reported benchmarks"
+    },
+    {
+      "step": 2,
+      "name": "policy_construction",
+      "description": "QAOA layers embedded into QRL policy network",
+      "joy_primitive": "deterministic_receipt",
+      "output": "policy_architecture_receipt",
+      "risk_boundary": "Architecture only, no performance claim"
+    },
+    {
+      "step": 3,
+      "name": "training_episodes",
+      "description": "Agent explores VRP solution space; record episodes, memory, convergence",
+      "joy_primitive": "replay_package",
+      "output": "episode_trace_hash",
+      "risk_boundary": "Claims limited to abstract: quicker convergence, fewer episodes"
+    },
+    {
+      "step": 4,
+      "name": "evaluation",
+      "description": "Compare to SPIQ, GAS, standard QRL baselines",
+      "joy_primitive": "semantic_firewall",
+      "output": "evaluation_receipt",
+      "risk_boundary": "Block universal advantage claims"
+    }
+  ],
+  "triad_mapping": {
+    "quantum_systems": "CRiSP classical prep → QAOA-QRL policy execution",
+    "applied_ai": "MCTS+Transformer → QRL with embedded QAOA",
+    "cognitive_security": "Receipts at each boundary prevent narrative drift"
+  },
+  "status": "provisional",
+  "notes": "Architectural synthesis only. No authority upgrade. No policy weight."
+}
