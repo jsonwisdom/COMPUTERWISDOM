@@ -1,0 +1,30 @@
+{
+  "fixture_id": "G1_FULL_VALID_LATTICE",
+  "version": "0.1",
+  "description": "Validator must ALLOW when lineage, authority boundary, hash shape, and validator state are valid.",
+  "context": {
+    "system_state": "INTEGRITY_CHECK_ENABLED",
+    "validator_mode": "STRICT_LINEAGE"
+  },
+  "input": {
+    "proposed_receipt": {
+      "decision_id": "g1-valid-lattice-0001",
+      "parent_cid": "QmValidParentCid1234567890abcdef1234567890",
+      "action": "ACCESS_GRANT",
+      "authority": false,
+      "policy_hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "validator_state": "CONSTITUTIONAL_READY"
+    },
+    "local_store_state": {
+      "available_cids": [
+        "QmValidParentCid1234567890abcdef1234567890"
+      ]
+    }
+  },
+  "expected_outcome": {
+    "verdict": "ALLOW",
+    "reason_code": "SUCCESS",
+    "constitutional_compliance": true
+  },
+  "authority": false
+}
