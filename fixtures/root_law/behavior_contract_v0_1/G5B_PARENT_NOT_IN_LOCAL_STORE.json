@@ -1,0 +1,26 @@
+{
+  "fixture_id": "G5B_PARENT_NOT_IN_LOCAL_STORE",
+  "version": "0.1",
+  "description": "Validator must VETO when parent exists conceptually but is unavailable in the local store.",
+  "context": {
+    "system_state": "INTEGRITY_CHECK_ENABLED",
+    "validator_mode": "STRICT_LINEAGE"
+  },
+  "input": {
+    "proposed_receipt": {
+      "decision_id": "g5b-parent-not-local-0001",
+      "parent_cid": "QmExpectedParentCid1234567890"
+    },
+    "local_store_state": {
+      "available_cids": []
+    }
+  },
+  "expected_outcome": {
+    "verdict": "VETO",
+    "reason_code": "PARENT_NOT_IN_LOCAL_STORE",
+    "failure_class": "LINEAGE_FAILURE",
+    "constitutional_compliance": true,
+    "memory_update": false
+  },
+  "authority": false
+}
