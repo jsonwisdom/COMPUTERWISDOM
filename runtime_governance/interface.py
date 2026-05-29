@@ -1,22 +1,20 @@
-import re
-
-
 class RejectionError(Exception):
     pass
 
 
-_SHA256_RE = re.compile(r'^[a-fA-F0-9]{64}$')
-
-
 class Executor:
+    def _validate_receipt_hash(self, receipt_hash):
+        if not receipt_hash or not isinstance(receipt_hash, str):
+            raise RejectionError('missing or invalid receipt_hash')
+
+        if len(receipt_hash) != 64 or not all(
+            c in '0123456789abcdef' for c in receipt_hash.lower()
+        ):
+            raise RejectionError('receipt_hash must be valid SHA256')
+
     def execute(self, request: dict):
         receipt_hash = request.get('receipt_hash')
-
-        if receipt_hash is None:
-            raise RejectionError('missing receipt_hash')
-
-        if not isinstance(receipt_hash, str) or not _SHA256_RE.match(receipt_hash):
-            raise RejectionError('invalid receipt_hash')
+        self._validate_receipt_hash(receipt_hash)
 
         decision = request.get('gate_decision')
 
