@@ -1,0 +1,27 @@
+{
+  "artifact": "CASEFLOW_TRANSITION_RULES_V0_2",
+  "authority": false,
+  "allowed_transitions": {
+    "DRAFT": ["UNDER_REVIEW", "REJECTED"],
+    "UNDER_REVIEW": ["GOVERNANCE_CHECK", "DISPUTED", "REJECTED"],
+    "GOVERNANCE_CHECK": ["APPROVED", "DISPUTED", "REJECTED"],
+    "APPROVED": ["IN_PROGRESS"],
+    "IN_PROGRESS": ["MERGED", "DISPUTED", "REJECTED"],
+    "MERGED": ["REPLAY"],
+    "DISPUTED": ["UNDER_REVIEW", "REJECTED"],
+    "REJECTED": [],
+    "REPLAY": ["DISPUTED"]
+  },
+  "global_invariants": {
+    "authority": false,
+    "legal_effect": false,
+    "boundary_honest": true,
+    "no_ghost_anchor": true
+  },
+  "forbidden_promotions": [
+    "witness_output_to_verified_truth",
+    "score_to_authority",
+    "anchor_pointer_to_legal_effect"
+  ],
+  "canonical_rule": "Observers surface. Witnesses report. Agents play. Verifiers gate. Courts translate. Receipts replay. Humans merge. Authority remains false."
+}
