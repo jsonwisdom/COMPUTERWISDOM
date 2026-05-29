@@ -1,0 +1,19 @@
+{
+  "artifact": "BASE_ANCHOR_HYGIENE_GATE_V0_1",
+  "schema_version": "v0.1",
+  "authority": false,
+  "required_fields": [
+    "chain",
+    "tx_hash_or_eas_uid",
+    "payload_hash",
+    "operator_confirmation",
+    "no_existing_anchor_conflict"
+  ],
+  "rules": [
+    "RECEIPT_NOT_DEED",
+    "MISSING_FIELDS_BLOCK",
+    "ANCHOR_CONFLICT_BLOCK",
+    "OPERATOR_CONFIRMATION_REQUIRED",
+    "NO_ANCHOR_TO_AUTHORITY_PROMOTION"
+  ]
+}
