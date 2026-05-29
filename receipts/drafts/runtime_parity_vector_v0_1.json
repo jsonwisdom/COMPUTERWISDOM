@@ -1,0 +1,32 @@
+{
+  "artifact": "RUNTIME_PARITY_VECTOR_V0_1",
+  "verification_cycle": "RUNTIME_PARITY_VERIFICATION_V0_1",
+  "authority": false,
+  "runtime_parity": "PENDING",
+  "witness_claim": false,
+  "production_claim": false,
+  "source_environment_declaration": "receipts/drafts/runtime_parity_environment_declaration_v0_2.json",
+  "execution_commit_sha": "9b232a9369deb37d79bf112be89788d2c125f675",
+  "declared_runtime": {
+    "runtime": "node",
+    "runtime_version": "v24.16.0"
+  },
+  "inputs": [
+    "_truth/clown_court/docket.jsonl",
+    "_truth/goblin_court/docket.jsonl",
+    "_truth/meme_court/docket.jsonl",
+    "docs/meme-court/MEME_COURT_CONSTITUTION_v1.md",
+    "schemas/meme_court_case_v1.schema.json",
+    "scripts/recompute_court_artifact_hashes.sh"
+  ],
+  "required_checks": [
+    "all_expected_artifacts_exist",
+    "json_artifacts_parse",
+    "court_dockets_nonempty",
+    "hash_recompute_script_executable_or_runnable",
+    "authority_false_preserved",
+    "runtime_parity_not_preclaimed"
+  ],
+  "status": "VECTOR_DECLARED_NOT_EXECUTED",
+  "verdict": "UNDETERMINED"
+}
