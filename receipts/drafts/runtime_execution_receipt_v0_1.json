@@ -1,0 +1,47 @@
+{
+  "artifact": "RUNTIME_EXECUTION_RECEIPT_V0_1",
+  "authority": false,
+  "runtime_parity": "UNDER_TEST",
+  "execution_commit_sha": "9b232a9369deb37d79bf112be89788d2c125f675",
+  "observed_head_sha": "73d70aa47301023f0e16e219a22e82108d251584",
+  "checks": [
+    {
+      "path": "_truth/clown_court/docket.jsonl",
+      "exists": true,
+      "sha256": "5c345f259037314909c89ae3af1d9e52ad210554404661cd77ade3d6710123ef",
+      "nonempty": true
+    },
+    {
+      "path": "_truth/goblin_court/docket.jsonl",
+      "exists": true,
+      "sha256": "b94b1374e5b380e3e7adf77df99324c184275cad4756ecce5469afa5699488d4",
+      "nonempty": true
+    },
+    {
+      "path": "_truth/meme_court/docket.jsonl",
+      "exists": true,
+      "sha256": "91b9f80f6305734a44fb3868b81c6cd829476f57ee8eae6148651cec9e8b642c",
+      "nonempty": true
+    },
+    {
+      "path": "docs/meme-court/MEME_COURT_CONSTITUTION_v1.md",
+      "exists": true,
+      "sha256": "161b83962526f367882bbdecae739875ece17a0c00237be111d32a519b9827d8",
+      "nonempty": true
+    },
+    {
+      "path": "schemas/meme_court_case_v1.schema.json",
+      "exists": true,
+      "sha256": "4a9b490e224de05e29393a94dbfd85b8657f240a4e0907a6cf6996c18d3640f2",
+      "nonempty": true
+    },
+    {
+      "path": "scripts/recompute_court_artifact_hashes.sh",
+      "exists": true,
+      "sha256": "c82cf64e5b8691b780076d84aeb6d4041e464b92f51108456beadf9936cd9eae",
+      "nonempty": true
+    }
+  ],
+  "tests_failed": 0,
+  "verdict": "PASS"
+}
