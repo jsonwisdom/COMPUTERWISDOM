@@ -1,0 +1,65 @@
+{
+  "fixture_id": "FIXTURE_001_FULL_VALID_LATTICE",
+  "expected": {
+    "verdict": "PASS",
+    "reason_code": "SUCCESS",
+    "gate_triggered": "VERDICT_FINALIZED"
+  },
+  "notes": {
+    "purpose": "Known-good path through ASSERTED -> OBSERVED -> DERIVED -> DISPUTED -> ADJUDICATED.",
+    "hashing_rule": "sha256:jcs(self_without_receipt_id)",
+    "authority": false
+  },
+  "receipts": [
+    {
+      "receipt_id": "sha256:7c75a33c1680d283626e2575971488c9f7a63447990141f6e1f0e49339e3a35e",
+      "category": "ASSERTED",
+      "content_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "genesis": true,
+      "provenance_id": null,
+      "timestamp_utc": "2026-05-28T18:52:51Z",
+      "version": "0.1",
+      "authority": false
+    },
+    {
+      "receipt_id": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "category": "OBSERVED",
+      "content_hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "genesis": false,
+      "provenance_id": "sha256:7c75a33c1680d283626e2575971488c9f7a63447990141f6e1f0e49339e3a35e",
+      "timestamp_utc": "2026-05-28T18:53:00Z",
+      "version": "0.1",
+      "authority": false
+    },
+    {
+      "receipt_id": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "category": "DERIVED",
+      "content_hash": "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "genesis": false,
+      "provenance_id": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+      "timestamp_utc": "2026-05-28T18:54:00Z",
+      "version": "0.1",
+      "authority": false
+    },
+    {
+      "receipt_id": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "category": "DISPUTED",
+      "content_hash": "sha256:cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "genesis": false,
+      "provenance_id": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+      "timestamp_utc": "2026-05-28T18:55:00Z",
+      "version": "0.1",
+      "authority": false
+    },
+    {
+      "receipt_id": "sha256:4444444444444444444444444444444444444444444444444444444444444444",
+      "category": "ADJUDICATED",
+      "content_hash": "sha256:dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "genesis": false,
+      "provenance_id": "sha256:3333333333333333333333333333333333333333333333333333333333333333",
+      "timestamp_utc": "2026-05-28T18:56:00Z",
+      "version": "0.1",
+      "authority": false
+    }
+  ]
+}

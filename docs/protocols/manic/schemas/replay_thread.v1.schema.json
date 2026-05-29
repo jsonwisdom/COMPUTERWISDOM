@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jsonwisdom/COMPUTERWISDOM/docs/protocols/manic/schemas/replay_thread.v1.schema.json",
+  "title": "Replay Thread v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id",
+    "thread_id",
+    "root_receipt",
+    "created_at",
+    "timeline",
+    "forks_allowed",
+    "append_only"
+  ],
+  "properties": {
+    "schema_id": { "const": "MANIC_REPLAY_THREAD_V1" },
+    "thread_id": { "type": "string", "pattern": "^thread:[a-f0-9]{64}$" },
+    "root_receipt": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "forks_allowed": { "const": true },
+    "append_only": { "const": true },
+    "timeline": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["receipt_id", "position", "timestamp"],
+        "properties": {
+          "receipt_id": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+          "position": { "type": "integer", "minimum": 0 },
+          "timestamp": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

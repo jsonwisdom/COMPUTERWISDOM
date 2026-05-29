@@ -1,0 +1,19 @@
+{
+  "sale_id": "SALE-VERIFY-0001",
+  "sku": "verification_pack",
+  "sale_status": "ANCHOR_CANDIDATE",
+  "payment_status": "NOT_ROUTED",
+  "sale_timestamp": "2026-05-21T00:00:00Z",
+  "router_repo": "jsonwisdom/COMPUTERWISDOM",
+  "router_commit": "b99df6610a17818d74d1a80cca83ab63a9314d48",
+  "schema_id": "sales_v0_alpha",
+  "schema_hash": "SCHEMA_HASH_PENDING",
+  "proof_inventory_repo": "jsonwisdom/AL",
+  "proof_hash": "AL_PROOF_INVENTORY_PENDING_BIND",
+  "merkle_root": "AL_MERKLE_ROOT_PENDING_BIND",
+  "receipt_hash": "SALE_RECEIPT_HASH_PENDING_FINALIZATION",
+  "ens_identity": "jaywisdom.base.eth",
+  "zora_status": "PENDING",
+  "eas_status": "PENDING",
+  "authority_boundary": "ANCHOR_CANDIDATE_ONLY_NO_PAYMENT_CLAIM"
+}

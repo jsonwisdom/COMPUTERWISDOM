@@ -1,0 +1,13 @@
+{
+  "payload_type": "EAS_ATTESTATION_CANDIDATE",
+  "sale_id": "SALE-VERIFY-0001",
+  "sku": "verification_pack",
+  "sale_receipt_sha256": "c5ab91ff915792232b195107561a867013c42bd15221b68c322c9e225e116293",
+  "anchor_envelope_sha256": "338653cfb0aa375449393575f165a29d7436550cb706bdf5b89c3ab65eaba0fb",
+  "router_commit": "b99df6610a17818d74d1a80cca83ab63a9314d48",
+  "identity": "jaywisdom.base.eth",
+  "payment_status": "NOT_ROUTED",
+  "attestation_status": "PENDING_REAL_EAS_UID",
+  "zora_status": "PENDING_REAL_ZORA_ID",
+  "claim_boundary": "candidate only; not anchored until real EAS UID or Zora ID is recorded"
+}

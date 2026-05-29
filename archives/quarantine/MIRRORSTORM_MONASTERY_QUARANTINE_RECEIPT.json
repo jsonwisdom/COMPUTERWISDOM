@@ -1,0 +1,18 @@
+{
+  "asset": "mirrorstorm_monastery.zip",
+  "status": "QUARANTINED",
+  "classification": "NON_CANONICAL_FORENSIC_ARCHIVE",
+  "excluded_from": [
+    "triggerdeck-canon-v1",
+    "mirrorstorm-genesis-v0"
+  ],
+  "future_actions_allowed": [
+    "forensic_review",
+    "selective_extraction",
+    "reclassification"
+  ],
+  "future_actions_forbidden": [
+    "direct_canonical_merge",
+    "implicit_authority_inheritance"
+  ]
+}

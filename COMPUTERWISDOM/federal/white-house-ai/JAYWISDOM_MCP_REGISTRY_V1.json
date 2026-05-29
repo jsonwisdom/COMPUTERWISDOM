@@ -1,0 +1,32 @@
+{
+  "registry_id": "jaywisdom_mcp_registry_v1",
+  "anchor_identity": "jaywisdom.base.eth",
+  "status": "ACTIVE_OBSERVER_REGISTRY",
+  "authority": "NONE",
+  "boundary": "REGISTRY_IS_NOT_GOVERNMENT_AUTHORITY",
+  "children": [
+    {
+      "system_id": "pam_bondi_public_portal_mcp_base_v1",
+      "name": "PAM_BONDI_PUBLIC_PORTAL",
+      "path": "pam-bondi-public-portal/PAM_BONDI_MCP_BASE_V1.json",
+      "mode": "READ_ONLY_PUBLIC_OBSERVER",
+      "receipt_path": "pam-bondi-public-portal/receipts/pam_bondi_signals.jsonl",
+      "invariants": [
+        "OBSERVER_IS_NOT_OFFICE",
+        "MEDIA_REPORT_IS_NOT_BINDING_LAW",
+        "ADVISORY_APPOINTMENT_IS_NOT_EXECUTIVE_ORDER",
+        "CORROBORATION_IS_NOT_AUTHORITY"
+      ],
+      "writes": "APPEND_ONLY_RECEIPTS",
+      "mutates_existing_records": false,
+      "is_federal_authority": false
+    }
+  ],
+  "core_rules": {
+    "no_authority_cosplay": true,
+    "public_sources_only": true,
+    "append_only_receipts": true,
+    "official_confirmation_requires_dot_gov_or_federal_register": true
+  },
+  "version": "1.0.0"
+}

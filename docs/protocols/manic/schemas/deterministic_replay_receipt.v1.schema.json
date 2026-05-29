@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jsonwisdom/COMPUTERWISDOM/docs/protocols/manic/schemas/deterministic_replay_receipt.v1.schema.json",
+  "title": "MANIC Deterministic Replay Receipt v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id",
+    "receipt_id",
+    "target_node",
+    "node_version_hash",
+    "registry_version",
+    "enforcement_gates",
+    "status",
+    "authority_claim",
+    "truth_adjudication",
+    "continuity_flag"
+  ],
+  "properties": {
+    "schema_id": {
+      "const": "MANIC_DETERMINISTIC_REPLAY_RECEIPT_V1"
+    },
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^RCP-RPL-\\d{3}-[A-Z0-9]+-\\d{5}$"
+    },
+    "target_node": {
+      "type": "string",
+      "pattern": "^RPL-\\d{3}-[A-Z0-9]+-\\d{5}$"
+    },
+    "node_version_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "registry_version": {
+      "const": "REPLAY_TRANSFORM_REGISTRY_001"
+    },
+    "enforcement_gates": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "string",
+        "enum": ["SCHEMA_GATE", "REGISTRY_GATE", "REPLAY_GATE"]
+      },
+      "contains": {
+        "const": "SCHEMA_GATE"
+      }
+    },
+    "status": {
+      "type": "string",
+      "enum": ["PROVEN_REPLAYABLE", "REFUSED"]
+    },
+    "authority_claim": {
+      "const": "NONE"
+    },
+    "truth_adjudication": {
+      "const": "NOT_PERFORMED"
+    },
+    "continuity_flag": {
+      "const": "COHERENTLY_INVALID_UNTIL_REPLAYED"
+    }
+  },
+  "not": {
+    "anyOf": [
+      { "required": ["timestamp"] },
+      { "required": ["created_at"] },
+      { "required": ["updated_at"] },
+      { "required": ["system_time"] },
+      { "required": ["generated_at"] }
+    ]
+  }
+}

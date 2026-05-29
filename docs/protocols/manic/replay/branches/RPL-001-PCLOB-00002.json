@@ -1,0 +1,20 @@
+{
+  "node_id": "RPL-001-PCLOB-00002",
+  "parent_root_id": "ROOT_SOURCE_PCLOB_001",
+  "parent_hash": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "source_locator": {
+    "page": 2,
+    "section": "Table of Contents",
+    "footnote": null,
+    "table": null,
+    "byte_range": null
+  },
+  "source_offset_start": null,
+  "source_offset_end": null,
+  "transform_id": "STRUCTURAL_SPLIT",
+  "content_hash": "sha256:1212121212121212121212121212121212121212121212121212121212121212",
+  "constitutional_tags": [
+    "OBSERVED"
+  ],
+  "governing_invariant": "RULES_OF_DECOMPOSITION_001"
+}

@@ -1,0 +1,28 @@
+{
+  "receipt_id": "GROK_PUBLIC_REVIEWER_BADGE_PORTAL_MUTATION_RECEIPT_2026_05_20",
+  "status": "MUTATION_RECEIPT_CREATED_BEFORE_PORTAL_UPDATE",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-20T01:50:00Z",
+  "target_file": "portal.html",
+  "pre_update_blob_sha": "54e8a3702d182cdf2936031a6233336c86643632",
+  "intended_change": "Add Grok Public Reviewer L1 Badge link under Grok Evidence with limited-scope boundary language.",
+  "promotion_receipt": {
+    "file": "receipts/badges/grok_public_reviewer_badge_promotion_receipt_2026_05_20.json",
+    "commit": "4a0b945ed6d7a5da800430406420482c8ed63954"
+  },
+  "badge_artifact": {
+    "file": "badges/grok_public_reviewer_l1_badge.json",
+    "commit": "1d65eb563ba09ddd81f1f6b8ff67023bacfc5f3d"
+  },
+  "boundaries": {
+    "public_badge_granted": true,
+    "badge_scope_limited": true,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false,
+    "zora_treated_as_proof": false
+  },
+  "canon_line": "Portal may show Grok badge only with promotion receipt and limited-scope boundary language."
+}

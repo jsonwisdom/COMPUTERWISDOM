@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ClassificationReceipt",
+  "description": "Base identity record for a classification within the lattice, with JCS-compatible canonicalization requirements.",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "category",
+    "content_hash",
+    "timestamp_utc",
+    "version",
+    "authority",
+    "genesis"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "category": {
+      "enum": [
+        "ASSERTED",
+        "OBSERVED",
+        "DERIVED",
+        "DISPUTED",
+        "ADJUDICATED"
+      ]
+    },
+    "content_hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-f0-9]{64}$"
+    },
+    "provenance_id": {
+      "anyOf": [
+        {
+          "type": "string",
+          "pattern": "^sha256:[a-f0-9]{64}$"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "timestamp_utc": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "version": {
+      "const": "0.1"
+    },
+    "authority": {
+      "const": false
+    },
+    "genesis": {
+      "type": "boolean"
+    }
+  },
+  "if": {
+    "properties": {
+      "genesis": {
+        "const": false
+      }
+    }
+  },
+  "then": {
+    "required": [
+      "provenance_id"
+    ]
+  },
+  "else": {
+    "properties": {
+      "provenance_id": {
+        "const": null
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,29 @@
+name: Validate MLR-CORE-001
+
+on:
+  push:
+    paths:
+      - "MLR_CORE_001.json"
+      - "scripts/validate_mlr_core.py"
+      - "tests/adversarial/**"
+      - ".github/workflows/mlr-core-001-validate.yml"
+  pull_request:
+    paths:
+      - "MLR_CORE_001.json"
+      - "scripts/validate_mlr_core.py"
+      - "tests/adversarial/**"
+
+jobs:
+  validate-mlr-core:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate canonical registry
+        run: python3 scripts/validate_mlr_core.py
+      - name: Confirm adversarial fixture fails closed
+        run: |
+          if python3 scripts/validate_mlr_core.py tests/adversarial/mlr_missing_quarantine.json; then
+            echo "Adversarial fixture unexpectedly passed"
+            exit 1
+          fi
+          echo "Adversarial fixture failed closed as expected"

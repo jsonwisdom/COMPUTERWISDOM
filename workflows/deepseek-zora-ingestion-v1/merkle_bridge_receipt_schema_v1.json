@@ -1,0 +1,32 @@
+{
+  "schema_id": "MERKLE_BRIDGE_RECEIPT_SCHEMA_V1",
+  "schema_version": "v1.0",
+  "bridge_receipt_id": "PENDING_HASH",
+  "from_tree_id": "PENDING",
+  "to_tree_id": "PENDING",
+  "from_tree_root": "PENDING_HASH",
+  "to_tree_root": "PENDING_HASH",
+  "dependency_reason": "PENDING",
+  "dependency_type": "STATE_DEPENDENCY",
+  "bridge_digest": "PENDING_HASH",
+  "timestamp_utc": "PENDING",
+  "validation_status": "CANDIDATE",
+  "failure_mode": null,
+  "allowed_dependency_types": [
+    "STATE_DEPENDENCY",
+    "RECEIPT_DEPENDENCY",
+    "PUBLICATION_DEPENDENCY",
+    "CONTRADICTION_DEPENDENCY",
+    "WORKFLOW_DEPENDENCY"
+  ],
+  "canonical_states": [
+    "CANDIDATE",
+    "HELD",
+    "REJECTED",
+    "VERIFIED_RECEIPT",
+    "CANON"
+  ],
+  "validation_rule": "A bridge receipt is valid only if from_tree_root and to_tree_root both replay cleanly and dependency_type is permitted.",
+  "replay_rule": "Bridge receipts replay in deterministic timestamp order after tree roots are reconstructed.",
+  "safety_boundary": "Bridge receipts coordinate repo lineage only. No external authority, surveillance, classified access, or targeting semantics are implied."
+}

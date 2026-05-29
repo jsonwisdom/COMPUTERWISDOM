@@ -1,0 +1,18 @@
+{
+  "node_id": "RPL-001-PCLOB-00001",
+  "parent_root_id": "ROOT_SOURCE_PCLOB_001",
+  "parent_hash": "sha256:9999999999999999999999999999999999999999999999999999999999999999",
+  "source_locator": {
+    "page": 1,
+    "section": "Title Page",
+    "footnote": null,
+    "table": null
+  },
+  "source_offset_start": null,
+  "source_offset_end": null,
+  "transform_id": "STRUCTURAL_SPLIT",
+  "content_hash": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+  "constitutional_tags": [
+    "OBSERVED"
+  ]
+}

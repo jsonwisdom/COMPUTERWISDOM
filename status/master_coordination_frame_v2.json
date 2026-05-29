@@ -1,0 +1,15 @@
+{
+  "calculated_instructions_hash": "3018e5453c7b1135e51af2e27e0b65e8be2552f93550a168867fbf399ab5e636",
+  "payload_manifest": {
+    "immutable_checksum_lock": {
+      "instructions_sha256": "3018e5453c7b1135e51af2e27e0b65e8be2552f93550a168867fbf399ab5e636"
+    },
+    "manifest_data": {
+      "payload_classification": "offline_static_verification_checksum",
+      "repository_id": "jsonwisdom/COMPUTERWISDOM",
+      "tracking_id": 22
+    }
+  },
+  "schema_version": "v2.0.0",
+  "system_integrity_lock": true
+}

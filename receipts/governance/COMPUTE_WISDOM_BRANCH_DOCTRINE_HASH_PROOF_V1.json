@@ -1,0 +1,24 @@
+{
+  "receipt_id": "COMPUTE_WISDOM_BRANCH_DOCTRINE_HASH_PROOF_V1",
+  "status": "COMMIT_PROOF_ONLY",
+  "generated_at": "2026-05-27T00:00:00Z",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "doctrine": "Compute Wisdom separates computation from authority.",
+  "bound_artifact": {
+    "path": "governance/COMPUTE_WISDOM_BRANCH_DOCTRINE_V1.md",
+    "commit": "3c8946beb2413ce0508c47ad5d23ea0205d149cb",
+    "role": "branch_doctrine_boundary"
+  },
+  "branch_invariants": [
+    "LEGISLATIVE_PROPOSES_DOES_NOT_EXECUTE_DOES_NOT_ADJUDICATE",
+    "EXECUTIVE_COORDINATES_DOES_NOT_CANONIZE_DOES_NOT_ADJUDICATE",
+    "JUDICIAL_REVIEWS_REPLAY_DOES_NOT_ORIGINATE_DOES_NOT_CREATE_FACTS",
+    "NONE_MAY_SELF_SEAL_LEGITIMACY",
+    "REPLAY_AND_AL_ADMISSION_REMAIN_FINAL_GATES"
+  ],
+  "relation_to_issue_24": {
+    "issue": "https://github.com/jsonwisdom/COMPUTERWISDOM/issues/24",
+    "relation": "extends_global_governance_role_collapse_guard_from_role_boundary_to_branch_boundary"
+  },
+  "authority_boundary": "HASH_PROOF_IS_COMMIT_EVIDENCE_NOT_FINAL_ADJUDICATION"
+}

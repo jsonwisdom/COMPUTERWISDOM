@@ -1,0 +1,35 @@
+{
+  "schema_id": "MANIC_ALMS_REFERENCE_RECEIPT_V1",
+  "receipt_id": "sha256:5555555555555555555555555555555555555555555555555555555555555555",
+  "protocol": "MANIC",
+  "protocol_version": "0.1",
+  "object_type": "DISPUTED_BRANCH",
+  "created_at": "2026-05-21T00:10:00Z",
+  "created_by": "example:reviewer",
+  "public_source_refs": [
+    "https://example.gov/public-hearing-transcript.pdf",
+    "https://example.org/oversight-analysis"
+  ],
+  "source_tiers": ["T1", "T4"],
+  "constitutional_tags": ["DISPUTED", "INTERPRETED"],
+  "confidence": {
+    "value": 0.42,
+    "qualifier": "Interpretation remains contested; contradictory readings preserved.",
+    "ceiling_basis": "source_tier"
+  },
+  "parent_receipts": [
+    "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+  ],
+  "supersedes": [],
+  "disputes": [
+    "sha256:3333333333333333333333333333333333333333333333333333333333333333"
+  ],
+  "content_hash": "sha256:6666666666666666666666666666666666666666666666666666666666666666",
+  "replay_requirements": {
+    "public_source_only": true,
+    "append_only": true,
+    "forkable": true,
+    "full_chain_reconstructable": true
+  },
+  "status": "COHERENTLY_INVALID_UNTIL_REPLAYED"
+}

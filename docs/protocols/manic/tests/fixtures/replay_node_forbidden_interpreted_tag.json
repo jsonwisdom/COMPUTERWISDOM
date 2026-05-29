@@ -1,0 +1,20 @@
+{
+  "node_id": "RPL-999-TEST-00001",
+  "parent_root_id": "ROOT_SOURCE_TEST_001",
+  "parent_hash": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+  "source_locator": {
+    "page": 1,
+    "section": "Test Fixture"
+  },
+  "source_offset_start": null,
+  "source_offset_end": null,
+  "transform_id": "STRUCTURAL_SPLIT",
+  "content_hash": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+  "constitutional_tags": [
+    "OBSERVED",
+    "INTERPRETED"
+  ],
+  "expected_result": "REFUSED",
+  "expected_refusal": "SCHEMA_FAILURE",
+  "fixture_purpose": "Proves replay_node.v1.schema.json rejects interpretive tags at replay layer. This file is a test fixture, not a canonical replay node."
+}

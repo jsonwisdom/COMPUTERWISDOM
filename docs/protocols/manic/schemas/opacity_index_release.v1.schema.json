@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jsonwisdom/COMPUTERWISDOM/docs/protocols/manic/schemas/opacity_index_release.v1.schema.json",
+  "title": "Opacity Index Release v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id",
+    "release_id",
+    "created_at",
+    "methodology_version",
+    "axes",
+    "composite_score",
+    "confidence_interval",
+    "replay_thread",
+    "disclaimer"
+  ],
+  "properties": {
+    "schema_id": { "const": "MANIC_OPACITY_INDEX_RELEASE_V1" },
+    "release_id": { "type": "string", "pattern": "^opacity:[a-f0-9]{64}$" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "methodology_version": { "type": "string", "minLength": 1 },
+    "axes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["axis", "score", "weight"],
+        "properties": {
+          "axis": { "type": "string" },
+          "score": { "type": "number", "minimum": 0, "maximum": 100 },
+          "weight": { "type": "number", "minimum": 0, "maximum": 1 }
+        }
+      }
+    },
+    "composite_score": { "type": "number", "minimum": 0, "maximum": 100 },
+    "confidence_interval": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["low", "high"],
+      "properties": {
+        "low": { "type": "number", "minimum": 0, "maximum": 100 },
+        "high": { "type": "number", "minimum": 0, "maximum": 100 }
+      }
+    },
+    "replay_thread": { "type": "string", "pattern": "^thread:[a-f0-9]{64}$" },
+    "disclaimer": {
+      "const": "Every map is incomplete. Coherently Invalid until proven replayable."
+    }
+  }
+}
