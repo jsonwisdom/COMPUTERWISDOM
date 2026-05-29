@@ -24,11 +24,12 @@ class Executor:
             raise RejectionError('execution denied by gate decision')
 
         if decision == 'ALLOW_WITH_GATES':
-            if not request.get('safeguards'):
-                raise RejectionError('safeguards required for ALLOW_WITH_GATES')
-            return 'EXECUTED_WITH_SAFEGUARDS'
+            safeguards = request.get('safeguards')
+            if not isinstance(safeguards, dict):
+                raise RejectionError('safeguards must be a dict for ALLOW_WITH_GATES')
+            return {'status': 'SUCCESS', 'mode': 'PROTECTED'}
 
         if decision == 'ALLOW':
-            return 'EXECUTED'
+            return {'status': 'SUCCESS', 'mode': 'OPEN'}
 
         raise RejectionError('unknown gate decision')
