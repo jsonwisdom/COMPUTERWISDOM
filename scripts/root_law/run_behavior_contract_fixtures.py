@@ -5,9 +5,8 @@ Root Law behavior fixture runner scaffold.
 Status: draft scaffold.
 Authority: false.
 
-This runner executes the current Root Law calibration batch and prints a
-fixture_suite_result draft receipt. Full JCS hashing and full G1-G6 coverage
-must be added before constitutional lock.
+Default behavior emits the baseline fixture_suite_result.v0_1 receipt only.
+Phase 3 pattern observation is experimental and opt-in via --emit-patterns.
 
 By default this script does not write generated receipts to the working tree.
 Use --write-receipt when an explicit local receipt artifact is desired.
@@ -15,12 +14,20 @@ Use --write-receipt when an explicit local receipt artifact is desired.
 
 import argparse
 import json
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 FIXTURE_DIR = ROOT / "fixtures" / "root_law" / "behavior_contract_v0_1"
 RECEIPT_DIR = ROOT / "receipts" / "root_law" / "fixture_runs"
+REASON_CODE_MAP_PATH = ROOT / "schemas" / "root_law" / "reason_code_failure_family_map.v0_1.json"
+PATTERN_WINDOW_SIZE = 10
+PATTERN_THRESHOLDS = {
+    "LINEAGE_REPEAT": 3,
+    "DOMAIN_REPEAT": 3,
+    "HASH_SHAPE_REPEAT": 3,
+}
 
 FIXTURE_BATCH = [
     "G1_FULL_VALID_LATTICE.json",
@@ -157,6 +164,79 @@ def build_receipt() -> dict:
     }
 
 
+def load_reason_code_map() -> dict:
+    family_map_doc = load_json(REASON_CODE_MAP_PATH)
+    return family_map_doc["mapping"]
+
+
+def build_packet_observations(fixture_results: list[dict], family_map: dict) -> list[dict]:
+    observations = []
+    for index, result in enumerate(fixture_results, start=1):
+        reason_code = result["actual"]["reason_code"]
+        if reason_code not in family_map:
+            raise ValueError(f"Unmapped reason_code: {reason_code}")
+        mapping = family_map[reason_code]
+        observations.append(
+            {
+                "packet_sequence_id": index,
+                "fixture_id": result["fixture_id"],
+                "reason_codes": [reason_code],
+                "families": [mapping["family"]],
+                "pattern_triggers": [bool(mapping["pattern_trigger"])],
+                "authority": False,
+            }
+        )
+    return observations
+
+
+def build_pattern_results(packet_observations: list[dict]) -> list[dict]:
+    window = packet_observations[-PATTERN_WINDOW_SIZE:]
+    family_counter: Counter[str] = Counter()
+
+    for packet in window:
+        for family, trigger in zip(packet["families"], packet["pattern_triggers"]):
+            if trigger and family != "NONE":
+                family_counter[family] += 1
+
+    families_to_report = sorted(set(PATTERN_THRESHOLDS) | set(family_counter))
+    return [
+        {
+            "pattern_family": family,
+            "observed_count": int(family_counter.get(family, 0)),
+            "threshold": int(PATTERN_THRESHOLDS.get(family, 3)),
+            "pattern_detected": int(family_counter.get(family, 0)) >= int(PATTERN_THRESHOLDS.get(family, 3)),
+            "success_masking": False,
+            "authority": False,
+        }
+        for family in families_to_report
+    ]
+
+
+def build_pattern_observation_receipt(baseline_receipt: dict) -> dict:
+    family_map = load_reason_code_map()
+    packet_observations = build_packet_observations(baseline_receipt["fixture_results"], family_map)
+    return {
+        "artifact": "pattern_observation_receipt.v0_1",
+        "receipt_id": "pattern-observation-draft-001",
+        "run_id": "root-law-fixture-run-draft",
+        "batch_id": baseline_receipt["runner_state"],
+        "timestamp_utc": baseline_receipt["timestamp_utc"],
+        "corpus_window": {
+            "mode": "last_N_packets",
+            "window_size": PATTERN_WINDOW_SIZE,
+            "sequence_scope": "runner_level_within_declared_test_corpus",
+        },
+        "reason_code_map_ref": str(REASON_CODE_MAP_PATH.relative_to(ROOT)),
+        "threshold_policy_ref": "inline:draft:LINEAGE_REPEAT=3,DOMAIN_REPEAT=3,HASH_SHAPE_REPEAT=3",
+        "packet_observations": packet_observations,
+        "pattern_results": build_pattern_results(packet_observations),
+        "memory_update": False,
+        "reputation_system": False,
+        "quarantine": False,
+        "authority": False,
+    }
+
+
 def write_receipt(receipt: dict) -> Path:
     RECEIPT_DIR.mkdir(parents=True, exist_ok=True)
     receipt_path = RECEIPT_DIR / "fixture_suite_result.v0_1.json"
@@ -171,12 +251,20 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Write fixture_suite_result.v0_1.json into receipts/root_law/fixture_runs/.",
     )
+    parser.add_argument(
+        "--emit-patterns",
+        action="store_true",
+        help="Emit passive Phase 3 pattern_observation_receipt.v0_1 alongside the baseline receipt.",
+    )
     return parser.parse_args()
 
 
 def main() -> int:
     args = parse_args()
     receipt = build_receipt()
+
+    if args.emit_patterns:
+        receipt["pattern_observation_receipt"] = build_pattern_observation_receipt(receipt)
 
     if args.write_receipt:
         receipt_path = write_receipt(receipt)
