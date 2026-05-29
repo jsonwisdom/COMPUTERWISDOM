@@ -1,10 +1,10 @@
 const fs = require('fs');
 const path = require('path');
-const Ajv = require('ajv');
+const Ajv2020 = require('ajv/dist/2020');
 
 const schemaPath = path.join(__dirname, '..', 'schemas', 'deterministic_replay_receipt.v1.schema.json');
 const schema = JSON.parse(fs.readFileSync(schemaPath, 'utf8'));
-const ajv = new Ajv({ allErrors: true, strict: false });
+const ajv = new Ajv2020({ allErrors: true, strict: false });
 const validate = ajv.compile(schema);
 
 const FORBIDDEN_FIELDS = [

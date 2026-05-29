@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
-const Ajv = require('ajv');
-const ajv = new Ajv();
+const Ajv2020 = require('ajv/dist/2020');
+const ajv = new Ajv2020({ allErrors: true, strict: false });
 
 const schema = require('../schemas/replay_node.v1.schema.json');
 const { validateTransform } = require('../validators/validate_transform');

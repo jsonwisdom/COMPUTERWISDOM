@@ -60,7 +60,7 @@ This guard is not Alabama-specific.
 It applies to:
 
 - all 50 U.S. states
-- federal offices
+- federal offices — evidence-bound role reference only; authority: NONE; proof boundary: PROCESS_VERIFIED_NOT_GOVERNMENT_AUTHORITY
 - counties
 - municipalities
 - agencies

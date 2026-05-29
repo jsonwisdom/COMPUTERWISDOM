@@ -3,7 +3,8 @@
 **Status:** VALID  
 **Rule:** External architecture may inform COMPUTERWISDOM. External architecture may not authorize COMPUTERWISDOM.  
 **Surface Type:** Observer alignment  
-**Authority Transfer:** NONE  
+**Authority Transfer:** NONE
+**Proof Boundary:** PROCESS_VERIFIED_NOT_GOVERNMENT_AUTHORITY; authority: NONE; evidence-bound observer alignment only.  
 **Dependency Leakage:** NONE  
 **Membrane:** INTACT  
 

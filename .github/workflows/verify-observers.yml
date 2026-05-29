@@ -6,18 +6,32 @@ on:
   pull_request:
     branches: [master, main, anchor]
 
+permissions:
+  contents: read
+  actions: read
+  id-token: write
+  attestations: write
+
 jobs:
   verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - uses: actions/setup-python@v5
         with:
           python-version: "3.x"
+
+      - name: Validate registry JSON
+        run: |
+          set -euo pipefail
+          python -m json.tool COMPUTERWISDOM/federal/white-house-ai/JAYWISDOM_MCP_REGISTRY_V1.json >/dev/null
+          echo "Registry JSON is valid." >> "$GITHUB_STEP_SUMMARY"
+
       - name: Verify observer credentials
         run: |
-          set -e
-          echo "| File | Result |" >> "$GITHUB_STEP_SUMMARY"
+          set -euo pipefail
+          echo "| VC File | Result |" >> "$GITHUB_STEP_SUMMARY"
           echo "|---|---|" >> "$GITHUB_STEP_SUMMARY"
 
           found=0
@@ -35,3 +49,79 @@ jobs:
             echo "| none | FAIL: no VC files found |" >> "$GITHUB_STEP_SUMMARY"
             exit 1
           fi
+
+      - name: Refuse unproven authority claims
+        run: |
+          set -euo pipefail
+          echo "Scanning protected claim surface..." >> "$GITHUB_STEP_SUMMARY"
+
+          python3 - <<'PY'
+          import pathlib, re, sys
+
+          scan_roots = [
+              pathlib.Path("COMPUTERWISDOM/federal/white-house-ai"),
+              pathlib.Path("badges"),
+              pathlib.Path("attestation"),
+              pathlib.Path("docs"),
+          ]
+          include = {".md", ".json"}
+          protected = re.compile(r"\b(federal|government|official|authority|authorized|compliant|observer registry|Federal AI Observer)\b", re.I)
+          proof = re.compile(r"\b(receipt|receipts|attestation|attestations|vc|credential|sigstore|hash|sha256|source_url|evidence|proof|authority\s*[:=]\s*[\"']?none|is_federal_authority\s*[:=]\s*false|REGISTRY_IS_NOT_GOVERNMENT_AUTHORITY|OBSERVER_IS_NOT_OFFICE|READ_ONLY_PUBLIC_OBSERVER|APPEND_ONLY_RECEIPTS|PROCESS_VERIFIED_NOT_GOVERNMENT_AUTHORITY)\b", re.I)
+
+          failures = []
+          for root in scan_roots:
+              if not root.exists():
+                  continue
+              for path in root.rglob("*"):
+                  if not path.is_file() or path.suffix not in include:
+                      continue
+                  text = path.read_text(errors="ignore")
+                  if not protected.search(text):
+                      continue
+                  if proof.search(text):
+                      continue
+                  first_claim = ""
+                  for idx, line in enumerate(text.splitlines(), 1):
+                      if protected.search(line):
+                          first_claim = f"{path}:{idx}: {line.strip()[:240]}"
+                          break
+                  failures.append(first_claim or str(path))
+
+          if failures:
+              print("❌ Files contain protected authority claims without file-level proof context:")
+              for item in failures:
+                  print(item)
+              print("Authority claims must resolve somewhere in the same file to VC, receipt, attestation, hash/source/evidence proof, or explicit NONE boundary.")
+              sys.exit(1)
+
+          print("✅ Protected claim files contain proof context or explicit boundaries.")
+          PY
+
+      - name: Generate CI badge artifact
+        if: success()
+        run: |
+          set -euo pipefail
+          mkdir -p .ci-badges
+          cat > .ci-badges/federal-ai-observer-ci.json <<EOF
+          {
+            "badge": "Federal AI Observer Registry",
+            "generated_by": "verify-observers.yml",
+            "commit": "${GITHUB_SHA}",
+            "status": "CI_VERIFIED",
+            "authority": "NONE",
+            "claim_boundary": "PROCESS_VERIFIED_NOT_GOVERNMENT_AUTHORITY"
+          }
+          EOF
+
+      - name: Attest CI badge artifact provenance
+        if: success()
+        uses: actions/attest-build-provenance@v2
+        with:
+          subject-path: .ci-badges/federal-ai-observer-ci.json
+
+      - name: Upload CI badge artifact
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: federal-ai-observer-ci-badge
+          path: .ci-badges/federal-ai-observer-ci.json
