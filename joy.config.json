@@ -1,0 +1,6 @@
+{
+  "joy_runtime_version": "JOY_RUNTIME_V0_1",
+  "joy_protocol_version": "JOY_PROTOCOL_V0_3",
+  "default_host": "local",
+  "authority": false
+}
