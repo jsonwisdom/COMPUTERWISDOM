@@ -105,6 +105,23 @@ class TestCaseflowEngineV02(unittest.TestCase):
         self.assertIn("denials", result)
         self.assertEqual(result["denials"][-1]["reason"], "ghost_anchor_blocked")
 
+    def test_base_or_ens_pointer_does_not_create_authority(self):
+        """BASE_OR_ENS_POINTER_NOT_AUTHORITY"""
+        case = copy.deepcopy(self.base_case)
+        case["metadata"]["ens_name"] = "jaywisdom.base.eth"
+        case["metadata"]["base_namespace"] = "Base L2 context only"
+        case["metadata"]["authority_level"] = 0
+        case["metadata"]["legal_effect"] = False
+
+        result = self.engine.apply_transition(case, "GOVERNANCE_CHECK", "GROK_WITNESS")
+
+        self.assertEqual(result["current_state"], "GOVERNANCE_CHECK")
+        self.assertEqual(result["metadata"]["authority_level"], 0)
+        self.assertEqual(result["metadata"]["legal_effect"], False)
+        self.assertIn("receipts", result)
+        self.assertFalse(result["receipts"][-1]["authority"])
+        self.assertFalse(result["receipts"][-1]["legal_effect"])
+
 
 if __name__ == "__main__":
     unittest.main()
