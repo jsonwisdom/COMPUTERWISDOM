@@ -8,25 +8,31 @@
       "artifact_id": "joy://2026-05-29/arxiv-2605.23138-001",
       "title": "Classical State Preparation for Variational Quantum Algorithms via Reinforcement Learning",
       "arxiv_id": "2605.23138v1",
-      "hash": "65fb435a2f43225097a40c3e495453cc24f62fd333691d35927c13b43721089c",
+      "hash": "4a0d94decd7e1a5699a63e09b345ee5dc4446a030f9ecf386ea5cbb6ed001355",
       "verification": "assistant_observed_source_and_claims",
       "hash_algorithm": "SHA-256",
       "hash_basis": "raw_arxiv_pdf_bytes",
-      "hash_status": "local_recompute_mismatch",
+      "hash_status": "verified_local_recompute",
       "local_recompute_sha256": "4a0d94decd7e1a5699a63e09b345ee5dc4446a030f9ecf386ea5cbb6ed001355",
-      "hash_verified": false
+      "hash_verified": true,
+      "recorded_hash_prior_to_local_recompute": "65fb435a2f43225097a40c3e495453cc24f62fd333691d35927c13b43721089c",
+      "mismatch_documented": true,
+      "authority": false
     },
     {
       "artifact_id": "joy://2026-05-29/arxiv-2605.01574-001",
       "title": "Hybrid Quantum Reinforcement Learning with QAOA for Improved Vehicle Routing Optimization",
       "arxiv_id": "2605.01574v1",
-      "hash": "903d92f593b0ef82adaa19b05e2a72bfc917e5b24e587c90d6692df562888460",
+      "hash": "4cd272864f1cffbdd5b86c695f65e9b8f185e4c56bc9020fb26f56d805566d6e",
       "verification": "assistant_verified_abstract",
       "hash_algorithm": "SHA-256",
       "hash_basis": "raw_arxiv_pdf_bytes",
-      "hash_status": "local_recompute_mismatch",
+      "hash_status": "verified_local_recompute",
       "local_recompute_sha256": "4cd272864f1cffbdd5b86c695f65e9b8f185e4c56bc9020fb26f56d805566d6e",
-      "hash_verified": false
+      "hash_verified": true,
+      "recorded_hash_prior_to_local_recompute": "903d92f593b0ef82adaa19b05e2a72bfc917e5b24e587c90d6692df562888460",
+      "mismatch_documented": true,
+      "authority": false
     }
   ],
   "steps": [
@@ -75,9 +81,12 @@
     "basis": "raw_arxiv_pdf_bytes",
     "normalization": "NONE",
     "verification_method": "local_sha256sum",
-    "status": "local_recompute_mismatch",
+    "status": "verified_local_recompute",
     "authority": false,
     "mismatch_policy": "preserve_recorded_hashes_and_record_local_recompute",
-    "verified": false
+    "verified": true,
+    "mismatch_documented": true,
+    "verification_basis": "operator_local_sha256sum_raw_arxiv_pdf_bytes",
+    "runtime_parity": "UNVERIFIED"
   }
 }
