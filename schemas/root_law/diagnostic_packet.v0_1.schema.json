@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "RootLawDiagnosticPacket",
+  "version": "0.1",
+  "description": "Stateless diagnostic packet for explaining Root Law fixture reactions without creating threat memory or adjudicative claims.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "packet_id",
+    "timestamp_utc",
+    "fixture_id",
+    "verdict",
+    "reason_code",
+    "failure_class",
+    "origin_context",
+    "mismatch_detail",
+    "remediation_hint",
+    "memory_update",
+    "authority"
+  ],
+  "properties": {
+    "packet_id": { "type": "string" },
+    "timestamp_utc": { "type": "string", "format": "date-time" },
+    "fixture_id": { "type": "string" },
+    "verdict": { "type": "string", "enum": ["ALLOW", "DENY", "STEP_UP", "VETO"] },
+    "reason_code": { "type": "string" },
+    "failure_class": {
+      "type": "string",
+      "enum": [
+        "NONE",
+        "LINEAGE_FAILURE",
+        "HASH_SHAPE_FAILURE",
+        "INVALID_TRANSITION",
+        "POLICY_DRIFT",
+        "CATEGORY_PROMOTION",
+        "AUTHORITY_BOUNDARY_FAILURE"
+      ]
+    },
+    "origin_context": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Where the asset or receipt claimed to originate, bounded to observable metadata."
+    },
+    "mismatch_detail": {
+      "type": "object",
+      "additionalProperties": true,
+      "description": "Specific structural reason the fixture reaction occurred."
+    },
+    "remediation_hint": {
+      "type": "string",
+      "description": "Non-adjudicative guidance for restoring conformance."
+    },
+    "memory_update": {
+      "type": "boolean",
+      "const": false,
+      "description": "Phase 1/2 packets must remain stateless and must not update known-threat memory."
+    },
+    "authority": {
+      "type": "boolean",
+      "const": false
+    }
+  }
+}
