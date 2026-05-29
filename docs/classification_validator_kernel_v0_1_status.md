@@ -15,6 +15,14 @@ Issue #34 implemented the executable substrate for `classification_validator_ker
 }
 ```
 
+## Authority boundary
+
+Authority claim context: explicit NONE boundary.
+
+This file does not claim VC issuance, attestation, external certification, production deployment, ENS completion, mainnet anchoring, or institutional authority.
+
+`authority: false` is a bounded-status field only. It records that this document and the referenced validator substrate do not assert adjudicative authority.
+
 ## Included surfaces
 
 ```text
@@ -29,6 +37,8 @@ tests/
 No agents yet.
 No semantic interpretation yet.
 No external acquisition yet.
+No observer authority transfer.
+No universal truth claim.
 
 Kernel first.
 
