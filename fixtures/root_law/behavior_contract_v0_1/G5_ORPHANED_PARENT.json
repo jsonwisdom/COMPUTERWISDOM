@@ -1,0 +1,27 @@
+{
+  "fixture_id": "G5_ORPHANED_PARENT",
+  "version": "0.1",
+  "description": "Validator must VETO when the parent CID in an evidence chain is missing from the local-first store.",
+  "context": {
+    "system_state": "INTEGRITY_CHECK_ENABLED",
+    "validator_mode": "STRICT_LINEAGE"
+  },
+  "input": {
+    "proposed_receipt": {
+      "decision_id": "8e3b-4f1a-a2d9-c3b4e5f6a7b8",
+      "parent_cid": "QmNbe5AzQ5o8n657a84090c25a07c3761891500d45",
+      "action": "ACCESS_GRANT"
+    },
+    "local_store_state": {
+      "available_cids": [
+        "QmOtherValidCid1234567890abcdef1234567890"
+      ]
+    }
+  },
+  "expected_outcome": {
+    "verdict": "VETO",
+    "reason_code": "ORPHANED_RECEIPT",
+    "constitutional_compliance": true
+  },
+  "authority": false
+}
