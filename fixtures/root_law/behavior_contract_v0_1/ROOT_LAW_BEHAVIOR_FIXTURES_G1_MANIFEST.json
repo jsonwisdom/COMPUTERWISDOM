@@ -1,0 +1,38 @@
+{
+  "suite_id": "ROOT_LAW_BEHAVIOR_FIXTURES_G1",
+  "suite_version": "0.1",
+  "role": "cryptographic_hash_of_expected_behavior",
+  "manifest_state": "DRAFT_PLACEHOLDER_HASHES",
+  "fixtures": {
+    "G1_FULL_VALID_LATTICE": {
+      "fixture_hash": null,
+      "provenance_commit": null
+    },
+    "G2_BAD_HASH_FORMAT": {
+      "fixture_hash": null,
+      "provenance_commit": null
+    },
+    "G3_INVALID_TRANSITION_SKIP": {
+      "fixture_hash": null,
+      "provenance_commit": null
+    },
+    "G4_POLICY_DRIFT": {
+      "fixture_hash": null,
+      "provenance_commit": null
+    },
+    "G5_ORPHANED_PARENT": {
+      "fixture_hash": null,
+      "provenance_commit": "98f3f84c2f887026454b12d1fb22c5b620bed83a",
+      "path": "fixtures/root_law/behavior_contract_v0_1/G5_ORPHANED_PARENT.json",
+      "expected_verdict": "VETO",
+      "expected_reason_code": "ORPHANED_RECEIPT"
+    },
+    "G6_UNAUTHORIZED_EMISSION": {
+      "fixture_hash": null,
+      "provenance_commit": null
+    }
+  },
+  "suite_hash": null,
+  "hashing_rule": "fixture_hash = sha256:JCS(fixture_file_bytes_after_canonicalization)",
+  "authority": false
+}
