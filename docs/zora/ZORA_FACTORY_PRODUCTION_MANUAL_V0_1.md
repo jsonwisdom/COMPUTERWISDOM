@@ -12,13 +12,118 @@ This manual defines the safe production path for converting DeepSeek candidate w
 
 It is a factory manual, not a financial recommendation, not a trading strategy, and not a claim that any coin has value.
 
-## 1. Three-Layer Stack
+## 1. Operator Jay Routing Map
+
+Operator Jay is the routing authority for the production run, but does not convert claims into verified truth without receipts.
+
+### DeepSeek
+
+Use for:
+
+- candidate analysis
+- symbolic drafts
+- speculative concepts
+- narrative compression
+- Zora production run ideas
+- naming, lore, captions, and early pattern discovery
+
+Output class:
+
+- SYMBOLIC
+- SPECULATIVE
+- CANDIDATE
+
+Do not use DeepSeek output as final evidence unless it is separately receipt-backed.
+
+### ChatGPT / Computer Wisdom
+
+Use for:
+
+- structuring DeepSeek output
+- writing manuals and schemas
+- enforcing reversibility classes
+- checking inference boundaries
+- creating operator commands
+- preparing PR language
+
+Output class:
+
+- STRUCTURED_CANDIDATE
+- RECEIPT_GATE
+- OPERATOR_GUIDANCE
+
+### Codex / Cloud Shell
+
+Use for:
+
+- executable scripts
+- metadata fetchers
+- hash recompute
+- schema validation
+- local repo commands
+- real acquisition runs
+
+Output class:
+
+- EXECUTION_OUTPUT
+- OBSERVED if stdout/stderr is pasted or committed
+
+### GitHub / COMPUTERWISDOM
+
+Use for:
+
+- doctrine
+- schemas
+- receipts
+- pull requests
+- review gates
+- commit history
+
+Output class:
+
+- REPOSITORY_RECEIPT
+- REVIEW_SURFACE
+
+### Zora
+
+Use for:
+
+- public creator coin surface
+- contract deployment
+- onchain publication
+- public metadata surface
+
+Output class:
+
+- PUBLIC_SURFACE
+- CHAIN_OBSERVATION only after tx/block/metadata receipts exist
+
+### Operator Jay
+
+Use for:
+
+- deciding what moves forward
+- selecting candidate outputs
+- approving promotion
+- rejecting drift
+- preserving family/business boundaries
+- deciding when something becomes public
+
+Output class:
+
+- PROMOTION_DECISION
+- HOLD_DECISION
+- REJECTION_DECISION
+
+## 2. Three-Layer Stack
 
 - DeepSeek: candidate analysis engine. Outputs inference, symbolic structure, speculative framing, and draft production concepts.
 - Computer Wisdom: operational control plane. Converts candidates into receipts, validates replayability, marks reversibility class, and blocks silent promotion.
 - Zora: public creator-coin surface. Receives only receipt-backed outputs after approval.
 
-## 2. Core Law
+Operator Jay routes between all layers.
+
+## 3. Core Law
 
 NO RECEIPT -> NO CLAIM  
 NO SOURCE -> NO PUBLIC POST  
@@ -39,24 +144,37 @@ Required minimum receipt fields:
 - acquisition_class
 - authority: false
 
-## 3. Intake Pipeline
+## 4. Intake Pipeline
 
 1. DeepSeek generates candidate material.
-2. Candidate is marked SYMBOLIC or SPECULATIVE unless directly observed.
-3. Computer Wisdom validates candidate against inference marking and replay rules.
-4. Validated candidate becomes a draft receipt under receipts/drafts/.
-5. Real Zora acquisition receipts are stored under receipts/zora_factory/.
-6. Jay acts as promotion gate.
-7. Zora public surface happens only after receipt exists.
+2. Operator Jay selects or rejects candidate material.
+3. Candidate is marked SYMBOLIC or SPECULATIVE unless directly observed.
+4. Computer Wisdom validates candidate against inference marking and replay rules.
+5. Validated candidate becomes a draft receipt under receipts/drafts/.
+6. Real Zora acquisition receipts are stored under receipts/zora_factory/.
+7. Operator Jay acts as promotion gate.
+8. Zora public surface happens only after receipt exists.
 
-## 4. Receipt Types
+## 5. Receipt Types
 
 - replay_acquisition_receipt: OBSERVED layer receipt for metadata fetches, tx logs, and contract acquisition.
 - derived_receipt: computed from OBSERVED evidence.
 - symbolic_receipt: interpretation or lore; must carry model_version or source engine.
 - speculative_receipt: hypothesis only; never promoted to authority.
 
-## 5. Factory Stages
+## 6. What Goes Where
+
+| Work Item | Correct System | Output Path |
+| --- | --- | --- |
+| Raw idea, lore, meme direction | DeepSeek | candidate text |
+| Boundary check, schema, manual | Computer Wisdom / ChatGPT | docs/ or schemas/ |
+| Real command execution | Cloud Shell / Codex | stdout/stderr or committed file |
+| Replayable receipt | COMPUTERWISDOM repo | receipts/zora_factory/ |
+| Draft candidate receipt | COMPUTERWISDOM repo | receipts/drafts/ |
+| Public mint or coin | Zora | onchain/public URL |
+| Promotion decision | Operator Jay | PR comment / receipt transition |
+
+## 7. Factory Stages
 
 ### Stage 0 — Concept
 
@@ -217,7 +335,7 @@ CLAIM -> RECEIPT -> VERIFIED_RECEIPT
 
 Promotion requires an explicit transition record.
 
-## 6. Reversibility Classes
+## 8. Reversibility Classes
 
 - OBSERVED: directly fetched or seen from source
 - DERIVED: computed from observed evidence
@@ -226,7 +344,7 @@ Promotion requires an explicit transition record.
 
 No class may silently promote itself.
 
-## 7. Failure Modes
+## 9. Failure Modes
 
 ### Missing contractURI()
 
@@ -252,7 +370,11 @@ Record tx and URI evidence. Metadata remains UNKNOWN.
 
 Mark as SYMBOLIC or SPECULATIVE. Do not route to Zora until receipt-backed.
 
-## 8. Required Repository Artifacts
+### Operator confusion between systems
+
+Return to the What Goes Where table. Do not publish, mint, or commit until the output path is clear.
+
+## 10. Required Repository Artifacts
 
 - docs/zora/ZFD-GOBLIN-ACQ-LAYER-V0_1.md
 - docs/zora/ZORA_FACTORY_PRODUCTION_MANUAL_V0_1.md
@@ -262,7 +384,7 @@ Mark as SYMBOLIC or SPECULATIVE. Do not route to Zora until receipt-backed.
 - services/zora-flywheel/factory_crawler_spec_candidate.md
 - services/zora-flywheel/factory_receipt_schema_candidate.json
 
-## 9. Operator Commands
+## 11. Operator Commands
 
 Example acquisition command:
 
@@ -283,7 +405,7 @@ git add receipts/zora_factory/replay_acquisition_receipt_001.json
 git commit -m "Add real replay acquisition receipt 001"
 ```
 
-## 10. Production Merge Rule
+## 12. Production Merge Rule
 
 Do not merge as production-ready while any of the following remain true:
 
@@ -295,8 +417,9 @@ Do not merge as production-ready while any of the following remain true:
 - acquisition was not replayed
 - DeepSeek candidate text is promoted without source boundary
 
-## 11. Final Invariant
+## 13. Final Invariant
 
+Operator Jay routes.  
 DeepSeek proposes.  
 Computer Wisdom structures.  
 Receipts constrain.  
