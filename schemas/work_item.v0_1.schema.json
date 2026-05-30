@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/work_item.v0_1.schema.json",
+  "title": "Work Item v0.1",
+  "description": "Atomic file-based work unit for Public Receipt Arcade operator workflow. Prevents prompt loss by moving AI handoffs from chat memory into replayable JSON state.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "work_item_id": {
+      "type": "string",
+      "pattern": "^wi-[0-9]{3,}$"
+    },
+    "parent_id": {
+      "type": ["string", "null"],
+      "pattern": "^wi-[0-9]{3,}$"
+    },
+    "intent_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "task_type": {
+      "type": "string",
+      "enum": [
+        "hash_pdf",
+        "create_receipt",
+        "replay_check",
+        "courts_click",
+        "drop_quarter",
+        "render_card"
+      ]
+    },
+    "prompt_text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "input_id": { "type": "string" },
+          "artifact_ref": { "type": "string" },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[A-Fa-f0-9]{64}$"
+          }
+        },
+        "required": ["input_id", "artifact_ref", "sha256"]
+      }
+    },
+    "assigned_ai": {
+      "type": "string",
+      "enum": [
+        "Meta",
+        "ChatGPT",
+        "Copilot",
+        "Claude",
+        "Grok"
+      ]
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "created",
+        "assigned",
+        "in_progress",
+        "completed",
+        "blocked"
+      ]
+    },
+    "lineage_hash": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]{64}$"
+    },
+    "created_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "completed_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    },
+    "output_artifact": {
+      "type": ["string", "null"]
+    },
+    "output_sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[A-Fa-f0-9]{64}$"
+    },
+    "blocked_reason": {
+      "type": ["string", "null"]
+    },
+    "authority": {
+      "type": "boolean",
+      "const": false
+    },
+    "fraud_status": {
+      "type": "string",
+      "const": "UNKNOWN"
+    }
+  },
+  "required": [
+    "work_item_id",
+    "parent_id",
+    "intent_ref",
+    "task_type",
+    "prompt_text",
+    "inputs",
+    "assigned_ai",
+    "status",
+    "lineage_hash",
+    "created_at",
+    "completed_at",
+    "output_artifact",
+    "output_sha256",
+    "blocked_reason",
+    "authority",
+    "fraud_status"
+  ]
+}
