@@ -141,20 +141,20 @@ Record:
 - resolved_image_url, if applicable
 - fetch_timestamp_iso
 
-### Stage 7 — Proof-007 Bundle
+### Stage 7 — Replay Acquisition Receipt
 
 Create receipt:
 
 ```json
 {
-  "proof_id": "PROOF_007_LEAF_001",
+  "receipt_id": "REPLAY_ACQUISITION_RECEIPT_001",
   "acquisition_class": "DIRECT_RPC",
   "reversibility_class": "OBSERVED",
   "authority": false
 }
 ```
 
-Bundle must include:
+Receipt must include:
 
 - metadata_snapshot
 - tx_receipt
@@ -225,27 +225,27 @@ Record tx and URI evidence. Metadata remains UNKNOWN.
 - docs/zora/ZORA_FACTORY_PRODUCTION_MANUAL_V0_1.md
 - schemas/zora_goblin_acquisition.v0_1.schema.json
 - receipts/drafts/zfd_goblin_acq_layer_fixture_v0_1.json
-- receipts/drafts/proof_007_leaf_001.json, once real acquisition exists
+- receipts/drafts/replay_acquisition_receipt_001.json, once real acquisition exists
 
 ## 6. Operator Commands
 
 Example acquisition command:
 
 ```bash
-python tools/acquisition/metadata_fetcher_v0.py <contract_address> > receipts/drafts/proof_007_leaf_001.json
+python tools/acquisition/metadata_fetcher_v0.py <contract_address> > receipts/drafts/replay_acquisition_receipt_001.json
 ```
 
 Validation command, if JSON Schema tooling is available:
 
 ```bash
-python -m json.tool receipts/drafts/proof_007_leaf_001.json
+python -m json.tool receipts/drafts/replay_acquisition_receipt_001.json
 ```
 
 Commit command:
 
 ```bash
-git add receipts/drafts/proof_007_leaf_001.json
-git commit -m "Add real acquisition receipt Proof-007 Leaf 001"
+git add receipts/drafts/replay_acquisition_receipt_001.json
+git commit -m "Add real replay acquisition receipt 001"
 ```
 
 ## 7. Production Merge Rule
