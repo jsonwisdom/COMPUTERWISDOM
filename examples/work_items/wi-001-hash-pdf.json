@@ -1,0 +1,29 @@
+{
+  "work_item_id": "wi-001",
+  "parent_id": null,
+  "intent_ref": "intent://saint-cloud-loon-cabinet-mvp",
+  "task_type": "hash_pdf",
+  "prompt_text": "Hash the 2014 and 2024 Saint Cloud parks budget PDFs and return SHA-256 hashes for both files.",
+  "inputs": [
+    {
+      "input_id": "old_pdf",
+      "artifact_ref": "local://saint-cloud/2014-parks-budget.pdf",
+      "sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    },
+    {
+      "input_id": "new_pdf",
+      "artifact_ref": "local://saint-cloud/2024-parks-budget.pdf",
+      "sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    }
+  ],
+  "assigned_ai": "Copilot",
+  "status": "completed",
+  "lineage_hash": "1111111111111111111111111111111111111111111111111111111111111111",
+  "created_at": "2026-05-30T10:00:00Z",
+  "completed_at": "2026-05-30T10:01:00Z",
+  "output_artifact": "artifacts/work_items/wi-001-hash-pdf.md",
+  "output_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+  "blocked_reason": null,
+  "authority": false,
+  "fraud_status": "UNKNOWN"
+}
