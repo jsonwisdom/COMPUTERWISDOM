@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/game_of_wisdom/board_layer.v0_2.schema.json",
+  "title": "Game of Wisdom — Board Layer Schema V0.2",
+  "description": "Defines the L2 board layer and four-street semantic coordinate overlay for Game of Wisdom. Structural only. Authority remains false.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "guided_link": {
+      "type": "string",
+      "description": "Required lineage link back to the guiding issue, record, or prior spec surface. Maintains JOY replay continuity."
+    },
+    "layer_id": {
+      "type": "string",
+      "description": "Stable identifier for the board layer."
+    },
+    "layer_level": {
+      "type": "string",
+      "const": "L2",
+      "description": "Board layer level. V0.2 locks this schema to L2."
+    },
+    "layer_name": {
+      "type": "string",
+      "description": "Human-readable board layer name."
+    },
+    "base_chain": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Base and chain context for the board layer. This is descriptive and does not claim wallet, chain, ENS, or institutional authority.",
+      "properties": {
+        "base": {
+          "type": ["string", "null"]
+        },
+        "chain": {
+          "type": ["string", "null"]
+        },
+        "claim_status": {
+          "type": "string",
+          "enum": ["DESCRIPTIVE_ONLY", "PUBLIC_RECORD_CANDIDATE", "UNKNOWN"]
+        }
+      },
+      "required": ["base", "chain", "claim_status"]
+    },
+    "four_street_axis": {
+      "type": "array",
+      "description": "Semantic coordinate overlay. It tags records/cells across boards without becoming a board or authority source.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "STATE_STREET",
+          "WALL_STREET",
+          "MAIN_STREET",
+          "JAYWISDOM_BASE"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "supported_boards": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Q_BIT_SUPREME_COURT_3X3",
+          "Q_BIT_CONGRESS_6X6X6",
+          "Q_BIT_PLAYGROUND_64X64",
+          "Q_BIT_MN_67X67"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "ruleset": {
+      "type": "string",
+      "enum": ["67_RULESET_ENFORCED", "UNKNOWN"]
+    },
+    "promotion_allowed": {
+      "const": false
+    },
+    "authority": {
+      "const": false
+    }
+  },
+  "required": [
+    "guided_link",
+    "layer_id",
+    "layer_level",
+    "layer_name",
+    "base_chain",
+    "four_street_axis",
+    "supported_boards",
+    "purpose",
+    "ruleset",
+    "promotion_allowed",
+    "authority"
+  ]
+}
