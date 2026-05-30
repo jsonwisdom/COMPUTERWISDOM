@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/game_of_wisdom/record_status.v0_2.schema.json",
+  "title": "Game of Wisdom — Record Status Enum V0.2",
+  "type": "string",
+  "enum": [
+    "VERIFIED_PUBLIC_RECORD",
+    "PUBLIC_RECORD_CANDIDATE",
+    "UNKNOWN"
+  ]
+}
