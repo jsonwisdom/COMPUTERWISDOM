@@ -1,0 +1,21 @@
+{
+  "receipt_id": "LEAF_003_DRIFT_RECEIPT_001",
+  "admissibility_rule": "OBSERVE_MEMORY_DRIFT_DO_NOT_DECLARE_FRAUD",
+  "surface": "workflow_engine",
+  "source_artifact": "examples/work_items/wi-004-courts-click.json",
+  "expected_reference": "docs/operator/workflow_engine_v0_1.md",
+  "observed_at": "2026-05-30T10:08:00Z",
+  "drift_type": "ASSIGNED_AI_MISMATCH",
+  "expected_value": {
+    "field": "assigned_ai",
+    "value": "Jay"
+  },
+  "observed_value": {
+    "field": "assigned_ai",
+    "value": "ChatGPT"
+  },
+  "replay_status": "REPLAYABLE",
+  "drift_summary": "workflow_engine_v0_1 transition table routes replay_check + completed to courts_click assigned to Jay, while wi-004-courts-click.json records assigned_ai as ChatGPT. Values recorded only; no attribution or intent inferred.",
+  "fraud_status": "UNKNOWN",
+  "authority": false
+}
