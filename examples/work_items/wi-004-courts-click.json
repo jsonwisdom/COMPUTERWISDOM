@@ -1,0 +1,24 @@
+{
+  "work_item_id": "wi-004",
+  "parent_id": "wi-003",
+  "intent_ref": "intent://saint-cloud-loon-cabinet-mvp",
+  "task_type": "courts_click",
+  "prompt_text": "Manually complete the Three Courts check for the Saint Cloud Loon Cabinet MVP receipt: Source, Replay, and Context.",
+  "inputs": [
+    {
+      "input_id": "wi_003_output",
+      "artifact_ref": "artifacts/work_items/wi-003-replay-check.md",
+      "sha256": "6666666666666666666666666666666666666666666666666666666666666666"
+    }
+  ],
+  "assigned_ai": "ChatGPT",
+  "status": "created",
+  "lineage_hash": "7777777777777777777777777777777777777777777777777777777777777777",
+  "created_at": "2026-05-30T10:07:00Z",
+  "completed_at": null,
+  "output_artifact": null,
+  "output_sha256": null,
+  "blocked_reason": null,
+  "authority": false,
+  "fraud_status": "UNKNOWN"
+}
