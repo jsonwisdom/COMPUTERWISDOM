@@ -1,0 +1,54 @@
+{
+  "workflow_id": "saint-cloud-loon-cabinet-mvp-workflow-001",
+  "intent_ref": "intent://saint-cloud-loon-cabinet-mvp",
+  "root_work_item": "wi-001",
+  "authority": false,
+  "fraud_status": "UNKNOWN",
+  "work_items": [
+    {
+      "work_item_id": "wi-001",
+      "parent_id": null,
+      "assigned_ai": "Copilot",
+      "task_type": "hash_pdf",
+      "output_artifact": "artifacts/work_items/wi-001-hash-pdf.md",
+      "output_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "lineage_hash": "1111111111111111111111111111111111111111111111111111111111111111"
+    },
+    {
+      "work_item_id": "wi-002",
+      "parent_id": "wi-001",
+      "assigned_ai": "ChatGPT",
+      "task_type": "create_receipt",
+      "output_artifact": "artifacts/work_items/wi-002-create-receipt.json",
+      "output_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+      "lineage_hash": "3333333333333333333333333333333333333333333333333333333333333333"
+    },
+    {
+      "work_item_id": "wi-003",
+      "parent_id": "wi-002",
+      "assigned_ai": "Claude",
+      "task_type": "replay_check",
+      "output_artifact": "artifacts/work_items/wi-003-replay-check.md",
+      "output_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+      "lineage_hash": "5555555555555555555555555555555555555555555555555555555555555555"
+    }
+  ],
+  "edges": [
+    {
+      "from": "wi-001",
+      "to": "wi-002",
+      "handoff": "Copilot -> ChatGPT"
+    },
+    {
+      "from": "wi-002",
+      "to": "wi-003",
+      "handoff": "ChatGPT -> Claude"
+    }
+  ],
+  "operator_view": {
+    "center": "wi-003 replay_check",
+    "left": "wi-001 -> wi-002 -> wi-003",
+    "right": "next child work item pending"
+  },
+  "closing_rule": "A new AI can reconstruct the workflow graph from this file without reading chat history."
+}
