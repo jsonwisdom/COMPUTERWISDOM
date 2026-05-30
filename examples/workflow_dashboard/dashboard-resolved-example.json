@@ -1,0 +1,26 @@
+{
+  "workflow_id": "saint-cloud-loon-cabinet-mvp-workflow-001",
+  "intent_ref": "intent://saint-cloud-loon-cabinet-mvp",
+  "current_work_item_id": "wi-004-v2",
+  "current_assigned_ai": "Jay",
+  "current_status": "created",
+  "next_task_type": "courts_click",
+  "next_assigned_ai": "Jay",
+  "lineage_head_hash": "8888888888888888888888888888888888888888888888888888888888888888",
+  "repo_artifact_count": 5,
+  "last_modified": "2026-05-30T10:16:00Z",
+  "missing_outputs": [],
+  "lineage_summary": [
+    {"parent_id": null, "work_item_id": "wi-001", "lineage_hash_short": "11111111"},
+    {"parent_id": "wi-001", "work_item_id": "wi-002", "lineage_hash_short": "33333333"},
+    {"parent_id": "wi-003", "work_item_id": "wi-004-v2", "lineage_hash_short": "88888888"}
+  ],
+  "operator_view": {
+    "top_bar": "intent://saint-cloud-loon-cabinet-mvp pinned",
+    "center": "Current: wi-004-v2 courts_click by Jay — created",
+    "left": "Drift resolved via res-20250601-001",
+    "right": "Next action: courts_click execution by Jay"
+  },
+  "authority": false,
+  "fraud_status": "UNKNOWN"
+}
