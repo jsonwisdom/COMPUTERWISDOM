@@ -1,1 +1,42 @@
-{"doc_id":"ZFD-GOBLIN-ACQ-LAYER-V0_1","acquisition_class":"DIRECT_RPC","chain_id":8453,"contract_address":"0x4e3804DEADBEEFCAFEBABE000000000000000000","symbol":"TITAN","series_id":"SERIES-001","authority":false}
+{
+  "doc_id": "ZFD-GOBLIN-ACQ-LAYER-V0_1",
+  "acquisition_version": "ZFD-GOBLIN-ACQ-LAYER-V0_1",
+  "acquisition_class": "DIRECT_RPC",
+  "chain_id": 8453,
+  "contract_address": "0x4e3804DEADBEEFCAFEBABE000000000000000000",
+  "symbol": "TITAN",
+  "series_id": "SERIES-001",
+  "card_id": "CARD-G∞-001",
+  "authority": false,
+  "reversibility_class": "OBSERVED",
+  "gateway_class": "MIRROR_GATEWAY",
+  "metadata_resolution": {
+    "attempted": ["contractURI()", "tokenURI(0)", "uri(0)"],
+    "selected": "contractURI()",
+    "raw_uri": "ipfs://QmExample",
+    "resolved_metadata_url": "https://ipfs.gateway/ipfs/QmExample"
+  },
+  "metadata_snapshot": {
+    "metadata_json": {
+      "name": "Titan of Assumptions"
+    },
+    "metadata_hash": "sha256:FAKEHASH0000"
+  },
+  "evidence_chain": [
+    {
+      "evidence_type": "metadata",
+      "uri": "ipfs://QmExample",
+      "hash_status": "UNKNOWN"
+    }
+  ],
+  "proof_007": {
+    "tx_hash": "0xFAKETX",
+    "block_number": 12345678,
+    "block_timestamp": "2026-05-30T00:00:00Z",
+    "replay_instructions": [
+      "Fetch tx receipt",
+      "Resolve metadata URI",
+      "Compare metadata hash"
+    ]
+  }
+}
