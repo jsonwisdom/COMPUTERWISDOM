@@ -1,0 +1,54 @@
+{
+  "artifact_id": "DEEPSEEK_CANDIDATE_ZORA_FACTORY_001",
+  "system_identity": "DeepSeek",
+  "current_role": "candidate_generator",
+  "intended_destination": "receipts/drafts/zora_factory_intake_template_v0_1.json",
+  "reversibility_class": "SYMBOLIC",
+  "authority": false,
+  "candidate_title": "Zora Factory Intake Template — Production Run Intake v0.1",
+  "candidate_summary": "A structured intake form for ingesting candidate data from external sources before Computer Wisdom structures it into receipts.",
+  "candidate_sections": [
+    {
+      "section": "intake_header",
+      "fields": [
+        "intake_id",
+        "source_system",
+        "source_session_id",
+        "timestamp_iso",
+        "operator"
+      ]
+    },
+    {
+      "section": "candidate_data",
+      "fields": [
+        "claim_type",
+        "raw_content",
+        "supporting_context",
+        "references_external"
+      ]
+    },
+    {
+      "section": "processing_gate",
+      "fields": [
+        "reversibility_class_assigned",
+        "requires_receipt_before_promotion",
+        "assigned_to",
+        "reason"
+      ]
+    }
+  ],
+  "known": [
+    "Intake template is not a receipt.",
+    "No onchain verification happens at intake stage.",
+    "Template is system-agnostic."
+  ],
+  "unknown": [
+    "Which Zora Factory event types should auto-fill intake fields.",
+    "Whether intake should be stored as JSON or database row.",
+    "How to handle partial or conflicting intake data."
+  ],
+  "missing_receipts": [
+    "No real intake example has been frozen as a receipt.",
+    "No link between intake template and PR #110 has been sealed beyond this draft artifact."
+  ]
+}
