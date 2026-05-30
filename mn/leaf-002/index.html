@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Leaf #002 — MN Anomaly Portal</title>
+  <style>
+    :root {
+      --bg: #07110c;
+      --panel: #0e1b14;
+      --text: #f1fff6;
+      --muted: #b9d4c0;
+      --accent: #8ef5a4;
+      --warn: #ffd166;
+      --danger: #ff6b6b;
+      --border: #2f5a3f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #173d28 0%, var(--bg) 46%, #030604 100%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    main { width: min(980px, calc(100% - 28px)); margin: 0 auto; padding: 28px 0 54px; }
+    .hero, .card, .banner {
+      border: 1px solid var(--border);
+      background: rgba(14, 27, 20, 0.92);
+      border-radius: 20px;
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.28);
+    }
+    .hero { padding: 26px; margin-bottom: 18px; }
+    h1 { margin: 0 0 8px; font-size: clamp(1.8rem, 5vw, 3.25rem); line-height: 1.03; }
+    h2 { margin: 0 0 14px; }
+    p { color: var(--muted); line-height: 1.6; }
+    .kicker { color: var(--accent); font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; font-size: 0.82rem; margin-bottom: 10px; }
+    .banner { padding: 18px; margin-bottom: 18px; background: linear-gradient(135deg, rgba(255, 209, 102, 0.16), rgba(14, 27, 20, 0.94)); }
+    .status-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; margin-top: 14px; }
+    .pill { border: 1px solid var(--border); border-radius: 999px; padding: 10px 12px; background: rgba(0, 0, 0, 0.16); font-weight: 750; color: var(--text); }
+    .pill span { color: var(--accent); }
+    .pill.warn span { color: var(--warn); }
+    .pill.danger span { color: var(--danger); }
+    .card { padding: 20px; margin-top: 18px; }
+    label { display: block; font-weight: 800; margin: 14px 0 6px; }
+    input, textarea, select { width: 100%; border: 1px solid var(--border); border-radius: 14px; padding: 13px 14px; color: var(--text); background: #07110c; font: inherit; }
+    textarea { min-height: 128px; resize: vertical; }
+    button { margin-top: 16px; width: 100%; border: 0; border-radius: 16px; padding: 14px 16px; font-weight: 900; font-size: 1rem; background: var(--accent); color: #07110c; cursor: pointer; }
+    button.secondary { background: transparent; color: var(--accent); border: 1px solid var(--border); }
+    pre { white-space: pre-wrap; word-break: break-word; background: #020403; border: 1px solid var(--border); border-radius: 16px; padding: 14px; overflow: auto; }
+    .small { font-size: 0.92rem; }
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="kicker">🌲🧾⚙️ Leaf #002</div>
+      <h1>MN Anomaly Portal</h1>
+      <p>FIRST_RECEIPT_BOOTSTRAP is active. This portal accepts one admissible Minnesota public-record observation and generates a local receipt draft. It does not declare fraud, assign guilt, or claim authority.</p>
+    </section>
+
+    <section class="banner" aria-label="Freeze manifest">
+      <h2>REGISTRY STATUS: FROZEN — v0.1</h2>
+      <div class="status-grid">
+        <div class="pill warn">INTAKE: <span>OPEN</span></div>
+        <div class="pill warn">UNLOCK: <span>FIRST_RECEIPT_ARCHIVED</span></div>
+        <div class="pill danger">CRAWLER: <span>DISABLED</span></div>
+        <div class="pill">AUTHORITY: <span>FALSE</span></div>
+        <div class="pill warn">FRAUD_STATUS: <span>UNKNOWN</span></div>
+        <div class="pill">RULE: <span>OBSERVE_ONLY</span></div>
+      </div>
+      <p><strong>One source → One observation → One receipt.</strong> Multi-source inputs are rejected. Correlation fields are hidden. Registry changes are locked.</p>
+    </section>
+
+    <section class="card">
+      <h2>Submit First Observation</h2>
+      <p class="small">Only registered genesis sources are accepted. Receipts stay local in your browser until copied or archived by an operator.</p>
+
+      <label for="source">Registered source</label>
+      <select id="source">
+        <option value="mn_mmb_budget_forecast">mn_mmb_budget_forecast — MMB Budget Forecast</option>
+        <option value="mn_legislative_auditor">mn_legislative_auditor — Legislative Auditor</option>
+        <option value="mn_state_procurement">mn_state_procurement — State Procurement</option>
+        <option value="mn_grants_portal">mn_grants_portal — Grants Portal</option>
+        <option value="mn_vendor_payments">mn_vendor_payments — Vendor Payments</option>
+      </select>
+
+      <label for="url">Public-record URL</label>
+      <input id="url" type="url" placeholder="https://mn.gov/..." />
+
+      <label for="anomalyType">Observed anomaly type</label>
+      <select id="anomalyType">
+        <option>MISSING_RECORD</option>
+        <option>INCONSISTENT_TOTAL</option>
+        <option>BROKEN_LINK</option>
+        <option>OUTDATED_DATA</option>
+        <option>FORMAT_DIVERGENCE</option>
+        <option>UNEXPECTED_STRUCTURE</option>
+        <option>UNCLASSIFIED_ANOMALY</option>
+      </select>
+
+      <label for="description">Observation description</label>
+      <textarea id="description" maxlength="4096" placeholder="Describe only what was observed. Do not infer intent, fraud, guilt, or liability."></textarea>
+
+      <button id="generate">Generate Local Receipt Draft</button>
+      <button id="copy" class="secondary hidden">Copy Receipt JSON</button>
+    </section>
+
+    <section class="card hidden" id="receiptCard">
+      <h2>MN_RECEIPT_0001 Draft</h2>
+      <pre id="output"></pre>
+    </section>
+  </main>
+
+  <script>
+    const registry = {
+      mn_mmb_budget_forecast: { role: "PRIMARY_SOURCE", base: "https://mn.gov/mmb/" },
+      mn_legislative_auditor: { role: "AUDIT_SOURCE", base: "https://www.auditor.leg.state.mn.us/" },
+      mn_state_procurement: { role: "PRIMARY_SOURCE", base: "https://mn.gov/admin/osp/" },
+      mn_grants_portal: { role: "REFERENCE_SOURCE", base: "https://mn.gov/grants/" },
+      mn_vendor_payments: { role: "PRIMARY_SOURCE", base: "https://mn.gov/mmb/vendor-payments/" }
+    };
+
+    const sourceEl = document.getElementById("source");
+    const urlEl = document.getElementById("url");
+    const typeEl = document.getElementById("anomalyType");
+    const descEl = document.getElementById("description");
+    const outputEl = document.getElementById("output");
+    const receiptCard = document.getElementById("receiptCard");
+    const copyBtn = document.getElementById("copy");
+
+    function isRegisteredUrl(sourceId, value) {
+      try {
+        const url = new URL(value);
+        const base = new URL(registry[sourceId].base);
+        return url.hostname === base.hostname || url.hostname.endsWith("." + base.hostname);
+      } catch (_) {
+        return false;
+      }
+    }
+
+    document.getElementById("generate").addEventListener("click", () => {
+      const sourceId = sourceEl.value;
+      const url = urlEl.value.trim();
+      const description = descEl.value.trim();
+
+      if (!url || !description) {
+        alert("URL and observation description are required.");
+        return;
+      }
+
+      if (!isRegisteredUrl(sourceId, url)) {
+        alert("Rejected: URL does not match the selected registered source domain.");
+        return;
+      }
+
+      const receipt = {
+        receipt_id: "MN_RECEIPT_0001_DRAFT",
+        version: "0.1",
+        leaf: "LEAF_002_MN_ANOMALY_FRAMEWORK_V0_1",
+        admissibility_rule: "OBSERVE_ANOMALY_DO_NOT_DECLARE_FRAUD",
+        authority: false,
+        fraud_status: "UNKNOWN",
+        fraud_adjudication: "RESERVED_TO_LAWFUL_AUTHORITY",
+        source_entity_id: sourceId,
+        source_role: registry[sourceId].role,
+        public_record_url: url,
+        anomaly_type: typeEl.value,
+        anomaly_description: description,
+        observed_at: new Date().toISOString(),
+        crawler_context: {
+          user_agent: navigator.userAgent,
+          fetch_status: "NOT_FETCHED_LOCAL_OBSERVATION_ONLY",
+          http_status: 0
+        },
+        meme_court_verdict: "NEEDS_HUMAN_REVIEW",
+        replay_status: "OBSERVED",
+        correlation_mode: "DISABLED",
+        multi_source_analysis: false,
+        registry_status: "FROZEN_V0_1",
+        unlock_condition: "FIRST_RECEIPT_ARCHIVED"
+      };
+
+      outputEl.textContent = JSON.stringify(receipt, null, 2);
+      receiptCard.classList.remove("hidden");
+      copyBtn.classList.remove("hidden");
+    });
+
+    copyBtn.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(outputEl.textContent);
+      copyBtn.textContent = "Copied Receipt JSON";
+      setTimeout(() => copyBtn.textContent = "Copy Receipt JSON", 1500);
+    });
+  </script>
+</body>
+</html>
