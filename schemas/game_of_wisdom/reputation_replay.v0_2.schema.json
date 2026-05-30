@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/game_of_wisdom/reputation_replay.v0_2.schema.json",
+  "title": "Game of Wisdom — Reputation Replay Schema V0.2",
+  "description": "Defines reputation as replayable receipt history, not authority, ranking, punishment, or social-credit scoring.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "reputation_replay_id": {
+      "type": "string"
+    },
+    "guided_link": {
+      "type": "string",
+      "description": "Lineage link to issue, record, PR, receipt, or board layer."
+    },
+    "subject_type": {
+      "type": "string",
+      "enum": [
+        "RECORD",
+        "BOARD_CELL",
+        "RECEIPT",
+        "LESSON_BYTE",
+        "PUBLIC_RECORD_SURFACE",
+        "UNKNOWN"
+      ]
+    },
+    "subject_id": {
+      "type": "string"
+    },
+    "reputation_basis": {
+      "type": "array",
+      "description": "Only replayable evidence may contribute to reputation context.",
+      "items": {
+        "type": "string",
+        "enum": [
+          "SOURCE_PINNED",
+          "DATE_VERIFIED",
+          "BOUNDARY_CHECKED",
+          "JOY_TRANSLATED",
+          "REPLAY_COMPLETE",
+          "UNKNOWN_HELD",
+          "CANDIDATE_NOT_PROMOTED",
+          "AUTHORITY_FALSE_PRESERVED"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "reputation_statement": {
+      "type": ["string", "null"],
+      "description": "Plain-language summary of replay history. Must not rank, punish, or assign personal worth."
+    },
+    "replay_status": {
+      "type": "string",
+      "enum": ["COMPLETE", "PARTIAL", "MISSING", "UNKNOWN"]
+    },
+    "forbidden_uses": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "SOCIAL_CREDIT",
+          "PERSON_RANKING",
+          "PUNISHMENT",
+          "LEGAL_CONCLUSION",
+          "AUTHORITY_UPGRADE",
+          "UNSOURCED_TRUST_SCORE"
+        ]
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "promotion_allowed": {
+      "const": false
+    },
+    "authority": {
+      "const": false
+    }
+  },
+  "required": [
+    "reputation_replay_id",
+    "guided_link",
+    "subject_type",
+    "subject_id",
+    "reputation_basis",
+    "replay_status",
+    "forbidden_uses",
+    "promotion_allowed",
+    "authority"
+  ]
+}
