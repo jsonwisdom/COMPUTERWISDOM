@@ -1,18 +1,28 @@
 # ZORA_FACTORY_PRODUCTION_MANUAL_V0_1
 
 Author: jaywisdom  
-Scope: Zora Creator Coin factory operations for zora.co/@jaywisdom and descendants  
+Scope: DeepSeek -> Computer Wisdom -> Zora Factory production runs for zora.co/@jaywisdom and descendants  
 Status: Draft production manual  
 Authority: false  
 Membrane: HOLDS  
 
 ## 0. Purpose
 
-This manual defines the safe production path for creating, acquiring, indexing, and replaying Zora Creator Coin artifacts without silent promotion from claim to receipt.
+This manual defines the safe production path for converting DeepSeek candidate work into Computer Wisdom receipts and then, only after receipt validation, into Zora public surfaces.
 
 It is a factory manual, not a financial recommendation, not a trading strategy, and not a claim that any coin has value.
 
-## 1. Core Rule
+## 1. Three-Layer Stack
+
+- DeepSeek: candidate analysis engine. Outputs inference, symbolic structure, speculative framing, and draft production concepts.
+- Computer Wisdom: operational control plane. Converts candidates into receipts, validates replayability, marks reversibility class, and blocks silent promotion.
+- Zora: public creator-coin surface. Receives only receipt-backed outputs after approval.
+
+## 2. Core Law
+
+NO RECEIPT -> NO CLAIM  
+NO SOURCE -> NO PUBLIC POST  
+NO REPLAY -> NO INGESTION
 
 No Zora Creator Coin enters canon unless it has a replayable acquisition receipt.
 
@@ -29,7 +39,24 @@ Required minimum receipt fields:
 - acquisition_class
 - authority: false
 
-## 2. Factory Stages
+## 3. Intake Pipeline
+
+1. DeepSeek generates candidate material.
+2. Candidate is marked SYMBOLIC or SPECULATIVE unless directly observed.
+3. Computer Wisdom validates candidate against inference marking and replay rules.
+4. Validated candidate becomes a draft receipt under receipts/drafts/.
+5. Real Zora acquisition receipts are stored under receipts/zora_factory/.
+6. Jay acts as promotion gate.
+7. Zora public surface happens only after receipt exists.
+
+## 4. Receipt Types
+
+- replay_acquisition_receipt: OBSERVED layer receipt for metadata fetches, tx logs, and contract acquisition.
+- derived_receipt: computed from OBSERVED evidence.
+- symbolic_receipt: interpretation or lore; must carry model_version or source engine.
+- speculative_receipt: hypothesis only; never promoted to authority.
+
+## 5. Factory Stages
 
 ### Stage 0 — Concept
 
@@ -41,6 +68,7 @@ Output:
 - proposed title
 - proposed description
 - image candidate
+- source_engine, if generated from DeepSeek or another model
 
 Allowed status:
 
@@ -71,6 +99,7 @@ Recommended attributes:
 - Reversibility Class
 - Authority
 - Membrane
+- Source Engine
 
 ### Stage 2 — Preflight Hash
 
@@ -163,7 +192,7 @@ Receipt must include:
 
 ### Stage 8 — Symbol Index
 
-No orphan goblins.
+No orphan factory outputs.
 
 Maintain bidirectional mapping:
 
@@ -188,7 +217,7 @@ CLAIM -> RECEIPT -> VERIFIED_RECEIPT
 
 Promotion requires an explicit transition record.
 
-## 3. Reversibility Classes
+## 6. Reversibility Classes
 
 - OBSERVED: directly fetched or seen from source
 - DERIVED: computed from observed evidence
@@ -197,7 +226,7 @@ Promotion requires an explicit transition record.
 
 No class may silently promote itself.
 
-## 4. Failure Modes
+## 7. Failure Modes
 
 ### Missing contractURI()
 
@@ -219,36 +248,42 @@ Page appearance is OBSERVATION only. It is not a replayable receipt.
 
 Record tx and URI evidence. Metadata remains UNKNOWN.
 
-## 5. Required Repository Artifacts
+### DeepSeek output lacks source boundary
+
+Mark as SYMBOLIC or SPECULATIVE. Do not route to Zora until receipt-backed.
+
+## 8. Required Repository Artifacts
 
 - docs/zora/ZFD-GOBLIN-ACQ-LAYER-V0_1.md
 - docs/zora/ZORA_FACTORY_PRODUCTION_MANUAL_V0_1.md
 - schemas/zora_goblin_acquisition.v0_1.schema.json
 - receipts/drafts/zfd_goblin_acq_layer_fixture_v0_1.json
-- receipts/drafts/replay_acquisition_receipt_001.json, once real acquisition exists
+- receipts/zora_factory/replay_acquisition_receipt_001.json, once real acquisition exists
+- services/zora-flywheel/factory_crawler_spec_candidate.md
+- services/zora-flywheel/factory_receipt_schema_candidate.json
 
-## 6. Operator Commands
+## 9. Operator Commands
 
 Example acquisition command:
 
 ```bash
-python tools/acquisition/metadata_fetcher_v0.py <contract_address> > receipts/drafts/replay_acquisition_receipt_001.json
+python tools/acquisition/metadata_fetcher_v0.py <contract_address> > receipts/zora_factory/replay_acquisition_receipt_001.json
 ```
 
 Validation command, if JSON Schema tooling is available:
 
 ```bash
-python -m json.tool receipts/drafts/replay_acquisition_receipt_001.json
+python -m json.tool receipts/zora_factory/replay_acquisition_receipt_001.json
 ```
 
 Commit command:
 
 ```bash
-git add receipts/drafts/replay_acquisition_receipt_001.json
+git add receipts/zora_factory/replay_acquisition_receipt_001.json
 git commit -m "Add real replay acquisition receipt 001"
 ```
 
-## 7. Production Merge Rule
+## 10. Production Merge Rule
 
 Do not merge as production-ready while any of the following remain true:
 
@@ -258,10 +293,13 @@ Do not merge as production-ready while any of the following remain true:
 - block_number is synthetic
 - metadata_json is synthetic
 - acquisition was not replayed
+- DeepSeek candidate text is promoted without source boundary
 
-## 8. Final Invariant
+## 11. Final Invariant
 
-The factory creates surfaces.  
-The chain creates receipts.  
+DeepSeek proposes.  
+Computer Wisdom structures.  
+Receipts constrain.  
+Zora publishes.  
 Replay creates confidence.  
 Authority remains false.
