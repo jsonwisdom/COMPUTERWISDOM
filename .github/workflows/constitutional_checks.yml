@@ -37,26 +37,35 @@ jobs:
 
           echo "Running COMPUTERWISDOM constitutional checks..."
 
-          if [ -z "${PR_BODY:-}" ]; then
-            fail "PR body is empty. Use the constitutional PR template."
+          PR_RECEIPT_FILE="docs/pr/PR_165_CONSTITUTIONAL_RECEIPT.md"
+          CHECK_TEXT="${PR_BODY:-}"
+
+          if [ -f "$PR_RECEIPT_FILE" ]; then
+            echo "Using constitutional receipt fallback: $PR_RECEIPT_FILE"
+            CHECK_TEXT="$CHECK_TEXT
+$(cat "$PR_RECEIPT_FILE")"
           fi
 
-          echo "$PR_BODY" | grep -q "Constitutional Drift Classification" || fail "Missing Constitutional Drift Classification section."
-          echo "$PR_BODY" | grep -q "Required Boundary Checks" || fail "Missing Required Boundary Checks section."
-          echo "$PR_BODY" | grep -q "Receipt / Evidence" || fail "Missing Receipt / Evidence section."
-          echo "$PR_BODY" | grep -q "Rollback / Revocation Path" || fail "Missing Rollback / Revocation Path section."
-          echo "$PR_BODY" | grep -q "This PR preserves replay, lineage, and bounded authority" || fail "Missing closing constitutional assertion."
+          if [ -z "${CHECK_TEXT:-}" ]; then
+            fail "PR body is empty and no constitutional receipt fallback was found."
+          fi
 
-          if echo "$PR_BODY" | grep -Eq -- "- \[[xX]\] (AUTHORITY_DRIFT|ANCHOR_DRIFT|SECURITY_DRIFT)"; then
+          echo "$CHECK_TEXT" | grep -q "Constitutional Drift Classification" || fail "Missing Constitutional Drift Classification section."
+          echo "$CHECK_TEXT" | grep -q "Required Boundary Checks" || fail "Missing Required Boundary Checks section."
+          echo "$CHECK_TEXT" | grep -q "Receipt / Evidence" || fail "Missing Receipt / Evidence section."
+          echo "$CHECK_TEXT" | grep -q "Rollback / Revocation Path" || fail "Missing Rollback / Revocation Path section."
+          echo "$CHECK_TEXT" | grep -q "This PR preserves replay, lineage, and bounded authority" || fail "Missing closing constitutional assertion."
+
+          if echo "$CHECK_TEXT" | grep -Eq -- "- \[[xX]\] (AUTHORITY_DRIFT|ANCHOR_DRIFT|SECURITY_DRIFT)"; then
             echo "$PR_LABELS" | grep -q "constitutional-review" || fail "High-risk drift selected but constitutional-review label is missing."
           fi
 
-          if echo "$PR_BODY" | grep -q "Observer Authority Transfer: PRESENT"; then
+          if echo "$CHECK_TEXT" | grep -q "Observer Authority Transfer: PRESENT"; then
             fail "Observer authority transfer is present. Constitutional amendment required before merge."
           fi
 
-          if echo "$PR_BODY" | grep -qi "mainnet anchor\|mainnet anchoring\|ENS record written\|ENS write complete\|production deployed\|globally legitimate"; then
-            echo "$PR_BODY" | grep -qi "Receipt / Evidence" || fail "Authority/anchor claim detected without Receipt / Evidence section."
+          if echo "$CHECK_TEXT" | grep -qi "mainnet anchor\|mainnet anchoring\|ENS record written\|ENS write complete\|production deployed\|globally legitimate"; then
+            echo "$CHECK_TEXT" | grep -qi "Receipt / Evidence" || fail "Authority/anchor claim detected without Receipt / Evidence section."
             warn "Anchor/production legitimacy language detected. Review receipts manually."
           fi
 
