@@ -1,0 +1,80 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "schemas/caseflow_state_machine.v0_2.schema.json",
+  "title": "Caseflow State Machine v0.2",
+  "description": "Bounded transition-kernel schema for constitutional caseflow. Defines lawful transition receipts only. Authority remains false.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "authority",
+    "from_state",
+    "to_state",
+    "transition_reason",
+    "receipt"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "v0.2"
+    },
+    "authority": {
+      "type": "boolean",
+      "const": false
+    },
+    "from_state": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "UNDER_REVIEW",
+        "GOVERNANCE_CHECK",
+        "APPROVED",
+        "IN_PROGRESS",
+        "MERGED",
+        "REJECTED",
+        "REPLAY",
+        "DISPUTED"
+      ]
+    },
+    "to_state": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "UNDER_REVIEW",
+        "GOVERNANCE_CHECK",
+        "APPROVED",
+        "IN_PROGRESS",
+        "MERGED",
+        "REJECTED",
+        "REPLAY",
+        "DISPUTED"
+      ]
+    },
+    "transition_reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "emitted",
+        "invariant",
+        "allowed"
+      ],
+      "properties": {
+        "emitted": {
+          "type": "boolean",
+          "const": true
+        },
+        "allowed": {
+          "type": "boolean"
+        },
+        "invariant": {
+          "type": "string",
+          "const": "NO_SILENT_CATEGORY_PROMOTION"
+        }
+      }
+    }
+  }
+}
