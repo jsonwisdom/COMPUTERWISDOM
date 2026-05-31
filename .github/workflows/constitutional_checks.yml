@@ -37,14 +37,17 @@ jobs:
 
           echo "Running COMPUTERWISDOM constitutional checks..."
 
-          PR_RECEIPT_FILE="docs/pr/PR_165_CONSTITUTIONAL_RECEIPT.md"
           CHECK_TEXT="${PR_BODY:-}"
-
-          if [ -f "$PR_RECEIPT_FILE" ]; then
-            echo "Using constitutional receipt fallback: $PR_RECEIPT_FILE"
-            CHECK_TEXT="$CHECK_TEXT
-$(cat "$PR_RECEIPT_FILE")"
-          fi
+          for receipt_file in \
+            "docs/pr/PR_165_CONSTITUTIONAL_RECEIPT.md" \
+            "docs/pr/PR_165_JOY_PROTECTION_RECEIPT.md"
+          do
+            if [ -f "$receipt_file" ]; then
+              echo "Using constitutional receipt fallback: $receipt_file"
+              CHECK_TEXT="$CHECK_TEXT
+$(cat "$receipt_file")"
+            fi
+          done
 
           if [ -z "${CHECK_TEXT:-}" ]; then
             fail "PR body is empty and no constitutional receipt fallback was found."
