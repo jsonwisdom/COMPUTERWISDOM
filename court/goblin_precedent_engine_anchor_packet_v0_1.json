@@ -1,0 +1,32 @@
+{
+  "artifact": "goblin_precedent_engine_anchor_packet_v0_1",
+  "status": "READY_TO_ANCHOR",
+  "authority": false,
+  "chain_target": {
+    "network": "Base Sepolia",
+    "chain_id": 84532,
+    "anchor_action": "ANCHOR_SHA256_HASH_ONLY"
+  },
+  "inputs": {
+    "manifest_blob_sha": "4a500f58f6f7ac28217c9272e8485554115aff42",
+    "runtime_receipt_blob_sha": "43e361f63f7c328a30f3545e7e415df3bb6caac8",
+    "runtime_receipt_sha256": "54455f6ad018c497edfddb9e6b19c0058713d883e0cb62c46926f6818a7a10c6"
+  },
+  "packet": {
+    "anchor_packet": "READY",
+    "precedent_engine": "GOBLIN_COURT",
+    "scope": "OBSERVER_ONLY_PRECEDENT_ENGINE",
+    "mutation_authority": false,
+    "claims": [
+      "manifest_blob_sha_matches_operator_reported_value",
+      "runtime_receipt_blob_sha_matches_operator_reported_value",
+      "runtime_receipt_sha256_bound_for_anchor"
+    ]
+  },
+  "invariants": [
+    "AUTHORITY_FALSE",
+    "NO_SILENT_CATEGORY_PROMOTION",
+    "ANCHOR_HASH_NOT_TRUTH",
+    "RECEIPT_BEATS_NARRATIVE"
+  ]
+}
