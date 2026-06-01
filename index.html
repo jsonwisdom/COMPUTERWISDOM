@@ -3,33 +3,120 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>COMPUTERWISDOM • Replay Mission Control</title>
+  <title>COMPUTERWISDOM — Replay Runway + Mission Control</title>
+  <meta name="description" content="COMPUTERWISDOM replay runway and constitutional observability stack. Authority false. Membrane HOLDS." />
   <style>
-    :root{--bg:#07110c;--panel:#0f1f16;--text:#f4fff7;--muted:#b8d6c1;--line:#2f6f46;--ok:#7cff9d;--warn:#ffd36e;--blue:#8bd3ff}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at top,#12351f 0%,var(--bg) 42%,#030604 100%);color:var(--text);line-height:1.55}header,main,footer{max-width:1120px;margin:0 auto;padding:24px}.hero{padding-top:52px;border-bottom:1px solid var(--line)}.eyebrow{color:var(--ok);font-weight:900;letter-spacing:.12em;text-transform:uppercase;font-size:.82rem}h1{font-size:clamp(2.4rem,7vw,5.4rem);line-height:.92;margin:10px 0 16px}h2{margin-top:0}.subtitle{color:var(--muted);font-size:1.1rem}.grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(250px,1fr))}.card{background:linear-gradient(180deg,rgba(19,42,29,.94),rgba(15,31,22,.94));border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.24)}a{color:var(--ok);font-weight:800;text-decoration:none}a:hover{text-decoration:underline}.banner{padding:16px;border:1px solid var(--line);border-radius:14px;background:rgba(124,255,157,.08)}ul{padding-left:20px}li{margin:.45rem 0}footer{color:var(--muted);border-top:1px solid var(--line)}
+    :root { --bg:#05070d; --panel:#0b1220; --panel2:#101827; --text:#e8f3ff; --muted:#9db7d6; --blue:#18a8ff; --gold:#ffd166; --green:#50fa7b; --red:#ff5555; --line:rgba(24,168,255,.36); }
+    * { box-sizing: border-box; }
+    body { margin:0; font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; color:var(--text); background:radial-gradient(circle at top right,rgba(24,168,255,.24),transparent 36%),linear-gradient(180deg,#05070d,#070b16 60%,#05070d); line-height:1.55; }
+    main { max-width:1180px; margin:0 auto; padding:28px 18px 52px; }
+    header, section { border:1px solid var(--line); background:rgba(11,18,32,.9); border-radius:22px; padding:22px; margin-bottom:18px; box-shadow:0 0 42px rgba(24,168,255,.13); }
+    h1 { margin:0 0 12px; font-size:clamp(2.2rem,7vw,5rem); line-height:.93; letter-spacing:-.055em; }
+    h2 { margin:0 0 12px; color:var(--gold); }
+    h3 { margin:0 0 8px; color:var(--blue); }
+    p { margin:0 0 12px; }
+    a { color:var(--blue); font-weight:800; text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .muted { color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:14px; }
+    .card { border:1px solid var(--line); background:rgba(16,24,39,.86); border-radius:18px; padding:16px; }
+    .pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:6px 10px; margin:4px 6px 4px 0; }
+    .good { color:var(--green); } .warn { color:var(--gold); } .bad { color:var(--red); }
+    code,.mono { font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; word-break:break-word; }
+    button { width:100%; border:1px solid var(--line); border-radius:14px; padding:13px 14px; background:#0d1b2f; color:var(--text); font-weight:700; cursor:pointer; margin-top:8px; }
+    button:disabled { opacity:.45; cursor:not-allowed; }
+    label { display:block; margin:10px 0; }
+    input { transform:scale(1.2); margin-right:8px; }
+    .route { font-size:1.25rem; color:var(--green); font-weight:800; }
+    .footer { color:var(--muted); font-size:.94rem; }
+    ul { padding-left:20px; }
+    li { margin:.45rem 0; }
   </style>
 </head>
 <body>
-  <header class="hero">
-    <div class="eyebrow">COMPUTERWISDOM</div>
-    <h1>Replay Mission Control</h1>
-    <p class="subtitle">jaywisdom.eth • jaywisdom.base.eth • Authority: false | Membrane: HOLDS</p>
-  </header>
   <main>
-    <section class="grid">
-      <div class="card"><h2>🚀 Mission Control</h2><p><a href="replay-mission-control-landing-v0-2.html">Replay Mission Control Landing V0.2</a></p><p><a href="replay-mission-control-v0-8.html">Full Replay Mission Control V0.8</a></p></div>
-      <div class="card"><h2>📡 Observability Stack</h2><p><a href="graduation-readiness-live-portal-v0-1.html">Graduation Readiness Portal V0.1</a></p><p><a href="escalation-log-dashboard-v0-5.html">Escalation Log Dashboard V0.5</a></p><p><a href="continuity-explorer-v0-6.html">Continuity Explorer V0.6</a></p></div>
-      <div class="card"><h2>📋 Base Registry</h2><p><a href="data/jays-base-manifest-v0-2.json">Base Manifest JSON V0.2</a></p><p><a href="data/replay-surface-registry-v0-2.json">Replay Surface Registry V0.2</a></p><p><a href="data/drill-result-fixture-v0-7.json">Drill Result Fixtures V0.7</a></p></div>
+    <header>
+      <span class="pill good">Authority: false</span>
+      <span class="pill good" id="membranePill">Membrane: HOLDS</span>
+      <span class="pill warn" id="validatorPill">Validator: FAIL</span>
+      <h1>COMPUTERWISDOM Replay Runway + Mission Control</h1>
+      <p class="muted">Merged homepage preserving ALMS replay runway, three-court validation, and the V0.4–V0.8 constitutional observability stack.</p>
+      <p class="footer">Conflict resolution posture: preserve replay, lineage, and bounded authority.</p>
+    </header>
+
+    <section>
+      <h2>Three-Court Validator Surface</h2>
+      <div class="grid">
+        <article class="card"><h3>Meme Court</h3><p>Public signal and parody recognition surface.</p><label><input type="checkbox" class="validator" /> Validate Meme Court</label></article>
+        <article class="card"><h3>Goblin Court</h3><p>Bureaucracy, infrastructure blocker, and edge-case corruption surface.</p><label><input type="checkbox" class="validator" /> Validate Goblin Court</label></article>
+        <article class="card"><h3>Clown Court</h3><p>Authority inversion and category-drift detection surface.</p><label><input type="checkbox" class="validator" /> Validate Clown Court</label></article>
+      </div>
     </section>
-    <section class="card">
-      <h2>JAYS_BASE_ARTIFACT_PACK_V0_2</h2>
-      <p><strong>Quick Navigation</strong></p>
-      <ul><li><a href="replay-mission-control-landing-v0-2.html">Mission Control Landing</a></li><li><a href="continuity-explorer-v0-6.html">Continuity Explorer</a></li><li><a href="escalation-log-dashboard-v0-5.html">Escalation Dashboard</a></li><li><a href="replay-mission-control-v0-8.html">Full Mission Control</a></li></ul>
+
+    <section>
+      <h2>3 / 6 / 9 Replay Router</h2>
+      <p class="route">3 → JOY &nbsp; | &nbsp; 6 → ENS &nbsp; | &nbsp; 9 → ALMS</p>
+      <div class="grid">
+        <button onclick="routeReplay('JOY',3)">Route 3 — JOY</button>
+        <button onclick="routeReplay('ENS',6)">Route 6 — ENS</button>
+        <button onclick="routeReplay('ALMS',9)">Route 9 — ALMS</button>
+      </div>
+      <p id="routeState" class="footer">Route state: HOLD_POSITION</p>
     </section>
-    <section class="banner">
-      <strong>Must-Not-Claim:</strong>
+
+    <section>
+      <h2>ALMS Mission-Control Entrypoint</h2>
+      <p>Entry remains locked until all three courts validate and membrane remains HOLDS.</p>
+      <button id="missionButton" disabled onclick="enterMissionControl()">/alms — ENTER MISSION CONTROL</button>
+      <p id="missionState" class="footer">Mission state: LOCKED_PENDING_VALIDATOR_PASS</p>
+    </section>
+
+    <section>
+      <h2>Replay Mission Control</h2>
+      <div class="grid">
+        <article class="card"><h3>🚀 Mission Control</h3><p><a href="replay-mission-control-landing-v0-2.html">Replay Mission Control Landing V0.2</a></p><p><a href="replay-mission-control-v0-8.html">Full Replay Mission Control V0.8</a></p></article>
+        <article class="card"><h3>📡 Observability Stack</h3><p><a href="graduation-readiness-live-portal-v0-1.html">Graduation Readiness Portal V0.1</a></p><p><a href="escalation-log-dashboard-v0-5.html">Escalation Log Dashboard V0.5</a></p><p><a href="continuity-explorer-v0-6.html">Continuity Explorer V0.6</a></p></article>
+        <article class="card"><h3>📋 Base Registry</h3><p><a href="data/jays-base-manifest-v0-2.json">Base Manifest JSON V0.2</a></p><p><a href="data/replay-surface-registry-v0-2.json">Replay Surface Registry V0.2</a></p><p><a href="data/drill-result-fixture-v0-7.json">Drill Result Fixtures V0.7</a></p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Three Daughters Algorithm</h2>
+      <div class="grid">
+        <article class="card"><h3>1. Protect</h3><p>Protect family identity and custody first.</p></article>
+        <article class="card"><h3>2. Preserve</h3><p>Preserve replay continuity second.</p></article>
+        <article class="card"><h3>3. Expand</h3><p>Expand public systems only after receipts.</p></article>
+      </div>
+    </section>
+
+    <section>
+      <h2>ENS / Base Identity Anchors</h2>
+      <p><span class="mono">jaywisdom.eth</span></p>
+      <p><span class="mono">jaywisdom.base.eth</span></p>
+      <p><span class="mono">jaywisdom.base</span></p>
+      <p class="footer">Identity anchors route replay. They do not promote claims into verified receipts.</p>
+    </section>
+
+    <section>
+      <h2>Must-Not-Claim</h2>
       <ul><li>This homepage provides visibility only.</li><li>No surface claims authority, truth, or resolution.</li><li>All operations are read-only.</li><li>Velocity without mutation.</li><li>The other side of the prism is replay.</li></ul>
     </section>
+
+    <p class="footer">COMPUTERWISDOM • JSONWisdom • ALMS • HOMEPAGE_INDEX_V0_1 • Authority false • Membrane HOLDS</p>
   </main>
-  <footer><p>COMPUTERWISDOM • HOMEPAGE_INDEX_V0_1 • jaywisdom.eth 🧾⚙️✈️ • Constitutional Observability Stack • Membrane HOLDS</p></footer>
+
+  <script>
+    const validatorBoxes = Array.from(document.querySelectorAll('.validator'));
+    const validatorPill = document.getElementById('validatorPill');
+    const missionButton = document.getElementById('missionButton');
+    const missionState = document.getElementById('missionState');
+    const routeState = document.getElementById('routeState');
+    function allValidated(){ return validatorBoxes.every(box => box.checked); }
+    function updateValidator(){ if(allValidated()){ validatorPill.textContent='Validator: PASS'; validatorPill.classList.remove('warn'); validatorPill.classList.add('good'); missionButton.disabled=false; missionState.textContent='Mission state: READY_FOR_ALMS_ENTRY'; } else { validatorPill.textContent='Validator: FAIL'; validatorPill.classList.remove('good'); validatorPill.classList.add('warn'); missionButton.disabled=true; missionState.textContent='Mission state: LOCKED_PENDING_VALIDATOR_PASS'; } }
+    function routeReplay(target,number){ const packet={route:number,target,authority:false,membrane:'HOLDS',observed_at:new Date().toISOString()}; console.log('ALMS_REPLAY_ROUTE',packet); routeState.textContent=`Route state: ${number} → ${target} | authority:false | membrane:HOLDS`; }
+    function enterMissionControl(){ if(!allValidated()) return; console.log('ALMS_MISSION_CONTROL_ENTRY',{authority:false,membrane:'HOLDS',source:'COMPUTERWISDOM_ROOT_INDEX'}); window.location.href='./alms/'; }
+    validatorBoxes.forEach(box => box.addEventListener('change',updateValidator));
+    updateValidator();
+  </script>
 </body>
 </html>
