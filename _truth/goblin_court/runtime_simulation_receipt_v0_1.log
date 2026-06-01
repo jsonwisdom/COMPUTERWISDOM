@@ -1,0 +1,61 @@
+=== GOBLIN COURT SIMULATION RECEIPT V0.1 ===
+Mon Jun  1 03:02:04 PM UTC 2026
+authority=false
+expected=GC-001 GC-002 GC-005 GC-010
+=== SIMULATION START ===
+Welcome to Cloud Shell! Type "help" to get started, or type "gemini" to try prompting with Gemini CLI.
+To set your Cloud Platform project in this session use `gcloud config set project [PROJECT_ID]`.
+You can view your projects by running `gcloud projects list`.
+/home/computerwisdom408/.bashrc: line 4: /home/computerwisdom408/.deno/env: No such file or directory
+/home/computerwisdom408/.profile: line 6: /home/computerwisdom408/.deno/env: No such file or directory
+/tmp/goblin_test/subdir
+
+⚠️  GOBLIN DETECTED: GC-001 — Nested Repository
+   📜 cd /tmp/goblin_test
+   🧾 Witnessed. Authority: false.
+
+Welcome to Cloud Shell! Type "help" to get started, or type "gemini" to try prompting with Gemini CLI.
+To set your Cloud Platform project in this session use `gcloud config set project [PROJECT_ID]`.
+You can view your projects by running `gcloud projects list`.
+/home/computerwisdom408/.bashrc: line 4: /home/computerwisdom408/.deno/env: No such file or directory
+/home/computerwisdom408/.profile: line 6: /home/computerwisdom408/.deno/env: No such file or directory
+bash: line 1: nonexistent_command_xyz123: command not found
+
+⚠️  GOBLIN DETECTED: GC-001 — Nested Repository
+   📜 cd /tmp/goblin_test
+   🧾 Witnessed. Authority: false.
+
+
+⚠️  GOBLIN DETECTED: GC-002 — Missing Dependency
+   📜 Verify dependency exists and version is pinned
+   🧾 Witnessed. Authority: false.
+
+Welcome to Cloud Shell! Type "help" to get started, or type "gemini" to try prompting with Gemini CLI.
+To set your Cloud Platform project in this session use `gcloud config set project [PROJECT_ID]`.
+You can view your projects by running `gcloud projects list`.
+/home/computerwisdom408/.bashrc: line 4: /home/computerwisdom408/.deno/env: No such file or directory
+/home/computerwisdom408/.profile: line 6: /home/computerwisdom408/.deno/env: No such file or directory
+1
+
+⚠️  GOBLIN DETECTED: GC-001 — Nested Repository
+   📜 cd /tmp/goblin_test
+   🧾 Witnessed. Authority: false.
+
+
+⚠️  GOBLIN DETECTED: GC-005 — Wrong Network
+   📜 Chain 1, expected 11155111
+   🧾 Witnessed. Authority: false.
+
+
+🔴 CIRCUIT BREAKER: GC-010 — Assumption Cascade
+   3 goblins in last 15 min
+   CL-010: STOP — CLEANSE — REBASE — AUDIT — SANITY — RESUME
+   Authority: false.
+
+=== SIMULATION END ===
+
+=== METADATA ===
+event: RUNTIME_SIMULATION_PASS
+timestamp: 2026-06-01T15:06:00Z
+goblins: GC-001, GC-002, GC-005, GC-010
+authority: false
