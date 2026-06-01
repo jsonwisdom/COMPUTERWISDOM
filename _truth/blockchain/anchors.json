@@ -1,0 +1,14 @@
+{
+  "pending_anchor": {
+    "packet_file": "court/goblin_precedent_engine_anchor_packet_v0_1.json",
+    "packet_sha256": "816894e4fd096dd024e1d56ba546a9493d455b7648a57b811b63591e8a384ade",
+    "github_blob_sha": "6577c35c30c7792b7753182675b8dcc47b05a120",
+    "pr": 176,
+    "merge_commit": "db5bd8a0dd37f6770ec66deae719729a268cbcfa",
+    "target_chain": "base_sepolia",
+    "chain_id": 84532,
+    "method": "PENDING_BASE_SEPOLIA_ANCHOR",
+    "status": "NOT_YET_EXECUTED",
+    "authority": false
+  }
+}
