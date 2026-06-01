@@ -1,1 +1,3 @@
 {"artifact":"GOBLIN_COURT_JURISDICTION_V0_1","case_id":"GIRTH-001","status":"RECEIPT_BOUND","authority":false,"membrane_state":"HOLDS","runtime_parity":"PENDING","drift":0}
+{"timestamp":"2026-06-01T10:55:00Z","event":"VERIFIER_DOC_UPDATED","artifact":"docs/goblin_verifier_v0_1.md","branch":"feature/goblin-precedent-index-verifier-v0-1","commit":"8331045","pr":"pending","authority":false}
+{"timestamp":"2026-06-01T10:55:00Z","event":"SCHEMA_AND_TESTS_READY","note":"Schema committed c828d80, tests committed f3706af","branch":"feature/goblin-precedent-index-verifier-v0-1","authority":false}
