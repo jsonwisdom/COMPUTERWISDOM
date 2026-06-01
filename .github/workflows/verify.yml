@@ -48,3 +48,35 @@ jobs:
           grep -q '2d050d623ab4a9ba7aff8547dc4f64d28b2f4c27' index.html
 
           echo "verify passed: ALMS replay runway holds"
+
+  validate-goblin-index:
+    name: validate goblin precedent index
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install pytest jsonschema
+
+      - name: Validate schema loads
+        run: |
+          python -c "import json, jsonschema; schema=json.load(open('schemas/goblin_precedent_index.v0_1.schema.json')); print('Schema OK')"
+
+      - name: Run Goblin Precedent Index tests
+        run: pytest tests/test_goblin_precedent_index_v0_1.py -v
+
+      - name: Check authority false in index
+        run: |
+          grep -q "Authority: false" docs/GOBLIN_PRECEDENT_INDEX_V0_1.md || grep -q "authority: false" docs/GOBLIN_PRECEDENT_INDEX_V0_1.md || (echo "authority false missing" && exit 1)
+          echo "Authority check passed"
+
+      - name: Check Trinity present
+        run: |
+          grep -q "PROTECT | WITNESS | APPEND_ONLY" docs/GOBLIN_PRECEDENT_INDEX_V0_1.md || (echo "Trinity missing" && exit 1)
+          echo "Trinity check passed"
