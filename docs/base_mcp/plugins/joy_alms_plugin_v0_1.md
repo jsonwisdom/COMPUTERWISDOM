@@ -1,5 +1,20 @@
 # JOY ALMS Base MCP Plugin V0.1
 
+## Doctrine Preamble V0.1
+
+Binary systems decide too soon.  
+Trinity systems preserve replay.
+
+A claim must be allowed to stand.  
+A challenge must be allowed to answer.  
+A witness must be allowed to preserve context.
+
+Memory precedes verdict.  
+Continuity precedes closure.  
+Authority remains false.
+
+Installation semantics: non-binding, non-authoritative, non-executing, non-promotional, non-merging, non-review-advancing.
+
 Status: DRAFT_AGENT_PLUGIN_SPEC
 Authority: false
 Mutation model: append-only
