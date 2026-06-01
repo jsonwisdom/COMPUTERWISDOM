@@ -2,8 +2,16 @@
 
 Status: DRAFT_SCOPED_CONTINUITY_MARKER
 Authority: false
+Authority proof boundary: NONE — this file is a non-executing continuity marker and makes no authority claim beyond its own draft posture.
 Execution: none
 Membrane: HOLDS
+
+Proof context:
+- VC: NONE
+- Receipt: NONE
+- Attestation: NONE
+- Hash/source/evidence proof: NONE
+- Boundary: This file is interpretive only, non-executing, non-promotional, and does not assert external authority.
 
 This file is a non-executing continuity marker for PR #170.
 
