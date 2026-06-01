@@ -1,0 +1,202 @@
+openapi: 3.1.0
+info:
+  title: JOY ALMS Base MCP Plugin API
+  version: 0.1.0
+  description: >
+    Append-only JOY/ALMS receipt adapter for Base MCP. This API prepares
+    unsigned calldata and reads receipt DAG state. It is a child of
+    base-mcp-agent-ecology-v0-1.json and docs/COMPUTERWISDOM_EPISTEMIC_STACK_V0_1.md.
+    Authority is always false.
+servers:
+  - url: https://api.joy-alms.example/v1
+paths:
+  /state/{address}:
+    get:
+      summary: Read receipt DAG for an address
+      parameters:
+        - name: address
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: limit
+          in: query
+          required: false
+          schema:
+            type: integer
+            default: 50
+        - name: cursor
+          in: query
+          required: false
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Receipt DAG without adjudication
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StateResponse"
+  /prepare/anchor:
+    get:
+      summary: Prepare unsigned calldata to anchor a claim
+      parameters:
+        - name: from
+          in: query
+          required: true
+          schema: { type: string }
+        - name: claim
+          in: query
+          required: true
+          schema: { type: string }
+        - name: evidence_uri
+          in: query
+          required: true
+          schema: { type: string }
+        - name: content_sha256
+          in: query
+          required: true
+          schema: { type: string }
+        - name: dry_run
+          in: query
+          required: false
+          schema: { type: boolean, default: false }
+      responses:
+        "200":
+          description: Unsigned anchor calldata
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PrepareResponse"
+  /prepare/dispute:
+    get:
+      summary: Prepare unsigned calldata to dispute a prior claim
+      parameters:
+        - name: from
+          in: query
+          required: true
+          schema: { type: string }
+        - name: target_claim_hash
+          in: query
+          required: true
+          schema: { type: string }
+        - name: dispute_type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [EVIDENCE_MISMATCH, HASH_MISMATCH, CONTEXT_MISSING, CLAIM_CONTESTED, DUPLICATE_RECORD, SCOPE_ERROR, UNKNOWN_ERROR]
+        - name: reason_uri
+          in: query
+          required: true
+          schema: { type: string }
+        - name: reason_sha256
+          in: query
+          required: true
+          schema: { type: string }
+      responses:
+        "200":
+          description: Unsigned dispute calldata
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PrepareResponse"
+  /prepare/witness:
+    get:
+      summary: Prepare unsigned calldata to witness a claim or dispute
+      parameters:
+        - name: from
+          in: query
+          required: true
+          schema: { type: string }
+        - name: target_type
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [CLAIM, DISPUTE]
+        - name: target_hash
+          in: query
+          required: true
+          schema: { type: string }
+        - name: witness_position
+          in: query
+          required: true
+          schema:
+            type: string
+            enum: [SUPPORTS, CONTESTS, CLARIFIES, PROVIDES_CONTEXT, OBSERVED_ONLY, UNKNOWN]
+        - name: witness_uri
+          in: query
+          required: true
+          schema: { type: string }
+        - name: witness_sha256
+          in: query
+          required: true
+          schema: { type: string }
+        - name: reputation_stake
+          in: query
+          required: false
+          schema: { type: string, default: "0x0" }
+      responses:
+        "200":
+          description: Unsigned witness calldata
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PrepareResponse"
+components:
+  schemas:
+    PrepareResponse:
+      type: object
+      required: [ok, plugin, action, authority, chainId, transactions, send_calls, truth_status]
+      properties:
+        ok: { type: boolean }
+        plugin: { type: string, const: JOY_ALMS_PLUGIN_V0_1 }
+        action: { type: string, enum: [anchor, dispute, witness] }
+        authority: { type: boolean, const: false }
+        chainId: { type: integer, const: 8453 }
+        truth_status:
+          type: string
+          enum: [CLAIM_ANCHORED_NOT_PROVEN, DISPUTE_RECORDED_NOT_ADJUDICATED, WITNESS_RECORDED_NOT_VERDICT]
+        transactions:
+          type: array
+          items:
+            $ref: "#/components/schemas/Transaction"
+        send_calls:
+          $ref: "#/components/schemas/SendCalls"
+    Transaction:
+      type: object
+      required: [step, to, value, data, chainId]
+      properties:
+        step: { type: string }
+        to: { type: string }
+        value: { type: string, default: "0x0" }
+        data: { type: string }
+        chainId: { type: integer, const: 8453 }
+    SendCalls:
+      type: object
+      required: [chain, calls]
+      properties:
+        chain: { type: string, const: base }
+        calls:
+          type: array
+          items:
+            type: object
+            required: [to, value, data]
+            properties:
+              to: { type: string }
+              value: { type: string, default: "0x0" }
+              data: { type: string }
+    StateResponse:
+      type: object
+      required: [ok, plugin, action, authority, chainId, address, summary, receipts, dag]
+      properties:
+        ok: { type: boolean }
+        plugin: { type: string, const: JOY_ALMS_PLUGIN_V0_1 }
+        action: { type: string, const: state }
+        authority: { type: boolean, const: false }
+        chainId: { type: integer, const: 8453 }
+        address: { type: string }
+        summary: { type: object }
+        receipts: { type: array, items: { type: object } }
+        dag: { type: object }
