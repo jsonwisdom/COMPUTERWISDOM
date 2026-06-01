@@ -1,32 +1,34 @@
 {
-  "artifact": "goblin_precedent_engine_anchor_packet_v0_1",
-  "status": "READY_TO_ANCHOR",
-  "authority": false,
-  "chain_target": {
-    "network": "Base Sepolia",
-    "chain_id": 84532,
-    "anchor_action": "ANCHOR_SHA256_HASH_ONLY"
+  "system": "Goblin Court",
+  "role": "witness_replay_engine",
+  "version": "v0.1.0",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "base_branch": "master",
+  "merge_commit_sha": "0a359be63ec869d047d75739a3046d35f9512762",
+  "packet_sha256": "1d95358dac31e3614ec8db2b170eab411c569f1130ec728f63ace5d0eb8765ac",
+  "canonical_file_order": [
+    "docs/GOBLIN_PRECEDENT_INDEX_V0_1.md",
+    "schemas/goblin_court_v0_1.schema.json",
+    "docket/GOBLIN_DOCKET_V0_1.md",
+    "tests/test_goblin_court_v0_1_replay.py"
+  ],
+  "file_lengths": {
+    "docs/GOBLIN_PRECEDENT_INDEX_V0_1.md": 2019,
+    "schemas/goblin_court_v0_1.schema.json": 3158,
+    "docket/GOBLIN_DOCKET_V0_1.md": 1551,
+    "tests/test_goblin_court_v0_1_replay.py": 953
   },
-  "inputs": {
-    "manifest_blob_sha": "4a500f58f6f7ac28217c9272e8485554115aff42",
-    "runtime_receipt_blob_sha": "43e361f63f7c328a30f3545e7e415df3bb6caac8",
-    "runtime_receipt_sha256": "54455f6ad018c497edfddb9e6b19c0058713d883e0cb62c46926f6818a7a10c6"
+  "doctrine": {
+    "AUTHORITY_FALSE": true,
+    "NO_SILENT_CATEGORY_PROMOTION": true,
+    "REPLAY_NATIVE": true,
+    "DISPUTE_FIRST_CLASS": true,
+    "HASH_PROVES_BYTES_NOT_REALITY": true,
+    "ANCHOR_PROVES_COMMITMENT_NOT_TRUTH": true,
+    "REPLAY_MATCH_PROVES_RECONSTRUCTION_NOT_LIABILITY": true
   },
-  "packet": {
-    "anchor_packet": "READY",
-    "precedent_engine": "GOBLIN_COURT",
-    "scope": "OBSERVER_ONLY_PRECEDENT_ENGINE",
-    "mutation_authority": false,
-    "claims": [
-      "manifest_blob_sha_matches_operator_reported_value",
-      "runtime_receipt_blob_sha_matches_operator_reported_value",
-      "runtime_receipt_sha256_bound_for_anchor"
-    ]
-  },
-  "invariants": [
-    "AUTHORITY_FALSE",
-    "NO_SILENT_CATEGORY_PROMOTION",
-    "ANCHOR_HASH_NOT_TRUTH",
-    "RECEIPT_BEATS_NARRATIVE"
-  ]
+  "runtime_verified": false,
+  "base_anchored": false,
+  "eas_uid": null,
+  "authority": false
 }
