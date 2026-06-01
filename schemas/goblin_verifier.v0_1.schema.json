@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "schemas/goblin_verifier.v0_1.schema.json",
+  "title": "Goblin Verifier v0.1",
+  "description": "Bounded transition checker for Constitutional Game Stack v0.2. Gates transitions only. Does not adjudicate truth or grant authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "authority",
+    "input_ref",
+    "requested_transition",
+    "verifier_output",
+    "invariant"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "v0.1"
+    },
+    "authority": {
+      "type": "boolean",
+      "const": false
+    },
+    "input_ref": {
+      "type": "string",
+      "minLength": 1
+    },
+    "requested_transition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["from_state", "to_state"],
+      "properties": {
+        "from_state": { "type": "string", "minLength": 1 },
+        "to_state": { "type": "string", "minLength": 1 }
+      }
+    },
+    "verifier_output": {
+      "type": "string",
+      "enum": [
+        "PASS_TO_EXISTENCE_CHECK",
+        "NEEDS_RECEIPT",
+        "GHOST_PROMOTION_BLOCKED",
+        "DUPLICATE_FOUND",
+        "DISPUTE_REQUIRED",
+        "INVALID_TRANSITION"
+      ]
+    },
+    "invariant": {
+      "type": "string",
+      "const": "NO_SILENT_CATEGORY_PROMOTION"
+    }
+  }
+}

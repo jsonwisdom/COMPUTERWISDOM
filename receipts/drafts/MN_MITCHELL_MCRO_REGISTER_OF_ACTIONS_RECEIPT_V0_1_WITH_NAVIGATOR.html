@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>MN Mitchell MCRO Register Receipt + Three Courts Navigator V0.1</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, sans-serif; margin: 32px; color: #111; background: #fafafa; }
+    header, section, footer { background: #fff; border: 1px solid #ccc; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+    .stamp { display: inline-block; border: 3px solid #b00020; color: #b00020; font-weight: 800; padding: 10px 14px; transform: rotate(-3deg); margin-right: 12px; }
+    .warning { border: 3px solid #b00020; background: #fff0f0; color: #7a0015; font-weight: 700; }
+    .court { border-left: 6px solid #333; padding-left: 16px; margin: 16px 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { border: 1px solid #bbb; padding: 8px; vertical-align: top; }
+    th { background: #eee; }
+    input, textarea, select { width: 100%; box-sizing: border-box; background: #fff9c4; border: 1px solid #999; border-radius: 6px; padding: 8px; }
+    textarea { min-height: 120px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .small { font-size: 0.9rem; color: #444; }
+    button { padding: 10px 14px; border: 1px solid #333; border-radius: 8px; background: #f2f2f2; cursor: pointer; margin-right: 10px; }
+    @media print { button { display: none; } body { background: #fff; } header, section, footer { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="stamp">SCAFFOLD OPERATIONAL</div>
+    <div class="stamp">PROMOTION GATE CLOSED</div>
+    <h1>MINNESOTA REGISTER OF ACTIONS RECEIPT + THREE COURTS NAVIGATOR</h1>
+    <p><strong>Artifact:</strong> MN_MITCHELL_MCRO_REGISTER_OF_ACTIONS_RECEIPT_V0_1_WITH_NAVIGATOR</p>
+    <p><strong>Format:</strong> Fillable HTML • <strong>Status:</strong> SCAFFOLD_OPERATIONAL_LOCKED</p>
+  </header>
+
+  <section class="warning">
+    <p>STANDING RULES ENFORCED — NO EXCEPTIONS:</p>
+    <p>• No MCRO text → No L2 claim<br />• No hash → No receipt<br />• No certified copy → No certified record claim<br />• No primary filing → No L3 claim</p>
+    <p>The Three Courts are translation surfaces only — not authority surfaces.</p>
+  </section>
+
+  <section>
+    <p><strong>Case Number:</strong> 03-CR-24-654</p>
+    <p><strong>Defendant:</strong> Mitchell</p>
+    <p><strong>Receipt Generated:</strong> <span id="receiptGenerated"></span></p>
+    <p><strong>Version Hash:</strong> <span id="versionHash">null_awaiting_mcro_capture</span></p>
+    <p><strong>Current Status:</strong> SCAFFOLD_OPERATIONAL_LOCKED</p>
+    <p><strong>L2 State:</strong> L2_PENDING_MCRO_CAPTURE_REQUIRED</p>
+    <p><strong>Promotion Gate:</strong> CLOSED • <strong>Next Allowed:</strong> MCRO_CAPTURED_HASHED_PENDING_REVIEW</p>
+  </section>
+
+  <section>
+    <h2>🧭 THREE COURTS MULTI-LEVEL NAVIGATOR V0_1</h2>
+    <p>Purpose: Translate evidence posture across Meme Court, Goblin Court, and Clown Court without changing legal or evidentiary status. All courts are vernacular interfaces only.</p>
+
+    <div class="court"><h3>Meme Court — public-readable, shareable, compression layer</h3><p><strong>Role:</strong> Turns receipts into memorable civic language.</p><p><strong>Guardrail:</strong> No claim may exceed source receipt.</p><p><strong>Use for this case:</strong> Explain the public timeline clearly.</p></div>
+    <div class="court"><h3>Goblin Court — adversarial anomaly detection layer</h3><p><strong>Role:</strong> Finds weird claims, ghost promotions, missing receipts, fake certainty.</p><p><strong>Guardrail:</strong> Suspicion is not proof.</p><p><strong>Use for this case:</strong> Flag unverified release, restitution, appeal, or social caption claims.</p></div>
+    <div class="court"><h3>Clown Court — absurdity and contradiction exposure layer</h3><p><strong>Role:</strong> Highlights institutional theater, circular logic, and performative claims.</p><p><strong>Guardrail:</strong> Mockery is not adjudication.</p><p><strong>Use for this case:</strong> Expose contradiction between caption claims and docket-backed facts.</p></div>
+
+    <h3>Evidence Ladder (Translation Surface Only)</h3>
+    <table><thead><tr><th>Level</th><th>Description</th><th>Navigator Rule</th></tr></thead><tbody>
+      <tr><td>L0</td><td>Public pointer / social clip / meme</td><td>Meme Court can explain &amp; compress</td></tr>
+      <tr><td>L1</td><td>News or public reporting context</td><td>All courts can reference as anchor</td></tr>
+      <tr><td>L2</td><td>Court index / MCRO register</td><td>Goblin Court flags missing entries</td></tr>
+      <tr><td>L3</td><td>Primary filings / orders / transcripts</td><td>Clown Court can highlight contradictions</td></tr>
+      <tr><td>L4</td><td>Execution record / hashes / timestamps / PDFs</td><td>Hash required for any promotion</td></tr>
+      <tr><td>L5</td><td>Witness annotation / closure summary</td><td>Translation only — no new authority</td></tr>
+    </tbody></table>
+
+    <p><strong>Forbidden Across All Courts:</strong><br />• Certify a docket<br />• Convert allegation into adjudication<br />• Treat social media as primary evidence<br />• Upgrade authority without receipts</p>
+    <p><strong>Navigator Rule for MN Artifacts:</strong> MCRO or filings decide the receipt layer; the Three Courts translate, they do not crown.</p>
+  </section>
+
+  <section>
+    <h2>MCRO Raw Export</h2>
+    <p class="small">Paste live MCRO register text here. No L2 claim exists until this text is hashed and timestamped.</p>
+    <textarea id="mcroRaw" placeholder="Paste raw MCRO register text for 03-CR-24-654 here"></textarea>
+    <p><button type="button" onclick="calculateHash()">Calculate SHA-256 Hash</button><button type="button" onclick="exportPdf()">Export to PDF</button></p>
+  </section>
+
+  <section>
+    <h2>Verified L1 Anchors (News / Public Reference Only)</h2>
+    <table><thead><tr><th>Field</th><th>Date / Status</th><th>L1 Source Anchor</th></tr></thead><tbody>
+      <tr><td>Complaint Filed</td><td><input /></td><td><input /></td></tr>
+      <tr><td>Verdict / Conviction Date</td><td><input /></td><td><input /></td></tr>
+      <tr><td>Sentencing Reset</td><td><input /></td><td><input /></td></tr>
+      <tr><td>Sentence Imposed</td><td><input /></td><td><input /></td></tr>
+    </tbody></table>
+  </section>
+
+  <section>
+    <h2>L2 — MCRO Register of Actions (MANDATORY CAPTURE REQUIRED)</h2>
+    <p>Live MCRO register text or screenshot MUST be inserted here. Hash required before any L2 claim.</p>
+    <table><thead><tr><th>Date</th><th>Event Label</th><th>L1 Anchor</th><th>MCRO Entry Text (Paste Here)</th><th>Promotion Status</th></tr></thead><tbody>
+      <tr><td><input /></td><td><input /></td><td><input /></td><td><textarea></textarea></td><td><select><option>Pending MCRO Capture</option><option>Hashed & Timestamped</option><option>Review Complete</option></select></td></tr>
+    </tbody></table>
+  </section>
+
+  <section>
+    <h2>Pending L2 / L3 Items — Do NOT Prefill</h2>
+    <p>Restitution entries — Pending MCRO capture only</p>
+    <p>Appeal entries — Pending MCRO capture only</p>
+    <p>Charge amendment entries — Pending MCRO capture only</p>
+    <p>Sentencing order entries — Pending MCRO capture only</p>
+    <p>Primary filings (L3) — No claim until certified copies obtained</p>
+  </section>
+
+  <section>
+    <p><strong>Classification:</strong> L0: pointer_only • L1: context_anchor_only • L2: pending_mcro_capture • L3: pending_downloaded_documents • L4: pending_hashes_and_timestamps • L5: pending_summary</p>
+    <p><strong>Next Action:</strong> Await live MCRO register for 03-CR-24-654 → Insert text/screenshot → Hash &amp; timestamp.</p>
+    <p><strong>Artifact locked at:</strong> SCAFFOLD_OPERATIONAL_LOCKED. Promotion gate remains CLOSED.</p>
+    <p><strong>Save as:</strong> receipts/drafts/MN_MITCHELL_MCRO_REGISTER_OF_ACTIONS_RECEIPT_V0_1_WITH_NAVIGATOR.html</p>
+  </section>
+
+  <footer>
+    <p><strong>Boundary:</strong> This scaffold is a navigation and receipt-preparation artifact only. It does not verify, certify, adjudicate, or alter any court record.</p>
+    <p id="printTimestamp" class="mono small"></p>
+  </footer>
+
+  <script>
+    async function calculateHash() {
+      const text = document.getElementById('mcroRaw').value || '';
+      if (!text.trim()) { alert('No MCRO text present. Promotion gate remains CLOSED.'); return; }
+      const data = new TextEncoder().encode(text);
+      const digest = await crypto.subtle.digest('SHA-256', data);
+      const hash = Array.from(new Uint8Array(digest)).map(b => b.toString(16).padStart(2, '0')).join('');
+      document.getElementById('versionHash').textContent = hash;
+      document.getElementById('receiptGenerated').textContent = new Date().toISOString();
+    }
+    function exportPdf() {
+      document.getElementById('printTimestamp').textContent = 'PDF export timestamp UTC: ' + new Date().toISOString();
+      window.print();
+    }
+  </script>
+</body>
+</html>

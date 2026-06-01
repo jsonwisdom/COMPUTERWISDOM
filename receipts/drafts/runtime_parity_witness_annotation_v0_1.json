@@ -1,0 +1,22 @@
+{
+  "artifact": "RUNTIME_PARITY_WITNESS_ANNOTATION_V0_1",
+  "verification_cycle": "RUNTIME_PARITY_VERIFICATION_V0_1",
+  "authority": false,
+  "witness_claim": true,
+  "production_claim": false,
+  "observer_authority_transfer": false,
+  "membrane_state": "HOLDS",
+  "runtime_parity": "EXECUTION_PASS_OPERATOR_REPORTED",
+  "observed_sequence": [
+    "COURT_SURFACE_HASH_RECEIPT_V0_1",
+    "RUNTIME_PARITY_ENVIRONMENT_DECLARATION_V0_2",
+    "RUNTIME_PARITY_VECTOR_V0_1",
+    "RUNTIME_EXECUTION_RECEIPT_V0_1"
+  ],
+  "runtime_execution_result": {
+    "verdict": "PASS",
+    "tests_failed": 0
+  },
+  "status": "WITNESS_ANNOTATION_ONLY",
+  "verdict": "OBSERVED_NOT_AUTHORIZED"
+}

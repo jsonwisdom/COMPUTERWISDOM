@@ -1,0 +1,10 @@
+{
+  "claim_id": "claim_demo_001",
+  "claim_text": "A public artifact was observed and should be routed for receipt review.",
+  "source_ref": "demo://source/public-artifact-001",
+  "requested_transition": {
+    "from_state": "DRAFT",
+    "to_state": "UNDER_REVIEW"
+  },
+  "authority": false
+}
