@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.github.io/COMPUTERWISDOM/schemas/goblin_court_v0_1.schema.json",
+  "title": "Goblin Court V0.1 Schema",
+  "type": "object",
+  "required": ["artifact", "version", "authority", "membrane", "claim", "receipt", "replay", "forbidden_transitions"],
+  "properties": {
+    "artifact": {"const": "GOBLIN_COURT_V0_1"},
+    "version": {"const": "0.1.0"},
+    "authority": {"const": false},
+    "membrane": {"const": "HOLDS"},
+    "claim": {
+      "type": "object",
+      "required": ["claim_id", "source", "observed_at", "claim_type", "truth_status", "authority"],
+      "properties": {
+        "claim_id": {"type": "string"},
+        "source": {"type": "string"},
+        "observed_at": {"type": "string"},
+        "claim_type": {"type": "string"},
+        "raw_payload_hash": {"type": "string"},
+        "truth_status": {"enum": ["UNDETERMINED", "UNKNOWN", "DISPUTED"]},
+        "authority": {"const": false}
+      }
+    },
+    "receipt": {
+      "type": "object",
+      "required": ["receipt_id", "canonical_json_sha256", "lineage", "authority"],
+      "properties": {
+        "receipt_id": {"type": "string"},
+        "canonical_json_sha256": {"type": "string"},
+        "lineage": {"type": "array", "items": {"type": "string"}},
+        "authority": {"const": false}
+      }
+    },
+    "anchor": {
+      "type": "object",
+      "properties": {
+        "target": {"enum": ["GITHUB", "EAS_BASE_SEPOLIA", "EAS_BASE_MAINNET", "IPFS", "GCS"]},
+        "anchor_id": {"type": "string"},
+        "anchor_proves_truth": {"const": false},
+        "authority": {"const": false}
+      }
+    },
+    "replay": {
+      "type": "object",
+      "required": ["replay_status", "declares_liability", "authority"],
+      "properties": {
+        "replay_status": {"enum": ["MATCH", "MISMATCH", "INCOMPLETE", "BLOCKED", "REQUESTED"]},
+        "input_hashes": {"type": "array", "items": {"type": "string"}},
+        "computed_hashes": {"type": "array", "items": {"type": "string"}},
+        "divergence_report": {"type": "string"},
+        "declares_liability": {"const": false},
+        "authority": {"const": false}
+      }
+    },
+    "dispute": {
+      "type": "object",
+      "properties": {
+        "state": {"enum": ["DISPUTE_OPENED", "EVIDENCE_REQUESTED", "COUNTER_RECEIPT_SUBMITTED", "MISMATCH_OBSERVED", "MATCH_OBSERVED", "ESCALATED", "CLOSED_WITHOUT_AUTHORITY"]},
+        "declares_winner": {"const": false},
+        "authority": {"const": false}
+      }
+    },
+    "settlement_surface": {
+      "type": "object",
+      "properties": {
+        "state": {"enum": ["UNSETTLED", "SETTLED_BY_CHAIN", "SETTLED_BY_OPERATOR", "SETTLED_BY_EXTERNAL_AUTHORITY", "SUPERSEDED"]},
+        "authority": {"type": "boolean"}
+      }
+    },
+    "forbidden_transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "expected_result"],
+        "properties": {
+          "from": {"type": "string"},
+          "to": {"type": "string"},
+          "expected_result": {"const": "DENIED"}
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
