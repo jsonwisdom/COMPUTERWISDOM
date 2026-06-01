@@ -5,6 +5,7 @@
   "repo": "jsonwisdom/COMPUTERWISDOM",
   "base_branch": "master",
   "merge_commit_sha": "0a359be63ec869d047d75739a3046d35f9512762",
+  "anchor_packet_merge_commit_sha": "6975509d34843ce7eb87a06c87d7e1c59af92c13",
   "packet_sha256": "1d95358dac31e3614ec8db2b170eab411c569f1130ec728f63ace5d0eb8765ac",
   "canonical_file_order": [
     "docs/GOBLIN_PRECEDENT_INDEX_V0_1.md",
@@ -27,8 +28,21 @@
     "ANCHOR_PROVES_COMMITMENT_NOT_TRUTH": true,
     "REPLAY_MATCH_PROVES_RECONSTRUCTION_NOT_LIABILITY": true
   },
+  "eas_anchor": {
+    "network": "base-mainnet",
+    "chain_id": 8453,
+    "schema_number": 1556,
+    "schema_uid": "0x28abd4efb33fab2f3fc1852e2127683185d7a6e98e75f11cd0db0904026d3231",
+    "attestation_uid": "0x100cf576f66fb60776e181d365ac15b0c59286755c957b1fab7c8fb70af82e26",
+    "tx_hash": "0x3c86ef31a6bb0b1ee996b876b065140869cc7b0f686da2aad0cb68512277d49b",
+    "attester": "0xC345B26094c63C69222Ee775189a3d3eaead5a84",
+    "recipient": null,
+    "attested_data": "0x1d95358dac31e3614ec8db2b170eab411c569f1130ec728f63ace5d0eb8765ac",
+    "anchored_at_observed": "2026-06-01T11:44:39-05:00"
+  },
   "runtime_verified": false,
-  "base_anchored": false,
-  "eas_uid": null,
+  "base_anchored": true,
+  "base_mainnet_anchored": true,
+  "eas_uid": "0x100cf576f66fb60776e181d365ac15b0c59286755c957b1fab7c8fb70af82e26",
   "authority": false
 }
