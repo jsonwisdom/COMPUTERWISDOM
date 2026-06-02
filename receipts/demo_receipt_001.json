@@ -1,19 +1,22 @@
 {
   "receipt_type": "PUBLIC_RECORD_VERIFICATION_DEMO_V1",
   "authority": false,
-  "claim": "The FY2024 budget allocates $63.1 billion for the Department of Housing and Urban Development.",
-  "claim_hash": "sha256:d7b050351ca6798af50a2b53bce2576ab9a97ad918792880abbbc523070b910e",
-  "claim_hash_status": "INDEPENDENTLY_RECOMPUTED_BY_ASSISTANT",
-  "source_uri": "https://www.whitehouse.gov/wp-content/uploads/2023/03/budget_fy2024.pdf",
-  "timestamp_utc": "2026-06-02T00:00:00Z",
-  "replay_steps": [
-    "1. Open the source_uri (PDF)",
-    "2. Search for 'Housing and Urban Development' or 'HUD'",
-    "3. Locate the discretionary budget table",
-    "4. Find the Department of Housing and Urban Development budget line",
-    "5. Copy the exact claim text: 'The FY2024 budget allocates $63.1 billion for the Department of Housing and Urban Development.'",
-    "6. Run `printf '%s' \"$CLAIM\" | sha256sum`",
-    "7. Compare output to the claim_hash above"
+  "claim": "The FY2024 Budget requests $73.3 billion in gross discretionary appropriations for the Department of Housing and Urban Development.",
+  "claim_hash": "sha256:5ece344efd4d5f5b83c53bfd0e03bd518694f8c4c5f5200b44913c14c2c23bfc",
+  "claim_hash_status": "INDEPENDENTLY_RECOMPUTED_BY_ASSISTANT_FROM_EXACT_CLAIM_TEXT",
+  "source_uri": "https://crsreports.congress.gov/product/pdf/IF/IF12278",
+  "archive_uris": [
+    "https://web.archive.org/web/20230315000000/https://crsreports.congress.gov/product/pdf/IF/IF12278"
   ],
-  "verification_command": "CLAIM='The FY2024 budget allocates $63.1 billion for the Department of Housing and Urban Development.' && printf '%s' \"$CLAIM\" | sha256sum"
+  "timestamp_utc": "2026-06-02T23:30:00Z",
+  "replay_steps": [
+    "1. Open the source_uri or archive_uris",
+    "2. Locate the HUD FY2024 budget request figure",
+    "3. Confirm the figure: $73.3 billion",
+    "4. Copy the exact claim text: 'The FY2024 Budget requests $73.3 billion in gross discretionary appropriations for the Department of Housing and Urban Development.'",
+    "5. Run `printf '%s' \"$CLAIM\" | sha256sum`",
+    "6. Compare output to claim_hash"
+  ],
+  "verification_command": "CLAIM='The FY2024 Budget requests $73.3 billion in gross discretionary appropriations for the Department of Housing and Urban Development.' && printf '%s' \"$CLAIM\" | sha256sum",
+  "correction_note": "Original claim incorrectly stated $63.1 billion. This receipt was patched after source-fact drift was detected."
 }
