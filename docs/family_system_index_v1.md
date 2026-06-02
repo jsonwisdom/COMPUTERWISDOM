@@ -28,7 +28,7 @@
 
 | Person | Repo | Role | Status |
 |--------|------|------|--------|
-| Jaycee | JAYCEE | Continuity space | SEEDED (README); index.json pending |
+| Jaycee | JAYCEE | Continuity space | SEEDED (README + index.json) |
 | Heidee | HEIDEE | JoySpace, child-owned | SEEDED (README, index.json, joyspace.md) |
 | Breann | BREANN | Continuity surface | CONFIRMED_EXISTS — pending audit |
 | Braelee | BRAELEE | Continuity surface | CONFIRMED_EXISTS — pending audit |
@@ -45,12 +45,14 @@ The master document for family wisdom, roles, and public-safe continuity:
 
 ---
 
-## Pending Existence Audit
+## Pending Inventory Verification (inside COMPUTERWISDOM)
 
-| Repo | Status | Next Action |
+The following are not standalone repositories. They are paths, branches, or issues inside `COMPUTERWISDOM` and require inventory verification there.
+
+| Name | Status | Next Action |
 |------|--------|-------------|
-| receipts-engine-v1 | NOT_CONFIRMED | Audit existence |
-| layered-proofing-state-level-alms | NOT_CONFIRMED | Audit existence |
+| receipts-engine-v1 | REQUIRES_INVENTORY_VERIFICATION | Locate inside COMPUTERWISDOM |
+| layered-proofing-state-level-alms | REQUIRES_INVENTORY_VERIFICATION | Locate inside COMPUTERWISDOM |
 
 ---
 
@@ -72,9 +74,9 @@ Applies to all family repos:
 
 - MARYDEE: seeded
 - HEIDEE: fully seeded
-- JAYCEE: README seeded, index pending
+- JAYCEE: fully seeded
 
-**Next commit after this index:** `JAYCEE/index.json`
+Next: audit BREANN, BRAELEE, GAGA, and GRAMMY.
 
 Canon preserved.  
 Authority false.  
