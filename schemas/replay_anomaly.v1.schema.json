@@ -1,0 +1,72 @@
+{
+  "$id": "schemas/replay_anomaly.v1.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Anti-Drift News Replay Anomaly Schema V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "type",
+    "reason",
+    "authority",
+    "validator_version",
+    "replay_engine_version",
+    "anomaly_hash"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "REPLAY_ANOMALY_SCHEMA_V1"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "DUPLICATE_EVENT_ID_CONFLICT",
+        "HASH_MISMATCH",
+        "AUTHORITY_TRUE",
+        "SCHEMA_INVALID",
+        "MISSING_REQUIRED_FIELD",
+        "INVALID_ENUM",
+        "INVALID_TIMESTAMP",
+        "SEGMENT_CORRUPTED",
+        "MANIFEST_CORRUPTED"
+      ]
+    },
+    "reason": {
+      "type": "string",
+      "minLength": 1
+    },
+    "authority": {
+      "type": "boolean",
+      "const": false
+    },
+    "validator_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "replay_engine_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "anomaly_hash": {
+      "type": "string",
+      "minLength": 1
+    },
+    "event_id": {
+      "type": ["string", "null"]
+    },
+    "first_event_hash": {
+      "type": ["string", "null"]
+    },
+    "conflicting_event_hash": {
+      "type": ["string", "null"]
+    },
+    "segment_id": {
+      "type": ["string", "null"]
+    },
+    "detected_at": {
+      "type": ["string", "null"],
+      "format": "date-time"
+    }
+  }
+}
