@@ -1,5 +1,6 @@
 # REPO_CONSTITUTIONAL_GRAPH_V1
 
+<<<<<<< HEAD
 **Authority:** false  
 **Purpose:** Visual and machine-readable dependency map of all constitutional artifacts across AL, COMPUTERWISDOM, JOY, ALMS, and ENS.
 
@@ -170,14 +171,272 @@ graph TD
     {"id": "E-013", "source": "ADN-006", "target": "ADN-009", "type": "triggers"},
     {"id": "E-014", "source": "ADN-010", "target": "ADN-005", "type": "memory"},
     {"id": "E-015", "source": "AL", "target": "ENS", "type": "anchor"}
+=======
+Repository constitutional topology for Jay Wisdom replay systems.  
+Authority: false  
+Status: Active topology artifact
+
+---
+
+## Purpose
+
+Create a visual and machine-readable dependency map of all constitutional artifacts across AL, COMPUTERWISDOM, JOY, ENS, ALMS, and Anti-Drift News.
+
+The graph prevents:
+
+- orphaned specs
+- silent authority mutation
+- undocumented promotion
+- hidden dependency drift
+- untraceable constitutional lineage
+
+---
+
+## 1. Repository Nodes
+
+```json
+{
+  "nodes": [
+    {
+      "id": "AL",
+      "repo": "jsonwisdom/AL",
+      "role": "doctrine_and_replay_protocol",
+      "authority": false
+    },
+    {
+      "id": "COMPUTERWISDOM",
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "role": "public_verification_surface",
+      "authority": false
+    },
+    {
+      "id": "JOY",
+      "repo": "jsonwisdom/JOY",
+      "role": "continuity_and_protection_membrane",
+      "authority": false
+    },
+    {
+      "id": "ENS",
+      "repo": null,
+      "role": "display_identity_only",
+      "authority": false
+    },
+    {
+      "id": "ALMS",
+      "repo": "jsonwisdom/layered-proofing-state-level-alms",
+      "role": "append_only_memory_and_receipts",
+      "authority": false
+    },
+    {
+      "id": "ANTI_DRIFT_NEWS",
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "role": "civic_receipt_game_application",
+      "authority": false
+    }
+>>>>>>> 06c86f9 (Add repo constitutional graph v1)
   ]
 }
 ```
 
 ---
 
+<<<<<<< HEAD
 ## CANON
 
 Dependencies are observable. Edges are verifiable.
 
 Not anti-news. Anti-drift. Public receipts from day one.
+=======
+## 2. Constitutional Artifacts
+
+```json
+{
+  "artifacts": [
+    {
+      "id": "CONSTITUTIONAL_INDEX_V1",
+      "path": "docs/constitutional_index_v1.md",
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "role": "discovery_index",
+      "authority": false
+    },
+    {
+      "id": "CONSISTENCY_CONSTITUTIONAL_BUILD_V1",
+      "path": "docs/anti_drift_news/consistency_constitutional_build_v1.md",
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "role": "anti_drift_constitution",
+      "authority": false
+    },
+    {
+      "id": "REPLAY_ENGINE_SPEC_V1",
+      "path": "docs/anti_drift_news/replay_engine_spec_v1.md",
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "role": "deterministic_replay_engine_spec",
+      "authority": false
+    },
+    {
+      "id": "UI_WIREFRAME_SPEC_V1",
+      "path": "docs/anti_drift_news/ui_wireframe_spec_v1.md",
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "role": "public_evidence_ui_contract",
+      "authority": false
+    },
+    {
+      "id": "OPEN_SOURCE_REPLAY_CLIENT_SPEC_V1",
+      "path": "docs/anti_drift_news/open_source_replay_client_spec_v1.md",
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "role": "public_replay_client_spec",
+      "authority": false
+    },
+    {
+      "id": "REPLAY_ANOMALY_SCHEMA_V1",
+      "path": "schemas/replay_anomaly.v1.schema.json",
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "role": "machine_readable_anomaly_schema",
+      "authority": false
+    },
+    {
+      "id": "INTERNAL_DRIFT_ALERT_RESPONSE_PROTOCOL_V1",
+      "path": "docs/anti_drift_news/internal_drift_alert_response_protocol_v1.md",
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "role": "response_discipline_protocol",
+      "authority": false
+    }
+  ]
+}
+```
+
+---
+
+## 3. Dependency Edges
+
+```json
+{
+  "edges": [
+    {
+      "from": "AL",
+      "to": "COMPUTERWISDOM",
+      "type": "doctrine_edge",
+      "rule": "AL supplies doctrine; COMPUTERWISDOM publishes verification surfaces.",
+      "authority": false
+    },
+    {
+      "from": "COMPUTERWISDOM",
+      "to": "JOY",
+      "type": "continuity_edge",
+      "rule": "JOY protects voice, custody, continuity, and safety membrane.",
+      "authority": false
+    },
+    {
+      "from": "JOY",
+      "to": "ENS",
+      "type": "identity_display_edge",
+      "rule": "ENS displays identity only; ENS is not authority.",
+      "authority": false
+    },
+    {
+      "from": "ENS",
+      "to": "ALMS",
+      "type": "memory_edge",
+      "rule": "ALMS remembers routes and receipts.",
+      "authority": false
+    },
+    {
+      "from": "ALMS",
+      "to": "ANTI_DRIFT_NEWS",
+      "type": "replay_edge",
+      "rule": "Anti-Drift consumes append-only memory as replay substrate.",
+      "authority": false
+    }
+  ]
+}
+```
+
+---
+
+## 4. Promotion Rules
+
+```json
+{
+  "promotion_rules": {
+    "memory_allowed": true,
+    "promotion_blocked_until_receipt": true,
+    "authority": false,
+    "identity_display_is_authority": false,
+    "snapshot_is_authority": false,
+    "server_is_authority": false,
+    "client_is_verification": true
+  }
+}
+```
+
+---
+
+## 5. Replay Rules
+
+```json
+{
+  "replay_rules": {
+    "invalid_events_never_change_state": true,
+    "valid_events_always_produce_deterministic_state": true,
+    "duplicate_event_id_is_never_update": true,
+    "unknown_remains_unknown_until_supported": true,
+    "replay_supremacy": true,
+    "authority": false
+  }
+}
+```
+
+---
+
+## 6. Markdown Graph
+
+```txt
+AL
+ └─ doctrine_edge
+    ↓
+COMPUTERWISDOM
+ └─ public verification surface
+    ↓
+JOY
+ └─ continuity and protection membrane
+    ↓
+ENS
+ └─ display identity only
+    ↓
+ALMS
+ └─ append-only memory and receipts
+    ↓
+ANTI_DRIFT_NEWS
+ └─ civic receipt game application
+```
+
+---
+
+## 7. Mermaid Graph
+
+```mermaid
+graph TD
+  AL[AL: doctrine + replay protocol] -->|doctrine_edge / authority:false| CW[COMPUTERWISDOM: public verification]
+  CW -->|continuity_edge / authority:false| JOY[JOY: continuity + protection]
+  JOY -->|identity_display_edge / authority:false| ENS[ENS: display identity only]
+  ENS -->|memory_edge / authority:false| ALMS[ALMS: append-only memory]
+  ALMS -->|replay_edge / authority:false| ADN[Anti-Drift News: civic receipt game]
+```
+
+---
+
+## 8. Canon Phrase
+
+This site does not ask you to trust it.  
+It gives you the math to verify it.
+
+Not anti-news.  
+Anti-drift.  
+Public receipts from day one.
+
+---
+
+## Final Rule
+
+An auditor should be able to traverse the entire constitutional system as a graph.
+>>>>>>> 06c86f9 (Add repo constitutional graph v1)
