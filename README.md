@@ -201,3 +201,137 @@ See `docs/ANCHOR_001_BOUNDARY.md` for the boundary between this operational cont
 **Sovereign Protocol Architect**  
 **TriggerDeck Operator**
 Status: Gate 4 Execution (Awaiting CI Receipt)
+
+---
+
+## PR_202_ANTI_DRIFT_NEWS_REPLAY_ENGINE_V1
+
+**Merge note:** This section preserves PR #202 Anti-Drift News replay engine README additions during rebase onto current master.  
+**Authority:** false  
+**No Fake Green:** active  
+**Conflict resolution:** master README preserved; PR #202 README additions appended rather than erased.
+
+---
+
+# Computer Wisdom: Sovereign OS Broadcast Hub
+
+> **Status: OPERATIONAL CONTROL PLANE**
+>
+> This repository contains anchor workers, signer routing, deployment tooling, revocation tooling, access-control logic, and replay-court coordination surfaces.
+>
+> It is the operational backbone for Computer Wisdom / Sovereign OS work, not the canonical Anchor 001 proof source.
+>
+> **Purpose:** See `docs/PURPOSE.md`.
+>
+> **Canonical Anchor 001:** `jsonwisdom/Welcome-to-JSONWISDOM`
+>
+> **Security:** See `SECURITY_BOUNDARY.md`. No keys belong in this repo.
+
+## Constitutional Discovery Entry
+
+This repository now includes a constitutional discovery path for Anti-Drift News and the wider Jay Wisdom replay stack.
+
+Quick start:
+
+| Need | Start Here |
+|---|---|
+| Full constitutional map | [`docs/constitutional_index_v1.md`](./docs/constitutional_index_v1.md) |
+| Cross-repo graph | [`docs/repo_constitutional_graph_v1.md`](./docs/repo_constitutional_graph_v1.md) |
+| Anti-Drift constitution | [`docs/anti_drift_news/consistency_constitutional_build_v1.md`](./docs/anti_drift_news/consistency_constitutional_build_v1.md) |
+| Replay engine spec | [`docs/anti_drift_news/replay_engine_spec_v1.md`](./docs/anti_drift_news/replay_engine_spec_v1.md) |
+| Open-source replay client | [`docs/anti_drift_news/open_source_replay_client_spec_v1.md`](./docs/anti_drift_news/open_source_replay_client_spec_v1.md) |
+| Replay anomaly schema | [`schemas/replay_anomaly.v1.schema.json`](./schemas/replay_anomaly.v1.schema.json) |
+
+Lineage:
+
+```text
+AL -> COMPUTERWISDOM -> JOY -> ENS -> ALMS
+```
+
+Invariant:
+
+```text
+authority:false
+invalid events never change state
+valid events always produce deterministic state
+server is convenience
+client is verification
+```
+
+Canon:
+
+```text
+This site does not ask you to trust it.
+It gives you the math to verify it.
+
+Not anti-news.
+Anti-drift.
+Public receipts from day one.
+```
+
+## Replay Root Map
+
+This repository is an operations lane. It can coordinate replay checks, prepare witness payloads, and preserve operational receipts, but it does not replace the canonical proof root.
+
+```text
+COMPUTERWISDOM = operational control plane
+Welcome-to-JSONWISDOM = canonical Anchor 001 proof source
+AL = receipt/proof machinery
+EAS = witness layer
+ENS = discovery layer
+```
+
+Replay law:
+
+```text
+Replay verifies.
+GitHub contextualizes.
+EAS witnesses.
+ENS discovers.
+```
+
+Boundary law:
+
+```text
+GitHub pointer != truth surface
+EAS witness != global legitimacy
+ENS discovery != authority
+```
+
+Step-0 replay court baseline:
+
+```text
+replay/instructions/replay_instructions_v1.json
+public_coordination/eas_anchor_payload.json
+status/master.json
+scripts/coordination/build_master_coordination_v2.py
+scripts/coordination/verify_replay_step0.py
+```
+
+Step-0 scope:
+
+```text
+local files only
+no network calls
+no SALE_VERIFY receipt mutation
+no live EAS publication
+no inferred finality
+```
+
+Acceptance output:
+
+```text
+PASS_1_CLEAN_ARTIFACT: MATCH_CONFIRMED
+PASS_2_MUTATED_ARTIFACT: FAIL_INVALID
+```
+
+## Constitutional Anchor Topology
+
+Canonical Reference Frozen:
+
+- [**FINAL_ANCHOR_TOPOLOGY_v1.md**](./FINAL_ANCHOR_TOPOLOGY_v1.md)
+- Branch Pointer: `anchor-topology-v1`
+- Frozen Commit: `3dbb071633cb1844d2cf1f6c4bb12a52a8ef83bf`
+- Root Hash: `0x102e70b50594e412b8f15d311cc4e04f5126a4405fb3b1d02652e3d11afeaf5b`
+- EAS Schema UID: `0x244c84adef25091c97090e6e3f0b1bb932fc7022b913b7546406f4213a202cab`
+- EAS Attestation UID: `0x23b3b97514fa232cfdbcdee7a5031ff11a5fcd36aa874a5f4067805cd0ad6c84`
