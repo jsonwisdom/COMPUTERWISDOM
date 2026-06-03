@@ -1,0 +1,41 @@
+{
+  "artifact": "COMPUTERWISDOM_REPLAY_PACKET_V1",
+  "claim_id": "PROOF_FOR_THE_PRESIDENT_002",
+  "claim_text": "Computer Wisdom Leaf 002 proves the replay protocol can repeat beyond the first proof.",
+  "claim_hash": "sha256:52324d1cb3f1599ce191657a9c11de7948667c2d47e949c6a2a7722673999271",
+  "evidence_layers": {
+    "github_commit": "PENDING_MERGE",
+    "github_issue_or_pr": "PENDING_PR",
+    "base_transaction": "",
+    "eas_uid": "",
+    "archive_uri": ""
+  },
+  "routing_layers": {
+    "zora_coin": "",
+    "x_post": "",
+    "website": "",
+    "other_routes": []
+  },
+  "replay_steps": [
+    "Fetch canonical claim_text from github_commit after merge",
+    "Recompute claim_hash and match",
+    "Verify source PR and merged file on master",
+    "Verify Base transaction when supplied",
+    "Verify archive_uri when supplied",
+    "Classify replayability status"
+  ],
+  "failure_rules": {
+    "routing_failure": "non_fatal",
+    "evidence_failure": "critical",
+    "partial_evidence": "trigger_recovery"
+  },
+  "classification": {
+    "status": "MAINTAIN",
+    "promotion_allowed": false,
+    "authority": false
+  },
+  "parent_leaf": "PROOF_FOR_THE_PRESIDENT_001",
+  "protocol_version": "v1",
+  "timestamp_utc": "2026-06-03T14:25:00Z",
+  "authority": false
+}
