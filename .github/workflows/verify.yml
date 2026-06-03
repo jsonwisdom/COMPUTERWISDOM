@@ -1,0 +1,35 @@
+name: verify
+on:
+  pull_request:
+    paths:
+      - 'packets/**'
+  workflow_dispatch:
+
+jobs:
+  verify-packet:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Find affected packet directories
+        id: changed
+        uses: tj-actions/changed-files@v44
+        with:
+          files: packets/**/manifest.json
+      - name: Verify each packet
+        if: steps.changed.outputs.any_changed == 'true'
+        run: |
+          for manifest in ${{ steps.changed.outputs.all_changed_files }}; do
+            PACKET_DIR=$(dirname "$manifest")
+            echo "Verifying $PACKET_DIR"
+            tar --sort=name --mtime='UTC 2026-06-02' --owner=0 --group=0 --numeric-owner \
+              -czf /tmp/packet.tar.gz -C "$PACKET_DIR" .
+            COMPUTED_SHA256=$(sha256sum /tmp/packet.tar.gz | cut -d' ' -f1)
+            DECLARED_HASH=$(jq -r '.packetHash' "$PACKET_DIR/onchain_witness_payload.json" | sed 's/^0x//' | tr '[:upper:]' '[:lower:]')
+            if [ "$COMPUTED_SHA256" != "$DECLARED_HASH" ]; then
+              echo "Hash mismatch for $PACKET_DIR"
+              echo "Computed: $COMPUTED_SHA256"
+              echo "Declared: $DECLARED_HASH"
+              exit 1
+            fi
+            echo "✓ $PACKET_DIR verified"
+          done
