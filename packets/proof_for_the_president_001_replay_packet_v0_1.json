@@ -1,0 +1,38 @@
+{
+  "artifact": "COMPUTERWISDOM_REPLAY_PACKET_V0_1",
+  "claim_id": "PROOF_FOR_THE_PRESIDENT_001",
+  "claim_text": "A public citizen can create a verifiable chain of evidence without requiring institutional permission.",
+  "claim_hash": "sha256:5ed8c733d8f8bd4292f139a46f98e2f09460d01c1ea4221047d4e7c3c42f0418",
+  "evidence_layers": {
+    "github_commit": "[PLACEHOLDER_PENDING_COMMIT]",
+    "github_issue_or_pr": "",
+    "base_transaction": "[MERGED219_RELATED_TX_PLACEHOLDER]",
+    "archive_uri": "[PLACEHOLDER_IPFS_OR_ARCHIVE]"
+  },
+  "routing_layers": {
+    "zora_coin": "base:0x7443b1cc32c6a72f52ecd91df4ac2adeb058a66a (MERGED219)",
+    "x_post": "",
+    "website": ""
+  },
+  "replay_steps": [
+    "1. Fetch canonical claim_text from github_commit",
+    "2. Recompute claim_hash and match",
+    "3. Verify base_transaction existence and timestamp on Base explorer",
+    "4. Confirm semantic consistency across evidence_layers",
+    "5. Validate against failure_rules (routing non-fatal, evidence critical)"
+  ],
+  "failure_rules": {
+    "routing_failure": "non_fatal",
+    "evidence_failure": "critical",
+    "partial_evidence": "trigger_recovery"
+  },
+  "authority": false,
+  "survival_test": "Can an unrelated observer reconstruct the claim after the publisher, platform, and routing surfaces disappear?",
+  "canonical_rule": {
+    "coin": "routing_layer",
+    "github": "evidence_layer",
+    "hash": "verification_layer",
+    "base_tx": "timestamp_layer",
+    "replayability": "promotion_gate"
+  }
+}
