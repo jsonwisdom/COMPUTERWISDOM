@@ -1,0 +1,22 @@
+{
+  "artifact": "COMPUTERWISDOM_REPLAY_VERIFIER_CHAIN_V1",
+  "claim_hash": "sha256:52324d1cb3f1599ce191657a9c11de7948667c2d47e949c6a2a7722673999271",
+  "packet_id": "PROOF_FOR_THE_PRESIDENT_002",
+  "verifications": [
+    {
+      "verifier_id": "verifier:computerwisdom-session-operator-v1",
+      "verification_timestamp": "2026-06-03T14:50:00Z",
+      "verification_mode": "OPERATOR_REPORTED",
+      "output_classification": {
+        "status": "ANCHORED",
+        "promotion_allowed": false,
+        "reason": "GitHub evidence and Base/EAS anchor receipt are present. Archive layer remains pending. Authority remains false."
+      },
+      "replay_result": {
+        "reconstructable": true,
+        "survival_test": "NOT_RUN"
+      }
+    }
+  ],
+  "authority": false
+}
