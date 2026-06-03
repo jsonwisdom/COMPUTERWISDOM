@@ -1,0 +1,11 @@
+name: ETF Audit Placeholder
+
+on:
+  workflow_dispatch:
+
+jobs:
+  noop:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Placeholder
+        run: echo "ETF audit placeholder active"
