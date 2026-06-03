@@ -1,0 +1,21 @@
+{
+  "artifact": "COMPUTERWISDOM_REPLAY_VERIFIER_V0_2",
+  "verifier_id": "verifier:golden-vector-v0-1",
+  "input_packet": {
+    "claim_id": "VECTOR_PERFECT_PACKET_001",
+    "claim_hash": "sha256:5ed8c733d8f8bd4292f139a46f98e2f09460d01c1ea4221047d4e7c3c42f0418"
+  },
+  "output_classification": {
+    "status": "FULLY_REPLAYABLE",
+    "promotion_allowed": true,
+    "reason": "All evidence layers are valid, the claim hash matches, and the survival test passes."
+  },
+  "verification_timestamp": "2026-06-03T13:47:00Z",
+  "verified_by": "verifier:golden-vector",
+  "verification_mode": "INDEPENDENTLY_VERIFIED",
+  "replay_result": {
+    "reconstructable": true,
+    "survival_test": "PASS"
+  },
+  "authority": false
+}
