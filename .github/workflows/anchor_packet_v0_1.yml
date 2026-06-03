@@ -1,0 +1,39 @@
+name: anchor_packet_v0_1
+on:
+  workflow_dispatch:
+    inputs:
+      packet_id:
+        description: 'Packet ID (e.g., RUSSIA_2026_06_02)'
+        required: true
+        type: string
+
+jobs:
+  prepare-attestation:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Load packet hash
+        id: packet
+        run: |
+          PACKET_DIR="packets/${{ github.event.inputs.packet_id }}"
+          if [ ! -f "$PACKET_DIR/onchain_witness_payload.json" ]; then
+            echo "Packet not found"
+            exit 1
+          fi
+          HASH=$(jq -r '.packetHash' "$PACKET_DIR/onchain_witness_payload.json")
+          echo "hash=$HASH" >> "$GITHUB_OUTPUT"
+      - name: Print manual attestation instructions
+        run: |
+          echo "==== MANUAL ATTESTATION REQUIRED ===="
+          echo "Packet: ${{ github.event.inputs.packet_id }}"
+          echo "Packet Hash: ${{ steps.packet.outputs.hash }}"
+          echo "Repo A commit: ${{ github.sha }}"
+          echo ""
+          echo "Steps:"
+          echo "1. Run Repo B pinning workflow to get IPFS CID"
+          echo "2. Locally sign and submit EAS attestation with:"
+          echo "   - schema: WarfareStabilitySubstratePacket"
+          echo "   - packetHash: ${{ steps.packet.outputs.hash }}"
+          echo "   - uri: ipfs://<CID>/${{ github.event.inputs.packet_id }}.tar.gz"
+          echo "3. Set ENS text record for jaywisdom.eth"
+          echo "===================================="
