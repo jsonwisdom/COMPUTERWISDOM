@@ -1,0 +1,5 @@
+date_receipt,source_type,direct_quote,signal_triggered,archive_link,analyst_note,status
+2026-06-02,Simulated FSB statement,"Simulated: Western intelligence services implanted malware on phones of senior officials",SIM01,https://web.archive.org/example/fsb,"Simulated: No IOCs published",Simulated
+2026-06-02,Simulated TASS (Peskov),"Simulated: Conflict shifted due to inhumane acts of terror",SIM02,https://web.archive.org/example/peskov,"Simulated: Terror framing for legal expansion",Simulated
+2026-06-01,Simulated Putin decree,"Simulated: Ensure uninterrupted operation of medical, information, payment services during limited internet",SIM03,https://web.archive.org/example/putin,"Simulated: Report due July 1",Simulated
+2026-06-01,Simulated Roskomnadzor,"Simulated: WhatsApp blocked nationwide, MAX promoted as state alternative",SIM04,https://web.archive.org/example/rkn,"Simulated: MAX pre-install mandate",Simulated
