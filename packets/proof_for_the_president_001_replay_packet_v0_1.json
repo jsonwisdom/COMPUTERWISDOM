@@ -4,27 +4,38 @@
   "claim_text": "A public citizen can create a verifiable chain of evidence without requiring institutional permission.",
   "claim_hash": "sha256:5ed8c733d8f8bd4292f139a46f98e2f09460d01c1ea4221047d4e7c3c42f0418",
   "evidence_layers": {
-    "github_commit": "[PLACEHOLDER_PENDING_COMMIT]",
-    "github_issue_or_pr": "",
+    "github_commit": "https://github.com/jsonwisdom/COMPUTERWISDOM/commit/ec4d599a117666d2b03dc0e60604d238339febee",
+    "github_issue_or_pr": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/220",
     "base_transaction": "[MERGED219_RELATED_TX_PLACEHOLDER]",
     "archive_uri": "[PLACEHOLDER_IPFS_OR_ARCHIVE]"
   },
   "routing_layers": {
     "zora_coin": "base:0x7443b1cc32c6a72f52ecd91df4ac2adeb058a66a (MERGED219)",
     "x_post": "",
-    "website": ""
+    "website": "",
+    "other_routes": [
+      "https://zora.co/coin/base:0x7443b1cc32c6a72f52ecd91df4ac2adeb058a66a"
+    ]
   },
   "replay_steps": [
     "1. Fetch canonical claim_text from github_commit",
     "2. Recompute claim_hash and match",
-    "3. Verify base_transaction existence and timestamp on Base explorer",
-    "4. Confirm semantic consistency across evidence_layers",
-    "5. Validate against failure_rules (routing non-fatal, evidence critical)"
+    "3. Verify source PR and merged file on master",
+    "4. Verify base_transaction existence and timestamp on Base explorer when supplied",
+    "5. Verify archive_uri when supplied",
+    "6. Confirm semantic consistency across evidence_layers",
+    "7. Validate against failure_rules (routing non-fatal, evidence critical)"
   ],
   "failure_rules": {
     "routing_failure": "non_fatal",
     "evidence_failure": "critical",
     "partial_evidence": "trigger_recovery"
+  },
+  "classification": {
+    "status": "PARTIAL_REPLAY_READY",
+    "promotion_allowed": false,
+    "authority": false,
+    "reason": "GitHub evidence layer is populated with merged PR #220 and merge commit. Base transaction and archive URI remain pending verified receipts. Zora MERGED219 is routing only."
   },
   "authority": false,
   "survival_test": "Can an unrelated observer reconstruct the claim after the publisher, platform, and routing surfaces disappear?",
