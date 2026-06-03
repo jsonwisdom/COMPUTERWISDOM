@@ -24,13 +24,13 @@ jobs:
           pip install jsonschema pytest
 
       - name: Run trigger evaluator unit tests
-        run: pytest tests/test_trigger_evaluator_v0_1.py
+        run: PYTHONPATH=. pytest tests/test_trigger_evaluator_v0_1.py
 
       - name: Run watch receipt schema tests
-        run: pytest tests/test_watch_receipt_schema_v0_1.py
+        run: PYTHONPATH=. pytest tests/test_watch_receipt_schema_v0_1.py
 
       - name: Run evaluator receipt integration tests
-        run: pytest tests/test_trigger_evaluator_receipt_integration_v0_1.py
+        run: PYTHONPATH=. pytest tests/test_trigger_evaluator_receipt_integration_v0_1.py
 
       - name: Run trigger schema tests
-        run: pytest tests/test_trigger_schema_v0_1.py
+        run: PYTHONPATH=. pytest tests/test_trigger_schema_v0_1.py
