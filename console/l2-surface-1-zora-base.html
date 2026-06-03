@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>L2 Console • Surface 1 • Zora Base</title>
+  <style>
+    :root { color-scheme: dark; --bg:#0d1117; --panel:#161b22; --line:#30363d; --text:#e6edf3; --muted:#8b949e; --green:#3fb950; --yellow:#d29922; --blue:#58a6ff; --red:#f85149; }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: radial-gradient(circle at top right, rgba(88,166,255,.18), transparent 34%), var(--bg); color:var(--text); }
+    main { max-width:1100px; margin:0 auto; padding:24px 16px 42px; }
+    header, section { background:rgba(22,27,34,.92); border:1px solid var(--line); border-radius:16px; padding:18px; margin-bottom:14px; box-shadow:0 12px 34px rgba(0,0,0,.22); }
+    h1 { margin:0 0 8px; font-size:clamp(2rem,6vw,4rem); letter-spacing:-.04em; }
+    h2 { margin:0 0 10px; color:var(--blue); }
+    p { margin:0 0 10px; color:var(--muted); }
+    .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px; }
+    .card { border:1px solid var(--line); border-radius:14px; padding:14px; background:#0d1117; }
+    .label { color:var(--muted); font-size:.82rem; text-transform:uppercase; letter-spacing:.08em; }
+    .value { margin-top:4px; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; word-break:break-word; }
+    .pill { display:inline-block; border:1px solid var(--line); border-radius:999px; padding:6px 10px; margin:4px 6px 4px 0; font-weight:700; }
+    .ok { color:var(--green); } .warn { color:var(--yellow); } .bad { color:var(--red); }
+    button { border:1px solid var(--line); border-radius:12px; background:#21262d; color:var(--text); padding:10px 12px; font-weight:800; cursor:pointer; }
+    #log { white-space:pre-wrap; font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size:.92rem; color:var(--muted); }
+    a { color:var(--blue); }
+  </style>
+</head>
+<body>
+  <main>
+    <header>
+      <span class="pill ok">RUNTIME ACTIVE</span>
+      <span class="pill ok">AUTHORITY: FALSE</span>
+      <span class="pill ok">MEMBRANE: HOLDS</span>
+      <h1>🧾 L2 Console</h1>
+      <p>SURFACE 1 • ZORA BASE • EXTERNAL OBSERVATION</p>
+      <p class="warn">⚠️ EXTERNAL OBSERVATION ONLY – This token shares a name with internal machine components but is not part of the JOY Replay Spine.</p>
+    </header>
+
+    <section>
+      <h2>Surface 1</h2>
+      <div class="grid">
+        <div class="card"><div class="label">Contract</div><div class="value">0x17c7f908a0cbd2d415c44fb4098f229878e3ea7c</div></div>
+        <div class="card"><div class="label">Chain</div><div class="value">Base • Chain ID 8453</div></div>
+        <div class="card"><div class="label">Classification</div><div class="value">Zora ContentCoin</div></div>
+        <div class="card"><div class="label">Relationship</div><div class="value">UNVERIFIED_EXTERNAL_OBSERVATION</div></div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Telemetry</h2>
+      <div class="grid">
+        <div class="card"><div class="label">Price USD</div><div class="value" id="priceUsd">loading</div></div>
+        <div class="card"><div class="label">Liquidity USD</div><div class="value" id="liquidity">loading</div></div>
+        <div class="card"><div class="label">Volume 24h</div><div class="value" id="volume">loading</div></div>
+        <div class="card"><div class="label">Market Cap / FDV</div><div class="value" id="marketCap">loading</div></div>
+      </div>
+      <p style="margin-top:12px"><button onclick="loadTelemetry(true)">Refresh telemetry</button></p>
+      <p id="telemetryState">DexScreener read-only fetch pending.</p>
+    </section>
+
+    <section>
+      <h2>Observation Log</h2>
+      <div id="log">No observations yet.</div>
+    </section>
+
+    <section>
+      <h2>Boundary</h2>
+      <p>OBSERVE_AND_RECEIPT_ONLY • No financial advice • No ownership claims • No chain writes</p>
+      <p>PR #165 MERGED • AUTHORITY FALSE • MEMBRANE HOLDS</p>
+      <p><a href="https://api.dexscreener.com/latest/dex/search?q=0x17c7f908a0cbd2d415c44fb4098f229878e3ea7c" target="_blank" rel="noreferrer">DexScreener API</a> • <a href="https://basescan.org/address/0x17c7f908a0cbd2d415c44fb4098f229878e3ea7c" target="_blank" rel="noreferrer">BaseScan</a> • <a href="https://zora.co/coin/base:0x17c7f908a0cbd2d415c44fb4098f229878e3ea7c" target="_blank" rel="noreferrer">Zora</a></p>
+    </section>
+  </main>
+
+  <script>
+    const CONTRACT = '0x17c7f908a0cbd2d415c44fb4098f229878e3ea7c';
+    const API = 'https://api.dexscreener.com/latest/dex/search?q=' + CONTRACT;
+    const fmtUsd = value => {
+      const n = Number(value);
+      if (!Number.isFinite(n)) return 'not available';
+      return '$' + n.toLocaleString(undefined, { maximumFractionDigits: n < 1 ? 8 : 2 });
+    };
+    const writeLog = entry => {
+      const prior = JSON.parse(localStorage.getItem('l2_surface_1_observations') || '[]');
+      prior.unshift(entry);
+      localStorage.setItem('l2_surface_1_observations', JSON.stringify(prior.slice(0, 25)));
+      document.getElementById('log').textContent = JSON.stringify(prior.slice(0, 8), null, 2);
+    };
+    async function loadTelemetry(manual=false) {
+      const state = document.getElementById('telemetryState');
+      state.textContent = 'Fetching read-only DexScreener telemetry...';
+      try {
+        const res = await fetch(API, { cache: 'no-store' });
+        if (!res.ok) throw new Error('HTTP ' + res.status);
+        const data = await res.json();
+        const pair = (data.pairs || []).find(p => (p.chainId || '').toLowerCase() === 'base') || (data.pairs || [])[0];
+        if (!pair) throw new Error('No pair found yet. Early-stage token or no indexed DEX pool.');
+        document.getElementById('priceUsd').textContent = fmtUsd(pair.priceUsd);
+        document.getElementById('liquidity').textContent = fmtUsd(pair.liquidity && pair.liquidity.usd);
+        document.getElementById('volume').textContent = fmtUsd(pair.volume && pair.volume.h24);
+        document.getElementById('marketCap').textContent = fmtUsd(pair.marketCap || pair.fdv);
+        state.textContent = 'Telemetry observed. Display-only. Last update: ' + new Date().toISOString();
+        writeLog({
+          observed_at: new Date().toISOString(),
+          source: 'DexScreener search API',
+          contract: CONTRACT,
+          pairAddress: pair.pairAddress || null,
+          priceUsd: pair.priceUsd || null,
+          liquidityUsd: pair.liquidity ? pair.liquidity.usd : null,
+          volume24h: pair.volume ? pair.volume.h24 : null,
+          manual,
+          authority: false,
+          membrane: 'HOLDS'
+        });
+      } catch (err) {
+        document.getElementById('priceUsd').textContent = 'not available';
+        document.getElementById('liquidity').textContent = 'not available';
+        document.getElementById('volume').textContent = 'not available';
+        document.getElementById('marketCap').textContent = 'not available';
+        state.textContent = 'Telemetry unavailable: ' + err.message + '. This is valid for early-stage or unindexed tokens.';
+        writeLog({ observed_at: new Date().toISOString(), source: 'DexScreener search API', contract: CONTRACT, error: err.message, authority: false, membrane: 'HOLDS' });
+      }
+    }
+    loadTelemetry(false);
+    setInterval(() => loadTelemetry(false), 60000);
+  </script>
+</body>
+</html>

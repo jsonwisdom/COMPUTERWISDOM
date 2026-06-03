@@ -1,0 +1,10 @@
+{
+  "schema": "WarfareStabilitySubstratePacket(bytes32 packetHash,string packetId,string ensRoot,string uri,bool authority)",
+  "packetId": "RUSSIA_PIPELINE_TEST_V0_1",
+  "ensRoot": "jaywisdom.eth",
+  "uri": "ipfs://QmPlaceholderCID/RUSSIA_PIPELINE_TEST_V0_1.tar.gz",
+  "authority": false,
+  "simulated": true,
+  "packetHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+  "disclaimer": "Simulated packet for pipeline test. Do not use as real-world evidence."
+}

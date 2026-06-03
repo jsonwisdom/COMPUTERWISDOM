@@ -1,0 +1,40 @@
+{
+  "watcher_id": "surface_1_zora_base_replay_spine_v0_1",
+  "status": "OBSERVE_AND_RECEIPT_ONLY",
+  "authority": false,
+  "membrane": "HOLDS",
+  "contract": "0x17c7f908a0cbd2d415c44fb4098f229878e3ea7c",
+  "chain": "base",
+  "chain_id": 8453,
+  "relationship_to_machine": "UNVERIFIED_EXTERNAL_OBSERVATION",
+  "surfaces": {
+    "zora_native": "https://zora.co/coin/base:0x17c7f908a0cbd2d415c44fb4098f229878e3ea7c",
+    "basescan": "https://basescan.org/address/0x17c7f908a0cbd2d415c44fb4098f229878e3ea7c",
+    "dexscreener_search": "https://api.dexscreener.com/latest/dex/search?q=0x17c7f908a0cbd2d415c44fb4098f229878e3ea7c"
+  },
+  "fields_to_capture": [
+    "coin_exists",
+    "contract_exists",
+    "deployer",
+    "priceUsd",
+    "priceNative",
+    "liquidity",
+    "volume",
+    "marketCap",
+    "fdv",
+    "pairAddress",
+    "pairCreatedAt"
+  ],
+  "deployer_lineage": {
+    "tracked": true,
+    "last_checked": null,
+    "notes": "to be populated via BaseScan forensic pass"
+  },
+  "creator_rewards": {
+    "observed": false,
+    "value_eth": null,
+    "last_updated": null
+  },
+  "update_frequency": "manual_or_epoch",
+  "promotion_rule": "Do not connect this token to PR 165 or Jay identity without deployer, metadata, timestamp, and source receipts."
+}
