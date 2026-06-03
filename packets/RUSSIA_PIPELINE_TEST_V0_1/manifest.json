@@ -1,0 +1,27 @@
+{
+  "packet_id": "RUSSIA_PIPELINE_TEST_V0_1",
+  "created": "2026-06-02T12:00:00Z",
+  "created_by": "jaywisdom.eth",
+  "authority": false,
+  "simulated": true,
+  "verification_status": "simulated_for_pipeline_test",
+  "anchor_status": "do_not_anchor_as_real_world_receipt",
+  "disclaimer": "This packet tests the GitHub verification, packet hashing, and future IPFS/EAS workflow. It is not a real-world evidence packet and must not be promoted as verified receipt data.",
+  "files": [
+    "manifest.json",
+    "watchboard_v0_2.csv",
+    "source_tracker_v0_2.csv",
+    "emergency_replay_reference_card.md",
+    "russia_source_tree.md",
+    "constitutional_power_map.md",
+    "onchain_witness_payload.json",
+    "source_urls.json"
+  ],
+  "source_events": [
+    "Simulated: FSB smartphone compromise claim",
+    "Simulated: Peskov counter-terror paradigm framing",
+    "Simulated: Putin internet continuity order",
+    "Simulated: WhatsApp / MAX communications-control signal"
+  ],
+  "packet_hash_sha256": "0x0000000000000000000000000000000000000000000000000000000000000000"
+}
