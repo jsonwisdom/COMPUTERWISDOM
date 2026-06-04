@@ -1,0 +1,141 @@
+{
+  "schema": "LIVING_LIBRARY_INDEX_V0_1",
+  "version": "0.1",
+  "project": "JSONWISDOM_LIVING_LIBRARY",
+  "status": "PROPOSED_FOR_REVIEW",
+  "authority": false,
+  "promotion": false,
+  "principle": "A Living Library organizes replayable meaning, not static categories.",
+  "equation": "Expected Reality - Observed Records = Missing Explanation Delta",
+  "indexed_dependencies": [
+    {
+      "artifact": "REPOSITORY_DUTY_GRAPH_V0_1",
+      "type": "constitutional_repo_boundary_map",
+      "source_branch": "feat/repository-duty-graph-v0.1",
+      "source_commit": "72e7c0cf74e2985ffca3fe41ae9e388bb4a17587",
+      "status": "PROPOSED_FOR_REVIEW",
+      "authority": false
+    },
+    {
+      "artifact": "AXIOMS_OF_COURT_SURFACE_V0_1",
+      "type": "formal_constraint_set",
+      "source_issue": 258,
+      "source_comment": 4625605222,
+      "status": "DESIGN_SURFACE_INDEXED",
+      "authority": false
+    }
+  ],
+  "indexes": {
+    "claims": [
+      {
+        "claim_id": "CLAIM_AXIOMATIC_COURT_SURFACE_V0_1",
+        "type": "axiomatic_framework",
+        "description": "Court surface behavior must be testable against versioned axioms before Democracy Math deltas are promoted.",
+        "depends_on": [
+          "AXIOMS_OF_COURT_SURFACE_V0_1"
+        ],
+        "authority": false
+      }
+    ],
+    "receipts": [
+      {
+        "receipt_type": "issue_comment_receipt",
+        "artifact": "AXIOMS_OF_COURT_SURFACE_V0_1",
+        "issue": 258,
+        "comment_id": 4625605222,
+        "authority": false
+      }
+    ],
+    "witnesses": [],
+    "deltas": [
+      {
+        "delta_type": "MISSING_EXPLANATION_DELTA",
+        "formula": "expected_state - observed_state",
+        "requires": [
+          "EXPECTED_STATE_MODELING_PRIMITIVES_V0_1",
+          "AXIOMS_OF_COURT_SURFACE_V0_1"
+        ],
+        "authority": false
+      }
+    ],
+    "versions": [
+      {
+        "artifact": "AXIOMS_OF_COURT_SURFACE_V0_1",
+        "version": "0.1",
+        "status": "INDEXED_NOT_CANONICALIZED",
+        "authority": false
+      },
+      {
+        "artifact": "EXPECTED_STATE_MODELING_PRIMITIVES_V0_1",
+        "version": "0.1",
+        "source_issue": 258,
+        "source_comment": 4625695608,
+        "status": "INDEXED_NOT_CANONICALIZED",
+        "authority": false
+      },
+      {
+        "artifact": "DEMOCRACY_MATH_PRETTY_JSON_GEO_STATE_V0_1",
+        "version": "0.1",
+        "source_issue": 258,
+        "source_comment": 4625742264,
+        "status": "INDEXED_NOT_CANONICALIZED",
+        "authority": false
+      }
+    ],
+    "replay_paths": [
+      {
+        "path_id": "REPLAY_AXIOMS_TO_DEMOCRACY_MATH_V0_1",
+        "sequence": [
+          "REPOSITORY_DUTY_GRAPH_V0_1",
+          "LIVING_LIBRARY_INDEX_V0_1",
+          "AXIOMS_OF_COURT_SURFACE_V0_1",
+          "EXPECTED_STATE_MODELING_PRIMITIVES_V0_1",
+          "DEMOCRACY_MATH_ENGINE_V0_1",
+          "DEMOCRACY_MATH_TEST_VECTORS_V0_1"
+        ],
+        "rule": "Index before engine; axioms before tests; deltas before receipts; no promotion without replay.",
+        "authority": false
+      }
+    ],
+    "repo_duties": [
+      "Welcome-to-JSONWISDOM",
+      "COMPUTERWISDOM",
+      "AL",
+      "JOY",
+      "receipts-engine-v1",
+      "public-proof"
+    ],
+    "public_signal_surfaces": [
+      "NSA",
+      "DOD_DOW",
+      "Pentagon",
+      "GCHQ",
+      "Five_Eyes",
+      "CIA",
+      "FBI",
+      "CISA",
+      "NIST",
+      "White_House",
+      "Congress",
+      "State_Governments",
+      "County_Governments",
+      "City_Governments"
+    ],
+    "expected_state_models": [
+      "EXPECTED_STATE_MODELING_PRIMITIVES_V0_1"
+    ],
+    "observed_state_records": []
+  },
+  "required_order_of_operations": [
+    "Index",
+    "Define Axioms",
+    "Model Expected State",
+    "Observe State",
+    "Compute Delta",
+    "Emit Receipt",
+    "Test Against Axioms",
+    "Escalate Without Verdict"
+  ],
+  "next_artifact": "DEMOCRACY_MATH_ENGINE_V0_1",
+  "test_artifact_after_engine": "DEMOCRACY_MATH_TEST_VECTORS_V0_1"
+}
