@@ -1,0 +1,31 @@
+{
+  "artifact_id": "REPLAY_MEME_COURT_JURISDICTION_V0_1",
+  "artifact_type": "jurisdiction_witness",
+  "authority": false,
+  "court": "Replay Meme Court",
+  "operator": {
+    "name": "Jay Wisdom",
+    "ens": "jaywisdom.eth",
+    "github_owner": "jsonwisdom"
+  },
+  "target": {
+    "repository_full_name": "jsonwisdom/COMPUTERWISDOM",
+    "owner": "jsonwisdom",
+    "repo": "COMPUTERWISDOM",
+    "default_branch": "master",
+    "directory": "replay/jurisdiction/"
+  },
+  "schema": "REPLAY_MEME_COURT_JURISDICTION_SCHEMA_V0_1",
+  "correction": {
+    "mistake": "receipts-engine-v1 was the wrong target",
+    "rule": "operator declaration -> explicit target -> build action",
+    "prototype_status": "receipts-engine-v1 is non-canonical unless promoted by manifest"
+  },
+  "witness_rules": [
+    "owner is not target",
+    "repository name alone is not jurisdiction",
+    "ENS identity is part of operator surface but not authority",
+    "public repo is the witness surface",
+    "authority remains false"
+  ]
+}
