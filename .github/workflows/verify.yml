@@ -11,6 +11,7 @@ on:
       - protocol/ers-v0_1
       - protocol/replay-kernel-v0_1
       - protocol/dispute-protocol-v0_1
+      - protocol/observation-protocol-v0_1
 
 permissions:
   contents: read
