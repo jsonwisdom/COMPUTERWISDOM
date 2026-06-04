@@ -10,6 +10,7 @@ on:
       - protocol/v0_1-admission
       - protocol/ers-v0_1
       - protocol/replay-kernel-v0_1
+      - protocol/dispute-protocol-v0_1
 
 permissions:
   contents: read
