@@ -1,0 +1,143 @@
+{
+  "artifact": "MRS_WISDOM_COMMUNICATION_LAYER_V0_1.json",
+  "version": "0.1",
+  "status": "PROPOSED_FOR_REVIEW",
+  "authority": false,
+  "promotion": false,
+  "description": "Mrs. Wisdom communication layer for Family Wisdom LIVE. This reframes emotional math and logical feelings as a protected communication protocol: feelings become clear signals, boundaries become respected interfaces, and repair becomes replayable without coercion.",
+  "parent_artifacts": [
+    "FAMILY_WISDOM_LIVE_CONSTITUTION_V0_1.md",
+    "FAMILY_WISDOM_LIVE_STATE_MACHINE_V0_1.json",
+    "FAMILY_WISDOM_LIVE_TEST_HARNESS_V0_1.json"
+  ],
+  "root_rule": "Communicate with care. Preserve with consent. Promote with proof.",
+  "boundary": {
+    "no_gender_stereotype_claim": true,
+    "no_person_control": true,
+    "no_emotional_coercion": true,
+    "no_private_detail_exposure": true,
+    "no_legal_medical_custody_schooling_or_financial_authority_claim": true,
+    "communication_is_not_command_authority": true,
+    "authority": false
+  },
+  "communication_math": {
+    "definition": "A care-aware method for translating emotional signals into context, need, boundary, repair path, and optional receipt.",
+    "equation": "feeling_signal + context + need + boundary + repair_path + consent = communication_receipt",
+    "inputs": [
+      "feeling_signal",
+      "context_hash",
+      "need_signal",
+      "boundary_signal",
+      "safety_status",
+      "glitter_signal",
+      "continuity_token",
+      "consent_status"
+    ],
+    "outputs": [
+      "COMMUNICATION_RECEIPT",
+      "SUPPORT_REQUEST",
+      "BOUNDARY_RECEIPT",
+      "REPAIR_PATH",
+      "PAUSE_REQUEST",
+      "NO_ACTION_NEEDED"
+    ],
+    "authority": false
+  },
+  "logical_feelings": {
+    "definition": "Feelings expressed with reason, boundary, context, and replayable care without requiring anyone to prove their worth.",
+    "forms": [
+      "I feel X because Y mattered to me.",
+      "I need support with Z.",
+      "My boundary is B.",
+      "The repair I can accept is R.",
+      "I am not ready to answer yet.",
+      "I want this preserved privately.",
+      "I do not consent to public receipt."
+    ],
+    "protected_rights": [
+      "right_to_feel_without_mockery",
+      "right_to_pause",
+      "right_to_context",
+      "right_to_boundary",
+      "right_to_repair",
+      "right_to_not_be_deleted",
+      "right_to_not_be_forced_into_public_receipt",
+      "right_to_change_visibility_later_with_version_history"
+    ],
+    "authority": false
+  },
+  "signal_classes": [
+    {
+      "signal": "HURT",
+      "default_action": "LOWER_STACK_AND_LISTEN",
+      "forbidden_action": "DISMISS_OR_MOCK",
+      "authority": false
+    },
+    {
+      "signal": "CONFUSED",
+      "default_action": "CLARIFY_WITHOUT_PRESSURE",
+      "forbidden_action": "RUSH_TO_VERDICT",
+      "authority": false
+    },
+    {
+      "signal": "OVERWHELMED",
+      "default_action": "PAUSE_AND_LOWER_STACK",
+      "forbidden_action": "FORCE_RESPONSE",
+      "authority": false
+    },
+    {
+      "signal": "JOYFUL",
+      "default_action": "PRESERVE_WITH_CONSENT",
+      "forbidden_action": "EXPLOIT_AS_PROMOTION",
+      "authority": false
+    },
+    {
+      "signal": "BOUNDARY",
+      "default_action": "RESPECT_AND_RECEIPT_IF_CONSENTED",
+      "forbidden_action": "ARGUE_BOUNDARY_AS_INVALID",
+      "authority": false
+    }
+  ],
+  "runtime_hooks": {
+    "state_machine_events": [
+      "EV_GLITTER_CHECK_REPORTED",
+      "EV_STACK_LOWERING_APPLIED",
+      "EV_TRUTH_TOLD",
+      "EV_REPLAY_HUG_COMPLETED"
+    ],
+    "guards_added": [
+      "GUARD_NO_FEELING_DISMISSAL",
+      "GUARD_BOUNDARY_SIGNAL_RESPECTED",
+      "GUARD_PAUSE_ALLOWED",
+      "GUARD_CONSENT_BEFORE_PUBLIC_RECEIPT",
+      "GUARD_COMMUNICATION_NOT_COMMAND"
+    ],
+    "effects_added": [
+      "EFF_CREATE_COMMUNICATION_RECEIPT",
+      "EFF_ROUTE_TO_SUPPORT_REQUEST",
+      "EFF_RECORD_BOUNDARY_HASH",
+      "EFF_CREATE_REPAIR_PATH",
+      "EFF_RECORD_VISIBILITY_CHOICE"
+    ],
+    "authority": false
+  },
+  "receipt_schema": {
+    "schema": "MRS_WISDOM_COMMUNICATION_RECEIPT_V0_1",
+    "fields": {
+      "receipt_id": "opaque_or_hash_id",
+      "timestamp": "ISO-8601",
+      "signal_class": "HURT | CONFUSED | OVERWHELMED | JOYFUL | BOUNDARY | OTHER",
+      "context_hash": "hash_only_no_private_content_required",
+      "need_signal": "string_or_null",
+      "boundary_signal": "string_or_null",
+      "repair_path": "string_or_null",
+      "visibility": "PRIVATE | FAMILY_ONLY | PUBLIC_REDACTED",
+      "consent_recorded": "boolean",
+      "authority": false,
+      "promotion": false
+    }
+  },
+  "next_artifact": "MRS_WISDOM_REPUTATION_LAYER_V0_1.json",
+  "authority": false,
+  "promotion": false
+}
