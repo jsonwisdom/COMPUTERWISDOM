@@ -25,15 +25,42 @@
       "authority": false
     }
   ],
+  "identity_surfaces": [
+    {
+      "identity": "jaywisdom.eth",
+      "type": "primary_identity_surface",
+      "status": "INDEXED_OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "ownership_verified": false,
+      "authority": false
+    },
+    {
+      "identity": "jaywisdom.base.eth",
+      "type": "base_identity_and_purpose_surface",
+      "network": "Base",
+      "status": "INDEXED_OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "ownership_verified": false,
+      "authority": false
+    }
+  ],
   "indexes": {
     "claims": [
       {
         "claim_id": "CLAIM_AXIOMATIC_COURT_SURFACE_V0_1",
         "type": "axiomatic_framework",
         "description": "Court surface behavior must be testable against versioned axioms before Democracy Math deltas are promoted.",
-        "depends_on": [
-          "AXIOMS_OF_COURT_SURFACE_V0_1"
-        ],
+        "depends_on": ["AXIOMS_OF_COURT_SURFACE_V0_1"],
+        "authority": false
+      },
+      {
+        "claim_id": "CLAIM_JAYWISDOM_ETH_INDEXED_V0_1",
+        "type": "identity_surface_index",
+        "description": "jaywisdom.eth is indexed as a primary Living Library identity surface by operator declaration, not ownership verification.",
+        "authority": false
+      },
+      {
+        "claim_id": "CLAIM_JAYWISDOM_BASE_ETH_INDEXED_V0_1",
+        "type": "base_identity_surface_index",
+        "description": "jaywisdom.base.eth is indexed as a Base purpose and reputation surface by operator declaration, not ownership verification.",
         "authority": false
       }
     ],
@@ -51,91 +78,37 @@
       {
         "delta_type": "MISSING_EXPLANATION_DELTA",
         "formula": "expected_state - observed_state",
-        "requires": [
-          "EXPECTED_STATE_MODELING_PRIMITIVES_V0_1",
-          "AXIOMS_OF_COURT_SURFACE_V0_1"
-        ],
+        "requires": ["EXPECTED_STATE_MODELING_PRIMITIVES_V0_1", "AXIOMS_OF_COURT_SURFACE_V0_1"],
         "authority": false
       }
     ],
     "versions": [
-      {
-        "artifact": "AXIOMS_OF_COURT_SURFACE_V0_1",
-        "version": "0.1",
-        "status": "INDEXED_NOT_CANONICALIZED",
-        "authority": false
-      },
-      {
-        "artifact": "EXPECTED_STATE_MODELING_PRIMITIVES_V0_1",
-        "version": "0.1",
-        "source_issue": 258,
-        "source_comment": 4625695608,
-        "status": "INDEXED_NOT_CANONICALIZED",
-        "authority": false
-      },
-      {
-        "artifact": "DEMOCRACY_MATH_PRETTY_JSON_GEO_STATE_V0_1",
-        "version": "0.1",
-        "source_issue": 258,
-        "source_comment": 4625742264,
-        "status": "INDEXED_NOT_CANONICALIZED",
-        "authority": false
-      }
+      {"artifact": "AXIOMS_OF_COURT_SURFACE_V0_1", "version": "0.1", "status": "INDEXED_NOT_CANONICALIZED", "authority": false},
+      {"artifact": "EXPECTED_STATE_MODELING_PRIMITIVES_V0_1", "version": "0.1", "source_issue": 258, "source_comment": 4625695608, "status": "INDEXED_NOT_CANONICALIZED", "authority": false},
+      {"artifact": "DEMOCRACY_MATH_PRETTY_JSON_GEO_STATE_V0_1", "version": "0.1", "source_issue": 258, "source_comment": 4625742264, "status": "INDEXED_NOT_CANONICALIZED", "authority": false},
+      {"artifact": "jaywisdom.eth", "version": "0.1", "status": "IDENTITY_SURFACE_INDEXED_NOT_OWNERSHIP_VERIFIED", "authority": false},
+      {"artifact": "jaywisdom.base.eth", "version": "0.1", "status": "BASE_IDENTITY_SURFACE_INDEXED_NOT_OWNERSHIP_VERIFIED", "authority": false}
     ],
     "replay_paths": [
       {
         "path_id": "REPLAY_AXIOMS_TO_DEMOCRACY_MATH_V0_1",
-        "sequence": [
-          "REPOSITORY_DUTY_GRAPH_V0_1",
-          "LIVING_LIBRARY_INDEX_V0_1",
-          "AXIOMS_OF_COURT_SURFACE_V0_1",
-          "EXPECTED_STATE_MODELING_PRIMITIVES_V0_1",
-          "DEMOCRACY_MATH_ENGINE_V0_1",
-          "DEMOCRACY_MATH_TEST_VECTORS_V0_1"
-        ],
+        "sequence": ["REPOSITORY_DUTY_GRAPH_V0_1", "LIVING_LIBRARY_INDEX_V0_1", "AXIOMS_OF_COURT_SURFACE_V0_1", "EXPECTED_STATE_MODELING_PRIMITIVES_V0_1", "DEMOCRACY_MATH_ENGINE_V0_1", "DEMOCRACY_MATH_TEST_VECTORS_V0_1"],
         "rule": "Index before engine; axioms before tests; deltas before receipts; no promotion without replay.",
+        "authority": false
+      },
+      {
+        "path_id": "REPLAY_IDENTITY_SURFACES_V0_1",
+        "sequence": ["jaywisdom.eth", "jaywisdom.base.eth", "PUBLIC_PROOF.json", "PUBLIC_REPLAY_INDEX.json", "LIVING_LIBRARY_INDEX_V0_1"],
+        "rule": "Identity surfaces may be indexed for discovery and reputation context but must not become ownership verification without independent receipts.",
         "authority": false
       }
     ],
-    "repo_duties": [
-      "Welcome-to-JSONWISDOM",
-      "COMPUTERWISDOM",
-      "AL",
-      "JOY",
-      "receipts-engine-v1",
-      "public-proof"
-    ],
-    "public_signal_surfaces": [
-      "NSA",
-      "DOD_DOW",
-      "Pentagon",
-      "GCHQ",
-      "Five_Eyes",
-      "CIA",
-      "FBI",
-      "CISA",
-      "NIST",
-      "White_House",
-      "Congress",
-      "State_Governments",
-      "County_Governments",
-      "City_Governments"
-    ],
-    "expected_state_models": [
-      "EXPECTED_STATE_MODELING_PRIMITIVES_V0_1"
-    ],
+    "repo_duties": ["Welcome-to-JSONWISDOM", "COMPUTERWISDOM", "AL", "JOY", "receipts-engine-v1", "public-proof"],
+    "public_signal_surfaces": ["jaywisdom.eth", "jaywisdom.base.eth", "NSA", "DOD_DOW", "Pentagon", "GCHQ", "Five_Eyes", "CIA", "FBI", "CISA", "NIST", "White_House", "Congress", "State_Governments", "County_Governments", "City_Governments"],
+    "expected_state_models": ["EXPECTED_STATE_MODELING_PRIMITIVES_V0_1"],
     "observed_state_records": []
   },
-  "required_order_of_operations": [
-    "Index",
-    "Define Axioms",
-    "Model Expected State",
-    "Observe State",
-    "Compute Delta",
-    "Emit Receipt",
-    "Test Against Axioms",
-    "Escalate Without Verdict"
-  ],
+  "required_order_of_operations": ["Index", "Define Axioms", "Model Expected State", "Observe State", "Compute Delta", "Emit Receipt", "Test Against Axioms", "Escalate Without Verdict"],
   "next_artifact": "DEMOCRACY_MATH_ENGINE_V0_1",
   "test_artifact_after_engine": "DEMOCRACY_MATH_TEST_VECTORS_V0_1"
 }
