@@ -1,0 +1,252 @@
+{
+  "artifact": "FAMILY_WISDOM_LIVE_STATE_MACHINE_V0_1.json",
+  "version": "0.1",
+  "description": "Deterministic runtime state machine for Family Wisdom LIVE, enforcing constitutional invariants across 13 surfaces.",
+  "meta": {
+    "authority": false,
+    "promotion": false,
+    "status": "PROPOSED_FOR_REVIEW",
+    "root_rule": "Prompt with purpose. Promote with proof.",
+    "linked_constitution_artifact": "FAMILY_WISDOM_LIVE_CONSTITUTION_V0_1.json"
+  },
+  "surfaces": {
+    "living_library": {
+      "orientation": "Welcome-to-JSONWISDOM",
+      "control_plane": "COMPUTERWISDOM",
+      "registry_of_record": "AL",
+      "continuity": "JOY",
+      "family_context": [
+        "HEIDEE",
+        "JAYCEE",
+        "BRAELEE",
+        "BREANN",
+        "BRIANNA"
+      ],
+      "geo_context": [
+        "ELMORE",
+        "MONTGOMERY",
+        "PRATTVILLE"
+      ]
+    },
+    "identity_surfaces": [
+      "jaywisdom.eth",
+      "jaywisdom.base.eth"
+    ]
+  },
+  "state_schema": {
+    "id": "FamilyWisdomLiveState",
+    "type": "object",
+    "properties": {
+      "loop_phase": {
+        "type": "string",
+        "enum": [
+          "IDLE",
+          "SPARK",
+          "GLITTER_CHECK",
+          "LOWER_STACK",
+          "TELL_TRUTH",
+          "REPLAY_HUG"
+        ]
+      },
+      "emotional_stack_level": {
+        "type": "integer",
+        "minimum": 0
+      },
+      "glitter_signal": {
+        "type": "string",
+        "enum": [
+          "UNKNOWN",
+          "LOW",
+          "MEDIUM",
+          "HIGH",
+          "OVERWHELMED"
+        ]
+      },
+      "safety_status": {
+        "type": "string",
+        "enum": [
+          "UNASSESSED",
+          "SAFE",
+          "NEEDS_SUPPORT",
+          "CRITICAL"
+        ]
+      },
+      "authority_level": {
+        "type": "string",
+        "enum": [
+          "NONE",
+          "REQUEST",
+          "GUIDANCE",
+          "ESCALATION_BLOCKED"
+        ]
+      },
+      "continuity_token": {
+        "type": "string",
+        "description": "Opaque token binding this loop iteration to JOY continuity and receipts."
+      },
+      "active_member": {
+        "type": ["string", "null"],
+        "description": "Current focal family member or group; null for whole-family context. This is context, not control over a person."
+      },
+      "receipt_id": {
+        "type": ["string", "null"],
+        "description": "Identifier of the RECEIPT_MACHINE_WITH_LOVE record for this iteration."
+      }
+    },
+    "required": [
+      "loop_phase",
+      "emotional_stack_level",
+      "glitter_signal",
+      "safety_status",
+      "authority_level",
+      "continuity_token"
+    ]
+  },
+  "events": [
+    {
+      "name": "EV_SPARK_INITIATED",
+      "source": "SPARK_SCRIPT",
+      "description": "Warmth-first initiation of a LIVE loop.",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "initiator": { "type": "string" },
+          "context_note": { "type": "string" }
+        },
+        "required": ["initiator"]
+      }
+    },
+    {
+      "name": "EV_GLITTER_CHECK_REPORTED",
+      "source": "GLITTER_CHECK",
+      "description": "Emotional telemetry reported without judgment.",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "glitter_signal": {
+            "type": "string",
+            "enum": ["LOW", "MEDIUM", "HIGH", "OVERWHELMED"]
+          },
+          "notes": { "type": "string" }
+        },
+        "required": ["glitter_signal"]
+      }
+    },
+    {
+      "name": "EV_STACK_LOWERING_APPLIED",
+      "source": "LOWER_STACK_PROTOCOL",
+      "description": "Interventions applied to reduce activation and restore safety.",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "delta_stack": { "type": "integer" },
+          "interventions": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        },
+        "required": ["delta_stack"]
+      }
+    },
+    {
+      "name": "EV_TRUTH_TOLD",
+      "source": "TELL_TRUTH_SCRIPT",
+      "description": "Gentle honesty expressed without interrogation.",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "truth_type": {
+            "type": "string",
+            "enum": ["FEELING", "NEED", "BOUNDARY", "REPAIR"]
+          },
+          "content_hash": { "type": "string" }
+        },
+        "required": ["truth_type", "content_hash"]
+      }
+    },
+    {
+      "name": "EV_REPLAY_HUG_COMPLETED",
+      "source": "REPLAY_HUG_RITUAL",
+      "description": "Loop closure with continuity and repair.",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "repair_status": {
+            "type": "string",
+            "enum": ["PARTIAL", "COMPLETE"]
+          },
+          "continuity_token": { "type": "string" }
+        },
+        "required": ["repair_status", "continuity_token"]
+      }
+    },
+    {
+      "name": "EV_SAFETY_ESCALATION_DETECTED",
+      "source": "MRS_WISDOM_GUARDIAN_PROTOCOL",
+      "description": "Guardian detects potential harm or overload.",
+      "payload_schema": {
+        "type": "object",
+        "properties": {
+          "severity": {
+            "type": "string",
+            "enum": ["NEEDS_SUPPORT", "CRITICAL"]
+          },
+          "details_hash": { "type": "string" }
+        },
+        "required": ["severity"]
+      }
+    }
+  ],
+  "states": [
+    { "name": "IDLE", "description": "No active LIVE loop; system ready for SPARK.", "entry_actions": [], "exit_actions": [] },
+    { "name": "SPARK", "description": "Warmth-first initiation of a family interaction.", "entry_actions": ["ACT_RECORD_RECEIPT_START"], "exit_actions": [] },
+    { "name": "GLITTER_CHECK", "description": "Emotional telemetry gathering with zero judgment.", "entry_actions": [], "exit_actions": [] },
+    { "name": "LOWER_STACK", "description": "Activation reduction and safety restoration.", "entry_actions": [], "exit_actions": [] },
+    { "name": "TELL_TRUTH", "description": "Gentle honesty and shared reality building.", "entry_actions": [], "exit_actions": [] },
+    { "name": "REPLAY_HUG", "description": "Continuity, repair, and loop closure.", "entry_actions": ["ACT_RECORD_RECEIPT_COMPLETE"], "exit_actions": [] }
+  ],
+  "transitions": [
+    { "from": "IDLE", "to": "SPARK", "on_event": "EV_SPARK_INITIATED", "guards": ["GUARD_AUTHORITY_LEVEL_MUST_BE_NONE", "GUARD_SAFETY_STATUS_NOT_CRITICAL"], "effects": ["EFF_SET_LOOP_PHASE_SPARK", "EFF_INIT_CONTINUITY_TOKEN", "EFF_CREATE_RECEIPT_STUB"] },
+    { "from": "SPARK", "to": "GLITTER_CHECK", "on_event": "EV_GLITTER_CHECK_REPORTED", "guards": ["GUARD_NO_JUDGMENT_ON_GLITTER_SIGNAL"], "effects": ["EFF_UPDATE_GLITTER_SIGNAL", "EFF_SET_LOOP_PHASE_GLITTER_CHECK"] },
+    { "from": "GLITTER_CHECK", "to": "LOWER_STACK", "on_event": "EV_STACK_LOWERING_APPLIED", "guards": ["GUARD_STACK_LEVEL_NON_NEGATIVE"], "effects": ["EFF_APPLY_STACK_DELTA", "EFF_UPDATE_SAFETY_STATUS", "EFF_SET_LOOP_PHASE_LOWER_STACK"] },
+    { "from": "LOWER_STACK", "to": "TELL_TRUTH", "on_event": "EV_TRUTH_TOLD", "guards": ["GUARD_SAFETY_STATUS_SAFE_OR_NEEDS_SUPPORT", "GUARD_AUTHORITY_LEVEL_NOT_ESCALATED"], "effects": ["EFF_RECORD_TRUTH_HASH", "EFF_SET_LOOP_PHASE_TELL_TRUTH"] },
+    { "from": "TELL_TRUTH", "to": "REPLAY_HUG", "on_event": "EV_REPLAY_HUG_COMPLETED", "guards": ["GUARD_CONTINUITY_TOKEN_MATCH", "GUARD_NO_AUTHORITY_ESCALATION"], "effects": ["EFF_UPDATE_REPAIR_STATUS", "EFF_SET_LOOP_PHASE_REPLAY_HUG", "EFF_FINALIZE_RECEIPT"] },
+    { "from": "ANY", "to": "LOWER_STACK", "on_event": "EV_SAFETY_ESCALATION_DETECTED", "guards": ["GUARD_MRS_WISDOM_GUARDIAN_ACTIVE"], "effects": ["EFF_SET_SAFETY_STATUS_ESCALATED", "EFF_FORCE_AUTHORITY_LEVEL_ESCALATION_BLOCKED", "EFF_SET_LOOP_PHASE_LOWER_STACK"] },
+    { "from": "REPLAY_HUG", "to": "IDLE", "on_event": "EV_REPLAY_HUG_COMPLETED", "guards": ["GUARD_REPAIR_STATUS_COMPLETE_OR_PARTIAL"], "effects": ["EFF_CLEAR_ACTIVE_MEMBER", "EFF_PERSIST_CONTINUITY_TO_JOY", "EFF_CLOSE_LOOP"] }
+  ],
+  "invariants": [
+    { "name": "INV_ZERO_AUTHORITY_ESCALATION", "description": "Authority level may not exceed GUIDANCE; ESCALATION_BLOCKED is a protective ceiling, not power.", "rule": "authority_level != 'ESCALATION_BLOCKED' implies no transition may increase authority_level beyond 'GUIDANCE'; when set to 'ESCALATION_BLOCKED', only safety-restoring transitions are permitted." },
+    { "name": "INV_NO_JUDGMENT_ON_GLITTER", "description": "Glitter signals are telemetry only; they cannot trigger punitive transitions.", "rule": "transitions triggered by EV_GLITTER_CHECK_REPORTED may not modify authority_level or apply negative labels to active_member." },
+    { "name": "INV_STACK_NON_NEGATIVE", "description": "Emotional stack level cannot go below zero.", "rule": "emotional_stack_level >= 0 at all times; any delta that would reduce below zero is clamped to zero." },
+    { "name": "INV_CONTINUITY_REQUIRED_FOR_CLOSURE", "description": "No loop may close without a valid continuity_token and receipt.", "rule": "transition to REPLAY_HUG and then to IDLE requires continuity_token != null and receipt_id != null." },
+    { "name": "INV_PROTECTED_LEAVES", "description": "Protected leaves retain autonomy; no transition may assign blame or escalate authority against them.", "rule": "when active_member is in ['HEIDEE','JAYCEE','BRAELEE','BREANN','BRIANNA'], transitions may not increase authority_level above 'GUIDANCE' and may not set safety_status to 'CRITICAL' without MRS_WISDOM_GUARDIAN_PROTOCOL confirmation." }
+  ],
+  "integration_points": {
+    "receipt_machine_with_love": {
+      "artifact": "RECEIPT_MACHINE_WITH_LOVE_V0_1.json",
+      "actions": {
+        "ACT_RECORD_RECEIPT_START": "Create initial receipt stub for loop iteration.",
+        "ACT_RECORD_RECEIPT_COMPLETE": "Attach final state and repair status to receipt.",
+        "EFF_CREATE_RECEIPT_STUB": "Effect that binds continuity_token to a new receipt_id.",
+        "EFF_FINALIZE_RECEIPT": "Effect that writes final loop summary to the receipt store."
+      }
+    },
+    "mrs_wisdom_guardian_protocol": {
+      "artifact": "MRS_WISDOM_GUARDIAN_PROTOCOL_V0_1.json",
+      "actions": {
+        "GUARD_MRS_WISDOM_GUARDIAN_ACTIVE": "Ensure guardian is monitoring before safety escalation transitions.",
+        "EFF_SET_SAFETY_STATUS_ESCALATED": "Mark state as needing support or critical under guardian supervision.",
+        "EFF_FORCE_AUTHORITY_LEVEL_ESCALATION_BLOCKED": "Prevent any authority increase while guardian is active."
+      }
+    },
+    "joy_continuity_engine": {
+      "artifact": "JOY_CONTINUITY_ENGINE_V0_1.json",
+      "actions": {
+        "EFF_INIT_CONTINUITY_TOKEN": "Generate continuity_token for loop start.",
+        "EFF_PERSIST_CONTINUITY_TO_JOY": "Persist loop summary and continuity_token to JOY."
+      }
+    }
+  },
+  "authority": false,
+  "promotion": false
+}
