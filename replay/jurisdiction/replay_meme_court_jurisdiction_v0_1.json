@@ -2,7 +2,23 @@
   "artifact_id": "REPLAY_MEME_COURT_JURISDICTION_V0_1",
   "artifact_type": "jurisdiction_witness",
   "authority": false,
-  "court": "Replay Meme Court",
+  "court": {
+    "name": "Replay Meme Court",
+    "role": "public witness and parody-adjacent replay surface",
+    "authority": false,
+    "may_do": [
+      "witness artifacts",
+      "record receipts",
+      "preserve divergence",
+      "route replay questions"
+    ],
+    "may_not_do": [
+      "declare truth",
+      "create trust by narrative",
+      "override validators",
+      "promote sidecar targets without manifest"
+    ]
+  },
   "operator": {
     "name": "Jay Wisdom",
     "ens_l1": "jaywisdom.eth",
@@ -13,19 +29,65 @@
     "l1_ens": {
       "name": "jaywisdom.eth",
       "network": "Ethereum L1",
-      "role": "operator identity surface"
+      "role": "operator identity surface",
+      "trust_status": "identifier_not_authority"
     },
     "base_l2_ens": {
       "name": "jaywisdom.base.eth",
       "network": "Base L2",
-      "role": "public L2 discovery and receipt surface"
+      "role": "public L2 discovery and receipt surface",
+      "trust_status": "discoverable_surface_not_truth_oracle"
     },
     "github": {
       "owner": "jsonwisdom",
       "repo": "COMPUTERWISDOM",
       "repository_full_name": "jsonwisdom/COMPUTERWISDOM",
-      "role": "public repository witness surface"
+      "role": "public repository witness surface",
+      "trust_status": "byte_storage_and_history_not_authority"
     }
+  },
+  "validators": {
+    "role": "independent replay validators",
+    "authority": false,
+    "required_behavior": [
+      "fetch exact bytes",
+      "canonicalize deterministically",
+      "recompute hashes",
+      "compare outputs",
+      "emit signed or attributable validation result if available"
+    ],
+    "may_confirm": [
+      "hash_match",
+      "schema_match",
+      "receipt_consistency",
+      "divergence_presence"
+    ],
+    "may_not_confirm": [
+      "global truth",
+      "legal authority",
+      "semantic correctness",
+      "operator intent without explicit declaration"
+    ]
+  },
+  "trust_model": {
+    "trust_claim": "trust is not granted by identity, court name, or repo presence",
+    "trust_source": "replayable evidence only",
+    "accepted_evidence": [
+      "exact bytes",
+      "commit history",
+      "canonical hashes",
+      "schema validation results",
+      "independent validator receipts",
+      "Base L2 receipts when explicitly referenced"
+    ],
+    "rejected_evidence": [
+      "vibes",
+      "branding",
+      "court language",
+      "absence of dissent",
+      "unfetched URLs",
+      "unverified sidecar repos"
+    ]
   },
   "target": {
     "repository_full_name": "jsonwisdom/COMPUTERWISDOM",
@@ -45,6 +107,9 @@
     "repository name alone is not jurisdiction",
     "ENS identity is part of operator surface but not authority",
     "Base L2 identity is part of public discovery and receipt surface but not authority",
+    "validators confirm replay properties not truth",
+    "trust is earned by recomputation not granted by labels",
+    "Meme Court witnesses and routes but does not rule as authority",
     "public repo is the witness surface",
     "authority remains false"
   ]
