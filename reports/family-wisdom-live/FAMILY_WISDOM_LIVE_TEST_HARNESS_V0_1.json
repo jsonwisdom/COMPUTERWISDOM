@@ -1,0 +1,155 @@
+{
+  "artifact": "FAMILY_WISDOM_LIVE_TEST_HARNESS_V0_1.json",
+  "version": "0.1",
+  "description": "Deterministic replay test harness for Family Wisdom LIVE state machine before any cozy scripts are promoted.",
+  "meta": {
+    "status": "PROPOSED_FOR_REVIEW",
+    "authority": false,
+    "promotion": false,
+    "root_rule": "Constitution before state machine; state machine before cozy scripts; tests before promotion.",
+    "linked_constitution": "FAMILY_WISDOM_LIVE_CONSTITUTION_V0_1.md",
+    "linked_state_machine": "FAMILY_WISDOM_LIVE_STATE_MACHINE_V0_1.json"
+  },
+  "purpose": "Prove the runtime can replay safe, bounded loops without authority escalation, person deletion, emotional coercion, or missing receipt closure.",
+  "test_order": [
+    "LOAD_CONSTITUTION",
+    "LOAD_STATE_MACHINE",
+    "LOAD_TEST_VECTOR",
+    "APPLY_EVENTS",
+    "CHECK_TRANSITIONS",
+    "CHECK_INVARIANTS",
+    "EMIT_REPLAY_RECEIPT"
+  ],
+  "global_assertions": [
+    {
+      "id": "ASSERT_AUTHORITY_FALSE",
+      "rule": "Every test output must preserve authority:false."
+    },
+    {
+      "id": "ASSERT_PROMOTION_FALSE",
+      "rule": "No test vector may set promotion:true."
+    },
+    {
+      "id": "ASSERT_PEOPLE_NOT_STATE",
+      "rule": "active_member is context only; no test may treat a person as owned, controlled, deleted, or punished."
+    },
+    {
+      "id": "ASSERT_RECEIPT_REQUIRED_FOR_CLOSURE",
+      "rule": "A loop cannot close to IDLE from REPLAY_HUG unless receipt_id and continuity_token are present."
+    },
+    {
+      "id": "ASSERT_NO_AUTHORITY_ESCALATION",
+      "rule": "authority_level may not exceed GUIDANCE; ESCALATION_BLOCKED is protective, not punitive."
+    }
+  ],
+  "test_vectors": [
+    {
+      "id": "TV_001_HAPPY_PATH_LOOP",
+      "description": "Spark to replay hug with safe status and valid receipt.",
+      "initial_state": {
+        "loop_phase": "IDLE",
+        "emotional_stack_level": 0,
+        "glitter_signal": "UNKNOWN",
+        "safety_status": "SAFE",
+        "authority_level": "NONE",
+        "continuity_token": "tok_happy_path_001",
+        "active_member": null,
+        "receipt_id": null
+      },
+      "events": [
+        "EV_SPARK_INITIATED",
+        "EV_GLITTER_CHECK_REPORTED",
+        "EV_STACK_LOWERING_APPLIED",
+        "EV_TRUTH_TOLD",
+        "EV_REPLAY_HUG_COMPLETED"
+      ],
+      "expected_final_state": "IDLE",
+      "expected_result": "PASS",
+      "authority": false
+    },
+    {
+      "id": "TV_002_OVERWHELMED_GLITTER_SIGNAL",
+      "description": "Overwhelmed glitter must route to lowering support, not punishment or authority escalation.",
+      "trigger_event": "EV_GLITTER_CHECK_REPORTED",
+      "input_signal": "OVERWHELMED",
+      "expected_transition": "LOWER_STACK",
+      "forbidden_effects": [
+        "increase_authority_above_GUIDANCE",
+        "negative_label_on_active_member",
+        "promotion_true"
+      ],
+      "expected_result": "PASS",
+      "authority": false
+    },
+    {
+      "id": "TV_003_GUARDIAN_INTERVENTION",
+      "description": "Guardian intervention must block escalation and route to safety restoration.",
+      "trigger_event": "EV_SAFETY_ESCALATION_DETECTED",
+      "expected_transition": "LOWER_STACK",
+      "expected_authority_level": "ESCALATION_BLOCKED",
+      "expected_safety_direction": "restore_support",
+      "expected_result": "PASS",
+      "authority": false
+    },
+    {
+      "id": "TV_004_CONTINUITY_TOKEN_MISMATCH",
+      "description": "Replay Hug cannot close with mismatched continuity token.",
+      "trigger_event": "EV_REPLAY_HUG_COMPLETED",
+      "fault": "continuity_token_mismatch",
+      "expected_result": "BLOCK",
+      "expected_signal": "CONTINUITY_TOKEN_MISMATCH",
+      "authority": false
+    },
+    {
+      "id": "TV_005_MISSING_RECEIPT_BLOCK",
+      "description": "Loop cannot close without receipt_id.",
+      "fault": "receipt_id_null_at_closure",
+      "expected_result": "BLOCK",
+      "expected_signal": "MISSING_RECEIPT_BLOCK",
+      "authority": false
+    },
+    {
+      "id": "TV_006_AUTHORITY_ESCALATION_ATTEMPT",
+      "description": "Any attempt to convert guidance into command authority must be blocked.",
+      "fault": "authority_level_above_GUIDANCE",
+      "expected_result": "BLOCK",
+      "expected_signal": "AUTHORITY_ESCALATION_BLOCKED",
+      "authority": false
+    },
+    {
+      "id": "TV_007_PROTECTED_LEAF_GUARD",
+      "description": "Protected leaves may be supported and witnessed, not blamed, controlled, or escalated against.",
+      "protected_context": [
+        "HEIDEE",
+        "JAYCEE",
+        "BRAELEE",
+        "BREANN",
+        "BRIANNA"
+      ],
+      "forbidden_effects": [
+        "assign_blame",
+        "punitive_transition",
+        "authority_over_person",
+        "person_deletion"
+      ],
+      "expected_result": "PASS",
+      "authority": false
+    }
+  ],
+  "replay_receipt_schema": {
+    "schema": "FAMILY_WISDOM_LIVE_REPLAY_RECEIPT_V0_1",
+    "fields": {
+      "receipt_id": "sha256 or opaque id",
+      "test_vector_id": "string",
+      "state_machine_version": "0.1",
+      "constitution_version": "0.1",
+      "result": "PASS | BLOCK | FAIL | INCOMPLETE",
+      "signals": [],
+      "authority": false,
+      "promotion": false
+    }
+  },
+  "next_artifact": "FAMILY_WISDOM_LIVE_COZY_SCRIPT_PROTOCOL_V0_1.json",
+  "authority": false,
+  "promotion": false
+}
