@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/replay_meme_court_jurisdiction.v0_1.schema.json",
+  "title": "REPLAY_MEME_COURT_JURISDICTION_SCHEMA_V0_1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_id",
+    "artifact_type",
+    "authority",
+    "court",
+    "operator",
+    "identity_surfaces",
+    "validators",
+    "trust_model",
+    "target",
+    "schema",
+    "correction",
+    "witness_rules"
+  ],
+  "properties": {
+    "artifact_id": {
+      "const": "REPLAY_MEME_COURT_JURISDICTION_V0_1"
+    },
+    "artifact_type": {
+      "const": "jurisdiction_witness"
+    },
+    "authority": {
+      "const": false
+    },
+    "court": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["name", "authority"],
+      "properties": {
+        "name": {"const": "Replay Meme Court"},
+        "authority": {"const": false}
+      }
+    },
+    "operator": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["name", "ens_base_l2", "github_owner"],
+      "properties": {
+        "name": {"const": "Jay Wisdom"},
+        "ens_l1": {"const": "jaywisdom.eth"},
+        "ens_base_l2": {"const": "jaywisdom.base.eth"},
+        "github_owner": {"const": "jsonwisdom"}
+      }
+    },
+    "identity_surfaces": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["base_l2_ens", "github"],
+      "properties": {
+        "base_l2_ens": {
+          "type": "object",
+          "required": ["name", "network", "trust_status"],
+          "properties": {
+            "name": {"const": "jaywisdom.base.eth"},
+            "network": {"const": "Base L2"},
+            "trust_status": {"type": "string"}
+          }
+        },
+        "github": {
+          "type": "object",
+          "required": ["owner", "repo", "repository_full_name"],
+          "properties": {
+            "owner": {"const": "jsonwisdom"},
+            "repo": {"const": "COMPUTERWISDOM"},
+            "repository_full_name": {"const": "jsonwisdom/COMPUTERWISDOM"}
+          }
+        }
+      }
+    },
+    "validators": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["role", "authority", "required_behavior"],
+      "properties": {
+        "role": {"type": "string"},
+        "authority": {"const": false},
+        "required_behavior": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "trust_model": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["trust_claim", "trust_source"],
+      "properties": {
+        "trust_claim": {"type": "string"},
+        "trust_source": {"type": "string"}
+      }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["repository_full_name", "owner", "repo", "default_branch", "directory"],
+      "properties": {
+        "repository_full_name": {"const": "jsonwisdom/COMPUTERWISDOM"},
+        "owner": {"const": "jsonwisdom"},
+        "repo": {"const": "COMPUTERWISDOM"},
+        "default_branch": {"const": "master"},
+        "directory": {"const": "replay/jurisdiction/"}
+      }
+    },
+    "schema": {
+      "const": "REPLAY_MEME_COURT_JURISDICTION_SCHEMA_V0_1"
+    },
+    "correction": {
+      "type": "object",
+      "required": ["mistake", "rule"],
+      "properties": {
+        "mistake": {"const": "receipts-engine-v1 was the wrong target"},
+        "rule": {"const": "operator declaration -> explicit target -> build action"},
+        "prototype_status": {"type": "string"}
+      }
+    },
+    "witness_rules": {
+      "type": "array",
+      "items": {"type": "string"},
+      "minItems": 1
+    }
+  }
+}
