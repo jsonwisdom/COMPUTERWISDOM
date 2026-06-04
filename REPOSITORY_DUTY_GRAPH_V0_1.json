@@ -1,0 +1,240 @@
+{
+  "schema": "REPOSITORY_DUTY_GRAPH_V0_1",
+  "version": "0.1",
+  "generated_at": "2026-06-04T20:20:00Z",
+  "project": "JSONWISDOM_LIVING_LIBRARY",
+  "status": "PROPOSED_FOR_REVIEW",
+  "authority": false,
+  "promotion": false,
+  "principle": "Repository boundaries are constitutional surfaces, not mere folder organization.",
+  "purpose": "Define what each JSONWisdom repository must contain, must not contain, exports, imports, and preserves so the Living Library remains replayable without repo drift.",
+  "repos": {
+    "Welcome-to-JSONWISDOM": {
+      "duty": "identity_root_orientation_layer",
+      "mission": "Narrate the ecosystem, orient humans and machines, and provide the canonical doorway into connected projects.",
+      "must_contain": [
+        "guides/",
+        "maps/",
+        "onboarding/",
+        "repository_tree_of_duties",
+        "orientation_docs"
+      ],
+      "must_not_contain": [
+        "canonical_replay_artifacts",
+        "verdict_outputs",
+        "authority_claims",
+        "unlabeled_experimental_proofs"
+      ],
+      "invariants": [
+        "human_readable",
+        "non_authoritative",
+        "narrator_boundary_preserved",
+        "orientation_does_not_promote_claims"
+      ],
+      "interfaces": {
+        "exports": [
+          "orientation_docs",
+          "repo_duty_map",
+          "public_doorway"
+        ],
+        "imports": [
+          "COMPUTERWISDOM/doctrine",
+          "AL/registry_references",
+          "JOY/witness_context"
+        ]
+      },
+      "authority": false
+    },
+    "COMPUTERWISDOM": {
+      "duty": "operational_control_plane_and_doctrine_surface",
+      "mission": "Coordinate doctrine, public reasoning, issue receipts, PR stacks, public proof scaffolds, and operational replay preparation.",
+      "must_contain": [
+        "doctrine/",
+        "issues/",
+        "coordination_notes/",
+        "PUBLIC_PROOF.json",
+        "public_replay_index_surfaces",
+        "living_library_coordination"
+      ],
+      "must_not_contain": [
+        "canonical_anchor_001_source",
+        "final_verdict_claims",
+        "unchecked_authority_claims",
+        "private_keys",
+        "secrets"
+      ],
+      "invariants": [
+        "operational_not_final_authority",
+        "public_reasoning_only",
+        "authority_false_preserved",
+        "promotion_requires_receipts",
+        "replay_court_boundary_preserved"
+      ],
+      "interfaces": {
+        "exports": [
+          "doctrine",
+          "coordination",
+          "public_proof_scaffolds",
+          "meme_court_precedents"
+        ],
+        "imports": [
+          "AL/schemas",
+          "AL/replay_rules",
+          "Welcome-to-JSONWISDOM/orientation",
+          "JOY/witness_context"
+        ]
+      },
+      "authority": false
+    },
+    "AL": {
+      "duty": "registry_of_record_and_courthouse",
+      "mission": "Preserve governance records, canonical schemas, receipts, challenge surfaces, replay logic, audit trails, and contestability machinery.",
+      "must_contain": [
+        "schemas/",
+        "receipts/",
+        "replay/",
+        "governance/",
+        "verifier/",
+        "tests/fixtures/"
+      ],
+      "must_not_contain": [
+        "mere_orientation_docs_as_authority",
+        "unversioned_schema_mutation",
+        "silent_receipt_rewrites",
+        "final_authority_without_challenge_surface"
+      ],
+      "invariants": [
+        "canonical_hash_surfaces",
+        "deterministic_replay",
+        "append_only_receipts",
+        "schemas_versioned_not_mutated",
+        "no_execution_without_receipt",
+        "no_receipt_without_challenge_surface"
+      ],
+      "interfaces": {
+        "exports": [
+          "schemas",
+          "replay_engine",
+          "registry_receipts",
+          "governance_anchors"
+        ],
+        "imports": [
+          "COMPUTERWISDOM/doctrine",
+          "receipts-engine-v1/proof_outputs"
+        ]
+      },
+      "authority": false
+    },
+    "JOY": {
+      "duty": "witness_and_continuity_layer",
+      "mission": "Preserve family-safe memory, human meaning, continuity, witness surfaces, badges, and gentle replay context.",
+      "must_contain": [
+        "witness_logs/",
+        "continuity/",
+        "badges/",
+        "family_safe_guides",
+        "sister_network_context"
+      ],
+      "must_not_contain": [
+        "legal_authority_claims",
+        "command_and_control_over_people",
+        "canonical_schema_authority",
+        "financial_authority_claims"
+      ],
+      "invariants": [
+        "family_safe",
+        "non_authoritative",
+        "witness_layer_not_command_layer",
+        "joy_guides_choices_not_people"
+      ],
+      "interfaces": {
+        "exports": [
+          "witness_layers",
+          "continuity_context",
+          "human_meaning_surfaces"
+        ],
+        "imports": [
+          "COMPUTERWISDOM/doctrine",
+          "AL/contestability_context"
+        ]
+      },
+      "authority": false
+    },
+    "receipts-engine-v1": {
+      "duty": "proof_and_verifier_surface",
+      "mission": "Provide deterministic proof display, hashing, Merkle or ledger patterns, verifier behavior, and replay UI surfaces.",
+      "must_contain": [
+        "verifier/",
+        "proof_generators/",
+        "hashing/",
+        "display/",
+        "test_vectors/"
+      ],
+      "must_not_contain": [
+        "doctrine_as_authority",
+        "orientation_narrative_as_proof",
+        "unreplayable_verification_claims"
+      ],
+      "invariants": [
+        "deterministic",
+        "replay_safe",
+        "hash_stable",
+        "proof_display_does_not_create_truth"
+      ],
+      "interfaces": {
+        "exports": [
+          "proofs",
+          "verification_outputs",
+          "display_surfaces"
+        ],
+        "imports": [
+          "AL/receipts",
+          "AL/schemas"
+        ]
+      },
+      "authority": false
+    },
+    "public-proof": {
+      "duty": "public_proof_publication_surface",
+      "mission": "Publish human-facing receipts, public attestations, and replay-discoverable proof summaries.",
+      "must_contain": [
+        "public_receipts/",
+        "attestations/",
+        "publication_indexes/"
+      ],
+      "must_not_contain": [
+        "hidden_authority_claims",
+        "unverified_promotion",
+        "private_evidence_without_redaction_boundary"
+      ],
+      "invariants": [
+        "public_facing",
+        "receipt_linked",
+        "replay_discoverable",
+        "publication_not_authority"
+      ],
+      "interfaces": {
+        "exports": [
+          "public_receipts",
+          "attestation_summaries",
+          "proof_publication_indexes"
+        ],
+        "imports": [
+          "COMPUTERWISDOM/public_proof_scaffolds",
+          "AL/registry_receipts"
+        ]
+      },
+      "authority": false
+    }
+  },
+  "global_invariants": [
+    "authority_false_by_default",
+    "repo_roles_must_not_collapse",
+    "proof_requires_receipts",
+    "pretty_output_is_not_proof",
+    "orientation_is_not_authority",
+    "publication_is_not_verdict",
+    "replay_before_promotion"
+  ],
+  "next_artifact": "LIVING_LIBRARY_INDEX_V0_1.json"
+}
