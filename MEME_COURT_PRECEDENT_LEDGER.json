@@ -1,0 +1,87 @@
+{
+  "schema": "MEME_COURT_PRECEDENT_LEDGER_V0_1",
+  "project": "COMPUTERWISDOM",
+  "layer": "PUBLIC_REPUTATION_LAYER",
+  "subject": {
+    "ens": "jaywisdom.eth",
+    "github_owner": "jsonwisdom",
+    "authority": false,
+    "identity_status": "OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED"
+  },
+  "status": "PRECEDENT_LEDGER_DECLARED",
+  "source_repo": "jsonwisdom/COMPUTERWISDOM",
+  "source_branch": "master",
+  "source_artifact": "PUBLIC_PROOF.json",
+  "source_merge_commit": "8eea6acb9c7874968f1383af3a83d244a34ba0bd",
+  "court": {
+    "name": "Meme Court",
+    "mode": "REPLAY_WITH_PRECEDENT",
+    "definition": "Meme Court recognizes precedent only when a public artifact, branch event, replay receipt, or merge receipt can be inspected. Opinion is not precedent.",
+    "principle": "Public replay, not public opinion.",
+    "authority": false
+  },
+  "precedents": [
+    {
+      "id": "P001_PUBLIC_PROOF_SCAFFOLD",
+      "rule": "A proof scaffold may merge while authority remains false if placeholders are explicit and promotion is deferred.",
+      "receipt": "PR #247 landed PUBLIC_PROOF.json as scaffold only.",
+      "scope": "artifact_scaffold",
+      "status": "ACTIVE",
+      "authority": false
+    },
+    {
+      "id": "P002_PUBLIC_FORK_REPLAY_COURT",
+      "rule": "The court is not GitHub, not Jay, and not a committee. The court is the replay surface.",
+      "receipt": "Court definition present in root PUBLIC_PROOF.json on master.",
+      "scope": "court_boundary",
+      "status": "ACTIVE",
+      "authority": false
+    },
+    {
+      "id": "P003_PLACEHOLDER_HONESTY",
+      "rule": "Pending hashes, tree SHA, tags, and attestations must remain explicit placeholders and must never be silently treated as verified.",
+      "receipt": "PENDING_* fields preserved in PUBLIC_PROOF.json.",
+      "scope": "claim_boundary",
+      "status": "ACTIVE",
+      "authority": false
+    },
+    {
+      "id": "P004_MATCH_IS_NOT_AUTHORITY",
+      "rule": "Artifact replay MATCH confirms branch and file consistency only. It does not certify claims, pass CI, or flip authority.",
+      "receipt": "Manual artifact replay receipt attached to PR #247 by operator.",
+      "scope": "replay_semantics",
+      "status": "ACTIVE",
+      "authority": false
+    },
+    {
+      "id": "P005_MECHANISM_SEPARATION",
+      "rule": "Do not merge artifact and verification mechanism in the same precedent-setting PR.",
+      "receipt": "PUBLIC_PROOF.json merged first; verify.yml deferred to a separate PR.",
+      "scope": "process_integrity",
+      "status": "ACTIVE",
+      "authority": false
+    }
+  ],
+  "public_reputation": {
+    "claim": "jaywisdom.eth is associated with the COMPUTERWISDOM public reputation layer by operator declaration.",
+    "basis": [
+      "PUBLIC_PROOF.json landed on master with authority false",
+      "Meme Court precedent ledger records replay-bounded doctrine",
+      "Future reputation changes require new receipts or new PRs"
+    ],
+    "not_claiming": [
+      "ENS ownership verification",
+      "legal identity verification",
+      "proof hash completion",
+      "promotion status",
+      "central authority"
+    ],
+    "authority": false
+  },
+  "next_required_mechanism": {
+    "artifact": ".github/workflows/verify.yml",
+    "status": "DEFERRED_SEPARATE_PR_REQUIRED",
+    "purpose": "Create automated verify context for future proof and precedent artifacts.",
+    "authority": false
+  }
+}
