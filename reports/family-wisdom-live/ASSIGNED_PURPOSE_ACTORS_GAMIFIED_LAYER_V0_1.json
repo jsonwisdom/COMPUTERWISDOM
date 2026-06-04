@@ -1,0 +1,126 @@
+{
+  "artifact": "ASSIGNED_PURPOSE_ACTORS_GAMIFIED_LAYER_V0_1.json",
+  "version": "0.1",
+  "status": "PROPOSED_FOR_REVIEW",
+  "authority": false,
+  "promotion": false,
+  "description": "Gamified actor-purpose layer for JSONWisdom and Family Wisdom LIVE. People may choose, play, learn, and express roles; the system may not assign permanent identity, control people, or rank human worth.",
+  "identity_surface": {
+    "primary": "jaywisdom.base.eth",
+    "network": "Base",
+    "indexed": true,
+    "ownership_verified": false,
+    "authority": false
+  },
+  "root_rule": "Actors have purposes. Purposes create quests. Quests create receipts. Receipts enable replay. Replay may earn promotion. No role creates authority over people.",
+  "actor_model": {
+    "definition": "An actor is a voluntary role in a learning, family, civic, or replay context.",
+    "actor_is_not": [
+      "property",
+      "legal_status",
+      "human_value_score",
+      "custody_status",
+      "surveillance_target",
+      "permanent_identity_assignment"
+    ],
+    "authority": false
+  },
+  "purpose_model": {
+    "definition": "A purpose is a declared function, quest, or contribution path attached to an actor role.",
+    "purpose_examples": [
+      "witness",
+      "builder",
+      "guardian",
+      "archivist",
+      "teacher",
+      "student",
+      "repairer",
+      "scout",
+      "auditor",
+      "story_keeper",
+      "receipt_maker",
+      "replay_runner"
+    ],
+    "authority": false
+  },
+  "gamified_loop": [
+    "CHOOSE_ACTOR",
+    "DECLARE_PURPOSE",
+    "ACCEPT_QUEST",
+    "CREATE_RECEIPT",
+    "REPLAY_RESULT",
+    "EARN_BADGE",
+    "PROMOTE_WITH_PROOF"
+  ],
+  "badge_classes": [
+    {
+      "badge": "WITNESS_BADGE",
+      "earned_by": "preserving an observation with consent and replay path",
+      "authority": false
+    },
+    {
+      "badge": "REPAIR_BADGE",
+      "earned_by": "documenting a repair attempt without blame or coercion",
+      "authority": false
+    },
+    {
+      "badge": "BUILDER_BADGE",
+      "earned_by": "shipping a useful artifact with clear boundaries and receipts",
+      "authority": false
+    },
+    {
+      "badge": "REPLAY_BADGE",
+      "earned_by": "independently replaying an artifact or test vector",
+      "authority": false
+    },
+    {
+      "badge": "CARE_BADGE",
+      "earned_by": "lowering the stack, respecting a boundary, or preserving dignity",
+      "authority": false
+    }
+  ],
+  "mrs_wisdom_role": {
+    "function": "communication, reputation, care, consent, and human meaning layer",
+    "output_formats": ["md", "json"],
+    "md_purpose": "human-facing story, context, and explanation",
+    "json_purpose": "machine-facing boundaries, receipts, badges, and replay paths",
+    "authority": false
+  },
+  "mr_wisdom_role": {
+    "function": "structured repo stack, JSON receipts, Base identity, and replay architecture",
+    "home": "JSONWisdom repos",
+    "base_surface": "jaywisdom.base.eth",
+    "authority": false
+  },
+  "forbidden_mechanics": [
+    "forced_role_assignment",
+    "punishment_score",
+    "social_credit_score",
+    "human_worth_ranking",
+    "public_shaming",
+    "private_person_tracking",
+    "children_as_data_objects",
+    "legal_or_custody_claims",
+    "automatic_promotion_without_replay"
+  ],
+  "receipt_schema": {
+    "schema": "ACTOR_PURPOSE_QUEST_RECEIPT_V0_1",
+    "fields": {
+      "receipt_id": "opaque_or_hash_id",
+      "timestamp": "ISO-8601",
+      "actor_role": "string",
+      "purpose": "string",
+      "quest_id": "string_or_null",
+      "badge_candidate": "string_or_null",
+      "evidence_refs": [],
+      "replay_path": "string_or_null",
+      "consent_status": "NOT_REQUIRED | RECORDED | WITHHELD | UNKNOWN",
+      "visibility": "PRIVATE | FAMILY_ONLY | PUBLIC_REDACTED | PUBLIC",
+      "authority": false,
+      "promotion": false
+    }
+  },
+  "next_artifact": "FAMILY_CRYPTO_ACTORS_PUBLIC_GUIDE_V0_1.md",
+  "authority": false,
+  "promotion": false
+}
