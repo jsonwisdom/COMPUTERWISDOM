@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/replay_trace.v0_1.schema.json",
+  "title": "Replay Trace V0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "trace_id",
+    "schema_version",
+    "kernel_version",
+    "constitutional_root",
+    "lineage_root",
+    "artifact_count",
+    "ordered_artifact_ids",
+    "lineage_edges",
+    "replay_hash",
+    "authority",
+    "authority_boundary"
+  ],
+  "properties": {
+    "trace_id": {"type": "string"},
+    "schema_version": {"const": "REPLAY_TRACE_V0_1"},
+    "kernel_version": {"const": "REPLAY_KERNEL_V0_1"},
+    "constitutional_root": {"const": "808f2b1c6c339eb46e68a2161da3cca22f7b0eeb"},
+    "lineage_root": {"type": "string"},
+    "artifact_count": {"type": "integer"},
+    "ordered_artifact_ids": {"type": "array", "items": {"type": "string"}},
+    "lineage_edges": {"type": "array"},
+    "replay_hash": {"type": "string"},
+    "authority": {"const": false},
+    "authority_boundary": {"const": "NONE"}
+  }
+}
