@@ -5,8 +5,27 @@
   "court": "Replay Meme Court",
   "operator": {
     "name": "Jay Wisdom",
-    "ens": "jaywisdom.eth",
+    "ens_l1": "jaywisdom.eth",
+    "ens_base_l2": "jaywisdom.base.eth",
     "github_owner": "jsonwisdom"
+  },
+  "identity_surfaces": {
+    "l1_ens": {
+      "name": "jaywisdom.eth",
+      "network": "Ethereum L1",
+      "role": "operator identity surface"
+    },
+    "base_l2_ens": {
+      "name": "jaywisdom.base.eth",
+      "network": "Base L2",
+      "role": "public L2 discovery and receipt surface"
+    },
+    "github": {
+      "owner": "jsonwisdom",
+      "repo": "COMPUTERWISDOM",
+      "repository_full_name": "jsonwisdom/COMPUTERWISDOM",
+      "role": "public repository witness surface"
+    }
   },
   "target": {
     "repository_full_name": "jsonwisdom/COMPUTERWISDOM",
@@ -25,6 +44,7 @@
     "owner is not target",
     "repository name alone is not jurisdiction",
     "ENS identity is part of operator surface but not authority",
+    "Base L2 identity is part of public discovery and receipt surface but not authority",
     "public repo is the witness surface",
     "authority remains false"
   ]
