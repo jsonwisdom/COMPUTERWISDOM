@@ -76,6 +76,13 @@
       "promotion status",
       "central authority"
     ],
+    "verification_flags": {
+      "ens_ownership_verified": false,
+      "legal_identity_verified": false,
+      "promotion_status": false,
+      "central_authority": false,
+      "independently_verified_by_assistant": false
+    },
     "authority": false
   },
   "next_required_mechanism": {
