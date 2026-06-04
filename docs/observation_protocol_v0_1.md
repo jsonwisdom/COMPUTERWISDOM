@@ -6,7 +6,7 @@ lineage_root: 0ba71a01de9ec58121df7cb22ed3e5e0103932b8
 constitutional_root: 808f2b1c6c339eb46e68a2161da3cca22f7b0eeb
 authority: false
 authority_boundary: NONE
-authority_proof_context: Explicit NONE boundary. Observation Protocol defines witness/intake records only and grants no authority, truth, adjudication, semantic correctness, execution rights, or institutional privilege.
+authority_proof_context: explicit NONE boundary
 admission_manifest: 244
 ---
 
@@ -35,5 +35,7 @@ Observation = witnessed record with lineage.
 ```yaml
 authority: false
 authority_boundary: NONE
-authority_proof_context: Explicit NONE boundary. Observation Protocol defines witness/intake records only and grants no authority, truth, adjudication, semantic correctness, execution rights, or institutional privilege.
+authority_proof_context: explicit NONE boundary
 ```
+
+This protocol grants no authority, truth, adjudication, semantic correctness, execution rights, or institutional privilege.
