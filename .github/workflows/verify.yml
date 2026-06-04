@@ -9,6 +9,7 @@ on:
       - feature/computerwisdom-alms-runtime-runway-v0-1
       - protocol/v0_1-admission
       - protocol/ers-v0_1
+      - protocol/replay-kernel-v0_1
 
 permissions:
   contents: read
