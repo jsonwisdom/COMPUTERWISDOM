@@ -3,6 +3,8 @@ lineage_root: 808f2b1c6c339eb46e68a2161da3cca22f7b0eeb
 version: 0.1
 status: PROPOSED
 authority: false
+authority_boundary: NONE
+authority_proof_context: Explicit NONE boundary; this protocol defines eligibility only and does not grant authority, truth, adjudication, or override power.
 admission_manifest: 236
 parent_baseline: COMPUTER_WISDOM_CONSTITUTIONAL_BASELINE_V1
 ---
@@ -11,6 +13,8 @@ parent_baseline: COMPUTER_WISDOM_CONSTITUTIONAL_BASELINE_V1
 
 **Status:** PROPOSED  
 **Authority:** false  
+**Authority Boundary:** NONE  
+**Authority Proof Context:** Explicit NONE boundary; this protocol defines eligibility only and does not grant authority, truth, adjudication, or override power.  
 **Lineage Root:** `808f2b1c6c339eb46e68a2161da3cca22f7b0eeb`  
 **Admission Manifest:** Issue #236  
 **Parent Baseline:** `COMPUTER_WISDOM_CONSTITUTIONAL_BASELINE_V1`
@@ -87,7 +91,7 @@ No artifact is admitted without merge through the governed repository path.
 
 Human-authorized merge is required.
 
-`authority: false` remains enforced unless authority is explicitly established by replayable lineage.
+`authority: false` remains enforced under an explicit `authority_boundary: NONE` unless authority is established by separate replayable lineage.
 
 ### G5: Revision Gate
 
@@ -124,6 +128,18 @@ This protocol does not adjudicate disputes.
 This protocol does not grant implicit authority.
 
 This protocol only defines eligibility for repository ingress.
+
+---
+
+## Authority Boundary
+
+`authority: false`
+
+`authority_boundary: NONE`
+
+This file contains no authority claim requiring external proof.
+
+The explicit NONE boundary means the artifact is self-limiting: it defines eligibility gates only and does not claim truth, adjudication, enforcement override, institutional authority, credential authority, legal authority, or finality.
 
 ---
 
