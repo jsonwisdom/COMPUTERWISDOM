@@ -4,6 +4,7 @@
   "status": "OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
   "authority": false,
   "promotion": false,
+  "future_proofing_status": "HARDENED_FOR_REPLAY_AND_EXTENSION",
   "identity": {
     "base_ens": "jaywisdom.base.eth",
     "operator_name": "Jay",
@@ -14,6 +15,7 @@
   "purpose": {
     "statement": "Base has purpose: preserve family continuity, publish public proofs, make reputation replayable, and keep authority false.",
     "plain_language": "Average Dad building public receipts so family, work, and reputation can be checked without trusting the storyteller.",
+    "base_future_thesis": "The future of Base reputation should be replayable by ordinary families, builders, and observers without requiring centralized permission or narrative trust.",
     "authority": false
   },
   "average_dad_layer": {
@@ -35,6 +37,43 @@
     "rule": "Base and Zora references are purpose and reputation pointers until independently replayed. No ownership or activity verification is asserted here.",
     "authority": false
   },
+  "future_proof_controls": {
+    "versioning": {
+      "current_version": "0.1",
+      "upgrade_rule": "Future versions must preserve prior receipts and mark all new claims as declared, verified, diverged, or pending.",
+      "authority": false
+    },
+    "claim_classes": [
+      "DECLARED",
+      "PENDING_RECEIPT",
+      "MATCH",
+      "DIVERGE",
+      "INCOMPLETE"
+    ],
+    "required_invariants": [
+      "authority must remain false unless a future artifact explicitly defines a lawful and replayable authority boundary",
+      "promotion must remain false until proof receipts replace placeholders",
+      "identity pointers must not become ownership claims without independent receipts",
+      "Zora, ENS, Base ENS, and family claims must remain separable",
+      "external auditors must be able to classify failures as MATCH, DIVERGE, or INCOMPLETE"
+    ],
+    "authority": false
+  },
+  "replay_interfaces": {
+    "public_replay_index": "PUBLIC_REPLAY_INDEX.json",
+    "verify_workflow": ".github/workflows/verify.yml",
+    "meme_court_ledger": "MEME_COURT_PRECEDENT_LEDGER.json",
+    "family_reputation_layer": "layers/FAMILY_REPUTATION_LAYER_V0_1.json",
+    "authority": false
+  },
+  "activation_conditions": {
+    "base_purpose_active": true,
+    "ownership_verified": false,
+    "zora_verified": false,
+    "promotion_ready": false,
+    "requires_future_receipts_for_verification": true,
+    "authority": false
+  },
   "not_claiming": [
     "Base ENS ownership verification",
     "Zora ownership verification",
@@ -44,7 +83,9 @@
     "official office or title",
     "credentialed authority",
     "promotion status",
-    "central authority"
+    "central authority",
+    "financial authority",
+    "legal trust status"
   ],
   "verification_flags": {
     "base_ens_ownership_verified": false,
@@ -56,6 +97,8 @@
     "credentialed_authority_verified": false,
     "promotion_status": false,
     "central_authority": false,
+    "financial_authority_verified": false,
+    "legal_trust_verified": false,
     "independently_verified_by_assistant": false
   },
   "parent_receipts": {
