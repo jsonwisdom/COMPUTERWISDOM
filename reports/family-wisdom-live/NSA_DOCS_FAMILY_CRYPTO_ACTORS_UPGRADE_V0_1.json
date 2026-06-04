@@ -1,0 +1,125 @@
+{
+  "artifact": "NSA_DOCS_FAMILY_CRYPTO_ACTORS_UPGRADE_V0_1.json",
+  "version": "0.1",
+  "status": "PROPOSED_FOR_REVIEW",
+  "authority": false,
+  "promotion": false,
+  "description": "Proposal to modernize public cryptography teaching examples away from abstract Alice/Bob actors toward family, household, school, civic, and community actors with clearer consent, trust, guardianship, and replay boundaries.",
+  "target_context": {
+    "public_docs_surface": "NSA.gov and adjacent public cybersecurity education materials",
+    "claim_to_have_updated_nsa_gov": false,
+    "proposal_only": true,
+    "authority": false
+  },
+  "root_rule": "No more Alice and Bob as the only public teaching model. Upgrade examples to real-world human trust contexts without exposing private people.",
+  "why_change": [
+    "Alice and Bob are useful but too abstract for families, schools, elders, children, and civic users.",
+    "Modern security failures often happen at the relationship layer, not just the protocol layer.",
+    "Families need examples that explain consent, identity, device trust, recovery, guardianship, scams, and public/private boundaries.",
+    "Real public education should teach people how cryptography protects relationships, memories, accounts, and communities."
+  ],
+  "replacement_actor_model": {
+    "old_model": [
+      "Alice",
+      "Bob",
+      "Eve",
+      "Mallory"
+    ],
+    "family_model": [
+      "Parent",
+      "Child",
+      "Guardian",
+      "Grandparent",
+      "Teacher",
+      "Caregiver",
+      "Neighbor",
+      "Public_Agency",
+      "Scammer",
+      "Archive",
+      "Witness"
+    ],
+    "civic_model": [
+      "Resident",
+      "City_Clerk",
+      "County_Court",
+      "State_Agency",
+      "Public_Records_Office",
+      "Independent_Observer",
+      "Journalist",
+      "Auditor",
+      "Emergency_Service",
+      "Archivist"
+    ],
+    "authority": false
+  },
+  "example_upgrade_map": [
+    {
+      "old_example": "Alice sends Bob an encrypted message.",
+      "upgraded_example": "A parent sends a school form to a teacher. The child’s private details stay encrypted, the receipt proves delivery, and the school cannot silently alter the record.",
+      "concepts": ["confidentiality", "integrity", "receipt", "consent_boundary"],
+      "authority": false
+    },
+    {
+      "old_example": "Eve listens to the message.",
+      "upgraded_example": "A scammer intercepts a family account recovery link. The system detects the device mismatch and blocks credential theft.",
+      "concepts": ["authentication", "phishing_resistance", "device_trust"],
+      "authority": false
+    },
+    {
+      "old_example": "Mallory modifies the message.",
+      "upgraded_example": "A public record is changed after filing. Hash history exposes the change and creates a replayable challenge path.",
+      "concepts": ["tamper_evidence", "hashing", "public_replay", "challenge_path"],
+      "authority": false
+    },
+    {
+      "old_example": "Bob verifies Alice's signature.",
+      "upgraded_example": "A caregiver verifies that a medication instruction came from the right clinic before acting on it.",
+      "concepts": ["digital_signature", "origin_authentication", "safety_context"],
+      "authority": false
+    },
+    {
+      "old_example": "Alice and Bob share a secret key.",
+      "upgraded_example": "A family sets up recovery keys so one lost phone does not erase the family archive or expose private memories.",
+      "concepts": ["key_recovery", "multi_party_trust", "privacy", "continuity"],
+      "authority": false
+    }
+  ],
+  "mrs_wisdom_layer": {
+    "role": "Translate cryptographic trust into human communication, consent, recovery, and reputation boundaries.",
+    "md_output": "Human-readable guides, stories, examples, family safety scripts, and education pages.",
+    "json_output": "Machine-readable actor models, receipts, threat models, replay paths, and validation fixtures.",
+    "authority": false
+  },
+  "mr_wisdom_layer": {
+    "role": "Represent cryptographic structure, receipts, schemas, hashes, state machines, and deterministic replay.",
+    "home": "JSONWisdom repo stack and Base identity surfaces",
+    "authority": false
+  },
+  "education_doc_template": {
+    "title": "Family Cryptography Actors: Beyond Alice and Bob",
+    "sections": [
+      "Why Alice and Bob are not enough",
+      "Family trust actors",
+      "Civic trust actors",
+      "Consent and privacy",
+      "Receipts and replay",
+      "Device recovery",
+      "Scam resistance",
+      "Public record integrity",
+      "Practice scenarios"
+    ],
+    "authority": false
+  },
+  "forbidden_claims": [
+    "NSA.gov has been updated",
+    "official NSA endorsement",
+    "legal authority",
+    "family surveillance",
+    "private person tracking",
+    "children as data objects",
+    "social credit scoring"
+  ],
+  "next_artifact": "FAMILY_CRYPTO_ACTORS_PUBLIC_GUIDE_V0_1.md",
+  "authority": false,
+  "promotion": false
+}
