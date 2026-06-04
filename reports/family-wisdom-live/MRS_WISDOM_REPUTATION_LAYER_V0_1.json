@@ -1,0 +1,121 @@
+{
+  "artifact": "MRS_WISDOM_REPUTATION_LAYER_V0_1.json",
+  "version": "0.1",
+  "status": "PROPOSED_FOR_REVIEW",
+  "authority": false,
+  "promotion": false,
+  "description": "Mrs. Wisdom reputation layer for Family Wisdom LIVE. Reputation is relationship continuity evidence, not a human value score, punishment score, legal authority, or social-credit system.",
+  "parent_artifacts": [
+    "MRS_WISDOM_COMMUNICATION_LAYER_V0_1.json",
+    "FAMILY_WISDOM_LIVE_CONSTITUTION_V0_1.md",
+    "FAMILY_WISDOM_LIVE_STATE_MACHINE_V0_1.json",
+    "FAMILY_WISDOM_LIVE_TEST_HARNESS_V0_1.json"
+  ],
+  "root_rule": "Reputation tracks care, repair, continuity, and kept promises. It never ranks human worth.",
+  "boundary": {
+    "not_social_credit": true,
+    "not_punishment_score": true,
+    "not_authority_score": true,
+    "not_human_value_score": true,
+    "not_legal_medical_custody_schooling_or_financial_authority": true,
+    "requires_consent_for_private_context": true,
+    "authority": false
+  },
+  "mrs_wisdom_role": {
+    "md": "human-readable communication, care, context, and meaning",
+    "json": "machine-readable boundaries, receipts, replay paths, and reputation signals",
+    "rule": "Mrs. Wisdom uses MD for humans and JSON for machines; both must preserve care and consent.",
+    "authority": false
+  },
+  "reputation_inputs": [
+    "kept_promises",
+    "repair_attempts",
+    "boundary_respect",
+    "continuity_preserved",
+    "care_receipts",
+    "support_given",
+    "support_received",
+    "truth_told_gently",
+    "privacy_respected",
+    "public_promotion_refused_without_receipts"
+  ],
+  "reputation_outputs": [
+    "trust_signal",
+    "repair_signal",
+    "continuity_signal",
+    "care_signal",
+    "boundary_respect_signal",
+    "promotion_readiness_signal"
+  ],
+  "forbidden_outputs": [
+    "human_worth_score",
+    "obedience_score",
+    "punishment_score",
+    "parental_authority_score",
+    "custody_score",
+    "schooling_score",
+    "public_shame_signal",
+    "private_detail_exposure"
+  ],
+  "signal_rules": [
+    {
+      "signal": "TRUST_SIGNAL",
+      "meaning": "Evidence that promises, boundaries, and repair paths have been respected over time.",
+      "allowed_use": "continuity_guidance",
+      "forbidden_use": "ranking_people",
+      "authority": false
+    },
+    {
+      "signal": "REPAIR_SIGNAL",
+      "meaning": "Evidence that a break or conflict has a visible repair attempt or path.",
+      "allowed_use": "support_repair",
+      "forbidden_use": "assign_blame",
+      "authority": false
+    },
+    {
+      "signal": "CARE_SIGNAL",
+      "meaning": "Evidence that communication lowered pressure, respected consent, and preserved dignity.",
+      "allowed_use": "reinforce_safe_patterns",
+      "forbidden_use": "performative_promotion",
+      "authority": false
+    },
+    {
+      "signal": "PROMOTION_READINESS_SIGNAL",
+      "meaning": "A non-authoritative signal that a public artifact may be ready for promotion only after receipts, replay, consent, and privacy checks.",
+      "allowed_use": "review_gate",
+      "forbidden_use": "automatic_promotion",
+      "authority": false
+    }
+  ],
+  "reputation_equation": "communication_receipts + care_receipts + repair_receipts + boundary_respect + continuity = reputation_signal",
+  "gates": {
+    "public_promotion_requires": [
+      "receipt_present",
+      "replay_path_present",
+      "privacy_redaction_checked",
+      "consent_recorded_where_required",
+      "no_authority_claim",
+      "no_person_score",
+      "no_private_detail_exposure"
+    ],
+    "authority": false
+  },
+  "receipt_schema": {
+    "schema": "MRS_WISDOM_REPUTATION_RECEIPT_V0_1",
+    "fields": {
+      "receipt_id": "opaque_or_hash_id",
+      "timestamp": "ISO-8601",
+      "source_receipts": [],
+      "signal_type": "TRUST_SIGNAL | REPAIR_SIGNAL | CONTINUITY_SIGNAL | CARE_SIGNAL | BOUNDARY_RESPECT_SIGNAL | PROMOTION_READINESS_SIGNAL",
+      "visibility": "PRIVATE | FAMILY_ONLY | PUBLIC_REDACTED",
+      "consent_status": "NOT_REQUIRED | RECORDED | WITHHELD | UNKNOWN",
+      "public_summary": "string_or_null",
+      "private_details_redacted": true,
+      "authority": false,
+      "promotion": false
+    }
+  },
+  "next_artifact": "MRS_WISDOM_HUMAN_READABLE_CHARTER_V0_1.md",
+  "authority": false,
+  "promotion": false
+}
