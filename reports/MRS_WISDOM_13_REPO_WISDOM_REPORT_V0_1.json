@@ -1,0 +1,140 @@
+{
+  "schema": "MRS_WISDOM_13_REPO_WISDOM_REPORT_V0_1",
+  "version": "0.1",
+  "created_for": "Mrs Wisdom",
+  "project": "JSONWISDOM_LIVING_LIBRARY",
+  "status": "PROPOSED_FOR_REVIEW",
+  "authority": false,
+  "promotion": false,
+  "purpose": "Pretty JSON report mapping thirteen JSONWisdom repositories into the Living Library architecture with wisdom, family, civic, and replay roles preserved.",
+  "boundary": {
+    "report_is_not_ownership_verification": true,
+    "report_is_not_legal_authority": true,
+    "report_is_not_promotion": true,
+    "report_is_not_final_truth": true,
+    "authority": false
+  },
+  "identity_surfaces": {
+    "jaywisdom_eth": {
+      "identity": "jaywisdom.eth",
+      "indexed": true,
+      "ownership_verified": false,
+      "authority": false
+    },
+    "jaywisdom_base_eth": {
+      "identity": "jaywisdom.base.eth",
+      "network": "Base",
+      "indexed": true,
+      "ownership_verified": false,
+      "authority": false
+    }
+  },
+  "repo_set": {
+    "count": 13,
+    "selection_rule": "Active Living Library and Wisdom-family repo surfaces named or repeatedly referenced by operator context.",
+    "authority": false
+  },
+  "repos": [
+    {
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "role": "operational_control_plane",
+      "wisdom_function": "coordinates doctrine, public proof scaffolds, replay-court issues, reports, and promotion gates",
+      "recommended_update": "Keep reports, doctrine, public proof coordination, prompt-and-promote protocol, and Democracy Epoch artifacts here.",
+      "authority": false
+    },
+    {
+      "repo": "jsonwisdom/Welcome-to-JSONWISDOM",
+      "role": "orientation_layer",
+      "wisdom_function": "front door and map explaining how all JSONWisdom repos relate",
+      "recommended_update": "Mirror a short pointer to this report after review; do not make orientation into proof.",
+      "authority": false
+    },
+    {
+      "repo": "jsonwisdom/AL",
+      "role": "registry_of_record_and_courthouse",
+      "wisdom_function": "schemas, receipts, replay, governance, and contestability machinery",
+      "recommended_update": "Mirror canonicalized registry entries only after review and replay rules are ready.",
+      "authority": false
+    },
+    {
+      "repo": "jsonwisdom/JOY",
+      "role": "witness_and_continuity_layer",
+      "wisdom_function": "human meaning, continuity, family-safe witness context, and sister-network coordination",
+      "recommended_update": "Use as continuity witness surface; do not convert care into command authority.",
+      "authority": false
+    },
+    {
+      "repo": "jsonwisdom/HEIDEE",
+      "role": "family_named_continuity_surface",
+      "wisdom_function": "named continuity branch in the Wisdom Living Library",
+      "recommended_update": "Add or preserve repo-local README pointer to JOY/Wisdom continuity rules after review.",
+      "authority": false
+    },
+    {
+      "repo": "jsonwisdom/JAYCEE",
+      "role": "family_named_continuity_surface",
+      "wisdom_function": "named continuity branch in the Wisdom Living Library",
+      "recommended_update": "Add or preserve repo-local README pointer to JOY/Wisdom continuity rules after review.",
+      "authority": false
+    },
+    {
+      "repo": "jsonwisdom/BRIANNA",
+      "role": "family_named_continuity_surface",
+      "wisdom_function": "named continuity branch in the Wisdom Living Library",
+      "recommended_update": "Verify repo exists before mutation; if present, add only non-authoritative continuity pointer after review.",
+      "authority": false
+    },
+    {
+      "repo": "jsonwisdom/BRAELEE",
+      "role": "purpose_driven_learning_and_continuity_surface",
+      "wisdom_function": "learning receipts, purpose-driven schooling context, and family continuity",
+      "recommended_update": "Keep Alabama/purpose-driven schooling layers bounded: no accreditation, no custody, no legal authority claims.",
+      "authority": false
+    },
+    {
+      "repo": "jsonwisdom/BREANN",
+      "role": "family_named_continuity_surface",
+      "wisdom_function": "named continuity branch in the Wisdom Living Library",
+      "recommended_update": "Add or preserve repo-local README pointer to JOY/Wisdom continuity rules after review.",
+      "authority": false
+    },
+    {
+      "repo": "jsonwisdom/BRIGHTHOUSE",
+      "role": "household_or_light_surface",
+      "wisdom_function": "supporting family/civic context surface within JSONWisdom repo constellation",
+      "recommended_update": "Index as supporting surface; do not assign proof authority without receipts.",
+      "authority": false
+    },
+    {
+      "repo": "jsonwisdom/ELMORE",
+      "role": "geo_civic_surface",
+      "wisdom_function": "county or local civic context surface for state-aware Democracy Math",
+      "recommended_update": "Use as geo-context pointer only until public records/replay receipts exist.",
+      "authority": false
+    },
+    {
+      "repo": "jsonwisdom/MONTGOMERY",
+      "role": "geo_civic_surface",
+      "wisdom_function": "city/county/state civic context surface for public signal and Democracy Math work",
+      "recommended_update": "Use as jurisdiction context; avoid fraud claims without receipts.",
+      "authority": false
+    },
+    {
+      "repo": "jsonwisdom/PRATTVILLE",
+      "role": "geo_civic_surface",
+      "wisdom_function": "local civic context surface for open courts, public replay, and state-aware indexing",
+      "recommended_update": "Use as local jurisdiction context; emit signals only after receipt-backed observations.",
+      "authority": false
+    }
+  ],
+  "mrs_wisdom_summary": {
+    "plain_english": "The Wisdom repos form a Living Library: COMPUTERWISDOM coordinates, Welcome orients, AL records and tests, JOY witnesses continuity, family-named repos preserve human context, and geo-civic repos provide state-aware surfaces. Nothing here creates authority or promotion without receipts.",
+    "root_rule": "Prompt with purpose. Promote with proof.",
+    "authority": false
+  },
+  "next_recommended_artifacts": [
+    "PROMPT_AND_PROMOTE_PROTOCOL_V0_1.json",
+    "AXIOMS_OF_COURT_SURFACE_V0_1.json",
+    "DEMOCRACY_MATH_ENGINE_V0_1.json"
+  ]
+}
