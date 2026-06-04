@@ -4,6 +4,7 @@
   "layer": "PUBLIC_REPUTATION_LAYER",
   "subject": {
     "ens": "jaywisdom.eth",
+    "base_ens": "jaywisdom.base.eth",
     "github_owner": "jsonwisdom",
     "authority": false,
     "identity_status": "OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED"
@@ -63,14 +64,29 @@
     }
   ],
   "public_reputation": {
-    "claim": "jaywisdom.eth is associated with the COMPUTERWISDOM public reputation layer by operator declaration.",
+    "claim": "jaywisdom.eth and jaywisdom.base.eth are associated with the COMPUTERWISDOM public reputation layer by operator declaration.",
+    "primary_identity": "jaywisdom.eth",
+    "base_identity": "jaywisdom.base.eth",
     "basis": [
       "PUBLIC_PROOF.json landed on master with authority false",
       "Meme Court precedent ledger records replay-bounded doctrine",
       "Future reputation changes require new receipts or new PRs"
     ],
+    "base_reputation_layer": {
+      "identity": "jaywisdom.base.eth",
+      "network": "Base",
+      "claim": "jaywisdom.base.eth is declared as the Base reputation identity for Jay's COMPUTERWISDOM reputation layer.",
+      "status": "OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "zora_evidence": {
+        "status": "PENDING_RECEIPT",
+        "rule": "Zora evidence may be added only as a receipt-bearing artifact or PR comment. No Zora ownership or activity is verified by this ledger."
+      },
+      "authority": false
+    },
     "not_claiming": [
       "ENS ownership verification",
+      "Base ENS ownership verification",
+      "Zora ownership verification",
       "legal identity verification",
       "proof hash completion",
       "promotion status",
@@ -78,6 +94,8 @@
     ],
     "verification_flags": {
       "ens_ownership_verified": false,
+      "base_ens_ownership_verified": false,
+      "zora_ownership_verified": false,
       "legal_identity_verified": false,
       "promotion_status": false,
       "central_authority": false,
