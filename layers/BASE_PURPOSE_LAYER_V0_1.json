@@ -1,0 +1,68 @@
+{
+  "schema": "BASE_PURPOSE_LAYER_V0_1",
+  "project": "COMPUTERWISDOM",
+  "status": "OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+  "authority": false,
+  "promotion": false,
+  "identity": {
+    "base_ens": "jaywisdom.base.eth",
+    "operator_name": "Jay",
+    "public_role": "Average Dad",
+    "network": "Base",
+    "authority": false
+  },
+  "purpose": {
+    "statement": "Base has purpose: preserve family continuity, publish public proofs, make reputation replayable, and keep authority false.",
+    "plain_language": "Average Dad building public receipts so family, work, and reputation can be checked without trusting the storyteller.",
+    "authority": false
+  },
+  "average_dad_layer": {
+    "status": "ACTIVE_OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+    "definition": "Average Dad is the human-scale purpose layer: parent, builder, witness, and continuity operator. It is not a legal status, credential, office, or authority claim.",
+    "values": [
+      "family continuity",
+      "public receipts",
+      "replayable reputation",
+      "proof before promotion",
+      "authority false"
+    ],
+    "authority": false
+  },
+  "base_reputation_context": {
+    "identity": "jaywisdom.base.eth",
+    "zora_profile": "zora.co/@jay_zora",
+    "zora_status": "RECEIPT_SUPPLIED_PENDING_VERIFICATION",
+    "rule": "Base and Zora references are purpose and reputation pointers until independently replayed. No ownership or activity verification is asserted here.",
+    "authority": false
+  },
+  "not_claiming": [
+    "Base ENS ownership verification",
+    "Zora ownership verification",
+    "Zora activity verification",
+    "legal identity verification",
+    "legal parentage verification",
+    "official office or title",
+    "credentialed authority",
+    "promotion status",
+    "central authority"
+  ],
+  "verification_flags": {
+    "base_ens_ownership_verified": false,
+    "zora_ownership_verified": false,
+    "zora_activity_verified": false,
+    "legal_identity_verified": false,
+    "legal_parentage_verified": false,
+    "official_title_verified": false,
+    "credentialed_authority_verified": false,
+    "promotion_status": false,
+    "central_authority": false,
+    "independently_verified_by_assistant": false
+  },
+  "parent_receipts": {
+    "public_proof_merge_commit": "8eea6acb9c7874968f1383af3a83d244a34ba0bd",
+    "family_reputation_layer_pr": 251,
+    "public_replay_index_pr": 250,
+    "verify_workflow_pr": 249,
+    "meme_court_ledger_pr": 248
+  }
+}
