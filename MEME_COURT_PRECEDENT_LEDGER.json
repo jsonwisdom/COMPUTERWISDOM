@@ -63,6 +63,55 @@
       "authority": false
     }
   ],
+  "family_reputation_layer": {
+    "status": "ACTIVATED_OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+    "parent_layer": {
+      "identity": "Jay",
+      "ens": "jaywisdom.eth",
+      "base_ens": "jaywisdom.base.eth",
+      "role": "parent_operator",
+      "authority": false
+    },
+    "child_drifters": {
+      "status": "ACTIVE_OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "definition": "Child Drifters are family-context witness surfaces and memory/reputation branches declared by the operator. They are not legal identity claims and are not authority-bearing validators.",
+      "supporting_repos": [
+        {
+          "name": "AL",
+          "repo": "jsonwisdom/AL",
+          "role": "contestability_and_replay_courthouse",
+          "default_branch": "master",
+          "authority": false
+        },
+        {
+          "name": "JOY",
+          "repo": "jsonwisdom/JOY",
+          "role": "family_witness_layer_and_continuity_surface",
+          "default_branch": "main",
+          "authority": false
+        }
+      ],
+      "authority": false
+    },
+    "not_claiming": [
+      "legal parentage verification",
+      "child legal identity verification",
+      "family legal status verification",
+      "custody or guardianship verification",
+      "authority over another person",
+      "promotion status",
+      "central authority"
+    ],
+    "verification_flags": {
+      "legal_parentage_verified": false,
+      "child_legal_identity_verified": false,
+      "family_legal_status_verified": false,
+      "custody_or_guardianship_verified": false,
+      "authority_over_persons": false,
+      "independently_verified_by_assistant": false
+    },
+    "authority": false
+  },
   "public_reputation": {
     "claim": "jaywisdom.eth and jaywisdom.base.eth are associated with the COMPUTERWISDOM public reputation layer by operator declaration.",
     "primary_identity": "jaywisdom.eth",
@@ -70,6 +119,7 @@
     "basis": [
       "PUBLIC_PROOF.json landed on master with authority false",
       "Meme Court precedent ledger records replay-bounded doctrine",
+      "AL and JOY provide supporting public family/reputation context",
       "Future reputation changes require new receipts or new PRs"
     ],
     "base_reputation_layer": {
@@ -78,8 +128,10 @@
       "claim": "jaywisdom.base.eth is declared as the Base reputation identity for Jay's COMPUTERWISDOM reputation layer.",
       "status": "OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
       "zora_evidence": {
-        "status": "PENDING_RECEIPT",
-        "rule": "Zora evidence may be added only as a receipt-bearing artifact or PR comment. No Zora ownership or activity is verified by this ledger."
+        "status": "RECEIPT_SUPPLIED_PENDING_VERIFICATION",
+        "profile": "zora.co/@jay_zora",
+        "supplied_by": "operator",
+        "rule": "Zora evidence has been supplied as a profile pointer. No Zora ownership or activity is verified by this ledger until independent replay confirms it."
       },
       "authority": false
     },
@@ -87,6 +139,7 @@
       "ENS ownership verification",
       "Base ENS ownership verification",
       "Zora ownership verification",
+      "Zora activity verification",
       "legal identity verification",
       "proof hash completion",
       "promotion status",
@@ -96,6 +149,7 @@
       "ens_ownership_verified": false,
       "base_ens_ownership_verified": false,
       "zora_ownership_verified": false,
+      "zora_activity_verified": false,
       "legal_identity_verified": false,
       "promotion_status": false,
       "central_authority": false,
