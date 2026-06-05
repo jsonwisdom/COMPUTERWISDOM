@@ -1,0 +1,4 @@
+KittyKrew minimal artifact v1
+No artifact, no hash.
+Tiny bytes first.
+Replay before authority.
