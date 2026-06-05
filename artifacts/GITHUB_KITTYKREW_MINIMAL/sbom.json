@@ -1,0 +1,11 @@
+{
+  "artifact": {
+    "filename": "artifact.txt",
+    "sha256": "6178a454475a7ef6f57c05bfe38771ae9952ee604d89191f773fd0b33260aef2",
+    "size_bytes": 95
+  },
+  "schema": {
+    "name": "kittykrew-minimal-sbom",
+    "version": "1"
+  }
+}
