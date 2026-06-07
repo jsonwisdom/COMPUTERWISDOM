@@ -1,0 +1,14 @@
+{
+  "version": "1.0",
+  "authority": false,
+  "vector_id": "HANDSHAKE-005",
+  "vector_type": "expression_only_golden_vector",
+  "purpose": "Demonstrate that expression may exist without receipt while remaining non-admissible as replay evidence.",
+  "joy_moment": {
+    "memory_type": "human",
+    "raw_observation": "Pretty JSON smiles.",
+    "source_membrane": "JOY",
+    "claims_truth": false,
+    "authority": false
+  },
+  "story_object
