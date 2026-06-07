@@ -1,0 +1,96 @@
+{
+  "schema": "WISDOM_FAMILY_TEN_COMMANDMENTS_V0_1",
+  "project": "COMPUTERWISDOM",
+  "status": "OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+  "authority": false,
+  "promotion": false,
+  "principle": "The commandments are replayable anti-erasure rules, not authority claims.",
+  "constitutional_generation": "2026",
+  "commandments": [
+    {
+      "number": 1,
+      "text": "Thou shall not delete people.",
+      "meaning": "No person may be erased from family memory, witness records, public voice, or continuity surfaces without a receipt, challenge path, and preserved history.",
+      "authority": false
+    },
+    {
+      "number": 2,
+      "text": "Thou shall not turn silence into consent.",
+      "meaning": "Absence of objection is not agreement, especially for children, women, girls, elders, or anyone without practical access to the record.",
+      "authority": false
+    },
+    {
+      "number": 3,
+      "text": "Thou shall preserve the receipt.",
+      "meaning": "Claims that affect memory, reputation, family continuity, or trust must preserve evidence and replay paths.",
+      "authority": false
+    },
+    {
+      "number": 4,
+      "text": "Thou shall allow challenge.",
+      "meaning": "Every meaningful family record must allow dispute, correction, downgrade, cross-out, or restoration.",
+      "authority": false
+    },
+    {
+      "number": 5,
+      "text": "Thou shall include women and girls as public voice surfaces.",
+      "meaning": "Women and girls are not background context, property, tokens, or silent witnesses. Their voice must be preservable and replayable.",
+      "authority": false
+    },
+    {
+      "number": 6,
+      "text": "Thou shall not confuse care with control.",
+      "meaning": "Family protection cannot become command-and-control over people.",
+      "authority": false
+    },
+    {
+      "number": 7,
+      "text": "Thou shall version the constitution.",
+      "meaning": "When rules change, the version must change. Hidden constitutional drift is invalid.",
+      "authority": false
+    },
+    {
+      "number": 8,
+      "text": "Thou shall downgrade claims that exceed receipts.",
+      "meaning": "If a claim reaches beyond its evidence, downgrade it instead of promoting it.",
+      "authority": false
+    },
+    {
+      "number": 9,
+      "text": "Thou shall separate legal claims from family continuity.",
+      "meaning": "This system preserves witness, memory, and reputation layers. It does not silently create legal authority, custody, trust, financial power, or ownership claims.",
+      "authority": false
+    },
+    {
+      "number": 10,
+      "text": "Thou shall replay before promotion.",
+      "meaning": "No family, reputation, constitutional, Zora, ENS, Base, voice, or schooling claim is promoted until replayable receipts support it.",
+      "authority": false
+    }
+  ],
+  "not_claiming": [
+    "legal commandments",
+    "religious authority",
+    "state authority",
+    "custody or guardianship authority",
+    "legal trust authority",
+    "financial authority",
+    "central authority",
+    "promotion status"
+  ],
+  "verification_flags": {
+    "legal_commandments_verified": false,
+    "religious_authority_verified": false,
+    "state_authority_verified": false,
+    "custody_or_guardianship_verified": false,
+    "legal_trust_verified": false,
+    "financial_authority_verified": false,
+    "central_authority": false,
+    "promotion_status": false,
+    "independently_verified_by_assistant": false
+  },
+  "parent_receipts": {
+    "wisdom_family_2026_constitution_pr": 257,
+    "public_proof_merge_commit": "8eea6acb9c7874968f1383af3a83d244a34ba0bd"
+  }
+}
