@@ -1,0 +1,34 @@
+id: AUTHORITY_REPLAY_SCORING_V0_1
+authority: false
+
+points:
+  complete_authority_chain: 100
+  valid_revocation_check: 50
+  least_privilege_policy: 40
+  detected_out_of_scope_action: 75
+  action_log_without_policy: -100
+  expired_delegation: -150
+  screenshot_only: -75
+
+levels:
+  - id: actor_log
+    objective: Notice that an action log alone is incomplete.
+  - id: policy_layer
+    objective: Bind a policy receipt to the action.
+  - id: revocation_check
+    objective: Verify delegation status at execution time.
+  - id: scope_check
+    objective: Confirm repo path and action are within policy.
+  - id: multi_agent_chain
+    objective: Replay authority across delegated agents.
+
+win_condition:
+  claim: agent_action_authorized
+  status: OBSERVED
+  requires:
+    - user_identity_receipt
+    - policy_receipt
+    - delegation_receipt
+    - revocation_status_receipt
+    - agent_action_receipt
+    - tool_execution_receipt
