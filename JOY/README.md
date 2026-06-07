@@ -1,32 +1,30 @@
-# JOY Memory
+# JOY — Human Memory Layer
 
 **Status:** active memory surface  
 **Authority:** false  
 **Role:** origin, family wisdom, curiosity, discovery, and human continuity
 
-JOY is the human memory layer for COMPUTERWISDOM.
+JOY answers why something mattered.
 
-Where AL preserves procedure, JOY preserves meaning.
+It captures origin, intention, family wisdom, and the questions that guide continuity.
+
+JOY is not procedural.
+JOY is meaning.
+
+## Directory Structure
+
+- `index.json` — machine-addressable map of JOY artifacts
+- `origin_stories/` — where the human thread begins
+- `family_wisdom/` — inherited principles, sayings, anchors
+- `questions/` — inquiries that shape the system
+- `traditions/` — rituals, repeated patterns, continuity
+- `moments/` — small events worth remembering
 
 ## Purpose
 
-JOY stores:
+JOY preserves context, emotion, and meaning so AL never becomes a cold machine.
 
-- origin stories
-- family wisdom
-- questions
-- discoveries
-- witness moments
-- cultural memory
-- creative expression
-
-## Operating Doctrine
-
-```text
-Questions before conclusions.
-Discovery before obedience.
-Learning before authority.
-```
+JOY is the human witness trail.
 
 ## Memory Boundary
 
@@ -36,11 +34,19 @@ JOY is not allowed to rewrite receipts.
 JOY can inspire claims.
 AL determines whether those claims replay.
 
+## First Entries
+
+- `origin_stories/001-why-receipts.md`
+- `family_wisdom/001-keep-the-receipt.md`
+- `questions/001-what-should-persist.md`
+
+These form the initial JOY spine.
+
 ## Relationship to AL
 
 ```text
-JOY = meaning
-AL  = procedure
+AL = how
+JOY = why
 
 Together:
 Human Memory
@@ -48,17 +54,8 @@ Human Memory
 Machine Replay
 ```
 
-## Current Memory Nodes
-
-- FAMILY_WISDOM
-- THREE_DAUGHTERS
-- COMPUTER_WISDOM
-- ORIGIN_STORIES
-- QUESTIONS
-- DISCOVERIES
-
 ## Constitutional Line
 
-Protect.
-Preserve.
+Protect.  
+Preserve.  
 Expand.
