@@ -1,0 +1,26 @@
+{
+  "version": "1.0",
+  "authority": false,
+  "vector_id": "HANDSHAKE-006",
+  "vector_type": "invalid_conformance_vector",
+  "purpose": "Demonstrate that narrative objects require receipts to become procedurally admissible.",
+  "story_object": {
+    "story_id": "sha256:pending",
+    "epoch": "AL",
+    "story_type": "narrative",
+    "intent": "Attempt procedural admission without a receipt.",
+    "claims_truth": false,
+    "authority": false
+  },
+  "receipt": null,
+  "validator_trace": {
+    "schema_check": "pass",
+    "receipt_check": "fail",
+    "replay_check": "fail"
+  },
+  "expected_validator_output": {
+    "authority": false,
+    "verdict": "invalid",
+    "reason": "missing_receipt"
+  }
+}
