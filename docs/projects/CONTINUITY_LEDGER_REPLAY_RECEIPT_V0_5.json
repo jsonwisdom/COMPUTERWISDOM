@@ -1,0 +1,42 @@
+{
+  "artifact": "CONTINUITY_LEDGER_REPLAY_RECEIPT_V0_5",
+  "version": "V0_5_REPLAY",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "expected_path": "docs/projects/CONTINUITY_LEDGER_V0_5.json",
+  "target_commit_sha": "35720496b9c436dca880f22822f8b292f5207101",
+  "authority": false,
+  "replay_observation": {
+    "commit_found": true,
+    "artifact_found": true,
+    "path_matches": true,
+    "authority_false_preserved": true,
+    "observed_anchor_count": 11,
+    "verified_anchors": [
+      "5f89a4675bc1f93c6a063b97ab210a73fb2f29f1",
+      "587fed9bf96e88e5731d7a1494372c49a46e2d39",
+      "8cbee42dcbd09c077fea1532e96958b4570592e4",
+      "e3e3cb25d0a2126149b8f9251622c1a9c27501bf",
+      "db1c5f54576a2ec35cf61def9c4b3cf48632681c",
+      "8f10ac9c9254364f3f22bbc041eff231fabfdc19",
+      "2a74e2e6c1cda7dc7f53a1c2c755f3e65f030b91",
+      "e2ce4b51c946915bb0328197d15e58196331f76a",
+      "6a6420087474e29e6516598254bef936473e31c2",
+      "2f08ccefb87658d865fa6271470bb07815ef03e9",
+      "35720496b9c436dca880f22822f8b292f5207101"
+    ]
+  },
+  "variance_check": {
+    "diff": 0,
+    "schema_drift": false,
+    "result": "MATCH"
+  },
+  "replay_verdict": "FULL_MATCH",
+  "court_readings": {
+    "goblin": "no drift detected in observed-only ledger",
+    "karen": "all eleven receipts confirmed",
+    "wendy_plus": "replay measured on preserved bytes",
+    "al": "ledger structure valid",
+    "mirror_mint": "continuity surface extended cleanly",
+    "joy": "observation preserved"
+  }
+}
