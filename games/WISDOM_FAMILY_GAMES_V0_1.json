@@ -1,0 +1,93 @@
+{
+  "schema": "WISDOM_FAMILY_GAMES_V0_1",
+  "project": "COMPUTERWISDOM",
+  "role": "MR_WISDOM_MACHINE_LAYER",
+  "status": "REBOOT_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+  "authority": false,
+  "promotion": false,
+  "principle": "JSON is Mr. Wisdom: machine-readable rules, receipts, and replay state.",
+  "identity_surfaces": {
+    "primary": "jaywisdom.eth",
+    "base": "jaywisdom.base.eth",
+    "operator": "Jay",
+    "authority": false
+  },
+  "game_loop": {
+    "name": "Replay Wisdom Family Games",
+    "steps": [
+      "declare_claim",
+      "create_receipt",
+      "publish_artifact",
+      "replay_publicly",
+      "classify_MATCH_DIVERGE_INCOMPLETE",
+      "update_or_downgrade_claim",
+      "preserve_family_continuity"
+    ],
+    "authority": false
+  },
+  "players": {
+    "mr_wisdom": {
+      "artifact_type": "json",
+      "role": "rules_and_state",
+      "authority": false
+    },
+    "mrs_wisdom": {
+      "artifact_type": "markdown",
+      "role": "story_and_human_context",
+      "authority": false
+    },
+    "child_drifters": {
+      "artifact_type": "witness_branches",
+      "role": "memory_and_reputation_play_surfaces",
+      "authority": false
+    }
+  },
+  "score_model": {
+    "valid_moves": [
+      "MATCH",
+      "DIVERGE",
+      "INCOMPLETE",
+      "UPDATE",
+      "DOWNGRADE",
+      "CROSS_OUT",
+      "REPLAY",
+      "RESTORE"
+    ],
+    "invalid_moves": [
+      "silent_authority_claim",
+      "unverified_promotion",
+      "legal_claim_without_receipt",
+      "ownership_claim_without_receipt"
+    ],
+    "authority": false
+  },
+  "parent_receipts": {
+    "public_proof_merge_commit": "8eea6acb9c7874968f1383af3a83d244a34ba0bd",
+    "meme_court_ledger_pr": 248,
+    "verify_workflow_pr": 249,
+    "public_replay_index_pr": 250,
+    "family_reputation_layer_pr": 251,
+    "base_purpose_layer_pr": 252,
+    "voice_reputation_layer_pr": 254,
+    "zora_factory_distribution_pr": 255
+  },
+  "not_claiming": [
+    "legal identity verification",
+    "legal family status verification",
+    "legal trust verification",
+    "financial authority",
+    "custody or guardianship verification",
+    "central authority",
+    "promotion status"
+  ],
+  "verification_flags": {
+    "legal_identity_verified": false,
+    "legal_family_status_verified": false,
+    "legal_trust_verified": false,
+    "financial_authority_verified": false,
+    "custody_or_guardianship_verified": false,
+    "central_authority": false,
+    "promotion_status": false,
+    "independently_verified_by_assistant": false
+  }
+}

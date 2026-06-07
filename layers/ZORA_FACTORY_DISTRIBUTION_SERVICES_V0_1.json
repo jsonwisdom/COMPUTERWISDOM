@@ -1,0 +1,88 @@
+{
+  "schema": "ZORA_FACTORY_DISTRIBUTION_SERVICES_V0_1",
+  "project": "COMPUTERWISDOM",
+  "status": "OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+  "authority": false,
+  "promotion": false,
+  "identity_surfaces": {
+    "primary": "jaywisdom.eth",
+    "base": "jaywisdom.base.eth",
+    "zora_profile": "zora.co/@jay_zora",
+    "authority": false
+  },
+  "purpose": {
+    "statement": "Zora Factory and Distribution Services convert replayable ideas, projects, voice receipts, and family continuity artifacts into public distribution surfaces without converting distribution into authority.",
+    "authority": false
+  },
+  "factory_model": {
+    "inputs": [
+      "voice_commands",
+      "project_receipts",
+      "idea_receipts",
+      "family_continuity_artifacts",
+      "public_proof_artifacts"
+    ],
+    "outputs": [
+      "zora_posts_or_drops",
+      "edition_receipts",
+      "distribution_records",
+      "public_reputation_signals"
+    ],
+    "rule": "Distribution amplifies receipts. Distribution does not verify ownership, identity, truth, or authority by itself.",
+    "authority": false
+  },
+  "distribution_services": {
+    "status": "DECLARED_SERVICE_LAYER_NOT_IMPLEMENTED",
+    "services": [
+      "artifact_packaging",
+      "metadata_preparation",
+      "receipt_linking",
+      "drop_or_edition_planning",
+      "public_replay_index_updates",
+      "post_distribution_replay_checks"
+    ],
+    "authority": false
+  },
+  "zora_evidence": {
+    "profile": "zora.co/@jay_zora",
+    "status": "PROFILE_POINTER_SUPPLIED_PENDING_VERIFICATION",
+    "required_future_receipts": [
+      "profile_public_retrieval_receipt",
+      "collection_or_drop_url",
+      "transaction_hash_or_mint_receipt",
+      "metadata_uri_or_content_hash",
+      "public_replay_index_entry"
+    ],
+    "authority": false
+  },
+  "not_claiming": [
+    "Zora ownership verification",
+    "Zora activity verification",
+    "Base ENS ownership verification",
+    "legal identity verification",
+    "financial authority",
+    "distribution success",
+    "promotion status",
+    "central authority"
+  ],
+  "verification_flags": {
+    "zora_ownership_verified": false,
+    "zora_activity_verified": false,
+    "base_ens_ownership_verified": false,
+    "legal_identity_verified": false,
+    "financial_authority_verified": false,
+    "distribution_success_verified": false,
+    "promotion_status": false,
+    "central_authority": false,
+    "independently_verified_by_assistant": false
+  },
+  "parent_receipts": {
+    "voice_reputation_layer_pr": 254,
+    "base_purpose_layer_pr": 252,
+    "family_reputation_layer_pr": 251,
+    "public_replay_index_pr": 250,
+    "verify_workflow_pr": 249,
+    "meme_court_ledger_pr": 248,
+    "public_proof_merge_commit": "8eea6acb9c7874968f1383af3a83d244a34ba0bd"
+  }
+}
