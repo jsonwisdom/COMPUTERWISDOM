@@ -1,10 +1,24 @@
 {
   "version": "1.0",
-  "surfaces": {
-    "replay": [],
-    "receipts": [],
-    "courts": [],
-    "verification": [],
-    "doctrine": []
+  "memory_type": "procedural",
+  "authority": false,
+  "domains": {
+    "doctrine": {
+      "seeded_entries": [
+        "doctrine/001-no-authority-generation.md"
+      ]
+    },
+    "replay": {
+      "seeded_entries": []
+    },
+    "receipts": {
+      "seeded_entries": []
+    },
+    "courts": {
+      "seeded_entries": []
+    },
+    "verification": {
+      "seeded_entries": []
+    }
   }
 }
