@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "authority": false,
+  "vector_id": "HANDSHAKE-005",
+  "vector_type": "expression_only_no_receipt",
+  "purpose": "Demonstrate that expression without receipt is allowed but not admitted as replay evidence.",
+  "story_object": {
+    "story_id": "sha256:pending",
+    "epoch": "JOY",
+    "story_type": "expression",
+    "intent": "Preserve an expressive memory without claiming procedural admissibility.",
+    "receipt_id": null,
+    "claims_truth": false,
+    "authority": false
+  },
+  "validator_trace": {
+    "schema_check": "pass",
+    "receipt_check": "not
