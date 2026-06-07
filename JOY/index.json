@@ -1,0 +1,16 @@
+{
+  "version": "1.0",
+  "surfaces": {
+    "origin_stories": [
+      "origin_stories/001-why-receipts.md"
+    ],
+    "family_wisdom": [
+      "family_wisdom/001-keep-the-receipt.md"
+    ],
+    "questions": [
+      "questions/001-what-should-persist.md"
+    ],
+    "traditions": [],
+    "moments": []
+  }
+}
