@@ -1,0 +1,50 @@
+{
+  "artifact": "CONTINUITY_LEDGER_REPLAY_RECEIPT_V0_4",
+  "purpose": "Replay the observed continuity ledger and court records without promoting unobserved artifacts.",
+  "authority": false,
+  "replay_targets": [
+    {
+      "name": "CONTINUITY_LEDGER_V0_2",
+      "sha": "2a74e2e6c1cda7dc7f53a1c2c755f3e65f030b91",
+      "state": "REPO_PRESERVED",
+      "replay_status": "MATCH"
+    },
+    {
+      "name": "GOBLIN_COURT_RECORD_V0_6",
+      "sha": "8f10ac9c9254364f3f22bbc041eff231fabfdc19",
+      "state": "REPO_PRESERVED",
+      "replay_status": "MATCH"
+    },
+    {
+      "name": "GOBLIN_COURT_RECORD_V0_8",
+      "sha": "e2ce4b51c946915bb0328197d15e58196331f76a",
+      "state": "REPO_PRESERVED",
+      "replay_status": "MATCH"
+    }
+  ],
+  "unobserved_artifacts": [
+    {
+      "name": "CONTINUITY_LEDGER_V0_4",
+      "state": "DECLARED_NOT_PRESERVED",
+      "replay_status": "NOT_ELIGIBLE"
+    }
+  ],
+  "verdict": {
+    "observed_targets_replay": "MATCH",
+    "unobserved_targets_promoted": false,
+    "variance": 0,
+    "authority": false
+  },
+  "court_reading": {
+    "goblin": "observed artifacts match; unobserved artifacts remain pending",
+    "karen": "provenance anchors confirmed for observed targets",
+    "wendy_plus": "replay closure measured only where bytes exist",
+    "al": "structure preserved",
+    "mirror_mint": "continuity memory extended without false promotion",
+    "joy": "observation preserved"
+  },
+  "identity_anchor": {
+    "ens": "jaywisdom.eth",
+    "basename": "jaywisdom.base.eth"
+  }
+}
