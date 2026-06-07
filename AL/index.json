@@ -9,16 +9,9 @@
       ]
     },
     "replay": {
-      "seeded_entries": []
+      "seeded_entries": [
+        "replay/001-deterministic-reconstruction.md"
+      ]
     },
     "receipts": {
-      "seeded_entries": []
-    },
-    "courts": {
-      "seeded_entries": []
-    },
-    "verification": {
-      "seeded_entries": []
-    }
-  }
-}
+      "seeded_entries
