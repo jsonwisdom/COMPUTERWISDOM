@@ -1,0 +1,35 @@
+{
+  "version": "1.0",
+  "authority": false,
+  "trace_type": "joy_al_paired_trace",
+  "start": {
+    "joy_entry": "JOY/origin_stories/001-why-receipts.md",
+    "reason": "Origin question: why do receipts exist?"
+  },
+  "steps": [
+    {
+      "id": "JOY-001",
+      "memory_type": "human",
+      "paired_al": "AL/receipts/001-what-a-receipt-is.md"
+    },
+    {
+      "id": "AL-002",
+      "memory_type": "procedural",
+      "paired_action": "invoke_replay"
+    },
+    {
+      "id": "AL-004",
+      "memory_type": "procedural",
+      "action": "deterministic_reconstruction"
+    },
+    {
+      "id": "AL-003",
+      "memory_type": "procedural",
+      "action": "verify_receipt",
+      "paired_joy": "JOY/origin_stories/001-why-receipts.md"
+    }
+  ],
+  "end": {
+    "status": "complete"
+  }
+}
