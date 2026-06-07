@@ -22,14 +22,21 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            await github.rest.repos.createCommitStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: context.payload.pull_request?.head?.sha || context.sha,
-              state: 'pending',
-              context: 'verify',
-              description: 'verify workflow running'
-            })
+            const targetShas = [
+              context.payload.pull_request?.head?.sha,
+              context.payload.pull_request?.merge_commit_sha,
+              context.sha
+            ].filter(Boolean);
+            for (const sha of [...new Set(targetShas)]) {
+              await github.rest.repos.createCommitStatus({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                sha,
+                state: 'pending',
+                context: 'verify',
+                description: 'verify workflow running'
+              });
+            }
 
       - name: Checkout
         uses: actions/checkout@v4
@@ -90,25 +97,39 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            await github.rest.repos.createCommitStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: context.payload.pull_request?.head?.sha || context.sha,
-              state: 'success',
-              context: 'verify',
-              description: 'verify workflow passed'
-            })
+            const targetShas = [
+              context.payload.pull_request?.head?.sha,
+              context.payload.pull_request?.merge_commit_sha,
+              context.sha
+            ].filter(Boolean);
+            for (const sha of [...new Set(targetShas)]) {
+              await github.rest.repos.createCommitStatus({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                sha,
+                state: 'success',
+                context: 'verify',
+                description: 'verify workflow passed'
+              });
+            }
 
       - name: Mark classic verify failure
         if: failure()
         uses: actions/github-script@v7
         with:
           script: |
-            await github.rest.repos.createCommitStatus({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              sha: context.payload.pull_request?.head?.sha || context.sha,
-              state: 'failure',
-              context: 'verify',
-              description: 'verify workflow failed'
-            })
+            const targetShas = [
+              context.payload.pull_request?.head?.sha,
+              context.payload.pull_request?.merge_commit_sha,
+              context.sha
+            ].filter(Boolean);
+            for (const sha of [...new Set(targetShas)]) {
+              await github.rest.repos.createCommitStatus({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                sha,
+                state: 'failure',
+                context: 'verify',
+                description: 'verify workflow failed'
+              });
+            }
