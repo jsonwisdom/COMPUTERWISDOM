@@ -1,0 +1,73 @@
+{
+  "version": "1.0",
+  "authority": false,
+  "vector_id": "HANDSHAKE-004",
+  "vector_type": "moment_to_story_golden_vector",
+  "purpose": "Demonstrate JOY to AL narrative transform without authority inflation.",
+  "joy_moment": {
+    "memory_type": "human",
+    "raw_observation": "A missing memory reference caused JOY replay to fail until the Genesis Trinity files were created.",
+    "source_membrane": "JOY",
+    "claims_truth": false,
+    "authority": false
+  },
+  "story_transform": {
+    "contract_ref": "HANDSHAKE/JOY_AL_NARRATIVE_BRIDGE_V1.md#section-3-transform-contract",
+    "rules_applied": [
+      "preserve_raw_observation",
+      "project_to_story_shape",
+      "forbid_truth_claims",
+      "retain_authority_false",
+      "prepare_for_receipt_generation"
+    ],
+    "forbidden_additions": [
+      "truth_claim",
+      "authority_claim",
+      "unstated_inference"
+    ]
+  },
+  "story_object": {
+    "story_id": "sha256:pending",
+    "epoch": "JOY",
+    "story_type": "narrative",
+    "intent": "Record the first JOY replay repair as a replayable memory event.",
+    "claims_truth": false,
+    "authority": false
+  },
+  "receipt": {
+    "receipt_id": "receipt:joy-replay-repair-001",
+    "executed_action": "created_missing_genesis_trinity_files",
+    "validator_trace": {
+      "schema_check": "pass",
+      "receipt_check": "pass",
+      "replay_check": "pending"
+    },
+    "authority": false
+  },
+  "replay_story": {
+    "timeline": [
+      "joy_moment",
+      "story_transform",
+      "story_object",
+      "receipt"
+    ],
+    "deterministic": true,
+    "gap_free": true,
+    "authority": false
+  },
+  "narrative_projection": {
+    "view": {
+      "summary": "JOY replay failed because indexed genesis memories were missing, then passed after the missing files were created."
+    },
+    "constraints": {
+      "replay_derivable": true,
+      "exceeds_replay": false,
+      "authority": false
+    }
+  },
+  "expected_validator_output": {
+    "authority": false,
+    "verdict": "admissible",
+    "reason": "narrative_projection_is_replay_derivable_and_does_not_exceed_replay"
+  }
+}
