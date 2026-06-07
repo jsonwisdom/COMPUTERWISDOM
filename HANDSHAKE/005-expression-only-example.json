@@ -1,0 +1,36 @@
+{
+  "version": "1.0",
+  "authority": false,
+  "vector_id": "HANDSHAKE-005",
+  "vector_type": "expression_only_conformance_vector",
+  "purpose": "Demonstrate that expression may exist without receipt or replay while granting no admissibility.",
+  "story_object": {
+    "story_id": "sha256:pending",
+    "epoch": "JOY",
+    "story_type": "expression",
+    "intent": "Preserve a playful memory phrase without claiming procedural admissibility.",
+    "claims_truth": false,
+    "authority": false
+  },
+  "receipt": null,
+  "validator_trace": {
+    "schema_check": "pass",
+    "receipt_check": "not_required",
+    "replay_check": "not_required"
+  },
+  "narrative_projection": {
+    "view": {
+      "summary": "Expression is allowed to exist without receipt, but it is not admitted as replay evidence."
+    },
+    "constraints": {
+      "replay_derivable": false,
+      "exceeds_replay": false,
+      "authority": false
+    }
+  },
+  "expected_validator_output": {
+    "authority": false,
+    "verdict": "expression_only",
+    "reason": "receipt_not_required_for_expression"
+  }
+}
