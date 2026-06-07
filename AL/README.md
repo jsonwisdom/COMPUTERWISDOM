@@ -1,68 +1,47 @@
-# AL Memory
+# AL — Procedural Memory Layer
 
 **Status:** active memory surface  
 **Authority:** false  
 **Role:** doctrine, replay, verification, court procedure, and protocol memory
 
-AL is the procedural memory layer for COMPUTERWISDOM.
+AL answers how something was done.
 
-It preserves the rules that keep expression from becoming false authority.
+It captures steps, rules, receipts, replay, and verification.
+
+AL is deterministic.
+AL is governance.
+
+## Directory Structure
+
+- `index.json` — machine-addressable map of AL artifacts
+- `replay/` — deterministic sequences of actions
+- `receipts/` — evidence objects
+- `courts/` — legitimacy review
+- `verification/` — checks, proofs, validations
+- `doctrine/` — rules, invariants, constraints
 
 ## Purpose
 
-AL stores:
+AL ensures procedural truth.
 
-- ALMS doctrine
-- replay rules
-- court procedures
-- verification gates
-- receipt promotion logic
-- authority:false constraints
-- agent delegation boundaries
+Every action is replayable.
+Every claim is anchored.
+Every mutation is governed.
 
-## Operating Doctrine
+## Relationship to JOY
 
-```text
-Expression may move.
-Receipts must replay.
-Identity must anchor.
-Authority remains false.
-```
+AL = how
+JOY = why
+
+Together they form a dual-memory system.
+
+- AL: Show me the steps.
+- JOY: Show me the meaning.
 
 ## Memory Boundary
 
 AL does not store vibes as truth.
 AL stores procedures that decide whether a claim can be replayed.
-
-A claim enters AL only when it can be described as:
-
-```yaml
-claim: string
-status: UNOBSERVED | OBSERVED | REPLAYED | REJECTED
-evidence: required
-authority: false
-```
-
-## Relationship to COMPUTERWISDOM
-
-COMPUTERWISDOM creates artifacts.
-AL decides whether the artifact has a replay path.
-
-```text
-Artifact
-→ Receipt
-→ Source
-→ Timeline
-→ Replay
-→ Memory
-```
-
-## Current Memory Nodes
-
-- `ALMS` — replay doctrine
-- `COURTS` — Meme Court, Goblin Court, Clown Court
-- `RECEIPTS` — evidence and promotion logic
-- `AGENTS` — delegation, traceability, reproducibility
 
 ## Constitutional Line
 
