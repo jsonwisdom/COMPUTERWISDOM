@@ -40,7 +40,7 @@
     "validator_trace": {
       "schema_check": "pass",
       "receipt_check": "pass",
-      "replay_check": "pending"
+      "replay_check": "pass"
     },
     "authority": false
   },
