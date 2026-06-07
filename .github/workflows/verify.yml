@@ -6,6 +6,9 @@ on:
       - master
   push:
     branches:
+      - master
+      - main
+      - feat/add-al-joy-memory
       - feature/computerwisdom-alms-runtime-runway-v0-1
       - protocol/v0_1-admission
       - protocol/ers-v0_1
@@ -37,6 +40,11 @@ jobs:
 
       - name: Checkout
         uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
 
       - name: Verify COMPUTERWISDOM ALMS replay runway
         shell: bash
@@ -70,6 +78,19 @@ jobs:
           grep -q '2d050d623ab4a9ba7aff8547dc4f64d28b2f4c27' index.html
 
           echo "verify passed: ALMS replay runway holds"
+
+      - name: Validate HANDSHAKE conformance vectors
+        run: python tools/validate_handshake_vectors.py
+
+      - name: Guard authority invariant
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -R '"authority"[[:space:]]*:[[:space:]]*true' HANDSHAKE AL JOY tools; then
+            echo 'authority:true is not allowed in constitutional memory surfaces'
+            exit 1
+          fi
+          echo 'authority:false invariant holds'
 
       - name: Mark classic verify success
         if: success()
