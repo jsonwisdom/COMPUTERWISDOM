@@ -1,0 +1,45 @@
+{
+  "schema": "receipt-manifest-v1",
+  "files": [
+    {
+      "path": "FED-AI-2026-PAS-001",
+      "digest": "6246b253637baa349d61e9d6d8ac89ce4943e1d4ef16adba47be49106e48f3d1",
+      "type": "governance",
+      "timestamp": "2026-06-08T18:30:07Z",
+      "external": true,
+      "repo": "jsonwisdom/AL",
+      "source_path": "docs/proof_at_scale/PROOF_AT_SCALE_v0.1.md",
+      "source_url": "https://raw.githubusercontent.com/jsonwisdom/AL/master/docs/proof_at_scale/PROOF_AT_SCALE_v0.1.md"
+    },
+    {
+      "path": "RECEIPT_STACK_2026-06-08.md",
+      "digest": "pending-post-commit",
+      "type": "governance",
+      "timestamp": "2026-06-08T18:30:07Z"
+    },
+    {
+      "path": "anti-time-travel.md",
+      "digest": "pending-post-commit",
+      "type": "governance",
+      "timestamp": "2026-06-08T18:30:07Z",
+      "external": true,
+      "note": "Doctrine encoded in RECEIPT_STACK_2026-06-08.md; standalone file pending."
+    },
+    {
+      "path": "derivative-receipt-spec.md",
+      "digest": "pending-post-commit",
+      "type": "governance",
+      "timestamp": "2026-06-08T18:30:07Z",
+      "external": true,
+      "note": "Doctrine encoded in RECEIPT_STACK_2026-06-08.md; standalone file pending."
+    },
+    {
+      "path": "stranger-replay.md",
+      "digest": "pending-post-commit",
+      "type": "governance",
+      "timestamp": "2026-06-08T18:30:07Z",
+      "external": true,
+      "note": "Doctrine encoded in RECEIPT_STACK_2026-06-08.md; standalone file pending."
+    }
+  ]
+}
