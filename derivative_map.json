@@ -1,4 +1,43 @@
 {
-  "receipts": [],
-  "derivatives": []
+  "receipts": [
+    {
+      "id": "PROMOTION_RECEIPT_296_001",
+      "type": "promotion_receipt",
+      "pr_number": 296,
+      "attested_head_sha": "8f5092d2bf724787b502097bd56ae4a9c61bceed",
+      "merge_sha": "b5bc241478526ea9d3212f213e9b80dd9f62a0ed",
+      "timestamp_promoted": "2026-06-08T18:54:04Z",
+      "machine_attested": true,
+      "promotion": true,
+      "authority": false
+    },
+    {
+      "id": "PROMOTION_RECEIPT_README_001",
+      "type": "promotion_receipt",
+      "pr_number": 298,
+      "attested_head_sha": "c1e9de8bf2a38b1beb7b81d9fa1eacef0e07b21f",
+      "merge_sha": "40fab158fbe82e1fca6ea614e1f10b87a5ed968b",
+      "timestamp_promoted": "2026-06-08T19:11:55Z",
+      "machine_attested": true,
+      "promotion": true,
+      "authority": false
+    }
+  ],
+  "derivatives": [
+    {
+      "id": "DERIVATIVE_EDGE_PROMOTION_296_TO_298_001",
+      "parent": "FED-AI-2026-PAS-001",
+      "sources": [
+        "PROMOTION_RECEIPT_296_001"
+      ],
+      "target": "PROMOTION_RECEIPT_README_001",
+      "relationship": "governance_doctrine_clarification_built_on_promoted_receipt_stack",
+      "evidence": {
+        "combined_receipt_comment_id": 4652489749,
+        "freeze_pointer_comment_id": 4652589639
+      },
+      "promotion": true,
+      "authority": false
+    }
+  ]
 }
