@@ -13,13 +13,13 @@
     },
     {
       "path": "RECEIPT_STACK_2026-06-08.md",
-      "digest": "15715571b8569d367e07d9f3faf76763f2020622",
+      "digest": "c6dbb8ec04725d548daebe1fccb2d21fdd1fc6c517ef11151a9fb360b806a1eb",
       "type": "governance",
       "timestamp": "2026-06-08T18:30:07Z"
     },
     {
       "path": "anti-time-travel.md",
-      "digest": "15715571b8569d367e07d9f3faf76763f2020622",
+      "digest": "c6dbb8ec04725d548daebe1fccb2d21fdd1fc6c517ef11151a9fb360b806a1eb",
       "type": "governance",
       "timestamp": "2026-06-08T18:30:07Z",
       "external": true,
@@ -27,7 +27,7 @@
     },
     {
       "path": "derivative-receipt-spec.md",
-      "digest": "15715571b8569d367e07d9f3faf76763f2020622",
+      "digest": "c6dbb8ec04725d548daebe1fccb2d21fdd1fc6c517ef11151a9fb360b806a1eb",
       "type": "governance",
       "timestamp": "2026-06-08T18:30:07Z",
       "external": true,
@@ -35,7 +35,7 @@
     },
     {
       "path": "stranger-replay.md",
-      "digest": "15715571b8569d367e07d9f3faf76763f2020622",
+      "digest": "c6dbb8ec04725d548daebe1fccb2d21fdd1fc6c517ef11151a9fb360b806a1eb",
       "type": "governance",
       "timestamp": "2026-06-08T18:30:07Z",
       "external": true,
