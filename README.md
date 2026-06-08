@@ -41,6 +41,91 @@ EAS witness != global legitimacy
 ENS discovery != authority
 ```
 
+## Promotion vs Authority
+
+Constitutional separation under the 2026-06-08 receipt stack.
+
+This repository implements a constitutional replay system where Promotion and Authority are intentionally decoupled.
+
+This prevents accidental governance elevation and ensures that all state transitions are evidence-driven.
+
+### Promotion
+
+A PR becomes Promoted when all of the following are true:
+
+- Custody of referenced artifacts is established.
+- Replay surface is complete.
+- `reproduce.sh` emits a machine-generated attestation.
+- CI records the attestation.
+- GitHub merges the PR.
+
+Promotion is a ledger event, not a governance event.
+
+Promotion proves:
+
+- Evidence was accepted.
+- Replay succeeded.
+- The merge is lawful under the doctrine.
+
+Promotion does not grant authority.
+
+### Authority
+
+Authority is a governance capability, not a merge outcome.
+
+Authority can only be elevated through:
+
+- A dedicated authority-elevation PR.
+- A governance-level artifact.
+- Machine attestation.
+- A lineage entry linking the elevation to PAS-001.
+- A subsequent Promotion.
+
+Authority is never implied by:
+
+- Merge.
+- Promotion.
+- Replay success.
+- CI attestation.
+- Operator action.
+
+This is enforced by:
+
+- Invariant 007: No receipt may claim evidence not observed.
+- Clause C-004: Promotion never creates evidence.
+- Issue #297 precedent.
+
+### Why Authority Stays False After Promotion
+
+Because Promotion is mechanical.
+
+Authority is constitutional.
+
+```text
+Promotion = evidence accepted
+Authority = governance granted
+```
+
+These are separate chains.
+
+### Tag Verification
+
+To confirm a Promotion is valid:
+
+1. Tag must point to the merge SHA, not the attested head.
+2. The merge SHA must match the PR's merge commit.
+3. The attestation receipt must reference the attested head.
+4. `derivative_map.json` must include the CI receipt.
+5. `manifest.json` must include all governance files.
+6. `reproduce.sh` must replay cleanly against the tag.
+
+This ensures:
+
+- No time travel.
+- No silent mutation.
+- No authority leakage.
+- No unverified governance.
+
 Step-0 replay court baseline:
 
 ```text
