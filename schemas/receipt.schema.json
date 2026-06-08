@@ -1,0 +1,19 @@
+{
+  "title": "IPE Receipt Manifest",
+  "type": "object",
+  "required": ["receipt_id", "document_title", "document_class", "issuing_institution", "source_url", "retrieval_timestamp", "access_method", "hashes", "fragments", "privacy_review", "orphaned_claims"],
+  "properties": {
+    "receipt_id": {"type": "string"},
+    "document_title": {"type": "string"},
+    "document_class": {"type": "string", "enum": ["statute", "charter", "executive_order", "regulation", "ordinance", "policy", "strategic_plan", "mission_statement", "website_copy", "agenda", "minutes", "report", "dataset", "other"]},
+    "issuing_institution": {"type": "string"},
+    "source_url": {"type": "string"},
+    "retrieval_timestamp": {"type": "string"},
+    "access_method": {"type": "string", "enum": ["public_web", "public_records_request", "official_archive", "authorized_api", "physical_inspection", "manual_upload", "other_lawful_access"]},
+    "hashes": {"type": "object", "required": ["sha256"], "properties": {"sha256": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"}}},
+    "fragments": {"type": "array", "minItems": 1, "items": {"type": "object", "required": ["fragment_id", "locator", "text"], "properties": {"fragment_id": {"type": "string"}, "locator": {"type": "string"}, "text": {"type": "string"}}}},
+    "privacy_review": {"type": "object", "required": ["private_data_detected", "review_status"], "properties": {"private_data_detected": {"type": "boolean"}, "review_status": {"type": "string", "enum": ["passed", "redaction_required", "excluded"]}, "redaction_method": {"type": "string"}, "notes": {"type": "string"}}},
+    "claims": {"type": "array"},
+    "orphaned_claims": {"type": "integer", "minimum": 0, "maximum": 0}
+  }
+}
