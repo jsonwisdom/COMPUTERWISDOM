@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Caseflow State Machine Schema v0.2",
+  "description": "Constitutional Game Stack - Caseflow State Machine Definition",
+  "type": "object",
+  "properties": {
+    "case_id": {
+      "type": "string",
+      "description": "Unique case identifier"
+    },
+    "current_state": {
+      "type": "string",
+      "enum": [
+        "DRAFT",
+        "UNDER_REVIEW",
+        "GOVERNANCE_CHECK",
+        "APPROVED",
+        "IN_PROGRESS",
+        "MERGED",
+        "REJECTED",
+        "REPLAY",
+        "DISPUTED"
+      ]
+    },
+    "history": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "from_state": {
+            "type": "string"
+          },
+          "to_state": {
+            "type": "string"
+          },
+          "trigger": {
+            "type": "string"
+          },
+          "actor": {
+            "type": "string",
+            "enum": [
+              "HUMAN",
+              "AGENT",
+              "GROK_WITNESS",
+              "OBSERVER",
+              "MEMBRANE"
+            ]
+          },
+          "witness_hash": {
+            "type": "string"
+          },
+          "receipt": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "timestamp",
+          "from_state",
+          "to_state",
+          "trigger"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "transitions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "from": {
+            "type": "string"
+          },
+          "to": {
+            "type": "string"
+          },
+          "allowed_actors": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "required_checks": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "membrane_hold": {
+            "type": "boolean",
+            "default": false
+          }
+        },
+        "required": [
+          "from",
+          "to"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "priority": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "replay_score": {
+          "type": "integer"
+        },
+        "authority_level": {
+          "type": "integer",
+          "maximum": 0
+        },
+        "boundary_honest": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "required": [
+    "case_id",
+    "current_state"
+  ],
+  "additionalProperties": false
+}

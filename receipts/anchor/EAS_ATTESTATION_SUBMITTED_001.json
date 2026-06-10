@@ -1,0 +1,55 @@
+{
+  "spec": "EAS_ATTESTATION_SUBMITTED_V1",
+  "receipt_id": "EAS_ATTESTATION_SUBMITTED_001",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "status": "EAS_ATTESTATION_SUBMITTED",
+  "network": "base-sepolia",
+  "timestamp": "2026-05-16T02:55:36Z",
+  "schema_uid": "0x244c84adef25091c97090e6e3f0b1bb932fc7022b913b7546406f4213a202cab",
+  "transaction_hash": "0x4cef493d67d8744d2458fd82c169aa872b14cfe2ecaf13f03329b57bd93acc35",
+  "attestation_uid": "0x23b3b97514fa232cfdbcdee7a5031ff11a5fcd36aa874a5f4067805cd0ad6c84",
+  "attester": "0x1dB2C056c7DeCD9f9fC574692b05F62aE34Fb8b5",
+  "anchorInputSha256": "0x102e70b50594e412b8f15d311cc4e04f5126a4405fb3b1d02652e3d11afeaf5b",
+  "subject": "COMPUTERWISDOM_CANON_CHAIN_CI_VERIFIED_PASS_001",
+  "attested_fields": {
+    "subject": "COMPUTERWISDOM_CANON_CHAIN_CI_VERIFIED_PASS_001",
+    "anchorInputSha256": "0x102e70b50594e412b8f15d311cc4e04f5126a4405fb3b1d02652e3d11afeaf5b",
+    "repo": "jsonwisdom/COMPUTERWISDOM",
+    "releaseTag": "cw-anchor-ready-v1",
+    "sourceReceiptPath": "receipts/anchor/EAS_ATTESTATION_PAYLOAD_001.json",
+    "ciRunId": "25956278044",
+    "artifactId": "7031618397",
+    "scope": "GitHub receipt chain, CI verifier PASS, and anchor payload hash only",
+    "antiClaims": "[\"not Microsoft endorsed\",\"not global legitimacy\",\"not semantic truth beyond declared verifier scope\",\"not ENS anchored yet\"]"
+  },
+  "source_receipts": {
+    "schema_and_entries": "receipts/anchor/EAS_SCHEMA_AND_ATTESTATION_ENTRIES_001.json",
+    "eas_payload": "receipts/anchor/EAS_ATTESTATION_PAYLOAD_001.json",
+    "anchor_payload_hash": "receipts/anchor/ANCHOR_PAYLOAD_HASH_RECEIPT_001.json",
+    "ci_verified_pass": "receipts/continuity/CI_VERIFIED_PASS_RECEIPT_001.json"
+  },
+  "anchor_status": {
+    "schema_prepared": true,
+    "schema_registered": true,
+    "attestation_submitted": true,
+    "attestation_uid_captured": true,
+    "ens_resolved": false,
+    "mainnet_anchor": false
+  },
+  "boundary": {
+    "does_claim": [
+      "EAS schema UID captured",
+      "Base Sepolia transaction hash captured",
+      "EAS attestation UID captured",
+      "anchor input witnessed by EAS attestation on Base Sepolia"
+    ],
+    "does_not_claim": [
+      "ENS text record exists",
+      "Microsoft endorsement",
+      "global legitimacy",
+      "mainnet finality",
+      "semantic truth beyond declared verifier scope"
+    ]
+  },
+  "next_transition": "OPTIONAL_ENS_TEXT_RECORD_POINTER"
+}

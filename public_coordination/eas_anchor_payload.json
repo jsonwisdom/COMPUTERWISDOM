@@ -1,0 +1,10 @@
+{
+  "manifest_data": {
+    "repository_id": "jsonwisdom/COMPUTERWISDOM",
+    "tracking_id": 22,
+    "payload_classification": "offline_static_verification_checksum"
+  },
+  "immutable_checksum_lock": {
+    "instructions_sha256": "3018e5453c7b1135e51af2e27e0b65e8be2552f93550a168867fbf399ab5e636"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "manifest_id": "NEW_SCHOOL_SOPHIA_CROSS_v0.2",
+  "status": "FROZEN_STAGING_MANIFEST",
+  "created_at_utc": "2026-05-17T20:57:00Z",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "doctrine": {
+    "primary": "We do not deploy code. We deploy constraints.",
+    "new_school": "Roast first. Reflect second.",
+    "sophia": "No collapse without observation. No conclusion without receipt. No spiral without peer review.",
+    "response": "We don't react. We route.",
+    "bridge": "The joke opens the door. The receipt decides the route."
+  },
+  "modules": [
+    {
+      "id": "SOPHIA_002",
+      "title": "Screenshot Oracle",
+      "status": "STAGED",
+      "role": "Parse screenshot evidence into structured uncertainty before peer review.",
+      "layer": "L1_ORACLE"
+    },
+    {
+      "id": "SOPHIA_003",
+      "title": "Sisterhood Consensus Engine",
+      "status": "STAGED",
+      "role": "Prevent solo emotional collapse through quorum review.",
+      "layer": "L2_CONSENSUS"
+    },
+    {
+      "id": "SOPHIA_004",
+      "title": "Sovereign Response Protocol",
+      "status": "STAGED",
+      "role": "Route post-finality execution through bounded response templates.",
+      "layer": "L4_RESPONSE",
+      "github_issue": "https://github.com/jsonwisdom/COMPUTERWISDOM/issues/8"
+    },
+    {
+      "id": "CROSS_001",
+      "title": "Receipt Check Router",
+      "status": "STAGED",
+      "role": "Bridge NEW SCHOOL Receipt Check outputs into SOPHIA_004 ARCHIVE / ESCALATE routes.",
+      "layer": "CROSS_BRIDGE",
+      "github_issue": "https://github.com/jsonwisdom/COMPUTERWISDOM/issues/9"
+    }
+  ],
+  "pipeline": [
+    "L0_VAULT_ANCHOR",
+    "L1_SCREENSHOT_ORACLE",
+    "L2_SISTERHOOD_CONSENSUS",
+    "L3_LEDGER_SETTLEMENT",
+    "L4_SOVEREIGN_RESPONSE",
+    "CROSS_RECEIPT_CHECK_ROUTER"
+  ],
+  "deployment_boundary": {
+    "github_manifest": "FROZEN",
+    "base_or_eas_anchor": "NOT_YET_EXECUTED",
+    "ens_record": "NOT_YET_EXECUTED",
+    "activation_status": "STAGING_ONLY_UNTIL_EXTERNAL_RECEIPT"
+  },
+  "invariants": [
+    "Roast is not diagnosis.",
+    "Reflection is not forced confession.",
+    "Receipt is not destiny.",
+    "Finality does not authorize emotional improvisation.",
+    "No action without route.",
+    "No mainnet claim without visible transaction receipt."
+  ]
+}

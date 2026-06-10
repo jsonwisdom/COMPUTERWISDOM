@@ -1,0 +1,56 @@
+{
+  "artifact": "COMPUTERWISDOM_REPLAY_PACKET_V0_1",
+  "claim_id": "PROOF_FOR_THE_PRESIDENT_001",
+  "claim_text": "A public citizen can create a verifiable chain of evidence without requiring institutional permission.",
+  "claim_hash": "sha256:5ed8c733d8f8bd4292f139a46f98e2f09460d01c1ea4221047d4e7c3c42f0418",
+  "evidence_layers": {
+    "github_commit": "https://github.com/jsonwisdom/COMPUTERWISDOM/commit/ec4d599a117666d2b03dc0e60604d238339febee",
+    "github_issue_or_pr": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/220",
+    "base_transaction": "0xb045bc517061bf4cad1a0f7a48162953653ce62c168e50695833490c8e62f94b",
+    "eas_attestation_uid": "0x4ad74cfbeb46ef19921ceb0424dc96c05ec584738a2a93e8657d5a8c09505528",
+    "eas_schema": "0x06ded5...928d2a96",
+    "eas_created": "2026-06-03T08:34:47",
+    "eas_revoked": false,
+    "eas_revocable": false,
+    "archive_uri": "[PLACEHOLDER_IPFS_OR_ARCHIVE]"
+  },
+  "routing_layers": {
+    "zora_coin": "base:0x7443b1cc32c6a72f52ecd91df4ac2adeb058a66a (MERGED219)",
+    "x_post": "",
+    "website": "",
+    "other_routes": [
+      "https://zora.co/coin/base:0x7443b1cc32c6a72f52ecd91df4ac2adeb058a66a"
+    ]
+  },
+  "replay_steps": [
+    "1. Fetch canonical claim_text from github_commit",
+    "2. Recompute claim_hash and match",
+    "3. Verify source PR and merged file on master",
+    "4. Verify Base transaction on Base explorer",
+    "5. Verify EAS attestation UID on base.easscan.org",
+    "6. Verify archive_uri when supplied",
+    "7. Confirm semantic consistency across evidence_layers",
+    "8. Validate against failure_rules (routing non-fatal, evidence critical)"
+  ],
+  "failure_rules": {
+    "routing_failure": "non_fatal",
+    "evidence_failure": "critical",
+    "partial_evidence": "trigger_recovery"
+  },
+  "classification": {
+    "status": "ANCHORED",
+    "promotion_allowed": false,
+    "authority": false,
+    "reason": "GitHub evidence layer is populated and Base EAS attestation receipt is attached. Archive URI remains pending verified receipt. Zora MERGED219 is routing only."
+  },
+  "authority": false,
+  "survival_test": "Can an unrelated observer reconstruct the claim after the publisher, platform, and routing surfaces disappear?",
+  "canonical_rule": {
+    "coin": "routing_layer",
+    "github": "evidence_layer",
+    "hash": "verification_layer",
+    "base_tx": "timestamp_layer",
+    "eas_attestation": "base_attestation_layer",
+    "replayability": "promotion_gate"
+  }
+}

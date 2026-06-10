@@ -1,0 +1,13 @@
+{
+  "receipt_type": "ZORA_FALLBACK_RECEIPT",
+  "sale_id": "SALE-VERIFY-0001",
+  "zora_status": "UNAVAILABLE",
+  "fallback_path": "EAS_OR_GITHUB_RECEIPT_ONLY",
+  "payment_status": "NOT_ROUTED",
+  "claim_boundary": "No Zora mint or collection claim is made.",
+  "next_allowed_actions": [
+    "EAS attestation",
+    "GitHub receipt anchor",
+    "Base transaction receipt later"
+  ]
+}

@@ -1,0 +1,41 @@
+{
+  "receipt_id": "ART_OF_WAR_2026_PUBLIC_POINTER_RESOLVER_V1",
+  "status": "PUBLIC_PATH_RESOLVER_COMMITTED",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T03:45:00Z",
+  "purpose": "Resolve public-path ambiguity reported by Grok for the Art of War 2026 portal pointer mutation receipt.",
+  "resolved_targets": {
+    "portal_pointer_mutation_receipt": {
+      "file": "receipts/portal_art_of_war_2026_pointer_mutation_receipt_2026_05_19.json",
+      "commit": "20b5fd8346b0d92ed5de5a81001f20a1c6a22e1c",
+      "status": "PRESENT_ON_MASTER_BY_GITHUB_FETCH"
+    },
+    "grok_ultimate_review": {
+      "file": "receipts/counters/grok_ultimate_chess_court_art_of_war_2026_review_2026_05_19.json",
+      "commit": "c51e0f39e3c74373cfa87041c417da138e18aaae",
+      "status": "PRESENT_ON_MASTER_BY_GITHUB_FETCH"
+    },
+    "portal_pointer_archive_counter_review": {
+      "file": "receipts/counters/grok_art_of_war_2026_archive_counter_review_2026_05_19.json",
+      "commit": "878bbd0ecc0a32e396cceac67e555a2d98386b4a",
+      "status": "COUNTER_REVIEW_ARCHIVED_PARTIAL_404_FLAGGED"
+    },
+    "portal_html_update": {
+      "file": "portal.html",
+      "commit": "ad7a6dd5e0ff35ca43302352800d4107a5a6405f",
+      "status": "PORTAL_POINTER_ADDED"
+    }
+  },
+  "governance_boundaries": {
+    "public_badge_granted": false,
+    "portal_html_mutated_without_receipt": false,
+    "onchain_claimed_live": false,
+    "zora_treated_as_proof": false,
+    "military_authority_claimed": false,
+    "legal_authority_claimed": false,
+    "official_government_claim": false
+  },
+  "daily_ledger_candidate_ready": true,
+  "recommended_next_artifact": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_19_candidate.json",
+  "canon_line": "Reported 404 resolved by a public pointer resolver. Candidate doctrine remains candidate-only. Receipts decide what moves."
+}

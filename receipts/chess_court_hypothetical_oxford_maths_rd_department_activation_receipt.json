@@ -1,0 +1,32 @@
+{
+  "receipt_id": "HYPOTHETICAL_OXFORD_MATHS_COMPUTE_WISDOM_RD_CHESS_DEPARTMENT_ACTIVATION_RECEIPT_V1",
+  "status": "CANDIDATE_DEPARTMENT_ACTIVATED",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T02:45:00Z",
+  "artifact": {
+    "file": "services/chess-court/hypothetical_oxford_maths_compute_wisdom_rd_chess_department_candidate.md",
+    "commit": "c61f11347026b19880b8f65aaae98156f64ba950"
+  },
+  "activation_scope": {
+    "department_type": "hypothetical_r_and_d_chess_department_of_knowledge",
+    "game_type": "5th_dimensional_chess",
+    "purpose": "gamified proof discipline, counterplay, claim tagging, atomic receipt recursion, and knowledge review"
+  },
+  "boundaries": {
+    "official_oxford_affiliation_claimed": false,
+    "oxford_chess_club_affiliation_claimed": false,
+    "public_badge_granted": false,
+    "portal_html_mutated": false,
+    "onchain_claimed_live": false,
+    "legal_court_claim": false
+  },
+  "board_actors": [
+    "Jay",
+    "Grok",
+    "Deep Seek",
+    "Logic Boy",
+    "Oxford Chess Club as HELD archetype",
+    "Hypothetical Oxford Maths as HELD rigor archetype"
+  ],
+  "canon_line": "Hypothetical Oxford Maths supplies rigor as an archetype. Computer Wisdom supplies receipts. Chess Court supplies the board. No piece moves without evidence."
+}

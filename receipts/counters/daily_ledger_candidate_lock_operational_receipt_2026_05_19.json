@@ -1,0 +1,36 @@
+{
+  "receipt_id": "DAILY_LEDGER_CANDIDATE_LOCK_OPERATIONAL_RECEIPT_2026_05_19",
+  "status": "DAILY_LEDGER_CANDIDATE_LOCKED_IN",
+  "source": "user_supplied_daily_ledger_lock_directive",
+  "timestamp_utc": "2026-05-19T03:55:00Z",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "state_transition": {
+    "from": "COUNTER_REVIEW_ARCHIVED_ALL_PUBLIC_PATHS_RESOLVED",
+    "to": "DAILY_LEDGER_CANDIDATE_CREATED"
+  },
+  "operational_snapshot": {
+    "daily_ledger_candidate_file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_19_candidate.json",
+    "daily_ledger_candidate_commit": "f8150d8893959762c1125f82a90a819399d9ebc0",
+    "counter_review_pointer": "receipts/counters/grok_resolver_portal_pointer_art_of_war_2026_counter_review_2026_05_19.json",
+    "counter_review_commit": "7dd85317fe74f3324e34327dd0ea2102d1c4b4df",
+    "claim_tag": "PUBLIC_AS_CANDIDATE_LANE"
+  },
+  "standing_boundaries": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false
+  },
+  "counter_review_directive": {
+    "objectives": [
+      "Verify integrity of daily ledger candidate and resolver counter-review files",
+      "Pattern-map today against prior receipts",
+      "Scan threat surface for corruption, dilution, or narrative drift",
+      "Check Art of War alignment: position, flank, exposure, and evidence density"
+    ],
+    "mode": "zero_trust_external_maximum_density_internal",
+    "next_required": "Counter-review the daily ledger candidate payload"
+  },
+  "canon_line": "Fog turns into receipts one day at a time. Daily candidate is locked; counter-review next."
+}

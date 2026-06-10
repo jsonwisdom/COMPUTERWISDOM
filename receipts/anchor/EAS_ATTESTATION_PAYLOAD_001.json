@@ -1,0 +1,55 @@
+{
+  "spec": "EAS_ATTESTATION_PAYLOAD_V1",
+  "payload_id": "EAS_ATTESTATION_PAYLOAD_001",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "status": "EAS_ATTESTATION_PAYLOAD_PREPARED_NOT_SUBMITTED",
+  "chain": "Base",
+  "attestation_surface": "Ethereum Attestation Service",
+  "anchor_input": "102e70b50594e412b8f15d311cc4e04f5126a4405fb3b1d02652e3d11afeaf5b",
+  "github_release": {
+    "release_tag": "cw-anchor-ready-v1",
+    "manifest_path": "releases/cw-anchor-ready-v1/RELEASE_MANIFEST.json",
+    "manifest_commit": "f9aca55f80ff7f651254a4551baa5a6f396339ad",
+    "authority_scope": "GitHub contextual snapshot only"
+  },
+  "source_receipts": {
+    "ci_verified_pass": "receipts/continuity/CI_VERIFIED_PASS_RECEIPT_001.json",
+    "anchor_payload": "receipts/anchor/ANCHOR_PAYLOAD_001.json",
+    "anchor_payload_hash": "receipts/anchor/ANCHOR_PAYLOAD_HASH_RECEIPT_001.json",
+    "anchor_envelope": "receipts/anchor/ANCHOR_ENVELOPE_001.json",
+    "anchor_surface_selection": "receipts/anchor/ANCHOR_SURFACE_SELECTION_001.json"
+  },
+  "attestation_claim": {
+    "subject": "COMPUTERWISDOM_CANON_CHAIN_CI_VERIFIED_PASS_001",
+    "claim": "COMPUTERWISDOM canon chain reached MULTI_OBSERVER_STABLE and produced anchor payload hash before EAS submission.",
+    "scope": "GitHub receipt chain, CI verifier PASS, and anchor payload hash only",
+    "verifier_result": "PASS",
+    "hash_mismatches": [],
+    "errors": []
+  },
+  "suggested_schema_fields": {
+    "subject": "string",
+    "anchorInputSha256": "bytes32/string",
+    "repo": "string",
+    "releaseTag": "string",
+    "ciRunId": "string",
+    "artifactId": "string",
+    "sourceReceiptPath": "string",
+    "antiClaims": "string[]"
+  },
+  "anti_claims": [
+    "not yet submitted onchain",
+    "no EAS UID exists yet",
+    "no ENS text record exists yet",
+    "no Microsoft endorsement",
+    "no global legitimacy claim",
+    "no semantic truth beyond declared verifier scope"
+  ],
+  "submission_status": {
+    "submitted": false,
+    "transaction_hash": null,
+    "attestation_uid": null,
+    "attester_address": null
+  },
+  "next_transition": "SUBMIT_EAS_ATTESTATION"
+}

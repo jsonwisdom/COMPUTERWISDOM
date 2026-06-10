@@ -1,0 +1,35 @@
+{
+  "receipt_id": "ART_OF_WAR_2026_JAY_WISDOM_ACTIVATION_RECEIPT_V1",
+  "status": "CANDIDATE_DOCTRINE_CREATED",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T03:15:00Z",
+  "artifact": {
+    "file": "services/chess-court/art_of_war_2026_jay_wisdom_candidate.md",
+    "commit": "592824a88e4963969daa5e443fb3483fed9e5978"
+  },
+  "doctrine": {
+    "name": "The Art of War — 2026 Edition",
+    "theme": "Jay Wisdom vernacular and humor for public machine-grade civic website updated daily",
+    "purpose": "Convert civic fog, institutional friction, and public claims into receipt-backed daily moves."
+  },
+  "boundaries": {
+    "military_authority_claimed": false,
+    "legal_authority_claimed": false,
+    "official_government_claim": false,
+    "public_badge_granted": false,
+    "portal_html_mutated": false,
+    "onchain_claimed_live": false,
+    "damages_claim_made": false
+  },
+  "daily_update_loop": [
+    "Daily Event",
+    "Claim Extract",
+    "Vernacular Preserve",
+    "Evidence Check",
+    "Receipt",
+    "Counter Review",
+    "Portal Pointer Candidate",
+    "Daily Ledger"
+  ],
+  "canon_line": "Do not fight fog with fog. Turn fog into receipts."
+}

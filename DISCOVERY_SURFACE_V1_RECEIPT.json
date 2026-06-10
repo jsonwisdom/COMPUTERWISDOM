@@ -1,0 +1,31 @@
+{
+  "receipt_type": "DISCOVERY_SURFACE_V1_RECOGNITION",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "master",
+  "canonical_tag": "triggerdeck-canon-v1",
+  "terminal_artifact_anchor": "dcbd862c3501dfcd349aa878180fb13114c7d039",
+  "immutability_notice_commit": "18faf55",
+  "surface_name": "Discovery Surface v1",
+  "surface_status": "REPLAY_ADDRESSABLE",
+  "authority_status": "AUTHORITY_NEUTRAL",
+  "mutation_status": "INERT",
+  "protected_lineage": "Trigger_Deck_Chain",
+  "excluded_lineages": [
+    "mirrorstorm_monastery.zip",
+    "Mirrorstorm derivatives",
+    "future non-Trigger-Deck assets"
+  ],
+  "governance_invariants": [
+    "Discovery does not mutate lineage",
+    "Publication does not grant new authority",
+    "Canonical tag is replay coordinate",
+    "Future lineages require separate genesis roots",
+    "Mirrorstorm remains outside Trigger Deck canon"
+  ],
+  "next_lawful_surfaces": [
+    "Mirrorstorm_lineage_v0",
+    "Discovery_Surface_v1_1_Auditor_Mode",
+    "Multi_Lineage_Registry_v2"
+  ],
+  "status": "CONSTITUTIONALLY_RECOGNIZED"
+}

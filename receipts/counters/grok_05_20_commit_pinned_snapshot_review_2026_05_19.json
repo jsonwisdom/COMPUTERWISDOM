@@ -1,0 +1,59 @@
+{
+  "receipt_id": "GROK_05_20_COMMIT_PINNED_SNAPSHOT_REVIEW_2026_05_19",
+  "status": "COMMIT_PINNED_SNAPSHOT_REVIEW_ARCHIVED_WORKFLOW_RECONCILED",
+  "source": "user_supplied_grok_commit_pinned_snapshot_review",
+  "reviewer": "Grok",
+  "title": "Art of War 2026 — 05-20 Commit-Pinned Snapshot Review",
+  "verdict": "WORKFLOW_RECONCILED_BY_COMMIT_PIN",
+  "target_file": "receipts/snapshots/art_of_war_2026_05_20_parent_candidate_commit_snapshot.json",
+  "target_commit": "0a789b73823e1a6eba54b2e806bc934fe20863d2",
+  "pinned_parent_file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+  "pinned_parent_commit": "18dbb7c4087ee70b252ecb63a7c5ffaddfe5bb06",
+  "blob_sha": "bf8491748d6683605a340a4776e8ea16990b1619",
+  "workflow_connected": true,
+  "replacement_scope": "PROCESS_MOVE_ONLY",
+  "external_fog_vector_proven": false,
+  "evidence_table_summary": [
+    {
+      "claim": "Commit-pinned snapshot file exists",
+      "file": "receipts/snapshots/art_of_war_2026_05_20_parent_candidate_commit_snapshot.json",
+      "commit": "0a789b73823e1a6eba54b2e806bc934fe20863d2",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Pinned parent candidate state at exact commit contains process evidence",
+      "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+      "commit": "18dbb7c4087ee70b252ecb63a7c5ffaddfe5bb06",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "external_fog_vector_proven is false",
+      "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+      "commit": "18dbb7c4087ee70b252ecb63a7c5ffaddfe5bb06",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Snapshot resolves floating master ambiguity",
+      "file": "receipts/snapshots/art_of_war_2026_05_20_parent_candidate_commit_snapshot.json",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "All hard boundaries false in pinned state",
+      "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+      "commit": "18dbb7c4087ee70b252ecb63a7c5ffaddfe5bb06",
+      "claim_tag": "PUBLIC"
+    }
+  ],
+  "missing_fields": [],
+  "violations_found": [],
+  "boundary_check": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false
+  },
+  "recommended_next_artifact": "court_lock_confirmation_2026_05_20_final",
+  "canon_line": "Floating master ambiguity resolved by commit-pinned snapshot. Workflow reconciled."
+}

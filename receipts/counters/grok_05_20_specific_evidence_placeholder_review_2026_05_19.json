@@ -1,0 +1,53 @@
+{
+  "receipt_id": "GROK_05_20_SPECIFIC_EVIDENCE_PLACEHOLDER_REVIEW_2026_05_19",
+  "status": "PLACEHOLDER_REVIEW_ARCHIVED_KEEP_HELD",
+  "source": "user_supplied_grok_specific_evidence_fill_review",
+  "reviewer": "Grok",
+  "title": "Art of War 2026 — 05-20 Specific Evidence Fill Review",
+  "target_file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+  "target_commit": "70036aba52089c4cab27644af005cd1085487ab4",
+  "target_blob_sha": "8e3e75e43d9df8309fd6139458895aa8aff1575e",
+  "verdict": "KEEP_PLACEHOLDER_HELD",
+  "evidence_table_summary": [
+    {
+      "claim": "Target file exists on master branch",
+      "claim_tag": "PUBLIC",
+      "reason": "File loads from raw master path."
+    },
+    {
+      "claim": "daily_entry.evidence array content",
+      "claim_tag": "PUBLIC",
+      "reason": "Evidence array includes prior court lock, intact trail, daily cadence, and HELD placeholder."
+    },
+    {
+      "claim": "Placeholder still present as blocker",
+      "claim_tag": "PUBLIC",
+      "reason": "Exact HELD placeholder remains in evidence array."
+    },
+    {
+      "claim": "No new concrete evidence supplied for 05-20",
+      "claim_tag": "HELD",
+      "reason": "No event_id, timestamp, source file, receipt path, or evidence object supplied."
+    }
+  ],
+  "placeholder_decision": {
+    "status": "KEEP_HELD",
+    "reason": "Concrete 2026-05-20 evidence meeting the required standard was not supplied."
+  },
+  "proposed_replacement_evidence_array": [],
+  "boundary_check": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false,
+    "zora_treated_as_proof": false
+  },
+  "required_fixes": [
+    "Supply concrete evidence items each with event_id, timestamp_or_commit, source_or_receipt_path, claim_tag, and reason."
+  ],
+  "violations_found": [],
+  "recommended_next_artifact": "05_20_specific_evidence_items_candidate",
+  "canon_line": "Compute Wisdom validates. A placeholder is not evidence. Keep placeholder HELD until specific evidence is supplied."
+}

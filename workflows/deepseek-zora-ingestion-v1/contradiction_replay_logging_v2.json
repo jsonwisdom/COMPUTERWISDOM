@@ -1,0 +1,52 @@
+{
+  "schema": "CONTRADICTION_REPLAY_LOG_V2",
+  "schema_version": "2026-05",
+  "log_type": "deterministic_contradiction_scan",
+  "deterministic_input_fields": [
+    "input_artifact_hash",
+    "threshold_version",
+    "scan_timestamp_utc",
+    "scanner_version",
+    "prior_merkle_root"
+  ],
+  "contradiction_entry_schema": {
+    "entry_id": "string",
+    "timestamp_utc": "string",
+    "input_artifact_hash": "PENDING_HASH",
+    "detected_contradictions": "array",
+    "contradiction_type": "enum",
+    "resolution": "enum",
+    "resolution_receipt_digest": "string or null",
+    "log_hash": "string"
+  },
+  "contradiction_type_enum": [
+    "SCHEMA_DRIFT",
+    "RECEIPT_MISMATCH",
+    "REPLAY_FAILURE",
+    "STATE_TRANSITION_INVALID",
+    "METAPHOR_LEAKAGE",
+    "PUBLICATION_OVERCLAIM"
+  ],
+  "resolution_enum": [
+    "REJECTED",
+    "HELD_PENDING_RECEIPT",
+    "SUPERSEDED",
+    "CANON_AFTER_REPLAY"
+  ],
+  "threshold_version": "v2.1",
+  "replay_log_entry_hash_rule": "SHA256(concat(all deterministic_input_fields + contradiction_details))",
+  "genesis_condition": "Empty vault with GENESIS_ROOT",
+  "canon_requirement": "No entry reaches CANON without full replay confirmation and matching merkle_root chain",
+  "example_entry": {
+    "entry_id": "log-001",
+    "timestamp_utc": "PENDING",
+    "input_artifact_hash": "PENDING_HASH",
+    "detected_contradictions": [
+      "SCHEMA_DRIFT"
+    ],
+    "contradiction_type": "SCHEMA_DRIFT",
+    "resolution": "HELD_PENDING_RECEIPT",
+    "resolution_receipt_digest": null,
+    "log_hash": "PENDING_HASH"
+  }
+}

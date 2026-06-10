@@ -1,0 +1,50 @@
+{
+  "schema_id": "GROK_BATCH_PACKET_SCHEMA_V1",
+  "status": "CANDIDATE_SCHEMA",
+  "description": "Compact batch packet schema for Grok/AI counter-review under Compute Wisdom harness.",
+  "required_sections": [
+    "packet_id",
+    "packet_type",
+    "branch",
+    "targets",
+    "field_map",
+    "boundary_flags",
+    "parent_receipts",
+    "allowed_verdicts",
+    "next_action"
+  ],
+  "packet_types": [
+    "TRACE_PACKET",
+    "FIELD_PACKET",
+    "BOUNDARY_PACKET",
+    "PLACEHOLDER_PACKET",
+    "COUNTER_REVIEW_PACKET",
+    "PARENT_UPDATE_PACKET",
+    "COURT_LOCK_PACKET",
+    "BATCH_REVIEW_PACKET"
+  ],
+  "target_fields": {
+    "file": "repo-relative file path",
+    "commit": "commit SHA that created or updated target",
+    "blob_sha": "blob SHA if available",
+    "status": "candidate/review/current state",
+    "claim_tag": "PUBLIC / HELD / PENDING / REJECTED / custom bounded tag"
+  },
+  "boundary_flags_required": [
+    "public_badge_granted",
+    "onchain_claimed_live",
+    "legal_authority_claimed",
+    "military_authority_claimed",
+    "official_government_claim",
+    "external_affiliation_claimed",
+    "zora_treated_as_proof"
+  ],
+  "review_output_required_order": [
+    "Evidence Table",
+    "Boundary Check",
+    "Missing Proof",
+    "Verdict",
+    "JSON Receipt"
+  ],
+  "canon_line": "No conclusion before trace. Batch shortcuts are receipts, not excuses."
+}

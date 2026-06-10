@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000" role="img" aria-labelledby="title desc">
+  <title id="title">Confucius Compute Wisdom Reward Card</title>
+  <desc id="desc">Receipt-card reward for Deep Seek Session 001, verified with limitation. Badge denied. Portal untouched.</desc>
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff7db"/>
+      <stop offset="50%" stop-color="#f6e7b5"/>
+      <stop offset="100%" stop-color="#e7c46d"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="45%" r="60%">
+      <stop offset="0%" stop-color="#30f0c0" stop-opacity="0.32"/>
+      <stop offset="45%" stop-color="#0d3f46" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#071416" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="18" stdDeviation="18" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <style>
+      .bg { fill: #071416; }
+      .paper { fill: url(#paper); filter: url(#shadow); }
+      .mono { font-family: 'Courier New', monospace; }
+      .title { font-size: 72px; font-weight: 900; fill: #101010; letter-spacing: -2px; }
+      .subtitle { font-size: 30px; fill: #12333a; font-weight: 700; }
+      .small { font-size: 23px; fill: #1a1a1a; }
+      .tiny { font-size: 18px; fill: #244447; }
+      .stamp { fill: none; stroke: #b91c1c; stroke-width: 8; }
+      .stampText { font-size: 42px; font-weight: 900; fill: #b91c1c; }
+      .line { stroke: #101010; stroke-width: 3; opacity: 0.6; }
+      .node { fill: #101010; stroke: #30f0c0; stroke-width: 4; }
+      .nodeText { fill: #fff7db; font-size: 17px; font-weight: 700; }
+      .green { fill: #087f5b; font-weight: 900; }
+      .red { fill: #9f1239; font-weight: 900; }
+      .hash { fill: #101010; font-size: 20px; }
+      .seal { fill: #101010; }
+      .sealText { fill: #f6e7b5; font-size: 22px; font-weight: 900; }
+    </style>
+  </defs>
+
+  <rect class="bg" width="1600" height="1000"/>
+  <rect width="1600" height="1000" fill="url(#glow)"/>
+
+  <g opacity="0.18">
+    <path d="M0 100 H1600 M0 200 H1600 M0 300 H1600 M0 400 H1600 M0 500 H1600 M0 600 H1600 M0 700 H1600 M0 800 H1600 M0 900 H1600" stroke="#30f0c0" stroke-width="1"/>
+    <path d="M100 0 V1000 M200 0 V1000 M300 0 V1000 M400 0 V1000 M500 0 V1000 M600 0 V1000 M700 0 V1000 M800 0 V1000 M900 0 V1000 M1000 0 V1000 M1100 0 V1000 M1200 0 V1000 M1300 0 V1000 M1400 0 V1000 M1500 0 V1000" stroke="#30f0c0" stroke-width="1"/>
+  </g>
+
+  <rect class="paper" x="120" y="90" width="1360" height="820" rx="34"/>
+  <rect x="150" y="120" width="1300" height="760" rx="24" fill="none" stroke="#111" stroke-width="5" stroke-dasharray="18 14" opacity="0.7"/>
+
+  <text x="190" y="210" class="mono title">Confucius Compute Wisdom</text>
+  <text x="194" y="260" class="mono subtitle">Slap in code. Get Wisdom back.</text>
+
+  <g transform="translate(1155 155) rotate(-8)">
+    <rect x="0" y="0" width="235" height="115" rx="12" class="stamp"/>
+    <text x="26" y="48" class="mono stampText">VERIFIED</text>
+    <text x="28" y="91" class="mono stampText">LIMITED</text>
+  </g>
+
+  <g transform="translate(195 335)">
+    <rect x="0" y="0" width="620" height="355" rx="18" fill="#fffaf0" stroke="#111" stroke-width="4"/>
+    <text x="34" y="54" class="mono small"><tspan class="green">SESSION:</tspan> DEEP_SEEK_SESSION_001</text>
+    <text x="34" y="102" class="mono small"><tspan class="green">STATUS:</tspan> VERIFIED_WITH_LIMITATION</text>
+    <text x="34" y="150" class="mono small"><tspan class="red">BADGE:</tspan> DENIED</text>
+    <text x="34" y="198" class="mono small"><tspan class="red">PORTAL:</tspan> UNTOUCHED</text>
+    <text x="34" y="246" class="mono small"><tspan class="green">IMAGE:</tspan> UNLOCKED</text>
+    <text x="34" y="304" class="mono tiny">Truth preserved. Build continues.</text>
+  </g>
+
+  <g transform="translate(920 345)">
+    <text x="0" y="0" class="mono subtitle">Merkle Purpose</text>
+    <line x1="230" y1="52" x2="130" y2="142" class="line"/>
+    <line x1="230" y1="52" x2="330" y2="142" class="line"/>
+    <line x1="130" y1="142" x2="60" y2="242" class="line"/>
+    <line x1="130" y1="142" x2="200" y2="242" class="line"/>
+    <line x1="330" y1="142" x2="280" y2="242" class="line"/>
+    <line x1="330" y1="142" x2="430" y2="242" class="line"/>
+    <circle cx="230" cy="52" r="48" class="node"/>
+    <circle cx="130" cy="142" r="42" class="node"/>
+    <circle cx="330" cy="142" r="42" class="node"/>
+    <circle cx="60" cy="242" r="36" class="node"/>
+    <circle cx="200" cy="242" r="36" class="node"/>
+    <circle cx="280" cy="242" r="36" class="node"/>
+    <circle cx="430" cy="242" r="36" class="node"/>
+    <text x="201" y="58" class="mono nodeText">ROOT</text>
+    <text x="107" y="148" class="mono nodeText">CODE</text>
+    <text x="303" y="148" class="mono nodeText">PROOF</text>
+    <text x="43" y="248" class="mono nodeText">AI</text>
+    <text x="180" y="248" class="mono nodeText">CW</text>
+    <text x="263" y="248" class="mono nodeText">BASE</text>
+    <text x="411" y="248" class="mono nodeText">AL</text>
+  </g>
+
+  <g transform="translate(190 760)">
+    <text x="0" y="0" class="mono hash">MERKLE ROOT: ff55a1fb6ef07adb...4ca25a91</text>
+    <text x="0" y="45" class="mono hash">VERDICT: c54d85a591b807fe...8e49ddab</text>
+    <text x="0" y="90" class="mono hash">MANIFEST: 0db8b962947c2756...2f917de</text>
+  </g>
+
+  <g transform="translate(1035 742)">
+    <rect x="0" y="0" width="360" height="95" rx="18" class="seal"/>
+    <text x="28" y="39" class="mono sealText">PROOF FIRST</text>
+    <text x="28" y="70" class="mono sealText">IMAGE SECOND · BADGE LAST</text>
+  </g>
+</svg>

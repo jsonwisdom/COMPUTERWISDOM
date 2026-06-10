@@ -1,0 +1,25 @@
+{
+  "spec": "GITHUB_RELEASE_MANIFEST_V1",
+  "release_tag": "cw-anchor-ready-v1",
+  "release_state": "REPLAY_STABLE_PRE_ANCHOR",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "authority_scope": "GitHub contextual snapshot only",
+  "anchor_input": "102e70b50594e412b8f15d311cc4e04f5126a4405fb3b1d02652e3d11afeaf5b",
+  "continuity_surface": "MULTI_OBSERVER_STABLE",
+  "anchor_status": "NOT_SUBMITTED",
+  "bound_receipts": [
+    "receipts/continuity/CI_VERIFIED_PASS_RECEIPT_001.json",
+    "receipts/anchor/ANCHOR_PAYLOAD_001.json",
+    "receipts/anchor/ANCHOR_PAYLOAD_HASH_RECEIPT_001.json",
+    "receipts/anchor/ANCHOR_ENVELOPE_001.json",
+    "receipts/anchor/ANCHOR_SURFACE_SELECTION_001.json"
+  ],
+  "anti_claims": [
+    "not onchain anchored",
+    "not EAS attested",
+    "not ENS anchored",
+    "not Microsoft endorsed",
+    "not global legitimacy"
+  ],
+  "next_transition": "CREATE_GITHUB_RELEASE_TAG"
+}

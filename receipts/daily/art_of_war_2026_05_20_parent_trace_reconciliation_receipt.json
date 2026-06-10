@@ -1,0 +1,40 @@
+{
+  "receipt_id": "ART_OF_WAR_2026_05_20_PARENT_TRACE_RECONCILIATION_RECEIPT",
+  "status": "PARENT_TRACE_RECONCILED_ON_MASTER",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-20T00:10:00Z",
+  "trigger": {
+    "file": "receipts/counters/grok_05_20_workflow_mismatch_review_2026_05_19.json",
+    "commit": "8f176366a89e54a1f5ed10384f7b7966eceadc0b",
+    "verdict": "REQUEST_CHANGES",
+    "issue": "Grok reported stale/old placeholder in parent candidate."
+  },
+  "live_parent_check": {
+    "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+    "branch": "master",
+    "commit": "18dbb7c4087ee70b252ecb63a7c5ffaddfe5bb06",
+    "blob_sha": "bf8491748d6683605a340a4776e8ea16990b1619",
+    "status": "PLACEHOLDER_REMOVED_PROCESS_EVIDENCE_PRESENT"
+  },
+  "verified_fields": {
+    "status": "DAILY_LEDGER_CANDIDATE_EVIDENCE_REPLACED_PENDING_FINAL_REVIEW",
+    "daily_entry_evidence_3": "AOW-2026-05-20-EVIDENCE-001: receipt-backed process move creating the 05-20 specific evidence intake layer; not proof of an external fog vector.",
+    "counter_review": "EVIDENCE_ITEM_READY_TO_REPLACE_PLACEHOLDER",
+    "external_fog_vector_proven": false
+  },
+  "resolution": {
+    "grok_reported_mismatch": "STALE_TRACE_OR_WRONG_SNAPSHOT",
+    "repo_state": "PARENT_UPDATED_ON_MASTER",
+    "workflow_connected": true,
+    "next_action": "Ask Grok to review reconciliation receipt and then re-evaluate workflow."
+  },
+  "boundaries": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false
+  },
+  "canon_line": "Stale trace is not a failed workflow. Reconcile against live master before rejecting the court lock."
+}

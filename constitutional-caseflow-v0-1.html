@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CONSTITUTIONAL_CASEFLOW_V0_1</title>
+  <style>
+    body { font-family: system-ui, -apple-system, Segoe UI, sans-serif; margin: 32px; color: #111; background: #fafafa; }
+    header, section, footer { background: #fff; border: 1px solid #ccc; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+    h1, h2, h3 { margin-top: 0; }
+    .stamp { display: inline-block; border: 3px solid #333; font-weight: 800; padding: 10px 14px; margin: 4px 8px 12px 0; }
+    .admissible { border-color: #14532d; color: #14532d; }
+    .low { border-color: #854d0e; color: #854d0e; }
+    .ready { border-color: #1d4ed8; color: #1d4ed8; }
+    .warning { border: 3px solid #7f1d1d; background: #fff0f0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+    th, td { border: 1px solid #bbb; padding: 8px; vertical-align: top; }
+    th { background: #eee; }
+    input, textarea, select { width: 100%; box-sizing: border-box; border: 1px solid #999; border-radius: 6px; padding: 8px; background: #fffbe6; }
+    textarea { min-height: 90px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
+    .small { font-size: 0.9rem; color: #444; }
+    .flow { font-weight: 700; line-height: 1.8; }
+  </style>
+</head>
+<body>
+  <header>
+    <span class="stamp admissible">GOBLIN COURT: ADMISSIBLE</span>
+    <span class="stamp low">CLOWN COURT: LOW ABSURDITY</span>
+    <span class="stamp ready">MEME COURT: READY</span>
+    <h1>CONSTITUTIONAL_CASEFLOW_V0_1</h1>
+    <p><strong>Artifact:</strong> CONSTITUTIONAL_CASEFLOW_V0_1</p>
+    <p><strong>Branch:</strong> feature/constitutional-caseflow-v0-1</p>
+    <p><strong>Status:</strong> READY_FOR_SPEC_AUTHORING • <strong>Authority:</strong> false</p>
+  </header>
+
+  <section>
+    <h2>Purpose</h2>
+    <p>Deterministic movement of claims through intake, classification, dispute, review, and receipt surfaces. This is a constitutional bridge, not a new court.</p>
+  </section>
+
+  <section>
+    <h2>Canonical Claim Flow</h2>
+    <p class="flow">CLAIM → INTAKE → EXISTENCE CHECK → CLASSIFICATION → DISPUTE STATE → REVIEW → RECEIPT → OPTIONAL MERGE</p>
+    <table>
+      <thead>
+        <tr><th>Stage</th><th>Description</th><th>Gate</th><th>Output Artifact</th><th>Three Courts Role</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>CLAIM</td><td>Raw input: social, news, allegation, artifact, pointer.</td><td>L0 pointer only.</td><td>Claim ID</td><td>Meme Court compresses.</td></tr>
+        <tr><td>INTAKE</td><td>Log source, timestamp, scope, and source hash when available.</td><td>Existence check required.</td><td>CASE_INTAKE_V0_1</td><td>Goblin Court flags duplicates.</td></tr>
+        <tr><td>EXISTENCE CHECK</td><td>Check whether the claim, source, receipt, or artifact already exists in the system.</td><td>Duplicate and ghost-promotion block.</td><td>Existence receipt</td><td>Goblin Court detects anomaly.</td></tr>
+        <tr><td>CLASSIFICATION</td><td>Assign L0 through L5 evidence ladder posture.</td><td>Navigator rules.</td><td>Classification tag</td><td>All courts translate.</td></tr>
+        <tr><td>DISPUTE STATE</td><td>Open objections, missing receipts, contested claims, and unresolved evidence paths.</td><td>CRO dispute merge rules.</td><td>Dispute ledger</td><td>Goblin Court demands receipts.</td></tr>
+        <tr><td>REVIEW</td><td>Attach hash, timestamp, source artifact, and contradiction notes.</td><td>Promotion gate.</td><td>Review receipt</td><td>Clown Court exposes contradiction.</td></tr>
+        <tr><td>RECEIPT</td><td>Final locked artifact, MCRO-style, public-record style, or runtime-style.</td><td>Hash required.</td><td>REPLAY_ZERO_TRUST receipt</td><td>Meme Court may publish.</td></tr>
+        <tr><td>OPTIONAL MERGE</td><td>Merge into master, ledger, or meta-substrate only after human review.</td><td>Consensus or authority=false.</td><td>Merged state</td><td>No court crowns.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>Connected Artifacts</h2>
+    <ul>
+      <li>CASE_INTAKE_V0_1</li>
+      <li>MEME_COURT_VERDICT_V0_1</li>
+      <li>CRO_DISPUTE_MERGE_SPEC</li>
+      <li>REPLAY_ZERO_TRUST_001</li>
+      <li>META_SUBSTRATE_SUBAGENT_ECONOMIES</li>
+      <li>MN_MITCHELL_MCRO_REGISTER_OF_ACTIONS_RECEIPT_V0_1_WITH_NAVIGATOR</li>
+    </ul>
+  </section>
+
+  <section class="warning">
+    <h2>Constitutional Guardrails</h2>
+    <p><strong>Authority:</strong> false. This flow never creates or delegates authority.</p>
+    <p><strong>Promotion:</strong> only on hash and receipt. No ghost moves.</p>
+    <p><strong>Courts:</strong> translation surfaces only. No adjudication.</p>
+    <p><strong>Claims:</strong> never upgraded without primary evidence or declared evidence ladder support.</p>
+    <p><strong>Merge:</strong> optional, consensus-gated, never automatic.</p>
+  </section>
+
+  <section>
+    <h2>Implementation Fields</h2>
+    <label>Claim ID<input placeholder="claim_id_pending" /></label>
+    <label>Current Stage<select><option>INTAKE</option><option>EXISTENCE CHECK</option><option>CLASSIFICATION</option><option>DISPUTE STATE</option><option>REVIEW</option><option>RECEIPT</option><option>OPTIONAL MERGE</option></select></label>
+    <label>Last Receipt Hash<input value="null_awaiting_mcro_capture" /></label>
+    <label>UTC Timestamp<input placeholder="YYYY-MM-DDTHH:MM:SSZ" /></label>
+    <label>Next Required Action<input value="LIVE_MCRO_CAPTURE" /></label>
+    <label>Notes<textarea placeholder="Bounded notes only. No authority upgrade."></textarea></label>
+  </section>
+
+  <footer>
+    <p><strong>CONSTITUTIONAL_CASEFLOW_V0_1</strong> — the missing operating system layer.</p>
+    <p class="mono small">No new court. Only deterministic bridge. No crown. Just deterministic movement.</p>
+  </footer>
+</body>
+</html>

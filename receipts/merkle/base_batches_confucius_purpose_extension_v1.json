@@ -1,0 +1,38 @@
+{
+  "receipt_id": "BASE_BATCHES_CONFUCIUS_PURPOSE_EXTENSION_V1",
+  "status": "PURPOSE_EXTENSION_CREATED",
+  "operator": "jaywisdom.base.eth",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "master",
+  "created_utc": "2026-05-18T16:30:00Z",
+  "purpose": "Merge Confucius Compute Wisdom with Base Batches as a second purpose rail for scalable utility auditing, verification, and transparent receipt grouping.",
+  "parent_purpose_key": {
+    "path": "receipts/merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json",
+    "commit": "d0abe0a0b711fae8a20694bcd4d3943e0eaf87fb",
+    "merkle_root_sha256": "ff55a1fb6ef07adbeea057aed4997a617e16ae3c80c8d18ec673c3d14ca25a91"
+  },
+  "new_purpose_leaf": {
+    "leaf_id": "BASE_BATCHES_PURPOSE_RAIL",
+    "path": "services/confucius-compute-wisdom/base_batches_purpose_candidate.md",
+    "commit": "03dbd3ef669a5290ae38369f84f6d2e097afcb4b",
+    "status": "CANDIDATE_ONLY",
+    "purpose": "Batch many Wisdom Reports or receipt events into reviewable Merkle roots for scaled utility verification."
+  },
+  "extension_claims": {
+    "utility_auditing": true,
+    "transparent_verification": true,
+    "batchable_receipts": true,
+    "base_anchor_ready_after_approval": true,
+    "onchain_claim_live": false,
+    "backend_claim_live": false,
+    "portal_html_mutated": false,
+    "public_badge_granted": false
+  },
+  "risk_notes": [
+    "This is not an onchain Base transaction.",
+    "This is not an EAS attestation.",
+    "This is not a deployed backend.",
+    "This is a GitHub receipt and candidate purpose extension only."
+  ],
+  "canon_line": "Confucius gives builders Wisdom. Base Batches give receipts scale. Verification makes it legitimate."
+}

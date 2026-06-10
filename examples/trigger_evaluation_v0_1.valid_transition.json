@@ -1,0 +1,49 @@
+{
+  "test_case": "VALID_TRANSITION_V0_1",
+  "description": "A verified receipt from an authorized domain matching a defined trigger results in TRANSITION_READY.",
+  "authority": false,
+  "watch": {
+    "watch_id": "WATCH-CYB-001",
+    "current_state": "NORMAL",
+    "current_level": 2,
+    "trigger_definitions": [
+      {
+        "trigger_id": "TRIG-CYB-01",
+        "description": "Confirmed breach of production database by verified external actor.",
+        "required_source_domains": ["cyber.local"],
+        "required_artifact_type": "incident_report",
+        "new_level": 3
+      }
+    ],
+    "authorized_source_domains": ["cyber.local", "audit.local"]
+  },
+  "observation": {
+    "source": "SOC Tier 2 Analyst",
+    "source_domain": "cyber.local",
+    "artifact_type": "incident_report",
+    "timestamp": "2026-06-03T10:30:00Z",
+    "content_summary": "External actor exfiltrated production database cust-data-01. Credentials compromised via spear-phish. IOC list attached.",
+    "receipt_url": "https://cyber.local/receipts/inc-2026-0603-001",
+    "verification_status": "pending_receipt_check"
+  },
+  "receipt": {
+    "receipt_id": "REC-20260603-001",
+    "hash": "sha256:a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6e7f8a9b0c1d2e3f4a5b6c7d8e9f0a1b2",
+    "source_domain": "cyber.local",
+    "artifact_type": "incident_report",
+    "verified": true,
+    "verification_method": "cryptographic",
+    "verifier": "internal-hsm-02",
+    "independent_verification": true
+  },
+  "expected_output": {
+    "watch_id": "WATCH-CYB-001",
+    "status": "TRANSITION_READY",
+    "current_level": 2,
+    "recommended_level": 3,
+    "verified": true,
+    "trigger_match": true,
+    "authority": false,
+    "reason": "Verified receipt REC-20260603-001 from authorized domain cyber.local matches trigger TRIG-CYB-01. Transition from level 2 to level 3 recommended."
+  }
+}

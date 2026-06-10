@@ -1,0 +1,111 @@
+# MANIC Replay Governance
+
+**Status:** Replay Gate Surface / Structural Decomposition Only  
+**Continuity Flag:** COHERENTLY_INVALID_UNTIL_REPLAYED
+
+## Purpose
+
+This directory governs active MANIC replay decomposition.
+
+Replay transforms convert public root sources into deterministic, hashable, append-only structural nodes. Replay does not interpret the source. Replay only proves whether structural extraction can be reconstructed.
+
+## Directory Layout
+
+```text
+replay/
+  branches/              # decomposed replay nodes
+  README.md              # governance rules
+  validate_replay.js     # replay-fidelity gate
+```
+
+## Decomposition vs. Interpretation
+
+### Allowed in Replay
+
+- structural extraction
+- section/page/table/footnote splitting
+- locator capture
+- SHA-256 content hashing
+- schema validation
+- lineage preservation
+
+### Forbidden in Replay
+
+- LLM summarization
+- semantic interpretation
+- political conclusions
+- truth adjudication
+- synthetic confidence claims
+- external network fetches during replay
+
+## Replay Node Requirements
+
+Every replay node must include:
+
+- `node_id`
+- `parent_root_id`
+- `parent_hash`
+- `source_locator`
+- `transform_id`
+- `content_hash`
+- `constitutional_tags`
+
+The initial replay node tag must be `OBSERVED` unless a later interpretive schema explicitly authorizes derived tags.
+
+## Operational Enforcement
+
+The batch validator now executes replay validation before derivative validations.
+
+```text
+REPLAY VALIDATION
+  → RECEIPT VALIDATION
+    → OPACITY VALIDATION
+```
+
+This ordering is constitutional:
+
+- lineage precedes claim surfaces
+- structure precedes interpretation
+- replay fidelity precedes synthesis
+- failed replay prevents downstream confidence
+
+## Active Gate
+
+Replay validation is enforced by:
+
+```text
+../validators/validate_all.js
+validate_replay.js
+```
+
+The replay gate checks:
+
+- deterministic replay node ID format
+- `ROOT_SOURCE_*` parent linkage
+- SHA-256 parent hash format
+- SHA-256 content hash format
+- whitelisted transform IDs
+- `OBSERVED` initial replay tag
+- absence of interpretive tags during replay
+- non-empty structural source locator
+
+## Failure Behavior
+
+Replay validation must fail loudly when it detects:
+
+- missing lineage
+- missing source locator
+- unauthorized transform
+- non-observed initial replay tag
+- missing content hash
+- attempted interpretation
+- disconnected root source
+- malformed hash reference
+
+## Core Rule
+
+Replay creates structure.
+
+Interpretation creates claims.
+
+Those layers must not collapse.

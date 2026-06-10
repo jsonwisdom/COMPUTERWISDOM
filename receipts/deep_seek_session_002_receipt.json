@@ -1,0 +1,42 @@
+{
+  "receipt_id": "DEEP_SEEK_SESSION_002",
+  "status": "OUTPUT_CORRECTED_PENDING_REVIEW",
+  "module": "Power Proof Deep Seek",
+  "session_rule": "exact_prompt_capture_first",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T16:00:00Z",
+  "topic": "Compute Wisdom Claim Parser Badge \u2014 KP-001 candidate design",
+  "prompt": {
+    "file": "receipts/deep_seek_session_002_prompt_exact.txt",
+    "commit": "99e3d7b6a6bb83bd02f47d330aff4f26c580aedc",
+    "hash_sha256": "b310599652e74a9af29d5f81746a988c29dca253d8330ec9b3d135285e9b9877",
+    "capture_type": "EXACT_PROMPT_CAPTURE"
+  },
+  "output": {
+    "file": "receipts/deep_seek_session_002_output_exact.md",
+    "commit": "0b76ad33324b2ab6a4018b48c9cb0b4d2a613055",
+    "hash_sha256": "82d2e7161520cd373ac8b5036061369dca282269324f6477f9c637e8ea81be88",
+    "capture_type": "EXACT_OUTPUT_CAPTURE"
+  },
+  "verification_method": "MANUAL_REVIEW | HASH_CHECK",
+  "previous_receipt_links": [
+    "receipts/deep_seek_session_001_verdict.json",
+    "receipts/confucius_deep_seek_session_001_reward_artifact_receipt.json"
+  ],
+  "expected_artifact": "Claim Parser Badge HTML/CSS (candidate)",
+  "public_badge_granted": false,
+  "portal_html_mutated": false,
+  "backend_claimed_live": false,
+  "onchain_claimed_live": false,
+  "badge_status": "CANDIDATE_ONLY_NOT_PUBLIC",
+  "risk_notes": [
+    "No live attestation",
+    "No portal mutation",
+    "No public badge claim",
+    "Exact prompt captured first",
+    "Output captured exactly before review"
+  ],
+  "review_status": "READY_FOR_JAY_REVIEW_AFTER_STATUS_CORRECTION",
+  "canon_line": "Prompt captured exactly. Output captured exactly. Hashes recorded. Badge still candidate. Portal untouched.",
+  "correction_note": "Changed badge display from VERIFIED to PENDING_REVIEW because candidate badge cannot claim verification before Jay review."
+}

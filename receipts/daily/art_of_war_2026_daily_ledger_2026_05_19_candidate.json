@@ -1,0 +1,71 @@
+{
+  "receipt_id": "ART_OF_WAR_2026_DAILY_LEDGER_2026_05_19_CANDIDATE",
+  "status": "VERIFIED_AS_CANDIDATE_ENTRY",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "date_utc": "2026-05-19",
+  "event_id": "AOW-2026-DAILY-0001",
+  "ledger_lane": "Art of War 2026 daily civic ledger",
+  "source_chain": {
+    "doctrine_candidate": {
+      "file": "services/chess-court/art_of_war_2026_jay_wisdom_candidate.md",
+      "commit": "592824a88e4963969daa5e443fb3483fed9e5978"
+    },
+    "activation_receipt": {
+      "file": "receipts/chess_court_art_of_war_2026_activation_receipt.json",
+      "commit": "243062f5870cb98899f6f03d780ebbc7feee5a53"
+    },
+    "ultimate_counter_review": {
+      "file": "receipts/counters/grok_ultimate_chess_court_art_of_war_2026_review_2026_05_19.json",
+      "commit": "c51e0f39e3c74373cfa87041c417da138e18aaae"
+    },
+    "portal_pointer_resolver": {
+      "file": "receipts/art_of_war_2026_public_pointer_resolver.json",
+      "commit": "0d0b5499bdfb5f72be43a7dd93909c4a98dc7135"
+    },
+    "resolver_counter_review": {
+      "file": "receipts/counters/grok_resolver_portal_pointer_art_of_war_2026_counter_review_2026_05_19.json",
+      "commit": "7dd85317fe74f3324e34327dd0ea2102d1c4b4df"
+    },
+    "final_payload_review": {
+      "file": "receipts/counters/grok_final_daily_entry_payload_review_2026_05_19.json",
+      "commit": "afa016651f778791620ad2f8f9bdfe127132bbf3",
+      "verdict": "VERIFIED_AS_CANDIDATE_ENTRY"
+    }
+  },
+  "daily_entry": {
+    "vernacular": "Do not fight fog with fog. Turn fog into receipts.",
+    "claim_extracted": "Art of War 2026 daily ledger lane is open as a verified candidate entry.",
+    "evidence": [
+      "candidate doctrine committed",
+      "activation receipt committed",
+      "Grok ultimate counter-review committed",
+      "public pointer resolver committed",
+      "resolver counter-review committed",
+      "final payload review committed"
+    ],
+    "claim_tag": "PUBLIC_AS_VERIFIED_CANDIDATE_ENTRY",
+    "receipt_path": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_19_candidate.json",
+    "counter_review": "VERIFIED_AS_CANDIDATE_ENTRY",
+    "public_pointer": "portal.html Daily Civic Ledger card"
+  },
+  "weak_flanks": [
+    "No explicit external fog vectors mapped for 2026-05-19; optional hardening opportunity for future daily entries."
+  ],
+  "boundaries": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false,
+    "zora_treated_as_proof": false,
+    "portal_html_mutated_by_this_receipt": false
+  },
+  "next_required": [
+    "Continue daily cadence with next Art of War 2026 entry",
+    "If public site changes again, create mutation receipt first",
+    "If badge advances, create promotion receipt first",
+    "If onchain claim advances, attach transaction or attestation receipt"
+  ],
+  "canon_line": "Daily ledger lane verified as candidate entry. Fog turns into receipts one day at a time."
+}

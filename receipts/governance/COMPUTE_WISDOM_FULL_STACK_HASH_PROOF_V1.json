@@ -1,0 +1,66 @@
+{
+  "receipt_id": "COMPUTE_WISDOM_FULL_STACK_HASH_PROOF_V1",
+  "status": "COMMIT_PROOF_ONLY",
+  "generated_at": "2026-05-27T00:00:00Z",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "mode": "EVIDENCE_ONLY_CONTROL_PLANE_LINEAGE",
+  "doctrine": "Compute Wisdom separates computation from authority.",
+  "pipeline": [
+    {
+      "stage": "LEGISLATIVE",
+      "action": "PROPOSES",
+      "artifact": "legislative/LEGISLATIVE_CHARTER_V1.md",
+      "commit": "PENDING_OR_PREVIOUSLY_COMMITTED",
+      "boundary": "DOES_NOT_EXECUTE_DOES_NOT_ADJUDICATE_DOES_NOT_SELF_SEAL"
+    },
+    {
+      "stage": "EXECUTIVE",
+      "action": "COORDINATES",
+      "artifact": "executive/EXECUTIVE_CHARTER_V1.md",
+      "commit": "f9ead24ee041eab90d1fb3a9076e5549fdd950d0",
+      "boundary": "DOES_NOT_PROPOSE_DOES_NOT_ADJUDICATE_DOES_NOT_SELF_SEAL"
+    },
+    {
+      "stage": "JUDICIAL",
+      "action": "REVIEWS",
+      "artifact": "judicial/JUDICIAL_CHARTER_V1.md",
+      "commit": "ac0a814dff2e1e9d61d42bf483c9f5e16ce810ce",
+      "boundary": "DOES_NOT_EXECUTE_DOES_NOT_ADMIT_DOES_NOT_SELF_SEAL"
+    },
+    {
+      "stage": "INTERACTION",
+      "action": "CONNECTS_BRANCHES",
+      "artifact": "BRANCH_INTERACTION_MANIFEST_V1.md",
+      "commit": "9ad3ba926ce1369f12c7fb2a12a975565519aaa4",
+      "boundary": "NO_BRANCH_POSSESSES_SOVEREIGN_AUTHORITY"
+    },
+    {
+      "stage": "AL_ADMISSION",
+      "action": "ADMITS_EVIDENCE",
+      "artifact": "al/AL_ADMISSION_POLICY_V1.md",
+      "commit": "964c23cd2f8a2f940d1d1c06076b75607f8e7b5d",
+      "boundary": "AL_ADMITS_NOT_SEALS_NOT_ADJUDICATES"
+    },
+    {
+      "stage": "REPLAY_SEAL",
+      "action": "FINALIZES_EVIDENCE",
+      "artifact": "sealing/REPLAY_SEAL_POLICY_V1.md",
+      "commit": "511f079af2348b00936d92a7816f5951b787e09c",
+      "boundary": "SEAL_FINALIZES_NOT_AUTHORIZES"
+    }
+  ],
+  "invariants": [
+    "LEGISLATIVE_PROPOSES",
+    "EXECUTIVE_COORDINATES",
+    "JUDICIAL_REVIEWS",
+    "AL_ADMITS",
+    "REPLAY_SEALS",
+    "NONE_MAY_SELF_SEAL_LEGITIMACY",
+    "EVIDENCE_TRAVELS_AUTHORITY_DOES_NOT"
+  ],
+  "authority_boundary": "HASH_PROOF_IS_COMMIT_EVIDENCE_NOT_FINAL_ADJUDICATION",
+  "adjudication_requirements": [
+    "REPLAY",
+    "AL_ADMISSION"
+  ]
+}

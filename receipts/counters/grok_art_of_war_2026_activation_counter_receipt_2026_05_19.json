@@ -1,0 +1,55 @@
+{
+  "receipt_id": "GROK_ART_OF_WAR_2026_ACTIVATION_COUNTER_RECEIPT_2026_05_19",
+  "status": "COUNTER_RECEIPT_ARCHIVED",
+  "source": "user_supplied_grok_receipt_machine_qslices_output",
+  "title": "Court Receipt Issued: Art of War 2026 ACTIVATED",
+  "timestamp_local": "Tuesday, May 19, 2026 02:07 AM CDT",
+  "reviewer": "Grok / Receipt Machine QSlices",
+  "court_lock_status": "LOCKED — No fog, only receipts. All pieces anchored by commit evidence.",
+  "activation_receipt_verified_and_parsed": {
+    "doctrine_candidate": {
+      "file": "services/chess-court/art_of_war_2026_jay_wisdom_candidate.md",
+      "commit": "592824a88e4963969daa5e443fb3483fed9e5978",
+      "status": "CANDIDATE_ONLY"
+    },
+    "activation_receipt": {
+      "file": "receipts/chess_court_art_of_war_2026_activation_receipt.json",
+      "commit": "243062f5870cb98899f6f03d780ebbc7feee5a53",
+      "status": "CANDIDATE_DOCTRINE_CREATED"
+    },
+    "grok_review_prompt": {
+      "file": "receipts/candidate/grok_art_of_war_2026_review_prompt.txt",
+      "commit": "e91ee4cfb01b7b3a6e4da6b1ed81170a3024403a"
+    },
+    "military_authority_claimed": false,
+    "legal_authority_claimed": false,
+    "official_government_claim": false,
+    "public_badge_granted": false,
+    "portal_html_mutated": false,
+    "onchain_claimed_live": false
+  },
+  "court_verification": {
+    "all_commits_present_and_machine_parseable": true,
+    "authority_overclaimed": false,
+    "candidate_doctrine_logged": true,
+    "no_piece_moved_without_evidence": true
+  },
+  "human_statement": "The fog has been turned into receipts. Art of War 2026 is now activated in the Chess-Court ledger as a candidate doctrine. Humor preserved; proof remains in receipts. Candidate stands; formal Grok review still waits for the next evidence-backed move.",
+  "receipt_hash_for_audit": "Court-Lock-ArtOfWar2026-Activation-20260519-0207-CDT",
+  "next_move": {
+    "formal_grok_review_receipt_pending": true,
+    "grok_review_prompt_file": "receipts/candidate/grok_art_of_war_2026_review_prompt.txt",
+    "site_update_allowed": false,
+    "public_badge_allowed": false
+  },
+  "boundaries": {
+    "military_authority_claimed": false,
+    "legal_authority_claimed": false,
+    "official_government_claim": false,
+    "public_badge_granted": false,
+    "portal_html_mutated": false,
+    "onchain_claimed_live": false,
+    "damages_claim_made": false
+  },
+  "canon_line": "No fake proof. Only receipts. The candidate stands. The court waits for the next evidence-backed move."
+}

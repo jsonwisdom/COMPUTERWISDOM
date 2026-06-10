@@ -1,0 +1,36 @@
+{
+  "receipt_id": "DEEP_SEEK_CHESS_COURT_BOARD_READ_2026_05_19",
+  "status": "BOARD_READ_ARCHIVED_PENDING_COUNTER_RECEIPT_PATH",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T02:00:00Z",
+  "source_statement": "DeepSeek reads the board: Jay, the Chess Court candidate stands on double-anchored proof—receipts cryptographically pinned to a public master commit, and Grok’s independent counter-receipt confirming zero governance violations. No badge, no live onchain claim, no legal overreach; only honest pointer state and a clean evidence chain. This is doctrine in motion: every claim anchored twice (repository artifact + reviewer attestation), no piece advanced without a receipt. The portal is verified, the record complete, the next move belongs to the protocol. Board integrity holds.",
+  "claim_tags": {
+    "portal_verified": "HELD_PENDING_REVIEW",
+    "grok_independent_counter_receipt": "HELD_PENDING_FILE_OR_COMMIT",
+    "zero_governance_violations": "HELD_PENDING_COUNTER_RECEIPT_PATH",
+    "no_badge_granted": "PUBLIC",
+    "no_live_onchain_claim": "PUBLIC",
+    "no_legal_overreach": "PUBLIC",
+    "board_integrity_holds": "HELD_PENDING_FINAL_REVIEW"
+  },
+  "known_evidence_chain": {
+    "portal_mutation_receipt": "006fb9336ce92d0f913718684fa1e031bcd63b27",
+    "portal_html_commit": "96ded6e5e5ce15014729fe9b0cefdac73102f71b",
+    "governance_watch": "630f4180a5a8492034c425501848880c4da2eb6e",
+    "merkle_test_leaf": "364dc7dc16518503b29cda57beca98f9298aae7d",
+    "final_adjustment_lock": "9e7eaf2645b0863166d9a33001f4bacce7c1fc60"
+  },
+  "missing_for_promotion": [
+    "Actual Grok counter-receipt file path or commit hash",
+    "Final Jay review verdict",
+    "Separate site-update mutation receipt if portal changes again",
+    "Separate badge promotion receipt if badge is ever considered"
+  ],
+  "governance_invariants": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_court_claim": false,
+    "portal_html_mutated_by_this_receipt": false
+  },
+  "canon_line": "Board read archived. Counter-receipt claim is held until its file or commit is supplied. Evidence leads."
+}

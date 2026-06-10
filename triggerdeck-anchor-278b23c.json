@@ -1,0 +1,10 @@
+{
+  "receipt_type": "TRIGGER_DECK_ANCHOR_POINTER",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "master",
+  "anchor_commit": "278b23c830e90720ccaa8bca952ac096e5bb4135",
+  "commit_message": "receipt: inventory Trigger Deck layer",
+  "status": "BASELINE_PUSHED",
+  "zip_push_status": "DEFERRED_UNTIL_MANIFEST_ALIGNMENT",
+  "ledger_validation_status": "PENDING_OPERATOR_REVIEW"
+}

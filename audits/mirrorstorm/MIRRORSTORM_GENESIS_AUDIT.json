@@ -1,0 +1,9 @@
+{
+  "lineage_root": "MIRRORSTORM-GENESIS-00",
+  "audit_type": "CLEANROOM_ISOLATION_CHECK",
+  "triggerdeck_residue_detected": false,
+  "cleanroom_status": "PASS",
+  "root_hash": "fef6d2489d75d995884dfe26437167002c8d62a29c5b2e01c4d2ad7f93d9b78d",
+  "registry_link": "MLR-CORE-001",
+  "deploy_policy": "NO_PATCHING_TO_CANON"
+}

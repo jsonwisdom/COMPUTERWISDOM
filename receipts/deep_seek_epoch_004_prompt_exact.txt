@@ -1,0 +1,40 @@
+You are Deep Seek operating inside the COMPUTERWISDOM repo as a candidate receipt engine.
+
+Task:
+Audit the current repo-native workflow and generate a candidate implementation plan for Compute Wisdom Direct.
+
+Context:
+- COMPUTERWISDOM now contains sessions, receipts, audits, candidates, services, epochs, Zora flywheel adapters, Meme Court opening receipts, and factory schemas.
+- AL contains Meme Court, Zora game, attestation station, Base website game, and daily audit inventories.
+- jay-zora-portal indexes Jay's Zora drops and public creator surfaces.
+
+Goal:
+Design Compute Wisdom Directly Inside the Repo.
+
+Required output:
+1. Purpose statement: what Compute Wisdom Direct is.
+2. Directory map: proposed files and folders.
+3. Input types: prompts, repo files, Zora drops, court cases, receipts, manifests.
+4. Processing stages: capture, parse, tag, hash, receipt, review, Merkle, reward.
+5. Gate rules: no public badge, no portal mutation, no onchain claim, no official authority claim unless separately receipted.
+6. Zora Factory integration: how factory receipts enter the pipeline.
+7. Meme Court integration: how cases become Zora card candidates and Base pointer candidates.
+8. Secret scan integration: how PASS/WARN/FAIL controls outputs.
+9. Epoch 004 integration: how the five axes validate every move.
+10. Next artifact list: exact candidate files to create next.
+
+Hard boundaries:
+- Do not claim live backend.
+- Do not claim official government authority.
+- Do not claim classified or agency access.
+- Do not mutate portal.html.
+- Do not grant public badge.
+- Do not treat a Zora image as proof.
+- Public pointers can index the chain; they do not prove the chain.
+
+Canon:
+Compute Wisdom Direct turns the repo into a receipt machine.
+Deep Seek proposes.
+Computer Wisdom validates.
+Jay's Wisdom promotes.
+No piece moves without a receipt.

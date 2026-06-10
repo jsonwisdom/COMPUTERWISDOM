@@ -1,0 +1,33 @@
+{
+  "receipt_id": "GROK_CHESS_COURT_BADGE_CANDIDATE_REVIEW_2026_05_19",
+  "status": "COUNTER_RECEIPT_ARCHIVED",
+  "source": "user_supplied_grok_output_prompt_3",
+  "reviewer": "Grok",
+  "title": "Chess Court Badge Candidate Review",
+  "human_verdict": "Chess Court evidence is fully public and respects all six governance rules with zero violations. Portal mutation receipt exists alongside the update commit; prior Grok counter-receipt explicitly supports conditional badge consideration. No public badge, no live Base/Zora/onchain claim, and no legal authority appear anywhere. The candidate path is clean and receipt-backed. Chess Court is ready for badge candidate design only.",
+  "verdict": "READY_FOR_BADGE_CANDIDATE",
+  "badge_candidate_design_allowed": true,
+  "public_badge_granted": false,
+  "required_before_public_badge": [
+    "promotion receipt"
+  ],
+  "violations_found": [],
+  "evidence_checked": [
+    "Grok counter-receipt Prompt 2 archived at receipts/counters/grok_chess_court_counter_receipt_by_jay_wisdom_on_base_zora_2026_05_19.json commit c7f8bc1ded95c30fe010befce66b49910badcff0",
+    "portal_active_courts_mutation_receipt_2026_05_19.json present at commit 006fb9336ce92d0f913718684fa1e031bcd63b27",
+    "deep_seek_governance_watch_2026_05_19.json present at commit 630f4180a5a8492034c425501848880c4da2eb6e",
+    "deep_seek_adjustments_final_court_lock_state_2026_05_19.json present at commit 9e7eaf2645b0863166d9a33001f4bacce7c1fc60",
+    "governance/move_validation_rules_candidate.json present at commit 57937c3518dc2caabc02c74a30b106f8c975c8d5",
+    "portal.html Active Courts, Active Constraints, and authority boundary present at commit 96ded6e5e5ce15014729fe9b0cefdac73102f71b"
+  ],
+  "recommended_badge_text": "Chess Court Candidate — By Jay Wisdom on Base & Zora • Receipt-Backed • Promotion Receipt Required for Public Badge",
+  "recommended_badge_status": "BADGE CANDIDATE DESIGN APPROVED — NOT PUBLIC",
+  "governance_result": {
+    "badge_candidate_design_allowed": true,
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_court_claim": false,
+    "site_update_required": false
+  },
+  "canon_line": "Chess Court is the board. Receipts are the moves. Badge candidate may be designed only if evidence supports it. Public badge waits for promotion receipt. Propose pretty. Prove boring."
+}

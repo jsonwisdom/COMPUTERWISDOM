@@ -1,0 +1,38 @@
+{
+  "receipt_id": "MEME_COURT_OPEN_ZORA_BASE_RECEIPT_V1",
+  "status": "CANDIDATE_OPEN_RECORDED",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T18:00:00Z",
+  "source_audit": {
+    "file": "audits/meme_court_zora_base_repo_audit_2026_05_19.md",
+    "commit": "3a3bb2d9a5b4880024173346249e911d41c6f0d0"
+  },
+  "candidate_spec": {
+    "file": "services/meme-court/open_court_zora_base_candidate.md",
+    "commit": "749ae8d5dff554d0d329a23b8e24b2d0a09df5cb"
+  },
+  "confirmed_sources": [
+    "jsonwisdom/AL Meme Court materials",
+    "jsonwisdom/AL Meme Court x Zora game spec",
+    "jsonwisdom/AL jaywisdom.base website game spec",
+    "jsonwisdom/AL daily IPFS JSON audit latest report",
+    "jsonwisdom/jay-zora-portal README",
+    "jsonwisdom/COMPUTERWISDOM repo chain index candidate"
+  ],
+  "boundaries": {
+    "portal_html_mutated": false,
+    "public_badge_granted": false,
+    "backend_claimed_live": false,
+    "onchain_claimed_live": false,
+    "official_authority_claim": false,
+    "legal_court_claim": false
+  },
+  "next_required": [
+    "Secret scan receipt across AL, COMPUTERWISDOM, and jay-zora-portal",
+    "Session 003 verdict",
+    "Zora Factory schema/crawler candidate",
+    "Base Court pointer schema",
+    "Jay approval receipt before public promotion"
+  ],
+  "canon_line": "Meme Court opens as candidate. Zora distributes cards. Base points to evidence. Receipts decide what leaves the floor."
+}

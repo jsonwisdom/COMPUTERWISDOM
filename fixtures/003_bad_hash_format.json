@@ -1,0 +1,22 @@
+{
+  "fixture_id": "FIXTURE_003_BAD_HASH_FORMAT",
+  "expected": {
+    "verdict": "DENY",
+    "reason_code": "HASH_MISMATCH",
+    "gate_triggered": "ID_RECOMPUTATION"
+  },
+  "notes": {
+    "purpose": "Identity gate must reject a schema-valid receipt whose receipt_id does not equal sha256:jcs(self_without_receipt_id).",
+    "authority": false
+  },
+  "receipt": {
+    "receipt_id": "sha256:ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "category": "ASSERTED",
+    "content_hash": "sha256:e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "genesis": true,
+    "provenance_id": null,
+    "timestamp_utc": "2026-05-28T19:10:00Z",
+    "version": "0.1",
+    "authority": false
+  }
+}

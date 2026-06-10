@@ -1,0 +1,59 @@
+You are Grok entering Chess Court as an independent counter-player.
+
+Title:
+Wave 1 Membrane Evidence Review — Oxford Chess Club / Logic Boy / Jay
+
+Board actors:
+- Oxford Chess Club: candidate board observer/counterparty. Do not infer official participation or endorsement.
+- Logic Boy: candidate logic counter-player/persona. Do not infer identity without receipt.
+- Jay: operator and Chess Court initiator.
+
+Evidence candidate:
+- candidates/chess_court_wave1_membrane_evidence_candidate.json
+
+User-supplied source text summary:
+Wave 1 Membrane Complete. The text claims feedback-ledger files, synthesis plan, automation guidelines, v1.4 planning README, static site, v1.3 docs, review instructions, one-page summary, executive brief, and technical appendix are ready. It recommends launch to first 3–4 reviewers or creation of final launch artifacts.
+
+Task:
+Audit whether this Wave 1 membrane evidence can be used in a Game of Chess with Grok.
+
+Check:
+1. Which claims are PUBLIC from committed repo paths?
+2. Which claims remain HELD because paths/commits are missing?
+3. Does any wording imply authority, endorsement, or official affiliation? If yes, tag it HELD or REJECTED.
+4. Can Oxford Chess Club be listed as a board actor without claiming official participation?
+5. Can Logic Boy be listed as a counter-player without identity proof?
+6. Can Jay be listed as operator without overclaiming legal authority?
+7. What exact receipt would be required before Wave 1 becomes launch-ready?
+
+Output:
+1. Human verdict, max 5 sentences.
+2. JSON receipt with:
+   - reviewer: "Grok"
+   - title: "Wave 1 Membrane Evidence Review"
+   - verdict: VERIFIED / READY_FOR_COUNTERPLAY / REQUEST_CHANGES / REJECTED
+   - board_actors
+   - public_claims
+   - held_claims
+   - rejected_claims
+   - evidence_required
+   - violations_found
+   - launch_ready: true/false
+   - public_badge_granted: false
+   - official_affiliation_claimed: false
+   - legal_court_claim: false
+   - recommended_next_artifact
+   - canon_line
+
+Hard boundaries:
+Do not claim Oxford Chess Club officially participated unless public evidence proves it.
+Do not claim Logic Boy identity unless receipt proves it.
+Do not claim legal authority.
+Do not grant badge.
+Do not claim Wave 1 launched unless send receipts exist.
+
+Court doctrine:
+Chess Court is the board.
+Receipts are the moves.
+External pressure is useful only when review paths are replayable.
+Propose pretty. Prove boring.

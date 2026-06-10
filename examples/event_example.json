@@ -1,0 +1,18 @@
+{
+  "artifact_type": "event",
+  "artifact_id": "ers-event-example-v0-1",
+  "timestamp": "2026-06-04T13:40:00Z",
+  "lineage_root": "f5c98f688296d1cece1cb8ac6635421384756f00",
+  "constitutional_root": "808f2b1c6c339eb46e68a2161da3cca22f7b0eeb",
+  "schema_version": "ERS_V0_1",
+  "authority": false,
+  "authority_boundary": "NONE",
+  "hash": "sha256:0000000000000000000000000000000000000000000000000000000000000001",
+  "source": "example",
+  "metadata": {
+    "purpose": "example event object"
+  },
+  "payload": {
+    "event_name": "example_event_recorded"
+  }
+}

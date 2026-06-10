@@ -1,0 +1,62 @@
+{
+  "receipt_id": "GROK_BATCH_FINAL_REVIEW_ART_OF_WAR_2026_05_20",
+  "status": "BATCH_FINAL_REVIEW_ARCHIVED_VERIFIED_AS_CANDIDATE_ENTRY",
+  "source": "user_supplied_grok_batch_packet_final_review",
+  "reviewer": "Grok",
+  "title": "Art of War 2026 — 05-20 Batch Packet Final Review",
+  "verdict": "VERIFIED_AS_CANDIDATE_ENTRY",
+  "target_file": "receipts/batch/grok_batch_packet_art_of_war_2026_05_20_v1.json",
+  "parent_file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+  "evidence_item_id": "AOW-2026-05-20-EVIDENCE-001",
+  "item_complete": true,
+  "replacement_eligible": true,
+  "replacement_scope": "PROCESS_MOVE_ONLY",
+  "external_fog_vector_proven": false,
+  "evidence_table_summary": [
+    {
+      "claim": "Batch packet file exists and is readable",
+      "file": "receipts/batch/grok_batch_packet_art_of_war_2026_05_20_v1.json",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Parent daily candidate updated with placeholder replacement",
+      "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+      "commit": "18dbb7c4087ee70b252ecb63a7c5ffaddfe5bb06",
+      "field_or_line": "daily_entry.evidence[3]",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Replacement bounded as PROCESS_MOVE_ONLY",
+      "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+      "commit": "18dbb7c4087ee70b252ecb63a7c5ffaddfe5bb06",
+      "field_or_line": "daily_entry.evidence[3] + boundaries.external_fog_vector_proven",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Evidence item review verdict",
+      "file": "receipts/counters/grok_05_20_evidence_item_ready_to_replace_review_2026_05_19.json",
+      "commit": "59925cbc8f6c3eac30db42293ad037078757e759",
+      "field_or_line": "verdict",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Boundary flags in packet",
+      "file": "receipts/batch/grok_batch_packet_art_of_war_2026_05_20_v1.json",
+      "field_or_line": "boundary_flags object",
+      "claim_tag": "PUBLIC"
+    }
+  ],
+  "missing_fields": [],
+  "violations_found": [],
+  "boundary_check": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false,
+    "external_fog_vector_proven": false
+  },
+  "recommended_next_artifact": "court_lock_confirmation_2026_05_20.json",
+  "canon_line": "Batch receipt shortcut validated. 05-20 verified as candidate with process move discipline."
+}

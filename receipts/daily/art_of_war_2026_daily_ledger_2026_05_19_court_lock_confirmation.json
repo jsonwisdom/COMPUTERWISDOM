@@ -1,0 +1,40 @@
+{
+  "receipt_id": "ART_OF_WAR_2026_DAILY_LEDGER_2026_05_19_COURT_LOCK_CONFIRMATION",
+  "status": "DAILY_LEDGER_ENTRY_VERIFIED_COURT_LOCK_CONFIRMED",
+  "source": "user_supplied_daily_ledger_verification_lock",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T04:15:00Z",
+  "verified_entry": {
+    "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_19_candidate.json",
+    "commit": "b7df17b35d5b20a0b26953f5b7d1306bb3e2446d",
+    "status": "VERIFIED_AS_CANDIDATE_ENTRY",
+    "claim_tag": "PUBLIC_AS_VERIFIED_CANDIDATE_ENTRY"
+  },
+  "final_review_receipt": {
+    "file": "receipts/counters/grok_final_daily_entry_payload_review_2026_05_19.json",
+    "commit": "afa016651f778791620ad2f8f9bdfe127132bbf3",
+    "verdict": "VERIFIED_AS_CANDIDATE_ENTRY"
+  },
+  "ledger_snapshot": {
+    "date": "2026-05-19",
+    "entry_id": "AOW-2026-DAILY-0001",
+    "doctrine_compliance": "PASS",
+    "evidence_trail_intact": true,
+    "candidate_status_preserved": true,
+    "counter_review_field_closed": true
+  },
+  "boundaries": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false
+  },
+  "next_cadence": {
+    "recommended_next_action": "Create next daily Art of War 2026 candidate entry",
+    "sequence": "doctrine -> candidate -> counter-review -> verify -> court-lock",
+    "badge_or_onchain_triggers": "HOLD until separate promotion or attestation receipt exists"
+  },
+  "canon_line": "Daily ledger entry verified as candidate. Fog turns into receipts one day at a time. Continue the cadence."
+}

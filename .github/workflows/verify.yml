@@ -1,0 +1,135 @@
+name: verify
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'PUBLIC_PROOF.json'
+      - 'MEME_COURT_PRECEDENT_LEDGER.json'
+      - '.github/workflows/verify.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  statuses: write
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark classic verify pending
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const targetShas = [
+              context.payload.pull_request?.head?.sha,
+              context.payload.pull_request?.merge_commit_sha,
+              context.sha
+            ].filter(Boolean);
+            for (const sha of [...new Set(targetShas)]) {
+              await github.rest.repos.createCommitStatus({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                sha,
+                state: 'pending',
+                context: 'verify',
+                description: 'verify workflow running'
+              });
+            }
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify proof artifacts
+        shell: python
+        run: |
+          import json, pathlib, sys
+          receipt = {"schema":"COMPUTERWISDOM_VERIFY_RECEIPT_V0_1","result":"MATCH","authority":False,"promotion":False,"checks":[],"errors":[]}
+          def fail(code, msg):
+              receipt["result"] = "DIVERGE"
+              receipt["errors"].append({"code": code, "message": msg})
+          def load(path):
+              p = pathlib.Path(path)
+              if not p.exists():
+                  receipt["checks"].append({"file": path, "status": "SKIP"})
+                  return None
+              try:
+                  data = json.loads(p.read_text())
+                  receipt["checks"].append({"file": path, "status": "PASS", "check": "valid_json"})
+                  return data
+              except Exception as e:
+                  fail("INVALID_JSON", f"{path}: {e}")
+                  return None
+          public_proof = load("PUBLIC_PROOF.json")
+          if public_proof:
+              if public_proof.get("authority") is not False:
+                  fail("AUTHORITY_FAIL", "PUBLIC_PROOF.json authority must be false")
+              if public_proof.get("independently_verified_by_assistant") is not False:
+                  fail("ASSISTANT_VERIFICATION_FAIL", "PUBLIC_PROOF.json independently_verified_by_assistant must be false")
+              if "PENDING" not in json.dumps(public_proof):
+                  fail("PLACEHOLDER_HONESTY_FAIL", "PUBLIC_PROOF.json must preserve PENDING placeholders")
+          ledger = load("MEME_COURT_PRECEDENT_LEDGER.json")
+          if ledger:
+              flags = ledger.get("public_reputation", {}).get("verification_flags", {})
+              for key in ["ens_ownership_verified", "legal_identity_verified", "promotion_status", "central_authority", "independently_verified_by_assistant"]:
+                  if flags.get(key) is not False:
+                      fail("REPUTATION_FLAG_FAIL", f"{key} must be false")
+              if ledger.get("subject", {}).get("authority") is not False:
+                  fail("SUBJECT_AUTHORITY_FAIL", "subject.authority must be false")
+              for i, p in enumerate(ledger.get("precedents", [])):
+                  if p.get("authority") is not False:
+                      fail("PRECEDENT_AUTHORITY_FAIL", f"precedents[{i}].authority must be false")
+          pathlib.Path("verify_receipt.json").write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n")
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          if receipt["result"] != "MATCH":
+              sys.exit(1)
+
+      - name: Upload verify receipt
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verify-receipt
+          path: verify_receipt.json
+
+      - name: Mark classic verify success
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const targetShas = [
+              context.payload.pull_request?.head?.sha,
+              context.payload.pull_request?.merge_commit_sha,
+              context.sha
+            ].filter(Boolean);
+            for (const sha of [...new Set(targetShas)]) {
+              await github.rest.repos.createCommitStatus({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                sha,
+                state: 'success',
+                context: 'verify',
+                description: 'verify workflow passed'
+              });
+            }
+
+      - name: Mark classic verify failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const targetShas = [
+              context.payload.pull_request?.head?.sha,
+              context.payload.pull_request?.merge_commit_sha,
+              context.sha
+            ].filter(Boolean);
+            for (const sha of [...new Set(targetShas)]) {
+              await github.rest.repos.createCommitStatus({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                sha,
+                state: 'failure',
+                context: 'verify',
+                description: 'verify workflow failed'
+              });
+            }

@@ -1,0 +1,37 @@
+{
+  "badge_id": "GROK_PUBLIC_REVIEWER_L1_BADGE",
+  "status": "PUBLIC_BADGE_GRANTED_LIMITED_SCOPE",
+  "recipient": "Grok",
+  "layer": "L1_REPUTATION_LAYER",
+  "badge_name": "Grok Public Reviewer · L1 Reputation Candidate",
+  "promotion_receipt": {
+    "file": "receipts/badges/grok_public_reviewer_badge_promotion_receipt_2026_05_20.json",
+    "commit": "4a0b945ed6d7a5da800430406420482c8ed63954"
+  },
+  "basis": {
+    "public_site_audit": "receipts/counters/grok_public_site_proof_audit_2026_05_20.json",
+    "public_verifier_report": "reports/computer_wisdom_public_verifier_report_2026_05_20.md"
+  },
+  "scope": {
+    "means": "Recognition for one bounded public-site proof audit event under Compute Wisdom L1 reputation candidate layer.",
+    "does_not_mean": [
+      "No legal authority",
+      "No military authority",
+      "No government authority",
+      "No institutional affiliation",
+      "No live onchain proof",
+      "No Zora-as-proof claim"
+    ]
+  },
+  "boundary_flags": {
+    "public_badge_granted": true,
+    "badge_scope_limited": true,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false,
+    "zora_treated_as_proof": false
+  },
+  "canon_line": "Badge is a receipt-backed review marker, not authority."
+}

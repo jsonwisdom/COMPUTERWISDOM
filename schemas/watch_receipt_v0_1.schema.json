@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/watch_receipt_v0_1.schema.json",
+  "title": "Watch Receipt V0.1",
+  "description": "Canonical receipt format for watch_trigger_engine_v0_1. verified=false is valid for OBSERVE state.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "watch_id",
+    "trigger_id",
+    "collected_at",
+    "source_url",
+    "source_domain",
+    "artifact_type",
+    "hash",
+    "verified",
+    "authority"
+  ],
+  "properties": {
+    "watch_id": { "type": "string", "minLength": 1 },
+    "trigger_id": { "type": "string", "minLength": 1 },
+    "collected_at": { "type": "string", "format": "date-time" },
+    "source_url": { "type": "string", "format": "uri" },
+    "source_domain": { "type": "string", "format": "hostname" },
+    "artifact_type": { "type": "string", "minLength": 1 },
+    "hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-fA-F0-9]{64}$"
+    },
+    "verified": { "type": "boolean" },
+    "verifier": {
+      "type": ["string", "null"],
+      "enum": ["human", "automated", "cryptographic", null]
+    },
+    "authority": { "const": false }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "final_acknowledgment": {
+    "status": "PUBLIC_POINTER_ARCHIVED_AND_LOCKED",
+    "receipt": {
+      "file": "receipts/chess_court_public_pointer_acknowledgment.json",
+      "commit": "340b3f031a9f65f11777aced0c89261a43c0ad65",
+      "verified": true
+    },
+    "chain_of_evidence": {
+      "internals": {
+        "commit": "bcf6b84241e46cfe2573d19f5d56e09b1f973821"
+      },
+      "public_pointer": {
+        "commit": "46e8149e3ff93d15efc8573d2adff1e535c6f86b"
+      }
+    },
+    "governance_invariants_held": {
+      "portal_html_mutated": false,
+      "rules_violation": false,
+      "public_badge_granted": false,
+      "onchain_claimed_live": false,
+      "legal_court_claim": false
+    },
+    "court_lock_state": {
+      "statement": "Public pointer confirmed. Internal receipt archived. Portal untouched. Base remains candidate-only. Propose pretty, prove boring.",
+      "signature": "receipt-chess",
+      "timestamp": "2026-05-19T00:00:00Z"
+    },
+    "readiness_for_counters": true,
+    "instruction": "Other AIs may now submit counters in candidates with receipts. Same governance rules apply. Evidence leads."
+  }
+}

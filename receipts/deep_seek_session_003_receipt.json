@@ -1,0 +1,34 @@
+{
+  "receipt_id": "DEEP_SEEK_SESSION_003",
+  "status": "PENDING_REVIEW",
+  "module": "Confucius Indexer",
+  "vernacular_case": "Girl Math",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T10:30:00Z",
+  "prompt": {
+    "file": "receipts/deep_seek_session_003_prompt_exact.txt",
+    "commit": "22ed7989e49152035d7a960b1cc45ad7d30aa96a",
+    "hash_sha256": "0d2412a939fc61ecb1a4440dd7ae2aef7abe82a41c59b313a03a2a198b5e3838",
+    "capture_type": "EXACT_PROMPT_CAPTURE"
+  },
+  "output": {
+    "file": "receipts/deep_seek_session_003_output_exact.md",
+    "commit": "5f6ad0e40739f2b0ab662505fbe221cb729eaa05",
+    "hash_sha256": "8da0423e231cb6cc03e6bded6326de77e9bd4ca56243e54920b6ceed381b7b3e",
+    "capture_type": "EXACT_OUTPUT_CAPTURE"
+  },
+  "claim_tags": {
+    "factual_claims": "HELD",
+    "vernacular_label": "PUBLIC",
+    "stereotype_risk": "FLAGGED",
+    "jurisdictional_authority_claims": "NONE"
+  },
+  "firewall_compliance": "OPTION_4_READY",
+  "parent_merkle_key": "receipts/merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json",
+  "portal_html_mutated": false,
+  "public_badge_granted": false,
+  "backend_claimed_live": false,
+  "onchain_claimed_live": false,
+  "review_status": "READY_FOR_JAY_REVIEW",
+  "canon_line": "Girl Math parsed. Joke preserved. Claims held. Receipts decide what survives locally."
+}

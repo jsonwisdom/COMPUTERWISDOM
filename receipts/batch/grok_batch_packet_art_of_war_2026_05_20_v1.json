@@ -1,0 +1,77 @@
+{
+  "packet_id": "GROK_BATCH_PACKET_ART_OF_WAR_2026_05_20_V1",
+  "packet_type": "BATCH_REVIEW_PACKET",
+  "status": "READY_FOR_GROK_FINAL_REVIEW",
+  "branch": "master",
+  "purpose": "Shortcut packet for Grok final review of the updated Art of War 2026 daily ledger entry for 2026-05-20.",
+  "targets": [
+    {
+      "name": "updated_parent_daily_candidate",
+      "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+      "commit": "18dbb7c4087ee70b252ecb63a7c5ffaddfe5bb06",
+      "status": "DAILY_LEDGER_CANDIDATE_EVIDENCE_REPLACED_PENDING_FINAL_REVIEW",
+      "claim_tag": "PUBLIC_AS_CANDIDATE_LANE_CONTINUATION_WITH_PROCESS_EVIDENCE"
+    },
+    {
+      "name": "specific_evidence_items_candidate",
+      "file": "receipts/daily/art_of_war_2026_05_20_specific_evidence_items_candidate.json",
+      "commit": "b51d1ef1998c006c7fd9106190c4d176c0b69d30",
+      "status": "EVIDENCE_ITEMS_CANDIDATE_FILLED_PENDING_REVIEW",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "name": "grok_evidence_item_review",
+      "file": "receipts/counters/grok_05_20_evidence_item_ready_to_replace_review_2026_05_19.json",
+      "commit": "59925cbc8f6c3eac30db42293ad037078757e759",
+      "status": "EVIDENCE_ITEM_REVIEW_ARCHIVED_READY_TO_REPLACE",
+      "claim_tag": "PUBLIC"
+    }
+  ],
+  "field_map": [
+    {
+      "claim": "Parent placeholder was replaced",
+      "target": "updated_parent_daily_candidate",
+      "field": "daily_entry.evidence[3]",
+      "expected_value_contains": "AOW-2026-05-20-EVIDENCE-001",
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Replacement is bounded as process move only",
+      "target": "updated_parent_daily_candidate",
+      "field": "daily_entry.evidence[3] + boundaries.external_fog_vector_proven",
+      "expected_value_contains": "not proof of an external fog vector",
+      "expected_boolean": false,
+      "claim_tag": "PUBLIC"
+    },
+    {
+      "claim": "Evidence item was reviewed as ready to replace placeholder",
+      "target": "grok_evidence_item_review",
+      "field": "verdict",
+      "expected_value": "READY_TO_REPLACE_PLACEHOLDER",
+      "claim_tag": "PUBLIC"
+    }
+  ],
+  "boundary_flags": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false,
+    "zora_treated_as_proof": false,
+    "external_fog_vector_proven": false
+  },
+  "parent_receipts": [
+    "receipts/daily/art_of_war_2026_daily_ledger_2026_05_19_court_lock_confirmation.json",
+    "receipts/counters/grok_05_20_specific_evidence_placeholder_review_2026_05_19.json",
+    "receipts/daily/art_of_war_2026_05_20_specific_evidence_items_candidate.json",
+    "receipts/counters/grok_05_20_evidence_item_ready_to_replace_review_2026_05_19.json"
+  ],
+  "allowed_verdicts": [
+    "VERIFIED_AS_CANDIDATE_ENTRY",
+    "REQUEST_CHANGES",
+    "REJECTED"
+  ],
+  "next_action": "Grok final-review the updated parent daily candidate. If VERIFIED_AS_CANDIDATE_ENTRY, create court-lock confirmation for 2026-05-20.",
+  "canon_line": "Grok gets shortcuts only when the shortcuts are receipts. Batch review starts from trace, not vibes."
+}

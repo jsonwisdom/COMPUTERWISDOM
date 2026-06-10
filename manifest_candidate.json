@@ -1,0 +1,56 @@
+{
+  "version": "0.1.0",
+  "layer": "compute_wisdom",
+  "foundation_ref": "computer_wisdom",
+  "public_url": "https://jsonwisdom.github.io/COMPUTERWISDOM/portal.html",
+  "protected_surface": {
+    "file": "portal.html",
+    "mutability": "protected",
+    "ai_role": "proposer_only"
+  },
+  "operator": {
+    "display_identity": "jaywisdom.base.eth",
+    "role": "human_checkpoint_authority",
+    "powers": [
+      "public_console_controller",
+      "final_promotion_gate"
+    ]
+  },
+  "checkpoint_model": {
+    "rule": "No deletion. No rename. No movement without receipt-backed review.",
+    "promotion_requires": [
+      "human_approval",
+      "receipt"
+    ]
+  },
+  "public_record": {
+    "system": "git",
+    "repo_status": "PENDING",
+    "commit_ref": "HELD"
+  },
+  "replay_trail": {
+    "type": "receipts",
+    "status": "PENDING"
+  },
+  "live_elements": {
+    "sponsor_badge": {
+      "text": "⚙🧾 First Wisdom Sponsor",
+      "identity": "jaywisdom.base.eth",
+      "location": "footer",
+      "promotion_commit": "a3f204d",
+      "status": "promoted_via_human_review"
+    }
+  },
+  "attestation_fields": {
+    "EAS": "HELD",
+    "ENS_verification": "HELD",
+    "legal_status": "HELD",
+    "institutional_affiliation": "HELD"
+  },
+  "promotion_rules": {
+    "candidate_only": true,
+    "direct_mutation": false,
+    "receipt_required": true,
+    "operator_approval_required": true
+  }
+}

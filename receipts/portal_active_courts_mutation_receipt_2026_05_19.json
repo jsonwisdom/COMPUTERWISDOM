@@ -1,0 +1,28 @@
+{
+  "receipt_id": "PORTAL_ACTIVE_COURTS_MUTATION_RECEIPT_2026_05_19",
+  "status": "MUTATION_RECEIPT_CREATED",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T01:35:00Z",
+  "target_file": "portal.html",
+  "source_audit": {
+    "file": "receipts/portal_public_proof_audit_2026_05_19.json",
+    "commit": "adc76824a08ae8f6daa65e0241d5b4562a084680",
+    "verdict": "PASS_WITH_LIMITATIONS"
+  },
+  "requested_adjustments": [
+    "adj_001_active_courts_links",
+    "adj_002_zora_base_evidence_integrity_statement",
+    "adj_005_official_authority_boundary"
+  ],
+  "intended_changes": [
+    "Add Active Courts card linking Chess Court candidate and public referee log pointer",
+    "Add Active Constraints card stating Base/Zora claims require tx or attestation receipt and no public badge without promotion receipt",
+    "Strengthen Operating Rule with no official authority claim boundary"
+  ],
+  "governance_rule_002": "portal_html_mutation_requires_receipt",
+  "portal_html_mutated_before_receipt": false,
+  "public_badge_granted": false,
+  "onchain_claimed_live": false,
+  "legal_court_claim": false,
+  "canon_line": "Portal mutation is allowed only because the mutation receipt exists first. Evidence leads."
+}

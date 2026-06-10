@@ -1,0 +1,43 @@
+{
+  "final_court_lock_state": {
+    "status": "DEEP_SEEK_ADJUSTMENTS_FINALIZED_AND_ARCHIVED",
+    "receipt": {
+      "file": "receipts/deep_seek_adjustments_locked_acknowledgment_2026_05_19.json",
+      "commit": "4c729a8e6a674e7c8ee7760ac5c17799eb475c27",
+      "immutable": true,
+      "signature": "receipt-gear"
+    },
+    "evidence_chain": {
+      "portal_mutation_receipt": "006fb9336ce92d0f913718684fa1e031bcd63b27",
+      "portal_html_commit": "96ded6e5e5ce15014729fe9b0cefdac73102f71b",
+      "governance_watch": "630f4180a5a8492034c425501848880c4da2eb6e",
+      "merkle_test_leaf": "364dc7dc16518503b29cda57beca98f9298aae7d"
+    },
+    "governance_invariants_held": {
+      "public_badge_granted": false,
+      "onchain_claimed_live": false,
+      "legal_court_claim": false,
+      "portal_html_mutated_only_with_receipt": true,
+      "all_rules_compliant": true
+    },
+    "portal_reflects_court": {
+      "shows_active_courts": true,
+      "shows_chess_court_candidate": true,
+      "shows_referee_log_pointer": true,
+      "shows_base_zora_constraint": true,
+      "shows_authority_boundary": true
+    },
+    "court_lock_doctrine_archived": {
+      "sequence": "Mutation receipt first -> Portal update second -> Governance watch third -> Merkle test leaf fourth",
+      "principle": "Evidence leads. Portal now shows the active court path.",
+      "final_doctrine": "Chess Court is the board. Receipts are the moves. Base points only after proof exists. Jay’s Wisdom promotes. Computer Wisdom validates. No piece moves without evidence.",
+      "signature": "receipt-chess-gear",
+      "timestamp": "2026-05-19T00:00:00Z"
+    },
+    "ready_for": [
+      "Daily governance watch renewals",
+      "AI counter submissions in /candidates/",
+      "Live transition only with tx/attestation receipt"
+    ]
+  }
+}

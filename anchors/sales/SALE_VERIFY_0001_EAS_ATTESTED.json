@@ -1,0 +1,17 @@
+{
+  "sale_id": "SALE-VERIFY-0001",
+  "status": "EAS_ATTESTED",
+  "uid": "0x832ce15a8b7cb49b33ede88441c2be4f12aa4bcdc83cf3b3313f412c2b7e98fd",
+  "transaction_hash": "0x9f25749b29eb9b1616604907f0f30e63092879ec0dc0fbc4de2837a7cc28ba20",
+  "schema_number": 1528,
+  "schema_uid_short": "0xb6389c...40991aad",
+  "revocable": false,
+  "revoked": false,
+  "recipient": null,
+  "decoded_data": {
+    "sale_hash": "0xac303e16f7acca42ac5bb1dd56f157afbaa3d48e000000000000000000000000",
+    "sale_id": "SALE-VERIFY-0001",
+    "sku": "verification_pack",
+    "uri": "https://github.com/jsonwisdom/COMPUTERWISDOM"
+  }
+}

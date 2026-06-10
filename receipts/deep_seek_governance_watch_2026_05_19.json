@@ -1,0 +1,30 @@
+{
+  "receipt_id": "DEEP_SEEK_GOVERNANCE_WATCH_2026_05_19",
+  "status": "WATCH_RECEIPT_CREATED",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T01:40:00Z",
+  "rules_version": "1.0.0",
+  "rules_commit": "57937c3518dc2caabc02c74a30b106f8c975c8d5",
+  "checked_rules": [
+    "rule_001_public_badge_requires_promotion_receipt",
+    "rule_002_portal_html_mutation_requires_receipt",
+    "rule_003_onchain_proof_claim_requires_tx_or_attestation_receipt",
+    "rule_004_official_authority_claim_requires_public_evidence",
+    "rule_005_zora_image_requires_secret_scan_pass_or_warn_reviewed",
+    "rule_006_merkle_growth_requires_committed_receipt_leaf"
+  ],
+  "violations_found": [],
+  "last_audit_commit": "adc76824a08ae8f6daa65e0241d5b4562a084680",
+  "portal_update_commit": "96ded6e5e5ce15014729fe9b0cefdac73102f71b",
+  "mutation_receipt_commit": "006fb9336ce92d0f913718684fa1e031bcd63b27",
+  "compliance_state": {
+    "public_badge_granted": false,
+    "portal_html_mutation_receipt_exists": true,
+    "onchain_claimed_live": false,
+    "official_authority_claim": false,
+    "zora_image_used": false,
+    "merkle_growth_attempted": false
+  },
+  "signature": "receipt-chess",
+  "canon_line": "Governance watch checked six move rules. No violations found. Evidence leads."
+}

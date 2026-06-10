@@ -1,0 +1,86 @@
+name: Repo Size Audit
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Generate repository size audit
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p audits
+          OUT="audits/repo-size-audit.md"
+          {
+            echo "# COMPUTERWISDOM Repo Size Audit"
+            echo
+            echo "Generated: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "Commit: ${GITHUB_SHA}"
+            echo
+            echo "## Repository Size"
+            echo '```text'
+            du -sh . || true
+            git count-objects -vH || true
+            echo '```'
+            echo
+            echo "## Top-Level Folder Sizes"
+            echo '```text'
+            du -sh ./* ./.??* 2>/dev/null | sort -h | tail -80 || true
+            echo '```'
+            echo
+            echo "## Biggest Tracked Files"
+            echo '```text'
+            git ls-files -z | xargs -0 du -h 2>/dev/null | sort -h | tail -100 || true
+            echo '```'
+            echo
+            echo "## Files Over 1MB"
+            echo '```text'
+            find . -type f -size +1M -not -path './.git/*' -exec ls -lh {} \; 2>/dev/null | sort -k5 -h || true
+            echo '```'
+            echo
+            echo "## Media / Archive / Database Candidates"
+            echo '```text'
+            find . -type f \( \
+              -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.gif' -o \
+              -iname '*.webp' -o -iname '*.mp4' -o -iname '*.mov' -o -iname '*.zip' -o \
+              -iname '*.tar' -o -iname '*.gz' -o -iname '*.tgz' -o -iname '*.pdf' -o \
+              -iname '*.sqlite' -o -iname '*.db' -o -iname '*.csv' -o -iname '*.parquet' \
+            \) -not -path './.git/*' -print 2>/dev/null | sort || true
+            echo '```'
+            echo
+            echo "## Generated Junk Candidates"
+            echo '```text'
+            find . \( \
+              -name node_modules -o -name target -o -name dist -o -name build -o \
+              -name __pycache__ -o -name .pytest_cache -o -name .mypy_cache -o \
+              -name .ruff_cache -o -name .cache \
+            \) -type d -prune -print 2>/dev/null | sort || true
+            echo '```'
+          } > "$OUT"
+
+      - name: Commit audit report
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add audits/repo-size-audit.md
+          if git diff --cached --quiet; then
+            echo "No audit changes to commit."
+          else
+            git commit -m "audit: add COMPUTERWISDOM repo size report"
+            git push
+          fi

@@ -1,0 +1,5 @@
+signal_id,description,date_window_start,date_window_end,signal_type,Moscow_stated_rationale,what_receipt_implies,status,emergency_authority_cited,emergency_track,spine_position,enforcement_before_statute,replay_instance
+SIM01,Simulated: FSB phone compromise claim,2026-06-02,2026-06-02,intel,"Simulated: Western intel + IT corps implant malware","Simulated pretext for elite monitoring",Simulated,35-FZ,Yes,Threat claim,No,In progress
+SIM02,Simulated: Counter-terror paradigm shift,2026-06-02,2026-06-02,legal,"Simulated: Conflict shifted due to terror acts","Simulated legal expansion for CTO",Simulated,35-FZ,Yes,Security Council framing,No,In progress
+SIM03,Simulated: Putin internet continuity order,2026-06-01,2026-06-01,executive,"Simulated: Ensure critical services during limited internet","Simulated FSB report due July 1",Simulated,Comms Law,Yes,Executive order,No,In progress
+SIM04,Simulated: WhatsApp/MAX messenger control,2026-06-01,2026-06-01,comms,"Simulated: WhatsApp blocked, MAX promoted","Simulated migration to state messenger",Simulated,Comms Law,Yes,Agency implementation,Yes,In progress

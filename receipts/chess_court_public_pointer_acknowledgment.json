@@ -1,0 +1,39 @@
+{
+  "referee_acknowledgment": {
+    "status": "PUBLIC_POINTER_CONFIRMED",
+    "internals_record": {
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "file": "receipts/chess_court_referee_log_entry.json",
+      "commit": "bcf6b84241e46cfe2573d19f5d56e09b1f973821",
+      "status": "REFEREE_LOG_ARCHIVED"
+    },
+    "public_pointer_record": {
+      "repo": "jsonwisdom/jay-zora-portal",
+      "branch": "live-zora-ingestion",
+      "file": "public/chess-court-referee-log.json",
+      "commit": "46e8149e3ff93d15efc8573d2adff1e535c6f86b",
+      "status": "PUBLIC_POINTER_CREATED"
+    },
+    "boundary_integrity_check": {
+      "portal_html_mutated": false,
+      "rules_violation": false,
+      "rule_002_compliant": true
+    },
+    "zero_trust_metrics": {
+      "public_badge_granted": false,
+      "onchain_claimed_live": false,
+      "legal_court_claim": false
+    },
+    "court_lock_state": {
+      "principle": "Candidate sits in services/chess-court/. Public site points to the receipt. Base remains candidate-only. No public badge. No live onchain claim.",
+      "evidence_standard": "Propose pretty, prove boring.",
+      "signature": "receipt-chess"
+    },
+    "next_allowed_moves": [
+      "Submit counter in candidates with receipt",
+      "Propose reviewed transition with required receipt evidence",
+      "Audit existing candidate compliance"
+    ],
+    "timestamp": "2026-05-19T00:00:00Z"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "receipt_id": "ART_OF_WAR_2026_05_20_SPECIFIC_EVIDENCE_ITEMS_CANDIDATE",
+  "status": "EVIDENCE_ITEMS_CANDIDATE_FILLED_PENDING_REVIEW",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "date_utc": "2026-05-20",
+  "parent_daily_candidate": {
+    "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+    "commit": "70036aba52089c4cab27644af005cd1085487ab4",
+    "blob_sha": "8e3e75e43d9df8309fd6139458895aa8aff1575e"
+  },
+  "placeholder_review": {
+    "file": "receipts/counters/grok_05_20_specific_evidence_placeholder_review_2026_05_19.json",
+    "commit": "41d6975ade017491dac1e1dcd989ca49db86e7f9",
+    "verdict": "KEEP_PLACEHOLDER_HELD"
+  },
+  "evidence_items": [
+    {
+      "event_id": "AOW-2026-05-20-EVIDENCE-001",
+      "status": "FILLED_PENDING_GROK_REVIEW",
+      "timestamp_or_commit": "d6c23ebc5294ba863a99094f84355b50c3030d75",
+      "source_or_receipt_path": "receipts/daily/art_of_war_2026_05_20_specific_evidence_items_candidate.json",
+      "claim_tag": "PUBLIC",
+      "reason": "This commit created the 05-20 specific evidence intake layer after Grok ruled the parent placeholder must remain HELD until concrete evidence exists. It belongs in the 05-20 ledger as a receipt-backed process move, not as proof of an external fog vector.",
+      "boundary_check": {
+        "public_badge_granted": false,
+        "onchain_claimed_live": false,
+        "legal_authority_claimed": false,
+        "military_authority_claimed": false,
+        "official_government_claim": false,
+        "external_affiliation_claimed": false
+      }
+    }
+  ],
+  "replacement_rule": "Only replace HELD_PENDING_TODAY_SPECIFIC_RECEIPTS_MOVES_OR_FOG_VECTORS after at least one evidence item is filled and counter-reviewed.",
+  "next_required": [
+    "Run Grok evidence item review.",
+    "If passed, update the 05-20 daily ledger evidence array.",
+    "If updated, court-lock the 05-20 daily entry."
+  ],
+  "canon_line": "One concrete evidence item has been filled as a process move. Counter-review decides whether it can replace the parent placeholder."
+}

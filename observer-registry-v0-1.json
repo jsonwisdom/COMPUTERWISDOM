@@ -1,0 +1,141 @@
+{
+  "artifact": "OBSERVER_REGISTRY_V0_1",
+  "type": "pre_verification_visibility_and_attention_registry",
+  "status": "proposed_for_intake",
+  "branch": "feature/constitutional-caseflow-v0-1",
+  "authority": false,
+  "court": false,
+  "verifier": false,
+  "witness": false,
+  "registry_itself_has_gating_power": false,
+  "purpose": "Declare the upstream observation and attention layer where claims become visible before witness, verification, classification, or receipt processing. Prevent pre-verification manipulation from hiding behind later fact-checking or runtime gates.",
+  "core_claim": "A civilization can be manipulated long before verification fails by deciding what is seen and what is ignored.",
+  "risk_surface": {
+    "name": "PRE_VERIFICATION_CONTROL_SURFACE",
+    "description": "Curation, amplification, suppression, flooding, and attention allocation can shape the visible information topology before any witness activates.",
+    "attack_vector": "visibility_control_not_necessarily_falsehood",
+    "authority": false
+  },
+  "observer_roles": [
+    {
+      "id": "HUMAN_OPERATOR_OBSERVER_V0_1",
+      "location": "human_attention_layer",
+      "role": "selects_claims_for_intake_or_review",
+      "authority": false,
+      "allowed_outputs": [
+        "OBSERVATION_POINTER",
+        "INTAKE_CANDIDATE",
+        "PRIORITY_NOTE",
+        "SOURCE_STARVATION_FLAG",
+        "FLOOD_PATTERN_FLAG"
+      ],
+      "forbidden_promotions": [
+        "attention_to_truth",
+        "priority_to_adjudication",
+        "visibility_to_authority"
+      ]
+    },
+    {
+      "id": "ALGORITHMIC_FEED_OBSERVER_V0_1",
+      "location": "external_platform_feed_layer",
+      "role": "exposes_or_hides_public_claims_through_ranking_or_recommendation",
+      "authority": false,
+      "allowed_outputs": [
+        "VISIBILITY_CONTEXT",
+        "AMPLIFICATION_PATTERN",
+        "SUPPRESSION_HINT",
+        "ECHO_CHAMBER_SKEW_HINT"
+      ],
+      "forbidden_promotions": [
+        "ranking_to_truth",
+        "virality_to_validity",
+        "absence_to_nonexistence"
+      ]
+    },
+    {
+      "id": "PUBLIC_SEARCH_OBSERVER_V0_1",
+      "location": "external_search_and_discovery_layer",
+      "role": "reveals discoverability, source availability, and query-dependent visibility",
+      "authority": false,
+      "allowed_outputs": [
+        "SEARCH_CONTEXT_POINTER",
+        "SOURCE_DISCOVERY_HINT",
+        "QUERY_DEPENDENCE_NOTE",
+        "MISSING_SOURCE_FLAG"
+      ],
+      "forbidden_promotions": [
+        "search_result_to_truth",
+        "search_absence_to_falsehood",
+        "discoverability_to_authority"
+      ]
+    },
+    {
+      "id": "EXTERNAL_AI_OBSERVER_V0_1",
+      "location": "external_ai_sensemaking_layer",
+      "role": "summarizes visible public context and may reveal asymmetric visibility or missing context",
+      "authority": false,
+      "allowed_outputs": [
+        "PUBLIC_CONTEXT_POINTER",
+        "CONTRADICTION_HINT",
+        "SOURCE_STARVATION_HINT",
+        "FLOOD_PATTERN_HINT",
+        "DISPUTE_TRIGGER"
+      ],
+      "forbidden_promotions": [
+        "ai_summary_to_truth",
+        "ai_confidence_to_verification",
+        "ai_visibility_to_adjudication"
+      ]
+    }
+  ],
+  "detected_patterns": [
+    {
+      "pattern": "SOURCE_STARVATION",
+      "meaning": "Important counter-sources or primary records appear absent from the visible set.",
+      "allowed_response": "FLAG_FOR_WITNESS_OR_INTAKE",
+      "forbidden_response": "DECLARE_SUPPRESSION_AS_PROVEN"
+    },
+    {
+      "pattern": "FLOODING",
+      "meaning": "Large volumes of repetitive or low-quality claims overwhelm review capacity.",
+      "allowed_response": "ROUTE_TO_PRIORITY_AND_DEDUPLICATION",
+      "forbidden_response": "DISMISS_ALL_CLAIMS_WITHOUT_REVIEW"
+    },
+    {
+      "pattern": "ECHO_CHAMBER_SKEW",
+      "meaning": "Visible inputs overrepresent one interpretive community or narrative cluster.",
+      "allowed_response": "REQUEST_COUNTER_WITNESS_OR_SOURCE_DISCOVERY",
+      "forbidden_response": "TREAT_CLUSTER_CONSENSUS_AS_TRUTH"
+    },
+    {
+      "pattern": "OVERAMPLIFICATION",
+      "meaning": "A weak or unreceipted claim receives disproportionate visibility.",
+      "allowed_response": "DOWNGRADE_TO_L0_POINTER_UNTIL_RECEIPTED",
+      "forbidden_response": "TREAT_ATTENTION_AS_EVIDENCE"
+    },
+    {
+      "pattern": "SILENCE_AS_SIGNAL_RISK",
+      "meaning": "Absence of visible claims is being misread as absence of reality.",
+      "allowed_response": "MARK_UNKNOWN_AND_REQUEST_SEARCH",
+      "forbidden_response": "PROMOTE_UNKNOWN_TO_FALSE"
+    }
+  ],
+  "allowed_outputs": [
+    "OBSERVATION_POINTER",
+    "INTAKE_CANDIDATE",
+    "VISIBILITY_CONTEXT",
+    "SOURCE_STARVATION_FLAG",
+    "FLOOD_PATTERN_FLAG",
+    "ECHO_CHAMBER_SKEW_HINT",
+    "DISPUTE_TRIGGER"
+  ],
+  "forbidden_claims": [
+    "Observation equals truth.",
+    "Visibility equals validity.",
+    "Absence from feed equals nonexistence.",
+    "Observer registry grants authority.",
+    "Attention rank can adjudicate a claim.",
+    "Meta-curation can be solved by a single witness."
+  ],
+  "canonical_rule": "Observers select and surface. Witnesses observe and report. Verifiers gate. Courts translate. Receipts replay. Humans merge. Authority remains false."
+}

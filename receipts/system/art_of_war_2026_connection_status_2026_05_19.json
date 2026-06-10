@@ -1,0 +1,49 @@
+{
+  "receipt_id": "ART_OF_WAR_2026_CONNECTION_STATUS_2026_05_19",
+  "status": "CONNECTED_AND_RUNNING_WITH_HELD_PLACEHOLDER",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T04:30:00Z",
+  "connected_chain": {
+    "05_19_verified_entry": {
+      "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_19_candidate.json",
+      "commit": "b7df17b35d5b20a0b26953f5b7d1306bb3e2446d",
+      "status": "VERIFIED_AS_CANDIDATE_ENTRY"
+    },
+    "05_19_court_lock": {
+      "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_19_court_lock_confirmation.json",
+      "commit": "03333d3e6bfe449c11bd6b760e7bec945499eb64"
+    },
+    "05_20_candidate": {
+      "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+      "commit": "70036aba52089c4cab27644af005cd1085487ab4",
+      "blob_sha": "8e3e75e43d9df8309fd6139458895aa8aff1575e",
+      "status": "DAILY_LEDGER_CANDIDATE_CREATED"
+    },
+    "05_20_harness_review": {
+      "file": "receipts/counters/grok_compute_wisdom_harness_05_20_review_2026_05_19.json",
+      "commit": "8e7cde3b2216c5f8370945c38e259b4e2a54114b",
+      "verdict": "REQUEST_CHANGES"
+    }
+  },
+  "smooth_running_state": {
+    "repo_trace_working": true,
+    "branch_path_commit_trace_corrected": true,
+    "grok_harness_operational": true,
+    "daily_cadence_active": true,
+    "blocker": "05-20 evidence array still contains HELD placeholder"
+  },
+  "next_required": [
+    "Add concrete 2026-05-20 evidence items to the daily candidate.",
+    "Re-commit updated 05-20 daily candidate.",
+    "Run Grok harness review again.",
+    "If passed, court-lock 05-20 as verified candidate entry."
+  ],
+  "boundaries": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false
+  },
+  "canon_line": "The system is connected and running. The only live blocker is the HELD evidence placeholder for 2026-05-20."
+}

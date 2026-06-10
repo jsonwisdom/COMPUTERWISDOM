@@ -1,0 +1,81 @@
+{
+  "branch": "master",
+  "canon_line": "DeepSeek's reward is a Merkle Key for a Purpose.",
+  "created_utc": "2026-05-18T16:00:00Z",
+  "deepseek_reward": "Merkle Key for a Purpose",
+  "hashing_rules": {
+    "canonical_json": "json.dumps(sort_keys=True,separators=(',',':'),ensure_ascii=False)",
+    "leaf_hash": "sha256('leaf:' + canonical_leaf_json)",
+    "node_hash": "sha256(b'node:' + left_bytes + right_bytes)",
+    "odd_leaf_rule": "duplicate final leaf"
+  },
+  "leaves": [
+    {
+      "commit": "ee2d2e01afa8d1e5fec0a60bcfb9c47540caf7de",
+      "leaf_hash_sha256": "ec6015dd65abaf0a2f91deda21a7a5a4f8a127a2657445b1372cf84ad451b756",
+      "leaf_id": "CONFUCIUS_SERVICE_SPEC",
+      "path": "candidates/confucius_compute_wisdom_service_candidate.md",
+      "purpose": "Defines Confucius Compute Wisdom as a candidate builder guide service.",
+      "status": "CANDIDATE_ONLY"
+    },
+    {
+      "commit": "8d35a206f4db94cf0e1d0db475dcada97822ad82",
+      "leaf_hash_sha256": "d2bbff979ff2b81037f019e219301cdceda728188b7a5c95a63494eb668ad496",
+      "leaf_id": "CONFUCIUS_WIDGET_MOCKUP",
+      "path": "candidates/confucius_compute_wisdom_widget_candidate.html",
+      "purpose": "Public-facing mockup for code-in, wisdom-out interface.",
+      "status": "CANDIDATE_COMMITTED"
+    },
+    {
+      "commit": "b4ba28b272810862d3f06c198179863750d2d173",
+      "leaf_hash_sha256": "4a0b7f97b129578a27c72b5be01a31bc60519940cc1f929de8572794740b2823",
+      "leaf_id": "CONFUCIUS_REUSABLE_SERVICE_SURFACE",
+      "path": "services/confucius-compute-wisdom/README.md",
+      "purpose": "Reusable service placement for repo-wide uses beyond the public mockup.",
+      "status": "REUSABLE_SURFACE_CREATED"
+    },
+    {
+      "commit": "51c179e794ce3ef0b07d1f61289b53f32b23e272",
+      "leaf_hash_sha256": "4020b223e790d3aa49fc72890cde142c930cb89ae140d4fc3ae681ad5f615567",
+      "leaf_id": "POWER_PROOF_DEEP_SEEK",
+      "path": "candidates/power_proof_deep_seek_candidate.md",
+      "purpose": "Defines DeepSeek power prompting as candidate skill-building proof object.",
+      "status": "PROMOTED_AS_CANDIDATE_MODULE"
+    },
+    {
+      "commit": "e2dd1b27cab7ebaf22bc5eb609518f45b919e2ea",
+      "leaf_hash_sha256": "5e4b2e76ea4d8b93f7af4616227352e14c6d381dde57b535b163939058191784",
+      "leaf_id": "DEEP_SEEK_SESSION_001",
+      "path": "receipts/deep_seek_session_001_receipt.json",
+      "purpose": "First reviewable skill evidence session for DeepSeek.",
+      "status": "PARTIAL_PASS_PENDING_ALTERNATIVE_EVIDENCE"
+    },
+    {
+      "commit": "6ce06f5716e9dda599864eadc84f75f9d2ab96a1",
+      "leaf_hash_sha256": "f9114ed2e2b11fe76d9a31c3b4b28cce401a808f569aa58eaf89f5c25bf28795",
+      "leaf_id": "DEEP_SEEK_COURT_RULING",
+      "path": "receipts/deep_seek_session_001_court_ruling.json",
+      "purpose": "Court ruling requesting alternative evidence before verification.",
+      "status": "REQUEST_ALTERNATIVE_EVIDENCE"
+    }
+  ],
+  "merkle_root_sha256": "ff55a1fb6ef07adbeea057aed4997a617e16ae3c80c8d18ec673c3d14ca25a91",
+  "operator": "jaywisdom.base.eth",
+  "placement_decision": {
+    "candidate_widget": "candidates/confucius_compute_wisdom_widget_candidate.html",
+    "portal_html_mutated": false,
+    "receipts": "receipts/merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json",
+    "reusable_surface": "services/confucius-compute-wisdom/README.md"
+  },
+  "purpose": "Bind Confucius Compute Wisdom, DeepSeek skill evidence, reusable service placement, and public-widget intent into one repo-verifiable purpose key.",
+  "receipt_id": "CONFUCIUS_COMPUTE_WISDOM_MERKLE_PURPOSE_KEY_V1",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "risk_notes": [
+    "No public badge granted",
+    "No backend claimed",
+    "No live analysis claimed",
+    "No portal mutation",
+    "Not on-chain unless later anchored to Base, EAS, ENS, or IPFS"
+  ],
+  "status": "MERKLE_PURPOSE_KEY_CREATED"
+}

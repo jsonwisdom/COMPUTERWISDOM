@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "AtomicRecursionTimeWasteUnitV1",
+  "description": "Candidate schema for converting infrastructure time-waste narratives into smallest verifiable receipt units without asserting damages, legal liability, or official misconduct.",
+  "type": "object",
+  "required": [
+    "unit_id",
+    "status",
+    "action_attempted",
+    "system_or_surface",
+    "time_or_event_marker",
+    "evidence_available",
+    "receipt_status",
+    "claim_tag",
+    "next_proof_needed",
+    "boundaries"
+  ],
+  "properties": {
+    "unit_id": {
+      "type": "string",
+      "pattern": "^AR-TW-[0-9]{4}$"
+    },
+    "status": {
+      "enum": ["CANDIDATE", "PENDING_EVIDENCE", "READY_FOR_REVIEW", "VERIFIED", "REJECTED"]
+    },
+    "action_attempted": {
+      "type": "string"
+    },
+    "system_or_surface": {
+      "type": "string"
+    },
+    "time_or_event_marker": {
+      "type": "object",
+      "properties": {
+        "timestamp_utc": { "type": "string" },
+        "event_reference": { "type": "string" },
+        "source_timezone": { "type": "string" }
+      }
+    },
+    "evidence_available": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["type", "path_or_url", "hash_or_commit", "availability"],
+        "properties": {
+          "type": { "enum": ["screenshot", "log", "commit", "receipt", "email", "calendar", "terminal_output", "url", "other"] },
+          "path_or_url": { "type": "string" },
+          "hash_or_commit": { "type": "string" },
+          "availability": { "enum": ["PUBLIC", "HELD", "PENDING", "MISSING"] }
+        }
+      }
+    },
+    "receipt_status": {
+      "enum": ["NO_RECEIPT", "RECEIPT_PENDING", "RECEIPT_COMMITTED", "RECEIPT_VERIFIED"]
+    },
+    "claim_tag": {
+      "enum": ["PUBLIC", "HELD", "PENDING", "REJECTED"]
+    },
+    "next_proof_needed": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "boundaries": {
+      "type": "object",
+      "required": ["legal_claim_made", "damages_claim_made", "official_misconduct_claim_verified", "public_badge_granted"],
+      "properties": {
+        "legal_claim_made": { "type": "boolean" },
+        "damages_claim_made": { "type": "boolean" },
+        "official_misconduct_claim_verified": { "type": "boolean" },
+        "public_badge_granted": { "type": "boolean" }
+      }
+    },
+    "canon_line": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "receipt_id": "MANIC_VALIDATION_RECEIPT_001",
+  "timestamp": "2026-05-21T06:45:00Z",
+  "status": "COHERENTLY_INVALID_UNTIL_REPLAYED",
+  "pipeline": "MANIC_VALIDATION_PIPELINE_001",
+  "scope": {
+    "validators": {
+      "validate_receipt.js": "6135faa94aa8935130530d4c1dcc7b51d984d0c8",
+      "validate_opacity_release.js": "cec57f07268464c7dd0946422f64cc344b4601bd",
+      "validate_all.js": "05b0e2135b9af2c78ae6aa95e375cfb5e99bafd3"
+    },
+    "schemas": {
+      "manic_reference_receipt.v1.schema.json": "331955fe37303a700f976432ab50748a89c7791a",
+      "replay_thread.v1.schema.json": "4dc3f1a2740960723259e79e7191262923279fff",
+      "opacity_index_release.v1.schema.json": "128c3ccfc4c9868c129388d74f387b87bd32bf29"
+    },
+    "examples_verified": {
+      "example_root_source.json": "3c3c24d1f9050ee5bf6ef8e5923e2801b7877f2e",
+      "example_claim_node.json": "d6fec3afad89db2a993c644050a0838a08df6d26",
+      "example_disputed_branch.json": "25806091ade0cd24ccb95a19829751eabd004af8",
+      "example_opacity_release.json": "bd013c346413522ca7830ac29968a08cfe3c87a1"
+    }
+  },
+  "result": "PASSED",
+  "disclaimer": "Every map is incomplete. Coherently Invalid until proven replayable."
+}

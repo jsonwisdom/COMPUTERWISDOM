@@ -1,0 +1,54 @@
+{
+  "receipt_id": "ART_OF_WAR_2026_DAILY_EPOCH_PROTOCOL_V1",
+  "status": "DAILY_EPOCH_PROTOCOL_CREATED",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "purpose": "Close the loop from 05-20 and define the repeatable daily epoch path for Art of War 2026 ledger entries.",
+  "source_epoch_closed": {
+    "entry_id": "AOW-2026-DAILY-0002",
+    "final_court_lock": {
+      "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_final_court_lock_confirmation.json",
+      "commit": "e9c54dafb32ff962c43a5201ab63b219c2bcb30e",
+      "status": "DAILY_LEDGER_ENTRY_FINAL_COURT_LOCK_CONFIRMED"
+    },
+    "commit_pinned_snapshot": {
+      "file": "receipts/snapshots/art_of_war_2026_05_20_parent_candidate_commit_snapshot.json",
+      "commit": "0a789b73823e1a6eba54b2e806bc934fe20863d2"
+    },
+    "workflow_verdict": "WORKFLOW_RECONCILED_BY_COMMIT_PIN"
+  },
+  "standard_epoch_path": [
+    "1_candidate_daily_entry",
+    "2_specific_evidence_item_intake",
+    "3_grok_batch_packet",
+    "4_commit_pinned_parent_snapshot",
+    "5_grok_counter_review",
+    "6_parent_update_if_review_passes",
+    "7_final_commit_pinned_reconciliation",
+    "8_final_court_lock"
+  ],
+  "hard_rules": [
+    "A placeholder is not evidence.",
+    "Floating master can lag; final review uses commit-pinned trace.",
+    "Batch shortcuts are receipts, not excuses.",
+    "A process move proves process only, not external fog.",
+    "No public badge without promotion receipt.",
+    "No live onchain claim without transaction or attestation receipt.",
+    "No legal, military, government, Oxford, or institutional authority claim without public evidence."
+  ],
+  "boundary_defaults": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false,
+    "zora_treated_as_proof": false,
+    "external_fog_vector_proven": false
+  },
+  "next_epoch": {
+    "entry_id": "AOW-2026-DAILY-0003",
+    "date_utc": "2026-05-21",
+    "status": "READY_FOR_CANDIDATE_CREATION"
+  },
+  "canon_line": "Close the loop. Repeat the epoch. Candidate, evidence, batch, pin, review, lock."
+}

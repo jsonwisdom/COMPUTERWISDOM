@@ -1,0 +1,35 @@
+{
+  "receipt_id": "MOVE_VALIDATION_RULES_CANDIDATE_RECEIPT_V1",
+  "status": "GOVERNANCE_RULES_CANDIDATE_CREATED",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T19:00:00Z",
+  "rules_file": {
+    "file": "governance/move_validation_rules_candidate.json",
+    "commit": "57937c3518dc2caabc02c74a30b106f8c975c8d5",
+    "version": "1.0.0"
+  },
+  "rules_count": 6,
+  "enforced_surfaces": [
+    "public badge grants",
+    "portal.html mutation",
+    "onchain/Base/Zora proof claims",
+    "official authority claims",
+    "Zora image usage",
+    "Merkle tree growth"
+  ],
+  "global_defaults": {
+    "on_violation": "reject",
+    "log_violation": true,
+    "notify_admin": true
+  },
+  "boundaries": {
+    "candidate_only": true,
+    "live_enforcement_claimed": false,
+    "portal_html_mutated": false,
+    "public_badge_granted": false,
+    "backend_claimed_live": false,
+    "onchain_claimed_live": false,
+    "official_authority_claim": false
+  },
+  "canon_line": "Move validation rules exist as candidate law. No piece moves without receipt evidence."
+}

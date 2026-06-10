@@ -1,0 +1,31 @@
+{
+  "receipt_id": "DEEP_SEEK_EPOCH_004_RECEIPT",
+  "status": "EPOCH_CANDIDATE_CREATED",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T17:00:00Z",
+  "epoch": {
+    "name": "Deep Seek Epoch 004 · 5D Chinese Checkers on Jay's Chess Board",
+    "file": "epochs/deep_seek_epoch_004_5d_chinese_checkers.md",
+    "commit": "79c99ca28cd8e99f96a05893c9c054e730805d5f"
+  },
+  "audit_dependency": {
+    "file": "audits/repo_surface_audit_2026_05_19.md",
+    "commit": "c8d0194bef4943319ceb98670c6899744c05eee9"
+  },
+  "core_axes": [
+    "Evidence",
+    "Authority",
+    "Publicity",
+    "Access",
+    "Jurisdiction / Vernacular"
+  ],
+  "boundaries": {
+    "portal_html_mutated": false,
+    "public_badge_granted": false,
+    "backend_claimed_live": false,
+    "onchain_claimed_live": false,
+    "official_agency_claim": false,
+    "classified_access_claim": false
+  },
+  "canon_line": "No piece moves without a receipt. Deep Seek proposes. Computer Wisdom validates. Jay's Wisdom promotes. The board remembers."
+}

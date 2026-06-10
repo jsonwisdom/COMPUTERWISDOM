@@ -1,0 +1,49 @@
+{
+  "spec": "ANCHOR_ENVELOPE_V1",
+  "envelope_id": "ANCHOR_ENVELOPE_001",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "status": "ANCHOR_ENVELOPE_PREPARED_NOT_SUBMITTED",
+  "anchor_payload": {
+    "path": "receipts/anchor/ANCHOR_PAYLOAD_001.json",
+    "commit": "38100b3a2f0084eb31612be567d909a9632d1a02",
+    "sha256_utf8_content": "102e70b50594e412b8f15d311cc4e04f5126a4405fb3b1d02652e3d11afeaf5b"
+  },
+  "hash_receipt": {
+    "path": "receipts/anchor/ANCHOR_PAYLOAD_HASH_RECEIPT_001.json",
+    "commit": "05ae98507cbe79d4232dd963bd1b398e9b1223fc",
+    "status": "ANCHOR_PAYLOAD_HASH_CONFIRMED"
+  },
+  "continuity_state": {
+    "state": "ANCHOR_READY",
+    "continuity_surface": "MULTI_OBSERVER_STABLE",
+    "onchain_status": "NOT_SUBMITTED"
+  },
+  "proposed_anchor_surfaces": {
+    "github_release_checksum": true,
+    "eas_on_base": "OPTIONAL_NOT_SUBMITTED",
+    "ens_text_record": "OPTIONAL_NOT_SUBMITTED",
+    "base_transaction_calldata": "OPTIONAL_NOT_SUBMITTED"
+  },
+  "attestation_claim": {
+    "claim": "ANCHOR_PAYLOAD_001 hash confirms COMPUTERWISDOM canon chain reached MULTI_OBSERVER_STABLE before any onchain submission.",
+    "anchor_input": "102e70b50594e412b8f15d311cc4e04f5126a4405fb3b1d02652e3d11afeaf5b",
+    "scope": "GitHub receipt chain and CI verifier pass only"
+  },
+  "anti_claims": [
+    "not submitted onchain",
+    "not ENS anchored",
+    "not EAS attested",
+    "not Microsoft endorsed",
+    "not global legitimacy",
+    "not semantic truth beyond declared verifier scope"
+  ],
+  "submission_fields": {
+    "chain": null,
+    "transaction_hash": null,
+    "attestation_uid": null,
+    "ens_name": null,
+    "ens_text_key": null,
+    "github_release_tag": null
+  },
+  "next_transition": "SELECT_ANCHOR_SURFACE"
+}

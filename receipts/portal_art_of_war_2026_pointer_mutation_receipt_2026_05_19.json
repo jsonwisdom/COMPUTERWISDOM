@@ -1,0 +1,29 @@
+{
+  "receipt_id": "PORTAL_ART_OF_WAR_2026_POINTER_MUTATION_RECEIPT_2026_05_19",
+  "status": "MUTATION_RECEIPT_CREATED",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T03:30:00Z",
+  "target_file": "portal.html",
+  "source_counter_review": {
+    "file": "receipts/counters/grok_ultimate_chess_court_art_of_war_2026_review_2026_05_19.json",
+    "commit": "c51e0f39e3c74373cfa87041c417da138e18aaae",
+    "verdict": "VERIFIED | READY_FOR_DAILY_LEDGER_CANDIDATE"
+  },
+  "intended_changes": [
+    "Add Art of War 2026 pointer under Active Courts or civic doctrine surface",
+    "Link candidate doctrine file",
+    "Link activation receipt",
+    "Link Grok ultimate counter-review receipt",
+    "Preserve candidate-only and no authority boundaries"
+  ],
+  "governance_rule_002": "portal_html_mutation_requires_receipt",
+  "portal_html_mutated_before_receipt": false,
+  "boundaries": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false
+  },
+  "canon_line": "Portal pointer allowed because the counter-review and mutation receipt exist first. Candidate doctrine only."
+}

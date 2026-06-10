@@ -1,0 +1,133 @@
+{
+  "artifact": "BASE_MCP_AGENT_ECOLOGY_V0_1",
+  "type": "l2_mcp_agent_witness_player_ecology",
+  "status": "proposed_for_intake",
+  "branch": "feature/constitutional-caseflow-v0-1",
+  "ens_root": "jaywisdom.base.eth",
+  "layer": "Base L2 namespace and witness context",
+  "authority": false,
+  "settlement_claim": false,
+  "base_anchor_complete": false,
+  "purpose": "Define how Base-linked MCP agents may operate as bounded witnesses and players inside the Computer Wisdom constitutional ecology without becoming authority, verifier, signer, or settlement truth by default.",
+  "core_distinction": {
+    "witness": "observes, reports, timestamps, references, and prepares hashable context",
+    "player": "submits bounded actions, work orders, claims, bids, responses, or artifacts subject to verification",
+    "verifier": "checks transitions and gates movement; not granted by player status",
+    "settlement_layer": "may witness anchors or attestations only when real tx, UID, or receipt is present",
+    "authority": false
+  },
+  "mcp_boundary": {
+    "meaning": "Model Context Protocol boundary for tool and context access",
+    "rule": "MCP access does not equal authority. Tool access must be receipt-gated and logged.",
+    "forbidden_promotions": [
+      "mcp_access_to_authority",
+      "tool_output_to_truth",
+      "agent_action_to_merge_authority",
+      "base_namespace_to_anchor_completion_without_receipt"
+    ]
+  },
+  "agent_species": [
+    {
+      "id": "GROK_AGENT_L2_V0_1",
+      "role": "external_ai_agent_input_surface",
+      "mode": ["witness_candidate", "player_candidate"],
+      "can_witness": true,
+      "can_play": true,
+      "can_verify": false,
+      "can_merge": false,
+      "authority": false,
+      "outputs": ["AGENT_CONTEXT_SUMMARY", "SOURCE_DISCOVERY_HINT", "CONTRADICTION_HINT", "CASE_INTAKE_CANDIDATE"]
+    },
+    {
+      "id": "CHATGPT_AGENT_L2_V0_1",
+      "role": "constitutional_coauthor_and_tool_agent_surface",
+      "mode": ["witness_candidate", "player_candidate", "drafting_agent"],
+      "can_witness": true,
+      "can_play": true,
+      "can_verify": false,
+      "can_merge": false,
+      "authority": false,
+      "outputs": ["SPEC_DRAFT", "REPO_MUTATION_WITH_USER_DIRECTION", "BOUNDARY_OBSERVATION", "CASEFLOW_MAPPING"]
+    },
+    {
+      "id": "COPILOT_AGENT_L2_V0_1",
+      "role": "code_assist_and_runtime_surface",
+      "mode": ["player_candidate", "runtime_witness_candidate"],
+      "can_witness": true,
+      "can_play": true,
+      "can_verify": false,
+      "can_merge": false,
+      "authority": false,
+      "outputs": ["CODE_PATCH", "TEST_OUTPUT", "RUNTIME_LOG", "IMPLEMENTATION_NOTE"]
+    },
+    {
+      "id": "LOCAL_MCP_AGENT_L2_V0_1",
+      "role": "local_context_and_tool_boundary_agent",
+      "mode": ["witness_candidate", "player_candidate"],
+      "can_witness": true,
+      "can_play": true,
+      "can_verify": false,
+      "can_merge": false,
+      "authority": false,
+      "outputs": ["LOCAL_CONTEXT_OBSERVATION", "TOOL_CALL_RECEIPT", "POLICY_BOUND_ACTION", "DENIAL_RECEIPT"]
+    },
+    {
+      "id": "BASE_ANCHOR_AGENT_L2_V0_1",
+      "role": "anchor_preparation_and_receipt_tracking_agent",
+      "mode": ["player_candidate", "chain_witness_candidate"],
+      "can_witness": true,
+      "can_play": true,
+      "can_verify": false,
+      "can_merge": false,
+      "can_sign": false,
+      "authority": false,
+      "outputs": ["ANCHOR_PREP", "TX_POINTER_IF_PROVIDED", "UID_POINTER_IF_PROVIDED", "NO_GHOST_ANCHOR_WARNING"]
+    },
+    {
+      "id": "HUMAN_OPERATOR_JAY_L2_V0_1",
+      "role": "human operator and final merge/signing decision surface",
+      "mode": ["operator", "witness", "player", "merge_decider"],
+      "can_witness": true,
+      "can_play": true,
+      "can_verify": true,
+      "can_merge": true,
+      "can_sign": true,
+      "authority": "human_operational_authority_only_not_universal_truth",
+      "outputs": ["MERGE_DECISION", "SIGNING_ACTION", "PUBLIC_ATTESTATION", "OPERATOR_RECEIPT"]
+    }
+  ],
+  "caseflow_compounding": {
+    "base_layer": "jaywisdom.base.eth namespace and optional Base/EAS witness layer",
+    "mcp_layer": "tool/context boundary where agents act under constraints",
+    "agent_layer": "witnesses and players submit outputs",
+    "verification_layer": "Goblin Verifier or human review checks transition legitimacy",
+    "receipt_layer": "hashes, commits, logs, attestations, and runtime receipts preserve replay",
+    "merge_layer": "human operator only"
+  },
+  "allowed_agent_actions": [
+    "observe_public_claim",
+    "summarize_context",
+    "propose_case_intake",
+    "draft_spec",
+    "prepare_anchor_payload",
+    "produce_runtime_log",
+    "submit_work_order_or_bid",
+    "flag_contradiction",
+    "emit_denial_or_boundary_observation"
+  ],
+  "forbidden_agent_actions": [
+    "self_grant_authority",
+    "self_verify_own_output_as_final",
+    "merge_without_human_operator",
+    "sign_wallet_transaction_without_explicit_operator_action",
+    "claim_base_anchor_without_tx_or_uid",
+    "treat_ens_namespace_as proof_of_truth",
+    "convert_witness_output_to_adjudication"
+  ],
+  "receipt_requirements": {
+    "agent_output": ["agent_id", "input_reference", "output_hash_or_commit", "timestamp_or_commit_time", "authority_false"],
+    "player_action": ["agent_id", "action_type", "allowed_scope", "receipt_pointer", "review_required"],
+    "base_anchor": ["chain", "tx_hash_or_eas_uid", "payload_hash", "operator_confirmation", "no_ghost_anchor_rule"]
+  },
+  "canonical_rule": "Base MCP agents may witness and play. They do not crown, merge, verify themselves, sign by implication, or turn jaywisdom.base.eth into authority. Receipts decide what happened; human review decides what moves."
+}

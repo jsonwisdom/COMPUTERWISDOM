@@ -1,0 +1,56 @@
+{
+  "candidate_id": "CHESS_COURT_WAVE1_MEMBRANE_EVIDENCE_CANDIDATE_V1",
+  "status": "CANDIDATE_EVIDENCE_HELD",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T02:30:00Z",
+  "purpose": "Use Wave 1 membrane completion text as evidence in a Game of Chess with Grok.",
+  "board_actors": [
+    {
+      "name": "Oxford Chess Club",
+      "role": "candidate_board_observer_or_counterparty",
+      "claim_tag": "HELD",
+      "boundary": "No official participation, endorsement, membership, or affiliation is claimed without public evidence."
+    },
+    {
+      "name": "Logic Boy",
+      "role": "candidate_logic_counter_player",
+      "claim_tag": "HELD",
+      "boundary": "Represents a reasoning role/persona until independently identified by receipt."
+    },
+    {
+      "name": "Jay",
+      "role": "operator_and_chess_court_initiator",
+      "claim_tag": "PUBLIC",
+      "boundary": "Operator role only; no legal court or official authority claim."
+    }
+  ],
+  "source_text_summary": {
+    "title": "Wave 1 Membrane Complete",
+    "claims": [
+      "Wave 1 feedback ledger files exist or are proposed.",
+      "v1.4 planning files exist or are proposed.",
+      "Static site and v1.3 technical docs are described as ready.",
+      "Wave 1 is described as send-ready for selected reviewers.",
+      "Personalized outreach emails are suggested as next step."
+    ],
+    "claim_tag": "HELD_PENDING_REPO_PATHS_OR_COMMITS",
+    "reason": "The text is useful as chess-game evidence, but specific file paths and commits must be verified before claims advance."
+  },
+  "evidence_requirements": [
+    "Repository name containing Wave 1 files",
+    "Commit hash for /wave-1/feedback-ledger/README.md",
+    "Commit hash for /wave-1/feedback-ledger/2026-05_wave1_ledger.md",
+    "Commit hash for /wave-1/SYNTHESIS_PLAN.md",
+    "Commit hash for /wave-1/LEDGER_AUTOMATION_GUIDELINES.md",
+    "Commit hash for /v1.4-planning/README.md",
+    "Public or private review status for initial reviewers"
+  ],
+  "governance_boundaries": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_court_claim": false,
+    "official_affiliation_claimed": false,
+    "portal_html_mutated": false
+  },
+  "canon_line": "Wave 1 membrane text may enter the Chess Court as candidate evidence. Oxford Chess Club, Logic Boy, and Jay are board actors until receipts prove stronger claims."
+}

@@ -1,0 +1,32 @@
+{
+  "status": "GOVERNANCE_RULES_CANDIDATE_COMMITTED",
+  "acknowledgment": true,
+  "court_lock": {
+    "active": true,
+    "meaning": "No piece moves without receipt evidence. Violations reject the transition. Candidate law first. Live enforcement later.",
+    "receipt_required_for_actions": [
+      "grant_public_badge",
+      "mutate_portal_html",
+      "claim_onchain_proof",
+      "claim_authority",
+      "use_zora_image",
+      "grow_merkle_tree"
+    ]
+  },
+  "receipt": {
+    "id": "receipt_move_validation_rules_candidate",
+    "timestamp": "2026-05-19T00:00:00Z",
+    "rules_version": "1.0.0",
+    "rules_commit": "57937c3518dc2caabc02c74a30b106f8c975c8d5",
+    "receipt_commit": "f9877960b9a4249587a9dbec32d0cf5069619a3a",
+    "signature": "🧾♟️"
+  },
+  "next_state": {
+    "live_enforcement": false,
+    "portal_html_mutated": false,
+    "public_badge_granted": false,
+    "backend_claimed_live": false,
+    "onchain_claimed_live": false
+  },
+  "instruction": "Candidate law is now court-locked. To transition to live enforcement, submit a governance action with a valid transition receipt."
+}

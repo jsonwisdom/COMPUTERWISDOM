@@ -1,0 +1,48 @@
+{
+  "version": "v0.1",
+  "index_file": "docs/GOBLIN_PRECEDENT_INDEX_V0_1.md",
+  "index_blob_sha": "9cf83bed5627d9d88eccf111a5e3eac929133c58",
+  "authority": false,
+  "receipts": {
+    "FR-001": {
+      "sha256": "1be40a028438196dbe6c64c91e0fe259fb2d181a6918cddff00000b021488a99",
+      "location": "embedded_in_index"
+    },
+    "FR-002": {
+      "sha256": "ab8670563c8ebe6a45cfc33e0e5405e5bc0eb899807e43f9143f7c936b708ad3",
+      "location": "embedded_in_index"
+    },
+    "FR-003": {
+      "sha256": "da252bada28d060c77eb7e29f7ec16454c8dd7b421dae9b8d94fe833040fe375",
+      "location": "embedded_in_index"
+    },
+    "FR-004": {
+      "sha256": "37399f55d89d90ed75bb261f05fdaa7b20fbfaa833bb075a13ec5d78f91d365d",
+      "location": "embedded_in_index"
+    },
+    "FR-005": {
+      "sha256": "89f1fb15103a52b7ce597957ea0641c363e759221692f823730a80449bc60796",
+      "location": "embedded_in_index"
+    },
+    "FR-006": {
+      "sha256": "1e7559a64d583876f5bd0191e62b129ac24a83911c09dd4bf7e0ec73c05d1bd8",
+      "location": "embedded_in_index"
+    },
+    "FR-007": {
+      "sha256": "c44689ab4ffa6e25cc8f67a6041080d6b9fabefedbf383b33f36f6dff3b287d7",
+      "location": "embedded_in_index"
+    },
+    "FR-008": {
+      "sha256": "83a4edf81c714ac98fded4908b8df59e9dbd119a42bc52b7750c294d2e0d082a",
+      "location": "embedded_in_index"
+    },
+    "FR-009": {
+      "sha256": "242dc032bdc6cffccd55a95399ec76fd5a9c059170e0dcee1d570dc3638d7d5c",
+      "location": "embedded_in_index"
+    },
+    "FR-010": {
+      "sha256": "d9473ef223ac27ec8dc86fb36377a53b35db304fb022371572eca5a2fd698ab2",
+      "location": "embedded_in_index"
+    }
+  }
+}

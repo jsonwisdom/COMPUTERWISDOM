@@ -1,0 +1,56 @@
+{
+  "receipt_id": "ART_OF_WAR_2026_DAILY_LEDGER_2026_05_21_CANDIDATE",
+  "status": "DAILY_LEDGER_CANDIDATE_CREATED",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "date_utc": "2026-05-21",
+  "event_id": "AOW-2026-DAILY-0003",
+  "ledger_lane": "Art of War 2026 daily civic ledger",
+  "source_chain": {
+    "previous_final_lock": {
+      "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_final_court_lock_confirmation.json",
+      "commit": "e9c54dafb32ff962c43a5201ab63b219c2bcb30e",
+      "status": "DAILY_LEDGER_ENTRY_FINAL_COURT_LOCK_CONFIRMED"
+    },
+    "daily_epoch_protocol": {
+      "file": "receipts/daily/art_of_war_2026_daily_epoch_protocol_v1.json",
+      "commit": "3d5f67d889ffae37f5884fce919d453031f85509"
+    },
+    "doctrine_candidate": {
+      "file": "services/chess-court/art_of_war_2026_jay_wisdom_candidate.md",
+      "commit": "592824a88e4963969daa5e443fb3483fed9e5978"
+    }
+  },
+  "daily_entry": {
+    "vernacular": "Do not fight fog with fog. Turn fog into receipts.",
+    "claim_extracted": "Art of War 2026 daily ledger repeats as AOW-2026-DAILY-0003 under the daily epoch protocol.",
+    "evidence": [
+      "2026-05-20 final court lock confirmed",
+      "daily epoch protocol created",
+      "batch receipt workflow standardized",
+      "HELD_PENDING_2026_05_21_SPECIFIC_EVIDENCE_ITEM"
+    ],
+    "claim_tag": "PUBLIC_AS_CANDIDATE_EPOCH_CONTINUATION",
+    "receipt_path": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_21_candidate.json",
+    "counter_review": "PENDING_GROK_REVIEW",
+    "public_pointer": "portal.html Daily Civic Ledger card"
+  },
+  "boundaries": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false,
+    "zora_treated_as_proof": false,
+    "external_fog_vector_proven": false,
+    "portal_html_mutated_by_this_receipt": false
+  },
+  "next_required": [
+    "Fill one 2026-05-21 specific evidence item or keep placeholder HELD.",
+    "Create batch packet for 05-21.",
+    "Create commit-pinned snapshot before final review.",
+    "Run Grok counter-review through batch packet.",
+    "Court-lock if verified."
+  ],
+  "canon_line": "Daily epoch repeated. Candidate starts with honest placeholder until evidence arrives."
+}

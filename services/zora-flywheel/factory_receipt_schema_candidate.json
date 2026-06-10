@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ZoraFactoryReceiptV1",
+  "type": "object",
+  "properties": {
+    "receipt_id": { "type": "string", "pattern": "^ZORA_FACTORY_[A-Z0-9]+$" },
+    "status": { "enum": ["CANDIDATE", "PENDING_REVIEW", "VERIFIED", "REJECTED"] },
+    "zora_drop": {
+      "type": "object",
+      "properties": {
+        "chain": { "type": "string", "enum": ["base", "zora", "eth"] },
+        "contract_address": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" },
+        "token_id": { "type": "string" },
+        "drop_title": { "type": "string" },
+        "drop_description": { "type": "string" },
+        "mint_tx_hash": { "type": "string", "pattern": "^0x[a-fA-F0-9]{64}$" }
+      },
+      "required": ["chain", "contract_address", "token_id"]
+    },
+    "receipt_anchor": {
+      "type": "object",
+      "properties": {
+        "sha256_of_metadata": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "merkle_root": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "previous_receipt_hash": { "type": "string" }
+      }
+    },
+    "claim_tags": {
+      "type": "object",
+      "properties": {
+        "ownership_claim": { "enum": ["PUBLIC", "HELD", "PENDING", "REJECTED"] },
+        "authorship_claim": { "enum": ["PUBLIC", "HELD", "PENDING", "REJECTED"] },
+        "receipt_integrity": { "enum": ["PUBLIC", "HELD", "PENDING", "REJECTED"] }
+      }
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "reviewer": { "type": "string" },
+        "timestamp_utc": { "type": "string", "format": "date-time" },
+        "promotion_receipt_hash": { "type": "string" }
+      }
+    },
+    "canon_line": { "type": "string" }
+  },
+  "required": ["receipt_id", "status", "zora_drop", "claim_tags"]
+}

@@ -1,0 +1,41 @@
+{
+  "receipt_id": "MANIC_REPLAY_ADHERENCE_RECEIPT_001",
+  "created_at": "2026-05-21T07:20:00Z",
+  "protocol": "MANIC",
+  "protocol_version": "0.1",
+  "adherence_cycle": "MANIC_DECOMPOSITION_ADHERENCE_001_PCLOB_702",
+  "governing_law": {
+    "name": "RULES_OF_DECOMPOSITION_001",
+    "path": "docs/protocols/manic/runtime/RULES_OF_DECOMPOSITION_001.md",
+    "commit_sha": "f64c4e35acdc6ac252b9dc14caddb71eea723815"
+  },
+  "runtime_registry": {
+    "name": "REPLAY_TRANSFORM_REGISTRY_001",
+    "path_markdown": "docs/protocols/manic/runtime/REPLAY_TRANSFORM_REGISTRY_001.md",
+    "path_json": "docs/protocols/manic/runtime/REPLAY_TRANSFORM_REGISTRY_001.json",
+    "markdown_commit_sha": "e434ab7f3526060f276085d6e9b892c9023b7eea",
+    "json_commit_sha": "94fe4c401edd0b7419bd53d4fc5c4483145bd91d"
+  },
+  "validated_node": {
+    "node_id": "RPL-001-PCLOB-00002",
+    "path": "docs/protocols/manic/replay/branches/RPL-001-PCLOB-00002.json",
+    "commit_sha": "cca336549b4ef01cf8b4f2b02089fc8276abd12e",
+    "transform_id": "STRUCTURAL_SPLIT",
+    "constitutional_tags": [
+      "OBSERVED"
+    ]
+  },
+  "adherence_result": "DECOMPOSITION_LAW_OBSERVED",
+  "validated_properties": [
+    "STRUCTURAL_ONLY_EXTRACTION",
+    "OBSERVED_ONLY_TAGGING",
+    "REGISTERED_TRANSFORM_USED",
+    "NO_INTERPRETATION_CREATED",
+    "SOURCE_LOCATOR_PRESENT",
+    "APPEND_ONLY_REPLAY_NODE"
+  ],
+  "authority_claim": "NONE",
+  "truth_adjudication": "NOT_PERFORMED",
+  "continuity_flag": "COHERENTLY_INVALID_UNTIL_REPLAYED",
+  "disclaimer": "This receipt records decomposition-rule adherence, not semantic truth. Every map is incomplete."
+}

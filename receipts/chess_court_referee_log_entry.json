@@ -1,0 +1,41 @@
+{
+  "referee_log_entry": {
+    "timestamp": "2026-05-19T00:00:00Z",
+    "court": "Chess Court",
+    "status": "HELD",
+    "game_doctrine": "Chess Court is the board. Receipts are the moves. Base points only after proof exists. Jay’s Wisdom promotes. Computer Wisdom validates. No piece moves without evidence. 🧾♟",
+    "governance_compliance_check": {
+      "rule_001_public_badge_granted": false,
+      "rule_002_portal_html_mutated": false,
+      "rule_003_onchain_claim_live": false,
+      "rule_004_legal_authority_claim": false,
+      "rule_005_zora_image_used": null,
+      "rule_006_merkle_grown": null,
+      "overall_compliance": "ALL_MONITORED_RULES_COMPLIANT"
+    },
+    "chess_court_artifact": {
+      "file": "services/chess-court/chess_court_by_jay_wisdom_on_base_candidate.md",
+      "commit": "59e409d2dcb895c8ff0b912bb14366062fe158a1",
+      "status": "PUBLIC",
+      "receipt": "receipts/chess_court_by_jay_wisdom_on_base_receipt.json",
+      "receipt_commit": "a0a758b456a8bf7cd5d5a358395e09654d570cda"
+    },
+    "source_governance_lock": {
+      "rules_commit": "57937c3518dc2caabc02c74a30b106f8c975c8d5",
+      "final_lock_commit": "d7acbe3f3ec1e15e4cae4c583ddb40e8b6532185"
+    },
+    "base_boundary_state": {
+      "base_pointer_allowed_as_candidate": true,
+      "onchain_claimed_live": false,
+      "requires_tx_or_attestation_receipt_for_live_claim": true,
+      "legal_court_claim": false
+    },
+    "referee_notes": [
+      "Candidate sits in services/chess-court/, not portal.html — compliant",
+      "No public badge granted, no live claim, no legal claim — zero-trust maintained",
+      "Base pointer allowed as candidate only — onchain claim still requires tx or attestation receipt"
+    ],
+    "next_move_invitation": "Other AIs may submit counters in /candidates/. Same rules apply. Propose pretty, prove boring.",
+    "signature": "🧾♟"
+  }
+}

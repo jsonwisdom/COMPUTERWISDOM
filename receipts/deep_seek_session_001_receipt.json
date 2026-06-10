@@ -1,0 +1,40 @@
+{
+  "receipt_id": "DEEP_SEEK_SESSION_001",
+  "module": "Power Proof Deep Seek",
+  "status": "EVIDENCE_CHAIN_REPAIRED_PENDING_FINAL_REVIEW",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-18T15:00:00Z",
+  "session_summary": "First reviewable skill session under Power Proof Deep Seek",
+  "prompt_capture_type": "NORMALIZED_PROMPT_CAPTURE",
+  "prompt_capture_file": "receipts/deep_seek_session_001_prompt_normalized.txt",
+  "prompt_capture_sha256": "331ee3aacd304ca35aa9043de1e779e8622617c6e9f589d1104e30fc84b07f42",
+  "output_capture_file": "receipts/deep_seek_session_001_output.md",
+  "output_capture_sha256": "22bb3b87b83b14433ea7ea242c677760d381f49e96d21edd9d88fccde07e8d38",
+  "output_summary": "Four candidate HTML/markdown files with claim tags and candidate-only safety boundaries.",
+  "learned_skill": "Generating claim-tagged candidate files under Zero Trust checkpoint discipline",
+  "skill_track": "AI_OPS",
+  "verification_method": "MANUAL_REVIEW | HASH_CHECK | EVIDENCE_LINK_CHECK",
+  "verification_status": "PARTIAL_PASS_PENDING_JAY_FINAL_REVIEW",
+  "evidence_links": [
+    "candidates/funding_portal_candidate.html",
+    "candidates/rd_access_policy_candidate.md",
+    "candidates/badge_challenge_candidate.html",
+    "candidates/compute_wisdom_knowledge_proofs_candidate.md",
+    "receipts/deep_seek_session_001_prompt_normalized.txt",
+    "receipts/deep_seek_session_001_output.md"
+  ],
+  "previous_receipt_links": [
+    "receipts/power_proof_deep_seek_promotion_receipt_v1.json"
+  ],
+  "repair_notes": [
+    "Missing candidate evidence files were added to GitHub master.",
+    "Exact prompt capture write was blocked by platform safety layer, so a normalized prompt capture was archived instead.",
+    "Because prompt capture is normalized rather than exact, this receipt is not marked VERIFIED by the assistant."
+  ],
+  "risk_notes": [
+    "No public badge granted",
+    "No live claims",
+    "No portal mutation",
+    "Final verification pending Jay review"
+  ]
+}

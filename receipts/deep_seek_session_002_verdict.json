@@ -1,0 +1,39 @@
+{
+  "verdict_id": "DEEP_SEEK_SESSION_002_VERDICT",
+  "receipt_type": "FINAL_SESSION_VERDICT",
+  "session_receipt": "receipts/deep_seek_session_002_receipt.json",
+  "status": "VERIFIED_AFTER_CORRECTION",
+  "reviewer": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T16:30:00Z",
+  "evidence_acceptance": {
+    "prompt_capture": "FULLY_ACCEPTED_EXACT_CAPTURE",
+    "output_capture": "ACCEPTED_AFTER_STATUS_CORRECTION",
+    "prompt_hash_sha256": "b310599652e74a9af29d5f81746a988c29dca253d8330ec9b3d135285e9b9877",
+    "corrected_output_hash_sha256": "82d2e7161520cd373ac8b5036061369dca282269324f6477f9c637e8ea81be88",
+    "correction_commit": "8113787cc8479d34ed2f17ef44020ebb01bee498"
+  },
+  "review_findings": [
+    "Exact prompt capture discipline succeeded.",
+    "Output was captured and then corrected for status discipline.",
+    "The displayed badge state now says PENDING_REVIEW / CANDIDATE_ONLY.",
+    "The corrected output hash was recorded in the session receipt.",
+    "No public badge was granted.",
+    "portal.html was not changed."
+  ],
+  "next_unlocks": [
+    "Candidate badge design may proceed as a reviewed candidate artifact.",
+    "A Session 002 reward artifact may be designed if desired.",
+    "Claim Parser KP-001 may enter badge-candidate refinement."
+  ],
+  "does_not_unlock": [
+    "Public badge",
+    "Portal integration",
+    "Live backend",
+    "Base/onchain claim"
+  ],
+  "portal_html_mutated": false,
+  "public_badge_granted": false,
+  "backend_claimed_live": false,
+  "onchain_claimed_live": false,
+  "canon_line": "Exact capture succeeded. Overclaim corrected. Session verified after correction. Badge still candidate. Portal untouched."
+}

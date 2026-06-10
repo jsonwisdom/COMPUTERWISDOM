@@ -1,0 +1,14 @@
+{
+  "lineage_id": "triggerdeck-canon-v1",
+  "audit_type": "BOUNDARY_PARITY_CHECK",
+  "expected_terminal_commit": "dcbd862c3501dfcd349aa878180fb13114c7d039",
+  "actual_tag_commit": "dcbd862c3501dfcd349aa878180fb13114c7d039",
+  "expected_tree": "ee8716de433d3672af6234ff449b1a1ef2d0da79",
+  "actual_tree": "ee8716de433d3672af6234ff449b1a1ef2d0da79",
+  "parity_status": "MATCH",
+  "cross_lineage_reference_count": 135,
+  "authority_surface_violation": false,
+  "semantic_drift_detected": false,
+  "mutation_access": "READ_ONLY",
+  "status": "AUDIT_COMPLETE"
+}

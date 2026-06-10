@@ -1,0 +1,30 @@
+{
+  "schema_id": "MANIC_OPACITY_INDEX_RELEASE_V1",
+  "release_id": "opacity:7777777777777777777777777777777777777777777777777777777777777777",
+  "created_at": "2026-05-21T00:20:00Z",
+  "methodology_version": "0.0",
+  "axes": [
+    {
+      "axis": "Chronology Visibility",
+      "score": 74,
+      "weight": 0.20
+    },
+    {
+      "axis": "Source Accessibility",
+      "score": 81,
+      "weight": 0.18
+    },
+    {
+      "axis": "Redaction Density",
+      "score": 43,
+      "weight": 0.15
+    }
+  ],
+  "composite_score": 35.8,
+  "confidence_interval": {
+    "low": 58,
+    "high": 73
+  },
+  "replay_thread": "thread:8888888888888888888888888888888888888888888888888888888888888888",
+  "disclaimer": "Every map is incomplete. Coherently Invalid until proven replayable."
+}

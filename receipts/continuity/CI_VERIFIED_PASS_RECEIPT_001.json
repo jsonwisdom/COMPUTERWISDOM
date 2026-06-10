@@ -1,0 +1,82 @@
+{
+  "spec": "REPLAY_RECEIPT_SPEC_V1",
+  "receipt_id": "CI_VERIFIED_PASS_RECEIPT_001",
+  "receipt_type": "ci_verified_pass_receipt",
+  "status": "CI_VERIFIED_PASS",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "workflow": "Verify Canon Chain Receipt",
+  "ci_run": {
+    "run_id": "25956278044",
+    "artifact_id": "7031618397",
+    "artifact_name": "canon-chain-verifier-result",
+    "trigger_commit": "2d160dc27508b72e73c64163ce9c69671bd95e49",
+    "repair_commit": "2cf998686cc177d7360ae0f93a3731fc4723454b"
+  },
+  "verifier_result": {
+    "verification": "PASS",
+    "checked_files": 4,
+    "hash_mismatches": [],
+    "errors": [],
+    "order_valid": true,
+    "scope_valid": true,
+    "anchor_status_valid": true
+  },
+  "computed_hashes": {
+    "COMPUTER_WISDOM_MICROSOFT_BRIEF_V1": "e189240a54fbe5fa36332513d788105bf099d2ca90a53586d7640040ac453c3d",
+    "REPUTATION_CONTINUITY_SPEC_V1": "15231bf62547899a3f597e1930677cff7ef05890685162997004aaaf305f3a30",
+    "REPLAY_RECEIPT_SPEC_V1": "647cba6264740b03b986e67ce617bcd6e4a1dd398d26ab5a7fd97238e6603b04",
+    "EXECUTION_CONTINUITY_MODEL_V1": "1e64af0c47d9d6120bdd4e875b6bce908a648338be114f5f441c4642944f7696"
+  },
+  "continuity_transition": {
+    "from": "AWAITING_FIRST_VALID_CI_REPLAY",
+    "to": "MULTI_OBSERVER_STABLE",
+    "reason": "Post-repair GitHub Actions run executed the canon-chain verifier and produced PASS with no hash mismatches or validation errors."
+  },
+  "prior_failure": {
+    "receipt": "receipts/continuity/CI_VERIFIER_FAILURE_RECEIPT_001.json",
+    "run_id": "25956105368",
+    "artifact_id": "7031563016",
+    "classification": "RUNTIME_DRIFT",
+    "preserved_as_history": true
+  },
+  "anchor_status": {
+    "github_committed": true,
+    "onchain_anchored": false,
+    "ens_anchored": false,
+    "eas_anchored": false,
+    "platform_endorsed": false,
+    "global_legitimacy_claimed": false
+  },
+  "boundary": {
+    "does_not_claim": [
+      "onchain anchor",
+      "ENS anchor",
+      "EAS attestation",
+      "Microsoft review or endorsement",
+      "global legitimacy",
+      "semantic truth beyond declared verifier scope"
+    ],
+    "does_claim": [
+      "GitHub Actions CI verifier executed after repair",
+      "verifier result PASS observed from artifact evidence",
+      "declared canon files matched expected SHA-256 values",
+      "canon order, scope, and anchor-status checks passed",
+      "continuity surface reached MULTI_OBSERVER_STABLE within GitHub-only boundary"
+    ]
+  },
+  "human_summary_separation": {
+    "machine_fields": [
+      "ci_run",
+      "verifier_result",
+      "computed_hashes",
+      "continuity_transition",
+      "prior_failure",
+      "anchor_status",
+      "boundary"
+    ],
+    "human_summary_field": "human_summary",
+    "rule": "Human summary does not replace verifier evidence."
+  },
+  "human_summary": "The repaired GitHub Actions workflow produced the first valid CI replay PASS for the COMPUTERWISDOM canon chain. The prior CI loader failure remains preserved as immutable history. This receipt advances the continuity surface to MULTI_OBSERVER_STABLE within a GitHub-only, not-onchain boundary.",
+  "next_transition": "PREPARE_ANCHOR_PAYLOAD"
+}

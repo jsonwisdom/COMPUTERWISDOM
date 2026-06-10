@@ -1,0 +1,19 @@
+{
+  "system_id": "{SYSTEM_ID}",
+  "portal_name": "{PORTAL_NAME}",
+  "target_official": "{TARGET_OFFICIAL}",
+  "mode": "READ_ONLY_PUBLIC_OBSERVER",
+  "authority": "NONE",
+  "boundary": "OBSERVER_IS_NOT_OFFICE",
+  "receipt_path": "{RECEIPT_PATH}",
+  "invariants": [
+    "OBSERVER_IS_NOT_OFFICE",
+    "MEDIA_REPORT_IS_NOT_BINDING_LAW",
+    "ADVISORY_APPOINTMENT_IS_NOT_EXECUTIVE_ORDER",
+    "CORROBORATION_IS_NOT_AUTHORITY"
+  ],
+  "writes": "APPEND_ONLY_RECEIPTS",
+  "mutates_existing_records": false,
+  "is_federal_authority": false,
+  "version": "1.0.0"
+}

@@ -1,0 +1,24 @@
+{
+  "schema_id": "MANIC_PRODUCTION_GATE_RECEIPT_V1",
+  "receipt_id": "MANIC_PRODUCTION_GATE_RECEIPT_001",
+  "target_commit": "9dbc641823bfe0637ccc87677cd0d34cf90c23a2",
+  "registry_version": "REPLAY_TRANSFORM_REGISTRY_001",
+  "enforcement_gates": [
+    "SCHEMA_GATE",
+    "REGISTRY_GATE",
+    "REPLAY_GATE",
+    "DETERMINISTIC_RECEIPT_GATE"
+  ],
+  "status": "PRODUCTION_GATE_VALIDATED",
+  "validated_surfaces": {
+    "replay_node_validation": "ACTIVE",
+    "deterministic_receipt_validation": "ACTIVE",
+    "temporal_fields": "FORBIDDEN",
+    "authority_claims": "FORBIDDEN",
+    "truth_adjudication": "FORBIDDEN"
+  },
+  "authority_claim": "NONE",
+  "truth_adjudication": "NOT_PERFORMED",
+  "continuity_flag": "COHERENTLY_INVALID_UNTIL_REPLAYED",
+  "disclaimer": "Every map is incomplete. Replay first."
+}

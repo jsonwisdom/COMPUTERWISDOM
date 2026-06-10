@@ -1,0 +1,38 @@
+{
+  "spec": "ANCHOR_SURFACE_SELECTION_V1",
+  "receipt_id": "ANCHOR_SURFACE_SELECTION_001",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "status": "SURFACE_SELECTED_NOT_SUBMITTED",
+  "selected_primary_surface": "GITHUB_RELEASE_CHECKSUM",
+  "secondary_surface": "EAS_ON_BASE",
+  "discovery_surface": "ENS_TEXT_RECORD",
+  "reserved_surface": "RAW_BASE_CALLDATA",
+  "anchor_input": "102e70b50594e412b8f15d311cc4e04f5126a4405fb3b1d02652e3d11afeaf5b",
+  "reason": "Staged anchoring minimizes authority drift and preserves layered verification semantics.",
+  "layer_law": {
+    "replay": "verifies",
+    "github_release": "contextualizes",
+    "eas_on_base": "witnesses",
+    "ens_text_record": "resolves"
+  },
+  "selected_path": [
+    "GITHUB_RELEASE_CHECKSUM",
+    "EAS_ATTESTATION_ON_BASE",
+    "ENS_TEXT_RECORD_POINTER"
+  ],
+  "invariants": {
+    "selection_is_not_submission": true,
+    "no_tx_hash": true,
+    "no_eas_uid": true,
+    "no_ens_record": true,
+    "no_chain_submission": true,
+    "no_platform_endorsement": true,
+    "no_global_legitimacy_claim": true
+  },
+  "current_state": {
+    "state": "ANCHOR_SURFACE_SELECTED",
+    "continuity_surface": "MULTI_OBSERVER_STABLE",
+    "anchor_status": "SURFACE_SELECTED_NOT_SUBMITTED",
+    "next_best_move": "FREEZE_GITHUB_RELEASE"
+  }
+}

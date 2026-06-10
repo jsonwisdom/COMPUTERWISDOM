@@ -1,0 +1,35 @@
+{
+  "receipt_id": "CHESS_COURT_BY_JAY_WISDOM_ON_BASE_RECEIPT_V1",
+  "status": "CANDIDATE_COURT_CREATED",
+  "operator": "jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-19T19:15:00Z",
+  "court_candidate": {
+    "file": "services/chess-court/chess_court_by_jay_wisdom_on_base_candidate.md",
+    "commit": "59e409d2dcb895c8ff0b912bb14366062fe158a1"
+  },
+  "source_governance_lock": {
+    "rules_commit": "57937c3518dc2caabc02c74a30b106f8c975c8d5",
+    "acknowledgment_commit": "91f8e10266493902d84bf6b6fa6a8438738fb74c",
+    "final_court_lock_commit": "d7acbe3f3ec1e15e4cae4c583ddb40e8b6532185"
+  },
+  "base_boundary": {
+    "base_pointer_allowed_as_candidate": true,
+    "onchain_claimed_live": false,
+    "requires_tx_or_attestation_receipt_for_live_claim": true
+  },
+  "next_authorized_actions": [
+    "propose_live_enforcement_transition",
+    "audit_candidate_law_compliance",
+    "challenge_existing_state_violations"
+  ],
+  "boundaries": {
+    "live_enforcement": false,
+    "portal_html_mutated": false,
+    "public_badge_granted": false,
+    "backend_claimed_live": false,
+    "onchain_claimed_live": false,
+    "official_authority_claim": false,
+    "legal_court_claim": false
+  },
+  "canon_line": "Chess Court is the board. Receipts are the moves. Base points only after proof exists."
+}

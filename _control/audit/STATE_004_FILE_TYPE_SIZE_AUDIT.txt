@@ -1,0 +1,146 @@
+# STATE_004_FILE_TYPE_SIZE_AUDIT
+
+repo_path=/home/computerwisdom408/COMPUTERWISDOM
+utc=2026-05-19T02:00:19Z
+head=aa5e416e2299fbc8b848e032e0b67edeb043e32a
+
+## LARGEST_FILES
+4118800	./Trigger_Deck/C1CF6FDC-54BC-4CD3-8416-F32CB02915B4.PNG
+3962314	./Trigger_Deck/4234BB82-CF71-4BAE-B0CF-361553E4DB6E.PNG
+3881954	./Trigger_Deck/C93E6346-6D21-4A9E-97FE-39BF6B8FF95F.PNG
+3873415	./Trigger_Deck/463B1C0A-2869-44F2-B660-5BF9F315FE4A.PNG
+3790897	./Trigger_Deck/595159BA-4696-49AC-B0EC-9BDB231B1830.PNG
+3789902	./Trigger_Deck/F14EA01B-B938-4892-AB31-FA7D68483AD0.PNG
+3749656	./Trigger_Deck/97EFCD41-6558-4BEC-BFF9-172DBD7D6319.PNG
+3721004	./Cards/62B2FF44-E125-4B2F-93ED-DC2D344C2F44.PNG
+3721004	./cards/62B2FF44-E125-4B2F-93ED-DC2D344C2F44.png
+3721004	./62B2FF44-E125-4B2F-93ED-DC2D344C2F44.png
+3675239	./Cards/09B020C1-C522-4E0F-9CD0-B57BD8DC94D7.PNG
+3675239	./cards/09B020C1-C522-4E0F-9CD0-B57BD8DC94D7.png
+3675239	./09B020C1-C522-4E0F-9CD0-B57BD8DC94D7.png
+3658674	./Trigger_Deck/50CC6BA7-447F-456C-970E-BE01D631F204.PNG
+3606892	./CE9A814F-BBD0-4273-826F-E9E2EEEB8FDA.png
+3606892	./Cards/CE9A814F-BBD0-4273-826F-E9E2EEEB8FDA.PNG
+3606892	./cards/CE9A814F-BBD0-4273-826F-E9E2EEEB8FDA.png
+3599204	./Cards/2E0B6482-B85C-4087-B65B-619060F59E8E.PNG
+3599204	./cards/2E0B6482-B85C-4087-B65B-619060F59E8E.png
+3599204	./2E0B6482-B85C-4087-B65B-619060F59E8E.png
+3583879	./D328E2F9-14B5-4301-B025-A2A46D4C3470.png
+3583879	./Cards/D328E2F9-14B5-4301-B025-A2A46D4C3470.PNG
+3583879	./cards/D328E2F9-14B5-4301-B025-A2A46D4C3470.png
+3548333	./Trigger_Deck/2ACDBD4F-98BB-4BEF-BD0E-F8E17F4ADAEC.PNG
+3502981	./Cards/2A17509A-A1CC-4873-9BFC-61B5A2B4A420.PNG
+3502981	./cards/2A17509A-A1CC-4873-9BFC-61B5A2B4A420.png
+3502981	./2A17509A-A1CC-4873-9BFC-61B5A2B4A420.png
+3438101	./Cards/Debtin_DEBBIE_Card_002.png
+3353638	./Cards/B44DB7E5-88D6-4D3B-88F5-FBF0B688DDDF.PNG
+3353638	./cards/B44DB7E5-88D6-4D3B-88F5-FBF0B688DDDF.png
+3353638	./B44DB7E5-88D6-4D3B-88F5-FBF0B688DDDF.png
+3196996	./Cards/D724FC85-8940-41AC-A51F-4D0E70A746EF.PNG
+3196996	./cards/D724FC85-8940-41AC-A51F-4D0E70A746EF.png
+2355755	./Cards/IMG_3208.PNG
+1283067	./tweets/9FC2AE3D-761E-4EE2-BF4C-E01E9654350A.png
+833669	./IMG_3237.png
+833669	./Cards/IMG_3237.PNG
+833669	./cards/IMG_3237.png
+830111	./Cards/IMG_3236.PNG
+830111	./cards/IMG_3236.png
+795994	./IMG_3238.png
+795994	./cards/IMG_3238.png
+792246	./IMG_3239.png
+792246	./cards/IMG_3239.png
+770575	./IMG_3248.png
+770575	./Cards/IMG_3248.PNG
+770575	./cards/IMG_3248.png
+55478	./CW Messenger Contact.pdf
+21554	./scroll_cover.png
+7871	./docs/EXECUTION_CONTINUITY_MODEL_V1.md
+7810	./_control/manifests/STATE_002_REPO_MANIFEST.txt
+7590	./docs/REPLAY_RECEIPT_SPEC_V1.md
+7574	./attestation/attestation_v2_true_draft.py
+7091	./docs/REPUTATION_CONTINUITY_SPEC_V1.md
+6787	./attestation/attestation_v2.py
+5497	./ztws/README.md
+5386	./receipts/continuity/CANON_CHAIN_RECEIPT_001.json
+4918	./.github/workflows/constitutional_checks.yml
+4765	./scripts/verify_canon_chain_receipt_001.ts
+4725	./scaling-solutions/os/signer.py
+4627	./Trigger_Deck_Proof_of_Creation_Ledger.json
+4088	./scaling-solutions/os/receipts_adapter.py
+3818	./docs/WAVE1_REVIEWER_PACKET_v1_3.md
+3697	./docs/CONSTITUTION.md
+3654	./docs/EXECUTION_RECEIPT_SCHEMA_V1.md
+3447	./scaling-solutions/os/anchor_loop.py
+3346	./docs/PR_DRIFT_REVIEW_CHECKLIST.md
+3327	./docs/COMPUTER_WISDOM_MICROSOFT_BRIEF_V1.md
+3272	./attestation/verify.py
+3232	./Trigger_Deck_GitHub_Final_Push.zip
+3229	./wave-1/MASTER_LAUNCH_CHECKLIST.md
+3167	./receipts/continuity/CI_VERIFIED_PASS_RECEIPT_001.json
+3100	./docs/SOVEREIGN_OS_SPEC_V1.md
+3038	./docs/ACTION_PROPOSAL_SCHEMA_V1.md
+2987	./tweets/2025-05-14_test-thread.png
+2970	./docs/HUMAN_INTERPRETATION_SCHEMA_V1.md
+2967	./scaling-solutions/os/anchor_worker.py
+2819	./scaling-solutions/os/anchor_recovery.py
+2818	./receipts/continuity/VERIFIER_PASS_RECEIPT_001.json
+2790	./docs/AUTHORITY_DECLARATION_SCHEMA_V1.md
+
+## EXTENSION_COUNTS
+     57 json
+     47 md
+     28 png
+     21 PNG
+     12 py
+      9 html
+      8 yml
+      5 txt
+      4 css
+      3 zip
+      3 sh
+      3 js
+      2 sol
+      2 pdf
+      2 keep
+      2 gitkeep
+      1 ts
+      1 nojekyll
+      1 ipynb
+      1 gitignore
+
+## ROOT_FILES
+./09B020C1-C522-4E0F-9CD0-B57BD8DC94D7.png
+./2A17509A-A1CC-4873-9BFC-61B5A2B4A420.png
+./2E0B6482-B85C-4087-B65B-619060F59E8E.png
+./62B2FF44-E125-4B2F-93ED-DC2D344C2F44.png
+./B44DB7E5-88D6-4D3B-88F5-FBF0B688DDDF.png
+./CE9A814F-BBD0-4273-826F-E9E2EEEB8FDA.png
+./CW Messenger Contact.pdf
+./D328E2F9-14B5-4301-B025-A2A46D4C3470.png
+./debug-tweepy-thread.md
+./deck.json
+./FINAL_ANCHOR_TOPOLOGY_v1.md
+./.gitignore
+./IMG_3237.png
+./IMG_3238.png
+./IMG_3239.png
+./IMG_3248.png
+./index 4.html
+./index.html
+./mirrorstorm_monastery.zip
+./.nojekyll
+./notebook.ipynb
+./proposal.cn.md
+./proposal.en.md
+./README.md
+./render.js
+./scroll_cover.png
+./SECURITY_BOUNDARY.md
+./snapback-diagnostic.html
+./snapback-init.html
+./sovereign_os_proposal.pdf
+./styles.css
+./Trigger_Deck_Cards_Upload.zip
+./Trigger_Deck_GitHub_Final_Push.zip
+./Trigger_Deck_Proof_of_Creation_Ledger.json
+./Witness_Manifest_Trigger_Deck_001.json

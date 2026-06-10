@@ -1,0 +1,54 @@
+{
+  "analysis_id": "TWEET_2056596286099402905_REPORT",
+  "receipt_type": "COURT_REPORTER_ALIGNMENT_ANALYSIS",
+  "status": "PUBLIC_STATEMENT_ALIGNS_WITH_CANDIDATE_WORK",
+  "operator": "jaywisdom.base.eth",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "master",
+  "source": "Public tweet by jaywisdom.base.eth",
+  "source_date": "2026-05-19",
+  "analyzed_against": [
+    "candidates/",
+    "services/confucius-compute-wisdom/",
+    "services/constitutional-substrate/",
+    "receipts/merkle/",
+    "receipts/deep_seek_session_001_receipt.json"
+  ],
+  "claim_extraction": [
+    {
+      "public_claim": "Confucius gives builders Wisdom.",
+      "alignment": "ALIGNED_WITH_CONFUCIUS_SERVICE_AND_WIDGET_CANDIDATES",
+      "tag": "PUBLIC_AS_INTENT_HELD_AS_LIVE_SERVICE"
+    },
+    {
+      "public_claim": "Base Batches give receipts scale.",
+      "alignment": "ALIGNED_WITH_BASE_BATCHES_PURPOSE_EXTENSION_AND_MERKLE_RECEIPTS",
+      "tag": "PUBLIC_AS_CONCEPT_HELD_AS_LIVE_BASE_ANCHOR"
+    },
+    {
+      "public_claim": "Constitutional Substrate gives speed a boundary.",
+      "alignment": "ALIGNED_WITH_CONSTITUTIONAL_SUBSTRATE_CANDIDATE",
+      "tag": "PENDING_AS_LIVE_SUBSTRATE_PUBLIC_AS_CANDIDATE_ARCHITECTURE"
+    },
+    {
+      "public_claim": "AL is the replay discipline reference.",
+      "alignment": "ALIGNED_AS_REFERENCE_ONLY_PENDING_CROSS_REPO_BINDING_RECEIPT",
+      "tag": "PENDING"
+    },
+    {
+      "public_claim": "Machine productivity becomes legitimate only when every accelerated step leaves a receipt.",
+      "alignment": "COMPLETE_ALIGNMENT_WITH_COMPUTE_WISDOM_KNOWLEDGE_PROOFS_AND_POWER_PROOF_DEEP_SEEK",
+      "tag": "PUBLIC_AS_LAW"
+    }
+  ],
+  "risk_assessment": "LOW",
+  "reasoning": "The tweet states high-level architectural intent. It does not claim completed badges, verified sessions, live backend, live Base anchor, or portal mutation. It correctly frames receipts as the basis of legitimacy.",
+  "critical_observation": "The tweet promotes a discipline. Candidate files build infrastructure for that discipline. This preserves healthy separation between vision and implementation.",
+  "next_action": "Continue building candidate proofs. This report does not promote any candidate to live.",
+  "portal_html_mutated": false,
+  "public_badge_granted": false,
+  "backend_claimed_live": false,
+  "onchain_claimed_live": false,
+  "image_generation_unlocked": false,
+  "canon_line": "The tweet is the vision. The receipts are the work. Both are needed. Neither alone is sufficient."
+}

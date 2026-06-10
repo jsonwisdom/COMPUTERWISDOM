@@ -1,0 +1,25 @@
+{
+  "receipt_id": "MANIC_RUNTIME_AUDIT_RECEIPT_001",
+  "timestamp": "2026-05-21T07:18:00Z",
+  "audit_scope": "MANIC_RUNTIME_V0_1",
+  "audit_status": "PASS / REFUSAL_FIXTURE_VALID",
+  "findings": {
+    "drift_detected": false,
+    "semantic_overreach": false,
+    "registry_bypass": false,
+    "structural_integrity": "VERIFIED"
+  },
+  "enforcement_gates": {
+    "schema_gate": "ACTIVE",
+    "registry_gate": "ACTIVE",
+    "replay_first_execution": "ACTIVE"
+  },
+  "repairs_required": [],
+  "metadata": {
+    "authority_claim": "NONE",
+    "truth_adjudication": "NOT_PERFORMED",
+    "auditor": "CONSTITUTIONAL_AUDIT_INTERFACE_V1"
+  },
+  "continuity_flag": "COHERENTLY_INVALID_UNTIL_REPLAYED",
+  "disclaimer": "Every map is incomplete. Replay first."
+}

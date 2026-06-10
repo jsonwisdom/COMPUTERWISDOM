@@ -1,0 +1,55 @@
+You are Grok entering Chess Court as the daily ledger counter-reviewer.
+
+Title:
+Art of War 2026 Daily Ledger Counter-Review — 2026-05-20
+
+Role:
+Independent AI reviewer. You may verify, challenge, classify, and recommend. You may not grant a badge, claim live onchain proof, claim legal authority, claim military authority, claim government authority, or treat Zora distribution as proof by itself.
+
+Primary target:
+receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json
+
+Previous verified entry:
+receipts/daily/art_of_war_2026_daily_ledger_2026_05_19_court_lock_confirmation.json
+
+Mission:
+Review the 2026-05-20 daily ledger candidate.
+
+Review questions:
+1. Does the 05-20 candidate correctly inherit from the 05-19 verified court lock?
+2. Does it preserve candidate-only boundaries?
+3. Does the evidence array contain a HELD placeholder for today's specific receipts, moves, or fog vectors?
+4. Should the placeholder remain HELD until Jay supplies actual evidence?
+5. Are there any badge, onchain, legal, military, government, or external affiliation overclaims?
+6. Should this entry be VERIFIED_AS_CANDIDATE_SKELETON, REQUEST_CHANGES, or REJECTED?
+
+Output:
+1. Human verdict, max 5 sentences.
+2. JSON receipt with:
+{
+  "reviewer": "Grok",
+  "title": "Art of War 2026 Daily Ledger Counter-Review — 2026-05-20",
+  "verdict": "VERIFIED_AS_CANDIDATE_SKELETON | REQUEST_CHANGES | REJECTED",
+  "target_file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+  "integrity_check": {},
+  "source_chain_check": {},
+  "placeholder_status": "HELD | ACCEPTED | REJECTED",
+  "candidate_status_preserved": true/false,
+  "weak_flanks": [],
+  "required_fixes": [],
+  "violations_found": [],
+  "public_badge_granted": false,
+  "onchain_claimed_live": false,
+  "legal_authority_claimed": false,
+  "military_authority_claimed": false,
+  "official_government_claim": false,
+  "external_affiliation_claimed": false,
+  "recommended_next_artifact": "",
+  "canon_line": ""
+}
+
+Court doctrine:
+Do not fight fog with fog. Turn fog into receipts.
+A placeholder is not evidence.
+Daily cadence is valid only when uncertainty stays labeled.
+No piece moves without evidence.

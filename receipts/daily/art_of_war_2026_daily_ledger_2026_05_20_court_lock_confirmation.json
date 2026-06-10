@@ -1,0 +1,40 @@
+{
+  "receipt_id": "ART_OF_WAR_2026_DAILY_LEDGER_2026_05_20_COURT_LOCK_CONFIRMATION",
+  "status": "DAILY_LEDGER_ENTRY_VERIFIED_COURT_LOCK_CONFIRMED",
+  "operator": "jaywisdom.eth / jaywisdom.base.eth",
+  "timestamp_utc": "2026-05-20T00:00:00Z",
+  "verified_entry": {
+    "file": "receipts/daily/art_of_war_2026_daily_ledger_2026_05_20_candidate.json",
+    "commit": "18dbb7c4087ee70b252ecb63a7c5ffaddfe5bb06",
+    "status": "DAILY_LEDGER_CANDIDATE_EVIDENCE_REPLACED_PENDING_FINAL_REVIEW",
+    "final_verdict": "VERIFIED_AS_CANDIDATE_ENTRY"
+  },
+  "batch_packet": {
+    "file": "receipts/batch/grok_batch_packet_art_of_war_2026_05_20_v1.json",
+    "commit": "0176de4399726c2647299eed84c1abbbd5bb45b2",
+    "status": "READY_FOR_GROK_FINAL_REVIEW"
+  },
+  "final_counter_review": {
+    "file": "receipts/counters/grok_batch_final_review_art_of_war_2026_05_20.json",
+    "commit": "cd5851b570adfbd8322273a637749509c2c250f3",
+    "verdict": "VERIFIED_AS_CANDIDATE_ENTRY"
+  },
+  "entry_id": "AOW-2026-DAILY-0002",
+  "claim_tag": "PUBLIC_AS_VERIFIED_CANDIDATE_ENTRY",
+  "replacement_scope": "PROCESS_MOVE_ONLY",
+  "external_fog_vector_proven": false,
+  "boundaries": {
+    "public_badge_granted": false,
+    "onchain_claimed_live": false,
+    "legal_authority_claimed": false,
+    "military_authority_claimed": false,
+    "official_government_claim": false,
+    "external_affiliation_claimed": false
+  },
+  "next_cadence": {
+    "next_entry": "AOW-2026-DAILY-0003",
+    "sequence": "candidate -> batch packet -> counter-review -> court-lock",
+    "note": "Batch receipt shortcuts are now the preferred Grok review path."
+  },
+  "canon_line": "05-20 daily ledger verified as candidate entry. Batch review works. Process move discipline held."
+}

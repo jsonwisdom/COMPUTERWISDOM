@@ -1,0 +1,43 @@
+{
+  "spec": "REPLAY_RECEIPT_SPEC_V1",
+  "receipt_id": "ANCHOR_PAYLOAD_HASH_RECEIPT_001",
+  "receipt_type": "anchor_payload_hash_receipt",
+  "status": "ANCHOR_PAYLOAD_HASH_CONFIRMED",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "payload": {
+    "path": "receipts/anchor/ANCHOR_PAYLOAD_001.json",
+    "commit": "38100b3a2f0084eb31612be567d909a9632d1a02",
+    "github_blob_sha": "53fd916d9f653359bb325a23bf89f897b87dd7ba",
+    "sha256_utf8_content": "102e70b50594e412b8f15d311cc4e04f5126a4405fb3b1d02652e3d11afeaf5b"
+  },
+  "hash_method": {
+    "algorithm": "SHA-256",
+    "encoding": "UTF-8",
+    "input": "fetched GitHub connector content for ANCHOR_PAYLOAD_001.json at declared commit",
+    "self_reference_rule": "Hash receipt is separate from payload to avoid self-reference drift."
+  },
+  "anchor_readiness": {
+    "payload_prepared": true,
+    "payload_hash_confirmed": true,
+    "submitted_onchain": false,
+    "ens_anchored": false,
+    "eas_anchored": false,
+    "transaction_hash": null,
+    "attestation_uid": null
+  },
+  "boundary": {
+    "does_claim": [
+      "ANCHOR_PAYLOAD_001 exists at declared commit and path",
+      "SHA-256 over fetched UTF-8 payload content is confirmed",
+      "payload remains PREPARED_NOT_SUBMITTED"
+    ],
+    "does_not_claim": [
+      "onchain submission",
+      "ENS text record",
+      "EAS attestation",
+      "Microsoft endorsement",
+      "global legitimacy"
+    ]
+  },
+  "next_transition": "ANCHOR_READY"
+}

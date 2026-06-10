@@ -1,0 +1,62 @@
+{
+  "spec": "REPLAY_RECEIPT_SPEC_V1",
+  "receipt_id": "VERIFIER_PASS_RECEIPT_001",
+  "receipt_type": "verifier_pass_receipt",
+  "status": "PASS_CONNECTOR_RECOMPUTED_HASHES_NOT_LOCAL_SCRIPT_EXECUTION",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "receipt_under_test": {
+    "path": "receipts/continuity/CANON_CHAIN_RECEIPT_001.json",
+    "updated_commit": "ad2b97744f64d616343e70e0bb3c2ac76557a163",
+    "status": "HASHES_RECOMPUTED_NOT_ONCHAIN_ANCHORED"
+  },
+  "verification_method": {
+    "mode": "GitHub connector file fetch plus SHA-256 over fetched UTF-8 content",
+    "local_script_executed": false,
+    "local_script_path": "scripts/verify_canon_chain_receipt_001.ts",
+    "boundary": "This receipt records connector-based recomputation. A local or CI verifier run remains a separate stronger receipt."
+  },
+  "checked_files": 4,
+  "computed_hashes": {
+    "COMPUTER_WISDOM_MICROSOFT_BRIEF_V1": "e189240a54fbe5fa36332513d788105bf099d2ca90a53586d7640040ac453c3d",
+    "REPUTATION_CONTINUITY_SPEC_V1": "15231bf62547899a3f597e1930677cff7ef05890685162997004aaaf305f3a30",
+    "REPLAY_RECEIPT_SPEC_V1": "647cba6264740b03b986e67ce617bcd6e4a1dd398d26ab5a7fd97238e6603b04",
+    "EXECUTION_CONTINUITY_MODEL_V1": "1e64af0c47d9d6120bdd4e875b6bce908a648338be114f5f441c4642944f7696"
+  },
+  "expected_hashes": {
+    "COMPUTER_WISDOM_MICROSOFT_BRIEF_V1": "e189240a54fbe5fa36332513d788105bf099d2ca90a53586d7640040ac453c3d",
+    "REPUTATION_CONTINUITY_SPEC_V1": "15231bf62547899a3f597e1930677cff7ef05890685162997004aaaf305f3a30",
+    "REPLAY_RECEIPT_SPEC_V1": "647cba6264740b03b986e67ce617bcd6e4a1dd398d26ab5a7fd97238e6603b04",
+    "EXECUTION_CONTINUITY_MODEL_V1": "1e64af0c47d9d6120bdd4e875b6bce908a648338be114f5f441c4642944f7696"
+  },
+  "hash_mismatches": [],
+  "order_valid": true,
+  "scope_valid": true,
+  "anchor_status_valid": true,
+  "verdict": "PASS_WITH_BOUNDARY",
+  "anchor_status": {
+    "github_committed": true,
+    "onchain_anchored": false,
+    "ens_anchored": false,
+    "eas_anchored": false,
+    "platform_endorsed": false,
+    "global_legitimacy_claimed": false
+  },
+  "human_summary_separation": {
+    "machine_fields": [
+      "verification_method",
+      "checked_files",
+      "computed_hashes",
+      "expected_hashes",
+      "hash_mismatches",
+      "order_valid",
+      "scope_valid",
+      "anchor_status_valid",
+      "verdict",
+      "anchor_status"
+    ],
+    "human_summary_field": "human_summary",
+    "rule": "Human summary does not replace machine verification fields."
+  },
+  "human_summary": "The canon receipt now contains real SHA-256 values and connector recomputation found no hash mismatches. This is a bounded PASS for connector-fetched file content, not a claim that the local ts-node verifier has executed in a clean checkout.",
+  "next_transition": "LOCAL_OR_CI_VERIFIER_PASS_RECEIPT"
+}

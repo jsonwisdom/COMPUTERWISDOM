@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "schemas/agent_action_receipt.v0_1.schema.json",
+  "title": "Agent Action Receipt v0.1",
+  "description": "Bounded receipt schema for recording agent actions. Agent actions do not grant authority, truth, wallet signing rights, ENS/Base authority, or autonomous merge authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "action_receipt_id",
+    "agent_id",
+    "action_type",
+    "artifact_ref",
+    "input_refs",
+    "output_ref",
+    "supporting_receipts",
+    "authority",
+    "timestamp_utc"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v0.1" },
+    "action_receipt_id": { "type": "string", "minLength": 1 },
+    "agent_id": { "type": "string", "minLength": 1 },
+    "action_type": {
+      "type": "string",
+      "enum": [
+        "observe_public_claim",
+        "summarize_context",
+        "propose_case_intake",
+        "draft_spec",
+        "prepare_anchor_payload",
+        "produce_runtime_log",
+        "open_dispute_state",
+        "emit_boundary_observation"
+      ]
+    },
+    "artifact_ref": { "type": "string", "minLength": 1 },
+    "input_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "output_ref": { "type": "string", "minLength": 1 },
+    "supporting_receipts": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "authority": { "type": "boolean", "const": false },
+    "timestamp_utc": { "type": "string", "format": "date-time" }
+  }
+}

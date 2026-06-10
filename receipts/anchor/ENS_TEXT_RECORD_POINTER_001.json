@@ -1,0 +1,51 @@
+{
+  "spec": "ENS_TEXT_RECORD_POINTER_V1",
+  "receipt_id": "ENS_TEXT_RECORD_POINTER_001",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "status": "ENS_POINTER_PREPARED_NOT_WRITTEN",
+  "purpose": "Prepare optional ENS text records as discovery pointers to the EAS witness. ENS is not a truth surface.",
+  "current_state": {
+    "state": "SECONDARY_SURFACE_WITNESSED",
+    "continuity_surface": "MULTI_OBSERVER_STABLE",
+    "github_release": "FROZEN_CONTEXTUAL_ARCHIVE",
+    "eas": "SUBMITTED_AND_UID_CAPTURED",
+    "ens": "OPTIONAL_UNRESOLVED",
+    "mainnet_anchor": false
+  },
+  "intended_text_records": {
+    "computerwisdom.eas.schema_uid": "0x244c84adef25091c97090e6e3f0b1bb932fc7022b913b7546406f4213a202cab",
+    "computerwisdom.eas.attestation_uid": "0x23b3b97514fa232cfdbcdee7a5031ff11a5fcd36aa874a5f4067805cd0ad6c84",
+    "computerwisdom.eas.tx": "0x4cef493d67d8744d2458fd82c169aa872b14cfe2ecaf13f03329b57bd93acc35",
+    "computerwisdom.anchor.sha256": "0x102e70b50594e412b8f15d311cc4e04f5126a4405fb3b1d02652e3d11afeaf5b"
+  },
+  "source_receipts": {
+    "eas_attestation_submitted": "receipts/anchor/EAS_ATTESTATION_SUBMITTED_001.json",
+    "eas_schema_entries": "receipts/anchor/EAS_SCHEMA_AND_ATTESTATION_ENTRIES_001.json",
+    "anchor_payload_hash": "receipts/anchor/ANCHOR_PAYLOAD_HASH_RECEIPT_001.json",
+    "ci_verified_pass": "receipts/continuity/CI_VERIFIED_PASS_RECEIPT_001.json"
+  },
+  "boundary": {
+    "ens_pointer_prepared": true,
+    "ens_record_written": false,
+    "ens_transaction_hash": null,
+    "does_claim": [
+      "intended ENS text record values are prepared",
+      "ENS role is discovery pointer only"
+    ],
+    "does_not_claim": [
+      "ENS text records have been written",
+      "ENS is the witness",
+      "ENS is verification authority",
+      "global legitimacy",
+      "Microsoft endorsement",
+      "mainnet anchor"
+    ]
+  },
+  "layer_law": {
+    "replay": "verifies",
+    "github": "contextualizes",
+    "eas": "witnesses",
+    "ens": "discovers"
+  },
+  "next_transition": "OPTIONAL_WRITE_ENS_TEXT_RECORDS"
+}
