@@ -1,0 +1,13 @@
+{
+  "protocol": "JAY_IDENTITY_FLYWHEEL_ATTESTATION_V0_1",
+  "attestation_uid": "0x0e60a3cc445f273d8af207cbec821d45f4731f2eeca04b02e5d01553847c4d93",
+  "tx_hash": "0x7c761a5a6314124aab66fcb8e9410515a066ccae1fb5c252ca1cb456e0a31516",
+  "network": "PENDING",
+  "schema_uid": "PENDING",
+  "recipient": "PENDING",
+  "attester": "PENDING",
+  "decoded_fields_verified": false,
+  "repo_receipt_created": true,
+  "authority": false,
+  "status": "YELLOW"
+}
