@@ -1,0 +1,49 @@
+{
+  "protocol": "L2_CLOSURE_PR314_V0_1",
+  "layer": "L2",
+  "state": "VERIFIED",
+  "closure_type": "identity_bridge_reference_closure",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "base_branch": "master",
+  "base_head": "238ddd06d8bcaaec1c37f9def7a9856617c1da52",
+  "source_pr": {
+    "number": 314,
+    "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/314",
+    "merged": true,
+    "merge_commit": "238ddd06d8bcaaec1c37f9def7a9856617c1da52",
+    "head_branch": "wallet-binding-v2"
+  },
+  "receipt_file": "receipts/identity-flywheel/eas_attestation_v0_1.json",
+  "on_chain_attestation": {
+    "network": "Base",
+    "attestation_uid": "0x0e60a3cc445f273d8af207cbec821d45f4731f2eeca04b02e5d01553847c4d93",
+    "tx_hash": "0x7c761a5a6314124aab66fcb8e9410515a066ccae1fb5c252ca1cb456e0a31516",
+    "schema_uid": "0x3c15f42c68ef371da9ed855af52d09ae99e0083cb111abc7a0cbf388836940d8",
+    "schema_id": 1576,
+    "recipient": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+    "recipient_name": "jaywisdom.base.eth",
+    "attester": "0x1dB2C056c7DeCD9f9fC574692b05F62aE34Fb8b5",
+    "claim_uri": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/314"
+  },
+  "verification_matrix": {
+    "control_plane_repo_resolved": true,
+    "source_pr_merged": true,
+    "receipt_committed_to_master": true,
+    "receipt_matches_on_chain_attestation": true,
+    "identity_binding_replayable": true,
+    "l3_runner_proof_present": false,
+    "computed_runtime_hashes_present": false
+  },
+  "doctrine": {
+    "authority": false,
+    "no_fake_green": true,
+    "l3_required_for_this_claim": false,
+    "reason": "The claim is an L2 identity bridge backed by committed GitHub receipt data and Base EAS attestation finality. GitHub Actions runtime proof remains optional and absent."
+  },
+  "classification": {
+    "previous_state": "EXTERNAL_REFERENCE_MISMATCH",
+    "corrected_state": "VERIFIED",
+    "bug_class": "DATA_MISMATCH_NOT_STRUCTURAL_VOID",
+    "membrane": "HOLDS"
+  }
+}
