@@ -1,0 +1,9 @@
+{
+  "protocol": "PR_319_RECHECK_TRIGGER_V0_1",
+  "pr": 319,
+  "reason": "trigger_fresh_checks_after_observer_gate_fix_landed",
+  "corrected_base_sha": "dabb8a05b8e70a0cc156b075c645a886d9b70803",
+  "authority": false,
+  "no_fake_green": true,
+  "replay_required": true
+}

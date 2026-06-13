@@ -1,0 +1,111 @@
+{
+  "schema": "BASE_PURPOSE_LAYER_V0_1",
+  "project": "COMPUTERWISDOM",
+  "status": "OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+  "authority": false,
+  "promotion": false,
+  "future_proofing_status": "HARDENED_FOR_REPLAY_AND_EXTENSION",
+  "identity": {
+    "base_ens": "jaywisdom.base.eth",
+    "operator_name": "Jay",
+    "public_role": "Average Dad",
+    "network": "Base",
+    "authority": false
+  },
+  "purpose": {
+    "statement": "Base has purpose: preserve family continuity, publish public proofs, make reputation replayable, and keep authority false.",
+    "plain_language": "Average Dad building public receipts so family, work, and reputation can be checked without trusting the storyteller.",
+    "base_future_thesis": "The future of Base reputation should be replayable by ordinary families, builders, and observers without requiring centralized permission or narrative trust.",
+    "authority": false
+  },
+  "average_dad_layer": {
+    "status": "ACTIVE_OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+    "definition": "Average Dad is the human-scale purpose layer: parent, builder, witness, and continuity operator. It is not a legal status, credential, office, or authority claim.",
+    "values": [
+      "family continuity",
+      "public receipts",
+      "replayable reputation",
+      "proof before promotion",
+      "authority false"
+    ],
+    "authority": false
+  },
+  "base_reputation_context": {
+    "identity": "jaywisdom.base.eth",
+    "zora_profile": "zora.co/@jay_zora",
+    "zora_status": "RECEIPT_SUPPLIED_PENDING_VERIFICATION",
+    "rule": "Base and Zora references are purpose and reputation pointers until independently replayed. No ownership or activity verification is asserted here.",
+    "authority": false
+  },
+  "future_proof_controls": {
+    "versioning": {
+      "current_version": "0.1",
+      "upgrade_rule": "Future versions must preserve prior receipts and mark all new claims as declared, verified, diverged, or pending.",
+      "authority": false
+    },
+    "claim_classes": [
+      "DECLARED",
+      "PENDING_RECEIPT",
+      "MATCH",
+      "DIVERGE",
+      "INCOMPLETE"
+    ],
+    "required_invariants": [
+      "authority must remain false unless a future artifact explicitly defines a lawful and replayable authority boundary",
+      "promotion must remain false until proof receipts replace placeholders",
+      "identity pointers must not become ownership claims without independent receipts",
+      "Zora, ENS, Base ENS, and family claims must remain separable",
+      "external auditors must be able to classify failures as MATCH, DIVERGE, or INCOMPLETE"
+    ],
+    "authority": false
+  },
+  "replay_interfaces": {
+    "public_replay_index": "PUBLIC_REPLAY_INDEX.json",
+    "verify_workflow": ".github/workflows/verify.yml",
+    "meme_court_ledger": "MEME_COURT_PRECEDENT_LEDGER.json",
+    "family_reputation_layer": "layers/FAMILY_REPUTATION_LAYER_V0_1.json",
+    "authority": false
+  },
+  "activation_conditions": {
+    "base_purpose_active": true,
+    "ownership_verified": false,
+    "zora_verified": false,
+    "promotion_ready": false,
+    "requires_future_receipts_for_verification": true,
+    "authority": false
+  },
+  "not_claiming": [
+    "Base ENS ownership verification",
+    "Zora ownership verification",
+    "Zora activity verification",
+    "legal identity verification",
+    "legal parentage verification",
+    "official office or title",
+    "credentialed authority",
+    "promotion status",
+    "central authority",
+    "financial authority",
+    "legal trust status"
+  ],
+  "verification_flags": {
+    "base_ens_ownership_verified": false,
+    "zora_ownership_verified": false,
+    "zora_activity_verified": false,
+    "legal_identity_verified": false,
+    "legal_parentage_verified": false,
+    "official_title_verified": false,
+    "credentialed_authority_verified": false,
+    "promotion_status": false,
+    "central_authority": false,
+    "financial_authority_verified": false,
+    "legal_trust_verified": false,
+    "independently_verified_by_assistant": false
+  },
+  "parent_receipts": {
+    "public_proof_merge_commit": "8eea6acb9c7874968f1383af3a83d244a34ba0bd",
+    "family_reputation_layer_pr": 251,
+    "public_replay_index_pr": 250,
+    "verify_workflow_pr": 249,
+    "meme_court_ledger_pr": 248
+  }
+}

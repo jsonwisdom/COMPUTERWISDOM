@@ -1,0 +1,40 @@
+{
+  "receipt_id": "VALID_CHAIN_001",
+  "user_identity_receipt": {
+    "user_id": "jay",
+    "verified": true
+  },
+  "policy_receipt": {
+    "policy_id": "POLICY_README_EDIT_001",
+    "issuer": "jay",
+    "subject": "agent_authority_replay_builder",
+    "allowed": {
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "path": "artifacts/AUTHORITY_REPLAY_MVP/README.md",
+      "action": "edit",
+      "max_lines_changed": 20
+    },
+    "expires_at": "2026-06-05T23:59:00Z",
+    "revoked": false
+  },
+  "delegation_receipt": {
+    "delegated_to": "agent_authority_replay_builder",
+    "policy_id": "POLICY_README_EDIT_001"
+  },
+  "revocation_status_receipt": {
+    "revoked": false,
+    "checked_at": "2026-06-05T16:30:00Z"
+  },
+  "agent_action_receipt": {
+    "agent_id": "agent_authority_replay_builder",
+    "action": "edit",
+    "repo": "jsonwisdom/COMPUTERWISDOM",
+    "path": "artifacts/AUTHORITY_REPLAY_MVP/README.md",
+    "lines_changed": 12,
+    "executed_at": "2026-06-05T16:31:00Z"
+  },
+  "tool_execution_receipt": {
+    "tool": "GitHub.create_file",
+    "status": "success"
+  }
+}

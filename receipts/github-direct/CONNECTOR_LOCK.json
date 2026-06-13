@@ -1,0 +1,6 @@
+{
+  "protocol": "CONNECTOR_LOCK",
+  "branch": "alms-baseline-receipt-v0-1",
+  "authority": false,
+  "no_fake_green": true
+}
