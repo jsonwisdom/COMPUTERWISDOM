@@ -1,0 +1,10 @@
+{
+  "artifact": "CONTINUITY_LEDGER_V0_6",
+  "purpose": "Bind Cycle 2 Anchor #15 into the observed-only continuity index after Court-first preservation.",
+  "authority": false,
+  "binding_rule": "observed_only",
+  "witness_order": "Court_first",
+  "cycle": 2,
+  "entries": [
+    {"name": "RECEIPTS_FIRST_BOX_SET", "sha": "5f89a4675bc1f93c6a063b97ab210a73fb2f29f1", "replay": "MATCH"},
+    {"name": "MIDWEST_CONSTITUTION_CODEX_V0_

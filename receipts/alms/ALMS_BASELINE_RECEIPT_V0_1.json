@@ -1,0 +1,24 @@
+{
+  "artifact": "ALMS_BASELINE_RECEIPT_V0_1",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "purpose": "Record the existing ALMS footprint inside COMPUTERWISDOM as repository-level observation only.",
+  "observed_paths": [
+    "docs/alms_fetch_spec_v1.md",
+    "alms/ALMS_REPLAY_MEMORY_9_ROUTE_V0_1.md",
+    "docs/base_mcp/plugins/joy_alms_plugin_v0_1.md",
+    "schemas/base_mcp/joy_alms_plugin_v0_1.schema.json",
+    "docs/base_mcp/joy_alms_base_mcp_plugin_openapi_v0_1.yaml",
+    "docs/alms_receipt_index_v1.md",
+    "docs/protocols/manic/ALMS_REFERENCE_MAPPING_V1.md"
+  ],
+  "authority": false,
+  "no_fake_green": true,
+  "eas_submitted": false,
+  "zora_emission": false,
+  "membrane": "INTACT",
+  "notes": "This receipt records ALMS repository presence only. It does not verify runtime execution, liquidity behavior, agent authority, or on-chain settlement.",
+  "generated_at_utc": "2026-06-11T04:40:41Z",
+  "branch": "alms-baseline-receipt-v0-1",
+  "base_head": "c5849e2118241f2802be0e326e97ef19dd7a9faa",
+  "receipt_canonical_sha256": "99c1409644abcbdd71c6c499a57a956b66ec58781cdea4d8d4b6322875d3607e"
+}

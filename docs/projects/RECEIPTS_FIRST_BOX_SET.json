@@ -1,0 +1,18 @@
+{
+  "collection": "RECEIPTS_FIRST_BOX_SET",
+  "format": "JSON_BOX_SET_V0_1",
+  "authority": false,
+  "identity_anchor": {
+    "primary": "jaywisdom.eth",
+    "secondary": "jaywisdom.base.eth"
+  },
+  "films": [
+    {
+      "title": "RECEIPTS_FIRST",
+      "theme": "PROVENANCE",
+      "question": "Where is the receipt?",
+      "lead": "Karen"
+    },
+    {
+      "title": "RECEIPTS_FIRST_II",
+      "subtitle": "Replay Edition",

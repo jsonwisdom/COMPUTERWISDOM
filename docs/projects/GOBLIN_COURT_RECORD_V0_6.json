@@ -1,0 +1,106 @@
+{
+  "artifact": "GOBLIN_COURT_RECORD_V0_6",
+  "format": "JSON_VARIANCE_RECORD",
+  "authority": false,
+  "purpose": "Record observed variances, contradictions, mismatches, and replay outcomes without asserting truth or authority.",
+  "court": {
+    "goblin_role": "variance_detection",
+    "karen_role": "provenance_request",
+    "wendy_role": "replay_request",
+    "al_role": "verification",
+    "joy_role": "observation",
+    "mirror_mint_role": "memory_rendering",
+    "computerwisdom_role": "public_screen"
+  },
+  "cases": [
+    {
+      "case_id": "KAREN11_PORTAL_RUNTIME_TEST_001",
+      "artifact": "KAREN11_PORTAL_RUNTIME_TEST_001",
+      "commit_sha": "e4f699e287ce5e6c996df404ac7e7c5b1fe97190",
+      "variance": 0,
+      "replay_status": "MATCH",
+      "authority": false
+    },
+    {
+      "case_id": "WENDY_REPLAY_UPGRADE_V0_1",
+      "artifact": "WENDY_REPLAY_UPGRADE_V0_1",
+      "commit_sha": "e3e3cb25d0a2126149b8f9251622c1a9c27501bf",
+      "variance": 0,
+      "replay_status": "MATCH",
+      "authority": false
+    },
+    {
+      "case_id": "TRIPLE_PRESERVATION_ARC",
+      "artifact": "TRIPLE_PRESERVATION_RECEIPT_V0_1",
+      "commit_shas": [
+        "5f89a4675bc1f93c6a063b97ab210a73fb2f29f1",
+        "587fed9bf96e88e5731d7a1494372c49a46e2d39",
+        "8cbee42dcbd09c077fea1532e96958b4570592e4"
+      ],
+      "variance": 0,
+      "replay_status": "MATCH",
+      "authority": false
+    },
+    {
+      "case_id": "PORTAL_RUNTIME_INDEX_V0_1",
+      "artifact": "PORTAL_RUNTIME_INDEX_V0_1",
+      "commit_sha": "PENDING_COMMIT",
+      "variance": 0,
+      "replay_status": "MATCH",
+      "authority": false
+    },
+    {
+      "case_id": "CONTINUITY_LEDGER_V0_1",
+      "artifact": "CONTINUITY_LEDGER_V0_1",
+      "commit_sha": "PENDING_COMMIT",
+      "variance": 0,
+      "replay_status": "MATCH",
+      "authority": false
+    },
+    {
+      "case_id": "CONTINUITY_LEDGER_V0_2_REPLAY",
+      "artifact": "CONTINUITY_LEDGER_REPLAY_RECEIPT_V0_2",
+      "commit_sha": "PENDING_COMMIT",
+      "variance": 0,
+      "replay_status": "MATCH",
+      "authority": false
+    },
+    {
+      "case_id": "MIRROR_MINT_MEMORY_BIBLE_REPLAY_V0_1",
+      "artifact": "MEMORY_BIBLE_REPLAY_RECEIPT_V0_1",
+      "commit_sha": "8cbee42dcbd09c077fea1532e96958b4570592e4",
+      "variance": 0,
+      "replay_status": "MATCH",
+      "authority": false
+    },
+    {
+      "case_id": "MIRROR_MINT_MEMORY_BIBLE_COMMENTARY_REPLAY_V0_1",
+      "artifact": "MEMORY_BIBLE_COMMENTARY_REPLAY_RECEIPT_V0_1",
+      "commit_sha": "db1c5f54576a2ec35cf61def9c4b3cf48632681c",
+      "variance": 0,
+      "replay_status": "MATCH",
+      "findings": {
+        "goblin": "no drift detected in commentary layer",
+        "karen": "provenance anchor confirmed",
+        "wendy_plus": "independent replay succeeded",
+        "al": "commentary structure verified",
+        "mirror_mint": "reflection layer reaffirmed",
+        "joy": "observation preserved"
+      },
+      "authority": false
+    }
+  ],
+  "court_doctrine": [
+    "Goblin detects variance.",
+    "Karen demands receipts.",
+    "Wendy+ demands replay.",
+    "AL verifies structure.",
+    "JOY preserves observation.",
+    "Mirror Mint preserves memory.",
+    "COMPUTERWISDOM renders the record."
+  ],
+  "identity_anchor": {
+    "ens": "jaywisdom.eth",
+    "basename": "jaywisdom.base.eth"
+  }
+}
