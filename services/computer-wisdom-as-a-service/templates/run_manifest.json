@@ -1,0 +1,13 @@
+{
+  "service": "COMPUTER_WISDOM_AS_A_SERVICE",
+  "mode": "READ_ONLY_COLLECTION",
+  "posture_state": "DUMPS_PRESERVED",
+  "run_id": "YYYY-MM-DD",
+  "run_dir": "dumps/YYYY-MM-DD",
+  "started_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "completed_at": "YYYY-MM-DDTHH:MM:SSZ",
+  "mutation_allowed": false,
+  "outputs_are_candidates_until_replayed": true,
+  "authority": false,
+  "no_fake_green": true
+}

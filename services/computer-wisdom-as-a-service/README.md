@@ -14,15 +14,15 @@
 
 ## Promise
 
-Computer Wisdom as a Service turns repo chaos into replayable receipts.
+Computer Wisdom as a Service helps turn repo chaos into replayable candidate receipts.
 
-It does not ask a client to believe a dashboard. It collects structured evidence, classifies blockers, and reports what the repository can actually prove.
+It does not ask a client to believe a dashboard. It collects structured evidence, classifies blocker candidates, and reports what the repository dumps can support after replay.
 
 ## First Package: 7-Day Repo Replay Audit
 
 The client runs a read-only collector for seven days and returns JSON dumps.
 
-Deliverables:
+Deliverables are candidate reports until independently replayed:
 
 - `audit_summary.md`
 - `repo_weather.json`
@@ -41,7 +41,9 @@ Deliverables:
   "merge": false,
   "delete": false,
   "force_push": false,
-  "authority": false
+  "outputs_are_candidates_until_replayed": true,
+  "authority": false,
+  "no_fake_green": true
 }
 ```
 
@@ -51,7 +53,13 @@ Deliverables:
 UNKNOWN -> OBSERVED -> PRESERVED -> REPLAYABLE -> VERIFIED
 ```
 
-## What It Detects
+## Posture States
+
+```text
+OFFERED -> CONFIGURED -> COLLECTION_RUNNING -> DUMPS_PRESERVED -> CANDIDATE_REPORTED -> CLIENT_REPLAYED
+```
+
+## What It Detects as Candidates
 
 - stale pull requests
 - failed checks
