@@ -27,6 +27,31 @@ write_manifest_state() {
     '{service:$service,mode:$mode,posture_state:$state,reason:$reason,started_at:$started_at,updated_at:$updated_at,run_id:$run_id,run_dir:$run_dir,mutation_allowed:false,outputs_are_candidates_until_replayed:true,authority:false,no_fake_green:true}' > "$RUN_DIR/run_manifest.json"
 }
 
+
+validate_run_manifest() {
+  local manifest="$RUN_DIR/run_manifest.json"
+
+  if [ ! -s "$manifest" ]; then
+    fail_with_state "MISSING_RECEIPT" "run_manifest.json missing or empty after collection"
+  fi
+
+  if ! jq -e '
+    .service == "COMPUTER_WISDOM_AS_A_SERVICE" and
+    .mode == "READ_ONLY_COLLECTION" and
+    (.posture_state | IN("BLOCKED","COLLECTION_RUNNING","DUMPS_PRESERVED","FAILED","MISSING_RECEIPT","STALE","CANDIDATE_REPORTED","CLIENT_REPLAYED")) and
+    (.run_id | type == "string" and length > 0) and
+    (.run_dir | type == "string" and length > 0) and
+    (.started_at | type == "string" and length > 0) and
+    (.updated_at | type == "string" and length > 0) and
+    .mutation_allowed == false and
+    .outputs_are_candidates_until_replayed == true and
+    .authority == false and
+    .no_fake_green == true
+  ' "$manifest" >/dev/null; then
+    fail_with_state "FAILED" "schema validation failed: run_manifest.json"
+  fi
+}
+
 fail_with_state() {
   local state="$1"
   local reason="$2"
@@ -85,9 +110,7 @@ jq \
   "$RUN_DIR/run_manifest.json" > "$RUN_DIR/run_manifest.tmp.json"
 mv "$RUN_DIR/run_manifest.tmp.json" "$RUN_DIR/run_manifest.json"
 
-if [ ! -f "$RUN_DIR/run_manifest.json" ]; then
-  fail_with_state "MISSING_RECEIPT" "run_manifest.json missing after collection"
-fi
+validate_run_manifest
 
 jq -n \
   --arg service "COMPUTER_WISDOM_AS_A_SERVICE" \

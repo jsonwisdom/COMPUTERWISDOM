@@ -27,3 +27,22 @@
 ## Rule
 
 No client-facing output may promote beyond `CANDIDATE_REPORTED` until the preserved dumps are replayed by the client or an independent reviewer.
+
+## STALE Data Policy
+
+`STALE` is a consumer/operator-side report-layer state.
+
+The harness provides `completed_at` in `run_manifest.json` so the consumer/operator can compare collection time against the applicable consumption window or client SLA.
+
+No universal execution-side stale threshold is applied by `run.sh`, because repository freshness depends on operational context.
+
+This preserves:
+
+```json
+{
+  "client_run_completed": false,
+  "verified": false,
+  "authority": false,
+  "no_fake_green": true
+}
+```
