@@ -1,0 +1,14 @@
+{
+  "protocol": "GITHUB_DIRECT_LOCK_RECEIPT_V0_1",
+  "branch": "alms-baseline-receipt-v0-1",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "fault": "git_push_auth_failure",
+  "root_cause": "identity_precedence_conflict",
+  "selected_identity": "jsonwisdom_via_github_cli",
+  "fix_confirmed": true,
+  "remote_push_confirmed": true,
+  "doctrine": "Credential failure is not artifact failure.",
+  "authority": false,
+  "no_fake_green": true,
+  "status": "LOCKED_IN_BRANCH"
+}

@@ -1,0 +1,18 @@
+name: Federal AI Observer Advisory Sidecar
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  advisory:
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - name: Advisory scan
+        run: |
+          echo "Advisory sidecar scan only. Non-blocking by design."
+          echo "Docs are observed here, not blocked here."

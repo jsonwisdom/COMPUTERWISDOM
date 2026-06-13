@@ -1,0 +1,11 @@
+{
+  "artifact": "WARGAMES_DEFENSIVE_STATE_SYSTEMS_V0_1",
+  "format": "JSON_CHARACTER_AGENT_MAP",
+  "purpose": "Map WarGames-inspired civic-memory characters and defensive AI agents without claiming offensive capability, legal authority, or real-world command authority.",
+  "identity_anchor": {
+    "ens": "jaywisdom.eth",
+    "basename": "jaywisdom.base.eth"
+  },
+  "authority": false,
+  "fictional_reference_layer": {
+    "WOPR": "Joshua-style strategic simulation

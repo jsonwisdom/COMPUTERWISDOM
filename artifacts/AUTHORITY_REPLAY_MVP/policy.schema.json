@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "AUTHORITY_REPLAY_POLICY_SCHEMA_V0_1",
+  "type": "object",
+  "required": ["policy_id", "issuer", "subject", "allowed", "expires_at", "revoked"],
+  "additionalProperties": false,
+  "properties": {
+    "policy_id": { "type": "string" },
+    "issuer": { "type": "string" },
+    "subject": { "type": "string" },
+    "allowed": {
+      "type": "object",
+      "required": ["repo", "path", "action", "max_lines_changed"],
+      "additionalProperties": false,
+      "properties": {
+        "repo": { "type": "string" },
+        "path": { "type": "string" },
+        "action": { "type": "string" },
+        "max_lines_changed": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "expires_at": { "type": "string", "format": "date-time" },
+    "revoked": { "type": "boolean" }
+  }
+}

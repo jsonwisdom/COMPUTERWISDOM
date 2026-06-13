@@ -1,0 +1,14 @@
+{
+  "protocol": "GOBLIN_COURTS_IDENTITY_FLYWHEEL_V0_1",
+  "source_repo": "jsonwisdom/JOY",
+  "source_commit": "57b85fb9d97b36a3e0b2c1bd0f6c42f7b2659358",
+  "source_path": "docs/prompts/JAYWISDOM_NEXT_LEVEL_SCHEMA_REPLAY_PROMPT_V0_1.md",
+  "public_identity": "jaywisdom.base.eth",
+  "core_line": "Do not sell belief. Build the replay path.",
+  "first_use_case": "Goblin Courts",
+  "promotion_state": "RECORDED_NOT_AUTHORITY",
+  "authority": false,
+  "no_fake_green": true,
+  "replay_required": true,
+  "status": "YELLOW_REPO_ANCHOR_CAPTURED"
+}

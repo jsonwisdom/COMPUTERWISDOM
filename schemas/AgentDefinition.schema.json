@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.org/schemas/AgentDefinition/v0.1",
+  "title": "AgentDefinition",
+  "description": "Defines a JSONWisdom agent role with explicit purpose, inputs, outputs, and no implied authority.",
+  "type": "object",
+  "required": ["agent_id", "purpose", "authority"],
+  "properties": {
+    "agent_id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]*$"
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "inputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "outputs": {
+      "type": "array",
+      "items": { "type": "string" },
+      "default": []
+    },
+    "authority": {
+      "type": "boolean",
+      "const": false
+    },
+    "manifest_issue": {
+      "type": "string",
+      "format": "uri"
+    },
+    "activated_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "additionalProperties": false
+}
