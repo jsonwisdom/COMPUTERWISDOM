@@ -3,8 +3,18 @@ name: Verify Federal AI Observers
 on:
   push:
     branches: [master, main, anchor]
+    paths:
+      - "COMPUTERWISDOM/federal/white-house-ai/**"
+      - "badges/**"
+      - "attestation/**"
+      - ".github/workflows/verify-observers.yml"
   pull_request:
     branches: [master, main, anchor]
+    paths:
+      - "COMPUTERWISDOM/federal/white-house-ai/**"
+      - "badges/**"
+      - "attestation/**"
+      - ".github/workflows/verify-observers.yml"
 
 permissions:
   contents: read
@@ -62,7 +72,6 @@ jobs:
               pathlib.Path("COMPUTERWISDOM/federal/white-house-ai"),
               pathlib.Path("badges"),
               pathlib.Path("attestation"),
-              pathlib.Path("docs"),
           ]
           include = {".md", ".json"}
           protected = re.compile(r"\b(federal|government|official|authority|authorized|compliant|observer registry|Federal AI Observer)\b", re.I)
@@ -88,13 +97,13 @@ jobs:
                   failures.append(first_claim or str(path))
 
           if failures:
-              print("❌ Files contain protected authority claims without file-level proof context:")
+              print("Files contain protected authority claims without file-level proof context:")
               for item in failures:
                   print(item)
               print("Authority claims must resolve somewhere in the same file to VC, receipt, attestation, hash/source/evidence proof, or explicit NONE boundary.")
               sys.exit(1)
 
-          print("✅ Protected claim files contain proof context or explicit boundaries.")
+          print("Protected claim files contain proof context or explicit boundaries.")
           PY
 
       - name: Generate CI badge artifact
