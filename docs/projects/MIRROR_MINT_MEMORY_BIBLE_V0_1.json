@@ -1,0 +1,36 @@
+{
+  "artifact": "MIRROR_MINT_MEMORY_BIBLE_V0_1",
+  "format": "JSON_BIBLE",
+  "authority": false,
+  "purpose": "Describe the lifecycle of civic memory from observation to legacy.",
+  "books": [
+    {"book": 1, "title": "Observation", "keeper": "JOY", "question": "What was observed?"},
+    {"book": 2, "title": "Provenance", "keeper": "Karen", "question": "Where is the receipt?"},
+    {"book": 3, "title": "Replay", "keeper": "Wendy", "question": "Can you do it again?"},
+    {"book": 4, "title": "Verification", "keeper": "AL", "question": "What can be verified?"},
+    {"book": 5, "title": "Memory", "keeper": "MirrorMint", "question": "What survived?"},
+    {"book": 6, "title": "Continuity", "keeper": "Mothers", "question": "Who remembered it?"},
+    {"book": 7, "title": "Community", "keeper": "Children", "question": "Can we still find it together?"},
+    {"book": 8, "title": "Legacy", "keeper": "COMPUTERWISDOM", "question": "How do we remember it?"}
+  ],
+  "lifecycle": [
+    "Observation",
+    "Provenance",
+    "Replay",
+    "Verification",
+    "Memory",
+    "Continuity",
+    "Community",
+    "Legacy"
+  ],
+  "core_doctrine": [
+    "Receipts create memory.",
+    "Memory creates continuity.",
+    "Continuity creates community.",
+    "Community creates legacy."
+  ],
+  "identity_anchor": {
+    "ens": "jaywisdom.eth",
+    "basename": "jaywisdom.base.eth"
+  }
+}
