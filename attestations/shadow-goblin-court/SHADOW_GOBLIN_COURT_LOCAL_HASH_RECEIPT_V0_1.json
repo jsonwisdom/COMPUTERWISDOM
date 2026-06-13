@@ -1,0 +1,14 @@
+{
+  "artifact": "SHADOW_GOBLIN_COURT_LOCAL_HASH_RECEIPT_V0_1",
+  "schema_path": "schemas/SHADOW_GOBLIN_COURT_ATTESTATION_V0_1.schema.json",
+  "payload_path": "attestations/shadow-goblin-court/SHADOW_GOBLIN_COURT_ATTESTATION_V0_1.json",
+  "schema_canonical_sha256": "9cc80669e73d963595df9f3858be8ae93f62a52e70f77aef570b6bcd94ca21ce",
+  "payload_canonical_sha256": "51ef3bd60568704d03d1bde9ab5348442b33ca5343f2269fab1b5a366771cf98",
+  "schema_file_sha256": "80fcb37114dcb884c69935d3056ddb1c5572e017b38a7b5f724e2593539d4ede",
+  "payload_file_sha256": "021a63de1dd7d402da414a9a49b8d8629ebf394bef671a0b8ea98bb0daf18ded",
+  "eas_attestation_status": "NOT_SUBMITTED",
+  "github_mutation": false,
+  "zora_emission": false,
+  "authority": false,
+  "no_fake_green": true
+}
