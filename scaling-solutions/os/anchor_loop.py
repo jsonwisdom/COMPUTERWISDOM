@@ -104,6 +104,7 @@ def try_anchor_once():
     state["last_anchor_tx"] = tx_hash.hex()
     state["anchoring_root"] = current_root
     state["last_anchor_nonce"] = nonce
+    state["anchoring_timestamp"] = int(time.time())
     save_state(state)
 
     print(f"Anchored root {current_root} in tx {tx_hash.hex()}")
