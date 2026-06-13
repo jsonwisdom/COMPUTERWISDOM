@@ -1,0 +1,12 @@
+{
+  "receipt_id": "JOY_ISD742_RECIPIENT_VERIFICATION_RECEIPT_V0_1",
+  "status": "SHELL_ONLY_NOT_YET_FILLED",
+  "created_at_utc": "2026-06-13T04:45:00Z",
+  "recipient_contact_confirmed_by_operator": false,
+  "operator_hashes": "PENDING",
+  "verbatim_excerpts": "PENDING",
+  "isd_742_delivery": "NOT_PROVEN",
+  "promotion": false,
+  "authority": false,
+  "no_fake_green": true
+}
