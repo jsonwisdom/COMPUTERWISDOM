@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://computerwisdom.local/schemas/SHADOW_GOBLIN_COURT_ATTESTATION_V0_1.schema.json",
+  "title": "SHADOW_GOBLIN_COURT_ATTESTATION_V0_1",
+  "type": "object",
+  "required": [
+    "artifact",
+    "identity",
+    "basename",
+    "purpose",
+    "risk_condition",
+    "neutralization_rule",
+    "truth_status",
+    "authority",
+    "no_fake_green",
+    "disclaimer"
+  ],
+  "properties": {
+    "artifact": {
+      "type": "string",
+      "const": "SHADOW_GOBLIN_COURT_ATTESTATION_V0_1"
+    },
+    "identity": {
+      "type": "string",
+      "const": "jaywisdom.eth"
+    },
+    "basename": {
+      "type": "string",
+      "const": "jaywisdom.base.eth"
+    },
+    "purpose": {
+      "type": "string"
+    },
+    "risk_condition": {
+      "type": "string",
+      "const": "GOBLIN_COURT_BECOMES_OPAQUE_AUTHORITY"
+    },
+    "neutralization_rule": {
+      "type": "string"
+    },
+    "truth_status": {
+      "type": "string",
+      "const": "UNDETERMINED"
+    },
+    "authority": {
+      "type": "boolean",
+      "const": false
+    },
+    "no_fake_green": {
+      "type": "boolean",
+      "const": true
+    },
+    "disclaimer": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,18 @@
+{
+  "schema_version": "1.0",
+  "event": "POST_MERGE_MASTER_REPLAY",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "pr": 314,
+  "merge_commit": "238ddd06d8bcaaec1c37f9def7a9856617c1da52",
+  "master_head_short": "238ddd0",
+  "source_branch": "wallet-binding-v2",
+  "local_command": "bash ./scaling-solutions/verify.sh",
+  "local_output": [
+    "signatures OK",
+    "OK: verify passed"
+  ],
+  "status": "PASS",
+  "authority": false,
+  "no_fake_green": true,
+  "next_gate": "ZORA_RECEIPT_FLYWHEEL_DRAFT"
+}

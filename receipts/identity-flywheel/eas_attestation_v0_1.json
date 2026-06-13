@@ -1,0 +1,33 @@
+{
+  "protocol": "JAY_IDENTITY_FLYWHEEL_ATTESTATION_V0_1",
+  "arena_status": "GREEN",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "wallet-binding-v2",
+  "commit_observed": "33b7b27",
+  "pr_url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/314",
+  "network": "Base",
+  "attestation_uid": "0x0e60a3cc445f273d8af207cbec821d45f4731f2eeca04b02e5d01553847c4d93",
+  "tx_hash": "0x7c761a5a6314124aab66fcb8e9410515a066ccae1fb5c252ca1cb456e0a31516",
+  "block_reported": 47171349,
+  "schema_uid": "0x3c15f42c68ef371da9ed855af52d09ae99e0083cb111abc7a0cbf388836940d8",
+  "recipient": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+  "recipient_name": "jaywisdom.base.eth",
+  "attester": "0x1dB2C056c7DeCD9f9fC574692b05F62aE34Fb8b5",
+  "decoded_data": {
+    "name_ens": "jaywisdom.base.eth",
+    "reference": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/314",
+    "schema_alignment": "identity_wallet_binding"
+  },
+  "verification": {
+    "uid_exists_on_chain": true,
+    "tx_exists_on_chain": true,
+    "schema_verified": true,
+    "recipient_verified": true,
+    "attester_verified": true,
+    "decoded_fields_verified": true,
+    "match": true,
+    "no_fake_green": true
+  },
+  "authority": false,
+  "next_gate": "REPRODUCE_SH_EAS_CHECK"
+}
