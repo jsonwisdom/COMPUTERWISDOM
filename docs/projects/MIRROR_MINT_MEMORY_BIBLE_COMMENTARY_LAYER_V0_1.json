@@ -1,0 +1,11 @@
+{
+  "artifact": "MIRROR_MINT_MEMORY_BIBLE_COMMENTARY_LAYER_V0_1",
+  "format": "JSON_COMMENTARY",
+  "authority": false,
+  "purpose": "Provide a non-authoritative commentary layer describing how each Book of the Memory Bible behaves when replay, continuity, and preservation are observed.",
+  "commentary": [
+    {
+      "book": 1,
+      "title": "Observation",
+      "keeper": "JOY",
+      "commentary": "Observation is the first surface where memory becomes

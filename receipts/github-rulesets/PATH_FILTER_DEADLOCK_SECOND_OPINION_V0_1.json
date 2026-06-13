@@ -1,0 +1,13 @@
+{
+  "schema": "PATH_FILTER_DEADLOCK_SECOND_OPINION_V0_1",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "blocked_pr": 319,
+  "blocked_head_sha": "36c5b0abcf1d09fa733f2ba9dca40aefedd058ca",
+  "required_check": "verify",
+  "diagnosis": "required_check_verify_is_path_filtered_and_does_not_run_for_pr_319",
+  "root_cause": "branch_ruleset_requires_verify_but_verify_workflow_has_top_level_paths_filter",
+  "fix": "make_verify_workflow_start_on_all_pull_requests",
+  "authority": false,
+  "no_fake_green": true,
+  "replay_required": true
+}
