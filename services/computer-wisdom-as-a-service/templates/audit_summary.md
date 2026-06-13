@@ -6,6 +6,7 @@
 {
   "source": "client_json_dumps",
   "mutation_performed": false,
+  "outputs_are_candidates_until_replayed": true,
   "authority": false,
   "verified": false,
   "no_fake_green": true
@@ -14,34 +15,49 @@
 
 ## Executive Takeaway
 
-<one sentence summary>
+<one sentence candidate summary, mapped to dump evidence>
 
-## Repo Weather
+## Run Manifest
+
+- Run ID:
+- Started at:
+- Completed at:
+- Posture state:
+- Evidence file: `run_manifest.json`
+
+## Repo Weather Candidate
 
 - Repositories observed:
 - Pull requests observed:
-- Failed checks:
-- Stale PRs:
-- Blocked merges:
+- Failed check candidates:
+- Stale PR candidates:
+- Blocked merge candidates:
 
-## Blocker Map
+## Blocker Map Candidate
 
-| Repo | PR | Blocker | Evidence File | Recommended Action |
+| Repo | PR | Candidate Blocker | Evidence File | Recommended Action Candidate |
 | --- | --- | --- | --- | --- |
 
-## Repair Plan
+## Evidence Gap Map
 
-1. <repair step>
-2. <repair step>
-3. <repair step>
+| Claim | Supporting Dump | Replay Step | Status |
+| --- | --- | --- | --- |
+
+## Repair Plan Candidate
+
+1. <repair step candidate>
+2. <repair step candidate>
+3. <repair step candidate>
 
 ## Closing State
 
 ```json
 {
-  "state": "AUDIT_REPORTED",
+  "state": "CANDIDATE_REPORTED",
+  "client_replayed": false,
   "repair_performed": false,
   "authority": false,
+  "verified": false,
   "no_fake_green": true
 }
 ```
