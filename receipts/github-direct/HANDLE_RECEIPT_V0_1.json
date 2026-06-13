@@ -1,0 +1,7 @@
+{
+  "protocol": "HANDLE_RECEIPT_V0_1",
+  "branch": "alms-baseline-receipt-v0-1",
+  "repository_side_handled": true,
+  "authority": false,
+  "no_fake_green": true
+}
