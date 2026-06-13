@@ -4,10 +4,6 @@ on:
   pull_request:
     branches:
       - master
-    paths:
-      - 'PUBLIC_PROOF.json'
-      - 'MEME_COURT_PRECEDENT_LEDGER.json'
-      - '.github/workflows/verify.yml'
   workflow_dispatch:
 
 permissions:
