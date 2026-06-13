@@ -2,6 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "CWaaS Repo Weather Candidate",
   "type": "object",
+  "additionalProperties": false,
   "required": ["service", "state", "authority", "no_fake_green", "repositories"],
   "properties": {
     "service": {"const": "COMPUTER_WISDOM_AS_A_SERVICE"},
@@ -10,12 +11,14 @@
     "no_fake_green": {"const": true},
     "repositories": {
       "type": "array",
+      "minItems": 1,
       "items": {
         "type": "object",
+        "additionalProperties": false,
         "required": ["repo", "evidence_file"],
         "properties": {
-          "repo": {"type": "string"},
-          "evidence_file": {"type": "string"},
+          "repo": {"type": "string", "minLength": 1},
+          "evidence_file": {"type": "string", "minLength": 1},
           "pull_requests_observed": {"type": "integer", "minimum": 0},
           "failed_check_candidates": {"type": "integer", "minimum": 0},
           "stale_pr_candidates": {"type": "integer", "minimum": 0},
