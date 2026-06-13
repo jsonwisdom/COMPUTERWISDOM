@@ -1,26 +1,31 @@
 # REPO_FAMILY_MAP_V0_1
 
-Parent: COMPUTERWISDOM  
-Child: JOY  
+Parent: COMPUTERWISDOM
+Daughter: JOY
+Engine: AL
 
-## Routing Rule
+## Canonical Rule
 
-COMPUTERWISDOM is the parent operator/workflow repo.
+JOY lives under COMPUTERWISDOM.
 
-JOY lives under COMPUTERWISDOM as the daughter publishing/output lane.
+COMPUTERWISDOM is the parent/operator/workflow repo.
+JOY is the daughter/public-output/publishing lane.
+AL is the ALMS engine: receipts, schemas, validators, replay logic.
 
-AL is the ALMS verification engine and receipt substrate.
+zero_trust_repos is mirror/inventory only. It is not the canonical destination.
 
-zero_trust_repos is local mirror/inventory only. It is not the canonical destination for new work.
+## Current Filesystem
 
-## Current Boundary
+- COMPUTERWISDOM/
+- COMPUTERWISDOM/JOY/
+- AL/
 
-- COMPUTERWISDOM/JOY contains JOY as daughter repo/worktree.
-- COMPUTERWISDOM/alms contains operator tooling and workflows.
-- AL contains ALMS validators, schemas, receipts, replay engines.
+## Invariants
+
 - No loose root receipts.
+- No random repo drift.
 - No fake green.
 
-authority: false  
-verified: false  
+authority: false
+verified: false
 no_fake_green: true
