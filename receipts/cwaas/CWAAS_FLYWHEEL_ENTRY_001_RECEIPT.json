@@ -4,7 +4,7 @@
   "state": "ZORA_METADATA_DRAFT",
   "action": "FULL_SEND_VISUAL_REPLAY_ENTRY_CREATED",
   "source_pr": 334,
-  "merge_commit": "5d918c9",
+  "merge_commit": "5d918c9ec4bb8c338b92f0943ef0681002c87ce1",
   "support_commit": "d09feebaf81ba6b7267e4306f7dcef9e8fba3a53",
   "entry_path": "services/zora-flywheel/CWAAS_FLYWHEEL_ENTRY_001_SUPPORT_JW_MASTER_GREEN.md",
   "entry_sha256": "6c76cdc7132af4f6a96f0f1f1f67301b1ae352e1527d8ae3947d17ee7da6a6c2",
