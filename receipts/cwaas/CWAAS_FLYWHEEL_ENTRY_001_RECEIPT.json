@@ -1,0 +1,18 @@
+{
+  "receipt_id": "CWAAS-FLYWHEEL-001",
+  "ticket_id": "SUPPORT-JW-001",
+  "state": "ZORA_METADATA_DRAFT",
+  "action": "FULL_SEND_VISUAL_REPLAY_ENTRY_CREATED",
+  "source_pr": 334,
+  "merge_commit": "5d918c9ec4bb8c338b92f0943ef0681002c87ce1",
+  "support_commit": "d09feebaf81ba6b7267e4306f7dcef9e8fba3a53",
+  "entry_path": "services/zora-flywheel/CWAAS_FLYWHEEL_ENTRY_001_SUPPORT_JW_MASTER_GREEN.md",
+  "entry_sha256": "6c76cdc7132af4f6a96f0f1f1f67301b1ae352e1527d8ae3947d17ee7da6a6c2",
+  "metadata_path": "metadata/zora/CWAAS_FLYWHEEL_ENTRY_001_SUPPORT_JW_MASTER_GREEN.metadata.json",
+  "metadata_sha256": "e997da041ad998b37e4ef6e17deb68cd08c7a0acc82414d806d686bb4905c0e9",
+  "image_filename": "MASTER_GREEN_RENDER.png",
+  "image_sha256": null,
+  "ipfs_uri": null,
+  "authority": false,
+  "no_fake_green": true
+}
