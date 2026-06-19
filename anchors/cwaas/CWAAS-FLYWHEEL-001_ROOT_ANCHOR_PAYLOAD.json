@@ -1,0 +1,13 @@
+{
+  "entry_id": "CWAAS-FLYWHEEL-001",
+  "ticket_id": "SUPPORT-JW-001",
+  "state": "DEPLOYED",
+  "proof_type": "ROOT_ANCHOR_PAYLOAD",
+  "image_uri": "ipfs://bafybeifrc7p22hg7gjg7fmx32h6ww5abbdq7qubgsaxp45qv5v3yyuqfje",
+  "metadata_uri": "ipfs://bafybeignsppilrdaeuaroz5zuqocq2hzcaxaoy3psijy7uarfsy2frj634",
+  "image_sha256": "1f5df872b3a15bc46743b6caffa58382b410d78baca852dbac78ff19e250cdda",
+  "metadata_sha256": "b1a077420645cfd20274f92d748c6271c54b08ff0a264774ab2e3595fa0a4965",
+  "no_fake_green": true,
+  "authority": false,
+  "timestamp_utc": "2026-06-14T21:20:37Z"
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "AUTHORITY_REPLAY_RECEIPT_SCHEMA_V0_1",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "user_identity_receipt",
+    "policy_receipt",
+    "delegation_receipt",
+    "revocation_status_receipt",
+    "agent_action_receipt",
+    "tool_execution_receipt"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "receipt_id": { "type": "string" },
+    "user_identity_receipt": { "type": "object" },
+    "policy_receipt": { "type": "object" },
+    "delegation_receipt": { "type": "object" },
+    "revocation_status_receipt": {
+      "type": "object",
+      "required": ["revoked", "checked_at"],
+      "properties": {
+        "revoked": { "type": "boolean" },
+        "checked_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "agent_action_receipt": {
+      "type": "object",
+      "required": ["agent_id", "action", "repo", "path", "lines_changed", "executed_at"],
+      "properties": {
+        "agent_id": { "type": "string" },
+        "action": { "type": "string" },
+        "repo": { "type": "string" },
+        "path": { "type": "string" },
+        "lines_changed": { "type": "integer", "minimum": 0 },
+        "executed_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "tool_execution_receipt": {
+      "type": "object",
+      "required": ["tool", "status"],
+      "properties": {
+        "tool": { "type": "string" },
+        "status": { "type": "string" }
+      }
+    }
+  }
+}

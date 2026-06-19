@@ -1,0 +1,16 @@
+{
+  "schema_version": "1.0",
+  "head": "698fcd47dc7d46fa912d16732d3af59b835a089e",
+  "local_verify": "PASS",
+  "eas_receipt": "VERIFIED",
+  "agent_inventory": "ALIGNED",
+  "pynacl": "INSTALLED",
+  "authority": false,
+  "no_fake_green": true,
+  "audit_trail": [
+    { "commit": "4009226", "resolution": "Fixed verifier execution permission bit" },
+    { "commit": "89dd0a8", "resolution": "Aligned stale agent inventory state definitions" },
+    { "commit": "698fcd4", "resolution": "Hardened CI/local runtime with PyNaCl library constraint" }
+  ],
+  "as_of": "2026-06-10T23:29:34Z"
+}

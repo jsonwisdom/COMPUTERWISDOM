@@ -1,0 +1,26 @@
+{
+  "artifact": "CONTINUITY_LEDGER_V0_5",
+  "purpose": "Bind only observed, court-witnessed artifacts into the continuity index.",
+  "authority": false,
+  "binding_rule": "observed_only",
+  "witness_order": "Court_first",
+  "entries": [
+    {"name": "RECEIPTS_FIRST_BOX_SET", "sha": "5f89a4675bc1f93c6a063b97ab210a73fb2f29f1", "replay": "MATCH"},
+    {"name": "MIDWEST_CONSTITUTION_CODEX_V0_1", "sha": "587fed9bf96e88e5731d7a1494372c49a46e2d39", "replay": "MATCH"},
+    {"name": "MIRROR_MINT_MEMORY_BIBLE_V0_1", "sha": "8cbee42dcbd09c077fea1532e96958b4570592e4", "replay": "MATCH"},
+    {"name": "WENDY_REPLAY_UPGRADE_V0_1", "sha": "e3e3cb25d0a2126149b8f9251622c1a9c27501bf", "replay": "MATCH"},
+    {"name": "MIRROR_MINT_MEMORY_BIBLE_COMMENTARY_LAYER_V0_1", "sha": "db1c5f54576a2ec35cf61def9c4b3cf48632681c", "replay": "MATCH"},
+    {"name": "GOBLIN_COURT_RECORD_V0_6", "sha": "8f10ac9c9254364f3f22bbc041eff231fabfdc19", "replay": "MATCH"},
+    {"name": "CONTINUITY_LEDGER_V0_2", "sha": "2a74e2e6c1cda7dc7f53a1c2c755f3e65f030b91", "replay": "MATCH"},
+    {"name": "GOBLIN_COURT_RECORD_V0_8", "sha": "e2ce4b51c946915bb0328197d15e58196331f76a", "replay": "MATCH"},
+    {"name": "CONTINUITY_LEDGER_REPLAY_RECEIPT_V0_4", "sha": "6a6420087474e29e6516598254bef936473e31c2", "replay": "MATCH"},
+    {"name": "GOBLIN_COURT_RECORD_V0_9", "sha": "2f08ccefb87658d865fa6271470bb07815ef03e9", "replay": "MATCH"}
+  ],
+  "observed_anchor_count": 10,
+  "continuity_status": {
+    "preservation": "COMPLETE",
+    "replay": "FULL_MATCH",
+    "variance": 0,
+    "authority": false
+  }
+}

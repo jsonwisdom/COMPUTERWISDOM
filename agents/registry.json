@@ -1,0 +1,46 @@
+{
+  "schema": "https://jsonwisdom.org/schemas/AgentDefinition/v0.1",
+  "registered_at": "2026-06-09T23:00:00Z",
+  "agents": [
+    {
+      "agent_id": "navigator",
+      "purpose": "Find correct lineage, repository, branch, and issue path. Prevent orphan work.",
+      "inputs": ["user intent", "repository state", "admission rules"],
+      "outputs": ["issue reference", "lineage path", "placement recommendation"],
+      "authority": false,
+      "manifest_issue": "https://github.com/jsonwisdom/COMPUTERWISDOM/issues/310"
+    },
+    {
+      "agent_id": "custody",
+      "purpose": "Capture bytes, generate metadata, and enforce honest receipts.",
+      "inputs": ["source_url", "capture policy"],
+      "outputs": ["Capture", "capture metadata", "raw file pointer"],
+      "authority": false,
+      "manifest_issue": "https://github.com/jsonwisdom/COMPUTERWISDOM/issues/310"
+    },
+    {
+      "agent_id": "replay",
+      "purpose": "Re-verify claims, compare hashes, and detect drift.",
+      "inputs": ["Receipt", "source_url", "expected_sha256"],
+      "outputs": ["ReplayResult", "pass", "fail", "blocked"],
+      "authority": false,
+      "manifest_issue": "https://github.com/jsonwisdom/COMPUTERWISDOM/issues/310"
+    },
+    {
+      "agent_id": "ci-gate",
+      "purpose": "Enforce No Fake Green policy on every proposed change.",
+      "inputs": ["proposed changes", "verification commands"],
+      "outputs": ["verification result", "blocked status", "green status"],
+      "authority": false,
+      "manifest_issue": "https://github.com/jsonwisdom/COMPUTERWISDOM/issues/310"
+    },
+    {
+      "agent_id": "clerk",
+      "purpose": "Maintain continuity, update manifests, preserve history, and prevent authority drift.",
+      "inputs": ["issues", "PRs", "receipts", "verification results"],
+      "outputs": ["updated docs", "lineage records", "status records"],
+      "authority": false,
+      "manifest_issue": "https://github.com/jsonwisdom/COMPUTERWISDOM/issues/310"
+    }
+  ]
+}

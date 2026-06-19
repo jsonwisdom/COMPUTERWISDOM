@@ -1,0 +1,40 @@
+{
+  "test_case": "OBSERVE_ONLY_V0_1",
+  "description": "A relevant signal from an authorized domain arrives without a verified receipt. Engine logs observation, recommends no level change.",
+  "authority": false,
+  "watch": {
+    "watch_id": "WATCH-FIN-002",
+    "current_state": "STABLE",
+    "current_level": 1,
+    "trigger_definitions": [
+      {
+        "trigger_id": "TRIG-FIN-01",
+        "description": "Audited financial restatement exceeding $10M materiality threshold.",
+        "required_source_domains": ["finance.local", "audit.local"],
+        "required_artifact_type": "audit_report",
+        "new_level": 2
+      }
+    ],
+    "authorized_source_domains": ["finance.local", "audit.local", "compliance.local"]
+  },
+  "observation": {
+    "source": "Internal Audit Team",
+    "source_domain": "audit.local",
+    "artifact_type": "audit_report",
+    "timestamp": "2026-06-03T14:00:00Z",
+    "content_summary": "Preliminary draft audit report identifies potential $12M revenue recognition error in Q1 filings.",
+    "receipt_url": null,
+    "verification_status": "unverified"
+  },
+  "receipt": null,
+  "expected_output": {
+    "watch_id": "WATCH-FIN-002",
+    "status": "OBSERVE",
+    "current_level": 1,
+    "recommended_level": 1,
+    "verified": false,
+    "trigger_match": true,
+    "authority": false,
+    "reason": "Observation from authorized domain audit.local matches trigger pattern TRIG-FIN-01, but no verified receipt exists. Logged for accumulation. Level unchanged."
+  }
+}

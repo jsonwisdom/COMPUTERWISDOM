@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "schemas/goblin_precedent_index.v0_1.schema.json",
+  "title": "Goblin Precedent Index v0.1",
+  "description": "Machine-verifiable index for GC-001 through GC-010. Observer-only; authority remains false.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "artifact",
+    "authority",
+    "mode",
+    "trinity",
+    "goblins",
+    "circuit_breaker"
+  ],
+  "properties": {
+    "schema_version": { "type": "string", "const": "v0.1" },
+    "artifact": { "type": "string", "const": "GOBLIN_PRECEDENT_INDEX_V0_1" },
+    "authority": { "type": "boolean", "const": false },
+    "mode": { "type": "string", "const": "OBSERVER_ONLY" },
+    "trinity": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["PROTECT", "WITNESS", "APPEND_ONLY"] },
+      "minItems": 3,
+      "maxItems": 3,
+      "uniqueItems": true
+    },
+    "goblins": {
+      "type": "array",
+      "minItems": 10,
+      "maxItems": 10,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["gc_id", "receipt_id", "checklist_id", "name", "priority", "status"],
+        "properties": {
+          "gc_id": { "type": "string", "pattern": "^GC-00[1-9]$|^GC-010$" },
+          "receipt_id": { "type": "string", "pattern": "^FR-00[1-9]$|^FR-010$" },
+          "checklist_id": { "type": "string", "pattern": "^CL-00[1-9]$|^CL-010$" },
+          "name": { "type": "string", "minLength": 1 },
+          "priority": { "type": "string", "enum": ["HIGH", "CRITICAL"] },
+          "status": { "type": "string", "enum": ["ANCHORED", "DRAFT", "PLACEHOLDER"] }
+        }
+      }
+    },
+    "circuit_breaker": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["gc_id", "trigger", "action", "authority"],
+      "properties": {
+        "gc_id": { "type": "string", "const": "GC-010" },
+        "trigger": { "type": "string", "const": "THREE_OR_MORE_DISTINCT_GOBLINS" },
+        "action": { "type": "string", "const": "STOP_AND_REBASE" },
+        "authority": { "type": "boolean", "const": false }
+      }
+    }
+  }
+}

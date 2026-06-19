@@ -1,0 +1,57 @@
+{
+  "artifact": "CONTINUITY_LEDGER_V0_2",
+  "purpose": "Index all preserved civic-memory artifacts and their replay anchors.",
+  "authority": false,
+  "entries": [
+    {
+      "name": "RECEIPTS_FIRST_BOX_SET",
+      "sha": "5f89a4675bc1f93c6a063b97ab210a73fb2f29f1",
+      "state": "REPO_PRESERVED",
+      "replay": "MATCH"
+    },
+    {
+      "name": "MIDWEST_CONSTITUTION_CODEX_V0_1",
+      "sha": "587fed9bf96e88e5731d7a1494372c49a46e2d39",
+      "state": "REPO_PRESERVED",
+      "replay": "MATCH"
+    },
+    {
+      "name": "MIRROR_MINT_MEMORY_BIBLE_V0_1",
+      "sha": "8cbee42dcbd09c077fea1532e96958b4570592e4",
+      "state": "REPO_PRESERVED",
+      "replay": "MATCH"
+    },
+    {
+      "name": "WENDY_REPLAY_UPGRADE_V0_1",
+      "sha": "e3e3cb25d0a2126149b8f9251622c1a9c27501bf",
+      "state": "REPO_PRESERVED",
+      "replay": "MATCH"
+    },
+    {
+      "name": "MIRROR_MINT_MEMORY_BIBLE_COMMENTARY_LAYER_V0_1",
+      "sha": "db1c5f54576a2ec35cf61def9c4b3cf48632681c",
+      "state": "REPO_PRESERVED",
+      "replay": "MATCH"
+    },
+    {
+      "name": "GOBLIN_COURT_RECORD_V0_6",
+      "sha": "8f10ac9c9254364f3f22bbc041eff231fabfdc19",
+      "state": "REPO_PRESERVED",
+      "replay": "PENDING"
+    }
+  ],
+  "continuity_chain": [
+    "Box Set",
+    "Codex",
+    "Memory Bible",
+    "Wendy Upgrade",
+    "Commentary Layer",
+    "Goblin Court Record"
+  ],
+  "continuity_status": {
+    "preservation": "COMPLETE",
+    "replay": "PARTIAL_MATCH",
+    "variance": 0,
+    "authority": false
+  }
+}

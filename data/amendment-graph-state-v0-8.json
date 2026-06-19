@@ -1,0 +1,32 @@
+{
+  "schema_version": "0.8",
+  "artifact": "AMENDMENT_GRAPH_STATE_V0_8",
+  "purpose": "amendment lineage and traversal visibility",
+  "phase": "GRAPH_REPLAY",
+  "authority": false,
+  "membrane": "HOLDS",
+  "computational_judgment": null,
+  "inference_block": true,
+  "graph_is_authoritative": true,
+  "graph_is_truth": false,
+  "must_not_claim": [
+    "Amendment graph visibility does not certify correctness or wisdom of amendments.",
+    "The graph records provenance, not universal truth.",
+    "Pressure does not equal amendment.",
+    "Review does not imply change.",
+    "Founder intent is inadmissible unless recorded in lineage artifacts.",
+    "Authority remains false."
+  ],
+  "traversal_primitives": [
+    "GET_EFFECTIVE_AT(T, scope)",
+    "GET_ANCESTORS(amendment_id)",
+    "GET_DESCENDANTS(amendment_id)",
+    "GET_PRESSURE_CONTEXT(amendment_id)",
+    "GET_REVIEW_RECORDS(amendment_id)",
+    "GET_RATIONALE(amendment_id)"
+  ],
+  "lineage_nodes": [],
+  "lineage_edges": [],
+  "review_records": [],
+  "pressure_links": []
+}

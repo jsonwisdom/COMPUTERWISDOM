@@ -1,0 +1,43 @@
+{
+  "artifact": "COMPUTERWISDOM_REPLAY_PACKET_V1",
+  "claim_id": "PROOF_FOR_THE_PRESIDENT_002",
+  "claim_text": "Computer Wisdom Leaf 002 proves the replay protocol can repeat beyond the first proof.",
+  "claim_hash": "sha256:52324d1cb3f1599ce191657a9c11de7948667c2d47e949c6a2a7722673999271",
+  "evidence_layers": {
+    "github_commit": "https://github.com/jsonwisdom/COMPUTERWISDOM/commit/a61d71d3ecfc61c053ab11692a44b31e13654d23",
+    "github_issue_or_pr": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/225",
+    "base_transaction": "0x80a8f29114eaeab0f97e4da405dab42504844fe6d37801829e29ef195ae0b6b6",
+    "eas_uid": "0x6e46a27bf0feef3a89db1f235a9d6c7cc8b402f4d2a73e10933357acbf1963e4",
+    "archive_uri": "ipfs://bafkreic33553r633bco5kl3cn5xdcivkxtnqdr2ddpiaqisqizn37tlynm"
+  },
+  "routing_layers": {
+    "zora_coin": "",
+    "x_post": "",
+    "website": "",
+    "other_routes": []
+  },
+  "replay_steps": [
+    "Fetch canonical claim_text from github_commit",
+    "Recompute claim_hash and match",
+    "Verify source PR and merged file on master",
+    "Verify Base transaction and EAS UID",
+    "Verify archive_uri and archive bundle hash when supplied",
+    "Classify replayability status"
+  ],
+  "failure_rules": {
+    "routing_failure": "non_fatal",
+    "evidence_failure": "critical",
+    "partial_evidence": "trigger_recovery"
+  },
+  "classification": {
+    "status": "FULLY_REPLAYABLE_CANDIDATE",
+    "promotion_allowed": false,
+    "authority": false,
+    "reason": "GitHub evidence, Base/EAS anchor, and archive CID are present. Independent replay remains pending before FULLY_REPLAYABLE classification."
+  },
+  "archive_bundle_sha256": "5bdf7bb8fb7b089dd52f626f6e3122aabcdb01c7431bd0082250465bbfcd786b",
+  "parent_leaf": "PROOF_FOR_THE_PRESIDENT_001",
+  "protocol_version": "v1",
+  "timestamp_utc": "2026-06-03T14:25:00Z",
+  "authority": false
+}

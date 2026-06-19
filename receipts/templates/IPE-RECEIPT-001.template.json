@@ -1,0 +1,41 @@
+{
+  "receipt_id": "IPE-RECEIPT-001",
+  "document_title": "Home Rule Charter of the City of St. Cloud",
+  "document_class": "charter",
+  "issuing_institution": "City of St. Cloud",
+  "source_url": "PASTE_REAL_DOWNLOADABLE_PDF_URL_HERE",
+  "retrieval_timestamp": "PASTE_REAL_UTC_TIMESTAMP_HERE",
+  "access_method": "public_web",
+  "hashes": {
+    "sha256": "PASTE_REAL_64_CHAR_SHA256_HERE"
+  },
+  "file_size_bytes": 0,
+  "fragments": [
+    {
+      "fragment_id": "IPE-RECEIPT-001-F1",
+      "locator": "title page or document heading",
+      "text": "Home Rule Charter of the City of St. Cloud"
+    }
+  ],
+  "privacy_review": {
+    "private_data_detected": false,
+    "review_status": "passed",
+    "notes": "Template only. Replace URL, timestamp, SHA256, and file size with values from the actual downloaded artifact before minting production receipt."
+  },
+  "claims": [
+    {
+      "claim_id": "IPE-RECEIPT-001-C1",
+      "claim_text": "This receipt identifies the Home Rule Charter as an authority-layer document for the City of St. Cloud.",
+      "evidence_mapping": {
+        "supports": [
+          {
+            "receipt_id": "IPE-RECEIPT-001",
+            "fragment_id": "IPE-RECEIPT-001-F1",
+            "relationship": "supports"
+          }
+        ]
+      }
+    }
+  ],
+  "orphaned_claims": 0
+}

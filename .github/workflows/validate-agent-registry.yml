@@ -1,0 +1,36 @@
+name: Validate JSONWisdom Agent Registry
+
+on:
+  pull_request:
+    paths:
+      - 'agents/registry.json'
+      - 'schemas/AgentDefinition.schema.json'
+      - 'scripts/validate_agent_registry.py'
+      - '.github/workflows/validate-agent-registry.yml'
+  push:
+    branches:
+      - jsonwisdom-agent-registry-v0-1
+    paths:
+      - 'agents/registry.json'
+      - 'schemas/AgentDefinition.schema.json'
+      - 'scripts/validate_agent_registry.py'
+      - '.github/workflows/validate-agent-registry.yml'
+
+jobs:
+  validate-agent-registry:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show Python version
+        run: python --version
+
+      - name: Parse AgentDefinition schema JSON
+        run: python -m json.tool schemas/AgentDefinition.schema.json > /tmp/AgentDefinition.schema.json
+
+      - name: Parse agent registry JSON
+        run: python -m json.tool agents/registry.json > /tmp/registry.json
+
+      - name: Validate agent registry
+        run: python scripts/validate_agent_registry.py

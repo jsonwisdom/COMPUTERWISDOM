@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/ers.v0_1.schema.json",
+  "title": "Evidence Rendering Schema V0.1",
+  "description": "Canonical ERS_V0_1 object schema. Defines structure only. Authority false with NONE boundary required.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_type",
+    "artifact_id",
+    "timestamp",
+    "lineage_root",
+    "constitutional_root",
+    "schema_version",
+    "authority",
+    "authority_boundary",
+    "hash"
+  ],
+  "properties": {
+    "artifact_type": {
+      "type": "string",
+      "enum": ["event", "observation", "dispute", "adjudication", "protocol"]
+    },
+    "artifact_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "lineage_root": {
+      "type": "string",
+      "minLength": 1
+    },
+    "constitutional_root": {
+      "const": "808f2b1c6c339eb46e68a2161da3cca22f7b0eeb"
+    },
+    "schema_version": {
+      "const": "ERS_V0_1"
+    },
+    "authority": {
+      "const": false
+    },
+    "authority_boundary": {
+      "const": "NONE"
+    },
+    "hash": {
+      "type": "string",
+      "pattern": "^sha256:[a-fA-F0-9]{64}$"
+    },
+    "source": {
+      "type": ["string", "null"]
+    },
+    "metadata": {
+      "type": "object"
+    },
+    "payload": {
+      "type": "object"
+    }
+  }
+}

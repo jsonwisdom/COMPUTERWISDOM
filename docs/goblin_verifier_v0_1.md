@@ -52,3 +52,40 @@ The verifier must never upgrade observation, witness output, score, anchor, or a
 ## Closing Rule
 
 Goblin Verifier gates transitions only. Humans merge. Authority remains false.
+
+## Goblin Precedent Index Integration (V0.1)
+
+The canonical source for goblin classification, receipts, and checklists is now:
+
+**`docs/GOBLIN_PRECEDENT_INDEX_V0_1.md`**
+
+This index defines:
+
+- 10 goblin precedents (GC-001 through GC-010)
+- Corresponding receipts (FR-001 through FR-010)
+- Executable checklists (CL-001 through CL-010)
+- Symptom lookup table
+- Intercept priority order
+- Circuit breaker protocol (GC-010)
+
+### Machine Verification
+
+The index is machine-verifiable via:
+
+| Artifact | Path | Purpose |
+|---|---|---|
+| JSON Schema | `schemas/goblin_precedent_index.v0_1.schema.json` | Validates structure, authority, Trinity, goblin count, cascade rule |
+| Test suite | `tests/test_goblin_precedent_index_v0_1.py` | Asserts all IDs present, authority false, trigger semantics |
+| Hash manifest | `receipts/goblin_precedent_index_hash_manifest_v0_1.json` | Maps receipts to content hashes for on-chain anchoring |
+
+All changes to goblin precedents must pass:
+
+1. Schema validation
+2. Test suite
+3. CI workflow (`.github/workflows/verify.yml`)
+
+### Observer-Only Doctrine
+
+The verifier enforces `authority: false` — it can witness and report, but never block or modify state. The Court advises; the operator decides.
+
+For details, see PR #172 and the merged commit `c7f7c4d`.
