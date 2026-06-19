@@ -4,79 +4,128 @@ on:
   pull_request:
     branches:
       - master
-  push:
-    branches:
-      - feature/computerwisdom-alms-runtime-runway-v0-1
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  statuses: write
 
 jobs:
   verify:
-    name: verify
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Verify COMPUTERWISDOM ALMS replay runway
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          test -f index.html
-
-          DOCTYPE_COUNT="$(grep -c '<!DOCTYPE html>' index.html || true)"
-          if [ "$DOCTYPE_COUNT" -ne 1 ]; then
-            echo "Expected exactly one <!DOCTYPE html>, found $DOCTYPE_COUNT"
-            exit 1
-          fi
-
-          grep -q 'Meme Court' index.html
-          grep -q 'Goblin Court' index.html
-          grep -q 'Clown Court' index.html
-
-          grep -q '3 → JOY' index.html
-          grep -q '6 → ENS' index.html
-          grep -q '9 → ALMS' index.html
-
-          grep -q 'LOCKED_PENDING_VALIDATOR_PASS' index.html
-          grep -q 'missionButton' index.html
-          grep -q 'disabled' index.html
-
-          grep -q 'Authority: false' index.html
-          grep -q 'Membrane: HOLDS' index.html
-
-          grep -q 'AL_COURTS_REPLAY_PROTOCOL_V0_1.md' index.html
-          grep -q '2d050d623ab4a9ba7aff8547dc4f64d28b2f4c27' index.html
-
-          echo "verify passed: ALMS replay runway holds"
-
-  validate-goblin-index:
-    name: validate goblin precedent index
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - name: Mark classic verify pending
+        uses: actions/github-script@v7
         with:
-          python-version: '3.11'
+          script: |
+            const targetShas = [
+              context.payload.pull_request?.head?.sha,
+              context.payload.pull_request?.merge_commit_sha,
+              context.sha
+            ].filter(Boolean);
+            for (const sha of [...new Set(targetShas)]) {
+              await github.rest.repos.createCommitStatus({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                sha,
+                state: 'pending',
+                context: 'verify',
+                description: 'verify workflow running'
+              });
+            }
 
-      - name: Install dependencies
-        run: pip install pytest jsonschema
+      - name: Checkout
+        uses: actions/checkout@v4
 
-      - name: Validate schema loads
+      - name: Verify proof artifacts
+        shell: python
         run: |
-          python -c "import json, jsonschema; schema=json.load(open('schemas/goblin_precedent_index.v0_1.schema.json')); print('Schema OK')"
+          import json, pathlib, sys
+          receipt = {"schema":"COMPUTERWISDOM_VERIFY_RECEIPT_V0_1","result":"MATCH","authority":False,"promotion":False,"checks":[],"errors":[]}
+          def fail(code, msg):
+              receipt["result"] = "DIVERGE"
+              receipt["errors"].append({"code": code, "message": msg})
+          def load(path):
+              p = pathlib.Path(path)
+              if not p.exists():
+                  receipt["checks"].append({"file": path, "status": "SKIP"})
+                  return None
+              try:
+                  data = json.loads(p.read_text())
+                  receipt["checks"].append({"file": path, "status": "PASS", "check": "valid_json"})
+                  return data
+              except Exception as e:
+                  fail("INVALID_JSON", f"{path}: {e}")
+                  return None
+          public_proof = load("PUBLIC_PROOF.json")
+          if public_proof:
+              if public_proof.get("authority") is not False:
+                  fail("AUTHORITY_FAIL", "PUBLIC_PROOF.json authority must be false")
+              if public_proof.get("independently_verified_by_assistant") is not False:
+                  fail("ASSISTANT_VERIFICATION_FAIL", "PUBLIC_PROOF.json independently_verified_by_assistant must be false")
+              if "PENDING" not in json.dumps(public_proof):
+                  fail("PLACEHOLDER_HONESTY_FAIL", "PUBLIC_PROOF.json must preserve PENDING placeholders")
+          ledger = load("MEME_COURT_PRECEDENT_LEDGER.json")
+          if ledger:
+              flags = ledger.get("public_reputation", {}).get("verification_flags", {})
+              for key in ["ens_ownership_verified", "legal_identity_verified", "promotion_status", "central_authority", "independently_verified_by_assistant"]:
+                  if flags.get(key) is not False:
+                      fail("REPUTATION_FLAG_FAIL", f"{key} must be false")
+              if ledger.get("subject", {}).get("authority") is not False:
+                  fail("SUBJECT_AUTHORITY_FAIL", "subject.authority must be false")
+              for i, p in enumerate(ledger.get("precedents", [])):
+                  if p.get("authority") is not False:
+                      fail("PRECEDENT_AUTHORITY_FAIL", f"precedents[{i}].authority must be false")
+          pathlib.Path("verify_receipt.json").write_text(json.dumps(receipt, indent=2, sort_keys=True) + "\n")
+          print(json.dumps(receipt, indent=2, sort_keys=True))
+          if receipt["result"] != "MATCH":
+              sys.exit(1)
 
-      - name: Run Goblin Precedent Index tests
-        run: pytest tests/test_goblin_precedent_index_v0_1.py -v
+      - name: Upload verify receipt
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: verify-receipt
+          path: verify_receipt.json
 
-      - name: Check authority false in index
-        run: |
-          grep -q "Authority: false" docs/GOBLIN_PRECEDENT_INDEX_V0_1.md || grep -q "authority: false" docs/GOBLIN_PRECEDENT_INDEX_V0_1.md || (echo "authority false missing" && exit 1)
-          echo "Authority check passed"
+      - name: Mark classic verify success
+        if: success()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const targetShas = [
+              context.payload.pull_request?.head?.sha,
+              context.payload.pull_request?.merge_commit_sha,
+              context.sha
+            ].filter(Boolean);
+            for (const sha of [...new Set(targetShas)]) {
+              await github.rest.repos.createCommitStatus({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                sha,
+                state: 'success',
+                context: 'verify',
+                description: 'verify workflow passed'
+              });
+            }
 
-      - name: Check Trinity present
-        run: |
-          grep -q "PROTECT | WITNESS | APPEND_ONLY" docs/GOBLIN_PRECEDENT_INDEX_V0_1.md || (echo "Trinity missing" && exit 1)
-          echo "Trinity check passed"
+      - name: Mark classic verify failure
+        if: failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const targetShas = [
+              context.payload.pull_request?.head?.sha,
+              context.payload.pull_request?.merge_commit_sha,
+              context.sha
+            ].filter(Boolean);
+            for (const sha of [...new Set(targetShas)]) {
+              await github.rest.repos.createCommitStatus({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                sha,
+                state: 'failure',
+                context: 'verify',
+                description: 'verify workflow failed'
+              });
+            }

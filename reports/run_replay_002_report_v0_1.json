@@ -1,0 +1,20 @@
+{
+  "artifact": "RUN_REPLAY_002_REPORT_TEMPLATE",
+  "leaf_id": "PROOF_FOR_THE_PRESIDENT_002",
+  "replay_audit_id": null,
+  "verification_metadata": {
+    "commit_sha": "099b16259745e1da02f80d4447a2d63a4b0b59ec",
+    "timestamp_utc": null
+  },
+  "protocol_results": {
+    "evidence_hash_validated": null,
+    "on_chain_anchor_verified": null,
+    "replay_sequence_status": "PENDING"
+  },
+  "final_classification": {
+    "status": "FULLY_REPLAYABLE_CANDIDATE",
+    "promotion_allowed": false,
+    "authority": false
+  },
+  "verifier_signature": null
+}

@@ -1,0 +1,79 @@
+{
+  "schema": "PUBLIC_PROOF_V0_1",
+  "project": "COMPUTERWISDOM",
+  "version": "0.1",
+  "phase": "PROMOTION",
+  "status": "OPERATOR_DECLARED_UNTIL_REPLAYED",
+  "authority": false,
+  "independently_verified_by_assistant": false,
+  "created_for": "public machine-readable proof surface",
+  "court": {
+    "type": "public_fork_replay_court",
+    "definition": "The court is not GitHub, not Jay, and not a validator committee. The court is the replay surface: any public observer capable of forking, rebuilding, and publishing a receipt.",
+    "principle": "Public replay, not public opinion.",
+    "authority": false
+  },
+  "repository": {
+    "owner": "jsonwisdom",
+    "name": "COMPUTERWISDOM",
+    "full_name": "jsonwisdom/COMPUTERWISDOM",
+    "default_branch": "master",
+    "commit_sha": "PENDING_COMMIT_SHA",
+    "tree_sha": "PENDING_TREE_SHA",
+    "tag": "PENDING_TAG"
+  },
+  "proofs": [
+    {
+      "id": "repo_target_corrected",
+      "claim": "Repository target is the declared source of truth for COMPUTERWISDOM promotion proof work.",
+      "status": "DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "hash": "PENDING_PROOF_HASH",
+      "attestation_id": "PENDING_ATTESTATION_ID",
+      "authority": false
+    },
+    {
+      "id": "public_proof_surface_recorded",
+      "claim": "A public proof surface exists so observers can verify without relying on narrative trust.",
+      "status": "DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "hash": "PENDING_PROOF_HASH",
+      "attestation_id": "PENDING_ATTESTATION_ID",
+      "authority": false
+    },
+    {
+      "id": "base_purpose_recorded",
+      "claim": "Base purpose is recorded as mission context, not marketing authority.",
+      "status": "DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "hash": "PENDING_PROOF_HASH",
+      "attestation_id": "PENDING_ATTESTATION_ID",
+      "authority": false
+    },
+    {
+      "id": "court_authority_bounded",
+      "claim": "Court authority is bounded to public replay and dispute receipts, with no central final authority.",
+      "status": "DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "hash": "PENDING_PROOF_HASH",
+      "attestation_id": "PENDING_ATTESTATION_ID",
+      "authority": false
+    },
+    {
+      "id": "validator_replay_path_defined",
+      "claim": "A validator replay path is defined so observers may rebuild from zero and compare outputs.",
+      "status": "DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+      "hash": "PENDING_PROOF_HASH",
+      "attestation_id": "PENDING_ATTESTATION_ID",
+      "authority": false
+    }
+  ],
+  "replay": {
+    "validator_count": "PENDING_VALIDATOR_COUNT",
+    "verified_at": "PENDING_VERIFIED_AT",
+    "match_receipt": "MATCH",
+    "diverge_receipt": "DIVERGE",
+    "rule": "Matching replay increases credibility. Divergence creates a dispute receipt. Neither creates centralized authority."
+  },
+  "promotion": {
+    "next_file": "PROMOTION.md",
+    "automation_file": ".github/workflows/promo.yml",
+    "automation_status": "DEFERRED_UNTIL_PUBLIC_PROOF_AND_PROMOTION_ARE_LOCKED"
+  }
+}

@@ -1,0 +1,41 @@
+{
+  "packet_id": "US_AI_EO_2026_06_02",
+  "watch_name": "US_AI_EO_WATCH",
+  "watch_ready": true,
+  "watch_active": true,
+  "authority": false,
+  "silence_until_receipt": true,
+  "priority_sources": [
+    {
+      "name": "CISA",
+      "target_receipt_level": 3,
+      "target": "Binding Operational Directive or official guidance tied to the EO",
+      "deadline_target": "2026-07-02"
+    },
+    {
+      "name": "OMB",
+      "target_receipt_level": 2,
+      "target": "Implementation memorandum tied to the EO"
+    },
+    {
+      "name": "NIST",
+      "target_receipt_level": 4,
+      "target": "Framework, criteria, draft guidance, or official technical document tied to the EO",
+      "deadline_target": "2026-08-01"
+    },
+    {
+      "name": "Federal Register",
+      "target_receipt_level": "2_or_higher",
+      "target": "Published agency action, notice, rule, or related federal document tied to the EO"
+    }
+  ],
+  "alert_condition": "new_primary_receipt_level_2_or_higher",
+  "promotion_rule": "No level change without attached primary-source receipt.",
+  "non_promotion_events": [
+    "proposed_sweep",
+    "simulated_sweep",
+    "unsourced_report",
+    "secondary_media_report",
+    "contextual_preexisting_document"
+  ]
+}

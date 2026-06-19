@@ -1,0 +1,30 @@
+{
+  "packet_id": "US_AI_EO_2026_06_02",
+  "title": "Promoting Advanced Artificial Intelligence Innovation and Security",
+  "status": "PRIMARY_RECEIPT_CAPTURED",
+  "public_witness_issue": 215,
+  "authority": false,
+  "execution_verified": false,
+  "implementation_status": "UNVERIFIED",
+  "watch_state": "ACTIVE",
+  "last_verified_sweep": "2026-06-02",
+  "last_verified_receipt_level": 1,
+  "sweep_result": "no_new_receipts",
+  "receipt_hierarchy": {
+    "1_WH_EO": true,
+    "2_OMB_memo": false,
+    "3_CISA_directive": false,
+    "4_NIST_framework": false,
+    "5_budget": false,
+    "6_contract": false,
+    "7_operational": false
+  },
+  "promotion_rule": "No receipt level may be promoted without an attached primary-source receipt.",
+  "priority_sources": [
+    "CISA",
+    "OMB",
+    "NIST",
+    "Federal Register"
+  ],
+  "next_check_target": "after_2026-07-02_CISA_30_day_deadline"
+}

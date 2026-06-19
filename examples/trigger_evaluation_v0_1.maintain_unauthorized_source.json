@@ -1,0 +1,40 @@
+{
+  "test_case": "MAINTAIN_UNAUTHORIZED_SOURCE_V0_1",
+  "description": "An observation from a non-authorized domain (social media) is rejected per Step 2. State maintained.",
+  "authority": false,
+  "watch": {
+    "watch_id": "WATCH-ELEC-003",
+    "current_state": "PRE-ELECTION",
+    "current_level": 2,
+    "trigger_definitions": [
+      {
+        "trigger_id": "TRIG-ELEC-01",
+        "description": "Official court filing contests election results in a monitored jurisdiction.",
+        "required_source_domains": ["courts.gov", "election.gov"],
+        "required_artifact_type": "court_filing",
+        "new_level": 3
+      }
+    ],
+    "authorized_source_domains": ["courts.gov", "election.gov"]
+  },
+  "observation": {
+    "source": "@ElectionWatcher247",
+    "source_domain": "x.com",
+    "artifact_type": "social_media_post",
+    "timestamp": "2026-06-03T16:00:00Z",
+    "content_summary": "Screenshot claiming to show a court filing contesting results in District 4. Viral thread.",
+    "receipt_url": "https://x.com/ElectionWatcher247/status/123456789",
+    "verification_status": "unverified"
+  },
+  "receipt": null,
+  "expected_output": {
+    "watch_id": "WATCH-ELEC-003",
+    "status": "MAINTAIN",
+    "current_level": 2,
+    "recommended_level": 2,
+    "verified": false,
+    "trigger_match": false,
+    "authority": false,
+    "reason": "Observation source domain 'x.com' is not in authorized_source_domains. Rejected per Step 2. State unchanged."
+  }
+}

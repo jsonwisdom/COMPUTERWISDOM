@@ -16,13 +16,6 @@ Continuity creates community.
 
 ## Boundary
 
-Mirror Mint preserves replayable history.  
-It does not compute truth.  
+Mirror Mint preserves replayable history.
+It does not compute truth.
 Participants decide what the history means.
-
-{
-  "mirror_mint": "project_pitch",
-  "packet_002": "Pan Park civic receipt example",
-  "packet_003": "reproducibility test",
-  "authority": false
-}

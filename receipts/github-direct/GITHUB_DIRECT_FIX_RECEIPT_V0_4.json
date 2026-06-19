@@ -1,0 +1,14 @@
+{
+  "protocol": "GITHUB_DIRECT_FIX_RECEIPT_V0_4",
+  "branch": "alms-baseline-receipt-v0-1",
+  "fault_code": "GITHUB_DIRECT_AUTH_FAILURE",
+  "lesson": "do_not_treat_a_door_problem_as_a_document_problem",
+  "proof_signals": [
+    "remote_branch_accepted",
+    "origin_tracking_established",
+    "connector_commits_added"
+  ],
+  "authority": false,
+  "no_fake_green": true,
+  "replay_required": true
+}

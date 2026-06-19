@@ -1,0 +1,101 @@
+{
+  "schema": "WISDOM_FAMILY_2026_CONSTITUTION_V0_1",
+  "project": "COMPUTERWISDOM",
+  "status": "OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+  "authority": false,
+  "promotion": false,
+  "principle": "A constitution is not authority. A constitution is a public voice and a replayable limit on authority.",
+  "constitutional_generation": "2026",
+  "public_voice": {
+    "status": "ACTIVE_AS_DECLARED_DOCTRINE",
+    "definition": "Public Voice means every family member, especially women and girls, must be included as a witnessable voice, not treated as silent background context.",
+    "authority": false
+  },
+  "inclusion_by_design": {
+    "women_and_girls": "included_as_primary_voice_surfaces",
+    "children": "protected_as_people_not_tokens",
+    "family_members": "recognized_as_witnesses_not_property",
+    "rule": "No family system may turn silence, dependence, age, gender, or lack of technical access into consent or authority.",
+    "authority": false
+  },
+  "rejection_of_exclusionary_constitution_patterns": [
+    "constitution_that_speaks_about_people_without_hearing_them",
+    "constitution_that_converts women or girls into background property",
+    "constitution_that_uses silence as consent",
+    "constitution_that_cannot_be_challenged",
+    "constitution_that_claims authority because it is old",
+    "constitution_that_hides power behind formal language"
+  ],
+  "constitutional_tests": [
+    "replayable",
+    "challengeable",
+    "forkable",
+    "bounded_authority",
+    "receipts_required",
+    "downgrade_allowed",
+    "cross_out_allowed",
+    "public_voice_preserved",
+    "women_and_girls_included"
+  ],
+  "family_network": {
+    "constitutional_spine": "jsonwisdom/AL",
+    "witness_layer": "jsonwisdom/JOY",
+    "proof_layer": "jsonwisdom/COMPUTERWISDOM",
+    "sister_surfaces": [
+      "jsonwisdom/HEIDEE",
+      "jsonwisdom/JAYCEE",
+      "jsonwisdom/BRAELEE",
+      "jsonwisdom/BREANN"
+    ],
+    "pending_surface_confirmation": [
+      "jsonwisdom/BRIANNA"
+    ],
+    "authority": false
+  },
+  "rights_of_voice": [
+    "right_to_be_seen",
+    "right_to_be_heard",
+    "right_to_be_protected_from_false_authority",
+    "right_to_challenge_records",
+    "right_to_downgrade_claims_that_exceed_receipts",
+    "right_to_cross_out narratives that erase evidence",
+    "right_to_privacy_when_safety_requires_it",
+    "right_to_replay_public_claims"
+  ],
+  "not_claiming": [
+    "legal constitution",
+    "state authority",
+    "legal parentage verification",
+    "custody or guardianship verification",
+    "legal trust verification",
+    "financial authority",
+    "authority over women",
+    "authority over girls",
+    "central authority",
+    "promotion status"
+  ],
+  "verification_flags": {
+    "legal_constitution_verified": false,
+    "state_authority_verified": false,
+    "legal_parentage_verified": false,
+    "custody_or_guardianship_verified": false,
+    "legal_trust_verified": false,
+    "financial_authority_verified": false,
+    "authority_over_women_verified": false,
+    "authority_over_girls_verified": false,
+    "central_authority": false,
+    "promotion_status": false,
+    "independently_verified_by_assistant": false
+  },
+  "parent_receipts": {
+    "public_proof_merge_commit": "8eea6acb9c7874968f1383af3a83d244a34ba0bd",
+    "meme_court_ledger_pr": 248,
+    "verify_workflow_pr": 249,
+    "public_replay_index_pr": 250,
+    "family_reputation_layer_pr": 251,
+    "base_purpose_layer_pr": 252,
+    "voice_reputation_layer_pr": 254,
+    "zora_factory_distribution_pr": 255,
+    "wisdom_family_games_pr": 256
+  }
+}

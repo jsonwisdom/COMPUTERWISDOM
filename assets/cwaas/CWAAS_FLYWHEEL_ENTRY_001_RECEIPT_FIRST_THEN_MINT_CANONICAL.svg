@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="2400" viewBox="0 0 1600 2400">
+  <rect width="100%" height="100%" fill="#06120b"/>
+  <rect x="90" y="90" width="1420" height="2220" rx="42" fill="#0b1f13" stroke="#98ffb3" stroke-width="10"/>
+  <rect x="135" y="135" width="1330" height="2130" rx="28" fill="none" stroke="#5be888" stroke-width="3" stroke-dasharray="18 14"/>
+
+  <text x="160" y="300" font-family="monospace" font-size="82" fill="#b8ffd0" font-weight="700">RECEIPT FIRST, THEN MINT</text>
+  <circle cx="1310" cy="255" r="105" fill="none" stroke="#98ffb3" stroke-width="16"/>
+  <path d="M1255 255 L1295 300 L1370 210" fill="none" stroke="#98ffb3" stroke-width="22" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <text x="160" y="560" font-family="monospace" font-size="72" fill="#98ffb3" font-weight="700">RECEIPT-FIRST MEMBRANE</text>
+  <line x1="160" y1="640" x2="1440" y2="640" stroke="#5be888" stroke-width="3" stroke-dasharray="20 16"/>
+
+  <text x="160" y="820" font-family="monospace" font-size="52" fill="#d6ffe0">ROOT_ANCHORED_PRE_MINT_LOCKED</text>
+
+  <g transform="translate(250 940) rotate(-10)">
+    <rect x="0" y="0" width="1100" height="190" rx="24" fill="none" stroke="#98ffb3" stroke-width="12"/>
+    <text x="90" y="125" font-family="monospace" font-size="92" fill="#98ffb3" font-weight="900">GREEN CONFIRMED</text>
+  </g>
+
+  <text x="160" y="1320" font-family="monospace" font-size="38" fill="#caffd8">MERGE_COMMIT=d71b926a39f1784b726abdb3bbe7ab1d4dc4ddf4</text>
+  <text x="160" y="1450" font-family="monospace" font-size="52" fill="#d6ffe0">MERGED_AT=2026-06-14T21:34:35Z</text>
+  <text x="160" y="1640" font-family="monospace" font-size="72" fill="#98ffb3" font-weight="900">NO_FAKE_GREEN=ACTIVE</text>
+
+  <rect x="160" y="1880" width="520" height="170" rx="24" fill="none" stroke="#98ffb3" stroke-width="8"/>
+  <text x="225" y="1955" font-family="monospace" font-size="58" fill="#98ffb3" font-weight="800">ZORA</text>
+  <text x="225" y="2020" font-family="monospace" font-size="40" fill="#d6ffe0">CLEARANCE</text>
+
+  <circle cx="1200" cy="1945" r="145" fill="none" stroke="#98ffb3" stroke-width="10"/>
+  <path d="M1128 1948 L1182 2005 L1288 1878" fill="none" stroke="#98ffb3" stroke-width="24" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1025" y="2150" font-family="monospace" font-size="40" fill="#98ffb3">GREEN CONFIRMED CLEARANCE</text>
+</svg>

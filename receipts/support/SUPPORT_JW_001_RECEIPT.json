@@ -1,0 +1,12 @@
+{
+"ticket_id": "SUPPORT-JW-001",
+"role": "Computer Wisdom Support Desk Technician",
+"technician": "Jay Wisdom",
+"state": "ROLE_RECOMMENDED",
+"authority": false,
+"payroll_authority": false,
+"deployed_agent": false,
+"artifact_path": "docs/support/COMPUTER_WISDOM_SUPPORT_DESK_JAY_WISDOM_V0_1.md",
+"artifact_sha256": "c15484be7f3fbfdd7ef2454728573a9c30c5f5c09655b8c09ab71e38a7e755f3",
+"no_fake_green": true
+}

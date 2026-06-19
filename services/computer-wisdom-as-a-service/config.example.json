@@ -1,0 +1,21 @@
+{
+  "service": "COMPUTER_WISDOM_AS_A_SERVICE",
+  "package": "7_DAY_REPO_REPLAY_AUDIT",
+  "mode": "READ_ONLY_COLLECTION",
+  "runtime_days": 7,
+  "repositories": [
+    "OWNER/REPO"
+  ],
+  "collect": {
+    "repo_metadata": true,
+    "pull_requests": true,
+    "checks": true,
+    "workflow_runs": true,
+    "reviews": true,
+    "comments": true,
+    "changed_files": true
+  },
+  "mutation_allowed": false,
+  "authority": false,
+  "no_fake_green": true
+}

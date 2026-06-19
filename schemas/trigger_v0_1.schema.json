@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/trigger_v0_1.schema.json",
+  "title": "TriggerDefinitionV0_1",
+  "description": "Canonical trigger definition for watch_trigger_engine_v0_1. Defines a requested state transition. Does not approve transitions. Evaluator approves TRANSITION_READY only after a matching verified receipt.",
+  "type": "object",
+  "required": [
+    "watch_id",
+    "trigger_id",
+    "source_domain",
+    "artifact_type",
+    "state_transition",
+    "authority"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "watch_id": { "type": "string", "minLength": 1 },
+    "trigger_id": { "type": "string", "minLength": 1 },
+    "source_domain": { "type": "string", "format": "hostname" },
+    "artifact_type": { "type": "string", "minLength": 1 },
+    "state_transition": {
+      "type": "object",
+      "required": ["from_level", "to_level"],
+      "additionalProperties": false,
+      "properties": {
+        "from_level": { "type": "integer", "minimum": 0 },
+        "to_level": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "authority": { "const": false }
+  }
+}
