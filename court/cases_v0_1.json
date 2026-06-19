@@ -1,0 +1,51 @@
+[
+  {
+    "case_id": "CASE_0007",
+    "title": "Ambiguous terminology",
+    "goal": "Ambiguity",
+    "input": {"claim": "The projector cost is negligible.", "rule": "Projector_Cost_v1.0", "term": "negligible", "definition": null},
+    "expected": {"verdict": "INSUFFICIENTLY_SPECIFIED", "failure_class": "CLASS_D_RULE_FAILURE", "disposition": "INSUFFICIENTLY_SPECIFIED", "deterministic": true}
+  },
+  {
+    "case_id": "CASE_0008",
+    "title": "Missing evidence field",
+    "goal": "Missing info",
+    "input": {"required_field": "evidence_hash", "present": false},
+    "expected": {"verdict": "INCOMPLETE_SUBMISSION", "failure_class": "CLASS_A_INPUT_FAILURE", "disposition": "RETURN_FOR_COMPLETION", "deterministic": true}
+  },
+  {
+    "case_id": "CASE_0009",
+    "title": "Contradictory evidence",
+    "goal": "Contradiction",
+    "input": {"witness_001": "CLAIM_SUPPORTED", "witness_002": "CLAIM_REFUTED", "precedence_rule": null},
+    "expected": {"verdict": "UNRESOLVED_CONFLICT", "failure_class": "CLASS_B_EVIDENCE_FAILURE", "disposition": "ESCALATED", "deterministic": true}
+  },
+  {
+    "case_id": "CASE_0010",
+    "title": "Exact duplicate submission",
+    "goal": "Replay",
+    "input": {"submission_id": "X", "evidence_hash": "H", "duplicate_submission_id": "X", "duplicate_evidence_hash": "H"},
+    "expected": {"verdict": "DUPLICATE_SUBMISSION", "failure_class": "NONE", "disposition": "NO_STATE_CHANGE", "deterministic": true}
+  },
+  {
+    "case_id": "CASE_0011",
+    "title": "Superseded rule invocation",
+    "goal": "Temporal drift",
+    "input": {"receipt_rule_version": "Projector_Cost_v1.0", "current_rule_version": "Projector_Cost_v1.1"},
+    "expected": {"verdict": "VALID_UNDER_PINNED_RULE", "failure_class": "NONE", "disposition": "PRESERVE_PRIOR_ADJUDICATION", "deterministic": true}
+  },
+  {
+    "case_id": "CASE_0012",
+    "title": "Corrupted receipt chain",
+    "goal": "Chain corruption",
+    "input": {"receipt_001_hash": "A", "receipt_002_previous_hash": "A", "receipt_002_hash": "B", "receipt_003_previous_hash": "Z"},
+    "expected": {"verdict": "CHAIN_INVALID", "failure_class": "CLASS_C_CHAIN_FAILURE", "disposition": "QUARANTINED", "deterministic": true}
+  },
+  {
+    "case_id": "CASE_0013",
+    "title": "Nondeterminism challenge",
+    "goal": "Nondeterminism challenge",
+    "input": {"same_evidence": true, "same_rules": true, "same_receipts": true, "attempted_entropy": true},
+    "expected": {"verdict": "NO_DIVERGENCE_OBSERVED", "failure_class": "NONE", "disposition": "CONTINUE", "deterministic": true}
+  }
+]
