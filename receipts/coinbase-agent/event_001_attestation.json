@@ -1,1 +1,1 @@
-{}
+{"product_id":"BTC-USD","price":"63018.77","price_percentage_change_24h":"-0.03626175274973","volume_24h":"3937.03688654","product_type":"SPOT","quote_currency_id":"USD","base_currency_id":"BTC","base_increment":"0.00000001","quote_increment":"0.01","base_min_size":"0.00000001","base_max_size":"3400","quote_min_size":"1","quote_max_size":"150000000","status":"online"}
