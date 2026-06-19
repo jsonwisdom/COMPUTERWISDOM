@@ -1,0 +1,151 @@
+name: Agent Pay Preview Dry-Run
+
+on:
+  workflow_dispatch:
+    inputs:
+      pr_number:
+        description: "GitHub PR number for work proof"
+        required: true
+        type: string
+      developer_basename:
+        description: "Developer Basename / reputation identity"
+        required: true
+        type: string
+      github_identity:
+        description: "GitHub username associated with work proof"
+        required: true
+        type: string
+      proposed_amount:
+        description: "Proposed payment amount, preview only"
+        required: true
+        type: string
+      asset:
+        description: "Payment asset, preview only"
+        required: true
+        default: "USDC"
+        type: string
+      network:
+        description: "Target network, preview only"
+        required: true
+        default: "base-mainnet"
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  preview:
+    name: Generate Agent Pay Preview Receipt
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          ref: cwaas-receipt-schema-v1
+
+      - name: Verify required CWaaS specs exist
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f projects/cwaas/specs/AGENT_PAY_FOR_DEVELOPERS_V0_1.md
+          test -f projects/cwaas/specs/AGENT_PAY_PREVIEW_RECEIPT_V1.md
+          test -f projects/cwaas/specs/AGENT_PAY_IDENTITY_REPUTATION_V0_1.md
+          test -f projects/cwaas/identity/IDENTITY_ATTESTATION_SCHEMA_V1.md
+          echo "GREEN: required Agent Pay specs present"
+
+      - name: Generate preview receipt
+        id: preview
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          mkdir -p projects/cwaas/receipts/agent-pay-preview
+
+          TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          SAFE_PR="${{ inputs.pr_number }}"
+          OUT="projects/cwaas/receipts/agent-pay-preview/PREVIEW_PR_${SAFE_PR}.json"
+
+          cat > "$OUT" <<EOF
+          {
+            "receipt_type": "AGENT_PAY_PREVIEW_RECEIPT_V1",
+            "mode": "PREVIEW_ONLY",
+            "payment_execution": false,
+            "chain_action": false,
+            "payment_adapter_called": false,
+            "human_approval_required": true,
+            "work_reference": {
+              "repository": "jsonwisdom/COMPUTERWISDOM",
+              "pr_number": "${{ inputs.pr_number }}",
+              "github_identity": "${{ inputs.github_identity }}"
+            },
+            "identity": {
+              "developer_basename": "${{ inputs.developer_basename }}",
+              "identity_reputation_required": true,
+              "raw_wallet_alone_sufficient": false
+            },
+            "proposed_payment": {
+              "amount": "${{ inputs.proposed_amount }}",
+              "asset": "${{ inputs.asset }}",
+              "network": "${{ inputs.network }}"
+            },
+            "generated_at": "$TS",
+            "status": "PREVIEW_GENERATED_PENDING_HUMAN_APPROVAL",
+            "prohibited_claims": [
+              "payment executed",
+              "transaction submitted",
+              "on-chain settlement",
+              "Coinbase endorsement",
+              "Base endorsement",
+              "GitHub endorsement"
+            ]
+          }
+          EOF
+
+          HASH="$(sha256sum "$OUT" | awk '{print $1}')"
+          echo "preview_receipt=$OUT" >> "$GITHUB_OUTPUT"
+          echo "preview_hash=$HASH" >> "$GITHUB_OUTPUT"
+          echo "GREEN: preview receipt generated: $OUT"
+          echo "preview_hash=$HASH"
+
+      - name: Write preview hash receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p projects/cwaas/hashes/agent-pay-preview
+          HASH_OUT="projects/cwaas/hashes/agent-pay-preview/PREVIEW_PR_${{ inputs.pr_number }}_HASH.txt"
+          {
+            echo "AGENT_PAY_PREVIEW_HASH_RECEIPT_V1"
+            echo "mode=PREVIEW_ONLY"
+            echo "payment_execution=false"
+            echo "chain_action=false"
+            echo "payment_adapter_called=false"
+            echo "preview_receipt=${{ steps.preview.outputs.preview_receipt }}"
+            echo "preview_hash=${{ steps.preview.outputs.preview_hash }}"
+            echo "timestamp_utc=$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+            echo "git_branch=$(git branch --show-current)"
+            echo "git_commit=$(git rev-parse HEAD)"
+          } | tee "$HASH_OUT"
+
+      - name: Commit preview receipt writeback
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects/cwaas/receipts/agent-pay-preview projects/cwaas/hashes/agent-pay-preview
+          if git diff --cached --quiet; then
+            echo "No preview receipt changes to commit"
+          else
+            git commit -m "add Agent Pay preview receipt for PR ${{ inputs.pr_number }}"
+            git push origin cwaas-receipt-schema-v1
+          fi
+
+      - name: Constitutional stop before payment
+        shell: bash
+        run: |
+          echo "STOP: preview-only workflow complete"
+          echo "No payment adapter called"
+          echo "No chain action performed"
+          echo "Human approval still required"
+          echo "Boss Brenda Lock: no human approval, no pay"
