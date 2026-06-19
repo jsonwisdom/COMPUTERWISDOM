@@ -1,0 +1,79 @@
+{
+  "artifact_id": "GC_SERIES_1_BATCH_A_META_CANDIDATES_V0_1",
+  "system_identity": "Meta",
+  "current_role": "candidate_generator_renderer",
+  "input_source": "Operator Jay directive",
+  "intended_destination": "rendered_candidate_artifacts",
+  "reversibility_class": "SYMBOLIC",
+  "authority": false,
+  "batch": "A",
+  "series": "Goblin Court Series 1: Receipts vs Vibes",
+  "candidates": [
+    {
+      "artifact_id": "GC-001",
+      "candidate_title": "GC-001 — Alpha Andy",
+      "visual_prompt": "Satirical portrait trading card art, white border, readable top title plate 'GOBLIN COURT SERIES 1', readable bottom name plate 'ALPHA ANDY — TRUST ME BRO'. Cyber-comic Goblin Court aesthetic, neon terminal green and glitch purple palette. Character: lanky goblin in oversized hoodie, hunched over a phone with Discord glow, finger to lips in 'shhh' gesture. Background: chaotic chat bubbles with redacted text, all reading 'source?'. Funny and sharp, no real public figures, no legal guilt claims, no financial safety claims.",
+      "metadata_candidate": {
+        "name": "Alpha Andy",
+        "description": "Trust Me Bro source goblin. Role: Drops unverifiable alpha into group chats. Flavor text: 'The source is a guy in my Discord.' Converts hearsay into conviction. Counters: basic questions, source requests.",
+        "attributes": [
+          { "trait_type": "Series", "value": "Goblin Court Series 1" },
+          { "trait_type": "Run", "value": "ZORA_FACTORY_PRODUCTION_RUN_10_V0_1" },
+          { "trait_type": "Authority", "value": "false" },
+          { "trait_type": "Reversibility Class", "value": "SYMBOLIC" },
+          { "trait_type": "Status", "value": "CANDIDATE" },
+          { "trait_type": "Role", "value": "Trust Me Bro" },
+          { "trait_type": "Clearance", "value": "Blue" },
+          { "trait_type": "Attack", "value": "UNSOURCED" },
+          { "trait_type": "Defense", "value": "PLAUSIBLE DENIABILITY" }
+        ]
+      }
+    },
+    {
+      "artifact_id": "GC-002",
+      "candidate_title": "GC-002 — Rugbert Pullman",
+      "visual_prompt": "Satirical portrait trading card art, white border, readable top title plate 'GOBLIN COURT SERIES 1', readable bottom name plate 'RUGBERT PULLMAN — LIQUIDITY EVAPORATOR'. Cyber-comic Goblin Court aesthetic, neon terminal green and glitch purple palette. Character: slick goblin in suit with briefcase labeled 'ROADMAP V7', standing on a literal rug mid-pull. Background: chart line rising then dissolving into pixels. Funny and sharp, no real public figures, no legal guilt claims, no financial safety claims.",
+      "metadata_candidate": {
+        "name": "Rugbert Pullman",
+        "description": "Liquidity Evaporator. Role: Announces strategic pivots right before silence. Flavor text: 'We're pivoting to a new vision.' Specialty: narrative agility. Counters: block explorers, multisig checks.",
+        "attributes": [
+          { "trait_type": "Series", "value": "Goblin Court Series 1" },
+          { "trait_type": "Run", "value": "ZORA_FACTORY_PRODUCTION_RUN_10_V0_1" },
+          { "trait_type": "Authority", "value": "false" },
+          { "trait_type": "Reversibility Class", "value": "SYMBOLIC" },
+          { "trait_type": "Status", "value": "CANDIDATE" },
+          { "trait_type": "Role", "value": "Liquidity Evaporator" },
+          { "trait_type": "Clearance", "value": "Violet" },
+          { "trait_type": "Attack", "value": "PIVOT" },
+          { "trait_type": "Defense", "value": "WHITEPAPER V2" }
+        ]
+      }
+    },
+    {
+      "artifact_id": "GC-003",
+      "candidate_title": "GC-003 — Screenshot Sally",
+      "visual_prompt": "Satirical portrait trading card art, white border, readable top title plate 'GOBLIN COURT SERIES 1', readable bottom name plate 'SCREENSHOT SALLY — DRAMA ARCHIVIST'. Cyber-comic Goblin Court aesthetic, neon terminal green and glitch purple palette. Character: goblin with six arms, each holding a phone showing different cropped screenshots, magnifying glass and red circle tool in hand. Background: tornado of chat fragments with timestamps cut off. Funny and sharp, no real public figures, no legal guilt claims, no financial safety claims.",
+      "metadata_candidate": {
+        "name": "Screenshot Sally",
+        "description": "Drama archivist without context. Role: Preserves fragments, discards timelines. Flavor text: 'I have screenshots.' Specialty: out-of-context evidence generation. Counters: full transcripts, context windows.",
+        "attributes": [
+          { "trait_type": "Series", "value": "Goblin Court Series 1" },
+          { "trait_type": "Run", "value": "ZORA_FACTORY_PRODUCTION_RUN_10_V0_1" },
+          { "trait_type": "Authority", "value": "false" },
+          { "trait_type": "Reversibility Class", "value": "SYMBOLIC" },
+          { "trait_type": "Status", "value": "CANDIDATE" },
+          { "trait_type": "Role", "value": "Drama Archivist" },
+          { "trait_type": "Clearance", "value": "Blue" },
+          { "trait_type": "Attack", "value": "CROP" },
+          { "trait_type": "Defense", "value": "RED CIRCLE" }
+        ]
+      }
+    }
+  ],
+  "missing_receipts": [
+    "rendered artifact files not yet recorded by Computer Wisdom",
+    "metadata hashes not computed",
+    "Zora publication not performed",
+    "replay acquisition receipts not generated"
+  ]
+}
