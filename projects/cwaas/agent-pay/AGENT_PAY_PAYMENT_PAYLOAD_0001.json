@@ -1,0 +1,39 @@
+{
+  "payload_type": "AGENT_PAY_PAYMENT_PAYLOAD_V1",
+  "status": "DRY_RUN_ONLY",
+  "lane": "AGENT_PAY",
+  "payload_id": "AGENT_PAY_PAYMENT_PAYLOAD_0001",
+  "work_reference": {
+    "work_id": "1",
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "github_identity": "jsonwisdom",
+    "developer_basename": "jaywisdom.base.eth"
+  },
+  "payment_preview": {
+    "amount": "0",
+    "asset": "USDC",
+    "network": "base-mainnet",
+    "recipient": "jaywisdom.base.eth",
+    "reason": "CWaaS Agent Pay dry-run preview only"
+  },
+  "references": {
+    "preview_receipt_path": "projects/cwaas/receipts/preview-dispatch/PREVIEW_1_V2.json",
+    "approval_receipt_path": "projects/cwaas/receipts/agent-pay/APPROVAL_0001.json",
+    "confirmed_payment_template": "projects/cwaas/receipts/agent-pay/AGENT_PAY_CONFIRMED_PAYMENT_RECEIPT_0001_TEMPLATE.md"
+  },
+  "execution_controls": {
+    "mode": "DRY_RUN",
+    "payment_execution": false,
+    "coinbase_call": false,
+    "base_transaction": false,
+    "signing": false,
+    "funds_moved": false
+  },
+  "prohibited_claims": [
+    "payment_executed",
+    "transaction_hash_exists",
+    "settlement_confirmed",
+    "coinbase_endorsement",
+    "base_endorsement"
+  ]
+}
