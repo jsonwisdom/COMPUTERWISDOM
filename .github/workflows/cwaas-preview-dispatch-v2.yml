@@ -1,0 +1,81 @@
+name: CWaaS Preview Dispatch V2
+
+on:
+  workflow_dispatch:
+    inputs:
+      work_id:
+        description: "Work reference identifier"
+        required: true
+        type: string
+      developer_basename:
+        description: "Developer Basename"
+        required: true
+        type: string
+      github_identity:
+        description: "GitHub username"
+        required: true
+        type: string
+
+permissions:
+  contents: write
+
+jobs:
+  preview:
+    name: Generate CWaaS Preview Receipt V2
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout CWaaS branch
+        uses: actions/checkout@v4
+        with:
+          ref: cwaas-receipt-schema-v1
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Generate preview receipt
+        id: preview
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p projects/cwaas/receipts/preview-dispatch
+          TS="$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          OUT="projects/cwaas/receipts/preview-dispatch/PREVIEW_${{ inputs.work_id }}_V2.json"
+          cat > "$OUT" <<EOF
+          {
+            "receipt_type": "CWAAS_PREVIEW_RECEIPT_V2",
+            "mode": "PREVIEW_ONLY",
+            "external_action": false,
+            "human_review_required": true,
+            "work_id": "${{ inputs.work_id }}",
+            "developer_basename": "${{ inputs.developer_basename }}",
+            "github_identity": "${{ inputs.github_identity }}",
+            "generated_at": "$TS",
+            "status": "PREVIEW_GENERATED"
+          }
+          EOF
+          HASH="$(sha256sum "$OUT" | awk '{print $1}')"
+          echo "preview_receipt=$OUT" >> "$GITHUB_OUTPUT"
+          echo "preview_hash=$HASH" >> "$GITHUB_OUTPUT"
+          echo "GREEN: preview receipt generated: $OUT"
+          echo "preview_hash=$HASH"
+
+      - name: Commit preview receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects/cwaas/receipts/preview-dispatch
+          if git diff --cached --quiet; then
+            echo "No preview receipt changes to commit"
+          else
+            git commit -m "add CWaaS preview dispatch receipt v2"
+            git push origin HEAD:cwaas-receipt-schema-v1
+          fi
+
+      - name: Stop at preview
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo "STOP: preview-only workflow complete"
+          echo "No external action performed"
+          echo "Human review required"
