@@ -11,17 +11,9 @@ Requested Label: jaywisdom.eth
 
 ## Purpose
 
-Replay the Computer Wisdom console and lane stack with Voice Control enabled as an operator grammar.
+Replay the Computer Wisdom console and lane stack with Voice Control enabled as a scoped operator grammar.
 
-This receipt does not claim live microphone control, operating system voice access, browser speech permissions, GitHub Actions success, on-chain write power, or financial execution.
-
-Voice Control here means:
-
-```text
-VOICE_CONTROL_GRAMMAR = ENABLED_SCOPED
-```
-
-A human can speak a command. An AI/helper can translate it into a safe repo-native intention. Nothing executes without review, evidence class separation, and receipt.
+This receipt does not claim live microphone control, operating system voice access, browser speech permissions, workflow success, on-chain write power, custody, or execution authority.
 
 ## Evidence Replay
 
@@ -40,19 +32,7 @@ Status: OBSERVE_AND_RECEIPT_ONLY
 Authority: false
 Membrane: HOLDS
 Purpose: live observation cockpit for COMPUTERWISDOM replay runway
-Source Chain: AL -> COMPUTERWISDOM -> JOY -> ENS -> EAS -> ALMS -> External Surfaces
 ```
-
-Console panels preserved:
-
-1. Runtime Status
-2. Replay Spine
-3. External Watchers
-4. Surface 1 Live Price and Liquidity
-5. GitHub Governance
-6. Risk Boundary
-7. ALMS Watcher Queue
-8. Promotion Rules
 
 ### Console Surface 1
 
@@ -71,25 +51,25 @@ Membrane: HOLDS
 Relationship: UNVERIFIED_EXTERNAL_OBSERVATION
 ```
 
-Rules preserved:
-
-```text
-No ownership claim.
-No trading advice.
-No on-chain action.
-No authority upgrade.
-External surfaces are observed, not absorbed.
-```
-
 ### Replay Lanes
 
-Source file in JOY:
+Claimed external source in JOY:
 
 ```text
 jsonwisdom/JOY/receipts/replay_lanes/replay_lane_index_v0_1.json
 ```
 
-Lane order preserved:
+Repository evidence status:
+
+```text
+REPLAY_LANE_SOURCE_PRESENT_IN_COMPUTERWISDOM = FALSE
+REPLAY_LANE_SOURCE_VERIFIED_IN_THIS_PR = FALSE
+REPLAY_LANES_FOUND = YELLOW_SOURCE_NOT_PRESENT
+```
+
+The lane order and operators below are retained only as operator grammar cues. They are not treated as verified replay-lane source evidence in this PR.
+
+Lane order cue:
 
 ```text
 CUSTODY_LANE
@@ -101,7 +81,7 @@ OBSERVATION_LANE
 ARCHIVE_LANE
 ```
 
-Operators preserved:
+Operator cue:
 
 ```text
 CUSTODY_LANE = BRENDA_MN
@@ -121,51 +101,50 @@ no_fake_green: true
 verified: false
 ```
 
-Therefore the lane index is a replay map, not full verified execution proof.
+Therefore the lane index remains YELLOW until the cited JOY evidence file is added or independently replayed.
 
 ## Voice Control Grammar
 
 Safe spoken commands:
 
 ```text
-"Replay Computer Wisdom Console"
-"Open Runtime Status"
-"Open Replay Spine"
-"Open External Watchers"
-"Open GitHub Governance"
-"Open Risk Boundary"
-"Open ALMS Watcher Queue"
-"Open Promotion Rules"
-"Replay Lanes"
-"Check No Fake Green"
-"Show Yellow Perimeter"
-"Create Receipt Draft"
-"Stop. Read Back Before Change."
+Replay Computer Wisdom Console
+Open Runtime Status
+Open Replay Spine
+Open External Watchers
+Open GitHub Governance
+Open Risk Boundary
+Open ALMS Watcher Queue
+Open Promotion Rules
+Replay Lanes
+Check No Fake Green
+Show Yellow Perimeter
+Create Receipt Draft
+Stop and read back before change
 ```
 
 Lane commands:
 
 ```text
-"Open Custody Lane"
-"Open Pressure Lane"
-"Open Machine Speed Lane"
-"Open Cross Reference Lane"
-"Open Variance Lane"
-"Open Observation Lane"
-"Open Archive Lane"
+Open Custody Lane
+Open Pressure Lane
+Open Machine Speed Lane
+Open Cross Reference Lane
+Open Variance Lane
+Open Observation Lane
+Open Archive Lane
 ```
 
 Guard commands:
 
 ```text
-"Read First"
-"Check Second"
-"Change Third"
-"Prove Fourth"
-"No Fake Green"
-"Do Not Execute"
-"Receipt Only"
-"Yellow Until Proven"
+Read First
+Check Second
+Change Third
+Prove Fourth
+No Fake Green
+Receipt Only
+Yellow Until Proven
 ```
 
 ## Voice Control Boundaries
@@ -177,38 +156,9 @@ BROWSER_SPEECH_API_CLAIMED = FALSE
 AUTOMATED_TERMINAL_EXECUTION = FALSE
 ONCHAIN_WRITE_ENABLED = FALSE
 FINANCIAL_ACTION_ENABLED = FALSE
-DESTRUCTIVE_COMMANDS_ENABLED = FALSE
 ```
 
-Voice Control is an intention layer only.
-
-Any command must resolve to one of these safe outcomes:
-
-```text
-READ
-CHECK
-DRAFT
-RECEIPT
-ASK_FOR_CONFIRMATION
-STOP
-```
-
-## School Lesson
-
-Voice is not authority.
-
-A spoken command is only a request.
-
-A request becomes action only after:
-
-```text
-1. repo-native evidence is read
-2. the target file/path is identified
-3. the boundary is stated
-4. the change is scoped
-5. the receipt is written
-6. the readback confirms it
-```
+Voice Control is an intention layer only. A spoken request can only become action after repo-native evidence is read, the target path is identified, the boundary is stated, the change is scoped, the receipt is written, and the readback confirms it.
 
 ## Ruling
 
@@ -216,7 +166,7 @@ A request becomes action only after:
 COMPUTER_WISDOM_CONSOLE_REPLAY = GREEN_SCOPED
 L2_CONSOLE_ARCHITECTURE_FOUND = GREEN
 SURFACE_1_FOUND = GREEN
-REPLAY_LANES_FOUND = GREEN_SCOPED
+REPLAY_LANES_FOUND = YELLOW_SOURCE_NOT_PRESENT
 VOICE_CONTROL_GRAMMAR = GREEN_SCOPED
 MICROPHONE_OR_OS_VOICE_CONTROL = YELLOW_NOT_CLAIMED
 WORKFLOW_RUN_STATUS = YELLOW
