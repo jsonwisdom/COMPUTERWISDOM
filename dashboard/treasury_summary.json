@@ -12,8 +12,22 @@
       "reward_id": "rwd_prod_20260618_001",
       "asset": "JAYWISDOM",
       "amount": "1000",
-      "settlement_status": "PENDING",
-      "lane": "pending"
+      "settlement_status": "REVIEW_BOUND",
+      "lane": "PR_357_tx_0x095eb5cf86b09f3e5dff5a75cff78ce4f6aeaaba7dc80c8d38ff70571994d81a_receipt_0001",
+      "references": {
+        "binding_pr": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/357",
+        "binding_merge_sha": "6e14f61d820213a5bbd533187a7914a38db0f8ed",
+        "binding_receipt": "projects/cwaas/receipts/JAYWISDOM_BASE_BOSS_BRE_TREASURY_BINDING_0001.md",
+        "base_tx_hash": "0x095eb5cf86b09f3e5dff5a75cff78ce4f6aeaaba7dc80c8d38ff70571994d81a"
+      },
+      "guardrails": {
+        "coinbase_custody_claim": false,
+        "coinbase_endorsement_claim": false,
+        "investment_value_claim": false,
+        "tokenomics_verification_claim": false,
+        "settlement_finality_claim": false,
+        "no_fake_green": true
+      }
     }
   ]
 }
