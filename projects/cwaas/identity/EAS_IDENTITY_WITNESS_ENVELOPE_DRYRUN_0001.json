@@ -1,0 +1,48 @@
+{
+  "envelope_type": "EAS_IDENTITY_WITNESS_ENVELOPE_V1",
+  "status": "PREVIEW_ONLY",
+  "mode": "DRY_RUN",
+  "lane": "CWaaS / Identity / External Witness / Dry-Run",
+  "schema": "IDENTITY_ATTESTATION_SCHEMA_V1",
+  "identity_root": "JAYWISDOM.eth",
+  "operator_identity": "jaywisdom.base.eth",
+  "github_identity": "jsonwisdom",
+  "binding_hash": "a934eb17ce56014155802c2df566f68b878511e71c41c8d722370ed703480be7",
+  "replay_trace_hash": null,
+  "evm_binding": {
+    "address": "0xa380552a27b0a5a2874ea7aa52cac09f542002e8",
+    "network": "base-mainnet",
+    "role": "attestation_or_settlement_surface"
+  },
+  "witness_fields": {
+    "eas_uid": null,
+    "anchor_tx_hash": null
+  },
+  "submission_preview": {
+    "schema_uid": "<pending>",
+    "data": {
+      "identity_root": "JAYWISDOM.eth",
+      "operator_identity": "jaywisdom.base.eth",
+      "github_identity": "jsonwisdom",
+      "binding_hash": "a934eb17ce56014155802c2df566f68b878511e71c41c8d722370ed703480be7",
+      "replay_trace_hash": null,
+      "evm_address": "0xa380552a27b0a5a2874ea7aa52cac09f542002e8"
+    },
+    "notes": [
+      "This is a dry-run preview.",
+      "No attestation will be submitted by this envelope.",
+      "No on-chain action will occur from this file.",
+      "No legal identity verification is implied.",
+      "No payment authority is implied.",
+      "No Coinbase, Base, GitHub, or EAS endorsement is implied."
+    ]
+  },
+  "timestamp_utc": null,
+  "boss_brenda_lock": [
+    "No human approval, no EAS submission.",
+    "No real EAS UID, no witnessed claim.",
+    "No anchor transaction, no confirmed anchor.",
+    "No endorsement by implication.",
+    "No fake green."
+  ]
+}
