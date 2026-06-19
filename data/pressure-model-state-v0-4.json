@@ -1,0 +1,36 @@
+{
+  "schema_version": "0.4.0",
+  "artifact": "PRESSURE_MODEL_STATE_V0_4",
+  "phase": "OPERATIONAL_OBSERVABILITY",
+  "pressure_state": "LOW",
+  "pressure_context": "NONE",
+  "pressure_source": "STATIC_CONSTITUTIONAL_PLACEHOLDER",
+  "pressure_metrics": {
+    "frequency": 0,
+    "source_concentration": "NONE",
+    "target_invariant": "NONE",
+    "precedent_risk_score": 0,
+    "cross_quarter_persistence": false
+  },
+  "graduation_eligible": false,
+  "graduation_eligibility_reason": "Pressure alone never graduates the system. Graduation requires full constitutional execution.",
+  "founder_intervention_detected": false,
+  "invariants_broken": 0,
+  "authority": false,
+  "membrane": "HOLDS",
+  "must_not_claim": [
+    "Pressure state does not certify correctness, truth, compliance, legitimacy, morality, readiness, or graduation.",
+    "HIGH or CRITICAL pressure does not create automatic graduation eligibility.",
+    "Graduation requires successor-led execution, founder silence, replay success, and invariants_broken: 0.",
+    "This file is static and read-only. It does not confer institutional authority.",
+    "Authority remains false."
+  ],
+  "allowed_pressure_states": [
+    "LOW",
+    "NORMAL",
+    "ELEVATED",
+    "HIGH",
+    "CRITICAL"
+  ],
+  "generated_at_utc": "PLACEHOLDER_UNTIL_OPERATIONAL_EMISSION"
+}

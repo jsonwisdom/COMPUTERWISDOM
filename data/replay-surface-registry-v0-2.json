@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.2",
+  "artifact": "REPLAY_SURFACE_REGISTRY_V0_2",
+  "purpose": "canonical index of all COMPUTERWISDOM observability surfaces",
+  "registry": "#130",
+  "phase": "BASE_INFRASTRUCTURE",
+  "authority": false,
+  "membrane": "HOLDS",
+  "computational_judgment": null,
+  "inference_block": true,
+  "last_updated": "2026-05-31",
+  "must_not_claim": [
+    "Registry does not certify completeness or correctness.",
+    "Listing does not imply validation or resolution.",
+    "All surfaces are read-only visibility tools.",
+    "Authority remains false."
+  ],
+  "surfaces": [
+    {"name": "Graduation Readiness Portal", "version": "V0.1", "file": "graduation-readiness-live-portal-v0-1.html", "purpose": "Readiness state visibility"},
+    {"name": "Pressure Model State", "version": "V0.4", "file": "data/pressure-model-state-v0-4.json", "purpose": "Pressure telemetry"},
+    {"name": "Escalation Log Dashboard", "version": "V0.5", "file": "escalation-log-dashboard-v0-5.html", "purpose": "Handoff visibility"},
+    {"name": "Continuity Explorer", "version": "V0.6", "file": "continuity-explorer-v0-6.html", "purpose": "Lineage replay visibility"},
+    {"name": "Drill Result Fixtures", "version": "V0.7", "file": "data/drill-result-fixture-v0-7.json", "purpose": "Canonical replay examples"},
+    {"name": "Replay Mission Control", "version": "V0.8", "file": "replay-mission-control-v0-8.html", "purpose": "Central command prism"}
+  ]
+}

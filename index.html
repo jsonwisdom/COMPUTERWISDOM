@@ -1,192 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>COMPUTERWISDOM — ALMS Replay Runway</title>
-  <meta name="description" content="COMPUTERWISDOM ALMS replay runway with three-court validation, 3/6/9 routing, ENS identity anchors, and authority:false membrane discipline." />
+  <meta charset="utf-8">
+  <title>COMPUTERWISDOM</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
-    :root {
-      --bg: #05070d;
-      --panel: #0b1220;
-      --panel2: #101827;
-      --text: #e8f3ff;
-      --muted: #9db7d6;
-      --blue: #18a8ff;
-      --gold: #ffd166;
-      --green: #50fa7b;
-      --red: #ff5555;
-      --line: rgba(24,168,255,.36);
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      color: var(--text);
-      background: radial-gradient(circle at top right, rgba(24,168,255,.24), transparent 36%), linear-gradient(180deg, #05070d, #070b16 60%, #05070d);
-      line-height: 1.55;
-    }
-    main { max-width: 1180px; margin: 0 auto; padding: 28px 18px 52px; }
-    header, section {
-      border: 1px solid var(--line);
-      background: rgba(11,18,32,.9);
-      border-radius: 22px;
-      padding: 22px;
-      margin-bottom: 18px;
-      box-shadow: 0 0 42px rgba(24,168,255,.13);
-    }
-    h1 { margin: 0 0 12px; font-size: clamp(2.2rem, 7vw, 5rem); line-height: .93; letter-spacing: -0.055em; }
-    h2 { margin: 0 0 12px; color: var(--gold); }
-    h3 { margin: 0 0 8px; color: var(--blue); }
-    p { margin: 0 0 12px; }
-    a { color: var(--blue); }
-    .muted { color: var(--muted); }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
-    .card { border: 1px solid var(--line); background: rgba(16,24,39,.86); border-radius: 18px; padding: 16px; }
-    .pill { display: inline-block; border: 1px solid var(--line); border-radius: 999px; padding: 6px 10px; margin: 4px 6px 4px 0; }
-    .good { color: var(--green); }
-    .warn { color: var(--gold); }
-    .bad { color: var(--red); }
-    code, .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; word-break: break-word; }
-    button {
-      width: 100%;
-      border: 1px solid var(--line);
-      border-radius: 14px;
-      padding: 13px 14px;
-      background: #0d1b2f;
-      color: var(--text);
-      font-weight: 700;
-      cursor: pointer;
-      margin-top: 8px;
-    }
-    button:disabled { opacity: .45; cursor: not-allowed; }
-    label { display: block; margin: 10px 0; }
-    input { transform: scale(1.2); margin-right: 8px; }
-    .route { font-size: 1.25rem; color: var(--green); font-weight: 800; }
-    .footer { color: var(--muted); font-size: .94rem; }
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 40px auto; padding: 20px; line-height: 1.5; }
+    h1 { margin-bottom: 0; }
+    .tag { color: #0a7; font-weight: 700; }
   </style>
 </head>
 <body>
-  <main>
-    <header>
-      <span class="pill good">Authority: false</span>
-      <span class="pill good" id="membranePill">Membrane: HOLDS</span>
-      <span class="pill warn" id="validatorPill">Validator: FAIL</span>
-      <h1>COMPUTERWISDOM ALMS Replay Runway</h1>
-      <p class="muted">Runtime surface for court-level replay, ENS identity routing, and machine-speed ALMS validation.</p>
-      <p class="footer">Doctrine source: <span class="mono">jsonwisdom/AL/docs/courts/AL_COURTS_REPLAY_PROTOCOL_V0_1.md</span> @ <span class="mono">2d050d623ab4a9ba7aff8547dc4f64d28b2f4c27</span></p>
-    </header>
-
-    <section>
-      <h2>Three-Court Validator Surface</h2>
-      <div class="grid">
-        <article class="card">
-          <h3>Meme Court</h3>
-          <p>Public signal and parody recognition surface.</p>
-          <label><input type="checkbox" class="validator" /> Validate Meme Court</label>
-        </article>
-        <article class="card">
-          <h3>Goblin Court</h3>
-          <p>Bureaucracy, infrastructure blocker, and edge-case corruption surface.</p>
-          <label><input type="checkbox" class="validator" /> Validate Goblin Court</label>
-        </article>
-        <article class="card">
-          <h3>Clown Court</h3>
-          <p>Authority inversion and category-drift detection surface.</p>
-          <label><input type="checkbox" class="validator" /> Validate Clown Court</label>
-        </article>
-      </div>
-    </section>
-
-    <section>
-      <h2>3 / 6 / 9 Replay Router</h2>
-      <p class="route">3 → JOY &nbsp; | &nbsp; 6 → ENS &nbsp; | &nbsp; 9 → ALMS</p>
-      <div class="grid">
-        <button onclick="routeReplay('JOY', 3)">Route 3 — JOY</button>
-        <button onclick="routeReplay('ENS', 6)">Route 6 — ENS</button>
-        <button onclick="routeReplay('ALMS', 9)">Route 9 — ALMS</button>
-      </div>
-      <p id="routeState" class="footer">Route state: HOLD_POSITION</p>
-    </section>
-
-    <section>
-      <h2>ALMS Mission-Control Entrypoint</h2>
-      <p>Entry remains locked until all three courts validate and membrane remains HOLDS.</p>
-      <button id="missionButton" disabled onclick="enterMissionControl()">/alms — ENTER MISSION CONTROL</button>
-      <p id="missionState" class="footer">Mission state: LOCKED_PENDING_VALIDATOR_PASS</p>
-    </section>
-
-    <section>
-      <h2>Three Daughters Algorithm</h2>
-      <div class="grid">
-        <article class="card"><h3>1. Protect</h3><p>Protect family identity and custody first.</p></article>
-        <article class="card"><h3>2. Preserve</h3><p>Preserve replay continuity second.</p></article>
-        <article class="card"><h3>3. Expand</h3><p>Expand public systems only after receipts.</p></article>
-      </div>
-    </section>
-
-    <section>
-      <h2>ENS / Base Identity Anchors</h2>
-      <p><span class="mono">jaywisdom.eth</span></p>
-      <p><span class="mono">jaywisdom.base.eth</span></p>
-      <p><span class="mono">jaywisdom.base</span></p>
-      <p class="footer">Identity anchors route replay. They do not promote claims into verified receipts.</p>
-    </section>
-
-    <p class="footer">COMPUTERWISDOM • JSONWisdom • ALMS • Authority false • Membrane HOLDS</p>
-  </main>
-
-  <script>
-    const validatorBoxes = Array.from(document.querySelectorAll('.validator'));
-    const validatorPill = document.getElementById('validatorPill');
-    const missionButton = document.getElementById('missionButton');
-    const missionState = document.getElementById('missionState');
-    const routeState = document.getElementById('routeState');
-
-    function allValidated() {
-      return validatorBoxes.every(box => box.checked);
-    }
-
-    function updateValidator() {
-      if (allValidated()) {
-        validatorPill.textContent = 'Validator: PASS';
-        validatorPill.classList.remove('warn');
-        validatorPill.classList.add('good');
-        missionButton.disabled = false;
-        missionState.textContent = 'Mission state: READY_FOR_ALMS_ENTRY';
-      } else {
-        validatorPill.textContent = 'Validator: FAIL';
-        validatorPill.classList.remove('good');
-        validatorPill.classList.add('warn');
-        missionButton.disabled = true;
-        missionState.textContent = 'Mission state: LOCKED_PENDING_VALIDATOR_PASS';
-      }
-    }
-
-    function routeReplay(target, number) {
-      const packet = {
-        route: number,
-        target,
-        authority: false,
-        membrane: 'HOLDS',
-        observed_at: new Date().toISOString()
-      };
-      console.log('ALMS_REPLAY_ROUTE', packet);
-      routeState.textContent = `Route state: ${number} → ${target} | authority:false | membrane:HOLDS`;
-    }
-
-    function enterMissionControl() {
-      if (!allValidated()) return;
-      console.log('ALMS_MISSION_CONTROL_ENTRY', {
-        authority: false,
-        membrane: 'HOLDS',
-        source: 'COMPUTERWISDOM_ROOT_INDEX'
-      });
-      window.location.href = './alms/';
-    }
-
-    validatorBoxes.forEach(box => box.addEventListener('change', updateValidator));
-    updateValidator();
-  </script>
+  <h1>COMPUTERWISDOM</h1>
+  <p class="tag">3 Daughters Repo Family</p>
+  <p>Simple public index for COMPUTERWISDOM.</p>
+  <ul>
+    <li>AL</li>
+    <li>JOY</li>
+    <li>COMPUTERWISDOM</li>
+  </ul>
+  <p><strong>Rule:</strong> Build. Seal. Verify. Repeat.</p>
 </body>
 </html>

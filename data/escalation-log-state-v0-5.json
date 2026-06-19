@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.5",
+  "artifact": "ESCALATION_LOG_STATE_V0_5",
+  "registry": "#162",
+  "phase": "HANDOFF_VISIBILITY",
+  "authority": false,
+  "membrane": "HOLDS",
+  "escalations_total": 0,
+  "open_escalations": 0,
+  "under_human_review": 0,
+  "resolved_by_human": 0,
+  "closed_with_disposition": 0,
+  "computational_judgment": null,
+  "inference_block": true,
+  "must_not_claim": [
+    "Escalation does not certify correctness, truth, compliance, legitimacy, or morality.",
+    "Escalation records handoff only.",
+    "Human review remains institutional.",
+    "This dashboard does not resolve disputes.",
+    "Authority remains false."
+  ],
+  "entries": []
+}

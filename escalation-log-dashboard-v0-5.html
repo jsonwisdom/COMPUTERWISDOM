@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COMPUTERWISDOM – Escalation Log Dashboard V0.5</title>
+  <style>
+    :root{--bg:#0b0c10;--panel:#111319;--panel2:#151923;--text:#e5e5e5;--muted:#aeb6c2;--line:#333b48;--ok:#7CFC00;--warn:#FFD700;--bad:#FF6347;--blue:#8bd3ff}*{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:2rem;background:var(--bg);color:var(--text);line-height:1.55}header,main,footer{max-width:1120px;margin:0 auto}h1,h2{margin-bottom:.25rem}.subtitle{color:var(--muted)}.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}.block,.metric{border:1px solid var(--line);padding:1rem;margin-bottom:1.5rem;border-radius:8px;background:var(--panel)}.metric strong{display:block;color:var(--muted);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}.metric span{display:block;font-size:1.45rem;font-weight:800;margin-top:.25rem}.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}.blue{color:var(--blue)}pre{background:#050608;padding:.75rem;border-radius:6px;overflow-x:auto;border:1px solid var(--line)}ul{padding-left:1.25rem}.empty{padding:1rem;border:1px dashed var(--line);border-radius:8px;color:var(--muted)}footer{color:var(--muted);border-top:1px solid var(--line);padding-top:1rem}.label{font-weight:700}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Escalation Log Dashboard V0.5</h1>
+    <p class="subtitle">Registry #162 • Handoff Visibility • Static Read-Only Surface</p>
+  </header>
+
+  <main>
+    <section class="grid">
+      <div class="metric"><strong>Registry</strong><span id="registry">#162</span></div>
+      <div class="metric"><strong>Authority</strong><span class="ok" id="authority">false</span></div>
+      <div class="metric"><strong>Membrane</strong><span class="ok" id="membrane">HOLDS</span></div>
+      <div class="metric"><strong>Computational Judgment</strong><span class="ok" id="judgment">null</span></div>
+      <div class="metric"><strong>Inference Block</strong><span class="ok" id="inference">true</span></div>
+    </section>
+
+    <section class="grid">
+      <div class="metric"><strong>Escalations Total</strong><span id="escalations-total">—</span></div>
+      <div class="metric"><strong>Open Escalations</strong><span id="open-escalations">—</span></div>
+      <div class="metric"><strong>Under Human Review</strong><span id="under-human-review">—</span></div>
+      <div class="metric"><strong>Resolved By Human</strong><span id="resolved-by-human">—</span></div>
+      <div class="metric"><strong>Closed With Disposition</strong><span id="closed-with-disposition">—</span></div>
+    </section>
+
+    <section class="block">
+      <h2>Escalation Entries</h2>
+      <div id="entries" class="empty">
+        <p>No escalation entries recorded.</p>
+        <p>Absence of escalation is not proof of absence of issues.</p>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Must-Not-Claim</h2>
+      <ul id="must-not-claim">
+        <li>Escalation does not certify correctness, truth, compliance, legitimacy, or morality.</li>
+        <li>Escalation records handoff only.</li>
+        <li>Human review remains institutional.</li>
+        <li>This dashboard does not resolve disputes.</li>
+        <li>Authority remains false.</li>
+      </ul>
+    </section>
+
+    <section class="block">
+      <h2>Canonical JSON State</h2>
+      <pre id="canonical-json">Fetching state...</pre>
+    </section>
+  </main>
+
+  <footer>
+    <p>COMPUTERWISDOM • Escalation Log Dashboard V0.5 • Static • Read-only • No authority claimed</p>
+  </footer>
+
+  <script>
+    const STATE_URL='data/escalation-log-state-v0-5.json';
+    const FALLBACK={schema_version:'0.5-fallback',artifact:'ESCALATION_LOG_STATE_FALLBACK',registry:'#162',phase:'SAFE_FALLBACK',authority:false,membrane:'HOLDS',escalations_total:0,open_escalations:0,under_human_review:0,resolved_by_human:0,closed_with_disposition:0,computational_judgment:null,inference_block:true,must_not_claim:['Fallback state does not certify escalation completeness.','Escalation records handoff only.','This dashboard does not resolve disputes.','Authority remains false.'],entries:[]};
+    function safeText(id,value){document.getElementById(id).textContent=String(value)}
+    function render(state,source){safeText('registry',state.registry||'#162');safeText('authority',state.authority===false?'false':'INVALID');safeText('membrane',state.membrane==='HOLDS'?'HOLDS':'INVALID');safeText('judgment',state.computational_judgment===null?'null':'INVALID');safeText('inference',state.inference_block===true?'true':'INVALID');safeText('escalations-total',state.escalations_total||0);safeText('open-escalations',state.open_escalations||0);safeText('under-human-review',state.under_human_review||0);safeText('resolved-by-human',state.resolved_by_human||0);safeText('closed-with-disposition',state.closed_with_disposition||0);const claims=state.must_not_claim||FALLBACK.must_not_claim;document.getElementById('must-not-claim').innerHTML=claims.map(x=>`<li>${x}</li>`).join('');const entries=state.entries||[];document.getElementById('entries').innerHTML=entries.length?entries.map(e=>`<pre>${JSON.stringify(e,null,2)}</pre>`).join(''):'<p>No escalation entries recorded.</p><p>Absence of escalation is not proof of absence of issues.</p>';document.getElementById('canonical-json').textContent=JSON.stringify({...state,state_source:source},null,2)}
+    async function load(){try{const res=await fetch(STATE_URL,{cache:'no-store'});if(!res.ok)throw new Error('fetch failed');render(await res.json(),'STATIC_JSON')}catch(e){render(FALLBACK,'SAFE_FALLBACK')}}
+    load();
+  </script>
+</body>
+</html>

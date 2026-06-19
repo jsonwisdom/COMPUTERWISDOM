@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COMPUTERWISDOM – Drill Results Replay V0.7</title>
+  <style>
+    :root{--bg:#0b0c10;--panel:#111319;--text:#e5e5e5;--muted:#aeb6c2;--line:#333b48;--ok:#7CFC00;--warn:#FFD700;--bad:#FF6347;--blue:#8bd3ff}*{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:2rem;background:var(--bg);color:var(--text);line-height:1.55}header,main,footer{max-width:1120px;margin:0 auto}h1,h2{margin-bottom:.25rem}.subtitle{color:var(--muted)}.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}.block,.metric,.fixture{border:1px solid var(--line);padding:1rem;margin-bottom:1.5rem;border-radius:8px;background:var(--panel)}.metric strong{display:block;color:var(--muted);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}.metric span{display:block;font-size:1.35rem;font-weight:800;margin-top:.25rem}.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.2rem .55rem;margin:.2rem;color:var(--muted);font-size:.82rem}pre{background:#050608;padding:.75rem;border-radius:6px;overflow-x:auto;border:1px solid var(--line)}ul{padding-left:1.25rem}.empty{padding:1rem;border:1px dashed var(--line);border-radius:8px;color:var(--muted)}footer{color:var(--muted);border-top:1px solid var(--line);padding-top:1rem}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Drill Results Replay V0.7</h1>
+    <p class="subtitle">Canonical training fixtures • Static read-only • Not actual system events</p>
+  </header>
+  <main>
+    <section class="grid">
+      <div class="metric"><strong>Artifact</strong><span id="artifact">DRILL_RESULT_FIXTURE_V0_7</span></div>
+      <div class="metric"><strong>Authority</strong><span class="ok" id="authority">false</span></div>
+      <div class="metric"><strong>Membrane</strong><span class="ok" id="membrane">HOLDS</span></div>
+      <div class="metric"><strong>Computational Judgment</strong><span class="ok" id="judgment">null</span></div>
+      <div class="metric"><strong>Inference Block</strong><span class="ok" id="inference">true</span></div>
+      <div class="metric"><strong>Fixture Count</strong><span class="warn" id="fixture-count">—</span></div>
+    </section>
+    <section class="block"><h2>Replay Fixtures</h2><div id="fixtures" class="empty">Loading fixtures...</div></section>
+    <section class="block"><h2>Must-Not-Claim</h2><ul id="must-not-claim"><li>These fixtures do not represent actual system events.</li><li>Drill results do not certify real-world outcomes.</li><li>Fixtures are for training and replay only.</li><li>Authority remains false.</li></ul></section>
+    <section class="block"><h2>Canonical JSON State</h2><pre id="canonical-json">Loading state...</pre></section>
+  </main>
+  <footer><p>COMPUTERWISDOM • Drill Results Replay V0.7 • Training fixtures only • No authority claimed</p></footer>
+  <script>
+    const STATE_URL='data/drill-result-fixture-v0-7.json';
+    const FALLBACK={schema_version:'0.7-fallback',artifact:'DRILL_RESULT_FIXTURE_FALLBACK',purpose:'safe fallback fixture replay',registry:'#162',phase:'SAFE_FALLBACK',authority:false,membrane:'HOLDS',computational_judgment:null,inference_block:true,generated_timestamp:null,must_not_claim:['Fallback state does not certify fixture completeness.','Fixtures are for training and replay only.','No fixture implies correctness, compliance, or resolution.','Authority remains false.'],fixtures:[]};
+    function text(id,value){document.getElementById(id).textContent=String(value)}
+    function render(state,source){text('artifact',state.artifact||'DRILL_RESULT_FIXTURE_V0_7');text('authority',state.authority===false?'false':'INVALID');text('membrane',state.membrane==='HOLDS'?'HOLDS':'INVALID');text('judgment',state.computational_judgment===null?'null':'INVALID');text('inference',state.inference_block===true?'true':'INVALID');const fixtures=state.fixtures||[];text('fixture-count',fixtures.length);document.getElementById('must-not-claim').innerHTML=(state.must_not_claim||FALLBACK.must_not_claim).map(x=>`<li>${x}</li>`).join('');document.getElementById('fixtures').innerHTML=fixtures.length?fixtures.map(f=>`<article class="fixture"><h2>${f.id}: ${f.scenario}</h2><p><strong>Severity:</strong> ${f.severity} · <strong>Outcome:</strong> ${f.outcome}</p><p>${f.description}</p><p>${(f.tags||[]).map(t=>`<span class="tag">${t}</span>`).join('')}</p><pre>${JSON.stringify(f,null,2)}</pre></article>`).join(''):'No fixture entries loaded. Absence of fixtures does not prove absence of training need.';document.getElementById('canonical-json').textContent=JSON.stringify({...state,state_source:source},null,2)}
+    async function load(){try{const r=await fetch(STATE_URL,{cache:'no-store'});if(!r.ok)throw new Error('fetch failed');render(await r.json(),'STATIC_JSON')}catch(e){render(FALLBACK,'SAFE_FALLBACK')}}
+    load();
+  </script>
+</body>
+</html>
