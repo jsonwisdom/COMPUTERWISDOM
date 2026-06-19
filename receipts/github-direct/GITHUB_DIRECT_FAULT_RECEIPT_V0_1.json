@@ -1,0 +1,22 @@
+{
+  "protocol": "GITHUB_DIRECT_FAULT_RECEIPT_V0_1",
+  "fault": "invalid_env_token_overrode_valid_gh_identity",
+  "observed_effect": "git push failed after valid local commits existed",
+  "false_diagnosis": "repo_or_artifact_failure",
+  "actual_diagnosis": "credential_precedence_conflict",
+  "bad_identity": "GITHUB_TOKEN_OR_GH_TOKEN",
+  "good_identity": "jsonwisdom via gh cli",
+  "fix": [
+    "unset GITHUB_TOKEN",
+    "unset GH_TOKEN",
+    "gh auth status",
+    "gh auth setup-git",
+    "git push"
+  ],
+  "permanent_guard": "~/.bashrc unsets GITHUB_TOKEN and GH_TOKEN",
+  "proof_signal": "branch pushed and tracking origin established after bad env token was removed",
+  "lesson": "Credential failure is not artifact failure.",
+  "authority": false,
+  "no_fake_green": true,
+  "status": "FIX_CONFIRMED"
+}

@@ -1,5 +1,12 @@
 {
-  "agents": [],
+  "agents": [
+    "audit.os.jaywisdom.eth",
+    "mcp.os.jaywisdom.eth",
+    "sentiment.os.jaywisdom.eth",
+    "treasury-01.os.jaywisdom.eth",
+    "treasury-02.os.jaywisdom.eth",
+    "treasury-03.os.jaywisdom.eth"
+  ],
   "anchor_status": null,
   "gateway": "app.jaywisdom.eth",
   "identity_root": "os.jaywisdom.eth",

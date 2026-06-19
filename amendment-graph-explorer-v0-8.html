@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COMPUTERWISDOM – Amendment Graph Explorer V0.8</title>
+  <style>
+    :root{--bg:#0b0c10;--panel:#111319;--text:#e5e5e5;--muted:#aeb6c2;--line:#333b48;--ok:#7CFC00;--warn:#FFD700;--bad:#FF6347;--blue:#8bd3ff}*{box-sizing:border-box}body{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;margin:2rem;background:var(--bg);color:var(--text);line-height:1.55}header,main,footer{max-width:1120px;margin:0 auto}h1,h2{margin-bottom:.25rem}.subtitle{color:var(--muted)}.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(210px,1fr))}.block,.metric{border:1px solid var(--line);padding:1rem;margin-bottom:1.5rem;border-radius:8px;background:var(--panel)}.metric strong{display:block;color:var(--muted);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}.metric span{display:block;font-size:1.25rem;font-weight:800;margin-top:.25rem}.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}pre{background:#050608;padding:.75rem;border-radius:6px;overflow-x:auto;border:1px solid var(--line)}ul{padding-left:1.25rem}.empty{padding:1rem;border:1px dashed var(--line);border-radius:8px;color:var(--muted)}footer{color:var(--muted);border-top:1px solid var(--line);padding-top:1rem}.primitive{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:.25rem .6rem;margin:.25rem;color:var(--muted);font-size:.86rem}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Amendment Graph Explorer V0.8</h1>
+    <p class="subtitle">Amendment lineage and traversal visibility • Static read-only • Provenance, not truth</p>
+  </header>
+  <main>
+    <section class="grid">
+      <div class="metric"><strong>Authority</strong><span class="ok" id="authority">false</span></div>
+      <div class="metric"><strong>Membrane</strong><span class="ok" id="membrane">HOLDS</span></div>
+      <div class="metric"><strong>Computational Judgment</strong><span class="ok" id="judgment">null</span></div>
+      <div class="metric"><strong>Inference Block</strong><span class="ok" id="inference">true</span></div>
+      <div class="metric"><strong>Graph Authoritative</strong><span class="warn" id="graph-authoritative">true</span></div>
+      <div class="metric"><strong>Graph Truth</strong><span class="ok" id="graph-truth">false</span></div>
+    </section>
+    <section class="grid">
+      <div class="metric"><strong>Lineage Nodes</strong><span id="node-count">0</span></div>
+      <div class="metric"><strong>Lineage Edges</strong><span id="edge-count">0</span></div>
+      <div class="metric"><strong>Review Records</strong><span id="review-count">0</span></div>
+      <div class="metric"><strong>Pressure Links</strong><span id="pressure-count">0</span></div>
+    </section>
+    <section class="block"><h2>Traversal Primitives</h2><div id="primitives"></div></section>
+    <section class="block"><h2>Graph State</h2><div id="graph-state" class="empty"><p>No amendment lineage nodes recorded yet.</p><p>Empty graph does not prove absence of constitutional history.</p></div></section>
+    <section class="block"><h2>Must-Not-Claim</h2><ul id="must-not-claim"><li>Amendment graph visibility does not certify correctness or wisdom of amendments.</li><li>The graph records provenance, not universal truth.</li><li>Authority remains false.</li></ul></section>
+    <section class="block"><h2>Canonical JSON State</h2><pre id="canonical-json">Loading state...</pre></section>
+  </main>
+  <footer><p>COMPUTERWISDOM • Amendment Graph Explorer V0.8 • Static • Read-only • No founder intent inference</p></footer>
+  <script>
+    const STATE_URL='data/amendment-graph-state-v0-8.json';
+    const FALLBACK={schema_version:'0.8-fallback',artifact:'AMENDMENT_GRAPH_STATE_FALLBACK',purpose:'safe fallback amendment graph visibility',phase:'SAFE_FALLBACK',authority:false,membrane:'HOLDS',computational_judgment:null,inference_block:true,graph_is_authoritative:true,graph_is_truth:false,must_not_claim:['Fallback state does not certify graph completeness.','The graph records provenance, not universal truth.','Pressure does not equal amendment.','Review does not imply change.','Authority remains false.'],traversal_primitives:[],lineage_nodes:[],lineage_edges:[],review_records:[],pressure_links:[]};
+    function text(id,value){document.getElementById(id).textContent=String(value)}
+    function render(state,source){text('authority',state.authority===false?'false':'INVALID');text('membrane',state.membrane==='HOLDS'?'HOLDS':'INVALID');text('judgment',state.computational_judgment===null?'null':'INVALID');text('inference',state.inference_block===true?'true':'INVALID');text('graph-authoritative',state.graph_is_authoritative===true?'true':'INVALID');text('graph-truth',state.graph_is_truth===false?'false':'INVALID');const nodes=state.lineage_nodes||[];const edges=state.lineage_edges||[];const reviews=state.review_records||[];const pressures=state.pressure_links||[];text('node-count',nodes.length);text('edge-count',edges.length);text('review-count',reviews.length);text('pressure-count',pressures.length);document.getElementById('primitives').innerHTML=(state.traversal_primitives||[]).map(x=>`<span class="primitive">${x}</span>`).join('')||'<p>No traversal primitives loaded.</p>';document.getElementById('must-not-claim').innerHTML=(state.must_not_claim||FALLBACK.must_not_claim).map(x=>`<li>${x}</li>`).join('');document.getElementById('graph-state').innerHTML=nodes.length||edges.length?`<h3>Nodes</h3><pre>${JSON.stringify(nodes,null,2)}</pre><h3>Edges</h3><pre>${JSON.stringify(edges,null,2)}</pre><h3>Review Records</h3><pre>${JSON.stringify(reviews,null,2)}</pre><h3>Pressure Links</h3><pre>${JSON.stringify(pressures,null,2)}</pre>`:'<p>No amendment lineage nodes recorded yet.</p><p>Empty graph does not prove absence of constitutional history.</p>';document.getElementById('canonical-json').textContent=JSON.stringify({...state,state_source:source},null,2)}
+    async function load(){try{const r=await fetch(STATE_URL,{cache:'no-store'});if(!r.ok)throw new Error('fetch failed');render(await r.json(),'STATIC_JSON')}catch(e){render(FALLBACK,'SAFE_FALLBACK')}}
+    load();
+  </script>
+</body>
+</html>

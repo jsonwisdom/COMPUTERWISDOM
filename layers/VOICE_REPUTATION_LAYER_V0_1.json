@@ -1,0 +1,53 @@
+{
+  "schema": "VOICE_REPUTATION_LAYER_V0_1",
+  "project": "COMPUTERWISDOM",
+  "status": "VISION_DECLARED_NOT_IMPLEMENTED",
+  "authority": false,
+  "promotion": false,
+  "identities": {
+    "primary": "jaywisdom.eth",
+    "base": "jaywisdom.base.eth",
+    "authority": false
+  },
+  "vision": {
+    "statement": "Eventually, individuals should be able to manage reputation, projects, trades, ideas, and continuity through their own voice while preserving auditability and user control.",
+    "authority": false
+  },
+  "auditable_categories": [
+    "projects",
+    "ideas",
+    "trades",
+    "thoughts",
+    "receipts",
+    "reputation"
+  ],
+  "control_model": {
+    "voice_controlled": true,
+    "user_controlled": true,
+    "permission_required": true,
+    "replayable": true,
+    "authority": false
+  },
+  "future_requirements": [
+    "verifiable voice authorization",
+    "replayable command receipts",
+    "identity separation",
+    "revocation support",
+    "privacy controls",
+    "public replay surfaces"
+  ],
+  "not_claiming": [
+    "implemented voice identity",
+    "verified voice ownership",
+    "legal authority",
+    "financial authority",
+    "credentialed authority"
+  ],
+  "verification_flags": {
+    "voice_identity_verified": false,
+    "voice_authorization_verified": false,
+    "legal_authority_verified": false,
+    "financial_authority_verified": false,
+    "independently_verified_by_assistant": false
+  }
+}

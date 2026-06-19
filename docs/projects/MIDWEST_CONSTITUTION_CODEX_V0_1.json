@@ -1,0 +1,31 @@
+{
+  "artifact": "MIDWEST_CONSTITUTION_CODEX_V0_1",
+  "format": "JSON_CODEX",
+  "authority": false,
+  "purpose": "Translate civic memory doctrine into human-scale vernacular roles.",
+  "articles": [
+    {"article": 1, "name": "JOY", "question": "What was observed?", "function": "observation"},
+    {"article": 2, "name": "Karen", "question": "Where is the receipt?", "function": "provenance"},
+    {"article": 3, "name": "Wendy", "question": "Can you do it again?", "function": "replay"},
+    {"article": 4, "name": "Goblin", "question": "What changed?", "function": "variance_detection"},
+    {"article": 5, "name": "AL", "question": "What can be verified?", "function": "verification"},
+    {"article": 6, "name": "MirrorMint", "question": "What survived?", "function": "memory"},
+    {"article": 7, "name": "Mothers", "question": "Who remembered it?", "function": "memory_keeping"},
+    {"article": 8, "name": "Children", "question": "Can we still find it?", "function": "rediscovery"},
+    {"article": 9, "name": "COMPUTERWISDOM", "question": "How do we remember it?", "function": "public_rendering"}
+  ],
+  "constitutional_chain": [
+    "Observation",
+    "Provenance",
+    "Replay",
+    "Verification",
+    "Memory",
+    "Continuity",
+    "Community",
+    "Legacy"
+  ],
+  "identity_anchor": {
+    "ens": "jaywisdom.eth",
+    "basename": "jaywisdom.base.eth"
+  }
+}

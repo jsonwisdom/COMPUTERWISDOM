@@ -1,0 +1,32 @@
+{
+  "simulated": true,
+  "verification_status": "simulated_for_pipeline_test",
+  "anchor_status": "do_not_anchor_as_real_world_receipt",
+  "disclaimer": "These URLs are illustrative examples. No real receipt exists for this test packet.",
+  "events": [
+    {
+      "event": "Simulated: FSB smartphone compromise claim",
+      "date": "2026-06-02",
+      "url": "https://example.com/fsb-phone-claim",
+      "archive": "https://web.archive.org/web/20260602120000/https://example.com/fsb-phone-claim"
+    },
+    {
+      "event": "Simulated: Peskov counter-terror paradigm framing",
+      "date": "2026-06-02",
+      "url": "https://example.com/peskov-terror",
+      "archive": "https://web.archive.org/web/20260602130000/https://example.com/peskov-terror"
+    },
+    {
+      "event": "Simulated: Putin internet continuity order",
+      "date": "2026-06-01",
+      "url": "https://example.com/putin-internet-order",
+      "archive": "https://web.archive.org/web/20260601180000/https://example.com/putin-internet-order"
+    },
+    {
+      "event": "Simulated: WhatsApp / MAX communications-control signal",
+      "date": "2026-06-01",
+      "url": "https://example.com/rkn-whatsapp-block",
+      "archive": "https://web.archive.org/web/20260601190000/https://example.com/rkn-whatsapp-block"
+    }
+  ]
+}

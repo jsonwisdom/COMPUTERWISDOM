@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Public Record Verification Demo | Anti-Drift</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 1rem; line-height: 1.5; background: #faf9f8; }
+    .card { background: white; border-radius: 20px; padding: 2rem; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 2rem; }
+    .receipt-box { background: #f0f2f5; padding: 1rem; border-radius: 12px; margin: 1rem 0; }
+    .hash { font-family: monospace; word-break: break-all; background: #1e1e2f; color: #c9d1d9; padding: 0.5rem; border-radius: 6px; }
+    button { background: #2c5f2d; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 40px; cursor: pointer; font-weight: bold; }
+    .game-link { text-align: center; margin-top: 1.5rem; }
+    footer { margin-top: 2rem; font-size: 0.8rem; text-align: center; color: #666; border-top: 1px solid #ddd; padding-top: 1rem; }
+  </style>
+</head>
+<body>
+<div class="card">
+  <h1>Public Record Verification Demo</h1>
+  <p>This demo turns a real public claim into a <strong>replayable receipt packet</strong>. No trust required — only math.</p>
+
+  <h2>Claim</h2>
+  <div class="receipt-box">
+    <em>"The FY2024 Budget requests $73.3 billion in gross discretionary appropriations for the Department of Housing and Urban Development."</em>
+  </div>
+
+  <h2>Source</h2>
+  <p><a href="https://crsreports.congress.gov/product/pdf/IF/IF12278" target="_blank" rel="noopener">CRS Report IF12278 — HUD Appropriations, FY2024</a></p>
+
+  <h2>Receipt Files</h2>
+  <ul>
+    <li><a href="../receipts/demo_receipt_001.json">demo_receipt_001.json</a></li>
+    <li><a href="../receipts/demo_receipt_001.md">demo_receipt_001.md</a></li>
+    <li><a href="../receipts/hud_fy2024_budget_archives.json">hud_fy2024_budget_archives.json</a></li>
+  </ul>
+
+  <h2>Verify Yourself</h2>
+  <ol>
+    <li>Open the source document.</li>
+    <li>Locate the HUD FY2024 budget request figure.</li>
+    <li>Confirm the value: <strong>$73.3 billion</strong>.</li>
+    <li>Copy the exact claim text below.</li>
+  </ol>
+  <pre style="background:#f0f2f5; padding:0.75rem; border-radius:8px; white-space:pre-wrap;">The FY2024 Budget requests $73.3 billion in gross discretionary appropriations for the Department of Housing and Urban Development.</pre>
+  <pre style="background:#1e1e2f; color:#c9d1d9; padding:0.75rem; border-radius:8px; white-space:pre-wrap;">CLAIM='The FY2024 Budget requests $73.3 billion in gross discretionary appropriations for the Department of Housing and Urban Development.'
+printf '%s' "$CLAIM" | sha256sum</pre>
+  <p>The output must match:</p>
+  <code class="hash">5ece344efd4d5f5b83c53bfd0e03bd518694f8c4c5f5200b44913c14c2c23bfc</code>
+
+  <div class="game-link">
+    <a href="game.html"><button>Play Verification Game</button></a>
+  </div>
+</div>
+
+<footer>
+  <p>Authority: false | Receipts are replayable</p>
+  <p>This site does not ask you to trust it. It gives you the math to verify it.<br>Not anti-news. Anti-drift. Public receipts from day one.</p>
+</footer>
+</body>
+</html>

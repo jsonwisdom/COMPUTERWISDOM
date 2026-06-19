@@ -1,0 +1,39 @@
+{
+  "schema_version": "0.2.0",
+  "artifact": "GRADUATION_READINESS_STATE_V0_2",
+  "phase": "VERIFICATION_READY",
+  "constitutional_design": "FROZEN_FOR_PILOT_SCOPE",
+  "portal_version": "0.2",
+  "source_pr": 162,
+  "source_branch": "feature/graduation-readiness-portal-v0-1",
+  "source_commit": "f33c4b840a5f42915a0a10a4153103f75a6cc2c8",
+  "authority": false,
+  "membrane": "HOLDS",
+  "graduation_ready": false,
+  "graduation_readiness": "UNCOMPUTED",
+  "readiness_computed_from": "STATIC_CONSTITUTIONAL_PLACEHOLDER",
+  "blocking_gates": {
+    "successor_capability": "UNVERIFIED",
+    "observer_capability": "UNVERIFIED",
+    "infrastructure_capability": "UNVERIFIED",
+    "process_capability": "UNVERIFIED",
+    "verification_capability": "UNVERIFIED"
+  },
+  "must_not_claim": [
+    "This state object does not certify correctness, truth, compliance, legitimacy, or morality.",
+    "This state object does not replace human institutional authority.",
+    "This state object does not create a Graduation Event without a real HIGH or CRITICAL pressure case.",
+    "Readiness is not graduation.",
+    "Authority remains false."
+  ],
+  "graduation_requirements": {
+    "real_pressure_event_required": "HIGH_OR_CRITICAL",
+    "successor_led_execution_required": true,
+    "founder_silence_required": true,
+    "replay_success_required": true,
+    "invariants_broken_required_value": 0
+  },
+  "next_artifact_source": "OPERATION",
+  "invariants_broken": 0,
+  "generated_at_utc": "PLACEHOLDER_UNTIL_OPERATIONAL_EMISSION"
+}

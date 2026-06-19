@@ -1,0 +1,98 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jsonwisdom/COMPUTERWISDOM/schemas/independent_verifier_result.schema.json",
+  "title": "Independent Verifier Result",
+  "description": "Schema for independent verification of replay events. This schema records replay evidence only and does not itself promote authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "verifier_id",
+    "verification_target",
+    "observed_hash",
+    "expected_hash",
+    "hash_match",
+    "transaction_hash",
+    "attestation_uid",
+    "schema_uid",
+    "source_artifact",
+    "compiled_bytecode_match",
+    "receipt_url",
+    "custody_timestamp",
+    "independent_verifier_result",
+    "authority",
+    "promotion_allowed"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "verifier_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "verification_target": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_hash": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{64}$"
+    },
+    "expected_hash": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{64}$"
+    },
+    "hash_match": {
+      "type": "boolean"
+    },
+    "transaction_hash": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{64}$"
+    },
+    "attestation_uid": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{64}$"
+    },
+    "schema_uid": {
+      "type": "string",
+      "pattern": "^0x[a-fA-F0-9]{64}$"
+    },
+    "source_artifact": {
+      "type": "string",
+      "minLength": 1
+    },
+    "compiled_bytecode_match": {
+      "type": "boolean"
+    },
+    "receipt_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "custody_timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "independent_verifier_result": {
+      "type": "string",
+      "enum": [
+        "PASS",
+        "FAIL",
+        "BLOCKED",
+        "PENDING"
+      ]
+    },
+    "authority": {
+      "type": "boolean",
+      "const": false
+    },
+    "promotion_allowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "reward_id": "rwd_prod_20260618_001",
+  "destination": "0x6076815543ee881fdc486b84c3c99435eca729cc",
+  "network": "base",
+  "asset": "JAYWISDOM",
+  "amount": "1000",
+  "replay_status": "REPLAYED",
+  "settlement_status": "PENDING",
+  "created": "2026-06-18T00:00:00Z"
+}

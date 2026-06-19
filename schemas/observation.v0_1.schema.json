@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OBSERVATION_V0_1",
+  "type": "object",
+  "required": [
+    "observation_id",
+    "observer_id",
+    "timestamp",
+    "lineage_root",
+    "constitutional_root",
+    "schema_version",
+    "authority",
+    "authority_boundary",
+    "hash"
+  ],
+  "properties": {
+    "observation_id": {"type": "string"},
+    "observer_id": {"type": "string"},
+    "observed_artifact_id": {"type": "string"},
+    "observed_trace_id": {"type": "string"},
+    "source_ref": {"type": "string"},
+    "observation_type": {"type": "string"},
+    "timestamp": {"type": "string"},
+    "lineage_root": {"type": "string"},
+    "constitutional_root": {"type": "string", "const": "808f2b1c6c339eb46e68a2161da3cca22f7b0eeb"},
+    "schema_version": {"type": "string", "const": "OBSERVATION_V0_1"},
+    "authority": {"type": "boolean", "const": false},
+    "authority_boundary": {"type": "string", "const": "NONE"},
+    "hash": {"type": "string"}
+  }
+}

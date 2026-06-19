@@ -1,0 +1,14 @@
+{
+  "event": "ONCHAIN_ANCHOR_COMPLETED",
+  "chain": "base",
+  "chain_id": 8453,
+  "block_number": 46769433,
+  "timestamp": "2026-06-01T15:36:53Z",
+  "status": "Success",
+  "eas_contract": "0x4200000000000000000000000000000000000021",
+  "schema_uid": "0x359875d7396872e2320592e88c85f3c426d639c07e6bc3f11593b89c186521d2",
+  "attestation_uid": "0xA8339B7891242FE7F4CEE14334018DF6DD0BE0DBD912B93F93B6AF4F593F0919",
+  "tx_hash": "0xadd6c7607ce1aaa21773ac1ff7ffcbb900f50b86c6e9d50f50b7b5c855376ca8",
+  "packet_hash": "0x816894e4fd096dd024e1d56ba546a9493d455b7648a57b811b63591e8a384ade",
+  "authority": false
+}

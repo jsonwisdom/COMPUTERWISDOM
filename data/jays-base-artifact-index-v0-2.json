@@ -1,0 +1,23 @@
+{
+  "schema_version": "0.2",
+  "artifact": "JAYS_BASE_ARTIFACT_INDEX_V0_2",
+  "identity_anchor": "jaywisdom.base.eth",
+  "companion_anchor": "jaywisdom.eth",
+  "system": "COMPUTERWISDOM",
+  "authority": false,
+  "membrane": "HOLDS",
+  "index_entries": [
+    {"name": "Graduation Readiness Portal", "path": "graduation-readiness-live-portal-v0-1.html", "class": "cockpit"},
+    {"name": "Pressure Model State", "path": "data/pressure-model-state-v0-4.json", "class": "state"},
+    {"name": "Escalation Dashboard", "path": "escalation-log-dashboard-v0-5.html", "class": "dashboard"},
+    {"name": "Continuity Explorer", "path": "continuity-explorer-v0-6.html", "class": "dashboard"},
+    {"name": "Drill Results Replay", "path": "drill-results-replay-v0-7.html", "class": "replay"},
+    {"name": "Amendment Graph Explorer", "path": "amendment-graph-explorer-v0-8.html", "class": "lineage"},
+    {"name": "Base Manifest", "path": "data/jays-base-manifest-v0-2.json", "class": "manifest"}
+  ],
+  "must_not_claim": [
+    "Index visibility does not equal validation.",
+    "Artifact presence does not certify correctness or completeness.",
+    "Authority remains false."
+  ]
+}
