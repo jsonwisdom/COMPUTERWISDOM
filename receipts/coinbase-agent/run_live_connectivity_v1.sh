@@ -44,7 +44,8 @@ STATUS
 fi
 
 cp "$OUT" "$RECEIPTS_DIR/connectivity_products_btc_usd.json"
-cp "$HASH" "$RECEIPTS_DIR/connectivity_products_btc_usd.sha256"
+sha256sum "$RECEIPTS_DIR/connectivity_products_btc_usd.json" | tee "$RECEIPTS_DIR/connectivity_products_btc_usd.sha256"
+
 cp "$OUT" "$RECEIPTS_DIR/event_001_attestation.json"
 sha256sum "$RECEIPTS_DIR/event_001_attestation.json" | tee "$RECEIPTS_DIR/event_001_attestation.sha256"
 
