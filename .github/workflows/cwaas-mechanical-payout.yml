@@ -1,0 +1,124 @@
+name: CWaaS Mechanical Payout
+
+on:
+  workflow_dispatch:
+    inputs:
+      receipt_path:
+        description: "Receipt file proving the payable event"
+        required: true
+        default: "projects/cwaas/receipts/EVENT_001_TREASURY_ATTEST_V0.md"
+      recipient:
+        description: "Recipient wallet, basename, or payout identifier"
+        required: true
+      amount:
+        description: "Amount to pay, human-entered"
+        required: true
+      asset:
+        description: "Asset symbol, for example USDC"
+        required: true
+        default: "USDC"
+      reason:
+        description: "Reason for payout"
+        required: true
+      dry_run:
+        description: "Keep true unless protected payout environment is approved"
+        required: true
+        default: "true"
+        type: choice
+        options:
+          - "true"
+          - "false"
+
+permissions:
+  contents: write
+
+jobs:
+  prepare-payout-receipt:
+    runs-on: ubuntu-latest
+    outputs:
+      receipt_hash: ${{ steps.hash.outputs.receipt_hash }}
+      payout_receipt: ${{ steps.emit.outputs.payout_receipt }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Verify payable receipt exists
+        run: |
+          set -euo pipefail
+          test -f "${{ inputs.receipt_path }}" || {
+            echo "BLOCKED: receipt_path missing: ${{ inputs.receipt_path }}"
+            exit 1
+          }
+
+      - name: Compute receipt hash
+        id: hash
+        run: |
+          set -euo pipefail
+          HASH="$(sha256sum "${{ inputs.receipt_path }}" | awk '{print $1}')"
+          echo "receipt_hash=$HASH" >> "$GITHUB_OUTPUT"
+          echo "receipt_hash=$HASH"
+
+      - name: Emit payout receipt
+        id: emit
+        run: |
+          set -euo pipefail
+          mkdir -p projects/cwaas/payouts
+          TS="$(date -u +%Y%m%dT%H%M%SZ)"
+          OUT="projects/cwaas/payouts/PAYOUT_${TS}.md"
+          cat > "$OUT" <<EOF
+          # CWaaS PAYOUT RECEIPT
+
+          status: PREPARED
+          workflow: cwaas-mechanical-payout
+          timestamp_utc: $(date -u +%Y-%m-%dT%H:%M:%SZ)
+          git_ref: $GITHUB_REF
+          git_sha: $GITHUB_SHA
+
+          receipt_path: ${{ inputs.receipt_path }}
+          receipt_hash: ${{ steps.hash.outputs.receipt_hash }}
+
+          recipient: ${{ inputs.recipient }}
+          amount: ${{ inputs.amount }}
+          asset: ${{ inputs.asset }}
+          reason: ${{ inputs.reason }}
+          dry_run: ${{ inputs.dry_run }}
+
+          execution_state: PREPARED_ONLY
+          human_approval_required: true
+          auto_execution: false
+
+          Boss Brenda Lock:
+          - No receipt hash, no payout.
+          - No protected approval, no live payment.
+          - No dry_run=false, no execution attempt.
+          - No secret in repo.
+          - No fake green.
+          EOF
+          echo "payout_receipt=$OUT" >> "$GITHUB_OUTPUT"
+
+      - name: Commit payout receipt
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add projects/cwaas/payouts/
+          git commit -m "emit CWaaS payout preparation receipt" || echo "No payout receipt changes to commit"
+          git push
+
+  guarded-payment-step:
+    needs: prepare-payout-receipt
+    runs-on: ubuntu-latest
+    environment: cwaas-payout
+    if: ${{ inputs.dry_run == 'false' }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Final constitutional gate
+        run: |
+          set -euo pipefail
+          echo "Receipt hash: ${{ needs.prepare-payout-receipt.outputs.receipt_hash }}"
+          echo "Payout receipt: ${{ needs.prepare-payout-receipt.outputs.payout_receipt }}"
+          echo "BLOCKED_BY_DEFAULT: connect a reviewed payout adapter here."
+          echo "This workflow intentionally does not include payment keys or provider commands."
+          exit 1
