@@ -1,0 +1,38 @@
+{
+  "receipt_type": "ARCHIVE_VERIFICATION",
+  "authority": false,
+  "timestamp_utc": "2026-06-02T23:30:00Z",
+  "claim": "The FY2024 Budget requests $73.3 billion in gross discretionary appropriations for the Department of Housing and Urban Development.",
+  "claim_hash": "sha256:5ece344efd4d5f5b83c53bfd0e03bd518694f8c4c5f5200b44913c14c2c23bfc",
+  "claim_hash_status": "INDEPENDENTLY_RECOMPUTED_BY_ASSISTANT_FROM_EXACT_CLAIM_TEXT",
+  "source_status": "USER_REPORTED_ARCHIVE_CANDIDATES_NOT_INDEPENDENTLY_CONFIRMED_BY_ASSISTANT",
+  "sources": [
+    {
+      "title": "White House FY2024 Budget Appendix",
+      "original_url": "https://www.whitehouse.gov/wp-content/uploads/2023/03/budget_fy2024.pdf",
+      "archive_url": "https://web.archive.org/web/20230309000000/https://www.whitehouse.gov/wp-content/uploads/2023/03/budget_fy2024.pdf"
+    },
+    {
+      "title": "CRS Report IF12278 - HUD Appropriations, FY2024",
+      "original_url": "https://crsreports.congress.gov/product/pdf/IF/IF12278",
+      "archive_url": "https://web.archive.org/web/20230315000000/https://crsreports.congress.gov/product/pdf/IF/IF12278",
+      "exact_quote_user_reported": "The President's FY2024 budget request proposes $73.3 billion in gross discretionary appropriations for HUD, about $1.1 billion (2%) more than the $72.2 billion in FY2023."
+    },
+    {
+      "title": "HUD FY2024 Congressional Budget Justification",
+      "original_url": "https://www.whitehouse.gov/wp-content/uploads/2023/03/hud_fy2024_cj.pdf",
+      "archive_url": "https://web.archive.org/web/20230309000000/https://www.whitehouse.gov/wp-content/uploads/2023/03/hud_fy2024_cj.pdf",
+      "page_user_reported": 8,
+      "table_user_reported": "Gross Discretionary Appropriations by Account"
+    }
+  ],
+  "verification_steps": [
+    "1. Open any archived source above",
+    "2. Locate the HUD discretionary appropriation for FY2024",
+    "3. Confirm the figure: $73.3 billion",
+    "4. Copy the exact claim text",
+    "5. Run: printf '%s' \"$CLAIM\" | sha256sum",
+    "6. Compare output to claim_hash"
+  ],
+  "discrepancy_note": "Original demo receipt ($63.1B) was flagged as incorrect. This receipt records the corrected claim text, recomputed hash, and user-reported archive candidates for source verification."
+}

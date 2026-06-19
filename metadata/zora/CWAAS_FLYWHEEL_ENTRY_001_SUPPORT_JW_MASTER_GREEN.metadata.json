@@ -1,0 +1,16 @@
+{
+  "name": "CWaaS Flywheel Entry 001 — SUPPORT-JW-001 Master Green",
+  "description": "The first Computer Wisdom as a Service flywheel entry: SUPPORT-JW-001 sealed to master, then prepared for Option D Full Send Visual Replay. The receipt is proof. The image is presentation.",
+  "image": "ipfs://PLACEHOLDER_MASTER_GREEN_RENDER",
+  "external_url": "https://github.com/jsonwisdom/COMPUTERWISDOM",
+  "attributes": [
+    { "trait_type": "Engine", "value": "Computer Wisdom as a Service" },
+    { "trait_type": "Ticket", "value": "SUPPORT-JW-001" },
+    { "trait_type": "State", "value": "MASTER_GREEN" },
+    { "trait_type": "Option", "value": "D_FULL_SEND_VISUAL_REPLAY" },
+    { "trait_type": "Proof Layer", "value": "Receipt" },
+    { "trait_type": "Presentation Layer", "value": "Rendered Image" },
+    { "trait_type": "Authority", "value": "false" },
+    { "trait_type": "No Fake Green", "value": "true" }
+  ]
+}

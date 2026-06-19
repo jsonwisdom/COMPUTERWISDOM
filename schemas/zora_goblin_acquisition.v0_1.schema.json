@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/zora_goblin_acquisition.v0_1.schema.json",
+  "title": "Zora Goblin Acquisition Layer v0.1",
+  "type": "object",
+  "required": [
+    "doc_id",
+    "acquisition_version",
+    "acquisition_class",
+    "chain_id",
+    "contract_address",
+    "symbol",
+    "series_id",
+    "authority",
+    "reversibility_class",
+    "metadata_resolution",
+    "metadata_snapshot",
+    "evidence_chain",
+    "gateway_class",
+    "proof_007"
+  ],
+  "properties": {
+    "doc_id": { "const": "ZFD-GOBLIN-ACQ-LAYER-V0_1" },
+    "acquisition_version": { "const": "ZFD-GOBLIN-ACQ-LAYER-V0_1" },
+    "acquisition_class": { "const": "DIRECT_RPC" },
+    "chain_id": { "const": 8453 },
+    "contract_address": { "type": "string", "pattern": "^0x[a-fA-F0-9]{40}$" },
+    "symbol": { "type": "string", "minLength": 1 },
+    "series_id": { "type": "string", "minLength": 1 },
+    "card_id": { "type": "string" },
+    "authority": { "const": false },
+    "reversibility_class": {
+      "enum": ["OBSERVED", "DERIVED", "SYMBOLIC", "SPECULATIVE"]
+    },
+    "gateway_class": {
+      "enum": ["DIRECT", "MIRROR_GATEWAY"]
+    },
+    "metadata_resolution": {
+      "type": "object",
+      "required": ["attempted", "selected", "raw_uri", "resolved_metadata_url"],
+      "properties": {
+        "attempted": {
+          "type": "array",
+          "items": { "enum": ["contractURI()", "tokenURI(0)", "uri(0)"] },
+          "minItems": 1
+        },
+        "selected": { "enum": ["contractURI()", "tokenURI(0)", "uri(0)"] },
+        "raw_uri": { "type": "string", "minLength": 1 },
+        "resolved_metadata_url": { "type": "string", "minLength": 1 },
+        "store_raw_uri": { "type": "boolean" },
+        "store_resolved_uri": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    },
+    "metadata_snapshot": {
+      "type": "object",
+      "required": ["metadata_json", "metadata_hash"],
+      "properties": {
+        "metadata_json": { "type": "object" },
+        "metadata_hash": { "type": "string", "pattern": "^sha256:[A-Za-z0-9._:-]+$" },
+        "image_uri": { "type": "string" },
+        "resolved_image_url": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "evidence_chain": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["evidence_type", "uri", "hash_status"],
+        "properties": {
+          "evidence_type": { "type": "string", "minLength": 1 },
+          "uri": { "type": "string", "minLength": 1 },
+          "resolved_uri": { "type": "string" },
+          "sha256": { "type": "string" },
+          "hash_status": { "enum": ["PENDING_LOCAL_RECOMPUTE", "BOUND", "UNKNOWN"] },
+          "observed_at_block": { "type": "integer", "minimum": 0 },
+          "tx_hash": { "type": "string" }
+        },
+        "additionalProperties": true
+      }
+    },
+    "proof_007": {
+      "type": "object",
+      "required": ["tx_hash", "block_number", "block_timestamp", "replay_instructions"],
+      "properties": {
+        "tx_hash": { "type": "string" },
+        "block_number": { "type": "integer", "minimum": 0 },
+        "block_timestamp": { "type": "string", "format": "date-time" },
+        "replay_instructions": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

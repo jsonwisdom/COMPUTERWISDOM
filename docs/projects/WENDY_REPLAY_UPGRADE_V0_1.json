@@ -1,0 +1,13 @@
+{
+  "artifact": "WENDY_REPLAY_UPGRADE_V0_1",
+  "format": "JSON_REPLAY_LAYER",
+  "authority": false,
+  "identity_anchor": {
+    "ens": "jaywisdom.eth",
+    "basename": "jaywisdom.base.eth"
+  },
+  "surface": "Wendy",
+  "region": "Wisconsin / Midwest",
+  "role": "replay_auditor",
+  "core_question": "Can you do it again?",
+  "purpose": "Upgrade Wendy from a vern

@@ -1,0 +1,10 @@
+{
+  "artifact": "KARENS_PORTAL_MN_EDITION_V0_1",
+  "format": "JSON_PORTAL_SPEC",
+  "authority": false,
+  "identity_anchor": {
+    "ens": "jaywisdom.eth",
+    "basename": "jaywisdom.base.eth"
+  },
+  "purpose": "Create a Minnesota-first provenance portal mirrored by Wisconsin Wendy and Dubuque Debbie for replay and cross-state civic metadata consumption.",
+  "portal

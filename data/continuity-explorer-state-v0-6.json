@@ -1,0 +1,26 @@
+{
+  "schema_version": "0.6",
+  "artifact": "CONTINUITY_EXPLORER_V0_6",
+  "purpose": "replay lineage visibility",
+  "registry": "#130",
+  "phase": "LINEAGE_REPLAY",
+  "authority": false,
+  "membrane": "HOLDS",
+  "computational_judgment": null,
+  "inference_block": true,
+  "last_replay_timestamp": null,
+  "feeds": [
+    "#130 Continuity Report",
+    "Successor Drill Results",
+    "Escalation Log",
+    "Amendment Lineage"
+  ],
+  "must_not_claim": [
+    "Lineage replay does not certify completeness or correctness.",
+    "Visibility does not equal validation.",
+    "Absence of entries does not prove absence of breaks.",
+    "This explorer does not resolve continuity disputes.",
+    "Authority remains false."
+  ],
+  "lineage_entries": []
+}

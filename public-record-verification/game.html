@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verification Game | Anti-Drift</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 800px;
+      margin: 2rem auto;
+      padding: 1rem;
+      background: #faf9f8;
+      line-height: 1.5;
+    }
+    .game-container {
+      background: white;
+      border-radius: 20px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+    .claim-card {
+      background: #f0f2f5;
+      padding: 1.5rem;
+      border-radius: 16px;
+      margin: 1.5rem 0;
+      font-size: 1.2rem;
+      border-left: 4px solid #2c5f2d;
+    }
+    .verification-console {
+      background: #1e1e2f;
+      color: #c9d1d9;
+      font-family: monospace;
+      padding: 1rem;
+      border-radius: 12px;
+      margin: 1.5rem 0;
+    }
+    .hash-input {
+      width: 100%;
+      font-family: monospace;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 0.9rem;
+    }
+    button {
+      background: #2c5f2d;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      border-radius: 40px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+    .score {
+      font-size: 1.4rem;
+      font-weight: bold;
+      text-align: right;
+      color: #2c5f2d;
+    }
+    .feedback {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+    }
+    .correct { background: #d4edda; color: #155724; border-left: 4px solid #28a745; }
+    .incorrect { background: #f8d7da; color: #721c24; border-left: 4px solid #dc3545; }
+    footer {
+      margin-top: 2rem;
+      font-size: 0.8rem;
+      text-align: center;
+      color: #666;
+      border-top: 1px solid #ddd;
+      padding-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div class="game-container">
+  <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;">
+    <h1>Verification Game</h1>
+    <div class="score">Score: <span id="scoreValue">0</span></div>
+  </div>
+  <p><em>Verify the claim by recomputing its SHA-256 hash using the source document.</em></p>
+
+  <div id="gameArea"></div>
+  <div id="feedback"></div>
+
+  <footer>
+    <p>Authority: false | Receipts are replayable | <a href="index.html">Back to demo</a></p>
+    <p>This site does not ask you to trust it. It gives you the math to verify it.</p>
+  </footer>
+</div>
+
+<script>
+  const receipts = [
+    {
+      claim: "The FY2024 Budget requests $73.3 billion in gross discretionary appropriations for the Department of Housing and Urban Development.",
+      hash: "5ece344efd4d5f5b83c53bfd0e03bd518694f8c4c5f5200b44913c14c2c23bfc",
+      source: "https://crsreports.congress.gov/product/pdf/IF/IF12278",
+      hint: "Look for the HUD FY2024 request figure."
+    }
+  ];
+
+  let currentReceipt = receipts[0];
+  let score = Number(localStorage.getItem("verification_game_score") || "0");
+
+  function renderGame() {
+    document.getElementById("scoreValue").textContent = score;
+    document.getElementById("gameArea").innerHTML = `
+      <div class="claim-card">
+        <strong>Claim to verify:</strong><br>
+        "${currentReceipt.claim}"
+      </div>
+      <p><a href="${currentReceipt.source}" target="_blank" rel="noopener">Open source document</a></p>
+      <p><strong>Hint:</strong> ${currentReceipt.hint}</p>
+      <div class="verification-console">
+        <div>$ printf '%s' "&lt;exact claim text&gt;" | sha256sum</div>
+        <div style="margin-top: 0.5rem;">Receipt hash:</div>
+        <div style="word-break: break-all; background: #0d1117; padding: 0.5rem; border-radius: 6px;">${currentReceipt.hash}</div>
+      </div>
+      <label for="userHash">Your computed hash:</label>
+      <input type="text" id="userHash" class="hash-input" placeholder="Paste 64-character SHA-256 hash">
+      <button id="verifyBtn">Verify and Score</button>
+    `;
+    document.getElementById("verifyBtn").addEventListener("click", verifyAndScore);
+  }
+
+  function verifyAndScore() {
+    const userHash = document.getElementById("userHash").value.trim().toLowerCase();
+    const feedback = document.getElementById("feedback");
+    feedback.className = "feedback";
+
+    if (userHash === currentReceipt.hash) {
+      score += 10;
+      localStorage.setItem("verification_game_score", String(score));
+      document.getElementById("scoreValue").textContent = score;
+      feedback.innerHTML = "<strong>Correct.</strong> The hash matches the receipt. +10 points.";
+      feedback.classList.add("correct");
+    } else {
+      score = Math.max(0, score - 5);
+      localStorage.setItem("verification_game_score", String(score));
+      document.getElementById("scoreValue").textContent = score;
+      feedback.innerHTML = `<strong>Incorrect hash.</strong> Drift detected. Expected:<br><code>${currentReceipt.hash}</code><br>-5 points.`;
+      feedback.classList.add("incorrect");
+    }
+  }
+
+  renderGame();
+</script>
+</body>
+</html>

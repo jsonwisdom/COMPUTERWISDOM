@@ -1,0 +1,45 @@
+{
+  "artifact": "COMPUTERWISDOM_REPLAY_PACKET_V1",
+  "claim_id": "VECTOR_PERFECT_PACKET_001",
+  "claim_text": "A public citizen can create a verifiable chain of evidence without requiring institutional permission.",
+  "claim_hash": "sha256:5ed8c733d8f8bd4292f139a46f98e2f09460d01c1ea4221047d4e7c3c42f0418",
+  "evidence_layers": {
+    "github_commit": "https://github.com/jsonwisdom/COMPUTERWISDOM/commit/ec4d599a117666d2b03dc0e60604d238339febee",
+    "github_issue_or_pr": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/220",
+    "base_transaction": "0xb045bc517061bf4cad1a0f7a48162953653ce62c168e50695833490c8e62f94b",
+    "eas_uid": "0x4ad74cfbeb46ef19921ceb0424dc96c05ec584738a2a93e8657d5a8c09505528",
+    "archive_uri": "ipfs://bafkreibc22qaak5krwk4mwgvr4kzcly274ifw2tgbzxaoxjdcy3zi6rnpe"
+  },
+  "routing_layers": {
+    "zora_coin": "base:0x7443b1cc32c6a72f52ecd91df4ac2adeb058a66a (MERGED219)",
+    "x_post": "",
+    "website": "",
+    "other_routes": []
+  },
+  "replay_steps": [
+    "Fetch GitHub commit and PR",
+    "Verify claim_hash against committed content",
+    "Verify Base transaction and EAS UID payload",
+    "Fetch IPFS archive and compare hash",
+    "Run survival test over all evidence URIs"
+  ],
+  "failure_rules": {
+    "routing_failure": "non_fatal",
+    "evidence_failure": "critical",
+    "partial_evidence": "trigger_recovery"
+  },
+  "verification": {
+    "verification_mode": "INDEPENDENTLY_VERIFIED",
+    "verified_by": "verifier:golden-vector",
+    "verified_at": "2026-06-03T13:47:00Z"
+  },
+  "replay_result": {
+    "reconstructable": true,
+    "survival_test": "PASS"
+  },
+  "classification": {
+    "status": "FULLY_REPLAYABLE",
+    "promotion_allowed": true,
+    "authority": false
+  }
+}

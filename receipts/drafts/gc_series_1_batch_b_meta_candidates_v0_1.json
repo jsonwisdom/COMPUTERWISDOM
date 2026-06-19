@@ -1,0 +1,79 @@
+{
+  "artifact_id": "GC_SERIES_1_BATCH_B_META_CANDIDATES_V0_1",
+  "system_identity": "Meta",
+  "current_role": "candidate_generator_renderer",
+  "input_source": "Operator Jay directive",
+  "intended_destination": "rendered_candidate_artifacts",
+  "reversibility_class": "SYMBOLIC",
+  "authority": false,
+  "batch": "B",
+  "series": "Goblin Court Series 1: Receipts vs Vibes",
+  "candidates": [
+    {
+      "artifact_id": "GC-004",
+      "candidate_title": "GC-004 — PDF Phil",
+      "visual_prompt": "Satirical portrait trading card art, white border, readable top title plate 'GOBLIN COURT SERIES 1', readable bottom name plate 'PDF PHIL — COMPLIANCE WIZARD'. Cyber-comic Goblin Court aesthetic, neon terminal green and glitch purple palette. Character: goblin librarian with monocle, buried under 300-page PDF stack labeled 'TERMS & CONDITIONS V42'. One finger pointing to page 287 with text 'see footnote'. Background: walls of unread documents, tiny print, Ctrl+F prompt blinking '0 results'. Funny and sharp, no real public figures, no legal guilt claims, no financial safety claims.",
+      "metadata_candidate": {
+        "name": "PDF Phil",
+        "description": "Compliance wizard of unread pages. Role: Weaponizes document length to end arguments. Flavor text: 'It's all on page 287.' Specialty: burying accountability in appendices. Counters: summary requests, TL;DR demands.",
+        "attributes": [
+          { "trait_type": "Series", "value": "Goblin Court Series 1" },
+          { "trait_type": "Run", "value": "ZORA_FACTORY_PRODUCTION_RUN_10_V0_1" },
+          { "trait_type": "Authority", "value": "false" },
+          { "trait_type": "Reversibility Class", "value": "SYMBOLIC" },
+          { "trait_type": "Status", "value": "CANDIDATE" },
+          { "trait_type": "Role", "value": "Compliance Wizard" },
+          { "trait_type": "Clearance", "value": "Violet" },
+          { "trait_type": "Attack", "value": "DOCKET DUMP" },
+          { "trait_type": "Defense", "value": "APPENDIX ARMOR" }
+        ]
+      }
+    },
+    {
+      "artifact_id": "GC-005",
+      "candidate_title": "GC-005 — Governance Gary",
+      "visual_prompt": "Satirical portrait trading card art, white border, readable top title plate 'GOBLIN COURT SERIES 1', readable bottom name plate 'GOVERNANCE GARY — DAO DELEGATE'. Cyber-comic Goblin Court aesthetic, neon terminal green and glitch purple palette. Character: goblin in toga with 'VOTER' sash, holding rubber stamp over unread proposal stack, coffee in other hand. Background: forum threads with 'TL;DR?' comments, voting button already clicked. Funny and sharp, no real public figures, no legal guilt claims, no financial safety claims.",
+      "metadata_candidate": {
+        "name": "Governance Gary",
+        "description": "DAO delegate who votes before reading. Role: Outsources cognition to vibes. Flavor text: 'I support the proposal in principle.' Specialty: quorum theater. Counters: mandatory quizzes, delegate scorecards.",
+        "attributes": [
+          { "trait_type": "Series", "value": "Goblin Court Series 1" },
+          { "trait_type": "Run", "value": "ZORA_FACTORY_PRODUCTION_RUN_10_V0_1" },
+          { "trait_type": "Authority", "value": "false" },
+          { "trait_type": "Reversibility Class", "value": "SYMBOLIC" },
+          { "trait_type": "Status", "value": "CANDIDATE" },
+          { "trait_type": "Role", "value": "DAO Delegate" },
+          { "trait_type": "Clearance", "value": "Blue" },
+          { "trait_type": "Attack", "value": "RUBBER STAMP" },
+          { "trait_type": "Defense", "value": "PRINCIPLE CLOAK" }
+        ]
+      }
+    },
+    {
+      "artifact_id": "GC-006",
+      "candidate_title": "GC-006 — Yield Yoda",
+      "visual_prompt": "Satirical portrait trading card art, white border, readable top title plate 'GOBLIN COURT SERIES 1', readable bottom name plate 'YIELD YODA — APR MYSTIC'. Cyber-comic Goblin Court aesthetic, neon terminal green and glitch purple palette. Character: tiny robed goblin levitating above calculator with broken '=' key, holding staff topped with '%' symbol. Background: chart with infinite up-only staircase, 'math' crossed out in red. Funny and sharp, no real public figures, no legal guilt claims, no financial safety claims.",
+      "metadata_candidate": {
+        "name": "Yield Yoda",
+        "description": "APR mystic ignoring mathematics. Role: Preaches perpetual motion finance. Flavor text: 'Number go up forever.' Specialty: conflating yield with price. Counters: unit economics, second-grade division.",
+        "attributes": [
+          { "trait_type": "Series", "value": "Goblin Court Series 1" },
+          { "trait_type": "Run", "value": "ZORA_FACTORY_PRODUCTION_RUN_10_V0_1" },
+          { "trait_type": "Authority", "value": "false" },
+          { "trait_type": "Reversibility Class", "value": "SYMBOLIC" },
+          { "trait_type": "Status", "value": "CANDIDATE" },
+          { "trait_type": "Role", "value": "APR Mystic" },
+          { "trait_type": "Clearance", "value": "Violet" },
+          { "trait_type": "Attack", "value": "PERPETUAL MOTION" },
+          { "trait_type": "Defense", "value": "VIBES MATH" }
+        ]
+      }
+    }
+  ],
+  "missing_receipts": [
+    "rendered artifact files not yet recorded by Computer Wisdom",
+    "metadata hashes not computed",
+    "Zora publication not performed",
+    "replay acquisition receipts not generated"
+  ]
+}

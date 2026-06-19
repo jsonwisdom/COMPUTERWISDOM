@@ -1,0 +1,13 @@
+{
+  "dispute_id": "dispute-v0-1-example",
+  "target_artifact_id": "ers-event-example-v0-1",
+  "dispute_type": "lineage_reference",
+  "dispute_reason": "Reference preserved without modifying target artifact.",
+  "timestamp": "2026-06-04T00:00:00Z",
+  "lineage_root": "57bea5c3d116bc5fa267d3e2da98626fb6ed50c6",
+  "constitutional_root": "808f2b1c6c339eb46e68a2161da3cca22f7b0eeb",
+  "schema_version": "DISPUTE_V0_1",
+  "authority": false,
+  "authority_boundary": "NONE",
+  "hash": "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+}

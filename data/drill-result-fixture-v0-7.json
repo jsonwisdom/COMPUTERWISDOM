@@ -1,0 +1,62 @@
+{
+  "schema_version": "0.7",
+  "artifact": "DRILL_RESULT_FIXTURE_V0_7",
+  "purpose": "canonical replay examples for successor training and continuity audits",
+  "registry": "#162",
+  "phase": "FIXTURE_REPLAY",
+  "authority": false,
+  "membrane": "HOLDS",
+  "computational_judgment": null,
+  "inference_block": true,
+  "generated_timestamp": null,
+  "must_not_claim": [
+    "These fixtures do not represent actual system events.",
+    "Drill results do not certify real-world outcomes.",
+    "Fixtures are for training and replay only.",
+    "No fixture implies correctness, compliance, or resolution.",
+    "Authority remains false.",
+    "This data does not resolve disputes or validate lineage."
+  ],
+  "fixtures": [
+    {
+      "id": "drill-001",
+      "scenario": "HIGH → NO_CHANGE",
+      "severity": "HIGH",
+      "outcome": "NO_CHANGE",
+      "description": "High-pressure drill with no material change required. Membrane held.",
+      "timestamp": "2026-05-15T14:22:10Z",
+      "tags": ["pressure-test", "stability"],
+      "notes": "Successor correctly identified stability."
+    },
+    {
+      "id": "drill-002",
+      "scenario": "CRITICAL → AMENDMENT_REJECTED",
+      "severity": "CRITICAL",
+      "outcome": "AMENDMENT_REJECTED",
+      "description": "Critical escalation where proposed amendment was rejected. Membrane maintained.",
+      "timestamp": "2026-05-20T09:15:45Z",
+      "tags": ["amendment", "rejection"],
+      "notes": "Human review upheld original state."
+    },
+    {
+      "id": "drill-003",
+      "scenario": "CRITICAL → FOUNDER_INTERVENTION_DETECTED",
+      "severity": "CRITICAL",
+      "outcome": "FOUNDER_INTERVENTION_DETECTED",
+      "description": "Critical pressure triggered detection of founder-level intervention protocol.",
+      "timestamp": "2026-05-25T23:47:12Z",
+      "tags": ["founder", "intervention"],
+      "notes": "Protocol acknowledged external override."
+    },
+    {
+      "id": "drill-004",
+      "scenario": "HIGH → MISSING_LINEAGE",
+      "severity": "HIGH",
+      "outcome": "MISSING_LINEAGE",
+      "description": "High-severity drill exposing gap in amendment lineage continuity.",
+      "timestamp": "2026-05-28T11:03:55Z",
+      "tags": ["lineage", "gap"],
+      "notes": "Triggers Continuity Explorer visibility."
+    }
+  ]
+}

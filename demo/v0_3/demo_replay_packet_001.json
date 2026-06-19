@@ -1,0 +1,10 @@
+{
+  "demo_id": "constitutional_game_stack_v0_3_demo_001",
+  "claim_id": "claim_demo_001",
+  "caseflow_transition": "DRAFT_TO_UNDER_REVIEW",
+  "goblin_verifier_output": "PASS_TO_EXISTENCE_CHECK",
+  "agent_action_receipt": "agent_action_receipt_demo_001",
+  "replay_score_receipt": "replay_score_receipt_demo_001",
+  "anchor_hygiene_gate": "NO_ANCHOR_CLAIM_PRESENT",
+  "authority": false
+}
