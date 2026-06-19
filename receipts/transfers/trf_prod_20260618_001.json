@@ -1,0 +1,11 @@
+{
+  "transfer_id": "trf_prod_20260618_001",
+  "reward_id": "rwd_prod_20260618_001",
+  "tx_hash": "0xPASTE_REAL_64_HEX_BASE_TX_HASH_HERE",
+  "network": "base",
+  "destination": "0x6076815543ee881fdc486b84c3c99435eca729cc",
+  "asset": "JAYWISDOM",
+  "amount": "1000",
+  "status": "CONFIRMED",
+  "created": "2026-06-18T00:00:00Z"
+}
