@@ -1,0 +1,11 @@
+{
+  "receipt_type": "CWAAS_PREVIEW_RECEIPT_V2",
+  "mode": "PREVIEW_ONLY",
+  "external_action": false,
+  "human_review_required": true,
+  "work_id": "1",
+  "developer_basename": "jaywisdom.base.eth",
+  "github_identity": "jsonwisdom",
+  "generated_at": "2026-06-19T22:41:44Z",
+  "status": "PREVIEW_GENERATED"
+}
