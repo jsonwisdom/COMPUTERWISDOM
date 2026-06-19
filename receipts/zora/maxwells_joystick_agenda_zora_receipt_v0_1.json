@@ -1,0 +1,35 @@
+{
+  "artifact": "MAXWELLS_JOYSTICK_AGENDA_ZORA_RECEIPT_V0_1",
+  "schema_version": "v0.1",
+  "title": "MAXWELL'S JOYSTICK AGENDA",
+  "subtitle": "TIMESTAMP DEMON OF THE BASE MEMBRANE",
+  "concept_by": "JayWisdom.base.eth",
+  "universe": [
+    "JSONWisdom",
+    "Court Click Maniac",
+    "Goblin Court MN"
+  ],
+  "zora_coin_url": "https://zora.co/coin/base:0xd43367b3134a6a89e05fbfca1625894ea88e343a?referrer=0x829adfedbe565f9885a7ea6bc78912acaef055e2",
+  "chain": "base",
+  "contract_or_coin_identifier": "0xd43367b3134a6a89e05fbfca1625894ea88e343a",
+  "referrer": "0x829adfedbe565f9885a7ea6bc78912acaef055e2",
+  "known_fields": {
+    "source_url": null,
+    "observed_at": null,
+    "sha256": null,
+    "file_name": null,
+    "byte_size": null
+  },
+  "caption": "MAXWELL'S JOYSTICK AGENDA — The timestamp demon is on the move. Observe → Record → Hash. No accusations. No shortcuts. Just receipts, timestamps, and one very determined arcade goblin chasing agenda packets through the Base Membrane. UP + RIGHT + A. #JSONWisdom #GoblinCourt #Base #OnchainArt #Zora #Receipts #OpenData #MaxwellsJoystickAgenda",
+  "membrane": "HOLDS",
+  "authority": false,
+  "fraud_status": "UNKNOWN",
+  "accusation_loaded": false,
+  "crawler_status": "DISABLED",
+  "verification_status": "OPERATOR_SUBMITTED_LINK_NOT_INDEPENDENTLY_VERIFIED_BY_ASSISTANT",
+  "notes": [
+    "Receipt records the operator-submitted Zora coin link only.",
+    "No invented URL, hash, timestamp, file name, or byte size.",
+    "Contract/coin identifier is parsed from the submitted Zora URL and should remain UNVERIFIED until independently checked on Base/Zora."
+  ]
+}

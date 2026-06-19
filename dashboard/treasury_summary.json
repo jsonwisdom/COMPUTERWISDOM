@@ -1,0 +1,19 @@
+{
+  "schema": "BOSS_BRE_TREASURY_SUMMARY_V1",
+  "wallet": "0x6076815543ee881fdc486b84c3c99435eca729cc",
+  "pending_count": 1,
+  "settled_count": 0,
+  "pending_totals": {
+    "JAYWISDOM": "1000"
+  },
+  "settled_totals": {},
+  "rewards": [
+    {
+      "reward_id": "rwd_prod_20260618_001",
+      "asset": "JAYWISDOM",
+      "amount": "1000",
+      "settlement_status": "PENDING",
+      "lane": "pending"
+    }
+  ]
+}

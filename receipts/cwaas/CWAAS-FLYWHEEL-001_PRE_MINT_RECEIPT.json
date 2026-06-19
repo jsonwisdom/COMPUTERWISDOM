@@ -1,0 +1,22 @@
+{
+  "protocol_version": "1.0.0",
+  "deployment_timestamp": "2026-06-14T21:23:10Z",
+  "entry_id": "CWAAS-FLYWHEEL-001",
+  "root_payload_sha256": "1587a6227334c47e79bbf92dc08c4cfa767032a260ecdefd3844c95aca2b4d94",
+  "artifacts": {
+    "image_cid": "bafybeifrc7p22hg7gjg7fmx32h6ww5abbdq7qubgsaxp45qv5v3yyuqfje",
+    "metadata_cid": "bafybeignsppilrdaeuaroz5zuqocq2hzcaxaoy3psijy7uarfsy2frj634"
+  },
+  "uris": {
+    "token_uri": "ipfs://bafybeignsppilrdaeuaroz5zuqocq2hzcaxaoy3psijy7uarfsy2frj634",
+    "image_uri": "ipfs://bafybeifrc7p22hg7gjg7fmx32h6ww5abbdq7qubgsaxp45qv5v3yyuqfje"
+  },
+  "mint_status": "PENDING_ON_CHAIN",
+  "on_chain_data": {
+    "tx_hash": null,
+    "token_id": null,
+    "block_number": null
+  },
+  "no_fake_green": true,
+  "authority": false
+}

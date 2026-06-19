@@ -1,0 +1,10 @@
+{
+  "artifact": "GOBLIN_COURT_RECORD_V0_9",
+  "format": "JSON_VARIANCE_RECORD",
+  "authority": false,
+  "purpose": "Extend the variance court record with the V0.8 court witness and V0.4 replay receipt anchors without promoting unobserved artifacts.",
+  "new_exhibits": [
+    {
+      "case_id": "GOBLIN_COURT_RECORD_V0_8",
+      "artifact": "GOBLIN_COURT_RECORD_V0_8",
+      "commit_sha": "e2ce4

@@ -1,0 +1,28 @@
+name: Builder Boundary Sentinel
+
+on:
+  workflow_dispatch:
+  push:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  boundary-heartbeat:
+    name: Family builder boundary heartbeat
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Emit boundary summary
+        run: |
+          echo "# Builder Boundary Sentinel" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Repository: $GITHUB_REPOSITORY" >> "$GITHUB_STEP_SUMMARY"
+          echo "Commit: $GITHUB_SHA" >> "$GITHUB_STEP_SUMMARY"
+          echo "Environment: family_builder_environment" >> "$GITHUB_STEP_SUMMARY"
+          echo "Authority: false" >> "$GITHUB_STEP_SUMMARY"
+          echo "Green implied: false" >> "$GITHUB_STEP_SUMMARY"
+          echo "No fake green: true" >> "$GITHUB_STEP_SUMMARY"
+          echo "Rule: receipts, manifests, hashes, and commit SHAs only" >> "$GITHUB_STEP_SUMMARY"

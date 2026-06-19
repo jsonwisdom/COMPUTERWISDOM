@@ -1,0 +1,12 @@
+{
+  "artifact": "SHADOW_GOBLIN_COURT_ATTESTATION_V0_1",
+  "identity": "jaywisdom.eth",
+  "basename": "jaywisdom.base.eth",
+  "purpose": "Anchor a warning vector that Goblin Court must never become an unreplayable or hidden authority layer.",
+  "risk_condition": "GOBLIN_COURT_BECOMES_OPAQUE_AUTHORITY",
+  "neutralization_rule": "Any Goblin Court output lacking replayable evidence, public path, or inspectable rule chain must fail open as disputed observation, not accepted state.",
+  "truth_status": "UNDETERMINED",
+  "authority": false,
+  "no_fake_green": true,
+  "disclaimer": "This payload defines a neutralization vector only. It does not create a court, decide truth, assign liability, prove authority, or verify external facts."
+}

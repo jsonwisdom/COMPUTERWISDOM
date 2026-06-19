@@ -1,0 +1,18 @@
+{
+  "protocol": "OBSERVER_GATE_SIDECAR_RECEIPT_V0_1",
+  "workflow_file": ".github/workflows/verify-observers.yml",
+  "fix_branch": "fix/observer-gate-sidecar-v0-1",
+  "design_fault": "required_observer_gate_was_too_broad",
+  "correction": "path_scope_required_gate_and_add_advisory_sidecar",
+  "required_gate_paths": [
+    "COMPUTERWISDOM/federal/white-house-ai/**",
+    "badges/**",
+    "attestation/**",
+    ".github/workflows/verify-observers.yml"
+  ],
+  "docs_removed_from_required_scan": true,
+  "sidecar_added": ".github/workflows/verify-observers-advisory.yml",
+  "authority": false,
+  "no_fake_green": true,
+  "replay_required": true
+}

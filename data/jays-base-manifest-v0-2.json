@@ -1,0 +1,29 @@
+{
+  "schema_version": "0.2",
+  "artifact": "JAYS_BASE_ARTIFACT_PACK_V0_2",
+  "purpose": "canonical base layer for COMPUTERWISDOM observability surfaces",
+  "registry": "#130",
+  "phase": "BASE_INFRASTRUCTURE",
+  "authority": false,
+  "membrane": "HOLDS",
+  "computational_judgment": null,
+  "inference_block": true,
+  "generated": "2026-05-31",
+  "must_not_claim": [
+    "This manifest does not certify completeness or finality.",
+    "Base pack provides visibility only.",
+    "No surface in this pack claims authority or resolution.",
+    "All operations remain read-only and constitutional.",
+    "Membrane HOLDS."
+  ],
+  "core_surfaces": [
+    "Mission Control Landing",
+    "Artifact Index",
+    "Replay Surface Registry",
+    "Pressure Model V0.4",
+    "Escalation Dashboard V0.5",
+    "Continuity Explorer V0.6",
+    "Drill Result Fixtures V0.7"
+  ],
+  "navigation_cards": ["Base Navigation Card V0.2"]
+}

@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>COMPUTERWISDOM – Graduation Readiness Live Portal V0.4</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body { font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif; margin: 2rem; background: #0b0c10; color: #e5e5e5; }
+    h1, h2, h3 { margin-bottom: 0.25rem; }
+    .block { border: 1px solid #333; padding: 1rem; margin-bottom: 1.5rem; border-radius: 6px; background: #111319; }
+    .status-ok { color: #7CFC00; }
+    .status-warn { color: #FFD700; }
+    .status-bad { color: #FF6347; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size: 0.9rem; }
+    pre { background: #050608; padding: 0.75rem; border-radius: 4px; overflow-x: auto; }
+    .label { font-weight: 600; }
+  </style>
+</head>
+<body>
+  <h1>COMPUTERWISDOM – Graduation Readiness Live Portal V0.4</h1>
+  <p>Static, read-only cockpit. Authority remains <strong>false</strong>. Membrane <strong>HOLDS</strong>. No graduation claims.</p>
+
+  <div class="block">
+    <h2>Constitutional Status</h2>
+    <p><span class="label">authority:</span> <span id="authority-status">false</span></p>
+    <p><span class="label">membrane:</span> <span id="membrane-status">HOLDS</span></p>
+    <p><span class="label">invariants_broken:</span> <span id="invariants-broken">0</span></p>
+  </div>
+
+  <div class="block">
+    <h2>Graduation Readiness (Static JSON – V0.2)</h2>
+    <p><span class="label">graduation_ready:</span> <span id="graduation-ready">false</span></p>
+    <p><span class="label">graduation_readiness:</span> <span id="graduation-readiness">UNCOMPUTED</span></p>
+    <p><span class="label">readiness_computed_from:</span> <span id="readiness-computed-from">[unloaded]</span></p>
+    <p><span class="label">blocking_gates:</span></p>
+    <ul id="blocking-gates-list"></ul>
+    <p><span class="label">must_not_claim:</span></p>
+    <ul id="must-not-claim-list"></ul>
+  </div>
+
+  <div class="block">
+    <h2>Pressure Monitor (Static JSON – V0.4)</h2>
+    <p><span class="label">pressure_state:</span> <span id="pressure-state">LOW (SAFE_FALLBACK)</span></p>
+    <p><span class="label">pressure_context:</span> <span id="pressure-context">UNVERIFIED</span></p>
+    <p><span class="label">precedent_risk_score:</span> <span id="precedent-risk-score">0</span></p>
+    <p><span class="label">graduation_eligible:</span> <span id="graduation-eligible">false</span></p>
+    <p><span class="label">founder_intervention_detected:</span> <span id="founder-intervention-detected">false</span></p>
+  </div>
+
+  <div class="block">
+    <h2>Canonical State Preview</h2>
+    <p>Read-only composite of readiness + pressure. This is not a graduation claim.</p>
+    <pre><code id="canonical-json-preview">{}</code></pre>
+  </div>
+
+  <div class="block">
+    <h2>Must-Not-Claim Conditions</h2>
+    <p>If any of these hold, no one may claim graduation:</p>
+    <ul>
+      <li>graduation_ready == false</li>
+      <li>graduation_readiness == UNCOMPUTED</li>
+      <li>any blocking_gate == UNVERIFIED</li>
+      <li>authority != false</li>
+      <li>membrane != HOLDS</li>
+      <li>invariants_broken != 0</li>
+      <li>pressure_state == CRITICAL without review</li>
+      <li>founder_intervention_detected == true</li>
+      <li>lineage_traversal_incomplete == true</li>
+    </ul>
+  </div>
+
+  <script>
+    (function () {
+      var readinessUrl = 'data/graduation-readiness-state-v0-2.json';
+      var pressureUrl = 'data/pressure-model-state-v0-4.json';
+
+      var readinessState = {
+        graduation_ready: false,
+        graduation_readiness: 'UNCOMPUTED',
+        readiness_computed_from: [],
+        blocking_gates: {},
+        must_not_claim: []
+      };
+
+      var pressureState = {
+        pressure_state: 'LOW',
+        pressure_context: 'UNVERIFIED',
+        precedent_risk_score: 0,
+        graduation_eligible: false,
+        founder_intervention_detected: false
+      };
+
+      var invariantsBroken = 0;
+      var authority = false;
+      var membrane = 'HOLDS';
+
+      function safeJsonFetch(url, onSuccess, onFailure) {
+        try {
+          var xhr = new XMLHttpRequest();
+          xhr.open('GET', url, true);
+          xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+              if (xhr.status >= 200 && xhr.status < 300) {
+                try {
+                  var data = JSON.parse(xhr.responseText);
+                  onSuccess(data);
+                } catch (e) {
+                  onFailure(e);
+                }
+              } else {
+                onFailure(new Error('HTTP ' + xhr.status));
+              }
+            }
+          };
+          xhr.send();
+        } catch (e) {
+          onFailure(e);
+        }
+      }
+
+      function render() {
+        document.getElementById('authority-status').textContent = String(authority);
+        document.getElementById('membrane-status').textContent = membrane;
+        document.getElementById('invariants-broken').textContent = String(invariantsBroken);
+
+        document.getElementById('graduation-ready').textContent = String(readinessState.graduation_ready);
+        document.getElementById('graduation-readiness').textContent = readinessState.graduation_readiness;
+        document.getElementById('readiness-computed-from').textContent =
+          readinessState.readiness_computed_from && readinessState.readiness_computed_from.length
+            ? readinessState.readiness_computed_from.join(', ')
+            : 'UNCOMPUTED';
+
+        var gatesList = document.getElementById('blocking-gates-list');
+        gatesList.innerHTML = '';
+        var gates = readinessState.blocking_gates || {};
+        for (var key in gates) {
+          if (Object.prototype.hasOwnProperty.call(gates, key)) {
+            var li = document.createElement('li');
+            li.textContent = key + ': ' + gates[key];
+            gatesList.appendChild(li);
+          }
+        }
+
+        var mustNotList = document.getElementById('must-not-claim-list');
+        mustNotList.innerHTML = '';
+        var mnc = readinessState.must_not_claim || [];
+        for (var i = 0; i < mnc.length; i++) {
+          var li2 = document.createElement('li');
+          li2.textContent = mnc[i];
+          mustNotList.appendChild(li2);
+        }
+
+        document.getElementById('pressure-state').textContent = pressureState.pressure_state;
+        document.getElementById('pressure-context').textContent = pressureState.pressure_context;
+        document.getElementById('precedent-risk-score').textContent = String(pressureState.precedent_risk_score);
+        document.getElementById('graduation-eligible').textContent = String(pressureState.graduation_eligible);
+        document.getElementById('founder-intervention-detected').textContent = String(pressureState.founder_intervention_detected);
+
+        var canonical = {
+          schema_version: '0.4',
+          artifact: 'graduation_readiness_plus_pressure',
+          authority: authority,
+          membrane: membrane,
+          invariants_broken: invariantsBroken,
+          readiness: readinessState,
+          pressure: pressureState,
+          note: 'This object is read-only and does not constitute a graduation claim.'
+        };
+        document.getElementById('canonical-json-preview').textContent = JSON.stringify(canonical, null, 2);
+      }
+
+      safeJsonFetch(readinessUrl, function (data) {
+        try {
+          readinessState.graduation_ready = !!data.graduation_ready;
+          readinessState.graduation_readiness = data.graduation_readiness || 'UNCOMPUTED';
+          readinessState.readiness_computed_from = data.readiness_computed_from || [];
+          readinessState.blocking_gates = data.blocking_gates || {};
+          readinessState.must_not_claim = data.must_not_claim || [];
+          if (typeof data.invariants_broken === 'number') invariantsBroken = data.invariants_broken;
+          if (typeof data.authority === 'boolean') authority = data.authority;
+          if (typeof data.membrane === 'string') membrane = data.membrane;
+        } catch (e) {}
+        render();
+      }, function () {
+        readinessState.graduation_ready = false;
+        readinessState.graduation_readiness = 'UNCOMPUTED';
+        readinessState.readiness_computed_from = [];
+        readinessState.blocking_gates = {};
+        readinessState.must_not_claim = [];
+        render();
+      });
+
+      safeJsonFetch(pressureUrl, function (data) {
+        try {
+          pressureState.pressure_state = data.pressure_state || 'LOW';
+          pressureState.pressure_context = data.pressure_context || 'UNVERIFIED';
+          pressureState.precedent_risk_score = typeof data.precedent_risk_score === 'number' ? data.precedent_risk_score : 0;
+          pressureState.graduation_eligible = !!data.graduation_eligible;
+          pressureState.founder_intervention_detected = !!data.founder_intervention_detected;
+          if (typeof data.invariants_broken === 'number' && data.invariants_broken !== 0) invariantsBroken = data.invariants_broken;
+        } catch (e) {}
+        render();
+      }, function () {
+        pressureState.pressure_state = 'LOW';
+        pressureState.pressure_context = 'UNVERIFIED';
+        pressureState.precedent_risk_score = 0;
+        pressureState.graduation_eligible = false;
+        pressureState.founder_intervention_detected = false;
+        render();
+      });
+
+      render();
+    })();
+  </script>
+</body>
+</html>
+
+<!--
+PR_162_GRADUATION_READINESS_EXTENSION
+Authority: false
+No Fake Green: active
+Merge note: master portal preserved; PR #162 readiness additions appended.
+Readiness status does not claim graduation completion.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Computer Wisdom Graduation Readiness Live Portal V0.3</title>
+  <style>
+    :root{--bg:#07110c;--panel:#0f1f16;--panel2:#132a1d;--text:#f4fff7;--muted:#b8d6c1;--line:#2f6f46;--ok:#7cff9d;--warn:#ffd36e;--bad:#ff7c7c;--blue:#8bd3ff}*{box-sizing:border-box}body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at top,#12351f 0%,var(--bg) 42%,#030604 100%);color:var(--text);line-height:1.55}header,main,footer{max-width:1120px;margin:0 auto;padding:24px}.hero{padding-top:48px;border-bottom:1px solid var(--line)}.eyebrow{color:var(--ok);font-weight:700;letter-spacing:.12em;text-transform:uppercase;font-size:.82rem}h1{font-size:clamp(2rem,6vw,4.8rem);line-height:.95;margin:10px 0 16px}h2{font-size:1.4rem;margin-top:0}.subtitle{max-width:860px;color:var(--muted);font-size:1.08rem}.status-grid,.cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.card,.status{background:linear-gradient(180deg,rgba(19,42,29,.94),rgba(15,31,22,.94));border:1px solid var(--line);border-radius:18px;padding:18px;box-shadow:0 18px 50px rgba(0,0,0,.24)}.status strong{display:block;font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.09em}.status span{display:block;font-size:1.45rem;font-weight:800;margin-top:6px}.ok{color:var(--ok)}.warn{color:var(--warn)}.bad{color:var(--bad)}.blue{color:var(--blue)}.section{margin:28px 0}ul{padding-left:20px}li{margin:8px 0}code,pre{background:#061009;border:1px solid var(--line);border-radius:12px}code{padding:2px 6px}pre{padding:16px;overflow-x:auto;color:var(--muted)}.gate-row{display:flex;justify-content:space-between;gap:14px;padding:10px 0;border-bottom:1px solid rgba(47,111,70,.35)}.gate-row strong{display:block}.gate-state{font-weight:900}.banner{padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(124,255,157,.08)}button{border:1px solid var(--line);background:var(--panel2);color:var(--text);border-radius:12px;padding:12px 14px;font-weight:800;cursor:pointer;margin:8px 8px 0 0}button:hover{filter:brightness(1.15)}footer{color:var(--muted);border-top:1px solid var(--line)}
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="eyebrow">Computer Wisdom · Graduation Readiness Live Portal V0.3</div>
+    <h1>Verification Ready.<br/>Evidence Next.</h1>
+    <p class="subtitle">A read-only cockpit for the Computer Wisdom constitutional pilot. This page fetches static constitutional state from <code>data/graduation-readiness-state-v0-2.json</code>, falls back safely if unavailable, and never submits or mutates data.</p>
+    <div class="status-grid">
+      <div class="status"><strong>Status</strong><span class="warn" id="readyStatus">LOADING</span></div>
+      <div class="status"><strong>Authority</strong><span class="ok" id="authorityStatus">false</span></div>
+      <div class="status"><strong>Membrane</strong><span class="ok" id="membraneStatus">HOLDS</span></div>
+      <div class="status"><strong>State Source</strong><span class="blue" id="sourceStatus">STATIC JSON</span></div>
+    </div>
+  </header>
+  <main>
+    <section class="section card"><h2>Constitutional Principle</h2><p><strong>If pressure arrives tomorrow, we execute. We do not design.</strong></p><p>Readiness is not graduation. Graduation requires a real HIGH or CRITICAL pressure event, successor-led execution, founder silence, replay success, and <code>invariants_broken: 0</code>.</p></section>
+    <section class="section card"><h2>Blocking Capability Gates</h2><p>Gate values are rendered from static JSON. Legal values: <code>UNVERIFIED</code>, <code>VERIFIED</code>, <code>FAILED</code>.</p><div id="gates"></div></section>
+    <section class="section card"><h2>Readiness Result</h2><div class="banner" id="resultBox">Loading static readiness state...</div><button onclick="loadState()">Reload Static State</button></section>
+    <section class="section card"><h2>Canonical State</h2><pre id="stateBlock">Loading...</pre></section>
+    <section class="section card"><h2>Must Not Claim</h2><ul id="mustNotClaim"><li>This portal does not certify correctness, truth, compliance, legitimacy, or morality.</li><li>This portal does not replace human institutional authority.</li><li>This portal does not create a Graduation Event without a real HIGH or CRITICAL pressure case.</li><li>This portal records readiness posture only. Authority remains false.</li></ul></section>
+  </main>
+  <footer><p>Computer Wisdom Graduation Readiness Live Portal V0.3 · Read-only static JSON binding · Authority false · Membrane HOLDS.</p></footer>
+  <script>
+    const STATE_URL = 'data/graduation-readiness-state-v0-2.json';
+    const FALLBACK_STATE = {schema_version:'0.3.0-fallback',artifact:'GRADUATION_READINESS_STATE_FALLBACK',phase:'VERIFICATION_READY',constitutional_design:'FROZEN_FOR_PILOT_SCOPE',portal_version:'0.3',authority:false,membrane:'HOLDS',graduation_ready:false,graduation_readiness:'UNVERIFIED',readiness_computed_from:'SAFE_FALLBACK_NO_JSON_LOADED',blocking_gates:{successor_capability:'UNVERIFIED',observer_capability:'UNVERIFIED',infrastructure_capability:'UNVERIFIED',process_capability:'UNVERIFIED',verification_capability:'UNVERIFIED'},must_not_claim:['Fallback state does not certify readiness.','Readiness is not graduation.','Authority remains false.'],next_artifact_source:'OPERATION',invariants_broken:0};
+    function classFor(value){if(value===true||value==='VERIFIED'||value==='READY')return'ok';if(value==='FAILED'||value==='NOT_READY')return'bad';return'warn'}
+    function renderState(state,source){const safeAuthority = state.authority === false ? false : 'INVALID'; const safeMembrane = state.membrane === 'HOLDS' ? 'HOLDS' : 'INVALID'; const readiness = state.graduation_readiness || (state.graduation_ready ? 'READY':'UNVERIFIED'); document.getElementById('readyStatus').textContent=readiness; document.getElementById('readyStatus').className=classFor(readiness); document.getElementById('authorityStatus').textContent=String(safeAuthority); document.getElementById('authorityStatus').className=safeAuthority===false?'ok':'bad'; document.getElementById('membraneStatus').textContent=safeMembrane; document.getElementById('membraneStatus').className=safeMembrane==='HOLDS'?'ok':'bad'; document.getElementById('sourceStatus').textContent=source; const gates=state.blocking_gates||{}; const labels={successor_capability:'Successor Capability',observer_capability:'Observer Capability',infrastructure_capability:'Infrastructure Capability',process_capability:'Process Capability',verification_capability:'Verification Capability'}; document.getElementById('gates').innerHTML=Object.keys(labels).map(k=>`<div class="gate-row"><strong>${labels[k]}</strong><span class="gate-state ${classFor(gates[k])}">${gates[k]||'UNVERIFIED'}</span></div>`).join(''); document.getElementById('resultBox').textContent=state.graduation_ready===true?'READY from static state. This is still not graduation.':'NOT READY / UNVERIFIED from static state. HIGH or CRITICAL events remain normal operations unless all constitutional requirements are met.'; document.getElementById('stateBlock').textContent=JSON.stringify(state,null,2); document.getElementById('mustNotClaim').innerHTML=(state.must_not_claim||FALLBACK_STATE.must_not_claim).map(x=>`<li>${x}</li>`).join('')}
+    async function loadState(){try{const response=await fetch(STATE_URL,{cache:'no-store'});if(!response.ok)throw new Error('Static state fetch failed');const state=await response.json();renderState(state,'STATIC JSON')}catch(error){renderState(FALLBACK_STATE,'SAFE FALLBACK')}}
+    loadState();
+  </script>
+</body>
+</html>
