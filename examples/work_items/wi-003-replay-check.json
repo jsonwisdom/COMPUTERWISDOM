@@ -1,0 +1,24 @@
+{
+  "work_item_id": "wi-003",
+  "parent_id": "wi-002",
+  "intent_ref": "intent://saint-cloud-loon-cabinet-mvp",
+  "task_type": "replay_check",
+  "prompt_text": "Replay the receipt created by wi-002 and confirm whether the same old and new hashes can be reproduced from the same input artifacts.",
+  "inputs": [
+    {
+      "input_id": "wi_002_output",
+      "artifact_ref": "artifacts/work_items/wi-002-create-receipt.json",
+      "sha256": "4444444444444444444444444444444444444444444444444444444444444444"
+    }
+  ],
+  "assigned_ai": "Claude",
+  "status": "completed",
+  "lineage_hash": "5555555555555555555555555555555555555555555555555555555555555555",
+  "created_at": "2026-05-30T10:04:00Z",
+  "completed_at": "2026-05-30T10:05:00Z",
+  "output_artifact": "artifacts/work_items/wi-003-replay-check.md",
+  "output_sha256": "6666666666666666666666666666666666666666666666666666666666666666",
+  "blocked_reason": null,
+  "authority": false,
+  "fraud_status": "UNKNOWN"
+}

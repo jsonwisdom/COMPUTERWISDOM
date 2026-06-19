@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/drift_resolution.v0_1.schema.json",
+  "title": "Drift Resolution v0.1",
+  "description": "Records resolution action for a drift receipt without deleting or mutating the original artifact.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "resolution_id": { "type": "string", "minLength": 1 },
+    "drift_receipt_id": { "type": "string", "minLength": 1 },
+    "resolution_status": {
+      "type": "string",
+      "enum": ["accepted", "rejected", "corrected", "superseded", "unresolved"]
+    },
+    "original_artifact": { "type": "string", "minLength": 1 },
+    "replacement_artifact": { "type": ["string", "null"] },
+    "observed_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "field": { "type": "string", "minLength": 1 },
+        "value": {}
+      },
+      "required": ["field", "value"]
+    },
+    "corrected_value": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "field": { "type": "string", "minLength": 1 },
+        "value": {}
+      },
+      "required": ["field", "value"]
+    },
+    "resolved_at": { "type": "string", "format": "date-time" },
+    "replay_status": {
+      "type": "string",
+      "enum": ["REPLAYABLE", "NON_REPLAYABLE", "PARTIAL", "UNOBSERVED"]
+    },
+    "validation_rules": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "authority": { "type": "boolean", "const": false },
+    "fraud_status": { "type": "string", "const": "UNKNOWN" }
+  },
+  "required": [
+    "resolution_id",
+    "drift_receipt_id",
+    "resolution_status",
+    "original_artifact",
+    "replacement_artifact",
+    "observed_value",
+    "corrected_value",
+    "resolved_at",
+    "replay_status",
+    "validation_rules",
+    "authority",
+    "fraud_status"
+  ]
+}

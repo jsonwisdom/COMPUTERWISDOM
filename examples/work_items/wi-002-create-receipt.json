@@ -1,0 +1,24 @@
+{
+  "work_item_id": "wi-002",
+  "parent_id": "wi-001",
+  "intent_ref": "intent://saint-cloud-loon-cabinet-mvp",
+  "task_type": "create_receipt",
+  "prompt_text": "Create a Public Memory Drift receipt from the hashes produced by wi-001 for the Saint Cloud Loon Cabinet MVP.",
+  "inputs": [
+    {
+      "input_id": "wi_001_output",
+      "artifact_ref": "artifacts/work_items/wi-001-hash-pdf.md",
+      "sha256": "2222222222222222222222222222222222222222222222222222222222222222"
+    }
+  ],
+  "assigned_ai": "ChatGPT",
+  "status": "completed",
+  "lineage_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+  "created_at": "2026-05-30T10:02:00Z",
+  "completed_at": "2026-05-30T10:03:00Z",
+  "output_artifact": "artifacts/work_items/wi-002-create-receipt.json",
+  "output_sha256": "4444444444444444444444444444444444444444444444444444444444444444",
+  "blocked_reason": null,
+  "authority": false,
+  "fraud_status": "UNKNOWN"
+}
