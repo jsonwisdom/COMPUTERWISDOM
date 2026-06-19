@@ -1,0 +1,20 @@
+{
+  "receipt_type": "IDENTITY_ATTESTATION_RECEIPT_V1",
+  "identity_root": "JAYWISDOM.eth",
+  "operator_identity": "jaywisdom.base.eth",
+  "github_identity": "jsonwisdom",
+  "evm_binding": {
+    "address": "<wallet_or_attestation_address>",
+    "network": "base-mainnet",
+    "role": "attestation_or_settlement_surface"
+  },
+  "witness": {
+    "eas_uid": null,
+    "anchor_tx_hash": null,
+    "github_commit": null,
+    "signature": null
+  },
+  "binding_status": "DECLARED_PENDING_EXTERNAL_WITNESS",
+  "binding_hash": null,
+  "timestamp_utc": null
+}

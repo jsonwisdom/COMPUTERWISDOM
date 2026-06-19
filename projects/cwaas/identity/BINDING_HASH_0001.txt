@@ -1,0 +1,9 @@
+IDENTITY_BINDING_HASH_0001
+identity_root=JAYWISDOM.eth
+operator_identity=jaywisdom.base.eth
+github_identity=jsonwisdom
+binding_status=DECLARED_PENDING_EXTERNAL_WITNESS
+binding_hash=a934eb17ce56014155802c2df566f68b878511e71c41c8d722370ed703480be7
+timestamp_utc=2026-06-19T21:53:53Z
+git_branch=cwaas-receipt-schema-v1
+git_commit_before=4e89282cdb46752ec67a01f8aad2ce3adc0da2ec
