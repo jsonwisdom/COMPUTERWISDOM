@@ -10,14 +10,15 @@ Depends on:
 - IDENTITY_ATTESTATION_SCHEMA_V1
 - IDENTITY_WITNESS_HUMAN_APPROVAL_GATE_V1
 - REPLAY_TRACE_FORMAT_V1
+- CROSS_LAYER_MCP_TREASURY_JAYTOKEN_V1
 
 ## 1. Purpose
 
 Defines the GitHub workflow logic for Agent Pay for Developers.
 
-The workflow turns verified developer work into pay eligibility only after identity, provenance, replay, and approval gates pass.
+The workflow turns verified developer work into pay eligibility only after identity, provenance, replay, cross-layer governance, and approval gates pass.
 
-This document is a workflow specification. It does not execute payment, submit an EAS attestation, or imply endorsement by GitHub, Base, Coinbase, ENS, or EAS.
+This document is a workflow specification. It does not execute payment, submit an EAS attestation, issue a public token, or imply endorsement by GitHub, Base, Coinbase, ENS, or EAS.
 
 ## 2. Core Flow
 
@@ -28,6 +29,7 @@ Developer work
   → identity witness readiness check
   → agent action receipt
   → replay PASS
+  → cross-layer governance check
   → pay preview receipt
   → human approval
   → payment adapter eligibility
@@ -88,10 +90,41 @@ commit_sha_present: true
 agent_action_receipt_present: true
 replay_trace_present: true
 replay_verdict: PASS
+cross_layer_architecture_present: true
+jay_human_root_declared: true
+boss_bre_gate_declared: true
+treasury_lane_declared: true
+jaytoken_internal_only_declared: true
+coinbase_mcp_adapter_only_declared: true
+al_mirror_declared: true
+joy_mirror_declared: true
 identity_binding_hash_present: true
 operator_identity_present: true
 recipient_declared: true
 payment_amount_declared: true
+```
+
+### 5.1 Cross-Layer Governance Check
+
+The workflow must verify that the cross-layer MCP treasury and JAYTOKEN architecture exists before payment preview or adapter eligibility.
+
+```yaml
+- name: Cross-Layer Governance Check
+  run: |
+    echo "Verifying cross-layer MCP treasury + JAYTOKEN architecture..."
+    if [ ! -f "projects/cwaas/specs/CROSS_LAYER_MCP_TREASURY_JAYTOKEN_V1.md" ]; then
+      echo "❌ Cross-layer architecture spec missing"
+      exit 1
+    fi
+    echo "✅ Cross-layer architecture present"
+    echo "Jay = human root of authority"
+    echo "Boss Bre = constitutional gatekeeper"
+    echo "Treasury = governed payment lane"
+    echo "JAYTOKEN = internal purpose accounting only"
+    echo "Coinbase MCP = payment adapter only"
+    echo "AL = civic / legal mirror"
+    echo "JOY = family / purpose mirror"
+    echo "No public token. No settlement claims. No fake green."
 ```
 
 Before confirmed payment:
@@ -99,6 +132,8 @@ Before confirmed payment:
 ```yaml
 preview_receipt_present: true
 preview_hash_valid: true
+cross_layer_architecture_present: true
+jaytoken_entry_bound_to_purpose: true
 human_approval_present: true
 protected_environment_approved: true
 payment_adapter_allowed: true
@@ -169,11 +204,15 @@ The payment adapter may not execute unless:
 
 ```yaml
 replay_verdict: PASS
+cross_layer_architecture_present: true
+jaytoken_entry_bound_to_purpose: true
 preview_receipt_valid: true
 human_approval_present: true
 protected_environment_approved: true
 dry_run: false
 ```
+
+The payment adapter is an adapter only. Coinbase MCP does not grant authority, approval, settlement, endorsement, or identity verification.
 
 The adapter must never read secrets from the repository.
 
@@ -203,14 +242,16 @@ No transaction witness means no confirmed payment receipt.
 ## 11. Failure States
 
 ```text
-MISSING_WORK_PROOF           → BLOCKED
-MISSING_IDENTITY_BINDING     → BLOCKED
-REPLAY_FAIL                  → BLOCKED
-HUMAN_REJECTED               → REJECTED
-MISSING_PREVIEW_RECEIPT      → BLOCKED
-PAYMENT_ADAPTER_NOT_ALLOWED  → BLOCKED
-TRANSACTION_WITNESS_MISSING  → NEEDS_REVIEW
-HASH_MISMATCH                → FAIL
+MISSING_WORK_PROOF             → BLOCKED
+MISSING_IDENTITY_BINDING       → BLOCKED
+MISSING_CROSS_LAYER_SPEC       → BLOCKED
+MISSING_JAYTOKEN_PURPOSE_ENTRY → BLOCKED
+REPLAY_FAIL                    → BLOCKED
+HUMAN_REJECTED                 → REJECTED
+MISSING_PREVIEW_RECEIPT        → BLOCKED
+PAYMENT_ADAPTER_NOT_ALLOWED    → BLOCKED
+TRANSACTION_WITNESS_MISSING    → NEEDS_REVIEW
+HASH_MISMATCH                  → FAIL
 ```
 
 ## 12. Prohibited Claims
@@ -224,6 +265,8 @@ Base endorsement
 EAS endorsement
 ENS endorsement
 legal identity verification
+public JAYTOKEN issuance
+JAYTOKEN monetary value
 payment completion without transaction witness
 automatic authorization from Basename alone
 ```
@@ -234,6 +277,8 @@ automatic authorization from Basename alone
 No GitHub proof, no Agent Pay.
 No identity binding, no pay eligibility.
 No replay PASS, no preview receipt.
+No cross-layer architecture, no preview receipt.
+No JAYTOKEN purpose entry, no payment adapter eligibility.
 No preview receipt, no human approval target.
 No human approval, no payment execution.
 No transaction witness, no confirmed payment.
