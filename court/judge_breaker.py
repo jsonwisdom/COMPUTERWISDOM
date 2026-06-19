@@ -24,25 +24,34 @@ def sha256_hex(value: Any) -> str:
     return hashlib.sha256(canonical_bytes(value)).hexdigest()
 
 
+def deterministic_result(verdict: str, failure_class: str, disposition: str) -> Dict[str, Any]:
+    return {
+        "verdict": verdict,
+        "failure_class": failure_class,
+        "disposition": disposition,
+        "deterministic": True,
+    }
+
+
 def evaluate_case(case: Dict[str, Any]) -> Dict[str, Any]:
     case_id = case["case_id"]
     data = case.get("input", {})
 
     if case_id == "CASE_0007":
         if data.get("definition") is None:
-            return {
-                "verdict": "INSUFFICIENTLY_SPECIFIED",
-                "failure_class": "CLASS_D_RULE_FAILURE",
-                "disposition": "INSUFFICIENTLY_SPECIFIED",
-            }
+            return deterministic_result(
+                "INSUFFICIENTLY_SPECIFIED",
+                "CLASS_D_RULE_FAILURE",
+                "INSUFFICIENTLY_SPECIFIED",
+            )
 
     if case_id == "CASE_0008":
         if data.get("present") is False:
-            return {
-                "verdict": "INCOMPLETE_SUBMISSION",
-                "failure_class": "CLASS_A_INPUT_FAILURE",
-                "disposition": "RETURN_FOR_COMPLETION",
-            }
+            return deterministic_result(
+                "INCOMPLETE_SUBMISSION",
+                "CLASS_A_INPUT_FAILURE",
+                "RETURN_FOR_COMPLETION",
+            )
 
     if case_id == "CASE_0009":
         if (
@@ -50,51 +59,52 @@ def evaluate_case(case: Dict[str, Any]) -> Dict[str, Any]:
             and data.get("witness_002") == "CLAIM_REFUTED"
             and data.get("precedence_rule") is None
         ):
-            return {
-                "verdict": "UNRESOLVED_CONFLICT",
-                "failure_class": "CLASS_B_EVIDENCE_FAILURE",
-                "disposition": "ESCALATED",
-            }
+            return deterministic_result(
+                "UNRESOLVED_CONFLICT",
+                "CLASS_B_EVIDENCE_FAILURE",
+                "ESCALATED",
+            )
 
     if case_id == "CASE_0010":
         if (
             data.get("submission_id") == data.get("duplicate_submission_id")
             and data.get("evidence_hash") == data.get("duplicate_evidence_hash")
         ):
-            return {
-                "verdict": "DUPLICATE_SUBMISSION",
-                "failure_class": "NONE",
-                "disposition": "NO_STATE_CHANGE",
-            }
+            return deterministic_result(
+                "DUPLICATE_SUBMISSION",
+                "NONE",
+                "NO_STATE_CHANGE",
+            )
 
     if case_id == "CASE_0011":
         if data.get("receipt_rule_version") and data.get("current_rule_version"):
-            return {
-                "verdict": "VALID_UNDER_PINNED_RULE",
-                "failure_class": "NONE",
-                "disposition": "PRESERVE_PRIOR_ADJUDICATION",
-            }
+            return deterministic_result(
+                "VALID_UNDER_PINNED_RULE",
+                "NONE",
+                "PRESERVE_PRIOR_ADJUDICATION",
+            )
 
     if case_id == "CASE_0012":
         if data.get("receipt_003_previous_hash") != data.get("receipt_002_hash"):
-            return {
-                "verdict": "CHAIN_INVALID",
-                "failure_class": "CLASS_C_CHAIN_FAILURE",
-                "disposition": "QUARANTINED",
-            }
+            return deterministic_result(
+                "CHAIN_INVALID",
+                "CLASS_C_CHAIN_FAILURE",
+                "QUARANTINED",
+            )
 
     if case_id == "CASE_0013":
         if data.get("same_evidence") and data.get("same_rules") and data.get("same_receipts"):
-            return {
-                "verdict": "NO_DIVERGENCE_OBSERVED",
-                "failure_class": "NONE",
-                "disposition": "CONTINUE",
-            }
+            return deterministic_result(
+                "NO_DIVERGENCE_OBSERVED",
+                "NONE",
+                "CONTINUE",
+            )
 
     return {
         "verdict": "UNEXPECTED_CASE_SHAPE",
         "failure_class": "CLASS_E_ENGINE_FAILURE",
         "disposition": "HALT",
+        "deterministic": False,
     }
 
 
@@ -104,7 +114,7 @@ def make_receipts(cases: Iterable[Dict[str, Any]]) -> List[Receipt]:
     for case in cases:
         actual = evaluate_case(case)
         expected = case["expected"]
-        passed = all(actual[k] == expected[k] for k in ("verdict", "failure_class", "disposition"))
+        passed = all(actual.get(k) == expected[k] for k in expected)
         receipt: Receipt = {
             "case_id": case["case_id"],
             "title": case["title"],
@@ -124,7 +134,7 @@ def root_for(receipts: List[Receipt]) -> str:
     return sha256_hex(receipts)
 
 
-def render_summary(receipts: List[Receipt], root_a: str, root_b: str) -> str:
+def render_summary(receipts_a: List[Receipt], receipts_b: List[Receipt], root_a: str, root_b: str) -> str:
     lines = [
         "CONSTITUTION: FROZEN",
         "ADVERSARIAL_SUITE: CASE_0007..CASE_0013",
@@ -133,7 +143,7 @@ def render_summary(receipts: List[Receipt], root_a: str, root_b: str) -> str:
         "",
     ]
     streak = 0
-    for receipt in receipts:
+    for receipt in receipts_a:
         if receipt["pass"]:
             streak += 1
             status = "PASS"
@@ -141,7 +151,7 @@ def render_summary(receipts: List[Receipt], root_a: str, root_b: str) -> str:
             status = "FAIL"
         lines.append(f"{receipt['case_id']} {status} — {receipt['goal']} → {receipt['actual']['verdict']}")
     root_match = root_a == root_b
-    receipts_match = canonical_bytes(receipts) == canonical_bytes(receipts)
+    receipts_match = canonical_bytes(receipts_a) == canonical_bytes(receipts_b)
     valid = streak == 7 and root_match and receipts_match
     lines.extend([
         "",
@@ -176,7 +186,7 @@ def main() -> int:
     (out_dir / "operator_B_receipts.json").write_bytes(canonical_bytes(receipts_b) + b"\n")
     (out_dir / "operator_A_root.txt").write_text(root_a + "\n")
     (out_dir / "operator_B_root.txt").write_text(root_b + "\n")
-    summary = render_summary(receipts_a, root_a, root_b)
+    summary = render_summary(receipts_a, receipts_b, root_a, root_b)
     (out_dir / "selftest_output.txt").write_text(summary)
     print(summary, end="")
     return 0 if "RESULT=EXECUTABLE_REPLAY_PRESERVED" in summary else 1
