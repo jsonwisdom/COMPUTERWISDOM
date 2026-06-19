@@ -1,0 +1,68 @@
+{
+  "payload_version": "EAS_BASE_PAYLOAD_V1",
+  "status": "DRAFT_LOCKED_CANONICALIZATION_PENDING",
+  "type": "CWaaS_REPLAY_ATTESTATION_V1",
+  "network": {
+    "chain": "Base",
+    "protocol": "EAS",
+    "schema_uid": null,
+    "attestation_uid": null,
+    "recipient": null,
+    "revocable": true
+  },
+  "subject": {
+    "system": "COMPUTERWISDOM",
+    "lane": "CWaaS",
+    "receipt_id": "EVENT_001",
+    "receipt_type": "TREASURY_ATTEST_V0",
+    "trace_id": "TRACE_0001",
+    "attestation_pointer_id": "BASE_ATTESTATION_0001_EVENT_001"
+  },
+  "verdict": {
+    "replay_verdict": "PASS",
+    "disposition": "SETTLED_READ_ONLY",
+    "failure_class": null,
+    "execution_state": "NONE",
+    "preview_only": true,
+    "auto_execution": false,
+    "human_approval_status": "NOT_REQUIRED_FOR_READ_ONLY"
+  },
+  "evidence": {
+    "github_repo": "jsonwisdom/COMPUTERWISDOM",
+    "github_branch": "cwaas-receipt-schema-v1",
+    "receipt_path": "projects/cwaas/receipts/EVENT_001_TREASURY_ATTEST_V0.md",
+    "receipt_commit": "aedf71a13208cc832d481fa5dcd24a4e3733f0b4",
+    "receipt_github_blob_sha": "c547cac51789f625adab970df8380f2aaad634b3",
+    "receipt_hash_algorithm": "sha256",
+    "receipt_hash": null,
+    "receipt_hash_status": "PENDING_CANONICAL_HASH",
+    "trace_path": "projects/cwaas/replay/TRACE_0001_REPLAY_EVENT_001.md",
+    "trace_commit": "c705c868b8f975013e10918bbd1ddbf8c27d2684",
+    "trace_github_blob_sha": "58b57e6615d0a11cb65b8887aa8ece54f5c9a185",
+    "trace_hash_algorithm": "sha256",
+    "trace_hash": null,
+    "trace_hash_status": "PENDING_CANONICAL_HASH",
+    "attestation_pointer_path": "projects/cwaas/attestations/BASE_ATTESTATION_0001_EVENT_001.md",
+    "attestation_pointer_commit": "0f78f55b20810beb817d486cb4f21a8c91a605dc"
+  },
+  "attestable_claim": "EVENT_001 exists as a CWaaS read-only treasury attestation receipt and has an associated replay trace with read-only settlement status.",
+  "prohibited_claims": [
+    "funds moved",
+    "trade executed",
+    "Coinbase endorsement",
+    "Base endorsement",
+    "GitHub endorsement",
+    "EAS endorsement",
+    "legal approval",
+    "financial advice"
+  ],
+  "boss_brenda_lock": [
+    "No receipt hash, no final attestation.",
+    "No replay trace, no attestation pointer.",
+    "No execution claim without execution evidence.",
+    "No endorsement by implication.",
+    "No fake green."
+  ],
+  "operator": "jsonwisdom",
+  "created_utc": "2026-06-19T00:00:00Z"
+}
