@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/public_memory_drift_receipt.v0_1.schema.json",
+  "title": "Public Memory Drift Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "authority": {
+      "type": "boolean",
+      "const": false
+    },
+    "fraud_status": {
+      "type": "string",
+      "const": "UNKNOWN"
+    },
+    "receipt_id": {
+      "type": "string"
+    },
+    "old_hash_sha256": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]{64}$"
+    },
+    "new_hash_sha256": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]{64}$"
+    },
+    "hash_changed": {
+      "type": "boolean"
+    },
+    "byte_size_old": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "byte_size_new": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "artifact_type": {
+      "type": "string",
+      "enum": [
+        "PDF",
+        "XLSX",
+        "CSV",
+        "DATASET",
+        "HTML",
+        "UNKNOWN"
+      ]
+    },
+    "replay_status": {
+      "type": "string",
+      "enum": [
+        "REPLAYABLE",
+        "NON_REPLAYABLE",
+        "PARTIAL",
+        "UNOBSERVED"
+      ]
+    },
+    "drift_summary": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "authority",
+    "fraud_status",
+    "receipt_id",
+    "old_hash_sha256",
+    "new_hash_sha256",
+    "hash_changed",
+    "byte_size_old",
+    "byte_size_new",
+    "artifact_type",
+    "replay_status",
+    "drift_summary"
+  ]
+}

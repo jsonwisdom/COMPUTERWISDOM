@@ -1,0 +1,101 @@
+{
+  "artifact_id": "GC_SERIES_1_BATCH_C_META_CANDIDATES_V0_1",
+  "system_identity": "Meta",
+  "current_role": "candidate_generator_renderer",
+  "input_source": "Operator Jay directive",
+  "intended_destination": "rendered_candidate_artifacts",
+  "reversibility_class": "SYMBOLIC",
+  "authority": false,
+  "batch": "C",
+  "series": "Goblin Court Series 1: Receipts vs Vibes",
+  "candidates": [
+    {
+      "artifact_id": "GC-007",
+      "candidate_title": "GC-007 — Vibe Victoria",
+      "visual_prompt": "Satirical portrait trading card art, white border, readable top title plate 'GOBLIN COURT SERIES 1', readable bottom name plate 'VIBE VICTORIA — NARRATIVE ENGINEER'. Cyber-comic Goblin Court aesthetic, neon terminal green and glitch purple palette. Character: goblin DJ with headset, mixing board labeled 'NARRATIVE', sliders set to 'FACTS: 0' and 'VIBES: 11'. Background: crowd of goblins nodding, eyes closed, speech bubbles full of sparkle emojis. Funny and sharp, no real public figures, no legal guilt claims, no financial safety claims.",
+      "metadata_candidate": {
+        "name": "Vibe Victoria",
+        "description": "Narrative engineer. Role: Calibrates consensus through aesthetic consensus. Flavor text: 'The vibes are immaculate.' Specialty: converting consensus into evidence. Counters: primary sources, falsification.",
+        "attributes": [
+          { "trait_type": "Series", "value": "Goblin Court Series 1" },
+          { "trait_type": "Run", "value": "ZORA_FACTORY_PRODUCTION_RUN_10_V0_1" },
+          { "trait_type": "Authority", "value": "false" },
+          { "trait_type": "Reversibility Class", "value": "SYMBOLIC" },
+          { "trait_type": "Status", "value": "CANDIDATE" },
+          { "trait_type": "Role", "value": "Narrative Engineer" },
+          { "trait_type": "Clearance", "value": "Violet" },
+          { "trait_type": "Attack", "value": "AESTHETIC OVERLOAD" },
+          { "trait_type": "Defense", "value": "CONSENSUS SHIELD" }
+        ]
+      }
+    },
+    {
+      "artifact_id": "GC-008",
+      "candidate_title": "GC-008 — Receipt Rita",
+      "visual_prompt": "Satirical portrait trading card art, white border, readable top title plate 'GOBLIN COURT SERIES 1', readable bottom name plate 'RECEIPT RITA — INSPECTOR GOBLIN'. Cyber-comic Goblin Court aesthetic, neon terminal green and glitch purple palette. Character: goblin inspector with magnifying glass and clipboard, trench coat covered in hash marks and checkmarks. Holding up glowing receipt scroll. Background: evidence locker, filing cabinets labeled 'SOURCE', 'TIMESTAMP', 'HASH'. Funny and sharp, no real public figures, no legal guilt claims, no financial safety claims.",
+      "metadata_candidate": {
+        "name": "Receipt Rita",
+        "description": "Inspector Goblin demanding evidence. Role: Terminates vibes with verification. Flavor text: 'Show the receipt.' Specialty: collapsing narratives to citations. Counters: trust-me-bro, unsourced claims.",
+        "attributes": [
+          { "trait_type": "Series", "value": "Goblin Court Series 1" },
+          { "trait_type": "Run", "value": "ZORA_FACTORY_PRODUCTION_RUN_10_V0_1" },
+          { "trait_type": "Authority", "value": "false" },
+          { "trait_type": "Reversibility Class", "value": "SYMBOLIC" },
+          { "trait_type": "Status", "value": "CANDIDATE" },
+          { "trait_type": "Role", "value": "Inspector Goblin" },
+          { "trait_type": "Clearance", "value": "Red" },
+          { "trait_type": "Attack", "value": "QUESTION" },
+          { "trait_type": "Defense", "value": "EVIDENCE" },
+          { "trait_type": "Special", "value": "REPLAY" }
+        ]
+      }
+    },
+    {
+      "artifact_id": "GC-009",
+      "candidate_title": "GC-009 — Recursive Rex",
+      "visual_prompt": "Satirical portrait trading card art, white border, readable top title plate 'GOBLIN COURT SERIES 1', readable bottom name plate 'RECURSIVE REX — AI GOBLIN'. Cyber-comic Goblin Court aesthetic, neon terminal green and glitch purple palette. Character: robot goblin with fractal head, screens for eyes showing nested summaries. Arms are printers spitting out 'Summary of Summary of Summary'. Background: hall of mirrors with citations pointing to each other, origin nowhere. Funny and sharp, no real public figures, no legal guilt claims, no financial safety claims.",
+      "metadata_candidate": {
+        "name": "Recursive Rex",
+        "description": "AI goblin summarizing summaries. Role: Compresses information until origin vanishes. Flavor text: 'According to my summary of your summary…' Specialty: reference loops. Counters: primary documents, provenance tracking.",
+        "attributes": [
+          { "trait_type": "Series", "value": "Goblin Court Series 1" },
+          { "trait_type": "Run", "value": "ZORA_FACTORY_PRODUCTION_RUN_10_V0_1" },
+          { "trait_type": "Authority", "value": "false" },
+          { "trait_type": "Reversibility Class", "value": "SYMBOLIC" },
+          { "trait_type": "Status", "value": "CANDIDATE" },
+          { "trait_type": "Role", "value": "AI Goblin" },
+          { "trait_type": "Clearance", "value": "Black" },
+          { "trait_type": "Attack", "value": "COMPRESSION" },
+          { "trait_type": "Defense", "value": "CITATION LOOP" }
+        ]
+      }
+    },
+    {
+      "artifact_id": "GC-010",
+      "candidate_title": "GC-010 — Supreme Goblin General",
+      "visual_prompt": "Satirical portrait trading card art, white border, readable top title plate 'GOBLIN COURT SERIES 1', readable bottom name plate 'SUPREME GOBLIN GENERAL — AUDITOR OF AUDITORS'. Cyber-comic Goblin Court aesthetic, neon terminal green and glitch purple palette. Character: goblin general in plain uniform, no medals, holding blank ledger and question mark. Background: pure void with single glowing text 'SHOW YOUR WORK'. No symbols of power. Funny and sharp, no real public figures, no legal guilt claims, no financial safety claims.",
+      "metadata_candidate": {
+        "name": "Supreme Goblin General",
+        "description": "Auditor of auditors. Role: Questions the questioners. Flavor text: 'Authority remains false.' Specialty: epistemic regression. Counters: all claims, including its own.",
+        "attributes": [
+          { "trait_type": "Series", "value": "Goblin Court Series 1" },
+          { "trait_type": "Run", "value": "ZORA_FACTORY_PRODUCTION_RUN_10_V0_1" },
+          { "trait_type": "Authority", "value": "false" },
+          { "trait_type": "Reversibility Class", "value": "SYMBOLIC" },
+          { "trait_type": "Status", "value": "CANDIDATE" },
+          { "trait_type": "Role", "value": "Auditor of Auditors" },
+          { "trait_type": "Clearance", "value": "Cosmic" },
+          { "trait_type": "Attack", "value": "QUESTION" },
+          { "trait_type": "Defense", "value": "EVIDENCE" },
+          { "trait_type": "Special", "value": "REPLAY" }
+        ]
+      }
+    }
+  ],
+  "missing_receipts": [
+    "rendered artifact files not yet recorded by Computer Wisdom",
+    "metadata hashes not computed",
+    "Zora publication not performed",
+    "replay acquisition receipts not generated"
+  ]
+}

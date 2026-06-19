@@ -1,0 +1,12 @@
+{
+  "artifact": "GOBLIN_COURT_RECORD_V0_8",
+  "format": "JSON_VARIANCE_RECORD",
+  "authority": false,
+  "new_case": {
+    "case_id": "CONTINUITY_LEDGER_V0_3",
+    "artifact": "CONTINUITY_LEDGER_V0_3",
+    "commit_sha": "2a74e2e6c1cda7dc7f53a1c2c755f3e65f030b91",
+    "variance": 0,
+    "replay_status": "MATCH",
+    "findings": {
+      "goblin": "no drift detected in self-index

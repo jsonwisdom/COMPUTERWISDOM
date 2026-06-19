@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BASE_L2_RECEIPT_LINKAGE_SCHEMA_V0_1",
+  "type": "object",
+  "required": ["authority", "ens_base_l2", "receipt_reference"],
+  "properties": {
+    "authority": {"const": false},
+    "ens_base_l2": {"const": "jaywisdom.base.eth"},
+    "receipt_reference": {
+      "type": "object",
+      "required": ["network", "identifier"],
+      "properties": {
+        "network": {"const": "Base L2"},
+        "identifier": {"type": "string"}
+      }
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,27 @@
+{
+  "work_item_id": "wi-006",
+  "parent_id": "wi-005",
+  "intent_ref": "intent://saint-cloud-public-agenda-drift-pilot",
+  "task_type": "create_receipt",
+  "prompt_text": "Create the first public-memory receipt from the completed Saint Cloud agenda hash artifact produced by wi-005. Preserve public URL, SHA-256, observed timestamp, and artifact type PDF.",
+  "inputs": [
+    {
+      "input_id": "wi_005_output",
+      "artifact_ref": "artifacts/work_items/wi-005-hash-agenda.md",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000"
+    }
+  ],
+  "assigned_ai": "ChatGPT",
+  "status": "created",
+  "lineage_hash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "created_at": "2026-05-30T10:20:00Z",
+  "completed_at": null,
+  "output_artifact": null,
+  "output_sha256": null,
+  "blocked_reason": null,
+  "source_type": "public_record",
+  "artifact_type": "PDF",
+  "target_output": "receipts/memory/public_agenda_receipt_001.json",
+  "authority": false,
+  "fraud_status": "UNKNOWN"
+}

@@ -1,0 +1,50 @@
+{
+  "artifact_id": "GC_SERIES_1_VISUAL_SELECTION_LOG_V0_1",
+  "system_identity": "ChatGPT / Computer Wisdom",
+  "current_role": "control_plane",
+  "input_source": "Operator Jay image review thread",
+  "intended_destination": "receipts/drafts/",
+  "authority": false,
+  "series": "Goblin Court Series 1",
+  "selected_visual_candidates": {
+    "GC-001": {
+      "name": "Alpha Andy",
+      "selected_image": "image_2",
+      "status": "VISUAL_CANDIDATE_SELECTED",
+      "reason": "Cleaner card frame, stronger shhh gesture, better source gag, consistent with Receipt Rita and Supreme Goblin General."
+    },
+    "GC-002": {
+      "name": "Rugbert Pullman",
+      "selected_image": "image_2",
+      "status": "VISUAL_CANDIDATE_SELECTED",
+      "reason": "Cleaner card frame, better rug-pull pose, stronger anxious goblin expression, readable bottom plate."
+    },
+    "GC-008": {
+      "name": "Receipt Rita",
+      "selected_image": "image_2",
+      "status": "VISUAL_ANCHOR_SELECTED",
+      "reason": "Clean framing, evidence-room read, strong receipt silhouette, collection anchor."
+    },
+    "GC-010": {
+      "name": "Supreme Goblin General",
+      "selected_image": "image_1",
+      "status": "VISUAL_ANCHOR_SELECTED",
+      "reason": "More comic-card style, stronger expression, better alignment with Receipt Rita style."
+    }
+  },
+  "pending_visual_candidates": [
+    "GC-003",
+    "GC-004",
+    "GC-005",
+    "GC-006",
+    "GC-007",
+    "GC-009"
+  ],
+  "missing_receipts": [
+    "Rendered image files not yet committed to repository artifacts path.",
+    "Image hashes not computed.",
+    "Metadata hashes not computed.",
+    "Zora publication not performed.",
+    "Replay acquisition receipts not generated."
+  ]
+}

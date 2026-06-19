@@ -1,0 +1,22 @@
+{
+  "artifact": "COMPUTERWISDOM_REPLAY_VERIFIER_CHAIN_V1",
+  "claim_hash": "sha256:5ed8c733d8f8bd4292f139a46f98e2f09460d01c1ea4221047d4e7c3c42f0418",
+  "packet_id": "PROOF_FOR_THE_PRESIDENT_001",
+  "verifications": [
+    {
+      "verifier_id": "verifier:computerwisdom-session-operator-v1",
+      "verification_timestamp": "2026-06-03T14:00:59Z",
+      "verification_mode": "OPERATOR_REPORTED",
+      "output_classification": {
+        "status": "ANCHORED",
+        "promotion_allowed": false,
+        "reason": "GitHub replay packet and Base/EAS anchor receipt are present in repository history. IPFS archive CID was reported by operator; independent full replay was not executed by assistant. Authority remains false."
+      },
+      "replay_result": {
+        "reconstructable": true,
+        "survival_test": "NOT_RUN"
+      }
+    }
+  ],
+  "authority": false
+}

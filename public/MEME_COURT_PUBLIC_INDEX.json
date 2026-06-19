@@ -1,0 +1,54 @@
+{
+  "artifact": "MEME_COURT_PUBLIC_INDEX",
+  "version": "0.1",
+  "status": "OPEN",
+  "authority": false,
+  "promotion": false,
+  "identity_surface": "jaywisdom.base.eth",
+  "wallet_surface": "0xa380552a27b0a5a2874ea7aa52cac09f542002e8",
+  "zora_surface": "https://zora.co/@jaywisdom",
+  "base_market_surface": "https://dexscreener.com/base/0x694ce46c64d9d1a5e9376a9febcf85ec05d72e9f",
+  "github_control_plane": "jsonwisdom/COMPUTERWISDOM",
+  "issue": 258,
+  "search_terms": [
+    "Meme Court",
+    "Jay Wisdom",
+    "jaywisdom.base.eth",
+    "JAYWISDOM",
+    "Receipts before authority",
+    "Prompt with purpose promote with proof",
+    "Mrs. Wisdom",
+    "JSONWisdom",
+    "ALMS"
+  ],
+  "mrs_wisdom_check": {
+    "can_she_search_it": true,
+    "can_she_open_it": true,
+    "can_she_understand_it": true,
+    "can_she_verify_links": true,
+    "can_she_see_what_is_missing": true
+  },
+  "missing_detection": {
+    "present": [
+      "identity_surface",
+      "wallet_surface",
+      "zora_surface",
+      "base_market_surface"
+    ],
+    "missing_or_unverified": [
+      "wallet_signature_receipt",
+      "ens_resolver_receipt",
+      "merkle_proof_public_link",
+      "alabama_art_public_link",
+      "twitter_animator_queue_link",
+      "al_registry_pointer",
+      "welcome_orientation_pointer"
+    ],
+    "classification": "PUBLIC_DISCOVERY_INCOMPLETE_UNTIL_RECEIPTS_ADDED"
+  },
+  "linked_systems": [
+    "MINISTRY_OF_MISSING_PEOPLE",
+    "DEMOCRACY_MATH_ENGINE",
+    "PUBLIC_REPLAY_ACCESS_FAILURE"
+  ]
+}

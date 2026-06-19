@@ -1,0 +1,31 @@
+{
+  "artifact_id": "META_BATCH_A_STATUS_GC_SERIES_1_V0_1",
+  "system_identity": "Meta",
+  "current_role": "candidate_generator_renderer",
+  "input_source": "Operator Jay directive",
+  "intended_destination": "rendered_candidate_artifacts",
+  "authority": false,
+  "batch": "A",
+  "series": "Goblin Court Series 1: Receipts vs Vibes",
+  "reported_items": [
+    "GC-001 Alpha Andy",
+    "GC-002 Rugbert Pullman",
+    "GC-003 Screenshot Sally"
+  ],
+  "reported_status": "Batch A candidate artifacts rendered. Awaiting Operator Jay approval before proceeding to Batch B.",
+  "computer_wisdom_assessment": {
+    "rendered_artifact_files_received": false,
+    "visual_prompts_received": false,
+    "metadata_candidates_received": false,
+    "publication_ready": false,
+    "promotion_status": "DENIED_PENDING_ARTIFACTS"
+  },
+  "missing_receipts": [
+    "No rendered artifact files were provided to Computer Wisdom.",
+    "No visual prompts were provided for GC-001 through GC-003.",
+    "No metadata JSON candidates were provided.",
+    "No metadata hashes were computed.",
+    "No Zora publication was performed.",
+    "No replay acquisition receipt exists."
+  ]
+}

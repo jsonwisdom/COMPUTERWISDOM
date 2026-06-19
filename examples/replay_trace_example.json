@@ -1,0 +1,25 @@
+{
+  "trace_id": "sha256:1111111111111111111111111111111111111111111111111111111111111111",
+  "schema_version": "REPLAY_TRACE_V0_1",
+  "kernel_version": "REPLAY_KERNEL_V0_1",
+  "constitutional_root": "808f2b1c6c339eb46e68a2161da3cca22f7b0eeb",
+  "lineage_root": "a42678a5484ffb238dd1ffe66ced595ccd392d33",
+  "artifact_count": 2,
+  "ordered_artifact_ids": [
+    "ers-event-example-v0-1",
+    "ers-observation-example-v0-1"
+  ],
+  "lineage_edges": [
+    {
+      "artifact_id": "ers-event-example-v0-1",
+      "lineage_root": "a42678a5484ffb238dd1ffe66ced595ccd392d33"
+    },
+    {
+      "artifact_id": "ers-observation-example-v0-1",
+      "lineage_root": "a42678a5484ffb238dd1ffe66ced595ccd392d33"
+    }
+  ],
+  "replay_hash": "sha256:2222222222222222222222222222222222222222222222222222222222222222",
+  "authority": false,
+  "authority_boundary": "NONE"
+}

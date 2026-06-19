@@ -1,0 +1,16 @@
+{
+  "version": "CanonReceiptV0_1",
+  "receiptId": "0x0b58518ad17b73252be9a5fbfef7d74d8dc57254",
+  "actor": "0x0000000000000000000000000000000000000000",
+  "actionType": "GENESIS_EXECUTION_PROOF",
+  "evidenceHash": "0x0000000000000000000000000000000000000000000000000000",
+  "evidenceURI": "ipfs://bafybeiczsscdsbs7ffqz55asqdf3smv6klcw3gofszvwlyarci47bgf354",
+  "al": "PROTECT",
+  "joy": "WITNESS",
+  "computerWisdom": "APPEND_ONLY",
+  "proofRef": "PR_170",
+  "mergeCommit": "0x0b58518ad17b73252be9a5fbfef7d74d8dc57254",
+  "status": "MERGED_REPLAYED_CLOSED",
+  "timestamp": 1730419200,
+  "note": "V0_1_SCAFFOLD_ONLY_NO_SIGNATURE"
+}

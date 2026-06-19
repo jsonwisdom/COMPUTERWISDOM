@@ -1,0 +1,102 @@
+{
+  "schema": "FAMILY_REPUTATION_LAYER_V0_1",
+  "project": "COMPUTERWISDOM",
+  "status": "ACTIVATED_OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+  "authority": false,
+  "promotion": false,
+  "principle": "Family reputation is a continuity and witness layer, not a legal authority layer.",
+  "parent_layer": {
+    "identity": "Jay",
+    "ens": "jaywisdom.eth",
+    "base_ens": "jaywisdom.base.eth",
+    "role": "parent_operator",
+    "authority": false
+  },
+  "family_networks": {
+    "status": "DECLARED_OPERATOR_CONTEXT",
+    "definition": "Family Networks are public continuity surfaces, repo-linked context, and witness paths for Wisdom Replay Systems.",
+    "supporting_repos": [
+      {
+        "name": "AL",
+        "repo": "jsonwisdom/AL",
+        "role": "contestability_and_replay_courthouse",
+        "default_branch": "master",
+        "authority": false
+      },
+      {
+        "name": "JOY",
+        "repo": "jsonwisdom/JOY",
+        "role": "family_witness_layer_and_continuity_surface",
+        "default_branch": "main",
+        "authority": false
+      },
+      {
+        "name": "COMPUTERWISDOM",
+        "repo": "jsonwisdom/COMPUTERWISDOM",
+        "role": "public_proof_and_reputation_index_surface",
+        "default_branch": "master",
+        "authority": false
+      }
+    ],
+    "authority": false
+  },
+  "family_legacies": {
+    "status": "DECLARED_CONTINUITY_LAYER",
+    "definition": "Family Legacies preserve memory, work, proofs, witness surfaces, and continuity records without converting them into legal identity or authority claims.",
+    "authority": false
+  },
+  "family_trusts": {
+    "status": "CONCEPTUAL_ONLY_NOT_LEGAL_TRUST_VERIFICATION",
+    "definition": "Family Trusts are declared here as a conceptual trust-and-continuity layer only. This artifact does not verify any legal trust, fiduciary status, custody status, guardianship status, estate status, or financial authority.",
+    "authority": false
+  },
+  "child_drifters": {
+    "status": "ACTIVE_OPERATOR_DECLARED_NOT_INDEPENDENTLY_VERIFIED",
+    "definition": "Child Drifters are family-context witness surfaces and memory/reputation branches declared by the operator. They are not legal identity claims and are not authority-bearing validators.",
+    "authority": false
+  },
+  "zora_context": {
+    "profile": "zora.co/@jay_zora",
+    "status": "RECEIPT_SUPPLIED_PENDING_VERIFICATION",
+    "rule": "Zora evidence may support public reputation only after independent replay confirms a concrete receipt. This layer does not verify Zora ownership or activity.",
+    "authority": false
+  },
+  "not_claiming": [
+    "legal parentage verification",
+    "child legal identity verification",
+    "family legal status verification",
+    "legal trust verification",
+    "custody or guardianship verification",
+    "authority over another person",
+    "financial authority",
+    "estate authority",
+    "ENS ownership verification",
+    "Base ENS ownership verification",
+    "Zora ownership verification",
+    "promotion status",
+    "central authority"
+  ],
+  "verification_flags": {
+    "legal_parentage_verified": false,
+    "child_legal_identity_verified": false,
+    "family_legal_status_verified": false,
+    "legal_trust_verified": false,
+    "custody_or_guardianship_verified": false,
+    "authority_over_persons": false,
+    "financial_authority_verified": false,
+    "estate_authority_verified": false,
+    "ens_ownership_verified": false,
+    "base_ens_ownership_verified": false,
+    "zora_ownership_verified": false,
+    "promotion_status": false,
+    "central_authority": false,
+    "independently_verified_by_assistant": false
+  },
+  "parent_receipts": {
+    "public_proof_merge_commit": "8eea6acb9c7874968f1383af3a83d244a34ba0bd",
+    "meme_court_ledger_branch": "feat/public-reputation-layer-jaywisdom-eth",
+    "meme_court_ledger_blob": "fb63298b1ed36756acf34d5ae2ddbc525027027f",
+    "public_replay_index_pr": 250,
+    "verify_workflow_pr": 249
+  }
+}

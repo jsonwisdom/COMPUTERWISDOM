@@ -1,0 +1,28 @@
+{
+  "resolution_id": "res-20250601-001",
+  "drift_receipt_id": "LEAF_003_DRIFT_RECEIPT_001",
+  "resolution_status": "corrected",
+  "original_artifact": "examples/work_items/wi-004-courts-click.json",
+  "replacement_artifact": "examples/work_items/wi-004-v2-courts-click.json",
+  "observed_value": {
+    "field": "assigned_ai",
+    "value": "ChatGPT"
+  },
+  "corrected_value": {
+    "field": "assigned_ai",
+    "value": "Jay"
+  },
+  "resolved_at": "2026-05-30T10:14:00Z",
+  "replay_status": "REPLAYABLE",
+  "validation_rules": [
+    "Original artifact is immutable. Never edit the file referenced in original_artifact.",
+    "Replacement artifact must be present for corrected status.",
+    "Correction does not delete drift. Drift receipt and resolution receipt both remain in repo.",
+    "Replay must remain possible. Both artifacts must be readable and sha256 must verify.",
+    "Authority remains false. Resolution adds new artifacts only.",
+    "Field names in observed_value and corrected_value must match exactly.",
+    "resolution_status must align with presence of replacement_artifact."
+  ],
+  "authority": false,
+  "fraud_status": "UNKNOWN"
+}

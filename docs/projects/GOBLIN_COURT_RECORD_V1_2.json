@@ -1,0 +1,16 @@
+{
+  "artifact": "GOBLIN_COURT_RECORD_V1_2",
+  "cycle": 2,
+  "anchor": "PENDING_WRITE_RECEIPT",
+  "surface": "MIRROR_MINT_MEME_COURT",
+  "function": "renderer_layer_meme_reflection",
+  "rule": "memes_may_illuminate_never_legislate",
+  "downstream_of": "Court",
+  "authority": false,
+  "observed_by": "Ledger-Wielder",
+  "court_first": true,
+  "no_fusion": true,
+  "no_recursion": true,
+  "no_drift": true,
+  "boundary": {
+    "declaration_is_not

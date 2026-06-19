@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Boss Boy Court Terminal v0.4</title>
+<style>
+body{font-family:monospace;background:#050505;color:#00ff41;padding:20px}
+.container{max-width:780px;margin:auto;border:1px solid #333;padding:20px}
+button,input,select,textarea{font-family:monospace}
+button{background:#111;color:#00ff41;border:1px solid #00ff41;padding:10px;cursor:pointer}
+button.active{background:#00ff41;color:#000}
+input,select,textarea{width:100%;background:#000;color:#00ff41;border:1px solid #333;padding:8px;margin:6px 0}
+.section{display:none}.section.active{display:block}
+.tabs{display:flex;gap:10px;margin-bottom:20px}
+#qr{font-size:8px;line-height:8px;white-space:pre;background:#fff;color:#000;padding:10px;overflow:auto}
+@media print{
+  .tabs,button,#verify-section{display:none!important}
+  body{background:white;color:black}
+  .container{border:0}
+  textarea,input,select{color:black;border:1px solid #000}
+  #qr{display:block;color:black}
+}
+</style>
+</head>
+<body>
+<div class="container">
+<h2>🌲 Boss Boy Court Terminal v0.4</h2>
+<p>Seal. Verify. Witness. Print. QR. Sign Mock.</p>
+
+<div class="tabs">
+<button id="btn-seal" class="active" onclick="tab('seal')">SEAL</button>
+<button id="btn-verify" onclick="tab('verify')">VERIFY</button>
+</div>
+
+<div id="seal-section" class="section active">
+<label>Signer Address</label>
+<input id="signer" placeholder="0x...">
+
+<label>Role</label>
+<select id="role">
+<option>Receipt Queen</option>
+<option>Receipt Builder</option>
+<option>Witness Node</option>
+<option>Audit Node</option>
+<option>Governance Node</option>
+<option>Archivist</option>
+<option>Signal Hunter</option>
+<option>Infrastructure Gremlin</option>
+<option>Court Clerk</option>
+<option>Archive Goblin</option>
+</select>
+
+<textarea id="oath" rows="5" readonly>I acknowledge the Forest Law: No Receipt = No Authority. I commit to the Replay-First doctrine. I will build, seal, verify, and repeat. I accept that if my contribution cannot be replayed, it does not exist.</textarea>
+
+<button onclick="seal()">SEAL RECEIPT</button>
+<button onclick="mockSign()">EIP-712 SIGN MOCK</button>
+<button onclick="download()">DOWNLOAD</button>
+<button onclick="window.print()">PRINT RITUAL</button>
+
+<h3>Receipt JSON</h3>
+<textarea id="receipt" rows="12" readonly></textarea>
+
+<h3>Witness Payload</h3>
+<textarea id="witness" rows="7" readonly></textarea>
+
+<h3>QR Export Preview</h3>
+<pre id="qr">Waiting...</pre>
+</div>
+
+<div id="verify-section" class="section">
+<textarea id="verifyInput" rows="14" placeholder="Paste receipt JSON..."></textarea>
+<button onclick="verify()">AUDIT RECEIPT</button>
+<div id="audit"></div>
+</div>
+</div>
+
+<script>
+const SCHEMA="EV-BBC-OATH-REGISTRY-v0.1";
+const VERSION="0.4";
+
+function tab(t){
+ document.querySelectorAll('.section').forEach(x=>x.classList.remove('active'));
+ document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('active'));
+ document.getElementById(t+"-section").classList.add('active');
+ document.getElementById("btn-"+t).classList.add('active');
+}
+
+function sortObj(o){
+ return Object.keys(o).sort().reduce((a,k)=>(a[k]=o[k],a),{});
+}
+
+async function sha256(s){
+ const b=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(s));
+ return [...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
+}
+
+function prefix(role){
+ if(role==="Receipt Queen") return "BOSSBRE-RECEIPTQUEEN-";
+ return "BOSSBOY-" + role.toUpperCase().replaceAll(" ","") + "-";
+}
+
+function qrText(s){
+ let out="";
+ for(let i=0;i<s.length;i++){
+   out += (s.charCodeAt(i)%2===0) ? "██" : "  ";
+   if(i%32===31) out+="\n";
+ }
+ return out || "Waiting...";
+}
+
+async function seal(){
+ const data={
+  schema:SCHEMA,
+  terminal_version:VERSION,
+  signer_address:signer.value.trim(),
+  class_selected:role.value,
+  oath_content:oath.value,
+  replay_acceptance:true,
+  timestamp_utc:new Date().toISOString()
+ };
+ const core=JSON.stringify(sortObj(data));
+ const hash=await sha256(core);
+ const nodeId=prefix(data.class_selected)+hash.slice(0,16);
+ const rec={
+  ...data,
+  oath_hash:hash,
+  node_id:nodeId,
+  authority:false,
+  eas_template_hint:{
+    nodeId:"0x"+hash,
+    oathHash:"0x"+hash,
+    signerAddress:data.signer_address,
+    classSelected:data.class_selected,
+    registryRevision:1,
+    metadataUri:"ipfs://REPLACE_WITH_RECEIPT_URI"
+  }
+ };
+ receipt.value=JSON.stringify(rec,null,2);
+ witness.value=JSON.stringify(rec.eas_template_hint,null,2);
+ qr.textContent=qrText(JSON.stringify({node_id:nodeId,oath_hash:hash}));
+}
+
+async function verify(){
+ try{
+  const rec=JSON.parse(verifyInput.value);
+  const {oath_hash,node_id,eas_template_hint,authority,signature_mock,...data}=rec;
+  const hash=await sha256(JSON.stringify(sortObj(data)));
+  const expected=prefix(data.class_selected)+hash.slice(0,16);
+  const ok=hash===oath_hash && node_id===expected && data.schema===SCHEMA && data.terminal_version===VERSION;
+  audit.innerHTML=ok?"✅ VALID: Court receipt replayed.":"❌ INVALID: Drift detected.";
+  audit.style.color=ok?"#00ff41":"#ff3333";
+ }catch(e){audit.innerHTML="❌ ERROR: Invalid JSON";}
+}
+
+async function mockSign(){
+ if(!receipt.value) return alert("Seal first.");
+ const rec=JSON.parse(receipt.value);
+ rec.signature_mock={
+  type:"EIP-712_SIMULATION",
+  domain:{name:"Boss Boy Court Terminal",version:VERSION,chainId:8453},
+  message_hash:"0x"+await sha256(JSON.stringify(sortObj({
+    node_id:rec.node_id,
+    oath_hash:rec.oath_hash,
+    signer_address:rec.signer_address
+  }))),
+  note:"Simulation only. Replace with wallet signature."
+ };
+ receipt.value=JSON.stringify(rec,null,2);
+}
+
+function download(){
+ const blob=new Blob([receipt.value],{type:"application/json"});
+ const a=document.createElement("a");
+ a.href=URL.createObjectURL(blob);
+ a.download="court-receipt-v0.4-"+Date.now()+".json";
+ a.click();
+}
+</script>
+</body>
+</html>

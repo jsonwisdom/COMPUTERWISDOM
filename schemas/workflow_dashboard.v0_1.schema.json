@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/workflow_dashboard.v0_1.schema.json",
+  "title": "Workflow Dashboard v0.1",
+  "description": "Single-file operator dashboard showing current work, next work, lineage, repo status, and loss detection for Public Receipt Arcade.",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "workflow_id": { "type": "string", "minLength": 1 },
+    "intent_ref": { "type": "string", "minLength": 1 },
+    "current_work_item_id": { "type": "string", "pattern": "^wi-[0-9]{3,}$" },
+    "current_assigned_ai": { "type": "string", "enum": ["Meta", "ChatGPT", "Copilot", "Claude", "Grok", "Jay"] },
+    "current_status": { "type": "string", "enum": ["created", "assigned", "in_progress", "completed", "blocked", "pending"] },
+    "next_task_type": { "type": "string", "enum": ["hash_pdf", "create_receipt", "replay_check", "courts_click", "drop_quarter", "render_card", "none"] },
+    "next_assigned_ai": { "type": "string", "enum": ["Meta", "ChatGPT", "Copilot", "Claude", "Grok", "Jay", "none"] },
+    "lineage_head_hash": { "type": "string", "pattern": "^[A-Fa-f0-9]{64}$" },
+    "repo_artifact_count": { "type": "integer", "minimum": 0 },
+    "last_modified": { "type": "string", "format": "date-time" },
+    "missing_outputs": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "lineage_summary": {
+      "type": "array",
+      "maxItems": 3,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "parent_id": { "type": ["string", "null"] },
+          "work_item_id": { "type": "string" },
+          "lineage_hash_short": { "type": "string", "pattern": "^[A-Fa-f0-9]{8}$" }
+        },
+        "required": ["parent_id", "work_item_id", "lineage_hash_short"]
+      }
+    },
+    "operator_view": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "top_bar": { "type": "string" },
+        "center": { "type": "string" },
+        "left": { "type": "string" },
+        "right": { "type": "string" }
+      },
+      "required": ["top_bar", "center", "left", "right"]
+    },
+    "authority": { "type": "boolean", "const": false },
+    "fraud_status": { "type": "string", "const": "UNKNOWN" }
+  },
+  "required": [
+    "workflow_id",
+    "intent_ref",
+    "current_work_item_id",
+    "current_assigned_ai",
+    "current_status",
+    "next_task_type",
+    "next_assigned_ai",
+    "lineage_head_hash",
+    "repo_artifact_count",
+    "last_modified",
+    "missing_outputs",
+    "lineage_summary",
+    "operator_view",
+    "authority",
+    "fraud_status"
+  ]
+}

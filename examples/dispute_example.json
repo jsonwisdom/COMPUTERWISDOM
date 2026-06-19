@@ -1,0 +1,19 @@
+{
+  "artifact_type": "dispute",
+  "artifact_id": "ers-dispute-example-v0-1",
+  "timestamp": "2026-06-04T13:42:00Z",
+  "lineage_root": "f5c98f688296d1cece1cb8ac6635421384756f00",
+  "constitutional_root": "808f2b1c6c339eb46e68a2161da3cca22f7b0eeb",
+  "schema_version": "ERS_V0_1",
+  "authority": false,
+  "authority_boundary": "NONE",
+  "hash": "sha256:0000000000000000000000000000000000000000000000000000000000000003",
+  "source": "example",
+  "metadata": {
+    "purpose": "example dispute object"
+  },
+  "payload": {
+    "target_artifact": "ers-observation-example-v0-1",
+    "dispute_reason": "example challenge only; no truth claim"
+  }
+}

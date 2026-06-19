@@ -1,0 +1,12 @@
+{
+  "protocol": "GITHUB_DIRECT_WORKFLOW_LOCK_V0_1",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "alms-baseline-receipt-v0-1",
+  "fault_code": "GITHUB_DIRECT_AUTH_FAILURE",
+  "lesson": "access_failure_is_not_artifact_failure",
+  "identity_rule": "use_confirmed_github_cli_identity_for_push",
+  "workflow_status": "branch_updated_by_github_direct",
+  "authority": false,
+  "no_fake_green": true,
+  "replay_required": true
+}

@@ -1,0 +1,16 @@
+{
+  "meta": {
+    "version": "0.1",
+    "schema": "ERS_V0.1",
+    "timestamp": "2026-06-09T13:56:51Z"
+  },
+  "artifact": {
+    "id": "COMPUTERWISDOM_REPLAY_BLOCKED_CONTINUITY_V1",
+    "commit_sha": "6162d1ae99e39c016c16a521c37472550f7dd377"
+  },
+  "status": {
+    "branch": "computerwisdom-replay-blocked-continuity-v1",
+    "verification_state": "INITIATED",
+    "authorized": true
+  }
+}

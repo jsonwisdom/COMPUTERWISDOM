@@ -1,0 +1,28 @@
+{
+  "work_item_id": "wi-005",
+  "parent_id": "leaf_005",
+  "intent_ref": "intent://saint-cloud-public-agenda-drift-pilot",
+  "task_type": "hash_pdf",
+  "prompt_text": "Manually download the City of Saint Cloud public meeting agenda PDF for 2026-06-02, record the public URL, compute SHA-256, and preserve the hash as the first public-memory drift pilot artifact.",
+  "inputs": [],
+  "assigned_ai": "Jay",
+  "status": "created",
+  "lineage_hash": "9999999999999999999999999999999999999999999999999999999999999999",
+  "created_at": "2026-05-30T10:19:00Z",
+  "completed_at": null,
+  "output_artifact": null,
+  "output_sha256": null,
+  "blocked_reason": null,
+  "source_type": "public_record",
+  "artifact_type": "PDF",
+  "target_source": {
+    "jurisdiction": "City of Saint Cloud",
+    "record_type": "public_meeting_agenda",
+    "target_date": "2026-06-02",
+    "public_url": null,
+    "access": "no_login_required",
+    "pii_public_display": false
+  },
+  "authority": false,
+  "fraud_status": "UNKNOWN"
+}
