@@ -1,0 +1,134 @@
+{
+  "artifact": "LEAF_002_REPLAY_IMPORT_TEST_VECTORS_V0_1",
+  "leaf": "LEAF_002_MN_ANOMALY_FRAMEWORK_V0_1",
+  "portal": "mn/leaf-002/index.html",
+  "authority": false,
+  "fraud_status": "UNKNOWN",
+  "purpose": "Offline replay-import fixtures for verifying Leaf #002 portal membrane behavior before lifting PR #93 from draft.",
+  "test_vectors": [
+    {
+      "test_vector": "inference_guard_block",
+      "finding_id": "mn-2026-official_state-001",
+      "surface": "official_state",
+      "observation": "The subject is clearly guilty and corrupt.",
+      "source_url": "https://example.com/a",
+      "source_date": "2026-05-30",
+      "fraud_status": "OBSERVE_ONLY",
+      "authority": false,
+      "expected": {
+        "banner": "REPLAY_MODE",
+        "field_highlight": "observation:red",
+        "message": "INFERENCE BLOCKED: rewrite as observable divergence",
+        "readonly": true
+      }
+    },
+    {
+      "test_vector": "registered_source_ok",
+      "finding_id": "mn-2026-official_state-002",
+      "surface": "official_state",
+      "observation": "The document states that the reported value differs from the baseline.",
+      "source_url": "https://genesis-source.example.org/001",
+      "source_date": "2026-05-30",
+      "fraud_status": "OBSERVE_ONLY",
+      "authority": false,
+      "expected": {
+        "yellow_banner": false,
+        "reliability_score": 0.95,
+        "source_role": "AUDIT_SOURCE",
+        "readonly": true
+      }
+    },
+    {
+      "test_vector": "unregistered_source_warning",
+      "finding_id": "mn-2026-unregistered-003",
+      "surface": "unregistered",
+      "unregistered_source": true,
+      "observation": "Observed discrepancy between reported and measured values.",
+      "source_url": "https://unknown.example.com/x",
+      "source_date": "2026-05-30",
+      "fraud_status": "OBSERVE_ONLY",
+      "authority": false,
+      "expected": {
+        "banner": "UNREGISTERED_SOURCE - proceed with caution",
+        "reliability_field": "hidden",
+        "readonly": true
+      }
+    },
+    {
+      "test_vector": "missing_required_fields",
+      "finding_id": "mn-2026-official_state-004",
+      "surface": "official_state",
+      "observation": "Missing source_url and source_date to trigger validation error.",
+      "fraud_status": "OBSERVE_ONLY",
+      "authority": false,
+      "expected": {
+        "message": "VALIDATION ERROR",
+        "replay_mode": false
+      }
+    },
+    {
+      "test_vector": "fraud_status_violation",
+      "finding_id": "mn-2026-official_state-005",
+      "surface": "official_state",
+      "observation": "Observed mismatch in reported values.",
+      "source_url": "https://genesis-source.example.org/002",
+      "source_date": "2026-05-30",
+      "fraud_status": "ACCUSATION",
+      "authority": true,
+      "expected": {
+        "banner": "AUTHORITY VIOLATION - leaf_002 forbids accusation",
+        "replay_mode": true,
+        "readonly": true
+      }
+    },
+    {
+      "test_vector": "full_valid_receipt",
+      "finding_id": "mn-2026-official_state-006",
+      "surface": "official_state",
+      "observation": "Observed divergence between expected and reported values without inferring intent.",
+      "source_url": "https://genesis-source.example.org/003",
+      "source_date": "2026-05-30",
+      "fraud_status": "OBSERVE_ONLY",
+      "authority": false,
+      "expected": {
+        "banner": "REPLAY_MODE",
+        "warnings": [],
+        "readonly": true,
+        "validation": "PASS",
+        "download_button": "enabled"
+      }
+    }
+  ],
+  "coverage_matrix": [
+    {
+      "verify_item": "inference_guard",
+      "test_vector": "inference_guard_block",
+      "expected_result": "Blocked"
+    },
+    {
+      "verify_item": "finding_id_generation",
+      "test_vector": "full_valid_receipt",
+      "expected_result": "ID preserved, no regen"
+    },
+    {
+      "verify_item": "unregistered_source_warning",
+      "test_vector": "unregistered_source_warning",
+      "expected_result": "Yellow banner"
+    },
+    {
+      "verify_item": "download_json",
+      "test_vector": "full_valid_receipt",
+      "expected_result": "Valid JSON export"
+    },
+    {
+      "verify_item": "readonly_reliability_score_display",
+      "test_vector": "registered_source_ok",
+      "expected_result": "Reliability shown"
+    },
+    {
+      "verify_item": "offline_replay_import",
+      "test_vector": "all six",
+      "expected_result": "Replay mode + correct banners"
+    }
+  ]
+}
