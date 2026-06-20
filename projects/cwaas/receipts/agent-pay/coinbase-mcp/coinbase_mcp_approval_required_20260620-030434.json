@@ -1,0 +1,10 @@
+{
+  "receipt_type": "COINBASE_MCP_APPROVAL_REQUIRED_V1",
+  "adapter": "coinbase-mcp-v1",
+  "preview_receipt": "projects/cwaas/receipts/agent-pay/coinbase-mcp/coinbase_mcp_preview_20260620-030434.json",
+  "preview_hash": "b42dfb20df7a5cffd2cfa352f38ba0c249d573f210e7a096aa91e7346c70b570",
+  "approved": false,
+  "approval_route": "/approve-agent-pay",
+  "status": "BLOCKED_PENDING_HUMAN_APPROVAL",
+  "created_at": "2026-06-20T03:04:34Z"
+}
