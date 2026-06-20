@@ -276,7 +276,8 @@ payment_adapter_allowed: false
 adapter_call_allowed: false
 execution_authority: false
 onchain_movement: false
-real_transaction_witness_present: true
+real_transaction_witness_required: true
+real_transaction_witness_present: false
 ```
 
 ## 6. Identity Witness Gate
