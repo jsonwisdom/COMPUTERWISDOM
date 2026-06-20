@@ -1,0 +1,53 @@
+{
+  "registry_event": "SUBSYSTEM_REGISTRATION",
+  "schema": "CWaaS_SUBSYSTEM_REGISTRATION_V1",
+  "node_id": "audit_workflow_storefront_01",
+  "lane": "RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT",
+  "status": "OPERATIONAL_COLD",
+  "root_identity": "jaywisdom.base.eth",
+  "boundary": {
+    "service_offer": true,
+    "customer_delivery": "structural_audit_outputs",
+    "payment_execution": false,
+    "token_claim": false,
+    "coinbase_authority_claim": false,
+    "base_authority_claim": false,
+    "settlement_claim": false,
+    "treasury_lane": "hold_cold",
+    "family_layer_protected": true,
+    "no_fake_green": true
+  },
+  "bound_artifacts": {
+    "binding_manifest": "projects/cwaas/offers/RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_BINDING_MANIFEST_V1.md",
+    "offer_spec": "projects/cwaas/offers/RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_V1.md",
+    "risk_matrix_template": "projects/cwaas/offers/templates/RISK_MATRIX_TEMPLATE_V1.md",
+    "replay_checklist_template": "projects/cwaas/offers/templates/REPLAY_CHECKLIST_TEMPLATE_V1.md",
+    "github_summary_template": "projects/cwaas/offers/templates/GITHUB_SUMMARY_TEMPLATE_V1.md",
+    "sample_audit": "projects/cwaas/offers/samples/SAMPLE_RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_0001.md"
+  },
+  "governance_compliance": {
+    "no_fake_green": "VERIFIED",
+    "authority_escalation": "DISABLED",
+    "treasury_lane_access": "DENIED",
+    "family_layer_override": "DENIED"
+  },
+  "provenance": {
+    "artifact_backfill_merge": "077efa9a713f97e0c608d45df7135b224f941b49",
+    "artifact_bound_merge": "b7b5da606b39ea31eca4a2b6a7ebd5ebc16b2e64",
+    "binding_witness": "AUDIT_LANE_ARTIFACTS_BOUND_AND_COLD"
+  },
+  "validation_checks": {
+    "required_artifacts_exist": true,
+    "manifest_status": "DEFINED_ARTIFACTS_BOUND",
+    "node_id_matches_manifest": true,
+    "payment_execution": false,
+    "token_claim": false,
+    "coinbase_authority_claim": false,
+    "base_authority_claim": false,
+    "settlement_claim": false,
+    "treasury_lane": "hold_cold",
+    "family_layer_protected": true,
+    "no_fake_green": true
+  },
+  "registration_status": "READY_FOR_REVIEW"
+}
