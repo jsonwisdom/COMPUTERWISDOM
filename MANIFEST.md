@@ -131,6 +131,7 @@
 | `court_reporter/tweet_2056596286099402905_alignment_report.json` | `ANALYSIS_COMPLETE` | `c79cc42` |
 | `projects/cwaas/receipts/CWAAS_RECEIPT_SCHEMA_v1.md` | `PENDING_REVIEW` | `PR_356` |
 | `projects/cwaas/receipts/agent-pay/AGENT_PAY_GOVERNANCE_WIRE_0001.md` | `PENDING_REVIEW` | `PR_355` |
+| `projects/cwaas/receipts/agent-pay/AGENT_PAY_ADAPTER_DRYRUN_0001.md` | `PENDING_REVIEW` | `PR_362` |
 | `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_JAYWISDOM_BASE_0001.md` | `PENDING_REVIEW` | `PR_359` |
 | `projects/cwaas/receipts/README_COMPUTERWISDOM_REBOOT_INDEX.md` | `PENDING_REVIEW` | `PR_359` |
 | `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_NEXT_ACTIONS_0001.md` | `PENDING_REVIEW` | `PR_359` |
@@ -196,6 +197,7 @@
 | COMPUTERWISDOM reboot receipts indexed | 2026-06-19 | `PENDING_REVIEW` |
 | CWaaS receipt schema v1 indexed | 2026-06-19 | `PENDING_REVIEW` |
 | Agent Pay governance wire indexed | 2026-06-20 | `PENDING_REVIEW` |
+| Agent Pay adapter dry-run receipt indexed | 2026-06-20 | `PENDING_REVIEW` |
 
 ---
 
@@ -218,6 +220,7 @@
   "latest_computerwisdom_reboot_pr": "PR_359",
   "latest_cwaas_receipt_schema": "projects/cwaas/receipts/CWAAS_RECEIPT_SCHEMA_v1.md",
   "latest_agent_pay_governance_wire": "projects/cwaas/receipts/agent-pay/AGENT_PAY_GOVERNANCE_WIRE_0001.md",
+  "latest_agent_pay_dryrun_receipt": "projects/cwaas/receipts/agent-pay/AGENT_PAY_ADAPTER_DRYRUN_0001.md",
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
