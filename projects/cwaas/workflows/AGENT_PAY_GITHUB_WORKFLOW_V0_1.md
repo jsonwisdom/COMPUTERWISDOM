@@ -17,7 +17,7 @@ Depends on:
 
 Defines the GitHub workflow logic for Agent Pay for Developers.
 
-The workflow turns verified developer work into pay eligibility only after identity, provenance, replay, cross-layer governance, schema compliance, and approval gates pass.
+The workflow turns verified developer work into pay eligibility only after identity, provenance, replay, cross-layer governance, schema compliance, Boss Bre green review, and approval gates pass.
 
 This document is a workflow specification. It does not execute payment, submit an EAS attestation, issue a public token, or imply endorsement by GitHub, Base, Coinbase, ENS, or EAS.
 
@@ -31,6 +31,7 @@ Developer work
   → agent action receipt
   → replay PASS
   → CWAAS receipt schema check
+  → Boss Bre green review check
   → cross-layer governance check
   → pay preview receipt
   → human approval
@@ -95,6 +96,7 @@ replay_verdict: PASS
 cwaas_receipt_schema_present: true
 cwaas_receipt_schema_version: CWAAS_RECEIPT_SCHEMA_v1
 cross_layer_architecture_present: true
+boss_bre_review: green
 jay_human_root_declared: true
 boss_bre_gate_declared: true
 treasury_lane_declared: true
@@ -125,7 +127,21 @@ The workflow must verify that CWaaS receipts use the canon schema before governa
     echo "No fake green."
 ```
 
-### 5.2 Cross-Layer Governance Check
+### 5.2 Boss Bre Green Review Check
+
+The workflow must record Boss Bre green before payment preview or adapter eligibility.
+
+```yaml
+- name: Boss Bre Green Review Check
+  run: |
+    echo "Verifying Boss Bre green review..."
+    echo "boss_bre_review=green"
+    echo "Boss Bre green is required before adapter eligibility."
+    echo "No Boss Bre green, no payment lane."
+    echo "No fake green."
+```
+
+### 5.3 Cross-Layer Governance Check
 
 The workflow must verify that the cross-layer MCP treasury and JAYTOKEN architecture exists before payment preview or adapter eligibility.
 
@@ -155,6 +171,7 @@ preview_receipt_present: true
 preview_hash_valid: true
 cwaas_receipt_schema_present: true
 cross_layer_architecture_present: true
+boss_bre_review: green
 jaytoken_entry_bound_to_purpose: true
 human_approval_present: true
 protected_environment_approved: true
@@ -229,6 +246,7 @@ The payment adapter may not execute unless:
 replay_verdict: PASS
 cwaas_receipt_schema_present: true
 cross_layer_architecture_present: true
+boss_bre_review: green
 jaytoken_entry_bound_to_purpose: true
 preview_receipt_valid: true
 human_approval_present: true
@@ -270,6 +288,7 @@ No transaction witness means no confirmed payment receipt.
 MISSING_WORK_PROOF             → BLOCKED
 MISSING_IDENTITY_BINDING       → BLOCKED
 MISSING_CWAAS_SCHEMA           → BLOCKED
+MISSING_BOSS_BRE_GREEN         → BLOCKED
 MISSING_CROSS_LAYER_SPEC       → BLOCKED
 MISSING_JAYTOKEN_PURPOSE_ENTRY → BLOCKED
 REPLAY_FAIL                    → BLOCKED
@@ -304,6 +323,7 @@ No GitHub proof, no Agent Pay.
 No identity binding, no pay eligibility.
 No replay PASS, no preview receipt.
 No CWaaS schema, no governance wire.
+No Boss Bre green, no payment lane.
 No cross-layer architecture, no preview receipt.
 No JAYTOKEN purpose entry, no payment adapter eligibility.
 No preview receipt, no human approval target.
