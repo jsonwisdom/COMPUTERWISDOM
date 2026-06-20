@@ -1,7 +1,9 @@
 {
   "receipt_type": "AGENT_PAY_APPROVAL_RECEIPT_V1",
+  "schema": "CWAAS_RECEIPT_SCHEMA_v1",
   "status": "HUMAN_APPROVED_DRYRUN_ONLY",
   "lane": "AGENT_PAY",
+  "governance_wire": "projects/cwaas/receipts/agent-pay/AGENT_PAY_GOVERNANCE_WIRE_0001.md",
   "preview_receipt_id": "PREVIEW_1_V2",
   "approval_id": "APPROVAL_0001",
   "preview_reference": {
