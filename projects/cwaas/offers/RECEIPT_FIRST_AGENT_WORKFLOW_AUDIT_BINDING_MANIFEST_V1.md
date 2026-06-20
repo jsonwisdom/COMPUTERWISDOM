@@ -7,7 +7,7 @@
 ```text
 date: 2026-06-20
 reviewer: Boss Bre / jaywisdom.base.eth
-status: DEFINED_AND_BINDING
+status: DEFINED_PENDING_ARTIFACTS
 schema: CWAAS_RECEIPT_SCHEMA_v1
 lane: RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT
 node_id: audit_workflow_storefront_01
@@ -15,18 +15,18 @@ node_id: audit_workflow_storefront_01
 
 ## Purpose
 
-This manifest defines the Receipt-First Agent Workflow Audit lane as a governed COMPUTERWISDOM storefront subsystem.
+This manifest defines the Receipt-First Agent Workflow Audit lane as a governed COMPUTERWISDOM storefront candidate.
 
-It binds the service offer, templates, and sample audit into one bounded service lane without granting payment execution, token authority, external endorsement, custody, or settlement claims.
+It identifies the service offer, templates, and sample audit that must be committed before the lane can be treated as fully bound. It grants no payment execution, token authority, external endorsement, custody, or settlement claims.
 
-## Bound References
+## Pending References
 
 ```text
-offer_spec: projects/cwaas/offers/RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_V1.md
-risk_matrix_template: projects/cwaas/offers/templates/RISK_MATRIX_TEMPLATE_V1.md
-replay_checklist_template: projects/cwaas/offers/templates/REPLAY_CHECKLIST_TEMPLATE_V1.md
-github_summary_template: projects/cwaas/offers/templates/GITHUB_SUMMARY_TEMPLATE_V1.md
-sample_audit: projects/cwaas/offers/samples/SAMPLE_RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_0001.md
+offer_spec_pending: projects/cwaas/offers/RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_V1.md
+risk_matrix_template_pending: projects/cwaas/offers/templates/RISK_MATRIX_TEMPLATE_V1.md
+replay_checklist_template_pending: projects/cwaas/offers/templates/REPLAY_CHECKLIST_TEMPLATE_V1.md
+github_summary_template_pending: projects/cwaas/offers/templates/GITHUB_SUMMARY_TEMPLATE_V1.md
+sample_audit_pending: projects/cwaas/offers/samples/SAMPLE_RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_0001.md
 root_identity: jaywisdom.base.eth
 family_layer: JOY / Layer 0 protected
 mirror_lane: AL
@@ -38,7 +38,7 @@ boundary: COMPUTERWISDOM
 
 ```text
 service_offer: true
-customer_delivery: structural
+customer_delivery: structural_pending_artifacts
 payment_execution: false
 token_claim: false
 coinbase_authority_claim: false
@@ -53,11 +53,11 @@ no_fake_green: true
 ## Artifact Requirements
 
 ```text
-offer_spec_required: true
-risk_matrix_template_required: true
-replay_checklist_template_required: true
-github_summary_template_required: true
-sample_audit_required: true
+offer_spec_required_before_binding: true
+risk_matrix_template_required_before_binding: true
+replay_checklist_template_required_before_binding: true
+github_summary_template_required_before_binding: true
+sample_audit_required_before_binding: true
 customer_claim_requires_deliverable: true
 audit_green_requires_evidence: true
 ```
@@ -67,6 +67,7 @@ audit_green_requires_evidence: true
 ```text
 No customer claim without deliverable.
 No audit green without evidence.
+No bound lane without committed artifacts.
 No payment claim without receipt.
 No token claim.
 No Coinbase/Base authority claim.
@@ -76,13 +77,13 @@ No fake green.
 
 ## Boundary
 
-This manifest defines and binds the storefront audit lane only. It does not register the lane as an indexed subsystem, bind it to the global replay spine, execute payment, provide legal or financial advice, claim custody, imply third-party endorsement, or create settlement finality.
+This manifest defines the storefront audit lane as a pending-artifact candidate. It does not fully bind missing artifacts, register the lane as an indexed subsystem, bind it to the global replay spine, execute payment, provide legal or financial advice, claim custody, imply third-party endorsement, or create settlement finality.
 
 ## Next Action
 
 ```text
-next_action: open audit lane binding manifest PR
-post_merge_action: register audit_workflow_storefront_01 in subsystem index
+next_action: commit offer, templates, and sample audit artifacts
+post_artifact_action: promote audit_workflow_storefront_01 from pending-artifact candidate to bound lane
 spine_binding: pending_after_subsystem_registration
 ```
 
