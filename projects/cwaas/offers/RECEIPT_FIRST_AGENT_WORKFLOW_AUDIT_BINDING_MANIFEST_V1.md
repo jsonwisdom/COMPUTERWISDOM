@@ -7,7 +7,7 @@
 ```text
 date: 2026-06-20
 reviewer: Boss Bre / jaywisdom.base.eth
-status: DEFINED_PENDING_ARTIFACTS
+status: DEFINED_ARTIFACTS_BOUND
 schema: CWAAS_RECEIPT_SCHEMA_v1
 lane: RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT
 node_id: audit_workflow_storefront_01
@@ -17,16 +17,16 @@ node_id: audit_workflow_storefront_01
 
 This manifest defines the Receipt-First Agent Workflow Audit lane as a governed COMPUTERWISDOM storefront candidate.
 
-It identifies the service offer, templates, and sample audit that must be committed before the lane can be treated as fully bound. It grants no payment execution, token authority, external endorsement, custody, or settlement claims.
+It identifies the service offer, templates, and sample audit now committed as lane artifacts. It grants no payment execution, token authority, external endorsement, custody, or settlement claims.
 
-## Pending References
+## Bound References
 
 ```text
-offer_spec_pending: projects/cwaas/offers/RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_V1.md
-risk_matrix_template_pending: projects/cwaas/offers/templates/RISK_MATRIX_TEMPLATE_V1.md
-replay_checklist_template_pending: projects/cwaas/offers/templates/REPLAY_CHECKLIST_TEMPLATE_V1.md
-github_summary_template_pending: projects/cwaas/offers/templates/GITHUB_SUMMARY_TEMPLATE_V1.md
-sample_audit_pending: projects/cwaas/offers/samples/SAMPLE_RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_0001.md
+offer_spec_bound: projects/cwaas/offers/RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_V1.md
+risk_matrix_template_bound: projects/cwaas/offers/templates/RISK_MATRIX_TEMPLATE_V1.md
+replay_checklist_template_bound: projects/cwaas/offers/templates/REPLAY_CHECKLIST_TEMPLATE_V1.md
+github_summary_template_bound: projects/cwaas/offers/templates/GITHUB_SUMMARY_TEMPLATE_V1.md
+sample_audit_bound: projects/cwaas/offers/samples/SAMPLE_RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_0001.md
 root_identity: jaywisdom.base.eth
 family_layer: JOY / Layer 0 protected
 mirror_lane: AL
@@ -38,7 +38,7 @@ boundary: COMPUTERWISDOM
 
 ```text
 service_offer: true
-customer_delivery: structural_pending_artifacts
+customer_delivery: structural_artifacts_bound
 payment_execution: false
 token_claim: false
 coinbase_authority_claim: false
@@ -53,11 +53,11 @@ no_fake_green: true
 ## Artifact Requirements
 
 ```text
-offer_spec_required_before_binding: true
-risk_matrix_template_required_before_binding: true
-replay_checklist_template_required_before_binding: true
-github_summary_template_required_before_binding: true
-sample_audit_required_before_binding: true
+offer_spec_committed: true
+risk_matrix_template_committed: true
+replay_checklist_template_committed: true
+github_summary_template_committed: true
+sample_audit_committed: true
 customer_claim_requires_deliverable: true
 audit_green_requires_evidence: true
 ```
@@ -77,13 +77,12 @@ No fake green.
 
 ## Boundary
 
-This manifest defines the storefront audit lane as a pending-artifact candidate. It does not fully bind missing artifacts, register the lane as an indexed subsystem, bind it to the global replay spine, execute payment, provide legal or financial advice, claim custody, imply third-party endorsement, or create settlement finality.
+This manifest defines the storefront audit lane as an artifacts-bound service lane. It does not register the lane as an indexed subsystem, bind it to the global replay spine, execute payment, provide legal or financial advice, claim custody, imply third-party endorsement, or create settlement finality.
 
 ## Next Action
 
 ```text
-next_action: commit offer, templates, and sample audit artifacts
-post_artifact_action: promote audit_workflow_storefront_01 from pending-artifact candidate to bound lane
+next_action: register audit_workflow_storefront_01 in subsystem index
 spine_binding: pending_after_subsystem_registration
 ```
 
