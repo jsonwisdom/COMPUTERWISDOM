@@ -23,8 +23,8 @@ related_files:
   - projects/cwaas/workflows/AGENT_PAY_GITHUB_WORKFLOW_V0_1.md
 root_identity: jaywisdom.base.eth
 treasury_anchor: FINAL_BOUND lane
-treasury_attest_event_001: PENDING_TREASURY_ATTEST_HASH
-treasury_attest_event_002: PENDING_TREASURY_ATTEST_HASH
+treasury_attest_event_001: 1bcd8cf4d27e23156dd780a6c2ec3e53cd47b307f638f6f0bdbed692aa7602ab
+treasury_attest_event_002: a579ce2ea512727e3cc6569fea4b849f6decc4ba767f55798f5afe513634eeb1
 manifest_refs:
   - projects/cwaas/receipts/agent-pay/AGENT_PAY_ADAPTER_ELIGIBILITY_0002.md
 ```
@@ -47,11 +47,11 @@ no_fake_green: true
 ## Eligibility Proof
 
 ```text
-adapter_preflight_eligibility: blocked_pending_treasury_attest_hashes
+adapter_preflight_eligibility: real_treasury_attest_hashes_bound
 execution_state: cold_review_only
 payment_lane_activated: false
 execution_authorized: false
-verdict: NOT_ELIGIBLE_FOR_ACTIVATION_REVIEW_UNTIL_TREASURY_ATTEST_HASHES_BOUND
+verdict: ELIGIBLE_FOR_ACTIVATION_REVIEW_ONLY
 execution_locked: true
 ```
 
@@ -80,8 +80,8 @@ manifest_refs:
 ## Recommendation
 
 ```text
-next_action: paste Treasury Attest Event 001/002 hashes before any activation review
-eligibility_note: Not eligible for activation review until Treasury Attest hashes are bound.
+next_action: open adapter activation review PR
+eligibility_note: Eligible for activation review only. No execution authorized.
 blockers:
   - treasury_attest_event_001_hash_required
   - treasury_attest_event_002_hash_required
@@ -109,4 +109,4 @@ canon_reference: current master post-01d52792f8a8d464263386ecfc39e44f628aabe4
 
 ## Boundary
 
-This receipt records review-only preflight status. It does not make the adapter eligible for activation review while Treasury Attest hashes are pending. It does not execute a payment, call an external adapter, move funds, create settlement finality, or imply third-party endorsement.
+This receipt records review-only preflight status. Real Treasury Attest hashes are now bound; the adapter is eligible for activation review only. It does not execute a payment, call an external adapter, move funds, create settlement finality, or imply third-party endorsement.

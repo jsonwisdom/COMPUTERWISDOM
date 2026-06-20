@@ -141,6 +141,7 @@
 | `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_LOCK_0001.md` | `PENDING_REVIEW` | `PR_359` |
 | `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_POINTER_0001.md` | `PENDING_REVIEW` | `PR_359` |
 
+| `projects/cwaas/receipts/TREASURY_ATTEST_BINDING_0002.md` | `PENDING_REVIEW` | `REAL_HASH_BINDING_PR` |
 ---
 
 ## 9. Service Layers (`/services/`)
