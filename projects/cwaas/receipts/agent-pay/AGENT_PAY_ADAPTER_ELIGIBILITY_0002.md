@@ -47,11 +47,11 @@ no_fake_green: true
 ## Eligibility Proof
 
 ```text
-adapter_preflight_eligibility: Boss Bre green gate confirmed for review only
+adapter_preflight_eligibility: blocked_pending_treasury_attest_hashes
 execution_state: cold_review_only
 payment_lane_activated: false
 execution_authorized: false
-verdict: ELIGIBLE_FOR_ACTIVATION_REVIEW_ONLY
+verdict: NOT_ELIGIBLE_FOR_ACTIVATION_REVIEW_UNTIL_TREASURY_ATTEST_HASHES_BOUND
 execution_locked: true
 ```
 
@@ -80,8 +80,8 @@ manifest_refs:
 ## Recommendation
 
 ```text
-next_action: paste Treasury Attest Event 001/002 hashes, then review adapter activation PR separately
-eligibility_note: Eligible for next activation review only after Treasury Attest hashes are bound.
+next_action: paste Treasury Attest Event 001/002 hashes before any activation review
+eligibility_note: Not eligible for activation review until Treasury Attest hashes are bound.
 blockers:
   - treasury_attest_event_001_hash_required
   - treasury_attest_event_002_hash_required
@@ -109,4 +109,4 @@ canon_reference: current master post-01d52792f8a8d464263386ecfc39e44f628aabe4
 
 ## Boundary
 
-This receipt records review-only preflight eligibility. It does not execute a payment, call an external adapter, move funds, create settlement finality, or imply third-party endorsement.
+This receipt records review-only preflight status. It does not make the adapter eligible for activation review while Treasury Attest hashes are pending. It does not execute a payment, call an external adapter, move funds, create settlement finality, or imply third-party endorsement.
