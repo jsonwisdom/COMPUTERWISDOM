@@ -1,0 +1,57 @@
+{
+  "spine_event": "REPLAY_SPINE_BINDING",
+  "schema": "CWaaS_REPLAY_SPINE_BINDING_V1",
+  "node_id": "audit_workflow_storefront_01",
+  "lane": "RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT",
+  "status": "BOUND_COLD",
+  "root_identity": "jaywisdom.base.eth",
+  "registration_ref": {
+    "registration_file": "projects/cwaas/registry/AUDIT_WORKFLOW_STOREFRONT_01_SUBSYSTEM_REGISTRATION_V1.json",
+    "registration_merge": "15083a2f290f6a7090872070f0e5cdcbf73db4e6"
+  },
+  "bound_artifacts": {
+    "binding_manifest": "projects/cwaas/offers/RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_BINDING_MANIFEST_V1.md",
+    "offer_spec": "projects/cwaas/offers/RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_V1.md",
+    "risk_matrix_template": "projects/cwaas/offers/templates/RISK_MATRIX_TEMPLATE_V1.md",
+    "replay_checklist_template": "projects/cwaas/offers/templates/REPLAY_CHECKLIST_TEMPLATE_V1.md",
+    "github_summary_template": "projects/cwaas/offers/templates/GITHUB_SUMMARY_TEMPLATE_V1.md",
+    "sample_audit": "projects/cwaas/offers/samples/SAMPLE_RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_0001.md"
+  },
+  "replay_checks": {
+    "artifacts_exist": true,
+    "registration_exists": true,
+    "manifest_status": "DEFINED_ARTIFACTS_BOUND",
+    "subsystem_status": "OPERATIONAL_COLD",
+    "spine_binding_only": true,
+    "customer_intake_started": false,
+    "payment_execution": false,
+    "token_claim": false,
+    "treasury_lane": "hold_cold",
+    "family_layer_protected": true,
+    "no_fake_green": true
+  },
+  "governance": {
+    "authority_escalation": "DISABLED",
+    "treasury_lane_access": "DENIED",
+    "family_layer_override": "DENIED",
+    "external_endorsement_claim": false,
+    "settlement_claim": false
+  },
+  "provenance": {
+    "artifact_backfill_merge": "077efa9a713f97e0c608d45df7135b224f941b49",
+    "artifact_bound_merge": "b7b5da606b39ea31eca4a2b6a7ebd5ebc16b2e64",
+    "subsystem_registration_merge": "15083a2f290f6a7090872070f0e5cdcbf73db4e6"
+  },
+  "validation_gate": {
+    "registration_file_exists": true,
+    "all_storefront_artifacts_exist": true,
+    "manifest_status_is_bound": true,
+    "subsystem_status_is_operational_cold": true,
+    "payment_execution_false": true,
+    "token_claim_false": true,
+    "treasury_lane_hold_cold": true,
+    "family_layer_protected_true": true,
+    "no_fake_green_true": true
+  },
+  "binding_status": "READY_FOR_REVIEW"
+}
