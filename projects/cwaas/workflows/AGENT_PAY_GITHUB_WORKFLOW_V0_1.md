@@ -13,12 +13,13 @@ Depends on:
 - CROSS_LAYER_MCP_TREASURY_JAYTOKEN_V1
 - CWAAS_RECEIPT_SCHEMA_v1
 - AGENT_PAY_ADAPTER_ACTIVATION_REVIEW_V1
+- AGENT_PAY_TRANSACTION_WITNESS_PLACEHOLDER_0001
 
 ## 1. Purpose
 
 Defines the GitHub workflow logic for Agent Pay for Developers.
 
-The workflow turns verified developer work into pay eligibility only after identity, provenance, replay, cross-layer governance, schema compliance, Boss Bre green review, activation review, and approval gates pass.
+The workflow turns verified developer work into pay eligibility only after identity, provenance, replay, cross-layer governance, schema compliance, Boss Bre green review, activation review, transaction witness placeholder replay continuity, and approval gates pass.
 
 This document is a workflow specification. It does not execute payment, submit an EAS attestation, issue a public token, or imply endorsement by GitHub, Base, Coinbase, ENS, or EAS.
 
@@ -38,7 +39,8 @@ Developer work
   → human approval
   → payment adapter eligibility
   → activation review gate
-  → confirmed payment receipt after transaction witness
+  → transaction witness placeholder gate
+  → confirmed payment receipt only after real transaction witness
 ```
 
 ## 3. Identity and Reputation Requirement
@@ -199,6 +201,34 @@ The workflow must verify the review-only activation package after eligibility an
     echo "no_fake_green=true"
 ```
 
+### 5.5 Transaction Witness Placeholder Gate
+
+The workflow must verify the transaction witness placeholder and replay trace before any confirmed-payment lane can be reviewed. This gate does not confirm payment and does not authorize execution.
+
+```yaml
+- name: Transaction Witness Placeholder Gate
+  run: |
+    echo "Running Agent Pay transaction witness placeholder gate..."
+    if [ ! -f "projects/cwaas/treasury/AGENT_PAY_TRANSACTION_WITNESS_PLACEHOLDER_0001.md" ]; then
+      echo "❌ Transaction witness placeholder missing"
+      exit 1
+    fi
+    if [ ! -f "projects/cwaas/treasury/AGENT_PAY_TRANSACTION_WITNESS_PLACEHOLDER_0001_REPLAY_TRACE.md" ]; then
+      echo "❌ Transaction witness replay trace missing"
+      exit 1
+    fi
+    echo "✅ Transaction witness placeholder present"
+    echo "✅ Transaction witness replay trace present"
+    echo "transaction_witness_status=PLACEHOLDER_ONLY"
+    echo "real_transaction_witness=false"
+    echo "confirmed_payment=false"
+    echo "execution_authority=false"
+    echo "adapter_call_allowed=false"
+    echo "onchain_movement=false"
+    echo "settlement_claimed=false"
+    echo "no_fake_green=true"
+```
+
 Before confirmed payment:
 
 ```yaml
@@ -213,11 +243,13 @@ protected_environment_approved: true
 activation_review_package_present: true
 real_treasury_attest_hashes_bound: true
 activation_review_status: ELIGIBLE_FOR_ACTIVATION_REVIEW_ONLY
+transaction_witness_placeholder_present: true
+transaction_witness_replay_trace_present: true
 payment_adapter_allowed: false
 adapter_call_allowed: false
 execution_authority: false
 onchain_movement: false
-transaction_witness_present: true
+real_transaction_witness_present: true
 ```
 
 ## 6. Identity Witness Gate
@@ -294,6 +326,8 @@ human_approval_present: true
 protected_environment_approved: true
 activation_review_package_present: true
 real_treasury_attest_hashes_bound: true
+transaction_witness_placeholder_present: true
+transaction_witness_replay_trace_present: true
 execution_authorization_receipt_present: false
 payment_adapter_allowed: false
 adapter_call_allowed: false
@@ -327,7 +361,7 @@ identity_binding_hash: <sha256>
 final_hash: <sha256>
 ```
 
-No transaction witness means no confirmed payment receipt.
+No real transaction witness means no confirmed payment receipt.
 
 ## 11. Failure States
 
@@ -340,6 +374,8 @@ MISSING_CROSS_LAYER_SPEC            → BLOCKED
 MISSING_JAYTOKEN_PURPOSE_ENTRY      → BLOCKED
 MISSING_ACTIVATION_REVIEW_PACKAGE   → BLOCKED
 MISSING_REAL_TREASURY_ATTEST_HASHES → BLOCKED
+MISSING_TRANSACTION_PLACEHOLDER     → BLOCKED
+MISSING_TRANSACTION_REPLAY_TRACE    → BLOCKED
 REPLAY_FAIL                         → BLOCKED
 HUMAN_REJECTED                      → REJECTED
 MISSING_PREVIEW_RECEIPT             → BLOCKED
@@ -364,6 +400,7 @@ JAYTOKEN monetary value
 payment completion without transaction witness
 automatic authorization from Basename alone
 activation review equals execution authority
+witness placeholder equals confirmed payment
 ```
 
 ## 13. Boss Brenda Lock
@@ -378,9 +415,11 @@ No cross-layer architecture, no preview receipt.
 No JAYTOKEN purpose entry, no payment adapter eligibility.
 No activation review package, no adapter activation review.
 No real Treasury Attest hashes, no activation review.
+No transaction witness placeholder, no witness replay continuity.
+No transaction witness replay trace, no witness lane.
 No preview receipt, no human approval target.
 No human approval, no payment execution.
-No transaction witness, no confirmed payment.
+No real transaction witness, no confirmed payment.
 No review eligibility as execution authority.
 No endorsement by implication.
 No fake green.
