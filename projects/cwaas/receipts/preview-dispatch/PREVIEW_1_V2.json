@@ -1,5 +1,7 @@
 {
   "receipt_type": "AGENT_PAY_PREVIEW_RECEIPT_V1",
+  "schema": "CWAAS_RECEIPT_SCHEMA_v1",
+  "governance_wire": "projects/cwaas/receipts/agent-pay/AGENT_PAY_GOVERNANCE_WIRE_0001.md",
   "agent_action_receipt_hash": "3d70f1d82fe77f7f3e2d0f59874c943c9db2f1d9b54e57d8654e2fffd1bb8407",
   "replay_trace_hash": "6a3231aa2dec1a4f8a3ade4bf499039805a9ffd90fd358b08c1a32143e843fe2",
   "proposed_payment": {
@@ -11,9 +13,9 @@
   },
   "work_reference": {
     "repository": "jsonwisdom/COMPUTERWISDOM",
-    "pr_number": 356,
+    "pr_number": 355,
     "issue_number": null,
-    "commit_sha": "0b0ec9d17f78467de145803d99e3e52862cad2f2"
+    "commit_sha": "6e96f0a31cd71d9bd87ae9b801193b5024ed1fc8"
   },
   "generated_at": "2026-06-19T22:41:44Z",
   "preview_hash": "e4b4f5e46acaef8b5aceb23c9f6f41d085f79cea9ff1ad955cfc0f848e691dc7"
