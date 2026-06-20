@@ -6,7 +6,7 @@
   "approval_id": "APPROVAL_0001",
   "preview_reference": {
     "preview_path": "projects/cwaas/receipts/preview-dispatch/PREVIEW_1_V2.json",
-    "preview_hash": "9a9ffe769241b85b2561917988c56454437eed786286317bce94a1ff3a32344b",
+    "preview_hash": "e4b4f5e46acaef8b5aceb23c9f6f41d085f79cea9ff1ad955cfc0f848e691dc7",
     "work_id": "1",
     "developer_basename": "jaywisdom.base.eth",
     "github_identity": "jsonwisdom",
@@ -21,8 +21,10 @@
   },
   "replay_reference": {
     "replay_trace_id": "TRACE_PREVIEW_1_V2",
+    "replay_trace_path": "projects/cwaas/receipts/agent-pay/PREVIEW_1_V2_REPLAY_TRACE.json",
+    "replay_trace_hash": "6a3231aa2dec1a4f8a3ade4bf499039805a9ffd90fd358b08c1a32143e843fe2",
     "replay_verdict": "PASS",
-    "replay_disposition": "SETTLED_READ_ONLY"
+    "replay_disposition": "DRYRUN_READ_ONLY"
   },
   "payment_adapter_eligibility": {
     "eligibility_status": "DRYRUN_ADAPTER_ELIGIBLE",
