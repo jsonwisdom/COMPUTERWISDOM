@@ -1,0 +1,11 @@
+{
+  "trace_type": "AGENT_PAY_PREVIEW_REPLAY_TRACE_V1",
+  "trace_id": "TRACE_PREVIEW_1_V2",
+  "preview_receipt_id": "PREVIEW_1_V2",
+  "preview_path": "projects/cwaas/receipts/preview-dispatch/PREVIEW_1_V2.json",
+  "mode": "DRYRUN_READ_ONLY",
+  "replay_verdict": "PASS",
+  "external_action": false,
+  "runtime_effect": false,
+  "generated_at": "2026-06-19T22:42:00Z"
+}

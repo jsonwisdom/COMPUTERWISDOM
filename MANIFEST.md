@@ -129,6 +129,7 @@
 | `merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json` | `MERKLED` | `d0abe0a` |
 | `merkle/base_batches_confucius_purpose_extension_v1.json` | `PURPOSE_EXTENSION_CREATED` | `edcd365` |
 | `court_reporter/tweet_2056596286099402905_alignment_report.json` | `ANALYSIS_COMPLETE` | `c79cc42` |
+| `projects/cwaas/receipts/CWAAS_RECEIPT_SCHEMA_v1.md` | `PENDING_REVIEW` | `PR_356` |
 | `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_JAYWISDOM_BASE_0001.md` | `PENDING_REVIEW` | `PR_359` |
 | `projects/cwaas/receipts/README_COMPUTERWISDOM_REBOOT_INDEX.md` | `PENDING_REVIEW` | `PR_359` |
 | `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_NEXT_ACTIONS_0001.md` | `PENDING_REVIEW` | `PR_359` |
@@ -192,6 +193,7 @@
 | Meme Court Open Zora Base candidate | 2026-05-19 | `OPEN_COURT_CANDIDATE_CREATED` |
 | Meme Court Open Zora Base receipt | 2026-05-19 | `OPEN_COURT_RECEIPT_CREATED` |
 | COMPUTERWISDOM reboot receipts indexed | 2026-06-19 | `PENDING_REVIEW` |
+| CWaaS receipt schema v1 indexed | 2026-06-19 | `PENDING_REVIEW` |
 
 ---
 
@@ -212,6 +214,7 @@
   "latest_open_court_candidate": "services/meme-court/open_court_zora_base_candidate.md",
   "latest_open_court_receipt": "receipts/meme_court_open_zora_base_receipt.json",
   "latest_computerwisdom_reboot_pr": "PR_359",
+  "latest_cwaas_receipt_schema": "projects/cwaas/receipts/CWAAS_RECEIPT_SCHEMA_v1.md",
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
