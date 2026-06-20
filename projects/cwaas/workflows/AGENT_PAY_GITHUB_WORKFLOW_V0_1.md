@@ -14,12 +14,13 @@ Depends on:
 - CWAAS_RECEIPT_SCHEMA_v1
 - AGENT_PAY_ADAPTER_ACTIVATION_REVIEW_V1
 - AGENT_PAY_TRANSACTION_WITNESS_PLACEHOLDER_0001
+- AGENT_PAY_REAL_TRANSACTION_WITNESS_SCHEMA_V1
 
 ## 1. Purpose
 
 Defines the GitHub workflow logic for Agent Pay for Developers.
 
-The workflow turns verified developer work into pay eligibility only after identity, provenance, replay, cross-layer governance, schema compliance, Boss Bre green review, activation review, transaction witness placeholder replay continuity, and approval gates pass.
+The workflow turns verified developer work into pay eligibility only after identity, provenance, replay, cross-layer governance, schema compliance, Boss Bre green review, activation review, transaction witness placeholder replay continuity, real transaction witness schema presence, and approval gates pass.
 
 This document is a workflow specification. It does not execute payment, submit an EAS attestation, issue a public token, or imply endorsement by GitHub, Base, Coinbase, ENS, or EAS.
 
@@ -40,6 +41,7 @@ Developer work
   → payment adapter eligibility
   → activation review gate
   → transaction witness placeholder gate
+  → real transaction witness schema gate
   → confirmed payment receipt only after real transaction witness
 ```
 
@@ -229,6 +231,30 @@ The workflow must verify the transaction witness placeholder and replay trace be
     echo "no_fake_green=true"
 ```
 
+### 5.6 Real Transaction Witness Schema Gate
+
+The workflow must verify the real transaction witness schema before any real-witness or confirmed-payment review can proceed. This gate defines the witness lane only; it does not record a real witness, confirm payment, authorize execution, or allow adapter calls.
+
+```yaml
+- name: Real Transaction Witness Schema Gate
+  run: |
+    echo "Running Agent Pay real transaction witness schema gate..."
+    if [ ! -f "projects/cwaas/treasury/AGENT_PAY_REAL_TRANSACTION_WITNESS_SCHEMA_V1.md" ]; then
+      echo "❌ Real transaction witness schema missing"
+      exit 1
+    fi
+    echo "✅ Real transaction witness schema present"
+    echo "real_transaction_witness_schema=present"
+    echo "real_transaction_witness_present=false"
+    echo "confirmed_payment=false"
+    echo "execution_authority=false"
+    echo "adapter_call_allowed=false"
+    echo "payment_execution=false"
+    echo "onchain_movement=false"
+    echo "settlement_claimed=false"
+    echo "no_fake_green=true"
+```
+
 Before confirmed payment:
 
 ```yaml
@@ -245,6 +271,7 @@ real_treasury_attest_hashes_bound: true
 activation_review_status: ELIGIBLE_FOR_ACTIVATION_REVIEW_ONLY
 transaction_witness_placeholder_present: true
 transaction_witness_replay_trace_present: true
+real_transaction_witness_schema_present: true
 payment_adapter_allowed: false
 adapter_call_allowed: false
 execution_authority: false
@@ -328,6 +355,7 @@ activation_review_package_present: true
 real_treasury_attest_hashes_bound: true
 transaction_witness_placeholder_present: true
 transaction_witness_replay_trace_present: true
+real_transaction_witness_schema_present: true
 execution_authorization_receipt_present: false
 payment_adapter_allowed: false
 adapter_call_allowed: false
@@ -376,6 +404,7 @@ MISSING_ACTIVATION_REVIEW_PACKAGE   → BLOCKED
 MISSING_REAL_TREASURY_ATTEST_HASHES → BLOCKED
 MISSING_TRANSACTION_PLACEHOLDER     → BLOCKED
 MISSING_TRANSACTION_REPLAY_TRACE    → BLOCKED
+MISSING_REAL_WITNESS_SCHEMA         → BLOCKED
 REPLAY_FAIL                         → BLOCKED
 HUMAN_REJECTED                      → REJECTED
 MISSING_PREVIEW_RECEIPT             → BLOCKED
@@ -386,7 +415,7 @@ HASH_MISMATCH                       → FAIL
 
 ## 12. Prohibited Claims
 
-The workflow may not claim:
+The workflow must not emit or imply:
 
 ```text
 GitHub endorsement
@@ -401,6 +430,7 @@ payment completion without transaction witness
 automatic authorization from Basename alone
 activation review equals execution authority
 witness placeholder equals confirmed payment
+witness schema equals confirmed payment
 ```
 
 ## 13. Boss Brenda Lock
@@ -417,6 +447,7 @@ No activation review package, no adapter activation review.
 No real Treasury Attest hashes, no activation review.
 No transaction witness placeholder, no witness replay continuity.
 No transaction witness replay trace, no witness lane.
+No real transaction witness schema, no real witness review.
 No preview receipt, no human approval target.
 No human approval, no payment execution.
 No real transaction witness, no confirmed payment.
