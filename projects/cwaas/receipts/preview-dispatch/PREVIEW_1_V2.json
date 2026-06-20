@@ -1,11 +1,20 @@
 {
-  "receipt_type": "CWAAS_PREVIEW_RECEIPT_V2",
-  "mode": "PREVIEW_ONLY",
-  "external_action": false,
-  "human_review_required": true,
-  "work_id": "1",
-  "developer_basename": "jaywisdom.base.eth",
-  "github_identity": "jsonwisdom",
+  "receipt_type": "AGENT_PAY_PREVIEW_RECEIPT_V1",
+  "agent_action_receipt_hash": "3d70f1d82fe77f7f3e2d0f59874c943c9db2f1d9b54e57d8654e2fffd1bb8407",
+  "replay_trace_hash": "6a3231aa2dec1a4f8a3ade4bf499039805a9ffd90fd358b08c1a32143e843fe2",
+  "proposed_payment": {
+    "amount": "0",
+    "asset": "USDC",
+    "network": "base-mainnet",
+    "recipient": "jaywisdom.base.eth",
+    "reason": "dryrun preview only"
+  },
+  "work_reference": {
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "pr_number": 356,
+    "issue_number": null,
+    "commit_sha": "efb22e53a6f583956d7b8a4f9a941294dfabbfd3"
+  },
   "generated_at": "2026-06-19T22:41:44Z",
-  "status": "PREVIEW_GENERATED"
+  "preview_hash": "e4b4f5e46acaef8b5aceb23c9f6f41d085f79cea9ff1ad955cfc0f848e691dc7"
 }
