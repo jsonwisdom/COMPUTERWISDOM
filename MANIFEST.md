@@ -105,7 +105,7 @@
 
 ---
 
-## 8. Receipts (`/receipts/`, `/receipts/merkle/`, `/receipts/epochs/`)
+## 8. Receipts (`/receipts/`, `/receipts/merkle/`, `/receipts/epochs/`, `/projects/cwaas/receipts/`)
 
 | Receipt | Status | Commit / Hash |
 |---------|--------|----------------|
@@ -129,6 +129,14 @@
 | `merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json` | `MERKLED` | `d0abe0a` |
 | `merkle/base_batches_confucius_purpose_extension_v1.json` | `PURPOSE_EXTENSION_CREATED` | `edcd365` |
 | `court_reporter/tweet_2056596286099402905_alignment_report.json` | `ANALYSIS_COMPLETE` | `c79cc42` |
+| `projects/cwaas/receipts/CWAAS_RECEIPT_SCHEMA_v1.md` | `PENDING_REVIEW` | `PR_356` |
+| `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_JAYWISDOM_BASE_0001.md` | `PENDING_REVIEW` | `PR_359` |
+| `projects/cwaas/receipts/README_COMPUTERWISDOM_REBOOT_INDEX.md` | `PENDING_REVIEW` | `PR_359` |
+| `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_NEXT_ACTIONS_0001.md` | `PENDING_REVIEW` | `PR_359` |
+| `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_STATUS_0001.md` | `PENDING_REVIEW` | `PR_359` |
+| `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_PR_BODY_0001.md` | `PENDING_REVIEW` | `PR_359` |
+| `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_LOCK_0001.md` | `PENDING_REVIEW` | `PR_359` |
+| `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_POINTER_0001.md` | `PENDING_REVIEW` | `PR_359` |
 
 ---
 
@@ -184,6 +192,8 @@
 | Meme Court Zora Base audit | 2026-05-19 | `AUDIT_REPORT_CREATED` |
 | Meme Court Open Zora Base candidate | 2026-05-19 | `OPEN_COURT_CANDIDATE_CREATED` |
 | Meme Court Open Zora Base receipt | 2026-05-19 | `OPEN_COURT_RECEIPT_CREATED` |
+| COMPUTERWISDOM reboot receipts indexed | 2026-06-19 | `PENDING_REVIEW` |
+| CWaaS receipt schema v1 indexed | 2026-06-19 | `PENDING_REVIEW` |
 
 ---
 
@@ -201,11 +211,10 @@
 {
   "status": "MEME_COURT_OPEN_TO_ZORA_BASE_CANDIDATE",
   "latest_meme_court_audit": "audits/meme_court_zora_base_repo_audit_2026_05_19.md",
-  "latest_meme_court_audit_commit": "3a3bb2d9a5b4880024173346249e911d41c6f0d0",
   "latest_open_court_candidate": "services/meme-court/open_court_zora_base_candidate.md",
-  "latest_open_court_candidate_commit": "749ae8d5dff554d0d329a23b8e24b2d0a09df5cb",
   "latest_open_court_receipt": "receipts/meme_court_open_zora_base_receipt.json",
-  "latest_open_court_receipt_commit": "552daef0b4e9408d74bba3d0dc985e2d64dbf2d8",
+  "latest_computerwisdom_reboot_pr": "PR_359",
+  "latest_cwaas_receipt_schema": "projects/cwaas/receipts/CWAAS_RECEIPT_SCHEMA_v1.md",
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
