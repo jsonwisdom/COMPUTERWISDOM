@@ -12,12 +12,13 @@ Depends on:
 - REPLAY_TRACE_FORMAT_V1
 - CROSS_LAYER_MCP_TREASURY_JAYTOKEN_V1
 - CWAAS_RECEIPT_SCHEMA_v1
+- AGENT_PAY_ADAPTER_ACTIVATION_REVIEW_V1
 
 ## 1. Purpose
 
 Defines the GitHub workflow logic for Agent Pay for Developers.
 
-The workflow turns verified developer work into pay eligibility only after identity, provenance, replay, cross-layer governance, schema compliance, Boss Bre green review, and approval gates pass.
+The workflow turns verified developer work into pay eligibility only after identity, provenance, replay, cross-layer governance, schema compliance, Boss Bre green review, activation review, and approval gates pass.
 
 This document is a workflow specification. It does not execute payment, submit an EAS attestation, issue a public token, or imply endorsement by GitHub, Base, Coinbase, ENS, or EAS.
 
@@ -36,6 +37,7 @@ Developer work
   → pay preview receipt
   → human approval
   → payment adapter eligibility
+  → activation review gate
   → confirmed payment receipt after transaction witness
 ```
 
@@ -164,6 +166,39 @@ The workflow must verify that the cross-layer MCP treasury and JAYTOKEN architec
     echo "No public token. No settlement claims. No fake green."
 ```
 
+### 5.4 Activation Review Gate
+
+The workflow must verify the review-only activation package after eligibility and before any warm-path adapter lane. This gate does not authorize execution.
+
+```yaml
+- name: Activation Review Gate
+  run: |
+    echo "Running Agent Pay review-only gate..."
+    if [ ! -f "projects/cwaas/specs/AGENT_PAY_ADAPTER_ACTIVATION_REVIEW_V1.md" ]; then
+      echo "❌ Review package spec missing"
+      exit 1
+    fi
+    if [ ! -f "projects/cwaas/checklists/AGENT_PAY_ADAPTER_ACTIVATION_REVIEW_CHECKLIST_V1.md" ]; then
+      echo "❌ Review package checklist missing"
+      exit 1
+    fi
+    if [ ! -f "projects/cwaas/receipts/TREASURY_ATTEST_BINDING_0002.md" ]; then
+      echo "❌ Real Treasury Attest binding receipt missing"
+      exit 1
+    fi
+    if [ ! -f "projects/cwaas/receipts/agent-pay/AGENT_PAY_ADAPTER_ELIGIBILITY_0002.md" ]; then
+      echo "❌ Adapter eligibility receipt missing"
+      exit 1
+    fi
+    echo "✅ Review-only prerequisites present"
+    echo "activation_review_status=ELIGIBLE_FOR_ACTIVATION_REVIEW_ONLY"
+    echo "execution_authority=false"
+    echo "adapter_call_allowed=false"
+    echo "onchain_movement=false"
+    echo "settlement_claimed=false"
+    echo "no_fake_green=true"
+```
+
 Before confirmed payment:
 
 ```yaml
@@ -175,7 +210,13 @@ boss_bre_review: green
 jaytoken_entry_bound_to_purpose: true
 human_approval_present: true
 protected_environment_approved: true
-payment_adapter_allowed: true
+activation_review_package_present: true
+real_treasury_attest_hashes_bound: true
+activation_review_status: ELIGIBLE_FOR_ACTIVATION_REVIEW_ONLY
+payment_adapter_allowed: false
+adapter_call_allowed: false
+execution_authority: false
+onchain_movement: false
 transaction_witness_present: true
 ```
 
@@ -240,7 +281,7 @@ Bot-only approval is not valid in v0.1.
 
 ## 9. Payment Adapter Boundary
 
-The payment adapter may not execute unless:
+The payment adapter may not execute unless a later, separate execution authorization receipt exists. Review eligibility is not execution authorization.
 
 ```yaml
 replay_verdict: PASS
@@ -251,7 +292,13 @@ jaytoken_entry_bound_to_purpose: true
 preview_receipt_valid: true
 human_approval_present: true
 protected_environment_approved: true
-dry_run: false
+activation_review_package_present: true
+real_treasury_attest_hashes_bound: true
+execution_authorization_receipt_present: false
+payment_adapter_allowed: false
+adapter_call_allowed: false
+onchain_movement: false
+dry_run: true
 ```
 
 The payment adapter is an adapter only. Coinbase MCP does not grant authority, approval, settlement, endorsement, or identity verification.
@@ -285,18 +332,20 @@ No transaction witness means no confirmed payment receipt.
 ## 11. Failure States
 
 ```text
-MISSING_WORK_PROOF             → BLOCKED
-MISSING_IDENTITY_BINDING       → BLOCKED
-MISSING_CWAAS_SCHEMA           → BLOCKED
-MISSING_BOSS_BRE_GREEN         → BLOCKED
-MISSING_CROSS_LAYER_SPEC       → BLOCKED
-MISSING_JAYTOKEN_PURPOSE_ENTRY → BLOCKED
-REPLAY_FAIL                    → BLOCKED
-HUMAN_REJECTED                 → REJECTED
-MISSING_PREVIEW_RECEIPT        → BLOCKED
-PAYMENT_ADAPTER_NOT_ALLOWED    → BLOCKED
-TRANSACTION_WITNESS_MISSING    → NEEDS_REVIEW
-HASH_MISMATCH                  → FAIL
+MISSING_WORK_PROOF                  → BLOCKED
+MISSING_IDENTITY_BINDING            → BLOCKED
+MISSING_CWAAS_SCHEMA                → BLOCKED
+MISSING_BOSS_BRE_GREEN              → BLOCKED
+MISSING_CROSS_LAYER_SPEC            → BLOCKED
+MISSING_JAYTOKEN_PURPOSE_ENTRY      → BLOCKED
+MISSING_ACTIVATION_REVIEW_PACKAGE   → BLOCKED
+MISSING_REAL_TREASURY_ATTEST_HASHES → BLOCKED
+REPLAY_FAIL                         → BLOCKED
+HUMAN_REJECTED                      → REJECTED
+MISSING_PREVIEW_RECEIPT             → BLOCKED
+PAYMENT_ADAPTER_NOT_ALLOWED         → BLOCKED
+TRANSACTION_WITNESS_MISSING         → NEEDS_REVIEW
+HASH_MISMATCH                       → FAIL
 ```
 
 ## 12. Prohibited Claims
@@ -314,6 +363,7 @@ public JAYTOKEN issuance
 JAYTOKEN monetary value
 payment completion without transaction witness
 automatic authorization from Basename alone
+activation review equals execution authority
 ```
 
 ## 13. Boss Brenda Lock
@@ -326,9 +376,12 @@ No CWaaS schema, no governance wire.
 No Boss Bre green, no payment lane.
 No cross-layer architecture, no preview receipt.
 No JAYTOKEN purpose entry, no payment adapter eligibility.
+No activation review package, no adapter activation review.
+No real Treasury Attest hashes, no activation review.
 No preview receipt, no human approval target.
 No human approval, no payment execution.
 No transaction witness, no confirmed payment.
+No review eligibility as execution authority.
 No endorsement by implication.
 No fake green.
 ```
