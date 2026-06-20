@@ -140,8 +140,10 @@
 | `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_PR_BODY_0001.md` | `PENDING_REVIEW` | `PR_359` |
 | `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_LOCK_0001.md` | `PENDING_REVIEW` | `PR_359` |
 | `projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_POINTER_0001.md` | `PENDING_REVIEW` | `PR_359` |
-
 | `projects/cwaas/receipts/TREASURY_ATTEST_BINDING_0002.md` | `PENDING_REVIEW` | `REAL_HASH_BINDING_PR` |
+| `projects/cwaas/treasury/AGENT_PAY_TRANSACTION_WITNESS_PLACEHOLDER_0001.md` | `PENDING_REVIEW` | `PR_371` |
+| `projects/cwaas/treasury/AGENT_PAY_TRANSACTION_WITNESS_PLACEHOLDER_0001_REPLAY_TRACE.md` | `PENDING_REVIEW` | `PR_371` |
+
 ---
 
 ## 9. Service Layers (`/services/`)
@@ -201,6 +203,7 @@
 | Agent Pay governance wire indexed | 2026-06-20 | `PENDING_REVIEW` |
 | Agent Pay adapter dry-run receipt indexed | 2026-06-20 | `PENDING_REVIEW` |
 | Agent Pay adapter eligibility preflight indexed | 2026-06-20 | `PENDING_REVIEW` |
+| Agent Pay transaction witness placeholder indexed | 2026-06-20 | `PENDING_REVIEW` |
 
 ---
 
@@ -225,6 +228,8 @@
   "latest_agent_pay_governance_wire": "projects/cwaas/receipts/agent-pay/AGENT_PAY_GOVERNANCE_WIRE_0001.md",
   "latest_agent_pay_dryrun_receipt": "projects/cwaas/receipts/agent-pay/AGENT_PAY_ADAPTER_DRYRUN_0001.md",
   "latest_agent_pay_eligibility_preflight": "projects/cwaas/receipts/agent-pay/AGENT_PAY_ADAPTER_ELIGIBILITY_0002.md",
+  "latest_agent_pay_transaction_witness_placeholder": "projects/cwaas/treasury/AGENT_PAY_TRANSACTION_WITNESS_PLACEHOLDER_0001.md",
+  "latest_agent_pay_transaction_witness_replay_trace": "projects/cwaas/treasury/AGENT_PAY_TRANSACTION_WITNESS_PLACEHOLDER_0001_REPLAY_TRACE.md",
   "portal_html_mutated": false,
   "public_badge_granted": false,
   "backend_claimed_live": false,
