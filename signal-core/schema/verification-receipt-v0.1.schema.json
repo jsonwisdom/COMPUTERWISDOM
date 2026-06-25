@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.github.io/COMPUTERWISDOM/signal-core/schema/verification-receipt-v0.1.schema.json",
+  "title": "Verification Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_id",
+    "artifact_hash",
+    "claim_graph_hash",
+    "claims_count",
+    "receipt_core_hash",
+    "confidence"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^vr:sha256:[0-9a-f]{64}$"
+    },
+    "artifact_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "claim_graph_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "claims_count": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "receipt_core_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-f]{64}$"
+    },
+    "confidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authority"],
+      "properties": {
+        "authority": {
+          "const": "NONE"
+        }
+      }
+    }
+  }
+}
