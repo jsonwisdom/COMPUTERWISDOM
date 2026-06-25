@@ -17,7 +17,7 @@ jobs:
         with:
           python-version: '3.11'
       - run: python -m pip install pytest
-      - run: python -m pytest signal-core/tests/test_receipt_core.py -q -rX
+      - run: python -m pytest signal-core/tests/ -q -rX
       - uses: actions/upload-artifact@v4
         if: failure()
         with:
