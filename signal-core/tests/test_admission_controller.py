@@ -28,6 +28,13 @@ def test_policy_accepts_strict_research(tmp_path):
     assert verify_receipt(str(receipt_path), policy_path=str(policy)) == 0
 
 
+def test_policy_failure_exit_code_is_one(tmp_path):
+    receipt, receipt_path = sealed_receipt(tmp_path)
+    policy = tmp_path / 'policy.rql'
+    policy.write_text('REQUIRE claims_count > 1\n', encoding='utf-8')
+    assert verify_receipt(str(receipt_path), policy_path=str(policy)) == 1
+
+
 def test_policy_denies_wrong_claim_count(tmp_path):
     receipt, _ = sealed_receipt(tmp_path)
     rules = parse_policy('REQUIRE claims_count > 1\n')
@@ -49,3 +56,25 @@ def test_policy_denies_authority_root():
         assert False
     except PolicyError as exc:
         assert 'DENY failed' in str(exc)
+
+
+def test_policy_missing_path_fails():
+    rules = parse_policy('REQUIRE confidence.missing == NONE\n')
+    try:
+        evaluate_policy({'confidence': {'authority': 'NONE'}}, rules)
+        assert False
+    except PolicyError as exc:
+        assert 'missing path' in str(exc)
+
+
+def test_policy_float_comparison():
+    rules = parse_policy('REQUIRE score >= 0.75\n')
+    assert evaluate_policy({'score': 0.8}, rules) is True
+
+
+def test_policy_rejects_in_operator():
+    try:
+        parse_policy('REQUIRE confidence.authority in NONE,ROOT\n')
+        assert False
+    except PolicyError as exc:
+        assert 'invalid operator' in str(exc)
