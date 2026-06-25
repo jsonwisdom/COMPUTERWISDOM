@@ -1,0 +1,16 @@
+{
+  "version": "v0.3",
+  "authority": "NONE",
+  "receipts": [
+    {
+      "id": "receipt-A",
+      "path": "receipt_A.json",
+      "dependencies": []
+    },
+    {
+      "id": "receipt-B",
+      "path": "receipt_B.json",
+      "dependencies": ["receipt-A"]
+    }
+  ]
+}
