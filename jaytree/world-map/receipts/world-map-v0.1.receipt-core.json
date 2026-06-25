@@ -1,0 +1,20 @@
+{
+  "artifactHash": "sha256:cfe04f781b937e62f6411207313f86bdd551baff3af4b2681fb6b5cfb7acc0de",
+  "authority": "NONE",
+  "authorityNone": true,
+  "bundleRoot": "sha256:0e99948bbdbdd5cc3495a067be94f8b462b57b23851801a3d23b18b4b1975e21",
+  "claimGraphHash": "sha256:e81e1015e5c94a7fff8fed7a2943b05ca2bec0830b07f681f2a660ca31a51e83",
+  "claimsCount": 1,
+  "closing_rule": "Map is not authority. Memory is not authority. Receipts beat narrative.",
+  "map_is_not_authority": true,
+  "memory_is_not_authority": true,
+  "merge_commit": "292503d8936a610e15d00cb5760f83c53132d13f",
+  "policyHash": "sha256:09b05a9f300be49131fe95e279f295cf6eb4e8e3f817f5c31ec2831e16ebe973",
+  "primaryArtifact": "jaytree/world-map/world-map-v0.1.json",
+  "receiptCoreHash": "sha256:dde2912ec03ce19b54dab8552129a113be12a767de0c3e1114116535d1812742",
+  "receiptId": "vr:sha256:dde2912ec03ce19b54dab8552129a113be12a767de0c3e1114116535d1812742",
+  "release_tag": "v0.1-world-map",
+  "runtime": "NOT_PERMITTED",
+  "surfacesCount": 9,
+  "version": "v0.1"
+}
