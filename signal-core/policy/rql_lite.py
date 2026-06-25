@@ -18,6 +18,10 @@ def parse_value(raw):
     try:
         return int(raw)
     except ValueError:
+        pass
+    try:
+        return float(raw)
+    except ValueError:
         return raw
 
 
