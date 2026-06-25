@@ -12,6 +12,18 @@
 >
 > **Security:** See `SECURITY_BOUNDARY.md`. No keys belong in this repo.
 
+## Jaytree External Roots v0.1
+
+- AL Base MCP: `jaytree/external-roots/al-base-mcp-v0.1.json`
+  - Authority: NONE
+  - Runtime: NOT_PERMITTED
+  - Human approval: REQUIRED
+  - Wallet authority: false
+  - Execution authority: false
+  - Signing enabled: false
+  - x402 enabled: false
+  - Connected to future Receipt bundles and EAS attestations
+
 ## Replay Root Map
 
 This repository is an operations lane. It can coordinate replay checks, prepare witness payloads, and preserve operational receipts, but it does not replace the canonical proof root.
