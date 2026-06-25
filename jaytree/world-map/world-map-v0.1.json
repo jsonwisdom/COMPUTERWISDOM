@@ -1,0 +1,121 @@
+{
+  "version": "v0.1",
+  "name": "jaytree-world-map-v0.1",
+  "status": "READ_ONLY_NAVIGATION_INDEX",
+  "invariant": "map is not authority",
+  "authority": "NONE",
+  "runtime": "NOT_PERMITTED",
+  "map_is_not_authority": true,
+  "memory_is_not_authority": true,
+  "mcp_runtime_enabled": false,
+  "network_access": false,
+  "write_access": false,
+  "witness_only": true,
+  "source_repo": "jsonwisdom/COMPUTERWISDOM",
+  "source_branch": "master",
+  "surfaces": [
+    {
+      "id": "graphiti_memory_audit",
+      "path": "jaytree/memory/graphiti-memory-v0.1.json",
+      "description": "Temporal KG witness; memory index only.",
+      "git_blob_sha": "88ac6e76beff169dc9d5f4242f51e48b48fbf520aa8bc02edeb3121b6a2bcda7",
+      "artifact_hash": "sha256:88ac6e76beff169dc9d5f4242f51e48b48fbf520aa8bc02edeb3121b6a2bcda7",
+      "anchor": "vr:sha256:c027a4129b426c47a2d373936bc005c1eacc00f3f10b0d7a5c0deea498fcbc1e",
+      "eas_uid": "0x22b32e59336970d44ad03cb32064e8d8e17fbdde9fe5f079a9ea94fa2a4aa46b",
+      "type": "memory-index",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED"
+    },
+    {
+      "id": "replay_instructions",
+      "path": "replay/instructions/replay_instructions_v1.json",
+      "description": "Deterministic replay instruction parameters; continuity navigation, no execution authority.",
+      "git_blob_sha": "ace91b46f2003d64165b091e90b5668c4fe3feb9",
+      "anchor": "replay-trace-witness",
+      "type": "replay-navigation",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED"
+    },
+    {
+      "id": "blocked_continuity_receipt",
+      "path": "receipts/COMPUTERWISDOM_REPLAY_BLOCKED_CONTINUITY_V1.receipt.json",
+      "description": "Verifier lattice receipt candidate; indexed as witness only, not authority.",
+      "git_blob_sha": "001fb20e3c0c9c09b7535817b2708391b364743c",
+      "anchor": "receipt-verifier",
+      "type": "receipt-index",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED",
+      "note": "Source artifact contains authorized=true internally; world-map interpretation remains authority NONE."
+    },
+    {
+      "id": "business_recovery_log",
+      "path": "BUSINESS_RECOVERY_LOG.md",
+      "description": "Business navigation and evidence spine witness.",
+      "git_blob_sha": "917883fd2878505d31bcbf0cb7603b84a67d17d8",
+      "anchor": "recovery-witness",
+      "type": "navigation-map",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED"
+    },
+    {
+      "id": "graphiti_ingest_ro",
+      "path": "jaytree/memory/ingest-ro/prototype.py",
+      "description": "Read-only episode builder; air-gapped local memory prototype.",
+      "git_blob_sha": "41ce4fa3d63cdb9036fd248c060f73384c8a2f66",
+      "anchor": "ingest-prototype",
+      "type": "replay-builder",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED"
+    },
+    {
+      "id": "minnesota_receipt_arcade",
+      "path": "docs/game/minnesota_map_v0_1.md",
+      "description": "First playable receipt quest map; arcade overworld, not GIS authority.",
+      "git_blob_sha": "51a81c50a0a0b15bb07c538cb1d3ae8410169560",
+      "anchor": "playable-map-witness",
+      "type": "playable-map",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED"
+    },
+    {
+      "id": "family_continuity_protection",
+      "path": "docs/family_continuity_protection_map_v1.md",
+      "description": "Layer 0 family continuity protection surface; expansion only after barriers hold.",
+      "git_blob_sha": "0105056b2b5f9993b7e58312a54ce28daf681967",
+      "anchor": "family-continuity-witness",
+      "type": "continuity-map",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED"
+    },
+    {
+      "id": "replay_transform_registry",
+      "path": "docs/protocols/manic/runtime/REPLAY_TRANSFORM_REGISTRY_001.md",
+      "description": "Deterministic replay transform rule table; structure may be created, meaning may not.",
+      "git_blob_sha": "f0939ed312e1c31945a443796dedbbec8f9d2ee2",
+      "anchor": "transform-registry-witness",
+      "type": "replay-transform-registry",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED"
+    },
+    {
+      "id": "public_replay_verifier",
+      "path": "docs/public_replay_verifier_spec_v0_1.md",
+      "description": "Public replayability classifier; authority remains false.",
+      "git_blob_sha": "316208cb7212488c27721b43a51076657fca6acf",
+      "anchor": "public-verifier-witness",
+      "type": "replay-verifier",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED"
+    }
+  ],
+  "schema": {
+    "anchors": "array",
+    "surfaces": "array",
+    "required_invariants": [
+      "memory-is-not-authority",
+      "map-is-not-authority",
+      "receipts-beat-narrative"
+    ]
+  },
+  "closing_rule": "Map is not authority. Memory is not authority. Receipts beat narrative."
+}
