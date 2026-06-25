@@ -3,6 +3,12 @@
   "authority": "NONE",
   "resolver": "none",
   "revocable": false,
+  "network": "Base",
+  "schema_number": 1618,
+  "schema_uid": "0xa5b0d2dd5470542a119d50eba19898f50e1f77591f01d4fec4c6f3075054aa11",
+  "creator": "0xC345B26094c63C69222Ee775189a3d3eaead5a84",
+  "transaction_hash": "0x60f9ac0a4d23b112743cc902f4d3f8f06f239664f9b9cc0c3c2909ef682ea7bf",
+  "explorer_url": "https://base.easscan.org/schema/view/0xa5b0d2dd5470542a119d50eba19898f50e1f77591f01d4fec4c6f3075054aa11",
   "schema": "string receiptId,string artifactHash,string claimGraphHash,uint256 claimsCount,string receiptCoreHash,bool authorityNone,string policyHash,string bundleRoot,string version",
   "fields": [
     "receiptId",
