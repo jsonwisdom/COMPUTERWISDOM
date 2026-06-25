@@ -32,4 +32,4 @@ def test_receipts_verify_rejects_verdict(tmp_path):
     }
     receipt_path = tmp_path / 'bad_receipt.json'
     receipt_path.write_text(json.dumps(receipt), encoding='utf-8')
-    assert verify_receipt(str(receipt_path)) == 1
+    assert verify_receipt(str(receipt_path)) == 2

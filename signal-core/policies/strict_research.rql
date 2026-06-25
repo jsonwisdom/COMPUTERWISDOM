@@ -1,0 +1,4 @@
+# RQL-lite v0.2 admission policy
+REQUIRE confidence.authority == NONE
+REQUIRE claims_count >= 1
+DENY confidence.authority != NONE
