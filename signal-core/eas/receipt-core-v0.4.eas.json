@@ -9,6 +9,19 @@
   "creator": "0xC345B26094c63C69222Ee775189a3d3eaead5a84",
   "transaction_hash": "0x60f9ac0a4d23b112743cc902f4d3f8f06f239664f9b9cc0c3c2909ef682ea7bf",
   "explorer_url": "https://base.easscan.org/schema/view/0xa5b0d2dd5470542a119d50eba19898f50e1f77591f01d4fec4c6f3075054aa11",
+  "first_attestation": {
+    "attestation_uid": "0x84b58fb78cfde7f791b311c07e5982eeffc3f60b550d594dc9407419ed5d5150",
+    "transaction_hash": "0x539c087bb2987bfa3eae4099b0a37765d1ec824e7c6174169745fc440004cab5",
+    "receiptId": "vr:sha256:fb83118511079eca8bb21adc5b24a7c26971f055c061ddcd4a7d7f532b2b759c",
+    "artifactHash": "sha256:088eb21253e58c62836f3d0c2945de542e4e7d85ebfc8d2507704454d03afcd6",
+    "claimGraphHash": "sha256:ceb0f19163adb1977151ca6b3730d8ec21882b4d91cbcd7042ffbf3b220138ac",
+    "claimsCount": 1,
+    "receiptCoreHash": "sha256:b2bb199d65e2d4f66cf093fd0d4218341046d892ce3c17cc881c2bda4d66868e",
+    "authorityNone": true,
+    "policyHash": "sha256:09b05a9f300be49131fe95e279f295cf6eb4e8e3f817f5c31ec2831e16ebe973",
+    "bundleRoot": "sha256:b3732b6b1c34075e60d85976c968f3d43d299e68b383bc604ed45bb3c1d45070",
+    "attestation_version": "v0.4"
+  },
   "schema": "string receiptId,string artifactHash,string claimGraphHash,uint256 claimsCount,string receiptCoreHash,bool authorityNone,string policyHash,string bundleRoot,string version",
   "fields": [
     "receiptId",
