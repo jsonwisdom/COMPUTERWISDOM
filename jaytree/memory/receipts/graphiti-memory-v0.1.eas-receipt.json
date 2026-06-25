@@ -1,0 +1,20 @@
+{
+  "version": "graphiti-memory-eas-receipt-v0.1",
+  "authority": "NONE",
+  "runtime": "NOT_PERMITTED",
+  "source_artifact": "jaytree/memory/graphiti-memory-v0.1.json",
+  "source_merge_commit": "804f4d61716b199173078cd94bbed8d2b235bd2c",
+  "schema_uid": "0xa5b0d2dd5470542a119d50eba19898f50e1f77591f01d4fec4c6f3075054aa11",
+  "attestation_uid": "0x22b32e59336970d44ad03cb32064e8d8e17fbdde9fe5f079a9ea94fa2a4aa46b",
+  "transaction_hash": "0x40b05628f634f7ab9f427234e00a8edf14f79bf72407ddf8558dc03d2d81208c",
+  "receipt_id": "vr:sha256:c027a4129b426c47a2d373936bc005c1eacc00f3f10b0d7a5c0deea498fcbc1e",
+  "artifact_hash": "sha256:88ac6e76beff169dc9d5f4242f51e48b48fbf520aa8bc02edeb3121b6a2bcda7",
+  "claim_graph_hash": "sha256:03bf3b6a5b734925d0e00bb4c51461c7e2451a9092ebbc105c7e2a1c1f93d79d",
+  "claims_count": 1,
+  "receipt_core_hash": "sha256:c7cfd3670dde9aaea44e949b82ebc2196bb4132aa18f646c41f1a2896f67ebdf",
+  "authority_none": true,
+  "policy_hash": "sha256:09b05a9f300be49131fe95e279f295cf6eb4e8e3f817f5c31ec2831e16ebe973",
+  "bundle_root": "sha256:d12a0cffd1fcbc1214808df49c2e219d7144858896a482f096090846fb430f5a",
+  "receipt_version": "v0.1",
+  "required_invariant": "memory is not authority"
+}
