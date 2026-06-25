@@ -1,0 +1,23 @@
+{
+  "version": "v0.4",
+  "authority": "NONE",
+  "resolver": "none",
+  "revocable": false,
+  "schema": "string receiptId,string artifactHash,string claimGraphHash,uint256 claimsCount,string receiptCoreHash,bool authorityNone,string policyHash,string bundleRoot,string version",
+  "fields": [
+    "receiptId",
+    "artifactHash",
+    "claimGraphHash",
+    "claimsCount",
+    "receiptCoreHash",
+    "authorityNone",
+    "policyHash",
+    "bundleRoot",
+    "version"
+  ],
+  "notes": [
+    "EAS anchors receipt structure publicly.",
+    "authorityNone must remain true.",
+    "Future schema versions require new schema UIDs."
+  ]
+}
