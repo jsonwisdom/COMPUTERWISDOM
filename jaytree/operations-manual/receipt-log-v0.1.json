@@ -1,0 +1,43 @@
+{
+  "version": "operations-manual-receipt-log-v0.1",
+  "authority": "NONE",
+  "manual": "Base Builder Operations Manual v0.1",
+  "operator_authority": {
+    "human": "Jay Wisdom",
+    "ens": "jaywisdom.eth",
+    "basename": "jaywisdom.base.eth",
+    "address": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8"
+  },
+  "entries": [
+    {
+      "entry_id": "al-base-mcp-root-v0.1",
+      "tag": "v0.1-al-base-mcp-root",
+      "tag_object_sha": "c11050b8cb0d084d40fb94f5711fda7e83fcf08d",
+      "target_commit": "261f7588a3955ec0f26b08eb609c888b7f12cbcc",
+      "artifact": "jaytree/external-roots/al-base-mcp-v0.1.json",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED",
+      "human_approval_required": true
+    },
+    {
+      "entry_id": "al-base-mcp-eas-receipt-v0.1",
+      "tag": "v0.1-al-base-mcp-eas-receipt",
+      "tag_object_sha": "df193d6bebbff7edd5820d7e2bb24e6506e14574",
+      "target_commit": "035802353e2ee622de0690aae4bfd6dd773b7bea",
+      "artifact": "jaytree/external-roots/receipts/al-base-mcp-v0.1.eas-receipt.json",
+      "eas_attestation_uid": "0x0718576a2cdb3eaabaf6bb338a8a4d1bfb09678b05357e7d8c15e237f92a8abb",
+      "eas_transaction_hash": "0x081e969eb9afd5dbef5e604cd903f9666271ef63eceb10af2457e4d1ea04ce3c",
+      "receipt_id": "vr:sha256:cc438cbc26e0139d0b581f0ca3ae4434e0ee82cf5d3740e446ca0ad45d9b2166",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED",
+      "human_approval_required": true
+    }
+  ],
+  "invariants": [
+    "Jay Wisdom is L0 human authority.",
+    "GitHub tags pin merge artifacts.",
+    "EAS witnesses receipt payloads but does not create truth authority.",
+    "Boss Bre may maintain manuals but does not receive wallet, signing, execution, or merge authority by default.",
+    "Base MCP remains closed until a separate authority receipt enables runtime."
+  ]
+}
