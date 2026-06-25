@@ -1,0 +1,66 @@
+{
+  "version": "graphiti-memory-v0.1",
+  "status": "AUDIT_ONLY",
+  "authority": "NONE",
+  "runtime": "NOT_PERMITTED",
+  "project": "COMPUTERWISDOM / Jaytree temporal memory",
+  "candidate": {
+    "name": "Graphiti",
+    "repository": "getzep/graphiti",
+    "role": "read-only temporal memory and retrieval layer"
+  },
+  "l0_human_authority": {
+    "name": "Jay Wisdom",
+    "ens": "jaywisdom.eth",
+    "basename": "jaywisdom.base.eth",
+    "address": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8"
+  },
+  "anchors": {
+    "root_tag": "v0.1-al-base-mcp-root",
+    "root_commit": "261f7588a3955ec0f26b08eb609c888b7f12cbcc",
+    "eas_receipt_tag": "v0.1-al-base-mcp-eas-receipt",
+    "eas_receipt_commit": "035802353e2ee622de0690aae4bfd6dd773b7bea",
+    "eas_uid": "0x0718576a2cdb3eaabaf6bb338a8a4d1bfb09678b05357e7d8c15e237f92a8abb",
+    "eas_tx": "0x081e969eb9afd5dbef5e604cd903f9666271ef63eceb10af2457e4d1ea04ce3c",
+    "receipt_id": "vr:sha256:cc438cbc26e0139d0b581f0ca3ae4434e0ee82cf5d3740e446ca0ad45d9b2166"
+  },
+  "ontology": [
+    "Receipt",
+    "Commit",
+    "Tag",
+    "EASAttestation",
+    "Manual",
+    "AuthorityBoundary",
+    "AgentRole",
+    "RuntimeSurface"
+  ],
+  "allowed_inputs": [
+    "local Receipt Core JSON",
+    "local EAS receipt JSON",
+    "local Git tag references",
+    "local Operations Manual receipt logs",
+    "local Jaytree lattice snapshots",
+    "local Markdown manuals"
+  ],
+  "required_invariant": "memory is not authority",
+  "closed_surfaces": {
+    "wallet_authority": false,
+    "signing_authority": false,
+    "execution_authority": false,
+    "merge_authority": false,
+    "eas_attestation_authority": false,
+    "evm_write_rpc": false,
+    "github_write_token": false,
+    "x402_enabled": false,
+    "runtime_enabled": false
+  },
+  "prototype_constraints": [
+    "read-only wrapper required",
+    "source episodes required for every result",
+    "prescribed ontology required for v0.1",
+    "LLM extraction must not be trusted as canonical truth",
+    "Graphiti is rebuildable cache only",
+    "truth flows from sealed artifacts to memory index only"
+  ],
+  "verdict": "GO for read-only prototype; NO-GO for authority role"
+}
