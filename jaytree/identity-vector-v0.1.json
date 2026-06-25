@@ -1,0 +1,26 @@
+{
+  "version": "jaytree-identity-vector-v0.1",
+  "authority": "NONE",
+  "operator": "Jay Wisdom",
+  "basename": "jaywisdom.base.eth",
+  "purpose": "Proof-oriented identity surface for COMPUTERWISDOM, MCP, and Base agents.",
+  "github": {
+    "repository": "jsonwisdom/COMPUTERWISDOM"
+  },
+  "eas": {
+    "network": "Base",
+    "schema_uid": "0xa5b0d2dd5470542a119d50eba19898f50e1f77591f01d4fec4c6f3075054aa11",
+    "first_receipt_core_attestation_uid": "0x84b58fb78cfde7f791b311c07e5982eeffc3f60b550d594dc9407419ed5d5150"
+  },
+  "mcp": {
+    "role": "agent coordination surface"
+  },
+  "base_agent": {
+    "role": "agentic proof consumer"
+  },
+  "invariants": [
+    "Authority remains NONE.",
+    "Identity links do not create truth authority.",
+    "Receipts and attestations remain independently verifiable."
+  ]
+}
