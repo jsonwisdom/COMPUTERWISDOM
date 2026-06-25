@@ -1,0 +1,29 @@
+{
+  "version": "al-base-mcp-external-root-v0.1",
+  "source_repo": "jsonwisdom/AL",
+  "identity_anchor": "jaywisdom.base.eth",
+  "base_mcp_plan": "docs/base-mcp-alms-agent-plan.md",
+  "scaffold_audit_receipt": "docs/base-mcp-scaffold-audit-receipt.md",
+  "action_receipt_schema": "agents/base_mcp/schemas/action_receipt.schema.json",
+  "permission_policy_schema": "agents/base_mcp/schemas/permission_policy.schema.json",
+  "session_log_schema": "agents/base_mcp/schemas/session_log.schema.json",
+  "authority": "NONE",
+  "runtime": "NOT_PERMITTED",
+  "wallet_authority": false,
+  "execution_authority": false,
+  "merge_authority": false,
+  "human_approval_required": true,
+  "x402_enabled": false,
+  "signing_enabled": false,
+  "target_stack": "COMPUTERWISDOM Receipt Core / EAS / Jaytree",
+  "timestamp": "2026-06-24T21:58:20Z",
+  "invariants": [
+    "External root is read-only.",
+    "Authority remains NONE.",
+    "Runtime remains NOT_PERMITTED.",
+    "Wallet authority remains false.",
+    "Execution authority remains false.",
+    "Human approval is required before any future live workflow.",
+    "Identity anchor does not prove truth."
+  ]
+}
