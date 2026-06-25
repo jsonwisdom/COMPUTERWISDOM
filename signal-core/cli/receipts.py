@@ -33,19 +33,19 @@ def verify_receipt(receipt_path: str, schema_path: str = None, policy_path: str 
         return 0
     except FileNotFoundError as exc:
         print(f'FAIL missing file: {exc}', file=sys.stderr)
-        return 1
+        return 3
     except json.JSONDecodeError as exc:
         print(f'FAIL invalid json: {exc}', file=sys.stderr)
-        return 1
+        return 3
     except ReceiptSchemaError as exc:
         print(f'FAIL receipt schema: {exc}', file=sys.stderr)
-        return 1
+        return 2
     except PolicyError as exc:
         print(f'FAIL receipt policy: {exc}', file=sys.stderr)
         return 1
     except Exception as exc:
         print(f'FAIL error: {exc}', file=sys.stderr)
-        return 1
+        return 3
 
 
 def build_parser() -> argparse.ArgumentParser:
@@ -62,7 +62,7 @@ def main(argv=None) -> int:
     args = build_parser().parse_args(argv)
     if args.command == 'verify':
         return verify_receipt(args.receipt_path, args.schema, args.policy)
-    return 1
+    return 3
 
 
 if __name__ == '__main__':
