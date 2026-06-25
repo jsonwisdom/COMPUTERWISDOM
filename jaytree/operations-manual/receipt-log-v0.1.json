@@ -31,12 +31,70 @@
       "authority": "NONE",
       "runtime": "NOT_PERMITTED",
       "human_approval_required": true
+    },
+    {
+      "entry_id": "graphiti-memory-audit-v0.1",
+      "target_commit": "804f4d61716b199173078cd94bbed8d2b235bd2c",
+      "artifact": "jaytree/memory/graphiti-memory-v0.1.json",
+      "required_invariant": "memory is not authority",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED",
+      "human_approval_required": true
+    },
+    {
+      "entry_id": "graphiti-memory-eas-receipt-v0.1",
+      "target_commit": "fee651690e3178dc6401df9b5ac424303d32ea2e",
+      "artifact": "jaytree/memory/receipts/graphiti-memory-v0.1.eas-receipt.json",
+      "eas_attestation_uid": "0x22b32e59336970d44ad03cb32064e8d8e17fbdde9fe5f079a9ea94fa2a4aa46b",
+      "eas_transaction_hash": "0x40b05628f634f7ab9f427234e00a8edf14f79bf72407ddf8558dc03d2d81208c",
+      "receipt_id": "vr:sha256:c027a4129b426c47a2d373936bc005c1eacc00f3f10b0d7a5c0deea498fcbc1e",
+      "required_invariant": "memory is not authority",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED",
+      "human_approval_required": true
+    },
+    {
+      "entry_id": "graphiti-ingest-ro-v0.1",
+      "target_commit": "486adec12a3f2bea799b0faf4c925c179a92d81d",
+      "artifact": "jaytree/memory/ingest-ro/",
+      "required_invariant": "memory is not authority",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED",
+      "human_approval_required": true
+    },
+    {
+      "entry_id": "world-map-v0.1",
+      "target_commit": "292503d8936a610e15d00cb5760f83c53132d13f",
+      "artifact": "jaytree/world-map/world-map-v0.1.json",
+      "required_invariant": "map is not authority",
+      "surfaces_count": 9,
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED",
+      "human_approval_required": true
+    },
+    {
+      "entry_id": "world-map-receipt-core-v0.1",
+      "target_commit": "fbc2345c163ab9ab6d81520e753b4cb04ff9df8c",
+      "artifact": "jaytree/world-map/receipts/world-map-v0.1.receipt-core.json",
+      "receipt_id": "vr:sha256:dde2912ec03ce19b54dab8552129a113be12a767de0c3e1114116535d1812742",
+      "artifact_hash": "sha256:cfe04f781b937e62f6411207313f86bdd551baff3af4b2681fb6b5cfb7acc0de",
+      "claim_graph_hash": "sha256:e81e1015e5c94a7fff8fed7a2943b05ca2bec0830b07f681f2a660ca31a51e83",
+      "bundle_root": "sha256:0e99948bbdbdd5cc3495a067be94f8b462b57b23851801a3d23b18b4b1975e21",
+      "receipt_core_hash": "sha256:dde2912ec03ce19b54dab8552129a113be12a767de0c3e1114116535d1812742",
+      "required_invariant": "map is not authority",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED",
+      "human_approval_required": true,
+      "eas_status": "HOLD"
     }
   ],
   "invariants": [
     "Jay Wisdom is L0 human authority.",
     "GitHub tags pin merge artifacts.",
     "EAS witnesses receipt payloads but does not create truth authority.",
+    "Memory is not authority.",
+    "Map is not authority.",
+    "Receipts hold evidence, not authority.",
     "Boss Bre may maintain manuals but does not receive wallet, signing, execution, or merge authority by default.",
     "Base MCP remains closed until a separate authority receipt enables runtime."
   ]
