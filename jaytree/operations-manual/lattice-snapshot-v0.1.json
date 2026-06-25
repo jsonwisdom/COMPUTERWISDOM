@@ -32,12 +32,65 @@
     "eas_transaction_hash": "0x081e969eb9afd5dbef5e604cd903f9666271ef63eceb10af2457e4d1ea04ce3c",
     "receipt_id": "vr:sha256:cc438cbc26e0139d0b581f0ca3ae4434e0ee82cf5d3740e446ca0ad45d9b2166"
   },
+  "memory_layer": {
+    "graphiti_memory_audit": {
+      "target_commit": "804f4d61716b199173078cd94bbed8d2b235bd2c",
+      "artifact": "jaytree/memory/graphiti-memory-v0.1.json",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED",
+      "required_invariant": "memory is not authority"
+    },
+    "graphiti_memory_eas_receipt": {
+      "target_commit": "fee651690e3178dc6401df9b5ac424303d32ea2e",
+      "artifact": "jaytree/memory/receipts/graphiti-memory-v0.1.eas-receipt.json",
+      "eas_attestation_uid": "0x22b32e59336970d44ad03cb32064e8d8e17fbdde9fe5f079a9ea94fa2a4aa46b",
+      "eas_transaction_hash": "0x40b05628f634f7ab9f427234e00a8edf14f79bf72407ddf8558dc03d2d81208c",
+      "receipt_id": "vr:sha256:c027a4129b426c47a2d373936bc005c1eacc00f3f10b0d7a5c0deea498fcbc1e",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED",
+      "required_invariant": "memory is not authority"
+    },
+    "graphiti_ingest_ro": {
+      "target_commit": "486adec12a3f2bea799b0faf4c925c179a92d81d",
+      "artifact": "jaytree/memory/ingest-ro/",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED",
+      "required_invariant": "memory is not authority"
+    }
+  },
+  "world_map_layer": {
+    "world_map_v0_1": {
+      "target_commit": "292503d8936a610e15d00cb5760f83c53132d13f",
+      "artifact": "jaytree/world-map/world-map-v0.1.json",
+      "surfaces_count": 9,
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED",
+      "required_invariant": "map is not authority"
+    },
+    "world_map_receipt_core_v0_1": {
+      "target_commit": "fbc2345c163ab9ab6d81520e753b4cb04ff9df8c",
+      "artifact": "jaytree/world-map/receipts/world-map-v0.1.receipt-core.json",
+      "receipt_id": "vr:sha256:dde2912ec03ce19b54dab8552129a113be12a767de0c3e1114116535d1812742",
+      "artifact_hash": "sha256:cfe04f781b937e62f6411207313f86bdd551baff3af4b2681fb6b5cfb7acc0de",
+      "claim_graph_hash": "sha256:e81e1015e5c94a7fff8fed7a2943b05ca2bec0830b07f681f2a660ca31a51e83",
+      "bundle_root": "sha256:0e99948bbdbdd5cc3495a067be94f8b462b57b23851801a3d23b18b4b1975e21",
+      "receipt_core_hash": "sha256:dde2912ec03ce19b54dab8552129a113be12a767de0c3e1114116535d1812742",
+      "authority": "NONE",
+      "runtime": "NOT_PERMITTED",
+      "required_invariant": "map is not authority",
+      "eas_status": "HOLD"
+    }
+  },
   "closed_surfaces": {
     "wallet_authority": false,
     "execution_authority": false,
     "signing_authority": false,
     "merge_authority": false,
     "x402_enabled": false,
-    "runtime_enabled": false
+    "runtime_enabled": false,
+    "mcp_runtime_enabled": false,
+    "network_access": false,
+    "write_access": false,
+    "eas_attestation_authority": false
   }
 }
