@@ -15,6 +15,7 @@ It is **not** the canonical Anchor 001 proof source.
 |---|---|
 | Formal operating charter | [`CHARTER.md`](./CHARTER.md) |
 | Root topology / binding map | [`ROOT_BINDING.md`](./ROOT_BINDING.md) |
+| Constitutional discovery route | [`docs/discovery_path_v1.md`](./docs/discovery_path_v1.md) |
 | Purpose statement | [`docs/PURPOSE.md`](./docs/PURPOSE.md) |
 | Security policy | [`SECURITY.md`](./SECURITY.md) |
 | Security boundary | [`SECURITY_BOUNDARY.md`](./SECURITY_BOUNDARY.md) |
