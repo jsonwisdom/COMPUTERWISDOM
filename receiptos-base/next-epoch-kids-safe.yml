@@ -1,0 +1,68 @@
+manifest: RECEIPTOS_BASE_NEXT_EPOCH_KIDS_SAFE_V0_1
+repo: jsonwisdom/COMPUTERWISDOM
+branch: corridor-family-secure-v0-1
+pr: 412
+authority: false
+no_fake_green: true
+
+base_identity:
+  basename: jaywisdom.base.eth
+  identity_scope: operator_context_only
+  wallet_control_attested_by_manifest: false
+
+lane:
+  name: Next Epoch Kids Safe
+  system: KID_REALITY_STUDIO
+  public_name: Imagination Station
+  receipt_layer: ReceiptOS Base
+  status: R_AND_D_SAFE_EDUCATION
+  truth_state: YELLOW_PROTECTED
+
+learning_model:
+  kids_write_realities: true
+  ai_enabled: true
+  advanced_learning_technology: true
+  replay_learning_receipts: true
+  pro_social_rewards: true
+
+pepe_economy:
+  meaning: Playful Educational Proof Economy
+  financialized: false
+  real_money: false
+  kid_wallet_required: false
+  rewards:
+    - learning
+    - kindness
+    - creating
+    - helping
+    - explaining
+    - fixing
+    - replaying
+
+safety:
+  kid_friendly: true
+  no_real_money_for_kids: true
+  no_wallet_required_for_kids: true
+  no_public_private_data: true
+  no_birthdates: true
+  no_location_leaks: true
+  no_adult_financial_pressure: true
+  parent_guardian_review: true
+  mrs_wisdom_purpose: family_safety_marker
+
+base_receipts:
+  allowed_for_operator_artifacts: true
+  allowed_for_child_financialization: false
+  allowed_for_price_claims: false
+  allowed_for_wallet_control_claims_without_signature: false
+
+promotion:
+  canonical_merge_allowed: false
+  family_facing_promotion_allowed: false
+  render_allowed_without_review: false
+  mrs_wisdom_approval_claimed: false
+
+ruling: >
+  ReceiptOS Base Next Epoch is seeded as an R&D-safe education lane for Imagination Station.
+  Base identity may witness operator artifacts through jaywisdom.base.eth context, but this manifest
+  does not attest wallet control, family approval, child wallet access, real-money participation, or canonical promotion.
