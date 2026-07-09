@@ -1,0 +1,71 @@
+corridor: COMPUTERWISDOM_FAMILY_SECURE_CORRIDOR_V0_1
+version: v0.1
+authority: false
+canonical: false
+status: SEEDED_FOR_REVIEW
+
+repo:
+  full_name: jsonwisdom/COMPUTERWISDOM
+  default_branch: master
+  visibility: public
+
+membrane:
+  joy_consent: BLOCKED_PENDING
+  al_court: REVIEW_CHAMBER_NOT_AUTHORITY
+  computerwisdom: COORDINATION_MEMBRANE
+  no_fake_green: true
+  watcher_only_default: true
+
+assignments:
+  operator:
+    assignee: jsonwisdom
+    role: corridor_operator
+    permissions_claimed: false
+    duties:
+      - review_corridor_scaffold
+      - confirm_public_safe_language
+      - approve_or_reject_promotion
+
+  al_review_chamber:
+    assignee: AL
+    role: boundary_review_surface
+    authority: false
+    duties:
+      - check_authority_false
+      - reject_ownership_or_control_language
+      - reject_unwitnessed_promotion
+
+  joy_protection_lane:
+    assignee: JOY
+    role: consent_and_alert_surface
+    authority: false
+    consent_state: BLOCKED_PENDING
+    duties:
+      - preserve_consent_boundary
+      - flag_family_safety_risk
+      - prevent_private_data_expansion
+
+  computerwisdom_coordination:
+    assignee: COMPUTERWISDOM
+    role: coordination_membrane
+    authority: false
+    duties:
+      - map_paths
+      - hold_receipt_pointers
+      - keep_no_fake_green_active
+
+required_checks:
+  - source_path_exists
+  - authority_false_present
+  - no_private_data
+  - no_secrets
+  - no_birthdates
+  - no_addresses
+  - no_family_authority_claims
+  - no_render_claim_without_artifact
+  - no_merge_claim_without_observed_merge
+  - consent_not_upgraded_without_witness
+
+promotion:
+  allowed: false
+  reason: seeded scaffold only; requires review before canonical promotion
