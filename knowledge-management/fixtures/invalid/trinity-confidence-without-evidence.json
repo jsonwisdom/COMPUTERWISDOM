@@ -1,0 +1,23 @@
+{
+  "schema": "JSONWisdom-Trinity-Classification",
+  "version": "0.1.0",
+  "repository": "jsonwisdom/example",
+  "scan_commit": "0123456789abcdef0123456789abcdef01234567",
+  "classification": {
+    "primary": "AL",
+    "secondary": [],
+    "confidence": "VERIFIED",
+    "responsibilities": ["verification"]
+  },
+  "scores": {
+    "AL": 90,
+    "COMPUTERWISDOM": 10,
+    "JOY": 0
+  },
+  "evidence_refs": [],
+  "counterevidence_refs": [],
+  "unresolved_questions": [],
+  "metadata_only": false,
+  "human_review_required": true,
+  "authority": false
+}
