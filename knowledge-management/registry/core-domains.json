@@ -1,0 +1,59 @@
+{
+  "schema": "JSONWisdom-Knowledge-Registry",
+  "version": "0.1.0",
+  "generated_from": "operator direction and currently recovered project context",
+  "recovery_boundary": "This is a seed, not a complete 1000-day archive.",
+  "domains": [
+    {
+      "id": "domain:identity",
+      "name": "Identity",
+      "priority": 100,
+      "subjects": ["Jason Wisdom", "Jay Wisdom", "JSONWisdom", "Zero Cool", "jaywisdom.eth", "jaywisdom.base.eth"]
+    },
+    {
+      "id": "domain:zora",
+      "name": "Zora",
+      "priority": 95,
+      "repositories": ["jsonwisdom/jay-zora-portal", "jsonwisdom/EV-012-ZORA-MARKET-SNAPSHOT", "jsonwisdom/signal-multisig-zora"],
+      "subjects": ["ContentCoins", "publishing", "creator economy", "market snapshots", "provenance"]
+    },
+    {
+      "id": "domain:base",
+      "name": "Base",
+      "priority": 95,
+      "repositories": ["jsonwisdom/base", "jsonwisdom/base-live", "jsonwisdom/receiptos-base", "jsonwisdom/ENS"],
+      "subjects": ["Basename identity", "transactions", "contracts", "attestations", "receipts"]
+    },
+    {
+      "id": "domain:minnesota",
+      "name": "Minnesota",
+      "priority": 95,
+      "repositories": ["jsonwisdom/AL", "jsonwisdom/mn-ago-entropy-ledger"],
+      "subjects": ["civic transparency", "public records", "fiscal anomaly intelligence", "local infrastructure", "governance"]
+    },
+    {
+      "id": "domain:replayos",
+      "name": "ReplayOS",
+      "priority": 100,
+      "repositories": ["jsonwisdom/-replayos-receiptos-spec", "jsonwisdom/replay-membrane", "jsonwisdom/replay-membrane-v0"],
+      "subjects": ["state recovery", "deterministic replay", "canonicalization", "continuity"]
+    },
+    {
+      "id": "domain:receiptos",
+      "name": "ReceiptOS",
+      "priority": 100,
+      "repositories": ["jsonwisdom/receiptos-base", "jsonwisdom/receipts-engine-v1", "jsonwisdom/public-proof", "jsonwisdom/provenance-audit-kit"],
+      "subjects": ["execution receipts", "evidence", "hashes", "verification", "authority separation"]
+    },
+    {
+      "id": "domain:usaf-km",
+      "name": "USAF Knowledge Management Review",
+      "priority": 90,
+      "repositories": [],
+      "subjects": ["training modernization", "institutional memory", "digital foundations", "Maxwell's Demon", "knowledge silos", "AI-assisted learning"],
+      "boundary": "Independent research and operator experience; not an official USAF system."
+    }
+  ],
+  "routing_rule": "Route by responsibility and importance. Never route by repository size.",
+  "authority": false
+}
