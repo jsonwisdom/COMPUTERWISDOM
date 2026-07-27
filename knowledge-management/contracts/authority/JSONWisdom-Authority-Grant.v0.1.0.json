@@ -63,7 +63,9 @@
     "evidence_refs": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "../shared/EvidenceReference.v0.1.0.json" }
+      "items": {
+        "$ref": "https://jsonwisdom.example/contracts/shared/EvidenceReference.v0.1.0.json"
+      }
     },
     "effective_at": { "type": "string", "format": "date-time" },
     "expires_at": { "type": ["string", "null"], "format": "date-time" },
@@ -75,7 +77,9 @@
         "reason": { "type": "string", "minLength": 1 },
         "evidence_refs": {
           "type": "array",
-          "items": { "$ref": "../shared/EvidenceReference.v0.1.0.json" }
+          "items": {
+            "$ref": "https://jsonwisdom.example/contracts/shared/EvidenceReference.v0.1.0.json"
+          }
         }
       },
       "required": ["revoked_at", "reason", "evidence_refs"],
