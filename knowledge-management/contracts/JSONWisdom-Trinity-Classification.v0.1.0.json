@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/contracts/JSONWisdom-Trinity-Classification.v0.1.0.json",
+  "title": "JSONWisdom Trinity Classification v0.1.0",
+  "type": "object",
+  "required": ["schema", "version", "repository", "scan_commit", "classification", "scores", "evidence_refs", "counterevidence_refs", "unresolved_questions", "metadata_only", "human_review_required", "authority"],
+  "properties": {
+    "schema": {"const": "JSONWisdom-Trinity-Classification"},
+    "version": {"const": "0.1.0"},
+    "repository": {"type": "string"},
+    "scan_commit": {"type": "string", "pattern": "^[A-Fa-f0-9]{40}$"},
+    "classification": {
+      "type": "object",
+      "required": ["primary", "secondary", "confidence", "responsibilities"],
+      "properties": {
+        "primary": {"enum": ["AL", "COMPUTERWISDOM", "JOY", "UNKNOWN"]},
+        "secondary": {"type": "array", "uniqueItems": true, "items": {"enum": ["AL", "COMPUTERWISDOM", "JOY"]}},
+        "confidence": {"enum": ["VERIFIED", "STRONGLY_SUPPORTED", "PARTIAL", "CONFLICTED", "UNKNOWN"]},
+        "responsibilities": {"type": "array", "items": {"type": "string"}}
+      },
+      "additionalProperties": false
+    },
+    "scores": {
+      "type": "object",
+      "required": ["AL", "COMPUTERWISDOM", "JOY"],
+      "properties": {
+        "AL": {"type": "integer", "minimum": 0, "maximum": 100},
+        "COMPUTERWISDOM": {"type": "integer", "minimum": 0, "maximum": 100},
+        "JOY": {"type": "integer", "minimum": 0, "maximum": 100}
+      },
+      "additionalProperties": false
+    },
+    "evidence_refs": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}},
+    "counterevidence_refs": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}},
+    "unresolved_questions": {"type": "array", "items": {"type": "string"}},
+    "metadata_only": {"type": "boolean"},
+    "human_review_required": {"type": "boolean"},
+    "authority": {"const": false}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"classification": {"properties": {"confidence": {"enum": ["VERIFIED", "STRONGLY_SUPPORTED"]}}}}},
+      "then": {"properties": {"evidence_refs": {"minItems": 2}}}
+    },
+    {
+      "if": {"properties": {"metadata_only": {"const": true}}},
+      "then": {"properties": {"classification": {"properties": {"confidence": {"enum": ["PARTIAL", "UNKNOWN"]}}}}}
+    },
+    {
+      "if": {"properties": {"classification": {"properties": {"primary": {"const": "UNKNOWN"}}}},
+      "then": {"properties": {"classification": {"properties": {"confidence": {"enum": ["UNKNOWN", "CONFLICTED", "PARTIAL"]}}}}
+    }
+  ],
+  "additionalProperties": false
+}
