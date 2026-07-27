@@ -21,48 +21,94 @@ function walk(dir) {
   });
 }
 
-for (const file of walk(contracts).filter((f) => f.endsWith('.json'))) {
+// Register every contract before compiling fixture validators. Sorting keeps shared
+// definitions deterministic and makes failures reproducible across runners.
+for (const file of walk(contracts).filter((f) => f.endsWith('.json')).sort()) {
   ajv.addSchema(readJson(file));
 }
 
 const schemaByFixture = {
   'minimal-repository-evidence.json': 'https://jsonwisdom.example/contracts/JSONWisdom-Repository-Evidence.v0.1.0.json',
   'missing-authority.json': 'https://jsonwisdom.example/contracts/JSONWisdom-Repository-Evidence.v0.1.0.json',
-  'trinity-confidence-without-evidence.json': 'https://jsonwisdom.example/contracts/JSONWisdom-Trinity-Classification.v0.1.0.json'
+  'trinity-confidence-without-evidence.json': 'https://jsonwisdom.example/contracts/JSONWisdom-Trinity-Classification.v0.1.0.json',
+  'auditor-claiming-authority.json': 'https://jsonwisdom.example/contracts/auditor/AuditorEvidenceBase.v0.1.0.json'
 };
 
-const expectedInvalidKeyword = {
-  'missing-authority.json': 'required',
-  'trinity-confidence-without-evidence.json': 'minItems'
+const expectedInvalidReason = {
+  'missing-authority.json': { type: 'keyword', value: 'required' },
+  'trinity-confidence-without-evidence.json': { type: 'keyword', value: 'minItems' },
+  'auditor-claiming-authority.json': { type: 'authority-separation' }
 };
+
+function authoritySeparationViolation(data, relativeFilename) {
+  const normalized = relativeFilename.split(path.sep).join('/');
+  const isAuthorityGrant = normalized.includes('authority/JSONWisdom-Authority-Grant');
+
+  if (data.authority === true && !isAuthorityGrant) {
+    return `SECURITY VIOLATION: Non-authority file ${normalized} claims authority: true`;
+  }
+  if (data.authority === false && isAuthorityGrant) {
+    return `SECURITY VIOLATION: Authority grant file ${normalized} must have authority: true`;
+  }
+  return null;
+}
 
 let failures = 0;
 for (const kind of ['valid', 'invalid']) {
   const dir = path.join(fixtures, kind);
-  for (const file of fs.readdirSync(dir).filter((f) => f.endsWith('.json'))) {
-    const schemaId = schemaByFixture[file];
-    if (!schemaId) throw new Error(`No schema mapping for ${file}`);
+  for (const filename of fs.readdirSync(dir).filter((f) => f.endsWith('.json')).sort()) {
+    const schemaId = schemaByFixture[filename];
+    if (!schemaId) throw new Error(`No schema mapping for ${filename}`);
+
     const validate = ajv.getSchema(schemaId);
     if (!validate) throw new Error(`Schema not loaded: ${schemaId}`);
-    const ok = validate(readJson(path.join(dir, file)));
 
-    if (kind === 'valid' && !ok) {
-      failures += 1;
-      console.error(`FAIL valid fixture ${file}`, validate.errors);
-    } else if (kind === 'invalid' && ok) {
-      failures += 1;
-      console.error(`FAIL invalid fixture unexpectedly passed: ${file}`);
-    } else if (kind === 'invalid') {
-      const keyword = expectedInvalidKeyword[file];
-      const observed = (validate.errors ?? []).some((error) => error.keyword === keyword);
-      if (!observed) {
+    const fullPath = path.join(dir, filename);
+    const data = readJson(fullPath);
+    const schemaValid = validate(data);
+    const authorityViolation = authoritySeparationViolation(
+      data,
+      path.relative(root, fullPath)
+    );
+
+    if (kind === 'valid') {
+      if (!schemaValid || authorityViolation) {
         failures += 1;
-        console.error(`FAIL ${file}: expected keyword ${keyword}`, validate.errors);
+        console.error(`FAIL valid fixture ${filename}`, {
+          schemaErrors: validate.errors,
+          authorityViolation
+        });
       } else {
-        console.log(`PASS invalid fixture ${file} failed as expected (${keyword})`);
+        console.log(`PASS valid fixture ${filename}`);
       }
+      continue;
+    }
+
+    const expectation = expectedInvalidReason[filename];
+    if (!expectation) throw new Error(`No invalid expectation for ${filename}`);
+
+    if (expectation.type === 'authority-separation') {
+      if (!authorityViolation) {
+        failures += 1;
+        console.error(`FAIL ${filename}: expected authority-separation violation`, validate.errors);
+      } else {
+        console.log(`PASS invalid fixture ${filename} failed as expected (authority-separation)`);
+      }
+      continue;
+    }
+
+    const observedKeyword = (validate.errors ?? []).some(
+      (error) => error.keyword === expectation.value
+    );
+    if (schemaValid || !observedKeyword) {
+      failures += 1;
+      console.error(`FAIL ${filename}: expected keyword ${expectation.value}`, {
+        schemaValid,
+        schemaErrors: validate.errors,
+        authorityViolation
+      });
     } else {
-      console.log(`PASS valid fixture ${file}`);
+      console.log(`PASS invalid fixture ${filename} failed as expected (${expectation.value})`);
     }
   }
 }
