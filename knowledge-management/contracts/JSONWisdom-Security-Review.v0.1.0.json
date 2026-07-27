@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/contracts/JSONWisdom-Security-Review.v0.1.0.json",
+  "title": "JSONWisdom Security Review v0.1.0",
+  "type": "object",
+  "required": ["schema", "version", "repository", "visibility", "publication_state", "findings", "public_summary_allowed", "public_content_allowed", "human_review_required", "authority"],
+  "properties": {
+    "schema": {"const": "JSONWisdom-Security-Review"},
+    "version": {"const": "0.1.0"},
+    "repository": {"type": "string"},
+    "visibility": {"enum": ["PUBLIC", "PRIVATE"]},
+    "publication_state": {"enum": ["PUBLIC_SAFE", "PUBLIC_REDACTED", "PRIVATE_ONLY", "FAMILY_SECURE", "OPERATOR_SECURE", "BLOCKED_SECRET_DETECTED", "UNKNOWN_PENDING_REVIEW"]},
+    "findings": {"type": "array", "items": {"$ref": "#/$defs/finding"}},
+    "public_summary_allowed": {"type": "boolean"},
+    "public_content_allowed": {"type": "boolean"},
+    "human_review_required": {"type": "boolean"},
+    "previous_publication_state": {"type": ["string", "null"]},
+    "human_downgrade_authorized": {"type": "boolean", "default": false},
+    "authority": {"const": false}
+  },
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "required": ["class", "severity", "evidence_refs"],
+      "properties": {
+        "class": {"enum": ["POTENTIAL_SECRET", "PRIVATE_CONTENT", "FAMILY_SENSITIVE", "IDENTITY_SENSITIVE", "SAFE_PUBLIC", "UNKNOWN"]},
+        "severity": {"enum": ["INFO", "LOW", "MEDIUM", "HIGH", "CRITICAL"]},
+        "path_disclosure": {"enum": ["PUBLIC", "REDACTED", "OMITTED"]},
+        "evidence_refs": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}}
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {"if": {"properties": {"visibility": {"const": "PRIVATE"}}}, "then": {"properties": {"public_content_allowed": {"const": false}}}},
+    {"if": {"properties": {"publication_state": {"enum": ["PRIVATE_ONLY", "FAMILY_SECURE", "OPERATOR_SECURE", "BLOCKED_SECRET_DETECTED", "UNKNOWN_PENDING_REVIEW"]}}}, "then": {"properties": {"public_content_allowed": {"const": false}}}},
+    {"if": {"properties": {"previous_publication_state": {"enum": ["PRIVATE_ONLY", "FAMILY_SECURE", "OPERATOR_SECURE", "BLOCKED_SECRET_DETECTED"]}, "human_downgrade_authorized": {"const": false}}, "required": ["previous_publication_state"]}, "then": {"not": {"properties": {"publication_state": {"enum": ["PUBLIC_SAFE", "PUBLIC_REDACTED"]}}}}}
+  ],
+  "additionalProperties": false
+}
