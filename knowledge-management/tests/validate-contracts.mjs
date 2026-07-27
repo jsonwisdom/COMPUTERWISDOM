@@ -11,7 +11,11 @@ const ajv = new Ajv2020({ allErrors: true, strict: false });
 addFormats(ajv);
 
 function readJson(file) {
-  return JSON.parse(fs.readFileSync(file, 'utf8'));
+  try {
+    return JSON.parse(fs.readFileSync(file, 'utf8'));
+  } catch (error) {
+    throw new Error(`Invalid JSON in ${path.relative(root, file)}: ${error.message}`);
+  }
 }
 
 function walk(dir) {
@@ -21,11 +25,46 @@ function walk(dir) {
   });
 }
 
-// Register every contract before compiling fixture validators. Sorting keeps shared
-// definitions deterministic and makes failures reproducible across runners.
-for (const file of walk(contracts).filter((f) => f.endsWith('.json')).sort()) {
-  ajv.addSchema(readJson(file));
+// Phase 1: load every contract into memory and verify stable, unique identifiers.
+const schemaEntries = walk(contracts)
+  .filter((file) => file.endsWith('.json'))
+  .sort()
+  .map((file) => ({ file, schema: readJson(file) }));
+
+const idOwners = new Map();
+for (const { file, schema } of schemaEntries) {
+  const relative = path.relative(root, file);
+  if (typeof schema.$id !== 'string' || schema.$id.length === 0) {
+    throw new Error(`Schema missing $id: ${relative}`);
+  }
+  if (idOwners.has(schema.$id)) {
+    throw new Error(
+      `Duplicate schema $id ${schema.$id}: ${idOwners.get(schema.$id)} and ${relative}`
+    );
+  }
+  idOwners.set(schema.$id, relative);
 }
+
+// Phase 2: register all schemas before compiling any of them so cross-contract
+// references resolve from the complete in-memory registry.
+for (const { schema } of schemaEntries) {
+  ajv.addSchema(schema);
+}
+
+// Compile every schema before fixture evaluation. This surfaces unresolved $refs
+// and malformed contracts with the exact schema identifier that caused the failure.
+for (const { file, schema } of schemaEntries) {
+  try {
+    const compiled = ajv.getSchema(schema.$id);
+    if (!compiled) throw new Error('schema was not registered');
+  } catch (error) {
+    throw new Error(
+      `Schema compilation failed for ${path.relative(root, file)} (${schema.$id}): ${error.message}`
+    );
+  }
+}
+
+console.log(`Registered ${schemaEntries.length} contracts with unique $id values.`);
 
 const schemaByFixture = {
   'minimal-repository-evidence.json': 'https://jsonwisdom.example/contracts/JSONWisdom-Repository-Evidence.v0.1.0.json',
@@ -56,7 +95,7 @@ function authoritySeparationViolation(data, relativeFilename) {
 let failures = 0;
 for (const kind of ['valid', 'invalid']) {
   const dir = path.join(fixtures, kind);
-  for (const filename of fs.readdirSync(dir).filter((f) => f.endsWith('.json')).sort()) {
+  for (const filename of fs.readdirSync(dir).filter((file) => file.endsWith('.json')).sort()) {
     const schemaId = schemaByFixture[filename];
     if (!schemaId) throw new Error(`No schema mapping for ${filename}`);
 
