@@ -1,0 +1,36 @@
+name: Trinity Repository Audit
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 11 * * *"
+
+permissions:
+  contents: read
+  pull-requests: read
+  actions: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      JSONWISDOM_OWNER: jsonwisdom
+    steps:
+      - name: Check out COMPUTERWISDOM
+        uses: actions/checkout@v4
+
+      - name: Build Trinity repository registry
+        run: python3 knowledge-management/scripts/audit_repositories.py
+
+      - name: Validate generated JSON
+        run: python3 -m json.tool knowledge-management/generated/repository-registry.json >/dev/null
+
+      - name: Upload audit artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: trinity-repository-audit
+          path: |
+            knowledge-management/generated/repository-registry.json
+            knowledge-management/generated/repository-audit.md
+          if-no-files-found: error
