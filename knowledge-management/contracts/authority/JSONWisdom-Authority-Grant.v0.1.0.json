@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/contracts/authority/JSONWisdom-Authority-Grant.v0.1.0.json",
+  "title": "JSONWisdom Authority Grant v0.1.0",
+  "type": "object",
+  "required": [
+    "schema",
+    "version",
+    "grant_id",
+    "subject",
+    "scope",
+    "granted_by",
+    "basis",
+    "evidence_refs",
+    "effective_at",
+    "status",
+    "authority"
+  ],
+  "properties": {
+    "schema": { "const": "JSONWisdom-Authority-Grant" },
+    "version": { "const": "0.1.0" },
+    "grant_id": { "type": "string", "minLength": 1 },
+    "subject": { "type": "string", "minLength": 1 },
+    "scope": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "PUBLISH_PUBLIC_REGISTRY",
+          "APPROVE_TRINITY_CLASSIFICATION",
+          "MARK_PR_READY",
+          "MERGE_CONTRACT_CHANGES",
+          "ACTIVATE_AGENT_WORKFLOW",
+          "ISSUE_ATTESTATION",
+          "REVOKE_AUTHORITY"
+        ]
+      }
+    },
+    "granted_by": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["identity", "role", "verification_method"],
+        "properties": {
+          "identity": { "type": "string", "minLength": 1 },
+          "role": { "type": "string", "minLength": 1 },
+          "verification_method": {
+            "enum": [
+              "GITHUB_SIGNED_COMMIT",
+              "HUMAN_SIGNATURE",
+              "MULTISIG",
+              "EAS_ATTESTATION",
+              "OTHER_VERIFIED_METHOD"
+            ]
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "basis": { "type": "string", "minLength": 1 },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "../shared/EvidenceReference.v0.1.0.json" }
+    },
+    "effective_at": { "type": "string", "format": "date-time" },
+    "expires_at": { "type": ["string", "null"], "format": "date-time" },
+    "status": { "enum": ["ACTIVE", "SUSPENDED", "REVOKED", "EXPIRED"] },
+    "revocation": {
+      "type": ["object", "null"],
+      "properties": {
+        "revoked_at": { "type": "string", "format": "date-time" },
+        "reason": { "type": "string", "minLength": 1 },
+        "evidence_refs": {
+          "type": "array",
+          "items": { "$ref": "../shared/EvidenceReference.v0.1.0.json" }
+        }
+      },
+      "required": ["revoked_at", "reason", "evidence_refs"],
+      "additionalProperties": false
+    },
+    "authority": { "const": true }
+  },
+  "additionalProperties": false
+}
