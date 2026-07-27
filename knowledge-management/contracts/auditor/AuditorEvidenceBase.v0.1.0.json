@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/contracts/auditor/AuditorEvidenceBase.v0.1.0.json",
+  "title": "JSONWisdom Auditor Evidence Base v0.1.0",
+  "type": "object",
+  "required": ["contract_version", "authority"],
+  "properties": {
+    "contract_version": { "const": "v0.1" },
+    "generated_by": { "type": "string" },
+    "authority": { "const": false }
+  },
+  "additionalProperties": true
+}
