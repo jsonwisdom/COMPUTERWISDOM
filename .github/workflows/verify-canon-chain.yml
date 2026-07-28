@@ -26,31 +26,40 @@ jobs:
         with:
           node-version: '24'
 
-      - name: Install TypeScript compiler
-        run: npm install --no-save typescript @types/node
-
-      - name: Compile canon-chain verifier
-        run: |
-          rm -rf .tmp-verifier
-          npx tsc scripts/verify_canon_chain_receipt_001.ts \
-            --module commonjs \
-            --moduleResolution node \
-            --target es2022 \
-            --types node \
-            --skipLibCheck \
-            --outDir .tmp-verifier
-          test -s .tmp-verifier/verify_canon_chain_receipt_001.js
-
-      - name: Run canon-chain verifier
+      - name: Run guarded canon-chain verifier pipeline
         shell: bash
         run: |
           set -uo pipefail
 
           verifier_status=0
-          node .tmp-verifier/verify_canon_chain_receipt_001.js > verifier-result.json || verifier_status=$?
+          failure_code=""
+          rm -f verifier-result.json
+
+          if [[ ! -s scripts/verify_canon_chain_receipt_001.js ]]; then
+            failure_code="VERIFIER_PROGRAM_MISSING_OR_EMPTY"
+            verifier_status=1
+          else
+            node scripts/verify_canon_chain_receipt_001.js > verifier-result.json || verifier_status=$?
+          fi
 
           if [[ ! -s verifier-result.json ]]; then
-            printf '%s\n' '{"receipt":"receipts/continuity/CANON_CHAIN_RECEIPT_001.json","verification":"FAIL","checked_files":0,"computed_hashes":{},"hash_mismatches":[],"errors":["EMPTY_VERIFIER_OUTPUT"],"order_valid":false,"scope_valid":false,"anchor_status_valid":false}' > verifier-result.json
+            if [[ -z "$failure_code" ]]; then
+              failure_code="EMPTY_VERIFIER_OUTPUT"
+            fi
+            node - "$failure_code" > verifier-result.json <<'NODE'
+          const failureCode = process.argv[2] || "VERIFIER_PIPELINE_FAILURE";
+          process.stdout.write(JSON.stringify({
+            receipt: "receipts/continuity/CANON_CHAIN_RECEIPT_001.json",
+            verification: "FAIL",
+            checked_files: 0,
+            computed_hashes: {},
+            hash_mismatches: [],
+            errors: [failureCode],
+            order_valid: false,
+            scope_valid: false,
+            anchor_status_valid: false
+          }, null, 2) + "\n");
+          NODE
             verifier_status=1
           fi
 
