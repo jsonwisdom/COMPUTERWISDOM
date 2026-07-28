@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/contracts/JSONWisdom-Importance-Score.v0.1.0.json",
+  "title": "JSONWisdom Importance Score v0.1.0",
+  "type": "object",
+  "required": ["schema", "version", "repository", "dimensions", "tier", "evidence_refs", "scoring_version", "authority"],
+  "properties": {
+    "schema": {"const": "JSONWisdom-Importance-Score"},
+    "version": {"const": "0.1.0"},
+    "repository": {"type": "string"},
+    "dimensions": {
+      "type": "object",
+      "required": ["constitutional_relevance", "identity_relevance", "dependency_centrality", "recurrence", "public_value", "family_value", "evidence_strength", "current_activity", "recovery_priority"],
+      "properties": {
+        "constitutional_relevance": {"type": "integer", "minimum": 0, "maximum": 100},
+        "identity_relevance": {"type": "integer", "minimum": 0, "maximum": 100},
+        "dependency_centrality": {"type": "integer", "minimum": 0, "maximum": 100},
+        "recurrence": {"type": "integer", "minimum": 0, "maximum": 100},
+        "public_value": {"type": "integer", "minimum": 0, "maximum": 100},
+        "family_value": {"type": "integer", "minimum": 0, "maximum": 100},
+        "evidence_strength": {"type": "integer", "minimum": 0, "maximum": 100},
+        "current_activity": {"type": "integer", "minimum": 0, "maximum": 100},
+        "recovery_priority": {"type": "integer", "minimum": 0, "maximum": 100}
+      },
+      "additionalProperties": false
+    },
+    "tier": {"enum": ["TIER_0_IDENTITY_ROOT", "TIER_1_CONSTITUTIONAL_CORE", "TIER_2_ACTIVE_INFRASTRUCTURE", "TIER_3_DOMAIN_SYSTEM", "TIER_4_EXPERIMENT_OR_ARCHIVE", "UNCLASSIFIED"]},
+    "evidence_refs": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}},
+    "scoring_version": {"const": "0.1.0"},
+    "repository_size_used": {"const": false},
+    "authority": {"const": false}
+  },
+  "additionalProperties": false
+}

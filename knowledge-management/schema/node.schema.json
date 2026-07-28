@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/schemas/knowledge-node-v0.1.json",
+  "title": "JSONWisdom Knowledge Node",
+  "type": "object",
+  "required": ["id", "kind", "name", "status", "importance", "evidence", "authority"],
+  "properties": {
+    "id": {"type": "string"},
+    "kind": {"enum": ["person", "identity", "project", "repository", "place", "subject", "object", "claim", "evidence", "decision", "lesson"]},
+    "name": {"type": "string"},
+    "aliases": {"type": "array", "items": {"type": "string"}},
+    "status": {"enum": ["observed", "inferred", "disputed", "unknown", "active", "archived"]},
+    "importance": {
+      "type": "object",
+      "required": ["identity_relevance", "recurrence", "dependency_weight", "value", "evidence_strength", "urgency"],
+      "properties": {
+        "identity_relevance": {"type": "integer", "minimum": 0, "maximum": 100},
+        "recurrence": {"type": "integer", "minimum": 0, "maximum": 100},
+        "dependency_weight": {"type": "integer", "minimum": 0, "maximum": 100},
+        "value": {"type": "integer", "minimum": 0, "maximum": 100},
+        "evidence_strength": {"type": "integer", "minimum": 0, "maximum": 100},
+        "urgency": {"type": "integer", "minimum": 0, "maximum": 100}
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["predicate", "target"],
+        "properties": {
+          "predicate": {"type": "string"},
+          "target": {"type": "string"},
+          "evidence": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "repositories": {"type": "array", "items": {"type": "string"}},
+    "evidence": {
+      "type": "object",
+      "required": ["state", "sources"],
+      "properties": {
+        "state": {"enum": ["verified", "partial", "operator_reported", "missing", "unknown"]},
+        "sources": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "authority": {"const": false},
+    "last_reviewed": {"type": ["string", "null"]},
+    "resume": {"type": ["string", "null"]}
+  }
+}

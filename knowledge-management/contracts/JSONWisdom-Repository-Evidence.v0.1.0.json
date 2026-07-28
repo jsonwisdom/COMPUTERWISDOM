@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/contracts/JSONWisdom-Repository-Evidence.v0.1.0.json",
+  "title": "JSONWisdom Repository Evidence v0.1.0",
+  "type": "object",
+  "required": ["schema", "version", "repository", "scan_commit", "observed_at", "visibility", "evidence", "limitations", "security_flags", "content_hash", "authority"],
+  "properties": {
+    "schema": {"const": "JSONWisdom-Repository-Evidence"},
+    "version": {"const": "0.1.0"},
+    "repository": {"type": "string", "pattern": "^[^/]+/[^/]+$"},
+    "scan_commit": {"type": "string", "pattern": "^[A-Fa-f0-9]{40}$"},
+    "observed_at": {"type": "string", "format": "date-time"},
+    "visibility": {"enum": ["PUBLIC", "PRIVATE"]},
+    "evidence": {
+      "type": "object",
+      "required": ["readmes", "commits", "pull_requests", "workflows", "schemas", "receipts", "cross_repository_references"],
+      "properties": {
+        "readmes": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}},
+        "commits": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}},
+        "pull_requests": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}},
+        "workflows": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}},
+        "schemas": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}},
+        "receipts": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}},
+        "cross_repository_references": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}}
+      },
+      "additionalProperties": false
+    },
+    "limitations": {"type": "array", "items": {"type": "string"}},
+    "security_flags": {"type": "array", "items": {"type": "string"}},
+    "content_hash": {"type": "string", "pattern": "^sha256:[A-Fa-f0-9]{64}$"},
+    "authority": {"const": false}
+  },
+  "additionalProperties": false
+}

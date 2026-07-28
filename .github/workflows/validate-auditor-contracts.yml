@@ -1,0 +1,31 @@
+name: Validate Auditor Contracts
+
+on:
+  pull_request:
+    paths:
+      - 'knowledge-management/contracts/**'
+      - 'knowledge-management/fixtures/**'
+      - 'knowledge-management/tests/**'
+      - '.github/workflows/validate-auditor-contracts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install validator dependencies
+        run: npm install --no-save ajv@8 ajv-formats@3
+
+      - name: Validate contracts and fixtures
+        run: node knowledge-management/tests/validate-contracts.mjs

@@ -169,4 +169,25 @@ function verify(): VerificationResult {
   };
 }
 
-console.log(JSON.stringify(verify(), null, 2));
+try {
+  const result = verify();
+  process.stdout.write(`${JSON.stringify(result, null, 2)}\n`);
+  if (result.verification !== "PASS") {
+    process.exitCode = 1;
+  }
+} catch (error) {
+  const message = error instanceof Error ? error.message : String(error);
+  const fatalResult: VerificationResult = {
+    receipt: "receipts/continuity/CANON_CHAIN_RECEIPT_001.json",
+    verification: "FAIL",
+    checked_files: 0,
+    computed_hashes: {},
+    hash_mismatches: [],
+    errors: [`VERIFIER_FATAL:${message}`],
+    order_valid: false,
+    scope_valid: false,
+    anchor_status_valid: false,
+  };
+  process.stdout.write(`${JSON.stringify(fatalResult, null, 2)}\n`);
+  process.exitCode = 1;
+}

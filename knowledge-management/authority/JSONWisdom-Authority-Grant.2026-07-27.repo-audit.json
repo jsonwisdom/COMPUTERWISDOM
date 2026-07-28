@@ -1,0 +1,44 @@
+{
+  "schema": "JSONWisdom-Authority-Grant",
+  "version": "0.1.0",
+  "grant_id": "JWAUTH-2026-07-27-75-REPO-READONLY",
+  "subject": "Trinity Repository Audit workflow in PR #417",
+  "scope": [
+    "ACTIVATE_AGENT_WORKFLOW",
+    "ISSUE_ATTESTATION"
+  ],
+  "granted_by": [
+    {
+      "identity": "jsonwisdom repository owner",
+      "role": "human operator",
+      "verification_method": "OTHER_VERIFIED_METHOD"
+    }
+  ],
+  "basis": "Explicit human directive in the active governance session: Fix the 72 of 75 repositories that remain unaccounted for. Authorization is limited to read-only inventory, evidence collection, proposed Trinity classification, deterministic receipts, and non-destructive remediation proposals. It excludes merge, deletion, archival, migration, publication, secret exposure, repository-setting changes, and direct default-branch modification.",
+  "evidence_refs": [
+    {
+      "type": "receipt",
+      "identifier": "sha256:443ade739c1ea5c2114f5820e690197e45403917803e4db544e383390eba5ea7",
+      "repository": "jsonwisdom/COMPUTERWISDOM",
+      "path": null,
+      "timestamp": null,
+      "hash": "443ade739c1ea5c2114f5820e690197e45403917803e4db544e383390eba5ea7",
+      "visibility": "PUBLIC",
+      "authority": false
+    },
+    {
+      "type": "run",
+      "identifier": "30312090920",
+      "repository": "jsonwisdom/COMPUTERWISDOM",
+      "path": null,
+      "timestamp": null,
+      "hash": null,
+      "visibility": "PUBLIC",
+      "authority": false
+    }
+  ],
+  "effective_at": "2026-07-27T23:05:35Z",
+  "expires_at": null,
+  "status": "ACTIVE",
+  "authority": true
+}

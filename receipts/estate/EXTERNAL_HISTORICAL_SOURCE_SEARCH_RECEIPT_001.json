@@ -1,0 +1,65 @@
+{
+  "schema": "JSONWisdom-External-Historical-Source-Search-Receipt",
+  "version": "1.0.0",
+  "receipt_id": "EXTERNAL_HISTORICAL_SOURCE_SEARCH_RECEIPT_001",
+  "searched_at": "2026-07-27T20:58:05-05:00",
+  "target": "historical source capable of supporting ORIGINAL_72_MANIFEST_V1.json",
+  "search_scope": {
+    "searched": [
+      "connected Gmail account",
+      "connected Google Drive account"
+    ],
+    "not_searched": [
+      "local filesystem and Downloads",
+      "OneDrive",
+      "Dropbox",
+      "GitHub account exports",
+      "billing exports",
+      "enterprise audit-log exports",
+      "external cold storage",
+      "other email accounts"
+    ]
+  },
+  "queries": [
+    {
+      "surface": "Gmail",
+      "query": "(\"jsonwisdom audit\" OR \"repository auditor\" OR \"agentic audit\" OR \"estate inventory\" OR \"Actions artifact\") has:attachment",
+      "result": "NOT_FOUND"
+    },
+    {
+      "surface": "Gmail",
+      "query": "(\"repository-inventory.json\" OR \"private-registry.json\" OR \"audit-receipt.json\" OR \"jsonwisdom-repository-audit\")",
+      "result": "NOT_FOUND"
+    },
+    {
+      "surface": "Google Drive",
+      "query": "jsonwisdom audit",
+      "result": "NOT_FOUND"
+    },
+    {
+      "surface": "Google Drive",
+      "query": "repository inventory",
+      "result": "NO_RELEVANT_RESULT",
+      "notes": "One unrelated retail-document false positive was returned and rejected."
+    },
+    {
+      "surface": "Google Drive",
+      "query": "agentic audit",
+      "result": "NO_RELEVANT_RESULT",
+      "notes": "Only unrelated research and legacy documents were returned and rejected."
+    },
+    {
+      "surface": "Google Drive",
+      "query": "repository-inventory.json",
+      "result": "NOT_FOUND"
+    }
+  ],
+  "candidate_count": 0,
+  "admissible_source_found": false,
+  "historical_identity_recoverable_from_searched_surfaces": false,
+  "original_72_manifest_authorized": false,
+  "live_enumeration_used": false,
+  "reconciliation_authorized": false,
+  "scope_limitation": "This receipt proves only that no admissible candidate was found in the connected Gmail and Google Drive surfaces using the recorded queries. It does not establish global non-existence or irrecoverability from unsearched locations.",
+  "authority": false
+}

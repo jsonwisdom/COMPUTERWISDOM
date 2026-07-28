@@ -1,0 +1,64 @@
+name: Trinity Repository Estate Gate
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  estate-gate:
+    runs-on: ubuntu-latest
+    env:
+      JSONWISDOM_OWNER: jsonwisdom
+    steps:
+      - name: Check out COMPUTERWISDOM
+        uses: actions/checkout@v4
+
+      - name: Evaluate historical manifest gate
+        id: gate
+        run: |
+          python3 knowledge-management/scripts/reconcile_repository_estate.py --gate-only
+          python3 knowledge-management/scripts/validate_estate_artifacts.py --mode hold
+          echo "authorized=$(python3 -c 'import json; print(str(json.load(open("knowledge-management/generated/repository-estate-gate.json"))["reconciliation_authorized"]).lower())')" >> "$GITHUB_OUTPUT"
+
+      - name: Validate owner-wide audit token
+        id: token
+        if: steps.gate.outputs.authorized == 'true'
+        env:
+          ESTATE_AUDIT_PAT: ${{ secrets.ESTATE_AUDIT_PAT }}
+        run: |
+          authorized=$(python3 knowledge-management/scripts/validate_estate_inventory_token.py)
+          echo "authorized=$authorized" >> "$GITHUB_OUTPUT"
+
+      - name: Build live repository registry
+        if: steps.gate.outputs.authorized == 'true' && steps.token.outputs.authorized == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.ESTATE_AUDIT_PAT }}
+        run: python3 knowledge-management/scripts/audit_repositories.py
+
+      - name: Reconcile original repository estate
+        if: steps.gate.outputs.authorized == 'true' && steps.token.outputs.authorized == 'true'
+        run: python3 knowledge-management/scripts/reconcile_repository_estate.py --reconcile
+
+      - name: Validate authorized estate artifacts
+        if: steps.gate.outputs.authorized == 'true' && steps.token.outputs.authorized == 'true'
+        run: python3 knowledge-management/scripts/validate_estate_artifacts.py --mode authorized
+
+      - name: Upload estate artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: repository-estate-gate
+          path: |
+            knowledge-management/generated/repository-estate-gate.json
+            knowledge-management/generated/repository-estate-hold.json
+            knowledge-management/generated/repository-estate-hold.md
+            knowledge-management/generated/repository-estate-token-gate.json
+            knowledge-management/generated/repository-registry.json
+            knowledge-management/generated/repository-audit.md
+            knowledge-management/generated/repository-estate-reconciliation.json
+            knowledge-management/generated/repository-estate-reconciliation.md
+            knowledge-management/config/repository-estate-baseline.json
+          if-no-files-found: warn

@@ -1,0 +1,52 @@
+{
+  "schema": "JSONWisdom-Trinity-Configuration",
+  "version": "0.1.0",
+  "owner": "jsonwisdom",
+  "legs": {
+    "proof": {
+      "repository": "jsonwisdom/AL",
+      "mission": "Evidence, verification, replay, contradiction, and witness consensus"
+    },
+    "memory": {
+      "repository": "jsonwisdom/COMPUTERWISDOM",
+      "mission": "Knowledge mapping, coordination, routing, discovery, and continuity"
+    },
+    "meaning": {
+      "repository": "jsonwisdom/JOY",
+      "mission": "Family purpose, consent, human witness, care, story, and transmission"
+    }
+  },
+  "importance_dimensions": [
+    "identity_relevance",
+    "recurrence",
+    "dependency_weight",
+    "human_value",
+    "evidence_strength",
+    "active_urgency"
+  ],
+  "excluded_importance_dimensions": ["repository_size"],
+  "allowed_roles": [
+    "trinity_root",
+    "proof_runtime",
+    "memory_index",
+    "meaning_family",
+    "identity",
+    "base_substrate",
+    "zora_distribution",
+    "minnesota_fixture",
+    "agent_runtime",
+    "specification",
+    "archive",
+    "experiment",
+    "unknown"
+  ],
+  "rules": [
+    "Never infer importance from repository size.",
+    "Every classification must include evidence.",
+    "Uncertain classifications remain unknown.",
+    "The audit must not delete, archive, merge, or mutate audited repositories.",
+    "Private repositories require an explicitly configured read token.",
+    "authority=false"
+  ],
+  "authority": false
+}
