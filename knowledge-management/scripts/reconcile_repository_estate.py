@@ -1,103 +1,191 @@
 #!/usr/bin/env python3
-"""Reconcile live GitHub inventory against the frozen historical 75/3/72 scope baseline."""
+"""Gate repository-estate reconciliation on an admissible historical 72-member manifest."""
 
 from __future__ import annotations
 
+import argparse
 import json
 from pathlib import Path
+from typing import Any
 
 ROOT = Path(__file__).resolve().parents[2]
-CONFIG = ROOT / "knowledge-management" / "config" / "repository-estate-baseline.json"
+BASELINE = ROOT / "knowledge-management" / "config" / "repository-estate-baseline.json"
+MANIFEST = ROOT / "receipts" / "estate" / "ORIGINAL_72_MANIFEST_V1.json"
 REGISTRY = ROOT / "knowledge-management" / "generated" / "repository-registry.json"
-OUT_JSON = ROOT / "knowledge-management" / "generated" / "repository-estate-reconciliation.json"
-OUT_MD = ROOT / "knowledge-management" / "generated" / "repository-estate-reconciliation.md"
+OUT = ROOT / "knowledge-management" / "generated"
+GATE_JSON = OUT / "repository-estate-gate.json"
+HOLD_JSON = OUT / "repository-estate-hold.json"
+HOLD_MD = OUT / "repository-estate-hold.md"
+RECON_JSON = OUT / "repository-estate-reconciliation.json"
+RECON_MD = OUT / "repository-estate-reconciliation.md"
 
 
-def load(path: Path) -> dict:
+def load(path: Path) -> dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
 
-def main() -> None:
-    baseline = load(CONFIG)
+def validate_baseline(baseline: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    counts = baseline.get("baseline_counts", {})
+    if counts.get("repositories_observed") != 75:
+        errors.append("BASELINE_TOTAL_NOT_75")
+    if counts.get("trinity_anchors") != 3:
+        errors.append("BASELINE_ANCHORS_NOT_3")
+    if counts.get("non_anchor_estate") != 72:
+        errors.append("BASELINE_NON_ANCHOR_NOT_72")
+    if baseline.get("authority") is not False:
+        errors.append("BASELINE_AUTHORITY_NOT_FALSE")
+    return errors
+
+
+def validate_manifest(manifest: dict[str, Any]) -> list[str]:
+    errors: list[str] = []
+    members = manifest.get("original_72_non_anchor")
+    if not isinstance(members, list):
+        errors.append("ORIGINAL_72_LIST_MISSING")
+    elif len(members) != 72:
+        errors.append("ORIGINAL_72_COUNT_NOT_72")
+
+    for field in (
+        "capture_timestamp_utc",
+        "capture_source",
+        "source_artifact_hash",
+        "manifest_sha256",
+    ):
+        if not manifest.get(field):
+            errors.append(f"{field.upper()}_MISSING")
+
+    if manifest.get("authority") is not False:
+        errors.append("MANIFEST_AUTHORITY_NOT_FALSE")
+    return errors
+
+
+def write_gate() -> bool:
+    OUT.mkdir(parents=True, exist_ok=True)
+    baseline = load(BASELINE)
+    errors = validate_baseline(baseline)
+
+    manifest_present = MANIFEST.exists()
+    if manifest_present:
+        try:
+            manifest = load(MANIFEST)
+            errors.extend(validate_manifest(manifest))
+        except (OSError, json.JSONDecodeError):
+            errors.append("ORIGINAL_72_MANIFEST_INVALID_JSON")
+
+    if not manifest_present:
+        errors.append("ORIGINAL_72_MANIFEST_MISSING")
+
+    authorized = manifest_present and not errors
+    gate = {
+        "schema": "JSONWisdom-Repository-Estate-Gate",
+        "version": "1.0.0",
+        "state": "RECONCILIATION_AUTHORIZED" if authorized else "CONSTITUTIONAL_HOLD",
+        "historical_baseline": {
+            "repositories_observed": 75,
+            "trinity_anchors": 3,
+            "non_anchor_estate": 72,
+        },
+        "manifest_path": str(MANIFEST.relative_to(ROOT)),
+        "manifest_present": manifest_present,
+        "manifest_valid": manifest_present and not errors,
+        "errors": errors,
+        "live_inventory_executed": False,
+        "reconciliation_authorized": authorized,
+        "identity_claims_authorized": authorized,
+        "authority": False,
+    }
+    GATE_JSON.write_text(json.dumps(gate, indent=2) + "\n", encoding="utf-8")
+
+    if not authorized:
+        hold = {
+            "schema": "JSONWisdom-Repository-Estate-Hold",
+            "version": "1.0.0",
+            "state": "CONSTITUTIONAL_HOLD",
+            "reason": "Original 72-member historical manifest is absent or invalid.",
+            "errors": errors,
+            "count_state": "KNOWN_75_3_72",
+            "identity_state": "UNKNOWN",
+            "evidence_state": "EMPTY",
+            "live_inventory_executed": False,
+            "reconciliation_status": "PENDING",
+            "reconciliation_authorized": False,
+            "authority": False,
+        }
+        HOLD_JSON.write_text(json.dumps(hold, indent=2) + "\n", encoding="utf-8")
+        HOLD_MD.write_text(
+            "# Repository Estate Constitutional Hold\n\n"
+            "- Count: **known (75 / 3 / 72)**\n"
+            "- Identities: **unknown**\n"
+            "- Historical manifest: **missing or invalid**\n"
+            "- Live inventory executed: **no**\n"
+            "- Reconciliation: **pending and unauthorized**\n"
+            "- `authority: false`\n",
+            encoding="utf-8",
+        )
+    return authorized
+
+
+def reconcile() -> None:
+    gate = load(GATE_JSON) if GATE_JSON.exists() else {}
+    if gate.get("reconciliation_authorized") is not True:
+        raise SystemExit("RECONCILIATION_NOT_AUTHORIZED")
+    if not REGISTRY.exists():
+        raise SystemExit("LIVE_REGISTRY_MISSING")
+
+    baseline = load(BASELINE)
+    manifest = load(MANIFEST)
     registry = load(REGISTRY)
 
-    live_repositories = registry.get("repositories", [])
-    live_names = {row.get("repository") for row in live_repositories if row.get("repository")}
-    anchors = set(baseline["trinity_anchors"])
-    live_anchor_names = sorted(live_names & anchors)
-    live_non_anchor_names = sorted(live_names - anchors)
+    historical_names = manifest["original_72_non_anchor"]
+    live_rows = registry.get("repositories", [])
+    live_names = [row.get("repository") for row in live_rows if row.get("repository")]
 
-    expected = baseline["baseline_counts"]
-    member_manifest = baseline["non_anchor_member_manifest"]
+    historical_set = set(historical_names)
+    live_set = set(live_names)
+    anchors = set(baseline["trinity_anchors"])
+    live_non_anchor = live_set - anchors
 
     reconciliation = {
         "schema": "JSONWisdom-Repository-Estate-Reconciliation",
         "version": "1.0.0",
-        "baseline": {
-            "repositories_observed": expected["repositories_observed"],
-            "trinity_anchors": expected["trinity_anchors"],
-            "non_anchor_estate": expected["non_anchor_estate"],
+        "status": "IDENTITY_COMPARISON_EXECUTED",
+        "historical_manifest": {
+            "path": str(MANIFEST.relative_to(ROOT)),
+            "member_count": len(historical_names),
+            "manifest_sha256": manifest["manifest_sha256"],
         },
-        "live_inventory": {
-            "inventory_mode": registry.get("inventory_mode"),
-            "repositories_observed": len(live_names),
-            "trinity_anchors_observed": len(live_anchor_names),
-            "non_anchor_repositories_observed": len(live_non_anchor_names),
-        },
-        "anchor_presence": {
-            "expected": sorted(anchors),
-            "observed": live_anchor_names,
-            "missing": sorted(anchors - live_names),
-        },
-        "original_72_member_manifest": {
-            "status": member_manifest["status"],
-            "captured_members": len(member_manifest.get("members", [])),
-            "identity_reconciliation_possible": member_manifest["status"] == "CAPTURED",
-        },
-        "count_drift": {
-            "total": len(live_names) - expected["repositories_observed"],
-            "non_anchor": len(live_non_anchor_names) - expected["non_anchor_estate"],
-            "interpretation": "DRIFT_REQUIRES_RECONCILIATION" if len(live_names) != expected["repositories_observed"] else "COUNT_MATCH_ONLY",
-        },
-        "portfolio_completion": {
-            "status": "NOT_ESTABLISHED",
-            "reason": "The original 72 repository names have not yet been captured as an evidence-backed baseline manifest.",
-        },
-        "boundaries": [
-            "Live inventory does not rewrite the historical 75/3/72 baseline.",
-            "Count equality alone does not establish member identity or audit completion.",
-            "Canon-chain PASS is not portfolio completion.",
-            "No repository is removed from scope by inference.",
-            "authority=false",
-        ],
+        "matched": sorted(historical_set & live_non_anchor),
+        "missing_or_renamed_unresolved": sorted(historical_set - live_non_anchor),
+        "added_or_renamed_unresolved": sorted(live_non_anchor - historical_set),
+        "classification_boundary": "Rename, split, merge, visibility change, deletion, and addition require separate evidence.",
+        "portfolio_completion": "NOT_ESTABLISHED",
         "authority": False,
     }
+    RECON_JSON.write_text(json.dumps(reconciliation, indent=2) + "\n", encoding="utf-8")
+    RECON_MD.write_text(
+        "# Repository Estate Reconciliation\n\n"
+        f"- Historical identities compared: **{len(historical_names)}**\n"
+        f"- Exact-name matches: **{len(reconciliation['matched'])}**\n"
+        f"- Missing or renamed unresolved: **{len(reconciliation['missing_or_renamed_unresolved'])}**\n"
+        f"- Added or renamed unresolved: **{len(reconciliation['added_or_renamed_unresolved'])}**\n"
+        "- Portfolio completion: **not established**\n"
+        "- `authority: false`\n",
+        encoding="utf-8",
+    )
 
-    OUT_JSON.write_text(json.dumps(reconciliation, indent=2) + "\n", encoding="utf-8")
 
-    lines = [
-        "# Repository Estate Reconciliation",
-        "",
-        "## Frozen historical scope",
-        "",
-        f"- Repositories observed: **{expected['repositories_observed']}**",
-        f"- Trinity anchors: **{expected['trinity_anchors']}**",
-        f"- Original non-anchor estate: **{expected['non_anchor_estate']}**",
-        "",
-        "## Live inventory",
-        "",
-        f"- Repositories observed now: **{len(live_names)}**",
-        f"- Trinity anchors observed now: **{len(live_anchor_names)}**",
-        f"- Non-anchor repositories observed now: **{len(live_non_anchor_names)}**",
-        "",
-        "## Constitutional status",
-        "",
-        "- Original 72-member name manifest: **NOT YET CAPTURED**",
-        "- Portfolio completion: **NOT ESTABLISHED**",
-        "- Canon-chain PASS: **component evidence only**",
-        "- `authority: false`",
-    ]
-    OUT_MD.write_text("\n".join(lines) + "\n", encoding="utf-8")
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    mode = parser.add_mutually_exclusive_group(required=True)
+    mode.add_argument("--gate-only", action="store_true")
+    mode.add_argument("--reconcile", action="store_true")
+    args = parser.parse_args()
+
+    if args.gate_only:
+        write_gate()
+    else:
+        reconcile()
 
 
 if __name__ == "__main__":

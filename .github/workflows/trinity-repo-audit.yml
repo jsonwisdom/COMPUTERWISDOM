@@ -1,9 +1,7 @@
-name: Trinity Repository Audit
+name: Trinity Repository Estate Gate
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: "17 11 * * *"
 
 permissions:
   contents: read
@@ -11,7 +9,7 @@ permissions:
   actions: read
 
 jobs:
-  audit:
+  estate-gate:
     runs-on: ubuntu-latest
     env:
       GH_TOKEN: ${{ github.token }}
@@ -20,25 +18,43 @@ jobs:
       - name: Check out COMPUTERWISDOM
         uses: actions/checkout@v4
 
-      - name: Build Trinity repository registry
+      - name: Evaluate historical manifest gate
+        id: gate
+        run: |
+          python3 knowledge-management/scripts/reconcile_repository_estate.py --gate-only
+          python3 -m json.tool knowledge-management/generated/repository-estate-gate.json >/dev/null
+          echo "authorized=$(python3 -c 'import json; print(str(json.load(open("knowledge-management/generated/repository-estate-gate.json"))["reconciliation_authorized"]).lower())')" >> "$GITHUB_OUTPUT"
+
+      - name: Build live repository registry
+        if: steps.gate.outputs.authorized == 'true'
         run: python3 knowledge-management/scripts/audit_repositories.py
 
       - name: Reconcile original repository estate
-        run: python3 knowledge-management/scripts/reconcile_repository_estate.py
+        if: steps.gate.outputs.authorized == 'true'
+        run: python3 knowledge-management/scripts/reconcile_repository_estate.py --reconcile
 
-      - name: Validate generated JSON
+      - name: Validate authorized reconciliation JSON
+        if: steps.gate.outputs.authorized == 'true'
         run: |
           python3 -m json.tool knowledge-management/generated/repository-registry.json >/dev/null
           python3 -m json.tool knowledge-management/generated/repository-estate-reconciliation.json >/dev/null
 
-      - name: Upload audit artifacts
+      - name: Validate constitutional hold JSON
+        if: steps.gate.outputs.authorized != 'true'
+        run: python3 -m json.tool knowledge-management/generated/repository-estate-hold.json >/dev/null
+
+      - name: Upload estate gate artifacts
+        if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: trinity-repository-audit
+          name: repository-estate-gate
           path: |
+            knowledge-management/generated/repository-estate-gate.json
+            knowledge-management/generated/repository-estate-hold.json
+            knowledge-management/generated/repository-estate-hold.md
             knowledge-management/generated/repository-registry.json
             knowledge-management/generated/repository-audit.md
             knowledge-management/generated/repository-estate-reconciliation.json
             knowledge-management/generated/repository-estate-reconciliation.md
             knowledge-management/config/repository-estate-baseline.json
-          if-no-files-found: error
+          if-no-files-found: warn
