@@ -9,6 +9,9 @@ on:
       - master
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   verify-canon-chain:
     name: Run canon-chain replay verifier
@@ -21,14 +24,36 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
       - name: Install TypeScript runner
         run: npm install --no-save ts-node typescript @types/node
 
       - name: Run canon-chain verifier
+        shell: bash
         run: |
-          npx ts-node --compiler-options '{"module":"CommonJS"}' scripts/verify_canon_chain_receipt_001.ts | tee verifier-result.json
+          set -uo pipefail
+
+          verifier_status=0
+          npx ts-node --compiler-options '{"module":"CommonJS"}' scripts/verify_canon_chain_receipt_001.ts > verifier-result.json || verifier_status=$?
+
+          if [[ ! -s verifier-result.json ]]; then
+            printf '%s\n' '{"receipt":"receipts/continuity/CANON_CHAIN_RECEIPT_001.json","verification":"FAIL","checked_files":0,"computed_hashes":{},"hash_mismatches":[],"errors":["EMPTY_VERIFIER_OUTPUT"],"order_valid":false,"scope_valid":false,"anchor_status_valid":false}' > verifier-result.json
+            verifier_status=1
+          fi
+
+          node -e '
+            const fs = require("node:fs");
+            const path = "verifier-result.json";
+            const value = JSON.parse(fs.readFileSync(path, "utf8"));
+            const required = ["receipt", "verification", "checked_files", "computed_hashes", "hash_mismatches", "errors", "order_valid", "scope_valid", "anchor_status_valid"];
+            const missing = required.filter((key) => !(key in value));
+            if (missing.length) throw new Error(`Missing verifier fields: ${missing.join(",")}`);
+            if (!["PASS", "FAIL"].includes(value.verification)) throw new Error("Invalid verification outcome");
+          ' || verifier_status=1
+
+          cat verifier-result.json
+          exit "$verifier_status"
 
       - name: Upload verifier result artifact
         if: always()
@@ -36,3 +61,5 @@ jobs:
         with:
           name: canon-chain-verifier-result
           path: verifier-result.json
+          if-no-files-found: error
+          retention-days: 90
