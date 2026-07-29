@@ -21,7 +21,20 @@
 </main>
 <footer class="footer"><div class="shell"><strong>JAYWISDOM · JSONWisdom Systems · COMPUTERWISDOM</strong><br />Public information and civic research only. Not legal, financial, or investment advice.</div></footer>
 <script>
-const contract='0x694ce46c64d9d1a5e9376a9febcf85ec05d72e9f';const copyBtn=document.getElementById('copyBtn');const copyNote=document.getElementById('copyNote');const likeBtn=document.getElementById('likeBtn');const likeCount=document.getElementById('likeCount');const subscribeBtn=document.getElementById('subscribeBtn');const subscribeNote=document.getElementById('subscribeNote');let likes=Number(localStorage.getItem('jaywisdomLikes')||0);likeCount.textContent=String(likes);likeBtn.addEventListener('click',()=>{likes+=1;localStorage.setItem('jaywisdomLikes',String(likes));likeCount.textContent=String(likes);likeBtn.textContent='⚡ Mission liked'});copyBtn.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(contract);copyNote.textContent='Contract copied.'}catch{copyNote.textContent='Copy unavailable. Select the address manually.'}});subscribeBtn.addEventListener('click',()=>{const email=document.getElementById('email').value.trim();if(!email||!email.includes('@')){subscribeNote.textContent='Enter a valid email address.';return}subscribeNote.textContent='Demo only — connect a mailing provider before launch.'});
+const contract='0x694ce46c64d9d1a5e9376a9febcf85ec05d72e9f';
+const copyBtn=document.getElementById('copyBtn');
+const copyNote=document.getElementById('copyNote');
+const likeBtn=document.getElementById('likeBtn');
+const likeCount=document.getElementById('likeCount');
+const subscribeBtn=document.getElementById('subscribeBtn');
+const subscribeNote=document.getElementById('subscribeNote');
+let likes=0;
+let storageAvailable=true;
+try{likes=Number(localStorage.getItem('jaywisdomLikes')||0)}catch{storageAvailable=false}
+likeCount.textContent=String(likes);
+likeBtn.addEventListener('click',()=>{likes+=1;if(storageAvailable){try{localStorage.setItem('jaywisdomLikes',String(likes))}catch{storageAvailable=false}}likeCount.textContent=String(likes);likeBtn.textContent='⚡ Mission liked'});
+copyBtn.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(contract);copyNote.textContent='Contract copied.'}catch{copyNote.textContent='Copy unavailable. Select the address manually.'}});
+subscribeBtn.addEventListener('click',()=>{const email=document.getElementById('email').value.trim();if(!email||!email.includes('@')){subscribeNote.textContent='Enter a valid email address.';return}subscribeNote.textContent='Demo only — connect a mailing provider before launch.'});
 </script>
 </body>
 </html>
