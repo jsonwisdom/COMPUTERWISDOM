@@ -1,0 +1,71 @@
+{
+  "schema": "P0_RUN_RECEIPT_TEMPLATE_V1",
+  "version": "1.0.0",
+  "status": "TEMPLATE_FROZEN",
+  "execution_id": null,
+  "operator": {
+    "operator_id": null,
+    "role": null,
+    "checklist_completed": false,
+    "checklist_locator": null,
+    "attestation": null
+  },
+  "controls": {
+    "search_plan": "receipts/estate/MANIFEST_RECOVERY_SEARCH_PLAN_V1.md",
+    "execution_checklist": "receipts/estate/SEARCH_EXECUTION_CHECKLIST_V1.md",
+    "p0_runbook": "receipts/estate/P0_EXECUTION_RUNBOOK_V1.md",
+    "candidate_population_workflow": "receipts/estate/CANDIDATE_LOG_POPULATION_WORKFLOW_V1.md",
+    "witness_protocol": "receipts/estate/CHAIN_OF_CUSTODY_WITNESS_PROTOCOL_V1.md",
+    "witness_checklist": "receipts/estate/WITNESS_ATTESTATION_CHECKLIST_V1.md",
+    "operator_checklist": "receipts/estate/P0_OPERATOR_CHECKLIST_V1.md",
+    "directory_layout": "receipts/estate/P0_DIRECTORY_LAYOUT_V1.md"
+  },
+  "execution": {
+    "source_priority": null,
+    "source_class": null,
+    "source_locator": null,
+    "access_state": null,
+    "approved_search_terms": [],
+    "started_at_utc": null,
+    "completed_at_utc": null,
+    "outcome": null,
+    "limitations": []
+  },
+  "artifacts": {
+    "raw_candidates": [],
+    "search_log_locator": null,
+    "outcome_locator": null,
+    "candidate_log_locator": "receipts/estate/MANIFEST_RECOVERY_CANDIDATE_LOG_V1.json"
+  },
+  "candidate_summary": {
+    "candidate_count": 0,
+    "candidate_ids": [],
+    "all_begin_not_evaluated": true,
+    "identity_extraction_authorized": false,
+    "reconciliation_authorized": false
+  },
+  "witness": {
+    "state": null,
+    "witness_ids": [],
+    "attestation_locators": [],
+    "hash_mismatches": []
+  },
+  "integrity": {
+    "receipt_sha256": null,
+    "canonicalization": "sorted keys, UTF-8, no insignificant whitespace, receipt_sha256 omitted during hash computation",
+    "digest_algorithm": "sha256"
+  },
+  "constitutional_state": {
+    "count_known": true,
+    "identities_known": false,
+    "source_artifact_found": false,
+    "manifest_authorized": false,
+    "reconciliation_pending": true,
+    "estate_advanced": false,
+    "self_ratification": false,
+    "authority": false
+  },
+  "failure_codes": [],
+  "notes": [],
+  "authority": false
+}

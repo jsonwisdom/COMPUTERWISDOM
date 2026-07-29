@@ -1,0 +1,31 @@
+{
+  "schema": "JSONWisdom-Repository-Estate-Baseline",
+  "version": "1.0.0",
+  "owner": "jsonwisdom",
+  "baseline_label": "original-repository-estate",
+  "baseline_counts": {
+    "repositories_observed": 75,
+    "trinity_anchors": 3,
+    "non_anchor_estate": 72
+  },
+  "trinity_anchors": [
+    "jsonwisdom/AL",
+    "jsonwisdom/COMPUTERWISDOM",
+    "jsonwisdom/JOY"
+  ],
+  "non_anchor_member_manifest": {
+    "status": "NOT_YET_CAPTURED",
+    "members": [],
+    "rule": "The count of 72 is a historical scope baseline, not proof of repository identity. No repository may be declared part of, removed from, or completed within the original 72-member estate until a name-level baseline manifest is captured from evidence."
+  },
+  "reconciliation_rules": [
+    "Never replace the original 75/3/72 baseline with a live API count.",
+    "Report live inventory and baseline inventory as separate fields.",
+    "A live count difference is drift to reconcile, not permission to rewrite history.",
+    "The three Trinity anchors do not consume or replace work owed to the original 72-repository estate.",
+    "Canon-chain verification is a component result and cannot represent portfolio completion.",
+    "Unknown remains valid.",
+    "authority=false"
+  ],
+  "authority": false
+}

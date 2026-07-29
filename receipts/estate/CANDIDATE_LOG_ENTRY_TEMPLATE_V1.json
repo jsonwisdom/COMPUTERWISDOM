@@ -1,0 +1,65 @@
+{
+  "schema": "Manifest-Recovery-Candidate-Entry",
+  "version": "1.0.0",
+  "candidate_id": "REQUIRED_UNIQUE_ID",
+  "execution_id": "REQUIRED_EXECUTION_ID",
+  "search_plan": "MANIFEST_RECOVERY_SEARCH_PLAN_V1",
+  "checklist": "SEARCH_EXECUTION_CHECKLIST_V1",
+  "status": "UNASSESSED",
+  "source_class": "REQUIRED_ADMISSIBLE_CLASS",
+  "source_location": {
+    "system": "REQUIRED",
+    "path_or_locator": "REQUIRED",
+    "account_or_owner": "UNKNOWN_ALLOWED",
+    "access_method": "REQUIRED"
+  },
+  "capture_provenance": {
+    "observed_at_utc": "REQUIRED_RFC3339_TIMESTAMP",
+    "historical_capture_timestamp_utc": "UNKNOWN_ALLOWED",
+    "captured_by": "UNKNOWN_ALLOWED",
+    "non_derivation_from_live_estate": "UNVERIFIED",
+    "provenance_notes": ""
+  },
+  "raw_artifact": {
+    "original_filename": "REQUIRED",
+    "preserved_filename": "REQUIRED",
+    "media_type": "REQUIRED",
+    "byte_length": 0,
+    "sha256": "REQUIRED_64_HEX",
+    "preservation_location": "REQUIRED",
+    "bytes_modified": false
+  },
+  "content_observation": {
+    "repository_names_visible": "UNASSESSED",
+    "observed_name_count": null,
+    "contains_all_original_75": "UNASSESSED",
+    "contains_three_trinity_anchors": "UNASSESSED",
+    "contains_72_non_anchor_names": "UNASSESSED",
+    "ordering_preserved": "UNASSESSED",
+    "duplicates_preserved": "UNASSESSED",
+    "anomalies_preserved": "UNASSESSED"
+  },
+  "admissibility": {
+    "decision": "NOT_EVALUATED",
+    "priority_class": null,
+    "timestamp_valid": "UNASSESSED",
+    "source_valid": "UNASSESSED",
+    "integrity_valid": "UNASSESSED",
+    "completeness_valid": "UNASSESSED",
+    "non_derivation_valid": "UNASSESSED",
+    "rejection_codes": [],
+    "decision_notes": ""
+  },
+  "chain_of_custody": {
+    "operator_id": "REQUIRED",
+    "witness_id": "NONE_OR_REQUIRED_ID",
+    "operator_attestation": "PENDING",
+    "witness_attestation": "PENDING_OR_NOT_AVAILABLE",
+    "attested_at_utc": null
+  },
+  "identity_extraction_authorized": false,
+  "manifest_creation_authorized": false,
+  "reconciliation_authorized": false,
+  "self_ratification": false,
+  "authority": false
+}

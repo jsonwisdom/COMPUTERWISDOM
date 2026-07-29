@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/contracts/JSONWisdom-Audit-Receipt.v0.1.0.json",
+  "title": "JSONWisdom Audit Receipt v0.1.0",
+  "type": "object",
+  "required": ["schema", "version", "run_id", "contract_versions", "inputs", "outputs", "checkpoint", "status", "generated_at", "receipt_hash", "authority"],
+  "properties": {
+    "schema": {"const": "JSONWisdom-Audit-Receipt"},
+    "version": {"const": "0.1.0"},
+    "run_id": {"type": "string", "minLength": 1},
+    "contract_versions": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "string"}
+    },
+    "inputs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/boundArtifact"}
+    },
+    "outputs": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/boundArtifact"}
+    },
+    "checkpoint": {
+      "type": "object",
+      "required": ["id", "commit"],
+      "properties": {
+        "id": {"enum": ["CP-0", "CP-1", "CP-2", "CP-3", "CP-4", "CP-5", "CP-6"]},
+        "commit": {"type": "string", "pattern": "^[A-Fa-f0-9]{40}$"}
+      },
+      "additionalProperties": false
+    },
+    "status": {"enum": ["PASS", "FAIL", "PARTIAL", "BLOCKED", "UNKNOWN"]},
+    "generated_at": {"type": "string", "format": "date-time"},
+    "receipt_hash": {"type": "string", "pattern": "^sha256:[A-Fa-f0-9]{64}$"},
+    "authority": {"const": false}
+  },
+  "$defs": {
+    "boundArtifact": {
+      "type": "object",
+      "required": ["path", "hash"],
+      "properties": {
+        "path": {"type": "string"},
+        "hash": {"type": "string", "pattern": "^sha256:[A-Fa-f0-9]{64}$"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

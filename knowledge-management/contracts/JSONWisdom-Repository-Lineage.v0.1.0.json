@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/contracts/JSONWisdom-Repository-Lineage.v0.1.0.json",
+  "title": "JSONWisdom Repository Lineage v0.1.0",
+  "type": "object",
+  "required": ["schema", "version", "repository", "scan_commit", "origin", "milestones", "relationships", "supersession", "unresolved_lineage", "authority"],
+  "properties": {
+    "schema": {"const": "JSONWisdom-Repository-Lineage"},
+    "version": {"const": "0.1.0"},
+    "repository": {"type": "string"},
+    "scan_commit": {"type": "string", "pattern": "^[A-Fa-f0-9]{40}$"},
+    "origin": {
+      "type": "object",
+      "required": ["earliest_observed_commit", "earliest_observed_purpose", "evidence_refs"],
+      "properties": {
+        "earliest_observed_commit": {"type": ["string", "null"]},
+        "earliest_observed_purpose": {"type": ["string", "null"]},
+        "evidence_refs": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}}
+      },
+      "additionalProperties": false
+    },
+    "milestones": {"type": "array", "items": {"$ref": "#/$defs/milestone"}},
+    "relationships": {"type": "array", "items": {"$ref": "#/$defs/relationship"}},
+    "supersession": {"type": "array", "items": {"$ref": "#/$defs/relationship"}},
+    "unresolved_lineage": {"type": "array", "items": {"type": "string"}},
+    "authority": {"const": false}
+  },
+  "$defs": {
+    "confidence": {"enum": ["VERIFIED", "STRONGLY_SUPPORTED", "PARTIAL", "CONFLICTED", "UNKNOWN"]},
+    "milestone": {
+      "type": "object",
+      "required": ["id", "type", "summary", "evidence_refs"],
+      "properties": {
+        "id": {"type": "string"},
+        "type": {"enum": ["ORIGIN", "CAPABILITY_ADDED", "GOVERNANCE_CHANGE", "RUNTIME_CHANGE", "PUBLICATION", "SUPERSESSION", "OTHER"]},
+        "summary": {"type": "string"},
+        "commit": {"type": ["string", "null"]},
+        "pull_request": {"type": ["integer", "null"]},
+        "evidence_refs": {"type": "array", "minItems": 1, "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}}
+      },
+      "additionalProperties": false
+    },
+    "relationship": {
+      "type": "object",
+      "required": ["predicate", "target", "confidence", "evidence_refs"],
+      "properties": {
+        "predicate": {"enum": ["IDENTITY_ROOT", "COORDINATES", "IMPLEMENTS", "VERIFIES", "OBSERVES", "PUBLISHES_TO", "ANCHORS_ON", "DEPENDS_ON", "PRODUCES_RECEIPTS_FOR", "WITNESSES", "DOCUMENTS", "SUPERSEDES", "FORKED_FROM", "MIRRORS", "FAMILY_CONTINUITY_FOR", "UNKNOWN_RELATIONSHIP"]},
+        "target": {"type": "string"},
+        "confidence": {"$ref": "#/$defs/confidence"},
+        "evidence_refs": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}}
+      },
+      "allOf": [{"if": {"properties": {"confidence": {"enum": ["VERIFIED", "STRONGLY_SUPPORTED"]}}}, "then": {"properties": {"evidence_refs": {"minItems": 1}}}}],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

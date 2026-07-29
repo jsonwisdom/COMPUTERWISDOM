@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/contracts/JSONWisdom-Collaboration-Graph.v0.1.0.json",
+  "title": "JSONWisdom Collaboration Graph v0.1.0",
+  "type": "object",
+  "required": ["schema", "version", "nodes", "edges", "unresolved_edges", "graph_root", "authority"],
+  "properties": {
+    "schema": {"const": "JSONWisdom-Collaboration-Graph"},
+    "version": {"const": "0.1.0"},
+    "nodes": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "edges": {"type": "array", "items": {"$ref": "#/$defs/edge"}},
+    "unresolved_edges": {"type": "array", "items": {"$ref": "#/$defs/edge"}},
+    "graph_root": {"type": "string", "pattern": "^sha256:[A-Fa-f0-9]{64}$"},
+    "authority": {"const": false}
+  },
+  "$defs": {
+    "edge": {
+      "type": "object",
+      "required": ["source", "predicate", "target", "confidence", "evidence_refs"],
+      "properties": {
+        "source": {"type": "string"},
+        "predicate": {"enum": ["IDENTITY_ROOT", "COORDINATES", "IMPLEMENTS", "VERIFIES", "OBSERVES", "PUBLISHES_TO", "ANCHORS_ON", "DEPENDS_ON", "PRODUCES_RECEIPTS_FOR", "WITNESSES", "DOCUMENTS", "SUPERSEDES", "FORKED_FROM", "MIRRORS", "FAMILY_CONTINUITY_FOR", "UNKNOWN_RELATIONSHIP"]},
+        "target": {"type": "string"},
+        "confidence": {"enum": ["VERIFIED", "STRONGLY_SUPPORTED", "PARTIAL", "CONFLICTED", "UNKNOWN"]},
+        "evidence_refs": {"type": "array", "items": {"$ref": "shared/EvidenceReference.v0.1.0.json"}}
+      },
+      "allOf": [{"if": {"properties": {"confidence": {"enum": ["VERIFIED", "STRONGLY_SUPPORTED"]}}}, "then": {"properties": {"evidence_refs": {"minItems": 1}}}}],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/contracts/JSONWisdom-Audit-Resume.v0.1.0.json",
+  "title": "JSONWisdom Audit Resume v0.1.0",
+  "type": "object",
+  "required": ["schema", "version", "run_id", "inventory_root", "last_completed_repository", "next_repository", "completed", "failed", "blocked", "unknown", "agent_versions", "checkpoint_commit", "resume_integrity", "status", "authority"],
+  "properties": {
+    "schema": {"const": "JSONWisdom-Audit-Resume"},
+    "version": {"const": "0.1.0"},
+    "run_id": {"type": "string"},
+    "inventory_root": {"type": "string", "pattern": "^sha256:[A-Fa-f0-9]{64}$"},
+    "last_completed_repository": {"type": ["string", "null"]},
+    "next_repository": {"type": ["string", "null"]},
+    "completed": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "failed": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "blocked": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "unknown": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "agent_versions": {
+      "type": "object",
+      "required": ["reader", "lineage", "classifier", "security", "importance", "graph", "receipt", "resume"],
+      "properties": {
+        "reader": {"type": "string"},
+        "lineage": {"type": "string"},
+        "classifier": {"type": "string"},
+        "security": {"type": "string"},
+        "importance": {"type": "string"},
+        "graph": {"type": "string"},
+        "receipt": {"type": "string"},
+        "resume": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "checkpoint_commit": {"type": "string", "pattern": "^[A-Fa-f0-9]{40}$"},
+    "resume_integrity": {"type": "string", "pattern": "^sha256:[A-Fa-f0-9]{64}$"},
+    "status": {"enum": ["NOT_STARTED", "PARTIAL", "COMPLETE", "BLOCKED", "FAILED"]},
+    "integrity_conditions": {
+      "type": "object",
+      "required": ["inventory_hash_matches", "agent_versions_match", "artifacts_validate", "checkpoint_exists", "completed_heads_unchanged", "failures_preserved"],
+      "properties": {
+        "inventory_hash_matches": {"type": "boolean"},
+        "agent_versions_match": {"type": "boolean"},
+        "artifacts_validate": {"type": "boolean"},
+        "checkpoint_exists": {"type": "boolean"},
+        "completed_heads_unchanged": {"type": "boolean"},
+        "failures_preserved": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "authority": {"const": false}
+  },
+  "additionalProperties": false
+}

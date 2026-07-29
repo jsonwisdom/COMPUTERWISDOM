@@ -9,6 +9,9 @@ on:
       - master
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 jobs:
   verify-canon-chain:
     name: Run canon-chain replay verifier
@@ -21,14 +24,57 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
-      - name: Install TypeScript runner
-        run: npm install --no-save ts-node typescript @types/node
-
-      - name: Run canon-chain verifier
+      - name: Run guarded canon-chain verifier pipeline
+        shell: bash
         run: |
-          npx ts-node --compiler-options '{"module":"CommonJS"}' scripts/verify_canon_chain_receipt_001.ts | tee verifier-result.json
+          set -uo pipefail
+
+          verifier_status=0
+          failure_code=""
+          rm -f verifier-result.json
+
+          if [[ ! -s scripts/verify_canon_chain_receipt_001.js ]]; then
+            failure_code="VERIFIER_PROGRAM_MISSING_OR_EMPTY"
+            verifier_status=1
+          else
+            node scripts/verify_canon_chain_receipt_001.js > verifier-result.json || verifier_status=$?
+          fi
+
+          if [[ ! -s verifier-result.json ]]; then
+            if [[ -z "$failure_code" ]]; then
+              failure_code="EMPTY_VERIFIER_OUTPUT"
+            fi
+            node - "$failure_code" > verifier-result.json <<'NODE'
+          const failureCode = process.argv[2] || "VERIFIER_PIPELINE_FAILURE";
+          process.stdout.write(JSON.stringify({
+            receipt: "receipts/continuity/CANON_CHAIN_RECEIPT_001.json",
+            verification: "FAIL",
+            checked_files: 0,
+            computed_hashes: {},
+            hash_mismatches: [],
+            errors: [failureCode],
+            order_valid: false,
+            scope_valid: false,
+            anchor_status_valid: false
+          }, null, 2) + "\n");
+          NODE
+            verifier_status=1
+          fi
+
+          node -e '
+            const fs = require("node:fs");
+            const path = "verifier-result.json";
+            const value = JSON.parse(fs.readFileSync(path, "utf8"));
+            const required = ["receipt", "verification", "checked_files", "computed_hashes", "hash_mismatches", "errors", "order_valid", "scope_valid", "anchor_status_valid"];
+            const missing = required.filter((key) => !(key in value));
+            if (missing.length) throw new Error(`Missing verifier fields: ${missing.join(",")}`);
+            if (!["PASS", "FAIL"].includes(value.verification)) throw new Error("Invalid verification outcome");
+          ' || verifier_status=1
+
+          cat verifier-result.json
+          exit "$verifier_status"
 
       - name: Upload verifier result artifact
         if: always()
@@ -36,3 +82,5 @@ jobs:
         with:
           name: canon-chain-verifier-result
           path: verifier-result.json
+          if-no-files-found: error
+          retention-days: 90

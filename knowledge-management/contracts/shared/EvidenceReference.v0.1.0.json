@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/contracts/shared/EvidenceReference.v0.1.0.json",
+  "title": "JSONWisdom Evidence Reference v0.1.0",
+  "type": "object",
+  "required": ["type", "identifier", "authority"],
+  "properties": {
+    "type": {"enum": ["commit", "pr", "file", "url", "receipt", "run", "manifest", "workflow", "schema"]},
+    "identifier": {"type": "string", "minLength": 1},
+    "repository": {"type": ["string", "null"]},
+    "path": {"type": ["string", "null"]},
+    "timestamp": {"type": ["string", "null"], "format": "date-time"},
+    "hash": {"type": ["string", "null"], "pattern": "^(sha256:)?[A-Fa-f0-9]{64}$"},
+    "visibility": {"enum": ["PUBLIC", "PRIVATE", "FAMILY_SECURE", "OPERATOR_SECURE", "UNKNOWN"]},
+    "authority": {"const": false}
+  },
+  "additionalProperties": false
+}

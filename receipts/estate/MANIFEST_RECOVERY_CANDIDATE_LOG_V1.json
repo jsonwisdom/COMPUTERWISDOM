@@ -1,0 +1,24 @@
+{
+  "schema": "MANIFEST_RECOVERY_CANDIDATE_LOG",
+  "version": "1.0.0",
+  "procedure": "receipts/estate/MANIFEST_RECOVERY_SEARCH_PLAN_V1.md",
+  "estate_baseline": {
+    "original_repository_count": 75,
+    "trinity_anchor_count": 3,
+    "original_non_anchor_count": 72,
+    "identity_state": "UNKNOWN"
+  },
+  "status": "SEARCH_NOT_EXECUTED",
+  "candidates": [],
+  "admissible_source_found": false,
+  "original_72_manifest_authorized": false,
+  "reconciliation_authorized": false,
+  "prohibitions": [
+    "NO_RECONSTRUCTION",
+    "NO_INFERENCE",
+    "NO_LIVE_ESTATE_SUBSTITUTION",
+    "NO_NORMALIZATION",
+    "NO_MEMORY_BASED_IDENTITIES"
+  ],
+  "authority": false
+}
