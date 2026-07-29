@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Public directory of Jay Wisdom projects, organized by visibility and verified status.">
+  <title>Jay Wisdom — Public Projects</title>
+  <style>
+    :root{--bg:#08111f;--panel:#101d31;--panel2:#15253d;--text:#edf3fa;--muted:#9fb0c5;--line:#2b3d57;--gold:#f5c65a;--green:#69d79f;--blue:#73b8ff;--red:#ff8d8d;--violet:#c29cff}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:linear-gradient(180deg,#07101d,#0b1627 45%,#08111f);color:var(--text);font:16px/1.55 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    a{color:inherit} .wrap{width:min(1120px,92vw);margin:auto}.top{padding:72px 0 34px;border-bottom:1px solid var(--line)}
+    .eyebrow{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:800}.top h1{font-size:clamp(2.5rem,7vw,5.3rem);line-height:.95;margin:.5rem 0 1rem;max-width:920px}.lede{max-width:760px;color:var(--muted);font-size:1.12rem}.boundary{display:inline-flex;gap:.5rem;flex-wrap:wrap;margin-top:22px}.pill,.status{border:1px solid var(--line);border-radius:999px;padding:.38rem .7rem;font-size:.78rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;background:#0b1728}
+    nav{position:sticky;top:0;z-index:5;background:rgba(8,17,31,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}nav .wrap{display:flex;gap:18px;overflow:auto;padding:14px 0}nav a{text-decoration:none;color:var(--muted);white-space:nowrap;font-weight:750}nav a:hover{color:var(--text)}
+    section{padding:48px 0}.section-head{display:flex;justify-content:space-between;gap:24px;align-items:end;margin-bottom:22px}.section-head h2{margin:0;font-size:2rem}.section-head p{margin:0;color:var(--muted);max-width:580px}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px}.card{display:flex;flex-direction:column;min-height:230px;padding:22px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(145deg,var(--panel),var(--panel2));box-shadow:0 14px 35px rgba(0,0,0,.16)}.card h3{font-size:1.27rem;margin:14px 0 7px}.card p{margin:0;color:var(--muted)}.meta{display:flex;justify-content:space-between;gap:12px;align-items:center}.class{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);font-weight:900}.card .foot{margin-top:auto;padding-top:20px;display:flex;justify-content:space-between;align-items:center;gap:12px}.card .foot span:last-child{color:var(--muted);font-size:.82rem}
+    .live{color:var(--green);border-color:#295d45}.preview,.review{color:var(--blue);border-color:#285c83}.hold{color:var(--gold);border-color:#765c24}.research{color:var(--violet);border-color:#5a4275}.private{color:var(--red);border-color:#744141}.archive{color:#bcc5d0}
+    .rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.rule{padding:18px;border-left:3px solid var(--gold);background:#0d192b}.rule strong{display:block;margin-bottom:4px}.rule span{color:var(--muted)}
+    footer{border-top:1px solid var(--line);padding:34px 0 50px;color:var(--muted)}code{overflow-wrap:anywhere;color:var(--gold)}
+    @media(max-width:650px){.section-head{align-items:start;flex-direction:column}.top{padding-top:48px}}
+  </style>
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <div class="eyebrow">My Space · Open Source · AI Enabled</div>
+      <h1>Jay Wisdom Projects</h1>
+      <p class="lede">A public map of what Jay intentionally publishes, what is still under review, and what remains protected. Repository activity is not automatically a public product.</p>
+      <div class="boundary"><span class="pill">Jay controlled</span><span class="pill">Explicitly published</span><span class="pill">No silent exposure</span></div>
+    </div>
+  </header>
+
+  <nav aria-label="Project directory navigation"><div class="wrap"><a href="#public">Public Projects</a><a href="#building">Building</a><a href="#research">Research</a><a href="#protected">Protected Systems</a><a href="#rules">Status Rules</a></div></nav>
+
+  <main>
+    <section id="public"><div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">Intentionally Published</div><h2>Public Projects</h2></div><p>Work meant for readers, fans, users, and civic learners. Each status describes the artifact—not Jay’s worth, authority, or future success.</p></div>
+      <div class="grid">
+        <article class="card"><div class="meta"><span class="class">Civic intelligence</span><span class="status preview">Preview</span></div><h3>Minnesota Law Monitor</h3><p>Atomic civic updates organized by official source, authority, procedural status, and effective date.</p><div class="foot"><span>Official sources first</span><span>Manual intake</span></div></article>
+        <article class="card"><div class="meta"><span class="class">Public records</span><span class="status hold">Stable hold</span></div><h3>Atomic Dockets</h3><p>Source-first public-record packages that separate verified records, conflicts, governing law, and unresolved questions.</p><div class="foot"><span>Fauci Diaries v0.5</span><span>S-003 pending</span></div></article>
+        <article class="card"><div class="meta"><span class="class">Community</span><span class="status review">In review</span></div><h3>JAYWISDOM Community</h3><p>A fan-facing page for following the mission, copying the public token contract, and exploring Jay’s projects.</p><div class="foot"><span>PR #419</span><span>No investment claims</span></div></article>
+        <article class="card"><div class="meta"><span class="class">Civic satire</span><span class="status review">In review</span></div><h3>Meme Court</h3><p>A replay-aware public satire surface that distinguishes humor, evidence, procedure, and authority.</p><div class="foot"><span>Pointer review</span><span>Authority = false</span></div></article>
+        <article class="card"><div class="meta"><span class="class">Narrative systems</span><span class="status research">Research</span></div><h3>Gray Baby</h3><p>Forensic satire and administrative storytelling built around replay, receipts, uncertainty, and systems inspection.</p><div class="foot"><span>Creative canon</span><span>Selective publication</span></div></article>
+        <article class="card"><div class="meta"><span class="class">Verification tools</span><span class="status research">Research</span></div><h3>Public Proof Tools</h3><p>Small tools and demonstrations for hashes, manifests, provenance, replay, and evidence-aware publication.</p><div class="foot"><span>Proof over posture</span><span>No fake green</span></div></article>
+      </div>
+    </div></section>
+
+    <section id="building"><div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">Active Development</div><h2>Building</h2></div><p>Projects visible at a high level while their implementation, receipts, or public interface remain incomplete.</p></div>
+      <div class="grid">
+        <article class="card"><div class="meta"><span class="class">System layer</span><span class="status research">Research</span></div><h3>COMPUTERWISDOM</h3><p>The project map, governance layer, and verification environment connecting Jay’s public, private, and personal work.</p><div class="foot"><span>Build. Seal. Verify.</span><span>Open source</span></div></article>
+        <article class="card"><div class="meta"><span class="class">Receipt infrastructure</span><span class="status research">Research</span></div><h3>ReceiptOS</h3><p>A receipts-first architecture for transforming observations into replayable, bounded evidence artifacts.</p><div class="foot"><span>Core frozen</span><span>Execution evolving</span></div></article>
+        <article class="card"><div class="meta"><span class="class">Replay infrastructure</span><span class="status research">Research</span></div><h3>Replay Verification</h3><p>Deterministic tools for matching, mismatch detection, indeterminate states, lineage, and reproducible review.</p><div class="foot"><span>Unknown is valid</span><span>No synthetic proof</span></div></article>
+      </div>
+    </div></section>
+
+    <section id="research"><div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">Public Description Only</div><h2>Research & Governance</h2></div><p>Conceptual and governance work may be named publicly without exposing internal controls, credentials, family details, or operational security.</p></div>
+      <div class="grid">
+        <article class="card"><div class="meta"><span class="class">Governance</span><span class="status review">In review</span></div><h3>Boardroom Governance</h3><p>Accountability, boundary, and verification rules for technical control-room work.</p><div class="foot"><span>High-level summary</span><span>No secrets</span></div></article>
+        <article class="card"><div class="meta"><span class="class">Architecture</span><span class="status research">Research</span></div><h3>Nonlocal Replay Architecture</h3><p>A conceptual frame for identity, coordination, receipts, and system boundaries beyond a single device or address.</p><div class="foot"><span>No quantum claim</span><span>No fake green</span></div></article>
+      </div>
+    </div></section>
+
+    <section id="protected"><div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">Named, Not Exposed</div><h2>Protected Systems</h2></div><p>These categories may appear publicly only as high-level labels. Their files, controls, identities, credentials, and private evidence remain access restricted.</p></div>
+      <div class="grid">
+        <article class="card"><div class="meta"><span class="class">Family boundary</span><span class="status private">Private</span></div><h3>Family Secure Corridor</h3><p>Consent-gated family coordination and review boundaries. No family authority or public rendering is implied.</p><div class="foot"><span>Restricted</span><span>Consent outranks graph</span></div></article>
+        <article class="card"><div class="meta"><span class="class">Operational security</span><span class="status private">Private</span></div><h3>Treasury & Wallet Controls</h3><p>Private controls, receipts, and authority boundaries for financial and wallet-related systems.</p><div class="foot"><span>No public controls</span><span>No authority inference</span></div></article>
+        <article class="card"><div class="meta"><span class="class">Personal records</span><span class="status private">Private</span></div><h3>Personal Evidence & Records</h3><p>Health, VA, housing, family, identity, financial, and private archival material belongs to Jay and is never auto-published.</p><div class="foot"><span>Jay controlled</span><span>Explicit consent required</span></div></article>
+      </div>
+    </div></section>
+
+    <section id="rules"><div class="wrap">
+      <div class="section-head"><div><div class="eyebrow">Classification Rules</div><h2>Status & Visibility</h2></div><p>Public status is explicit. GitHub presence alone does not create publication, verification, endorsement, or authority.</p></div>
+      <div class="rules">
+        <div class="rule"><strong>PUBLIC</strong><span>Intentionally published for public use.</span></div>
+        <div class="rule"><strong>PRIVATE</strong><span>Access restricted and not publicly rendered.</span></div>
+        <div class="rule"><strong>PERSONAL</strong><span>Belongs to Jay; disclosure requires an explicit choice.</span></div>
+        <div class="rule"><strong>IN REVIEW</strong><span>Proposed change, not yet merged or adopted.</span></div>
+        <div class="rule"><strong>STABLE HOLD</strong><span>Preserved state awaiting a defined evidence trigger.</span></div>
+        <div class="rule"><strong>RESEARCH</strong><span>Exploratory work without a production claim.</span></div>
+      </div>
+    </div></section>
+  </main>
+
+  <footer><div class="wrap"><strong>MY SPACE · OPEN SOURCE · AI ENABLED · JAY CONTROLLED</strong><br>Last status review: July 29, 2026. No silent exposure. No repository activity is treated as public publication without an explicit release decision.</div></footer>
+</body>
+</html>
