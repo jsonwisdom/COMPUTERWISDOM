@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "document_type": "computerwisdom.wisdom_operator_integration",
+  "version": "0.1.0",
+  "status": "DRAFT_UNFROZEN",
+  "operator": "APPLY_WISDOM",
+  "integration": {
+    "alms_role": "proof_and_replay",
+    "joy_role": "meaning_and_family_context",
+    "computerwisdom_role": "public_teaching_and_distribution",
+    "wisdom_role": "human_decision_on_whether_to_proceed"
+  },
+  "required_sequence": [
+    "receipt",
+    "replay",
+    "wisdom_review",
+    "family_review_when_applicable",
+    "human_authorization",
+    "limited_action_or_public_derivative"
+  ],
+  "controls": {
+    "verification_does_not_equal_permission": true,
+    "care_is_not_automated": true,
+    "family_consent_not_inferred": true,
+    "model_judgment_creates_no_execution_authority": true,
+    "identity_pointer_creates_no_authority": true
+  },
+  "references": [
+    "wisdom-index.json",
+    "docs/adr/ADR-008-wisdom-operator-specification.md",
+    "docs/blueprint/06-wisdom-index.md",
+    "identity.json"
+  ],
+  "verification_state": {
+    "runtime_implemented": false,
+    "independently_replayed": false,
+    "signed": false,
+    "hash_frozen": false,
+    "publication_authorized": false
+  }
+}
