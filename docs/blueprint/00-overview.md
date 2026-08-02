@@ -2,13 +2,32 @@
 
 ## Status
 
-Draft v0.1 for public review.
+Draft v0.2 for public review.
 
 ## Purpose
 
-`COMPUTERWISDOM` is the public reference implementation of a governed, AI-enabled second-brain architecture bound to the identity anchors `jaywisdom.eth` and `jaywisdom.base.eth`.
+`COMPUTERWISDOM` is the public reference implementation of a governed, AI-enabled second-brain architecture bound to the identity pointers `jaywisdom.eth` and `jaywisdom.base.eth`.
 
-The public system exposes architecture, governance, schemas, examples, and replayable decision records. It does not expose personal or confidential source material.
+The architecture is designed as though no commercial code host, desktop vendor, cloud provider, or proprietary office suite exists. No single company is part of the trust root.
+
+## Sovereign source rule
+
+The canonical system is a directory tree of ordinary files on storage controlled by the operator.
+
+```text
+LOCAL CANONICAL DIRECTORY
+        ↓
+BYTE FREEZE + HASH + RECEIPT
+        ↓
+OPTIONAL DISTRIBUTED COPIES
+├── public Git remote
+├── object storage
+├── content-addressed storage
+├── removable encrypted backup
+└── printed or offline recovery packet
+```
+
+A hosted repository is a distribution mirror and collaboration surface. It is never the sole source of truth.
 
 ## Three planes
 
@@ -16,48 +35,47 @@ The public system exposes architecture, governance, schemas, examples, and repla
 - **AL — private/operational plane:** confidential operations, relationships, finances, health, and authority-gated records.
 - **COMPUTERWISDOM — public plane:** public philosophy, code, teachings, reference architecture, schemas, and safe examples.
 
-Public materials may describe JOY and AL as types or governed planes. They must not publish protected values from either plane.
+The planes are logical namespaces, not vendor accounts. They may be stored, mirrored, or migrated independently.
 
 ## Root identity
 
-The identity anchors provide resolvable references. They do not create authority, prove truth, or replace source evidence.
+Identity pointers help locate records. They do not create authority, prove truth, or replace source evidence.
 
-Controlling rule:
+> The hash proves byte identity. The source record supports the claim. The identity pointer helps people locate the record.
 
-> The hash proves byte identity. The source record supports the claim. The identity anchor helps people locate the record.
+## Minimum technology assumptions
+
+The design assumes only:
+
+1. a filesystem capable of preserving bytes;
+2. UTF-8 text and documented binary formats;
+3. SHA-256 or a declared successor hash;
+4. a portable signature format;
+5. a command-line or small local program capable of replaying receipts;
+6. exportable backups readable without a vendor account.
 
 ## Governance
 
-1. Changes are proposed through pull requests.
-2. Major architectural choices are recorded as Architecture Decision Records.
+1. Changes begin as local proposals or patches.
+2. Major decisions are recorded as Architecture Decision Records.
 3. Governance-relevant transitions produce receipts.
-4. Corrections are added as new events rather than silently rewriting history.
+4. Corrections append rather than silently rewriting history.
 5. AI may propose, classify, compare, and generate drafts; AI does not create execution authority.
 6. Cross-plane access or inference requires explicit authorization and a receipt.
+7. Publication to any host is optional and reproducible from canonical bytes.
 
 ## Public safety boundary
 
-The public repository must contain no:
-
-- private family records;
-- medical, financial, credential, or relationship secrets;
-- private keys, signing seeds, tokens, or operational credentials;
-- unsupported claims presented as verified facts;
-- simulated signatures presented as real signatures.
+The public plane must contain no private family records, medical or financial secrets, credentials, private keys, unsupported claims presented as verified facts, or simulated signatures presented as real.
 
 ## Replay principle
 
-Mistakes, rejected paths, and dead ends are retained as reviewable history when safe to publish. Replay is used to improve later versions without pretending the earlier state never existed.
+Mistakes, rejected paths, and dead ends remain reviewable history when safe to preserve. Replay improves later versions without pretending earlier states never existed.
 
-## Initial implementation sequence
+## Recovery invariant
 
-1. Publish the plane and identity definitions.
-2. Add ADRs for repository separation, receipts, redaction, and perspective switching.
-3. Add schemas with examples and validation tests.
-4. Add an unsigned demonstration ledger clearly marked as non-production.
-5. Implement the public perspective engine.
-6. Add cryptographic signing only after key custody and verification procedures are operationally tested.
+The system must remain recoverable after loss of any one vendor, account, domain, repository host, cloud region, application, or AI provider.
 
 ## Current boundary
 
-This document is a design artifact. It does not claim that signing, append-only storage, cryptographic verification, or automated perspective enforcement is already operational.
+This document is a design artifact. It does not claim that signing, append-only storage, cryptographic verification, replication, or automated perspective enforcement is already operational.
