@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "document_type": "jsonwisdom.public_identity_manifest",
+  "version": "0.1.0",
+  "status": "DRAFT",
+  "system_id": "COMPUTERWISDOM",
+  "identity_anchors": [
+    {
+      "name": "jaywisdom.eth",
+      "function": "resolvable_identity_pointer",
+      "creates_authority": false
+    },
+    {
+      "name": "jaywisdom.base.eth",
+      "function": "resolvable_identity_pointer",
+      "creates_authority": false
+    }
+  ],
+  "planes": [
+    {
+      "id": "personal",
+      "repository": "JOY",
+      "visibility": "protected",
+      "public_values_allowed": false,
+      "public_type_reference_allowed": true
+    },
+    {
+      "id": "private",
+      "repository": "AL",
+      "visibility": "protected",
+      "public_values_allowed": false,
+      "public_type_reference_allowed": true
+    },
+    {
+      "id": "public",
+      "repository": "COMPUTERWISDOM",
+      "visibility": "public",
+      "public_values_allowed": true,
+      "public_type_reference_allowed": true
+    }
+  ],
+  "authority": {
+    "ai_execution_authority": false,
+    "human_authorization_required": true,
+    "cross_plane_inference_requires_receipt": true
+  },
+  "verification_rule": "The hash proves byte identity. The source record supports the claim. The identity anchor helps people locate the record.",
+  "operational_claims": {
+    "signed_receipt_ledger_active": false,
+    "append_only_storage_verified": false,
+    "perspective_enforcement_verified": false
+  }
+}
