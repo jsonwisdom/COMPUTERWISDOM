@@ -2,55 +2,57 @@
   "receipt_id": "JAYWISDOM_REVENUE_CONTRACT_PACKAGE_PREPARED_V0_1",
   "issue": 429,
   "branch": "agent/jaywisdom-revenue-contracts-v0-1",
-  "status": "PREPARED_UNCOMPILED",
+  "source_commit": "5aa27295c798304d619e1fb4ee50d07f71c5c742",
+  "status": "SUPERSEDED_PREPARED_UNCOMPILED",
+  "superseded_by": "receipts/jaywisdom/JAYWISDOM_REVENUE_CONTRACT_CI_PASS_V0_1.json",
   "canonical_document": {
     "path": "docs/jaywisdom/JAYWISDOM_VELOCITY_ARCS_V0_1.md",
-    "sha256": "dc507f830544eba3dae742ef441c1ec479b54d47d059cc5750fb53ad0a3f905d"
+    "sha256_at_source_commit": "dc507f830544eba3dae742ef441c1ec479b54d47d059cc5750fb53ad0a3f905d"
   },
   "artifacts": [
     {
       "path": ".github/workflows/jaywisdom-clarity-contracts.yml",
-      "sha256": "8eb884d3da4f1a6db86fd006ce042824170877be87e64715f4d7280386670443"
+      "sha256_at_source_commit": "8eb884d3da4f1a6db86fd006ce042824170877be87e64715f4d7280386670443"
     },
     {
       "path": "contracts/jaywisdom/README.md",
-      "sha256": "d076c7460d09a24f524f1bee11abae4d16b4ace15cac2bab2da1f2ed45140dce"
+      "sha256_at_source_commit": "d076c7460d09a24f524f1bee11abae4d16b4ace15cac2bab2da1f2ed45140dce"
     },
     {
       "path": "contracts/jaywisdom/foundry.toml",
-      "sha256": "94d129e0ee9af247fc5fd53a71d300d417a71d1b9a76cabd8c923607224a6274"
+      "sha256_at_source_commit": "94d129e0ee9af247fc5fd53a71d300d417a71d1b9a76cabd8c923607224a6274"
     },
     {
       "path": "contracts/jaywisdom/script/DeployBaseSepolia.s.sol",
-      "sha256": "dcd4ab7999f4ec7c4b6fc7379c42e4ecc5a37bfb5538a98cdf0d8fdee4cb49c4"
+      "sha256_at_source_commit": "dcd4ab7999f4ec7c4b6fc7379c42e4ecc5a37bfb5538a98cdf0d8fdee4cb49c4"
     },
     {
       "path": "contracts/jaywisdom/src/ClarityEngine.sol",
-      "sha256": "3a17f310270934182359aec825580dde80fe0905afd663ff07e345f9d5de5527"
+      "sha256_at_source_commit": "3a17f310270934182359aec825580dde80fe0905afd663ff07e345f9d5de5527"
     },
     {
       "path": "contracts/jaywisdom/src/JWIS.sol",
-      "sha256": "b653e7a7fa0112ac5ffab80feb84cf9c828d56e535d2b81fbbf2181d09e32305"
+      "sha256_at_source_commit": "b653e7a7fa0112ac5ffab80feb84cf9c828d56e535d2b81fbbf2181d09e32305"
     },
     {
       "path": "contracts/jaywisdom/src/MockUSDC.sol",
-      "sha256": "100a0e1d68705bf633a15222ad64588ce7c421608d42e90a3124e3b9fcc029c5"
+      "sha256_at_source_commit": "100a0e1d68705bf633a15222ad64588ce7c421608d42e90a3124e3b9fcc029c5"
     },
     {
       "path": "contracts/jaywisdom/test/ClarityEngine.t.sol",
-      "sha256": "a2c8f83d1eaff51813e409f3f7ca364cd22989289841aa1616ac750aafc76e1e"
+      "sha256_at_source_commit": "a2c8f83d1eaff51813e409f3f7ca364cd22989289841aa1616ac750aafc76e1e"
     },
     {
       "path": "docs/jaywisdom/JAYWISDOM_CLARITY_CONTRACT_SPEC_V0_1.md",
-      "sha256": "55a995f3d65e68676fef42a8836debeaa5d062ad0e9398008370872b99bb83ba"
+      "sha256_at_source_commit": "55a995f3d65e68676fef42a8836debeaa5d062ad0e9398008370872b99bb83ba"
     },
     {
       "path": "fixtures/jaywisdom/clarity/CLARITY_CONTRACT_FIXTURES_V0_1.json",
-      "sha256": "f7d45e8a07262d6e394737a45b4345a65c398331df1a575334a38d47f86d1a47"
+      "sha256_at_source_commit": "f7d45e8a07262d6e394737a45b4345a65c398331df1a575334a38d47f86d1a47"
     },
     {
       "path": "schemas/jaywisdom/clarity_contract_records.v0_1.schema.json",
-      "sha256": "be6ffd737b8f7d6582beb19d3d30c19905ca4720ecb87c03166bdc7210875d3c"
+      "sha256_at_source_commit": "be6ffd737b8f7d6582beb19d3d30c19905ca4720ecb87c03166bdc7210875d3c"
     }
   ],
   "json_validated": true,
@@ -60,6 +62,7 @@
   "base_sepolia_deployed": false,
   "mainnet_deployed": false,
   "independent_replay": false,
-  "authority_created": false,
-  "no_fake_green": true
+  "legal_authority_created": false,
+  "no_fake_green": true,
+  "history_preserved": true
 }
