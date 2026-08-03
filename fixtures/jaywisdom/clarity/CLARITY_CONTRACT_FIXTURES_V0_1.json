@@ -1,0 +1,56 @@
+{
+  "fixture_set": "CLARITY_CONTRACT_FIXTURES_V0_1",
+  "authority": false,
+  "cases": [
+    {
+      "id": "F01_VALID_ONE_DOLLAR_PURCHASE",
+      "input": "customer approves and purchases CLARITY_RUBRIC with 1000000 six-decimal units",
+      "expected": "PAID_AND_ESCROWED"
+    },
+    {
+      "id": "F02_VALID_FULFILLMENT",
+      "input": "authorized fulfiller supplies seven nonzero CLARITY hashes and receipt hashes before deadline",
+      "expected": "TREASURY_SETTLED_AND_JWIS_MINTED"
+    },
+    {
+      "id": "F03_MISSING_AUTHORITY",
+      "input": "controllingAuthority is zero",
+      "expected": "REVERT_MISSING_CLARITY_FIELD_0"
+    },
+    {
+      "id": "F04_UNAUTHORIZED_FULFILLER",
+      "input": "non-fulfiller attempts settlement",
+      "expected": "REVERT_NOT_FULFILLER"
+    },
+    {
+      "id": "F05_REFUND_TIMEOUT",
+      "input": "paid order remains unfulfilled beyond deadline",
+      "expected": "CUSTOMER_REFUND"
+    },
+    {
+      "id": "F06_REPLAY_MATCH",
+      "input": "exact original CLARITY and delivery commitments",
+      "expected": "MATCH"
+    },
+    {
+      "id": "F07_REPLAY_DIVERGENCE",
+      "input": "requiredEvidence differs from original fulfillment",
+      "expected": "DIVERGE"
+    },
+    {
+      "id": "F08_DIRECT_TOKEN_MINT",
+      "input": "address other than ClarityEngine calls JWIS.mint",
+      "expected": "REVERT_NOT_MINTER"
+    },
+    {
+      "id": "F09_CONFIG_VERSION_STABILITY",
+      "input": "owner updates global rubric after an order is purchased",
+      "expected": "ORDER_REPLAY_REMAINS_BOUND_TO_PURCHASED_RUBRIC_VERSION"
+    },
+    {
+      "id": "F10_REWARD_CAP_EXHAUSTED",
+      "input": "JWIS cap has insufficient room for promised reward",
+      "expected": "SERVICE_SETTLES_WITH_ZERO_REWARD_AND_NO_REVENUE_BLOCK"
+    }
+  ]
+}
