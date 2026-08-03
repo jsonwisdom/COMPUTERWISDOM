@@ -1,0 +1,74 @@
+{
+  "receipt_id": "JAYWISDOM_REVENUE_CONTRACT_CI_PASS_V0_1",
+  "issue": 429,
+  "pull_request": 430,
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "agent/jaywisdom-revenue-contracts-v0-1",
+  "verified_source_commit": "5816d665bfa5bb115b4c746db9ad9e9ccb72c52a",
+  "status": "CI_VERIFIED_PASS",
+  "product_boundary": {
+    "clarity": "PRODUCT",
+    "stablecoin_payment": "REVENUE",
+    "jwis": "CAPPED_SERVICE_REWARD",
+    "replay": "VERIFICATION_SURFACE"
+  },
+  "workflow": {
+    "name": "JAYWISDOM Clarity Contracts",
+    "run_id": 30826222629,
+    "run_number": 4,
+    "job_id": 91728433973,
+    "conclusion": "success"
+  },
+  "execution": {
+    "runner_os": "Ubuntu 24.04.4 LTS",
+    "foundry_version": "1.7.1",
+    "solc_version": "0.8.24",
+    "openzeppelin_tag": "v5.6.1",
+    "solidity_files_compiled": 20,
+    "compiler_result": "PASS",
+    "test_suites": 1,
+    "tests_executed": 9,
+    "tests_passed": 9,
+    "tests_failed": 0,
+    "tests_skipped": 0,
+    "secret_scan": "PASS"
+  },
+  "verified_fixtures": [
+    "CUSTOMER_REFUND_AFTER_DEADLINE",
+    "MISSING_CLARITY_FIELD_REJECTED",
+    "SIX_DECIMAL_ONE_DOLLAR_PRICE",
+    "ONLY_ENGINE_MINTS_JWIS",
+    "FULFILLMENT_SETTLES_JAY_TREASURY_AND_MINTS_REWARD",
+    "PURCHASED_ECONOMICS_AND_RUBRIC_SURVIVE_ADMIN_CHANGES",
+    "REPLAY_DIVERGES_ON_EVIDENCE_CHANGE",
+    "REWARD_CAP_EXHAUSTION_DOES_NOT_BLOCK_REVENUE",
+    "UNAUTHORIZED_FULFILLER_REJECTED"
+  ],
+  "repository_checks": {
+    "verify": "PASS",
+    "verify_canon_chain_receipt": "PASS",
+    "manic_validation_gate": "PASS",
+    "receipt_core": "PASS",
+    "watch_trigger_engine": "PASS",
+    "federal_ai_observer_sidecar": "PASS"
+  },
+  "deployment": {
+    "base_sepolia_deployed": false,
+    "base_mainnet_deployed": false,
+    "contract_address": null,
+    "deployment_transaction": null,
+    "source_verified_on_explorer": false
+  },
+  "boundaries": {
+    "pull_request_draft": true,
+    "merged": false,
+    "independent_replay": false,
+    "external_security_audit": false,
+    "legal_review_complete": false,
+    "legal_authority_created": false,
+    "admin_control_created_onchain": false,
+    "customer_revenue_received": false,
+    "no_fake_green": true
+  },
+  "holding": "The contracts compile and the declared local fixtures pass in GitHub CI. No network deployment, customer payment, independent audit, or legal authority is claimed."
+}
