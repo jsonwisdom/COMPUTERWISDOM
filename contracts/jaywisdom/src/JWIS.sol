@@ -14,10 +14,7 @@ contract JWIS is ERC20, ERC20Capped {
     error InvalidMinter();
     error NotMinter();
 
-    constructor(address minter_)
-        ERC20("JAYWISDOM Velocity ARCS", "JWIS")
-        ERC20Capped(MAX_SUPPLY)
-    {
+    constructor(address minter_) ERC20("JAYWISDOM Velocity ARCS", "JWIS") ERC20Capped(MAX_SUPPLY) {
         if (minter_ == address(0)) revert InvalidMinter();
         minter = minter_;
     }
@@ -25,5 +22,9 @@ contract JWIS is ERC20, ERC20Capped {
     function mint(address to, uint256 amount) external {
         if (msg.sender != minter) revert NotMinter();
         _mint(to, amount);
+    }
+
+    function _update(address from, address to, uint256 value) internal override(ERC20, ERC20Capped) {
+        super._update(from, to, value);
     }
 }
