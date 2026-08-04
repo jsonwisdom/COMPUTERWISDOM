@@ -1,20 +1,154 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "document_type": "computerwisdom.wisdom_operator_integration",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "status": "DRAFT_UNFROZEN",
   "operator": "APPLY_WISDOM",
+  "program": {
+    "name": "CORE_PRESIDENTIAL_WRAPJACK_CRISSCROSS_APPLESAUCE",
+    "public_label": "SchoolSister AI Enablement for Girls",
+    "syntax_name": "SecretSyntax",
+    "syntax_aliases": [
+      "SecretSytax"
+    ],
+    "purpose": "Help girls learn how to question, search, create, code, compare sources, preserve authorship, and use AI as a human-directed educational tool.",
+    "authority": false,
+    "government_affiliation": false,
+    "school_authority": false,
+    "platform_affiliation": false
+  },
   "integration": {
     "alms_role": "proof_and_replay",
     "joy_role": "meaning_and_family_context",
     "computerwisdom_role": "public_teaching_and_distribution",
-    "wisdom_role": "human_decision_on_whether_to_proceed"
+    "wisdom_role": "human_decision_on_whether_to_proceed",
+    "core_presidential_role": "read_only_observation of verified public Presidential AI actions and enablement signals",
+    "gray_baby_role": "fictional child-safe narrator and curiosity interface",
+    "meta_mark_role": "non_authoritative receipt witness"
+  },
+  "core_presidential": {
+    "mode": "READ_ONLY_PUBLIC_OBSERVER",
+    "official_source_required": true,
+    "accepted_authority_sources": [
+      "whitehouse.gov",
+      "federalregister.gov",
+      "congress.gov",
+      "agency.gov"
+    ],
+    "media_report_is_not_binding_law": true,
+    "presidential_policy_does_not_authorize_private_firm": true,
+    "authorized_by_the_president": false,
+    "creates_federal_authority": false,
+    "writes": "APPEND_ONLY_RECEIPTS"
+  },
+  "enablement_stack": {
+    "wrapjack": {
+      "role": "protective runtime and context wrapper",
+      "rules": [
+        "age_and_capacity_appropriate",
+        "human_supervision_required",
+        "privacy_by_default",
+        "unsafe_or_high_impact_actions_blocked"
+      ]
+    },
+    "crisscross": {
+      "role": "pointer_only relationship validation",
+      "checks": [
+        "person_to_role",
+        "role_to_process",
+        "process_to_evidence",
+        "claim_to_source"
+      ],
+      "authority_inference": "PROHIBITED"
+    },
+    "applesauce": {
+      "role": "three_layer educational presentation",
+      "layers": [
+        "simple_learning_view",
+        "guided_reasoning_view",
+        "receipt_and_source_view"
+      ]
+    },
+    "google_gambit": {
+      "role": "search literacy and source comparison game",
+      "skills": [
+        "write_better_questions",
+        "compare_search_results",
+        "find_primary_sources",
+        "separate_claim_from_evidence",
+        "record_what_is_missing"
+      ],
+      "google_affiliation": false,
+      "ranking_authority": false
+    },
+    "school_sister": {
+      "role": "peer_learning and mentorship interface",
+      "may": [
+        "explain",
+        "encourage",
+        "practice",
+        "organize_learning",
+        "help_preserve_authorship"
+      ],
+      "may_not": [
+        "claim_guardianship",
+        "claim_school_authority",
+        "discipline_students",
+        "grade_high_impact_outcomes",
+        "profile_vulnerability",
+        "replace_trusted_adults"
+      ]
+    },
+    "secret_syntax": {
+      "role": "private prompt, code, and machine_language literacy",
+      "rules": [
+        "never_request_passwords",
+        "never_store_private_keys",
+        "redact_credentials",
+        "minimize_personal_data",
+        "teach_safe_sharing",
+        "preserve_creator_attribution"
+      ]
+    }
+  },
+  "girls_enablement_boundary": {
+    "girls_are_participants_not_targets": true,
+    "educational_use": true,
+    "commercial_exploitation": false,
+    "behavioral_advertising": false,
+    "sale_of_student_data": false,
+    "biometric_inference": false,
+    "sexualization": false,
+    "covert_surveillance": false,
+    "autonomous_high_impact_decisions": false,
+    "family_review_when_applicable": true,
+    "school_context_review_when_applicable": true,
+    "consent_is_not_inferred": true,
+    "revocation_and_access_controls_required": true,
+    "human_judgment_required": true
+  },
+  "purposeful_profits_boundary": {
+    "girls_data_is_not_a_revenue_asset": true,
+    "access_may_not_depend_on_data_surrender": true,
+    "paid_services_require_adult_or_institutional_contracting": true,
+    "profit_cannot_override_safety_or_consent": true,
+    "tally_outputs": [
+      "LEARNING_ACCESS",
+      "CREATOR_BENEFIT",
+      "VERIFIED_COST",
+      "PURPOSEFUL_REINVESTMENT",
+      "UNVERIFIED_CLAIM",
+      "UNAUTHORIZED_USE"
+    ]
   },
   "required_sequence": [
+    "official_source_observation_when_presidential_claimed",
     "receipt",
     "replay",
+    "girl_safety_review",
     "wisdom_review",
     "family_review_when_applicable",
+    "school_context_review_when_applicable",
     "human_authorization",
     "limited_action_or_public_derivative"
   ],
@@ -23,7 +157,10 @@
     "care_is_not_automated": true,
     "family_consent_not_inferred": true,
     "model_judgment_creates_no_execution_authority": true,
-    "identity_pointer_creates_no_authority": true
+    "identity_pointer_creates_no_authority": true,
+    "search_result_does_not_equal_fact": true,
+    "presidential_observation_does_not_equal_endorsement": true,
+    "student_participation_does_not_equal_data_consent": true
   },
   "references": [
     "wisdom-index.json",
@@ -32,8 +169,11 @@
     "identity.json"
   ],
   "verification_state": {
+    "metadata_updated": true,
     "runtime_implemented": false,
     "independently_replayed": false,
+    "official_presidential_action_bound": false,
+    "girls_enablement_reviewed_by_school_or_family": false,
     "signed": false,
     "hash_frozen": false,
     "publication_authorized": false
