@@ -1,0 +1,29 @@
+{
+  "dry_run_version": "0.1",
+  "network": "base",
+  "chain_id": 8453,
+  "schema_uid": "0xc90097ca9f787edcc5fa2ce0920032abe4c4417cc8356198fa12d397c46a453c",
+  "schema_string": "bytes32 receiptHash,bytes32 lineageHash,bytes32 previousReceiptHash,bytes32 subjectHash,bytes32 sourceRefHash,uint64 createdAt,uint8 evidenceState,uint8 retrievalState",
+  "mapping": {
+    "receiptHash": "0xc117f476b50d4c6cbd362cd57799c80387b68a9d972b25e0a597daf5b937e730",
+    "lineageHash": "0x1fc9d89e6f9c004338189eaa0a93047fb10c54d4b8ec76cb89a2fe4ba61e5744",
+    "previousReceiptHash": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "subjectHash": "0x40bf5cc8faa9668b288f59da1fe8a0c787abe2c6ad6d77620c95129d303fc7bc",
+    "sourceRefHash": "0x8fcfde270b3f0254bf9dfaa8375c8ad06a24ce2cf346d7ed1da64a1abed6c430",
+    "createdAt": 1786146235,
+    "evidenceState": 0,
+    "retrievalState": 1
+  },
+  "validation": {
+    "jcs_profile_valid": true,
+    "self_hash_valid": true,
+    "lineage_valid": true,
+    "state_enum_valid": true,
+    "secret_fields_present": false,
+    "pii_onchain": false,
+    "authority": false
+  },
+  "transaction_submitted": false,
+  "attestation_uid": null,
+  "status": "DRY_RUN_VALIDATED"
+}
