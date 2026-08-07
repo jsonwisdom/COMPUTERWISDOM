@@ -1,0 +1,9 @@
+{
+  "opportunity_id": "opp_misc_marketplace_001",
+  "payout_usd": 200,
+  "acceptance_probability": 0.2,
+  "estimated_agent_hours": 5,
+  "agent_hour_cost_usd": 10,
+  "estimated_human_minutes": 30,
+  "human_minute_cost_usd": 1.0
+}
