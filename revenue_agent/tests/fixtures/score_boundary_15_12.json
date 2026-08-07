@@ -1,0 +1,9 @@
+{
+  "opportunity_id": "opp_boundary_15_12",
+  "payout_usd": 100,
+  "acceptance_probability": 0.5,
+  "estimated_agent_hours": 2,
+  "agent_hour_cost_usd": 10,
+  "estimated_human_minutes": 14.88,
+  "human_minute_cost_usd": 1.0
+}
