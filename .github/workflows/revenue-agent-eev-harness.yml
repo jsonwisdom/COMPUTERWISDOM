@@ -1,0 +1,50 @@
+name: Revenue Agent EEV Harness
+
+on:
+  push:
+    paths:
+      - "revenue_agent/**"
+      - ".github/workflows/revenue-agent-eev-harness.yml"
+  pull_request:
+    paths:
+      - "revenue_agent/**"
+      - ".github/workflows/revenue-agent-eev-harness.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  eev-contract:
+    name: EEV v0.1 contract + fixtures
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install test dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install pytest jsonschema
+
+      - name: Run EEV score schema harness
+        run: |
+          python -m pytest -q revenue_agent/tests/test_score_schema.py -rX
+
+      - name: Emit harness receipt summary
+        if: always()
+        run: |
+          echo "## Revenue Agent EEV Harness" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Commit: \`$GITHUB_SHA\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Formula: EEV_V0_1" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Threshold: \$15.00 USD" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Authority: false" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Scanner lane: LOCKED" >> "$GITHUB_STEP_SUMMARY"
+          echo "- REAL_REVENUE: NOT_YET_PROVEN" >> "$GITHUB_STEP_SUMMARY"
