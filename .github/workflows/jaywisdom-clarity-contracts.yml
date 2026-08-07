@@ -1,0 +1,48 @@
+name: JAYWISDOM Clarity Contracts
+
+on:
+  pull_request:
+    paths:
+      - "contracts/jaywisdom/**"
+      - "schemas/jaywisdom/**"
+      - "fixtures/jaywisdom/**"
+      - ".github/workflows/jaywisdom-clarity-contracts.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  forge:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: contracts/jaywisdom
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: stable
+
+      - name: Install pinned OpenZeppelin Contracts
+        run: |
+          mkdir -p lib
+          git clone --depth 1 --branch v5.6.1 \
+            https://github.com/OpenZeppelin/openzeppelin-contracts.git \
+            lib/openzeppelin-contracts
+
+      - name: Normalize Solidity formatting in runner
+        run: forge fmt
+
+      - name: Compile and test
+        run: forge test -vvv
+
+      - name: Reject committed secrets
+        run: |
+          if grep -RInE '(PRIVATE_KEY|DEPLOYER_PRIVATE_KEY|MNEMONIC)=' . \
+            --exclude-dir=lib --exclude='README.md'; then
+            echo 'Potential secret assignment found.'
+            exit 1
+          fi
