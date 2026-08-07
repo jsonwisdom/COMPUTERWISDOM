@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import importlib.util
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -13,10 +14,12 @@ SEAL = ROOT / "fixtures" / "court" / "SEAL_ENVELOPE_DRY_RUN_001.json"
 
 
 def load_adapter():
-    spec = importlib.util.spec_from_file_location("replay_court_adapter_v0_1", ADAPTER)
+    name = "replay_court_adapter_v0_1"
+    spec = importlib.util.spec_from_file_location(name, ADAPTER)
     if spec is None or spec.loader is None:
         raise RuntimeError("unable to load adapter")
     module = importlib.util.module_from_spec(spec)
+    sys.modules[name] = module
     spec.loader.exec_module(module)
     return module
 
