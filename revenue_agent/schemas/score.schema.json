@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.dev/computerwisdom/revenue-agent/score.schema.json",
+  "title": "JAYWISDOM Revenue Opportunity Score",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "opportunity_id",
+    "expected_value_usd",
+    "threshold_usd",
+    "threshold_pass",
+    "reason",
+    "inputs",
+    "formula_version",
+    "scored_at"
+  ],
+  "properties": {
+    "opportunity_id": {"type": "string", "pattern": "^opp_[a-z0-9][a-z0-9._-]{2,127}$"},
+    "expected_value_usd": {"type": "number"},
+    "threshold_usd": {"type": "number", "const": 15.0},
+    "threshold_pass": {"type": "boolean"},
+    "reason": {"type": "string", "enum": ["OK", "LOW_EEV"]},
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "payout_usd",
+        "acceptance_probability",
+        "estimated_agent_hours",
+        "agent_hour_cost_usd",
+        "estimated_human_minutes",
+        "human_minute_cost_usd"
+      ],
+      "properties": {
+        "payout_usd": {"type": "number", "minimum": 0},
+        "acceptance_probability": {"type": "number", "minimum": 0, "maximum": 1},
+        "estimated_agent_hours": {"type": "number", "minimum": 0},
+        "agent_hour_cost_usd": {"type": "number", "minimum": 0},
+        "estimated_human_minutes": {"type": "number", "minimum": 0},
+        "human_minute_cost_usd": {"type": "number", "minimum": 0}
+      }
+    },
+    "formula_version": {"type": "string", "const": "EEV_V0_1"},
+    "scored_at": {"type": "string", "format": "date-time"}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"threshold_pass": {"const": true}}, "required": ["threshold_pass"]},
+      "then": {"properties": {"reason": {"const": "OK"}}}
+    },
+    {
+      "if": {"properties": {"threshold_pass": {"const": false}}, "required": ["threshold_pass"]},
+      "then": {"properties": {"reason": {"const": "LOW_EEV"}}}
+    }
+  ]
+}
