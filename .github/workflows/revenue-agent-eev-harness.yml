@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   qualification-contract:
-    name: EEV + Decomposition + RePlay v0.2 contracts
+    name: EEV + Decomposition + RePlay v0.2 + Locality v0.1 contracts
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -40,6 +40,7 @@ jobs:
             revenue_agent/tests/test_decomposition.py \
             revenue_agent/tests/test_replay_handoff.py \
             revenue_agent/tests/test_quadratic_family.py \
+            revenue_agent/tests/test_locality_anomaly.py \
             -rX
 
       - name: Emit qualified membrane state
@@ -52,6 +53,8 @@ jobs:
           echo "- Decomposition: DECOMPOSITION_V0_1" >> "$GITHUB_STEP_SUMMARY"
           echo "- RePlay handoff: REPLAY_HANDOFF_V0_1" >> "$GITHUB_STEP_SUMMARY"
           echo "- Semantic validator: QUADRATIC_FAMILY_V0_2" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Locality anomaly: LOCALITY_ANOMALY_ENGINE_V0_1" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Locality evidence: NON_AUTHORITATIVE" >> "$GITHUB_STEP_SUMMARY"
           echo "- Aggregate score: INFORMATIONAL_ONLY" >> "$GITHUB_STEP_SUMMARY"
           echo "- Threshold: \$15.00 USD" >> "$GITHUB_STEP_SUMMARY"
           echo "- Authority: false" >> "$GITHUB_STEP_SUMMARY"

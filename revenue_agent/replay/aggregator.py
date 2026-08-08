@@ -26,8 +26,10 @@ def aggregate_results(
             raise ValueError("validator result name must be a non-empty string")
         if name in seen_names:
             raise ValueError(f"duplicate validator result name: {name}")
-        if status not in {"PASS", "FAIL"}:
-            raise ValueError(f"validator {name} status must be PASS or FAIL")
+        if status not in {"PASS", "FAIL", "INDETERMINATE"}:
+            raise ValueError(
+                f"validator {name} status must be PASS, FAIL, or INDETERMINATE"
+            )
         if not isinstance(score, (int, float)) or isinstance(score, bool):
             raise ValueError(f"validator {name} score must be numeric")
         if not math.isfinite(float(score)) or not 0.0 <= float(score) <= 1.0:
@@ -50,11 +52,16 @@ def aggregate_results(
     failed_validators = [
         result for result in normalized if result.get("status") == "FAIL"
     ]
+    indeterminate_validators = [
+        result for result in normalized if result.get("status") == "INDETERMINATE"
+    ]
 
     if high_severity_anomalies:
         overall_status = "ANOMALY"
     elif failed_validators:
         overall_status = "FAIL"
+    elif indeterminate_validators:
+        overall_status = "INDETERMINATE"
     elif aggregate_score < 0.5:
         overall_status = "INDETERMINATE"
     else:
