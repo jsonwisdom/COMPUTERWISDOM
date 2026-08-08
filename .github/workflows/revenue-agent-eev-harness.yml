@@ -1,4 +1,4 @@
-name: Revenue Agent EEV Harness
+name: Revenue Agent Qualification Harness
 
 on:
   push:
@@ -15,8 +15,8 @@ permissions:
   contents: read
 
 jobs:
-  eev-contract:
-    name: EEV v0.1 contract + fixtures
+  qualification-contract:
+    name: EEV + Decomposition v0.1 contracts
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -33,18 +33,33 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install pytest jsonschema
 
-      - name: Run EEV score schema harness
+      - name: Run EEV and decomposition qualification harness
         run: |
-          python -m pytest -q revenue_agent/tests/test_score_schema.py -rX
+          python -m pytest -q \
+            revenue_agent/tests/test_score_schema.py \
+            revenue_agent/tests/test_decomposition.py \
+            -rX
 
-      - name: Emit harness receipt summary
-        if: always()
+      - name: Emit qualified membrane state
+        if: success()
         run: |
-          echo "## Revenue Agent EEV Harness" >> "$GITHUB_STEP_SUMMARY"
+          echo "## Revenue Agent Qualification Harness" >> "$GITHUB_STEP_SUMMARY"
           echo "" >> "$GITHUB_STEP_SUMMARY"
           echo "- Commit: \`$GITHUB_SHA\`" >> "$GITHUB_STEP_SUMMARY"
           echo "- Formula: EEV_V0_1" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Decomposition: DECOMPOSITION_V0_1" >> "$GITHUB_STEP_SUMMARY"
           echo "- Threshold: \$15.00 USD" >> "$GITHUB_STEP_SUMMARY"
           echo "- Authority: false" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Scanner lane: UNLOCKED" >> "$GITHUB_STEP_SUMMARY"
+          echo "- REAL_REVENUE: NOT_YET_PROVEN" >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Emit fail-closed membrane state
+        if: failure()
+        run: |
+          echo "## Revenue Agent Qualification Harness" >> "$GITHUB_STEP_SUMMARY"
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Commit: \`$GITHUB_SHA\`" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Authority: false" >> "$GITHUB_STEP_SUMMARY"
           echo "- Scanner lane: LOCKED" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Qualification: FAIL" >> "$GITHUB_STEP_SUMMARY"
           echo "- REAL_REVENUE: NOT_YET_PROVEN" >> "$GITHUB_STEP_SUMMARY"
