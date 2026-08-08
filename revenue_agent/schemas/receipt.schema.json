@@ -2,24 +2,14 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://jsonwisdom.dev/computerwisdom/revenue-agent/receipt.schema.json",
   "title": "JAYWISDOM RePlay Handoff Receipt V0.1",
-  "description": "Deterministic replay receipt with Quadratic Family v0.2 observability. It records execution, dimensional validation, and anomaly evidence but never creates authority.",
+  "description": "Deterministic replay receipt with Quadratic Family v0.2 observability and optional locality evidence. It never creates authority.",
   "type": "object",
   "additionalProperties": false,
   "required": [
-    "receipt_version",
-    "work_order_id",
-    "parent_id",
-    "work_order_sha256",
-    "baseline_anchor",
-    "input_claim_sha256",
-    "quadratic_weight",
-    "replay_runner_version",
-    "observed_outputs",
-    "evidence_refs",
-    "execution_trace",
-    "semantic_validation",
-    "anomalies",
-    "receipt_digest"
+    "receipt_version", "work_order_id", "parent_id", "work_order_sha256",
+    "baseline_anchor", "input_claim_sha256", "quadratic_weight",
+    "replay_runner_version", "observed_outputs", "evidence_refs",
+    "execution_trace", "semantic_validation", "anomalies", "receipt_digest"
   ],
   "$defs": {
     "anomaly": {
@@ -27,27 +17,10 @@
       "additionalProperties": false,
       "required": ["type", "severity", "description"],
       "properties": {
-        "type": {
-          "type": "string",
-          "enum": [
-            "missing_required_field",
-            "unexpected_output_shape",
-            "temporal_drift",
-            "evidence_mismatch",
-            "logical_contradiction"
-          ]
-        },
-        "severity": {
-          "type": "string",
-          "enum": ["LOW", "MEDIUM", "HIGH"]
-        },
-        "description": {
-          "type": "string",
-          "minLength": 5
-        },
-        "field": {"type": "string"},
-        "expected": {},
-        "actual": {}
+        "type": {"type": "string", "enum": ["missing_required_field", "unexpected_output_shape", "temporal_drift", "evidence_mismatch", "logical_contradiction"]},
+        "severity": {"type": "string", "enum": ["LOW", "MEDIUM", "HIGH"]},
+        "description": {"type": "string", "minLength": 5},
+        "field": {"type": "string"}, "expected": {}, "actual": {}
       }
     },
     "dimension": {
@@ -55,136 +28,82 @@
       "additionalProperties": false,
       "required": ["status", "score"],
       "properties": {
-        "status": {
-          "type": "string",
-          "enum": ["PASS", "FAIL"]
-        },
-        "score": {
-          "type": "number",
-          "minimum": 0,
-          "maximum": 1
-        },
-        "reason": {
-          "type": "string",
-          "minLength": 1
-        }
+        "status": {"type": "string", "enum": ["PASS", "FAIL", "INDETERMINATE"]},
+        "score": {"type": "number", "minimum": 0, "maximum": 1},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "localityObservation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["where", "when", "what", "baseline", "delta", "corroboration", "confidence", "severity"],
+      "properties": {
+        "where": {"type": "string", "pattern": "^R[0-5]-[A-Z0-9]+$"},
+        "when": {"type": "string", "format": "date-time"},
+        "what": {"type": "string", "enum": ["weather_alert", "infrastructure_outage", "emergency_broadcast", "traffic_disruption"]},
+        "baseline": {"type": "number"}, "delta": {"type": "number"},
+        "corroboration": {"type": "integer", "minimum": 0},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "severity": {"type": "string", "enum": ["LOW", "MEDIUM", "HIGH"]},
+        "sources": {"type": "array", "items": {"type": "string", "minLength": 1, "maxLength": 160}, "maxItems": 5}
+      }
+    },
+    "localityAnomalyReport": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source", "engine_version", "locality", "time_window", "snapshot_digest", "baseline_digest", "observations"],
+      "properties": {
+        "source": {"type": "string", "const": "locality_anomaly"},
+        "engine_version": {"type": "string", "const": "v0.1"},
+        "locality": {"type": "string", "pattern": "^R[0-5]-[A-Z0-9]+$"},
+        "time_window": {"type": "string", "pattern": "^[1-9][0-9]*(h|d)$"},
+        "snapshot_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "baseline_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "observations": {"type": "array", "items": {"$ref": "#/$defs/localityObservation"}}
       }
     }
   },
   "properties": {
-    "receipt_version": {
-      "type": "string",
-      "const": "REPLAY_HANDOFF_V0_1"
-    },
-    "work_order_id": {
-      "type": "string",
-      "minLength": 1
-    },
-    "parent_id": {
-      "type": ["string", "null"]
-    },
-    "work_order_sha256": {
-      "type": "string",
-      "pattern": "^[a-f0-9]{64}$"
-    },
-    "baseline_anchor": {
-      "type": "string",
-      "pattern": "^[a-f0-9]{40}$"
-    },
-    "input_claim_sha256": {
-      "type": "string",
-      "pattern": "^[a-f0-9]{64}$"
-    },
-    "quadratic_weight": {
-      "type": "number",
-      "minimum": 0
-    },
-    "replay_runner_version": {
-      "type": "string",
-      "const": "REPLAY_RUNNER_V0_1"
-    },
-    "observed_outputs": {
-      "type": "array",
-      "items": {"type": "object"}
-    },
-    "evidence_refs": {
-      "type": "array",
-      "minItems": 1,
-      "items": {"type": "string", "minLength": 1}
-    },
+    "receipt_version": {"type": "string", "const": "REPLAY_HANDOFF_V0_1"},
+    "work_order_id": {"type": "string", "minLength": 1},
+    "parent_id": {"type": ["string", "null"]},
+    "work_order_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "baseline_anchor": {"type": "string", "pattern": "^[a-f0-9]{40}$"},
+    "input_claim_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "quadratic_weight": {"type": "number", "minimum": 0},
+    "replay_runner_version": {"type": "string", "const": "REPLAY_RUNNER_V0_1"},
+    "observed_outputs": {"type": "array", "items": {"type": "object"}},
+    "evidence_refs": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
     "execution_trace": {
-      "type": "object",
-      "additionalProperties": false,
+      "type": "object", "additionalProperties": false,
       "properties": {
         "seed": {"type": "integer", "minimum": 0},
-        "work_order_hash": {
-          "type": "string",
-          "pattern": "^[a-f0-9]{64}$"
-        },
-        "implementation_hash": {
-          "type": "string",
-          "pattern": "^[a-f0-9]{64}$"
-        }
+        "work_order_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "implementation_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
       },
       "required": ["seed", "work_order_hash", "implementation_hash"]
     },
     "semantic_validation": {
-      "type": "object",
-      "additionalProperties": false,
+      "type": "object", "additionalProperties": false,
       "properties": {
-        "result": {
-          "type": "string",
-          "enum": ["PASS", "FAIL"]
-        },
-        "reason": {
-          "type": "string",
-          "minLength": 1
-        },
+        "result": {"type": "string", "enum": ["PASS", "FAIL"]},
+        "reason": {"type": "string", "minLength": 1},
         "details": {
-          "type": "object",
-          "additionalProperties": false,
-          "required": [
-            "overall_status",
-            "dimensions",
-            "anomalies",
-            "aggregate_score",
-            "validator_version"
-          ],
+          "type": "object", "additionalProperties": false,
+          "required": ["overall_status", "dimensions", "anomalies", "aggregate_score", "validator_version"],
           "properties": {
-            "overall_status": {
-              "type": "string",
-              "enum": ["PASS", "FAIL", "ANOMALY", "INDETERMINATE"]
-            },
-            "dimensions": {
-              "type": "object",
-              "additionalProperties": {"$ref": "#/$defs/dimension"}
-            },
-            "anomalies": {
-              "type": "array",
-              "items": {"$ref": "#/$defs/anomaly"}
-            },
-            "aggregate_score": {
-              "type": "number",
-              "minimum": 0,
-              "maximum": 1,
-              "description": "Informational bounded RMS only; excluded from receipt digest computation and never authoritative."
-            },
-            "validator_version": {
-              "type": "string",
-              "const": "v0.2"
-            }
+            "overall_status": {"type": "string", "enum": ["PASS", "FAIL", "ANOMALY", "INDETERMINATE"]},
+            "dimensions": {"type": "object", "additionalProperties": {"$ref": "#/$defs/dimension"}},
+            "anomalies": {"type": "array", "items": {"$ref": "#/$defs/anomaly"}},
+            "aggregate_score": {"type": "number", "minimum": 0, "maximum": 1},
+            "validator_version": {"type": "string", "const": "v0.2"},
+            "anomaly_report": {"$ref": "#/$defs/localityAnomalyReport"}
           }
         }
       },
       "required": ["result", "reason"]
     },
-    "anomalies": {
-      "type": "array",
-      "items": {"$ref": "#/$defs/anomaly"}
-    },
-    "receipt_digest": {
-      "type": "string",
-      "pattern": "^[a-f0-9]{64}$"
-    }
+    "anomalies": {"type": "array", "items": {"$ref": "#/$defs/anomaly"}},
+    "receipt_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
   }
 }
