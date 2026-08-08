@@ -1,0 +1,100 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.dev/computerwisdom/revenue-agent/receipt.schema.json",
+  "title": "JAYWISDOM RePlay Handoff Receipt V0.1",
+  "description": "Deterministic replay receipt. The receipt records execution and validation evidence but never creates authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_version",
+    "work_order_id",
+    "parent_id",
+    "work_order_sha256",
+    "baseline_anchor",
+    "input_claim_sha256",
+    "quadratic_weight",
+    "replay_runner_version",
+    "observed_outputs",
+    "evidence_refs",
+    "execution_trace",
+    "semantic_validation",
+    "receipt_digest"
+  ],
+  "properties": {
+    "receipt_version": {
+      "type": "string",
+      "const": "REPLAY_HANDOFF_V0_1"
+    },
+    "work_order_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "parent_id": {
+      "type": ["string", "null"]
+    },
+    "work_order_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "baseline_anchor": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{40}$"
+    },
+    "input_claim_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "quadratic_weight": {
+      "type": "number",
+      "minimum": 0
+    },
+    "replay_runner_version": {
+      "type": "string",
+      "const": "REPLAY_RUNNER_V0_1"
+    },
+    "observed_outputs": {
+      "type": "array",
+      "items": {"type": "object"}
+    },
+    "evidence_refs": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"type": "string", "minLength": 1}
+    },
+    "execution_trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "seed": {"type": "integer", "minimum": 0},
+        "work_order_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "implementation_hash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      },
+      "required": ["seed", "work_order_hash", "implementation_hash"]
+    },
+    "semantic_validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "result": {
+          "type": "string",
+          "enum": ["PASS", "FAIL"]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": ["result", "reason"]
+    },
+    "receipt_digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}
