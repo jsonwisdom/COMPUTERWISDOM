@@ -41,6 +41,7 @@ jobs:
             revenue_agent/tests/test_replay_handoff.py \
             revenue_agent/tests/test_quadratic_family.py \
             revenue_agent/tests/test_locality_anomaly.py \
+            revenue_agent/tests/test_locality_matrix_router.py \
             -rX
 
       - name: Emit qualified membrane state
