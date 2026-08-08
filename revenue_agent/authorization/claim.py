@@ -5,6 +5,8 @@ import re
 from dataclasses import dataclass
 from pathlib import Path
 
+from authorization.signature import VerificationResult
+
 _TASK_ID_RE = re.compile(r"^TASK-[A-F0-9]{32}$")
 _DIGEST_RE = re.compile(r"^[a-f0-9]{64}$")
 
@@ -22,7 +24,17 @@ class FileBasedClaimStore:
         self.root = Path(root)
         self.root.mkdir(mode=0o700, parents=True, exist_ok=True)
 
-    def claim(self, task_id: str, auth_receipt_digest: str) -> ClaimResult:
+    def claim(
+        self,
+        task_id: str,
+        auth_receipt_digest: str,
+        verification_result: VerificationResult,
+    ) -> ClaimResult:
+        if (
+            verification_result.status != "VERIFIED"
+            or verification_result.authorized is not True
+        ):
+            return ClaimResult("REJECTED", "SIGNATURE_NOT_VERIFIED")
         if not isinstance(task_id, str) or not _TASK_ID_RE.fullmatch(task_id):
             return ClaimResult("REJECTED", "INVALID_TASK_ID")
         if not isinstance(auth_receipt_digest, str) or not _DIGEST_RE.fullmatch(
