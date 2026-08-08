@@ -5,7 +5,14 @@
   "description": "RePlay Wisdom Factory Game — a cooperative agentic game for learning replay, verification, and reflection.",
   "type": "module",
   "scripts": {
-    "start": "node src/cli.js"
+    "start": "node src/cli.js",
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js --runInBand"
+  },
+  "dependencies": {
+    "ajv": "^8.17.1"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0"
   },
   "license": "MIT"
 }
