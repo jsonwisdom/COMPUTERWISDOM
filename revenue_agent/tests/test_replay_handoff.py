@@ -9,8 +9,8 @@ sys.path.insert(0, str(ROOT))
 
 from decomposition.agent import decompose_claim
 from replay.handoff import run_replay_handoff
-from replay.receipt_builder import sha256_json
-from replay.semantic_validator import SemanticValidator
+from replay.receipt_builder import receipt_digest_payload, sha256_json
+from replay.semantic_validator import SemanticValidator, StubValidator
 
 BASELINE = "c44fd4423ec412de811edbc8e41f7781bc880cea"
 RECEIPT_SCHEMA = json.loads(
@@ -54,16 +54,21 @@ def test_authority_never_created_by_handoff():
 
 
 def test_stub_pass_does_not_claim_semantic_correctness():
-    receipt = run_replay_handoff(sample_work_order(), BASELINE)
+    receipt = run_replay_handoff(
+        sample_work_order(),
+        BASELINE,
+        validator=StubValidator(),
+    )
     assert receipt["semantic_validation"]["result"] == "PASS"
     assert "semantic correctness is not asserted" in receipt["semantic_validation"]["reason"]
     assert "Evidence refs bound: 1" in receipt["semantic_validation"]["reason"]
+    assert receipt["anomalies"] == []
+    VALIDATOR.validate(receipt)
 
 
-def test_receipt_digest_covers_execution_trace_and_validation():
+def test_receipt_digest_covers_execution_trace_and_validation_except_aggregate_score():
     receipt = run_replay_handoff(sample_work_order(), BASELINE)
-    digest = receipt.pop("receipt_digest")
-    assert digest == sha256_json(receipt)
+    assert receipt["receipt_digest"] == sha256_json(receipt_digest_payload(receipt))
 
 
 def test_baseline_changes_seed_and_receipt_digest():
@@ -115,5 +120,6 @@ def test_fail_validation_is_recorded_not_promoted_to_authority():
     )
 
     assert receipt["semantic_validation"]["result"] == "FAIL"
+    assert receipt["anomalies"] == []
     assert "authority_created" not in receipt
     VALIDATOR.validate(receipt)
