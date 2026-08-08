@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   qualification-contract:
-    name: EEV + Decomposition + RePlay v0.1 contracts
+    name: EEV + Decomposition + RePlay v0.2 contracts
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -39,6 +39,7 @@ jobs:
             revenue_agent/tests/test_score_schema.py \
             revenue_agent/tests/test_decomposition.py \
             revenue_agent/tests/test_replay_handoff.py \
+            revenue_agent/tests/test_quadratic_family.py \
             -rX
 
       - name: Emit qualified membrane state
@@ -50,7 +51,8 @@ jobs:
           echo "- Formula: EEV_V0_1" >> "$GITHUB_STEP_SUMMARY"
           echo "- Decomposition: DECOMPOSITION_V0_1" >> "$GITHUB_STEP_SUMMARY"
           echo "- RePlay handoff: REPLAY_HANDOFF_V0_1" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Semantic validator: STUB_V0_1" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Semantic validator: QUADRATIC_FAMILY_V0_2" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Aggregate score: INFORMATIONAL_ONLY" >> "$GITHUB_STEP_SUMMARY"
           echo "- Threshold: \$15.00 USD" >> "$GITHUB_STEP_SUMMARY"
           echo "- Authority: false" >> "$GITHUB_STEP_SUMMARY"
           echo "- Scanner lane: UNLOCKED" >> "$GITHUB_STEP_SUMMARY"

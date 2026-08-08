@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import hashlib
 import json
 from typing import Any, Dict, List
@@ -23,15 +24,30 @@ def sha256_json(value: Any) -> str:
     return hashlib.sha256(canonical_json_bytes(value)).hexdigest()
 
 
+def receipt_digest_payload(receipt: Dict[str, Any]) -> Dict[str, Any]:
+    """Return the digest-bound payload with informational aggregate score removed."""
+    payload = copy.deepcopy(receipt)
+    payload.pop("receipt_digest", None)
+    details = payload.get("semantic_validation", {}).get("details")
+    if isinstance(details, dict):
+        details.pop("aggregate_score", None)
+    return payload
+
+
 def build_receipt(
     work_order: Dict[str, Any],
     baseline_anchor: str,
     observed_outputs: List[Dict[str, Any]],
     evidence_refs: List[str],
     execution_trace: Dict[str, Any],
-    semantic_validation: Dict[str, str],
+    semantic_validation: Dict[str, Any],
+    anomalies: List[Dict[str, Any]] | None = None,
 ) -> Dict[str, Any]:
-    """Build an immutable, content-addressed replay receipt with no authority claim."""
+    """Build an immutable replay receipt with no authority claim.
+
+    Validator dimensions and anomaly evidence are digest-bound. The quadratic
+    aggregate_score is deliberately excluded because it is informational only.
+    """
     receipt: Dict[str, Any] = {
         "receipt_version": RECEIPT_VERSION,
         "work_order_id": work_order["work_order_id"],
@@ -47,6 +63,7 @@ def build_receipt(
         "evidence_refs": evidence_refs,
         "execution_trace": execution_trace,
         "semantic_validation": semantic_validation,
+        "anomalies": anomalies or [],
     }
-    receipt["receipt_digest"] = sha256_json(receipt)
+    receipt["receipt_digest"] = sha256_json(receipt_digest_payload(receipt))
     return receipt
