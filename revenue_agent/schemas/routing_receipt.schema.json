@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://jsonwisdom.dev/computerwisdom/revenue-agent/routing_receipt.schema.json",
+  "title": "Locality Matrix Routing Receipt V0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "router_version", "locality_scope", "observation_digest", "routing_class",
+    "eligible_response_roles", "human_authorization_required", "expires_after_window",
+    "policy_digest", "authority_created", "routing_digest"
+  ],
+  "properties": {
+    "router_version": {"type": "string", "const": "LOCALITY_MATRIX_ROUTER_V0_1"},
+    "locality_scope": {"type": "string", "pattern": "^R[0-5]-[A-Z0-9]+$"},
+    "observation_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "routing_class": {
+      "type": "string",
+      "enum": ["INFORMATION", "WATCH", "REQUEST_FOR_VERIFICATION", "RESOURCE_COORDINATION", "HUMAN_REVIEW_REQUIRED"]
+    },
+    "eligible_response_roles": {
+      "type": "array", "uniqueItems": true,
+      "items": {"type": "string", "enum": ["public_observer", "public_works", "emergency_management", "designated_human_reviewer"]}
+    },
+    "human_authorization_required": {"type": "boolean"},
+    "expires_after_window": {"type": "boolean", "const": true},
+    "policy_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "authority_created": {"type": "boolean", "const": false},
+    "routing_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}
