@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jaywisdom.eth/schemas/clarity_contract_records.v0_1.schema.json",
+  "title": "JAYWISDOM CLARITY Contract Records V0.1",
+  "oneOf": [
+    { "$ref": "#/$defs/serviceOrder" },
+    { "$ref": "#/$defs/fulfillmentReceipt" }
+  ],
+  "$defs": {
+    "hash32": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{64}$"
+    },
+    "address": {
+      "type": "string",
+      "pattern": "^0x[0-9a-fA-F]{40}$"
+    },
+    "clarity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "controlling_authority",
+        "lawful_purpose",
+        "responsible_actor",
+        "required_evidence",
+        "instruments_enablements",
+        "tracking_custody",
+        "remedy_appeal"
+      ],
+      "properties": {
+        "controlling_authority": { "$ref": "#/$defs/hash32" },
+        "lawful_purpose": { "$ref": "#/$defs/hash32" },
+        "responsible_actor": { "$ref": "#/$defs/hash32" },
+        "required_evidence": { "$ref": "#/$defs/hash32" },
+        "instruments_enablements": { "$ref": "#/$defs/hash32" },
+        "tracking_custody": { "$ref": "#/$defs/hash32" },
+        "remedy_appeal": { "$ref": "#/$defs/hash32" }
+      }
+    },
+    "serviceOrder": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_type",
+        "order_id",
+        "customer",
+        "service_type",
+        "price_usdc_units",
+        "question_hash",
+        "rubric_version",
+        "deadline",
+        "status"
+      ],
+      "properties": {
+        "record_type": { "const": "JAYWISDOM_SERVICE_ORDER_V0_1" },
+        "order_id": { "type": "integer", "minimum": 1 },
+        "customer": { "$ref": "#/$defs/address" },
+        "service_type": {
+          "enum": [
+            "CLARITY_RUBRIC",
+            "ENS_ENABLEMENT_LESSON",
+            "GUIDED_REPLAY",
+            "ENABLEMENT_AUDIT"
+          ]
+        },
+        "price_usdc_units": { "type": "integer", "minimum": 1 },
+        "question_hash": { "$ref": "#/$defs/hash32" },
+        "rubric_version": { "$ref": "#/$defs/hash32" },
+        "deadline": { "type": "integer", "minimum": 1 },
+        "status": { "enum": ["PAID", "FULFILLED", "REFUNDED"] }
+      }
+    },
+    "fulfillmentReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_type",
+        "order_id",
+        "clarity",
+        "clarity_score",
+        "finding_state",
+        "result_hash",
+        "human_uri_hash",
+        "machine_uri_hash",
+        "replay_hash",
+        "payment_settled",
+        "authority_created"
+      ],
+      "properties": {
+        "record_type": { "const": "JAYWISDOM_FULFILLMENT_RECEIPT_V0_1" },
+        "order_id": { "type": "integer", "minimum": 1 },
+        "clarity": { "$ref": "#/$defs/clarity" },
+        "clarity_score": { "const": 100 },
+        "finding_state": {
+          "enum": ["COMPLETE", "INCOMPLETE", "BLOCKED", "ESCALATION_REQUIRED"]
+        },
+        "result_hash": { "$ref": "#/$defs/hash32" },
+        "human_uri_hash": { "$ref": "#/$defs/hash32" },
+        "machine_uri_hash": { "$ref": "#/$defs/hash32" },
+        "replay_hash": { "$ref": "#/$defs/hash32" },
+        "payment_settled": { "type": "boolean" },
+        "jwis_reward_units": { "type": "string", "pattern": "^[0-9]+$" },
+        "authority_created": { "const": false }
+      }
+    }
+  }
+}
