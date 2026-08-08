@@ -91,16 +91,27 @@ def test_router_and_authorization_policy_must_both_allow_role():
 def test_claim_is_single_use(tmp_path):
     store = FileBasedClaimStore(tmp_path / "claims")
     task_id = generate_task_id(consequential_receipt())
-    first = store.claim(task_id, "c" * 64)
-    second = store.claim(task_id, "c" * 64)
+    verified = VerificationResult("VERIFIED", "SIGNATURE_VALID", True)
+    first = store.claim(task_id, "c" * 64, verified)
+    second = store.claim(task_id, "c" * 64, verified)
     assert first.status == "CLAIMED"
     assert second.status == "ALREADY_CLAIMED"
 
 
 def test_claim_rejects_unvalidated_identifiers(tmp_path):
     store = FileBasedClaimStore(tmp_path / "claims")
-    assert store.claim("../../escape", "c" * 64).status == "REJECTED"
-    assert store.claim("TASK-" + "A" * 32, "X" * 64).status == "REJECTED"
+    verified = VerificationResult("VERIFIED", "SIGNATURE_VALID", True)
+    assert store.claim("../../escape", "c" * 64, verified).status == "REJECTED"
+    assert store.claim("TASK-" + "A" * 32, "X" * 64, verified).status == "REJECTED"
+
+
+def test_simulation_cannot_consume_single_use_claim(tmp_path):
+    store = FileBasedClaimStore(tmp_path / "claims")
+    task_id = generate_task_id(consequential_receipt())
+    simulation = VerificationResult("INDETERMINATE", "SIMULATION", False)
+    result = store.claim(task_id, "c" * 64, simulation)
+    assert result == ClaimResult("REJECTED", "SIGNATURE_NOT_VERIFIED")
+    assert list((tmp_path / "claims").iterdir()) == []
 
 
 @pytest.mark.parametrize(
