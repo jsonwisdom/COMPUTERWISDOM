@@ -23,7 +23,7 @@ class SchemaValidator(Validator):
             return self.result("FAIL", 0.0, "Observed outputs must be a list of objects.")
 
         output_schema = work_order.get("output_schema")
-        if output_schema in {None, "", "PENDING"}:
+        if output_schema is None or output_schema in ("", "PENDING"):
             return self.result(
                 "PASS",
                 1.0,
