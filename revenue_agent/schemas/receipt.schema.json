@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://jsonwisdom.dev/computerwisdom/revenue-agent/receipt.schema.json",
   "title": "JAYWISDOM RePlay Handoff Receipt V0.1",
-  "description": "Deterministic replay receipt. The receipt records execution and validation evidence but never creates authority.",
+  "description": "Deterministic replay receipt with Quadratic Family v0.2 observability. It records execution, dimensional validation, and anomaly evidence but never creates authority.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -18,8 +18,59 @@
     "evidence_refs",
     "execution_trace",
     "semantic_validation",
+    "anomalies",
     "receipt_digest"
   ],
+  "$defs": {
+    "anomaly": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["type", "severity", "description"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "missing_required_field",
+            "unexpected_output_shape",
+            "temporal_drift",
+            "evidence_mismatch",
+            "logical_contradiction"
+          ]
+        },
+        "severity": {
+          "type": "string",
+          "enum": ["LOW", "MEDIUM", "HIGH"]
+        },
+        "description": {
+          "type": "string",
+          "minLength": 5
+        },
+        "field": {"type": "string"},
+        "expected": {},
+        "actual": {}
+      }
+    },
+    "dimension": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "score"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["PASS", "FAIL"]
+        },
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  },
   "properties": {
     "receipt_version": {
       "type": "string",
@@ -88,9 +139,48 @@
         "reason": {
           "type": "string",
           "minLength": 1
+        },
+        "details": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "overall_status",
+            "dimensions",
+            "anomalies",
+            "aggregate_score",
+            "validator_version"
+          ],
+          "properties": {
+            "overall_status": {
+              "type": "string",
+              "enum": ["PASS", "FAIL", "ANOMALY", "INDETERMINATE"]
+            },
+            "dimensions": {
+              "type": "object",
+              "additionalProperties": {"$ref": "#/$defs/dimension"}
+            },
+            "anomalies": {
+              "type": "array",
+              "items": {"$ref": "#/$defs/anomaly"}
+            },
+            "aggregate_score": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1,
+              "description": "Informational bounded RMS only; excluded from receipt digest computation and never authoritative."
+            },
+            "validator_version": {
+              "type": "string",
+              "const": "v0.2"
+            }
+          }
         }
       },
       "required": ["result", "reason"]
+    },
+    "anomalies": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/anomaly"}
     },
     "receipt_digest": {
       "type": "string",
