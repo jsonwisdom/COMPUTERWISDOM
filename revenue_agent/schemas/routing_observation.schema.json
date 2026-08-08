@@ -1,0 +1,18 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://jsonwisdom.dev/computerwisdom/revenue-agent/routing_observation.schema.json",
+  "title": "Locality Matrix Routing Observation V0.1",
+  "description": "Closed, person-free projection of frozen locality anomaly evidence.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["where", "what", "severity_score", "digest"],
+  "properties": {
+    "where": {"type": "string", "pattern": "^R[0-5]-[A-Z0-9]+$"},
+    "what": {
+      "type": "string",
+      "enum": ["weather_alert", "infrastructure_outage", "emergency_broadcast", "traffic_disruption"]
+    },
+    "severity_score": {"type": "number", "minimum": 0, "maximum": 1},
+    "digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}

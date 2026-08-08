@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   qualification-contract:
-    name: EEV + Decomposition + RePlay v0.2 + Locality v0.1 contracts
+    name: EEV + RePlay v0.2 + Locality + Matrix Router v0.1 contracts
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -41,6 +41,7 @@ jobs:
             revenue_agent/tests/test_replay_handoff.py \
             revenue_agent/tests/test_quadratic_family.py \
             revenue_agent/tests/test_locality_anomaly.py \
+            revenue_agent/tests/test_locality_matrix_router.py \
             -rX
 
       - name: Emit qualified membrane state
@@ -55,6 +56,11 @@ jobs:
           echo "- Semantic validator: QUADRATIC_FAMILY_V0_2" >> "$GITHUB_STEP_SUMMARY"
           echo "- Locality anomaly: LOCALITY_ANOMALY_ENGINE_V0_1" >> "$GITHUB_STEP_SUMMARY"
           echo "- Locality evidence: NON_AUTHORITATIVE" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Locality Matrix router: LOCALITY_MATRIX_ROUTER_V0_1" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Program mode: RESEARCH_AND_DEVELOPMENT" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Production execution: false" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Human review: deferred" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Routing policy: FROZEN_AND_DIGEST_BOUND" >> "$GITHUB_STEP_SUMMARY"
           echo "- Aggregate score: INFORMATIONAL_ONLY" >> "$GITHUB_STEP_SUMMARY"
           echo "- Threshold: \$15.00 USD" >> "$GITHUB_STEP_SUMMARY"
           echo "- Authority: false" >> "$GITHUB_STEP_SUMMARY"
