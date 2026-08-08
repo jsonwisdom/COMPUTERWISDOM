@@ -1,0 +1,43 @@
+{
+  "receipt_version": "REPLAY_HANDOFF_V0_1",
+  "work_order_id": "JOY-CD8D67E3",
+  "parent_id": "fixture_parent",
+  "work_order_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+  "baseline_anchor": "6caa38221c9f509c3ebe895a1c9ec0b45b9d2f93",
+  "input_claim_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+  "quadratic_weight": 1,
+  "replay_runner_version": "REPLAY_RUNNER_V0_1",
+  "observed_outputs": [
+    {
+      "kind": "fixture",
+      "value": "observable only"
+    }
+  ],
+  "evidence_refs": [
+    "fixture:evidence:1"
+  ],
+  "execution_trace": {
+    "seed": 7,
+    "work_order_hash": "3333333333333333333333333333333333333333333333333333333333333333",
+    "implementation_hash": "4444444444444444444444444444444444444444444444444444444444444444"
+  },
+  "semantic_validation": {
+    "result": "PASS",
+    "reason": "Fixture pipeline executed; semantic correctness is not asserted.",
+    "details": {
+      "overall_status": "PASS",
+      "dimensions": {
+        "schema": {
+          "status": "PASS",
+          "score": 1,
+          "reason": "Fixture conforms to the receipt schema."
+        }
+      },
+      "anomalies": [],
+      "aggregate_score": 1,
+      "validator_version": "v0.2"
+    }
+  },
+  "anomalies": [],
+  "receipt_digest": "5555555555555555555555555555555555555555555555555555555555555555"
+}
