@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://jsonwisdom.dev/computerwisdom/revenue-agent/authorization/auth_receipt.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "task_id", "signer_ens", "signer_role", "routing_receipt_digest",
+    "authorization_policy_digest", "signature_verification_status",
+    "signature_verification_reason", "action_implementation_digest",
+    "canonical_timestamp", "action_authorized", "authority_created", "receipt_digest"
+  ],
+  "properties": {
+    "task_id": {"type": "string", "pattern": "^TASK-[A-F0-9]{32}$"},
+    "signer_ens": {"type": "string", "pattern": "^[a-z0-9-]+([.][a-z0-9-]+)+$"},
+    "signer_role": {"type": "string", "minLength": 1, "maxLength": 64},
+    "routing_receipt_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "authorization_policy_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "signature_verification_status": {"type": "string", "enum": ["VERIFIED", "INVALID", "INDETERMINATE"]},
+    "signature_verification_reason": {"type": "string", "minLength": 1, "maxLength": 160},
+    "action_implementation_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "canonical_timestamp": {"type": "string", "pattern": "^[0-9]{4}-[0-9]{2}-[0-9]{2}T[0-9]{2}:[0-9]{2}:[0-9]{2}([.][0-9]+)?Z$"},
+    "action_authorized": {"type": "boolean", "const": false},
+    "authority_created": {"type": "boolean", "const": false},
+    "receipt_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+  }
+}
