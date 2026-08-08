@@ -16,7 +16,7 @@ permissions:
 
 jobs:
   qualification-contract:
-    name: EEV + RePlay v0.2 + Locality + Matrix Router v0.1 contracts
+    name: EEV + RePlay + Locality Matrix + Authorization v0.1 contracts
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
@@ -42,6 +42,7 @@ jobs:
             revenue_agent/tests/test_quadratic_family.py \
             revenue_agent/tests/test_locality_anomaly.py \
             revenue_agent/tests/test_locality_matrix_router.py \
+            revenue_agent/tests/test_authorization_verifier.py \
             -rX
 
       - name: Emit qualified membrane state
@@ -58,6 +59,9 @@ jobs:
           echo "- Locality evidence: NON_AUTHORITATIVE" >> "$GITHUB_STEP_SUMMARY"
           echo "- Locality Matrix router: LOCALITY_MATRIX_ROUTER_V0_1" >> "$GITHUB_STEP_SUMMARY"
           echo "- Routing policy: FROZEN_AND_DIGEST_BOUND" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Authorization verifier: PURE_STATELESS_V0_1" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Signature verification: INDETERMINATE_SIMULATION" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Action authorized: false" >> "$GITHUB_STEP_SUMMARY"
           echo "- Aggregate score: INFORMATIONAL_ONLY" >> "$GITHUB_STEP_SUMMARY"
           echo "- Threshold: \$15.00 USD" >> "$GITHUB_STEP_SUMMARY"
           echo "- Authority: false" >> "$GITHUB_STEP_SUMMARY"
