@@ -91,6 +91,36 @@ state/wisdom-graph.json
 
 That file is gitignored. Do not submit personal/private session state in issues.
 
+## Receipt Renderer V0.1
+
+`src/renderer/` is a read-only projection boundary for canonical `REPLAY_HANDOFF_V0_1` receipts from `../revenue_agent/schemas/receipt.schema.json`.
+
+The renderer:
+
+- rejects any key matching `^authority(_|$)` anywhere in the receipt;
+- rejects malformed receipt digests;
+- validates against the canonical closed receipt schema;
+- deep-clones and deep-freezes projected values;
+- copies `receipt_digest` unchanged and never recomputes it;
+- exposes only the projection whitelist;
+- never promotes semantic, verification, economic, or authority state.
+
+```text
+RECEIPT = SOURCE OF RECORD
+RENDERER = READ-ONLY PROJECTION
+UI = EXPERIENCE ONLY
+AUTHORITY FIELD PRESENT = REJECT
+```
+
+Run the renderer security suite with:
+
+```bash
+npm install
+npm test
+```
+
+The current Game Zero CLI does not contain a `SIGNOFF` state. Renderer-to-SIGNOFF wiring is therefore intentionally not fabricated in v0.1; integration remains a separate change after a real state-machine seam exists.
+
 ## David + Friends Playtest
 
 For the first public test, play Game Zero once and report:
