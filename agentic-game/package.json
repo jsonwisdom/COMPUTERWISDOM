@@ -1,0 +1,11 @@
+{
+  "name": "replay-wisdom-factory-game",
+  "version": "0.1.0",
+  "private": false,
+  "description": "RePlay Wisdom Factory Game — a cooperative agentic game for learning replay, verification, and reflection.",
+  "type": "module",
+  "scripts": {
+    "start": "node src/cli.js"
+  },
+  "license": "MIT"
+}
