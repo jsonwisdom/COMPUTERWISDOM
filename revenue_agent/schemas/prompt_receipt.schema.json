@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.dev/computerwisdom/revenue-agent/prompt_receipt.schema.json",
+  "title": "Canonical Prompt Spine Receipt V0.1",
+  "description": "Authority-free receipt binding a deterministic prompt, strict parsed model response, and exchange digest.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "spine_version",
+    "question",
+    "known_facts",
+    "unknowns",
+    "constraints",
+    "model_responses",
+    "exchange_digest",
+    "timestamp"
+  ],
+  "properties": {
+    "spine_version": {"type": "string", "const": "v0.1"},
+    "question": {"type": "string", "minLength": 1},
+    "known_facts": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "unknowns": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "constraints": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "model_responses": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["model_id", "answer", "evidence_summary", "confidence"],
+        "properties": {
+          "model_id": {"type": "string", "minLength": 1},
+          "answer": {"type": "string", "minLength": 1},
+          "evidence_summary": {"type": "string", "minLength": 1},
+          "confidence": {"type": "number", "minimum": 0.0, "maximum": 1.0}
+        }
+      }
+    },
+    "exchange_digest": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "timestamp": {"type": "string", "format": "date-time"}
+  }
+}
