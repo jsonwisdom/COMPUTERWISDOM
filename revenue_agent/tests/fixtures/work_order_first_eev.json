@@ -1,0 +1,16 @@
+{
+  "work_order_id": "JOY-CD8D67E3",
+  "parent_id": "opp_eth_foundation_rfp_001",
+  "claim_text": "EEV fixture opp_eth_foundation_rfp_001 has expected economic value 1960.00 USD under EEV_V0_1 and passes the 15.00 USD qualification threshold.",
+  "decomposition_version": "DECOMPOSITION_V0_1",
+  "verification_status": "UNVERIFIED",
+  "assumptions": [],
+  "evidence_requirements": [],
+  "method": "PENDING",
+  "acceptance_test": "PENDING",
+  "hazards": [],
+  "output_schema": "PENDING",
+  "replay_requirement": "REQUIRED",
+  "quadratic_weight": 1.0,
+  "authority_created": false
+}

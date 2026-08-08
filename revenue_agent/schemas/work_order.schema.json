@@ -24,8 +24,8 @@
   "properties": {
     "work_order_id": {
       "type": "string",
-      "pattern": "^wo_[a-f0-9]{16}$",
-      "description": "Deterministic identifier derived from parent_id and normalized claim text."
+      "pattern": "^JOY-[A-F0-9]{8}$",
+      "description": "Deterministic content-addressed identifier derived from parent_id, normalized claim text, and quadratic_weight."
     },
     "parent_id": {
       "type": ["string", "null"],
