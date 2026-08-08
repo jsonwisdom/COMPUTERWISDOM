@@ -5,86 +5,40 @@
   "description": "Atomic, institution-agnostic verification work unit. Economic priority metadata may route work but cannot affect verification outcome or create authority.",
   "type": "object",
   "additionalProperties": false,
+  "dependentRequired": {
+    "locality": ["time_window"],
+    "time_window": ["locality"]
+  },
   "required": [
-    "work_order_id",
-    "parent_id",
-    "claim_text",
-    "decomposition_version",
-    "verification_status",
-    "assumptions",
-    "evidence_requirements",
-    "method",
-    "acceptance_test",
-    "hazards",
-    "output_schema",
-    "replay_requirement",
-    "quadratic_weight",
-    "authority_created"
+    "work_order_id", "parent_id", "claim_text", "decomposition_version",
+    "verification_status", "assumptions", "evidence_requirements", "method",
+    "acceptance_test", "hazards", "output_schema", "replay_requirement",
+    "quadratic_weight", "authority_created"
   ],
   "properties": {
-    "work_order_id": {
+    "work_order_id": {"type": "string", "pattern": "^wo_[a-f0-9]{16}$"},
+    "parent_id": {"type": ["string", "null"], "minLength": 1},
+    "claim_text": {"type": "string", "minLength": 1},
+    "decomposition_version": {"type": "string", "const": "DECOMPOSITION_V0_1"},
+    "verification_status": {"type": "string", "const": "UNVERIFIED"},
+    "assumptions": {"type": "array", "items": {"type": "string"}, "default": []},
+    "evidence_requirements": {"type": "array", "items": {"type": "string"}, "default": []},
+    "method": {"type": "string", "const": "PENDING"},
+    "acceptance_test": {"type": "string", "const": "PENDING"},
+    "hazards": {"type": "array", "items": {"type": "string"}, "default": []},
+    "output_schema": {"type": "string", "const": "PENDING"},
+    "replay_requirement": {"type": "string", "const": "REQUIRED"},
+    "quadratic_weight": {"type": "number", "minimum": 0},
+    "authority_created": {"type": "boolean", "const": false},
+    "locality": {
       "type": "string",
-      "pattern": "^wo_[a-f0-9]{16}$",
-      "description": "Deterministic identifier derived from parent_id and normalized claim text."
+      "pattern": "^R[0-5]-[A-Z0-9]+$",
+      "description": "Privacy-preserving ring-locality identifier only; names and addresses are prohibited."
     },
-    "parent_id": {
-      "type": ["string", "null"],
-      "minLength": 1,
-      "description": "Optional parent claim or work-order identifier."
-    },
-    "claim_text": {
+    "time_window": {
       "type": "string",
-      "minLength": 1,
-      "description": "Precisely scoped claim entering verification. Source identity does not confer evidentiary weight."
-    },
-    "decomposition_version": {
-      "type": "string",
-      "const": "DECOMPOSITION_V0_1"
-    },
-    "verification_status": {
-      "type": "string",
-      "const": "UNVERIFIED"
-    },
-    "assumptions": {
-      "type": "array",
-      "items": {"type": "string"},
-      "default": []
-    },
-    "evidence_requirements": {
-      "type": "array",
-      "items": {"type": "string"},
-      "default": []
-    },
-    "method": {
-      "type": "string",
-      "const": "PENDING"
-    },
-    "acceptance_test": {
-      "type": "string",
-      "const": "PENDING"
-    },
-    "hazards": {
-      "type": "array",
-      "items": {"type": "string"},
-      "default": []
-    },
-    "output_schema": {
-      "type": "string",
-      "const": "PENDING"
-    },
-    "replay_requirement": {
-      "type": "string",
-      "const": "REQUIRED"
-    },
-    "quadratic_weight": {
-      "type": "number",
-      "minimum": 0,
-      "description": "Token-weighted priority signal from $JAYWISDOM router. Does NOT affect verification outcome."
-    },
-    "authority_created": {
-      "type": "boolean",
-      "const": false,
-      "description": "Decomposition never creates epistemic, legal, or computational authority."
+      "pattern": "^[1-9][0-9]*(h|d)$",
+      "description": "Locality evidence scope label, such as 24h or 7d."
     }
   }
 }
