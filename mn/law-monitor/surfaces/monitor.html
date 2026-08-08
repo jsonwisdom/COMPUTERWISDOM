@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minnesota Law Monitor — COMPUTERWISDOM</title>
+  <style>
+    :root {
+      --bg: #060a12;
+      --panel: #0c1220;
+      --gold: #d4af37;
+      --gold-dim: #a88b2a;
+      --text: #eef2f7;
+      --muted: #9aa8bc;
+      --border: #2a3a55;
+      --accent: #7eb8ff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, sans-serif;
+      background: radial-gradient(ellipse at top, #122038 0%, var(--bg) 55%);
+      color: var(--text);
+      min-height: 100vh;
+    }
+    main { width: min(920px, calc(100% - 28px)); margin: 0 auto; padding: 32px 0 64px; }
+    .hero {
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      background: linear-gradient(160deg, rgba(212,175,55,0.08), rgba(12,18,32,0.95));
+      margin-bottom: 18px;
+    }
+    .kicker {
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 10px;
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: clamp(1.7rem, 4.5vw, 2.6rem);
+      letter-spacing: 0.02em;
+    }
+    h1 span { color: var(--gold); }
+    p { color: var(--muted); line-height: 1.55; }
+    .pills { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .pill {
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 12px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: rgba(0,0,0,0.25);
+    }
+    .pill strong { color: var(--gold); }
+    .card {
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      background: rgba(12,18,32,0.92);
+      padding: 18px 20px;
+      margin-top: 14px;
+    }
+    .card h2 { margin: 0 0 12px; font-size: 1rem; color: var(--gold-dim); letter-spacing: 0.06em; text-transform: uppercase; }
+    .row {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 10px;
+      align-items: baseline;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(42,58,85,0.6);
+    }
+    .row:last-child { border-bottom: 0; }
+    .bill { font-weight: 800; color: var(--accent); font-variant-numeric: tabular-nums; }
+    .meta { font-size: 0.92rem; }
+    .meta .topic { color: var(--text); font-weight: 700; }
+    .meta .phase { color: var(--muted); }
+    .date { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .foot {
+      margin-top: 22px;
+      text-align: center;
+      color: var(--gold-dim);
+      letter-spacing: 0.2em;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+    }
+    .warn {
+      border-color: #6b5a22;
+      background: rgba(212,175,55,0.07);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <section class="hero">
+      <div class="kicker">⚖️ COMPUTERWISDOM · Civic Surface</div>
+      <h1>Minnesota <span>Law Monitor</span></h1>
+      <p>Atomic civic updates. State first. Official sources. Phased by authority, status, and effective date.</p>
+      <div class="pills">
+        <div class="pill">AUTHORITY: <strong>FALSE</strong></div>
+        <div class="pill">FRAUD: <strong>UNKNOWN</strong></div>
+        <div class="pill">CRAWLER: <strong>DISABLED</strong></div>
+        <div class="pill">INTAKE: <strong>MANUAL</strong></div>
+      </div>
+    </section>
+
+    <section class="card warn">
+      <strong>Scaffold v0.1.</strong> Rows below are illustrative samples from the promo graphic pattern — not verified live filings. Live docket entries require official source_url + observed_at under <code>mn/law-monitor/</code>.
+    </section>
+
+    <section class="card">
+      <h2>Docket Feed (sample)</h2>
+      <div class="row">
+        <div class="bill">HF 12</div>
+        <div class="meta"><div class="topic">EDUCATION POLICY</div><div class="phase">Passed House</div></div>
+        <div class="date">05/20/2025</div>
+      </div>
+      <div class="row">
+        <div class="bill">SF 789</div>
+        <div class="meta"><div class="topic">CIVIL PROCEDURE</div><div class="phase">Senate File</div></div>
+        <div class="date">05/20/2025</div>
+      </div>
+      <div class="row">
+        <div class="bill">HF 1015</div>
+        <div class="meta"><div class="topic">ENVIRONMENT</div><div class="phase">Passed House</div></div>
+        <div class="date">05/19/2025</div>
+      </div>
+      <div class="row">
+        <div class="bill">SF 1123</div>
+        <div class="meta"><div class="topic">TAX POLICY</div><div class="phase">Committee Rep.</div></div>
+        <div class="date">05/19/2025</div>
+      </div>
+      <div class="row">
+        <div class="bill">HF 1430</div>
+        <div class="meta"><div class="topic">PUBLIC SAFETY</div><div class="phase">Enacted</div></div>
+        <div class="date">05/18/2025</div>
+      </div>
+    </section>
+
+    <p class="foot">— COMPUTERWISDOM —</p>
+  </main>
+</body>
+</html>
