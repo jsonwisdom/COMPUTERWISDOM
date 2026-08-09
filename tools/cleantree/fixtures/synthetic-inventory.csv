@@ -1,0 +1,4 @@
+"repository","commit_sha","relative_path","bytes","sha256","suggested_classification","rule_ids","content_scan_state","matched_content_recorded","human_review_required"
+"jsonwisdom/SYNTHETIC","0000000000000000000000000000000000000000","README.md","12","aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","PUBLIC_CANDIDATE","","SCANNED","False","False"
+"jsonwisdom/SYNTHETIC","0000000000000000000000000000000000000000","internal/router.py","24","bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","PRIVATE_IP","PRIVATE_IP_PATH_MARKER","SCANNED","False","True"
+"jsonwisdom/SYNTHETIC","0000000000000000000000000000000000000000","credentials.env","32","cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","SECRET","SECRET_SENSITIVE_FILENAME","SCANNED","False","True"
