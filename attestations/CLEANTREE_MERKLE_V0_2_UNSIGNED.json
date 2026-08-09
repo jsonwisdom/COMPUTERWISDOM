@@ -1,0 +1,31 @@
+{
+  "$schema": "urn:jsonwisdom:cleantree:attestation:v0.2",
+  "attestation_id": "CLEANTREE_MERKLE_V0_2_UNSIGNED",
+  "attestation_status": "UNSIGNED_GITHUB_CANDIDATE",
+  "observed_v0_1_failure": {
+    "environment": "Windows PowerShell 7.6.4",
+    "expected_fixture_root": "656020bb502588bf3cd0574a6890950ccec3c5ffd2f2e4551594c8d13e32677a",
+    "observed_fixture_root": "b5aff300e2fa84af1009df2ff97e13c395e718e7767bf2878cf281d8e7630d52",
+    "leaf_hashes_matched": true,
+    "root_matched": false,
+    "root_cause": "culture-dependent case-insensitive leaf ordering"
+  },
+  "v0_2_patch": {
+    "algorithm": "UTF8_ORDINAL_HEX_SORT_V1",
+    "python_regression_tests": "PENDING_COMMIT_RECEIPT",
+    "windows_powershell_rerun": "NOT_RUN"
+  },
+  "onchain_handoff": {
+    "network": null,
+    "schema_uid": null,
+    "attestation_uid": null,
+    "transaction_hash": null,
+    "real_inventory_merkle_root": null,
+    "submission_authorized": false,
+    "wallet_signature": "HUMAN_ONLY"
+  },
+  "repository_visibility": "PUBLIC",
+  "publication_authority_created": false,
+  "authority_created": false,
+  "next_transition": "WINDOWS_RERUNS_SYNTHETIC_VECTOR"
+}
