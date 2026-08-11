@@ -37,12 +37,19 @@ missions/<MISSION_ID>/
 Registry generation is discovery, not approval. Every generated branch-tip row begins as:
 
 ```text
+ARTIFACT_ID = UNSPLIT_BRANCH_TIP
+SOURCE_PATHS = []
+DESTINATION_SUBDIR = null
 MIGRATION_STATUS = PENDING_REVIEW
 REVIEW_REQUIRED = TRUE
 AUTHORITY_CREATED = FALSE
 ```
 
-A reviewer may change a row to `REVIEWED` only after confirming its mission assignment, artifact class, source SHA, and canonical destination. `UNKNOWN` and ambiguous classifications remain review-required.
+A reviewer may change a row to `REVIEWED` only after confirming its mission assignment, artifact class, source SHA, explicit source path selector(s), artifact identity, and destination subdirectory.
+
+If one branch contains multiple artifacts, duplicate the discovery row into multiple artifact rows that retain the same `DISCOVERY_ID`, `BRANCH`, and `SOURCE_SHA`, but assign distinct `ARTIFACT_ID`, `SOURCE_PATHS`, `ARTIFACT_CLASS`, and destination fields. Do not flatten a multi-artifact branch into one migration unit.
+
+`UNKNOWN` and ambiguous classifications remain review-required.
 
 ## Invariants
 
@@ -55,7 +62,8 @@ COPY != AUTHORITY
 PROVENANCE_RECEIPT != AUTHORITY_GRANT
 DISCOVERY != CLASSIFICATION_CERTAINTY
 BRANCH_NAME != MISSION_TRUTH
+BRANCH != ARTIFACT
 AUTHORITY_CREATED = FALSE unless separately evidenced
 ```
 
-The migration workflow is intentionally absent from v0.1. Discovery, classification, indexing, validation, manual review, and directory creation must complete before any copy operation is eligible for later authorization.
+The migration workflow is intentionally absent from v0.1. Discovery, classification, indexing, validation, artifact-level manual review, and directory creation must complete before any copy operation is eligible for later authorization.
