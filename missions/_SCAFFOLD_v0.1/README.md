@@ -32,6 +32,18 @@ missions/<MISSION_ID>/
 - `schemas/` — machine-readable contracts.
 - `tests/` — synthetic and replay validation assets.
 
+## Review state
+
+Registry generation is discovery, not approval. Every generated branch-tip row begins as:
+
+```text
+MIGRATION_STATUS = PENDING_REVIEW
+REVIEW_REQUIRED = TRUE
+AUTHORITY_CREATED = FALSE
+```
+
+A reviewer may change a row to `REVIEWED` only after confirming its mission assignment, artifact class, source SHA, and canonical destination. `UNKNOWN` and ambiguous classifications remain review-required.
+
 ## Invariants
 
 ```text
@@ -40,9 +52,10 @@ HANDOFF != SOURCE
 HANDOFF != RECEIPT
 HANDOFF != MANIFEST
 COPY != AUTHORITY
+PROVENANCE_RECEIPT != AUTHORITY_GRANT
 DISCOVERY != CLASSIFICATION_CERTAINTY
 BRANCH_NAME != MISSION_TRUTH
 AUTHORITY_CREATED = FALSE unless separately evidenced
 ```
 
-The migration workflow is intentionally absent from v0.1. Discovery, classification, indexing, validation, and directory creation must complete before any copy operation is authorized.
+The migration workflow is intentionally absent from v0.1. Discovery, classification, indexing, validation, manual review, and directory creation must complete before any copy operation is eligible for later authorization.
