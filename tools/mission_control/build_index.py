@@ -88,6 +88,10 @@ def classify(branch, paths, rules):
     return selected, detail
 
 
+def discovery_id(branch, sha):
+    return hashlib.sha256(f"{branch}\0{sha}".encode("utf-8")).hexdigest()
+
+
 def main():
     ap = argparse.ArgumentParser(description="Generate provenance-preserving COMPUTERWISDOM mission registry.")
     ap.add_argument("--no-path-scan", action="store_true", help="Classify by branch name only.")
@@ -111,13 +115,17 @@ def main():
             destination = None
 
         entries.append({
+            "DISCOVERY_ID": discovery_id(branch, sha),
+            "ARTIFACT_ID": "UNSPLIT_BRANCH_TIP",
             "MISSION_ID": mission_id,
             "CURRENT_LOCATION": ref,
             "BRANCH": branch,
             "ARTIFACT_CLASS": artifact_class,
             "CURRENT_STATE": state_signal(branch),
             "CANONICAL_DESTINATION": destination,
+            "DESTINATION_SUBDIR": None,
             "SOURCE_SHA": sha,
+            "SOURCE_PATHS": [],
             "MIGRATION_STATUS": "PENDING_REVIEW",
             "AUTHORITY_CREATED": False,
             "REVIEW_REQUIRED": True,
@@ -138,6 +146,7 @@ def main():
     INDEX_PATH.write_text(json.dumps(output, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {len(entries)} branch-tip entries to {INDEX_PATH}")
     print("All generated entries require explicit review before migration eligibility.")
+    print("SOURCE_PATHS and DESTINATION_SUBDIR are intentionally empty until artifact-level review.")
     print(f"Unclassified: {sum(1 for e in entries if e['MISSION_ID'] == 'UNKNOWN')}")
     print(f"Ambiguous classification: {sum(1 for e in entries if e['CLASSIFICATION_AMBIGUOUS'])}")
 
