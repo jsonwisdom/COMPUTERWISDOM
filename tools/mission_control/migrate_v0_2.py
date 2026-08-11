@@ -208,6 +208,18 @@ def copy_stage(stage, dest):
             shutil.copy2(src, target)
 
 
+def verify_destination(stage, dest):
+    for src in stage.rglob("*"):
+        if not src.is_file():
+            continue
+        rel = src.relative_to(stage)
+        target = dest / rel
+        if not target.is_file():
+            raise RuntimeError(f"destination verification missing file: {target}")
+        if sha256_file(target) != sha256_file(src):
+            raise RuntimeError(f"destination verification hash mismatch: {target}")
+
+
 def receipt_stable_fields(e, files):
     return {
         "RECEIPT_VERSION": "0.2",
@@ -257,6 +269,7 @@ def execute(rows):
             staged.append((e, stage, files, dest))
         for e, stage, files, dest in staged:
             copy_stage(stage, dest)
+            verify_destination(stage, dest)
             receipt = write_receipt(e, files)
             completed.append({"ARTIFACT_ID": e["ARTIFACT_ID"], "destination": str(dest.relative_to(ROOT)), "receipt": str(receipt.relative_to(ROOT))})
     return completed
