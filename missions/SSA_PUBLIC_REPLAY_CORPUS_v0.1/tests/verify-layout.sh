@@ -8,7 +8,9 @@ required=(
   "Dockerfile"
   "contracts/directory-contract.json"
   "receipts/scaffold-declaration.json"
+  "tests/route-http-observation.sh"
   "tests/verify-layout.sh"
+  "tests/verify-router-matrix.sh"
 )
 
 for path in "${required[@]}"; do
@@ -34,6 +36,7 @@ if [[ -d "corpus/raw" ]] && find "corpus/raw" -type f -print -quit | grep -q .; 
 fi
 
 grep -Fq '"authority_created": false' contracts/directory-contract.json
+grep -Fq '"network_access_allowed": false' contracts/directory-contract.json
 grep -Fq '"runtime_verified": false' receipts/scaffold-declaration.json
 grep -Fq '"manifest_created": false' receipts/scaffold-declaration.json
 grep -Fq '"live_fetch_executed": false' receipts/scaffold-declaration.json
@@ -47,3 +50,5 @@ echo "AUTHORITY_CREATED=FALSE"
 echo "FILE_SHA256_BEGIN"
 sha256sum "${required[@]}"
 echo "FILE_SHA256_END"
+
+tests/verify-router-matrix.sh
