@@ -1,1 +1,2 @@
 *.zip filter=lfs diff=lfs merge=lfs -text
+missions/SSA_PUBLIC_REPLAY_CORPUS_v0.1/tests/*.sh text eol=lf
