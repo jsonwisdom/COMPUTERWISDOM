@@ -1,24 +1,29 @@
 # SSA Public Replay Corpus v0.1
 
 Status: `PROPOSAL_SCAFFOLD`  
-Runtime verification: `PENDING_LOCAL_DOCKER_RUN`  
+Synthetic router gate: `v0.2`  
+Live fetch: `PROHIBITED_UNTIL_SYNTHETIC_MATRIX_PASS`  
 Authority created: `FALSE`
 
 ## Purpose
 
-This mission defines a fail-closed container scaffold for collecting and replaying public Social Security Administration web evidence. It creates structure and validation rules only.
+This mission defines a fail-closed container scaffold and a synthetic HTTP observation router for collecting and replaying public Social Security Administration web evidence.
 
-It does **not** claim that a corpus, manifest, successful fetch, policy conclusion, or institutional authority exists.
+It does **not** claim that a production corpus, manifest, successful live fetch, policy conclusion, or institutional authority exists.
 
 ## Boundary law
 
 ```text
 A_child subseteq A_parent
-403/404 response body -> receipts/failures/body/
-2xx source bytes       -> corpus/raw/SHA256(body)
-failure body           -> corpus/raw/                  PROHIBITED
-placeholder manifest   -> manifest.jsonl               PROHIBITED
+200 + transport OK + zero redirects -> corpus/raw/SHA256(body)
+403/404 response body                -> receipts/failures/body/SHA256(body)
+redirect status or redirect history  -> HOLD
+network failure                      -> failure receipt
+failure or ambiguous body            -> corpus/raw/                  PROHIBITED
+placeholder manifest                 -> manifest.jsonl               PROHIBITED
 ```
+
+Only an exact HTTP `200` is admitted by Router Gate v0.2. Every unlisted status fails closed.
 
 ## Materialized scaffold
 
@@ -31,38 +36,53 @@ SSA_PUBLIC_REPLAY_CORPUS_v0.1/
 ├── receipts/
 │   └── scaffold-declaration.json
 └── tests/
-    └── verify-layout.sh
+    ├── route-http-observation.sh
+    ├── verify-layout.sh
+    └── verify-router-matrix.sh
 ```
 
-The runtime evidence paths are intentionally absent. Git does not track empty directories, and placeholders would violate their artifact classes.
+The production runtime evidence paths are intentionally absent. Router tests create synthetic artifacts only below a temporary directory and remove that directory on exit.
+
+## Synthetic routing matrix
+
+`verify-router-matrix.sh` performs no network operation and tests:
+
+| Observation | Required decision |
+|---|---|
+| `200`, no redirects | exact body bytes at `corpus/raw/SHA256(body)` |
+| `403` | exact body bytes at `receipts/failures/body/SHA256(body)` |
+| `404` | exact body bytes at `receipts/failures/body/SHA256(body)` |
+| `3xx`, or final `200` with redirect history | `HOLD_REDIRECT_AMBIGUITY` |
+| network failure | `receipts/failures/network/` receipt |
+
+Every case asserts that no manifest is created. Every non-admission case asserts that no corpus object is created.
 
 ## Local Docker replay
 
 From the `COMPUTERWISDOM` repository root:
 
 ```powershell
-docker build --tag ssa-public-replay-scaffold:v0.1 missions/SSA_PUBLIC_REPLAY_CORPUS_v0.1
-docker run --rm ssa-public-replay-scaffold:v0.1
+docker build --tag ssa-public-replay-scaffold:v0.2 missions/SSA_PUBLIC_REPLAY_CORPUS_v0.1
+docker run --rm ssa-public-replay-scaffold:v0.2
 ```
 
-The Dockerfile pins the exact Ubuntu image digest observed during the Windows/Docker/WSL2 verification session.
+The Dockerfile pins the exact Ubuntu image digest observed during the Windows/Docker/WSL2 verification session. The container runs the scaffold validator and the synthetic router matrix. It does not fetch SSA bytes.
 
 ## Promotion gates
 
-The scaffold remains on HOLD until all applicable gates pass:
+The live-fetch gate remains on HOLD until:
 
 1. Directory contract validates.
 2. Docker build completes from the pinned base digest.
-3. Container test returns `SSA_SCAFFOLD_LAYOUT=PASS`.
-4. Live source bytes are captured without redirect or status ambiguity.
-5. Successful source bytes and failure bodies are classified into different paths.
-6. File hashes and fetch metadata are computed from observed bytes.
-7. A manifest is generated only from admitted raw objects.
-8. Replay equivalence is independently demonstrated.
+3. Container reports `SSA_SCAFFOLD_LAYOUT=PASS`.
+4. Container reports `SSA_SYNTHETIC_ROUTER_MATRIX=PASS`.
+5. Operator independently confirms the container made no live SSA request.
+
+After that gate, any future live observation must still classify bytes before a manifest can exist.
 
 ```text
-SCHEMA != LAW
 SCAFFOLD != CORPUS
+SCHEMA != LAW
 RECEIPT != REMEDY
 COMPUTATION != AUTHORITY
 ```
