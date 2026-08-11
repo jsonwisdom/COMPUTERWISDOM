@@ -4,7 +4,7 @@ WORKDIR /replay
 
 COPY README.md Dockerfile ./
 COPY contracts ./contracts
-COPY receipts ./receipts
+COPY receipts/scaffold-declaration.json ./receipts/scaffold-declaration.json
 COPY tests ./tests
 
 RUN chmod 0555 tests/verify-layout.sh
