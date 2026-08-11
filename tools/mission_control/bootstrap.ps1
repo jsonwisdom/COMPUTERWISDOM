@@ -17,7 +17,11 @@ python tools/mission_control/scaffold.py --dry-run
 if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
 Write-Host ''
-Write-Host 'Index generated and validated. Scaffold creation remains a separate explicit command:'
+Write-Host 'Every generated row begins PENDING_REVIEW and REVIEW_REQUIRED=TRUE.'
+Write-Host 'Before marking an artifact REVIEWED, set explicit ARTIFACT_ID, SOURCE_PATHS, and DESTINATION_SUBDIR.'
+Write-Host 'Split multi-artifact branches into multiple rows sharing DISCOVERY_ID/BRANCH/SOURCE_SHA.'
+Write-Host ''
+Write-Host 'Scaffold creation remains a separate explicit command:'
 Write-Host '  python tools/mission_control/scaffold.py'
 Write-Host ''
 Write-Host 'No artifacts copied. No branches moved or deleted. No authority created.'
