@@ -22,10 +22,6 @@ ALLOWED_DESTINATION_SUBDIRS = {
 SAFE_ID = re.compile(r"^[A-Za-z0-9._-]+$")
 
 
-def git_text(*args):
-    return subprocess.check_output(["git", *args], cwd=ROOT, text=True, errors="replace").strip()
-
-
 def git_ok(*args):
     return subprocess.run(["git", *args], cwd=ROOT, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL).returncode == 0
 
@@ -50,35 +46,72 @@ def validate_row(e):
         errors.append("MISSION_ID must be explicit")
     if e.get("CLASSIFICATION_AMBIGUOUS") is True:
         errors.append("CLASSIFICATION_AMBIGUOUS must be false")
+
     artifact_id = e.get("ARTIFACT_ID")
     if not artifact_id or artifact_id == "UNSPLIT_BRANCH_TIP" or not SAFE_ID.fullmatch(artifact_id):
         errors.append("ARTIFACT_ID must be explicit and filesystem-safe")
-    if not isinstance(e.get("SOURCE_PATHS"), list) or not e.get("SOURCE_PATHS"):
+
+    source_paths = e.get("SOURCE_PATHS")
+    if not isinstance(source_paths, list) or not source_paths:
         errors.append("SOURCE_PATHS must be a non-empty explicit list")
+        source_paths = []
+
     if e.get("DESTINATION_SUBDIR") not in ALLOWED_DESTINATION_SUBDIRS:
         errors.append("DESTINATION_SUBDIR is not approved")
+
     expected = f"missions/{e.get('MISSION_ID')}/"
     if e.get("CANONICAL_DESTINATION") != expected:
         errors.append(f"CANONICAL_DESTINATION must equal {expected}")
+
     sha = e.get("SOURCE_SHA")
     if not sha or not git_ok("cat-file", "-e", f"{sha}^{{commit}}"):
         errors.append("SOURCE_SHA is not a resolvable commit")
-    for p in e.get("SOURCE_PATHS", []):
+
+    normalized = []
+    for p in source_paths:
+        if not isinstance(p, str):
+            errors.append(f"SOURCE_PATH must be a string: {p!r}")
+            continue
         pp = PurePosixPath(p)
         if p in ("", ".") or pp.is_absolute() or ".." in pp.parts:
             errors.append(f"unsafe SOURCE_PATH: {p}")
-        elif sha and not git_ok("cat-file", "-e", f"{sha}:{p}"):
-            errors.append(f"SOURCE_PATH not found at SOURCE_SHA: {p}")
+            continue
+        norm = pp.as_posix().rstrip("/")
+        normalized.append(norm)
+        if sha and not git_ok("cat-file", "-e", f"{sha}:{norm}"):
+            errors.append(f"SOURCE_PATH not found at SOURCE_SHA: {norm}")
+
+    if len(normalized) != len(set(normalized)):
+        errors.append("SOURCE_PATHS contains duplicates")
+    for i, a in enumerate(normalized):
+        ap = PurePosixPath(a)
+        for b in normalized[i + 1:]:
+            bp = PurePosixPath(b)
+            if ap in bp.parents or bp in ap.parents:
+                errors.append(f"SOURCE_PATHS overlap: {a} <-> {b}")
+
     return errors
+
+
+def destination_string(e):
+    return f"{e['CANONICAL_DESTINATION']}{e['DESTINATION_SUBDIR']}/{e['ARTIFACT_ID']}/"
 
 
 def reviewed_rows(doc):
     rows = []
     blocked = []
+    destinations = {}
     for e in doc.get("entries", []):
         if e.get("MIGRATION_STATUS") != "REVIEWED":
             continue
         errors = validate_row(e)
+        if not errors:
+            dest = destination_string(e)
+            prior = destinations.get(dest)
+            if prior is not None:
+                errors.append(f"destination collides with {prior}")
+            else:
+                destinations[dest] = f"{e.get('DISCOVERY_ID')}::{e.get('ARTIFACT_ID')}"
         if errors:
             blocked.append({"DISCOVERY_ID": e.get("DISCOVERY_ID"), "ARTIFACT_ID": e.get("ARTIFACT_ID"), "errors": errors})
         else:
@@ -103,7 +136,7 @@ def write_plan(doc, rows, blocked):
                 "BRANCH": e["BRANCH"],
                 "SOURCE_SHA": e["SOURCE_SHA"],
                 "SOURCE_PATHS": e["SOURCE_PATHS"],
-                "DESTINATION": f"{e['CANONICAL_DESTINATION']}{e['DESTINATION_SUBDIR']}/{e['ARTIFACT_ID']}/",
+                "DESTINATION": destination_string(e),
             }
             for e in rows
         ],
@@ -126,25 +159,27 @@ def safe_members(tf):
 
 
 def stage_row(e, stage_root):
-    artifact_stage = stage_root / e["ARTIFACT_ID"]
-    artifact_stage.mkdir(parents=True, exist_ok=True)
+    stage_name = f"{e['DISCOVERY_ID'][:12]}-{e['ARTIFACT_ID']}"
+    artifact_stage = stage_root / stage_name
+    artifact_stage.mkdir(parents=True, exist_ok=False)
     cmd = ["git", "archive", "--format=tar", e["SOURCE_SHA"], "--", *e["SOURCE_PATHS"]]
     archive_bytes = subprocess.check_output(cmd, cwd=ROOT)
-    tf = tarfile.open(fileobj=io.BytesIO(archive_bytes), mode="r:")
-    members = safe_members(tf)
-    files = []
-    for m in members:
-        target = artifact_stage / Path(*PurePosixPath(m.name).parts)
-        if m.isdir():
-            target.mkdir(parents=True, exist_ok=True)
-            continue
-        target.parent.mkdir(parents=True, exist_ok=True)
-        src = tf.extractfile(m)
-        if src is None:
-            raise RuntimeError(f"could not extract {m.name}")
-        with src, open(target, "wb") as out:
-            shutil.copyfileobj(src, out)
-        files.append({"source_member": m.name, "sha256": sha256_file(target), "size": target.stat().st_size})
+    with tarfile.open(fileobj=io.BytesIO(archive_bytes), mode="r:") as tf:
+        members = safe_members(tf)
+        files = []
+        for m in members:
+            target = artifact_stage / Path(*PurePosixPath(m.name).parts)
+            if m.isdir():
+                target.mkdir(parents=True, exist_ok=True)
+                continue
+            target.parent.mkdir(parents=True, exist_ok=True)
+            src = tf.extractfile(m)
+            if src is None:
+                raise RuntimeError(f"could not extract {m.name}")
+            with src, open(target, "wb") as out:
+                shutil.copyfileobj(src, out)
+            files.append({"source_member": m.name, "sha256": sha256_file(target), "size": target.stat().st_size})
+    files.sort(key=lambda x: x["source_member"])
     return artifact_stage, files
 
 
@@ -173,14 +208,10 @@ def copy_stage(stage, dest):
             shutil.copy2(src, target)
 
 
-def write_receipt(e, files):
-    receipt_dir = ROOT / e["CANONICAL_DESTINATION"] / "receipts" / "migration-v0.2"
-    receipt_dir.mkdir(parents=True, exist_ok=True)
-    receipt_path = receipt_dir / f"{e['ARTIFACT_ID']}.provenance.json"
-    receipt = {
+def receipt_stable_fields(e, files):
+    return {
         "RECEIPT_VERSION": "0.2",
         "EVENT": "COPY_HASH_VERIFIED",
-        "COPIED_AT_UTC": datetime.now(timezone.utc).isoformat(),
         "DISCOVERY_ID": e["DISCOVERY_ID"],
         "ARTIFACT_ID": e["ARTIFACT_ID"],
         "MISSION_ID": e["MISSION_ID"],
@@ -194,10 +225,23 @@ def write_receipt(e, files):
         "AUTHORITY_GRANT": None,
         "ORIGINAL_BRANCH_DELETED": False,
     }
-    data = json.dumps(receipt, indent=2) + "\n"
-    if receipt_path.exists() and receipt_path.read_text(encoding="utf-8") != data:
-        raise RuntimeError(f"receipt already exists with different content: {receipt_path}")
-    receipt_path.write_text(data, encoding="utf-8")
+
+
+def write_receipt(e, files):
+    receipt_dir = ROOT / e["CANONICAL_DESTINATION"] / "receipts" / "migration-v0.2"
+    receipt_dir.mkdir(parents=True, exist_ok=True)
+    receipt_path = receipt_dir / f"{e['ARTIFACT_ID']}.provenance.json"
+    stable = receipt_stable_fields(e, files)
+
+    if receipt_path.exists():
+        existing = json.loads(receipt_path.read_text(encoding="utf-8"))
+        existing_stable = {k: existing.get(k) for k in stable}
+        if existing_stable != stable:
+            raise RuntimeError(f"receipt already exists with different provenance: {receipt_path}")
+        return receipt_path
+
+    receipt = {"COPIED_AT_UTC": datetime.now(timezone.utc).isoformat(), **stable}
+    receipt_path.write_text(json.dumps(receipt, indent=2) + "\n", encoding="utf-8")
     return receipt_path
 
 
