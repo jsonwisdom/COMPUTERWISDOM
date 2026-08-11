@@ -1,0 +1,73 @@
+{
+  "contract_id": "SSA_PUBLIC_REPLAY_DIRECTORY_CONTRACT_v0.1",
+  "corpus_id": "SSA_PUBLIC_REPLAY_CORPUS_v0.1",
+  "status": "PROPOSAL_SCAFFOLD",
+  "authority_created": false,
+  "inheritance_rule": "A_child subseteq A_parent",
+  "materialized_paths": {
+    "./": {
+      "allowed_classes": [
+        "mission_documentation",
+        "container_definition",
+        "contracts",
+        "scaffold_receipts",
+        "tests"
+      ]
+    },
+    "contracts/": {
+      "allowed_classes": [
+        "directory_contract",
+        "schema"
+      ]
+    },
+    "receipts/": {
+      "allowed_classes": [
+        "scaffold_declaration"
+      ]
+    },
+    "tests/": {
+      "allowed_classes": [
+        "structural_validator"
+      ]
+    }
+  },
+  "runtime_paths_not_materialized": {
+    "corpus/raw/": {
+      "allowed_classes": [
+        "successful_source_bytes"
+      ],
+      "admission_gate": "HTTP status is 2xx and response bytes were captured",
+      "filename_rule": "lowercase SHA256 of exact response body bytes",
+      "failure_bodies_allowed": false
+    },
+    "receipts/failures/body/": {
+      "allowed_classes": [
+        "http_failure_body_bytes"
+      ],
+      "admission_gate": "non-2xx response bytes were captured",
+      "corpus_promotion_allowed": false
+    },
+    "manifest/": {
+      "allowed_classes": [
+        "manifest_jsonl"
+      ],
+      "admission_gate": "at least one raw object passed Gate 1",
+      "placeholder_allowed": false
+    },
+    "gate1/": {
+      "allowed_classes": [
+        "gate_result",
+        "validation_receipt"
+      ],
+      "admission_gate": "validation executed against observed bytes"
+    }
+  },
+  "prohibitions": [
+    "403 or 404 bodies in corpus/raw/",
+    "manifest creation from failure bodies",
+    "placeholder raw evidence",
+    "placeholder manifest",
+    "claiming runtime verification from this scaffold",
+    "claiming institutional authority"
+  ]
+}
