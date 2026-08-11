@@ -18,6 +18,11 @@ for path in "${required[@]}"; do
   fi
 done
 
+if find receipts -maxdepth 1 -type f ! -name "scaffold-declaration.json" -print -quit | grep -q .; then
+  echo "RUNTIME_RECEIPT_INCLUDED_IN_IMAGE=PROHIBITED" >&2
+  exit 1
+fi
+
 if [[ -e "manifest.jsonl" || -e "manifest/manifest.jsonl" ]]; then
   echo "PLACEHOLDER_MANIFEST=PROHIBITED" >&2
   exit 1
@@ -34,6 +39,7 @@ grep -Fq '"manifest_created": false' receipts/scaffold-declaration.json
 grep -Fq '"live_fetch_executed": false' receipts/scaffold-declaration.json
 
 echo "SSA_SCAFFOLD_LAYOUT=PASS"
+echo "RUNTIME_RECEIPTS_IN_IMAGE=FALSE"
 echo "CORPUS_CREATED=FALSE"
 echo "MANIFEST_CREATED=FALSE"
 echo "RUNTIME_FETCH_VERIFIED=FALSE"
