@@ -118,10 +118,11 @@ def main():
             "CURRENT_STATE": state_signal(branch),
             "CANONICAL_DESTINATION": destination,
             "SOURCE_SHA": sha,
-            "MIGRATION_STATUS": "DISCOVERED",
+            "MIGRATION_STATUS": "PENDING_REVIEW",
             "AUTHORITY_CREATED": False,
-            "REVIEW_REQUIRED": selected is None or len(matches) > 1,
+            "REVIEW_REQUIRED": True,
             "CLASSIFICATION_MATCHES": matches,
+            "CLASSIFICATION_AMBIGUOUS": len(matches) > 1,
             "DISCOVERY_SCOPE": "BRANCH_TIP",
         })
 
@@ -136,7 +137,9 @@ def main():
     INDEX_PATH.parent.mkdir(parents=True, exist_ok=True)
     INDEX_PATH.write_text(json.dumps(output, indent=2) + "\n", encoding="utf-8")
     print(f"Wrote {len(entries)} branch-tip entries to {INDEX_PATH}")
-    print(f"Manual review required: {sum(1 for e in entries if e['REVIEW_REQUIRED'])}")
+    print("All generated entries require explicit review before migration eligibility.")
+    print(f"Unclassified: {sum(1 for e in entries if e['MISSION_ID'] == 'UNKNOWN')}")
+    print(f"Ambiguous classification: {sum(1 for e in entries if e['CLASSIFICATION_AMBIGUOUS'])}")
 
 
 if __name__ == "__main__":
