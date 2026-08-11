@@ -7,6 +7,6 @@ COPY contracts ./contracts
 COPY receipts/scaffold-declaration.json ./receipts/scaffold-declaration.json
 COPY tests ./tests
 
-RUN chmod 0555 tests/verify-layout.sh
+RUN chmod 0555 tests/verify-layout.sh tests/route-http-observation.sh tests/verify-router-matrix.sh
 
 ENTRYPOINT ["/bin/bash", "tests/verify-layout.sh"]
