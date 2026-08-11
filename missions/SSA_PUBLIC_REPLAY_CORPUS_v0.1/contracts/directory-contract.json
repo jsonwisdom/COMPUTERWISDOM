@@ -1,9 +1,10 @@
 {
-  "contract_id": "SSA_PUBLIC_REPLAY_DIRECTORY_CONTRACT_v0.1",
+  "contract_id": "SSA_PUBLIC_REPLAY_DIRECTORY_CONTRACT_v0.2",
   "corpus_id": "SSA_PUBLIC_REPLAY_CORPUS_v0.1",
-  "status": "PROPOSAL_SCAFFOLD",
+  "status": "PROPOSAL_SCAFFOLD_SYNTHETIC_ROUTER",
   "authority_created": false,
   "inheritance_rule": "A_child subseteq A_parent",
+  "router_admission_rule": "HTTP status is exactly 200, transport succeeded, redirect count is zero, and exact response body bytes were captured",
   "materialized_paths": {
     "./": {
       "allowed_classes": [
@@ -30,7 +31,9 @@
     },
     "tests/": {
       "allowed_classes": [
-        "structural_validator"
+        "structural_validator",
+        "synthetic_router",
+        "synthetic_router_matrix"
       ]
     }
   },
@@ -39,22 +42,48 @@
       "allowed_classes": [
         "successful_source_bytes"
       ],
-      "admission_gate": "HTTP status is 2xx and response bytes were captured",
+      "admission_gate": "HTTP status is exactly 200, transport succeeded, redirect count is zero, and response bytes were captured",
       "filename_rule": "lowercase SHA256 of exact response body bytes",
-      "failure_bodies_allowed": false
+      "failure_bodies_allowed": false,
+      "redirected_bodies_allowed": false
     },
     "receipts/failures/body/": {
       "allowed_classes": [
-        "http_failure_body_bytes"
+        "http_failure_body_bytes",
+        "redirect_ambiguous_body_bytes"
       ],
-      "admission_gate": "non-2xx response bytes were captured",
+      "admission_gate": "non-200 or redirect-ambiguous response bytes were captured",
       "corpus_promotion_allowed": false
+    },
+    "receipts/failures/http/": {
+      "allowed_classes": [
+        "http_failure_receipt"
+      ],
+      "corpus_promotion_allowed": false
+    },
+    "receipts/failures/network/": {
+      "allowed_classes": [
+        "network_failure_receipt"
+      ],
+      "corpus_promotion_allowed": false
+    },
+    "receipts/holds/redirect/": {
+      "allowed_classes": [
+        "redirect_ambiguity_hold_receipt"
+      ],
+      "release_gate": "explicit later review; synthetic test success does not release a live observation",
+      "corpus_promotion_allowed": false
+    },
+    "receipts/router/": {
+      "allowed_classes": [
+        "router_decision_receipt"
+      ]
     },
     "manifest/": {
       "allowed_classes": [
         "manifest_jsonl"
       ],
-      "admission_gate": "at least one raw object passed Gate 1",
+      "admission_gate": "at least one non-synthetic raw object passed Gate 1",
       "placeholder_allowed": false
     },
     "gate1/": {
@@ -64,6 +93,14 @@
       ],
       "admission_gate": "validation executed against observed bytes"
     }
+  },
+  "synthetic_router_boundary": {
+    "network_access_allowed": false,
+    "output_root": "temporary directory created by test runner",
+    "cleanup_required": true,
+    "production_corpus_created": false,
+    "production_manifest_created": false,
+    "live_fetch_executed": false
   },
   "container_boundary": {
     "included": [
@@ -76,6 +113,8 @@
     "excluded": [
       "receipts/runtime outputs",
       "receipts/failures/",
+      "receipts/holds/",
+      "receipts/router/",
       "corpus/",
       "manifest/",
       "gate1/"
@@ -84,11 +123,14 @@
   },
   "prohibitions": [
     "403 or 404 bodies in corpus/raw/",
-    "manifest creation from failure bodies",
+    "redirected or redirect-ambiguous bodies in corpus/raw/",
+    "network failure represented as source bytes",
+    "manifest creation from failure or synthetic bodies",
     "placeholder raw evidence",
     "placeholder manifest",
     "runtime evidence copied into validator image",
-    "claiming runtime verification from this scaffold",
+    "live SSA fetch before the synthetic router matrix passes",
+    "claiming runtime verification from structure alone",
     "claiming institutional authority"
   ]
 }
