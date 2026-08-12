@@ -39,7 +39,7 @@ contract AuthorityGuardResolver is SchemaResolver {
     /// G3: gitHashAlg is SHA-1 (1) or SHA-256 (2)
     /// G4: refUID != bytes32(0)
     /// G5: referenced identity attestation exists, uses the expected schema, is not revoked,
-    ///     is not expired, and was issued by the expected attester.
+    ///     is not expired, was issued by the expected attester, and names the same nonzero recipient.
     function onAttest(Attestation calldata attestation, uint256) internal view override returns (bool) {
         (
             bytes32 resumeHash,
@@ -72,6 +72,8 @@ contract AuthorityGuardResolver is SchemaResolver {
         if (identity.revocationTime != 0) return false;
         if (identity.expirationTime != 0 && identity.expirationTime <= block.timestamp) return false;
         if (identity.attester != expectedIdentityAttester) return false;
+        if (attestation.recipient == address(0)) return false;
+        if (identity.recipient != attestation.recipient) return false;
 
         return true;
     }
