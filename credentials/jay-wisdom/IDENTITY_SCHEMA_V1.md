@@ -1,6 +1,6 @@
 # JSONWisdom Dedicated Identity Schema v1
 
-Status: `DEFINED_NOT_REGISTERED`
+Status: `DEFINED_RESOLVER_IMPLEMENTED_TESTED_NOT_REGISTERED`
 Network target: `Base Sepolia`
 Purpose: parent identity/provenance attestation accepted by `AuthorityGuardResolver` for the on-chain resume integrity chain.
 
@@ -40,9 +40,25 @@ The following are deliberately **not** repeated in schema data:
 
 This avoids dual truth sources such as `ethAddress != recipient` or `validUntil != expirationTime`.
 
-## Required Identity Resolver
+## IdentityBindingResolver implementation
 
-The identity schema MUST NOT be registered with resolver `0x0` if the system claims fail-closed enforcement. A dedicated immutable resolver is required before registration.
+The identity schema MUST NOT be registered with resolver `0x0` while claiming fail-closed enforcement.
+
+Implemented files:
+
+```text
+contracts/jaywisdom/src/IdentityBindingResolver.sol
+contracts/jaywisdom/test/IdentityBindingResolver.t.sol
+```
+
+Verified CI result on code head `215d7a6abed9403addaca4e528aedd9be80a2220`:
+
+```text
+IdentityBindingResolver = 15 PASS / 0 FAIL / 0 SKIP
+AuthorityGuardResolver  = 20 PASS / 0 FAIL / 0 SKIP
+Full Foundry project    = 44 PASS / 0 FAIL / 0 SKIP
+Secret scan             = PASS
+```
 
 Required gates:
 
@@ -68,13 +84,13 @@ REVOCATION_ALLOWED     = TRUE
 AUTHORITY_CREATED      = FALSE
 ```
 
-## Expected attester candidate
+## Expected attester deployment binding
 
 ```text
 0x1dB2C056c7DeCD9f9fC574692b05F62aE34Fb8b5
 ```
 
-This address is the current selected candidate from existing JSONWisdom EAS lineage. Constructor binding occurs only after the dedicated resolver implementation and tests pass.
+The implementation accepts the expected attester as an immutable constructor parameter. The Base Sepolia deployment is required to bind the candidate above into an actual deployed resolver address.
 
 ## Base Sepolia protocol targets
 
@@ -87,12 +103,12 @@ SchemaRegistry  = 0x4200000000000000000000000000000000000020
 
 ```text
 schema      = bytes32 bindingHash,string subjectAnchor,string artifactId,bool authorityCreated
-resolver    = PENDING_IDENTITY_RESOLVER_DEPLOYMENT
+resolver    = PENDING_BASE_SEPOLIA_DEPLOYMENT_ADDRESS
 revocable   = true
 schema_uid  = PENDING_REGISTRATION
 ```
 
-No schema registration, resolver deployment, or attestation is authorized by this document.
+No schema registration, resolver deployment, or attestation has occurred as a result of this document.
 
 ## Child relationship
 
@@ -109,6 +125,8 @@ A resume attestation may reference this identity attestation through `refUID` on
 
 ```text
 DEFINE_DEDICATED_IDENTITY_SCHEMA = COMPLETE
-NEXT = IMPLEMENT_IDENTITY_BINDING_RESOLVER
-REGISTER_IDENTITY_SCHEMA_BASE_SEPOLIA = BLOCKED
+IMPLEMENT_IDENTITY_BINDING_RESOLVER = COMPLETE
+IDENTITY_RESOLVER_UNIT_TESTS = PASS
+NEXT = DEPLOY_IDENTITY_RESOLVER_BASE_SEPOLIA
+REGISTER_IDENTITY_SCHEMA_BASE_SEPOLIA = BLOCKED_UNTIL_RESOLVER_ADDRESS_CAPTURED
 ```
