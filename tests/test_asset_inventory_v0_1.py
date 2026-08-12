@@ -4,7 +4,7 @@ from pathlib import Path
 
 
 def load_module(repo_root: Path):
-    tool = repo_root / "tools" / "asset_inventory_v0_1.py"
+    tool = repo_root / "executables" / "asset_inventory_v0_1.py"
     spec = importlib.util.spec_from_file_location("asset_inventory_v0_1", tool)
     module = importlib.util.module_from_spec(spec)
     assert spec.loader is not None
@@ -42,5 +42,6 @@ def test_asset_inventory_classifies_without_moving():
         assert by_path["docs/runbooks/FINAL_CONNECTOR_PROOF.md"]["status_by_class"]["proofs"] == "BURIED_CANDIDATE"
         assert by_path["projects/alpha/network_auditor.py"]["status_by_class"]["instruments"] == "BURIED_CANDIDATE"
         assert by_path["whitepapers/architecture_whitepaper.md"]["status_by_class"]["whitepapers"] == "CANONICAL"
+        assert report["classification_requires_review"] is True
         assert report["moves_performed"] is False
         assert report["authority_created"] is False
