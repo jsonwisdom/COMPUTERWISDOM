@@ -51,13 +51,14 @@ jobs:
         run: |
           python -m pytest -q \
             tests/test_asset_inventory_v0_1.py \
+            tests/test_asset_inventory_v0_2.py \
             tests/test_crisscross_auditor_v0_1.py \
             tests/test_asset_migration_plan_v0_1.py
 
       - name: Build transparent audit outputs
         run: |
           mkdir -p audit-output
-          python executables/asset_inventory_v0_1.py --root . > audit-output/asset-inventory.json
+          python executables/asset_inventory_v0_2.py --root . > audit-output/asset-inventory.json
           python executables/asset_migration_plan_v0_1.py audit-output/asset-inventory.json --repo-root . > audit-output/asset-migration-plan.json
 
       - name: Assert fail-closed boundaries
@@ -67,6 +68,7 @@ jobs:
           from pathlib import Path
           inventory = json.loads(Path('audit-output/asset-inventory.json').read_text())
           plan = json.loads(Path('audit-output/asset-migration-plan.json').read_text())
+          assert inventory['schema'] == 'computerwisdom.asset_inventory.v0.2'
           assert inventory['classification_requires_review'] is True
           assert inventory['moves_performed'] is False
           assert inventory['authority_created'] is False
