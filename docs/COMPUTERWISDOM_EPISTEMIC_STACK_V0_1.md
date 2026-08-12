@@ -295,6 +295,43 @@ The next real proof boundary is not another concept. It is evidence-driven imple
 4. Validate admissions transitions.
 5. Only then consider runtime replay testing.
 
+## 13. Validator Requirements: Anti Observation-to-Capability Laundering
+
+Validators MUST enforce the following invariants:
+
+- **Observation != Capability**
+  No validator MAY treat an observation, interface failure, or connector state as evidence of capability, permission, role, or identity.
+
+- **Source-Bound Classification**
+  Every classification MUST include a `CLAIM_SOURCE` and stable evidence reference in a replayable receipt.
+
+- **Provisional-by-Default**
+  A classification remains `PROVISIONAL` until its source and evidence satisfy the applicable validator rules.
+
+- **Contradiction Priority**
+  A material contradiction MUST trigger replay through all applicable validators and emit a reclassification receipt.
+
+- **Append-Only Reclassification**
+  Reclassification MUST preserve the prior label and mark it superseded. Validators MUST NOT silently erase or mutate earlier evidence.
+
+- **Replay Determinism**
+  Identical evidence and validator versions MUST produce identical classification outputs. No validator MAY mutate evidence or create authority.
+
+- **Capability Isolation**
+  Validators MAY NOT infer capabilities from connector metadata, wallet activity, observation frequency, or a temporary interface failure.
+
+- **Appeal-Ready State**
+  Validators MUST emit structured receipts answering the six-question human appeal path defined in `CHARTER.md`.
+
+```json
+{
+  "validator_mode": "ANTI_OBSERVATION_TO_CAPABILITY_LAUNDERING",
+  "contradiction_reclassification": "REQUIRED",
+  "prior_labels": "APPEND_ONLY_SUPERSEDED",
+  "authority": false
+}
+```
+
 ## Final Lock Phrase
 
 **Data may move fast. Authority may not.**
