@@ -1,0 +1,60 @@
+{
+  "object_id": "rubric:jason:center-always:v1",
+  "object_type": "PUBLIC_STORY_RUBRIC",
+  "version": "1.0.0",
+  "name": "JASON_RUBRIC_CENTER_ALWAYS",
+  "invariant": "NO_RUBRIC_ESCAPES_ITS_OWN_AUDIT",
+  "center": {
+    "subject": {
+      "required": true
+    },
+    "conflict": {
+      "required": true
+    },
+    "message": {
+      "required": true,
+      "max_main_messages": 1
+    },
+    "receipt": {
+      "required": true
+    },
+    "supporting_ideas": {
+      "maximum": 3
+    }
+  },
+  "execution_order": [
+    "CENTER",
+    "PUNCH",
+    "MESSAGE",
+    "FRAME",
+    "LOCK",
+    "REMOVE"
+  ],
+  "rejection_rules": [
+    "DECORATION_WITHOUT_ROLE",
+    "MESSAGE_WITHOUT_CONFLICT",
+    "CLAIM_WITHOUT_RECEIPT",
+    "PUBLICATION_WITHOUT_PROTECTION_AUDIT",
+    "RUBRIC_WITHOUT_SELF_AUDIT"
+  ],
+  "receipt_fields": [
+    "hash",
+    "chain_of_custody",
+    "source_file",
+    "artifact_number",
+    "verification_state",
+    "contradiction_marker",
+    "approval_status"
+  ],
+  "public_protection": [
+    "NO_SECRETS",
+    "NO_PRIVATE_DATA",
+    "NO_LIVE_SYSTEM_ACCESS",
+    "NO_ATTACK_ENABLING_DETAILS",
+    "VISIBLE_SAFETY_BOUNDARY",
+    "REPORT_PATH",
+    "UNCERTAINTY_EXPLICIT",
+    "HUMAN_REVIEW_BEFORE_PUBLIC_PROMOTION"
+  ],
+  "authority_created": false
+}
