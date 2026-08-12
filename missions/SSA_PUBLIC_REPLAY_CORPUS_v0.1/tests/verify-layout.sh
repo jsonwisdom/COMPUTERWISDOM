@@ -11,6 +11,7 @@ required=(
   "tests/route-http-observation.sh"
   "tests/verify-layout.sh"
   "tests/verify-router-matrix.sh"
+  "tests/verify-reverse-audit.sh"
 )
 
 for path in "${required[@]}"; do
@@ -52,3 +53,4 @@ sha256sum "${required[@]}"
 echo "FILE_SHA256_END"
 
 tests/verify-router-matrix.sh
+tests/verify-reverse-audit.sh

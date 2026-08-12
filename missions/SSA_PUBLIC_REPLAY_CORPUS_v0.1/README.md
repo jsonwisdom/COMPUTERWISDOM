@@ -2,6 +2,7 @@
 
 Status: `PROPOSAL_SCAFFOLD`  
 Synthetic router gate: `v0.2`  
+Reverse audit: `CRISSCROSS_APPLESAUCE_v0.1`  
 Live fetch: `PROHIBITED_UNTIL_SYNTHETIC_MATRIX_PASS`  
 Authority created: `FALSE`
 
@@ -38,7 +39,8 @@ SSA_PUBLIC_REPLAY_CORPUS_v0.1/
 └── tests/
     ├── route-http-observation.sh
     ├── verify-layout.sh
-    └── verify-router-matrix.sh
+    ├── verify-router-matrix.sh
+    └── verify-reverse-audit.sh
 ```
 
 The production runtime evidence paths are intentionally absent. Router tests create synthetic artifacts only below a temporary directory and remove that directory on exit.
@@ -57,6 +59,21 @@ The production runtime evidence paths are intentionally absent. Router tests cre
 
 Every case asserts that no manifest is created. Every non-admission case asserts that no corpus object is created.
 
+## CrissCross AppleSauce reverse audit
+
+`verify-reverse-audit.sh` runs synthetic `403` and `404` observations over identical body bytes, then audits the resulting custody tree backward instead of trusting the forward labels.
+
+The current receipt schema preserves the `HTTP_FAILURE` class and content-addressed failure body, but it does not preserve the upstream HTTP status. Therefore a reverse audit can prove **failure class**, but cannot prove **403 versus 404** from current stored evidence alone. Human-selected case IDs are labels, not evidence.
+
+```text
+FAILURE_CLASS_RECOVERABLE=TRUE
+HTTP_STATUS_403_VS_404_RECOVERABLE=FALSE
+CRISSCROSS_APPLESAUCE=HOLD_EXACT_STATUS_IDENTITY
+MACOS_OBSERVATION_CREATED=FALSE
+```
+
+No macOS observation is synthesized by this test. Cross-platform equivalence remains unproven until independently observed bytes and transport metadata exist.
+
 ## Local Docker replay
 
 From the `COMPUTERWISDOM` repository root:
@@ -66,7 +83,7 @@ docker build --tag ssa-public-replay-scaffold:v0.2 missions/SSA_PUBLIC_REPLAY_CO
 docker run --rm ssa-public-replay-scaffold:v0.2
 ```
 
-The Dockerfile pins the exact Ubuntu image digest observed during the Windows/Docker/WSL2 verification session. The container runs the scaffold validator and the synthetic router matrix. It does not fetch SSA bytes.
+The Dockerfile pins the exact Ubuntu image digest observed during the Windows/Docker/WSL2 verification session. The container runs the scaffold validator, synthetic router matrix, and reverse audit. It does not fetch SSA bytes.
 
 ## Promotion gates
 
@@ -76,7 +93,8 @@ The live-fetch gate remains on HOLD until:
 2. Docker build completes from the pinned base digest.
 3. Container reports `SSA_SCAFFOLD_LAYOUT=PASS`.
 4. Container reports `SSA_SYNTHETIC_ROUTER_MATRIX=PASS`.
-5. Operator independently confirms the container made no live SSA request.
+5. Container reports `SSA_REVERSE_AUDIT=PASS` while exact-status identity remains explicitly held.
+6. Operator independently confirms the container made no live SSA request.
 
 After that gate, any future live observation must still classify bytes before a manifest can exist.
 
