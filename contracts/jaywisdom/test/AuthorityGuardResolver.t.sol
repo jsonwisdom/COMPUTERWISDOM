@@ -58,6 +58,7 @@ contract AuthorityGuardResolverTest {
     address private constant IDENTITY_ATTESTER = address(0xA11CE);
     address private constant WRONG_ATTESTER = address(0xBAD);
     address private constant SUBJECT = address(0xCAFE);
+    address private constant OTHER_SUBJECT = address(0xB0B);
 
     MockEAS private eas;
     AuthorityGuardResolver private resolver;
@@ -168,6 +169,20 @@ contract AuthorityGuardResolverTest {
     function testG5WrongAttesterRejected() public {
         Attestation memory identity = _validIdentity(PARENT_UID);
         identity.attester = WRONG_ATTESTER;
+        eas.setAttestation(identity);
+
+        _expectRejected(_validResume(PARENT_UID));
+    }
+
+    function testG5ZeroResumeRecipientRejected() public {
+        Attestation memory resume = _validResume(PARENT_UID);
+        resume.recipient = address(0);
+        _expectRejected(resume);
+    }
+
+    function testG5IdentityRecipientMismatchRejected() public {
+        Attestation memory identity = _validIdentity(PARENT_UID);
+        identity.recipient = OTHER_SUBJECT;
         eas.setAttestation(identity);
 
         _expectRejected(_validResume(PARENT_UID));
