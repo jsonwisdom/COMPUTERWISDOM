@@ -4,7 +4,7 @@ pragma solidity ^0.8.24;
 import {DeployIdentityResolverBaseSepolia} from "../script/DeployIdentityResolverBaseSepolia.s.sol";
 
 interface VmDeployScriptTest {
-    function expectRevert(bytes4) external;
+    function expectRevert(bytes calldata) external;
 }
 
 contract DeployIdentityResolverBaseSepoliaTest {
@@ -32,7 +32,12 @@ contract DeployIdentityResolverBaseSepoliaTest {
     function testRunFailsClosedOnWrongChain() public {
         if (block.chainid == 84532) return;
 
-        vm.expectRevert(DeployIdentityResolverBaseSepolia.WrongChain.selector);
+        vm.expectRevert(
+            abi.encodeWithSelector(
+                DeployIdentityResolverBaseSepolia.WrongChain.selector,
+                block.chainid
+            )
+        );
         deployment.run();
     }
 }
