@@ -59,9 +59,10 @@ A mission such as `missions/SSA_PUBLIC_REPLAY_CORPUS_v0.1/` may test CrissCross 
 
 ## Discovery
 
-`tools/asset_inventory_v0_1.py` performs a read-only heuristic inventory and marks canonical and buried candidates. Its classifications are candidate labels requiring review; it performs no moves and creates no authority.
+`executables/asset_inventory_v0_1.py` performs a read-only heuristic inventory and marks canonical and buried candidates. Its classifications are candidate labels requiring semantic review; it performs no moves and creates no authority.
 
 ```text
+CLASSIFICATION_REQUIRES_REVIEW=true
 MOVES_PERFORMED=false
 AUTHORITY_CREATED=false
 ```
