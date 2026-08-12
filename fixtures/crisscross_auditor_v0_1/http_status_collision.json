@@ -1,0 +1,24 @@
+{
+  "claim_field": "http_status",
+  "evidence_fields": [
+    "decision",
+    "route_path",
+    "body_sha256"
+  ],
+  "cases": [
+    {
+      "case_id": "alpha",
+      "http_status": 403,
+      "decision": "HTTP_FAILURE",
+      "route_path": "receipts/failures/body/SHARED",
+      "body_sha256": "SHARED"
+    },
+    {
+      "case_id": "beta",
+      "http_status": 404,
+      "decision": "HTTP_FAILURE",
+      "route_path": "receipts/failures/body/SHARED",
+      "body_sha256": "SHARED"
+    }
+  ]
+}
