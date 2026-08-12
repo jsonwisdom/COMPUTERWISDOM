@@ -1,0 +1,169 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "computerwisdom://internal-rules-schism/rule_schema_v1",
+  "title": "COMPUTERWISDOM Internal Rules Schism Rule Schema v1",
+  "type": "object",
+  "required": [
+    "poc_id",
+    "rule_id",
+    "version_id",
+    "state",
+    "source_attestation",
+    "dates",
+    "scope",
+    "unknown_scope_factors",
+    "authority_scope",
+    "court_binding",
+    "congress_binding",
+    "authority_created",
+    "parent_version",
+    "parent_version_verified",
+    "supersedes",
+    "delta",
+    "precedent_match",
+    "queries",
+    "ci_certificate",
+    "epistemic_status"
+  ],
+  "properties": {
+    "poc_id": {"type": "string"},
+    "rule_id": {"type": "string"},
+    "version_id": {"type": "string"},
+    "state": {"type": "string", "enum": ["PRIMARY_SOURCE_PENDING", "VERIFIED", "HOLD"]},
+    "source_attestation": {
+      "type": "object",
+      "required": [
+        "publisher",
+        "canonical_url",
+        "retrieved_at",
+        "media_type",
+        "byte_length",
+        "sha256",
+        "redirect_chain",
+        "etag",
+        "last_modified",
+        "retrieval_method",
+        "primary_source_verified",
+        "notes"
+      ],
+      "properties": {
+        "publisher": {"type": "string"},
+        "canonical_url": {"type": ["string", "null"]},
+        "retrieved_at": {"type": ["string", "null"]},
+        "media_type": {"type": ["string", "null"]},
+        "byte_length": {"type": ["integer", "null"], "minimum": 0},
+        "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "redirect_chain": {"type": "array", "items": {"type": "string"}},
+        "etag": {"type": ["string", "null"]},
+        "last_modified": {"type": ["string", "null"]},
+        "retrieval_method": {"type": ["string", "null"]},
+        "primary_source_verified": {"type": "boolean"},
+        "notes": {"type": "string"}
+      }
+    },
+    "dates": {
+      "type": "object",
+      "required": ["issued_at", "effective_from", "applicability_start"],
+      "properties": {
+        "issued_at": {"type": ["string", "null"], "format": "date"},
+        "effective_from": {"type": ["string", "null"], "format": "date"},
+        "applicability_start": {"type": ["string", "null"], "format": "date"}
+      }
+    },
+    "scope": {"type": "object"},
+    "unknown_scope_factors": {"type": "object"},
+    "authority_scope": {"type": "string"},
+    "court_binding": {"type": "boolean"},
+    "congress_binding": {"type": "boolean"},
+    "authority_created": {"const": false},
+    "parent_version": {"type": "string"},
+    "parent_version_verified": {"type": "boolean"},
+    "supersedes": {"type": "array"},
+    "delta": {
+      "type": "object",
+      "required": [
+        "delta_id",
+        "status",
+        "operation",
+        "subject",
+        "dimension",
+        "before",
+        "after",
+        "conditions_added",
+        "conditions_removed",
+        "source_span",
+        "confidence"
+      ],
+      "properties": {
+        "status": {"type": "string", "enum": ["CANDIDATE_UNVERIFIED", "VERIFIED"]},
+        "operation": {
+          "type": "string",
+          "enum": [
+            "ADD_SCOPE",
+            "REMOVE_SCOPE",
+            "EXPAND_SCOPE",
+            "NARROW_SCOPE",
+            "ADD_CONDITION",
+            "REMOVE_CONDITION",
+            "CHANGE_AUTHORITY_CLAIM",
+            "CHANGE_APPLICABILITY",
+            "CHANGE_REMEDY",
+            "SUPERSEDE",
+            "REINTERPRET"
+          ]
+        },
+        "after": {"type": "string"},
+        "conditions_added": {"type": "array", "items": {"type": "string"}},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+      }
+    },
+    "precedent_match": {"type": "object"},
+    "queries": {"type": "object"},
+    "ci_certificate": {
+      "type": "object",
+      "required": [
+        "primary_object",
+        "source_bytes",
+        "source_sha256",
+        "version_parent",
+        "issued_at",
+        "applicability_start",
+        "machine_delta",
+        "scope_expansion",
+        "precedent_graph",
+        "tension",
+        "automatic_reliance",
+        "recommended_action",
+        "final_state",
+        "epistemic_gate"
+      ],
+      "properties": {
+        "automatic_reliance": {"const": "HOLD"},
+        "recommended_action": {
+          "type": "string",
+          "enum": [
+            "FETCH_PRIMARY_SOURCE",
+            "VERIFY_SOURCE_BYTES",
+            "PRESERVE_PRIOR_VERSION",
+            "REQUEST_LEGAL_REVIEW",
+            "REQUEST_PRECEDENT_REVIEW",
+            "HOLD_AUTOMATIC_RELIANCE",
+            "ESCALATE_SCOPE_CONFLICT",
+            "NO_ACTION"
+          ]
+        },
+        "final_state": {"type": "string", "enum": ["HOLD_PRIMARY_BYTES", "FETCH_PRIMARY_SOURCE", "VERIFIED"]}
+      }
+    },
+    "epistemic_status": {
+      "type": "object",
+      "required": ["primary_source", "dates", "scope", "delta", "precedent_match"],
+      "properties": {
+        "primary_source": {"type": "string", "enum": ["MISSING", "VERIFIED"]},
+        "scope": {"type": "string"},
+        "delta": {"type": "string"},
+        "precedent_match": {"type": "string"}
+      }
+    }
+  }
+}

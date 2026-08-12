@@ -1,0 +1,137 @@
+{
+  "poc_id": "INTERNAL_RULES_SCHISM_POC_0001",
+  "rule_id": "EXEC_PRIV_PRES_COMM",
+  "version_id": "2026-08-10-private-advisers",
+  "state": "PRIMARY_SOURCE_PENDING",
+  "source_attestation": {
+    "publisher": "U.S. Department of Justice / Office of Legal Counsel",
+    "canonical_url": null,
+    "retrieved_at": null,
+    "media_type": null,
+    "byte_length": null,
+    "sha256": null,
+    "redirect_chain": [],
+    "etag": null,
+    "last_modified": null,
+    "retrieval_method": null,
+    "primary_source_verified": false,
+    "notes": "Secondary reporting from Axios on 2026-08-11 describes the OLC opinion. The official DOJ OLC opinions index currently lists July 16, 2026 as its latest indexed opinion; primary opinion bytes for this object have not yet been located."
+  },
+  "dates": {
+    "issued_at": "2026-08-10",
+    "effective_from": null,
+    "applicability_start": null
+  },
+  "scope": {
+    "official_presidential_decisionmaking": true,
+    "government_advisers": true,
+    "private_advisers": true,
+    "conditions": [
+      "communication involves or reflects presidential decision-making",
+      "communication maintained as confidential"
+    ]
+  },
+  "unknown_scope_factors": {
+    "formal_role_condition": "UNKNOWN",
+    "compensation_condition": "UNKNOWN",
+    "employment_condition": "UNKNOWN",
+    "branch_affiliation_condition": "UNKNOWN"
+  },
+  "authority_scope": "EXECUTIVE_BRANCH_INTERNAL",
+  "court_binding": false,
+  "congress_binding": false,
+  "authority_created": false,
+  "parent_version": "PREVIOUS_DOJ_POSITION",
+  "supersedes": [],
+  "delta": {
+    "delta_id": "D-001",
+    "operation": "EXPAND_SCOPE",
+    "subject": "presidential_communications_privilege",
+    "dimension": "eligible_adviser",
+    "before": "government employees and immediate White House staff",
+    "after": "qualifying private advisers outside government",
+    "conditions_added": [
+      "tied to official presidential decisionmaking",
+      "involves or reflects presidential communication",
+      "requires confidentiality"
+    ],
+    "conditions_removed": [],
+    "source_span": null,
+    "confidence": 0.92,
+    "status": "CANDIDATE_UNVERIFIED"
+  },
+  "precedent_match": {
+    "status": "PARTIAL",
+    "matches": [
+      {
+        "case_id": "U.S. v. Nixon (1974)",
+        "court": "SCOTUS",
+        "holding_match": 0.45,
+        "fact_match": 0.3,
+        "scope_match": 0.4,
+        "tension": "MODERATE",
+        "confidence": 0.85,
+        "binding_level": "BINDING",
+        "note": "Presidential privilege recognized, but strictly limited to official duties; private advisers not addressed."
+      },
+      {
+        "case_id": "Cheney v. U.S. Dist. Court (2004)",
+        "court": "SCOTUS",
+        "holding_match": 0.6,
+        "fact_match": 0.5,
+        "scope_match": 0.55,
+        "tension": "MODERATE",
+        "confidence": 0.78,
+        "binding_level": "BINDING",
+        "note": "VP privilege recognized; acknowledges confidentiality interests but rejects blanket shields."
+      }
+    ],
+    "overall_tension": "MODERATE_HIGH",
+    "automated_verdict": "UNRESOLVED",
+    "assessment_type": "HEURISTIC_NON_AUTHORITATIVE"
+  },
+  "queries": {
+    "forward_trace": {
+      "status": "PASS",
+      "affected_objects": [
+        "subpoena_response",
+        "litigation_hold_memo",
+        "witness_instruction",
+        "congressional_oversight_letter",
+        "FOIA_exemption_claim"
+      ]
+    },
+    "backward_trace": {
+      "status": "PASS",
+      "chain": "COMMUNICATION_WITHHELD → RULE_2026-08-10 → DOJ_OLC → EXECUTIVE_AUTHORITY → DELTA_FOUND"
+    }
+  },
+  "ci_certificate": {
+    "primary_object": "HOLD",
+    "source_bytes": "PENDING",
+    "source_sha256": "PENDING",
+    "version_parent": "PASS",
+    "issued_at": "REPORTED_DATE_FORMAT_PASS",
+    "applicability_start": "UNKNOWN",
+    "machine_delta": "PASS",
+    "scope_expansion": "CANDIDATE_DETECTED",
+    "precedent_graph": "PARTIAL",
+    "tension": "UNRESOLVED",
+    "automatic_reliance": "HOLD",
+    "recommended_action": "FETCH_PRIMARY_SOURCE",
+    "final_state": "HOLD_PRIMARY_BYTES",
+    "epistemic_gate": "HOLD_PRIMARY_SOURCE"
+  },
+  "epistemic_status": {
+    "primary_source": "MISSING",
+    "dates": {
+      "issued_at": "SECONDARY_REPORTED",
+      "effective_from": "UNKNOWN",
+      "applicability_start": "UNKNOWN"
+    },
+    "scope": "SECONDARY_REPORTED",
+    "delta": "CANDIDATE_INFERRED_FROM_SECONDARY_REPORTING",
+    "precedent_match": "HEURISTIC_NON_AUTHORITATIVE"
+  },
+  "parent_version_verified": false
+}

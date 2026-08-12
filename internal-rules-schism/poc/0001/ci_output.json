@@ -1,0 +1,16 @@
+{
+  "authority_created": false,
+  "checks": {
+    "ci_cascade": "PASS",
+    "date_logic": "PASS",
+    "delta_coherence": "PASS",
+    "hash_invariant": "PASS",
+    "schema_validation": "PASS"
+  },
+  "integrity_gate": "PASS",
+  "poc_id": "INTERNAL_RULES_SCHISM_POC_0001",
+  "primary_source_verified": false,
+  "rule_verification": "HOLD_PRIMARY_BYTES",
+  "specimen_sha256": "8ad9ee119fa3e8902bd40daba095906477be4542fa95f0507516d6ac77c0bdbd",
+  "validator": "computerwisdom.internal_rules_schism.poc_validator.v0.1"
+}
