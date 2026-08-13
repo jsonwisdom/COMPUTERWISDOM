@@ -9,7 +9,7 @@ AUTHORITY_CREATED     = FALSE
 NO_FAKE_GREEN         = TRUE
 ```
 
-This directory is the human-readable documentation root for the public `jaywisdom.base.eth` resume and reputation architecture.
+This directory is the human-readable documentation root for the public `jaywisdom.base.eth` resume, reputation, witness, and institutional-scaling architecture.
 
 The existing resume artifact remains at:
 
@@ -26,25 +26,30 @@ This documentation does **not** modify those bytes, does not create a new resume
 ```text
 docs/jaywisdom.base.eth/
 ├── README.md
-├── reputation/
+├── wisdom-prime-logic/
 │   ├── README.md
-│   └── mrs-wisdom/
-│       └── README.md
-└── institutions/
+│   ├── tree/
+│   ├── mrs-wisdom/
+│   ├── institution-adapters/
+│   └── replay/
+└── reputation/
     └── README.md
 ```
 
 ## The blend
 
 ```text
+WISDOM PRIME LOGIC
+    = scaling grammar
+
 MR. WISDOM RESUME
     = the claim object
 
 MRS. WISDOM
-    = the reputational membrane
+    = the reputational / witness membrane
 
 INSTITUTIONS
-    = scoped evidence / verification / witness nodes
+    = scoped evidence / verification / decision nodes
 
 ENS
     = discovery
@@ -64,6 +69,10 @@ Keep claims explicit, bounded, and typed. A claim may be user-attested, document
 ### Around the resume
 
 Allow institutions and people to contribute bounded reputation edges without rewriting the resume core or silently upgrading a claim.
+
+### Above the branches
+
+WisdomPrimeLogic defines how the system scales. Branches may inherit schemas, vocabulary, constraints, and replay procedures. They do not automatically inherit broader authority.
 
 ## Constitutional invariant
 
@@ -92,6 +101,7 @@ ENS_AUTHORITY      = FALSE
 Scale by adding independent, scoped institutional edges around claims rather than by increasing one global score.
 
 ```text
+ONE LOGIC ROOT
 ONE RESUME
 MANY CLAIMS
 MANY SOURCES
