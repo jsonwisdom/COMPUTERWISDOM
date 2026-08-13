@@ -56,12 +56,54 @@ Initial claim states:
 
 The fixture in `fixtures/publicproof/MN_2026_ROUND_001.json` carries the replayable claim/evidence state. `publicproof.py` computes evidence totals and rejects party-based scoring fields.
 
+## MinnesotaMathMatrix — quadratic verification priority
+
+`quadratic_priority.py` adds a separate public-attention mechanism inspired by quadratic voting. It **does not conduct an election and does not vote on truth, guilt, candidate preference, party preference, or official outcomes**.
+
+Each participant receives a fixed budget of 100 proof-credits. If a participant allocates `q_j` verification-priority votes to claim `j`, the cost is:
+
+```text
+cost_j = q_j^2
+ballot_cost = sum(q_j^2)
+ballot_cost <= 100
+```
+
+Examples:
+
+| Priority votes on one claim | Credit cost |
+|---:|---:|
+| 1 | 1 |
+| 2 | 4 |
+| 3 | 9 |
+| 5 | 25 |
+| 8 | 64 |
+| 10 | 100 |
+
+The purpose is narrow: **which unresolved claim should receive verification effort next?** A quadratic tally is an attention signal only. It cannot change `VERIFIED`, `FALSE`, `HOLD`, `VIDEO_NEEDED`, `NOT_PROVEN`, or `NOT_ESTABLISHED`; only replayable evidence may change those states.
+
+The initial matrix is `fixtures/publicproof/MN_2026_PRIORITY_MATRIX_001.json`. It begins with zero ballots so the repository never fabricates a public preference signal.
+
+### Public-post receipt shape
+
+```json
+{
+  "participant_id": "PUBLIC_HASH_OR_PSEUDONYM",
+  "allocations": {
+    "IMPERSONATION_OCCURRED": 5,
+    "ILLEGAL_BALLOT_CAST": 3
+  }
+}
+```
+
+That sample costs `5^2 + 3^2 = 34` credits. Participant identity and Sybil resistance are separate governance problems; account count must never be treated automatically as unique-human count.
+
 ## Primary sources
 
 - Minnesota Secretary of State — 2026 U.S. Senate primary results: https://electionresults.sos.mn.gov/Results/Index?ErsElectionId=200&electionDate=08%2F11%2F2026+00%3A00%3A00&officeInElectionIdList=-1&officeInElectionIdList=38485&scenario=USSenate
 - Minnesota Secretary of State — current/active voters do not need ID at sign-in: https://www.sos.mn.gov/elections-voting/election-day-voting/do-i-need-to-bring-id/
 - Minnesota Secretary of State — Election Day registration/vouching: https://www.sos.mn.gov/elections-voting/register-to-vote/register-on-election-day/
 - Minnesota Statutes §201.061 subd. 3 — registered precinct voter may vouch for residence for up to eight voters: https://www.revisor.mn.gov/statutes/?id=201.061
+- Lalley & Weyl, “Quadratic Voting: How Mechanism Design Can Radicalize Democracy,” AEA Papers and Proceedings 108 (2018), pp. 33–37: https://doi.org/10.1257/pandp.20181002
 
 ## Guardrails
 
@@ -70,3 +112,5 @@ The fixture in `fixtures/publicproof/MN_2026_ROUND_001.json` carries the replaya
 3. `VIDEO_NEEDED` means the claimed event is not scored as established until the original evidence can be replayed.
 4. `NOT_PROVEN` and `NOT_ESTABLISHED` must never be rendered as guilt.
 5. Any candidate, campaign, election official, journalist, activist, or citizen is evaluated by the same evidence weights.
+6. Quadratic priority selects **verification attention**, not candidate support or a factual verdict.
+7. Public-post tallies create no governmental, electoral, legal, or evidentiary authority.
