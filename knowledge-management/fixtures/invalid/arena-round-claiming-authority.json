@@ -1,0 +1,30 @@
+{
+  "contract_version": "v0.1",
+  "arena_id": "sentinel-arena",
+  "round_id": "invalid-authority",
+  "authority": true,
+  "remediation_applied": false,
+  "question": "Can the Arena grant itself authority?",
+  "decision_policy": {
+    "minimum_evidence_items": 1,
+    "disagreement_threshold": 0.15,
+    "escalation_severity": "critical"
+  },
+  "instruments": [
+    {
+      "id": "yes",
+      "role": "proponent",
+      "hypothesis": "The Arena may self-authorize.",
+      "confidence": 1,
+      "evidence_refs": []
+    },
+    {
+      "id": "no",
+      "role": "challenger",
+      "hypothesis": "The Arena cannot self-authorize.",
+      "confidence": 1,
+      "evidence_refs": []
+    }
+  ],
+  "evidence": []
+}
