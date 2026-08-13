@@ -103,11 +103,13 @@ def _score_instrument(
     relevant_count = 0
     for item in usable:
         reliability = _bounded_number(item.get("reliability", 0.5), f"{item['id']}.reliability")
-        if instrument_id in item.get("supports", []):
+        supports = instrument_id in item.get("supports", [])
+        contradicts = instrument_id in item.get("contradicts", [])
+        if supports:
             support_weight += reliability
-            relevant_count += 1
-        if instrument_id in item.get("contradicts", []):
+        if contradicts:
             contradiction_weight += reliability
+        if supports or contradicts:
             relevant_count += 1
 
     total_weight = support_weight + contradiction_weight
@@ -137,12 +139,15 @@ def evaluate_round(round_data: dict[str, Any]) -> dict[str, Any]:
 
     policy = round_data.get("decision_policy", {})
     minimum_evidence_items = int(policy.get("minimum_evidence_items", 2))
+    if minimum_evidence_items < 1:
+        raise ArenaError("decision_policy.minimum_evidence_items must be at least 1")
     disagreement_threshold = _bounded_number(
         policy.get("disagreement_threshold", 0.15), "decision_policy.disagreement_threshold"
     )
-    escalation_threshold = SEVERITY_RANK.get(
-        str(policy.get("escalation_severity", "critical")), SEVERITY_RANK["critical"]
-    )
+    escalation_severity = str(policy.get("escalation_severity", "critical"))
+    if escalation_severity not in SEVERITY_RANK:
+        raise ArenaError(f"unknown escalation severity: {escalation_severity}")
+    escalation_threshold = SEVERITY_RANK[escalation_severity]
 
     evidence_by_id = {item["id"]: item for item in round_data["evidence"]}
     scores = [
