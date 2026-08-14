@@ -12,6 +12,24 @@ Official source:
 - https://help.coinbase.com/en/dapps/getting-started/comparing-coinbase-wallets
 - https://help.coinbase.com/en/wallet/getting-started/what-is-coinbase-wallet
 
+## COMPUTERWISDOM identity must remain explicit
+
+GitHub is only the host/transport for this public page. Ziggy's repository/system identity is:
+
+`jsonwisdom/COMPUTERWISDOM`
+
+That exact repository string is part of the signing boundary and must remain visible in receipts and replay.
+
+User-supplied signer claim:
+
+`0x73ad550dcb47d254a5b3c335ae39d8999c42ff12`
+
+Current state:
+
+`USER_SUPPLIED_UNVERIFIED`
+
+Do not treat that address as verified ownership until the connected wallet actually signs the Ziggy release message from the same address. A mismatch must remain a mismatch; it must not be silently substituted.
+
 ## Current Base app route on iPhone
 
 Coinbase's current Base help says to connect to an app through the **Base app explorer**:
@@ -23,6 +41,7 @@ Coinbase's current Base help says to connect to an app through the **Base app ex
 4. Load the page.
 5. Tap **1 — CONNECT WALLET**.
 6. Continue only if the page reports a wallet provider and the wallet/account shown is the one the human intends to use.
+7. Before signing, compare the connected wallet address with the user-supplied claim above. If it differs, stop and preserve the gap.
 
 Official source:
 - https://help.coinbase.com/en-gb/wallet/other-topics/mobile-app-sign-in-discontinued
@@ -50,6 +69,6 @@ Therefore:
 
 `PUBLISHED ≠ PRESERVED ≠ SIGNED ≠ ATTESTED`
 
-A wallet connection is not a signature. A signature is not a transaction. A transaction is not an attestation until independently verified.
+A wallet connection is not a signature. A supplied address is not proof of wallet control. A signature is not a transaction. A transaction is not an attestation until independently verified.
 
 `authority_created=false`
