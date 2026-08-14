@@ -3,9 +3,9 @@
   "authority_created": false,
   "commit_binding": "ROOT_IS_COMMITTED_BY_THE_GIT_COMMIT_CONTAINING_THIS_FILE",
   "eas_attestation": "NOT_CREATED",
-  "leaf_count": 43,
+  "leaf_count": 44,
   "manifest": "story-mode.manifest.v3.json",
-  "merkle_root": "cf3ea1132ed80be19d62d5d797debc93f056067f9cfa57c9db02da1bbcec67a7",
+  "merkle_root": "d95ccafb7423fb51002ba9ef57e585ad46bc227e973328fdb5520a96fd308f80",
   "object_id": "merkle:jsonwisdom-story-mode:v1",
   "object_type": "PUBLIC_MERKLE_ROOT",
   "version": "1.0.0"

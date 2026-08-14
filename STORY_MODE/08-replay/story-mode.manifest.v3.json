@@ -88,6 +88,11 @@
       "sha256": "ee3bacdab2660c08e52f21e0d0c992df887cdd16174ff78b18f8c69660d0428c"
     },
     {
+      "bytes": 2751,
+      "path": "07-receipts/replay-rebellion-blueprint-receipt-invalid.v1.json",
+      "sha256": "58523dd2edaf28506df4c1377d74db780f988d617bb4d6d650eaf5dc86cfa6ca"
+    },
+    {
       "bytes": 809,
       "path": "07-receipts/toolchain-audit.v2.json",
       "sha256": "3e5a0c06a3ccef7c20fb30212a5ecc77618ee81132f092d83f31e1a862612060"
