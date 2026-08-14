@@ -1,0 +1,105 @@
+{
+  "format": "ZIGGY_IDENTITY_THRESHOLDS_V0.1",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "default_authority_created": false,
+  "ladder": [
+    "ACTIVITY",
+    "PROTOCOL_ROLE",
+    "CONTROL",
+    "IDENTITY_BINDING",
+    "AUTHORITY"
+  ],
+  "independent_evidence_class": "THIRD_PARTY_ATTESTATION",
+  "thresholds": {
+    "ACTIVITY": {
+      "crossing_evidence": [
+        "observable on-chain transaction involving address",
+        "observable transfer/log/call/state change involving address"
+      ],
+      "does_not_prove": [
+        "protocol role",
+        "ownership",
+        "control",
+        "identity",
+        "authority"
+      ]
+    },
+    "PROTOCOL_ROLE": {
+      "uniswap_examples": [
+        "Swap event attributable to address",
+        "Universal Router interaction attributable to address",
+        "PoolManager interaction attributable to address",
+        "liquidity position minted or protocol state assigned to address"
+      ],
+      "insufficient_evidence": [
+        "token receipt",
+        "token transfer",
+        "convenience label"
+      ]
+    },
+    "CONTROL": {
+      "crossing_evidence": [
+        "valid personal_sign signature recoverable to exact address",
+        "valid EIP-712 signature recoverable to exact address",
+        "valid ERC-1271 signature when subject address is a contract wallet"
+      ],
+      "insufficient_evidence": [
+        "third-party attestation about address",
+        "token ownership",
+        "token transfer",
+        "screenshot",
+        "social statement"
+      ]
+    },
+    "IDENTITY_BINDING": {
+      "crossing_evidence": [
+        "verified signature from controlled address that explicitly binds the address to the named identity",
+        "mutually supported cryptographic binding between controlled address and named identity"
+      ],
+      "supporting_but_not_control_evidence": [
+        "third-party attestation from independently verified or trusted attester"
+      ],
+      "insufficient_evidence": [
+        "human label",
+        "token activity",
+        "screenshot",
+        "unverified social claim"
+      ]
+    },
+    "THIRD_PARTY_ATTESTATION": {
+      "meaning": "an attester makes a claim about an address or identity relationship",
+      "hard_boundary": "ATTESTATION ABOUT ADDRESS != SIGNATURE BY ADDRESS",
+      "does_not_prove": [
+        "subject private-key control",
+        "authority"
+      ]
+    },
+    "AUTHORITY": {
+      "crossing_evidence": [
+        "explicit human authority grant within a defined scope",
+        "explicit sealed-protocol authority command within a defined scope"
+      ],
+      "insufficient_evidence": [
+        "activity",
+        "protocol role",
+        "protocol ownership",
+        "address control",
+        "identity binding",
+        "third-party attestation",
+        "Merkle root"
+      ],
+      "default": "NOT_CREATED"
+    }
+  },
+  "non_collapse_rules": [
+    "OBSERVED_EDGE != OWNERSHIP",
+    "PROTOCOL_OWNERSHIP != PRIVATE_KEY_CONTROL",
+    "OWNERSHIP != CONTROL",
+    "CONTROL != IDENTITY",
+    "IDENTITY != AUTHORITY",
+    "ATTESTATION_ABOUT_ADDRESS != SIGNATURE_BY_ADDRESS",
+    "CONVENIENCE_LABEL != VERIFIED_CLAIM",
+    "MERKLE_COMMITMENT != WALLET_IDENTITY"
+  ],
+  "authority_created": false
+}
