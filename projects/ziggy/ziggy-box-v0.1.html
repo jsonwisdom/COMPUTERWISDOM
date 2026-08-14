@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ziggy Box v0.1</title>
+<style>
+:root{font-family:system-ui,sans-serif;color:#111;background:#f4f1e8}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px}
+.device{width:min(92vw,720px);aspect-ratio:1/1;border:14px solid #111;border-radius:42px;background:#e7e0ce;box-shadow:12px 16px 0 #111;padding:28px;display:grid;grid-template-rows:auto 1fr auto;gap:20px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{font-weight:900;font-size:clamp(28px,6vw,56px);letter-spacing:-.05em}.status{border:3px solid #111;border-radius:999px;padding:8px 12px;font-weight:800;background:#fff}
+.screen{border:7px solid #111;border-radius:26px;background:#fff;padding:22px;display:grid;align-content:space-between;gap:16px}.ziggy{display:grid;grid-template-columns:110px 1fr;gap:18px;align-items:center}.face{aspect-ratio:1;border:5px solid #111;border-radius:48% 48% 44% 44%;background:#ccc;position:relative}.eye{position:absolute;width:18px;height:30px;background:#111;border-radius:50%;top:38%}.eye.a{left:27%}.eye.b{right:27%}.mouth{position:absolute;width:36px;border-top:4px solid #111;left:50%;bottom:24%;transform:translateX(-50%)}h1{font-size:clamp(20px,3.7vw,36px);margin:0 0 6px}p{margin:0;line-height:1.35}.question{font-size:clamp(18px,3vw,28px);font-weight:850}.gates{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.gate{border:3px solid #111;border-radius:16px;padding:10px;text-align:center;font-size:clamp(11px,2vw,15px);font-weight:850}.controls{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.btn{appearance:none;border:4px solid #111;border-radius:18px;background:#fff;padding:14px 7px;font-weight:900;font-size:clamp(11px,2vw,15px);box-shadow:0 5px 0 #111}.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #111}.footer{display:flex;justify-content:space-between;font-size:12px;font-weight:800;gap:12px}
+@media(max-width:560px){.device{padding:17px;border-width:9px;border-radius:28px}.ziggy{grid-template-columns:76px 1fr}.screen{padding:14px;border-width:5px}.controls{gap:7px}.btn{border-width:3px;padding:10px 3px}.gates{gap:5px}.gate{padding:7px 3px}}
+</style>
+</head>
+<body>
+<main class="device" aria-label="Ziggy Box v0.1 prototype">
+  <header class="top"><div class="brand">ZIGGY</div><div class="status">PARENT: ON</div></header>
+  <section class="screen">
+    <div class="ziggy">
+      <div class="face" aria-hidden="true"><span class="eye a"></span><span class="eye b"></span><span class="mouth"></span></div>
+      <div><h1>Quantum RePlay</h1><p class="question">What changed? What’s missing? What could happen next?</p></div>
+    </div>
+    <div class="gates">
+      <div class="gate">GIRLMATH<br>REQUIRED</div>
+      <div class="gate">MIND THE GAP<br>ACTIVE</div>
+      <div class="gate">BOXD<br>ORIGINAL SAFE</div>
+    </div>
+    <p><strong>Rule:</strong> Unknown stays unknown. Parent boundaries control transform, save, print, and export.</p>
+  </section>
+  <section class="controls" aria-label="Ziggy features">
+    <button class="btn">ASK ZIGGY</button>
+    <button class="btn">REPLAY</button>
+    <button class="btn">FAMILY PHOTO</button>
+    <button class="btn">ZIGGY PRINT</button>
+  </section>
+  <footer class="footer"><span>v0.1 • SANITIZED DEMO</span><span>authority_created=false</span></footer>
+</main>
+</body>
+</html>
