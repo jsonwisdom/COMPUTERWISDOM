@@ -1,0 +1,96 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/schemas/grant-county/jay_screw_tooth.v0_1.schema.json",
+  "title": "Grant County Jay Screw Tooth v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "tooth_id",
+    "district",
+    "artifact_sha256",
+    "page",
+    "source_line",
+    "raw_amount",
+    "normalized_amount",
+    "verification",
+    "locked",
+    "reusable",
+    "authority_created"
+  ],
+  "properties": {
+    "tooth_id": {
+      "type": "string",
+      "pattern": "^J-GC-[0-9]{4,}$"
+    },
+    "district": {
+      "type": "string",
+      "minLength": 1
+    },
+    "artifact_sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[a-fA-F0-9]{64}$"
+    },
+    "page": {
+      "type": ["integer", "null"],
+      "minimum": 1
+    },
+    "source_line": {
+      "type": ["string", "null"],
+      "minLength": 1
+    },
+    "raw_amount": {
+      "type": ["number", "null"]
+    },
+    "normalized_amount": {
+      "type": ["number", "null"]
+    },
+    "verification": {
+      "type": "string",
+      "enum": ["HOLD", "LOCKED"]
+    },
+    "locked": {
+      "type": "boolean"
+    },
+    "reusable": {
+      "type": "boolean"
+    },
+    "authority_created": {
+      "const": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "verification": {"const": "HOLD"}
+        },
+        "required": ["verification"]
+      },
+      "then": {
+        "properties": {
+          "locked": {"const": false},
+          "reusable": {"const": false}
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "verification": {"const": "LOCKED"}
+        },
+        "required": ["verification"]
+      },
+      "then": {
+        "properties": {
+          "artifact_sha256": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"},
+          "page": {"type": "integer", "minimum": 1},
+          "source_line": {"type": "string", "minLength": 1},
+          "raw_amount": {"type": "number"},
+          "normalized_amount": {"type": "number"},
+          "locked": {"const": true},
+          "reusable": {"const": true}
+        }
+      }
+    }
+  ]
+}
