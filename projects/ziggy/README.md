@@ -48,12 +48,22 @@ Live GitHub Pages signer:
 
 The signer is deliberately bounded:
 
-- connects an injected EVM wallet
+- connects an injected EIP-1193 wallet provider
 - requires Base Sepolia (`84532`) before signing
 - uses `personal_sign` over an explicit Ziggy release message
 - binds the BoxD payload hash, source commit, repository, operator label, network target, timestamp, and `authority_created=false`
 - creates a downloadable JSON signature receipt
 - does **not** call `eth_sendTransaction`, submit EAS, spend gas, or claim an attestation UID / transaction hash
+
+### iPhone / Coinbase product boundary
+
+Do **not** treat the Coinbase trading app as the Base app wallet explorer. A screen showing **Spot / Futures / Stocks / Portfolio / Orders** is the trading product, not proof of an injected EVM provider.
+
+For the current verified iPhone path and official Coinbase/Base references, read:
+
+**[WALLET_SIGNING_IOS.md](./WALLET_SIGNING_IOS.md)**
+
+If the signer reports `No injected EVM wallet provider found`, the correct state is `SIGNATURE_NOT_CREATED`. Do not promote that into a wallet, chain, or attestation failure.
 
 A wallet signature is a separate state from an on-chain attestation:
 
