@@ -1,0 +1,264 @@
+name: Matrix Sentinel
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - agent/matrix-sentinel-v0-1
+    paths:
+      - fixtures/jaywisdom/wargame/**
+      - .github/workflows/matrix-sentinel.yml
+  workflow_run:
+    workflows:
+      - MANIC Validation Gate
+      - Builder Boundary Sentinel
+    types:
+      - completed
+
+permissions:
+  actions: read
+  contents: read
+
+concurrency:
+  group: matrix-sentinel-${{ github.event.workflow_run.head_branch || github.ref_name }}
+  cancel-in-progress: false
+
+env:
+  SENTINEL_ARTIFACT: fixtures/jaywisdom/wargame/matrix_sentinel.v0_1.json
+  SENTINEL_REPORT: matrix_sentinel_report.json
+  AUTHORITY_CREATED: "false"
+  MERGE_AUTHORIZED: "false"
+  DEPLOYMENT_AUTHORIZED: "false"
+
+jobs:
+  observe:
+    name: Observe Actions logs and emit replay receipt
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout repository read-only
+        uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+
+      - name: Validate Matrix Sentinel substrate
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f "$SENTINEL_ARTIFACT"
+          jq -e '
+            .schema == "jsonwisdom.matrix_sentinel.v0.1" and
+            .classification == "PUBLIC_EDUCATIONAL_SIMULATION" and
+            .matrix.board_count == 7 and
+            .matrix.board_dimensions == [256,256] and
+            .matrix.cells_per_board == 65536 and
+            .matrix.total_cells == 458752 and
+            .versioning.mode == "APPEND_ONLY" and
+            .versioning.prior_state_overwrite == false and
+            .versioning.cross_board_bleed == false and
+            .authority_created == false and
+            .merge_authorized == false and
+            .deployment_authorized == false
+          ' "$SENTINEL_ARTIFACT" >/dev/null
+
+      - name: Collect recent workflow runs and logs
+        id: collect
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+
+          branch="$GITHUB_REF_NAME"
+          if [[ "$GITHUB_EVENT_NAME" == "workflow_run" ]]; then
+            branch="$(jq -r '.workflow_run.head_branch // empty' "$GITHUB_EVENT_PATH")"
+          fi
+          if [[ -z "$branch" ]]; then
+            branch="agent/matrix-sentinel-v0-1"
+          fi
+
+          runs_file="$RUNNER_TEMP/runs.json"
+          entries_file="$RUNNER_TEMP/entries.ndjson"
+          : > "$entries_file"
+
+          gh api \
+            -H "Accept: application/vnd.github+json" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            "repos/$GITHUB_REPOSITORY/actions/runs?branch=$branch&per_page=50" \
+            > "$runs_file"
+
+          targets=(
+            "MANIC Validation Gate"
+            "Builder Boundary Sentinel"
+            ".github/workflows/etf_audit.yml"
+          )
+
+          for workflow_name in "${targets[@]}"; do
+            run_json="$(jq -c --arg name "$workflow_name" '[.workflow_runs[] | select(.name == $name)][0] // empty' "$runs_file")"
+
+            if [[ -z "$run_json" ]]; then
+              jq -cn --arg workflow "$workflow_name" '{
+                workflow: $workflow,
+                observed: false,
+                state: "UNKNOWN",
+                job_count: 0,
+                warning_count: 0,
+                deprecated_count: 0,
+                schema_warning_count: 0
+              }' >> "$entries_file"
+              continue
+            fi
+
+            run_id="$(jq -r '.id' <<<"$run_json")"
+            conclusion="$(jq -r '.conclusion // "UNKNOWN"' <<<"$run_json")"
+            head_sha="$(jq -r '.head_sha' <<<"$run_json")"
+            run_url="$(jq -r '.html_url' <<<"$run_json")"
+
+            jobs_json="$(gh api \
+              -H "Accept: application/vnd.github+json" \
+              -H "X-GitHub-Api-Version: 2022-11-28" \
+              "repos/$GITHUB_REPOSITORY/actions/runs/$run_id/jobs?per_page=100")"
+
+            job_count="$(jq '.total_count' <<<"$jobs_json")"
+            warning_count=0
+            deprecated_count=0
+            schema_warning_count=0
+
+            while read -r job_id; do
+              [[ -z "$job_id" ]] && continue
+              log_file="$RUNNER_TEMP/job-$job_id.log"
+              if curl -fsSL \
+                -H "Authorization: Bearer $GH_TOKEN" \
+                -H "Accept: application/vnd.github+json" \
+                -H "X-GitHub-Api-Version: 2022-11-28" \
+                "https://api.github.com/repos/$GITHUB_REPOSITORY/actions/jobs/$job_id/logs" \
+                -o "$log_file"; then
+                warnings="$(grep -Eic '##\[warning\]|warning' "$log_file" || true)"
+                deprecated="$(grep -Eic 'deprecated|deprecation' "$log_file" || true)"
+                schema_warnings="$(grep -Eic 'unknown format "(date-time|uri)"' "$log_file" || true)"
+                warning_count=$((warning_count + warnings))
+                deprecated_count=$((deprecated_count + deprecated))
+                schema_warning_count=$((schema_warning_count + schema_warnings))
+              fi
+            done < <(jq -r '.jobs[].id' <<<"$jobs_json")
+
+            state="PASS"
+            case "$conclusion" in
+              failure|cancelled|timed_out|action_required|startup_failure)
+                state="FAIL"
+                ;;
+              success)
+                if (( warning_count > 0 || deprecated_count > 0 || schema_warning_count > 0 )); then
+                  state="PASS_WITH_WARNINGS"
+                fi
+                ;;
+              *)
+                state="HOLD"
+                ;;
+            esac
+
+            if [[ "$conclusion" == "failure" && "$job_count" -eq 0 ]]; then
+              state="FAIL_NO_JOBS"
+            fi
+
+            jq -cn \
+              --arg workflow "$workflow_name" \
+              --argjson run_id "$run_id" \
+              --arg conclusion "$conclusion" \
+              --arg state "$state" \
+              --arg head_sha "$head_sha" \
+              --arg run_url "$run_url" \
+              --argjson job_count "$job_count" \
+              --argjson warning_count "$warning_count" \
+              --argjson deprecated_count "$deprecated_count" \
+              --argjson schema_warning_count "$schema_warning_count" \
+              '{
+                workflow: $workflow,
+                observed: true,
+                run_id: $run_id,
+                conclusion: $conclusion,
+                state: $state,
+                head_sha: $head_sha,
+                run_url: $run_url,
+                job_count: $job_count,
+                warning_count: $warning_count,
+                deprecated_count: $deprecated_count,
+                schema_warning_count: $schema_warning_count
+              }' >> "$entries_file"
+          done
+
+          jq -s --arg repository "$GITHUB_REPOSITORY" --arg branch "$branch" --arg observed_at "$(date -u +%Y-%m-%dT%H:%M:%SZ)" '
+            def is_fail: (.state == "FAIL" or .state == "FAIL_NO_JOBS");
+            def is_warn: (.state == "PASS_WITH_WARNINGS" or .state == "HOLD" or .state == "UNKNOWN");
+            {
+              schema: "jsonwisdom.matrix_sentinel.workflow_receipt.v0.1",
+              classification: "PUBLIC_EDUCATIONAL_SIMULATION",
+              repository: $repository,
+              branch: $branch,
+              observed_at: $observed_at,
+              workflows: .,
+              summary: {
+                observed: ([.[] | select(.observed == true)] | length),
+                failures: ([.[] | select(is_fail)] | length),
+                warnings_or_holds: ([.[] | select(is_warn)] | length)
+              },
+              state: (if any(.[]; is_fail) then "FAIL" elif any(.[]; is_warn) then "PASS_WITH_WARNINGS" else "PASS" end),
+              invariants: {
+                vote_is_evidence: false,
+                receipt_is_truth: false,
+                version_is_authorization: false,
+                replay_is_real_world_execution: false,
+                cross_board_bleed: false
+              },
+              authority_created: false,
+              merge_authorized: false,
+              deployment_authorized: false
+            }
+          ' "$entries_file" > "$SENTINEL_REPORT"
+
+          report_sha="$(sha256sum "$SENTINEL_REPORT" | awk '{print $1}')"
+          state="$(jq -r '.state' "$SENTINEL_REPORT")"
+          echo "report_sha=$report_sha" >> "$GITHUB_OUTPUT"
+          echo "state=$state" >> "$GITHUB_OUTPUT"
+
+      - name: Emit replay-grade Sentinel summary
+        shell: bash
+        run: |
+          set -euo pipefail
+          {
+            echo "# Matrix Sentinel"
+            echo
+            echo "Repository: $GITHUB_REPOSITORY"
+            echo "Commit: $GITHUB_SHA"
+            echo "Authority created: false"
+            echo "Merge authorized: false"
+            echo "Deployment authorized: false"
+            echo "No fake green: true"
+            echo "Report SHA-256: ${{ steps.collect.outputs.report_sha }}"
+            echo "Sentinel state: ${{ steps.collect.outputs.state }}"
+            echo
+            echo "## Observed workflows"
+            echo
+            echo '| Workflow | Conclusion | Sentinel state | Jobs | Warnings | Deprecated | Schema warnings |'
+            echo '|---|---:|---:|---:|---:|---:|---:|'
+            jq -r '.workflows[] | "| \(.workflow) | \(.conclusion // "-") | \(.state) | \(.job_count) | \(.warning_count) | \(.deprecated_count) | \(.schema_warning_count) |"' "$SENTINEL_REPORT"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Upload Sentinel receipt
+        uses: actions/upload-artifact@v7
+        with:
+          name: matrix-sentinel-receipt-${{ github.run_id }}
+          path: matrix_sentinel_report.json
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Fail closed on observed workflow failure
+        shell: bash
+        run: |
+          set -euo pipefail
+          state="$(jq -r '.state' "$SENTINEL_REPORT")"
+          if [[ "$state" == "FAIL" ]]; then
+            echo "Matrix Sentinel observed a failing workflow state. Green is forbidden."
+            exit 1
+          fi
