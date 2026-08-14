@@ -1,11 +1,11 @@
 {
   "hash_algorithm": "SHA-256",
   "hash_scope": "UTF-8 bytes of JSON.stringify(payload) with recursively sorted object keys, separators=(',', ':'), ensure_ascii=false",
-  "payload_sha256": "51da6e02aafb096ee275bb197157e4beccdef396d57b35895d4191f7fa34f313",
+  "payload_sha256": "b54d9ac7b7c22bc3ed9f59cfa3373a73391edf0afc2ec8b693bab9d5b4b74361",
   "payload": {
     "schema": "gray-baby-zora-binding-v0",
     "artifact_id": "GRAY_BABY_ZORA_BINDING_V0",
-    "generated_at": "2026-08-14T14:37:00Z",
+    "generated_at": "2026-08-14T14:42:00Z",
     "identity_root": "jaywisdom.eth",
     "authority_created": false,
     "doctrine": [
@@ -21,11 +21,17 @@
         "path": "ARCHIVE/GB-QUANTUM-NETWORK-01.md",
         "file_id": "GB-QUANTUM-NETWORK-01",
         "blob_sha": "e248d70689b3b9e508645eafdbf3d9f35c9f0789",
-        "observed_at_commit": "e471c4dc9ed6a10831be2d46e90b33d217f4b216"
+        "observed_at_commit": "e471c4dc9ed6a10831be2d46e90b33d217f4b216",
+        "creation_commit": "05b7afc49ac03d036aa4b085cab318577ec3d4de"
       },
       "declared_parent": {
         "file_id": "GB-COMMS-EVOLUTION-01",
-        "resolution_status": "UNRESOLVED_IN_CURRENT_REPO_SEARCH"
+        "relationship_status": "DECLARED_AT_CHILD_CREATION",
+        "creation_commit_message_declares_parent": true,
+        "creation_commit": "05b7afc49ac03d036aa4b085cab318577ec3d4de",
+        "parent_artifact_resolved": false,
+        "resolution_status": "DECLARATION_VERIFIED_ARTIFACT_UNRESOLVED",
+        "search_notes": "Exact identifier resolves in the child archive and its creation commit; no separately resolved parent artifact or matching historical commit was found in the current GitHub searches."
       }
     },
     "identity_surfaces": {
