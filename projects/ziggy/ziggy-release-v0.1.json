@@ -25,6 +25,9 @@
     "rule": "No attestation is claimed until a wallet signature and transaction receipt are independently verified."
   },
   "drive": {
-    "status": "RELEASE_RECORD_TO_BE_BOUND_TO_THIS_HASH"
+    "status": "BOUND",
+    "document_id": "1_s57670_WKRRKTb3SgFPEGYLa8gh2YjItmfkhcP3IBA",
+    "document_url": "https://docs.google.com/document/d/1_s57670_WKRRKTb3SgFPEGYLa8gh2YjItmfkhcP3IBA/edit?usp=drivesdk",
+    "document_title": "Ziggy v0.1 — BoxD Release Receipt — 100th Intelligence — jaywisdom.eth"
   }
 }
