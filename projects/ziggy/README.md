@@ -40,6 +40,25 @@ Every edge requires provenance and a permission state. Missing edges remain unkn
 - **Release manifest:** `projects/ziggy/ziggy-release-v0.1.json`
 - **On-chain status:** signature required / not submitted
 
+## Human signature gate
+
+Live GitHub Pages signer:
+
+**https://jsonwisdom.github.io/COMPUTERWISDOM/projects/ziggy/sign-v0.1.html**
+
+The signer is deliberately bounded:
+
+- connects an injected EVM wallet
+- requires Base Sepolia (`84532`) before signing
+- uses `personal_sign` over an explicit Ziggy release message
+- binds the BoxD payload hash, source commit, repository, operator label, network target, timestamp, and `authority_created=false`
+- creates a downloadable JSON signature receipt
+- does **not** call `eth_sendTransaction`, submit EAS, spend gas, or claim an attestation UID / transaction hash
+
+A wallet signature is a separate state from an on-chain attestation:
+
+`PUBLISHED ≠ PRESERVED ≠ SIGNED ≠ ATTESTED`
+
 Canonical purpose:
 
 > ZIGGY = a bounded reasoning companion that helps a child explore possibilities while preserving originals, exposing missing information, respecting parent-defined boundaries, and making the reasoning path replayable.
