@@ -2,73 +2,115 @@
 
 Verified against official Coinbase / Base documentation on 2026-08-14.
 
-## First: identify the app
+## What failed in signer v0.1
 
-The **Coinbase trading app** and the **Base app** are different products.
+Signer v0.1 depended only on an injected EIP-1193 provider (`window.ethereum`).
 
-If the screen shows market/trading navigation such as **Spot**, **Futures**, **Stocks**, **Portfolio**, or **Orders**, do not treat that screen as the Base app explorer. Coinbase documents that a Coinbase primary balance cannot be used to access dapps.
+Opening that page inside ChatGPT's in-app browser or ordinary Safari could therefore produce:
 
-Official source:
-- https://help.coinbase.com/en/dapps/getting-started/comparing-coinbase-wallets
-- https://help.coinbase.com/en/wallet/getting-started/what-is-coinbase-wallet
+`No injected EVM wallet provider found`
+
+That result means only:
+
+`INJECTED_PROVIDER_NOT_PRESENT`
+
+It is not proof of a wallet failure, chain failure, or attestation failure.
+
+## Current signer — v0.2
+
+Use:
+
+`https://jsonwisdom.github.io/COMPUTERWISDOM/projects/ziggy/sign-v0.2.html`
+
+Signer v0.2 uses two explicit provider paths:
+
+1. If an injected EIP-1193 provider is present, use it.
+2. Otherwise, create an EIP-1193 provider using the official Base Account SDK browser build.
+
+The browser SDK is pinned in the page to:
+
+`@base-org/account@2.5.7`
+
+Official Base documentation supports loading the Base Account SDK directly in plain HTML through a CDN and obtaining an EIP-1193 provider with `createBaseAccountSDK(...).getProvider()`.
+
+Official references:
+- https://docs.base.org/base-account/quickstart/web
+- https://docs.base.org/base-account/reference/core/createBaseAccount
+- https://docs.base.org/base-account/reference/core/provider-rpc-methods/personal_sign
+
+## What to do on iPhone now
+
+1. Open the v0.2 signer URL above.
+2. Tap **1 — CONNECT WALLET**.
+3. Ziggy selects the provider path:
+   - `INJECTED_EIP1193`, or
+   - `BASE_ACCOUNT_SDK_2.5.7`.
+4. Continue only after a real wallet/account address is displayed.
+5. Tap **2 — USE BASE SEPOLIA** if the page is not already on chain ID `84532`.
+6. Read and check the signature boundary acknowledgement.
+7. Tap **3 — SIGN RELEASE RECEIPT**.
+8. Approve only a **message signature**. Do not approve a transaction prompt for this step.
+9. Download the JSON receipt.
+
+If the Base Account SDK popup/handoff is blocked by the browser, preserve that exact error. Do not fall back to pretending a signature exists.
 
 ## COMPUTERWISDOM identity must remain explicit
 
-GitHub is only the host/transport for this public page. Ziggy's repository/system identity is:
+GitHub is hosting/transport. Ziggy's repository/system identity remains:
 
 `jsonwisdom/COMPUTERWISDOM`
 
-That exact repository string is part of the signing boundary and must remain visible in receipts and replay.
+The signer records that exact repository string in the signed message and receipt.
 
-User-supplied signer claim:
+## Address claims
 
-`0x73ad550dcb47d254a5b3c335ae39d8999c42ff12`
+User-supplied claims currently preserved:
 
-Current state:
+- `0x73ad550dcb47d254a5b3c335ae39d8999c42ff12`
+- `0xa380552a27b0a5a2874ea7aa52cac09f542002e8`
 
-`USER_SUPPLIED_UNVERIFIED`
+Both remain:
 
-Do not treat that address as verified ownership until the connected wallet actually signs the Ziggy release message from the same address. A mismatch must remain a mismatch; it must not be silently substituted.
+`USER_SUPPLIED / UNVERIFIED / UNASSIGNED`
 
-## Current Base app route on iPhone
-
-Coinbase's current Base help says to connect to an app through the **Base app explorer**:
-
-1. Open the **Base app** on the iPhone.
-2. Open **Apps / app explorer**.
-3. Manually enter the Ziggy signer URL in the explorer address field:
-   `https://jsonwisdom.github.io/COMPUTERWISDOM/projects/ziggy/sign-v0.1.html`
-4. Load the page.
-5. Tap **1 — CONNECT WALLET**.
-6. Continue only if the page reports a wallet provider and the wallet/account shown is the one the human intends to use.
-7. Before signing, compare the connected wallet address with the user-supplied claim above. If it differs, stop and preserve the gap.
-
-Official source:
-- https://help.coinbase.com/en-gb/wallet/other-topics/mobile-app-sign-in-discontinued
+Signer v0.2 compares the connected address with these claims but does not treat a connection alone as proof of ownership. The receipt records match/mismatch explicitly.
 
 ## Base Sepolia
 
-Ziggy v0.1 targets **Base Sepolia**, chain ID **84532**. Base's network documentation lists 84532 as the Base Sepolia chain ID.
+Ziggy v0.1 still targets Base Sepolia:
 
-Official source:
+- chain ID: `84532`
+- hex chain ID: `0x14a34`
+
+Official reference:
 - https://docs.base.org/base-chain/quickstart/connecting-to-base
 
-## Important compatibility boundary
+## Signature boundary
 
-The Ziggy v0.1 signer currently uses an injected **EIP-1193** provider (`window.ethereum`) and `personal_sign`.
+Base Account's provider supports `personal_sign`. Ziggy v0.2 uses it only for the bounded release receipt.
 
-Therefore:
+The page does not call `eth_sendTransaction`, does not submit EAS, and does not spend gas.
 
-- Opening the page in ChatGPT's in-app browser or ordinary Safari may show `No injected EVM wallet provider found`.
-- The Coinbase trading screen is **not evidence** that an injected provider exists.
-- Do not invent a tap path through a changing Coinbase UI.
-- Do not claim compatibility until the actual Base app explorer loads the page and exposes the wallet provider.
-- If the Base app explorer does not expose an injected provider, stop at `SIGNATURE_NOT_CREATED`; that is a client-compatibility gap, not a blockchain failure.
+After capture, the receipt states:
+
+`SIGNATURE_CAPTURED_NOT_ATTESTED`
+
+and independently records:
+
+`signature_verification_state = NOT_PERFORMED`
+
+until verification is actually performed.
+
+## Product boundary
+
+The Coinbase trading app and the Base app are different products. A screen showing market/trading navigation such as **Spot**, **Futures**, **Stocks**, **Portfolio**, or **Orders** is not evidence that an injected EVM provider exists.
+
+Do not invent UI tap paths through a changing Coinbase interface. The v0.2 signer is designed so the web page itself owns the provider fallback instead of sending the human around the same loop.
 
 ## State doctrine
 
-`PUBLISHED ≠ PRESERVED ≠ SIGNED ≠ ATTESTED`
+`PUBLISHED ≠ PRESERVED ≠ CONNECTED ≠ SIGNED ≠ ATTESTED`
 
-A wallet connection is not a signature. A supplied address is not proof of wallet control. A signature is not a transaction. A transaction is not an attestation until independently verified.
+A supplied address is not proof of control. A connected address is not yet a verified signature. A signature is not a transaction. A transaction is not an attestation until independently verified.
 
 `authority_created=false`

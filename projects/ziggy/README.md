@@ -85,32 +85,34 @@ Both are currently `USER_SUPPLIED / UNVERIFIED / UNASSIGNED`; their relationship
 
 ## Human signature gate
 
-Live GitHub Pages signer:
+### Current signer — v0.2
 
-**https://jsonwisdom.github.io/COMPUTERWISDOM/projects/ziggy/sign-v0.1.html**
+**https://jsonwisdom.github.io/COMPUTERWISDOM/projects/ziggy/sign-v0.2.html**
 
-The signer is deliberately bounded:
+Signer v0.2 removes the injected-provider dead end while preserving the same Ziggy v0.1 release boundary:
 
-- connects an injected EIP-1193 wallet provider
-- requires Base Sepolia (`84532`) before signing
-- uses `personal_sign` over an explicit Ziggy release message
-- binds the BoxD payload hash, source commit, repository, operator label, network target, timestamp, and `authority_created=false`
+- uses an injected EIP-1193 provider when one is actually present
+- otherwise creates an EIP-1193 provider with the official Base Account SDK browser build
+- pins `@base-org/account` to `2.5.7` for replayability
+- targets Base Sepolia (`84532`)
+- uses `personal_sign` over the explicit Ziggy release message
+- records which provider path was used
+- compares the connected signer address with the user-supplied address claims without promoting ownership
 - creates a downloadable JSON signature receipt
-- does **not** call `eth_sendTransaction`, submit EAS, spend gas, or claim an attestation UID / transaction hash
+- leaves signature verification as `NOT_PERFORMED` until independently checked
+- does **not** call `eth_sendTransaction`, submit EAS, spend gas, or invent an attestation UID / transaction hash
 
-### iPhone / Coinbase product boundary
+### Preserved signer — v0.1
 
-Do **not** treat the Coinbase trading app as the Base app wallet explorer. A screen showing **Spot / Futures / Stocks / Portfolio / Orders** is the trading product, not proof of an injected EVM provider.
+`sign-v0.1.html` remains preserved as the injected-only implementation that exposed the iPhone / in-app-browser compatibility gap. It is not the current recommended signing surface.
 
-For the current verified iPhone path and official Coinbase/Base references, read:
+For the iPhone compatibility history and current path, read:
 
 **[WALLET_SIGNING_IOS.md](./WALLET_SIGNING_IOS.md)**
 
-If the signer reports `No injected EVM wallet provider found`, the correct state is `SIGNATURE_NOT_CREATED`. Do not promote that into a wallet, chain, or attestation failure.
+A wallet connection is a separate state from a wallet signature, and a signature is separate from an on-chain attestation:
 
-A wallet signature is a separate state from an on-chain attestation:
-
-`PUBLISHED ≠ PRESERVED ≠ SIGNED ≠ ATTESTED`
+`PUBLISHED ≠ PRESERVED ≠ CONNECTED ≠ SIGNED ≠ ATTESTED`
 
 Canonical purpose:
 
@@ -120,4 +122,4 @@ No chain attestation is claimed until a wallet signature and transaction receipt
 
 ## Version rule
 
-v0.1 is preserved as the first prototype. Later versions improve by explicit revision rather than overwriting provenance.
+v0.1 is preserved as the first prototype. Later implementations improve by explicit revision rather than overwriting provenance.
