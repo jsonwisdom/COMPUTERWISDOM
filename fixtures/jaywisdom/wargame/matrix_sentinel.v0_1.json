@@ -1,0 +1,60 @@
+{
+  "schema": "jsonwisdom.matrix_sentinel.v0.1",
+  "artifact_id": "MATRIX_SENTINEL_V0_1",
+  "classification": "PUBLIC_EDUCATIONAL_SIMULATION",
+  "operation": "BRANCH_SPECIFIC_UPDATE",
+  "git_branch": "agent/matrix-sentinel-v0-1",
+  "base_ref": "master",
+  "base_sha": "e471c4dc9ed6a10831be2d46e90b33d217f4b216",
+  "matrix": {
+    "board_count": 7,
+    "board_dimensions": [256, 256],
+    "cells_per_board": 65536,
+    "total_cells": 458752,
+    "storage_model": "SPARSE_COORDINATES",
+    "boards": [
+      "USAF",
+      "ARMY",
+      "NAVY",
+      "MARINES",
+      "CG",
+      "GB",
+      "GRAY_BABY"
+    ]
+  },
+  "sentinel": {
+    "role": "OBSERVE_REPORT_VERIFY_BOUNDARIES",
+    "state": "INIT_READY",
+    "allowed_operations": [
+      "READ_BRANCH_STATE",
+      "COMPARE_VERSION_STATE",
+      "REPORT_DRIFT",
+      "EMIT_REPLAY_RECEIPT"
+    ],
+    "forbidden_operations": [
+      "MUTATE_SIBLING_BRANCH",
+      "CROSS_BOARD_WRITE",
+      "MERGE_WITHOUT_HUMAN_APPROVAL",
+      "DEPLOY_REAL_WORLD_ACTION",
+      "CREATE_AUTHORITY"
+    ]
+  },
+  "type_invariants": {
+    "position_is_claim": false,
+    "vote_is_evidence": false,
+    "receipt_is_truth": false,
+    "version_is_authorization": false,
+    "replay_is_real_world_execution": false,
+    "branch_update_is_substrate_update": false
+  },
+  "versioning": {
+    "mode": "APPEND_ONLY",
+    "parent_required": true,
+    "prior_state_overwrite": false,
+    "cross_board_bleed": false
+  },
+  "authority_created": false,
+  "real_world_command": "NONE",
+  "merge_authorized": false,
+  "deployment_authorized": false
+}
