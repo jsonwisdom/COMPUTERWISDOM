@@ -33,12 +33,31 @@ Every edge requires provenance and a permission state. Missing edges remain unkn
 ## Release identity
 
 - **Operator:** `jaywisdom.eth`
+- **Repository / system identity:** `jsonwisdom/COMPUTERWISDOM`
 - **Preservation layer:** `BoxD`
 - **Intelligence label:** `100th Intelligence`
 - **Source commit:** `5aa886746ec08adcbbbad2c5f758b64324066d66`
 - **BoxD release payload SHA-256:** `ad22599ef68bca96af1328ed0ab60cc0ff488af21db1139db954098400146447`
 - **Release manifest:** `projects/ziggy/ziggy-release-v0.1.json`
 - **On-chain status:** signature required / not submitted
+
+### COMPUTERWISDOM boundary
+
+GitHub is the host and transport for this public release. It does not replace the repository/system identity.
+
+`COMPUTERWISDOM` must remain explicit in Ziggy receipts, signer messages, manifests, and replay paths as:
+
+`repository = jsonwisdom/COMPUTERWISDOM`
+
+User-supplied signer claim:
+
+`0x73ad550dcb47d254a5b3c335ae39d8999c42ff12`
+
+Current verification state:
+
+`USER_SUPPLIED_UNVERIFIED`
+
+The address must not be promoted to verified operator control merely because it was supplied in conversation. Verification requires an actual wallet signature from that address over the bounded Ziggy release message. See `computerwisdom-signer-binding-v0.1.json`.
 
 ## Human signature gate
 
