@@ -1,0 +1,22 @@
+{
+  "format": "ZIGGY_ENS_ADDRESS_CLAIMS_V0.1",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "claims": [
+    {
+      "address": "0x73ad550dcb47d254a5b3c335ae39d8999c42ff12",
+      "source": "USER_SUPPLIED",
+      "verification": "UNVERIFIED",
+      "role": "UNASSIGNED"
+    },
+    {
+      "address": "0xa380552a27b0a5a2874ea7aa52cac09f542002e8",
+      "source": "USER_SUPPLIED",
+      "verification": "UNVERIFIED",
+      "role": "UNASSIGNED"
+    }
+  ],
+  "relationship_between_claims": "UNDEFINED",
+  "promotion_rule": "A claim may be promoted only after an independently verifiable signature or other explicit cryptographic proof demonstrates control for the exact address.",
+  "mismatch_rule": "Never silently substitute, merge, alias, or replace address claims.",
+  "authority_created": false
+}
