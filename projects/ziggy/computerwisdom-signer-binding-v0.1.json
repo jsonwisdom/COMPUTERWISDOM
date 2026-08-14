@@ -1,0 +1,20 @@
+{
+  "format": "ZIGGY_COMPUTERWISDOM_SIGNER_BINDING_V0.1",
+  "system_identity": "COMPUTERWISDOM",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "hosting_transport": "GitHub Pages",
+  "release": "Ziggy v0.1",
+  "operator_label": "jaywisdom.eth",
+  "claimed_signer_address": "0x73ad550dcb47d254a5b3c335ae39d8999c42ff12",
+  "claimed_signer_state": "USER_SUPPLIED_UNVERIFIED",
+  "verification_rule": "Promote the claimed signer address only after an actual wallet signature from the same address over the bounded Ziggy release message is independently verified.",
+  "mismatch_rule": "If the connected or recovered signer address differs, preserve the mismatch and do not silently substitute identities.",
+  "artifact_payload_sha256": "ad22599ef68bca96af1328ed0ab60cc0ff488af21db1139db954098400146447",
+  "source_commit_sha1": "5aa886746ec08adcbbbad2c5f758b64324066d66",
+  "target_network": "Base Sepolia",
+  "chain_id": 84532,
+  "signature_state": "NOT_CREATED",
+  "attestation_uid": null,
+  "transaction_hash": null,
+  "authority_created": false
+}
