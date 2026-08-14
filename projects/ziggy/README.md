@@ -59,6 +59,30 @@ Current verification state:
 
 The address must not be promoted to verified operator control merely because it was supplied in conversation. Verification requires an actual wallet signature from that address over the bounded Ziggy release message. See `computerwisdom-signer-binding-v0.1.json`.
 
+## Directories-first control architecture
+
+Ziggy's next control layer is intentionally directory-first:
+
+- [`DIRECTORY_MAP.md`](./DIRECTORY_MAP.md)
+- [`natural-language/`](./natural-language/)
+- [`ens/`](./ens/)
+- [`voice/`](./voice/)
+- [`imagination/`](./imagination/)
+- [`github-control/`](./github-control/)
+- [`launches/main/`](./launches/main/)
+- [`test-runs/base-sepolia/`](./test-runs/base-sepolia/)
+- [`receipts/`](./receipts/)
+- [`replay/`](./replay/)
+
+Natural language may propose. ENS may resolve. Voice may transcribe. Imagination may sandbox. GitHub may gate. The human remains the promotion authority.
+
+Address claims are preserved without inference in [`ens/claims.v0.1.json`](./ens/claims.v0.1.json), including:
+
+- `0x73ad550dcb47d254a5b3c335ae39d8999c42ff12`
+- `0xa380552a27b0a5a2874ea7aa52cac09f542002e8`
+
+Both are currently `USER_SUPPLIED / UNVERIFIED / UNASSIGNED`; their relationship is `UNDEFINED` until cryptographic evidence says otherwise.
+
 ## Human signature gate
 
 Live GitHub Pages signer:
