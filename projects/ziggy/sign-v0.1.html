@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Ziggy v0.1 — Sign BoxD Release Receipt</title>
+<style>
+:root{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;color:#111;background:#f4f1e8}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:24px;background:radial-gradient(circle at top,#fff 0,#f4f1e8 55%,#e5ddc9 100%)}
+main{width:min(920px,100%);margin:0 auto}.shell{border:8px solid #111;border-radius:30px;background:#ece4d1;box-shadow:10px 12px 0 #111;overflow:hidden}
+header{padding:24px;border-bottom:6px solid #111;display:flex;gap:18px;align-items:center;justify-content:space-between;flex-wrap:wrap}.brand{font:900 clamp(30px,7vw,62px)/.9 system-ui,sans-serif;letter-spacing:-.06em}.tag{border:3px solid #111;border-radius:999px;background:#fff;padding:9px 12px;font-weight:900}
+section{padding:22px;border-bottom:4px solid #111}.screen{background:#fff}.lead{font:800 clamp(20px,4vw,34px)/1.15 system-ui,sans-serif;margin:0 0 10px}.sub{line-height:1.45;margin:0;max-width:75ch}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}.cell{border:3px solid #111;border-radius:14px;padding:12px;background:#fff}.cell b{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:5px}.value{overflow-wrap:anywhere;font-size:13px;line-height:1.35}
+.boundary{background:#111;color:#fff;font-weight:900;text-align:center;letter-spacing:.02em}.statusrow{display:flex;gap:10px;align-items:center;flex-wrap:wrap}.pill{border:3px solid #111;border-radius:999px;padding:8px 11px;background:#fff;font-weight:900}.pill.warn{background:#ffe9a8}.pill.good{background:#dff8d8}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}button,a.button{appearance:none;border:4px solid #111;border-radius:15px;background:#fff;color:#111;padding:14px 12px;font:900 15px system-ui,sans-serif;box-shadow:0 5px 0 #111;cursor:pointer;text-decoration:none;text-align:center}button:active,a.button:active{transform:translateY(4px);box-shadow:0 1px 0 #111}button.primary{background:#111;color:#fff}button:disabled{opacity:.45;cursor:not-allowed;transform:none;box-shadow:0 5px 0 #111}
+label.confirm{display:flex;gap:12px;align-items:flex-start;margin-top:18px;font-weight:800;line-height:1.35}input[type=checkbox]{width:22px;height:22px;flex:0 0 auto;margin-top:1px}.notice{border-left:6px solid #111;padding:10px 12px;margin:14px 0;background:#f7f4ec;line-height:1.4}.error{background:#ffd9d9}.success{background:#dff8d8}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;border:3px solid #111;border-radius:14px;background:#111;color:#f9f5e9;padding:14px;max-height:360px;overflow:auto;font-size:12px;line-height:1.45}.small{font-size:12px;line-height:1.45}.hidden{display:none!important}footer{padding:18px 22px;font-size:12px;font-weight:800;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+@media(max-width:640px){body{padding:12px}.shell{border-width:6px;border-radius:22px;box-shadow:6px 8px 0 #111}.grid,.controls{grid-template-columns:1fr}header,section{padding:17px}.brand{font-size:38px}}
+</style>
+</head>
+<body>
+<main>
+<div class="shell">
+<header><div><div class="brand">ZIGGY</div><div><strong>v0.1 • BoxD Release Signer</strong></div></div><div class="tag">100th Intelligence</div></header>
+<section class="screen">
+  <h1 class="lead">Human signature gate</h1>
+  <p class="sub">This page signs the preserved Ziggy v0.1 release receipt with your connected EVM wallet. It does <strong>not</strong> submit a blockchain transaction, create an EAS attestation, spend gas, or create authority.</p>
+  <div class="grid">
+    <div class="cell"><b>Operator label</b><div class="value">jaywisdom.eth</div></div>
+    <div class="cell"><b>Preservation</b><div class="value">BoxD</div></div>
+    <div class="cell"><b>Release label</b><div class="value">100th Intelligence</div></div>
+    <div class="cell"><b>Version</b><div class="value">Ziggy v0.1</div></div>
+    <div class="cell"><b>BoxD payload SHA-256</b><div class="value">ad22599ef68bca96af1328ed0ab60cc0ff488af21db1139db954098400146447</div></div>
+    <div class="cell"><b>Source commit</b><div class="value">5aa886746ec08adcbbbad2c5f758b64324066d66</div></div>
+    <div class="cell"><b>Chain target</b><div class="value">Base Sepolia • 84532</div></div>
+    <div class="cell"><b>Authority created</b><div class="value">false</div></div>
+  </div>
+</section>
+<section class="boundary">PUBLISHED ≠ PRESERVED ≠ SIGNED ≠ ATTESTED</section>
+<section>
+  <div class="statusrow">
+    <span class="pill" id="walletStatus">WALLET: NOT CONNECTED</span>
+    <span class="pill warn" id="chainStatus">CHAIN: UNKNOWN</span>
+    <span class="pill warn" id="signStatus">SIGNATURE: NOT CREATED</span>
+  </div>
+  <div id="messageBox" class="notice">Connect a wallet. The page will require Base Sepolia before signing. If your browser has no injected wallet provider, open this HTTPS page inside an EVM wallet browser.</div>
+  <div class="controls">
+    <button id="connectBtn" type="button">1 — CONNECT WALLET</button>
+    <button id="networkBtn" type="button" disabled>2 — USE BASE SEPOLIA</button>
+  </div>
+  <label class="confirm"><input id="understand" type="checkbox"><span>I understand this wallet signature proves only that the connected wallet signed this exact release receipt. <strong>It is not an on-chain attestation.</strong></span></label>
+  <div class="controls">
+    <button id="signBtn" class="primary" type="button" disabled>3 — SIGN RELEASE RECEIPT</button>
+    <button id="downloadBtn" type="button" disabled>DOWNLOAD SIGNATURE JSON</button>
+  </div>
+</section>
+<section id="signedSection" class="hidden">
+  <h2>Exact signed message</h2>
+  <pre id="signedMessage"></pre>
+  <h2>Signature receipt</h2>
+  <pre id="receiptJson"></pre>
+  <div class="controls">
+    <button id="copyBtn" type="button">COPY RECEIPT JSON</button>
+    <a class="button" href="./ziggy-release-v0.1.json">OPEN CANONICAL MANIFEST</a>
+  </div>
+  <p class="small"><strong>Next boundary:</strong> keep <code>ATTESTATION_UID=null</code> and <code>TRANSACTION_HASH=null</code> until a separately authorized EAS transaction is actually submitted and independently verified.</p>
+</section>
+<footer><span>BoxD • preserved originals</span><span>authority_created=false</span></footer>
+</div>
+</main>
+<script>
+(() => {
+  'use strict';
+
+  const RELEASE = Object.freeze({
+    format: 'ZIGGY_RELEASE_V0.1',
+    artifact_id: 'ZIGGY_QUANTUM_REPLAY_V0_1',
+    repository: 'jsonwisdom/COMPUTERWISDOM',
+    release_manifest_path: 'projects/ziggy/ziggy-release-v0.1.json',
+    source_commit_sha1: '5aa886746ec08adcbbbad2c5f758b64324066d66',
+    artifact_payload_sha256: 'ad22599ef68bca96af1328ed0ab60cc0ff488af21db1139db954098400146447',
+    operator_ens: 'jaywisdom.eth',
+    preservation_layer: 'BoxD',
+    intelligence_layer: '100th Intelligence',
+    target_network: 'Base Sepolia',
+    chain_id: 84532,
+    authority_created: false
+  });
+
+  const BASE_SEPOLIA = Object.freeze({
+    chainId: '0x14a34',
+    chainName: 'Base Sepolia',
+    nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+    rpcUrls: ['https://sepolia.base.org'],
+    blockExplorerUrls: ['https://sepolia-explorer.base.org']
+  });
+
+  const $ = id => document.getElementById(id);
+  const ui = {
+    connectBtn: $('connectBtn'), networkBtn: $('networkBtn'), signBtn: $('signBtn'), downloadBtn: $('downloadBtn'),
+    copyBtn: $('copyBtn'), understand: $('understand'), walletStatus: $('walletStatus'), chainStatus: $('chainStatus'),
+    signStatus: $('signStatus'), messageBox: $('messageBox'), signedSection: $('signedSection'), signedMessage: $('signedMessage'), receiptJson: $('receiptJson')
+  };
+
+  let account = null;
+  let chainId = null;
+  let receipt = null;
+
+  function provider() {
+    if (!window.ethereum || typeof window.ethereum.request !== 'function') {
+      throw new Error('No injected EVM wallet provider found. Open this page inside Coinbase Wallet, MetaMask, or another EIP-1193 compatible wallet browser.');
+    }
+    return window.ethereum;
+  }
+
+  function setNotice(text, kind='') {
+    ui.messageBox.textContent = text;
+    ui.messageBox.className = 'notice' + (kind ? ' ' + kind : '');
+  }
+
+  function shortAddress(addr) {
+    return addr ? addr.slice(0,6) + '…' + addr.slice(-4) : 'NOT CONNECTED';
+  }
+
+  function updateUi() {
+    ui.walletStatus.textContent = 'WALLET: ' + shortAddress(account);
+    ui.walletStatus.className = 'pill' + (account ? ' good' : '');
+    const onBaseSepolia = chainId && chainId.toLowerCase() === BASE_SEPOLIA.chainId;
+    ui.chainStatus.textContent = chainId ? ('CHAIN: ' + (onBaseSepolia ? 'BASE SEPOLIA 84532' : chainId)) : 'CHAIN: UNKNOWN';
+    ui.chainStatus.className = 'pill ' + (onBaseSepolia ? 'good' : 'warn');
+    ui.networkBtn.disabled = !account || onBaseSepolia;
+    ui.signBtn.disabled = !(account && onBaseSepolia && ui.understand.checked) || !!receipt;
+  }
+
+  async function refreshChain() {
+    if (!window.ethereum) return;
+    chainId = await provider().request({ method: 'eth_chainId' });
+    updateUi();
+  }
+
+  async function connect() {
+    try {
+      const accounts = await provider().request({ method: 'eth_requestAccounts' });
+      if (!accounts || !accounts[0]) throw new Error('Wallet returned no account.');
+      account = accounts[0];
+      chainId = await provider().request({ method: 'eth_chainId' });
+      setNotice('Wallet connected. Confirm Base Sepolia, read the boundary statement, then sign. No transaction will be sent.', 'success');
+      updateUi();
+    } catch (err) {
+      setNotice(err && err.message ? err.message : String(err), 'error');
+    }
+  }
+
+  async function useBaseSepolia() {
+    try {
+      const p = provider();
+      try {
+        await p.request({ method: 'wallet_switchEthereumChain', params: [{ chainId: BASE_SEPOLIA.chainId }] });
+      } catch (err) {
+        if (err && (err.code === 4902 || err.code === -32603)) {
+          await p.request({ method: 'wallet_addEthereumChain', params: [BASE_SEPOLIA] });
+        } else {
+          throw err;
+        }
+      }
+      chainId = await p.request({ method: 'eth_chainId' });
+      if (chainId.toLowerCase() !== BASE_SEPOLIA.chainId) throw new Error('Wallet did not switch to Base Sepolia (84532).');
+      setNotice('Base Sepolia selected. This network selection does not submit a transaction.', 'success');
+      updateUi();
+    } catch (err) {
+      setNotice(err && err.message ? err.message : String(err), 'error');
+    }
+  }
+
+  function buildMessage(signedAt) {
+    return [
+      'ZIGGY_RELEASE_SIGNATURE_V0.1',
+      'artifact_id=' + RELEASE.artifact_id,
+      'artifact_payload_sha256=' + RELEASE.artifact_payload_sha256,
+      'source_commit_sha1=' + RELEASE.source_commit_sha1,
+      'repository=' + RELEASE.repository,
+      'release_manifest_path=' + RELEASE.release_manifest_path,
+      'operator_ens=' + RELEASE.operator_ens,
+      'preservation_layer=' + RELEASE.preservation_layer,
+      'intelligence_layer=' + RELEASE.intelligence_layer,
+      'target_network=' + RELEASE.target_network,
+      'chain_id=' + RELEASE.chain_id,
+      'authority_created=false',
+      'signed_at=' + signedAt,
+      'statement=I sign this exact Ziggy v0.1 release receipt with the connected wallet. This signature is not an on-chain attestation and creates no authority.'
+    ].join('\n');
+  }
+
+  function utf8ToHex(text) {
+    return '0x' + Array.from(new TextEncoder().encode(text), b => b.toString(16).padStart(2,'0')).join('');
+  }
+
+  async function sha256Hex(text) {
+    const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+    return Array.from(new Uint8Array(digest), b => b.toString(16).padStart(2,'0')).join('');
+  }
+
+  async function signReceipt() {
+    try {
+      if (!ui.understand.checked) throw new Error('Confirm the signature boundary before signing.');
+      if (!account) throw new Error('Connect a wallet first.');
+      await refreshChain();
+      if (!chainId || chainId.toLowerCase() !== BASE_SEPOLIA.chainId) throw new Error('Switch the wallet to Base Sepolia (84532) before signing.');
+
+      const signedAt = new Date().toISOString();
+      const message = buildMessage(signedAt);
+      const messageHex = utf8ToHex(message);
+      ui.signedMessage.textContent = message;
+      ui.signedSection.classList.remove('hidden');
+      setNotice('Review the wallet prompt. It should be a message signature only — never a transaction approval.', '');
+
+      const signature = await provider().request({ method: 'personal_sign', params: [messageHex, account] });
+      const messageSha256 = await sha256Hex(message);
+
+      receipt = {
+        format: 'ZIGGY_WALLET_SIGNATURE_RECEIPT_V0.1',
+        artifact_id: RELEASE.artifact_id,
+        repository: RELEASE.repository,
+        release_manifest_path: RELEASE.release_manifest_path,
+        artifact_payload_sha256: RELEASE.artifact_payload_sha256,
+        source_commit_sha1: RELEASE.source_commit_sha1,
+        operator_ens_label: RELEASE.operator_ens,
+        signer_address: account,
+        wallet_chain_id: 84532,
+        signing_method: 'personal_sign',
+        signed_at: signedAt,
+        signed_message: message,
+        signed_message_sha256: messageSha256,
+        signature,
+        signature_state: 'SIGNED_LOCALLY_NOT_ATTESTED',
+        onchain: {
+          target_network: 'Base Sepolia',
+          chain_id: 84532,
+          attestation_status: 'SIGNATURE_CREATED_NOT_SUBMITTED',
+          attestation_uid: null,
+          transaction_hash: null
+        },
+        authority_created: false
+      };
+
+      ui.receiptJson.textContent = JSON.stringify(receipt, null, 2);
+      ui.signStatus.textContent = 'SIGNATURE: CREATED';
+      ui.signStatus.className = 'pill good';
+      ui.downloadBtn.disabled = false;
+      ui.signBtn.disabled = true;
+      setNotice('Signature created locally. Ziggy is now signed, but still NOT attested and NOT on-chain.', 'success');
+    } catch (err) {
+      setNotice(err && err.message ? err.message : String(err), 'error');
+    }
+  }
+
+  function downloadReceipt() {
+    if (!receipt) return;
+    const blob = new Blob([JSON.stringify(receipt, null, 2) + '\n'], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'ziggy-v0.1-wallet-signature-receipt.json';
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  async function copyReceipt() {
+    if (!receipt) return;
+    try {
+      await navigator.clipboard.writeText(JSON.stringify(receipt, null, 2));
+      setNotice('Signature receipt copied to clipboard.', 'success');
+    } catch (_) {
+      setNotice('Clipboard access was blocked. Use Download Signature JSON instead.', 'error');
+    }
+  }
+
+  ui.connectBtn.addEventListener('click', connect);
+  ui.networkBtn.addEventListener('click', useBaseSepolia);
+  ui.signBtn.addEventListener('click', signReceipt);
+  ui.downloadBtn.addEventListener('click', downloadReceipt);
+  ui.copyBtn.addEventListener('click', copyReceipt);
+  ui.understand.addEventListener('change', updateUi);
+
+  if (window.ethereum && typeof window.ethereum.on === 'function') {
+    window.ethereum.on('accountsChanged', accounts => {
+      account = accounts && accounts[0] ? accounts[0] : null;
+      receipt = null;
+      ui.downloadBtn.disabled = true;
+      ui.signedSection.classList.add('hidden');
+      ui.signStatus.textContent = 'SIGNATURE: NOT CREATED';
+      ui.signStatus.className = 'pill warn';
+      updateUi();
+    });
+    window.ethereum.on('chainChanged', id => { chainId = id; updateUi(); });
+  }
+
+  updateUi();
+})();
+</script>
+</body>
+</html>
