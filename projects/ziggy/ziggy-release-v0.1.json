@@ -1,0 +1,33 @@
+{
+  "format": "ZIGGY_RELEASE_V0.1",
+  "artifact_payload": {
+    "artifact_id": "ZIGGY_QUANTUM_REPLAY_V0_1",
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "branch": "ziggy-quantum-replay-v0-1",
+    "source_commit_sha1": "5aa886746ec08adcbbbad2c5f758b64324066d66",
+    "readme_git_blob_sha1": "34f986fd49882bc64a79c97880c5a5ad5d24fc40",
+    "prototype_git_blob_sha1": "a2566abbd8ffe993689fae44c679e993e659497e",
+    "operator_ens": "jaywisdom.eth",
+    "boxd": "BoxD",
+    "intelligence_layer": "100th Intelligence",
+    "canonical_purpose": "ZIGGY = a bounded reasoning companion that helps a child explore possibilities while preserving originals, exposing missing information, respecting parent-defined boundaries, and making the reasoning path replayable.",
+    "authority_created": false
+  },
+  "artifact_payload_sha256": "ad22599ef68bca96af1328ed0ab60cc0ff488af21db1139db954098400146447",
+  "canonicalization": "UTF-8 JSON; keys sorted recursively; separators=(',', ':'); SHA-256 is over artifact_payload only",
+  "onchain": {
+    "target_network": "Base Sepolia",
+    "chain_id": 84532,
+    "attestation_status": "SIGNATURE_REQUIRED_NOT_SUBMITTED",
+    "attestation_uid": null,
+    "transaction_hash": null,
+    "authority_created": false,
+    "rule": "No attestation is claimed until a wallet signature and transaction receipt are independently verified."
+  },
+  "drive": {
+    "status": "BOUND",
+    "document_id": "1_s57670_WKRRKTb3SgFPEGYLa8gh2YjItmfkhcP3IBA",
+    "document_url": "https://docs.google.com/document/d/1_s57670_WKRRKTb3SgFPEGYLa8gh2YjItmfkhcP3IBA/edit?usp=drivesdk",
+    "document_title": "Ziggy v0.1 — BoxD Release Receipt — 100th Intelligence — jaywisdom.eth"
+  }
+}
