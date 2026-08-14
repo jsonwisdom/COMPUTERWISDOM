@@ -1,0 +1,103 @@
+{
+  "format": "ZIGGY_ADDRESS_STATUS_V0.1",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "snapshot_date": "2026-08-14",
+  "subject": {
+    "address": "0xF18E616d5F315435F9A0C48EeD52048d4051FB27",
+    "chain": "Base",
+    "convenience_label": "Jay's Uniswap",
+    "label_state": "USER_SUPPLIED_NOT_IDENTITY_PROOF"
+  },
+  "source_boundary": {
+    "status_source": "USER_SUPPLIED_CANONICAL_RECEIPT",
+    "independent_basescan_replay_in_this_commit": "NOT_PERFORMED",
+    "rule": "This file codifies the bounded state supplied for Ziggy. It does not promote a user label or reported activity into control, identity, protocol role, or authority."
+  },
+  "ladder": {
+    "activity": {
+      "status": "OBSERVED",
+      "reported_observations": [
+        "received DAI",
+        "received Zerocool token",
+        "transferred/interacted with JAYWISDOM contract 0x694ce46c64d9d1a5e9376a9febcf85ec05d72e9f",
+        "transferred/interacted with 0x829adfedbe565f9885a7ea6bc78912acaef055e2"
+      ],
+      "promotion_effect": "ACTIVITY_ONLY"
+    },
+    "protocol_role": {
+      "status": "NOT_YET_VERIFIED_FROM_BASESCAN",
+      "protocol": "Uniswap",
+      "crossing_evidence": [
+        "Swap event attributable to subject address",
+        "Universal Router interaction attributable to subject address",
+        "PoolManager interaction attributable to subject address",
+        "Uniswap liquidity position minted or protocol state assigned to subject address"
+      ]
+    },
+    "control": {
+      "status": "NOT_CRYPTOGRAPHICALLY_VERIFIED",
+      "crossing_evidence": [
+        "valid personal_sign signature recoverable to subject address",
+        "valid EIP-712 signature recoverable to subject address",
+        "valid ERC-1271 signature if subject address is a contract wallet"
+      ]
+    },
+    "identity_binding": {
+      "status": "NOT_VERIFIED",
+      "target_identity_if_claimed": "jaywisdom.eth",
+      "crossing_evidence": [
+        "verified signature from subject address explicitly binding it to jaywisdom.eth",
+        "mutually supported cryptographic binding"
+      ]
+    },
+    "third_party_attestation": {
+      "status": "NO_SUBJECT_BINDING_RECORDED_HERE",
+      "rule": "An attestation about the subject address is not a signature by the subject address and does not prove subject control."
+    },
+    "authority": {
+      "status": "NOT_CREATED",
+      "crossing_evidence": [
+        "explicit human authority grant within a defined scope",
+        "explicit sealed-protocol authority command within a defined scope"
+      ]
+    }
+  },
+  "distinct_nodes": {
+    "eas_creator_attester": {
+      "address": "0xC345B26094c63C69222Ee775189a3d3eaead5a84",
+      "relationship_to_subject": "DISTINCT_NO_IDENTITY_COLLAPSE",
+      "repository_evidence": "signal-core/eas/receipt-core-v0.4.eas.json"
+    },
+    "jaywisdom_contract": {
+      "address": "0x694ce46c64d9d1a5e9376a9febcf85ec05d72e9f",
+      "relationship_to_subject": "ACTIVITY_EDGE_ONLY_NOT_IDENTITY"
+    },
+    "other_address": {
+      "address": "0x829adfedbe565f9885a7ea6bc78912acaef055e2",
+      "relationship_to_subject": "ACTIVITY_EDGE_ONLY_NOT_IDENTITY"
+    }
+  },
+  "context_commitments_not_identity_proofs": [
+    {
+      "type": "MERKLE_ROOT_SHA256",
+      "value": "ff55a1fb6ef07adbeea057aed4997a617e16ae3c80c8d18ec673c3d14ca25a91",
+      "repository_evidence": "receipts/merkle/confucius_compute_wisdom_merkle_purpose_key_v1.json",
+      "relationship_to_subject": "NOT_ASSERTED"
+    },
+    {
+      "type": "EAS_RECEIPT_CORE_BUNDLE_ROOT_SHA256",
+      "value": "b3732b6b1c34075e60d85976c968f3d43d299e68b383bc604ed45bb3c1d45070",
+      "repository_evidence": "signal-core/eas/receipt-core-v0.4.eas.json",
+      "relationship_to_subject": "NOT_ASSERTED"
+    }
+  ],
+  "hard_rules": [
+    "OBSERVED_EDGE != OWNERSHIP",
+    "PROTOCOL_OWNERSHIP != PRIVATE_KEY_CONTROL",
+    "CONTROL != IDENTITY",
+    "IDENTITY != AUTHORITY",
+    "ATTESTATION_ABOUT_ADDRESS != SIGNATURE_BY_ADDRESS",
+    "ACTIVITY != AUTHORITY"
+  ],
+  "authority_created": false
+}
