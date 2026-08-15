@@ -1,0 +1,90 @@
+{
+  "schema_version": "0.1",
+  "instrument": "ENFORCEMENT_TAIL_REPLAY_V0_1",
+  "fixture_id": "FAUCI_CONTEMPT_REFERRAL_2026_08_06",
+  "status": "REVIEW_OPEN",
+  "system_author": "Jay",
+  "declared_identity_label": "jaywisdom.base.eth",
+  "authority_created": false,
+  "purpose": "Procedural replay fixture only; does not determine guilt, innocence, prosecutorial obligation, or final legal validity.",
+  "sources": [
+    {
+      "type": "REPORTING",
+      "publisher": "Reuters",
+      "date": "2026-08-06",
+      "url": "https://www.reuters.com/legal/litigation/us-senate-panel-votes-hold-fauci-contempt-congress-2026-08-06/"
+    },
+    {
+      "type": "LAW",
+      "publisher": "U.S. House Office of the Law Revision Counsel",
+      "citation": "2 U.S.C. §194",
+      "url": "https://uscode.house.gov/view.xhtml?req=%28title%3A2+section%3A194+edition%3Aprelim%29"
+    }
+  ],
+  "nodes": [
+    {
+      "node_id": "COMMITTEE_VOTE",
+      "node_type": "ACTION",
+      "status": "OBSERVED",
+      "actor": "Senate Homeland Security and Governmental Affairs Committee",
+      "gap": null
+    },
+    {
+      "node_id": "DIRECT_DOJ_REFERRAL",
+      "node_type": "ACTION",
+      "status": "OBSERVED",
+      "actor": "Senator Rand Paul",
+      "gap": null
+    },
+    {
+      "node_id": "DOJ_RECEIPT",
+      "node_type": "RECEIPT",
+      "status": "OBSERVED",
+      "actor": "U.S. Department of Justice",
+      "gap": "Receipt alone does not establish prosecution, guilt, or a judicial finding."
+    },
+    {
+      "node_id": "FULL_SENATE_REFERRAL_VOTE",
+      "node_type": "PROCEDURE",
+      "status": "NOT_ESTABLISHED",
+      "actor": "United States Senate",
+      "gap": "Reuters reported that the direct referral bypassed a full Senate referral vote."
+    },
+    {
+      "node_id": "SECTION_194_CERTIFICATION_PATH",
+      "node_type": "PROCEDURE",
+      "status": "NOT_ESTABLISHED",
+      "actor": "President of the Senate / statutory certification chain",
+      "gap": "The cited materials do not establish completion of the ordinary certification path described in 2 U.S.C. §194."
+    },
+    {
+      "node_id": "DIRECT_REFERRAL_STATUTORY_EQUIVALENCE",
+      "node_type": "AUTHORITY",
+      "status": "DISPUTED",
+      "actor": "Contesting legal interpretations",
+      "gap": "Do not resolve by narrative; hold until a controlling legal source or adjudication establishes the effect."
+    },
+    {
+      "node_id": "PROSECUTION",
+      "node_type": "EFFECT",
+      "status": "NOT_ESTABLISHED",
+      "actor": "U.S. Department of Justice",
+      "gap": null
+    },
+    {
+      "node_id": "GUILT",
+      "node_type": "EFFECT",
+      "status": "NOT_ESTABLISHED",
+      "actor": "Court",
+      "gap": "No judicial finding is established by this fixture."
+    }
+  ],
+  "result": "HOLD_AT_SECTION_194_CERTIFICATION_PATH",
+  "invariants": [
+    "DECLARATION != PROCEDURAL_FORCE",
+    "REFERRAL != PROSECUTION",
+    "RECEIPT != DUTY_TO_ACT",
+    "CHARGE != GUILT",
+    "MISSING_LINK != PROOF_OF_MISCONDUCT"
+  ]
+}
