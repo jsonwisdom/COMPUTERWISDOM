@@ -65,16 +65,19 @@ Ziggy's next control layer is intentionally directory-first:
 
 - [`DIRECTORY_MAP.md`](./DIRECTORY_MAP.md)
 - [`natural-language/`](./natural-language/)
+- [`identity/`](./identity/)
 - [`ens/`](./ens/)
 - [`voice/`](./voice/)
 - [`imagination/`](./imagination/)
+- [`profiles/ziggyprime/`](./profiles/ziggyprime/)
+- [`lessons/wisconsin/`](./lessons/wisconsin/)
 - [`github-control/`](./github-control/)
 - [`launches/main/`](./launches/main/)
 - [`test-runs/base-sepolia/`](./test-runs/base-sepolia/)
 - [`receipts/`](./receipts/)
 - [`replay/`](./replay/)
 
-Natural language may propose. ENS may resolve. Voice may transcribe. Imagination may sandbox. GitHub may gate. The human remains the promotion authority.
+Natural language may propose. ENS may resolve. Voice may transcribe. Imagination may sandbox. Applied profiles may extend bounded skills. Lessons may exercise those skills. GitHub may gate. The human remains the promotion authority.
 
 Address claims are preserved without inference in [`ens/claims.v0.1.json`](./ens/claims.v0.1.json), including:
 
@@ -82,6 +85,22 @@ Address claims are preserved without inference in [`ens/claims.v0.1.json`](./ens
 - `0xa380552a27b0a5a2874ea7aa52cac09f542002e8`
 
 Both are currently `USER_SUPPLIED / UNVERIFIED / UNASSIGNED`; their relationship is `UNDEFINED` until cryptographic evidence says otherwise.
+
+## Applied profile: ZiggyPrime
+
+`ZIGGYPRIME` is Ziggy's advanced applied-skill profile for public-source provenance work. It is not a new character, identity, operator, or authority.
+
+`ZIGGYPRIME = QUESTION + NAVIGATE + MEASURE + COMPARE + REPLAY`
+
+With LeahPrime's bounded classifier/explainer rail:
+
+`LEAHPRIME = CLASSIFY + GAP_CHECK + EXPLAIN + ROUTE + HOLD`
+
+Applied cross:
+
+`ZIGGYPRIME × LEAHPRIME = CHILD_PROVENANCE_ENGINE`
+
+See [`profiles/ziggyprime/README.md`](./profiles/ziggyprime/README.md) and [`lessons/wisconsin/WISCONSIN_LESSON_002_FOLLOW_THE_DOLLAR_V0_1.md`](./lessons/wisconsin/WISCONSIN_LESSON_002_FOLLOW_THE_DOLLAR_V0_1.md).
 
 ## Human signature gate
 
