@@ -1,0 +1,31 @@
+{
+  "object_id": "policy:story-mode-public-protection:v1",
+  "object_type": "PUBLICATION_GATE",
+  "version": "1.0.0",
+  "purpose": "Teach the public without exposing the public naked and unprotected on the internet.",
+  "default_decision": "HOLD",
+  "prohibited_outputs": [
+    "secrets or credentials",
+    "private repository names or internal metadata",
+    "personal private data",
+    "live system access",
+    "attack-enabling operational details",
+    "unreviewed executable network behavior"
+  ],
+  "required_controls": [
+    "static-first HTML CSS JS JSON",
+    "no backend required for core playback",
+    "no browser secrets",
+    "no live network calls required for core lesson playback",
+    "versioned reviewable lessons",
+    "visible safety boundary and report link",
+    "what-this-teaches and what-this-does-not-teach",
+    "worked examples and replay controls",
+    "pass/fail reasons and commit/version",
+    "Gitleaks or equivalent secret scan",
+    "forbidden output surface scan",
+    "human PASS before public promotion"
+  ],
+  "no_fake_green": true,
+  "authority_created": false
+}

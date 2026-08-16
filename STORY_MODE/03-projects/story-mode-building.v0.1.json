@@ -1,0 +1,21 @@
+{
+  "object_id": "project:story-mode-building:v0.1",
+  "object_type": "PROJECT_SPINE",
+  "version": "0.1.0",
+  "title": "JSONWisdom Story Mode Building",
+  "method": "DIRECTORIES_FIRST",
+  "properties": [
+    "REPEATABLE",
+    "REPLAYABLE",
+    "FAIL_CLOSED"
+  ],
+  "target_repository": "jsonwisdom/COMPUTERWISDOM",
+  "initial_repository_count": 1,
+  "known_account_repository_inventory": 80,
+  "all_80_propagated": false,
+  "searched_all_repositories": false,
+  "historical_files_mutated": false,
+  "proposal_issue": 459,
+  "merge_authorized": false,
+  "authority_created": false
+}

@@ -1,0 +1,12 @@
+{
+  "receipt_id": "STORY-MODE-PROPOSAL-459-v1",
+  "receipt_type": "PROPOSAL_RECEIPT",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "issue": 459,
+  "branch": "agent/story-mode-directories-first",
+  "base_commit": "e471c4dc9ed6a10831be2d46e90b33d217f4b216",
+  "historical_files_mutated": false,
+  "all_80_propagated": false,
+  "merge_authorized": false,
+  "authority_created": false
+}

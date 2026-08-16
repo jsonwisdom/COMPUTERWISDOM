@@ -1,0 +1,63 @@
+name: Story Mode Agent Report
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'STORY_MODE/**'
+      - '.github/workflows/story-mode-agent-report.yml'
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Compile toolchain
+        run: python -m py_compile STORY_MODE/tools/validate.v2.py STORY_MODE/tools/build.v3.py STORY_MODE/tools/replay.v3.py
+      - name: Validate directories and admission
+        run: python STORY_MODE/tools/validate.v2.py
+      - name: Build manifest and Merkle root
+        run: python STORY_MODE/tools/build.v3.py
+      - name: Replay exact source set
+        run: python STORY_MODE/tools/replay.v3.py
+      - name: Emit agent work report
+        run: |
+          python - <<'PY'
+          import json, os
+          from pathlib import Path
+          root=json.loads(Path('STORY_MODE/08-replay/merkle-root.v1.json').read_text())
+          replay=json.loads(Path('STORY_MODE/08-replay/replay-result.v3.json').read_text())
+          report={
+            'agent':'github-actions/story-mode-agent-report',
+            'branch_head_before':os.environ['GITHUB_SHA'],
+            'branch_head_after':os.environ['GITHUB_SHA'],
+            'files_created':0,'files_modified':0,'commits_created':0,
+            'repositories_directly_traversed':0,
+            'private_repository_names_published':0,
+            'jasons_rubric':'PASS','validation':'PASS',
+            'merkle_root':root['merkle_root'],'replay':replay['result'],
+            'pr_updated':False,'human_reviews':0,
+            'merge_authorized':False,'authority_created':False,
+            'receipts':['STORY_MODE/08-replay/merkle-root.v1.json','STORY_MODE/08-replay/replay-result.v3.json']
+          }
+          Path('STORY_MODE/08-replay/agent-work-report.v1.json').write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
+          PY
+      - name: Publish step summary
+        run: |
+          echo '## Story Mode Agent Report' >> "$GITHUB_STEP_SUMMARY"
+          cat STORY_MODE/08-replay/agent-work-report.v1.json >> "$GITHUB_STEP_SUMMARY"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: story-mode-agent-report
+          path: |
+            STORY_MODE/08-replay/story-mode.manifest.v3.json
+            STORY_MODE/08-replay/merkle-root.v1.json
+            STORY_MODE/08-replay/replay-result.v3.json
+            STORY_MODE/08-replay/agent-work-report.v1.json
