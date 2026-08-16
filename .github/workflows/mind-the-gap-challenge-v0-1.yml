@@ -6,14 +6,18 @@ on:
       - agent/mind-the-gap-challenge-dice-v0-1
     paths:
       - "schemas/jaywisdom/challenge_membrane.v0_1.schema.json"
+      - "schemas/jaywisdom/gamification_membrane.v0_1.schema.json"
       - "fixtures/jaywisdom/challenge/**"
       - "tools/verify_challenge_membrane_v0_1.py"
+      - "tools/verify_gamification_membrane_v0_1.py"
       - ".github/workflows/mind-the-gap-challenge-v0-1.yml"
   pull_request:
     paths:
       - "schemas/jaywisdom/challenge_membrane.v0_1.schema.json"
+      - "schemas/jaywisdom/gamification_membrane.v0_1.schema.json"
       - "fixtures/jaywisdom/challenge/**"
       - "tools/verify_challenge_membrane_v0_1.py"
+      - "tools/verify_gamification_membrane_v0_1.py"
       - ".github/workflows/mind-the-gap-challenge-v0-1.yml"
   workflow_dispatch:
 
@@ -21,7 +25,7 @@ permissions:
   contents: read
 
 jobs:
-  verify-q1-q2:
+  verify-q1-q2-and-game:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
@@ -36,5 +40,8 @@ jobs:
         with:
           python-version: "3.12"
 
-      - name: Verify dice selection and deterministic replay
+      - name: Verify dice selection and deterministic binding replay
         run: python tools/verify_challenge_membrane_v0_1.py
+
+      - name: Verify Dice LeahPrime gamification membrane
+        run: python tools/verify_gamification_membrane_v0_1.py
