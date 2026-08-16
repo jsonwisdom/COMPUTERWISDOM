@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Deterministic Q1/Q2 verifier for MIND_THE_GAP_DICE_V0_1."""
+"""Deterministic Q1/Q2 binding verifier for MIND_THE_GAP_DICE_V0_1."""
 
 from __future__ import annotations
 
@@ -171,7 +171,7 @@ def main() -> int:
         "verifier": "MIND_THE_GAP_DICE_VERIFIER_V0_1",
         "status": "PASS_WITH_BOUNDARY" if ok else "FAIL",
         "q1": "ROLL_SELECTS_FROZEN_SNAPSHOT",
-        "q2": "FROZEN_SNAPSHOT_DETERMINES_DISPOSITION",
+        "q2": "RULE_SCOPE_SNAPSHOT_DISPOSITION_BINDING_MATCH",
         "mapping_sha256": sha(mapping_bytes),
         "positive_results": positive,
         "negative_results": negative,
@@ -181,6 +181,9 @@ def main() -> int:
             "dice_is_verdict_generator": False,
             "roll_observed_does_not_prove_randomness_quality": True,
             "pass_does_not_mean_claim_true": True,
+            "substantive_rule_engine_proven": False,
+            "schema_dialect_checked": True,
+            "full_schema_validation": False,
             "replay_does_not_create_authority": True
         },
         "authority_created": False
