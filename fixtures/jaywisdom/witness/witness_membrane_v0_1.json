@@ -1,0 +1,47 @@
+{
+  "format": "JSONWISDOM_WITNESS_MEMBRANE_V0.1",
+  "progression": {
+    "stages": [
+      "OBSERVATION",
+      "WITNESS",
+      "ATTESTATION",
+      "SIGNATURE",
+      "VERIFICATION"
+    ],
+    "automatic_promotion": false
+  },
+  "typed_objects": {
+    "witness": {
+      "kind": "witness",
+      "meaning": "records an observation within a defined scope",
+      "creates_authority": false,
+      "scope_required": true
+    },
+    "attester": {
+      "kind": "attester",
+      "meaning": "makes a signed or attributable assertion",
+      "creates_authority": false,
+      "scope_required": true
+    },
+    "signer": {
+      "kind": "signer",
+      "meaning": "demonstrates cryptographic control for a specific signed payload",
+      "creates_authority": false,
+      "scope_required": true
+    },
+    "authority": {
+      "kind": "authority",
+      "meaning": "separately granted decision power within explicit scope",
+      "requires_explicit_grant": true,
+      "creates_authority": true,
+      "scope_required": true
+    }
+  },
+  "role_instances": [],
+  "evidence_objects": [],
+  "shared_law": {
+    "evidence_may_accumulate": true,
+    "authority_may_emerge_by_accumulation": false
+  },
+  "authority_created": false
+}
