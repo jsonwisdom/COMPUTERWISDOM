@@ -29,8 +29,10 @@ jobs:
   verify-precommitted-lanes:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout exact commit
+      - name: Checkout exact PR head
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Verify 36 outcomes map evenly to 12 lanes
         run: python tools/verify_jasons_dice_12_justice_lanes_v0_1.py
       - name: Verify White House nightly cross-receipt clerk test vectors
