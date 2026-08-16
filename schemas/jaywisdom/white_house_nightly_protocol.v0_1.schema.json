@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://jsonwisdom.invalid/schemas/jaywisdom/white_house_nightly_protocol.v0_1.schema.json",
   "title": "WHITE_HOUSE_NIGHTLY_PROTOCOL_v0_1",
-  "$comment": "Cross-receipt equality, lane-map binding, dependency ordering, and digest recomputation require a protocol verifier; JSON Schema validates structure only. For every receipt_sha256, compute SHA-256 over RFC 8785 JCS canonicalization of that receipt object with the receipt_sha256 member omitted.",
+  "$comment": "Cross-receipt equality, lane-map binding, dependency ordering, and digest recomputation require a protocol verifier; JSON Schema validates structure only. For every receipt_sha256, compute SHA-256 over RFC 8785 JCS canonicalization of that receipt object with the receipt_sha256 member omitted. authority_created is required and false at protocol root and every receipt.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -50,7 +50,8 @@
         "claim_pool_frozen",
         "claim_selected_id",
         "timestamp",
-        "receipt_sha256"
+        "receipt_sha256",
+        "authority_created"
       ],
       "properties": {
         "event_id": {
@@ -71,6 +72,9 @@
         "receipt_sha256": {
           "type": "string",
           "pattern": "^[0-9a-f]{64}$"
+        },
+        "authority_created": {
+          "const": false
         }
       }
     },
@@ -170,7 +174,8 @@
         "lane",
         "lane_map_sha256",
         "timestamp",
-        "receipt_sha256"
+        "receipt_sha256",
+        "authority_created"
       ],
       "properties": {
         "event_id": {
@@ -211,6 +216,9 @@
         "receipt_sha256": {
           "type": "string",
           "pattern": "^[0-9a-f]{64}$"
+        },
+        "authority_created": {
+          "const": false
         }
       }
     },
@@ -225,7 +233,8 @@
         "byte_length",
         "sha256",
         "raw_bytes_preserved",
-        "receipt_sha256"
+        "receipt_sha256",
+        "authority_created"
       ],
       "properties": {
         "event_id": {
@@ -258,6 +267,9 @@
         "receipt_sha256": {
           "type": "string",
           "pattern": "^[0-9a-f]{64}$"
+        },
+        "authority_created": {
+          "const": false
         }
       }
     },
@@ -271,7 +283,8 @@
         "claim_id",
         "disposition",
         "timestamp",
-        "receipt_sha256"
+        "receipt_sha256",
+        "authority_created"
       ],
       "properties": {
         "event_id": {
@@ -303,6 +316,9 @@
         "receipt_sha256": {
           "type": "string",
           "pattern": "^[0-9a-f]{64}$"
+        },
+        "authority_created": {
+          "const": false
         }
       }
     }
