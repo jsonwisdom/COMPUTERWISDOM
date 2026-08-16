@@ -104,15 +104,84 @@ The parent models collaborative verification, not confrontation or authority.
 7. Parent-Safe Replay
 8. Takeaway
 
-## Mission queue
+## Mission Card 002 — Dinosaurs & People
 
-- Mission 002 — Dinosaurs & People
-- Mission 003 — “This Picture Happened Yesterday”
-- Mission 004 — “A Grown-Up Says This Number Is Correct”
-- Mission 005 — “This Poster Looks Official”
-- Mission 006 — “My Friend Says Everyone Knows It”
+**Mission:** A child sees a picture showing people standing beside dinosaurs.
 
-These remain queued mission titles until their individual cards are written and replayed. A title does not create a completed lesson receipt.
+1. **LOOK** — “I saw people and dinosaurs together in one picture.”
+2. **GUESS** — “I’m guessing the picture means they lived together.”
+3. **SOURCE** — “I don’t know who made the picture or what they used as evidence.”
+4. **RECEIPT** — Check a museum source, science book, or another evidence-backed explanation.
+5. **TRUE / FALSE / HOLD** — `HOLD`; the picture alone does not prove the claim.
+6. **FIRST GAP** — “I don’t know what evidence the picture is based on.”
+7. **PARENT-SAFE REPLAY** — “The picture is interesting. Let’s find out what evidence scientists use to date people and dinosaurs.”
+8. **TAKEAWAY** — A picture can show an idea without proving the idea.
+
+## Mission Card 003 — This Picture Happened Yesterday
+
+**Mission:** Someone shows a picture and says, “This happened yesterday.”
+
+1. **LOOK** — “I saw a picture and heard someone say when it happened.”
+2. **GUESS** — “I’m guessing the picture was really taken yesterday.”
+3. **SOURCE** — The speaker is the source of the date claim; the image itself may not show when it was taken.
+4. **RECEIPT** — Look for the original post, timestamp, file details, or a trusted record of when it was made.
+5. **TRUE / FALSE / HOLD** — `HOLD`; date not yet verified.
+6. **FIRST GAP** — “I don’t know when the original picture was created.”
+7. **PARENT-SAFE REPLAY** — “We can enjoy the picture and still check when it came from.”
+8. **TAKEAWAY** — `IMAGE ≠ VERIFIED_DATE`.
+
+## Mission Card 004 — A Grown-Up Says This Number Is Correct
+
+**Mission:** A grown-up says, “The answer is 42.”
+
+1. **LOOK** — “I heard a grown-up give me a number.”
+2. **GUESS** — “I’m guessing the number is correct because they sound sure.”
+3. **SOURCE** — The grown-up supplied the answer.
+4. **RECEIPT** — Re-do the math, inspect the worksheet, or ask how the number was calculated.
+5. **TRUE / FALSE / HOLD** — `HOLD` until the calculation can be replayed.
+6. **FIRST GAP** — “I don’t know how they got 42.”
+7. **PARENT-SAFE REPLAY** — “Let’s do the steps together and see whether we get the same answer.”
+8. **TAKEAWAY** — `CONFIDENCE ≠ PROOF`; replay makes numbers checkable.
+
+## Mission Card 005 — This Poster Looks Official
+
+**Mission:** A child sees a polished poster with seals, uniforms, logos, and formal words.
+
+1. **LOOK** — “I saw a poster that looks like something an office might make.”
+2. **GUESS** — “I’m guessing an official organization made it.”
+3. **SOURCE** — The poster does not identify a verified publisher just by looking official.
+4. **RECEIPT** — Check the named organization’s real website or publication record and look for the original document.
+5. **TRUE / FALSE / HOLD** — `HOLD`; appearance does not establish origin or authority.
+6. **FIRST GAP** — “I don’t know who actually published this.”
+7. **PARENT-SAFE REPLAY** — “It looks official. Let’s see whether the organization itself published it.”
+8. **TAKEAWAY** — `OFFICIAL_LOOKING ≠ OFFICIAL`; `SYMBOL ≠ AUTHORITY`.
+
+## Mission Card 006 — My Friend Says Everyone Knows It
+
+**Mission:** A friend says, “Everybody knows that.”
+
+1. **LOOK** — “I heard my friend say that everybody knows something.”
+2. **GUESS** — “I’m guessing the claim must be true because it sounds popular.”
+3. **SOURCE** — The friend is repeating a claim; “everybody” is not a specific source.
+4. **RECEIPT** — Ask, “How do we know?” and look for a source that can actually support the claim.
+5. **TRUE / FALSE / HOLD** — `HOLD`; popularity has not verified the claim.
+6. **FIRST GAP** — “I don’t know where the claim came from.”
+7. **PARENT-SAFE REPLAY** — “Your friend may have heard something useful. Let’s find the source before deciding.”
+8. **TAKEAWAY** — `POPULAR ≠ PROVEN`; `ASKING ≠ ACCUSING`.
+
+## Mission set state
+
+```text
+MISSION_001 = COMPLETED
+MISSION_002 = COMPLETED
+MISSION_003 = COMPLETED
+MISSION_004 = COMPLETED
+MISSION_005 = COMPLETED
+MISSION_006 = COMPLETED
+PARENT_SAFE = TRUE
+REPLAY_OPEN = TRUE
+AUTHORITY_CREATED = FALSE
+```
 
 ## Invariants
 
@@ -122,6 +191,9 @@ These remain queued mission titles until their individual cards are written and 
 - `SHARING ≠ VERIFICATION`
 - `ASKING_FOR_SOURCE ≠ CALLING_SOMEONE_A_LIAR`
 - `MISSION_TITLE ≠ COMPLETED_REPLAY`
+- `IMAGE ≠ VERIFIED_DATE`
+- `POPULAR ≠ PROVEN`
+- `SYMBOL ≠ AUTHORITY`
 
 ## Series 003 operating principle
 
