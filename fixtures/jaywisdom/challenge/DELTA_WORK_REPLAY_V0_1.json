@@ -1,0 +1,104 @@
+{
+  "format": "JSONWISDOM_DELTA_WORK_REPLAY_V0.1",
+  "artifact_id": "DELTA_WORK_REPLAY_V0_1",
+  "classification": "SYNTHETIC_WORK_TRAINING_ORCHESTRATOR",
+  "purpose": "Measure and replay what changed between bounded training states without converting change, score, simulation, or institutional context into truth or authority.",
+  "base_game": "LEAHPRIME_DICE_GAME_V0_1",
+  "delta_meaning": "OBSERVED_CHANGE_BETWEEN_FROZEN_BEFORE_AND_AFTER_STATES",
+  "loop": [
+    "FREEZE_BEFORE_STATE",
+    "ROLL_OR_SELECT_BOUNDED_SCENARIO",
+    "DICE_LEAHPRIME_PRESENTS_SCENARIO",
+    "ZIGGY_CHALLENGES_CLAIMS_AND_MISSING_EDGES",
+    "GIRLMATH_CHECKS_EVIDENCE_DENOMINATOR",
+    "CLASSIFY_PASS_GAP_CONFLICT_OR_HOLD",
+    "RECEIPTOS_RECORDS_EVENTS",
+    "REPLAY_REPRODUCES_BINDINGS",
+    "DELTA_COMPARES_BEFORE_AND_AFTER",
+    "HUMAN_DECIDES_ANY_CONSEQUENTIAL_ACTION"
+  ],
+  "delta_axes": [
+    "OBSERVATION_STATE",
+    "EVIDENCE_STATE",
+    "CLAIM_STATE",
+    "GAP_STATE",
+    "CONFLICT_STATE",
+    "BOUNDARY_PRESERVATION_STATE",
+    "DECISION_READINESS_STATE",
+    "AUTHORITY_STATE"
+  ],
+  "delta_outputs": [
+    "NO_DELTA",
+    "DELTA_OBSERVED",
+    "DELTA_GAP_OPENED",
+    "DELTA_GAP_CLOSED_WITH_RECEIPT",
+    "DELTA_CONFLICT_OPENED",
+    "DELTA_CONFLICT_RESOLVED_WITH_RECEIPT",
+    "DELTA_BOUNDARY_VIOLATION",
+    "HOLD_INSUFFICIENT_REPLAY"
+  ],
+  "work_context_profiles": [
+    {
+      "profile": "AFRL_STYLE_RESEARCH_ASSURANCE",
+      "use": "hypothesis challenge, experiment provenance, reproducibility and evidence-gap drills"
+    },
+    {
+      "profile": "USAF_STYLE_OPERATIONAL_TRAINING",
+      "use": "bounded decision exercises where uncertain evidence remains explicitly uncertain"
+    },
+    {
+      "profile": "USSF_STYLE_CONTESTED_DATA",
+      "use": "sensor/data lineage, missing-link and conflicting-surface exercises"
+    },
+    {
+      "profile": "AETC_STYLE_INSTRUCTION",
+      "use": "randomized student cases that reduce answer memorization and reward boundary discipline"
+    },
+    {
+      "profile": "MAXWELL_STYLE_PME",
+      "use": "leadership, systems-thinking, cyber, acquisition and AI-governance tabletop replay"
+    },
+    {
+      "profile": "AIR_UNIVERSITY_STYLE_SYSTEMS_EDUCATION",
+      "use": "cross-domain reasoning, evidence mechanics, replay and human decision practice"
+    }
+  ],
+  "institutional_boundary": {
+    "official_affiliation_claimed": false,
+    "institutional_adoption_claimed": false,
+    "institutional_endorsement_claimed": false,
+    "real_mission_authority_created": false,
+    "personnel_decision_use_authorized": false
+  },
+  "promotion_gate": {
+    "allowed_inputs": [
+      "EVIDENCE_TYPE_MATCH",
+      "VERIFICATION_RESULT",
+      "RULE_SCOPE_BINDING",
+      "EDGE_LOCAL_RECEIPT"
+    ],
+    "forbidden_inputs": [
+      "DICE_ROLL",
+      "PLAYER_SCORE",
+      "VOTE_COUNT",
+      "POPULARITY",
+      "DELTA_MAGNITUDE",
+      "INSTITUTION_NAME",
+      "ACTOR_ROLE"
+    ]
+  },
+  "laws": [
+    "DELTA != TRUTH",
+    "DELTA != CAUSATION",
+    "DELTA != AUTHORITY",
+    "CHANGE_DETECTED != CHANGE_EXPLAINED",
+    "SCORE_DELTA != EVIDENCE_DELTA",
+    "TRAINING_CONTEXT != INSTITUTIONAL_ENDORSEMENT",
+    "DICE = SCENARIO_SELECTOR",
+    "DICE != VERDICT_GENERATOR",
+    "GAMEPLAY != AUTHORITY",
+    "HUMAN_RETAINS_CONSEQUENTIAL_AUTHORITY"
+  ],
+  "verification_state": "CREATED_NOT_YET_WIRED_TO_DEDICATED_VERIFIER",
+  "authority_created": false
+}
