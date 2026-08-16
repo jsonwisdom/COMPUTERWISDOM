@@ -1,0 +1,51 @@
+{
+  "mode": "MINNESOTA_MATH_MATRIX_PUBLIC_POSTS_PRIORITY_PEGGYPROOFPLAYER1",
+  "purpose": "VERIFICATION_PRIORITY_ONLY",
+  "budget_per_participant": 100,
+  "player": {
+    "id": "PEGGYPLAYER1",
+    "role": "case_label_only",
+    "candidate_preference_scored": false,
+    "party_preference_scored": false,
+    "guilt_scored_by_public_vote": false
+  },
+  "quadratic_rule": {
+    "allocation_symbol": "q_j",
+    "claim_cost": "q_j^2",
+    "ballot_cost": "sum(q_j^2)",
+    "constraint": "sum(q_j^2) <= 100"
+  },
+  "claims": [
+    {"id": "CLAIMED_STING", "status": "HOLD"},
+    {"id": "NO_ID_ACTIVE_VOTER", "status": "VERIFIED"},
+    {"id": "8_PERSON_VOUCHING", "status": "VERIFIED"},
+    {"id": "VOUCH_PROVES_CITIZENSHIP", "status": "FALSE"},
+    {"id": "IMPERSONATION_OCCURRED", "status": "VIDEO_NEEDED"},
+    {"id": "ILLEGAL_BALLOT_CAST", "status": "NOT_PROVEN"},
+    {"id": "PEGGY_INVOLVEMENT", "status": "NOT_ESTABLISHED"}
+  ],
+  "ballots": [],
+  "public_post_protocol": {
+    "accepted_action": "ALLOCATE_VERIFICATION_PRIORITY",
+    "not_accepted_actions": [
+      "VOTE_CANDIDATE",
+      "VOTE_PARTY",
+      "VOTE_GUILTY",
+      "VOTE_TRUE_FALSE",
+      "CHANGE_ELECTION_RESULT"
+    ],
+    "minimum_receipt_fields": [
+      "participant_id",
+      "allocations"
+    ],
+    "anti_brigading_note": "A public tally is an attention signal only. Identity/Sybil controls are a separate unresolved layer and must not be inferred from account count.",
+    "evidence_separation": "Priority votes select what to investigate next; only replayable evidence may change a claim status."
+  },
+  "seed_state": {
+    "synthetic_ballots_added": 0,
+    "public_ballots_recorded": 0,
+    "priority_winner": null,
+    "reason": "No public participation has been recorded. Do not fabricate a crowd signal."
+  },
+  "authority_created": false
+}
