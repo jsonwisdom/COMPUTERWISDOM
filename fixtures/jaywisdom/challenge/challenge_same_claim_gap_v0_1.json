@@ -1,0 +1,33 @@
+{
+  "format": "JSONWISDOM_CHALLENGE_FIXTURE_V0.1",
+  "fixture_id": "CHALLENGE_SAME_CLAIM_GAP_V0_1",
+  "classification": "SYNTHETIC_CHALLENGE_FIXTURE",
+  "claim_id": "CLAIM_MIND_THE_GAP_001",
+  "challenge_id": "CHALLENGE_001",
+  "authority_state": "UNCHANGED",
+  "replay": {
+    "replay_id": "REPLAY_GAP_001",
+    "rule_version": "challenge_membrane.v0_1",
+    "scope": "DECLARED_SCOPE_001"
+  },
+  "evidence_snapshot": {
+    "snapshot_id": "EVIDENCE_SNAPSHOT_C",
+    "content_type": "text/plain; charset=utf-8",
+    "payload_utf8": "MIND_THE_GAP_V0_1|SNAPSHOT_C|EVIDENCE=SUPPORT_INSUFFICIENT_WITHIN_DECLARED_SCOPE\n",
+    "byte_length": 81,
+    "sha256": "619745baf0926d0f3be6591e05f816f47cf605cf4371ec306b9f013e1681f2d2"
+  },
+  "response": {
+    "response_state": "RESPONDED",
+    "evidence_sufficiency": "INSUFFICIENT"
+  },
+  "result": {
+    "disposition": "GAP",
+    "assessment_state_changed": true
+  },
+  "source_evidence_mutated": false,
+  "claim_state_mutated": false,
+  "identity_state_mutated": false,
+  "authority_state_mutated": false,
+  "authority_created": false
+}
