@@ -4,14 +4,22 @@ on:
   pull_request:
     paths:
       - 'fixtures/jaywisdom/fraud_ledger/JASONS_DICE_12_JUSTICE_LANES_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_CONTRACT_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_TEST_VECTORS_V0_1.json'
+      - 'schemas/jaywisdom/white_house_nightly_protocol.v0_1.schema.json'
       - 'tools/verify_jasons_dice_12_justice_lanes_v0_1.py'
+      - 'tools/verify_white_house_nightly_protocol_v0_1.py'
       - '.github/workflows/jasons-dice-12-justice-lanes-v0-1.yml'
   push:
     branches:
       - 'agent/fraud-ledger-jasons-dice-game-v0-1'
     paths:
       - 'fixtures/jaywisdom/fraud_ledger/JASONS_DICE_12_JUSTICE_LANES_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_CONTRACT_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_TEST_VECTORS_V0_1.json'
+      - 'schemas/jaywisdom/white_house_nightly_protocol.v0_1.schema.json'
       - 'tools/verify_jasons_dice_12_justice_lanes_v0_1.py'
+      - 'tools/verify_white_house_nightly_protocol_v0_1.py'
       - '.github/workflows/jasons-dice-12-justice-lanes-v0-1.yml'
 
 permissions:
@@ -25,3 +33,5 @@ jobs:
         uses: actions/checkout@v4
       - name: Verify 36 outcomes map evenly to 12 lanes
         run: python tools/verify_jasons_dice_12_justice_lanes_v0_1.py
+      - name: Verify White House nightly cross-receipt clerk test vectors
+        run: python tools/verify_white_house_nightly_protocol_v0_1.py --self-test
