@@ -127,6 +127,47 @@ Mission `004-001 / WESTVIEW_HISTORY_LIVE` is the first concrete applied mission.
 
 Its replay should treat material conditions such as institution identity, jurisdiction, time, funding context, referendum rules, contract conditions, accessibility, local population, and available records as separately typed environmental lanes when those conditions matter to the claim being tested.
 
+## Kid Mode — Curiosity Turns Investigators
+
+Kid Mode starts with curiosity, not suspicion.
+
+```text
+CURIOSITY
+-> OBSERVATION
+-> QUESTION
+-> SOURCE
+-> RECEIPT
+-> GAP
+-> REPLAY
+-> PARENT-SAFE FINDING
+```
+
+The child is an investigator because they learn a method for checking claims, not because they receive authority over another person or institution.
+
+```text
+CURIOSITY != ACCUSATION
+QUESTION != GUILT
+INVESTIGATOR != ENFORCER
+UNKNOWN != FAILURE
+HOLD = SUCCESSFUL GAP DETECTION
+```
+
+Kid Mode asks:
+
+- What did I actually see?
+- What am I adding to the story?
+- Who said it?
+- What environment was this happening inside?
+- Where is the receipt?
+- What is the first gap?
+- Can someone else replay what I found?
+
+Parent / guardian remains the boundary authority for child participation and sharing. Kid Mode does not require private student records, covert surveillance, confrontation, public accusation, or publication.
+
+Canonical principle:
+
+> **Curiosity turns kids into investigators when questions become replayable evidence trails.**
+
 ## Apparatus geometry
 
 ```text
@@ -169,5 +210,8 @@ ENVIRONMENT_IS_AGENT = FALSE
 ENVIRONMENTAL_OBJECT = V0_1_DEFINED
 SERIES_004_AGENT_ONLY = FALSE
 MISSION_004_001 = APPLIED_EXAMPLE
+KID_MODE = ACTIVE
+CURIOSITY_TURNS_INVESTIGATORS = TRUE
+INVESTIGATOR_AUTHORITY = FALSE
 AUTHORITY_CREATED = FALSE
 ```
