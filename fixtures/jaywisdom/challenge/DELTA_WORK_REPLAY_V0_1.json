@@ -99,6 +99,8 @@
     "GAMEPLAY != AUTHORITY",
     "HUMAN_RETAINS_CONSEQUENTIAL_AUTHORITY"
   ],
-  "verification_state": "CREATED_NOT_YET_WIRED_TO_DEDICATED_VERIFIER",
+  "verifier": "tools/verify_delta_work_replay_v0_1.py",
+  "workflow": ".github/workflows/mind-the-gap-challenge-v0-1.yml",
+  "verification_state": "STRUCTURAL_VERIFIER_WIRED",
   "authority_created": false
 }
