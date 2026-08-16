@@ -1,0 +1,130 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.invalid/schemas/jaywisdom/gamification_membrane.v0_1.schema.json",
+  "title": "JSONWisdom Gamification Membrane v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "game_id",
+    "classification",
+    "base_mapping",
+    "roles",
+    "arenas",
+    "turn",
+    "scoring",
+    "promotion_gate",
+    "arena_rules",
+    "laws",
+    "win_condition",
+    "authority_created"
+  ],
+  "properties": {
+    "format": {"const": "JSONWISDOM_GAMIFICATION_MEMBRANE_V0.1"},
+    "game_id": {"const": "LEAHPRIME_DICE_GAME_V0_1"},
+    "classification": {"const": "SYNTHETIC_GAME_LAYER"},
+    "base_mapping": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["mapping_id", "path", "sha256"],
+      "properties": {
+        "mapping_id": {"const": "MIND_THE_GAP_DICE_V0_1"},
+        "path": {"const": "fixtures/jaywisdom/challenge/MIND_THE_GAP_DICE_V0_1.json"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "roles": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dice_leahprime", "ziggy", "girlmath", "receiptos", "human"],
+      "properties": {
+        "dice_leahprime": {"const": "SCENARIO_PRESENTER"},
+        "ziggy": {"const": "ADVERSARIAL_QUESTIONER"},
+        "girlmath": {"const": "EVIDENCE_DENOMINATOR_AUDITOR"},
+        "receiptos": {"const": "EVENT_RECORDER"},
+        "human": {"const": "CONSEQUENTIAL_AUTHORITY"}
+      }
+    },
+    "arenas": {
+      "type": "array",
+      "minItems": 7,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "MIND_THE_GAP",
+          "CLAIM_EVIDENCE",
+          "DELTA_QUADRATIC_VOTING",
+          "PARTICIPANT_VECTOR",
+          "FAMILY_MAP",
+          "RESUME_GITHUB",
+          "DELTA_REPLAY"
+        ]
+      }
+    },
+    "turn": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["step_1", "step_2", "step_3", "step_4", "step_5", "step_6", "step_7"],
+      "properties": {
+        "step_1": {"const": "ROLL_OR_SELECT_SCENARIO"},
+        "step_2": {"const": "DICE_LEAHPRIME_PRESENTS_BOUNDED_SCENARIO"},
+        "step_3": {"const": "ZIGGY_CHALLENGES_CLAIM_AND_MISSING_EDGES"},
+        "step_4": {"const": "GIRLMATH_CHECKS_REQUIRED_EVIDENCE_DENOMINATOR"},
+        "step_5": {"const": "RECEIPTOS_RECORDS_ACTIONS_AND_RESULTS"},
+        "step_6": {"const": "REPLAY_REPRODUCES_BINDINGS"},
+        "step_7": {"const": "HUMAN_DECIDES_ANY_CONSEQUENTIAL_ACTION"}
+      }
+    },
+    "scoring": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["classification_accuracy", "gap_detection", "conflict_detection", "boundary_preservation", "overclaim_penalty", "score_changes_epistemic_state"],
+      "properties": {
+        "classification_accuracy": {"type": "integer", "minimum": 0},
+        "gap_detection": {"type": "integer", "minimum": 0},
+        "conflict_detection": {"type": "integer", "minimum": 0},
+        "boundary_preservation": {"type": "integer", "minimum": 0},
+        "overclaim_penalty": {"type": "integer", "maximum": 0},
+        "score_changes_epistemic_state": {"const": false}
+      }
+    },
+    "promotion_gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["allowed_inputs", "forbidden_inputs"],
+      "properties": {
+        "allowed_inputs": {"type": "array", "const": ["EVIDENCE_TYPE_MATCH", "VERIFICATION_RESULT", "RULE_SCOPE_BINDING"]},
+        "forbidden_inputs": {"type": "array", "const": ["DICE_ROLL", "PLAYER_SCORE", "VOTE_COUNT", "POPULARITY"]}
+      }
+    },
+    "arena_rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["MIND_THE_GAP", "CLAIM_EVIDENCE", "DELTA_QUADRATIC_VOTING", "PARTICIPANT_VECTOR", "FAMILY_MAP", "RESUME_GITHUB", "DELTA_REPLAY"],
+      "properties": {
+        "MIND_THE_GAP": {"const": "DICE_SELECTS_FROZEN_SURFACE_ONLY"},
+        "CLAIM_EVIDENCE": {"const": "ARTIFACT_COUNT_DOES_NOT_EQUAL_SUFFICIENCY"},
+        "DELTA_QUADRATIC_VOTING": {"const": "VOTE_WEIGHT_IS_PRIORITY_SIGNAL_ONLY"},
+        "PARTICIPANT_VECTOR": {"const": "PRESENCE_DOES_NOT_EQUAL_ACTION_AUTHORITY_OR_CAUSATION"},
+        "FAMILY_MAP": {"const": "MISSING_EDGE_STAYS_MISSING"},
+        "RESUME_GITHUB": {"const": "REPOSITORY_EVIDENCE_DOES_NOT_PROVE_EMPLOYMENT_OR_CREDENTIALS"},
+        "DELTA_REPLAY": {"const": "STORY_DERIVATION_DOES_NOT_CREATE_INSTITUTIONAL_ENDORSEMENT"}
+      }
+    },
+    "laws": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dice_selects_scenario_not_verdict", "score_does_not_create_evidence", "votes_do_not_create_evidence", "receipt_does_not_create_truth", "simulation_does_not_create_authority", "story_does_not_promote_history"],
+      "properties": {
+        "dice_selects_scenario_not_verdict": {"const": true},
+        "score_does_not_create_evidence": {"const": true},
+        "votes_do_not_create_evidence": {"const": true},
+        "receipt_does_not_create_truth": {"const": true},
+        "simulation_does_not_create_authority": {"const": true},
+        "story_does_not_promote_history": {"const": true}
+      }
+    },
+    "win_condition": {"const": "MAXIMIZE_CORRECT_CLASSIFICATION_WITHOUT_OVERCLAIM"},
+    "authority_created": {"const": false}
+  }
+}

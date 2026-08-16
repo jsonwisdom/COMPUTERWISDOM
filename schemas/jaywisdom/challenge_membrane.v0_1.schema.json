@@ -1,0 +1,91 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.invalid/schemas/jaywisdom/challenge_membrane.v0_1.schema.json",
+  "title": "JSONWisdom Typed Challenge Membrane v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "fixture_id",
+    "classification",
+    "claim_id",
+    "challenge_id",
+    "authority_state",
+    "replay",
+    "evidence_snapshot",
+    "response",
+    "result",
+    "source_evidence_mutated",
+    "claim_state_mutated",
+    "identity_state_mutated",
+    "authority_state_mutated",
+    "authority_created"
+  ],
+  "properties": {
+    "format": {"const": "JSONWISDOM_CHALLENGE_FIXTURE_V0.1"},
+    "fixture_id": {"type": "string", "minLength": 1},
+    "classification": {"const": "SYNTHETIC_CHALLENGE_FIXTURE"},
+    "claim_id": {"type": "string", "minLength": 1},
+    "challenge_id": {"type": "string", "minLength": 1},
+    "authority_state": {"const": "UNCHANGED"},
+    "replay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["replay_id", "rule_version", "scope"],
+      "properties": {
+        "replay_id": {"type": "string", "minLength": 1},
+        "rule_version": {"const": "challenge_membrane.v0_1"},
+        "scope": {"type": "string", "minLength": 1}
+      }
+    },
+    "evidence_snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["snapshot_id", "content_type", "payload_utf8", "byte_length", "sha256"],
+      "properties": {
+        "snapshot_id": {"type": "string", "pattern": "^EVIDENCE_SNAPSHOT_[A-Z0-9_]+$"},
+        "content_type": {"const": "text/plain; charset=utf-8"},
+        "payload_utf8": {"type": "string", "minLength": 1},
+        "byte_length": {"type": "integer", "minimum": 1},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "response": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["response_state", "evidence_sufficiency"],
+      "properties": {
+        "response_state": {"enum": ["RESPONDED", "NO_RESPONSE"]},
+        "evidence_sufficiency": {"enum": ["SUFFICIENT", "CONFLICTING", "INSUFFICIENT", "NOT_EVALUABLE"]}
+      }
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["disposition", "assessment_state_changed"],
+      "properties": {
+        "disposition": {"enum": ["PASS", "CONFLICT", "GAP"]},
+        "assessment_state_changed": {"const": true}
+      }
+    },
+    "source_evidence_mutated": {"const": false},
+    "claim_state_mutated": {"const": false},
+    "identity_state_mutated": {"const": false},
+    "authority_state_mutated": {"const": false},
+    "authority_created": {"const": false}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"result": {"properties": {"disposition": {"const": "PASS"}}}}},
+      "then": {"properties": {"response": {"properties": {"response_state": {"const": "RESPONDED"}, "evidence_sufficiency": {"const": "SUFFICIENT"}}}}}
+    },
+    {
+      "if": {"properties": {"result": {"properties": {"disposition": {"const": "CONFLICT"}}}}},
+      "then": {"properties": {"response": {"properties": {"response_state": {"const": "RESPONDED"}, "evidence_sufficiency": {"const": "CONFLICTING"}}}}}
+    },
+    {
+      "if": {"properties": {"result": {"properties": {"disposition": {"const": "GAP"}}}}},
+      "then": {"properties": {"response": {"properties": {"evidence_sufficiency": {"enum": ["INSUFFICIENT", "NOT_EVALUABLE"]}}}}}
+    }
+  ]
+}
