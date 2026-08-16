@@ -1,0 +1,104 @@
+{
+  "format": "RECEIPTOS_HISTORY_REGRESSION_V0.1",
+  "fixture_id": "AUNT_RANN_SAME_ENDPOINT_DIFFERENT_HISTORY_V0_1",
+  "classification": "SYNTHETIC_REGRESSION",
+  "lesson_surface": "FAMILY_EDUCATIONAL_SIMULATION",
+  "purpose": "Prove that identical final state hashes do not imply identical event-history hashes.",
+  "canonicalization": {
+    "encoding": "UTF-8",
+    "json": "sort_keys=true,separators=(',',':'),ensure_ascii=false",
+    "hash": "SHA-256"
+  },
+  "initial_state": {
+    "consent": "HOLD",
+    "content": "Meet me by the pink tree.",
+    "delivered": false
+  },
+  "initial_state_hash": "sha256:30cc29ff65e9f94595a0c1c0e35ad4e58692d1dea4c4ed4badf83719435cfdd9",
+  "paths": {
+    "PATH_A": {
+      "description": "No route interaction occurred.",
+      "event_count": 0,
+      "event_history": [],
+      "path_hash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "event_history_hash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "final_state": {
+        "consent": "HOLD",
+        "content": "Meet me by the pink tree.",
+        "delivered": false
+      },
+      "state_hash": "sha256:30cc29ff65e9f94595a0c1c0e35ad4e58692d1dea4c4ed4badf83719435cfdd9",
+      "replay_result": "PATH_RECONSTRUCTED"
+    },
+    "PATH_B": {
+      "description": "A route was requested, consent was checked, and the route was blocked.",
+      "event_count": 3,
+      "event_history": [
+        "ROUTE_REQUESTED",
+        "CONSENT_CHECKED",
+        "ROUTE_BLOCKED"
+      ],
+      "path_hash": "sha256:ba6ab657988d965d2bbba0096a7ce94cbf843c09bf3d2e9c540eda1f9448fa7e",
+      "event_history_hash": "sha256:ba6ab657988d965d2bbba0096a7ce94cbf843c09bf3d2e9c540eda1f9448fa7e",
+      "final_state": {
+        "consent": "HOLD",
+        "content": "Meet me by the pink tree.",
+        "delivered": false
+      },
+      "state_hash": "sha256:30cc29ff65e9f94595a0c1c0e35ad4e58692d1dea4c4ed4badf83719435cfdd9",
+      "replay_result": "PATH_RECONSTRUCTED"
+    }
+  },
+  "comparison": {
+    "state_hash_equal": true,
+    "path_hash_equal": false,
+    "event_history_hash_equal": false,
+    "replay_result": "MULTIPLE_PATHS_DISTINGUISHED",
+    "canonical_law": "STATE_HASH_EQUAL != HISTORY_HASH_EQUAL"
+  },
+  "replay_objects": {
+    "PATH_A": {
+      "initial_state_hash": "sha256:30cc29ff65e9f94595a0c1c0e35ad4e58692d1dea4c4ed4badf83719435cfdd9",
+      "final_state_hash": "sha256:30cc29ff65e9f94595a0c1c0e35ad4e58692d1dea4c4ed4badf83719435cfdd9",
+      "event_count": 0,
+      "event_history_hash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "replay_result": "PATH_RECONSTRUCTED",
+      "authority_created": false
+    },
+    "PATH_B": {
+      "initial_state_hash": "sha256:30cc29ff65e9f94595a0c1c0e35ad4e58692d1dea4c4ed4badf83719435cfdd9",
+      "final_state_hash": "sha256:30cc29ff65e9f94595a0c1c0e35ad4e58692d1dea4c4ed4badf83719435cfdd9",
+      "event_count": 3,
+      "event_history_hash": "sha256:ba6ab657988d965d2bbba0096a7ce94cbf843c09bf3d2e9c540eda1f9448fa7e",
+      "replay_result": "PATH_RECONSTRUCTED",
+      "authority_created": false
+    }
+  },
+  "three_wisdom_girls": {
+    "WITNESS": {
+      "question": "What state do we actually see?",
+      "observation": "DELIVERED = FALSE",
+      "cannot_infer": "WHY"
+    },
+    "CHALLENGER": {
+      "question": "Show me the receipts. What path produced this state?",
+      "function": "DISTINGUISH_EVENT_HISTORY"
+    },
+    "GATEKEEPER": {
+      "blocked_promotion": "DELIVERED_FALSE -> NOBODY_TRIED",
+      "allowed_classifications": [
+        "UNIQUE_PATH_PROVEN",
+        "MULTIPLE_PATHS_REMAIN",
+        "INSUFFICIENT_HISTORY"
+      ]
+    }
+  },
+  "laws": [
+    "ENDPOINT != HISTORY",
+    "STATE_ROOT != EVENT_ROOT",
+    "OBSERVED_RESULT != PROVEN_CAUSE",
+    "NO_VISIBLE_STATE_CHANGE != NO_INTERACTION"
+  ],
+  "child_sentence": "Two roads can end at the same house.",
+  "authority_created": false
+}
