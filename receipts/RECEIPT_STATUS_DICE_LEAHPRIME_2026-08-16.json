@@ -26,13 +26,13 @@
     "promotion_performed": false
   },
   "epistemic_boundaries": {
-    "poster_content": "!= EVIDENCE",
-    "visual_summary": "!= SOURCE_BOUND_ARTIFACT",
-    "gameplay": "!= AUTHORITY",
-    "player_score": "!= EVIDENCE",
-    "dice_roll": "!= VERDICT",
-    "declared_in_chat": "!= COMMITTED_IN_REPOSITORY",
-    "poster_content": "!= DRIVE_OBJECT"
+    "poster_content_vs_evidence": "POSTER_CONTENT != EVIDENCE",
+    "visual_summary_vs_source_bound_artifact": "VISUAL_SUMMARY != SOURCE_BOUND_ARTIFACT",
+    "gameplay_vs_authority": "GAMEPLAY != AUTHORITY",
+    "player_score_vs_evidence": "PLAYER_SCORE != EVIDENCE",
+    "dice_roll_vs_verdict": "DICE_ROLL != VERDICT",
+    "declared_chat_vs_repository_commit": "DECLARED_IN_CHAT != COMMITTED_IN_REPOSITORY",
+    "poster_content_vs_drive_object": "POSTER_CONTENT != DRIVE_OBJECT"
   },
   "authorization_scope": {
     "allowed": [
