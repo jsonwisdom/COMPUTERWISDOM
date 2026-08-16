@@ -1,0 +1,57 @@
+{
+  "format": "JSONWISDOM_STATUS_RECEIPT_V0.1",
+  "receipt_id": "DICE_LEAHPRIME_2026-08-16",
+  "receipt_date": "2026-08-16",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "agent/mind-the-gap-challenge-dice-v0-1",
+  "receipt_path": "receipts/RECEIPT_STATUS_DICE_LEAHPRIME_2026-08-16.json",
+  "authority_created": false,
+  "observed_pre_write": {
+    "pr": 486,
+    "status": "OPEN_DRAFT_UNMERGED",
+    "head_sha": "cb92c550f69e84e7623c324579c117fcc033dddd",
+    "mergeable": true,
+    "ci": "GREEN",
+    "poster_binding_to_pr_486": "NONE"
+  },
+  "dice_constitution": {
+    "mutated_by_receipt_write": false,
+    "mapping": "UNCHANGED",
+    "receipts": "UNCHANGED"
+  },
+  "poster_layer": {
+    "binding_to_pr_486": "NONE",
+    "drive_resolution": "UNRESOLVED_EXACT_TITLE_0_OF_5",
+    "classification_required": true,
+    "promotion_performed": false
+  },
+  "epistemic_boundaries": {
+    "poster_content": "!= EVIDENCE",
+    "visual_summary": "!= SOURCE_BOUND_ARTIFACT",
+    "gameplay": "!= AUTHORITY",
+    "player_score": "!= EVIDENCE",
+    "dice_roll": "!= VERDICT",
+    "declared_in_chat": "!= COMMITTED_IN_REPOSITORY",
+    "poster_content": "!= DRIVE_OBJECT"
+  },
+  "authorization_scope": {
+    "allowed": [
+      "receipt-only write"
+    ],
+    "forbidden": [
+      "merge",
+      "PR_484_mutation",
+      "PR_485_mutation",
+      "poster_promotion",
+      "personnel_fact_promotion",
+      "drive_mutation",
+      "unrelated_file_changes"
+    ]
+  },
+  "self_reference_boundary": {
+    "receipt_commit_sha_embedded": false,
+    "post_write_head_embedded": false,
+    "reason": "The commit containing this receipt changes the branch head. Post-write commit identity must be established by repository readback, not self-reference."
+  },
+  "status": "BOUNDARY_SEALED_PENDING_POST_WRITE_READBACK"
+}
