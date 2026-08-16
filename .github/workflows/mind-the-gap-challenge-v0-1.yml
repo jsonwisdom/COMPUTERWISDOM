@@ -10,6 +10,7 @@ on:
       - "fixtures/jaywisdom/challenge/**"
       - "tools/verify_challenge_membrane_v0_1.py"
       - "tools/verify_gamification_membrane_v0_1.py"
+      - "tools/verify_delta_work_replay_v0_1.py"
       - ".github/workflows/mind-the-gap-challenge-v0-1.yml"
   pull_request:
     paths:
@@ -18,6 +19,7 @@ on:
       - "fixtures/jaywisdom/challenge/**"
       - "tools/verify_challenge_membrane_v0_1.py"
       - "tools/verify_gamification_membrane_v0_1.py"
+      - "tools/verify_delta_work_replay_v0_1.py"
       - ".github/workflows/mind-the-gap-challenge-v0-1.yml"
   workflow_dispatch:
 
@@ -25,7 +27,7 @@ permissions:
   contents: read
 
 jobs:
-  verify-q1-q2-and-game:
+  verify-q1-q2-game-and-delta:
     runs-on: ubuntu-24.04
     timeout-minutes: 5
     steps:
@@ -45,3 +47,6 @@ jobs:
 
       - name: Verify Dice LeahPrime gamification membrane
         run: python tools/verify_gamification_membrane_v0_1.py
+
+      - name: Verify DELTA work replay membrane
+        run: python tools/verify_delta_work_replay_v0_1.py
