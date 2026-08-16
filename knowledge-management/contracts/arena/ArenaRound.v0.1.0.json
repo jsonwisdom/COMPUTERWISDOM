@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/contracts/arena/ArenaRound.v0.1.0.json",
+  "title": "COMPUTERWISDOM Sentinel Arena Round v0.1.0",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "arena_id",
+    "round_id",
+    "authority",
+    "remediation_applied",
+    "question",
+    "decision_policy",
+    "instruments",
+    "evidence"
+  ],
+  "properties": {
+    "contract_version": { "const": "v0.1" },
+    "arena_id": { "type": "string", "minLength": 1 },
+    "round_id": { "type": "string", "minLength": 1 },
+    "authority": { "const": false },
+    "remediation_applied": { "const": false },
+    "question": { "type": "string", "minLength": 1 },
+    "decision_policy": {
+      "type": "object",
+      "required": ["minimum_evidence_items", "disagreement_threshold", "escalation_severity"],
+      "properties": {
+        "minimum_evidence_items": { "type": "integer", "minimum": 1 },
+        "disagreement_threshold": { "type": "number", "minimum": 0, "maximum": 1 },
+        "escalation_severity": { "enum": ["info", "low", "medium", "high", "critical"] }
+      },
+      "additionalProperties": false
+    },
+    "instruments": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["id", "role", "hypothesis", "confidence", "evidence_refs"],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "role": { "type": "string", "minLength": 1 },
+          "hypothesis": { "type": "string", "minLength": 1 },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "evidence_refs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "kind",
+          "source",
+          "claim",
+          "reliability",
+          "severity",
+          "supports",
+          "contradicts"
+        ],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "kind": {
+            "enum": ["telemetry", "repository", "incident", "feedback", "research", "decision", "other"]
+          },
+          "source": { "type": "string", "minLength": 1 },
+          "claim": { "type": "string", "minLength": 1 },
+          "reliability": { "type": "number", "minimum": 0, "maximum": 1 },
+          "severity": { "enum": ["info", "low", "medium", "high", "critical"] },
+          "supports": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "contradicts": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "additionalProperties": false
+}
