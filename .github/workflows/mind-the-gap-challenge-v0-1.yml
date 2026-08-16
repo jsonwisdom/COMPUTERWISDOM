@@ -1,0 +1,40 @@
+name: Mind the Gap Challenge Replay v0.1
+
+on:
+  push:
+    branches:
+      - agent/mind-the-gap-challenge-dice-v0-1
+    paths:
+      - "schemas/jaywisdom/challenge_membrane.v0_1.schema.json"
+      - "fixtures/jaywisdom/challenge/**"
+      - "tools/verify_challenge_membrane_v0_1.py"
+      - ".github/workflows/mind-the-gap-challenge-v0-1.yml"
+  pull_request:
+    paths:
+      - "schemas/jaywisdom/challenge_membrane.v0_1.schema.json"
+      - "fixtures/jaywisdom/challenge/**"
+      - "tools/verify_challenge_membrane_v0_1.py"
+      - ".github/workflows/mind-the-gap-challenge-v0-1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-q1-q2:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify dice selection and deterministic replay
+        run: python tools/verify_challenge_membrane_v0_1.py
