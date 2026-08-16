@@ -109,3 +109,68 @@ ENVIRONMENTAL_LAYER = REQUIRED
 IDENTITY_BINDING = SEPARATE_EVIDENCE_LANE
 AUTHORITY_CREATED = FALSE
 ```
+
+## Phase 2 constitutional hold receipt
+
+The live `MC002 / Series 004` experiment is bound here as the break-test instance of repository mission `004-032`. The original mission card above remains unchanged in meaning.
+
+### Constitutional Invariant #1 — Burden Rule
+
+```text
+CLAIMANT_OF_STRONGER_STATE -> BURDEN_OF_PROOF
+NO_RECEIPT != FALSE
+NO_RECEIPT != PROVEN
+CAPTURE_FAILURE != BURDEN_SHIFT
+```
+
+LeahPrime authority is procedural and bounded:
+
+```text
+EVALUATE_RECEIPT_SUFFICIENCY
+CLASSIFY_TO_CLAIM_CEILING
+REFUSE_UNSUPPORTED_PROMOTION
+PRESERVE_HOLD
+```
+
+LeahPrime does not prove negation, invent missing edges, shift burden, or create external authority.
+
+### Orthogonal Phase 2 holds
+
+```text
+I:
+LIFECYCLE_TRACE = PASS
+RUNTIME_RECEIPT = GAP_CAPTURE
+STATE_DELTA = HOLD
+
+J:
+SIMILAR_MATCH = PASS
+INDEXED_CONSTRUCTOR_DIVERGENCE = PASS
+PRIMARY_TX_INPUTS = GAP_CAPTURE
+CONSTRUCTOR_PROVENANCE_REPLAY = HOLD
+
+K:
+CREATE2_DERIVATION = PASS
+DERIVED_ADDRESS = PASS
+CODE_OBJECT@N = GAP_CAPTURE
+EMPTY_STATE@N = HOLD
+```
+
+Membrane invariant:
+
+```text
+UPSTREAM_PASS != DOWNSTREAM_PROMOTION
+LIFECYCLE_TRACE != RUNTIME_RECEIPT
+INDEXED_CREATION_DATA != PRIMARY_TX_INPUT
+PREDICTABLE_ADDRESS != RECEIPTED_EMPTY_ADDRESS
+```
+
+K remains at the sole lawful promotion path: a primary `eth_getCode(0xa28d6ca03be1015dcc8855b747fd866465282fa0, N)` receipt returning `0x` may establish `EMPTY_STATE@N = PASS`; it still cannot establish `NEVER_DEPLOYED`, `WHY_EMPTY`, `DEPLOYMENT_HISTORY`, or `FUTURE_STATE`.
+
+```text
+I = SEALED / HOLD
+J = SEALED / HOLD
+K = DERIVATION_PASS / STATE_HOLD
+INVARIANT_001 = ACTIVE
+LEAHPRIME_GATE = CLOSED
+AUTHORITY_CREATED = FALSE
+```
