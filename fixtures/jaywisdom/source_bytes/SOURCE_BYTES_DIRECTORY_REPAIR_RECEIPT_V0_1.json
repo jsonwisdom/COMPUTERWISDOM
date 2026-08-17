@@ -1,0 +1,21 @@
+{
+  "receipt_type": "SOURCE_BYTES_DIRECTORY_REPAIR_RECEIPT_V0.1",
+  "repair_mode": "EXPLICIT_CORRECTIVE_SUPERSESSION",
+  "violation_head": "f9eeff160f3084c2740ffa02be6c4b9b845ef9a8",
+  "pre_violation_head_reported": "bb484d0f10f4311abb39173e13599e00189f84b8",
+  "history_rewritten": false,
+  "directory_contracts_added": [
+    "fixtures/jaywisdom/source_bytes/README.md",
+    "agents/congressional_accountability/README.md"
+  ],
+  "ci_admission_required": [
+    "tools/verify_congressional_directory_contracts_v0_1.py",
+    "tools/verify_source_bytes_receipt_v0_1.py"
+  ],
+  "openai_developers_role": "DESIGN_SURFACE_ONLY",
+  "openai_developers_repository_execution": false,
+  "live_source_fetch_performed": false,
+  "claim_verified": false,
+  "authority_created": false
+}
+
