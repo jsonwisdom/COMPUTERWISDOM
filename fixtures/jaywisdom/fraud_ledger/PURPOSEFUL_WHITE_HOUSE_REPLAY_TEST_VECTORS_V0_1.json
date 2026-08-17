@@ -1,0 +1,120 @@
+{
+  "suite": "PURPOSEFUL_WHITE_HOUSE_REPLAY_TEST_VECTORS_V0_1",
+  "semantic_type": "BOUNDED_PUBLIC_PURPOSE_EVIDENCE_DISPOSITION",
+  "vectors": [
+    {
+      "id": "T01_COMPLETE_TRACE",
+      "expected": "REPLAYABLE",
+      "record": {
+        "subject": "PRESIDENCY",
+        "public_purpose_audit": true,
+        "authority_created": false,
+        "party_score": null,
+        "president_score": null,
+        "reverse_trace_complete": true,
+        "forward_trace": {
+          "public_need": {"status": "SOURCE_BOUND", "source_refs": ["SRC-NEED"]},
+          "legal_authority": {"status": "SOURCE_BOUND", "source_refs": ["SRC-LAW"]},
+          "declared_purpose": {"status": "SOURCE_BOUND", "source_refs": ["SRC-PURPOSE"]},
+          "resources": {"status": "SOURCE_BOUND", "source_refs": ["SRC-RESOURCE"]},
+          "execution": {"status": "SOURCE_BOUND", "source_refs": ["SRC-ACTION"]},
+          "measurable_result": {"status": "SOURCE_BOUND", "source_refs": ["SRC-RESULT"]},
+          "public_receipt": {"status": "SOURCE_BOUND", "source_refs": ["SRC-RECEIPT"]},
+          "correction_or_appeal": {"status": "NOT_REQUIRED", "note": "No correction event asserted."}
+        }
+      }
+    },
+    {
+      "id": "T02_MISSING_AUTHORITY_EDGE",
+      "expected": "GAP",
+      "record": {
+        "subject": "PRESIDENCY", "public_purpose_audit": true, "authority_created": false,
+        "party_score": null, "president_score": null, "reverse_trace_complete": true,
+        "forward_trace": {
+          "public_need": {"status": "SOURCE_BOUND"},
+          "declared_purpose": {"status": "SOURCE_BOUND"},
+          "resources": {"status": "SOURCE_BOUND"},
+          "execution": {"status": "SOURCE_BOUND"},
+          "measurable_result": {"status": "SOURCE_BOUND"},
+          "public_receipt": {"status": "SOURCE_BOUND"},
+          "correction_or_appeal": {"status": "NOT_REQUIRED"}
+        }
+      }
+    },
+    {
+      "id": "T03_CONTRADICTION",
+      "expected": "CONFLICT",
+      "record": {
+        "subject": "PRESIDENCY", "public_purpose_audit": true, "authority_created": false,
+        "party_score": null, "president_score": null, "reverse_trace_complete": true,
+        "forward_trace": {
+          "public_need": {"status": "SOURCE_BOUND"}, "legal_authority": {"status": "SOURCE_BOUND"},
+          "declared_purpose": {"status": "CONFLICT"}, "resources": {"status": "SOURCE_BOUND"},
+          "execution": {"status": "SOURCE_BOUND"}, "measurable_result": {"status": "SOURCE_BOUND"},
+          "public_receipt": {"status": "SOURCE_BOUND"}, "correction_or_appeal": {"status": "NOT_REQUIRED"}
+        }
+      }
+    },
+    {
+      "id": "T04_UNSUPPORTED_RESULT",
+      "expected": "HOLD",
+      "record": {
+        "subject": "PRESIDENCY", "public_purpose_audit": true, "authority_created": false,
+        "party_score": null, "president_score": null, "reverse_trace_complete": true,
+        "forward_trace": {
+          "public_need": {"status": "SOURCE_BOUND"}, "legal_authority": {"status": "SOURCE_BOUND"},
+          "declared_purpose": {"status": "SOURCE_BOUND"}, "resources": {"status": "SOURCE_BOUND"},
+          "execution": {"status": "SOURCE_BOUND"}, "measurable_result": {"status": "HOLD"},
+          "public_receipt": {"status": "SOURCE_BOUND"}, "correction_or_appeal": {"status": "NOT_REQUIRED"}
+        }
+      }
+    },
+    {
+      "id": "T05_PARTY_SCORE_FORBIDDEN",
+      "expected": "REJECTED",
+      "record": {
+        "subject": "PRESIDENCY", "public_purpose_audit": true, "authority_created": false,
+        "party_score": 1, "president_score": null, "reverse_trace_complete": true, "forward_trace": {}
+      }
+    },
+    {
+      "id": "T06_PRESIDENT_SCORE_FORBIDDEN",
+      "expected": "REJECTED",
+      "record": {
+        "subject": "PRESIDENCY", "public_purpose_audit": true, "authority_created": false,
+        "party_score": null, "president_score": 1, "reverse_trace_complete": true, "forward_trace": {}
+      }
+    },
+    {
+      "id": "T07_AUTHORITY_CREATION_FORBIDDEN",
+      "expected": "REJECTED",
+      "record": {
+        "subject": "PRESIDENCY", "public_purpose_audit": true, "authority_created": true,
+        "party_score": null, "president_score": null, "reverse_trace_complete": true, "forward_trace": {}
+      }
+    },
+    {
+      "id": "T08_PERSONALITY_FIELD_FORBIDDEN",
+      "expected": "REJECTED",
+      "record": {
+        "subject": "PRESIDENCY", "public_purpose_audit": true, "authority_created": false,
+        "party_score": null, "president_score": null, "president_name": "TEST PERSON",
+        "reverse_trace_complete": true, "forward_trace": {}
+      }
+    },
+    {
+      "id": "T09_REVERSE_PATH_BREAK",
+      "expected": "GAP",
+      "record": {
+        "subject": "PRESIDENCY", "public_purpose_audit": true, "authority_created": false,
+        "party_score": null, "president_score": null, "reverse_trace_complete": false,
+        "forward_trace": {
+          "public_need": {"status": "SOURCE_BOUND"}, "legal_authority": {"status": "SOURCE_BOUND"},
+          "declared_purpose": {"status": "SOURCE_BOUND"}, "resources": {"status": "SOURCE_BOUND"},
+          "execution": {"status": "SOURCE_BOUND"}, "measurable_result": {"status": "SOURCE_BOUND"},
+          "public_receipt": {"status": "SOURCE_BOUND"}, "correction_or_appeal": {"status": "NOT_REQUIRED"}
+        }
+      }
+    }
+  ]
+}
