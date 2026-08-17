@@ -90,10 +90,42 @@ These are financial graph nodes, not claims of installation-level budgets.
 5. Every money edge must bind source identity, fiscal year, amount class, geography, and provenance before promotion.
 6. REQUEST != APPROPRIATED != OBLIGATED != EXPENDED != AUDITED.
 
+## Official source-object binding — 2026-08-17
+
+SOURCE_OBJECT_OLDCC_FY2024:
+- Publisher: Office of Local Defense Community Cooperation.
+- Surface: Defense Spending by State Fiscal Year 2024.
+- Official surface confirms FY2024 analysis covers DoD personnel, contractual, and grant spending.
+- Official surface states DMDC supplies gross payroll/personnel counts and USAspending supplies contract place-of-performance data.
+- SOURCE_IDENTITY_BOUND: TRUE
+- REPORT_BYTES_BOUND: FALSE
+
+SOURCE_OBJECT_AL_EBO_FY26:
+- Publisher: Alabama Department of Finance, Executive Budget Office.
+- Surface: FY26 Appropriation Bills.
+- Official surface identifies FY26 General Fund Appropriation Bill 2025-251.
+- SOURCE_IDENTITY_BOUND: TRUE
+- BILL_BYTES_BOUND: FALSE
+
+SOURCE_OBJECT_AL_EBO_SGF_FY26:
+- Publisher: Alabama Department of Finance, Executive Budget Office.
+- Surface: State General Fund Appropriations / FY2026 Appropriations.
+- SOURCE_IDENTITY_BOUND: TRUE
+- UNDERLYING_SCHEDULE_BYTES_BOUND: FALSE
+
+### Promotion gate
+
+SOURCE_PAGE_FOUND != SOURCE_BYTES_PRESERVED
+SOURCE_IDENTITY_BOUND != AMOUNT_PROVEN
+REPORT_PAGE != REPORT_DATA
+APPROPRIATION_PAGE != ENACTED_LINE_ITEM
+
+Therefore the FY2024 Alabama totals, county values, personnel/payroll values, and Alabama Military Department FY2026 amount claims remain HOLD_SOURCE_BYTES_PENDING. Page discovery alone promotes zero financial edges.
+
 ## Next bounded task
 
-Bind the FY2024 Alabama OLDCC state source and FY2026 Alabama state budget / appropriation source objects directly, preserve source bytes or immutable references, then materialize typed money edges.
+Preserve and hash the OLDCC FY2024 report/data bytes and Alabama FY26 enacted bill/schedule bytes, then materialize typed money edges.
 
-MONEY_EDGES: SOURCE_BOUND
+MONEY_EDGES: HOLD_SOURCE_BYTES_PENDING
 AUTHORITY_CREATED: FALSE
 NO_FAKE_GREEN: TRUE
