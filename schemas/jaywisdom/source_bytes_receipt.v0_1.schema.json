@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/schemas/source_bytes_receipt.v0_1.schema.json",
+  "title": "SOURCE_BYTES_RECEIPT_V0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_type",
+    "record_id",
+    "source_locator",
+    "fetch",
+    "bytes",
+    "provenance",
+    "semantic_type",
+    "disposition",
+    "authority_created"
+  ],
+  "properties": {
+    "receipt_type": {"const": "SOURCE_BYTES_RECEIPT_V0.1"},
+    "record_id": {"type": "string", "minLength": 1},
+    "source_locator": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["uri"],
+      "properties": {
+        "uri": {"type": "string", "minLength": 1},
+        "declared_source_class": {
+          "enum": ["OFFICIAL_PUBLIC", "PUBLIC_THIRD_PARTY", "USER_SUPPLIED", "LOCAL_FIXTURE", "UNKNOWN"]
+        }
+      }
+    },
+    "fetch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {"enum": ["NOT_FETCHED", "FETCHED", "ERROR"]},
+        "observed_at": {"type": "string", "format": "date-time"},
+        "http_status": {"type": "integer", "minimum": 100, "maximum": 599},
+        "media_type": {"type": "string", "minLength": 1}
+      }
+    },
+    "bytes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["observed_sha256", "byte_length", "expected_sha256", "comparison"],
+      "properties": {
+        "observed_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "byte_length": {"type": ["integer", "null"], "minimum": 0},
+        "expected_sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "comparison": {"enum": ["MATCH", "MISMATCH", "NO_REFERENCE", "NOT_AVAILABLE"]}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_identity_status", "content_assertion_status"],
+      "properties": {
+        "source_identity_status": {
+          "enum": ["NOT_EVALUATED", "LOCATOR_ONLY", "SOURCE_BOUND", "CONFLICT", "HOLD"]
+        },
+        "content_assertion_status": {
+          "enum": ["NOT_EVALUATED", "SOURCE_STATEMENT", "THIRD_PARTY_STATEMENT", "ALLEGATION", "TESTIMONY", "EXHIBIT", "COURT_FINDING", "AGENCY_FINDING", "UNKNOWN"]
+        }
+      }
+    },
+    "semantic_type": {"const": "BOUNDED_SOURCE_BYTES_RECEIPT_DISPOSITION"},
+    "disposition": {"enum": ["PROVEN", "HOLD", "REJECTED"]},
+    "world_fact_proven": {"const": false},
+    "claim_verified": {"const": false},
+    "authority_created": {"const": false}
+  }
+}
