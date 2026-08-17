@@ -4,6 +4,11 @@
 The observer classifies mechanical evidence gates only. It does not create a DOJ
 decision, legal conclusion/finding, White House misconduct finding, authorization,
 policy, or authority.
+
+T16 adds an external-presentation membrane: the terminal observer disposition may
+remain a primitive internally, but every external JSON/text surface must carry its
+semantic type and bounded rendering. A bare PROVEN observer disposition or semantic
+widening such as "fraud proven" is invalid output.
 """
 
 from __future__ import annotations
@@ -22,6 +27,32 @@ SHA256_RE = re.compile(r"^[0-9a-f]{64}$")
 
 GATE_ORDER = ("identity", "provenance", "temporal", "delta", "dependency", "scope", "authority")
 RESULT_PRECEDENCE = ("REJECTED", "DIVERGENCE", "HOLD", "PROVEN")
+OBSERVER_RESULT_SEMANTIC_TYPE = "BOUNDED_EVIDENCE_GATE_DISPOSITION"
+OBSERVER_RESULT_RENDERINGS = {
+    "PROVEN": "EVIDENCE_GATE_PROVEN",
+    "HOLD": "EVIDENCE_GATE_HOLD",
+    "DIVERGENCE": "EVIDENCE_GATE_DIVERGENCE",
+    "REJECTED": "EVIDENCE_GATE_REJECTED",
+}
+FORBIDDEN_SEMANTIC_WIDENINGS = (
+    "fraud proven",
+    "fraud is proven",
+    "misconduct proven",
+    "misconduct is proven",
+    "guilt proven",
+    "guilt is proven",
+    "criminal conduct proven",
+    "legal violation proven",
+)
+T16_SURFACE_COVERAGE = {
+    "CERTIFICATE_JSON_SERIALIZER": "T16_ENFORCED",
+    "CLI_CI_SELF_TEST_JSON": "T16_ENFORCED",
+    "MARKDOWN_HUMAN_TEXT_RENDERER": "T16_ENFORCED",
+    "WHITE_HOUSE_NIGHTLY_PROTOCOL_RENDERERS": "T16_NOT_ROUTED",
+    "REPORT_TEMPLATE": "T16_NOT_ROUTED",
+    "API_EXPORT_ADAPTER": "T16_NOT_ROUTED",
+    "LEGACY_OBSERVER_RESULT_PATHS": "T16_NOT_ROUTED",
+}
 
 
 @dataclass(frozen=True)
@@ -61,7 +92,6 @@ class Edge:
 
     @classmethod
     def from_mapping(cls, edge_id: str, value: dict[str, Any]) -> "Edge":
-        # The caller may never submit the terminal observer state.
         if "observer_result" in value:
             raise ValueError("CALLER_SUPPLIED_OBSERVER_RESULT_FORBIDDEN")
         return cls(
@@ -79,6 +109,65 @@ class Edge:
             policy_claimed=bool(value.get("policy_claimed", False)),
             authority_evidence_source_ids=tuple(value.get("authority_evidence_source_ids", [])),
         )
+
+
+def typed_observer_result(value: str) -> dict[str, str]:
+    if value not in OBSERVER_RESULT_RENDERINGS:
+        raise ValueError(f"INVALID_OBSERVER_RESULT:{value}")
+    return {
+        "semantic_type": OBSERVER_RESULT_SEMANTIC_TYPE,
+        "value": value,
+        "rendering": OBSERVER_RESULT_RENDERINGS[value],
+    }
+
+
+def _all_strings(value: Any):
+    if isinstance(value, str):
+        yield value
+    elif isinstance(value, dict):
+        for item in value.values():
+            yield from _all_strings(item)
+    elif isinstance(value, list):
+        for item in value:
+            yield from _all_strings(item)
+
+
+def validate_external_payload(payload: dict[str, Any]) -> None:
+    """Fail closed if an external payload loses observer-result typing or widens meaning."""
+    result = payload.get("observer_result")
+    if not isinstance(result, dict):
+        raise ValueError("T16_UNTYPED_OBSERVER_RESULT")
+    if result.get("semantic_type") != OBSERVER_RESULT_SEMANTIC_TYPE:
+        raise ValueError("T16_OBSERVER_RESULT_SEMANTIC_TYPE_MISSING_OR_INVALID")
+    value = result.get("value")
+    if value not in OBSERVER_RESULT_RENDERINGS:
+        raise ValueError("T16_OBSERVER_RESULT_VALUE_INVALID")
+    if result.get("rendering") != OBSERVER_RESULT_RENDERINGS[value]:
+        raise ValueError("T16_OBSERVER_RESULT_RENDERING_INVALID")
+    for text in _all_strings(payload):
+        lowered = text.lower()
+        if any(phrase in lowered for phrase in FORBIDDEN_SEMANTIC_WIDENINGS):
+            raise ValueError("T16_SEMANTIC_WIDENING_REJECTED")
+
+
+def validate_external_text(observer_result: dict[str, str], text: str) -> None:
+    validate_external_payload({"observer_result": observer_result})
+    lowered = text.lower()
+    if any(phrase in lowered for phrase in FORBIDDEN_SEMANTIC_WIDENINGS):
+        raise ValueError("T16_SEMANTIC_WIDENING_REJECTED")
+    # Bare terminal PROVEN is forbidden in text; the bounded rendering token is allowed.
+    scrubbed = text.replace("EVIDENCE_GATE_PROVEN", "")
+    if re.search(r"\bPROVEN\b", scrubbed, flags=re.IGNORECASE):
+        raise ValueError("T16_UNTYPED_PROVEN_TEXT")
+
+
+def render_observer_text(observer_result: dict[str, str], surface: str) -> str:
+    if surface not in {"MARKDOWN", "CLI", "LOG", "REPORT", "HUMAN_SUMMARY"}:
+        raise ValueError(f"T16_UNKNOWN_TEXT_SURFACE:{surface}")
+    validate_external_payload({"observer_result": observer_result})
+    text = f"{OBSERVER_RESULT_SEMANTIC_TYPE}:{observer_result['rendering']}"
+    validate_external_text(observer_result, text)
+    return text
 
 
 @dataclass
@@ -99,7 +188,7 @@ class OIGOversightCertificate:
         self.observer_result = derive_observer_result(self.gate_outcomes)
 
     def as_dict(self) -> dict[str, Any]:
-        return {
+        payload = {
             "format": "OIG_OVERSIGHT_CERTIFICATE_V0.1",
             "classification": "EVIDENCE_CLASSIFICATION_ONLY",
             "edge_id": self.edge.edge_id,
@@ -114,7 +203,7 @@ class OIGOversightCertificate:
                 for item in self.edge.source_objects
             ],
             "gate_outcomes": self.gate_outcomes,
-            "observer_result": self.observer_result,
+            "observer_result": typed_observer_result(self.observer_result),
             "doj_decision_created": False,
             "legal_conclusion_created": False,
             "legal_finding_created": False,
@@ -123,6 +212,8 @@ class OIGOversightCertificate:
             "policy_created": False,
             "authority_created": False,
         }
+        validate_external_payload(payload)
+        return payload
 
 
 def _valid_refs(refs: tuple[str, ...], source_ids: set[str]) -> bool:
@@ -198,7 +289,6 @@ def _authority_gate(edge: Edge, source_ids: set[str]) -> str:
     ))
     if not semantic_claimed:
         return "PROVEN"
-    # URL wording never counts. Only explicit source-object references can satisfy this gate.
     return "PROVEN" if _valid_refs(edge.authority_evidence_source_ids, source_ids) else "HOLD"
 
 
@@ -226,12 +316,61 @@ def derive_observer_result(gates: dict[str, str]) -> str:
     return "PROVEN"
 
 
+def _t16_surface_test(output: dict[str, Any], vector: dict[str, Any]) -> tuple[bool, dict[str, Any]]:
+    checks: dict[str, bool] = {}
+
+    try:
+        validate_external_payload(output)
+        checks["certificate_json_typed"] = True
+    except ValueError:
+        checks["certificate_json_typed"] = False
+
+    serialized = json.dumps(output, sort_keys=True)
+    checks["serializer_has_semantic_type"] = OBSERVER_RESULT_SEMANTIC_TYPE in serialized
+    checks["serializer_has_no_bare_observer_result"] = '"observer_result": "PROVEN"' not in serialized
+
+    try:
+        render_observer_text(output["observer_result"], "MARKDOWN")
+        render_observer_text(output["observer_result"], "CLI")
+        render_observer_text(output["observer_result"], "LOG")
+        render_observer_text(output["observer_result"], "REPORT")
+        render_observer_text(output["observer_result"], "HUMAN_SUMMARY")
+        checks["typed_text_surfaces_pass"] = True
+    except ValueError:
+        checks["typed_text_surfaces_pass"] = False
+
+    raw_rejected = False
+    try:
+        validate_external_payload({"observer_result": "PROVEN"})
+    except ValueError as exc:
+        raw_rejected = str(exc) == "T16_UNTYPED_OBSERVER_RESULT"
+    checks["raw_json_proven_rejected"] = raw_rejected
+
+    widening_text = vector.get("surface_contract", {}).get("negative_text", "fraud proven")
+    widening_rejected = False
+    try:
+        validate_external_text(output["observer_result"], widening_text)
+    except ValueError as exc:
+        widening_rejected = str(exc) == "T16_SEMANTIC_WIDENING_REJECTED"
+    checks["fraud_proven_text_rejected"] = widening_rejected
+
+    widening_payload_rejected = False
+    widened_payload = dict(output)
+    widened_payload["human_summary"] = widening_text
+    try:
+        validate_external_payload(widened_payload)
+    except ValueError as exc:
+        widening_payload_rejected = str(exc) == "T16_SEMANTIC_WIDENING_REJECTED"
+    checks["alternative_payload_widening_rejected"] = widening_payload_rejected
+
+    return all(checks.values()), checks
+
+
 def run_self_test() -> int:
     suite = json.loads(VECTORS.read_text(encoding="utf-8"))
     failures: list[dict[str, Any]] = []
     results: list[dict[str, Any]] = []
 
-    # Prove the caller cannot inject the terminal state.
     caller_result_rejected = False
     try:
         Edge.from_mapping("FORBIDDEN_RESULT_TEST", {
@@ -241,11 +380,13 @@ def run_self_test() -> int:
     except ValueError as exc:
         caller_result_rejected = str(exc) == "CALLER_SUPPLIED_OBSERVER_RESULT_FORBIDDEN"
 
+    t16_checks: dict[str, Any] = {}
     for vector in suite["vectors"]:
         edge = Edge.from_mapping(vector["id"], vector["edge"])
         certificate = OIGOversightCertificate(edge)
         output = certificate.as_dict()
-        ok = output["observer_result"] == vector["expected_result"]
+        observed_value = output["observer_result"]["value"]
+        ok = observed_value == vector["expected_result"]
 
         for gate, expected in vector.get("expected_gates", {}).items():
             ok = ok and output["gate_outcomes"].get(gate) == expected
@@ -254,7 +395,6 @@ def run_self_test() -> int:
         if "expected_source_count" in vector:
             ok = ok and len(output["source_objects"]) == vector["expected_source_count"]
 
-        # Constitutional membrane is global, not vector-specific.
         boundary_fields = (
             "doj_decision_created",
             "legal_conclusion_created",
@@ -266,9 +406,13 @@ def run_self_test() -> int:
         )
         ok = ok and all(output[name] is False for name in boundary_fields)
 
+        if vector["id"].startswith("T16_"):
+            t16_ok, t16_checks = _t16_surface_test(output, vector)
+            ok = ok and t16_ok
+
         result = {
             "id": vector["id"],
-            "expected_result": vector["expected_result"],
+            "expected_result": typed_observer_result(vector["expected_result"]),
             "observed_result": output["observer_result"],
             "gate_outcomes": output["gate_outcomes"],
             "pass": ok,
@@ -286,6 +430,10 @@ def run_self_test() -> int:
         "observer_result_init_false": True,
         "byte_length_optional": True,
         "result_precedence": list(RESULT_PRECEDENCE),
+        "t16_semantic_type": OBSERVER_RESULT_SEMANTIC_TYPE,
+        "t16_surface_contract": "NO_UNTYPED_PROVEN_MAY_CROSS_EXTERNAL_PRESENTATION_BOUNDARY",
+        "t16_surface_coverage": T16_SURFACE_COVERAGE,
+        "t16_checks": t16_checks,
         "doj_decision_created": False,
         "legal_conclusion_created": False,
         "legal_finding_created": False,
@@ -296,6 +444,15 @@ def run_self_test() -> int:
         "roll_002_live": False,
         "results": results,
     }
+    # The self-test summary is itself an external CLI/CI JSON surface. Validate every
+    # embedded observer disposition and reject semantic widening before printing it.
+    for item in results:
+        validate_external_payload({"observer_result": item["expected_result"]})
+        validate_external_payload({"observer_result": item["observed_result"]})
+    for text in _all_strings(summary):
+        if any(phrase in text.lower() for phrase in FORBIDDEN_SEMANTIC_WIDENINGS):
+            raise ValueError("T16_CLI_SUMMARY_SEMANTIC_WIDENING")
+
     print(json.dumps(summary, indent=2, sort_keys=True))
     return 0 if not failures and caller_result_rejected else 1
 
