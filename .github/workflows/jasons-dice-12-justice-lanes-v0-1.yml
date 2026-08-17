@@ -7,11 +7,14 @@ on:
       - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_CONTRACT_V0_1.json'
       - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_TEST_VECTORS_V0_1.json'
       - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_OVERSIGHT_RECEIPT_TEMPLATE_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/OIG_OVERSIGHT_CERTIFICATE_TEST_VECTORS_V0_1.json'
       - 'schemas/jaywisdom/white_house_nightly_protocol.v0_1.schema.json'
       - 'schemas/jaywisdom/white_house_nightly_protocol_oversight_verifier.v0_1.schema.json'
+      - 'schemas/jaywisdom/oig_oversight_certificate.v0_1.schema.json'
       - 'tools/verify_jasons_dice_12_justice_lanes_v0_1.py'
       - 'tools/verify_white_house_nightly_protocol_v0_1.py'
       - 'tools/verify_white_house_nightly_protocol_oversight_v0_1.py'
+      - 'tools/verify_oig_oversight_certificate_v0_1.py'
       - '.github/workflows/jasons-dice-12-justice-lanes-v0-1.yml'
   push:
     branches:
@@ -21,11 +24,14 @@ on:
       - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_CONTRACT_V0_1.json'
       - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_TEST_VECTORS_V0_1.json'
       - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_OVERSIGHT_RECEIPT_TEMPLATE_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/OIG_OVERSIGHT_CERTIFICATE_TEST_VECTORS_V0_1.json'
       - 'schemas/jaywisdom/white_house_nightly_protocol.v0_1.schema.json'
       - 'schemas/jaywisdom/white_house_nightly_protocol_oversight_verifier.v0_1.schema.json'
+      - 'schemas/jaywisdom/oig_oversight_certificate.v0_1.schema.json'
       - 'tools/verify_jasons_dice_12_justice_lanes_v0_1.py'
       - 'tools/verify_white_house_nightly_protocol_v0_1.py'
       - 'tools/verify_white_house_nightly_protocol_oversight_v0_1.py'
+      - 'tools/verify_oig_oversight_certificate_v0_1.py'
       - '.github/workflows/jasons-dice-12-justice-lanes-v0-1.yml'
 
 permissions:
@@ -53,3 +59,13 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - name: Verify oversight White House nightly clerk vectors
         run: python tools/verify_white_house_nightly_protocol_oversight_v0_1.py --self-test
+
+  ci-doj-oig:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact PR head for DOJ OIG observer
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify DOJ OIG fail-closed 15-vector suite
+        run: python tools/verify_oig_oversight_certificate_v0_1.py --self-test
