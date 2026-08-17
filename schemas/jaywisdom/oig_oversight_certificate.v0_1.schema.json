@@ -11,6 +11,7 @@
     "gate_outcomes",
     "observer_result",
     "doj_decision_created",
+    "legal_conclusion_created",
     "legal_finding_created",
     "white_house_misconduct_finding_created",
     "authorization_created",
@@ -46,6 +47,7 @@
       "description": "Mechanically derived by the verifier. Caller-supplied observer_result is rejected by the implementation."
     },
     "doj_decision_created": {"const": false},
+    "legal_conclusion_created": {"const": false},
     "legal_finding_created": {"const": false},
     "white_house_misconduct_finding_created": {"const": false},
     "authorization_created": {"const": false},
