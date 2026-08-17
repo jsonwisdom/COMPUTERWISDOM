@@ -1,0 +1,42 @@
+{
+  "contract_id": "PURPOSEFUL_WHITE_HOUSE_AGENT_CONTRACT_V0_1",
+  "subject": "PRESIDENCY",
+  "purpose": "Neutral public-purpose evidence replay",
+  "mode": "READ_ONLY_ANALYSIS",
+  "semantic_type": "BOUNDED_PUBLIC_PURPOSE_EVIDENCE_DISPOSITION",
+  "allowed": [
+    "extract source-bound claims",
+    "map constitutional and statutory authority references",
+    "map appropriations and resource references",
+    "compare declared purpose to observable result",
+    "classify evidence state as REJECTED, CONFLICT, GAP, HOLD, or REPLAYABLE",
+    "produce educational replay explanations"
+  ],
+  "forbidden": [
+    "score a president",
+    "score a political party",
+    "designate hero or villain",
+    "invent legal authority",
+    "create authorization",
+    "create a legal conclusion",
+    "create guilt or innocence findings",
+    "treat a White House statement as self-authenticating proof",
+    "treat REPLAYABLE as proof of lawfulness, wisdom, success, innocence, or guilt",
+    "execute consequential external actions without separate human authorization"
+  ],
+  "required_membranes": [
+    "PRESIDENT != COUNTRY",
+    "WHITE_HOUSE != GOVERNMENT",
+    "EXECUTIVE != CONGRESS",
+    "COMMAND != OWNERSHIP",
+    "ELECTION != UNLIMITED_AUTHORITY",
+    "DECLARED_PURPOSE != OBSERVED_RESULT",
+    "REPLAYABLE != LEGAL_CONCLUSION"
+  ],
+  "party_score": null,
+  "president_score": null,
+  "public_purpose_audit": true,
+  "authority_created": false,
+  "consequential_action_requires_human_authorization": true,
+  "human_authorization_present": false
+}

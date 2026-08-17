@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/schemas/purposeful_white_house_replay.v0_1.schema.json",
+  "title": "Purposeful White House Replay v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "subject",
+    "public_purpose_audit",
+    "authority_created",
+    "party_score",
+    "president_score",
+    "forward_trace",
+    "reverse_trace_complete"
+  ],
+  "properties": {
+    "subject": {"const": "PRESIDENCY"},
+    "public_purpose_audit": {"const": true},
+    "authority_created": {"const": false},
+    "party_score": {"type": "null"},
+    "president_score": {"type": "null"},
+    "test_vector_id": {"type": ["string", "null"]},
+    "forward_trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "public_need": {"$ref": "#/$defs/edge"},
+        "legal_authority": {"$ref": "#/$defs/edge"},
+        "declared_purpose": {"$ref": "#/$defs/edge"},
+        "resources": {"$ref": "#/$defs/edge"},
+        "execution": {"$ref": "#/$defs/edge"},
+        "measurable_result": {"$ref": "#/$defs/edge"},
+        "public_receipt": {"$ref": "#/$defs/edge"},
+        "correction_or_appeal": {"$ref": "#/$defs/edge"}
+      }
+    },
+    "reverse_trace_complete": {"type": "boolean"}
+  },
+  "$defs": {
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "enum": ["SOURCE_BOUND", "HOLD", "GAP", "CONFLICT", "NOT_REQUIRED"]
+        },
+        "source_refs": {
+          "type": "array",
+          "items": {"type": "string"},
+          "uniqueItems": true
+        },
+        "note": {"type": "string"}
+      }
+    }
+  }
+}

@@ -1,0 +1,37 @@
+name: Purposeful White House Replay v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'docs/jaywisdom/PURPOSEFUL_WHITE_HOUSE_DOUBLE_REVERSE_ONION_V0_1.md'
+      - 'schemas/jaywisdom/purposeful_white_house_replay.v0_1.schema.json'
+      - 'fixtures/jaywisdom/fraud_ledger/PURPOSEFUL_WHITE_HOUSE_REPLAY_TEST_VECTORS_V0_1.json'
+      - 'tools/verify_purposeful_white_house_replay_v0_1.py'
+      - 'agents/purposeful_white_house/agent_contract.json'
+      - '.github/workflows/purposeful-white-house-replay-v0-1.yml'
+  push:
+    paths:
+      - 'docs/jaywisdom/PURPOSEFUL_WHITE_HOUSE_DOUBLE_REVERSE_ONION_V0_1.md'
+      - 'schemas/jaywisdom/purposeful_white_house_replay.v0_1.schema.json'
+      - 'fixtures/jaywisdom/fraud_ledger/PURPOSEFUL_WHITE_HOUSE_REPLAY_TEST_VECTORS_V0_1.json'
+      - 'tools/verify_purposeful_white_house_replay_v0_1.py'
+      - 'agents/purposeful_white_house/agent_contract.json'
+      - '.github/workflows/purposeful-white-house-replay-v0-1.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Parse JSON contracts
+        run: |
+          python3 -m json.tool schemas/jaywisdom/purposeful_white_house_replay.v0_1.schema.json >/dev/null
+          python3 -m json.tool fixtures/jaywisdom/fraud_ledger/PURPOSEFUL_WHITE_HOUSE_REPLAY_TEST_VECTORS_V0_1.json >/dev/null
+          python3 -m json.tool agents/purposeful_white_house/agent_contract.json >/dev/null
+      - name: Deterministic purpose replay
+        run: |
+          python3 tools/verify_purposeful_white_house_replay_v0_1.py \
+            fixtures/jaywisdom/fraud_ledger/PURPOSEFUL_WHITE_HOUSE_REPLAY_TEST_VECTORS_V0_1.json
