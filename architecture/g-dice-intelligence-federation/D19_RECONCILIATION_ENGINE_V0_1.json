@@ -1,0 +1,78 @@
+{
+  "schema": "g-dice-intelligence-federation/d19-reconciliation/v0.1",
+  "status": "FROZEN_REPLAY_GRADE",
+  "invariants": {
+    "d19_reads_only": true,
+    "d19_writes_ledger": false,
+    "d19_creates_facts": false,
+    "d19_averages": false,
+    "d19_votes": false,
+    "d19_promotes_finding": false,
+    "reconciliation_is_verdict": false,
+    "conflict_exposure_is_disproof": false,
+    "agreement_is_proof": false,
+    "authority_created": false
+  },
+  "canonical_output": {
+    "reconciliation_id": "",
+    "hypothesis_id": "",
+    "ledger_snapshot_hash": "",
+    "timestamp": "",
+    "coverage": {
+      "lenses_with_receipts": [],
+      "lenses_without_receipts": [],
+      "receipt_count": 0
+    },
+    "agreement_surfaces": [],
+    "divergence_surfaces": [],
+    "missing_coverage": [],
+    "falsifiability_status": {
+      "conditions_present": [],
+      "conditions_absent": [],
+      "notes": ""
+    },
+    "invariants": {
+      "authority": false,
+      "truth_declared": false,
+      "finding_promoted": false,
+      "vote_taken": false,
+      "average_computed": false
+    }
+  },
+  "behavior": {
+    "input": [
+      "ONE_HYPOTHESIS_ID",
+      "CURRENT_LEDGER_STATE_BOUND_TO_HYPOTHESIS_ID"
+    ],
+    "processing": [
+      "GROUP_RECEIPTS_BY_CLAIM_FRAGMENT",
+      "DETECT_EXACT_AGREEMENT_ACROSS_INDEPENDENT_SOURCE_STATE_TRIPLES",
+      "DETECT_DIVERGENCE_WHERE_SAME_CLAIM_FRAGMENT_IS_SUPPORTED_AND_CONTRADICTED",
+      "IDENTIFY_ZERO_RECEIPT_MISSING_COVERAGE",
+      "SURFACE_PRESENT_AND_ABSENT_FALSIFIABILITY_CONDITIONS"
+    ],
+    "output_constraints": [
+      "NO_FINDING",
+      "NO_CONCLUSION",
+      "NO_VERDICT",
+      "NO_MOST_LIKELY",
+      "NO_LENS_RELIABILITY_OR_AUTHORITY_RANKING",
+      "NO_COLLAPSE_TO_SINGLE_TRUTH_VALUE",
+      "PRESERVE_ALL_CONFLICT_REFS",
+      "PRESERVE_ALL_PARENT_RECEIPT_REFS",
+      "ALWAYS_INCLUDE_LEDGER_SNAPSHOT_HASH"
+    ],
+    "promotion": [
+      "OUTPUT_RECONCILIATION_OBJECT_ONLY",
+      "MAY_BE_STORED_AS_SOURCE_TYPE_RECONCILIATION_OR_TRANSIENT_VIEW",
+      "NEVER_MODIFIES_EXISTING_RECEIPT"
+    ]
+  },
+  "routing_after_d19": [
+    "RETURN_TO_OPERATOR_OR_HUMAN_REVIEW",
+    "NO_AUTOMATIC_INTELLIGENCE_FINDING_PROMOTION",
+    "NO_AUTOMATIC_CRIMINAL_FINDING_PROMOTION",
+    "FURTHER_D00_THROWS_OR_LENS_PROPOSALS_ALLOWED",
+    "AUTHORITY_CREATED_FALSE"
+  ]
+}
