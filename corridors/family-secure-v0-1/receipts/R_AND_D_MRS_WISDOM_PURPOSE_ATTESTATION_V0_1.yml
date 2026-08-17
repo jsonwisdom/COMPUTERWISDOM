@@ -1,0 +1,36 @@
+attestation: R_AND_D_MRS_WISDOM_PURPOSE_ATTESTATION_V0_1
+repo: jsonwisdom/COMPUTERWISDOM
+pr: 412
+corridor: COMPUTERWISDOM_FAMILY_SECURE_CORRIDOR_V0_1
+authority: false
+no_fake_green: true
+
+operator_identity:
+  builder_creator: Jay Wisdom
+  ens: jaywisdom.eth
+  basename: jaywisdom.base.eth
+  zora: jaywisdom
+  identity_scope: self_identified_operator_context
+  wallet_control_attested_here: false
+
+state:
+  mode: R_AND_D_ONLY_WITH_MRS_WISDOM_PURPOSE
+  ci_green: true
+  governance_green: false
+  mrs_wisdom_approval_observed: false
+  mrs_wisdom_purpose_preserved: true
+  family_facing_promotion_allowed: false
+  render_allowed: false
+  canonical_merge_allowed: false
+
+purpose:
+  jay_work: Builder research may continue in noncanonical R&D mode.
+  jay_impact: Corridor research should improve replay, receipts, and public-safe coordination.
+  jay_integrity: No technical green may be promoted as family approval.
+  replay: Receipts before narrative.
+  receiptos_base: Candidate concept; no matching jsonwisdom/receiptos-base repo found in connector search at attestation time.
+
+ruling: >
+  R&D mode may proceed without witnessed Mrs Wisdom approval only while it remains noncanonical,
+  non-rendering, non-family-facing, and non-consent-advancing. Any public family promotion,
+  consent advancement, render, or canonical merge still requires a witnessed Mrs Wisdom review.
