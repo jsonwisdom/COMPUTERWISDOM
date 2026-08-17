@@ -42,9 +42,23 @@
       }
     },
     "observer_result": {
-      "enum": ["PROVEN", "HOLD", "DIVERGENCE", "REJECTED"],
+      "type": "object",
       "readOnly": true,
-      "description": "Mechanically derived by the verifier. Caller-supplied observer_result is rejected by the implementation."
+      "additionalProperties": false,
+      "required": ["semantic_type", "value", "rendering"],
+      "properties": {
+        "semantic_type": {"const": "BOUNDED_EVIDENCE_GATE_DISPOSITION"},
+        "value": {"enum": ["PROVEN", "HOLD", "DIVERGENCE", "REJECTED"]},
+        "rendering": {
+          "enum": [
+            "EVIDENCE_GATE_PROVEN",
+            "EVIDENCE_GATE_HOLD",
+            "EVIDENCE_GATE_DIVERGENCE",
+            "EVIDENCE_GATE_REJECTED"
+          ]
+        }
+      },
+      "description": "Mechanically derived bounded evidence-gate disposition. External serialization MUST preserve semantic_type and rendering; caller-supplied observer_result remains forbidden."
     },
     "doj_decision_created": {"const": false},
     "legal_conclusion_created": {"const": false},
