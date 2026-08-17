@@ -67,5 +67,5 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
-      - name: Verify DOJ OIG fail-closed 15-vector suite
+      - name: Verify DOJ OIG fail-closed T01-T16 + surface coverage
         run: python tools/verify_oig_oversight_certificate_v0_1.py --self-test
