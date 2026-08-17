@@ -1,0 +1,48 @@
+{
+  "schema": "g-dice-intelligence-federation/d01-receipt-proposal/v0.1",
+  "status": "D01_ACTIVATED_RECEIPT_PROPOSAL_ONLY",
+  "authority_created": false,
+  "throw_id": "D00-20260817-ODNI-IC18-001",
+  "hypothesis_id": "HYP-20260817-ODNI-IC18-001",
+  "lens_id": "D01",
+  "activation": {
+    "control_input": "ACTIVATE_D01",
+    "timestamp": "2026-08-17T14:58:00-05:00",
+    "mission_relevance_only": true,
+    "agency_suspicion": false,
+    "tasking_created": false,
+    "investigation_created": false
+  },
+  "receipt_proposal_envelope": {
+    "claim_fragment": "ODNI public Intelligence Community membership count is reproducible as 18 organizations.",
+    "requested_public_receipt_types": [
+      "current_official_odni_membership_surface",
+      "enumerated_public_member_list",
+      "retrieval_timestamp",
+      "content_hash"
+    ],
+    "proposed_source_identifier": "https://www.odni.gov/index.php/who-we-are/121-dni/intelligence-community",
+    "content_fetched": false,
+    "content_interpreted": false,
+    "evidence_observed": null,
+    "supports": [],
+    "contradicts": [],
+    "falsifiability_condition": "A current official ODNI source states a total other than 18, or the enumerated membership does not reconcile to 18.",
+    "ledger_receipt_created": false,
+    "receipt_promoted": false
+  },
+  "ledger_state": {
+    "receipt_count_added_by_this_activation": 0,
+    "ledger_modified": false
+  },
+  "invariants": [
+    "MISSION_RELEVANCE_NOT_SUSPICION",
+    "LENS_SELECTION_NOT_TASKING",
+    "RECEIPT_REQUEST_NOT_INVESTIGATION",
+    "RECEIPT_PROPOSAL_NOT_RECEIPT",
+    "NO_CONTENT_FETCHED",
+    "NO_CONTENT_INTERPRETED",
+    "NO_LEDGER_PROMOTION",
+    "AUTHORITY_CREATED_FALSE"
+  ]
+}
