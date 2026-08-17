@@ -30,9 +30,10 @@ REFEREE      = HUMAN / ACTUAL AUTHORITY
 
 The scoreboard saying **REPLAY COMPLETE** does not mean Alabama won the game.
 
-Likewise:
+Likewise, the typed machine disposition:
 
 ```text
+SEMANTIC_TYPE = BOUNDED_CONGRESSIONAL_EVIDENCE_GATE_DISPOSITION
 OBSERVER_RESULT = PROVEN
 ```
 
@@ -116,14 +117,14 @@ Computer Wisdom is the replay booth. It may show the exact frame, bind the bytes
 
 ```text
 VALUE = PROVEN
-WITHOUT SEMANTIC_TYPE = BOUNDED_EVIDENCE_GATE_DISPOSITION
+WITHOUT SEMANTIC_TYPE = BOUNDED_CONGRESSIONAL_EVIDENCE_GATE_DISPOSITION
 → INVALID_OUTPUT
 
 NO UNTYPED PROVEN MAY CROSS
 AN EXTERNAL PRESENTATION BOUNDARY
 ```
 
-For PR #488, the congressional membrane uses the corresponding bounded congressional disposition type. Educational metaphors never change the machine contract.
+Educational metaphors never change the machine contract.
 
 ```text
 STORY != SOURCE
