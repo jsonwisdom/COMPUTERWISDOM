@@ -11,7 +11,9 @@ on:
       - 'tools/verify_congressional_accountability_membrane_v0_1.py'
       - 'tools/verify_source_bytes_receipt_v0_1.py'
       - 'tools/verify_congressional_directory_contracts_v0_1.py'
+      - 'tools/verify_alabama_military_public_websites_contract_v0_1.py'
       - 'agents/congressional_accountability/**'
+      - 'docs/jaywisdom/ALABAMA_MILITARY_PUBLIC_WEBSITES_CONGRESSIONAL_UPDATE_V0_1.md'
       - '.github/workflows/congressional-accountability-membrane-v0-1.yml'
   push:
     branches:
@@ -34,4 +36,6 @@ jobs:
         run: python tools/verify_congressional_accountability_membrane_v0_1.py --self-test
       - name: Replay SOURCE_BYTES semantic boundaries
         run: python tools/verify_source_bytes_receipt_v0_1.py --self-test
+      - name: Replay Alabama military public website contract boundaries
+        run: python tools/verify_alabama_military_public_websites_contract_v0_1.py
 
