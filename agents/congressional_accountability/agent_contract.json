@@ -1,0 +1,21 @@
+{
+  "contract": "CONGRESSIONAL_ACCOUNTABILITY_AGENT_V0.1",
+  "runtime_pattern": "ONE_AGENT_PLUS_DETERMINISTIC_FUNCTION_TOOL",
+  "agent_may": [
+    "extract_candidate_fields_from_supplied_records",
+    "request_missing_source_fields",
+    "call_congressional_accountability_verifier",
+    "return_verifier_receipt_without_semantic_widening"
+  ],
+  "agent_must_not": [
+    "declare_bill_enacted_without_public_law_receipt",
+    "treat_hearing_or_testimony_as_fact_proven",
+    "treat_referral_as_finding",
+    "infer_fraud_guilt_legality_or_government_endorsement",
+    "submit_to_congress_or_an_agency",
+    "create_authority"
+  ],
+  "consequential_effect_default": "HOLD_FOR_HUMAN_AUTHORIZATION",
+  "model_execution_performed": false,
+  "authority_created": false
+}
