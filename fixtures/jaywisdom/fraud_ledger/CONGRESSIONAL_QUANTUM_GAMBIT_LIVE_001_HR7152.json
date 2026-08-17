@@ -1,0 +1,64 @@
+{
+  "receipt_id": "CONGRESSIONAL_QUANTUM_GAMBIT_LIVE_001_HR7152",
+  "observer": "jaywisdom.base.eth",
+  "claim": "The U.S. House of Representatives passed H.R. 7152 — the Civil Rights Act of 1964 — on 1964-02-10 by a recorded vote of 290–130.",
+  "claim_scope": "HOUSE_PASSAGE_ONLY",
+  "semantic_type": "BOUNDED_CONGRESSIONAL_EVIDENCE_GATE_DISPOSITION",
+  "observer_result": "REPLAYABLE",
+  "dice": {
+    "source": "PASS",
+    "authority": "PASS",
+    "claim": "PASS",
+    "money": "NOT_REQUIRED",
+    "time": "PASS",
+    "replay": "PASS"
+  },
+  "official_sources": [
+    {
+      "source_class": "NATIONAL_ARCHIVES_HOUSE_RECORD",
+      "url": "https://www.archives.gov/exhibits/treasures_of_congress/Images/page_24/72a.html",
+      "supports": ["HOUSE_PASSAGE_DATE", "HOUSE_VOTE"]
+    },
+    {
+      "source_class": "NATIONAL_ARCHIVES_ENGROSSED_COPY_FEATURE",
+      "url": "https://www.archives.gov/legislative/features/civil-rights-1964/hr7152-engrossed-copy.html",
+      "supports": ["HOUSE_PASSAGE_DATE", "HOUSE_VOTE"]
+    },
+    {
+      "source_class": "HOUSE_HISTORY_ART_ARCHIVES_CLERK_RECORD",
+      "url": "https://history.house.gov/HouseRecord/Detail/25769811476",
+      "supports": ["HOUSE_PASSAGE_DATE", "HOUSE_VOTE"]
+    },
+    {
+      "source_class": "CONGRESS_GOV_ACTIONS_OVERVIEW",
+      "url": "https://www.congress.gov/bill/88th-congress/house-bill/7152/all-actions",
+      "supports": ["HOUSE_PASSAGE_DATE", "LATER_SENATE_PASSAGE", "LATER_ENACTMENT"]
+    }
+  ],
+  "states": {
+    "house_passage_date": "1964-02-10",
+    "house_vote_yea": 290,
+    "house_vote_nay": 130,
+    "senate_passage_date": "1964-06-19",
+    "enactment_date": "1964-07-02",
+    "public_law_number": "88-352"
+  },
+  "membranes": [
+    "PASSED_HOUSE != LAW",
+    "HOUSE_PASSAGE != SENATE_PASSAGE",
+    "HOUSE_PASSAGE != ENACTMENT",
+    "SOURCE_BOUND_PUBLIC_RECORD != BOXD_BYTES_PROVEN",
+    "REPLAYABLE != LEGAL_CONCLUSION"
+  ],
+  "boxd": {
+    "manifest_state": "CANDIDATE_ONLY",
+    "source_urls_bound": true,
+    "source_bytes_fetched_and_frozen": false,
+    "source_digest_recomputed": false,
+    "source_byte_authentication": "NOT_PERFORMED"
+  },
+  "facts_promoted": 0,
+  "edges_inferred": 0,
+  "silent_inference": "BLOCKED",
+  "authority_created": false
+}

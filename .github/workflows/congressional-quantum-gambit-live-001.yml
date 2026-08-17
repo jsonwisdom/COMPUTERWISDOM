@@ -1,0 +1,72 @@
+name: Congressional Quantum Gambit Live 001
+
+on:
+  pull_request:
+    paths:
+      - 'docs/jaywisdom/CONGRESSIONAL_QUANTUM_GAMBIT_LIVE_001_HR7152.md'
+      - 'fixtures/jaywisdom/fraud_ledger/CONGRESSIONAL_QUANTUM_GAMBIT_LIVE_001_HR7152.json'
+      - '.github/workflows/congressional-quantum-gambit-live-001.yml'
+  push:
+    paths:
+      - 'docs/jaywisdom/CONGRESSIONAL_QUANTUM_GAMBIT_LIVE_001_HR7152.md'
+      - 'fixtures/jaywisdom/fraud_ledger/CONGRESSIONAL_QUANTUM_GAMBIT_LIVE_001_HR7152.json'
+      - '.github/workflows/congressional-quantum-gambit-live-001.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate live receipt
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+
+          p = Path('fixtures/jaywisdom/fraud_ledger/CONGRESSIONAL_QUANTUM_GAMBIT_LIVE_001_HR7152.json')
+          x = json.loads(p.read_text())
+
+          assert x['claim_scope'] == 'HOUSE_PASSAGE_ONLY'
+          assert x['observer_result'] == 'REPLAYABLE'
+          assert x['states']['house_passage_date'] == '1964-02-10'
+          assert x['states']['house_vote_yea'] == 290
+          assert x['states']['house_vote_nay'] == 130
+          assert x['dice'] == {
+              'source': 'PASS',
+              'authority': 'PASS',
+              'claim': 'PASS',
+              'money': 'NOT_REQUIRED',
+              'time': 'PASS',
+              'replay': 'PASS'
+          }
+
+          b = x['boxd']
+          assert b['manifest_state'] == 'CANDIDATE_ONLY'
+          assert b['source_urls_bound'] is True
+          assert b['source_bytes_fetched_and_frozen'] is False
+          assert b['source_digest_recomputed'] is False
+          assert b['source_byte_authentication'] == 'NOT_PERFORMED'
+
+          assert x['facts_promoted'] == 0
+          assert x['edges_inferred'] == 0
+          assert x['silent_inference'] == 'BLOCKED'
+          assert x['authority_created'] is False
+
+          required = {
+              'PASSED_HOUSE != LAW',
+              'HOUSE_PASSAGE != SENATE_PASSAGE',
+              'HOUSE_PASSAGE != ENACTMENT',
+              'SOURCE_BOUND_PUBLIC_RECORD != BOXD_BYTES_PROVEN',
+              'REPLAYABLE != LEGAL_CONCLUSION'
+          }
+          assert required.issubset(set(x['membranes']))
+
+          print('LIVE_001_HR7152=PASS')
+          print('CLAIM_SCOPE=HOUSE_PASSAGE_ONLY')
+          print('HOUSE_VOTE=290-130')
+          print('BOXD_BYTES_PROVEN=false')
+          print('AUTHORITY_CREATED=false')
+          PY
