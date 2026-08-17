@@ -149,6 +149,19 @@
       "expected_result": "HOLD",
       "expected_gates": {"authority":"HOLD"},
       "expected_false_fields": ["legal_finding_created","authority_created"]
+    },
+    {
+      "id": "T16_SURFACE_COVERAGE_NO_SEMANTIC_WIDENING",
+      "edge": {
+        "source_objects": [{"source_id":"OIG","url":"https://example.invalid/oig/t16","sha256":"efefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefef","observed_at":"2026-08-16T20:00:00Z"}]
+      },
+      "expected_result": "PROVEN",
+      "surface_contract": {
+        "semantic_type": "BOUNDED_EVIDENCE_GATE_DISPOSITION",
+        "negative_text": "fraud proven",
+        "expected_negative_result": "REJECTED",
+        "invariant": "NO_UNTYPED_PROVEN_MAY_CROSS_EXTERNAL_PRESENTATION_BOUNDARY"
+      }
     }
   ],
   "laws": [
@@ -159,7 +172,9 @@
     "OIG_OVERSIGHT_CERTIFICATE != DOJ_DECISION",
     "OIG_OVERSIGHT_CERTIFICATE != LEGAL_FINDING",
     "OIG_OVERSIGHT_CERTIFICATE != WHITE_HOUSE_MISCONDUCT_FINDING",
-    "OIG_OVERSIGHT_CERTIFICATE != AUTHORITY"
+    "OIG_OVERSIGHT_CERTIFICATE != AUTHORITY",
+    "VALUE_PROVEN_WITHOUT_BOUNDED_EVIDENCE_GATE_DISPOSITION_TYPE = INVALID_OUTPUT",
+    "NO_UNTYPED_PROVEN_MAY_CROSS_EXTERNAL_PRESENTATION_BOUNDARY"
   ],
   "roll_002_live": false,
   "authority_created": false
