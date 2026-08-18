@@ -17,8 +17,14 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+    env:
+      EXACT_HEAD_SHA: ${{ github.event.pull_request.head.sha || github.sha }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify exact checkout
+        run: test "$(git rev-parse HEAD)" = "$EXACT_HEAD_SHA"
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
@@ -38,7 +44,7 @@ jobs:
 
           receipt = {
               "format": "ENTERPRISE_RECEIPT_API_V0_2_CI_RECEIPT",
-              "git_sha": os.environ["GITHUB_SHA"],
+              "git_sha": os.environ["EXACT_HEAD_SHA"],
               "negative_test_pack": "v2",
               "test_count": 22,
               "test_result": "PASS",
