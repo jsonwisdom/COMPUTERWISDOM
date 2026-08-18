@@ -6,7 +6,7 @@
     "preserve_parent_conflict": true,
     "active_path": "OPTION_B_DIRECT_EAS_UID_REPLAY",
     "option_a_hash_correction": "BLOCKED_NO_CORRECTED_HASH",
-    "option_b_eas_uid_replay": "ACTIVE_RECOVERY_PATH",
+    "option_b_eas_uid_replay": "COMPLETED_REJECT_DECLARED_BASE_SEPOLIA_OBJECTS",
     "teaching_artifact": "PRESERVE_CONFLICT_APPEND_ONLY"
   },
   "declared_objects": {
@@ -19,8 +19,7 @@
   "internal_receipt_transition": {
     "prior_receipt": {
       "path": "receipts/anchor/EAS_SCHEMA_AND_ATTESTATION_ENTRIES_001.json",
-      "status": "SCHEMA_AND_ENTRIES_PREPARED_NOT_REGISTERED_NOT_SUBMITTED",
-      "noted_registration_url": "https://sepolia.easscan.org/schema/register"
+      "status": "SCHEMA_AND_ENTRIES_PREPARED_NOT_REGISTERED_NOT_SUBMITTED"
     },
     "later_receipt": {
       "path": "receipts/anchor/EAS_ATTESTATION_SUBMITTED_001.json",
@@ -30,46 +29,43 @@
       "claims_attestation_submitted": true,
       "claims_attestation_uid_captured": true
     },
-    "transition_status": "CONFLICT_REPLAY_REQUIRED",
-    "reason": "The later submission receipt asserts a completed Base Sepolia registration/submission transition that is not independently bound by the failed transaction hash. The earlier preparation receipt is retained as prior state and is not overwritten."
+    "transition_status": "REJECT_DECLARED_BASE_SEPOLIA_REGISTRATION_AND_SUBMISSION_EDGES",
+    "reason": "Independent GitHub Actions replay on Base Sepolia found no declared transaction or receipt; EASSCAN GraphQL returned no attestation object; direct EAS getAttestation(bytes32) returned the zero Attestation struct; direct SchemaRegistry getSchema(bytes32) returned the zero SchemaRecord. The earlier prepared state remains preserved, and the later repository claim is not accepted as chain truth."
+  },
+  "live_replay_receipt": {
+    "path": "citizen/blockchain-reverse-replay/receipts/CITIZEN_LEDGER_ITEM_001_EAS_UID_DIRECT_REPLAY_2026_08_18.json",
+    "workflow_run_id": 32106944392,
+    "job_id": 95618197380,
+    "head_sha": "141d4af42578d28586ddcadbf661efcc33c7c0c2",
+    "artifact_id": 9313480754,
+    "artifact_sha256": "fdb0e6d5d28221ed21b2452b85803234b2e5507e8e39df30d879f4e75b96a8ff",
+    "observed_at_utc": "2026-08-18T06:26:48.316052Z"
   },
   "public_replay_surface": {
     "official_explorer": "https://base-sepolia.easscan.org/",
     "official_graphql": "https://base-sepolia.easscan.org/graphql",
     "base_sepolia_rpc": "https://sepolia.base.org",
     "base_sepolia_chain_id": 84532,
-    "lookup_order": [
-      "ATTESTATION_UID",
-      "SCHEMA_UID",
-      "ATTESTER_ADDRESS",
-      "TRANSACTION_HASH_ONLY_IF_RECOVERED_FROM_BOUND_OBJECT"
-    ]
+    "eas_contract": "0x4200000000000000000000000000000000000021",
+    "schema_registry_contract": "0x4200000000000000000000000000000000000020"
   },
   "current_observations": {
-    "exact_uid_web_search": "NO_INDEXED_RESULT_FOUND",
-    "exact_schema_uid_web_search": "NO_INDEXED_RESULT_FOUND",
-    "meaning": "Search-engine absence is not chain absence. Direct EAS or RPC replay remains required.",
-    "user_supplied_transaction_rpc_replay": "NULL_TRANSACTION_AND_RECEIPT_REPORTED",
-    "assistant_direct_eas_uid_replay": "NOT_COMPLETED"
+    "network_chain_id": "PASS_84532",
+    "transaction_by_hash": "REJECT_NOT_FOUND",
+    "transaction_receipt": "REJECT_NOT_FOUND",
+    "easscan_attestation_uid": "REJECT_NOT_FOUND_IN_INDEXER",
+    "eas_contract_getAttestation": "REJECT_ZERO_ATTESTATION_STRUCT",
+    "schema_registry_getSchema": "REJECT_ZERO_SCHEMA_RECORD",
+    "corrected_transaction_hash": "NOT_FOUND",
+    "user_supplied_transaction_rpc_replay": "CORROBORATED_BY_GITHUB_ACTIONS_PUBLIC_NETWORK_REPLAY"
   },
-  "required_bindings": [
-    "DIRECT_ATTESTATION_UID_LOOKUP_RESULT",
-    "CHAIN_OR_OFFCHAIN_TYPE",
-    "SCHEMA_UID_MATCH",
-    "ATTESTER_MATCH",
-    "RECIPIENT_IF_ANY",
-    "TIMESTAMP_OR_BLOCK_TIME",
-    "TX_HASH_IF_ONCHAIN",
-    "BLOCK_NUMBER_IF_ONCHAIN",
-    "DECODED_PAYLOAD_OR_SCHEMA_DATA",
-    "SOURCE_URL_OR_RPC_RECEIPT"
-  ],
-  "terminal": "HOLD",
-  "terminal_reason": "Parent ledger item remains CONFLICT. Recovery path is open but no direct EAS UID object is bound yet.",
+  "terminal": "REJECT",
+  "terminal_reason": "Option B completed. The repository-declared Base Sepolia transaction, onchain attestation UID, and schema registration are contradicted by independent public network replay. This REJECT is scoped to the declared Base Sepolia anchor-object claims only; it is not motive proof and not a claim about unrelated networks or offchain material.",
+  "parent_state": "CONFLICT_PRESERVED_AS_HISTORICAL_TEACHING_ARTIFACT",
   "boundaries": {
     "repository_record_not_chain_truth": true,
-    "search_absence_not_chain_absence": true,
-    "uid_string_not_attestation": true,
+    "negative_chain_replay_not_motive_proof": true,
+    "rejected_base_sepolia_edge_not_global_absence": true,
     "corrected_hash_must_come_from_bound_object": true,
     "parent_conflict_must_not_be_rewritten": true,
     "round_06_executive_ready_not_rolled": true,
