@@ -1,0 +1,61 @@
+{
+  "suite": "CITIZEN_BANKING_BURDEN_FLIP_V0.1",
+  "base_case": {
+    "case_id": "base",
+    "trigger_family": "CIP_ACCOUNT_OPENING",
+    "actor_class": "bank",
+    "consumer_step": {
+      "performed": true,
+      "step_type": "provide_identifying_information",
+      "receipt_ref": "consumer://id-information-receipt"
+    },
+    "trigger": {
+      "qualifying": true,
+      "condition_refs": ["31usc5318l", "31cfr1020.220"],
+      "timing_status": "not_applicable"
+    },
+    "institution_duty": {
+      "duty_type": "verify_identity_and_record",
+      "performed": true,
+      "receipt_ref": "bank://cip-verification-audit-receipt",
+      "duty_quality": "sufficient",
+      "consumer_facing_receipt_required": false
+    },
+    "constitutional": {
+      "government_actor_bound": false,
+      "state_action_theory_ref": "",
+      "violation_claimed": false
+    },
+    "records_conflict": false,
+    "same_proof_requested_again": false,
+    "attempted_promotions": {
+      "private_action_as_government_action": false,
+      "general_bank_action_as_ecoa": false,
+      "any_dispute_as_fcra": false,
+      "any_collector_as_fdcpa": false,
+      "missing_receipt_as_legal_violation": false
+    }
+  },
+  "cases": [
+    {"case_id": "B01_cip_shared_sequential_pass", "expected_disposition": "PASS", "patch": {}},
+    {"case_id": "B02_cip_bank_verification_receipt_missing_hold", "expected_disposition": "HOLD", "patch": {"institution_duty": {"receipt_ref": ""}}},
+    {"case_id": "B03_recursive_reproof_before_cip_reconciliation_hold", "expected_disposition": "HOLD", "patch": {"same_proof_requested_again": true, "institution_duty": {"performed": false, "receipt_ref": "", "duty_quality": "unknown"}}},
+    {"case_id": "B04_ecoa_adverse_action_specific_reasons_pass", "expected_disposition": "PASS", "patch": {"trigger_family": "ECOA_ADVERSE_ACTION", "actor_class": "creditor", "consumer_step": {"step_type": "credit_application", "receipt_ref": "consumer://credit-application"}, "trigger": {"condition_refs": ["15usc1691d", "12cfr1002.9"], "timing_status": "within_window"}, "institution_duty": {"duty_type": "adverse_action_notice_and_reasons_path", "receipt_ref": "creditor://adverse-action-specific-reasons", "duty_quality": "sufficient", "consumer_facing_receipt_required": true}}},
+    {"case_id": "B05_ecoa_vague_internal_policy_reason_hold", "expected_disposition": "HOLD", "patch": {"trigger_family": "ECOA_ADVERSE_ACTION", "actor_class": "creditor", "consumer_step": {"step_type": "credit_application", "receipt_ref": "consumer://credit-application"}, "trigger": {"condition_refs": ["15usc1691d", "12cfr1002.9"], "timing_status": "within_window"}, "institution_duty": {"duty_type": "adverse_action_notice_and_reasons_path", "receipt_ref": "creditor://internal-policy-only", "duty_quality": "vague_internal_policy", "consumer_facing_receipt_required": true}}},
+    {"case_id": "B06_general_deposit_action_promoted_to_ecoa_reject", "expected_disposition": "REJECT", "patch": {"trigger_family": "ECOA_ADVERSE_ACTION", "actor_class": "bank", "attempted_promotions": {"general_bank_action_as_ecoa": true}}},
+    {"case_id": "B07_fcra_cra_reinvestigation_pass", "expected_disposition": "PASS", "patch": {"trigger_family": "FCRA_CRA_DISPUTE", "actor_class": "consumer_reporting_agency", "consumer_step": {"step_type": "cra_dispute", "receipt_ref": "consumer://cra-dispute"}, "trigger": {"condition_refs": ["15usc1681i"], "timing_status": "within_window"}, "institution_duty": {"duty_type": "cra_reinvestigate_and_correct", "receipt_ref": "cra://reinvestigation-result", "duty_quality": "sufficient", "consumer_facing_receipt_required": true}}},
+    {"case_id": "B08_fcra_cra_reinvestigation_receipt_missing_hold", "expected_disposition": "HOLD", "patch": {"trigger_family": "FCRA_CRA_DISPUTE", "actor_class": "consumer_reporting_agency", "consumer_step": {"step_type": "cra_dispute", "receipt_ref": "consumer://cra-dispute"}, "trigger": {"condition_refs": ["15usc1681i"], "timing_status": "within_window"}, "institution_duty": {"duty_type": "cra_reinvestigate_and_correct", "receipt_ref": "", "duty_quality": "unknown", "consumer_facing_receipt_required": true}}},
+    {"case_id": "B09_fcra_inaccurate_unverifiable_not_corrected_hold", "expected_disposition": "HOLD", "patch": {"trigger_family": "FCRA_CRA_DISPUTE", "actor_class": "consumer_reporting_agency", "consumer_step": {"step_type": "cra_dispute", "receipt_ref": "consumer://cra-dispute"}, "trigger": {"condition_refs": ["15usc1681i"], "timing_status": "within_window"}, "institution_duty": {"duty_type": "cra_reinvestigate_and_correct", "receipt_ref": "cra://result-no-correction", "duty_quality": "inaccurate_unverifiable_not_corrected", "consumer_facing_receipt_required": true}}},
+    {"case_id": "B10_fcra_furnisher_direct_dispute_pass", "expected_disposition": "PASS", "patch": {"trigger_family": "FCRA_FURNISHER_DIRECT_DISPUTE", "actor_class": "furnisher", "consumer_step": {"step_type": "qualifying_direct_furnisher_dispute", "receipt_ref": "consumer://direct-dispute"}, "trigger": {"condition_refs": ["12cfr1022.43-scope", "12cfr1022.43-address", "12cfr1022.43-content"], "timing_status": "within_window"}, "institution_duty": {"duty_type": "furnisher_investigate_and_correct", "receipt_ref": "furnisher://investigation-result", "duty_quality": "sufficient", "consumer_facing_receipt_required": true}}},
+    {"case_id": "B11_furnisher_direct_dispute_conditions_not_bound_hold", "expected_disposition": "HOLD", "patch": {"trigger_family": "FCRA_FURNISHER_DIRECT_DISPUTE", "actor_class": "furnisher", "consumer_step": {"step_type": "direct_dispute", "receipt_ref": "consumer://direct-dispute"}, "trigger": {"qualifying": false, "condition_refs": [], "timing_status": "unknown"}, "institution_duty": {"duty_type": "furnisher_investigate_and_correct", "performed": false, "receipt_ref": "", "duty_quality": "unknown", "consumer_facing_receipt_required": true}}},
+    {"case_id": "B12_fdcpa_written_30d_dispute_verified_mailed_pass", "expected_disposition": "PASS", "patch": {"trigger_family": "FDCPA_WRITTEN_DISPUTE_30D", "actor_class": "debt_collector", "consumer_step": {"step_type": "written_debt_dispute", "receipt_ref": "consumer://written-dispute"}, "trigger": {"condition_refs": ["15usc1692g-b", "written", "within-30-days"], "timing_status": "within_window"}, "institution_duty": {"duty_type": "pause_collect_verify_mail", "receipt_ref": "collector://verification-mailed", "duty_quality": "sufficient", "consumer_facing_receipt_required": true}}},
+    {"case_id": "B13_fdcpa_30d_window_not_bound_hold", "expected_disposition": "HOLD", "patch": {"trigger_family": "FDCPA_WRITTEN_DISPUTE_30D", "actor_class": "debt_collector", "consumer_step": {"step_type": "debt_dispute", "receipt_ref": "consumer://dispute"}, "trigger": {"qualifying": false, "condition_refs": ["15usc1692g-b"], "timing_status": "outside_window"}, "institution_duty": {"duty_type": "pause_collect_verify_mail", "performed": false, "receipt_ref": "", "duty_quality": "unknown", "consumer_facing_receipt_required": true}}},
+    {"case_id": "B14_any_collector_promoted_to_fdcpa_debt_collector_reject", "expected_disposition": "REJECT", "patch": {"trigger_family": "FDCPA_WRITTEN_DISPUTE_30D", "actor_class": "creditor", "attempted_promotions": {"any_collector_as_fdcpa": true}}},
+    {"case_id": "B15_private_bank_action_promoted_to_fifth_amendment_reject", "expected_disposition": "REJECT", "patch": {"constitutional": {"violation_claimed": true}, "attempted_promotions": {"private_action_as_government_action": true}}},
+    {"case_id": "B16_constitutional_claim_with_attribution_question_hold", "expected_disposition": "HOLD", "patch": {"constitutional": {"government_actor_bound": false, "state_action_theory_ref": "state-action://nexus-question", "violation_claimed": true}}},
+    {"case_id": "B17_bound_records_conflict_conflict", "expected_disposition": "CONFLICT", "patch": {"records_conflict": true}},
+    {"case_id": "B18_missing_receipt_promoted_to_violation_reject", "expected_disposition": "REJECT", "patch": {"institution_duty": {"receipt_ref": ""}, "attempted_promotions": {"missing_receipt_as_legal_violation": true}}},
+    {"case_id": "B19_repeat_request_after_institution_reconciled_pass", "expected_disposition": "PASS", "patch": {"same_proof_requested_again": true}},
+    {"case_id": "B20_unclassified_trigger_hold", "expected_disposition": "HOLD", "patch": {"trigger_family": "UNCLASSIFIED", "actor_class": "unknown"}}
+  ]
+}
