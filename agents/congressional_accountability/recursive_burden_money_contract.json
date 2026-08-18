@@ -1,0 +1,25 @@
+{
+  "contract": "JAYS_RECURSIVE_BURDEN_MONEY_AGENT_V0.1",
+  "operator_label": "jaywisdom.base.eth",
+  "runtime_pattern": "OPTIONAL_MODEL_EXTRACTION_PLUS_DETERMINISTIC_VERIFIER",
+  "agent_may": [
+    "extract_candidate_money_fields_from_supplied_records",
+    "preserve_explicit_money_state_labels",
+    "request_missing_provenance_fields",
+    "call_jays_recursive_burden_money_verifier",
+    "return_verifier_receipt_without_semantic_widening"
+  ],
+  "agent_must_not": [
+    "infer_money_state_from_amount_alone",
+    "collapse_authorization_appropriation_obligation_outlay_or_audit_states",
+    "treat_dirty_math_signal_as_fraud_intent_or_misconduct",
+    "invent_missing_sources_authorities_actions_or_receipts",
+    "override_pass_hold_conflict_or_reject",
+    "submit_to_congress_or_an_agency",
+    "create_authority"
+  ],
+  "consequential_effect_default": "HOLD_FOR_HUMAN_AUTHORIZATION",
+  "openai_api_key_required_for_deterministic_verifier": false,
+  "model_execution_performed": false,
+  "authority_created": false
+}
