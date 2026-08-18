@@ -1,0 +1,139 @@
+{
+  "format": "MINNESOTA_SUPREME_SUBSTRATES_STATE_SCOPE_REPLAY_V0.2",
+  "classification": "PERSONAL_RESEARCH_PUBLIC_RECORD_CIVIC_LEARNING_ONLY",
+  "title": "Jay's Minnesota Experience — SupremeSubstrates + Quadratic Voice Audit v0.2",
+  "author_label": "jaywisdom.base.eth",
+  "supersedes": "MINNESOTA_SUPREME_SUBSTRATES_STATE_SCOPE_REPLAY_V0.1",
+  "authority_created": false,
+  "official_election_system_created": false,
+  "purpose": "EXTEND_MINNESOTA_SUPREMESUBSTRATES_WITH_AUDITABLE_QUADRATIC_DEMOCRATIC_VOICE_MECHANICS_WITHOUT_PROMOTING_SIMULATION_TO_OFFICIAL_BALLOT_AUTHORITY",
+  "core_membrane": [
+    "SIMULATION != OFFICIAL_ELECTION",
+    "VOICE_INPUT != BALLOT",
+    "VOICE != IDENTITY",
+    "TRANSCRIPT != INTENT_PROVEN",
+    "INTENSITY != ELIGIBILITY",
+    "QUADRATIC_CREDIT != LEGAL_VOTE",
+    "PROCESS_PASS != PROOF",
+    "DARVO_PATTERN != GUILT",
+    "AUDIT_FLAG != FINDING",
+    "AUTHORITY_CREATED = FALSE"
+  ],
+  "pincer_proof_promice": {
+    "institution_lane": [
+      "CLAIM",
+      "AUTHORITY",
+      "RULE",
+      "PROCEDURE",
+      "EVIDENCE",
+      "RECORD",
+      "FINDING",
+      "RECEIPT"
+    ],
+    "human_lane": [
+      "ACCUSATION_OR_REQUEST",
+      "HUMAN_RESPONSE",
+      "BURDEN_IMPOSED",
+      "CHALLENGE_OR_CORRECTION_OPPORTUNITY",
+      "RESPONSE_RECORD",
+      "FINDING",
+      "RECEIPT"
+    ],
+    "invariants": [
+      "ACCUSATION != PROOF",
+      "DENIAL != PROOF",
+      "REPETITION != PROOF",
+      "OFFICIAL_STATUS != PROOF",
+      "SHAME != FINDING",
+      "PROCESS_PASS != CLAIM_PROVEN"
+    ]
+  },
+  "quadratic_democratic_voice_audit": {
+    "mode": "CIVIC_SIMULATION_AND_SYSTEMS_AUDIT_ONLY",
+    "mechanic": "For each issue i, a participant may allocate signed voice units v_i; simulated credit cost is v_i^2 and total simulated cost may not exceed the declared credit budget.",
+    "formula": "COST_i = v_i^2; TOTAL_COST = SUM(COST_i); TOTAL_COST <= CREDIT_BUDGET",
+    "voice_pipeline": [
+      "VOICE_CAPTURE_OPTIONAL",
+      "TRANSCRIPT_GENERATED",
+      "HUMAN_REVIEW_AND_CORRECTION",
+      "ISSUE_BINDING",
+      "SIGNED_INTENSITY_SELECTION",
+      "QUADRATIC_COST_CALCULATION",
+      "BUDGET_CHECK",
+      "RECEIPT_HASH",
+      "REPLAY"
+    ],
+    "voice_accessibility": [
+      "TEXT_INPUT_MUST_REMAIN_AVAILABLE",
+      "VOICE_IS_AN_ENABLEMENT_NOT_A_REQUIREMENT",
+      "NO_EMOTION_INFERENCE_FOR_VOTE_WEIGHT",
+      "NO_ACCENT_OR_DIALECT_PENALTY",
+      "NO_SPEECH_RATE_OR_FLUENCY_PENALTY",
+      "NO_VOICEPRINT_IDENTITY_INFERENCE_BY_DEFAULT",
+      "TRANSCRIPT_MUST_BE_CORRECTABLE_BEFORE_COMMIT",
+      "RAW_AUDIO_RETENTION_MUST_BE_EXPLICITLY_DECLARED"
+    ],
+    "audit_checks": [
+      "CREDIT_BUDGET_DECLARED_BEFORE_ALLOCATION",
+      "COST_FUNCTION_FROZEN_BEFORE_INPUT",
+      "ISSUE_LIST_VERSION_BOUND",
+      "NO_HIDDEN_DEFAULT_ALLOCATIONS",
+      "NO_DUPLICATE_CREDIT_MINTING",
+      "NO_POST_HOC_COST_RULE_CHANGE",
+      "TRANSCRIPT_MATCHES_CONFIRMED_HUMAN_INPUT",
+      "VOICE_AND_TEXT_PATHS_PRODUCE_EQUIVALENT_LEDGER_SEMANTICS",
+      "EVERY_ALLOCATION_HAS_REPLAYABLE_RECEIPT"
+    ]
+  },
+  "supreme_substrate_secret_slimy_syntax": {
+    "classification": "CUSTOM_AUDIT_PARSER_NOT_OFFICIAL_MINNESOTA_TERMINOLOGY_AND_NOT_A_SECRET_GOVERNMENT_SYSTEM",
+    "purpose": "Detect hidden state changes, burden shifts, proof substitutions, voice-interface distortions, and role reversals without inferring intent.",
+    "syntax": "SUBSTRATE :: CLAIM -> SOURCE -> AUTHORITY -> ACTION -> BURDEN -> VOICE -> MATH -> RECORD -> CHALLENGE -> FINDING -> RECEIPT",
+    "flags": {
+      "SLIME_PROOF_SUBSTITUTION": "A process status, reputation signal, accusation, or repetition is substituted for proof.",
+      "SLIME_BURDEN_INVERSION": "A party is required to disprove a claim before the claimant binds evidence or authority.",
+      "SLIME_AUTHORITY_COLLAPSE": "Person, office, authority, rule, and action are treated as interchangeable.",
+      "SLIME_TRANSCRIPT_DRIFT": "Recorded or generated transcript materially differs from confirmed human input.",
+      "SLIME_VOICE_SUPPRESSION": "A voice or accessibility pathway changes effective participation rather than merely enabling input.",
+      "SLIME_QUADRATIC_DRIFT": "Credit budget, issue set, or cost function changes after allocations begin.",
+      "SLIME_HIDDEN_DEFAULT": "Unspoken or unconfirmed preferences are converted into allocations.",
+      "SLIME_IDENTITY_BY_VOICE": "Identity, eligibility, demographic category, credibility, or authority is inferred from voice characteristics without independent binding.",
+      "SLIME_DARVO_DENIAL": "Denial is observed and logged without treating denial as proof of either guilt or innocence.",
+      "SLIME_DARVO_ATTACK": "Attack or credibility diversion is observed and separated from the underlying claim evidence.",
+      "SLIME_DARVO_ROLE_REVERSAL": "Victim/offender or claimant/respondent roles are rhetorically reversed; original claims and burdens remain separately bound.",
+      "SLIME_SHAME_PROMOTION": "Human shame, embarrassment, fear, or defensiveness is treated as an evidentiary finding.",
+      "SLIME_RECEIPT_GAP": "A material state transition lacks a replayable receipt."
+    },
+    "flag_invariants": [
+      "FLAG != INTENT_PROVEN",
+      "FLAG != ABUSE_PROVEN",
+      "FLAG != FRAUD_PROVEN",
+      "FLAG != GUILT",
+      "FLAG != AUTHORITY"
+    ]
+  },
+  "minnesota_substrate_bindings": [
+    {"id":"MN00","name":"PEOPLE_CONSTITUTION","audit_role":"ROOT_RIGHTS_AND_PUBLIC_AUTHORITY_BOUNDARY"},
+    {"id":"MN01","name":"LEGISLATURE","audit_role":"STATUTORY_AND_ELECTION_RULE_SOURCE_WHEN_APPLICABLE"},
+    {"id":"MN03","name":"SUPREME_COURT","audit_role":"LEGAL_INTERPRETATION_AND_REVIEW_SUBSTRATE_NOT_VOTE_TABULATOR"},
+    {"id":"MN05","name":"DISTRICT_COURTS","audit_role":"RECORD_AND_FACT_FINDING_LAYER_WHEN JURISDICTIONALLY_APPLICABLE"},
+    {"id":"MN07","name":"COURT_RULES","audit_role":"PROCEDURE_SUBSTRATE_DISTINCT_FROM_STATUTE"},
+    {"id":"MN08","name":"PRECEDENT_OPINIONS_ORDERS","audit_role":"INTERPRETIVE_RECORD"},
+    {"id":"MN09","name":"CLERK_APPELLATE_RECORDS","audit_role":"PROVENANCE_AND_RECEIPT_SUBSTRATE"},
+    {"id":"MN10","name":"STATE_LAW_LIBRARY_ARCHIVES","audit_role":"HISTORICAL_AND_VERSION_REPLAY_SUBSTRATE"},
+    {"id":"MN12","name":"SAINT_CLOUD_PUBLIC_RECORDS","audit_role":"OBSERVATION_ANCHOR_ONLY"}
+  ],
+  "replay_status": ["PASS", "HOLD", "CONFLICT", "REJECT"],
+  "evidence_status": ["PROVEN", "NOT_PROVEN", "DISPROVEN", "UNRESOLVED"],
+  "terminal_rules": [
+    "PASS = MECHANICAL_OR_RECORD_CHAIN_RECONCILES_WITHIN_DECLARED_SCOPE",
+    "PASS != CLAIM_PROVEN",
+    "PROVEN_REQUIRES_BOUND_EVIDENCE_AND_DECLARED_FINDING_STANDARD",
+    "HOLD = REQUIRED_EVIDENCE_OR_AUTHORITY_MISSING",
+    "CONFLICT = VALID_BOUND_RECORDS_DISAGREE",
+    "REJECT = CLAIM_CONTRADICTED_WITHIN_BOUND_EVIDENCE",
+    "VOICE_SIMULATION_RESULT != OFFICIAL_MINNESOTA_ELECTION_RESULT"
+  ],
+  "terminal": "MINNESOTA_SUPREME_SUBSTRATES_QUADRATIC_VOICE_AUDIT_V0_2_OPEN_UNMERGED",
+  "authority_created": false
+}
