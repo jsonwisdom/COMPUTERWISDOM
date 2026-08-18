@@ -1,0 +1,27 @@
+{
+  "contract": "CONGRESS_3_0_OPENAI_AGENT_V0.1",
+  "runtime_pattern": "ONE_AGENT_ONE_DETERMINISTIC_FUNCTION_TOOL",
+  "tool_result_is_final": true,
+  "agent_input_class": "STRUCTURED_CONGRESS_3_0_CASE_JSON",
+  "agent_may": [
+    "accept_user_supplied_structured_case_json",
+    "call_verify_congress_3_0_case_exactly_once",
+    "return_the_deterministic_tool_receipt_as_final_output"
+  ],
+  "agent_must_not": [
+    "invent_missing_authority_or_receipts",
+    "widen_PASS_HOLD_CONFLICT_REJECT_semantics",
+    "treat_verifier_pass_as_underlying_world_truth",
+    "promote_model_output_into_government_decision",
+    "contact_congress_or_any_agency",
+    "mutate_government_or_citizen_records",
+    "publish_or_submit_without_separate_human_authorization",
+    "persist_api_keys_or_credentials",
+    "create_authority"
+  ],
+  "external_effect_default": "HOLD_FOR_HUMAN_AUTHORIZATION",
+  "raw_record_extraction_lane": "NOT_ADMITTED_IN_V0.1",
+  "model_execution_performed": false,
+  "government_submission_performed": false,
+  "authority_created": false
+}
