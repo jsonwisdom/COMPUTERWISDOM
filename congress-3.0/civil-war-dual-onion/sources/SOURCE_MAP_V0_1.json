@@ -1,0 +1,36 @@
+{
+  "source_map": "CIVIL_WAR_DUAL_ONION_SOURCE_MAP_V0_1",
+  "operator_identity": "jaywisdom.eth",
+  "sources": [
+    {
+      "id": "CONSTITUTION_ANNOTATED_RECONSTRUCTION_AMENDMENTS",
+      "publisher": "Congress.gov / Library of Congress",
+      "url": "https://constitution.congress.gov/browse/essay/Intro.6-4/ALDE_00000388/",
+      "role": "constitutional state change: Thirteenth, Fourteenth, Fifteenth Amendments"
+    },
+    {
+      "id": "NARA_EMANCIPATION_PROCLAMATION",
+      "publisher": "National Archives",
+      "url": "https://www.archives.gov/milestone-documents/emancipation-proclamation",
+      "role": "primary-source and archival anchor for January 1, 1863 proclamation"
+    },
+    {
+      "id": "NARA_CIVIL_WAR_RECONSTRUCTION_EDUCATION",
+      "publisher": "National Archives",
+      "url": "https://www.archives.gov/legislative/resources/education/reviewing-civil-war-reconstruction",
+      "role": "primary-source educational replay method"
+    }
+  ],
+  "connected_project_sources": [
+    "Google Drive: Alabama History — Divided Families — Secret Sister v0.1",
+    "Google Drive: Family Dice — CrissCross Congress Constitution v0.1",
+    "Google Drive: Jay's Minnesota Experience — Supreme Court + State Scope Replay v0.1",
+    "Google Drive: BoxD Administration — Drive Logger and Machine-Readable PDF Protocol v0.1"
+  ],
+  "boundaries": [
+    "CONNECTED_PROJECT_SOURCE != PUBLIC_HISTORICAL_AUTHORITY",
+    "ARCHIVE_SOURCE != COMPLETE_CAUSAL_ACCOUNT",
+    "SOURCE_MAP != HISTORICAL_VERDICT",
+    "AUTHORITY_CREATED = FALSE"
+  ]
+}
