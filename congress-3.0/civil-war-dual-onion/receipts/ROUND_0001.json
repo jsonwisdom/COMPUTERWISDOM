@@ -1,0 +1,29 @@
+{
+  "receipt": "CIVIL_WAR_DUAL_ONION_ROUND_0001",
+  "operator_identity": "jaywisdom.eth",
+  "base_identity_anchor": "jaywisdom.base.eth",
+  "timestamp": "2026-08-17T21:36:00-05:00",
+  "topology_commit": "b2f94adfbb643f6098561cd6b8916eb17faab222",
+  "seed": "b2f94adfbb643f6098561cd6b8916eb17faab222|2026-08-17T21:36:00-05:00|CIVIL_WAR_DUAL_ONION_V0_1",
+  "seed_sha256": "58770480ff3cee985bc6a066cb4dcdce4d7e2470cfd31a1011a1fa7d4df2f229",
+  "roll": {
+    "RECORD_DIE": "ARCHIVE",
+    "AUTHORITY_DIE": "PRIVATE_ACTOR",
+    "PHASE_DIE": "AMENDMENTS",
+    "PERSPECTIVE_DIE": "BORDER",
+    "QUESTION_DIE": "WHERE",
+    "REPLAY_DIE": "SOURCE_CHECK"
+  },
+  "round_question": "Where does an archived private claim about the Reconstruction Amendments enter the official constitutional record, and what receipt is required before treating it as authority?",
+  "disposition": "HOLD",
+  "reason": "PRIVATE_ACTOR cannot establish constitutional authority. Bind the official constitutional text or other competent public authority before promotion.",
+  "boundaries": {
+    "dice_roll_is_fact": false,
+    "private_actor_is_constitutional_authority": false,
+    "north_is_modern_enemy_class": false,
+    "south_is_modern_enemy_class": false,
+    "family_fact_created": false,
+    "historical_verdict_created": false,
+    "authority_created": false
+  }
+}
