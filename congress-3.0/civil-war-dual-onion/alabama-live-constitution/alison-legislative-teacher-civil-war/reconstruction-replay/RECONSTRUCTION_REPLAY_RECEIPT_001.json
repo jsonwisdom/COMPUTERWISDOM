@@ -1,0 +1,53 @@
+{
+  "schema": "reconstruction_replay_receipt.v0_1",
+  "receipt_id": "RECONSTRUCTION_REPLAY_RECEIPT_001",
+  "PRIOR_STATE": "Alabama functioning as a state within the United States under the U.S. Constitution before the convention's secession action.",
+  "ACTOR": "Alabama Constitutional Convention of 1861",
+  "CLAIMED_AUTHORITY": "The convention asserted that Alabama could withdraw from the United States and exist as a sovereign and independent state.",
+  "PRIMARY_SOURCE": [
+    {
+      "title": "Ordinance of Secession, adopted by the Alabama constitutional convention of 1861",
+      "url": "https://digital.archives.alabama.gov/digital/collection/voices/id/3764",
+      "source_class": "OFFICIAL_ARCHIVE",
+      "temporal_role": "AT_EVENT"
+    }
+  ],
+  "DATE": "1861-01-11",
+  "ACTION": "The convention adopted an ordinance declaring that Alabama withdrew from the Union and asserted sovereign and independent state status; the ordinance also proposed meeting with other slaveholding states to frame a new government.",
+  "FEDERAL_STATE_RELATION": "Alabama's convention claimed termination of its constitutional relation with the United States; this field records the claim and does not validate its legal effectiveness.",
+  "SUPERSESSION_EVENT": "Confederate governmental and military power collapsed in 1865. Congress later enacted the Reconstruction Act of March 2, 1867, which treated governments then existing in the affected former Confederate states as provisional and subject to the paramount authority of the United States.",
+  "NEXT_STATE": "CLAIMED_WITHDRAWAL_AND_SEPARATE_SOVEREIGNTY; later transitions to Confederate governance, postwar provisional government, and military Reconstruction require their own receipts.",
+  "CONTRADICTORY_SOURCE": [
+    {
+      "title": "Constitution of the United States, Article VI",
+      "url": "https://www.archives.gov/founding-docs/constitution-transcript",
+      "source_class": "PRIMARY_FEDERAL",
+      "temporal_role": "AT_EVENT"
+    },
+    {
+      "title": "U.S. Reports: Texas v. White, 74 U.S. (7 Wall.) 700 (1869)",
+      "url": "https://www.loc.gov/item/usrep074700/",
+      "source_class": "COURT_OPINION",
+      "temporal_role": "LATER_JUDICIAL_INTERPRETATION"
+    },
+    {
+      "title": "An Act to provide for the more efficient Government of the Rebel States, ch. 153, March 2, 1867",
+      "url": "https://www.loc.gov/collections/united-states-statutes-at-large/articles-and-essays/vol14-18/",
+      "source_class": "PRIMARY_FEDERAL",
+      "temporal_role": "LATER_SUPERSESSION"
+    }
+  ],
+  "BOXD_RECEIPT": {
+    "terminal": "PASS",
+    "reason": "PASS is scoped only to the proposition that the official Alabama archival source records the convention's January 11, 1861 withdrawal claim. It does not validate secession as lawful or authenticate frozen source bytes.",
+    "source_bound": true,
+    "authority_validated": false,
+    "raw_bytes_frozen": false,
+    "sha256_computed": false
+  },
+  "boundaries": {
+    "source_bound_not_authority_validated": true,
+    "later_supersession_not_retroactive_fact_rewrite": true,
+    "authority_created": false
+  }
+}
