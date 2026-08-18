@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://computerwisdom.example/schemas/signature-bundle-v0.2.json",
+  "title": "Receipt Signature Bundle v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "algorithm",
+    "key_id",
+    "public_key_fingerprint",
+    "payload_hash",
+    "signature",
+    "signed_at",
+    "signer_role",
+    "signing_event_id"
+  ],
+  "properties": {
+    "algorithm": {"const": "Ed25519"},
+    "key_id": {"type": "string", "minLength": 1},
+    "public_key_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "payload_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "signature": {"type": "string", "minLength": 1},
+    "signed_at": {"type": "string", "format": "date-time"},
+    "signer_role": {
+      "enum": ["REPLAY_SERVICE", "TENANT_SERVICE", "AUDIT_SERVICE", "ROTATION_SERVICE"]
+    },
+    "signing_event_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+  }
+}

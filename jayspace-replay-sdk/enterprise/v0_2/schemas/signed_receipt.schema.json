@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://computerwisdom.example/schemas/signed-receipt-v0.2.json",
+  "title": "Enterprise Signed Receipt v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "disposition", "receipt_payload", "receipt_id", "signature_bundle"],
+  "properties": {
+    "case_id": {"type": "string", "minLength": 1},
+    "disposition": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]},
+    "receipt_payload": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "case_id",
+        "request_hash",
+        "replay_graph_hash",
+        "evidence_hash",
+        "ruleset_hash",
+        "ruleset_version",
+        "disposition"
+      ],
+      "properties": {
+        "case_id": {"type": "string", "minLength": 1},
+        "request_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "replay_graph_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "evidence_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "ruleset_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "ruleset_version": {"type": "string", "minLength": 1},
+        "disposition": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]}
+      }
+    },
+    "receipt_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "signature_bundle": {"$ref": "signature_bundle.schema.json"}
+  }
+}

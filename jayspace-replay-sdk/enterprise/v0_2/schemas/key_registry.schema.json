@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://computerwisdom.example/schemas/tenant-key-registry-v0.2.json",
+  "title": "Tenant Key Registry v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["registry_version", "keys"],
+  "properties": {
+    "registry_version": {"const": "v0.2"},
+    "keys": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["key_id", "public_key_base64", "public_key_fingerprint", "events"],
+        "properties": {
+          "key_id": {"type": "string", "minLength": 1},
+          "public_key_base64": {"type": "string", "minLength": 1},
+          "public_key_fingerprint": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+          "events": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["key_event_id", "type", "at"],
+              "properties": {
+                "key_event_id": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+                "type": {
+                  "enum": [
+                    "KEY_CREATED",
+                    "KEY_REGISTERED",
+                    "TENANT_BOUND",
+                    "ROLE_GRANTED",
+                    "ROLE_REVOKED",
+                    "ACTIVE",
+                    "SIGN",
+                    "ROTATED",
+                    "SUSPENDED",
+                    "REVOKED",
+                    "EXPIRED"
+                  ]
+                },
+                "at": {"type": "string", "format": "date-time"},
+                "tenant_id": {"type": "string"},
+                "role": {
+                  "enum": ["REPLAY_SERVICE", "TENANT_SERVICE", "AUDIT_SERVICE", "ROTATION_SERVICE"]
+                },
+                "metadata": {"type": "object"}
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "format": "ENTERPRISE_RECEIPT_NEGATIVE_TEST_PACK_V2",
+  "test_count": 22,
+  "authority_created": false,
+  "model_required": false,
+  "vectors": [
+    {"id": "NTP2_01", "name": "VALID_AUTHORIZED_SIGNATURE", "expected": "PASS"},
+    {"id": "NTP2_02", "name": "ALTERED_RECEIPT_PAYLOAD", "expected": "REJECT", "signal": "RECEIPT_ID_MISMATCH"},
+    {"id": "NTP2_03", "name": "PAYLOAD_HASH_MISMATCH", "expected": "REJECT", "signal": "PAYLOAD_HASH_MISMATCH"},
+    {"id": "NTP2_04", "name": "TENANT_CROSSOVER", "expected": "REJECT", "signal": "TENANT_MISMATCH"},
+    {"id": "NTP2_05", "name": "UNREGISTERED_KEY", "expected": "REJECT", "signal": "KEY_ID_UNREGISTERED"},
+    {"id": "NTP2_06", "name": "SIGNER_ROLE_NOT_GRANTED", "expected": "REJECT", "signal": "SIGNER_ROLE_NOT_ALLOWED"},
+    {"id": "NTP2_07", "name": "SUSPENDED_KEY", "expected": "REJECT", "signal": "KEY_SUSPENDED_FOR_EVENT_SCOPE"},
+    {"id": "NTP2_08", "name": "REVOKED_KEY", "expected": "REJECT", "signal": "KEY_REVOKED_FOR_EVENT_SCOPE"},
+    {"id": "NTP2_09", "name": "EXPIRED_KEY", "expected": "REJECT", "signal": "KEY_EXPIRED_FOR_EVENT_SCOPE"},
+    {"id": "NTP2_10", "name": "FORGED_RECEIPT_ID", "expected": "REJECT", "signal": "RECEIPT_ID_MISMATCH"},
+    {"id": "NTP2_11", "name": "FORGED_ED25519_SIGNATURE", "expected": "REJECT", "signal": "SIGNATURE_INVALID"},
+    {"id": "NTP2_12", "name": "ROTATION_HISTORY", "expected": "HISTORICAL_PASS_FUTURE_REJECT"},
+    {"id": "NTP2_13", "name": "PUBLIC_KEY_FINGERPRINT_MISMATCH", "expected": "REJECT", "signal": "PUBLIC_KEY_FINGERPRINT_MISMATCH"},
+    {"id": "NTP2_14", "name": "RULESET_DRIFT", "expected": "RECEIPT_ID_CHANGES"},
+    {"id": "NTP2_15", "name": "MODEL_OUTPUT_PROMOTION", "expected": "REJECT", "signal": "RECEIPT_PAYLOAD_FIELDS_INVALID"},
+    {"id": "NTP2_16", "name": "SIGNING_EVENT_ID_MISMATCH", "expected": "REJECT", "signal": "SIGNING_EVENT_ID_MISMATCH"},
+    {"id": "NTP2_17", "name": "SAME_RECEIPT_MULTIPLE_SIGNING_EVENTS", "expected": "SAME_RECEIPT_ID_DIFFERENT_SIGNING_EVENT_ID"},
+    {"id": "NTP2_18", "name": "KEY_EVENT_TAMPERING", "expected": "REJECT", "signal_prefix": "KEY_EVENT_ID_MISMATCH:"},
+    {"id": "NTP2_19", "name": "REVOKED_KEY_HISTORICAL_VALIDITY", "expected": "PASS_BEFORE_REVOCATION"},
+    {"id": "NTP2_20", "name": "SUSPENDED_KEY_HISTORICAL_VALIDITY", "expected": "PASS_BEFORE_SUSPENSION"},
+    {"id": "NTP2_21", "name": "EXPIRED_KEY_HISTORICAL_VALIDITY", "expected": "PASS_BEFORE_EXPIRATION"},
+    {"id": "NTP2_22", "name": "REGISTRY_FINGERPRINT_TAMPERING", "expected": "REJECT", "signal": "REGISTRY_FINGERPRINT_MISMATCH"}
+  ]
+}
