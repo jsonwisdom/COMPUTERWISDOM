@@ -1,0 +1,83 @@
+{
+  "schema": "logicboy_boxd_reverse_replay_kernel.v0_1",
+  "kernel_id": "LOGICBOY_BOXD_REVERSE_REPLAY_V0_1",
+  "container": "BOXD",
+  "operator": "ReverseReplay",
+  "executor": "logicBoy",
+  "semantic_type": "DETERMINISTIC_INTERNAL_BOXD_OPERATOR",
+  "placement": {
+    "boxd_is_container": true,
+    "reverse_replay_is_internal_operator": true,
+    "reverse_replay_is_sibling_system": false,
+    "logicboy_is_truth_source": false,
+    "logicboy_is_authority": false,
+    "model_required": false
+  },
+  "boxd_cycle": [
+    "BIND_ORIGINAL",
+    "OBSERVE_CURRENT_STATE",
+    "FREEZE_EVIDENCE_GRAPH",
+    "REVERSE_REPLAY",
+    "CLASSIFY_EACH_EDGE",
+    "FORWARD_REPLAY",
+    "EMIT_SCOPED_DISPOSITION",
+    "APPEND_RECEIPT",
+    "LOCK_HISTORY"
+  ],
+  "reverse_replay": {
+    "start": "CURRENT_CLAIM",
+    "direction": "BACKWARD_THROUGH_BOUND_EDGES",
+    "edge_order": [
+      "CURRENT_CLAIM",
+      "DERIVED_RECORD",
+      "TRANSFORM_OR_ACTION",
+      "SOURCE_RECORD",
+      "AUTHORITY_IF_CLAIMED",
+      "ORIGINAL_STATE"
+    ],
+    "rules": {
+      "missing_required_edge": "HOLD",
+      "valid_records_disagree": "CONFLICT",
+      "bound_record_contradicts_scoped_claim": "REJECT",
+      "all_required_edges_reconcile": "PASS"
+    },
+    "preserve_encountered_states": true,
+    "stop_on_first_problem": false
+  },
+  "forward_replay": {
+    "required_after_reverse_replay": true,
+    "purpose": "TEST WHETHER THE ORIGINAL CLAIM CAN BE RECONSTRUCTED FROM THE BOUND SOURCE PATH WITHOUT INVENTING EDGES",
+    "unbound_transition": "HOLD",
+    "contradictory_transition": "CONFLICT",
+    "contradicted_transition": "REJECT"
+  },
+  "receipt_semantics": {
+    "parent_history_append_only": true,
+    "child_recovery_may_reach_new_terminal": true,
+    "child_terminal_does_not_rewrite_parent": true,
+    "scope_must_be_explicit": true
+  },
+  "teaching_fixture": {
+    "fixture_id": "CITIZEN_LEDGER_ITEM_001",
+    "teaching_log": "citizen/blockchain-reverse-replay/BOXD_TEACHING_CASE_CITIZEN_LEDGER_ITEM_001_V0_1.md",
+    "parent_state": "CONFLICT_PRESERVED",
+    "child_state": "REJECT_DECLARED_BASE_SEPOLIA_ANCHOR_OBJECTS",
+    "lesson": "REPOSITORY_RECORD != CHAIN_TRUTH"
+  },
+  "invariants": [
+    "ReverseReplay IN BOXD",
+    "ReverseReplay != BOXD",
+    "ReverseReplay != TRUTH_SOURCE",
+    "ReverseReplay != AUTHORITY",
+    "LOGICBOY_EXECUTION != FACT",
+    "CURRENT_STATE != PROOF_OF_TRANSITION",
+    "SCREENSHOT != SOURCE",
+    "TX_HASH != FACT",
+    "HASH != SEMANTIC_TRUTH",
+    "PARENT_HISTORY != CHILD_TERMINAL",
+    "AUTHORITY_CREATED = FALSE"
+  ],
+  "round_06_executive": "READY_NOT_ROLLED",
+  "family_lane_imported": false,
+  "authority_created": false
+}
