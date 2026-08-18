@@ -1,0 +1,79 @@
+{
+  "schema": "citizen_eas_uid_recovery_replay.v0_1",
+  "recovery_id": "CITIZEN_LEDGER_ITEM_001_EAS_UID_RECOVERY_V0_1",
+  "parent_entry": "CITIZEN_LEDGER_ITEM_001",
+  "strategy": {
+    "preserve_parent_conflict": true,
+    "active_path": "OPTION_B_DIRECT_EAS_UID_REPLAY",
+    "option_a_hash_correction": "BLOCKED_NO_CORRECTED_HASH",
+    "option_b_eas_uid_replay": "ACTIVE_RECOVERY_PATH",
+    "teaching_artifact": "PRESERVE_CONFLICT_APPEND_ONLY"
+  },
+  "declared_objects": {
+    "network": "base-sepolia",
+    "attestation_uid": "0x23b3b97514fa232cfdbcdee7a5031ff11a5fcd36aa874a5f4067805cd0ad6c84",
+    "schema_uid": "0x244c84adef25091c97090e6e3f0b1bb932fc7022b913b7546406f4213a202cab",
+    "transaction_hash": "0x4cef493d67d8744d2458fd82c169aa872b14cfe2ecaf13f03329b57bd93acc35",
+    "attester": "0x1dB2C056c7DeCD9f9fC574692b05F62aE34Fb8b5"
+  },
+  "internal_receipt_transition": {
+    "prior_receipt": {
+      "path": "receipts/anchor/EAS_SCHEMA_AND_ATTESTATION_ENTRIES_001.json",
+      "status": "SCHEMA_AND_ENTRIES_PREPARED_NOT_REGISTERED_NOT_SUBMITTED",
+      "noted_registration_url": "https://sepolia.easscan.org/schema/register"
+    },
+    "later_receipt": {
+      "path": "receipts/anchor/EAS_ATTESTATION_SUBMITTED_001.json",
+      "status": "EAS_ATTESTATION_SUBMITTED",
+      "network": "base-sepolia",
+      "claims_schema_registered": true,
+      "claims_attestation_submitted": true,
+      "claims_attestation_uid_captured": true
+    },
+    "transition_status": "CONFLICT_REPLAY_REQUIRED",
+    "reason": "The later submission receipt asserts a completed Base Sepolia registration/submission transition that is not independently bound by the failed transaction hash. The earlier preparation receipt is retained as prior state and is not overwritten."
+  },
+  "public_replay_surface": {
+    "official_explorer": "https://base-sepolia.easscan.org/",
+    "official_graphql": "https://base-sepolia.easscan.org/graphql",
+    "base_sepolia_rpc": "https://sepolia.base.org",
+    "base_sepolia_chain_id": 84532,
+    "lookup_order": [
+      "ATTESTATION_UID",
+      "SCHEMA_UID",
+      "ATTESTER_ADDRESS",
+      "TRANSACTION_HASH_ONLY_IF_RECOVERED_FROM_BOUND_OBJECT"
+    ]
+  },
+  "current_observations": {
+    "exact_uid_web_search": "NO_INDEXED_RESULT_FOUND",
+    "exact_schema_uid_web_search": "NO_INDEXED_RESULT_FOUND",
+    "meaning": "Search-engine absence is not chain absence. Direct EAS or RPC replay remains required.",
+    "user_supplied_transaction_rpc_replay": "NULL_TRANSACTION_AND_RECEIPT_REPORTED",
+    "assistant_direct_eas_uid_replay": "NOT_COMPLETED"
+  },
+  "required_bindings": [
+    "DIRECT_ATTESTATION_UID_LOOKUP_RESULT",
+    "CHAIN_OR_OFFCHAIN_TYPE",
+    "SCHEMA_UID_MATCH",
+    "ATTESTER_MATCH",
+    "RECIPIENT_IF_ANY",
+    "TIMESTAMP_OR_BLOCK_TIME",
+    "TX_HASH_IF_ONCHAIN",
+    "BLOCK_NUMBER_IF_ONCHAIN",
+    "DECODED_PAYLOAD_OR_SCHEMA_DATA",
+    "SOURCE_URL_OR_RPC_RECEIPT"
+  ],
+  "terminal": "HOLD",
+  "terminal_reason": "Parent ledger item remains CONFLICT. Recovery path is open but no direct EAS UID object is bound yet.",
+  "boundaries": {
+    "repository_record_not_chain_truth": true,
+    "search_absence_not_chain_absence": true,
+    "uid_string_not_attestation": true,
+    "corrected_hash_must_come_from_bound_object": true,
+    "parent_conflict_must_not_be_rewritten": true,
+    "round_06_executive_ready_not_rolled": true,
+    "family_lane_imported": false,
+    "authority_created": false
+  }
+}
