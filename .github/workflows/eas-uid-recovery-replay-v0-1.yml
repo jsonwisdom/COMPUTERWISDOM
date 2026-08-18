@@ -1,0 +1,40 @@
+name: EAS UID Recovery Replay v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'citizen/blockchain-reverse-replay/**'
+      - '.github/workflows/eas-uid-recovery-replay-v0-1.yml'
+  push:
+    branches:
+      - 'stack/dual-onion-azure-blockchain-audit-v0-1'
+    paths:
+      - 'citizen/blockchain-reverse-replay/**'
+      - '.github/workflows/eas-uid-recovery-replay-v0-1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+
+      - name: Compile live replay probe
+        run: python -m py_compile citizen/blockchain-reverse-replay/tools/replay_eas_uid_v0_1.py
+
+      - name: Replay Base Sepolia EAS UID and declared transaction
+        run: |
+          set -o pipefail
+          python citizen/blockchain-reverse-replay/tools/replay_eas_uid_v0_1.py | tee eas_uid_replay_observation.json
+
+      - name: Upload replay observation
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: eas-uid-replay-observation-v0-1
+          path: eas_uid_replay_observation.json
+          if-no-files-found: warn
