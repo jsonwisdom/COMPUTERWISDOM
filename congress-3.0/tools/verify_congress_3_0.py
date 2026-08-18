@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import copy
 import json
 import sys
 from pathlib import Path
@@ -130,6 +131,18 @@ def verify(case: dict) -> dict:
     }
 
 
+def deep_merge(base, patch):
+    if not isinstance(base, dict) or not isinstance(patch, dict):
+        return copy.deepcopy(patch)
+    out = copy.deepcopy(base)
+    for key, value in patch.items():
+        if isinstance(value, dict) and isinstance(out.get(key), dict):
+            out[key] = deep_merge(out[key], value)
+        else:
+            out[key] = copy.deepcopy(value)
+    return out
+
+
 def main() -> None:
     if len(sys.argv) != 2:
         raise SystemExit("usage: verify_congress_3_0.py <vectors.json>")
@@ -137,15 +150,18 @@ def main() -> None:
     payload = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
     failures = []
     results = []
+    base_case = payload.get("base_case", {})
 
-    for case in payload["cases"]:
+    for vector in payload["cases"]:
+        case = deep_merge(base_case, vector.get("patch", {}))
+        case["case_id"] = vector["case_id"]
         result = verify(case)
         results.append(result)
-        if result["disposition"] != case["expected_disposition"]:
+        if result["disposition"] != vector["expected_disposition"]:
             failures.append(
                 {
-                    "case_id": case["case_id"],
-                    "expected": case["expected_disposition"],
+                    "case_id": vector["case_id"],
+                    "expected": vector["expected_disposition"],
                     "actual": result["disposition"],
                     "reasons": result["reasons"],
                 }
