@@ -1,0 +1,24 @@
+{
+  "contract": "SHOCK_GLOVES_AUDITING_OPENAI_CONTRACT_V0_1",
+  "operator_label": "jaywisdom.base.eth",
+  "model_required_for_core": false,
+  "model_execution_performed": false,
+  "api_key_stored_in_repository": false,
+  "allowed_role": "OPTIONAL_EXPLANATION_AND_INPUT_NORMALIZATION",
+  "deterministic_authority": "tools/verify_receipt_sufficiency_v0_1.py",
+  "forbidden_promotions": [
+    "MODEL_OUTPUT_TO_LEGAL_FINDING",
+    "MODEL_OUTPUT_TO_CONTEMPT_FINDING",
+    "MODEL_OUTPUT_TO_CRIMINAL_ACCUSATION",
+    "MODEL_OUTPUT_TO_PHYSICAL_ENFORCEMENT",
+    "MODEL_OUTPUT_TO_GOVERNMENT_AUTHORITY"
+  ],
+  "required_language": [
+    "DICE_ROLL != FACT",
+    "TIMESTAMP_ANOMALY != TAMPERING_PROVEN",
+    "CLERK_RECEIPT != JUDICIAL_RULING",
+    "CONTEMPT_REQUIRES_COURT_PROCESS"
+  ],
+  "storage_requested": false,
+  "authority_created": false
+}
