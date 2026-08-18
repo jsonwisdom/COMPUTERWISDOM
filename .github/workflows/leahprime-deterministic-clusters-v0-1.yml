@@ -1,0 +1,30 @@
+name: LeahPrime Deterministic Clusters v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'docs/gray-baby/leahprime-deterministic-clusters/**'
+      - '.github/workflows/leahprime-deterministic-clusters-v0-1.yml'
+  push:
+    branches:
+      - 'agent/leahprime-deterministic-information-clusters-v0-1'
+    paths:
+      - 'docs/gray-baby/leahprime-deterministic-clusters/**'
+      - '.github/workflows/leahprime-deterministic-clusters-v0-1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+
+      - name: Compile deterministic verifier
+        run: python -m py_compile docs/gray-baby/leahprime-deterministic-clusters/verify_leahprime_deterministic_clusters_v0_1.py
+
+      - name: Replay deterministic clusters
+        run: python docs/gray-baby/leahprime-deterministic-clusters/verify_leahprime_deterministic_clusters_v0_1.py
