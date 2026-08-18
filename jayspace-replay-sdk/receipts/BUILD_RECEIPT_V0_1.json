@@ -1,0 +1,65 @@
+{
+  "api_key_stored": false,
+  "artifact": "JAYSPACE_REPLAY_SDK_v0.1",
+  "authority_created": false,
+  "base_commit": "b6e55ea0e5b8f089b9f9ddda3a13844b0143f434",
+  "branch": "product/jayspace-replay-sdk-v0-1",
+  "files": [
+    {
+      "bytes": 1222,
+      "path": ".github/workflows/jayspace-replay-sdk-v0-1.yml",
+      "sha256": "3ac1605e4ac658f817dc07c99095f3a30dba1c4e13ae45d2b74b05ee7d49bf43"
+    },
+    {
+      "bytes": 2245,
+      "path": "jayspace-replay-sdk/README.md",
+      "sha256": "aaa6ecd877847590bf4d0b08c7542d3fd50ec46758514536583db326591b3757"
+    },
+    {
+      "bytes": 757,
+      "path": "jayspace-replay-sdk/api/openapi.yaml",
+      "sha256": "6b1a55f11f411335e1f1a2d81969f64f96ee56bbbed251134b4f19b619ad2a4d"
+    },
+    {
+      "bytes": 1413,
+      "path": "jayspace-replay-sdk/fixtures/GENERIC_SEVEN_NODE_MEMBRANE_V0_1.json",
+      "sha256": "e34cd0d442c4ab94c9b88efc4d3edf5076b9e1e4dead974b807699ab760abd0a"
+    },
+    {
+      "bytes": 991,
+      "path": "jayspace-replay-sdk/openai/OPTIONAL_MODEL_CONTRACT.md",
+      "sha256": "77f84f09d2e69170b5e31ceee1acade0826db89d40dce25f1b2431875df296bc"
+    },
+    {
+      "bytes": 1899,
+      "path": "jayspace-replay-sdk/schemas/replay_case.schema.json",
+      "sha256": "dc376a06ba70e18bf9ead74a2f1e129d162bb6200d0cd53a5c8793e8700ae5ff"
+    },
+    {
+      "bytes": 654,
+      "path": "jayspace-replay-sdk/schemas/replay_receipt.schema.json",
+      "sha256": "411f2029165ca035715b45e0c24be2d1e197037f9c629b46f871271b5f0e0291"
+    },
+    {
+      "bytes": 4183,
+      "path": "jayspace-replay-sdk/src/replay_engine.py",
+      "sha256": "77e63c21c64c52cb161b14d81e90486bee135b5d14fe7f0e335cad9834afd15e"
+    },
+    {
+      "bytes": 1909,
+      "path": "jayspace-replay-sdk/tests/test_replay_engine.py",
+      "sha256": "836910da59f5e51294103a6c710f33e823906ad660c06b7ddfc4bcb3aebc4bce"
+    }
+  ],
+  "format": "JAYSPACE_REPLAY_SDK_BUILD_RECEIPT_V0.1",
+  "local_validation": {
+    "fixture_case_id": "GENERIC_SEVEN_NODE_MEMBRANE_V0_1",
+    "fixture_disposition": "REJECT",
+    "meaning": "The generic fixture intentionally attempts a forbidden real/synthetic identity collapse; REJECT is the expected engine result.",
+    "unittest_count": 4,
+    "unittest_result": "PASS"
+  },
+  "merge_authorized": false,
+  "model_execution_performed": false,
+  "model_required": false
+}
