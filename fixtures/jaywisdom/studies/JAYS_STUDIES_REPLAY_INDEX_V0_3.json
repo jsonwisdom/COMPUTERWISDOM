@@ -1,0 +1,53 @@
+{
+  "format": "JAYS_STUDIES_REPLAY_INDEX_V0.3",
+  "classification": "PERSONAL_RESEARCH_AND_CIVIC_EVIDENCE_LEARNING_INDEX",
+  "title": "Jay's Studies — Replay Curriculum Index v0.3",
+  "author_label": "jaywisdom.base.eth",
+  "extends": "JAYS_STUDIES_REPLAY_INDEX_V0.2",
+  "delta": "ADD_S14_ZORA_VISUAL_EVIDENCE_MERKLE_TREE",
+  "new_source_binding": {
+    "id": "JAYS_ZORA_VISUAL_EVIDENCE_MERKLE_TREE_V0_1",
+    "path": "fixtures/jaywisdom/studies/zora/JAYS_ZORA_VISUAL_EVIDENCE_MERKLE_TREE_V0_1.json"
+  },
+  "new_track": {
+    "id": "S14",
+    "name": "Zora On-Chain Visual Evidence Merkle",
+    "goal": "Enumerate Jay's Zora-created visual artifacts, bind each to chain/contract/token/media provenance, hash canonical leaves, build inclusion proofs, and preserve the distinction between on-chain provenance and semantic truth.",
+    "skills": [
+      "ZORA_PROFILE_ENUMERATION",
+      "CHAIN_CONTRACT_BINDING",
+      "TOKEN_URI_BINDING",
+      "MEDIA_URI_BINDING",
+      "MEDIA_BYTE_HASHING",
+      "DOMAIN_SEPARATED_MERKLE_HASHING",
+      "INCLUSION_PROOFS",
+      "ROOT_VERSIONING",
+      "ONCHAIN_VS_TRUTH_MEMBRANE"
+    ],
+    "completion": "Learner can reproduce a Merkle root from the complete enumerated manifest and verify random inclusion proofs while explaining why inclusion proves registry membership rather than visual truth."
+  },
+  "new_invariants": [
+    "ON_CHAIN != TRUE",
+    "VISUAL != PROOF",
+    "ART != RECEIPT",
+    "MINT != FACT",
+    "HASHED != INTERPRETED",
+    "MERKLE_INCLUSION != SEMANTIC_VALIDITY",
+    "1000_PLUS_REQUIRES_ENUMERATION"
+  ],
+  "current_seed_state": {
+    "verified_seed_leaves": 2,
+    "user_declared_scale": "1000+",
+    "scale_state": "HOLD_ENUMERATION_REQUIRED",
+    "seed_merkle_root": "5cbc91ab66bda512d4e800001f09a6986a1b4b82c97b29ca61828dfaadf911ca",
+    "full_root": null
+  },
+  "runtime": {
+    "openai_required": false,
+    "api_key_required": false,
+    "agent_required": false,
+    "authority_created": false
+  },
+  "terminal": "S14_SEED_OPEN_FULL_ENUMERATION_HOLD",
+  "authority_created": false
+}
