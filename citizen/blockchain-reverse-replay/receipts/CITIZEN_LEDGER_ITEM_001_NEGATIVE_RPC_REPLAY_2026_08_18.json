@@ -1,0 +1,66 @@
+{
+  "receipt_id": "CITIZEN_LEDGER_ITEM_001_NEGATIVE_RPC_REPLAY_2026_08_18",
+  "recorded_at": "2026-08-18T01:10:00-05:00",
+  "source_origin": "USER_SUPPLIED_RPC_OUTPUT",
+  "assistant_independent_web_verification": "ATTEMPTED_BUT_UNAVAILABLE_503",
+  "claim_under_test": "Transaction 0x4cef493d67d8744d2458fd82c169aa872b14cfe2ecaf13f03329b57bd93acc35 exists on Base Sepolia as the COMPUTERWISDOM EAS anchor transaction.",
+  "observations": [
+    {
+      "network": "base-sepolia",
+      "rpc_endpoint": "https://sepolia.base.org",
+      "method": "eth_getTransactionByHash",
+      "hash": "0x4cef493d67d8744d2458fd82c169aa872b14cfe2ecaf13f03329b57bd93acc35",
+      "reported_response": {"jsonrpc": "2.0", "result": null, "id": 1},
+      "source_state": "USER_REPORTED"
+    },
+    {
+      "network": "base-sepolia",
+      "rpc_endpoint": "https://sepolia.base.org",
+      "method": "eth_getTransactionReceipt",
+      "hash": "0x4cef493d67d8744d2458fd82c169aa872b14cfe2ecaf13f03329b57bd93acc35",
+      "reported_result": null,
+      "source_state": "USER_REPORTED"
+    },
+    {
+      "network": "base-mainnet",
+      "rpc_endpoint": "PUBLIC_BASE_MAINNET_RPC_USER_REPORTED",
+      "method": "eth_getTransactionByHash / eth_getTransactionReceipt",
+      "hash": "0x4cef493d67d8744d2458fd82c169aa872b14cfe2ecaf13f03329b57bd93acc35",
+      "reported_result": null,
+      "source_state": "USER_REPORTED"
+    }
+  ],
+  "negative_replay_effect": {
+    "raw_transaction": "NOT_FOUND_USER_REPORTED",
+    "transaction_receipt": "NOT_FOUND_USER_REPORTED",
+    "block_number": "NOT_AVAILABLE",
+    "status": "NOT_AVAILABLE",
+    "from": "NOT_AVAILABLE",
+    "to": "NOT_AVAILABLE",
+    "calldata": "NOT_AVAILABLE",
+    "logs": "NOT_AVAILABLE",
+    "eas_decode": "NOT_REACHABLE_FROM_SUPPLIED_TX_HASH"
+  },
+  "classification": {
+    "repository_anchor_claim": "CONFLICT",
+    "transaction_edge": "CONFLICT",
+    "independent_chain_replay": "CONFLICT",
+    "reject_threshold_met": false,
+    "reason": "The repository declares a Base Sepolia transaction witness while the user reports null transaction and receipt responses on Base Sepolia and Base mainnet. Because the assistant could not independently re-query public chain sources in this turn, the contradiction is preserved as CONFLICT rather than promoted to REJECT."
+  },
+  "repair_requirements": [
+    "CORRECT_TRANSACTION_HASH_OR_EXPLICIT_CORRECTION",
+    "DIRECT_EAS_ATTESTATION_UID_REPLAY_IF_ATTESTATION_IS_STILL_CLAIMED",
+    "NETWORK_AND_BLOCK_BINDING",
+    "EXACT_TRANSACTION_RECEIPT",
+    "EXACT_EVENT_OR_ATTESTATION_DECODE"
+  ],
+  "boundaries": {
+    "user_report_not_independent_assistant_verification": true,
+    "tx_hash_not_fact": true,
+    "repository_record_not_chain_truth": true,
+    "family_lane_imported": false,
+    "round_06_executive_advanced": false,
+    "authority_created": false
+  }
+}
