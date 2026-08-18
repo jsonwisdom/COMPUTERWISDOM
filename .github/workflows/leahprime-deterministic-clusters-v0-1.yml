@@ -23,8 +23,14 @@ jobs:
       - name: Checkout exact head
         uses: actions/checkout@v4
 
-      - name: Compile deterministic verifier
+      - name: Compile deterministic cluster verifier
         run: python -m py_compile docs/gray-baby/leahprime-deterministic-clusters/verify_leahprime_deterministic_clusters_v0_1.py
 
       - name: Replay deterministic clusters
         run: python docs/gray-baby/leahprime-deterministic-clusters/verify_leahprime_deterministic_clusters_v0_1.py
+
+      - name: Compile CrissCrossAppleSauce verifier
+        run: python -m py_compile docs/gray-baby/leahprime-deterministic-clusters/verify_crisscross_applesauce_v0_1.py
+
+      - name: Verify LeahPrime GirlMath sister substrates
+        run: python docs/gray-baby/leahprime-deterministic-clusters/verify_crisscross_applesauce_v0_1.py
