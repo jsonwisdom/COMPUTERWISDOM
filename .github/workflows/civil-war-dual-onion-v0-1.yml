@@ -34,6 +34,11 @@ jobs:
           python -m py_compile congress-3.0/civil-war-dual-onion/tools/verify_alabama_replay_stack_ack_v0_1.py
           python congress-3.0/civil-war-dual-onion/tools/verify_alabama_replay_stack_ack_v0_1.py
 
+      - name: Verify ALISON Reconstruction replay receipt templates
+        run: |
+          python -m py_compile congress-3.0/civil-war-dual-onion/tools/verify_reconstruction_replay_receipts_v0_1.py
+          python congress-3.0/civil-war-dual-onion/tools/verify_reconstruction_replay_receipts_v0_1.py
+
       - name: Verify dual-onion membranes
         run: |
           python - <<'PY'
