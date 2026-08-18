@@ -6,7 +6,7 @@
   "receipt_schema": "RECONSTRUCTION_REPLAY_RECEIPT_SCHEMA_V0_1.json",
   "slots": [
     {"id": "RECONSTRUCTION_REPLAY_RECEIPT_001", "label": "Alabama Secession Convention / Ordinance of Secession", "state": "PASS_SOURCE_BOUND_AUTHORITY_NOT_VALIDATED"},
-    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_002", "label": "Civil War / Federal Action", "state": "HOLD_TEMPLATE_ONLY"},
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_002", "label": "Civil War / Federal Action", "state": "PASS_SOURCE_BOUND_AUTHORITY_NOT_VALIDATED"},
     {"id": "RECONSTRUCTION_REPLAY_RECEIPT_003", "label": "1865 Alabama Constitution", "state": "HOLD_TEMPLATE_ONLY"},
     {"id": "RECONSTRUCTION_REPLAY_RECEIPT_004", "label": "Thirteenth Amendment Alabama transition", "state": "HOLD_TEMPLATE_ONLY"},
     {"id": "RECONSTRUCTION_REPLAY_RECEIPT_005", "label": "Reconstruction Acts / military reconstruction", "state": "HOLD_TEMPLATE_ONLY"},
