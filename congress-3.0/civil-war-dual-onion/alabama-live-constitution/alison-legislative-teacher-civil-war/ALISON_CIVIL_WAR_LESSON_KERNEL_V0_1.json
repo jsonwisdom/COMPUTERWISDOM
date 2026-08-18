@@ -1,0 +1,78 @@
+{
+  "schema": "alison_alabama_legislative_teacher_civil_war.v0_1",
+  "operator": "jaywisdom.base.eth",
+  "mode": "historical_civics_education_source_replay",
+  "authority_created": false,
+  "teacher": {
+    "name": "ALISON",
+    "semantic_type": "OFFICIAL_ALABAMA_LEGISLATIVE_SOURCE_NAVIGATOR",
+    "person": false,
+    "court": false,
+    "fact_creator": false
+  },
+  "lesson_chain": [
+    "SOURCE",
+    "DOCUMENT_TYPE",
+    "DATE",
+    "AUTHORITY_AT_TIME",
+    "ACTION_AT_TIME",
+    "CONSEQUENCE",
+    "LATER_CONSTITUTIONAL_CHANGE",
+    "CURRENT_ALABAMA_STATE",
+    "CURRENT_FEDERAL_STATE",
+    "BOXD_RECEIPT",
+    "REPLAY"
+  ],
+  "historical_spine": {
+    "alabama_1861_constitution": {
+      "state": "SOURCE_BOUND_HISTORICAL_OBJECT",
+      "current_authority": false,
+      "url": "https://digital.archives.alabama.gov/digital/collection/constitutions/id/6/"
+    },
+    "civil_war_amendments": {
+      "url": "https://constitution.congress.gov/browse/essay/Intro.6-4/ALDE_00000388/",
+      "alabama_ratification_dates": {
+        "thirteenth": "1865-12-02",
+        "fourteenth": "1868-07-13",
+        "fifteenth": "1869-11-16"
+      }
+    },
+    "current_alabama_constitution": {
+      "title": "Constitution of Alabama 2022",
+      "url": "https://alison.legislature.state.al.us/constitution/search",
+      "section_42": "https://alison.legislature.state.al.us/constitution?section=42",
+      "section_279": "https://alison.legislature.state.al.us/constitution?section=279"
+    }
+  },
+  "teacher_dice": {
+    "source": ["ARCHIVE", "ALISON", "CONGRESS", "NARA", "COURT", "HOLD"],
+    "time": ["PRE_1861", "1861", "WAR", "1865", "RECONSTRUCTION", "1901", "2022", "PRESENT"],
+    "authority": ["CONVENTION", "LEGISLATURE", "EXECUTIVE", "COURT", "FEDERAL", "PRIVATE"],
+    "change": ["AMENDMENT", "NEW_CONSTITUTION", "STATUTE", "COURT_HOLDING", "REPEAL", "HOLD"],
+    "question": ["WHO", "WHAT", "WHEN", "WHERE", "BY_WHAT_AUTHORITY", "WHAT_CHANGED", "WHAT_SURVIVES"],
+    "replay": ["SOURCE_CHECK", "VERSION_CHECK", "AUTHORITY_CHECK", "SUPERSESSION_CHECK", "PRESENT_STATE_CHECK"]
+  },
+  "boxd_required_fields": [
+    "url",
+    "observed_time",
+    "document_identifier",
+    "displayed_version_or_effective_date",
+    "raw_bytes_if_available",
+    "sha256_if_computed",
+    "archive_or_pdf_if_available",
+    "readback_status"
+  ],
+  "membranes": [
+    "DICE_ROLL != FACT",
+    "OLD_TEXT != CURRENT_LAW",
+    "ARCHIVE_OBJECT != PRESENT_AUTHORITY",
+    "SECESSION_CLAIM != CURRENT_STATE_STATUS",
+    "BAMA_VS_AUBURN != NORTH_VS_SOUTH",
+    "HISTORICAL_ACTOR != MODERN_DESCENDANT",
+    "ALABAMA_HISTORY != FAMILY_GENEALOGY",
+    "MILITIA_HISTORY != CURRENT_MILITARY_TASKING",
+    "HASH != TRUTH",
+    "AUTHORITY_CREATED = FALSE"
+  ],
+  "terminals": ["PASS", "HOLD", "CONFLICT", "REJECT"]
+}
