@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "shock_gloves_audit_receipt.v0_1.schema.json",
+  "title": "Shock Gloves Auditing Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_type",
+    "operator_label",
+    "created_at",
+    "seed_input",
+    "seed_sha256",
+    "roll",
+    "terminal",
+    "boundaries"
+  ],
+  "properties": {
+    "receipt_type": { "const": "SHOCK_GLOVES_AUDIT_ROLL_V0_1" },
+    "operator_label": { "const": "jaywisdom.base.eth" },
+    "created_at": { "type": "string", "format": "date-time" },
+    "seed_input": { "type": "string", "minLength": 1 },
+    "seed_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "roll": {
+      "type": "object",
+      "required": ["TIME_SOURCE_DIE","TEMPORAL_STATE_DIE","RECEIPT_DIE","CLERK_GATE_DIE","CONTEMPT_GATE_DIE","SUFFICIENCY_DIE"],
+      "additionalProperties": false,
+      "properties": {
+        "TIME_SOURCE_DIE": { "enum": ["COURT_DOCKET","NEF","SERVER_LOG","GIT_COMMIT","ARCHIVE_CAPTURE","USER_DECLARED"] },
+        "TEMPORAL_STATE_DIE": { "enum": ["ORDERED","OUT_OF_ORDER","CLOCK_SKEW","EDIT_AFTER_EVENT","MISSING_TIMESTAMP","CONFLICT"] },
+        "RECEIPT_DIE": { "enum": ["HASHED","SIGNED","DOCKETED","EMAILED","SCREENSHOT_ONLY","NONE"] },
+        "CLERK_GATE_DIE": { "enum": ["FILING_RECEIVED","DOCKET_ENTRY","NOTICE_ISSUED","CORRECTION_ENTRY","NOT_APPLICABLE","HOLD"] },
+        "CONTEMPT_GATE_DIE": { "enum": ["COURT_ORDER_BOUND","NOTICE_BOUND","DISOBEDIENCE_BOUND","AUTHORITY_BOUND","ELEMENT_MISSING","NOT_A_COURT_QUESTION"] },
+        "SUFFICIENCY_DIE": { "enum": ["PASS","HOLD","CONFLICT","REJECT","NEEDS_SOURCE","NEEDS_AUTHORITY"] }
+      }
+    },
+    "terminal": { "enum": ["PASS","HOLD","CONFLICT","REJECT"] },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["dice_roll_is_fact","contempt_found","physical_enforcement","legal_advice","authority_created"],
+      "properties": {
+        "dice_roll_is_fact": { "const": false },
+        "contempt_found": { "const": false },
+        "physical_enforcement": { "const": false },
+        "legal_advice": { "const": false },
+        "authority_created": { "const": false }
+      }
+    }
+  }
+}
