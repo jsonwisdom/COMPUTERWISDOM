@@ -1,0 +1,89 @@
+{
+  "suite": "CONGRESS_3_0_SYSTEMS_ACCOUNTABILITY_V0.1",
+  "base_case": {
+    "case_id": "base",
+    "claim": "A bounded government-facing systems action is replayable end to end.",
+    "authority": {
+      "source_ref": "authority://public-law-or-regulation",
+      "actor": "AGENCY",
+      "role": "AUTHORIZED_OFFICIAL",
+      "jurisdiction": "FEDERAL",
+      "delegation_ref": "delegation://bounded"
+    },
+    "implementation": {
+      "rule_ref": "rule://implementation",
+      "machine_rule_id": "MR-001",
+      "version": "1.0.0",
+      "scope_relation": "within_authority"
+    },
+    "execution": {
+      "actor_type": "service_account",
+      "actor_id": "svc-001",
+      "permission_ref": "permission://execute",
+      "authorization_ref": "authorization://action",
+      "action": "mutate_record",
+      "timestamp": "2026-08-17T20:57:00-05:00",
+      "input_ref": "input://receipt",
+      "output_ref": "output://receipt"
+    },
+    "record_delta": {
+      "before_ref": "record://before",
+      "after_ref": "record://after",
+      "canonical": true,
+      "write_receipt_ref": "write://receipt",
+      "promotion_authority_ref": "promotion://authority"
+    },
+    "citizen_effect": {
+      "effect_type": "eligibility_change",
+      "notice_ref": "notice://receipt",
+      "explanation_ref": "explanation://receipt"
+    },
+    "review": {
+      "review_available": true,
+      "review_ref": "review://procedure",
+      "reviewer_authority_ref": "reviewer://authority",
+      "correction_ref": "correction://receipt"
+    },
+    "burden": {
+      "proof_requested_from": "none",
+      "repeat_count": 0,
+      "government_record_conflict": false,
+      "government_reconciliation_ref": "reconcile://receipt"
+    },
+    "replay": {
+      "forward": ["LAW", "RULE", "MACHINE_RULE", "EXECUTION", "RECORD_DELTA", "CITIZEN_EFFECT", "REVIEW", "CORRECTION"],
+      "reverse": ["CORRECTION", "REVIEW", "CITIZEN_EFFECT", "RECORD_DELTA", "EXECUTION", "MACHINE_RULE", "RULE", "LAW"],
+      "receipt_ref": "replay://receipt"
+    },
+    "model": {
+      "used": false,
+      "human_or_institutional_decision_ref": "decision://human"
+    },
+    "attempted_promotions": {
+      "capability_as_authority": false,
+      "permission_as_authorization": false,
+      "database_state_as_legal_state": false,
+      "green_check_as_correct_action": false,
+      "model_output_as_government_decision": false
+    },
+    "government_records_conflict": false
+  },
+  "cases": [
+    {"case_id": "C01_complete_closed_loop_pass", "expected_disposition": "PASS", "patch": {}},
+    {"case_id": "C02_permission_without_authorization_hold", "expected_disposition": "HOLD", "patch": {"execution": {"authorization_ref": ""}}},
+    {"case_id": "C03_capability_promoted_to_authority_reject", "expected_disposition": "REJECT", "patch": {"attempted_promotions": {"capability_as_authority": true}}},
+    {"case_id": "C04_machine_rule_scope_conflict", "expected_disposition": "CONFLICT", "patch": {"implementation": {"scope_relation": "conflicts_with_authority"}}},
+    {"case_id": "C05_machine_rule_scope_unknown_hold", "expected_disposition": "HOLD", "patch": {"implementation": {"scope_relation": "unknown"}}},
+    {"case_id": "C06_database_state_promoted_to_legal_state_reject", "expected_disposition": "REJECT", "patch": {"attempted_promotions": {"database_state_as_legal_state": true}}},
+    {"case_id": "C07_recursive_citizen_reproof_unreconciled_hold", "expected_disposition": "HOLD", "patch": {"burden": {"proof_requested_from": "citizen", "repeat_count": 3, "government_record_conflict": true, "government_reconciliation_ref": ""}}},
+    {"case_id": "C08_bound_government_records_disagree_conflict", "expected_disposition": "CONFLICT", "patch": {"government_records_conflict": true}},
+    {"case_id": "C09_reverse_replay_mismatch_conflict", "expected_disposition": "CONFLICT", "patch": {"replay": {"reverse": ["CORRECTION", "REVIEW", "CITIZEN_EFFECT", "RECORD_DELTA", "MACHINE_RULE", "EXECUTION", "RULE", "LAW"]}}},
+    {"case_id": "C10_canonical_write_without_promotion_authority_hold", "expected_disposition": "HOLD", "patch": {"record_delta": {"promotion_authority_ref": ""}}},
+    {"case_id": "C11_model_advisory_with_separate_decision_pass", "expected_disposition": "PASS", "patch": {"model": {"used": true}}},
+    {"case_id": "C12_model_output_promoted_to_decision_reject", "expected_disposition": "REJECT", "patch": {"model": {"used": true, "human_or_institutional_decision_ref": ""}, "attempted_promotions": {"model_output_as_government_decision": true}}},
+    {"case_id": "C13_consequential_effect_without_review_hold", "expected_disposition": "HOLD", "patch": {"review": {"review_available": false}}},
+    {"case_id": "C14_correction_receipt_missing_hold", "expected_disposition": "HOLD", "patch": {"review": {"correction_ref": ""}}},
+    {"case_id": "C15_recursive_reproof_after_reconciliation_pass_with_signal", "expected_disposition": "PASS", "patch": {"burden": {"proof_requested_from": "citizen", "repeat_count": 2, "government_record_conflict": true, "government_reconciliation_ref": "reconcile://fixed"}}},
+    {"case_id": "C16_informational_effect_no_correction_required_pass", "expected_disposition": "PASS", "patch": {"citizen_effect": {"effect_type": "informational"}, "review": {"review_available": false, "correction_ref": ""}}}
+  ]
+}
