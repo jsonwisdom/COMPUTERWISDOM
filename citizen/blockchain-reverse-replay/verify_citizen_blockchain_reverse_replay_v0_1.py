@@ -5,6 +5,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent
 LEDGER = ROOT / "CITIZEN_BLOCKCHAIN_REVERSE_REPLAY_LEDGER_V0_1.json"
 NEGATIVE = ROOT / "receipts" / "CITIZEN_LEDGER_ITEM_001_NEGATIVE_RPC_REPLAY_2026_08_18.json"
+RECOVERY = ROOT / "EAS_UID_RECOVERY_REPLAY_V0_1.json"
 
 TERMINALS = {"PASS", "HOLD", "CONFLICT", "REJECT"}
 
@@ -12,6 +13,7 @@ TERMINALS = {"PASS", "HOLD", "CONFLICT", "REJECT"}
 def main():
     data = json.loads(LEDGER.read_text())
     negative = json.loads(NEGATIVE.read_text())
+    recovery = json.loads(RECOVERY.read_text())
 
     assert data["schema"] == "citizen_blockchain_reverse_replay_ledger.v0_1"
     assert data["ledger_id"] == "CITIZEN_BLOCKCHAIN_REVERSE_REPLAY_LEDGER_V0_1"
@@ -55,10 +57,26 @@ def main():
     assert seed["entry_boundaries"]["legal_authority_bound"] is False
     assert seed["entry_boundaries"]["causation_bound"] is False
 
+    assert recovery["schema"] == "citizen_eas_uid_recovery_replay.v0_1"
+    assert recovery["parent_entry"] == "CITIZEN_LEDGER_ITEM_001"
+    assert recovery["strategy"]["preserve_parent_conflict"] is True
+    assert recovery["strategy"]["active_path"] == "OPTION_B_DIRECT_EAS_UID_REPLAY"
+    assert recovery["strategy"]["option_a_hash_correction"] == "BLOCKED_NO_CORRECTED_HASH"
+    assert recovery["strategy"]["option_b_eas_uid_replay"] == "ACTIVE_RECOVERY_PATH"
+    assert recovery["internal_receipt_transition"]["transition_status"] == "CONFLICT_REPLAY_REQUIRED"
+    assert recovery["terminal"] == "HOLD"
+    assert recovery["boundaries"]["parent_conflict_must_not_be_rewritten"] is True
+    assert recovery["boundaries"]["round_06_executive_ready_not_rolled"] is True
+    assert recovery["boundaries"]["family_lane_imported"] is False
+    assert recovery["boundaries"]["authority_created"] is False
+
     print("CITIZEN_BLOCKCHAIN_LEDGER_SCHEMA=PASS_STRUCTURE")
     print("NEGATIVE_RPC_REPLAY=BOUND_USER_SUPPLIED")
-    print("CITIZEN_LEDGER_ITEM_001=CONFLICT")
-    print("REJECT_THRESHOLD=NOT_MET_WITHOUT_INDEPENDENT_ASSISTANT_REPLAY")
+    print("CITIZEN_LEDGER_ITEM_001=CONFLICT_PRESERVED")
+    print("EAS_UID_RECOVERY=HOLD_ACTIVE_PATH")
+    print("OPTION_A_HASH_CORRECTION=BLOCKED_NO_CORRECTED_HASH")
+    print("OPTION_B_DIRECT_EAS_UID_REPLAY=ACTIVE")
+    print("REJECT_THRESHOLD=NOT_MET")
     print("ROUND_06_EXECUTIVE=READY_NOT_ROLLED")
     print("JOY_FAMILY_PRIVACY=SEALED")
     print("AUTHORITY_CREATED=FALSE")
