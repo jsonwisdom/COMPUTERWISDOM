@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/schemas/banking_burden_flip.v0_1.schema.json",
+  "title": "Citizen Banking Burden Flip Case v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "trigger_family",
+    "actor_class",
+    "consumer_step",
+    "trigger",
+    "institution_duty",
+    "constitutional",
+    "records_conflict",
+    "attempted_promotions"
+  ],
+  "properties": {
+    "case_id": {"type": "string", "minLength": 1},
+    "trigger_family": {
+      "enum": [
+        "CIP_ACCOUNT_OPENING",
+        "ECOA_ADVERSE_ACTION",
+        "FCRA_CRA_DISPUTE",
+        "FCRA_FURNISHER_DIRECT_DISPUTE",
+        "FDCPA_WRITTEN_DISPUTE_30D",
+        "UNCLASSIFIED"
+      ]
+    },
+    "actor_class": {
+      "enum": ["bank", "creditor", "consumer_reporting_agency", "furnisher", "debt_collector", "private_entity", "government_actor", "unknown"]
+    },
+    "consumer_step": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["performed", "step_type", "receipt_ref"],
+      "properties": {
+        "performed": {"type": "boolean"},
+        "step_type": {"type": "string"},
+        "receipt_ref": {"type": "string"}
+      }
+    },
+    "trigger": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["qualifying", "condition_refs", "timing_status"],
+      "properties": {
+        "qualifying": {"type": "boolean"},
+        "condition_refs": {"type": "array", "items": {"type": "string"}},
+        "timing_status": {"enum": ["within_window", "outside_window", "not_applicable", "unknown"]}
+      }
+    },
+    "institution_duty": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["duty_type", "performed", "receipt_ref", "consumer_facing_receipt_required"],
+      "properties": {
+        "duty_type": {
+          "enum": [
+            "verify_identity_and_record",
+            "adverse_action_notice_and_reasons_path",
+            "cra_reinvestigate_and_correct",
+            "furnisher_investigate_and_correct",
+            "pause_collect_verify_mail",
+            "none",
+            "unknown"
+          ]
+        },
+        "performed": {"type": "boolean"},
+        "receipt_ref": {"type": "string"},
+        "consumer_facing_receipt_required": {"type": "boolean"}
+      }
+    },
+    "constitutional": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["government_actor_bound", "state_action_theory_ref", "violation_claimed"],
+      "properties": {
+        "government_actor_bound": {"type": "boolean"},
+        "state_action_theory_ref": {"type": "string"},
+        "violation_claimed": {"type": "boolean"}
+      }
+    },
+    "records_conflict": {"type": "boolean"},
+    "same_proof_requested_again": {"type": "boolean"},
+    "attempted_promotions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "private_action_as_government_action",
+        "general_bank_action_as_ecoa",
+        "any_dispute_as_fcra",
+        "any_collector_as_fdcpa",
+        "missing_receipt_as_legal_violation"
+      ],
+      "properties": {
+        "private_action_as_government_action": {"type": "boolean"},
+        "general_bank_action_as_ecoa": {"type": "boolean"},
+        "any_dispute_as_fcra": {"type": "boolean"},
+        "any_collector_as_fdcpa": {"type": "boolean"},
+        "missing_receipt_as_legal_violation": {"type": "boolean"}
+      }
+    },
+    "expected_disposition": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]}
+  }
+}
