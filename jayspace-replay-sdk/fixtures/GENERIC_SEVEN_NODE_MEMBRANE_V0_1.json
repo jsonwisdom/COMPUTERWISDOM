@@ -1,0 +1,19 @@
+{
+  "case_id": "GENERIC_SEVEN_NODE_MEMBRANE_V0_1",
+  "claim": "A context-specific fictional derivation is equivalent to a public-person record and inherits its authority.",
+  "nodes": [
+    {"id": "n0", "kind": "HISTORICAL_IDENTITY", "source_status": "UNBOUND", "authority": false, "metadata": {}},
+    {"id": "n1", "kind": "RELATIONSHIP_ROLE", "source_status": "UNBOUND", "authority": false, "metadata": {}},
+    {"id": "n2", "kind": "ALTERNATE_IDENTITY_RECORD", "source_status": "UNBOUND", "authority": false, "metadata": {}},
+    {"id": "n3", "kind": "PUBLIC_PERSON_RECORD", "source_status": "BOUND", "authority": false, "metadata": {}},
+    {"id": "n4", "kind": "CONTEXT_SPECIFIC_DERIVATION", "source_status": "BOUND", "authority": false, "metadata": {}},
+    {"id": "n5", "kind": "GENERAL_SYNTHETIC_EXPLAINER", "source_status": "BOUND", "authority": false, "metadata": {}},
+    {"id": "n6", "kind": "GENERATED_VARIANT", "source_status": "BOUND", "authority": false, "metadata": {}}
+  ],
+  "edges": [
+    {"from": "n4", "to": "n3", "relation": "DERIVED_FROM", "status": "BOUND", "receipt_ref": "synthetic:derivation"},
+    {"from": "n5", "to": "n3", "relation": "EXPLAINS", "status": "BOUND", "receipt_ref": "synthetic:explanation"},
+    {"from": "n4", "to": "n3", "relation": "IDENTITY_EQUIVALENCE", "status": "REJECTED", "receipt_ref": "membrane:real-person-vs-fiction"}
+  ],
+  "authority_created": false
+}
