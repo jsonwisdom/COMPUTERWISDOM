@@ -70,22 +70,46 @@ def direct_call(contract, function_signature, bytes32_arg, ident_base):
     }
 
 
-def words(raw):
+def tuple_head(raw, head_slots):
+    """Return (tuple base byte offset, tuple head words) for ABI returns.
+
+    Structs containing dynamic fields are returned as a dynamic tuple, so the
+    first ABI word is an offset (normally 0x20) to the tuple body. All dynamic
+    offsets inside the tuple are relative to that tuple base.
+    """
     if not isinstance(raw, str) or not raw.startswith("0x"):
-        return []
+        return None, []
     body = raw[2:]
-    if len(body) % 64:
-        return []
-    return [body[i:i + 64] for i in range(0, len(body), 64)]
+    if len(body) < 64:
+        return None, []
+    try:
+        first = int(body[:64], 16)
+    except Exception:
+        return None, []
+
+    # EAS Attestation/SchemaRecord returns are tuples with dynamic members and
+    # therefore begin with a pointer to the tuple. Fall back to base 0 only if
+    # the first word cannot plausibly be an in-buffer tuple offset.
+    if first % 32 == 0 and first >= 32 and (first * 2 + head_slots * 64) <= len(body):
+        base_bytes = first
+    else:
+        base_bytes = 0
+
+    start = base_bytes * 2
+    end = start + head_slots * 64
+    if end > len(body):
+        return None, []
+    head = body[start:end]
+    return base_bytes, [head[i:i + 64] for i in range(0, len(head), 64)]
 
 
-def decode_dynamic_bytes(raw, offset_word):
+def decode_dynamic_bytes(raw, offset_word, tuple_base_bytes):
     if not isinstance(raw, str) or not raw.startswith("0x"):
         return None
     body = raw[2:]
     try:
-        offset_bytes = int(offset_word, 16)
-        start = offset_bytes * 2
+        relative_offset_bytes = int(offset_word, 16)
+        start = (tuple_base_bytes + relative_offset_bytes) * 2
         if start + 64 > len(body):
             return None
         length = int(body[start:start + 64], 16)
@@ -99,10 +123,10 @@ def decode_dynamic_bytes(raw, offset_word):
 
 
 def decode_attestation(raw):
-    ws = words(raw)
-    if len(ws) < 10:
+    base, ws = tuple_head(raw, 10)
+    if base is None or len(ws) < 10:
         return None
-    data = decode_dynamic_bytes(raw, ws[9])
+    data = decode_dynamic_bytes(raw, ws[9], base)
     return {
         "uid": "0x" + ws[0],
         "schema": "0x" + ws[1],
@@ -114,14 +138,15 @@ def decode_attestation(raw):
         "attester": "0x" + ws[7][-40:],
         "revocable": bool(int(ws[8], 16)),
         "data": data,
+        "abi_tuple_base_bytes": base,
     }
 
 
 def decode_schema(raw):
-    ws = words(raw)
-    if len(ws) < 4:
+    base, ws = tuple_head(raw, 4)
+    if base is None or len(ws) < 4:
         return None
-    dynamic = decode_dynamic_bytes(raw, ws[3])
+    dynamic = decode_dynamic_bytes(raw, ws[3], base)
     schema_text = None
     if dynamic is not None:
         try:
@@ -134,6 +159,7 @@ def decode_schema(raw):
         "revocable": bool(int(ws[2], 16)),
         "schema": schema_text,
         "schema_raw": dynamic,
+        "abi_tuple_base_bytes": base,
     }
 
 
@@ -210,7 +236,7 @@ def main():
         recovery_terminal = "HOLD"
 
     output = {
-        "schema": "citizen_eas_uid_live_replay_observation.v0_2",
+        "schema": "citizen_eas_uid_live_replay_observation.v0_3",
         "observed_at_utc": observed_at,
         "parent_entry": "CITIZEN_LEDGER_ITEM_001",
         "source_class": "GITHUB_ACTIONS_PUBLIC_NETWORK_REPLAY",
@@ -255,6 +281,7 @@ def main():
             "uid_string_not_attestation": True,
             "indexer_result_not_same_as_contract_state": True,
             "direct_contract_state_preferred_for_onchain_existence": True,
+            "abi_tuple_offset_decoded": True,
             "corrected_hash_must_come_from_bound_object": True,
             "parent_historical_conflict_must_not_be_rewritten": True,
             "family_lane_imported": False,
