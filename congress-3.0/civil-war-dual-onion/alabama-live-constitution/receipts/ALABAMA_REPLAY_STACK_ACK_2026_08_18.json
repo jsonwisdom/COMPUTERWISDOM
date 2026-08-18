@@ -1,0 +1,74 @@
+{
+  "observation_time": "2026-08-18T05:20:00Z",
+  "declared_receipt": {
+    "timestamp": "2026-08-18T21:12:00Z",
+    "alabama_replay_stack": {
+      "pr": {
+        "number": 496,
+        "status": "OPEN / DRAFT / UNMERGED",
+        "head": "815cf577ac5a00bb06fff33a3b9044a2ab410c2a"
+      },
+      "components": [
+        "IronBowlReplay",
+        "KnowThyAlabamaHistory",
+        "AlabamaHistoryReplay",
+        "Double Onion Cross-Check",
+        "ReplayReverse"
+      ],
+      "workflows": {
+        "CivilWarDualisticOnion_v0.1": "SUCCESS",
+        "MANIC_Validation_Gate": "SUCCESS",
+        "other_triggers": "SUCCESS (all five)"
+      },
+      "doctrine_check": {
+        "perspective_engine": true,
+        "rival_not_enemy": true,
+        "cheer_not_evidence": true,
+        "scoreboard_not_historical_truth": true,
+        "bama_vs_auburn_not_north_vs_south": true,
+        "win_condition": "BEST_RECEIPT_CHAIN > LOUDEST_TEAM_CLAIM"
+      },
+      "history_replay_model": {
+        "event": true,
+        "source_at_time": true,
+        "authority_at_time": true,
+        "action": true,
+        "human_consequence": true,
+        "amendment_supersession": true,
+        "present_constitutional_state": true,
+        "receipt": true
+      },
+      "know_thy_alabama": {
+        "dice_questions": ["WHO?", "WHAT?", "WHEN?", "WHERE?", "BY WHAT AUTHORITY?", "WHAT CHANGED?", "WHAT RECEIPT?"],
+        "answer_selection": "NEVER (dice select questions only)"
+      },
+      "membrane_preserved": {
+        "alabama_history_not_genealogy": true,
+        "civil_war_not_modern_civil_war": true,
+        "bama_auburn_not_north_south": true,
+        "story_not_evidence": true
+      },
+      "api_key_status": {
+        "created": false,
+        "model_required": false,
+        "openai_platform_checked": true,
+        "personal_project_targets_available": true
+      },
+      "current_gates": {
+        "SCHEMA_COMPLIANCE": "HOLD",
+        "TIMESTAMP_RELATION": "HOLD",
+        "BITBOT_VALIDATOR": "CLOSED",
+        "FACT_PROMOTION": 0,
+        "AUTHORITY_CREATED": false,
+        "MERGE": "NO"
+      }
+    }
+  },
+  "validation": {
+    "schema_compliance": "PASS_AFTER_SCHEMA_BINDING",
+    "timestamp_relation": "HOLD_FUTURE_RELATIVE_TO_OBSERVATION",
+    "fact_promotion": 0,
+    "authority_created": false,
+    "merge_authorized": false
+  }
+}
