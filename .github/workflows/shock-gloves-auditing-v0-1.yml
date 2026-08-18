@@ -1,0 +1,69 @@
+name: Shock Gloves Auditing v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'congress-3.0/shock-gloves-auditing/**'
+      - '.github/workflows/shock-gloves-auditing-v0-1.yml'
+  push:
+    branches:
+      - 'agent/shock-gloves-auditing-timestamp-products-v0-1'
+    paths:
+      - 'congress-3.0/shock-gloves-auditing/**'
+      - '.github/workflows/shock-gloves-auditing-v0-1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+
+      - name: Compile new deterministic tools
+        run: |
+          python -m py_compile congress-3.0/shock-gloves-auditing/tools/roll_audit_dice_v0_1.py
+          python -m py_compile congress-3.0/shock-gloves-auditing/tools/verify_receipt_sufficiency_v0_1.py
+
+      - name: Replay receipt sufficiency vectors
+        run: python congress-3.0/shock-gloves-auditing/tools/verify_receipt_sufficiency_v0_1.py
+
+      - name: Replay deterministic roll 0001
+        run: |
+          OUT="$(python congress-3.0/shock-gloves-auditing/tools/roll_audit_dice_v0_1.py '5520d516de7335f7314f7637f40fcb361bb8ead7|2026-08-17T21:25:00-05:00|SHOCK_GLOVES_AUDIT_V0_1')"
+          echo "$OUT"
+          echo "$OUT" | grep '5c44ab44cb84a9e3f7e7b5e6e825df6305274cad2150397ef3bb49398c4930c5'
+          echo "$OUT" | grep '"TIME_SOURCE_DIE": "SERVER_LOG"'
+          echo "$OUT" | grep '"TEMPORAL_STATE_DIE": "CLOCK_SKEW"'
+          echo "$OUT" | grep '"CONTEMPT_GATE_DIE": "NOT_A_COURT_QUESTION"'
+
+      - name: Validate commercial and safety membranes
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('congress-3.0/shock-gloves-auditing')
+          catalog = json.loads((root/'products/CATALOG_V0_1.json').read_text())
+          receipt = json.loads((root/'receipts/ROLL_0001.json').read_text())
+          contract = json.loads((root/'openai/agent_contract.json').read_text())
+          source_map = json.loads((root/'sources/LEGAL_SOURCE_MAP_V0_1.json').read_text())
+
+          assert catalog['live_checkout'] is False
+          assert catalog['payment_processor_live'] is False
+          assert catalog['production_deployment'] is False
+          assert catalog['authority_created'] is False
+          assert receipt['boundaries']['physical_enforcement'] is False
+          assert receipt['boundaries']['contempt_found'] is False
+          assert contract['model_execution_performed'] is False
+          assert contract['authority_created'] is False
+          assert len(source_map['sources']) >= 4
+          print('SHOCK_GLOVES_AUDIT_MEMBRANES=PASS')
+          PY
+
+      - name: Preserve Congress 3.0 foundation
+        run: |
+          python congress-3.0/tools/verify_congress_3_0.py congress-3.0/fixtures/CONGRESS_3_0_SYSTEMS_ACCOUNTABILITY_TEST_VECTORS_V0_1.json
+          python congress-3.0/banking/tools/verify_banking_burden_flip_v0_1.py congress-3.0/banking/fixtures/BANKING_BURDEN_FLIP_TEST_VECTORS_V0_1.json
