@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import copy
 import json
 from pathlib import Path
 
@@ -19,7 +20,6 @@ VALID_GATE_STATES = {"VERIFIED", "MISSING", "DISAGREES", "CONTRADICTED", "NOT_AP
 
 def evaluate(record: dict) -> dict:
     holds, conflicts, rejects, signals = [], [], [], []
-
     if record.get("authority_created") is not False:
         rejects.append("AUTHORITY_CREATION_BLOCKED")
 
@@ -29,8 +29,7 @@ def evaluate(record: dict) -> dict:
         rejects.append("MONEY_VALUE_INVALID")
     if money.get("currency") != "USD":
         rejects.append("CURRENCY_NOT_USD")
-    state = money.get("state")
-    if state not in MONEY_STATES:
+    if money.get("state") not in MONEY_STATES:
         holds.append("MONEY_STATE_REQUIRED")
     for field in ("account", "program", "fiscal_year", "authority_ref", "source_ref", "receipt_ref"):
         if not money.get(field):
@@ -69,7 +68,6 @@ def evaluate(record: dict) -> dict:
 
     observations = record.get("state_observations") or []
     by_state, value_to_states = {}, {}
-    unreconciled_cross_state = False
     for obs in observations:
         state, value = obs.get("state"), obs.get("value")
         if state not in MONEY_STATES:
@@ -88,12 +86,9 @@ def evaluate(record: dict) -> dict:
             signals.append(f"SAME_NUMBER_DIFFERENT_STATE:{value}")
             rows = [o for o in observations if o.get("value") == value and o.get("state") in states]
             if any(o.get("reconciled") is not True for o in rows):
-                unreconciled_cross_state = True
-    if unreconciled_cross_state:
-        holds.append("STATE_COLLAPSE_TRACE_REQUIRED")
+                holds.append("STATE_COLLAPSE_TRACE_REQUIRED")
 
-    top_down = record.get("top_down")
-    bottom_up = record.get("bottom_up")
+    top_down, bottom_up = record.get("top_down"), record.get("bottom_up")
     if not isinstance(top_down, list) or not top_down:
         holds.append("TOP_DOWN_REPLAY_MISSING")
     if not isinstance(bottom_up, list) or not bottom_up:
@@ -121,11 +116,66 @@ def evaluate(record: dict) -> dict:
     }
 
 
+def gate(status="VERIFIED", ref="BOUND"):
+    return {"status": status, **({"ref": ref} if ref is not None else {})}
+
+
+def base_record() -> dict:
+    return {
+        "format": "JAYS_RECURSIVE_BURDEN_MONEY_CLAIM_V0.1",
+        "claim_id": "C0",
+        "claim_text": "$10B obligated",
+        "money_object": {
+            "value": 10_000_000_000, "currency": "USD", "state": "OBLIGATION",
+            "account": "A1", "program": "P1", "fiscal_year": "FY2026",
+            "authority_ref": "LAW1", "source_ref": "S1", "receipt_ref": "R1",
+        },
+        "recursion": [{
+            "depth": 0, "claim_ref": "C0", "source": gate(ref="S0"),
+            "authority": gate(ref="A0"), "action": gate(ref="X0"),
+            "receipt": gate(ref="R0"), "replay": gate(ref="RP0"), "terminal": True,
+        }],
+        "state_observations": [{
+            "value": 10_000_000_000, "state": "OBLIGATION",
+            "source_ref": "S1", "reconciled": True,
+        }],
+        "top_down": ["LAW1", "MONEY1", "PROGRAM1", "TX1", "R1"],
+        "bottom_up": ["R1", "TX1", "PROGRAM1", "MONEY1", "LAW1"],
+        "authority_created": False,
+    }
+
+
+def build(vector: dict) -> dict:
+    record = base_record()
+    if vector.get("drop_money_field"):
+        record["money_object"].pop(vector["drop_money_field"], None)
+    if "money_value" in vector:
+        record["money_object"]["value"] = vector["money_value"]
+        record["state_observations"][0]["value"] = vector["money_value"]
+    for gate_name, gate_state in (vector.get("gate_overrides") or {}).items():
+        record["recursion"][0][gate_name] = gate(gate_state, ref=f"{gate_name.upper()}_REF")
+    if "state_observations" in vector:
+        record["state_observations"] = copy.deepcopy(vector["state_observations"])
+    if "bottom_up" in vector:
+        record["bottom_up"] = list(vector["bottom_up"])
+    if vector.get("attempt_state_promotion"):
+        record["attempt_state_promotion"] = True
+    if vector.get("recursive_binding_invalid"):
+        first = copy.deepcopy(record["recursion"][0])
+        first["terminal"] = False
+        first["receipt_claim_ref"] = "WRONG"
+        second = copy.deepcopy(record["recursion"][0])
+        second["depth"] = 1
+        second["claim_ref"] = "C1"
+        record["recursion"] = [first, second]
+    return record
+
+
 def self_test() -> int:
     vectors = json.loads(VECTORS.read_text(encoding="utf-8"))["vectors"]
     rows, failed = [], []
     for vector in vectors:
-        receipt = evaluate(vector["record"])
+        receipt = evaluate(build(vector))
         ok = (
             receipt["status"] == vector["expected_status"]
             and receipt["dirty_math_signal"] == vector.get("expected_dirty_math_signal", False)
