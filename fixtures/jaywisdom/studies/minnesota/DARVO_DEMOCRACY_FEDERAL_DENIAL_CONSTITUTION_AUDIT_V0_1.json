@@ -1,0 +1,103 @@
+{
+  "format": "DARVO_DEMOCRACY_FEDERAL_DENIAL_CONSTITUTION_AUDIT_V0.1",
+  "classification": "PERSONAL_RESEARCH_PUBLIC_RECORD_CIVIC_LEARNING_ONLY",
+  "author_label": "jaywisdom.base.eth",
+  "authority_created": false,
+  "purpose": "AUDIT_DENIAL_BURDEN_ROLE_REVERSAL_AND_OVERSIGHT_PATTERNS_ACROSS_EPSTEIN_RECORDS_SSA_VA_CONGRESS_AND_MINNESOTA_SUPREMESUBSTRATES_WITHOUT_PROMOTING_PATTERN_TO_GUILT_OR_INTENT",
+  "core_membrane": [
+    "PATTERN != ROOT_CAUSE_PROVEN",
+    "DARVO_PATTERN != GUILT",
+    "DENIAL != DARVO",
+    "APPEAL != ORIGINAL_DECISION_WRONG",
+    "REVERSAL_OR_REMAND != BAD_FAITH",
+    "NAMED_IN_EPSTEIN_RECORD != CRIME_PROVEN",
+    "GANG_OF_EIGHT_MEMBERSHIP != EPSTEIN_INVOLVEMENT",
+    "SAME_PERSON != SAME_AUTHORITY != SAME_PROCESS",
+    "PROCESS_PASS != PROOF",
+    "AUTHORITY_CREATED = FALSE"
+  ],
+  "shock_awe_replay": {
+    "user_hypothesis": "TRUMP_SHOCK_ONLY_SINCE_2016_AWE_DISREGARDED",
+    "status": "HOLD_HYPOTHESIS_NOT_ROOT_CAUSE_PROVEN",
+    "audit_note": "Shock and awe is a military-strategy phrase, not a constitutional command. Any longitudinal claim about one president requires event-by-event policy, authority, objective, outcome, restraint, and oversight receipts.",
+    "required_replay": ["EVENT", "DATE", "PRESIDENTIAL_ACTION", "LEGAL_AUTHORITY", "CONGRESSIONAL_ROLE", "MILITARY_OBJECTIVE", "COERCIVE_EFFECT", "DETERRENCE_OR_STABILIZATION_EFFECT", "OUTCOME", "RECEIPT"]
+  },
+  "epstein_congress_lanes": {
+    "epstein_files_transparency_act": {
+      "citation": "Public Law 119-38 / H.R. 4405",
+      "enacted": "2025-11-19",
+      "release_report_recipient": "HOUSE_AND_SENATE_JUDICIARY_COMMITTEES",
+      "rule": "EPSTEIN_RELEASE_REPORT != GANG_OF_EIGHT_NOTIFICATION"
+    },
+    "gang_of_eight": {
+      "authority": "50_U.S.C._3093(c)(2)_RESTRICTED_COVERT_ACTION_NOTIFICATION",
+      "members_by_role": ["HOUSE_SPEAKER", "HOUSE_MINORITY_LEADER", "SENATE_MAJORITY_LEADER", "SENATE_MINORITY_LEADER", "HPSCI_CHAIR", "HPSCI_RANKING_MEMBER", "SSCI_CHAIR", "SSCI_RANKING_MEMBER"],
+      "current_house_speaker_observed_2026_08": "MIKE_JOHNSON",
+      "rule": "GANG_OF_EIGHT_ROLE = INTELLIGENCE_OVERSIGHT_ROLE_ONLY"
+    },
+    "unsupported_criminal_label": {
+      "claim": "GANG_OF_EIGHT_PEDOPHILES",
+      "status": "NOT_PROVEN_REJECT_PROMOTION",
+      "reason": "No bound evidence establishes that statutory oversight membership proves participation in Epstein crimes or any sex offense."
+    }
+  },
+  "doj_epstein_audit": {
+    "doj_release_state": "DOJ_REPORTS_NEARLY_3_5_MILLION_PAGES_RELEASED_BY_2026_01_30_AND_LIBRARY_UPDATED_2026_07_17",
+    "oig_state": "ACTIVE_AUDIT_ANNOUNCED_2026_04_23",
+    "oig_scope": ["IDENTIFICATION_COLLECTION_PRODUCTION", "REDACTION_AND_WITHHOLDING_PROCESS", "POST_RELEASE_PUBLICATION_CONCERNS"],
+    "important_caution": "DOJ_STATES_CORPUS_CAN_INCLUDE_FALSE_OR_FAKE_PUBLIC_SUBMISSIONS; PRESENCE_IN_CORPUS != VERIFIED_FACT",
+    "terminal": "OIG_RESULT_PENDING"
+  },
+  "ssa_denial_replay": {
+    "official_statistical_signal": "SSA_2024_ANNUAL_REPORT_STATES_DENIED_DISABILITY_CLAIMS_HAVE_AVERAGED_68_PERCENT",
+    "latest_outcome_series": "APPLICATION_YEAR_DATA_THROUGH_2023_WITH_RECENT_YEARS_PARTLY_PENDING",
+    "appeal_chain": ["INITIAL_DETERMINATION", "RECONSIDERATION", "ALJ_HEARING", "APPEALS_COUNCIL", "FEDERAL_DISTRICT_COURT"],
+    "constitutional_anchor": "MATHEWS_V_ELDRIDGE_DUE_PROCESS_BALANCES_PRIVATE_INTEREST_RISK_OF_ERROR_VALUE_OF_ADDITIONAL_SAFEGUARDS_AND_GOVERNMENT_INTEREST",
+    "darvo_gate": "A_DENIAL_BECOMES_DARVO_PATTERN_EVIDENCE_ONLY_IF_RESPONSE_LANGUAGE_OR_PROCESS_SHOWS_BOUND_DENIAL_ATTACK_AND_ROLE_REVERSAL_ELEMENTS; DENIAL_RATE_ALONE_IS_INSUFFICIENT"
+  },
+  "va_denial_replay": {
+    "current_public_metrics": {
+      "weekly_claims_reporting": true,
+      "claims_based_accuracy_12_month_observed_2026_07_15_percent": 83.19,
+      "pending_claims_observed_2026_07_27": 606557,
+      "rating_backlog_observed_2026_07_27": 70292
+    },
+    "review_chain": ["INITIAL_DECISION", "SUPPLEMENTAL_CLAIM", "HIGHER_LEVEL_REVIEW", "BOARD_OF_VETERANS_APPEALS", "U_S_COURT_OF_APPEALS_FOR_VETERANS_CLAIMS"],
+    "error_correction_signal": "VA_HIGHER_LEVEL_REVIEW_CAN_IDENTIFY_DUTY_TO_ASSIST_ERROR_AND_REQUIRE_CORRECTION",
+    "court_signal": "VA_REPORTS_MORE_THAN_HALF_OF_1441_BOARD_DECISIONS_REVIEWED_ON_THE_MERITS_BY_CAVC_IN_FY2023_WERE_REMANDED_IN_WHOLE_OR_PART",
+    "caution": "CLAIMS_ACCURACY_ERROR_OR_COURT_REMAND != DARVO_OR_BAD_FAITH_PROVEN"
+  },
+  "minnesota_supreme_substrate_binding": {
+    "role": "STATE_JUDICIAL_REPLAY_ANALOGY_NOT_DIRECT_FEDERAL_SSA_OR_VA_APPELLATE_FORUM",
+    "chain": ["CLAIM", "SOURCE", "AUTHORITY", "ACTION", "BURDEN", "RECORD", "CHALLENGE", "JURISDICTION", "FINDING", "RECEIPT"],
+    "state_agency_note": "MINNESOTA_JUDICIAL_BRANCH_EXPLAINS_THAT_GOVERNMENT_AGENCY_APPEALS_FOLLOW_DIFFERENT_PATHS_AND_SOME_GO_TO_COURT_OF_APPEALS_OR_DIRECTLY_TO_SUPREME_COURT_DEPENDING_ON_AUTHORITY",
+    "rule": "JURISDICTION != MERITS"
+  },
+  "darvo_democracy_detector": {
+    "D": "DENY_OR_REFUSE_CLAIM_WITH_STATED_REASON",
+    "A": "ATTACK_CREDIBILITY_STATUS_CHARACTER_OR_MOTIVE_INSTEAD_OF_RESOLVING_BOUND_EVIDENCE",
+    "RVO": "REVERSE_CLAIMANT_RESPONDENT_OR_VICTIM_OFFENDER_ROLE_SO_CHALLENGER_MUST_DISPROVE_UNBOUND_ASSERTION",
+    "required_fields": ["EXACT_STATEMENT", "SPEAKER_OR_OFFICE", "DATE", "AUTHORITY", "EVIDENCE_CITED", "BURDEN_BEFORE", "BURDEN_AFTER", "APPEAL_OR_CORRECTION_PATH", "OUTCOME", "RECEIPT"],
+    "terminal_states": ["PASS_NO_DARVO_PATTERN", "HOLD_INSUFFICIENT_RECORD", "CONFLICT_MIXED_PATTERN", "PATTERN_OBSERVED_NOT_INTENT_PROVEN"]
+  },
+  "root_cause_gate": {
+    "current_state": "UNRESOLVED",
+    "candidate_systemic_causes_to_test_not_assume": ["HIGH_VOLUME_ADMINISTRATION", "EVIDENCE_RULES", "STATUTORY_ELIGIBILITY_THRESHOLDS", "RESOURCE_CONSTRAINTS", "INCENTIVE_OR_METRIC_DESIGN", "ERROR_CORRECTION_LATENCY", "INFORMATION_ASYMMETRY", "BURDEN_SHIFTING", "POLITICAL_MESSAGING"],
+    "rule": "CORRELATION_OR_REPEATED_DENIAL != ROOT_CAUSE"
+  },
+  "source_urls": [
+    "https://www.congress.gov/crs-product/R45191",
+    "https://www.congress.gov/bill/119th-congress/house-bill/4405/text/enr",
+    "https://www.justice.gov/epstein",
+    "https://oig.justice.gov/ongoing-work/audit-department-justices-compliance-epstein-files-transparency-act",
+    "https://www.ssa.gov/policy/docs/statcomps/di_asr/2024/sect04.html",
+    "https://www.ssa.gov/disabilityssi/appeal.html",
+    "https://constitution.congress.gov/browse/essay/amdt14-S1-5-4-2/ALDE_00013751/",
+    "https://www.va.gov/decision-reviews/",
+    "https://www.benefits.va.gov/reports/",
+    "https://department.va.gov/board-of-veterans-appeals/decision-wait-times/better-decision-quality-leading-to-fewer-court-appeals/",
+    "https://www.mncourts.gov/Help-Topics/Appeals.aspx"
+  ],
+  "terminal": "DARVO_DEMOCRACY_AUDIT_OPEN_EVIDENCE_BOUND",
+  "authority_created": false
+}
