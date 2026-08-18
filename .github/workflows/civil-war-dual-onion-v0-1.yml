@@ -29,6 +29,11 @@ jobs:
       - name: Replay Kernel Jay vectors and round
         run: python congress-3.0/civil-war-dual-onion/tools/verify_civil_war_dual_onion_v0_1.py
 
+      - name: Verify Alabama replay acknowledgment schema and timestamp relation
+        run: |
+          python -m py_compile congress-3.0/civil-war-dual-onion/tools/verify_alabama_replay_stack_ack_v0_1.py
+          python congress-3.0/civil-war-dual-onion/tools/verify_alabama_replay_stack_ack_v0_1.py
+
       - name: Verify dual-onion membranes
         run: |
           python - <<'PY'
