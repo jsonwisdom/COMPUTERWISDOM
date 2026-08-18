@@ -53,7 +53,7 @@
     "institution_duty": {
       "type": "object",
       "additionalProperties": false,
-      "required": ["duty_type", "performed", "receipt_ref", "consumer_facing_receipt_required"],
+      "required": ["duty_type", "performed", "receipt_ref", "duty_quality", "consumer_facing_receipt_required"],
       "properties": {
         "duty_type": {
           "enum": [
@@ -68,6 +68,16 @@
         },
         "performed": {"type": "boolean"},
         "receipt_ref": {"type": "string"},
+        "duty_quality": {
+          "enum": [
+            "sufficient",
+            "vague_internal_policy",
+            "inaccurate_unverifiable_not_corrected",
+            "verification_not_mailed",
+            "unknown",
+            "not_applicable"
+          ]
+        },
         "consumer_facing_receipt_required": {"type": "boolean"}
       }
     },
