@@ -128,11 +128,18 @@ def verify(case: dict) -> dict:
             if not duty.get("receipt_ref"):
                 disposition = combine(disposition, "HOLD")
                 reasons.append("INSTITUTION_DUTY_RECEIPT_MISSING")
+            if duty.get("duty_quality") != "sufficient":
+                disposition = combine(disposition, "HOLD")
+                reasons.append(f"INSTITUTION_DUTY_QUALITY_NOT_PROVEN:{duty.get('duty_quality', 'missing')}")
 
             if (
                 case.get("same_proof_requested_again") is True
                 and consumer.get("performed") is True
-                and (duty.get("performed") is not True or not duty.get("receipt_ref"))
+                and (
+                    duty.get("performed") is not True
+                    or not duty.get("receipt_ref")
+                    or duty.get("duty_quality") != "sufficient"
+                )
             ):
                 signals.append("RECURSIVE_BANKING_BURDEN_SIGNAL")
                 disposition = combine(disposition, "HOLD")
