@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'citizen/blockchain-reverse-replay/**'
+      - 'citizen/boxd/**'
       - 'docs/jaytree/DUAL_ONION_AZURE_BLOCKCHAIN_AUDIT_V0_1.md'
       - '.github/workflows/citizen-blockchain-reverse-replay-v0-1.yml'
   push:
@@ -11,6 +12,7 @@ on:
       - 'stack/dual-onion-azure-blockchain-audit-v0-1'
     paths:
       - 'citizen/blockchain-reverse-replay/**'
+      - 'citizen/boxd/**'
       - '.github/workflows/citizen-blockchain-reverse-replay-v0-1.yml'
   workflow_dispatch:
 
@@ -24,11 +26,17 @@ jobs:
       - name: Checkout exact head
         uses: actions/checkout@v4
 
-      - name: Compile deterministic verifier
+      - name: Compile deterministic citizen ledger verifier
         run: python -m py_compile citizen/blockchain-reverse-replay/verify_citizen_blockchain_reverse_replay_v0_1.py
 
       - name: Verify normalized citizen ledger
         run: python citizen/blockchain-reverse-replay/verify_citizen_blockchain_reverse_replay_v0_1.py
+
+      - name: Compile logicBoy BoxD verifier
+        run: python -m py_compile citizen/boxd/verify_logicboy_boxd_reverse_replay_v0_1.py
+
+      - name: Verify ReverseReplay is internal to BoxD
+        run: python citizen/boxd/verify_logicboy_boxd_reverse_replay_v0_1.py
 
       - name: Preserve citizen/family membrane
         run: |
