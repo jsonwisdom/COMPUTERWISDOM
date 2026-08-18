@@ -35,10 +35,13 @@ GITHUB COMMIT / PR
 - PR #494 — Congress 3.0 v0.1 — draft/open/unmerged
 - PR #493 — Dual Onion Azure vs blockchain audit flywheel v0.1 — draft/open/unmerged
 
-## Drive anchor
+## Drive anchors
 
-Living sync ledger:
+Living sync ledger:  
 `https://docs.google.com/document/d/1tePBcJmEFE-uSQIkeDXIsyNCxNCH6LFrO3V9NiOzR7c/edit`
+
+2026 master calendar + execution plan:  
+`https://docs.google.com/document/d/1nbPHYrvgf-pB-rGlJ1Pz2Felhy6IXcAmYJm5hp_Me7Y/edit`
 
 ## Knowledge classes
 
@@ -88,6 +91,96 @@ PR #499 CI receipt: workflow run `32117964653`, exact head `fc04e195795c2e467a5a
 | Living Sync Ledger created | 2026-08-18T21:33:26.231Z | `b7mn7787dv13p29gn4k5toiqao` |
 | Cross-surface sync canonized | 2026-08-18T21:41:00Z | `gdvme1qh06msc87hf2ejhd2ico` |
 
+## 2026 master calendar / execution plan
+
+Historical phases are receipt-oriented summaries; September–December are planning windows and are **not** accomplishment claims.
+
+```text
+JAN — professional / identity state
+FEB — manifest / concept state
+MAR — live monitoring / boardroom state
+APR — ALMS detection + claim receipts
+MAY — courts + Zora + replay factory
+JUN — public proof + hash + provenance infrastructure
+JUL — contracts + evidence estate + normative freeze
+AUG — integration + productization + knowledge transfer
+SEP — control-plane reconciliation
+OCT — product hardening / release-candidate discipline
+NOV — HEIDEE–JOY–BOXDEE knowledge-transfer replay
+DEC — canonical 2026 replay + 2027 handoff
+```
+
+### September — control-plane reconciliation
+
+- Reconcile AL live activity against declared STATUS / ACTIVE_LANES objects.
+- Prepare `manifest.v1` reconciliation object without changing activation-contract semantics.
+- Index COMPUTERWISDOM draft/product stack by exact head, CI receipt, and merge state.
+- Add HEIDEE only through typed receipt-backed lane rules.
+- No whole-lane GREEN without a receipt DAG.
+
+Decision gate: `PASS | HOLD | CONFLICT | REJECT`, human reviewed.
+
+### October — product hardening
+
+Priority candidates:
+- Enterprise Receipt API
+- JAYSPACE Replay SDK
+- ReceiptOS / RePlayOS specification alignment
+
+Requirements:
+- versioned schemas
+- negative-test/threat matrix
+- exact-head CI receipts
+- reproducible verifier path
+- deployment status held separately from release-candidate status
+
+Decision gate: `RELEASE_CANDIDATE_READY | HOLD`.
+
+### November — knowledge transfer
+
+- HEIDEE directories-first child-safe package
+- JOY public-safe teaching/replay surfaces
+- BoxDee AI Knowledge Management crosswalks
+- LeahPrime synthetic translation rules
+- Functional • Non-Local • Remote proof
+
+Requirements:
+- `REAL != SYNTHETIC`
+- source locality travels with knowledge
+- remote reviewer can reconstruct state without Jay present
+- story/imagination never substitutes for receipt
+
+Decision gate: `PASS | HOLD | CONFLICT | REJECT`.
+
+### December — year close
+
+- Generate canonical 2026 milestone index.
+- Reconcile GitHub PR/commit/CI ↔ Drive artifacts ↔ Calendar event IDs.
+- Archive superseded state while preserving unresolved HOLD/CONFLICT.
+- Produce public-safe 2026 engineering / knowledge-transfer portfolio summary.
+- Separate 2027 backlog into `PROVEN | OPEN | HOLD | EXPERIMENTAL`.
+
+Decision gate: `2026_CLOSE = PASS_WITH_OPEN_HOLDS | HOLD`.
+
+### Operating cadence — Sep–Dec
+
+```text
+MONDAY    READ / INVENTORY
+WEDNESDAY BUILD / VERIFY
+FRIDAY    RECONCILE / RECEIPT
+MONTH-END CANONIZATION REVIEW
+```
+
+Calendar planning does not create completion state. Month-end canonization is valid only after evidence/replay and human decision.
+
+## OpenAI Platform lane
+
+```text
+OPENAI_PLATFORM = ACCESS_ONLY
+RUNTIME_DEPLOYMENT = NOT_PROVEN_BY_PROJECT_VISIBILITY
+API_KEY_CREATED_BY_THIS_PLAN = FALSE
+```
+
 ## Membranes
 
 ```text
@@ -95,10 +188,12 @@ CODE != IDEA
 IDEA != COMMIT
 COMMIT != CANONIZATION
 CALENDAR_EVENT != PROOF
+PLAN != EXECUTION
 DRIVE_DOC != DEPLOYMENT
 ENS_LABEL != AUTHORITY
 CI_PASS != WHOLE_LANE_GREEN
 DRAFT != RELEASE
+NO_FAKE_GREEN = ACTIVE
 AUTHORITY_CREATED = FALSE
 MERGE_DEPLOY_AUTHORITY = HUMAN
 ```
@@ -107,8 +202,9 @@ MERGE_DEPLOY_AUTHORITY = HUMAN
 
 ```text
 GITHUB_SYNC = PASS / PR_501_DRAFT
-DRIVE_SYNC = PASS / LIVING_LEDGER_UPDATED
-CALENDAR_SYNC = PASS / EVENT_IDS_BOUND
+DRIVE_SYNC = PASS / 2026_MASTER_PLAN_BOUND
+CALENDAR_SYNC = PASS / AUGUST_EVENT_IDS_BOUND
+FULL_YEAR_CALENDARIZATION = PLAN_DEFINED / HISTORICAL_BACKFILL_OPEN
 TRASH_RESTORE = NOT_PERFORMED / CONNECTOR_DOES_NOT_EXPOSE_CANCELLED_EVENTS
 OPENAI_PLATFORM = ACCESS_ONLY
 API_KEY_CREATED_BY_THIS_SYNC = FALSE
