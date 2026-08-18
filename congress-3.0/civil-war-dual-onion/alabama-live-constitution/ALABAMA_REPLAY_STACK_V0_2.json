@@ -1,0 +1,65 @@
+{
+  "stack": "ALABAMA_REPLAY_STACK_V0_2",
+  "parent": "DOUBLE_ONION_CIVIL_WAR_ALABAMA_LIVE_CONSTITUTION_V0_1",
+  "authority_created": false,
+  "criminal_finding_created": false,
+  "modules": [
+    {
+      "name": "IronBowlReplay",
+      "role": "RIVALRY_AS_CIVIC_REPLAY_MECHANIC",
+      "may_select_perspective": true,
+      "may_create_fact": false,
+      "terminal_states": ["PASS", "HOLD", "CONFLICT", "REJECT"]
+    },
+    {
+      "name": "AlabamaHistoryReplay",
+      "role": "SOURCE_BOUND_HISTORICAL_CONSTITUTIONAL_REPLAY",
+      "may_select_perspective": false,
+      "may_promote_bound_historical_fact": true,
+      "promotion_requires_receipt": true,
+      "terminal_states": ["PASS", "HOLD", "CONFLICT", "REJECT"]
+    },
+    {
+      "name": "KnowThyAlabamaHistory",
+      "role": "CIVIC_HISTORY_VERIFICATION_CURRICULUM",
+      "may_generate_questions": true,
+      "may_create_fact": false,
+      "terminal_states": ["PASS", "HOLD", "CONFLICT", "REJECT"]
+    }
+  ],
+  "flow": [
+    "IRON_BOWL_REPLAY",
+    "KNOW_THY_QUESTION",
+    "ALABAMA_HISTORY_SOURCE_BINDING",
+    "DOUBLE_ONION_CROSS_CHECK",
+    "REVERSE_REPLAY",
+    "PASS_HOLD_CONFLICT_REJECT"
+  ],
+  "rules": [
+    "RIVALRY != ENEMY_STATUS",
+    "BAMA_VS_AUBURN != NORTH_VS_SOUTH",
+    "DICE_ROLL != FACT",
+    "QUESTION != ALLEGATION",
+    "HISTORICAL_RECORD != CURRENT_AUTHORITY",
+    "HISTORICAL_ACTOR != MODERN_DESCENDANT",
+    "STORY != EVIDENCE",
+    "SOURCE_CONFLICT != FORCED_EQUIVALENCE",
+    "SYNTHETIC_ROLE != REAL_PERSON",
+    "AUTHORITY_CREATED = FALSE"
+  ],
+  "openai_boundary": {
+    "model_required": false,
+    "api_key_required": false,
+    "allowed": [
+      "generate source-seeking educational questions",
+      "explain already-bound receipts",
+      "summarize PASS HOLD CONFLICT REJECT states"
+    ],
+    "forbidden": [
+      "promote game state into historical fact",
+      "convert rivalry into enemy status",
+      "create suspect status for a real person",
+      "create governmental military police or court authority"
+    ]
+  }
+}
