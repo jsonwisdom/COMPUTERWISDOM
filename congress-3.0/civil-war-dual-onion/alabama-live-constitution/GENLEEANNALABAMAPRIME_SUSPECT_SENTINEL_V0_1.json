@@ -1,0 +1,90 @@
+{
+  "artifact": "GENLEEANNALABAMAPRIME_SUSPECT_SENTINEL_V0_1",
+  "parent": "CIVIL_WAR_DUALISTIC_ONION_KERNEL_JAY_V0_1",
+  "mode": "HISTORICAL_CIVICS_REPLAY_MODERN_REAL_PERSON_SAFE",
+  "authority_created": false,
+  "criminal_finding_created": false,
+  "live_definition": "Replay authority at event time through later constitutional state changes into the present; not surveillance or targeting.",
+  "reverse_replay": [
+    "SUSPECT",
+    "SUSPECT_OF_WHAT",
+    "SPECIFIC_CLAIM",
+    "OBSERVABLE_EVENT",
+    "SOURCE",
+    "IDENTITY_BINDING",
+    "AUTHORITY",
+    "ACTION",
+    "RECEIPT",
+    "REPLAY"
+  ],
+  "synthetic_role": {
+    "name": "GENLEEANNALABAMAPRIME",
+    "classification": "SYNTHETIC_REPLAY_ROLE",
+    "alabama": "STORY_OR_LOCATION_CONTEXT",
+    "prime": "NAMESPACE_OR_CHARACTER_LAYER",
+    "suspect_label": "UNBOUND",
+    "specific_misconduct": "NOT_ESTABLISHED",
+    "real_person_binding": "BLOCKED",
+    "military_authority": false,
+    "criminal_finding": false
+  },
+  "sentinel": {
+    "event": "LABEL_WITHOUT_BOUND_CLAIM",
+    "state": "HOLD",
+    "reason": "SUSPECT_PREDICATE_NOT_DEFINED"
+  },
+  "real_person_rail": {
+    "name": "LEEANN H. CHAVERS",
+    "pn734_colonel_confirmation": "PASS",
+    "pn734_confirmation_date": "2026-01-30",
+    "effective_colonel_date": "HOLD",
+    "current_position": "HOLD_UNLESS_SEPARATELY_BOUND",
+    "general_nomination": "HOLD_NOT_LOCATED",
+    "suspect_of_misconduct": "NOT_ESTABLISHED"
+  },
+  "historical_alabama": {
+    "secession_ordinance": {
+      "date": "1861-01-11",
+      "state": "SOURCE_BOUND_HISTORICAL_OBJECT",
+      "present_authority": false
+    },
+    "constitution_1861": {
+      "state": "SOURCE_BOUND_HISTORICAL_OBJECT",
+      "present_authority": false
+    },
+    "thirteenth_amendment_alabama_approval": {
+      "date": "1865-12-02",
+      "state": "PASS_SOURCE_BOUND_CONSTITUTION_ANNOTATED"
+    },
+    "fourteenth_amendment_alabama_approval": {
+      "date": "1868-07-13",
+      "state": "PASS_SOURCE_BOUND_CONSTITUTION_ANNOTATED"
+    }
+  },
+  "rules": [
+    "SUSPECT != GUILTY",
+    "QUESTION != ALLEGATION",
+    "ALLEGATION != FINDING",
+    "SYNTHETIC_ROLE != REAL_PERSON",
+    "PUBLIC_PERSON != SUSPECT",
+    "CONFIRMATION != MISCONDUCT_FINDING",
+    "NOMINATION != EFFECTIVE_PROMOTION_DATE",
+    "HISTORICAL_AUTHORITY != CURRENT_AUTHORITY",
+    "SECESSION_CLAIM != CURRENT_STATE_STATUS",
+    "HISTORY_REPLAY != MODERN_CIVIL_WAR",
+    "AUTHORITY_CREATED = FALSE",
+    "CRIMINAL_FINDING_CREATED = FALSE"
+  ],
+  "terminals": ["PASS", "HOLD", "CONFLICT", "REJECT"],
+  "official_sources": [
+    "https://digital.archives.alabama.gov/digital/collection/constitutions/id/124/",
+    "https://digital.archives.alabama.gov/digital/collection/constitutions/id/6/",
+    "https://constitution.congress.gov/browse/essay/Intro.6-4/ALDE_00000388/",
+    "https://www.congress.gov/nomination/119th-congress/734"
+  ],
+  "openai": {
+    "model_required": false,
+    "model_execution_performed": false,
+    "api_key_required": false
+  }
+}
