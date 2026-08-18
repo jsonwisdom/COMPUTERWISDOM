@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "reconstruction_replay_receipt.v0_1",
+  "title": "ALISON Reconstruction Replay Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "receipt_id",
+    "PRIOR_STATE",
+    "ACTOR",
+    "CLAIMED_AUTHORITY",
+    "PRIMARY_SOURCE",
+    "DATE",
+    "ACTION",
+    "FEDERAL_STATE_RELATION",
+    "SUPERSESSION_EVENT",
+    "NEXT_STATE",
+    "CONTRADICTORY_SOURCE",
+    "BOXD_RECEIPT",
+    "boundaries"
+  ],
+  "properties": {
+    "schema": {"const": "reconstruction_replay_receipt.v0_1"},
+    "receipt_id": {"type": "string", "pattern": "^RECONSTRUCTION_REPLAY_RECEIPT_[0-9]{3}$"},
+    "PRIOR_STATE": {"type": "string", "minLength": 1},
+    "ACTOR": {"type": "string", "minLength": 1},
+    "CLAIMED_AUTHORITY": {"type": "string", "minLength": 1},
+    "PRIMARY_SOURCE": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/source"}
+    },
+    "DATE": {"type": "string", "minLength": 1},
+    "ACTION": {"type": "string", "minLength": 1},
+    "FEDERAL_STATE_RELATION": {"type": "string", "minLength": 1},
+    "SUPERSESSION_EVENT": {"type": "string", "minLength": 1},
+    "NEXT_STATE": {"type": "string", "minLength": 1},
+    "CONTRADICTORY_SOURCE": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/source"}
+    },
+    "BOXD_RECEIPT": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["terminal", "reason", "source_bound", "authority_validated", "raw_bytes_frozen", "sha256_computed"],
+      "properties": {
+        "terminal": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]},
+        "reason": {"type": "string", "minLength": 1},
+        "source_bound": {"type": "boolean"},
+        "authority_validated": {"type": "boolean"},
+        "raw_bytes_frozen": {"type": "boolean"},
+        "sha256_computed": {"type": "boolean"}
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_bound_not_authority_validated", "later_supersession_not_retroactive_fact_rewrite", "authority_created"],
+      "properties": {
+        "source_bound_not_authority_validated": {"const": true},
+        "later_supersession_not_retroactive_fact_rewrite": {"const": true},
+        "authority_created": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "url", "source_class", "temporal_role"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "format": "uri"},
+        "source_class": {"enum": ["PRIMARY_STATE", "PRIMARY_FEDERAL", "OFFICIAL_ARCHIVE", "COURT_OPINION", "SECONDARY_OFFICIAL"]},
+        "temporal_role": {"enum": ["AT_EVENT", "LATER_SUPERSESSION", "LATER_JUDICIAL_INTERPRETATION", "CURRENT_STATE"]}
+      }
+    }
+  }
+}
