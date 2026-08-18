@@ -1,0 +1,134 @@
+{
+  "format": "DICE_WITH_PAM_BONDI_WOMEN_IN_JUSTICE_LEARNING_V0.2",
+  "classification": "PUBLIC_RECORD_CIVIC_LEARNING_GAME_ONLY",
+  "title": "Dice With Pam Bondi — Women in Justice Learning Lab v0.2",
+  "author_label": "jaywisdom.base.eth",
+  "extends": "DICE_WITH_PAM_BONDI_WOMEN_IN_JUSTICE_LEARNING_V0.1",
+  "design_goal": "ADD_CONFLICT_RESOLUTION_WITHOUT_FORCING_VERDICTS_AND_UNIFY_DICE_PINCER_CLERK_REPLAY",
+  "unchanged_invariants": [
+    "PERSON != OFFICE != AUTHORITY",
+    "TERM != CLAIM",
+    "CLAIM != FACT",
+    "FLAG != FINDING",
+    "PASS != WORLD_TRUE",
+    "ROLL != EVIDENCE",
+    "ROLL != GUILT",
+    "ROLL != AUTHORITY",
+    "HOLD_IS_A_VALID_SKILLFUL_RESULT",
+    "CONFLICT_MAY_REMAIN_UNRESOLVED",
+    "SUBSTRATE_INJECTION != CLAIM_PROMOTION",
+    "AUTHORITY_CREATED = FALSE"
+  ],
+  "base_justice_lanes": {
+    "count": 12,
+    "rule": "V0.1_LANE_MAP_REMAINS_FROZEN",
+    "mutation": "NONE"
+  },
+  "conflict_activation": {
+    "activate_when": [
+      "TWO_OR_MORE_BOUND_RECORDS_DISAGREE",
+      "CURRENT_AND_PRIOR_OFFICE_STATE_DIFFER",
+      "VERSION_OR_ARCHIVE_DELTA_CHANGES_MEANING",
+      "AUTHORITY_OR_JURISDICTION_BINDINGS_DISAGREE",
+      "COURT_OR_OVERSIGHT_RECORD_SUPERSEDES_PRIOR_STATE"
+    ],
+    "do_not_activate_for": [
+      "MERE_POLITICAL_DISAGREEMENT",
+      "UNSOURCED_RUMOR",
+      "DICE_RESULT",
+      "PERSONAL_CHARACTER_JUDGMENT"
+    ]
+  },
+  "conflict_replay_lanes": [
+    {"lane":"C1","id":"EXACT_CLAIM_SPLIT","question":"Are the records actually answering the same proposition?","skill":"Split broad claims into separately testable propositions before comparing them."},
+    {"lane":"C2","id":"SOURCE_IDENTITY","question":"Are these independent sources, mirrors, quotations, or the same underlying record?","skill":"Avoid false corroboration."},
+    {"lane":"C3","id":"TIME_VERSION","question":"Did the office, title, document, archive, or legal state change over time?","skill":"Bind each record to an observed date and version."},
+    {"lane":"C4","id":"OFFICE_AUTHORITY","question":"Which person, office, acting status, delegation, or authority applied at each time?","skill":"Replay office state instead of inheriting stale authority."},
+    {"lane":"C5","id":"JURISDICTION_SCOPE","question":"Are the records operating under the same jurisdiction, scope, legal standard, or evidentiary threshold?","skill":"Prevent scope mismatch from becoming factual conflict."},
+    {"lane":"C6","id":"ACTION_RECEIPT","question":"What action does each record prove actually occurred?","skill":"Separate statement, authorization, action, and receipt."},
+    {"lane":"C7","id":"SUPERSESSION_APPEAL_CORRECTION","question":"Did a later order, appeal, correction, rescission, or oversight finding supersede the earlier state?","skill":"Treat first record and final record as different states."},
+    {"lane":"C8","id":"INDEPENDENT_CRISSCROSS","question":"Can a genuinely independent institutional surface reconcile or preserve the conflict?","skill":"Seek convergence without manufacturing it."}
+  ],
+  "reverse_replay_integration": {
+    "path": [
+      "NEWEST_RECORD",
+      "IDENTIFY_CLAIM",
+      "BIND_SOURCE",
+      "BIND_DATE_VERSION",
+      "BIND_PERSON_OFFICE_AUTHORITY",
+      "TRACE_PRIOR_RECORDS",
+      "FIND_ORIGINATING_AUTHORITY_OR_EVENT",
+      "COMPARE_DELTAS",
+      "SEND_TO_CLERK"
+    ],
+    "rule": "REVERSE_REPLAY_RECONSTRUCTS_PROVENANCE; IT DOES_NOT_CREATE_TRUTH"
+  },
+  "pincer_integration": {
+    "top_down": ["LAW","AUTHORITY","OFFICE","ACTION","RECORD"],
+    "bottom_up": ["RECORD","ACTION","OFFICE","AUTHORITY","LAW"],
+    "convergence_rule": "MATCHING_PATHS_INCREASE_CONFIDENCE_IN_THE_CHAIN_NOT_IN_UNSTATED_WORLD_FACTS",
+    "divergence_rule": "MISMATCH_SENDS_THE_EDGE_TO_CONFLICT_REPLAY_OR_HOLD"
+  },
+  "clerk_integration": {
+    "input": "TYPED_EDGE_PLUS_BOUND_SOURCE_OBJECTS",
+    "gates": ["IDENTITY","PROVENANCE","TEMPORAL","DELTA","DEPENDENCY","SCOPE","AUTHORITY"],
+    "caller_supplied_terminal_forbidden": true,
+    "external_semantic_widening_forbidden": true,
+    "output_mapping": {
+      "EVIDENCE_GATE_PROVEN": "PASS_FOR_BOUNDED_CHAIN_ONLY",
+      "EVIDENCE_GATE_HOLD": "HOLD",
+      "EVIDENCE_GATE_DIVERGENCE": "CONFLICT",
+      "EVIDENCE_GATE_REJECTED": "REJECT"
+    }
+  },
+  "v0_2_round_loop": [
+    "ROLL",
+    "QUESTION",
+    "RECEIPTS",
+    "CRISSCROSS",
+    "FORWARD_OR_REVERSE_REPLAY",
+    "PINCER",
+    "IF_DIVERGENCE_THEN_CONFLICT_REPLAY",
+    "CLERK",
+    "PASS_OR_HOLD_OR_CONFLICT_OR_REJECT",
+    "EXPLAIN_SUPPORT",
+    "EXPLAIN_LIMITS",
+    "WRITE_RECEIPT"
+  ],
+  "conflict_scoring": {
+    "SPLIT_FALSE_CONFLICT": 2,
+    "DETECT_SHARED_SOURCE_FALSE_CORROBORATION": 3,
+    "VERSION_LOCK": 2,
+    "OFFICE_STATE_REPLAY": 3,
+    "SCOPE_MISMATCH_DETECTED": 2,
+    "SUPERSEDING_RECORD_BOUND": 3,
+    "PRESERVE_UNRESOLVED_CONFLICT": 4,
+    "ACCEPT_SOURCE_CORRECTION": 2,
+    "FORCE_VERDICT_WITHOUT_RECEIPT": 0
+  },
+  "new_badges": [
+    {"id":"KEEP_BOTH","earned_by":"Preserve two valid conflicting records without discarding either."},
+    {"id":"VERSION_LOCK","earned_by":"Bind each conflicting record to its correct date and version."},
+    {"id":"SCOPE_SPLITTER","earned_by":"Show that apparent conflict came from different jurisdictions, scopes, or standards."},
+    {"id":"APPEAL_CHAIN","earned_by":"Trace a ruling or administrative state through correction, appeal, rescission, or supersession."},
+    {"id":"CLERK_CLEAN","earned_by":"Send a typed edge through the Clerk without caller-supplied verdict or semantic widening."}
+  ],
+  "live_case_exercise": {
+    "label": "OFFICE_STATE_DRIFT",
+    "instruction": "At round start, recheck current official DOJ surfaces for Attorney General and Acting Attorney General status. Do not infer cause, legality, delegation, or practical authority from titles alone.",
+    "required_questions": [
+      "WHAT_DATE_DOES_EACH_OFFICIAL_SURFACE_DESCRIBE",
+      "WHAT_TITLE_IS_STATED",
+      "IS_ACTING_STATUS_STATED",
+      "WHAT_DELEGATION_OR_AUTHORITY_RECEIPT_EXISTS",
+      "HAS_A_LATER_RECORD_SUPERSEDED_THE_PRIOR_STATE",
+      "WHAT_REMAINS_UNKNOWN"
+    ]
+  },
+  "terminal_states": ["PASS","HOLD","CONFLICT","REJECT"],
+  "terminal_rule": "CONFLICT_IS_A_VALID_FINAL_STATE_WHEN_BOUND_RECORDS_GENUINELY_DISAGREE_AND_NO_SUPERSEDING_RECEIPT_RESOLVES_THE_EDGE",
+  "world_fact_promotions": 0,
+  "legal_findings_created": 0,
+  "guilt_determinations_created": 0,
+  "authority_created": false
+}

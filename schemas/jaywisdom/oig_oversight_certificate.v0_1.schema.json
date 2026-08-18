@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "OIG_OVERSIGHT_CERTIFICATE_V0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "classification",
+    "edge_id",
+    "source_objects",
+    "gate_outcomes",
+    "observer_result",
+    "doj_decision_created",
+    "legal_conclusion_created",
+    "legal_finding_created",
+    "white_house_misconduct_finding_created",
+    "authorization_created",
+    "policy_created",
+    "authority_created"
+  ],
+  "properties": {
+    "format": {"const": "OIG_OVERSIGHT_CERTIFICATE_V0.1"},
+    "classification": {"const": "EVIDENCE_CLASSIFICATION_ONLY"},
+    "edge_id": {"type": "string", "minLength": 1},
+    "source_objects": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/SourceObject"}
+    },
+    "gate_outcomes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identity", "provenance", "temporal", "delta", "dependency", "scope", "authority"],
+      "properties": {
+        "identity": {"$ref": "#/$defs/GateOutcome"},
+        "provenance": {"$ref": "#/$defs/GateOutcome"},
+        "temporal": {"$ref": "#/$defs/GateOutcome"},
+        "delta": {"$ref": "#/$defs/GateOutcome"},
+        "dependency": {"$ref": "#/$defs/GateOutcome"},
+        "scope": {"$ref": "#/$defs/GateOutcome"},
+        "authority": {"$ref": "#/$defs/GateOutcome"}
+      }
+    },
+    "observer_result": {
+      "type": "object",
+      "readOnly": true,
+      "additionalProperties": false,
+      "required": ["semantic_type", "value", "rendering"],
+      "properties": {
+        "semantic_type": {"const": "BOUNDED_EVIDENCE_GATE_DISPOSITION"},
+        "value": {"enum": ["PROVEN", "HOLD", "DIVERGENCE", "REJECTED"]},
+        "rendering": {
+          "enum": [
+            "EVIDENCE_GATE_PROVEN",
+            "EVIDENCE_GATE_HOLD",
+            "EVIDENCE_GATE_DIVERGENCE",
+            "EVIDENCE_GATE_REJECTED"
+          ]
+        }
+      },
+      "description": "Mechanically derived bounded evidence-gate disposition. External serialization MUST preserve semantic_type and rendering; caller-supplied observer_result remains forbidden."
+    },
+    "doj_decision_created": {"const": false},
+    "legal_conclusion_created": {"const": false},
+    "legal_finding_created": {"const": false},
+    "white_house_misconduct_finding_created": {"const": false},
+    "authorization_created": {"const": false},
+    "policy_created": {"const": false},
+    "authority_created": {"const": false}
+  },
+  "$defs": {
+    "SourceObject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "url", "sha256"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "format": "uri"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "byte_length": {"type": "integer", "minimum": 0},
+        "observed_at": {"type": "string"}
+      }
+    },
+    "GateOutcome": {
+      "enum": ["PROVEN", "HOLD", "HOLD_DELTA", "DIVERGENCE", "REJECTED", "DEPENDENCY_NOT_REQUIRED"]
+    }
+  }
+}

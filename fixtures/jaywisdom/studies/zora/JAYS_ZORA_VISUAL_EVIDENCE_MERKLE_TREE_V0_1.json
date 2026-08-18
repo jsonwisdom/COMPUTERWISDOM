@@ -1,0 +1,108 @@
+{
+  "format": "JAYS_ZORA_VISUAL_EVIDENCE_MERKLE_TREE_V0.1",
+  "classification": "ONCHAIN_VISUAL_PROVENANCE_INDEX_NOT_WORLD_TRUTH",
+  "title": "Jay's Zora Visual Evidence Merkle Tree v0.1",
+  "author_label": "jaywisdom.base.eth",
+  "identity_labels": ["jaywisdom.eth", "jaywisdom.base.eth", "zora:@jaywisdom"],
+  "wallet_anchor": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+  "user_declared_scale": "1000+",
+  "scale_state": "HOLD_ENUMERATION_REQUIRED",
+  "scale_rule": "1000_PLUS_MAY_BE_PROMOTED_ONLY_AFTER_PROFILE_OR_CHAIN_ENUMERATION_RETURNS_AT_LEAST_1000_DISTINCT_BOUND_LEAVES",
+  "membrane": [
+    "ON_CHAIN != TRUE",
+    "VISUAL != PROOF",
+    "ART != RECEIPT",
+    "MINT != FACT",
+    "HASHED != INTERPRETED",
+    "MERKLE_INCLUSION != SEMANTIC_VALIDITY",
+    "CREATOR_BINDING != CLAIM_VALIDATION",
+    "1000_PLUS_USER_DECLARED != 1000_PLUS_VERIFIED",
+    "AUTHORITY_CREATED = FALSE"
+  ],
+  "zora_enumeration_contract": {
+    "official_query": "getProfileCoins",
+    "identifier": "jaywisdom",
+    "alternate_identifier": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+    "count_field": "profile.createdCoins.count",
+    "pagination": "profile.createdCoins.pageInfo.endCursor",
+    "required_leaf_fields": [
+      "address",
+      "chainId",
+      "createdAt",
+      "creatorAddress",
+      "tokenUri",
+      "mediaContent.mimeType",
+      "mediaContent.originalUri"
+    ],
+    "status": "QUERY_SPEC_BOUND_ENUMERATION_NOT_YET_EXECUTED"
+  },
+  "merkle_algorithm": {
+    "canonicalization": "UTF8_JSON_SORTED_KEYS_NO_WHITESPACE_V0_1",
+    "leaf_hash": "SHA256(0x00 || canonical_leaf_bytes)",
+    "internal_hash": "SHA256(0x01 || left_32_bytes || right_32_bytes)",
+    "odd_node_rule": "PROMOTE_UNPAIRED_NODE_UNCHANGED",
+    "leaf_order": "CHAIN_ID_ASC_THEN_CONTRACT_ADDRESS_LOWERCASE_ASC_THEN_TOKEN_URI_ASC",
+    "proof_direction_required": true
+  },
+  "verified_seed_leaves": [
+    {
+      "leaf_id": "EAS_ALMS_REPLAY_DIAGRAM_V1",
+      "source_type": "EAS_ATTESTATION",
+      "chain": "base",
+      "attestation_uid": "0x95f53567bbecb3c5583283f8bd8a941059ef650ca2205041f31b3b25424d57f4",
+      "recipient": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+      "transaction_hash": "0x7c189d21d68ca83ff99290ed7e285c0502f1d1652183850bda51394af459aedb",
+      "artifact_id": "ARTIFACT_ALMS_001",
+      "title": "ALMS Replay Diagram v1",
+      "artifact_sha256": "22ce377dcc0d13be0a0b9ca715f45502b9fa975a35e65bbb4b4715f00fd2740c",
+      "artifact_ipfs_cid": "QmaNRxSRYcmC4GNsQekdhNSKNwUiKg3AtEXkSD334vexJM",
+      "leaf_hash": "1c41b7df545ff2eb3909d25d66282853ebe5939e9ab5abaa8e47cc1139fc73f2"
+    },
+    {
+      "leaf_id": "EAS_BABY_GRAY_GENESIS_VISUAL",
+      "source_type": "EAS_ATTESTATION",
+      "chain": "base",
+      "attestation_uid": "0xec9a29523f3ed0aac4e199ea6e34d07bf0ce015220678edde71444ff0230f1c8",
+      "recipient": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+      "transaction_hash": "0x749ac76bf5f5c931bd75a70a234a83e16ccf3ae4ae894f9a29ea7a35519a83e7",
+      "title": "Baby Gray Genesis Visual",
+      "original_doc_hash": "a49a8d4ffdb7f1801039f3af8ebdc53ac54e30d7cbd8dbc93e1ef179c56736e3",
+      "visual_identity_hash": "a49a8d4ffdb7f1801039f3af8ebdc53ac54e30d7cbd8dbc93e1ef179c56736e3",
+      "artifact_uri": "ipfs://bafybeifetkgu77nx6gabaoptv6hl3rj2yvhdbv6l3dn4spq66f44kzzw4m",
+      "leaf_hash": "c438ae755414bfed430fa1ecc6f65e464928dc8f0b8c01ed7cb983498ff984cb"
+    }
+  ],
+  "verified_seed_root": {
+    "leaf_count": 2,
+    "merkle_root": "5cbc91ab66bda512d4e800001f09a6986a1b4b82c97b29ca61828dfaadf911ca",
+    "meaning": "ROOT_COMMITS_TO_THE_TWO_BOUND_SEED_RECORDS_ONLY",
+    "does_not_mean": [
+      "ALL_ZORA_ASSETS_ENUMERATED",
+      "1000_PLUS_VERIFIED",
+      "VISUAL_CONTENT_TRUE",
+      "CLAIMS_IN_VISUALS_TRUE"
+    ]
+  },
+  "full_tree_state": {
+    "enumerated_leaf_count": 2,
+    "target_user_declared_minimum": 1000,
+    "full_merkle_root": null,
+    "terminal": "SEED_ROOT_PROVEN_FULL_TREE_HOLD"
+  },
+  "replay_path": [
+    "ZORA_PROFILE",
+    "ENUMERATE_CREATED_COINS",
+    "BIND_CHAIN_CONTRACT_TOKEN_URI_MEDIA_URI",
+    "OPTIONALLY_FETCH_MEDIA_BYTES",
+    "HASH_MEDIA_BYTES",
+    "CANONICALIZE_LEAF",
+    "HASH_LEAF",
+    "SORT_LEAVES",
+    "BUILD_MERKLE_LEVELS",
+    "PUBLISH_ROOT_AND_MANIFEST",
+    "VERIFY_RANDOM_INCLUSION_PROOFS",
+    "CLERK"
+  ],
+  "terminal": "SEED_ROOT_PROVEN_FULL_TREE_HOLD",
+  "authority_created": false
+}
