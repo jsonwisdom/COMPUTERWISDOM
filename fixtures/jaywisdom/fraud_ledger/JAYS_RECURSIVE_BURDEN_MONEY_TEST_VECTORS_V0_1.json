@@ -1,0 +1,19 @@
+{
+  "format": "JAYS_RECURSIVE_BURDEN_MONEY_TEST_VECTORS_V0.1",
+  "classification": "SYNTHETIC_SEMANTIC_BOUNDARY_TESTS_ONLY",
+  "vectors": [
+    {"id":"T01_COMPLETE_PASS","expected_status":"PASS"},
+    {"id":"T02_NUMBER_WITHOUT_STATE_HOLD","drop_money_field":"state","expected_status":"HOLD"},
+    {"id":"T03_RECEIPT_MISSING_HOLD","gate_overrides":{"receipt":"MISSING"},"expected_status":"HOLD"},
+    {"id":"T04_VALID_RECORDS_DISAGREE_CONFLICT","gate_overrides":{"source":"DISAGREES"},"expected_status":"CONFLICT"},
+    {"id":"T05_BOUND_EVIDENCE_CONTRADICTS_REJECT","gate_overrides":{"authority":"CONTRADICTED"},"expected_status":"REJECT"},
+    {"id":"T06_SAME_NUMBER_DIFFERENT_STATE_TRACE_HOLD","state_observations":[{"value":10000000000,"state":"APPROPRIATION","source_ref":"S-A","reconciled":false},{"value":10000000000,"state":"OBLIGATION","source_ref":"S-O","reconciled":false}],"expected_status":"HOLD","expected_dirty_math_signal":true},
+    {"id":"T07_RECONCILED_CROSS_STATE_PASS","state_observations":[{"value":10000000000,"state":"APPROPRIATION","source_ref":"S-A","reconciled":true},{"value":10000000000,"state":"OBLIGATION","source_ref":"S-O","reconciled":true}],"expected_status":"PASS","expected_dirty_math_signal":true},
+    {"id":"T08_TWO_DIRECTION_MISMATCH_CONFLICT","bottom_up":["R1","TX9","PROGRAM1","MONEY1","LAW1"],"expected_status":"CONFLICT"},
+    {"id":"T09_STATE_PROMOTION_REJECT","attempt_state_promotion":true,"expected_status":"REJECT"},
+    {"id":"T10_RECURSIVE_BINDING_INVALID_REJECT","recursive_binding_invalid":true,"expected_status":"REJECT"},
+    {"id":"T11_ZERO_AMOUNT_VALID_PASS","money_value":0,"expected_status":"PASS"},
+    {"id":"T12_SAME_STATE_SAME_VALUE_PASS","state_observations":[{"value":10000000000,"state":"OBLIGATION","source_ref":"S1","reconciled":true},{"value":10000000000,"state":"OBLIGATION","source_ref":"S2","reconciled":true}],"expected_status":"PASS"}
+  ],
+  "authority_created": false
+}

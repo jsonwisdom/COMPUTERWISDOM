@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/schemas/jays_recursive_burden_money_claim.v0_1.schema.json",
+  "title": "Jay's Recursive Burden / Congressional Money Claim v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["format", "claim_id", "claim_text", "money_object", "recursion", "top_down", "bottom_up", "authority_created"],
+  "properties": {
+    "format": {"const": "JAYS_RECURSIVE_BURDEN_MONEY_CLAIM_V0.1"},
+    "claim_id": {"type": "string", "minLength": 1},
+    "claim_text": {"type": "string", "minLength": 1},
+    "money_object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "currency"],
+      "properties": {
+        "value": {"type": "number", "minimum": 0},
+        "currency": {"const": "USD"},
+        "state": {"enum": ["REQUEST", "AUTHORIZATION", "APPROPRIATION", "APPORTIONMENT", "ALLOTMENT", "OBLIGATION", "OUTLAY", "EXPENDITURE_RESULT", "AUDITED_RESULT"]},
+        "account": {"type": "string"},
+        "program": {"type": "string"},
+        "fiscal_year": {"type": "string", "pattern": "^FY[0-9]{4}$"},
+        "authority_ref": {"type": "string"},
+        "source_ref": {"type": "string"},
+        "receipt_ref": {"type": "string"}
+      }
+    },
+    "recursion": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["depth", "claim_ref", "source", "authority", "action", "receipt", "replay", "terminal"],
+        "properties": {
+          "depth": {"type": "integer", "minimum": 0},
+          "claim_ref": {"type": "string", "minLength": 1},
+          "source": {"$ref": "#/$defs/gate"},
+          "authority": {"$ref": "#/$defs/gate"},
+          "action": {"$ref": "#/$defs/gate"},
+          "receipt": {"$ref": "#/$defs/gate"},
+          "replay": {"$ref": "#/$defs/gate"},
+          "receipt_claim_ref": {"type": "string"},
+          "terminal": {"type": "boolean"}
+        }
+      }
+    },
+    "state_observations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["value", "state", "source_ref", "reconciled"],
+        "properties": {
+          "value": {"type": "number", "minimum": 0},
+          "state": {"enum": ["REQUEST", "AUTHORIZATION", "APPROPRIATION", "APPORTIONMENT", "ALLOTMENT", "OBLIGATION", "OUTLAY", "EXPENDITURE_RESULT", "AUDITED_RESULT"]},
+          "source_ref": {"type": "string", "minLength": 1},
+          "reconciled": {"type": "boolean"}
+        }
+      }
+    },
+    "top_down": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "bottom_up": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "attempt_state_promotion": {"type": "boolean"},
+    "authority_created": {"const": false}
+  },
+  "$defs": {
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status"],
+      "properties": {
+        "status": {"enum": ["VERIFIED", "MISSING", "DISAGREES", "CONTRADICTED", "NOT_APPLICABLE"]},
+        "ref": {"type": "string"}
+      }
+    }
+  }
+}

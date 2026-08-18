@@ -1,0 +1,46 @@
+name: Congressional Accountability Membrane v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'schemas/jaywisdom/congressional_accountability_membrane.v0_1.schema.json'
+      - 'schemas/jaywisdom/source_bytes_receipt.v0_1.schema.json'
+      - 'schemas/jaywisdom/jays_recursive_burden_money_claim.v0_1.schema.json'
+      - 'fixtures/jaywisdom/fraud_ledger/CONGRESSIONAL_ACCOUNTABILITY_MEMBRANE_TEST_VECTORS_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/JOHN_JAY_CONSTITUTION_REVERSE_REPLAY_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/JAYS_RECURSIVE_BURDEN_MONEY_TEST_VECTORS_V0_1.json'
+      - 'fixtures/jaywisdom/source_bytes/**'
+      - 'tools/verify_congressional_accountability_membrane_v0_1.py'
+      - 'tools/verify_jays_recursive_burden_money_v0_1.py'
+      - 'tools/verify_source_bytes_receipt_v0_1.py'
+      - 'tools/verify_congressional_directory_contracts_v0_1.py'
+      - 'tools/verify_alabama_military_public_websites_contract_v0_1.py'
+      - 'agents/congressional_accountability/**'
+      - 'docs/jaywisdom/ALABAMA_MILITARY_PUBLIC_WEBSITES_CONGRESSIONAL_UPDATE_V0_1.md'
+      - 'docs/jaywisdom/JAYS_RECURSIVE_BURDEN_DIRTY_MATH_ALGORITHM_V0_1.md'
+      - '.github/workflows/congressional-accountability-membrane-v0-1.yml'
+  push:
+    branches:
+      - 'agent/congressional-accountability-membrane-v0-1'
+
+permissions:
+  contents: read
+
+jobs:
+  ci-congressional-membrane:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify governed directory topology and CI admission
+        run: python tools/verify_congressional_directory_contracts_v0_1.py
+      - name: Replay congressional semantic boundaries
+        run: python tools/verify_congressional_accountability_membrane_v0_1.py --self-test
+      - name: Replay Jay recursive burden money boundaries
+        run: python tools/verify_jays_recursive_burden_money_v0_1.py --self-test
+      - name: Replay SOURCE_BYTES semantic boundaries
+        run: python tools/verify_source_bytes_receipt_v0_1.py --self-test
+      - name: Replay Alabama military public website contract boundaries
+        run: python tools/verify_alabama_military_public_websites_contract_v0_1.py

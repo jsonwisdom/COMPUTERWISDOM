@@ -1,0 +1,131 @@
+{
+  "format": "ALABAMA_MILITARY_PUBLIC_WEBSITES_CONGRESSIONAL_CONTRACT_V0.1",
+  "classification": "PUBLIC_REFERENCE_LOCATOR_CONTRACT",
+  "replay_date": "2026-08-17",
+  "scope": "OFFICIAL_PUBLIC_FACING_WEB_LOCATORS_ONLY",
+  "purpose": "Provide a bounded congressional replay inventory of publicly accessible official Alabama military and National Guard web surfaces without collecting operational intelligence or promoting publication into fact, authority, guilt, or legal findings.",
+  "entries": [
+    {
+      "id": "AL_ARMY_REDSTONE_ARSENAL",
+      "service_or_component": "U.S. Army",
+      "public_name": "Redstone Arsenal / Team Redstone",
+      "primary_public_url": "https://home.army.mil/redstone/",
+      "locator_state": "OFFICIAL_PUBLIC_PAGE_VERIFIED",
+      "dedicated_home_verified": true
+    },
+    {
+      "id": "AL_ARMY_ANNISTON_ARMY_DEPOT",
+      "service_or_component": "U.S. Army",
+      "public_name": "Anniston Army Depot",
+      "primary_public_url": "https://anad.army.mil/",
+      "locator_state": "OFFICIAL_PUBLIC_PAGE_VERIFIED",
+      "dedicated_home_verified": true
+    },
+    {
+      "id": "AL_ARMY_FORT_RUCKER_AVCOE",
+      "service_or_component": "U.S. Army",
+      "public_name": "Fort Rucker / U.S. Army Aviation Center of Excellence",
+      "primary_public_url": "https://home.army.mil/rucker/",
+      "locator_state": "OFFICIAL_PUBLIC_PAGE_VERIFIED",
+      "dedicated_home_verified": true
+    },
+    {
+      "id": "AL_AIR_FORCE_MAXWELL_GUNTER",
+      "service_or_component": "U.S. Air Force",
+      "public_name": "Maxwell Air Force Base and Gunter Annex",
+      "primary_public_url": "https://www.maxwell.af.mil/",
+      "locator_state": "OFFICIAL_PUBLIC_PAGE_VERIFIED",
+      "dedicated_home_verified": true
+    },
+    {
+      "id": "AL_ANG_187_FIGHTER_WING",
+      "service_or_component": "Alabama Air National Guard",
+      "public_name": "187th Fighter Wing",
+      "primary_public_url": "https://www.187fw.ang.af.mil/",
+      "locator_state": "OFFICIAL_PUBLIC_PAGE_VERIFIED",
+      "dedicated_home_verified": true
+    },
+    {
+      "id": "AL_ANG_117_AIR_REFUELING_WING",
+      "service_or_component": "Alabama Air National Guard",
+      "public_name": "117th Air Refueling Wing",
+      "primary_public_url": "https://www.117arw.ang.af.mil/",
+      "locator_state": "OFFICIAL_PUBLIC_PAGE_VERIFIED",
+      "dedicated_home_verified": true
+    },
+    {
+      "id": "AL_NATIONAL_GUARD_STATE_HOME",
+      "service_or_component": "Alabama National Guard",
+      "public_name": "Alabama National Guard",
+      "primary_public_url": "https://al.ng.mil/",
+      "locator_state": "OFFICIAL_PUBLIC_PAGE_VERIFIED",
+      "dedicated_home_verified": true
+    },
+    {
+      "id": "AL_USCG_ATC_MOBILE",
+      "service_or_component": "U.S. Coast Guard",
+      "public_name": "Aviation Training Center Mobile",
+      "primary_public_url": "https://www.forcecom.uscg.mil/Our-Organization/FORCECOM-UNITS/ATC/",
+      "locator_state": "OFFICIAL_PUBLIC_PAGE_VERIFIED",
+      "dedicated_home_verified": true
+    },
+    {
+      "id": "AL_USCG_SECTOR_MOBILE",
+      "service_or_component": "U.S. Coast Guard",
+      "public_name": "Sector Mobile",
+      "primary_public_url": "https://www.atlanticarea.uscg.mil/Our-Organization/Heartland-District/Units/Sector-Mobile/",
+      "locator_state": "OFFICIAL_PUBLIC_PAGE_VERIFIED",
+      "dedicated_home_verified": true
+    },
+    {
+      "id": "AL_USMCR_MOBILE_BATTLESPACE_SURVEILLANCE_COMPANY",
+      "service_or_component": "U.S. Marine Corps Forces Reserve",
+      "public_name": "Battlespace Surveillance Company, Intelligence Support Battalion",
+      "primary_public_url": "https://www.marforres.marines.mil/Units/Force-Headquarters-Group/Intelligence-Support-Battalion/Battlespace-Surveillance-Company/",
+      "locator_state": "OFFICIAL_PUBLIC_PAGE_VERIFIED",
+      "dedicated_home_verified": true
+    },
+    {
+      "id": "AL_NAVY_RESERVE_CENTER_BIRMINGHAM_REFERENCE",
+      "service_or_component": "U.S. Navy Reserve",
+      "public_name": "Navy Reserve Center Birmingham",
+      "primary_public_url": "https://www.navyreserve.navy.mil/News/Article-View-News/Article/3485801/profiles-in-professionalism-lt-melissa-bagwell-seifert/",
+      "locator_state": "OFFICIAL_REFERENCE_PAGE_VERIFIED_DEDICATED_HOME_NOT_VERIFIED",
+      "dedicated_home_verified": false
+    }
+  ],
+  "public_web_deltas": [
+    {
+      "delta_id": "AL_ARMY_RUCKER_NOVOSEL_NOMENCLATURE_V0_1",
+      "subject": "Fort Rucker / Fort Novosel public web nomenclature",
+      "current_garrison_locator": "https://home.army.mil/rucker/",
+      "additional_official_locator": "https://www.army.mil/novosel",
+      "observed_state": "OFFICIAL_PUBLIC_WEB_NOMENCLATURE_DELTA",
+      "question": "Are the Army's public-facing installation names, aliases, redirects, and archival labels synchronized across official web properties?",
+      "error_asserted": false,
+      "intent_asserted": false,
+      "misconduct_asserted": false
+    }
+  ],
+  "congressional_replay_questions": [
+    "Are official Alabama military installation and unit public websites current and consistently named across service-owned domains?",
+    "Where an official unit is referenced but a dedicated public home is not verified, should the state be recorded as a public-information gap rather than inferred from secondary sources?",
+    "Do public website changes preserve enough versioning or archival context for citizens and congressional staff to distinguish current information from stale or transitional pages?",
+    "Are public affairs and FOIA pathways discoverable from the official public-facing surfaces without treating those pathways as evidence of any underlying allegation?"
+  ],
+  "membrane": {
+    "PUBLIC_PAGE_LOCATOR_VERIFIED": "DOES_NOT_PROVE_ALL_PAGE_CONTENT_TRUE",
+    "OFFICIAL_DOMAIN": "DOES_NOT_CREATE_LEGAL_FINDING",
+    "WEBSITE_DELTA": "DOES_NOT_PROVE_ERROR_OR_INTENT",
+    "MISSING_DEDICATED_HOME": "GAP_NOT_MISCONDUCT",
+    "TOOL_CALL": "DOES_NOT_EQUAL_GOVERNMENT_ACTION",
+    "OPENAI_DEVELOPER_SURFACE": "DOES_NOT_EQUAL_REPOSITORY_EXECUTOR"
+  },
+  "raw_source_bytes_frozen": false,
+  "operational_intelligence_collected": false,
+  "claim_verified": false,
+  "legal_finding_created": false,
+  "misconduct_finding_created": false,
+  "model_execution_performed": false,
+  "authority_created": false
+}

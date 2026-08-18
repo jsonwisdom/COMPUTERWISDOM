@@ -1,0 +1,120 @@
+{
+  "format": "SOURCE_BYTES_RECEIPT_TEST_VECTORS_V0.1",
+  "classification": "SYNTHETIC_BOUNDARY_TESTS_ONLY",
+  "vectors": [
+    {
+      "id": "T01_MATCHING_REFERENCE_PROVES_ONLY_BYTE_MATCH",
+      "fetch_status": "FETCHED",
+      "observed_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expected_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "byte_length": 128,
+      "comparison": "MATCH",
+      "attempt_claim": null,
+      "expected_disposition": "PROVEN"
+    },
+    {
+      "id": "T02_HASH_MISMATCH_REJECTED",
+      "fetch_status": "FETCHED",
+      "observed_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "expected_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "byte_length": 128,
+      "comparison": "MISMATCH",
+      "attempt_claim": null,
+      "expected_disposition": "REJECTED"
+    },
+    {
+      "id": "T03_LOCATOR_WITHOUT_FETCH_HOLD",
+      "fetch_status": "NOT_FETCHED",
+      "observed_sha256": null,
+      "expected_sha256": null,
+      "byte_length": null,
+      "comparison": "NOT_AVAILABLE",
+      "attempt_claim": null,
+      "expected_disposition": "HOLD"
+    },
+    {
+      "id": "T04_FETCHED_WITHOUT_REFERENCE_PROVES_OBSERVATION_NOT_AUTHENTICATION",
+      "fetch_status": "FETCHED",
+      "observed_sha256": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "expected_sha256": null,
+      "byte_length": 256,
+      "comparison": "NO_REFERENCE",
+      "attempt_claim": null,
+      "expected_disposition": "PROVEN"
+    },
+    {
+      "id": "T05_MALFORMED_OBSERVED_HASH_REJECTED",
+      "fetch_status": "FETCHED",
+      "observed_sha256": "not-a-sha",
+      "expected_sha256": null,
+      "byte_length": 12,
+      "comparison": "NO_REFERENCE",
+      "attempt_claim": null,
+      "expected_disposition": "REJECTED"
+    },
+    {
+      "id": "T06_OFFICIAL_LABEL_WITHOUT_SOURCE_BINDING_STAYS_BOUNDED",
+      "fetch_status": "FETCHED",
+      "observed_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "expected_sha256": null,
+      "byte_length": 512,
+      "comparison": "NO_REFERENCE",
+      "declared_source_class": "OFFICIAL_PUBLIC",
+      "source_identity_status": "LOCATOR_ONLY",
+      "attempt_claim": null,
+      "expected_disposition": "PROVEN"
+    },
+    {
+      "id": "T07_SAME_BYTES_DIFFERENT_LOCATOR_NOT_SAME_SOURCE_IDENTITY",
+      "fetch_status": "FETCHED",
+      "observed_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "expected_sha256": null,
+      "byte_length": 1024,
+      "comparison": "NO_REFERENCE",
+      "second_locator_same_digest": true,
+      "attempt_claim": "same_source_identity",
+      "expected_disposition": "REJECTED"
+    },
+    {
+      "id": "T08_SAME_LOCATOR_CHANGED_BYTES_HISTORY_DISTINGUISHABLE",
+      "fetch_status": "FETCHED",
+      "observed_sha256": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "expected_sha256": "1111111111111111111111111111111111111111111111111111111111111111",
+      "byte_length": 2048,
+      "comparison": "MISMATCH",
+      "attempt_claim": null,
+      "expected_disposition": "REJECTED"
+    },
+    {
+      "id": "T09_BYTE_MATCH_CANNOT_WIDEN_TO_FRAUD_PROVEN",
+      "fetch_status": "FETCHED",
+      "observed_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "expected_sha256": "2222222222222222222222222222222222222222222222222222222222222222",
+      "byte_length": 4096,
+      "comparison": "MATCH",
+      "attempt_claim": "fraud_proven",
+      "expected_disposition": "REJECTED"
+    },
+    {
+      "id": "T10_UNTYPED_PROVEN_EXTERNAL_OUTPUT_REJECTED",
+      "fetch_status": "FETCHED",
+      "observed_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "expected_sha256": "3333333333333333333333333333333333333333333333333333333333333333",
+      "byte_length": 8192,
+      "comparison": "MATCH",
+      "attempt_claim": "untyped_proven_output",
+      "expected_disposition": "REJECTED"
+    }
+  ],
+  "invariants": [
+    "LOCATOR_EXISTS != BYTES_FETCHED",
+    "BYTES_FETCHED != BYTES_MATCH_REFERENCE",
+    "BYTES_MATCH_REFERENCE != SOURCE_IDENTITY_AUTHENTICATED",
+    "SOURCE_IDENTITY_AUTHENTICATED != CONTENT_ASSERTION_TRUE",
+    "SOURCE_BYTES_AUTHENTICATED != WORLD_FACT_PROVEN",
+    "SAME_DIGEST != SAME_SOURCE_IDENTITY",
+    "SAME_LOCATOR != SAME_BYTES_OVER_TIME",
+    "NO_UNTYPED_PROVEN_MAY_CROSS_EXTERNAL_PRESENTATION_BOUNDARY"
+  ],
+  "authority_created": false
+}

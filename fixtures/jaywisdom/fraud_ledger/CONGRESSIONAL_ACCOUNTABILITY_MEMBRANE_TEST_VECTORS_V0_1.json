@@ -1,0 +1,23 @@
+{
+  "format": "CONGRESSIONAL_ACCOUNTABILITY_MEMBRANE_TEST_VECTORS_V0.1",
+  "classification": "SYNTHETIC_SEMANTIC_BOUNDARY_TESTS_ONLY",
+  "vectors": [
+    {"id":"T01_INTRODUCED_BILL_NOT_LAW","document_type":"BILL","bill_status":"INTRODUCED","expected_enacted":false,"expected_result":"PROVEN"},
+    {"id":"T02_PASSED_HOUSE_NOT_LAW","document_type":"BILL","bill_status":"PASSED_HOUSE","expected_enacted":false,"expected_result":"PROVEN"},
+    {"id":"T03_COMMITTEE_REPORT_NOT_LAW","document_type":"COMMITTEE_REPORT","bill_status":"NOT_APPLICABLE","expected_enacted":false,"expected_result":"PROVEN"},
+    {"id":"T04_PUBLIC_LAW_ENACTMENT_BOUND","document_type":"PUBLIC_LAW","bill_status":"ENACTED","public_law_number":"Public Law 119-1","enacted_at":"2026-01-01T00:00:00Z","expected_enacted":true,"expected_result":"PROVEN"},
+    {"id":"T05_ENACTED_WITHOUT_PUBLIC_LAW_HOLD","document_type":"PUBLIC_LAW","bill_status":"ENACTED","expected_enacted":false,"expected_result":"HOLD"},
+    {"id":"T06_AUTHORIZATION_NOT_APPROPRIATION","document_type":"BILL","bill_status":"INTRODUCED","set_lane":"AUTHORIZATION","expected_enacted":false,"expected_result":"PROVEN"},
+    {"id":"T07_APPROPRIATION_NOT_EXECUTION","document_type":"APPROPRIATION","bill_status":"NOT_APPLICABLE","set_lane":"APPROPRIATION","expected_enacted":false,"expected_result":"PROVEN"},
+    {"id":"T08_HEARING_NOT_FACT_PROVEN","document_type":"HEARING","bill_status":"NOT_APPLICABLE","set_lane":"HEARING_TESTIMONY","expected_enacted":false,"expected_result":"PROVEN"},
+    {"id":"T09_TESTIMONY_NOT_FACT_PROVEN","document_type":"TESTIMONY","bill_status":"NOT_APPLICABLE","set_lane":"HEARING_TESTIMONY","expected_enacted":false,"expected_result":"PROVEN"},
+    {"id":"T10_REFERRAL_NOT_FBI_FINDING","document_type":"REFERRAL","bill_status":"NOT_APPLICABLE","set_lane":"DOJ_FBI_REFERRAL_OR_RESPONSE","expected_enacted":false,"expected_result":"PROVEN"},
+    {"id":"T11_INVESTIGATION_NOT_GUILT","document_type":"INVESTIGATION_RECORD","bill_status":"NOT_APPLICABLE","set_lane":"DOJ_FBI_REFERRAL_OR_RESPONSE","expected_enacted":false,"expected_result":"PROVEN"},
+    {"id":"T12_IG_AUDIT_NOT_LEGAL_FINDING","document_type":"IG_AUDIT","bill_status":"NOT_APPLICABLE","set_lane":"IG_AUDIT","expected_enacted":false,"expected_result":"PROVEN"},
+    {"id":"T13_COURT_RECORD_ONLY_BOUNDS_REVIEW","document_type":"COURT_RECORD","bill_status":"NOT_APPLICABLE","set_lane":"JUDICIAL_FISA_CONSTITUTIONAL_REVIEW","expected_enacted":false,"expected_result":"PROVEN"},
+    {"id":"T14_MALFORMED_HASH_REJECTED","document_type":"BILL","bill_status":"INTRODUCED","sha256":"bad","expected_enacted":false,"expected_result":"REJECTED"},
+    {"id":"T15_MISSING_SOURCE_HOLD","document_type":"BILL","bill_status":"INTRODUCED","url":"","expected_enacted":false,"expected_result":"HOLD"},
+    {"id":"T16_RENDERER_WIDENING_REJECTED","document_type":"PUBLIC_LAW","bill_status":"ENACTED","public_law_number":"Public Law 119-2","enacted_at":"2026-02-01T00:00:00Z","attempt_claim":"fraud_proven","expected_enacted":true,"expected_result":"REJECTED"}
+  ],
+  "authority_created": false
+}

@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/schemas/congressional_accountability_membrane.v0_1.schema.json",
+  "title": "Jason's Congressional Accountability Membrane v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["record_id", "document", "lanes", "claims", "authority_created"],
+  "properties": {
+    "record_id": {"type": "string", "minLength": 1},
+    "document": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["document_type", "url", "sha256", "observed_at"],
+      "properties": {
+        "document_type": {
+          "enum": ["BILL", "JOINT_RESOLUTION", "PUBLIC_LAW", "COMMITTEE_REPORT", "HEARING", "TESTIMONY", "APPROPRIATION", "AGENCY_REPORT", "IG_AUDIT", "REFERRAL", "INVESTIGATION_RECORD", "COURT_RECORD", "OTHER"]
+        },
+        "url": {"type": "string", "format": "uri"},
+        "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "observed_at": {"type": "string", "format": "date-time"},
+        "bill_status": {"enum": ["NOT_APPLICABLE", "INTRODUCED", "PASSED_HOUSE", "PASSED_SENATE", "AGREED_BOTH_CHAMBERS", "PRESENTED", "VETOED", "ENACTED"]},
+        "public_law_number": {"type": "string", "pattern": "^Public Law [0-9]+-[0-9]+$"},
+        "enacted_at": {"type": "string", "format": "date-time"}
+      }
+    },
+    "lanes": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["STATUTORY_AUTHORITY", "BILL_STATUS", "AUTHORIZATION", "APPROPRIATION", "COMMITTEE_JURISDICTION", "REQUIRED_CONGRESSIONAL_NOTICE", "HEARING_TESTIMONY", "COMMITTEE_REPORT", "IG_AUDIT", "TRANSPARENCY_PUBLIC_REPORTING", "DOJ_FBI_REFERRAL_OR_RESPONSE", "JUDICIAL_FISA_CONSTITUTIONAL_REVIEW"],
+      "properties": {
+        "STATUTORY_AUTHORITY": {"$ref": "#/$defs/lane"},
+        "BILL_STATUS": {"$ref": "#/$defs/lane"},
+        "AUTHORIZATION": {"$ref": "#/$defs/lane"},
+        "APPROPRIATION": {"$ref": "#/$defs/lane"},
+        "COMMITTEE_JURISDICTION": {"$ref": "#/$defs/lane"},
+        "REQUIRED_CONGRESSIONAL_NOTICE": {"$ref": "#/$defs/lane"},
+        "HEARING_TESTIMONY": {"$ref": "#/$defs/lane"},
+        "COMMITTEE_REPORT": {"$ref": "#/$defs/lane"},
+        "IG_AUDIT": {"$ref": "#/$defs/lane"},
+        "TRANSPARENCY_PUBLIC_REPORTING": {"$ref": "#/$defs/lane"},
+        "DOJ_FBI_REFERRAL_OR_RESPONSE": {"$ref": "#/$defs/lane"},
+        "JUDICIAL_FISA_CONSTITUTIONAL_REVIEW": {"$ref": "#/$defs/lane"}
+      }
+    },
+    "claims": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["enacted_law", "agency_action_lawful", "underlying_claim_true", "fraud_proven", "guilt_established", "congressional_endorsement", "government_authority_created"],
+      "properties": {
+        "enacted_law": {"type": "boolean"},
+        "agency_action_lawful": {"const": false},
+        "underlying_claim_true": {"const": false},
+        "fraud_proven": {"const": false},
+        "guilt_established": {"const": false},
+        "congressional_endorsement": {"const": false},
+        "government_authority_created": {"const": false}
+      }
+    },
+    "authority_created": {"const": false}
+  },
+  "$defs": {
+    "lane": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "evidence_refs"],
+      "properties": {
+        "status": {"enum": ["NOT_EVALUATED", "SUPPORTED", "PARTIALLY_SUPPORTED", "NOT_SUPPORTED", "INDETERMINATE", "HOLD"]},
+        "evidence_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true}
+      }
+    }
+  }
+}

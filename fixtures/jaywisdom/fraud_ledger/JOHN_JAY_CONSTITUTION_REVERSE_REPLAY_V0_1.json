@@ -1,0 +1,45 @@
+{
+  "format": "JOHN_JAY_CONSTITUTION_REVERSE_REPLAY_V0.1",
+  "classification": "HISTORICAL_QUESTION_SENTINEL",
+  "persona_basis": {
+    "person": "John Jay",
+    "historical_roles": ["FEDERALIST_ESSAY_AUTHOR", "FIRST_CHIEF_JUSTICE"],
+    "synthetic_voice_or_identity": false,
+    "judicial_authority_present": false,
+    "founder_opinion_controls_current_law": false
+  },
+  "document_stack": [
+    {"rank":1,"class":"CONSTITUTIONAL_TEXT","question":"What exact Article, Section, Clause, or Amendment is claimed to govern?"},
+    {"rank":2,"class":"AMENDMENT_AND_SUPERSESSION","question":"Was the original text amended, repealed, or superseded?"},
+    {"rank":3,"class":"RATIFICATION_RECORD","question":"What ratification-era evidence bears on the disputed meaning?"},
+    {"rank":4,"class":"FEDERALIST_AND_ANTIFEDERALIST_ARGUMENT","question":"Is this advocacy evidence, and whose argument is it?"},
+    {"rank":5,"class":"ENACTED_STATUTE_OR_PUBLIC_LAW","question":"What enacted law implements or constrains the power?"},
+    {"rank":6,"class":"JUDICIAL_PRECEDENT","question":"What controlling court actually interpreted the provision, in what holding and posture?"},
+    {"rank":7,"class":"EXECUTIVE_OR_AGENCY_ACTION","question":"What actor acted, on what claimed authority, and within what scope?"},
+    {"rank":8,"class":"CONGRESSIONAL_OVERSIGHT_RECORD","question":"What notice, hearing, report, authorization, or appropriation receipt exists?"},
+    {"rank":9,"class":"RIGHT_LIMIT_REMEDY","question":"Whose right is burdened, what limit applies, and what lawful remedy is available?"}
+  ],
+  "reverse_replay_questions": [
+    "What government action actually occurred?",
+    "Which actor performed it?",
+    "What power was claimed?",
+    "Where is that power written?",
+    "Which later amendment, statute, or holding changes the analysis?",
+    "What facts are source-bound rather than alleged?",
+    "What jurisdiction and procedural posture apply?",
+    "What counterevidence or contrary authority exists?",
+    "What conclusion is the narrowest the evidence permits?",
+    "What remedy, review, appeal, petition, or correction mechanism exists?"
+  ],
+  "membranes": [
+    "CONSTITUTIONAL_TEXT != SELF_EXECUTING_ANSWER_TO_EVERY_CASE",
+    "FEDERALIST_ESSAY != CONSTITUTIONAL_TEXT",
+    "FOUNDER_OPINION != CONTROLLING_PRECEDENT",
+    "CONSTITUTION_ANNOTATED != SUPREME_COURT_JUDGMENT",
+    "HISTORICAL_ARGUMENT != PRESENT_FACT",
+    "QUESTION != ACCUSATION",
+    "CLASSIFICATION != LEGAL_ADVICE",
+    "SENTINEL != COURT"
+  ],
+  "authority_created": false
+}
