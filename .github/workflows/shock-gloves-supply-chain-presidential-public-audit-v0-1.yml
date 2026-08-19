@@ -1,0 +1,50 @@
+name: shock-gloves-supply-chain-presidential-public-audit-v0-1
+
+on:
+  pull_request:
+    paths:
+      - 'public-question-router/extensions/shock-gloves/**'
+      - '.github/workflows/shock-gloves-supply-chain-presidential-public-audit-v0-1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse JSON artifacts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('public-question-router/extensions/shock-gloves')
+          for path in sorted(root.rglob('*.json')):
+              json.loads(path.read_text(encoding='utf-8'))
+              print(f'JSON PASS: {path}')
+          PY
+      - name: Run fail-closed fixture regression
+        run: python public-question-router/extensions/shock-gloves/tests/test_shock_gloves_hold_fixture.py
+      - name: Boundary assertions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          root = Path('public-question-router/extensions/shock-gloves')
+          text = '\n'.join(p.read_text(encoding='utf-8') for p in root.rglob('*') if p.is_file())
+          required = [
+              'DARVO_PATTERN_CANDIDATE != DARVO_FINDING',
+              'METADATA_COLLECTION != METADATA_LEAK',
+              'SEALED != COVER_UP',
+              'CIA_AIRCRAFT != RENDITION',
+              'UCMJ_COURT_MARTIAL != MILITARY_COMMISSION',
+              'SHOCK_GLOVE_LABEL != DEVICE_IDENTITY',
+          ]
+          for marker in required:
+              assert marker in text, marker
+          print('boundary assertions: PASS')
+          PY
