@@ -1,0 +1,89 @@
+{
+  "schema_version": "boxd_four_onion_multipass.v0_1",
+  "question_id": "Q-20260819-001",
+  "record_onion": {
+    "state": "PASS",
+    "required_edges": ["EVENT", "TIMESTAMP", "SOURCE"],
+    "missing_edges": [],
+    "contradictions": [],
+    "receipts": [
+      {
+        "source_type": "PUBLIC_RECORD_FIXTURE",
+        "source_url": null,
+        "record_id": "BOXD-RUN-0001-RECORD",
+        "sha256": null,
+        "observed_at": "2026-08-19T00:04:00-05:00",
+        "status": "PASS"
+      }
+    ]
+  },
+  "authority_onion": {
+    "state": "PASS",
+    "required_edges": ["OFFICE", "JURISDICTION", "GRANTING_TEXT"],
+    "missing_edges": [],
+    "contradictions": [],
+    "receipts": [
+      {
+        "source_type": "AUTHORITY_FIXTURE",
+        "source_url": null,
+        "record_id": "BOXD-RUN-0001-AUTHORITY",
+        "sha256": null,
+        "observed_at": "2026-08-19T00:04:00-05:00",
+        "status": "PASS"
+      }
+    ]
+  },
+  "execution_onion": {
+    "state": "HOLD",
+    "required_edges": ["IMPLEMENTER", "RESOURCE_EDGE", "IMPLEMENTATION_RECEIPT"],
+    "missing_edges": ["IMPLEMENTATION_RECEIPT"],
+    "contradictions": [],
+    "receipts": []
+  },
+  "oversight_onion": {
+    "state": "PASS",
+    "required_edges": ["REVIEW_PATH"],
+    "missing_edges": [],
+    "contradictions": [],
+    "receipts": [
+      {
+        "source_type": "OVERSIGHT_FIXTURE",
+        "source_url": null,
+        "record_id": "BOXD-RUN-0001-OVERSIGHT",
+        "sha256": null,
+        "observed_at": "2026-08-19T00:04:00-05:00",
+        "status": "PASS"
+      }
+    ]
+  },
+  "cross_edges": {
+    "record_to_authority": {
+      "state": "PASS",
+      "question": "Does the observed action map to the claimed authority?",
+      "receipts": [],
+      "missing": []
+    },
+    "authority_to_execution": {
+      "state": "HOLD",
+      "question": "Did the authority lawfully reach the actor/resources that executed it?",
+      "receipts": [],
+      "missing": ["IMPLEMENTATION_RECEIPT"]
+    },
+    "execution_to_oversight": {
+      "state": "HOLD",
+      "question": "Did execution generate the required oversight trail?",
+      "receipts": [],
+      "missing": ["IMPLEMENTATION_RECEIPT"]
+    },
+    "oversight_to_record": {
+      "state": "PASS",
+      "question": "Is any review/correction delta preserved in the record?",
+      "receipts": [],
+      "missing": []
+    }
+  },
+  "multi_pass_state": "MULTI_PASS_HOLD",
+  "promotion_note": "Three onion PASS states cannot overcome a HOLD execution onion or HOLD cross-edge.",
+  "authority_created": false,
+  "legal_finding_created": false
+}
