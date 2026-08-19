@@ -1,0 +1,75 @@
+{
+  "schema": "citizen_eas_uid_recovery_replay.v0_1",
+  "recovery_id": "CITIZEN_LEDGER_ITEM_001_EAS_UID_RECOVERY_V0_1",
+  "parent_entry": "CITIZEN_LEDGER_ITEM_001",
+  "strategy": {
+    "preserve_parent_conflict": true,
+    "active_path": "OPTION_B_DIRECT_EAS_UID_REPLAY",
+    "option_a_hash_correction": "BLOCKED_NO_CORRECTED_HASH",
+    "option_b_eas_uid_replay": "COMPLETED_REJECT_DECLARED_BASE_SEPOLIA_OBJECTS",
+    "teaching_artifact": "PRESERVE_CONFLICT_APPEND_ONLY"
+  },
+  "declared_objects": {
+    "network": "base-sepolia",
+    "attestation_uid": "0x23b3b97514fa232cfdbcdee7a5031ff11a5fcd36aa874a5f4067805cd0ad6c84",
+    "schema_uid": "0x244c84adef25091c97090e6e3f0b1bb932fc7022b913b7546406f4213a202cab",
+    "transaction_hash": "0x4cef493d67d8744d2458fd82c169aa872b14cfe2ecaf13f03329b57bd93acc35",
+    "attester": "0x1dB2C056c7DeCD9f9fC574692b05F62aE34Fb8b5"
+  },
+  "internal_receipt_transition": {
+    "prior_receipt": {
+      "path": "receipts/anchor/EAS_SCHEMA_AND_ATTESTATION_ENTRIES_001.json",
+      "status": "SCHEMA_AND_ENTRIES_PREPARED_NOT_REGISTERED_NOT_SUBMITTED"
+    },
+    "later_receipt": {
+      "path": "receipts/anchor/EAS_ATTESTATION_SUBMITTED_001.json",
+      "status": "EAS_ATTESTATION_SUBMITTED",
+      "network": "base-sepolia",
+      "claims_schema_registered": true,
+      "claims_attestation_submitted": true,
+      "claims_attestation_uid_captured": true
+    },
+    "transition_status": "REJECT_DECLARED_BASE_SEPOLIA_REGISTRATION_AND_SUBMISSION_EDGES",
+    "reason": "Independent GitHub Actions replay on Base Sepolia found no declared transaction or receipt; EASSCAN GraphQL returned no attestation object; direct EAS getAttestation(bytes32) returned the zero Attestation struct; direct SchemaRegistry getSchema(bytes32) returned the zero SchemaRecord. The earlier prepared state remains preserved, and the later repository claim is not accepted as chain truth."
+  },
+  "live_replay_receipt": {
+    "path": "citizen/blockchain-reverse-replay/receipts/CITIZEN_LEDGER_ITEM_001_EAS_UID_DIRECT_REPLAY_2026_08_18.json",
+    "workflow_run_id": 32106944392,
+    "job_id": 95618197380,
+    "head_sha": "141d4af42578d28586ddcadbf661efcc33c7c0c2",
+    "artifact_id": 9313480754,
+    "artifact_sha256": "fdb0e6d5d28221ed21b2452b85803234b2e5507e8e39df30d879f4e75b96a8ff",
+    "observed_at_utc": "2026-08-18T06:26:48.316052Z"
+  },
+  "public_replay_surface": {
+    "official_explorer": "https://base-sepolia.easscan.org/",
+    "official_graphql": "https://base-sepolia.easscan.org/graphql",
+    "base_sepolia_rpc": "https://sepolia.base.org",
+    "base_sepolia_chain_id": 84532,
+    "eas_contract": "0x4200000000000000000000000000000000000021",
+    "schema_registry_contract": "0x4200000000000000000000000000000000000020"
+  },
+  "current_observations": {
+    "network_chain_id": "PASS_84532",
+    "transaction_by_hash": "REJECT_NOT_FOUND",
+    "transaction_receipt": "REJECT_NOT_FOUND",
+    "easscan_attestation_uid": "REJECT_NOT_FOUND_IN_INDEXER",
+    "eas_contract_getAttestation": "REJECT_ZERO_ATTESTATION_STRUCT",
+    "schema_registry_getSchema": "REJECT_ZERO_SCHEMA_RECORD",
+    "corrected_transaction_hash": "NOT_FOUND",
+    "user_supplied_transaction_rpc_replay": "CORROBORATED_BY_GITHUB_ACTIONS_PUBLIC_NETWORK_REPLAY"
+  },
+  "terminal": "REJECT",
+  "terminal_reason": "Option B completed. The repository-declared Base Sepolia transaction, onchain attestation UID, and schema registration are contradicted by independent public network replay. This REJECT is scoped to the declared Base Sepolia anchor-object claims only; it is not motive proof and not a claim about unrelated networks or offchain material.",
+  "parent_state": "CONFLICT_PRESERVED_AS_HISTORICAL_TEACHING_ARTIFACT",
+  "boundaries": {
+    "repository_record_not_chain_truth": true,
+    "negative_chain_replay_not_motive_proof": true,
+    "rejected_base_sepolia_edge_not_global_absence": true,
+    "corrected_hash_must_come_from_bound_object": true,
+    "parent_conflict_must_not_be_rewritten": true,
+    "round_06_executive_ready_not_rolled": true,
+    "family_lane_imported": false,
+    "authority_created": false
+  }
+}

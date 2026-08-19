@@ -1,0 +1,88 @@
+{
+  "schema": "citizen_gambit_ci_classification.v0_1",
+  "observed_date": "2026-08-18",
+  "scope": "Citizen Gambit replay stack only",
+  "primary_pr": {
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "pr": 493,
+    "base": "agent/jaytree-evidence-mechanics-v0-1",
+    "parent_stack_pr": 481,
+    "state": "OPEN_DRAFT_UNMERGED",
+    "classification": "STACK_GREEN_NOT_DEFAULT_BRANCH_CANONICAL"
+  },
+  "downstream": [
+    {
+      "repository": "jsonwisdom/receiptos-base",
+      "pr": 178,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "critical_replay_packet_check": "PASS",
+      "red_checks": [
+        {
+          "workflow": "Pre-Publish Audit",
+          "run_id": 32107151424,
+          "failed_step": "npm audit --audit-level=high",
+          "observed_issue": "3 high severity vulnerabilities in the current dependency graph involving postcss and sharp through Next.js; automated force-fix proposes a breaking Next.js upgrade",
+          "classification": "DEPENDENCY_SECURITY_RED_SEPARATE_FROM_CITIZEN_REPLAY_PACKET",
+          "waive": false,
+          "force_green": false,
+          "recommended_lane": "SEPARATE_DEPENDENCY_SECURITY_PR"
+        },
+        {
+          "workflow": "ReceiptOS Website CI",
+          "run_id": 32107151388,
+          "failed_step": "NPM audit high+",
+          "observed_issue": "same high-severity npm audit condition prevents later website/build steps from running",
+          "classification": "DEPENDENCY_SECURITY_RED_SEPARATE_FROM_CITIZEN_REPLAY_PACKET",
+          "waive": false,
+          "force_green": false,
+          "recommended_lane": "SEPARATE_DEPENDENCY_SECURITY_PR"
+        }
+      ]
+    },
+    {
+      "repository": "jsonwisdom/AL",
+      "pr": 420,
+      "state": "OPEN_DRAFT_UNMERGED",
+      "red_checks": [
+        {
+          "workflow": "Alabama Engine ENS Divergence",
+          "run_id": 32107199163,
+          "failed_step": "Run Alabama Engine divergence checker",
+          "observed_issue": "RED_EXPIRED subject=jaywisdom.base.eth expired_at=2026-07-16T06:20:00Z missing=alms.packet.cid alms.packet.sha256 alms.matrix.hash",
+          "classification": "PRE_EXISTING_POLICY_RED_NOT_CITIZEN_REPLAY_PACKET_FAILURE",
+          "waive": false,
+          "force_green": false,
+          "recommended_lane": "SEPARATE_ENS_POLICY_REPLAY_OR_RENEWAL_DECISION"
+        },
+        {
+          "workflow": "resolver-ci",
+          "run_id": 32107199125,
+          "failed_step": "Install Foundry",
+          "observed_issue": "foundry-rs nightly release asset returned HTTP 404 before Build or Test executed",
+          "classification": "TOOLCHAIN_INFRASTRUCTURE_RED_NO_BUILD_OR_TEST_REACHED",
+          "waive": false,
+          "force_green": false,
+          "recommended_lane": "PIN_STABLE_FOUNDRY_OR_REPAIR_TOOLCHAIN_IN_SEPARATE_PR"
+        }
+      ]
+    }
+  ],
+  "merge_gate": {
+    "documentation_frozen": true,
+    "ci_classified": true,
+    "primary_ready_for_review": false,
+    "parent_stack_decision_complete": false,
+    "merge_authorized": false,
+    "reason": "Documentation and CI classification precede ready-for-review. PR #493 remains stacked on draft/unmerged PR #481. Downstream reds are typed but not waived or force-greened."
+  },
+  "invariants": [
+    "CI_GREEN != MERGED",
+    "STACK_GREEN != DEFAULT_BRANCH_CANONICAL",
+    "REPLAY_PACKET_PASS != REPO_WIDE_GREEN",
+    "DEPENDENCY_SECURITY_RED != DOCTRINE_FAILURE",
+    "TOOLCHAIN_404 != CODE_FAILURE",
+    "POLICY_RED != CITIZEN_REPLAY_PACKET_FAILURE",
+    "WAIVER != FIX",
+    "AUTHORITY_CREATED = FALSE"
+  ]
+}

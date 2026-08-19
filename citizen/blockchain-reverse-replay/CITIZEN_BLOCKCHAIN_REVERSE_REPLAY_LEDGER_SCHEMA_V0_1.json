@@ -1,0 +1,117 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "citizen_blockchain_reverse_replay_ledger.v0_1",
+  "title": "Citizen Blockchain Reverse Replay Ledger v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "ledger_id", "lane", "round_06_executive_state", "entries", "boundaries"],
+  "properties": {
+    "schema": {"const": "citizen_blockchain_reverse_replay_ledger.v0_1"},
+    "ledger_id": {"const": "CITIZEN_BLOCKCHAIN_REVERSE_REPLAY_LEDGER_V0_1"},
+    "lane": {"const": "AMERICAN_CITIZEN_PUBLIC_RECORD"},
+    "round_06_executive_state": {"enum": ["READY_NOT_ROLLED", "ROLLED"]},
+    "entries": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/entry"}
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "american_citizen_not_american_family",
+        "joy_family_privacy_sealed",
+        "citizen_research_public_record_only",
+        "tx_hash_not_fact",
+        "hash_not_semantic_truth",
+        "token_transfer_not_invoice",
+        "onchain_event_not_legal_authority",
+        "wallet_address_not_natural_person_identity",
+        "missing_link_is_hold",
+        "dice_select_question",
+        "dice_decide_truth",
+        "authority_created"
+      ],
+      "properties": {
+        "american_citizen_not_american_family": {"const": true},
+        "joy_family_privacy_sealed": {"const": true},
+        "citizen_research_public_record_only": {"const": true},
+        "tx_hash_not_fact": {"const": true},
+        "hash_not_semantic_truth": {"const": true},
+        "token_transfer_not_invoice": {"const": true},
+        "onchain_event_not_legal_authority": {"const": true},
+        "wallet_address_not_natural_person_identity": {"const": true},
+        "missing_link_is_hold": {"const": true},
+        "dice_select_question": {"const": true},
+        "dice_decide_truth": {"const": false},
+        "authority_created": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "url", "source_class"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "format": "uri"},
+        "source_class": {"enum": ["REPO_RECORD", "CHAIN_RPC", "CHAIN_EXPLORER", "EAS_EXPLORER", "OFFCHAIN_DOCUMENT", "GOVERNMENT_RECORD"]}
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "value", "sources"],
+      "properties": {
+        "status": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]},
+        "value": {"type": "string"},
+        "sources": {"type": "array", "items": {"$ref": "#/$defs/source"}}
+      }
+    },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "entry_id", "current_claim", "network", "wallet_or_contract_state", "transaction",
+        "receipt_and_event_log", "contract_or_function", "asset_or_counterparty", "offchain_commercial_bridge",
+        "payment_source", "government_money_bridge", "original_authority_claim", "reverse_replay", "entry_boundaries"
+      ],
+      "properties": {
+        "entry_id": {"type": "string", "pattern": "^CITIZEN_LEDGER_ITEM_[0-9]{3}$"},
+        "current_claim": {"type": "string", "minLength": 1},
+        "network": {"$ref": "#/$defs/edge"},
+        "wallet_or_contract_state": {"$ref": "#/$defs/edge"},
+        "transaction": {"$ref": "#/$defs/edge"},
+        "receipt_and_event_log": {"$ref": "#/$defs/edge"},
+        "contract_or_function": {"$ref": "#/$defs/edge"},
+        "asset_or_counterparty": {"$ref": "#/$defs/edge"},
+        "offchain_commercial_bridge": {"$ref": "#/$defs/edge"},
+        "payment_source": {"$ref": "#/$defs/edge"},
+        "government_money_bridge": {"$ref": "#/$defs/edge"},
+        "original_authority_claim": {"$ref": "#/$defs/edge"},
+        "reverse_replay": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["terminal", "reason", "missing_edges", "independent_chain_replay"],
+          "properties": {
+            "terminal": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]},
+            "reason": {"type": "string", "minLength": 1},
+            "missing_edges": {"type": "array", "items": {"type": "string"}},
+            "independent_chain_replay": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]}
+          }
+        },
+        "entry_boundaries": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["natural_person_identity_bound", "invoice_bound", "legal_authority_bound", "causation_bound"],
+          "properties": {
+            "natural_person_identity_bound": {"type": "boolean"},
+            "invoice_bound": {"type": "boolean"},
+            "legal_authority_bound": {"type": "boolean"},
+            "causation_bound": {"type": "boolean"}
+          }
+        }
+      }
+    }
+  }
+}

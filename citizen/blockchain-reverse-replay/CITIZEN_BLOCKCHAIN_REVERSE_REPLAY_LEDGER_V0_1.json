@@ -1,0 +1,140 @@
+{
+  "schema": "citizen_blockchain_reverse_replay_ledger.v0_1",
+  "ledger_id": "CITIZEN_BLOCKCHAIN_REVERSE_REPLAY_LEDGER_V0_1",
+  "lane": "AMERICAN_CITIZEN_PUBLIC_RECORD",
+  "round_06_executive_state": "READY_NOT_ROLLED",
+  "entries": [
+    {
+      "entry_id": "CITIZEN_LEDGER_ITEM_001",
+      "current_claim": "COMPUTERWISDOM's frozen anchor topology declares a Base Sepolia EAS witness using transaction hash 0x4cef493d67d8744d2458fd82c169aa872b14cfe2ecaf13f03329b57bd93acc35. A user-supplied negative RPC replay now reports null transaction and receipt results on Base Sepolia and Base mainnet. The contradiction is preserved as CONFLICT pending a corrected hash, direct EAS attestation replay, or independently bound chain record.",
+      "network": {
+        "status": "PASS",
+        "value": "base-sepolia; repository-declared intended network only; this PASS binds the repository label, not transaction existence",
+        "sources": [
+          {
+            "title": "FINAL_ANCHOR_TOPOLOGY_v1.md",
+            "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/stack/dual-onion-azure-blockchain-audit-v0-1/FINAL_ANCHOR_TOPOLOGY_v1.md",
+            "source_class": "REPO_RECORD"
+          }
+        ]
+      },
+      "wallet_or_contract_state": {
+        "status": "HOLD",
+        "value": "attester address declared as 0x1dB2C056c7DeCD9f9fC574692b05F62aE34Fb8b5; account-control mechanism and natural-person binding remain unproven",
+        "sources": [
+          {
+            "title": "FINAL_ANCHOR_TOPOLOGY_v1.md",
+            "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/stack/dual-onion-azure-blockchain-audit-v0-1/FINAL_ANCHOR_TOPOLOGY_v1.md",
+            "source_class": "REPO_RECORD"
+          }
+        ]
+      },
+      "transaction": {
+        "status": "CONFLICT",
+        "value": "Repository declares transaction 0x4cef493d67d8744d2458fd82c169aa872b14cfe2ecaf13f03329b57bd93acc35 on Base Sepolia; user-supplied RPC replay reports eth_getTransactionByHash=null and eth_getTransactionReceipt=null on Base Sepolia and corresponding null lookup on Base mainnet.",
+        "sources": [
+          {
+            "title": "FINAL_ANCHOR_TOPOLOGY_v1.md",
+            "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/stack/dual-onion-azure-blockchain-audit-v0-1/FINAL_ANCHOR_TOPOLOGY_v1.md",
+            "source_class": "REPO_RECORD"
+          },
+          {
+            "title": "CITIZEN_LEDGER_ITEM_001_NEGATIVE_RPC_REPLAY_2026_08_18.json",
+            "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/stack/dual-onion-azure-blockchain-audit-v0-1/citizen/blockchain-reverse-replay/receipts/CITIZEN_LEDGER_ITEM_001_NEGATIVE_RPC_REPLAY_2026_08_18.json",
+            "source_class": "REPO_RECORD"
+          }
+        ]
+      },
+      "receipt_and_event_log": {
+        "status": "CONFLICT",
+        "value": "Repository declares EAS schema UID 0x244c84adef25091c97090e6e3f0b1bb932fc7022b913b7546406f4213a202cab and attestation UID 0x23b3b97514fa232cfdbcdee7a5031ff11a5fcd36aa874a5f4067805cd0ad6c84, but the user-supplied replay reports no transaction receipt or logs for the declared transaction hash. The UIDs must be replayed directly before any EAS witness claim is restored.",
+        "sources": [
+          {
+            "title": "FINAL_ANCHOR_TOPOLOGY_v1.md",
+            "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/stack/dual-onion-azure-blockchain-audit-v0-1/FINAL_ANCHOR_TOPOLOGY_v1.md",
+            "source_class": "REPO_RECORD"
+          },
+          {
+            "title": "CITIZEN_LEDGER_ITEM_001_NEGATIVE_RPC_REPLAY_2026_08_18.json",
+            "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/stack/dual-onion-azure-blockchain-audit-v0-1/citizen/blockchain-reverse-replay/receipts/CITIZEN_LEDGER_ITEM_001_NEGATIVE_RPC_REPLAY_2026_08_18.json",
+            "source_class": "REPO_RECORD"
+          }
+        ]
+      },
+      "contract_or_function": {
+        "status": "HOLD",
+        "value": "no transaction is presently bound from the supplied hash, so exact target contract, calldata, and function remain unavailable",
+        "sources": []
+      },
+      "asset_or_counterparty": {
+        "status": "HOLD",
+        "value": "no asset transfer, commercial counterparty, or natural-person counterparty is established",
+        "sources": []
+      },
+      "offchain_commercial_bridge": {
+        "status": "HOLD",
+        "value": "no agreement, invoice, purchase order, or commercial-purpose document is bound",
+        "sources": []
+      },
+      "payment_source": {
+        "status": "HOLD",
+        "value": "no payment-source claim is bound",
+        "sources": []
+      },
+      "government_money_bridge": {
+        "status": "HOLD",
+        "value": "government-money applicability is not established; no appropriation or statutory spending authority is inferred",
+        "sources": []
+      },
+      "original_authority_claim": {
+        "status": "HOLD",
+        "value": "the anchor topology expressly disclaims global legitimacy and authority creation; the negative replay creates no governmental or legal authority conclusion",
+        "sources": [
+          {
+            "title": "FINAL_ANCHOR_TOPOLOGY_v1.md",
+            "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/stack/dual-onion-azure-blockchain-audit-v0-1/FINAL_ANCHOR_TOPOLOGY_v1.md",
+            "source_class": "REPO_RECORD"
+          }
+        ]
+      },
+      "reverse_replay": {
+        "terminal": "CONFLICT",
+        "reason": "The repository-declared Base Sepolia transaction witness conflicts with the user-supplied RPC replay reporting no transaction and no receipt for that hash. The assistant's attempted external web verification was unavailable in this turn, so the evidence is preserved as CONFLICT rather than promoted to REJECT.",
+        "missing_edges": [
+          "CORRECT_TRANSACTION_HASH_OR_EXPLICIT_CORRECTION",
+          "DIRECT_EAS_ATTESTATION_UID_REPLAY",
+          "INDEPENDENT_CHAIN_TRANSACTION_RECEIPT",
+          "BLOCK_NUMBER_AND_STATUS",
+          "EXACT_LOG_OR_ATTESTATION_DECODE",
+          "CONTRACT_AND_FUNCTION",
+          "ACCOUNT_CONTROL_MECHANISM",
+          "NATURAL_PERSON_IDENTITY_IF_CLAIMED",
+          "OFFCHAIN_AGREEMENT_OR_INVOICE_IF_CLAIMED",
+          "PAYMENT_SOURCE_IF_CLAIMED",
+          "APPROPRIATION_AND_AUTHORITY_ONLY_IF_GOVERNMENT_MONEY"
+        ],
+        "independent_chain_replay": "CONFLICT"
+      },
+      "entry_boundaries": {
+        "natural_person_identity_bound": false,
+        "invoice_bound": false,
+        "legal_authority_bound": false,
+        "causation_bound": false
+      }
+    }
+  ],
+  "boundaries": {
+    "american_citizen_not_american_family": true,
+    "joy_family_privacy_sealed": true,
+    "citizen_research_public_record_only": true,
+    "tx_hash_not_fact": true,
+    "hash_not_semantic_truth": true,
+    "token_transfer_not_invoice": true,
+    "onchain_event_not_legal_authority": true,
+    "wallet_address_not_natural_person_identity": true,
+    "missing_link_is_hold": true,
+    "dice_select_question": true,
+    "dice_decide_truth": false,
+    "authority_created": false
+  }
+}
