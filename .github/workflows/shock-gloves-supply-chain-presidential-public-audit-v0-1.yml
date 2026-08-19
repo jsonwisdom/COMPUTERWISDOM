@@ -32,6 +32,8 @@ jobs:
         run: python public-question-router/extensions/shock-gloves/tests/test_shock_gloves_hold_fixture.py
       - name: Run BoxD four-onion Multi Pass regression
         run: python public-question-router/extensions/shock-gloves/boxdee/tests/test_boxd_four_onion_multipass.py
+      - name: Run Minnesota Quad Onion ledger regression
+        run: python public-question-router/extensions/shock-gloves/boxdee/minnesota/tests/test_mn_quad_onion_ledger.py
       - name: Boundary assertions
         run: |
           python - <<'PY'
@@ -49,6 +51,7 @@ jobs:
               'FAFO != RETALIATION',
               'PHYSICAL_SHOCK = PROHIBITED',
               'AGE_TARGETED_HARM = FALSE',
+              'FOLLOW_THE_MONEY_WITHOUT_PROMOTING_THE_RAIL_INTO_THE_CRIME',
           ]
           for marker in required:
               assert marker in text, marker
