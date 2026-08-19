@@ -1,0 +1,217 @@
+{
+  "schema": "boxd.mn_quad_onion_ledger.v0_1",
+  "ledger_id": "MN-QUAD-ONION-HOLD-0001",
+  "jurisdiction": "MN",
+  "status": "DRAFT",
+  "generated_at": "2026-08-19T00:23:00-05:00",
+  "authority_created": false,
+  "legal_finding_created": false,
+  "source_receipts": [
+    {
+      "source_id": "MN-HSS-BRILLIANT-MINDS-PLEAS-2026-07-24",
+      "uri": "https://www.justice.gov/opa/pr/four-men-plead-guilty-2m-minnesota-medicaid-fraud",
+      "source_type": "DOJ",
+      "published_date": "2026-07-24",
+      "claim_scope": "Four Brilliant Minds defendants pleaded guilty to wire fraud involving approximately $2.2M in HSS funds",
+      "state": "PASS_SOURCE_BOUND"
+    },
+    {
+      "source_id": "MN-HSS-BRILLIANT-MINDS-AMEX",
+      "uri": "https://www.justice.gov/usao-mn/pr/defendants-charged-first-wave-housing-stabilization-fraud-cases",
+      "source_type": "DOJ",
+      "published_date": null,
+      "claim_scope": "Public charging record names a shared Platinum American Express card and nearly $500,000 in charges paid from company accounts",
+      "state": "PASS_SOURCE_BOUND"
+    },
+    {
+      "source_id": "MN-FOF-FINANCIAL-INSTITUTIONS-SALAH",
+      "uri": "https://www.justice.gov/usao-mn/pr/former-minneapolis-mayoral-aide-and-safari-restaurant-co-owner-both-plead-guilty-250",
+      "source_type": "DOJ",
+      "published_date": null,
+      "claim_scope": "Plea/forfeiture record names seized balances at Bell Bank, Northeast Bank, and Star Choice Credit Union",
+      "state": "PASS_SOURCE_BOUND"
+    },
+    {
+      "source_id": "MN-FOF-ALISHIRE-KENYA-WIRE",
+      "uri": "https://www.justice.gov/usao-mn/pr/brooklyn-park-man-pleads-guilty-his-role-250-million-feeding-our-future-fraud-scheme",
+      "source_type": "DOJ",
+      "published_date": null,
+      "claim_scope": "$216,300 wire from Hoodo Properties to Jaafar Jelle & Co. toward Karibu Palms Resort in Kenya plus forfeiture",
+      "state": "PASS_CASE_BOUND"
+    }
+  ],
+  "onion_1_criminal_receipts": [
+    {
+      "case_id": "MN-HSS-BRILLIANT-MINDS",
+      "actor_id": "BRILLIANT-MINDS-FOUR-PLEA-COHORT",
+      "actor_type": "PERSON",
+      "program": "Housing Stabilization Services / Minnesota Medicaid",
+      "proceeding_type": "CRIMINAL",
+      "adjudication_status": "PLEADED_GUILTY",
+      "conduct_summary": "Four defendants pleaded guilty to wire fraud involving approximately $2.2M in HSS funds.",
+      "source_receipt_ids": ["MN-HSS-BRILLIANT-MINDS-PLEAS-2026-07-24"],
+      "state": "PASS_CASE_BOUND"
+    }
+  ],
+  "onion_2_payment_control_edges": [
+    {
+      "edge_id": "O2-HSS-DHS-BRILLIANT-MINDS",
+      "program": "Housing Stabilization Services / Minnesota Medicaid",
+      "payor": "Minnesota Medicaid / DHS payment administration",
+      "approval_actor_or_system": null,
+      "recipient_entity": "Brilliant Minds-related provider entities",
+      "payment_authority_basis": "HSS Medicaid reimbursement program; deeper claim-level authority receipts remain open",
+      "claim_id": null,
+      "payment_or_remittance_id": null,
+      "control_flags": ["CLAIM_LEVEL_APPROVAL_PATH_HOLD", "REMITTANCE_ID_HOLD"],
+      "source_receipt_ids": ["MN-HSS-BRILLIANT-MINDS-PLEAS-2026-07-24"],
+      "state": "PASS_PARTIAL"
+    }
+  ],
+  "onion_3_financial_rail_edges": [
+    {
+      "edge_id": "O3-BRILLIANT-MINDS-AMEX",
+      "case_id": "MN-HSS-BRILLIANT-MINDS",
+      "rail_type": "CARD",
+      "origin": {"name": "Brilliant Minds company accounts", "entity_id": null, "account_last4": null, "country": "US"},
+      "counterparty": {"name": "American Express card account", "entity_id": null, "account_last4": null, "country": "US"},
+      "money": {"amount": 500000, "currency": "USD", "approximate": true, "public_text": "nearly $500,000 in charges"},
+      "transaction_date": null,
+      "bank": null,
+      "card_network": "American Express",
+      "merchant": null,
+      "mcc": null,
+      "acquirer": null,
+      "processor_gateway": null,
+      "foreign_destination": null,
+      "asset": null,
+      "institution_wrongdoing_claimed": false,
+      "institution_finding_id": null,
+      "source_receipt_ids": ["MN-HSS-BRILLIANT-MINDS-AMEX"],
+      "state": "PASS_PARTIAL"
+    },
+    {
+      "edge_id": "O3-SALAH-BELL-BANK",
+      "case_id": "MN-FOF-SALAH",
+      "rail_type": "BANK_ACCOUNT",
+      "origin": {"name": "Cosmopolitan Business Solutions d/b/a Safari Restaurant", "entity_id": null, "account_last4": null, "country": "US"},
+      "counterparty": {"name": "Bell Bank", "entity_id": null, "account_last4": null, "country": "US"},
+      "money": {"amount": 309993.51, "currency": "USD", "approximate": false, "public_text": null},
+      "transaction_date": null,
+      "bank": "Bell Bank",
+      "card_network": null,
+      "merchant": null,
+      "mcc": null,
+      "acquirer": null,
+      "processor_gateway": null,
+      "foreign_destination": null,
+      "asset": "seized account balance",
+      "institution_wrongdoing_claimed": false,
+      "institution_finding_id": null,
+      "source_receipt_ids": ["MN-FOF-FINANCIAL-INSTITUTIONS-SALAH"],
+      "state": "PASS_CASE_BOUND"
+    },
+    {
+      "edge_id": "O3-ALISHIRE-KENYA-WIRE",
+      "case_id": "MN-FOF-ALISHIRE",
+      "rail_type": "FOREIGN_TRANSFER",
+      "origin": {"name": "Hoodo Properties", "entity_id": null, "account_last4": null, "country": "US"},
+      "counterparty": {"name": "Jaafar Jelle & Co.", "entity_id": null, "account_last4": null, "country": "Kenya"},
+      "money": {"amount": 216300, "currency": "USD", "approximate": false, "public_text": null},
+      "transaction_date": null,
+      "bank": null,
+      "card_network": null,
+      "merchant": null,
+      "mcc": null,
+      "acquirer": null,
+      "processor_gateway": null,
+      "foreign_destination": "Kenya",
+      "asset": "Karibu Palms Resort, Diani Beach",
+      "institution_wrongdoing_claimed": false,
+      "institution_finding_id": null,
+      "source_receipt_ids": ["MN-FOF-ALISHIRE-KENYA-WIRE"],
+      "state": "PASS_CASE_BOUND"
+    }
+  ],
+  "onion_4_oversight_recovery_edges": [
+    {
+      "edge_id": "O4-SALAH-BELL-SEIZURE",
+      "case_id": "MN-FOF-SALAH",
+      "action_type": "SEIZURE",
+      "actor_or_agency": "United States / federal prosecution and forfeiture process",
+      "money": {"amount": 309993.51, "currency": "USD", "approximate": false, "public_text": null},
+      "asset_or_account": "Bell Bank account for Cosmopolitan Business Solutions d/b/a Safari Restaurant",
+      "order_or_docket_id": null,
+      "source_receipt_ids": ["MN-FOF-FINANCIAL-INSTITUTIONS-SALAH"],
+      "state": "PASS_CASE_BOUND"
+    },
+    {
+      "edge_id": "O4-ALISHIRE-KENYA-FORFEITURE",
+      "case_id": "MN-FOF-ALISHIRE",
+      "action_type": "FORFEITURE",
+      "actor_or_agency": "United States / federal prosecution and forfeiture process",
+      "money": null,
+      "asset_or_account": "Nairobi apartment and Karibu Palms Resort",
+      "order_or_docket_id": null,
+      "source_receipt_ids": ["MN-FOF-ALISHIRE-KENYA-WIRE"],
+      "state": "PASS_CASE_BOUND"
+    }
+  ],
+  "cross_onion_edges": [
+    {
+      "edge_id": "X-O1-O2-BRILLIANT-MINDS",
+      "join": "O1_TO_O2",
+      "from_ids": ["MN-HSS-BRILLIANT-MINDS"],
+      "to_ids": ["O2-HSS-DHS-BRILLIANT-MINDS"],
+      "state": "HOLD",
+      "reason": "Plea is bound, but claim-level approval/remittance path is not yet complete."
+    },
+    {
+      "edge_id": "X-O2-O3-BRILLIANT-MINDS",
+      "join": "O2_TO_O3",
+      "from_ids": ["O2-HSS-DHS-BRILLIANT-MINDS"],
+      "to_ids": ["O3-BRILLIANT-MINDS-AMEX"],
+      "state": "HOLD",
+      "reason": "Public record names the card rail but not the complete merchant/MCC/acquirer/processor sequence."
+    },
+    {
+      "edge_id": "X-O3-O4-SALAH",
+      "join": "O3_TO_O4",
+      "from_ids": ["O3-SALAH-BELL-BANK"],
+      "to_ids": ["O4-SALAH-BELL-SEIZURE"],
+      "state": "PASS_CASE_BOUND",
+      "reason": "Named account balance and seizure/forfeiture trail are source-bound to the plea record."
+    },
+    {
+      "edge_id": "X-O4-O1-ALISHIRE",
+      "join": "O4_TO_O1",
+      "from_ids": ["O4-ALISHIRE-KENYA-FORFEITURE"],
+      "to_ids": ["MN-FOF-ALISHIRE"],
+      "state": "PASS_CASE_BOUND",
+      "reason": "Plea and forfeiture are bound in the same official source object."
+    }
+  ],
+  "institution_findings": [],
+  "boxd_disposition": {
+    "o1": "PASS_PARTIAL",
+    "o2": "PASS_PARTIAL",
+    "o3": "PASS_PARTIAL",
+    "o4": "PASS_PARTIAL",
+    "leeloo_multi_pass": "MULTI_PASS_HOLD"
+  },
+  "hold_reasons": [
+    "merchant list and MCC data are not source-bound",
+    "acquiring-bank and gateway/processor fields are not source-bound",
+    "claim-level HSS approval/remittance path is incomplete",
+    "most foreign receiving-bank details are not source-bound",
+    "full recovery-versus-loss ledger is incomplete"
+  ],
+  "membranes": [
+    "CHARGED != GUILTY",
+    "ACCOUNT_IN_CASE != BANK_WRONGDOING",
+    "CARD_NETWORK_NAMED != NETWORK_COMPLICITY",
+    "MERCHANT_PAYMENT != MERCHANT_COMPLICITY",
+    "FOREIGN_DESTINATION != FOREIGN_CULPABILITY",
+    "FOLLOW_THE_MONEY_WITHOUT_PROMOTING_THE_RAIL_INTO_THE_CRIME"
+  ]
+}
