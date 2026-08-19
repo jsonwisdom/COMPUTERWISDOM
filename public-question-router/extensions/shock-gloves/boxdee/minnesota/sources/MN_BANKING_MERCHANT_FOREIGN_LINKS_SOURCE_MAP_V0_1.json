@@ -1,0 +1,114 @@
+{
+  "schema": "boxd.mn_banking_merchant_foreign_links.source_map.v0_1",
+  "status": "DRAFT_SOURCE_BOUND_UNMERGED",
+  "generated_date": "2026-08-19",
+  "authority_created": false,
+  "legal_finding_created": false,
+  "bank_culpability_created": false,
+  "merchant_culpability_created": false,
+  "records": [
+    {
+      "id": "MN-FOF-68-CONVICTIONS-2026-07-21",
+      "source": "https://www.justice.gov/usao-mn/pr/pelican-rapids-man-68th-defendant-plead-guilty-feeding-our-future-fraud-scheme",
+      "state": "PASS_SOURCE_BOUND",
+      "claim": "DOJ reported 68 Feeding Our Future defendants convicted as of 2026-07-21"
+    },
+    {
+      "id": "MN-HSS-BRILLIANT-MINDS-PLEAS-2026-07-24",
+      "source": "https://www.justice.gov/opa/pr/four-men-plead-guilty-2m-minnesota-medicaid-fraud",
+      "state": "PASS_PLEA_BOUND",
+      "claim": "Four Brilliant Minds defendants pleaded guilty to wire fraud involving approximately $2.2M in HSS funds"
+    },
+    {
+      "id": "MN-FOF-FINANCIAL-INSTITUTIONS-SALAH",
+      "source": "https://www.justice.gov/usao-mn/pr/former-minneapolis-mayoral-aide-and-safari-restaurant-co-owner-both-plead-guilty-250",
+      "state": "PASS_PLEA_FORFEITURE_BOUND",
+      "institutions": [
+        {"name": "Bell Bank", "amounts_usd": [309993.51, 435512.44]},
+        {"name": "Northeast Bank", "amounts_usd": [472889.08]},
+        {"name": "Star Choice Credit Union", "amounts_usd": [343418.98]}
+      ],
+      "membrane": "ACCOUNT_NAMED_IN_CASE != INSTITUTION_PARTICIPATED_IN_FRAUD"
+    },
+    {
+      "id": "MN-HSS-BRILLIANT-MINDS-AMEX",
+      "source": "https://www.justice.gov/usao-mn/pr/defendants-charged-first-wave-housing-stabilization-fraud-cases",
+      "state": "PASS_SOURCE_BOUND_CARD_RAIL",
+      "card_network": "American Express",
+      "public_amount": "nearly $500,000 in charges",
+      "merchant_list": "HOLD",
+      "mcc": "HOLD",
+      "acquirer": "HOLD",
+      "gateway_processor": "HOLD",
+      "membrane": "CARD_NETWORK_NAMED != NETWORK_COMPLICITY"
+    },
+    {
+      "id": "MN-FOF-GHEDI-CREDIT-CARD",
+      "source": "https://www.justice.gov/usao-mn/pr/minneapolis-man-pleads-guilty-forty-seventh-conviction-feeding-our-future-fraud-scheme",
+      "state": "PASS_PLEA_BOUND_SPENDING",
+      "public_amount": "more than $200,000 in credit-card spending",
+      "issuer": "HOLD",
+      "merchants": "HOLD"
+    },
+    {
+      "id": "MN-EIDBI-DHS-UCARE",
+      "source": "https://www.justice.gov/usao-mn/pr/six-additional-defendants-charged-one-defendant-pleads-guilty-ongoing-fraud-schemes",
+      "state": "PASS_SOURCE_BOUND_PAYOR",
+      "payors": ["Minnesota DHS", "UCare"],
+      "membrane": "PAYOR_NAMED != PAYOR_COMPLICITY"
+    },
+    {
+      "id": "MN-FOF-ALISHIRE-KENYA-WIRE",
+      "source": "https://www.justice.gov/usao-mn/pr/brooklyn-park-man-pleads-guilty-his-role-250-million-feeding-our-future-fraud-scheme",
+      "state": "PASS_PLEA_BOUND_FOREIGN_WIRE",
+      "amount_usd": 216300,
+      "origin_entity": "Hoodo Properties",
+      "destination_entity": "Jaafar Jelle & Co.",
+      "destination_country": "Kenya",
+      "asset": "Karibu Palms Resort, Diani Beach",
+      "additional_forfeiture": ["Apartment in Nairobi, Kenya", "Karibu Palms Resort"]
+    },
+    {
+      "id": "MN-EIDBI-YUSSUF-KENYA",
+      "source": "https://www.justice.gov/usao-mn/pr/six-additional-defendants-charged-one-defendant-pleads-guilty-ongoing-fraud-schemes",
+      "state": "HOLD_CHARGED_NOT_CONVICTED_IN_SOURCE",
+      "amount": "more than $200,000",
+      "destination_country": "Kenya"
+    },
+    {
+      "id": "MN-HSS-ASAD-ADOW-KENYA-REAL-ESTATE",
+      "source": "https://www.justice.gov/usao-mn/pr/defendants-charged-first-wave-housing-stabilization-fraud-cases",
+      "state": "HOLD_CHARGED_NOT_CONVICTED_IN_SOURCE",
+      "destination_country": "Kenya",
+      "asset_type": "real estate"
+    },
+    {
+      "id": "MN-FOF-KENYA-TURKEY-ASSETS",
+      "source": "https://www.justice.gov/usao-mn/pr/federal-jury-finds-feeding-our-future-mastermind-and-co-defendant-guilty-250-million",
+      "state": "PASS_SCHEME_SOURCE",
+      "destination_countries": ["Kenya", "Turkey"],
+      "asset_type": "real estate"
+    },
+    {
+      "id": "MN-HSS-PRISTINE-TRAVEL",
+      "source": "https://www.justice.gov/usao-mn/pr/six-additional-defendants-charged-one-defendant-pleads-guilty-ongoing-fraud-schemes",
+      "state": "HOLD_CHARGED_ALLEGATION",
+      "destinations": ["London", "Sydney", "Dubai", "Istanbul", "Saudi Arabia"],
+      "membrane": "TRAVEL_DESTINATION != FOREIGN_FINANCIAL_INSTITUTION"
+    }
+  ],
+  "boxd_disposition": {
+    "onion_1_record_criminal": "PASS_PARTIAL_CASE_BOUND",
+    "onion_2_authority_payment_control": "PASS_GENERAL_DEEPER_TRANSACTION_AUTHORITY_OPEN",
+    "onion_3_execution_banking_merchant_foreign": "PASS_PARTIAL",
+    "onion_4_oversight_recovery": "PASS_PARTIAL",
+    "leeloo_multi_pass": "HOLD"
+  },
+  "hold_reasons": [
+    "public press releases are not complete transaction ledgers",
+    "merchant list and MCC data are not source-bound",
+    "acquiring-bank and gateway/processor fields are not source-bound",
+    "most foreign-recipient bank details are not public in the cited sources",
+    "SAR/AML/BSA records are not source-bound in this public audit"
+  ]
+}
