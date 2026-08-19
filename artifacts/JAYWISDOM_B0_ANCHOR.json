@@ -1,0 +1,26 @@
+{
+  "tx_hash": "0x7239f942d4818821f88d24c63140ba0aaae1e096036d746e007b2f6f0c3789e6",
+  "block_number_hex": "0x183afe0",
+  "block_number": 25407456,
+  "block_hash": "0x4686285c9bd01010b52fe9748693898e6ed50193f9743abe44f653ddffa22e81",
+  "timestamp_unix": 1737604259,
+  "timestamp_utc": "2025-01-23T03:50:59Z",
+  "from": "0x8611d9722ec5089f974eb48a7b5ccdb97e8978fb",
+  "to": "0x0ba958a449701907302e28f5955fa9d16ddc45c3",
+  "status": "0x1",
+  "gas_used": "0x442ce",
+  "proxy_address": "0x829AdfEdBe565F9885a7eA6Bc78912acAef055E2",
+  "state": "PROVEN",
+  "notes": "Morphological birth of the proxy. Immutable L2 receipt. Flips HOLD_EXACT_FETCH to PROVEN.",
+  "fetched_at": "2026-08-19T10:17:24.480473Z",
+  "provenance": {
+    "primary": "user-supplied Base RPC eth_getTransactionReceipt + eth_getBlockByNumber receipt",
+    "public_crosscheck": "BaseScan transaction pointer independently known; exact block/timestamp were not independently returned by the browser fetch in this replay"
+  },
+  "membrane": {
+    "account_deployment_is_not_first_funding": true,
+    "account_deployment_is_not_dense_scan_floor": true,
+    "authority_created": false,
+    "financial_claim_created": false
+  }
+}
