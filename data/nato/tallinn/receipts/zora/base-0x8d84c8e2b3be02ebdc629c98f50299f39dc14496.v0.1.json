@@ -1,0 +1,38 @@
+{
+  "schema": "boxd.zora_source_receipt.v0_1",
+  "source_url": "https://zora.co/coin/base:0x8d84c8e2b3be02ebdc629c98f50299f39dc14496?referrer=0x829adfedbe565f9885a7ea6bc78912acaef055e2",
+  "network": "Base",
+  "chain_id": 8453,
+  "coin_contract": "0x8d84c8e2b3be02ebdc629c98f50299f39dc14496",
+  "referrer": "0x829adfedbe565f9885a7ea6bc78912acaef055e2",
+  "referrer_binding": {
+    "identity": "jaywisdom.base.eth",
+    "basis": "existing jsonwisdom/jay-zora-portal LOCAL_PROOF_RECEIPT.md",
+    "status": "CORPUS_BOUND"
+  },
+  "zora_query_model": {
+    "address_keyed": true,
+    "base_default_chain_id": 8453,
+    "basis": "Zora Coins SDK public documentation"
+  },
+  "page_fetch": {
+    "status": "UNAVAILABLE_TO_WEB_CRAWLER",
+    "reason": "zora.co page fetch returned cache miss"
+  },
+  "coin_metadata": {
+    "name": null,
+    "symbol": null,
+    "creator_address": null,
+    "created_at": null,
+    "media": null,
+    "status": "HOLD_UNTIL_DECODED"
+  },
+  "story_context_candidate": "AVIGNON × THE FRIAR THAT FLEW × JOEY",
+  "story_binding_status": "CONTEXT_ONLY_NOT_ONCHAIN_VERIFIED",
+  "rules": [
+    "URL_IS_A_RECEIPT_NOT_A_METADATA_DECODE",
+    "REFERRER_IS_NOT_CREATOR_WITHOUT_PROOF",
+    "CONVERSATION_CONTEXT_IS_NOT_ONCHAIN_METADATA",
+    "RECEIPT_BEFORE_PROMOTION"
+  ]
+}
