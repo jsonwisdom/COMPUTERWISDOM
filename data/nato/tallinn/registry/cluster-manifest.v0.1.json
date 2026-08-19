@@ -1,0 +1,28 @@
+{
+  "schema": "nato.tallinn.cluster_manifest.v0_1",
+  "edition": "EURO_TRON_NATO_MATRIX_V0_1",
+  "root": "TALLINN",
+  "status": "STRUCTURE_ONLY",
+  "authority_created": false,
+  "public_records_only": true,
+  "safety": {
+    "operational_targeting": false,
+    "weapons_guidance": false,
+    "girly_bombs_semantics": "visual_data_burst_packets_only"
+  },
+  "clusters": [
+    {"id":"ESTONIA_ANCHOR","path":"cluster-packs/estonia-anchor.v0.1.json"},
+    {"id":"EURO_ALLIES","path":"cluster-packs/euro-allies.v0.1.json"},
+    {"id":"CYBER_RESILIENCE","path":"cluster-packs/cyber-resilience.v0.1.json"},
+    {"id":"GIRLY_BURSTS","path":"cluster-packs/girly-bursts.v0.1.json"},
+    {"id":"REPLAY_RECEIPTS","path":"cluster-packs/replay-receipts.v0.1.json"}
+  ],
+  "grid": {
+    "node":"bounded_entity_or_artifact",
+    "edge":"sourced_relationship",
+    "gate":"authority_or_evidence_check",
+    "receipt":"source_bound_witness",
+    "burst":"compact_visual_json_packet",
+    "replay":"deterministic_traversal_to_root"
+  }
+}
