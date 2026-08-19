@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.local/schemas/alpr_max_ledger.v0_1.schema.json",
+  "title": "ALPR MAX Ledger v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "ledger_id",
+    "jurisdiction",
+    "observation_window",
+    "source_receipts",
+    "query_events",
+    "network_contacts",
+    "derived_metrics",
+    "capacity_evidence",
+    "disposition"
+  ],
+  "properties": {
+    "schema_version": {"const": "alpr_max_ledger.v0_1"},
+    "ledger_id": {"type": "string", "minLength": 1},
+    "jurisdiction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["country", "state", "scope_type", "scope_name"],
+      "properties": {
+        "country": {"type": "string"},
+        "state": {"type": ["string", "null"]},
+        "scope_type": {"enum": ["NETWORK", "AGENCY", "COUNTY", "STATE", "MULTI_STATE", "OTHER"]},
+        "scope_name": {"type": "string"}
+      }
+    },
+    "observation_window": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["start_utc", "end_utc"],
+      "properties": {
+        "start_utc": {"type": "string"},
+        "end_utc": {"type": "string"}
+      }
+    },
+    "source_receipts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/sourceReceipt"}
+    },
+    "query_events": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/queryEvent"}
+    },
+    "network_contacts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/networkContact"}
+    },
+    "derived_metrics": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/derivedMetric"}
+    },
+    "capacity_evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["peak_qps", "concurrency_limit", "rate_limit", "fanout_limit_or_distribution", "response_latency_distribution", "state"],
+      "properties": {
+        "peak_qps": {"type": ["number", "null"], "minimum": 0},
+        "concurrency_limit": {"type": ["integer", "null"], "minimum": 0},
+        "rate_limit": {"type": ["number", "null"], "minimum": 0},
+        "fanout_limit_or_distribution": {"type": ["object", "null"]},
+        "response_latency_distribution": {"type": ["object", "null"]},
+        "source_receipt_ids": {"type": "array", "items": {"type": "string"}},
+        "state": {"$ref": "#/$defs/state"}
+      }
+    },
+    "disposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unit_identity", "dedupe", "state_comparison", "machine_capacity", "boxd_state"],
+      "properties": {
+        "unit_identity": {"$ref": "#/$defs/state"},
+        "dedupe": {"$ref": "#/$defs/state"},
+        "state_comparison": {"$ref": "#/$defs/state"},
+        "machine_capacity": {"$ref": "#/$defs/state"},
+        "boxd_state": {"$ref": "#/$defs/state"},
+        "notes": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  },
+  "$defs": {
+    "state": {
+      "enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]
+    },
+    "unit": {
+      "enum": [
+        "ORIGIN_SEARCH_EVENT",
+        "TARGET_NETWORK_CONTACT",
+        "RETURNED_RECORD",
+        "HIT",
+        "EXPORT_EVENT",
+        "RETENTION_EVENT",
+        "SHARING_EVENT",
+        "SECONDS",
+        "NETWORKS_PER_QUERY",
+        "QUERIES_PER_SECOND",
+        "CONTACTS_PER_SECOND"
+      ]
+    },
+    "sourceReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["receipt_id", "source_type", "source_locator", "sha256", "state"],
+      "properties": {
+        "receipt_id": {"type": "string"},
+        "source_type": {"enum": ["AUDIT_EXPORT", "OFFICIAL_REPORT", "PUBLIC_PORTAL", "PUBLIC_RECORD", "OTHER"]},
+        "source_locator": {"type": "string"},
+        "sha256": {"type": ["string", "null"]},
+        "retrieved_at_utc": {"type": ["string", "null"]},
+        "state": {"$ref": "#/$defs/state"}
+      }
+    },
+    "queryEvent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "query_event_id",
+        "origin_agency",
+        "timestamp_utc",
+        "source_local_timestamp",
+        "source_timezone",
+        "query_or_session_id",
+        "justification",
+        "case_number",
+        "query_parameters",
+        "fanout_count",
+        "returned_records",
+        "hits",
+        "exports",
+        "retention",
+        "sharing",
+        "source_receipt_ids",
+        "dedupe_key",
+        "dedupe_fields",
+        "state"
+      ],
+      "properties": {
+        "query_event_id": {"type": "string"},
+        "origin_agency": {"type": ["string", "null"]},
+        "timestamp_utc": {"type": ["string", "null"]},
+        "source_local_timestamp": {"type": ["string", "null"]},
+        "source_timezone": {"type": ["string", "null"]},
+        "query_or_session_id": {"type": ["string", "null"]},
+        "justification": {"type": ["string", "null"]},
+        "case_number": {"type": ["string", "null"]},
+        "query_parameters": {"type": ["object", "null"]},
+        "fanout_count": {"type": ["integer", "null"], "minimum": 0},
+        "returned_records": {"type": ["integer", "null"], "minimum": 0},
+        "hits": {"type": ["integer", "null"], "minimum": 0},
+        "exports": {"type": ["integer", "null"], "minimum": 0},
+        "retention": {"type": ["integer", "null"], "minimum": 0},
+        "sharing": {"type": ["integer", "null"], "minimum": 0},
+        "source_receipt_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "dedupe_key": {"type": ["string", "null"]},
+        "dedupe_fields": {"type": "array", "items": {"type": "string"}},
+        "state": {"$ref": "#/$defs/state"}
+      }
+    },
+    "networkContact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["network_contact_id", "query_event_id", "target_network", "target_agency", "contact_timestamp_utc", "source_receipt_ids", "state"],
+      "properties": {
+        "network_contact_id": {"type": "string"},
+        "query_event_id": {"type": ["string", "null"]},
+        "target_network": {"type": ["string", "null"]},
+        "target_agency": {"type": ["string", "null"]},
+        "contact_timestamp_utc": {"type": ["string", "null"]},
+        "source_receipt_ids": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+        "state": {"$ref": "#/$defs/state"}
+      }
+    },
+    "derivedMetric": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["metric_id", "label", "value", "unit", "model_mode", "observed_activity", "formula", "input_receipt_ids", "state"],
+      "properties": {
+        "metric_id": {"type": "string"},
+        "label": {"type": "string"},
+        "value": {"type": ["number", "null"]},
+        "unit": {"$ref": "#/$defs/unit"},
+        "model_mode": {"enum": ["OBSERVED", "DERIVED_OBSERVED", "SYNTHETIC_STRESS_TEST"]},
+        "observed_activity": {"type": "boolean"},
+        "formula": {"type": ["string", "null"]},
+        "input_receipt_ids": {"type": "array", "items": {"type": "string"}},
+        "state": {"$ref": "#/$defs/state"}
+      }
+    }
+  }
+}
