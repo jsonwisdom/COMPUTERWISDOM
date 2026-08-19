@@ -1,0 +1,27 @@
+name: public-question-authority-router-v0-1
+
+on:
+  pull_request:
+    paths:
+      - "public-question-router/**"
+      - ".github/workflows/public-question-authority-router-v0-1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run deterministic materializer tests
+        run: python -m unittest public-question-router/tests/test_materialize_question.py -v
+      - name: Boundary assertions
+        run: |
+          grep -q 'AI_ROUTING != GOVERNMENT_AUTHORITY' public-question-router/README.md
+          grep -q 'NO_RESPONSE != GUILT' public-question-router/README.md
+          grep -q 'portal_24h_is_legal_deadline' public-question-router/tools/materialize_question.py
