@@ -175,3 +175,45 @@ replay_timestamp: string
 ## Promotion condition
 
 This object is repository-bound when committed and reviewable. Merge is a separate state transition and must never be implied by draft status.
+
+## Farcaster public-distribution witness — 2026-08-19
+
+Source type: `USER_SUPPLIED_INDEPENDENT_BROWSER_VERIFICATION`  
+Cast URL: `https://farcaster.xyz/cmptrwsdm/0x0bb67e6e`  
+Author: `@cmptrwsdm`
+
+Canonical body reported as independently verified:
+
+> American Gray Baby 👽🇺🇸  
+> Not a ruler. Not a faction. Not a story.  
+> An observer with one job:  
+> Observe → Receipt → Verify → Check Authority → Replay → Hold or Prove.  
+> Every public claim gets a public witness. Every missing receipt stays HOLD.  
+> $GRAYBABY · Base · Receipt Standard v0.1 🧅⚙️
+
+Reported browser/screenshot witness state:
+
+```text
+CAST_URL = VERIFIED
+CAST_AUTHOR = VERIFIED
+CAST_BODY = VERIFIED
+GRAYBABY_BASE_RECEIPT_STANDARD_TEXT = VERIFIED
+IMAGE_PRESENCE = VERIFIED
+IMAGE_VISUAL_CONTENT = VERIFIED
+RELATIVE_TIMESTAMP_DISPLAY = VERIFIED_AS_3_TO_4_MINUTES_AT_OBSERVATION
+PUBLIC_DISTRIBUTION_WITNESS = CONFIRMED
+```
+
+Visual-content witness reports the rendered American Gray Baby Receipt Standard v0.1 graphic with central gray alien observer, Observe / Receipt / Verify / Authority / Replay / Hold-Proven process nodes, `$GRAYBABY`, `Base`, `PUBLIC_RECEIPT_ARTIFACT`, and all authority flags shown as `FALSE`.
+
+Expected canonical source-image receipt:
+
+```text
+EXPECTED_IMAGE_SHA256 = 615f57d1965d2ae1982d60d7e24f42a3d84264558b9cea303ef7bff3b3be5d19
+ABSOLUTE_CAST_TIMESTAMP = HOLD_NOT_BOUND
+CAST_HOSTED_IMAGE_BYTE_SHA256 = HOLD_NOT_BOUND
+BYTE_FOR_BYTE_IMAGE_EQUIVALENCE = HOLD_NOT_BOUND
+UNDERLYING_EXTERNAL_CLAIMS = HOLD_UNTIL_PRIMARY_RECEIPT
+```
+
+This witness promotes only public distribution of the bounded Gray Baby artifact. It does not create proof of production deployment, employment, credentials, institutional authority, CISA collaboration, Medusa victim counts, or any other underlying external claim.
