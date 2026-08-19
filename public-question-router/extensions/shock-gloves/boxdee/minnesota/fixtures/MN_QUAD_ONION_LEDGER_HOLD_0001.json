@@ -51,6 +51,17 @@
       "conduct_summary": "Four defendants pleaded guilty to wire fraud involving approximately $2.2M in HSS funds.",
       "source_receipt_ids": ["MN-HSS-BRILLIANT-MINDS-PLEAS-2026-07-24"],
       "state": "PASS_CASE_BOUND"
+    },
+    {
+      "case_id": "MN-FOF-ALISHIRE",
+      "actor_id": "MOHAMED-ISMAIL-ALISHIRE",
+      "actor_type": "PERSON",
+      "program": "Feeding Our Future / federal child nutrition programs",
+      "proceeding_type": "CRIMINAL",
+      "adjudication_status": "PLEADED_GUILTY",
+      "conduct_summary": "Plea-bound Feeding Our Future conduct includes a $216,300 wire from Hoodo Properties toward the Karibu Palms Resort in Kenya and forfeiture of related assets.",
+      "source_receipt_ids": ["MN-FOF-ALISHIRE-KENYA-WIRE"],
+      "state": "PASS_CASE_BOUND"
     }
   ],
   "onion_2_payment_control_edges": [
