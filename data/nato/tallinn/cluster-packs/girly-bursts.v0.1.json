@@ -1,0 +1,21 @@
+{
+  "schema": "nato.tallinn.girly_bursts.v0_1",
+  "label": "EuroTRONNATOMatrixClusterGirlyBombs",
+  "semantic_type": "VISUAL_DATA_BURST_PACKS",
+  "status": "DIRECTORY_FIRST",
+  "packets": [
+    {"id":"PINK_RECEIPT","purpose":"source_card","fields":["source","date","jurisdiction","hash","status"]},
+    {"id":"CYAN_NODE","purpose":"entity_card","fields":["name","type","country","public_role","receipt_refs"]},
+    {"id":"VIOLET_EDGE","purpose":"relationship_card","fields":["from","to","relationship","source_ref","confidence"]},
+    {"id":"GOLD_GATE","purpose":"evidence_gate","fields":["claim","authority","receipt","disposition"]},
+    {"id":"NEON_REPLAY","purpose":"timeline_replay","fields":["event_id","timestamp","inputs","outputs","root_ref"]}
+  ],
+  "rules": [
+    "NO_UNSOURCED_EDGES",
+    "NO_AUTHORITY_FROM_STYLE",
+    "NO_OPERATIONAL_TARGETING",
+    "NO_WEAPONS_GUIDANCE",
+    "RECEIPT_BEFORE_PROMOTION",
+    "REPLAY_TO_TALLINN_ROOT"
+  ]
+}
