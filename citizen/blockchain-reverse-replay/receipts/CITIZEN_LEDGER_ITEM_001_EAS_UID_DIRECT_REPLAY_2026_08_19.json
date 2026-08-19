@@ -1,0 +1,74 @@
+{
+  "schema": "citizen_eas_uid_direct_replay_receipt.v0_2",
+  "receipt_id": "CITIZEN_LEDGER_ITEM_001_EAS_UID_DIRECT_REPLAY_2026_08_19",
+  "parent_entry": "CITIZEN_LEDGER_ITEM_001",
+  "predecessor_receipt": "CITIZEN_LEDGER_ITEM_001_EAS_UID_DIRECT_REPLAY_2026_08_18",
+  "observed_at_utc": "2026-08-19T22:29:45.114503Z",
+  "source_origin": "GITHUB_ACTIONS_PUBLIC_NETWORK_REPLAY",
+  "workflow": {
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "workflow_name": "EAS UID Recovery Replay v0.1",
+    "run_id": 32106944392,
+    "rerun_job_id": 96248073738,
+    "replay_head": "141d4af42578d28586ddcadbf661efcc33c7c0c2",
+    "artifact_id": 9385758971,
+    "artifact_name": "eas-uid-replay-observation-v0-1",
+    "artifact_zip_sha256": "d56afc43cb5e2a25a55c86f0d3bd0b54699ff2b6ca43f34966ca077241382b28"
+  },
+  "targets": {
+    "network": "Base Sepolia",
+    "chain_id_decimal": 84532,
+    "rpc": "https://sepolia.base.org",
+    "easscan_graphql": "https://base-sepolia.easscan.org/graphql",
+    "eas_contract": "0x4200000000000000000000000000000000000021",
+    "schema_registry_contract": "0x4200000000000000000000000000000000000020",
+    "declared_transaction_hash": "0x4cef493d67d8744d2458fd82c169aa872b14cfe2ecaf13f03329b57bd93acc35",
+    "declared_attestation_uid": "0x23b3b97514fa232cfdbcdee7a5031ff11a5fcd36aa874a5f4067805cd0ad6c84",
+    "declared_schema_uid": "0x244c84adef25091c97090e6e3f0b1bb932fc7022b913b7546406f4213a202cab"
+  },
+  "observations": {
+    "rpc_chain_id": "0x14a34",
+    "network_confirmed": true,
+    "transaction_by_hash": null,
+    "transaction_receipt": null,
+    "easscan_http_status": 200,
+    "easscan_graphql_errors": null,
+    "easscan_attestation": null,
+    "eas_getAttestation_return_uid": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "eas_getAttestation_return_schema": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "eas_getAttestation_return_attester": "0x0000000000000000000000000000000000000000",
+    "schema_getSchema_return_uid": "0x0000000000000000000000000000000000000000000000000000000000000000",
+    "schema_getSchema_return_schema": ""
+  },
+  "classification": {
+    "parent_historical_state": "CONFLICT_PRESERVED",
+    "declared_transaction_edge": "REJECT",
+    "declared_transaction_receipt_edge": "REJECT",
+    "declared_onchain_attestation_edge": "REJECT",
+    "declared_schema_registration_edge": "REJECT",
+    "recovery_terminal": "REJECT_DECLARED_BASE_SEPOLIA_ANCHOR_OBJECTS",
+    "corrected_transaction_hash": "NOT_FOUND",
+    "authority_created": false
+  },
+  "drive_mirror": {
+    "file_id": "1CvkJEirj2GeQ1-xb0_lMFt1R6pRuxtAi",
+    "file_name": "eas-uid-replay-observation-v0-1-2026-08-19.zip",
+    "mirror_scope": "workflow artifact copy only",
+    "authority_created": false
+  },
+  "corrections": {
+    "base_sepolia_eas_contract": "0x4200000000000000000000000000000000000021",
+    "base_sepolia_schema_registry": "0x4200000000000000000000000000000000000020",
+    "ethereum_sepolia_eas_address_not_base_sepolia": "0xC2679fBD37d54388Ce493F1DB75320D236e1815e",
+    "ci_success_does_not_imply_transaction_success": true
+  },
+  "interpretation": "A fresh rerun on 2026-08-19 again confirmed Base Sepolia chain ID 84532 but returned null for the declared transaction and receipt, no indexed attestation, a zero EAS attestation struct for the declared UID, and a zero schema record for the declared schema UID. The declared Base Sepolia anchor-object edges remain rejected. This does not prove motive, fabrication by a person, or absence on unrelated networks or off-chain systems.",
+  "boundaries": {
+    "repository_record_not_chain_truth": true,
+    "workflow_success_not_chain_success": true,
+    "negative_chain_replay_not_motive_proof": true,
+    "rejected_base_sepolia_edge_not_global_absence": true,
+    "append_only_history": true,
+    "authority_created": false
+  }
+}
