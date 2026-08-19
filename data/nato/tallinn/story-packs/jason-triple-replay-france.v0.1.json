@@ -1,0 +1,66 @@
+{
+  "schema": "boxd.story_pack.v0_1",
+  "title": "JASON × JASON × JASON — It’s Already Here",
+  "edition": "EURO_TRON_NATO_MATRIX",
+  "mode": "FICTION_WITH_FACT_RAILS",
+  "root": "TALLINN",
+  "entities": [
+    {
+      "id": "JASON_VOORHEES",
+      "type": "FICTIONAL_CHARACTER_REFERENCE",
+      "authority": false,
+      "relation_to_other_jasons": "NONE_PROVEN"
+    },
+    {
+      "id": "JASON_GROUP",
+      "type": "REAL_SCIENTIFIC_ADVISORY_GROUP",
+      "fact_rail": "NSF describes JASON as an independent scientific advisory group providing technical assessments to the U.S. government.",
+      "source": "https://www.nsf.gov/tip/emerging-technology",
+      "authority": "SOURCE_BOUND_ONLY",
+      "relation_to_other_jasons": "NONE_PROVEN"
+    },
+    {
+      "id": "JASON_WISDOM",
+      "type": "CREATOR_NARRATOR_IDENTITY",
+      "role": "BOXD_REPLAY_AUTHOR",
+      "institutional_affiliation_implied": false,
+      "relation_to_jason_group": "NONE_PROVEN"
+    }
+  ],
+  "story_event": {
+    "id": "FRANCE_MASSACRE",
+    "tagline": "IT_IS_ALREADY_HERE",
+    "real_world_binding": null,
+    "status": "HOLD_EVENT_IDENTITY",
+    "rule": "DO_NOT_BIND_TO_A_REAL_MASSACRE_WITHOUT_A_RECEIPT"
+  },
+  "historical_candidates": [
+    {
+      "event": "Saint Bartholomew's Day Massacre",
+      "date": "1572-08-24",
+      "location": "Paris and other French cities",
+      "source": "https://www.archives-nationales.culture.gouv.fr/archives-la-loupe/la-saint-barthelemy-une-nuit-de-violence-racontee-par-les-archives",
+      "binding": "CANDIDATE_ONLY"
+    },
+    {
+      "event": "Oradour-sur-Glane massacre",
+      "date": "1944-06-10",
+      "location": "Oradour-sur-Glane, France",
+      "source": "https://www.defense.gouv.fr/chemins-memoire/histoire-memoires/ressources-historiques/seconde-guerre-mondiale/traquer-deporter-assassiner-3",
+      "binding": "CANDIDATE_ONLY"
+    }
+  ],
+  "replay": [
+    "NAME_COLLISION",
+    "SEPARATE_FACT_FROM_FICTION",
+    "REQUIRE_SOURCE_FOR_REAL_WORLD_EDGE",
+    "HOLD_AMBIGUOUS_EVENT",
+    "REPLAY_TO_ROOT"
+  ],
+  "safety": {
+    "fiction_is_not_intelligence": true,
+    "name_similarity_is_not_affiliation": true,
+    "violence_is_historical_or_fictional_context_only": true,
+    "operational_guidance": false
+  }
+}
