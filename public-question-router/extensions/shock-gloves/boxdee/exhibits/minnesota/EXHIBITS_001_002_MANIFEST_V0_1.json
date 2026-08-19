@@ -1,0 +1,41 @@
+{
+  "schema_version": "boxdee_exhibit_manifest.v0_1",
+  "run_id": "BOXD-MN-EXHIBITS-001-002-20260819",
+  "created_at": "2026-08-19T00:10:00-05:00",
+  "authority_created": false,
+  "legal_finding_created": false,
+  "raw_images_in_repository": false,
+  "exhibits": [
+    {
+      "exhibit_id": "EXHIBIT-001",
+      "subject_label_from_image": "Angie Craig",
+      "uploaded_filename": "EE91D7B8-B594-4D1D-B48D-BC0B18B7C0AB.jpeg",
+      "byte_length": 711723,
+      "sha256": "e36796ffaccc246c367c375c931c02336ec0e2c3312062f061cc1ed96a812c5b",
+      "image_dimensions": [1198, 1313],
+      "artifact_type": "USER_SUPPLIED_BOXDEE_CARD",
+      "evidence_scope": "PROVES_CONTENT_OF_CARD_ONLY_UNTIL_UNDERLYING_CLAIMS_ARE_SOURCE_BOUND",
+      "integrity_state": "CONFLICT"
+    },
+    {
+      "exhibit_id": "EXHIBIT-002",
+      "subject_label_from_image": "Peggy Flanagan",
+      "uploaded_filename": "F834A7AC-8005-4C17-9208-1105290E67AD.jpeg",
+      "byte_length": 693959,
+      "sha256": "63a42a4e046be7f8171e57876f76c35ed2a4dce5e57955d97c816c66866e90fe",
+      "image_dimensions": [1199, 1312],
+      "artifact_type": "USER_SUPPLIED_BOXDEE_CARD",
+      "evidence_scope": "PROVES_CONTENT_OF_CARD_ONLY_UNTIL_UNDERLYING_CLAIMS_ARE_SOURCE_BOUND",
+      "integrity_state": "CONFLICT"
+    }
+  ],
+  "membranes": [
+    "CARD != UNDERLYING_FACT",
+    "IMAGE_HASH != CLAIM_TRUTH",
+    "OFFICIAL_SOURCE != SELF_PROVING_LEGALITY",
+    "CHARGED != CONVICTED",
+    "POLICY_ROLE != OPERATIONAL_CONTROL",
+    "LEGISLATIVE_ROLE != FRAUD_INVESTIGATOR",
+    "FRAUD_EXPERT_LABEL = HOLD_UNTIL_ROLE_OR_EXPERTISE_IS_SOURCE_BOUND"
+  ]
+}
