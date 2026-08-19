@@ -1,7 +1,7 @@
-# JAYWISDOM B0 Index Partition Schedule v0.1
+# JAYWISDOM B0 Index Partition Schedule v0.1.1
 
 Date: `2026-08-19`
-Status: `B0_DENSE_FLOOR_BOUND / ACCOUNT_BIRTH_EXACT_BLOCK_HOLD`
+Status: `B0_SEALED / ACCOUNT_DEPLOYMENT_PROVEN / DENSE_FLOOR_BOUND`
 Authority created: `FALSE`
 Financial claim created: `FALSE`
 
@@ -24,34 +24,59 @@ B0_FIRST_RELEVANT_ACTIVITY = earliest transaction/log/transfer involving the aud
 B0_DENSE_SCAN_FLOOR = conservative block floor for dense historical indexing
 ```
 
-User-supplied Phase 0 observation:
+## B0 exact anchor — PROVEN
+
+Canonical machine-readable receipt:
+
+`artifacts/JAYWISDOM_B0_ANCHOR.json`
+
+User-supplied Base RPC receipt (`eth_getTransactionReceipt` + `eth_getBlockByNumber`) establishes:
+
+```text
+B0_ACCOUNT_DEPLOYMENT_TX = 0x7239f942d4818821f88d24c63140ba0aaae1e096036d746e007b2f6f0c3789e6
+B0_ACCOUNT_DEPLOYMENT_BLOCK_HEX = 0x183afe0
+B0_ACCOUNT_DEPLOYMENT_BLOCK = 25,407,456
+B0_ACCOUNT_DEPLOYMENT_BLOCK_HASH = 0x4686285c9bd01010b52fe9748693898e6ed50193f9743abe44f653ddffa22e81
+B0_ACCOUNT_DEPLOYMENT_TIMESTAMP_UNIX = 1737604259
+B0_ACCOUNT_DEPLOYMENT_TIMESTAMP_UTC = 2025-01-23T03:50:59Z
+B0_TX_FROM = 0x8611d9722ec5089f974eb48a7b5ccdb97e8978fb
+B0_TX_TO = 0x0ba958a449701907302e28f5955fa9d16ddc45c3
+B0_TX_STATUS = 0x1 / SUCCESS
+B0_GAS_USED = 0x442ce
+B0_PROXY_ADDRESS = 0x829AdfEdBe565F9885a7eA6Bc78912acAef055E2
+B0_ACCOUNT_DEPLOYMENT_STATE = PROVEN
+```
+
+This flips the prior exact-fetch hold:
+
+```text
+B0_ACCOUNT_DEPLOYMENT_TX: BOUND_POINTER -> PROVEN
+B0_ACCOUNT_DEPLOYMENT_BLOCK: HOLD_EXACT_FETCH -> PROVEN / 25,407,456
+B0_ACCOUNT_DEPLOYMENT_TIMESTAMP: HOLD_EXACT_FETCH -> PROVEN / 2025-01-23T03:50:59Z
+```
+
+Provenance boundary:
+
+```text
+PRIMARY_RECEIPT = user-supplied Base RPC result
+PUBLIC_POINTER = BaseScan transaction hash already independently observed
+BROWSER_EXACT_BLOCK_TIMESTAMP_CROSSCHECK = NOT_COMPLETED_IN_THIS_REPLAY
+```
+
+The RPC receipt is the promoted primary receipt for this v0.1.1 delta. The public-browser cross-check remains a distinct witness class and is not silently claimed.
+
+## First relevant activity / dense floor
+
+The previously supplied explorer-window observation remains independently typed:
 
 ```text
 B0_FIRST_RELEVANT_ACTIVITY_CANDIDATE ~= 29,889,702
+B0_FIRST_RELEVANT_ACTIVITY_STATE = CANDIDATE / NEEDS_COMPLETE_MIN_ACROSS_EVENT_CLASSES
 B0_DENSE_SCAN_FLOOR = 29,800,000
+B0_DENSE_SCAN_FLOOR_STATE = LOCKED_WORK_FLOOR
 ```
 
-Current BaseScan observation independently confirms `0x829a...` is a CoinbaseSmartWallet proxy contract and exposes a contract-creation receipt. The creation receipt transaction hash observed from BaseScan navigation is:
-
-```text
-0x7239f942d4818821f88d24c63140ba0aaae1e096036d746e007b2f6f0c3789e6
-```
-
-The exact creation block/timestamp was not returned by the independent browser fetch in this replay. Therefore:
-
-```text
-B0_ACCOUNT_DEPLOYMENT_TX = BOUND_POINTER
-B0_ACCOUNT_DEPLOYMENT_BLOCK = HOLD_EXACT_FETCH
-B0_ACCOUNT_DEPLOYMENT_TIMESTAMP = HOLD_EXACT_FETCH
-B0_FIRST_RELEVANT_ACTIVITY_CANDIDATE = USER_SUPPLIED / NEEDS_RPC_OR_EXPORT_MIN
-B0_DENSE_SCAN_FLOOR = 29,800,000 / ACCEPTED_CONSERVATIVE_WORK_FLOOR
-```
-
-BaseScan also reports 31 regular transactions in its current address snapshot; visible regular rows extend at least to July 22, 2025. Regular transaction history is not a complete substitute for contract creation, internal calls, token transfers, or logs.
-
-Primary public explorer pointers:
-- https://basescan.org/address/0x829adfedbe565f9885a7ea6bc78912acaef055e2
-- https://basescan.org/address/0x694ce46c64d9d1a5e9376a9febcf85ec05d72e9f
+The exact account deployment at block 25,407,456 is earlier than the dense floor. This is expected and does not require moving the dense floor. The sparse completeness backstop covers the interval before dense indexing.
 
 ## Partition schedule
 
@@ -99,6 +124,8 @@ PROTOCOL FAMILIES:
 - ENS / Basename identity-resolution checkpoints where historically resolvable
 ```
 
+The interval `25,407,456 -> 29,799,999` is now an explicit sparse-backfill region. Any matching rows found there are appended as PROVEN / BOUND / HOLD / CONFLICT according to their receipts; they do not retroactively alter B0.
+
 ## Four-rail merger
 
 ```text
@@ -142,17 +169,27 @@ conflicts: []
 created_at: string
 ```
 
-## Promotion condition
+## Current promotion state
 
-The exact first relevant block is promoted only after a complete RPC/indexed-provider result or explorer export supports `MIN(blockNumber)` across the relevant event classes. Until then, `29,800,000` is the dense work floor—not a claim of wallet birth.
+```text
+B0_ACCOUNT_DEPLOYMENT = PROVEN
+B0_ACCOUNT_DEPLOYMENT_BLOCK = 25,407,456
+B0_ACCOUNT_DEPLOYMENT_TIMESTAMP = 2025-01-23T03:50:59Z
+B0_FIRST_RELEVANT_ACTIVITY_CANDIDATE = ~29,889,702 / NOT YET PROMOTED
+B0_DENSE_SCAN_FLOOR = 29,800,000 / LOCKED
+DENSE_SCANNER_EXECUTION = NOT_CLAIMED_BY_THIS_ARTIFACT
+BACKGROUND_EXECUTION = NOT_CLAIMED
+```
 
 ## Doctrine
 
 ```text
 ACCOUNT DEPLOYMENT != FIRST FUNDING
+ACCOUNT DEPLOYMENT != DENSE FLOOR
 FIRST REGULAR TX != FIRST LOG
 DENSE FLOOR != CHAIN BIRTH
 BLOCK CO-OCCURRENCE != RELATIONSHIP
 SNAPSHOT != CURRENT STATE
+USER-SUPPLIED RPC RECEIPT != INDEPENDENT BROWSER FETCH
 MISSING HISTORICAL READBACK -> HOLD
 ```
