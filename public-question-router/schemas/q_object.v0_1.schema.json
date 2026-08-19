@@ -1,0 +1,181 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.local/schemas/q_object.v0_1.schema.json",
+  "title": "Public Question Q-Object v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "question_id",
+    "submitted_at",
+    "question_text",
+    "record_onion",
+    "power_onion",
+    "directory",
+    "portal_clock",
+    "external_clocks",
+    "public_status",
+    "replay_state",
+    "authority_created"
+  ],
+  "properties": {
+    "schema_version": {"const": "q_object.v0_1"},
+    "question_id": {"type": "string", "pattern": "^Q-[0-9]{8}-[0-9]{3}$"},
+    "submitted_at": {"type": "string", "format": "date-time"},
+    "question_text": {"type": "string", "minLength": 1},
+    "normalized_question": {"type": ["string", "null"]},
+    "question_classes": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "AUTHORITY",
+          "PUBLIC_RECORD",
+          "COURT_RECORD",
+          "OIG",
+          "CONGRESSIONAL_OVERSIGHT",
+          "MONEY",
+          "APPROPRIATION",
+          "CONTRACT",
+          "TRAVEL",
+          "LODGING",
+          "DATA_ACCESS",
+          "GEOLOCATION",
+          "CUSTODY",
+          "REPRESENTATION",
+          "OTHER"
+        ]
+      }
+    },
+    "record_onion": {"$ref": "#/$defs/onion"},
+    "power_onion": {"$ref": "#/$defs/onion"},
+    "directory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["root", "materialized_at", "materializer", "status"],
+      "properties": {
+        "root": {"type": "string", "pattern": "^public-question-router/questions/Q-[0-9]{8}-[0-9]{3}$"},
+        "materialized_at": {"type": "string", "format": "date-time"},
+        "materializer": {"const": "public-question-router/tools/materialize_question.py"},
+        "status": {"enum": ["MATERIALIZED", "CONFLICT", "REJECTED"]}
+      }
+    },
+    "candidate_authorities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["office", "basis", "status"],
+        "properties": {
+          "office": {"type": "string", "minLength": 1},
+          "person": {"type": ["string", "null"]},
+          "basis": {"type": "string", "minLength": 1},
+          "source_url": {"type": ["string", "null"], "format": "uri"},
+          "status": {
+            "enum": [
+              "PROPOSED_BY_AI",
+              "PROPOSED_BY_HUMAN",
+              "SOURCE_BOUND_CANDIDATE",
+              "AUTHORITY_EDGE_PROVEN",
+              "AUTHORITY_EDGE_REJECTED",
+              "HOLD"
+            ]
+          }
+        }
+      }
+    },
+    "record_edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["record_type", "status"],
+        "properties": {
+          "record_type": {"type": "string", "minLength": 1},
+          "custodian": {"type": ["string", "null"]},
+          "source_url": {"type": ["string", "null"], "format": "uri"},
+          "sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+          "status": {
+            "enum": [
+              "MISSING",
+              "PUBLICLY_AVAILABLE",
+              "REQUESTED",
+              "ACKNOWLEDGED",
+              "PARTIAL",
+              "RECEIVED",
+              "WITHHELD",
+              "SEALED",
+              "CONFLICT",
+              "REJECTED"
+            ]
+          }
+        }
+      }
+    },
+    "portal_clock": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["clock_type", "started_at", "status_due_at", "sla_hours", "legal_deadline_created", "status"],
+      "properties": {
+        "clock_type": {"const": "PORTAL_TRANSPARENCY_SLA"},
+        "started_at": {"type": "string", "format": "date-time"},
+        "status_due_at": {"type": "string", "format": "date-time"},
+        "sla_hours": {"const": 24},
+        "legal_deadline_created": {"const": false},
+        "status": {"enum": ["RUNNING", "SATISFIED", "BREACHED_PORTAL_SLA"]}
+      }
+    },
+    "external_clocks": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "source", "status"],
+        "properties": {
+          "name": {"type": "string"},
+          "source": {"type": "string"},
+          "deadline_at": {"type": ["string", "null"], "format": "date-time"},
+          "status": {"enum": ["UNBOUND", "INFORMATIONAL", "RUNNING", "PAUSED", "SATISFIED", "EXPIRED", "NOT_APPLICABLE"]}
+        }
+      }
+    },
+    "public_status": {
+      "enum": [
+        "QUESTION_ACCEPTED",
+        "DIRECTORY_MATERIALIZED",
+        "CANDIDATE_AUTHORITY_ROUTED",
+        "ANSWER_RECEIVED",
+        "RECORDS_RECEIVED",
+        "ACKNOWLEDGMENT_RECEIVED",
+        "ROUTED_TO_STATUTORY_PROCESS",
+        "NO_RESPONSE_OBSERVED",
+        "JURISDICTION_UNRESOLVED"
+      ]
+    },
+    "public_status_receipt": {"type": ["string", "null"]},
+    "replay_state": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]},
+    "authority_created": {"const": false}
+  },
+  "$defs": {
+    "onion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "missing_edges"],
+      "properties": {
+        "status": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]},
+        "bound_receipts": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "missing_edges": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "contradictions": {
+          "type": "array",
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}
