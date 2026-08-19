@@ -28,8 +28,10 @@ jobs:
               json.loads(path.read_text(encoding='utf-8'))
               print(f'JSON PASS: {path}')
           PY
-      - name: Run fail-closed fixture regression
+      - name: Run Shock Gloves fail-closed fixture regression
         run: python public-question-router/extensions/shock-gloves/tests/test_shock_gloves_hold_fixture.py
+      - name: Run BoxD four-onion Multi Pass regression
+        run: python public-question-router/extensions/shock-gloves/boxdee/tests/test_boxd_four_onion_multipass.py
       - name: Boundary assertions
         run: |
           python - <<'PY'
@@ -43,6 +45,10 @@ jobs:
               'CIA_AIRCRAFT != RENDITION',
               'UCMJ_COURT_MARTIAL != MILITARY_COMMISSION',
               'SHOCK_GLOVE_LABEL != DEVICE_IDENTITY',
+              '3 GREEN + 1 HOLD != PASS',
+              'FAFO != RETALIATION',
+              'PHYSICAL_SHOCK = PROHIBITED',
+              'AGE_TARGETED_HARM = FALSE',
           ]
           for marker in required:
               assert marker in text, marker
