@@ -1,0 +1,49 @@
+{
+  "schema": "boxd.story_pack.v0_1",
+  "title": "AVIGNON × THE FRIAR THAT FLEW × JOEY",
+  "edition": "EURO_TRON_NATO_MATRIX",
+  "mode": "HISTORY_MYSTERY_WITH_FACT_RAILS",
+  "nodes": [
+    {
+      "id": "AVIGNON",
+      "type": "HISTORICAL_LOCATION",
+      "fact_rail": "Avignon is historically associated with the medieval papacy and the Palais des Papes.",
+      "source": "https://whc.unesco.org/en/list/228",
+      "status": "SOURCE_BOUND"
+    },
+    {
+      "id": "THE_FRIAR_THAT_FLEW",
+      "type": "HISTORICAL_RELIGIOUS_TRADITION",
+      "candidate_identity": "Saint Joseph of Cupertino",
+      "fact_rail": "Franciscan sources identify Joseph of Cupertino (1603-1663) as the 'Flying Friar' and report traditions of levitation during religious ecstasy.",
+      "source": "https://www.franciscantradition.org/blog/saint-joseph-of-cupertino-the-flying-friar/",
+      "status": "SOURCE_BOUND_TRADITION",
+      "empirical_levitation_proven": false
+    },
+    {
+      "id": "JOEY",
+      "type": "STORY_ALIAS",
+      "candidate_binding": "JOSEPH_OF_CUPERTINO",
+      "status": "HOLD_ALIAS_BINDING"
+    }
+  ],
+  "edges": [
+    {
+      "from": "THE_FRIAR_THAT_FLEW",
+      "to": "JOSEPH_OF_CUPERTINO",
+      "status": "STRONG_HISTORICAL_MATCH"
+    },
+    {
+      "from": "AVIGNON",
+      "to": "JOSEPH_OF_CUPERTINO",
+      "status": "NO_DIRECT_LINK_FOUND"
+    },
+    {
+      "from": "JOEY",
+      "to": "JOSEPH_OF_CUPERTINO",
+      "status": "STORY_ALIAS_CANDIDATE_ONLY"
+    }
+  ],
+  "replay_rule": "DO_NOT_COLLAPSE_AVIGNON_AND_COPERTINO_WITHOUT_A_RECEIPT",
+  "tagline": "THE GRID CAN RHYME BEFORE THE HISTORY BINDS"
+}
