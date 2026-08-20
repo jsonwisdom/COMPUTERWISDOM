@@ -48,17 +48,22 @@
   },
   "national_2025": {
     "cryptocurrency_nexus_complaints": 181565,
-    "cryptocurrency_nexus_losses_usd": 11366000000,
+    "cryptocurrency_nexus_losses_usd": 11366669732,
     "crypto_investment_fraud_complaints": 61559,
-    "crypto_investment_fraud_losses_usd": 7228000000,
+    "crypto_investment_fraud_losses_displayed_usd": 7228000000,
+    "crypto_investment_fraud_losses_display_note": "FBI IC3 page 53 displays $7.228 billion; separate crime-type-with-cryptocurrency-nexus table reports Investment losses of $7,277,868,919, so these metrics are preserved separately and not silently collapsed.",
+    "investment_crime_type_with_crypto_nexus_losses_usd": 7277868919,
     "ai_related_complaints": 22364,
-    "ai_related_losses_usd": 893346472
+    "ai_related_losses_usd": 893346472,
+    "ai_related_with_crypto_nexus_complaints": 8712,
+    "ai_related_with_crypto_nexus_losses_usd": 741639787
   },
   "boundaries": [
     "STATE_OF_COMPLAINANT != SCAM_ORIGIN",
     "COMPLAINT != PROVEN_CRIME",
     "LOSS_REPORTED != ADJUDICATED_LOSS",
     "CRYPTO_NEXUS != CRYPTO_CAUSED_THE_FRAUD",
+    "CRYPTO_INVESTMENT_FRAUD_SUMMARY != INVESTMENT_CRIME_TYPE_WITH_CRYPTO_NEXUS_TABLE",
     "STATE_DELTA != ENFORCEMENT_QUALITY",
     "CORRELATION != CAUSATION",
     "AUTHORITY_CREATED = FALSE"
