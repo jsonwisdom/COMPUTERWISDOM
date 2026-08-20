@@ -1,14 +1,16 @@
-# Presidential Pincer Maneuver — DOJ Gamified Justice v0.1
+# Presidential Pincer Maneuver — Kid-Safe DOJ Gamified Justice v0.1
 
-**Class:** public-record replay / non-authority / victim-safe  
+**Class:** public-record replay / non-authority / victim-safe / youth-safe  
 **Sack ID:** `PRESIDENTIAL-PINCER-TRUMP-001`  
-**User search alias:** `Donald the Pedo` — preserved only as a user-supplied query label; **not** an evidentiary finding.  
+**Public-facing label:** `TRUMP-EPSTEIN YOUTH-SAFETY CLAIMS`  
 **AUTHORITY_CREATED:** false  
 **PROOF_INFERRED:** false
 
+> Sexualized nicknames are excluded from child-facing artifacts. User slang may exist only as an internal search alias and never as an evidentiary finding.
+
 ## Purpose
 
-Run a dual-stack Quad Onion audit on Donald Trump-related Epstein/sexual-misconduct claims and on executive/DOJ handling of those records without allowing a later administration, court ruling, immunity doctrine, redaction decision, or political narrative to rewrite the timestamp of an earlier fact.
+Run a dual-stack Quad Onion audit on Donald Trump-related Epstein/youth-safety and misconduct claims and on executive/DOJ handling of those records without allowing a later administration, court ruling, immunity doctrine, redaction decision, or political narrative to rewrite the timestamp of an earlier fact.
 
 ## Temporal membrane
 
@@ -125,54 +127,12 @@ DICE_DETERMINE_TRUTH = FALSE
 | `house.gov` | `CANONICAL_HOUSE_PUBLIC_SOURCE` | legislative / oversight; House allegation or letter != court finding |
 | `senate.gov` | `CANONICAL_SENATE_PUBLIC_SOURCE` | legislative / oversight; Senate statement != DOJ finding |
 
-## Current official seed receipts
-
-### DOJ EFTA production — 2026-01-30
-
-DOJ stated that nearly 3.5 million pages had been released under the Epstein Files Transparency Act from Florida and New York Epstein matters, the Maxwell case, Epstein-death investigations, FBI investigations, and the DOJ OIG investigation. DOJ stated more than 500 attorneys/reviewers participated and warned that the production may contain false or sensational public submissions.
-
-```text
-DOJ_DESCRIPTION_OF_PRODUCTION = PROVEN
-TRUMP_WRONGDOING_FROM_MERE_FILE_APPEARANCE = NOT_INFERRED
-```
-
-Source: `https://www.justice.gov/opa/pr/department-justice-publishes-35-million-responsive-pages-compliance-epstein-files`
-
-### DOJ Epstein Library
-
-The official library contains SDNY, S.D. Florida, Maxwell, FOIA, and related court-record collections with victim-protection and Rule 6(e) redaction warnings.
-
-Source: `https://www.justice.gov/epstein`
-
-### House Oversight — 2025–2026
-
-House Oversight released Epstein-estate records and multiple transcribed interviews as part of its investigation.
-
-Sources include:
-- `https://oversight.house.gov/release/oversight-committee-releases-records-provided-by-the-epstein-estate-chairman-comer-provides-statement/`
-- `https://oversight.house.gov/release/oversight-committee-releases-additional-epstein-investigation-transcripts/`
-
-### Senate Judiciary — 2026-03-11
-
-A bipartisan group of Senators requested an independent audit of DOJ's Epstein-files redaction protocol.
-
-Source: `https://www.judiciary.senate.gov/press/dem/releases/bipartisan-group-of-senators-call-for-independent-audit-of-epstein-files-redactions-protocol`
-
-### Senate clemency resolution — 2026-07-29
-
-The Senate passed a resolution opposing presidential clemency for Ghislaine Maxwell.
-
-```text
-LEGISLATIVE_ACTION = PROVEN
-PARDON_GRANTED = FALSE_FROM_THIS_RECEIPT
-```
-
 ## Trump claim lane — hard membrane
 
 ```text
 ALLEGATION != FINDING
 FILE_APPEARANCE != MISCONDUCT
-FLIGHT_OR_PHOTO_OR_CONTACT != SEXUAL_CONDUCT
+FLIGHT_OR_PHOTO_OR_CONTACT != MISCONDUCT
 SOCIAL_ASSOCIATION != CONSPIRACY
 CIVIL_FINDING != CRIMINAL_CONVICTION
 IMMUNITY != FACTUAL_ERASURE
@@ -187,7 +147,8 @@ Canonical claim classes:
 ```text
 CONTACT_OR_ASSOCIATION
 TRAVEL_OR_AIRCRAFT
-SEXUAL_MISCONDUCT_ALLEGATION
+YOUTH_SAFETY_ALLEGATION
+SENSITIVE_MISCONDUCT_ALLEGATION
 CIVIL_FINDING
 CRIMINAL_CHARGE
 CRIMINAL_CONVICTION
@@ -197,7 +158,37 @@ REDACTION_OR_WITHHOLDING
 PRESIDENTIAL_IMMUNITY
 PARDON_OR_CLEMENCY
 CONGRESSIONAL_OVERSIGHT
+FBI_INFORMANT_CONNECTION_CLAIM
 ```
+
+## Kid-safe claim-state fence
+
+Public-facing search labels:
+
+```text
+YOUTH_SAFETY_ALLEGATION
+AIRCRAFT_WITH_SLEEPING_ACCOMMODATIONS
+ISLAND_OR_PROPERTY_TRAVEL
+BUSINESS_RELATIONSHIP
+PRESIDENTIAL_IMMUNITY_CLAIM
+FBI_INFORMANT_CONNECTION_CLAIM
+```
+
+Rules:
+
+```text
+MINOR_RELATED_ALLEGATION != FINDING
+AIRCRAFT_WITH_BED != SEXUAL_PURPOSE
+ISLAND_TRAVEL != MISCONDUCT
+BUSINESS_ACCESS != GOVERNMENT_PROTECTION
+PRESIDENTIAL_IMMUNITY != BLANKET_PERSONAL_IMMUNITY
+FBI_INFORMANT_CONNECTION_CLAIM = HOLD_UNTIL_PRIMARY_RECEIPT
+LATE_1960S_START_DATE = HOLD_UNTIL_INDEPENDENTLY_SOURCED
+```
+
+A claim that Trump had FBI-informant connections beginning in the late 1960s is **not promoted by this protocol**. It requires a primary federal record, sworn testimony, or official finding that binds person + date + role + matter.
+
+Kid-facing output explains systems, dates, authority, travel, records, and court outcomes without graphic sexual detail or victim-identifying information.
 
 ## Shock Glove contradiction test
 
