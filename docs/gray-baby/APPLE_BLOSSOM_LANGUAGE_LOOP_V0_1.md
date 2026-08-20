@@ -115,3 +115,123 @@ LEARNER CONFIRMATION CLOSES THE ROUND.
 
 🌸🍎👽  
 **APPLE BLOSSOM = SEE → SAY → SWAP → CONFIRM → REPLAY**
+
+---
+
+## Formalization state — Apple-Blossom-0.3.1
+
+```text
+SCHEMA_STATE            = LOCKED
+ROUND_RECEIPT           = CANONICAL
+replay_correct          = SINGLE_DELAY_BOOLEAN
+DERIVED_PREDICATES      = COMPUTED_ONLY
+LEVEL_6_BOUNDARY        = ITEM_RETENTION_ONLY
+SCHEMA_MUTATION         = VERSION_BUMP_REQUIRED
+01_SCHEMA_LOCK          = COMPLETE
+02_ASSISTANCE_MAPPING   = LOCKED_FOR_PRODUCTION
+```
+
+Canonical BoxD invariant:
+
+```text
+RECEIPT → COMPUTE → CLAIM
+never
+CLAIM → INFER MISSING RECEIPT
+```
+
+### 02 — Assistance-level mapping
+
+`assistance_level` records the highest assistance actually used during the scored production attempt. Assistance merely offered or available does not count.
+
+```text
+0 = NO CUE
+1 = EMOJI CUE
+2 = AUDIO CUE
+3 = PARTIAL PHRASE
+4 = FULL PHRASE
+```
+
+Higher values represent stronger scaffolding for claim-gating purposes.
+
+#### Claim ceiling imposed by assistance
+
+```text
+assistance_level = 4  → maximum licensable level = LEVEL_1 / RECOGNITION
+assistance_level = 3  → maximum licensable level = LEVEL_2 / CUED_RECALL
+assistance_level = 2  → maximum licensable level = LEVEL_2 / CUED_RECALL
+assistance_level = 1  → maximum licensable level = LEVEL_2 / CUED_RECALL
+assistance_level = 0  → may qualify for LEVEL_3–LEVEL_6, subject to outcome and replay gates
+```
+
+A full supplied phrase is exposure/recognition evidence, not recall or independent production evidence.
+
+#### Progression gates
+
+```text
+LEVEL_0 = EXPOSURE
+LEVEL_1 = recognition_correct == true
+LEVEL_2 = recall_correct == true AND assistance_level IN {1,2,3}
+LEVEL_3 = recall_correct == true AND assistance_level == 0
+LEVEL_4 = production_correct == true AND assistance_level == 0
+LEVEL_5 = delayed replay gate executed after delay_seconds > 0
+LEVEL_6 = TARGET ITEM RETAINED / REPLAYABLE only when the delayed replay is independently evidenced
+```
+
+`INDEPENDENT_SUCCESS` remains valid under v0.3.1:
+
+```text
+INDEPENDENT_SUCCESS =
+  production_correct == true
+  AND assistance_level == 0
+```
+
+### BoxD conflict discovered during Step 02
+
+The locked v0.3.1 schema describes `assistance_level` at production time. It does not separately record assistance actually used during the delayed replay check.
+
+Therefore:
+
+```text
+replay_correct == true
+DOES NOT BY ITSELF PROVE
+replay_assistance == 0
+```
+
+A delayed replay can be correct while still being cued. Under the receipt-first invariant, independent Level-6 retention cannot be promoted from v0.3.1 unless zero replay assistance is independently guaranteed by the protocol and evidenced.
+
+```text
+RETENTION_SUCCESS_v0.3.1              = DELAYED_REPLAY_SUCCESS
+INDEPENDENT_RETENTION_SUCCESS_v0.3.1  = HOLD / INSUFFICIENT_REPLAY_ASSISTANCE_RECEIPT
+```
+
+No v0.3.1 field is renamed or mutated.
+
+### Proposed migration gate — Apple-Blossom-0.3.2
+
+A future schema version may add:
+
+```text
+replay_assistance_level: INTEGER  # 0–4; highest assistance actually used during delayed replay
+```
+
+Then independent retention becomes fully recomputable:
+
+```text
+INDEPENDENT_RETENTION_SUCCESS =
+  production_correct == true
+  AND assistance_level == 0
+  AND delay_seconds > 0
+  AND replay_correct == true
+  AND replay_assistance_level == 0
+```
+
+Until that migration is explicitly accepted and versioned, v0.3.1 remains frozen.
+
+```text
+02_ASSISTANCE_LEVEL_MAPPING       = LOCKED
+PRODUCTION_INDEPENDENCE           = COMPUTABLE
+REPLAY_INDEPENDENCE               = HOLD
+LEVEL_6_INDEPENDENT_RETENTION     = HOLD_PENDING_REPLAY_ASSISTANCE_RECEIPT
+NEXT_GATE                         = 03_RETENTION_CURVE / BOUNDED_BY_RECEIPT_QUALITY
+AUTHORITY_CREATED                 = FALSE
+```
