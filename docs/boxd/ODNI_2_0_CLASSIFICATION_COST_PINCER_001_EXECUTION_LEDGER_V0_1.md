@@ -74,10 +74,44 @@ STATUS = SENT / AWAITING_AGENCY_ACKNOWLEDGMENT
 
 Scope: SF-716 or successor/equivalent classification-cost submissions, supporting worksheets, ODNI/ISOO methodology correspondence, and ODNI-specific classification/security cost categories where existing records permit segregation.
 
+## Parallel pass — 2026-08-20
+
+### FOIA acknowledgment check
+
+Immediate Gmail check found no new ODNI, GSA, or NARA/ISOO acknowledgment or agency response.
+
+```text
+T_transmitted   = 3
+A_acknowledged  = 0
+R_retrieved     = 0
+```
+
+A recurring FOIA acknowledgment watch is active. It should notify only on a new acknowledgment, tracking number, clarification request, fee notice, denial, referral, or records response.
+
+### USAspending alternate-route test
+
+USAspending's API documentation confirms alternate POST routes that do not depend exclusively on the `/agency/<TOPTIER_CODE>/...` family:
+
+```text
+/api/v2/autocomplete/awarding_agency/
+/api/v2/autocomplete/funding_agency/
+/api/v2/search/spending_by_award/
+```
+
+The API supports agency-name and subtier filtering in Advanced Award Search. However, the indexed public surface did not yield a clean ODNI-specific awarding/funding-agency binding sufficient to close FY2024–FY2026 ΔC or ΔPr. Recipient-name searches for Leidos remain noisy across unrelated agencies.
+
+```text
+ALTERNATE_QUERY_PATH = CONFIRMED_BY_API_DOCUMENTATION
+ODNI_AGENCY_BIND     = NOT_YET_REPRODUCIBLY_RESOLVED
+ΔC                   = PARTIAL
+ΔPr                  = PARTIAL
+NO_DELTA_PROMOTED    = TRUE
+```
+
 ## Filing sequence
 
 ```text
-0 USAspending ΔC + ΔPr baseline = PARTIAL / STRUCTURAL LIMIT
+0 USAspending ΔC + ΔPr baseline = PARTIAL / ALT ROUTE IDENTIFIED
 1 ODNI FOIA                     = SENT / ACK PENDING
 2 GSA FOIA                      = SENT / ACK PENDING
 3 NARA/ISOO FOIA                = SENT / ACK PENDING
@@ -91,6 +125,7 @@ Scope: SF-716 or successor/equivalent classification-cost submissions, supportin
 > Show the numerator, show the offsets, show the fiscal baseline, and let another observer reproduce the savings.
 
 ```text
+FOIA_TRANSMISSION != RETRIEVAL
 EMAIL_SENT != AGENCY_RECEIVED_ACK
 CLAIMED != PROVEN
 CLASSIFIED != WRONGDOING
