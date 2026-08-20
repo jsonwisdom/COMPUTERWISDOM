@@ -1,0 +1,68 @@
+name: Congress 3.0 Systems Accountability v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'congress-3.0/**'
+      - '.github/workflows/congress-3-0-systems-accountability-v0-1.yml'
+  push:
+    branches:
+      - 'agent/congress-3-0-systems-accountability-v0-1'
+    paths:
+      - 'congress-3.0/**'
+      - '.github/workflows/congress-3-0-systems-accountability-v0-1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  ci-congress-3-0:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+
+      - name: Compile deterministic and agent surfaces
+        run: |
+          python -m py_compile congress-3.0/tools/verify_congress_3_0.py
+          python -m py_compile congress-3.0/openai/agent.py
+          python -m py_compile congress-3.0/banking/tools/verify_banking_burden_flip_v0_1.py
+          python -m py_compile congress-3.0/banking/openai/agent.py
+
+      - name: Replay 16 Congress 3.0 semantic boundary vectors
+        run: |
+          python congress-3.0/tools/verify_congress_3_0.py \
+            congress-3.0/fixtures/CONGRESS_3_0_SYSTEMS_ACCOUNTABILITY_TEST_VECTORS_V0_1.json
+
+      - name: Replay 20 banking burden flip vectors
+        run: |
+          python congress-3.0/banking/tools/verify_banking_burden_flip_v0_1.py \
+            congress-3.0/banking/fixtures/BANKING_BURDEN_FLIP_TEST_VECTORS_V0_1.json
+
+      - name: Validate bounded contracts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          schema = json.loads(Path('congress-3.0/schemas/congress_3_0_systems_accountability.v0_1.schema.json').read_text())
+          contract = json.loads(Path('congress-3.0/openai/agent_contract.json').read_text())
+          bank_schema = json.loads(Path('congress-3.0/banking/schemas/banking_burden_flip.v0_1.schema.json').read_text())
+          bank_contract = json.loads(Path('congress-3.0/banking/openai/agent_contract.json').read_text())
+
+          assert schema['title'] == 'Congress 3.0 Systems Accountability Case v0.1'
+          assert contract['tool_result_is_final'] is True
+          assert contract['model_execution_performed'] is False
+          assert contract['government_submission_performed'] is False
+          assert contract['authority_created'] is False
+
+          assert bank_schema['title'] == 'Citizen Banking Burden Flip Case v0.1'
+          assert bank_contract['tool_result_is_final'] is True
+          assert bank_contract['model_execution_performed'] is False
+          assert bank_contract['government_submission_performed'] is False
+          assert bank_contract['authority_created'] is False
+
+          print('CONGRESS_3_0_CONTRACTS=PASS')
+          print('BANKING_BURDEN_FLIP_CONTRACTS=PASS')
+          PY

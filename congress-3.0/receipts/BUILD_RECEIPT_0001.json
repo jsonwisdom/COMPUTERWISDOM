@@ -1,0 +1,27 @@
+{
+  "receipt": "CONGRESS_3_0_BUILD_RECEIPT_0001",
+  "foundation_pr": 488,
+  "extension_pr": 494,
+  "validated_head": "3d265eab3ff2754f0de29723cbbd61eafe53c0ca",
+  "workflow_run": 32090645954,
+  "job": 95571977832,
+  "workflow_conclusion": "success",
+  "checks": {
+    "checkout_exact_head": "PASS",
+    "compile_deterministic_and_agent_surfaces": "PASS",
+    "semantic_boundary_vectors": "16/16 PASS",
+    "bounded_contract_checks": "PASS"
+  },
+  "openai": {
+    "api_key_setup_flow_opened": true,
+    "api_key_stored_in_repository": false,
+    "model_execution_performed": false
+  },
+  "government": {
+    "congressional_submission_performed": false,
+    "government_action_performed": false,
+    "legal_violation_proven": false,
+    "authority_created": false
+  },
+  "note": "This receipt binds the prior validated head. The receipt commit itself requires a subsequent exact-head CI replay."
+}

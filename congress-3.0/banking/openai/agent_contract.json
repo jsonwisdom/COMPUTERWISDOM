@@ -1,0 +1,26 @@
+{
+  "contract": "CONGRESS_3_0_BANKING_BURDEN_FLIP_AGENT_V0.1",
+  "runtime_pattern": "ONE_AGENT_ONE_DETERMINISTIC_FUNCTION_TOOL",
+  "tool_result_is_final": true,
+  "agent_input_class": "STRUCTURED_BANKING_BURDEN_FLIP_CASE_JSON",
+  "agent_may": [
+    "accept_user_supplied_structured_case_json",
+    "call_verify_banking_burden_flip_exactly_once",
+    "return_deterministic_receipt_as_final_output"
+  ],
+  "agent_must_not": [
+    "invent_statutory_trigger_conditions",
+    "invent_actor_scope_or_deadlines",
+    "treat_private_bank_action_as_government_action_without_bound_analysis",
+    "declare_legal_or_constitutional_violation",
+    "turn_missing_audit_receipt_into_misconduct",
+    "contact_bank_regulator_congress_cra_furnisher_or_debt_collector",
+    "mutate_consumer_or_financial_records",
+    "store_api_keys_or_credentials",
+    "create_authority"
+  ],
+  "external_effect_default": "HOLD_FOR_HUMAN_AUTHORIZATION",
+  "model_execution_performed": false,
+  "government_submission_performed": false,
+  "authority_created": false
+}

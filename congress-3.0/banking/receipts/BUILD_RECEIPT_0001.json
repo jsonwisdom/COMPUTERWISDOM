@@ -1,0 +1,40 @@
+{
+  "receipt": "CITIZEN_BANKING_BURDEN_FLIP_BUILD_RECEIPT_0001",
+  "parent_pr": 494,
+  "validated_head": "2e9ff9f70571dc800f6e40efe803dbe4b8fcbcd7",
+  "workflow_run": 32091181906,
+  "job": 95573488851,
+  "workflow_conclusion": "success",
+  "verification_date": "2026-08-17",
+  "checks": {
+    "checkout_exact_head": "PASS",
+    "compile_deterministic_and_agent_surfaces": "PASS",
+    "congress_3_0_vectors": "16/16 PASS",
+    "banking_burden_flip_vectors": "20/20 PASS",
+    "bounded_contract_checks": "PASS"
+  },
+  "trigger_families": [
+    "CIP_ACCOUNT_OPENING",
+    "ECOA_ADVERSE_ACTION",
+    "FCRA_CRA_DISPUTE",
+    "FCRA_FURNISHER_DIRECT_DISPUTE",
+    "FDCPA_WRITTEN_DISPUTE_30D"
+  ],
+  "legal_boundaries": {
+    "legal_violation_proven": false,
+    "constitutional_violation_proven": false,
+    "state_action_proven": false,
+    "bankruptcy_uniformity_is_personal_uniformity": false
+  },
+  "openai": {
+    "api_key_setup_flow_opened": true,
+    "api_key_stored_in_repository": false,
+    "model_execution_performed": false,
+    "tool_result_is_final": true
+  },
+  "government": {
+    "submission_performed": false,
+    "authority_created": false
+  },
+  "note": "This receipt binds the validated head above. The receipt commit itself must receive a subsequent exact-head CI replay before promotion."
+}

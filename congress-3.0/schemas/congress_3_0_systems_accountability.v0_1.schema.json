@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/schemas/congress_3_0_systems_accountability.v0_1.schema.json",
+  "title": "Congress 3.0 Systems Accountability Case v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "claim",
+    "authority",
+    "implementation",
+    "execution",
+    "record_delta",
+    "citizen_effect",
+    "review",
+    "burden",
+    "replay",
+    "model",
+    "attempted_promotions",
+    "government_records_conflict"
+  ],
+  "properties": {
+    "case_id": {"type": "string", "minLength": 1},
+    "claim": {"type": "string", "minLength": 1},
+    "authority": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_ref", "actor", "role", "jurisdiction", "delegation_ref"],
+      "properties": {
+        "source_ref": {"type": "string"},
+        "actor": {"type": "string"},
+        "role": {"type": "string"},
+        "jurisdiction": {"type": "string"},
+        "delegation_ref": {"type": "string"}
+      }
+    },
+    "implementation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rule_ref", "machine_rule_id", "version", "scope_relation"],
+      "properties": {
+        "rule_ref": {"type": "string"},
+        "machine_rule_id": {"type": "string"},
+        "version": {"type": "string"},
+        "scope_relation": {"enum": ["within_authority", "unknown", "conflicts_with_authority"]}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["actor_type", "actor_id", "permission_ref", "authorization_ref", "action", "timestamp", "input_ref", "output_ref"],
+      "properties": {
+        "actor_type": {"type": "string"},
+        "actor_id": {"type": "string"},
+        "permission_ref": {"type": "string"},
+        "authorization_ref": {"type": "string"},
+        "action": {"type": "string"},
+        "timestamp": {"type": "string"},
+        "input_ref": {"type": "string"},
+        "output_ref": {"type": "string"}
+      }
+    },
+    "record_delta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["before_ref", "after_ref", "canonical", "write_receipt_ref", "promotion_authority_ref"],
+      "properties": {
+        "before_ref": {"type": "string"},
+        "after_ref": {"type": "string"},
+        "canonical": {"type": "boolean"},
+        "write_receipt_ref": {"type": "string"},
+        "promotion_authority_ref": {"type": "string"}
+      }
+    },
+    "citizen_effect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["effect_type", "notice_ref", "explanation_ref"],
+      "properties": {
+        "effect_type": {"type": "string"},
+        "notice_ref": {"type": "string"},
+        "explanation_ref": {"type": "string"}
+      }
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["review_available", "review_ref", "reviewer_authority_ref", "correction_ref"],
+      "properties": {
+        "review_available": {"type": "boolean"},
+        "review_ref": {"type": "string"},
+        "reviewer_authority_ref": {"type": "string"},
+        "correction_ref": {"type": "string"}
+      }
+    },
+    "burden": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["proof_requested_from", "repeat_count", "government_record_conflict", "government_reconciliation_ref"],
+      "properties": {
+        "proof_requested_from": {"enum": ["none", "citizen", "agency", "contractor", "other"]},
+        "repeat_count": {"type": "integer", "minimum": 0},
+        "government_record_conflict": {"type": "boolean"},
+        "government_reconciliation_ref": {"type": "string"}
+      }
+    },
+    "replay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["forward", "reverse", "receipt_ref"],
+      "properties": {
+        "forward": {"type": "array", "items": {"type": "string"}},
+        "reverse": {"type": "array", "items": {"type": "string"}},
+        "receipt_ref": {"type": "string"}
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["used", "human_or_institutional_decision_ref"],
+      "properties": {
+        "used": {"type": "boolean"},
+        "human_or_institutional_decision_ref": {"type": "string"}
+      }
+    },
+    "attempted_promotions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["capability_as_authority", "permission_as_authorization", "database_state_as_legal_state", "green_check_as_correct_action", "model_output_as_government_decision"],
+      "properties": {
+        "capability_as_authority": {"type": "boolean"},
+        "permission_as_authorization": {"type": "boolean"},
+        "database_state_as_legal_state": {"type": "boolean"},
+        "green_check_as_correct_action": {"type": "boolean"},
+        "model_output_as_government_decision": {"type": "boolean"}
+      }
+    },
+    "government_records_conflict": {"type": "boolean"},
+    "expected_disposition": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]}
+  }
+}
