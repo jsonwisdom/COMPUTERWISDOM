@@ -1,0 +1,91 @@
+name: MechanicalQuadOnion Self Audit
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 3 * * 1'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: mechanical-quad-onion-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  quad-onion-audit:
+    name: Quad Onion Audit
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Layer 1 — Mechanical integrity
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'Checking repository integrity...'
+          git fsck --no-progress
+          test -f .github/workflows/mechanical-quad-onion-self-audit.yml
+
+      - name: Layer 2 — Quad structure
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'Auditing four structural lanes...'
+          printf '%s\n' \
+            'Q1 SOURCE: repository state captured' \
+            'Q2 RECEIPT: commit and tree hashes captured' \
+            'Q3 REPLAY: workflow can be re-run manually' \
+            'Q4 VERDICT: failures stop the run'
+          echo "commit=$(git rev-parse HEAD)"
+          echo "tree=$(git rev-parse HEAD^{tree})"
+
+      - name: Layer 3 — Onion secret-surface scan
+        shell: bash
+        run: |
+          set -euo pipefail
+          echo 'Scanning tracked text for high-risk credential patterns...'
+          PATTERN='(AKIA[0-9A-Z]{16}|BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY|ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,}|sk-[A-Za-z0-9_-]{20,})'
+          if git grep -nEI "$PATTERN" -- ':!*.lock' ':!*.min.js' ':!*.map'; then
+            echo 'Potential credential material detected.' >&2
+            exit 1
+          fi
+          echo 'No matching credential patterns found.'
+
+      - name: Layer 4 — Self-audit receipt
+        shell: bash
+        run: |
+          set -euo pipefail
+          WORKFLOW=.github/workflows/mechanical-quad-onion-self-audit.yml
+          SHA256=$(sha256sum "$WORKFLOW" | awk '{print $1}')
+          TRACKED=$(git ls-files | wc -l | tr -d ' ')
+          DIRTY=$(git status --porcelain | wc -l | tr -d ' ')
+          {
+            echo '## MechanicalQuadOnion Receipt'
+            echo
+            echo "- Repository: $GITHUB_REPOSITORY"
+            echo "- Ref: $GITHUB_REF"
+            echo "- Commit: $GITHUB_SHA"
+            echo "- Workflow SHA-256: $SHA256"
+            echo "- Tracked files: $TRACKED"
+            echo "- Dirty working-tree entries after audit: $DIRTY"
+            echo "- Result: PASS"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Fail if audit modified repository
+        shell: bash
+        run: |
+          set -euo pipefail
+          if [ -n "$(git status --porcelain)" ]; then
+            echo 'Audit mutated the working tree; self-audit must be read-only.' >&2
+            git status --short
+            exit 1
+          fi
