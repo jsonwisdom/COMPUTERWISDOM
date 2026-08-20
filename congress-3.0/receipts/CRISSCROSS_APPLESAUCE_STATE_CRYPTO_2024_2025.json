@@ -1,0 +1,67 @@
+{
+  "schema": "CRISSCROSS_APPLESAUCE_STATE_CRYPTO_V0_1",
+  "observed_at": "2026-08-20T18:23:00-05:00",
+  "source": {
+    "2024": "FBI IC3 2024 Annual Report",
+    "2025": "FBI IC3 2025 Annual Report",
+    "metric": "complaints and losses with a cryptocurrency nexus by complainant state"
+  },
+  "states": {
+    "LA": {
+      "2024": {"complaints": 1165, "loss_usd": 49306020},
+      "2025": {"complaints": 1366, "loss_usd": 53679269},
+      "delta": {"complaints": 201, "complaints_percent": 17.3, "loss_usd": 4373249, "loss_percent": 8.9},
+      "2025_loss_per_complaint_usd": 39297
+    },
+    "MN": {
+      "2024": {"complaints": 1852, "loss_usd": 91614693},
+      "2025": {"complaints": 2253, "loss_usd": 151658166},
+      "delta": {"complaints": 401, "complaints_percent": 21.7, "loss_usd": 60043473, "loss_percent": 65.5},
+      "2025_loss_per_complaint_usd": 67314
+    },
+    "AL": {
+      "2024": {"complaints": 1313, "loss_usd": 51273598},
+      "2025": {"complaints": 1687, "loss_usd": 93813940},
+      "delta": {"complaints": 374, "complaints_percent": 28.5, "loss_usd": 42540342, "loss_percent": 83.0},
+      "2025_loss_per_complaint_usd": 55610
+    },
+    "WI": {
+      "2024": {"complaints": 1973, "loss_usd": 67513795},
+      "2025": {"complaints": 3092, "loss_usd": 87426944},
+      "delta": {"complaints": 1119, "complaints_percent": 56.7, "loss_usd": 19913149, "loss_percent": 29.5},
+      "2025_loss_per_complaint_usd": 28275
+    }
+  },
+  "crisscross": {
+    "MN_vs_LA_2025": {
+      "complaint_delta": 887,
+      "loss_delta_usd": 97978897,
+      "complaint_ratio": 1.649,
+      "loss_ratio": 2.825
+    },
+    "MN_vs_WI_2025": {
+      "complaint_delta": -839,
+      "loss_delta_usd": 64231222,
+      "loss_ratio": 1.735,
+      "interpretation": "Minnesota reported fewer cryptocurrency-nexus complaints than Wisconsin but substantially higher reported losses; severity signal only, not causal proof."
+    }
+  },
+  "national_2025": {
+    "cryptocurrency_nexus_complaints": 181565,
+    "cryptocurrency_nexus_losses_usd": 11366000000,
+    "crypto_investment_fraud_complaints": 61559,
+    "crypto_investment_fraud_losses_usd": 7228000000,
+    "ai_related_complaints": 22364,
+    "ai_related_losses_usd": 893346472
+  },
+  "boundaries": [
+    "STATE_OF_COMPLAINANT != SCAM_ORIGIN",
+    "COMPLAINT != PROVEN_CRIME",
+    "LOSS_REPORTED != ADJUDICATED_LOSS",
+    "CRYPTO_NEXUS != CRYPTO_CAUSED_THE_FRAUD",
+    "STATE_DELTA != ENFORCEMENT_QUALITY",
+    "CORRELATION != CAUSATION",
+    "AUTHORITY_CREATED = FALSE"
+  ],
+  "authority_created": false
+}
