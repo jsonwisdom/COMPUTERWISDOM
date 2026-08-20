@@ -1,0 +1,38 @@
+{
+  "gap_id": "GAP-WATCH-001",
+  "proposition": "What public record explains a claimed budget/authority/access gap, and what layer owns the missing edge?",
+  "source_surface": "congress.gov",
+  "source_surface_state": "CANONICAL_PUBLIC_LEGISLATIVE_SOURCE",
+  "authority_source": "HOLD_PENDING_EXACT_STATUTE_APPROPRIATION_OR_OFFICIAL_RECEIPT",
+  "record_status": "UNKNOWN",
+  "access_status": "NOT_TESTED",
+  "evidence_state": "HOLD",
+  "authority_created": false,
+  "proof_inferred": false,
+  "budget_claim_label": "TOMS_50000",
+  "budget_amount": 50000,
+  "budget_amount_state": "HOLD",
+  "budget_receipt_uri": null,
+  "authority_edge_state": "HOLD",
+  "fbi_edge_state": "HOLD",
+  "public_access_edge_state": "HOLD",
+  "required_layers": [
+    "PUBLIC_URL",
+    "SYSTEM_OF_RECORD",
+    "CUSTODIAN",
+    "RETENTION_RULE",
+    "BUDGET_OR_APPROPRIATION",
+    "CONTRACT_OR_PROGRAM",
+    "AUTHORITY",
+    "EXECUTION",
+    "OVERSIGHT"
+  ],
+  "hard_rules": [
+    "HTTP_404 != DELETION",
+    "DELETION != UNLAWFUL_DESTRUCTION",
+    "BUDGET_CLAIM != BUDGET_RECEIPT",
+    "DOMAIN != AUTHORITY",
+    "FBI_REFERENCE != FBI_AUTHORITY_EDGE",
+    "MISSING_RECORD = NEW_CUSTODY_PROPOSITION"
+  ]
+}
