@@ -1,0 +1,144 @@
+name: ReceiptOS Git-Native Live Binding v0.2
+
+on:
+  pull_request:
+    paths:
+      - 'receipts/receiptos/git-native-v0-2/live/git_native_memory_substrate_v0_1.semantic-envelope.json'
+      - '.github/workflows/receiptos-git-native-live-binding-v0-2.yml'
+      - 'tools/receiptos_git_native_reverse_replay_v0_2.py'
+      - 'schemas/receiptos/git_native_semantic_envelope_v0_2.schema.json'
+      - 'docs/receiptos/GIT_NATIVE_MEMORY_SUBSTRATE_V0_1.md'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-live-binding:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Capture toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .receiptos-live-binding-v02
+          git --version | tee .receiptos-live-binding-v02/git-version.txt
+          python3 --version | tee .receiptos-live-binding-v02/python-version.txt
+          git rev-parse HEAD | tee .receiptos-live-binding-v02/head-sha.txt
+
+      - name: Verify one-path post-hoc semantic binding
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' 2>&1 | tee .receiptos-live-binding-v02/verify.log
+          from __future__ import annotations
+          import importlib.util
+          import json
+          from pathlib import Path
+          import subprocess
+
+          repo = Path('.').resolve()
+          envelope_path = Path('receipts/receiptos/git-native-v0-2/live/git_native_memory_substrate_v0_1.semantic-envelope.json')
+          semantic_dir = Path('receipts/receiptos/git-native-v0-2')
+          engine_path = Path('tools/receiptos_git_native_reverse_replay_v0_2.py')
+
+          spec = importlib.util.spec_from_file_location('receiptos_git_native_v02', engine_path)
+          assert spec is not None and spec.loader is not None
+          engine = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(engine)
+
+          envelope = json.loads(envelope_path.read_text(encoding='utf-8'))
+          errors = engine.envelope_errors(envelope)
+          assert errors == [], errors
+
+          binding = envelope['binding']
+          target = binding['target_path']
+          bound_commit = binding['git_commit_oid']
+          receipt_id = envelope['receipt_id']
+
+          head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
+          head_parent = subprocess.check_output(['git', 'rev-parse', 'HEAD^'], text=True).strip()
+          assert head_parent == bound_commit, (head_parent, bound_commit)
+
+          bound_result = engine.find_out(repo, bound_commit, target, semantic_dir)
+          head_result = engine.find_out(repo, 'HEAD', target, semantic_dir)
+
+          exact = bound_result.get('receipts', {}).get('exact_current_bindings', [])
+          assert bound_result.get('disposition') == 'PASS', bound_result
+          assert bound_result.get('disposition_reason') == 'EXACT_RECEIPT_DISPOSITION', bound_result
+          assert len(exact) == 1 and exact[0].get('receipt_id') == receipt_id, exact
+          assert bound_result.get('current_state', {}).get('blob_oid') == binding['git_blob_oids'][0]
+          assert bound_result.get('current_state', {}).get('tree_oid') == binding['git_tree_oid']
+          assert bound_result.get('current_state', {}).get('content_sha256') == binding['content_sha256']
+          assert bound_result.get('current_history', {}).get('commit_oid') == bound_commit
+          assert bound_result.get('current_history', {}).get('parent_oids') == binding['git_parent_oids']
+
+          # The target file was carried forward by v0.2; it was last changed by the v0.1 commit.
+          assert bound_result.get('current_history', {}).get('last_changed_commit') == '728c6671dfafdad6859f7c9794e9d8729f98c38b'
+          assert bound_commit != bound_result.get('current_history', {}).get('last_changed_commit')
+
+          # No ALMS witness is claimed for this exact live object yet.
+          assert bound_result.get('witness', {}).get('rows') == []
+
+          # HEAD contains the envelope, so it is a new commit and is deliberately not self-receipted.
+          assert head != bound_commit
+          assert head_result.get('disposition') == 'HOLD', head_result
+          assert head_result.get('disposition_reason') == 'NO_EXACT_CURRENT_RECEIPT', head_result
+          assert head_result.get('receipts', {}).get('exact_current_bindings') == []
+
+          assert bound_result.get('authority_created') is False
+          assert bound_result.get('merge_authorized') is False
+          assert head_result.get('authority_created') is False
+          assert head_result.get('merge_authorized') is False
+
+          machine_receipt = {
+              'schema': 'RECEIPTOS_GIT_NATIVE_LIVE_BINDING_V0_2_MACHINE_RECEIPT',
+              'status': 'PASS',
+              'receipt_id': receipt_id,
+              'target_path': target,
+              'receipt_carrier_head': head,
+              'bound_commit_oid': bound_commit,
+              'bound_tree_oid': binding['git_tree_oid'],
+              'bound_blob_oid': binding['git_blob_oids'][0],
+              'bound_content_sha256': binding['content_sha256'],
+              'last_changed_commit': bound_result['current_history']['last_changed_commit'],
+              'bound_ref_disposition': bound_result['disposition'],
+              'new_head_disposition': head_result['disposition'],
+              'new_head_reason': head_result['disposition_reason'],
+              'exact_bound_receipts': [r['receipt_id'] for r in exact],
+              'alms_witness_claimed': False,
+              'laws': [
+                  'RECEIPT_COMMIT != RECEIPTED_COMMIT',
+                  'POST_HOC_BINDING != HISTORY_REWRITE',
+                  'CARRIED_FORWARD != CREATED_HERE',
+                  'PASS_AT_BOUND_REF != PASS_AT_NEW_HEAD',
+                  'NO_ALMS_CLAIM != ALMS_FAILURE',
+                  'REPLAY_RESULT != AUTHORITY',
+              ],
+              'authority_created': False,
+              'merge_authorized': False,
+              'openai_required': False,
+              'network_required_by_engine': False,
+          }
+          rendered = json.dumps(machine_receipt, indent=2, sort_keys=True) + '\n'
+          Path('.receiptos-live-binding-v02/live_binding.receipt.json').write_text(rendered, encoding='utf-8')
+          Path('.receiptos-live-binding-v02/bound_find_out.json').write_text(json.dumps(bound_result, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          Path('.receiptos-live-binding-v02/head_find_out.json').write_text(json.dumps(head_result, indent=2, sort_keys=True) + '\n', encoding='utf-8')
+          print(rendered, end='')
+          PY
+
+      - name: Archive live-binding receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ReceiptOS_Git_Native_Live_Binding_V0_2
+          path: .receiptos-live-binding-v02/**
+          retention-days: 14
+          if-no-files-found: error
+          include-hidden-files: true
