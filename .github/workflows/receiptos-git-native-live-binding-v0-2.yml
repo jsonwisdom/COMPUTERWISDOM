@@ -63,8 +63,13 @@ jobs:
           receipt_id = envelope['receipt_id']
 
           head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip()
-          head_parent = subprocess.check_output(['git', 'rev-parse', 'HEAD^'], text=True).strip()
-          assert head_parent == bound_commit, (head_parent, bound_commit)
+          ancestry = subprocess.run(
+              ['git', 'merge-base', '--is-ancestor', bound_commit, head],
+              cwd=repo,
+              stdout=subprocess.DEVNULL,
+              stderr=subprocess.DEVNULL,
+          )
+          assert ancestry.returncode == 0, (bound_commit, head)
 
           bound_result = engine.find_out(repo, bound_commit, target, semantic_dir)
           head_result = engine.find_out(repo, 'HEAD', target, semantic_dir)
@@ -86,7 +91,7 @@ jobs:
           # No ALMS witness is claimed for this exact live object yet.
           assert bound_result.get('witness', {}).get('rows') == []
 
-          # HEAD contains the envelope, so it is a new commit and is deliberately not self-receipted.
+          # HEAD remains a later carrier state and is deliberately not self-receipted.
           assert head != bound_commit
           assert head_result.get('disposition') == 'HOLD', head_result
           assert head_result.get('disposition_reason') == 'NO_EXACT_CURRENT_RECEIPT', head_result
@@ -112,11 +117,13 @@ jobs:
               'new_head_disposition': head_result['disposition'],
               'new_head_reason': head_result['disposition_reason'],
               'exact_bound_receipts': [r['receipt_id'] for r in exact],
+              'bound_commit_is_ancestor_of_head': True,
               'alms_witness_claimed': False,
               'laws': [
                   'RECEIPT_COMMIT != RECEIPTED_COMMIT',
                   'POST_HOC_BINDING != HISTORY_REWRITE',
                   'CARRIED_FORWARD != CREATED_HERE',
+                  'ANCESTRY != IMMEDIATE_PARENT_REQUIREMENT',
                   'PASS_AT_BOUND_REF != PASS_AT_NEW_HEAD',
                   'NO_ALMS_CLAIM != ALMS_FAILURE',
                   'REPLAY_RESULT != AUTHORITY',
