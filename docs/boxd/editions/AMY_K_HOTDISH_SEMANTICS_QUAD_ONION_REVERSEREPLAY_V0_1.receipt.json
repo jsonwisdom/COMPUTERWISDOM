@@ -1,0 +1,76 @@
+{
+  "artifact": "AMY_K_HOTDISH_SEMANTICS_QUAD_ONION_REVERSEREPLAY_V0_1",
+  "class": "PUBLIC_RECORD_REPLAY",
+  "authority_created": false,
+  "proof_inferred": false,
+  "raw_source_sha256_state": "HOLD",
+  "raw_source_sha256_reason": "Current public-web retrieval did not expose provider raw bytes; no full-page source hash asserted.",
+  "claim_states": {
+    "literal_zero_fraud_mentions_2022_2025": "REJECT",
+    "fof_specific_press_release_silence_2022_2025": "HOLD_PENDING_FULL_ARCHIVE_ENUMERATION",
+    "press_release_count_1085": "HOLD_PENDING_OFFICIAL_ENUMERATION",
+    "klobuchar_prosecuted_fof": "REJECT",
+    "klobuchar_supported_luger_confirmation": "PROVEN",
+    "silence_equals_darvo": "REJECT",
+    "darvo_pattern_for_klobuchar": "HOLD"
+  },
+  "excerpt_receipts": [
+    {
+      "id": "AK_2022_03_11",
+      "date": "2022-03-11",
+      "source": "https://www.klobuchar.senate.gov/public/index.cfm/2022/3/congress-passes-klobuchar-bills-to-boost-tourism-protect-seniors-from-scams-prevent-carbon-monoxide-poisoning",
+      "excerpt": "Seniors Fraud Prevention Act",
+      "excerpt_sha256": "f44610d832cad35d17cf7875f6495feffdab776937e073aaf3e7ee8fef77fadc"
+    },
+    {
+      "id": "AK_2023_11_03",
+      "date": "2023-11-03",
+      "source": "https://www.klobuchar.senate.gov/public/index.cfm/news-releases?ID=B3A29AFC-D2BD-403D-95BB-97718E9A037D",
+      "excerpt": "fraudsters are using artificial intelligence voice cloning technology",
+      "excerpt_sha256": "6523adc1a5154a2cf4455a16207d90836d08cf611e74de46cff92e61d3a6eb18"
+    },
+    {
+      "id": "AK_2024_02_08",
+      "date": "2024-02-08",
+      "source": "https://www.klobuchar.senate.gov/public/index.cfm/2024/2/klobuchar-statement-on-federal-communications-commission-declaring-ai-generated-voices-in-robocalls-illegal",
+      "excerpt": "Fraudsters are using artificial intelligence voice cloning technology to deceive voters",
+      "excerpt_sha256": "d45441b1eb93eed96784ef1d794693c30b5713514ce1d5984c2005c5054505d4"
+    },
+    {
+      "id": "AK_2025_01_25",
+      "date": "2025-01-25",
+      "source": "https://www.klobuchar.senate.gov/public/index.cfm/news-releases?ID=4FA437FC-B096-4C40-863A-5F63CAF7046F",
+      "excerpt": "Independent inspectors general are critical to rooting out waste, fraud, and abuse throughout the federal government",
+      "excerpt_sha256": "09edeec7ac927664cacf82bfe35f5a2aabaec5541d3bbc4e920186c7f6a521e4"
+    },
+    {
+      "id": "DOJ_2022_01_20",
+      "date": "2022-01-20",
+      "source": "https://www.justice.gov/usao-mn/pr/savage-man-arrested-charged-passport-fraud",
+      "excerpt": "on January 20, 2022, law enforcement executed a search warrant at Ismail’s home in Savage",
+      "excerpt_sha256": "6568609915b44353fe17b7a28fa09451e87226175df2d4181c801ea7e98bed43"
+    },
+    {
+      "id": "MN_OLA_2024_06_13",
+      "date": "2024-06-13",
+      "source": "https://www.auditor.leg.state.mn.us/sreview/2024/mdefof-sum.htm",
+      "excerpt": "MDE’s inadequate oversight of Feeding Our Future created opportunities for fraud",
+      "excerpt_sha256": "09930c61b984457ebe5c279e28208d0a10c4c56a37f1aff3bf8a541333fd03fe"
+    },
+    {
+      "id": "AK_2016_01_19",
+      "date": "2016-01-19",
+      "source": "https://www.klobuchar.senate.gov/public/index.cfm/2016/1/klobuchar-franken-senate-confirms-wilhelmina-wright-as-federal-district-court-judge",
+      "excerpt": "represented the United States in complex economic fraud cases",
+      "excerpt_sha256": "0cb693a49d9ac18a843b0962ccfe958770556779c93b14b6aff7a6a4f444d67e"
+    }
+  ],
+  "hard_rules": [
+    "PRESS_RELEASE_SILENCE_NE_LEGAL_VIOLATION",
+    "SILENCE_NE_DARVO",
+    "SENATOR_NE_PROSECUTOR",
+    "MINNESOTA_SUPREME_COURT_NE_EXECUTIVE_ENFORCEMENT",
+    "SECONDARY_PARTISAN_COUNT_NE_OFFICIAL_ARCHIVE_COUNT",
+    "EXCERPT_HASH_NE_SOURCE_PAGE_HASH"
+  ]
+}
