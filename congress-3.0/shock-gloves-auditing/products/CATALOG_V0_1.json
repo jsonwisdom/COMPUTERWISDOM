@@ -1,0 +1,55 @@
+{
+  "catalog": "SHOCK_GLOVES_AUDITING_UTILITARIAN_PRODUCTS_V0_1",
+  "operator_label": "jaywisdom.base.eth",
+  "commercial_state": "IDEAS_FOR_SALE_NOT_LIVE_CHECKOUT",
+  "currency": "USD",
+  "prices_are_design_choices_not_market_claims": true,
+  "products": [
+    {
+      "id": "timestamp-replay-dice-pack",
+      "name": "Timestamp Replay Dice Pack",
+      "suggested_price": 9,
+      "type": "DIGITAL_TEMPLATE_AND_REPLAY_TOOL",
+      "purpose": "Turn a timeline claim into source-time, receipt-time, timezone, and ordering checks.",
+      "legal_advice": false
+    },
+    {
+      "id": "clerk-receipt-replay",
+      "name": "Clerk Receipt Replay",
+      "suggested_price": 19,
+      "type": "DIGITAL_CHECKLIST_AND_RECEIPT_SCHEMA",
+      "purpose": "Track filing, docket, notice, correction, and routing receipts without treating clerical activity as a judicial ruling.",
+      "legal_advice": false
+    },
+    {
+      "id": "temporal-drift-audit",
+      "name": "Temporal Drift Audit",
+      "suggested_price": 29,
+      "type": "TIMELINE_COMPARISON_UTILITY",
+      "purpose": "Classify clock skew, timezone mismatch, delayed docketing, edit-after-event, missing timestamps, and source conflicts.",
+      "legal_advice": false
+    },
+    {
+      "id": "receipt-sufficiency-gate",
+      "name": "Receipt Sufficiency Gate",
+      "suggested_price": 49,
+      "type": "DETERMINISTIC_AUDIT_TEMPLATE",
+      "purpose": "Compare a bound trigger and duty against the institution's actual response elements; outputs PASS, HOLD, CONFLICT, or REJECT without declaring illegality.",
+      "legal_advice": false
+    },
+    {
+      "id": "shock-gloves-audit-deck",
+      "name": "Shock Gloves Audit Deck",
+      "suggested_price": 12,
+      "type": "NON_CONTACT_EDUCATIONAL_DICE_GAME",
+      "purpose": "A symbolic dice mechanic for selecting timestamp, receipt, clerk-routing, and legal-gate audit questions.",
+      "physical_device": false,
+      "physical_enforcement": false,
+      "legal_advice": false
+    }
+  ],
+  "live_checkout": false,
+  "payment_processor_live": false,
+  "production_deployment": false,
+  "authority_created": false
+}

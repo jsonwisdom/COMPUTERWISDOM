@@ -1,0 +1,94 @@
+{
+  "suite": "RECEIPT_SUFFICIENCY_TEST_VECTORS_V0_1",
+  "vectors": [
+    {
+      "id": "V01_COMPLETE_DUTY_RECEIPT",
+      "case": {
+        "trigger_bound": true,
+        "duty_source_bound": true,
+        "required_elements": ["reason", "date", "actor"],
+        "response_elements": ["reason", "date", "actor"],
+        "timestamp_conflict": false,
+        "claim_contradicted_by_bound_source": false,
+        "contempt_asserted": false
+      },
+      "expected": "PASS"
+    },
+    {
+      "id": "V02_DUTY_RECEIPT_THIN",
+      "case": {
+        "trigger_bound": true,
+        "duty_source_bound": true,
+        "required_elements": ["reason", "date", "actor"],
+        "response_elements": ["date"],
+        "timestamp_conflict": false,
+        "claim_contradicted_by_bound_source": false,
+        "contempt_asserted": false
+      },
+      "expected": "HOLD"
+    },
+    {
+      "id": "V03_TIMESTAMP_CONFLICT",
+      "case": {
+        "trigger_bound": true,
+        "duty_source_bound": true,
+        "required_elements": [],
+        "response_elements": [],
+        "timestamp_conflict": true,
+        "claim_contradicted_by_bound_source": false,
+        "contempt_asserted": false
+      },
+      "expected": "CONFLICT"
+    },
+    {
+      "id": "V04_CLAIM_CONTRADICTED",
+      "case": {
+        "trigger_bound": true,
+        "duty_source_bound": true,
+        "required_elements": [],
+        "response_elements": [],
+        "timestamp_conflict": false,
+        "claim_contradicted_by_bound_source": true,
+        "contempt_asserted": false
+      },
+      "expected": "REJECT"
+    },
+    {
+      "id": "V05_CONTEMPT_ELEMENTS_MISSING",
+      "case": {
+        "trigger_bound": true,
+        "duty_source_bound": true,
+        "required_elements": [],
+        "response_elements": [],
+        "timestamp_conflict": false,
+        "claim_contradicted_by_bound_source": false,
+        "contempt_asserted": true,
+        "court_with_authority_bound": false,
+        "lawful_order_bound": false,
+        "notice_or_knowledge_bound": false,
+        "disobedience_evidence_bound": false,
+        "procedural_path_bound": false
+      },
+      "expected": "HOLD"
+    },
+    {
+      "id": "V06_CONTEMPT_REVIEW_ELIGIBLE_NOT_FINDING",
+      "case": {
+        "trigger_bound": true,
+        "duty_source_bound": true,
+        "required_elements": [],
+        "response_elements": [],
+        "timestamp_conflict": false,
+        "claim_contradicted_by_bound_source": false,
+        "contempt_asserted": true,
+        "court_with_authority_bound": true,
+        "lawful_order_bound": true,
+        "notice_or_knowledge_bound": true,
+        "disobedience_evidence_bound": true,
+        "procedural_path_bound": true
+      },
+      "expected": "HOLD",
+      "note": "All audit gates being bound only makes the question eligible for legal review; this verifier never declares contempt."
+    }
+  ]
+}

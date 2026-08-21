@@ -1,0 +1,31 @@
+{
+  "receipt_type": "SHOCK_GLOVES_AUDIT_ROLL_V0_1",
+  "operator_label": "jaywisdom.base.eth",
+  "created_at": "2026-08-17T21:25:00-05:00",
+  "parent_pr": 494,
+  "parent_head": "5520d516de7335f7314f7637f40fcb361bb8ead7",
+  "seed_input": "5520d516de7335f7314f7637f40fcb361bb8ead7|2026-08-17T21:25:00-05:00|SHOCK_GLOVES_AUDIT_V0_1",
+  "seed_sha256": "5c44ab44cb84a9e3f7e7b5e6e825df6305274cad2150397ef3bb49398c4930c5",
+  "roll": {
+    "TIME_SOURCE_DIE": "SERVER_LOG",
+    "TEMPORAL_STATE_DIE": "CLOCK_SKEW",
+    "RECEIPT_DIE": "EMAILED",
+    "CLERK_GATE_DIE": "NOTICE_ISSUED",
+    "CONTEMPT_GATE_DIE": "NOT_A_COURT_QUESTION",
+    "SUFFICIENCY_DIE": "PASS"
+  },
+  "terminal": "PASS",
+  "interpretation": {
+    "audit_scenario": "Compare a server-log timestamp to an emailed notice timestamp while normalizing timezone and clock basis. Preserve any skew as an anomaly until reconciled.",
+    "clerk_question": "If the notice represents a court filing path, bind the actual docket/NEF receipt before treating it as a clerk-system event.",
+    "contempt_question": "The roll does not establish a court-order path; contempt is therefore not a valid finding from this scenario.",
+    "pass_scope": "The deterministic roll/replay mechanism produced the expected scenario. PASS does not validate any external event."
+  },
+  "boundaries": {
+    "dice_roll_is_fact": false,
+    "contempt_found": false,
+    "physical_enforcement": false,
+    "legal_advice": false,
+    "authority_created": false
+  }
+}

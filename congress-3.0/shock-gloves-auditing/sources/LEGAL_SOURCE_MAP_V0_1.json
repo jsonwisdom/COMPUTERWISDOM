@@ -1,0 +1,40 @@
+{
+  "source_map": "SHOCK_GLOVES_AUDITING_LEGAL_SOURCE_MAP_V0_1",
+  "checked_date": "2026-08-17",
+  "sources": [
+    {
+      "id": "18_USC_401",
+      "authority": "United States Code",
+      "url": "https://uscode.house.gov/view.xhtml?edition=prelim&num=0&req=granuleid%3AUSC-prelim-title18-section401",
+      "bounded_use": "Establishes that federal contempt power belongs to a court of the United States within the statute's listed categories.",
+      "does_not_establish": ["contempt in any audited case", "criminal liability", "authority for this software"]
+    },
+    {
+      "id": "USCOURTS_CURRENT_RULES",
+      "authority": "Administrative Office of the U.S. Courts",
+      "url": "https://www.uscourts.gov/forms-rules/current-rules-practice-procedure",
+      "bounded_use": "Entry point for current national federal rules of practice and procedure.",
+      "does_not_establish": ["case-specific compliance", "local-rule compliance"]
+    },
+    {
+      "id": "CACB_OFFICIAL_TIME_OF_FILING",
+      "authority": "U.S. Bankruptcy Court, Central District of California",
+      "url": "https://www.cacb.uscourts.gov/faq/official-time-filing-what-official-time-filing-petition-or-document",
+      "bounded_use": "Example official court guidance tying filing time to entry and docketing in CM/ECF in that court.",
+      "does_not_establish": ["a universal rule for every court", "substantive legal correctness of a filing"]
+    },
+    {
+      "id": "CA4_CMECF_NOTICE",
+      "authority": "U.S. Court of Appeals for the Fourth Circuit",
+      "url": "https://www.ca4.uscourts.gov/caseinformationefiling/efiling_cm-ecf/cm-ecf-faqs",
+      "bounded_use": "Example official guidance that a system-generated docket notice records filing time and that clerk quality-control review can produce corrected docket activity.",
+      "does_not_establish": ["judicial approval", "substantive legal sufficiency"]
+    }
+  ],
+  "rules": [
+    "OFFICIAL_SOURCE != CASE_FINDING",
+    "DOCKET_TIMESTAMP != SUBSTANTIVE_TRUTH",
+    "CLERK_ACTION != JUDICIAL_RULING",
+    "CONTEMPT_STATUTE != CONTEMPT_PROVEN"
+  ]
+}
