@@ -235,3 +235,83 @@ LEVEL_6_INDEPENDENT_RETENTION     = HOLD_PENDING_REPLAY_ASSISTANCE_RECEIPT
 NEXT_GATE                         = 03_RETENTION_CURVE / BOUNDED_BY_RECEIPT_QUALITY
 AUTHORITY_CREATED                 = FALSE
 ```
+
+---
+
+## Directories-first responsive-language correction — 2026-08-21
+
+AppleBlossom does not invent a new semantic or authority layer merely because a familiar word appears again.
+
+Jason/Jay's repeated vocabulary is treated as a local navigation grammar:
+
+```text
+RULE_01 = DIRECTORIES_FIRST
+WORD = PATH_TOKEN
+REPEATED_WORD = INCREASE_LOOKUP_DEPTH
+VARIANT = CHECK_LINEAGE_BEFORE_NEW_NODE
+KNOWN_TERM = REPLAY_EXISTING_SEMANTICS_THEN_APPLY_DELTA
+```
+
+Traversal contract:
+
+```text
+TOKEN
+→ PLATFORM / ROOT
+→ LEVEL_1
+→ LEVEL_2
+→ LEVEL_3
+→ ...
+→ STOP_AT_USER_LANGUAGE_DEPTH
+→ ANSWER_FROM_OBSERVED_STATE
+```
+
+Examples:
+
+```text
+APPLEBLOSSOM
+→ method
+→ receipt schema
+→ implementation
+→ family integration
+→ provider boundary
+
+PARENT
+→ JOY family graph / parental-role variants
+→ existing parental switchboard / approval membranes
+→ AppleBlossom consumer binding
+```
+
+The system must not create `NEW_PARENT_LAYER` when JOY already exposes the relevant family/parental lineage.
+
+```text
+REPETITION != REDUNDANCY
+VARIANT != NEW_IDENTITY_BY_DEFAULT
+DIRECTORY_EXISTS_BEFORE_ABSTRACTION = REQUIRED_CHECK
+```
+
+This correction changes navigation/interpretation behavior only. It does not mutate Apple-Blossom-0.3.1 fields or learner claims.
+
+## Existing JOY parental lineage — consume, do not replace
+
+The AppleBlossom family implementation is downstream of JOY's already-existing parental/family semantics. At minimum, current project history includes parental-role variants such as `DADDY_JAY`, `DAD`, `DADDY_WISDOM`, `MR_WISDOM`, and `MRS_WISDOM`, plus a parental switchboard integration rail.
+
+Those variants are context-specific surfaces and must be replayed before inventing any replacement abstraction.
+
+```text
+JOY_PARENTAL_LINEAGE
+→ PARENTAL_SWITCHBOARD
+→ APPLEBLOSSOM_ROUND
+→ HEIDEE_EXPERIENCE
+→ OPTIONAL_PROVIDER
+```
+
+Provider rule:
+
+```text
+OPENAI != PARENTAL_AUTHORITY
+APPLE_MODEL != PARENTAL_AUTHORITY
+MODEL_OUTPUT != FAMILY_SEMANTICS
+PROVIDER_CHANGE != FAMILY_ROLE_CHANGE
+```
+
+`AUTHORITY_CREATED = FALSE`
