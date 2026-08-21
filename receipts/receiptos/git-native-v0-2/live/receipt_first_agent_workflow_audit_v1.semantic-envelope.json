@@ -1,0 +1,35 @@
+{
+  "authority_created": false,
+  "binding": {
+    "content_sha256": "sha256:b62b742efd14dc70d17bd262ea1185132b2b5c4d9ee337170831ed87e3e8ba3c",
+    "git_blob_oids": [
+      "62a30a9d2209e0f0d9f9b12398e9240541c65e7a"
+    ],
+    "git_commit_oid": "0aff025b7efe448d996809ad4f8abcae4622e546",
+    "git_object_format": "sha1",
+    "git_parent_oids": [
+      "4dfb181d6021a27accb0e508f0801035110bf69f"
+    ],
+    "git_ref_observed": "refs/heads/agent/receiptos-git-native-memory-substrate-v0-1",
+    "git_tag_oid": null,
+    "git_tree_oid": "2e29d78feeaeedb807edf0812915f79b871565b3",
+    "target_path": "projects/cwaas/offers/RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_V1.md"
+  },
+  "merge_authorized": false,
+  "receipt_id": "RECEIPTOS_GIT_NATIVE_CWAAS_OFFER_AUDIT_V0_2_001",
+  "schema": "RECEIPTOS_GIT_NATIVE_SEMANTIC_ENVELOPE_V0_2",
+  "semantic": {
+    "authority_state": "NONE_EXTERNAL",
+    "claim_class": "COMMERCIAL_OFFER_WORKFLOW_AUDIT_SERVICE",
+    "consent_state": "OWNER_DECLARED_JASON",
+    "evidence_class": "TEXT_ONLY_STOREFRONT_NO_BOUND_LIVE_FULFILLMENT_RECEIPT",
+    "replay_disposition": "HOLD",
+    "source_binding": [
+      "git:jsonwisdom/COMPUTERWISDOM@077efa9a713f97e0c608d45df7135b224f941b49:projects/cwaas/offers/RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_V1.md",
+      "git:jsonwisdom/COMPUTERWISDOM@0aff025b7efe448d996809ad4f8abcae4622e546:projects/cwaas/offers/RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_V1.md",
+      "claim-boundary:price_range_50_250_USD_declared_not_fulfillment_proven",
+      "claim-boundary:turnaround_24_72_hours_declared_not_fulfillment_proven",
+      "claim-boundary:five_deliverables_declared_not_live_client_fulfillment_proven"
+    ]
+  }
+}
