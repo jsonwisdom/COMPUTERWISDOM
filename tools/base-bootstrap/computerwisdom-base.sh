@@ -16,14 +16,180 @@ while (($#)); do
     --receipt-out) RECEIPT_OUT="$2"; shift 2;; --allow-send) ALLOW_SEND=1; shift;; *) die "Unknown option: $1";;
   esac
 done
+POLICY_FILE="$SCRIPT_DIR/config/allowed-environments.json"
+[[ -f "$POLICY_FILE" ]] || die "DOTENV_POLICY: missing policy file '$POLICY_FILE'."
+
+DEFAULT_ENV_NAME="$(
+  sed -n 's/.*"default"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$POLICY_FILE" |
+    head -n 1
+)"
+
+[[ -n "$DEFAULT_ENV_NAME" ]] ||
+  die 'DOTENV_POLICY: invalid default ENV_NAME.'
+
+read_policy_array() {
+  policy_key="$1"
+
+  awk -v wanted="\"$policy_key\"" '
+    index($0, wanted) {
+      inside = 1
+      next
+    }
+
+    inside && index($0, "]") {
+      exit
+    }
+
+    inside {
+      line = $0
+
+      sub(/^[[:space:]]*"/, "", line)
+      sub(/",[[:space:]]*$/, "", line)
+      sub(/"[[:space:]]*$/, "", line)
+
+      if (length(line) > 0) {
+        print line
+      }
+    }
+  ' "$POLICY_FILE"
+}
+
+ALLOWED_ENV_NAMES="$(read_policy_array allowed_env_names)"
+ALLOWED_DOTENV_KEYS="$(read_policy_array allowed_dotenv_keys)"
+
+list_contains() {
+  wanted="$1"
+  values="$2"
+
+  while IFS= read -r item; do
+    if [[ "$item" == "$wanted" ]]; then
+      return 0
+    fi
+  done <<EOF
+$values
+EOF
+
+  return 1
+}
+
+list_contains "$DEFAULT_ENV_NAME" "$ALLOWED_ENV_NAMES" ||
+  die 'DOTENV_POLICY: invalid default ENV_NAME.'
+
+DOTENV_NAMES=()
+DOTENV_VALUES=()
+UNKNOWN_KEYS=()
+
 if [[ -f "$ENV_FILE" ]]; then
   while IFS= read -r line || [[ -n "$line" ]]; do
-    line="${line%$'\r'}"; [[ -z "$line" || "$line" == \#* ]] && continue
-    [[ "$line" =~ ^([A-Z][A-Z0-9_]*)=(.*)$ ]] || die 'Invalid .env line.'
-    name="${BASH_REMATCH[1]}"; val="${BASH_REMATCH[2]}"; val="${val%\"}"; val="${val#\"}"; val="${val%\'}"; val="${val#\'}"
-    [[ "$name" =~ PRIVATE|SECRET|MNEMONIC|SEED|PASSWORD|TOKEN ]] && die "Secret-like variable '$name' is forbidden."
-    printf -v "$name" '%s' "$val"; export "$name"
+    line="${line%$'\r'}"
+
+    [[ -z "$line" ]] && continue
+
+    case "$line" in
+      \#*)
+        continue
+        ;;
+    esac
+
+    case "$line" in
+      *=*)
+        name="${line%%=*}"
+        val="${line#*=}"
+        ;;
+      *)
+        die 'DOTENV_POLICY: MALFORMED_LINE'
+        ;;
+    esac
+
+    case "$name" in
+      [A-Z]*)
+        ;;
+      *)
+        die 'DOTENV_POLICY: MALFORMED_LINE'
+        ;;
+    esac
+
+    case "$name" in
+      *[!A-Z0-9_]*)
+        die 'DOTENV_POLICY: MALFORMED_LINE'
+        ;;
+    esac
+
+    i=0
+    while (( i < ${#DOTENV_NAMES[@]} )); do
+      if [[ "${DOTENV_NAMES[$i]}" == "$name" ]]; then
+        die "DOTENV_POLICY: DUPLICATE_KEY=$name"
+      fi
+      i=$((i + 1))
+    done
+
+    case "$name" in
+      *PRIVATE*|*SECRET*|*MNEMONIC*|*SEED*|*PASSWORD*|*TOKEN*)
+        die "DOTENV_POLICY: SECRET_LIKE_KEY=$name"
+        ;;
+    esac
+
+    if ! list_contains "$name" "$ALLOWED_DOTENV_KEYS"; then
+      UNKNOWN_KEYS+=("$name")
+    fi
+
+    val="${val%\"}"
+    val="${val#\"}"
+    val="${val%\'}"
+    val="${val#\'}"
+
+    DOTENV_NAMES+=("$name")
+    DOTENV_VALUES+=("$val")
+
   done < "$ENV_FILE"
+fi
+
+if (( ${#UNKNOWN_KEYS[@]} > 0 )); then
+  old_ifs="$IFS"
+  IFS=,
+  unknown_joined="${UNKNOWN_KEYS[*]}"
+  IFS="$old_ifs"
+
+  die "DOTENV_POLICY: UNKNOWN_KEYS=$unknown_joined"
+fi
+
+ENV_NAME_VALUE="$DEFAULT_ENV_NAME"
+
+i=0
+while (( i < ${#DOTENV_NAMES[@]} )); do
+  if [[ "${DOTENV_NAMES[$i]}" == "ENV_NAME" ]]; then
+    ENV_NAME_VALUE="${DOTENV_VALUES[$i]}"
+  fi
+  i=$((i + 1))
+done
+
+list_contains "$ENV_NAME_VALUE" "$ALLOWED_ENV_NAMES" ||
+  die "ENV_NAME_INVALID: $ENV_NAME_VALUE"
+
+i=0
+while (( i < ${#DOTENV_NAMES[@]} )); do
+  name="${DOTENV_NAMES[$i]}"
+  val="${DOTENV_VALUES[$i]}"
+
+  printf -v "$name" '%s' "$val"
+  export "$name"
+
+  i=$((i + 1))
+done
+
+found_env_name=0
+
+i=0
+while (( i < ${#DOTENV_NAMES[@]} )); do
+  if [[ "${DOTENV_NAMES[$i]}" == "ENV_NAME" ]]; then
+    found_env_name=1
+  fi
+  i=$((i + 1))
+done
+
+if (( found_env_name == 0 )); then
+  ENV_NAME="$DEFAULT_ENV_NAME"
+  export ENV_NAME
 fi
 CHAIN="${CHAIN:-${CW_CHAIN:-base-sepolia}}"
 need cast; need forge

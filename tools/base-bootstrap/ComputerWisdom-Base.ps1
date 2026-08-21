@@ -23,15 +23,105 @@ function Need([string]$Name) {
   if (-not (Get-Command $Name -ErrorAction SilentlyContinue)) { Fail "'$Name' is required." }
 }
 function Import-SafeEnv([string]$Path) {
-  if (-not (Test-Path -LiteralPath $Path)) { return }
-  foreach ($line in Get-Content -LiteralPath $Path) {
-    $s = $line.Trim()
-    if (-not $s -or $s.StartsWith('#')) { continue }
-    if ($s -notmatch '^([A-Z][A-Z0-9_]*)=(.*)$') { Fail 'Invalid .env line; expected NAME=value.' }
-    $name = $Matches[1]
-    $value = $Matches[2].Trim().Trim('"').Trim("'")
-    if ($name -match '(PRIVATE|SECRET|MNEMONIC|SEED|PASSWORD|TOKEN)') { Fail "Secret-like variable '$name' is forbidden." }
-    [Environment]::SetEnvironmentVariable($name, $value, 'Process')
+  $policyPath = Join-Path $PSScriptRoot 'config\allowed-environments.json'
+
+  if (-not (Test-Path -LiteralPath $policyPath)) {
+    Fail "DOTENV_POLICY: missing policy file '$policyPath'."
+  }
+
+  try {
+    $policy = Get-Content -LiteralPath $policyPath -Raw | ConvertFrom-Json
+  }
+  catch {
+    Fail 'DOTENV_POLICY: invalid policy JSON.'
+  }
+
+  $allowedKeys = @($policy.allowed_dotenv_keys)
+  $allowedEnvNames = @($policy.allowed_env_names)
+  $defaultEnvName = [string]$policy.default
+
+  if (-not $defaultEnvName) {
+    Fail 'DOTENV_POLICY: missing default ENV_NAME.'
+  }
+
+  if ($defaultEnvName -notin $allowedEnvNames) {
+    Fail 'DOTENV_POLICY: invalid default ENV_NAME.'
+  }
+
+  $entries = [ordered]@{}
+  $unknown = [System.Collections.Generic.List[string]]::new()
+
+  if (Test-Path -LiteralPath $Path) {
+    foreach ($line in Get-Content -LiteralPath $Path) {
+      $s = $line.Trim()
+
+      if (-not $s -or $s.StartsWith('#')) {
+        continue
+      }
+
+      if ($s -notmatch '^([A-Z][A-Z0-9_]*)=(.*)$') {
+        Fail 'DOTENV_POLICY: MALFORMED_LINE'
+      }
+
+      $name = $Matches[1]
+      $value = $Matches[2].Trim()
+
+      if (
+        ($value.StartsWith('"') -and $value.EndsWith('"')) -or
+        ($value.StartsWith("'") -and $value.EndsWith("'"))
+      ) {
+        if ($value.Length -ge 2) {
+          $value = $value.Substring(1, $value.Length - 2)
+        }
+      }
+
+      if ($entries.Contains($name)) {
+        Fail "DOTENV_POLICY: DUPLICATE_KEY=$name"
+      }
+
+      if ($name -match '(PRIVATE|SECRET|MNEMONIC|SEED|PASSWORD|TOKEN)') {
+        Fail "DOTENV_POLICY: SECRET_LIKE_KEY=$name"
+      }
+
+      if ($name -notin $allowedKeys) {
+        $unknown.Add($name)
+      }
+
+      $entries[$name] = $value
+    }
+  }
+
+  if ($unknown.Count -gt 0) {
+    $unknownNames = ($unknown | Sort-Object -Unique) -join ','
+    Fail "DOTENV_POLICY: UNKNOWN_KEYS=$unknownNames"
+  }
+
+  if ($entries.Contains('ENV_NAME')) {
+    $envName = [string]$entries['ENV_NAME']
+  }
+  else {
+    $envName = $defaultEnvName
+  }
+
+  if ($envName -notin $allowedEnvNames) {
+    Fail "ENV_NAME_INVALID: $envName"
+  }
+
+  # Assignment happens only after the entire file passes policy validation.
+  foreach ($name in $entries.Keys) {
+    [Environment]::SetEnvironmentVariable(
+      [string]$name,
+      [string]$entries[$name],
+      'Process'
+    )
+  }
+
+  if (-not $entries.Contains('ENV_NAME')) {
+    [Environment]::SetEnvironmentVariable(
+      'ENV_NAME',
+      $defaultEnvName,
+      'Process'
+    )
   }
 }
 function Env([string]$Name) { [Environment]::GetEnvironmentVariable($Name, 'Process') }
