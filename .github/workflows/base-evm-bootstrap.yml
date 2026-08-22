@@ -35,6 +35,10 @@ jobs:
           python -m py_compile tools/base-bootstrap/verify_receipt.py tools/base-bootstrap/test_verify_receipt_gate2.py
       - name: Gate 2 assert-free receipt validation
         run: python tools/base-bootstrap/test_verify_receipt_gate2.py
+      - name: Install Gate 3 schema dependency
+        run: python -m pip install --disable-pip-version-check jsonschema
+      - name: Gate 3 full receipt schema
+        run: bash tests/test_gate3_receipt_schema.sh
       - name: Start isolated Base Sepolia replay chain
         run: |
           anvil --chain-id 84532 --port 8545 > "$RUNNER_TEMP/anvil-sepolia.log" 2>&1 &
