@@ -1,0 +1,44 @@
+{
+  "source_map": "DOUBLE_ONION_ALABAMA_LIVE_CONSTITUTION_SOURCE_MAP_V0_1",
+  "classification": "OFFICIAL_SOURCE_ANCHORS_WITH_PROJECT_BOUNDARIES",
+  "sources": [
+    {
+      "id": "ADAH_ALABAMA_SECESSION_ORDINANCE_1861",
+      "publisher": "Alabama Department of Archives and History",
+      "date": "1861-01-11",
+      "url": "https://digital.archives.alabama.gov/digital/collection/constitutions/id/124/",
+      "role": "historical primary-source anchor for Alabama convention secession action"
+    },
+    {
+      "id": "ADAH_ALABAMA_CONSTITUTION_1861",
+      "publisher": "Alabama Department of Archives and History",
+      "date": "1861",
+      "url": "https://digital.archives.alabama.gov/digital/collection/constitutions/id/6/",
+      "role": "historical primary-source anchor for Alabama 1861 constitutional text"
+    },
+    {
+      "id": "CONSTITUTION_ANNOTATED_CIVIL_WAR_AMENDMENTS",
+      "publisher": "Congress.gov / Library of Congress",
+      "url": "https://constitution.congress.gov/browse/essay/Intro.6-4/ALDE_00000388/",
+      "role": "federal constitutional state-change anchor for Thirteenth, Fourteenth, and Fifteenth Amendments"
+    },
+    {
+      "id": "CONGRESS_PN734_119TH",
+      "publisher": "Congress.gov / Library of Congress",
+      "date_received": "2026-01-13",
+      "confirmation_date": "2026-01-30",
+      "url": "https://www.congress.gov/nomination/119th-congress/734",
+      "role": "bounded public receipt for Leeann H. Chavers inclusion in ANG Colonel nomination slate and Senate confirmation of PN734"
+    }
+  ],
+  "boundaries": [
+    "HISTORICAL_SOURCE != CURRENT_AUTHORITY",
+    "SOURCE_MAP != LEGAL_CONCLUSION",
+    "NOMINATION_RECEIPT != EFFECTIVE_PROMOTION_DATE",
+    "CONFIRMATION != MISCONDUCT_FINDING",
+    "PUBLIC_PERSON != SUSPECT",
+    "SYNTHETIC_ROLE != REAL_PERSON",
+    "CONNECTED_PROJECT_SOURCE != PUBLIC_AUTHORITY",
+    "AUTHORITY_CREATED = FALSE"
+  ]
+}

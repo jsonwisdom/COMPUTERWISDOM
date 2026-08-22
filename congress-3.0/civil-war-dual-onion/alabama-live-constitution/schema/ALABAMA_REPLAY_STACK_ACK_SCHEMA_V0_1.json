@@ -1,0 +1,37 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "ALABAMA_REPLAY_STACK_ACK_SCHEMA_V0_1",
+  "title": "Alabama Replay Stack Acknowledgment Receipt v0.1",
+  "type": "object",
+  "required": ["timestamp", "alabama_replay_stack"],
+  "properties": {
+    "timestamp": {"type": "string", "format": "date-time"},
+    "alabama_replay_stack": {
+      "type": "object",
+      "required": ["pr", "components", "workflows", "doctrine_check", "history_replay_model", "know_thy_alabama", "membrane_preserved", "api_key_status", "current_gates"],
+      "properties": {
+        "pr": {
+          "type": "object",
+          "required": ["number", "status", "head"],
+          "properties": {
+            "number": {"const": 496},
+            "status": {"type": "string"},
+            "head": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+          }
+        },
+        "components": {"type": "array", "minItems": 5, "items": {"type": "string"}},
+        "workflows": {"type": "object"},
+        "doctrine_check": {"type": "object"},
+        "history_replay_model": {"type": "object"},
+        "know_thy_alabama": {"type": "object"},
+        "membrane_preserved": {"type": "object"},
+        "api_key_status": {"type": "object"},
+        "current_gates": {
+          "type": "object",
+          "required": ["SCHEMA_COMPLIANCE", "TIMESTAMP_RELATION", "BITBOT_VALIDATOR", "FACT_PROMOTION", "AUTHORITY_CREATED", "MERGE"]
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}

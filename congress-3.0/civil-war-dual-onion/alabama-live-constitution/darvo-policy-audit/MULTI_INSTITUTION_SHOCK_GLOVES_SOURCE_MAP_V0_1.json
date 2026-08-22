@@ -1,0 +1,73 @@
+{
+  "source_map": "MULTI_INSTITUTION_SHOCK_GLOVES_SOURCE_MAP_V0_1",
+  "authority_created": false,
+  "darvo_finding_created": false,
+  "military_coordination_finding_created": false,
+  "sources": [
+    {
+      "id": "AL_CODE_26_14_3",
+      "publisher": "Alabama Legislature",
+      "role": "mandatory reporting; DHR military-status determination; DoD Family Advocacy Program notification for military parent/guardian child-abuse allegations",
+      "url": "https://alison.legislature.state.al.us/code-of-alabama?section=26-14-3"
+    },
+    {
+      "id": "AL_CODE_30_3_9",
+      "publisher": "Alabama Legislature / codified statute",
+      "role": "military deployment may not be sole factor in custody determination; SCRA stay interface",
+      "url": "https://alison.legislature.state.al.us/code-of-alabama?section=30-3-9"
+    },
+    {
+      "id": "AL_CIVIL_APPEALS",
+      "publisher": "Alabama Judicial System",
+      "role": "domestic-relations appellate jurisdiction",
+      "url": "https://judicial.alabama.gov/Appellate/CivilAppeals"
+    },
+    {
+      "id": "AL_CODE_30_3B_311",
+      "publisher": "Alabama Legislature",
+      "role": "warrant to take physical custody of child; law-enforcement execution under statutory findings",
+      "url": "https://alison.legislature.state.al.us/code-of-alabama?section=30-3B-311"
+    },
+    {
+      "id": "AL_DHR_CHILD_SUPPORT_RIGHTS",
+      "publisher": "Alabama Department of Human Resources",
+      "role": "notice, participation, full/fair treatment, agency-action review and administrative-hearing paths",
+      "url": "https://dhr.alabama.gov/child-support-enforcement-division/your-rights/"
+    },
+    {
+      "id": "AL_DHR_CHILD_SUPPORT_ENFORCEMENT",
+      "publisher": "Alabama Department of Human Resources",
+      "role": "passport denial, FIDM, liens, levies, license suspension/revocation",
+      "url": "https://dhr.alabama.gov/child-support-enforcement-division/enforcement-of-court-ordered-child-support-payments/"
+    },
+    {
+      "id": "AL_DHR_SNAP_QC",
+      "publisher": "Alabama Department of Human Resources",
+      "role": "mandatory SNAP quality-control review; closure/ineligibility for noncooperation",
+      "url": "https://dhr.alabama.gov/directory/quality-control/"
+    },
+    {
+      "id": "AL_DHR_ADMIN_HEARINGS",
+      "publisher": "Alabama Department of Human Resources",
+      "role": "due-process administrative hearings in qualifying matters",
+      "url": "https://dhr.alabama.gov/directory/administrative-hearings/"
+    },
+    {
+      "id": "DOD_FAP",
+      "publisher": "Military OneSource",
+      "role": "Family Advocacy Program prevention/response and civilian-military coordination",
+      "url": "https://www.militaryonesource.mil/benefits/family-advocacy-program/"
+    }
+  ],
+  "boundaries": [
+    "REPORT != FINDING",
+    "DENIAL != DARVO",
+    "ENFORCEMENT != MISUSE",
+    "INTERAGENCY_TRANSFER != COMMON_INTENT",
+    "DHR_TO_DOD_FAP_NOTIFICATION != MILITARY_CONTROL_OF_COURT",
+    "MILITARY_STATUS != COURT_AUTHORITY",
+    "SHOCK_GLOVES = SYMBOLIC_COERCION_AUDIT_MECHANIC_UNLESS_LITERAL_EVIDENCE_BOUND",
+    "COORDINATED_DARVO_CAMPAIGN = HOLD_EVENT_AND_COORDINATION_RECEIPTS_REQUIRED",
+    "AUTHORITY_CREATED = FALSE"
+  ]
+}

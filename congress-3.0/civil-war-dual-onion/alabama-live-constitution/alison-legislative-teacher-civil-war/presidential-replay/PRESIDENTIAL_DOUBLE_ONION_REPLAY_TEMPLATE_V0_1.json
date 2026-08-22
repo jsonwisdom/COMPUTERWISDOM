@@ -1,0 +1,76 @@
+{
+  "schema": "alison_presidential_double_onion_replay.v0_1",
+  "replay_id": "PRESIDENTIAL_REPLAY_TEMPLATE",
+  "president": {
+    "name": "HOLD_UNBOUND",
+    "office": "President of the United States",
+    "identity_source": {
+      "title": "HOLD_SOURCE_REQUIRED",
+      "url": "https://example.invalid/hold",
+      "source_class": "OFFICIAL_ARCHIVE",
+      "temporal_role": "AT_EVENT"
+    }
+  },
+  "event": {
+    "exact_claim": "HOLD_EXACT_CLAIM_REQUIRED",
+    "exact_action": "HOLD_EXACT_ACTION_REQUIRED",
+    "date_or_range": "HOLD_DATE_REQUIRED",
+    "observable_consequence": "HOLD_CONSEQUENCE_REQUIRED"
+  },
+  "power_onion": {
+    "claimed_power": "HOLD_CLAIMED_POWER_REQUIRED",
+    "constitutional_text": [],
+    "statutory_delegation": [],
+    "authority_on_date": {"status": "HOLD", "claim": "HOLD_AUTHORITY_ON_DATE", "sources": []},
+    "congressional_response": {"status": "HOLD", "claim": "HOLD_CONGRESSIONAL_RESPONSE", "sources": []},
+    "judicial_review": {"status": "HOLD", "claim": "HOLD_JUDICIAL_REVIEW", "sources": []},
+    "legal_authority_jaw": {
+      "action": "HOLD",
+      "basis": "HOLD",
+      "agency_or_executor": "HOLD",
+      "deadline_or_duration": "HOLD",
+      "funding": "HOLD",
+      "limits": "HOLD"
+    },
+    "execution_evidence_jaw": {
+      "guidance": "HOLD",
+      "contracts_or_orders": "HOLD",
+      "deployment": "HOLD",
+      "testing_or_review": "HOLD",
+      "results": "HOLD",
+      "missing_or_conflicting_records": "HOLD"
+    },
+    "later_change": [],
+    "current_state": {"status": "HOLD", "claim": "HOLD_CURRENT_STATE", "sources": []},
+    "boxd": {"source_bound": false, "raw_bytes_frozen": false, "sha256_computed": false, "readback_status": "HOLD"}
+  },
+  "people_onion": {
+    "right_to_object": {"status": "HOLD", "claim": "HOLD_RIGHT_TO_OBJECT", "sources": []},
+    "right_to_vote": {"status": "HOLD", "claim": "HOLD_RIGHT_TO_VOTE", "sources": []},
+    "right_to_petition": {"status": "HOLD", "claim": "HOLD_RIGHT_TO_PETITION", "sources": []},
+    "access_to_court": {"status": "HOLD", "claim": "HOLD_ACCESS_TO_COURT", "sources": []},
+    "access_to_counsel_or_profession": {"status": "HOLD", "claim": "HOLD_ACCESS_TO_COUNSEL_OR_PROFESSION", "sources": []},
+    "institutional_barriers": {"status": "HOLD", "claim": "HOLD_INSTITUTIONAL_BARRIERS", "sources": []},
+    "retaliation_or_burden": {"status": "HOLD", "claim": "HOLD_RETALIATION_OR_BURDEN", "sources": []},
+    "actual_remedy": {"status": "HOLD", "claim": "HOLD_ACTUAL_REMEDY", "sources": []},
+    "challenge_evidence": [],
+    "boxd": {"source_bound": false, "raw_bytes_frozen": false, "sha256_computed": false, "readback_status": "HOLD"}
+  },
+  "cross_onion_receipt": {
+    "power_status": "HOLD",
+    "challenge_capacity_status": "HOLD",
+    "terminal": "HOLD",
+    "reason": "Template only. No presidential action or citizen challenge environment is promoted without bound sources."
+  },
+  "boundaries": {
+    "president_identity_not_authority": true,
+    "election_win_not_blank_check": true,
+    "presidential_statement_not_law": true,
+    "court_nonreview_not_validation": true,
+    "historical_reputation_not_authority": true,
+    "formal_right_not_practical_access": true,
+    "source_bound_not_authority_validated": true,
+    "model_required": false,
+    "authority_created": false
+  }
+}

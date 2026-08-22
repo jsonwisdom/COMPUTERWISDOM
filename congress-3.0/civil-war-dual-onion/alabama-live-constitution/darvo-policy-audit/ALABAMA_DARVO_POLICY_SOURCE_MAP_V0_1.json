@@ -1,0 +1,39 @@
+{
+  "source_map": "ALABAMA_DARVO_POLICY_SOURCE_MAP_V0_1",
+  "audit_date": "2026-08-18",
+  "named_darvo_policy": {
+    "family_court": "NOT_LOCATED",
+    "state_statute": "NOT_LOCATED",
+    "statewide_k12": "NOT_LOCATED"
+  },
+  "family_court": [
+    {"id":"ALA_30_3_152","role":"joint custody / best-interest factors","url":"https://alison.legislature.state.al.us/code-of-alabama?section=30-3-152"},
+    {"id":"ALA_30_3_131","role":"domestic/family violence custody presumption","url":"https://alison.legislature.state.al.us/code-of-alabama?section=30-3-131"},
+    {"id":"ALA_30_3_132","role":"violence safety/history factors","url":"https://alison.legislature.state.al.us/code-of-alabama?section=30-3-132"},
+    {"id":"ALA_30_3_169_4","role":"relocation burden of proof","url":"https://alison.legislature.state.al.us/code-of-alabama?section=30-3-169.4"},
+    {"id":"ALA_30_5_6","role":"protection-from-abuse hearing / proof standard / temporary orders","url":"https://alison.legislature.state.al.us/code-of-alabama?section=30-5-6"},
+    {"id":"ALA_30_5_7","role":"protection-from-abuse remedies","url":"https://alison.legislature.state.al.us/code-of-alabama?section=30-5-7"},
+    {"id":"EX_PARTE_MCLENDON","role":"custody modification doctrine","url":"https://law.justia.com/cases/alabama/supreme-court/1984/455-so-2d-863-1.html"}
+  ],
+  "procedure": [
+    {"id":"ALA_R_CIV_P_59","role":"post-judgment motion timing","url":"https://judicial.alabama.gov/docs/library/rules/cv59.pdf"},
+    {"id":"ALA_R_APP_P_4","role":"appeal timing / tolling","url":"https://judicial.alabama.gov/docs/library/rules/ap4.pdf"},
+    {"id":"ALA_JUDICIAL_CANONS","role":"judicial ethics","url":"https://judicial.alabama.gov/library/RulesCanons"},
+    {"id":"ALA_JIC","role":"judicial misconduct complaint / non-appellate boundary","url":"https://judicial.alabama.gov/appellate/JIC"}
+  ],
+  "education": [
+    {"id":"ALA_16_28B_6","role":"school anti-harassment/intimidation/violence duties","url":"https://alison.legislature.state.al.us/code-of-alabama?section=16-28B-6"},
+    {"id":"AAC_290_4_3_03","role":"Alabama Core Teaching Standards","url":"https://admincode.legislature.state.al.us/administrative-code/290-4-3-.03"},
+    {"id":"AAC_290_4_3_04","role":"Alabama Standards for School Leadership","url":"https://admincode.legislature.state.al.us/administrative-code/290-4-3-.04"}
+  ],
+  "membranes": [
+    "DARVO != STATUTORY_CAUSE_OF_ACTION",
+    "NARCISSISTIC_LABEL != LEGAL_ELEMENT",
+    "DENIAL != DARVO",
+    "DARVO_PATTERN_CANDIDATE != LEGAL_ERROR",
+    "DARVO_PATTERN_CANDIDATE != JUDICIAL_MISCONDUCT",
+    "STATUTORY_BURDEN_SHIFT != DARVO",
+    "SYSTEMIC_DARVO_REQUIRES_AGGREGATE_EVIDENCE",
+    "AUTHORITY_CREATED = FALSE"
+  ]
+}

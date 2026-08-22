@@ -1,0 +1,53 @@
+{
+  "schema": "reconstruction_replay_receipt.v0_1",
+  "receipt_id": "RECONSTRUCTION_REPLAY_RECEIPT_002",
+  "PRIOR_STATE": "Alabama's 1861 convention had asserted withdrawal from the United States and Alabama was participating in Confederate governance, while the United States executive treated the Union as unbroken.",
+  "ACTOR": "President Abraham Lincoln / United States executive and military authorities; later Maj. Gen. Edward R. S. Canby and Confederate Lt. Gen. Richard Taylor for the Alabama-area surrender edge",
+  "CLAIMED_AUTHORITY": "The United States executive asserted constitutional duty to execute federal law and statutory/constitutional authority to call militia against combinations obstructing federal law; Canby acted as a United States military commander in accepting Taylor's surrender. This receipt records the asserted authority and acts without independently validating the full legal scope of that authority.",
+  "PRIMARY_SOURCE": [
+    {
+      "title": "Abraham Lincoln, First Inaugural Address, final delivery text, March 4, 1861",
+      "url": "https://www.loc.gov/item/mal0773800/",
+      "source_class": "PRIMARY_FEDERAL",
+      "temporal_role": "AT_EVENT"
+    },
+    {
+      "title": "Abraham Lincoln, Proclamation on State Militia, April 15, 1861",
+      "url": "https://www.loc.gov/item/mal0907400/",
+      "source_class": "PRIMARY_FEDERAL",
+      "temporal_role": "AT_EVENT"
+    },
+    {
+      "title": "National Archives, The Last Surrenders of the Civil War — Richard Taylor / Citronelle surrender",
+      "url": "https://www.archives.gov/publications/prologue/2015/spring/images/cw-surrenders.html",
+      "source_class": "SECONDARY_OFFICIAL",
+      "temporal_role": "AT_EVENT"
+    }
+  ],
+  "DATE": "1861-03-04/1865-05-04",
+  "ACTION": "On March 4, 1861, Lincoln publicly stated the United States executive position that the Union remained unbroken. On April 15, 1861, he called forth 75,000 state militia to suppress combinations obstructing federal law and to cause the laws to be executed. On May 4, 1865, Lt. Gen. Richard Taylor surrendered the Confederate Department of Alabama, Mississippi, and East Louisiana to Maj. Gen. Edward R. S. Canby at Citronelle, Alabama.",
+  "FEDERAL_STATE_RELATION": "The United States executive acted on the premise that unilateral secession had not terminated the federal constitutional relation, while Alabama and Confederate authorities acted on the contrary claimed-sovereignty premise. The May 4, 1865 Citronelle surrender establishes a military-control transition in the Alabama theater; it does not by itself establish the complete postwar constitutional status of Alabama.",
+  "SUPERSESSION_EVENT": "Postwar Alabama constitutional reorganization in 1865 is reserved for Reconstruction Replay Receipt 003. The 1867 Reconstruction Acts are reserved for Receipt 005 and are not retrojected into this 1861-1865 event window.",
+  "NEXT_STATE": "By May 4, 1865, a principal Confederate field command covering Alabama had surrendered to United States forces. Alabama's postwar civil-government and constitutional state remains unresolved in this receipt and advances to Receipt 003.",
+  "CONTRADICTORY_SOURCE": [
+    {
+      "title": "Alabama Ordinance of Secession, adopted January 11, 1861",
+      "url": "https://digital.archives.alabama.gov/digital/collection/voices/id/3764",
+      "source_class": "PRIMARY_STATE",
+      "temporal_role": "AT_EVENT"
+    }
+  ],
+  "BOXD_RECEIPT": {
+    "terminal": "PASS",
+    "reason": "PASS_SOURCE_BOUND_AUTHORITY_NOT_VALIDATED: official/primary records bind the federal nonrecognition position, the April 15 militia action, and the May 4 Citronelle military surrender. The receipt does not promote those facts into a complete judicial holding on secession or a fully reconstructed Alabama civil-government state.",
+    "source_bound": true,
+    "authority_validated": false,
+    "raw_bytes_frozen": false,
+    "sha256_computed": false
+  },
+  "boundaries": {
+    "source_bound_not_authority_validated": true,
+    "later_supersession_not_retroactive_fact_rewrite": true,
+    "authority_created": false
+  }
+}

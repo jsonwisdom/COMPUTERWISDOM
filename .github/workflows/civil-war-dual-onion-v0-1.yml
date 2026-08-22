@@ -1,0 +1,73 @@
+name: Civil War Dualistic Onion v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'congress-3.0/civil-war-dual-onion/**'
+      - '.github/workflows/civil-war-dual-onion-v0-1.yml'
+  push:
+    branches:
+      - 'agent/civil-war-dualistic-onion-kernel-jay-v0-1'
+    paths:
+      - 'congress-3.0/civil-war-dual-onion/**'
+      - '.github/workflows/civil-war-dual-onion-v0-1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+
+      - name: Compile deterministic verifier
+        run: python -m py_compile congress-3.0/civil-war-dual-onion/tools/verify_civil_war_dual_onion_v0_1.py
+
+      - name: Replay Kernel Jay vectors and round
+        run: python congress-3.0/civil-war-dual-onion/tools/verify_civil_war_dual_onion_v0_1.py
+
+      - name: Verify Alabama replay acknowledgment schema and timestamp relation
+        run: |
+          python -m py_compile congress-3.0/civil-war-dual-onion/tools/verify_alabama_replay_stack_ack_v0_1.py
+          python congress-3.0/civil-war-dual-onion/tools/verify_alabama_replay_stack_ack_v0_1.py
+
+      - name: Verify ALISON Reconstruction replay receipt templates
+        run: |
+          python -m py_compile congress-3.0/civil-war-dual-onion/tools/verify_reconstruction_replay_receipts_v0_1.py
+          python congress-3.0/civil-war-dual-onion/tools/verify_reconstruction_replay_receipts_v0_1.py
+
+      - name: Verify ALISON presidential double-onion replay
+        run: |
+          python -m py_compile congress-3.0/civil-war-dual-onion/tools/verify_presidential_double_onion_replay_v0_1.py
+          python congress-3.0/civil-war-dual-onion/tools/verify_presidential_double_onion_replay_v0_1.py
+
+      - name: Verify dual-onion membranes
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('congress-3.0/civil-war-dual-onion')
+          kernel = json.loads((root/'kernel/KERNEL_JAY_V0_1.json').read_text())
+          receipt = json.loads((root/'receipts/ROUND_0001.json').read_text())
+          contract = json.loads((root/'openai/agent_contract.json').read_text())
+          sources = json.loads((root/'sources/SOURCE_MAP_V0_1.json').read_text())
+
+          assert kernel['authority_created'] is False
+          assert kernel['cryptographic_control_verified'] is False
+          assert receipt['boundaries']['north_is_modern_enemy_class'] is False
+          assert receipt['boundaries']['south_is_modern_enemy_class'] is False
+          assert receipt['boundaries']['family_fact_created'] is False
+          assert contract['model_execution_performed'] is False
+          assert contract['authority_created'] is False
+          assert len(sources['sources']) >= 3
+          print('CIVIL_WAR_DUAL_ONION_MEMBRANES=PASS')
+          PY
+
+      - name: Preserve parent audit foundation
+        run: |
+          python congress-3.0/shock-gloves-auditing/tools/verify_receipt_sufficiency_v0_1.py
+          python congress-3.0/tools/verify_congress_3_0.py congress-3.0/fixtures/CONGRESS_3_0_SYSTEMS_ACCOUNTABILITY_TEST_VECTORS_V0_1.json
+          python congress-3.0/banking/tools/verify_banking_burden_flip_v0_1.py congress-3.0/banking/fixtures/BANKING_BURDEN_FLIP_TEST_VECTORS_V0_1.json

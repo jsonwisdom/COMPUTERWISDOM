@@ -1,0 +1,32 @@
+{
+  "schema": "alison_reconstruction_replay_rail.v0_1",
+  "parent": "ALISON_ALABAMA_LEGISLATIVE_TEACHER_CIVIL_WAR_V0_1",
+  "authority_created": false,
+  "rule": "Read old law -> bind event -> trace supersession -> read next state -> freeze receipt.",
+  "receipt_schema": "RECONSTRUCTION_REPLAY_RECEIPT_SCHEMA_V0_1.json",
+  "slots": [
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_001", "label": "Alabama Secession Convention / Ordinance of Secession", "state": "PASS_SOURCE_BOUND_AUTHORITY_NOT_VALIDATED"},
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_002", "label": "Civil War / Federal Action", "state": "PASS_SOURCE_BOUND_AUTHORITY_NOT_VALIDATED"},
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_003", "label": "1865 Alabama Constitution", "state": "HOLD_TEMPLATE_ONLY"},
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_004", "label": "Thirteenth Amendment Alabama transition", "state": "HOLD_TEMPLATE_ONLY"},
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_005", "label": "Reconstruction Acts / military reconstruction", "state": "HOLD_TEMPLATE_ONLY"},
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_006", "label": "1868 Alabama Constitution", "state": "HOLD_TEMPLATE_ONLY"},
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_007", "label": "Fourteenth Amendment Alabama transition", "state": "HOLD_TEMPLATE_ONLY"},
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_008", "label": "Congressional readmission / representation state", "state": "HOLD_TEMPLATE_ONLY"},
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_009", "label": "Fifteenth Amendment Alabama transition", "state": "HOLD_TEMPLATE_ONLY"},
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_010", "label": "1875 Alabama Constitution", "state": "HOLD_TEMPLATE_ONLY"},
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_011", "label": "1901 Alabama Constitution", "state": "HOLD_TEMPLATE_ONLY"},
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_012", "label": "Constitution of Alabama 2022", "state": "HOLD_TEMPLATE_ONLY"},
+    {"id": "RECONSTRUCTION_REPLAY_RECEIPT_013", "label": "Present-law constitutional state", "state": "HOLD_TEMPLATE_ONLY"}
+  ],
+  "terminals": ["PASS", "HOLD", "CONFLICT", "REJECT"],
+  "membranes": [
+    "SOURCE_BOUND != AUTHORITY_VALIDATED",
+    "CLAIMED_AUTHORITY != LAWFUL_AUTHORITY",
+    "LATER_SUPERSESSION != RETROACTIVE_FACT_REWRITE",
+    "WAR_END != CONSTITUTIONAL_REPLAY_END",
+    "RECONSTRUCTION != FOOTNOTE",
+    "HOLD_TEMPLATE_ONLY != FACT",
+    "AUTHORITY_CREATED = FALSE"
+  ]
+}

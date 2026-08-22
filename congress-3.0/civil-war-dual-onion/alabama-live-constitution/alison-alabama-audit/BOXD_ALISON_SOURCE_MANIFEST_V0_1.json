@@ -1,0 +1,67 @@
+{
+  "artifact_id": "BOXD_ALISON_SOURCE_MANIFEST_V0_1",
+  "operator": "jaywisdom.base.eth",
+  "surface": "ALISON_ALABAMA_LEGISLATURE",
+  "observed_minute": "2026-08-18T05:34Z",
+  "raw_bytes_captured": false,
+  "hash_status": "NOT_COMPUTED",
+  "authority_created": false,
+  "sources": [
+    {
+      "id": "ALISON_HOME",
+      "source_type": "SESSION",
+      "url": "https://alison.legislature.state.al.us/",
+      "observed_state": "2026 Regular Session adjourned April 9, 2026",
+      "readback_verified": true
+    },
+    {
+      "id": "ALISON_CONSTITUTION_2022",
+      "source_type": "CONSTITUTION",
+      "url": "https://alison.legislature.state.al.us/constitution/search",
+      "observed_state": "Constitution of Alabama 2022 search surface",
+      "readback_verified": true
+    },
+    {
+      "id": "ALISON_CODE_30_3_152",
+      "source_type": "CODE",
+      "identifier": "30-3-152",
+      "url": "https://alison.legislature.state.al.us/code-of-alabama?section=30-3-152",
+      "observed_state": "joint custody factors; specific findings required when both parents request joint custody and it is denied",
+      "readback_verified": true
+    },
+    {
+      "id": "ALISON_CODE_30_3_169_4",
+      "source_type": "CODE",
+      "identifier": "30-3-169.4",
+      "url": "https://alison.legislature.state.al.us/code-of-alabama?section=30-3-169.4",
+      "observed_state": "relocation burden allocation and statutory shift",
+      "readback_verified": true
+    },
+    {
+      "id": "ALISON_CODE_26_14_3",
+      "source_type": "CODE",
+      "identifier": "26-14-3",
+      "url": "https://alison.legislature.state.al.us/code-of-alabama?section=26-14-3&version=2026-10-01",
+      "displayed_effective_state": "Effective until 2026-10-01 / Effective 2026-10-01",
+      "amending_act": "Act 2026-375",
+      "observed_state": "mandatory reporting plus DHR military-status determination and DoD Family Advocacy Program notification edge",
+      "readback_verified": true
+    },
+    {
+      "id": "ALISON_ACT_DISPOSITIONS",
+      "source_type": "DISPOSITION",
+      "url": "https://alison.legislature.state.al.us/legal-division-publications",
+      "observed_state": "Disposition Table by Act and by Code Sections available",
+      "readback_verified": true
+    }
+  ],
+  "boundaries": [
+    "SOURCE_URL_BOUND != SOURCE_BYTES_PROVEN",
+    "READBACK_VERIFIED != HASH_VERIFIED",
+    "CODE_TEXT != CASE_APPLICATION",
+    "BILL != LAW",
+    "ACT != CURRENT_CODE_WITHOUT_EFFECTIVE_DATE_CHECK",
+    "HASH != SEMANTIC_TRUTH",
+    "BOXD != LEGAL_AUTHORITY"
+  ]
+}

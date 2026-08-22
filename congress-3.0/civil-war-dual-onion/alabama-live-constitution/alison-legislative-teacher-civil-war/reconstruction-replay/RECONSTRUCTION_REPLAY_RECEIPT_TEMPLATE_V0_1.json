@@ -1,0 +1,34 @@
+{
+  "schema": "reconstruction_replay_receipt.v0_1",
+  "receipt_id": "RECONSTRUCTION_REPLAY_RECEIPT_000",
+  "PRIOR_STATE": "HOLD_UNBOUND",
+  "ACTOR": "HOLD_UNBOUND",
+  "CLAIMED_AUTHORITY": "HOLD_UNBOUND",
+  "PRIMARY_SOURCE": [
+    {
+      "title": "HOLD_UNBOUND",
+      "url": "https://example.invalid/hold",
+      "source_class": "OFFICIAL_ARCHIVE",
+      "temporal_role": "AT_EVENT"
+    }
+  ],
+  "DATE": "HOLD_UNBOUND",
+  "ACTION": "HOLD_UNBOUND",
+  "FEDERAL_STATE_RELATION": "HOLD_UNBOUND",
+  "SUPERSESSION_EVENT": "HOLD_UNBOUND",
+  "NEXT_STATE": "HOLD_UNBOUND",
+  "CONTRADICTORY_SOURCE": [],
+  "BOXD_RECEIPT": {
+    "terminal": "HOLD",
+    "reason": "Template only; required historical edges are not yet source-bound.",
+    "source_bound": false,
+    "authority_validated": false,
+    "raw_bytes_frozen": false,
+    "sha256_computed": false
+  },
+  "boundaries": {
+    "source_bound_not_authority_validated": true,
+    "later_supersession_not_retroactive_fact_rewrite": true,
+    "authority_created": false
+  }
+}

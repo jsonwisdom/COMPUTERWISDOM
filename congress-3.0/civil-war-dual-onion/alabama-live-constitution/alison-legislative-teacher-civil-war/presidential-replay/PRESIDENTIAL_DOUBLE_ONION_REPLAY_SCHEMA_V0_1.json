@@ -1,0 +1,195 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "alison_presidential_double_onion_replay.v0_1",
+  "title": "ALISON Presidential Double Onion Replay v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "replay_id",
+    "president",
+    "event",
+    "power_onion",
+    "people_onion",
+    "cross_onion_receipt",
+    "boundaries"
+  ],
+  "properties": {
+    "schema": {"const": "alison_presidential_double_onion_replay.v0_1"},
+    "replay_id": {"type": "string", "pattern": "^PRESIDENTIAL_REPLAY_[A-Z0-9_]+$"},
+    "president": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "office", "identity_source"],
+      "properties": {
+        "name": {"type": "string", "minLength": 1},
+        "office": {"const": "President of the United States"},
+        "identity_source": {"$ref": "#/$defs/source"}
+      }
+    },
+    "event": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["exact_claim", "exact_action", "date_or_range", "observable_consequence"],
+      "properties": {
+        "exact_claim": {"type": "string", "minLength": 1},
+        "exact_action": {"type": "string", "minLength": 1},
+        "date_or_range": {"type": "string", "minLength": 1},
+        "observable_consequence": {"type": "string", "minLength": 1}
+      }
+    },
+    "power_onion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "claimed_power",
+        "constitutional_text",
+        "statutory_delegation",
+        "authority_on_date",
+        "congressional_response",
+        "judicial_review",
+        "legal_authority_jaw",
+        "execution_evidence_jaw",
+        "later_change",
+        "current_state",
+        "boxd"
+      ],
+      "properties": {
+        "claimed_power": {"type": "string", "minLength": 1},
+        "constitutional_text": {"type": "array", "items": {"$ref": "#/$defs/source"}},
+        "statutory_delegation": {"type": "array", "items": {"$ref": "#/$defs/source"}},
+        "authority_on_date": {"$ref": "#/$defs/gate"},
+        "congressional_response": {"$ref": "#/$defs/gate"},
+        "judicial_review": {"$ref": "#/$defs/gate"},
+        "legal_authority_jaw": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["action", "basis", "agency_or_executor", "deadline_or_duration", "funding", "limits"],
+          "properties": {
+            "action": {"type": "string"},
+            "basis": {"type": "string"},
+            "agency_or_executor": {"type": "string"},
+            "deadline_or_duration": {"type": "string"},
+            "funding": {"type": "string"},
+            "limits": {"type": "string"}
+          }
+        },
+        "execution_evidence_jaw": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["guidance", "contracts_or_orders", "deployment", "testing_or_review", "results", "missing_or_conflicting_records"],
+          "properties": {
+            "guidance": {"type": "string"},
+            "contracts_or_orders": {"type": "string"},
+            "deployment": {"type": "string"},
+            "testing_or_review": {"type": "string"},
+            "results": {"type": "string"},
+            "missing_or_conflicting_records": {"type": "string"}
+          }
+        },
+        "later_change": {"type": "array", "items": {"$ref": "#/$defs/source"}},
+        "current_state": {"$ref": "#/$defs/gate"},
+        "boxd": {"$ref": "#/$defs/boxd"}
+      }
+    },
+    "people_onion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "right_to_object",
+        "right_to_vote",
+        "right_to_petition",
+        "access_to_court",
+        "access_to_counsel_or_profession",
+        "institutional_barriers",
+        "retaliation_or_burden",
+        "actual_remedy",
+        "challenge_evidence",
+        "boxd"
+      ],
+      "properties": {
+        "right_to_object": {"$ref": "#/$defs/gate"},
+        "right_to_vote": {"$ref": "#/$defs/gate"},
+        "right_to_petition": {"$ref": "#/$defs/gate"},
+        "access_to_court": {"$ref": "#/$defs/gate"},
+        "access_to_counsel_or_profession": {"$ref": "#/$defs/gate"},
+        "institutional_barriers": {"$ref": "#/$defs/gate"},
+        "retaliation_or_burden": {"$ref": "#/$defs/gate"},
+        "actual_remedy": {"$ref": "#/$defs/gate"},
+        "challenge_evidence": {"type": "array", "items": {"$ref": "#/$defs/source"}},
+        "boxd": {"$ref": "#/$defs/boxd"}
+      }
+    },
+    "cross_onion_receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["power_status", "challenge_capacity_status", "terminal", "reason"],
+      "properties": {
+        "power_status": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]},
+        "challenge_capacity_status": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]},
+        "terminal": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]},
+        "reason": {"type": "string", "minLength": 1}
+      }
+    },
+    "boundaries": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "president_identity_not_authority",
+        "election_win_not_blank_check",
+        "presidential_statement_not_law",
+        "court_nonreview_not_validation",
+        "historical_reputation_not_authority",
+        "formal_right_not_practical_access",
+        "source_bound_not_authority_validated",
+        "model_required",
+        "authority_created"
+      ],
+      "properties": {
+        "president_identity_not_authority": {"const": true},
+        "election_win_not_blank_check": {"const": true},
+        "presidential_statement_not_law": {"const": true},
+        "court_nonreview_not_validation": {"const": true},
+        "historical_reputation_not_authority": {"const": true},
+        "formal_right_not_practical_access": {"const": true},
+        "source_bound_not_authority_validated": {"const": true},
+        "model_required": {"const": false},
+        "authority_created": {"const": false}
+      }
+    }
+  },
+  "$defs": {
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title", "url", "source_class", "temporal_role"],
+      "properties": {
+        "title": {"type": "string", "minLength": 1},
+        "url": {"type": "string", "format": "uri"},
+        "source_class": {"enum": ["CONSTITUTION", "STATUTE", "PRESIDENTIAL_RECORD", "CONGRESSIONAL_RECORD", "COURT_OPINION", "OFFICIAL_ARCHIVE", "OFFICIAL_REPORT", "OTHER_PRIMARY"]},
+        "temporal_role": {"enum": ["AT_EVENT", "PRE_EVENT_AUTHORITY", "CONTEMPORARY_CHALLENGE", "LATER_REVIEW", "LATER_SUPERSESSION", "CURRENT_STATE"]}
+      }
+    },
+    "gate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "claim", "sources"],
+      "properties": {
+        "status": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]},
+        "claim": {"type": "string", "minLength": 1},
+        "sources": {"type": "array", "items": {"$ref": "#/$defs/source"}}
+      }
+    },
+    "boxd": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_bound", "raw_bytes_frozen", "sha256_computed", "readback_status"],
+      "properties": {
+        "source_bound": {"type": "boolean"},
+        "raw_bytes_frozen": {"type": "boolean"},
+        "sha256_computed": {"type": "boolean"},
+        "readback_status": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]}
+      }
+    }
+  }
+}

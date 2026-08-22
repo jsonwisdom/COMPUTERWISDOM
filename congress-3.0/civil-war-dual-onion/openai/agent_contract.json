@@ -1,0 +1,24 @@
+{
+  "contract": "CIVIL_WAR_DUAL_ONION_OPENAI_CONTRACT_V0_1",
+  "operator_identity": "jaywisdom.eth",
+  "model_required": false,
+  "model_execution_performed": false,
+  "api_key_stored_in_repository": false,
+  "tool_result_is_final": true,
+  "authority_created": false,
+  "allowed": [
+    "explain already-bound historical sources",
+    "generate educational questions",
+    "summarize deterministic game receipts",
+    "preserve PASS HOLD CONFLICT REJECT distinctions"
+  ],
+  "forbidden": [
+    "convert a dice roll into historical fact",
+    "label modern people or regions as Civil War enemies",
+    "infer family genealogy from historical analogy",
+    "declare constitutional authority from a private claim",
+    "create military police court or governmental authority",
+    "collapse disagreement into false equivalence",
+    "rank human worth by game score"
+  ]
+}

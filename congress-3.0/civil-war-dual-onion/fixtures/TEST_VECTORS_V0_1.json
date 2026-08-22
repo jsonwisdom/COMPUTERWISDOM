@@ -1,0 +1,59 @@
+{
+  "suite": "CIVIL_WAR_DUAL_ONION_TEST_VECTORS_V0_1",
+  "vectors": [
+    {
+      "id": "V01_PRIVATE_CLAIM_AS_AUTHORITY",
+      "official_authority_bound": false,
+      "private_claim_present": true,
+      "valid_records_conflict": false,
+      "claim_contradicted": false,
+      "modern_enemy_label": false,
+      "expected": "HOLD"
+    },
+    {
+      "id": "V02_OFFICIAL_CONSTITUTIONAL_SOURCE_BOUND",
+      "official_authority_bound": true,
+      "private_claim_present": false,
+      "valid_records_conflict": false,
+      "claim_contradicted": false,
+      "modern_enemy_label": false,
+      "expected": "PASS"
+    },
+    {
+      "id": "V03_VALID_ARCHIVES_DISAGREE",
+      "official_authority_bound": true,
+      "private_claim_present": false,
+      "valid_records_conflict": true,
+      "claim_contradicted": false,
+      "modern_enemy_label": false,
+      "expected": "CONFLICT"
+    },
+    {
+      "id": "V04_HISTORY_USED_AS_MODERN_ENEMY_LIST",
+      "official_authority_bound": true,
+      "private_claim_present": false,
+      "valid_records_conflict": false,
+      "claim_contradicted": false,
+      "modern_enemy_label": true,
+      "expected": "REJECT"
+    },
+    {
+      "id": "V05_CLAIM_CONTRADICTS_BOUND_RECORD",
+      "official_authority_bound": true,
+      "private_claim_present": false,
+      "valid_records_conflict": false,
+      "claim_contradicted": true,
+      "modern_enemy_label": false,
+      "expected": "REJECT"
+    },
+    {
+      "id": "V06_STORY_PRESENT_SOURCE_MISSING",
+      "official_authority_bound": false,
+      "private_claim_present": false,
+      "valid_records_conflict": false,
+      "claim_contradicted": false,
+      "modern_enemy_label": false,
+      "expected": "HOLD"
+    }
+  ]
+}
