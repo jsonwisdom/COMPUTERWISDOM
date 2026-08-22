@@ -1,0 +1,73 @@
+name: Base EVM Bootstrap Replay
+
+on:
+  pull_request:
+    paths:
+      - "tools/base-bootstrap/**"
+      - ".github/workflows/base-evm-bootstrap.yml"
+  push:
+    branches: [master]
+    paths:
+      - "tools/base-bootstrap/**"
+      - ".github/workflows/base-evm-bootstrap.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: v1.3.1
+      - name: Syntax gates
+        shell: pwsh
+        run: |
+          $tokens = $null
+          $errors = $null
+          [System.Management.Automation.Language.Parser]::ParseFile("tools/base-bootstrap/ComputerWisdom-Base.ps1", [ref]$tokens, [ref]$errors) | Out-Null
+          if ($errors.Count) { $errors | Format-List; exit 1 }
+          bash -n tools/base-bootstrap/computerwisdom-base.sh
+          python -m py_compile tools/base-bootstrap/verify_receipt.py tools/base-bootstrap/test_verify_receipt_gate2.py
+      - name: Gate 2 assert-free receipt validation
+        run: python tools/base-bootstrap/test_verify_receipt_gate2.py
+      - name: Install Gate 3 schema dependency
+        run: python -m pip install --disable-pip-version-check jsonschema
+      - name: Gate 3 full receipt schema
+        run: bash tests/test_gate3_receipt_schema.sh
+      - name: Start isolated Base Sepolia replay chain
+        run: |
+          anvil --chain-id 84532 --port 8545 > "$RUNNER_TEMP/anvil-sepolia.log" 2>&1 &
+          echo $! > "$RUNNER_TEMP/anvil.pid"
+          for i in {1..20}; do cast chain-id --rpc-url http://127.0.0.1:8545 && break; sleep 0.25; done
+      - name: Cross-platform replay and receipt parity
+        env:
+          CW_CHAIN: base-sepolia
+          CW_BASE_SEPOLIA_RPC_URL: http://127.0.0.1:8545
+          CW_WALLET_MODE: hardware
+          CW_WALLET_ADDRESS: "0x0000000000000000000000000000000000000001"
+        run: |
+          mkdir -p replay
+          pwsh -NoProfile -File tools/base-bootstrap/ComputerWisdom-Base.ps1 -Action check
+          bash tools/base-bootstrap/computerwisdom-base.sh check
+          pwsh -NoProfile -File tools/base-bootstrap/ComputerWisdom-Base.ps1 -Action receipt -ReceiptId ci-replay-001 -ObservedAtUtc 2026-08-21T00:00:00Z -ReceiptOut replay/powershell.json
+          bash tools/base-bootstrap/computerwisdom-base.sh receipt --receipt-id ci-replay-001 --observed-at-utc 2026-08-21T00:00:00Z --receipt-out replay/bash.json
+          cmp replay/powershell.json replay/bash.json
+          python tools/base-bootstrap/verify_receipt.py replay/powershell.json | tee replay/verification.json
+          sha256sum replay/powershell.json | tee replay/SHA256SUMS
+      - name: Reject mainnet RPC presented as Sepolia
+        run: |
+          kill "$(cat "$RUNNER_TEMP/anvil.pid")"
+          anvil --chain-id 8453 --port 8545 > "$RUNNER_TEMP/anvil-mainnet.log" 2>&1 &
+          for i in {1..20}; do [[ "$(cast chain-id --rpc-url http://127.0.0.1:8545 2>/dev/null || true)" == 8453 ]] && break; sleep 0.25; done
+          if CW_CHAIN=base-sepolia CW_BASE_SEPOLIA_RPC_URL=http://127.0.0.1:8545 pwsh -NoProfile -File tools/base-bootstrap/ComputerWisdom-Base.ps1 -Action check; then exit 1; fi
+          if CW_CHAIN=base-sepolia CW_BASE_SEPOLIA_RPC_URL=http://127.0.0.1:8545 bash tools/base-bootstrap/computerwisdom-base.sh check; then exit 1; fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: base-bootstrap-replay
+          path: replay/
+          if-no-files-found: error
