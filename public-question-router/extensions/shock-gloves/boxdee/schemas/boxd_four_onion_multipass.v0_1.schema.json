@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.local/schemas/boxd_four_onion_multipass.v0_1.schema.json",
+  "title": "BoxD Four Onion LeeLoo Multi Pass v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "question_id",
+    "record_onion",
+    "authority_onion",
+    "execution_onion",
+    "oversight_onion",
+    "cross_edges",
+    "multi_pass_state",
+    "authority_created",
+    "legal_finding_created"
+  ],
+  "properties": {
+    "schema_version": {"const": "boxd_four_onion_multipass.v0_1"},
+    "question_id": {"type": "string", "pattern": "^Q-[0-9]{8}-[0-9]{3}$"},
+    "record_onion": {"$ref": "#/$defs/onion"},
+    "authority_onion": {"$ref": "#/$defs/onion"},
+    "execution_onion": {"$ref": "#/$defs/onion"},
+    "oversight_onion": {"$ref": "#/$defs/onion"},
+    "cross_edges": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record_to_authority",
+        "authority_to_execution",
+        "execution_to_oversight",
+        "oversight_to_record"
+      ],
+      "properties": {
+        "record_to_authority": {"$ref": "#/$defs/edge"},
+        "authority_to_execution": {"$ref": "#/$defs/edge"},
+        "execution_to_oversight": {"$ref": "#/$defs/edge"},
+        "oversight_to_record": {"$ref": "#/$defs/edge"}
+      }
+    },
+    "multi_pass_state": {
+      "enum": ["MULTI_PASS_PASS", "MULTI_PASS_HOLD", "MULTI_PASS_CONFLICT", "MULTI_PASS_REJECT"]
+    },
+    "promotion_note": {"type": ["string", "null"]},
+    "authority_created": {"const": false},
+    "legal_finding_created": {"const": false}
+  },
+  "$defs": {
+    "state": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]},
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_type", "status"],
+      "properties": {
+        "source_type": {"type": "string", "minLength": 1},
+        "source_url": {"type": ["string", "null"], "format": "uri"},
+        "record_id": {"type": ["string", "null"]},
+        "sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+        "observed_at": {"type": ["string", "null"], "format": "date-time"},
+        "status": {"$ref": "#/$defs/state"}
+      }
+    },
+    "onion": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "required_edges", "missing_edges", "receipts"],
+      "properties": {
+        "state": {"$ref": "#/$defs/state"},
+        "required_edges": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "missing_edges": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "contradictions": {"type": "array", "items": {"type": "string"}},
+        "receipts": {"type": "array", "items": {"$ref": "#/$defs/receipt"}}
+      }
+    },
+    "edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "question"],
+      "properties": {
+        "state": {"$ref": "#/$defs/state"},
+        "question": {"type": "string", "minLength": 1},
+        "receipts": {"type": "array", "items": {"$ref": "#/$defs/receipt"}},
+        "missing": {"type": "array", "items": {"type": "string"}}
+      }
+    }
+  }
+}

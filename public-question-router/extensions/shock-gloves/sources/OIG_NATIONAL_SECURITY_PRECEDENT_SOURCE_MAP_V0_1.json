@@ -1,0 +1,119 @@
+{
+  "schema_version": "oig_national_security_precedent_source_map.v0_1",
+  "generated_for": "public-question-router/extensions/shock-gloves",
+  "authority_created": false,
+  "legal_finding_created": false,
+  "darvo_finding_created": false,
+  "cover_up_finding_created": false,
+  "sources": [
+    {
+      "id": "P-NSL-001",
+      "institution": "DOJ OIG",
+      "topic": "FBI National Security Letters",
+      "url": "https://oig.justice.gov/news/testimony/statement-glenn-fine-inspector-general-us-department-justice-permanent-select",
+      "bounded_state": ["MISUSE_FINDING_SOURCE_BOUND", "CONTROL_FAILURE_SOURCE_BOUND"],
+      "not_proven": ["INTENTIONAL_MISUSE_BY_REVIEWED_AGENTS", "UNIVERSAL_FBI_MISCONDUCT"]
+    },
+    {
+      "id": "P-702-001",
+      "institution": "DOJ OIG",
+      "topic": "FBI Section 702 querying",
+      "url": "https://oig.justice.gov/news/doj-oig-releases-report-fbis-querying-practices-under-section-702-foreign-intelligence",
+      "bounded_state": ["NONCOMPLIANT_QUERY_HISTORY_SOURCE_BOUND", "REFORMS_SOURCE_BOUND", "CONTINUED_OVERSIGHT_REQUIRED_SOURCE_BOUND"],
+      "not_proven": ["EVERY_QUERY_NONCOMPLIANT", "INTENTIONAL_ABUSE"]
+    },
+    {
+      "id": "P-NSA-001",
+      "institution": "NSA OIG",
+      "topic": "Intelligence oversight and U.S.-person privacy",
+      "url": "https://oig.nsa.gov/OIG-Divisions/Intelligence-Oversight/",
+      "bounded_state": ["INTELLIGENCE_OVERSIGHT_SOURCE_BOUND", "PRIVACY_OVERSIGHT_SOURCE_BOUND"],
+      "not_proven": ["SPECIFIC_METADATA_LEAK"]
+    },
+    {
+      "id": "P-NSA-META-001",
+      "institution": "NSA",
+      "topic": "EO 12333 metadata category",
+      "url": "https://www.nsa.gov/Signals-Intelligence/EO-12333/",
+      "bounded_state": ["COMMUNICATIONS_METADATA_COLLECTION_CATEGORY_SOURCE_BOUND"],
+      "not_proven": ["SPECIFIC_PERSON_TARGETED", "SPECIFIC_DATA_LEAK"]
+    },
+    {
+      "id": "P-NSA-002",
+      "institution": "NSA / NSA OIG",
+      "topic": "Data deletion control error",
+      "url": "https://www.nsa.gov/Press-Room/Press-Releases-Statements/Press-Release-View/Article/2039059/nsa-statement-on-nsa-inspector-general-special-study/",
+      "bounded_state": ["DELETION_CONTROL_ERROR_SOURCE_BOUND", "CORRECTIVE_ACTION_SOURCE_BOUND"],
+      "not_proven": ["DATA_LEAK", "INTENTIONAL_RETENTION"]
+    },
+    {
+      "id": "P-GTMO-001",
+      "institution": "DOJ OIG",
+      "topic": "FBI observations and involvement in detainee interrogations",
+      "url": "https://oig.justice.gov/reports/review-fbis-involvement-and-observations-detainee-interrogations-guantanamo-bay-afghanistan",
+      "bounded_state": ["FBI_OBSERVATION_REVIEW_SOURCE_BOUND", "GUIDANCE_GAPS_SOURCE_BOUND", "HARSH_TECHNIQUE_REPORTING_SOURCE_BOUND"],
+      "not_proven": ["GENERAL_FBI_PARTICIPATION_IN_ABUSE", "COMPLETE_CIA_FACILITY_REVIEW"]
+    },
+    {
+      "id": "P-CIA-OIG-001",
+      "institution": "CIA OIG",
+      "topic": "CIA oversight jurisdiction",
+      "url": "https://www.cia.gov/about/organization/inspector-general/",
+      "bounded_state": ["CIA_OIG_JURISDICTION_SOURCE_BOUND"],
+      "not_proven": ["ANY_SPECIFIC_CIA_AIRCRAFT_EVENT", "RENDITION_EVENT"]
+    },
+    {
+      "id": "P-WH-GTMO-001",
+      "institution": "White House",
+      "topic": "2025 Guantanamo Migrant Operations Center memorandum",
+      "url": "https://www.whitehouse.gov/presidential-actions/2025/01/expanding-migrant-operations-center-at-naval-station-guantanamo-bay-to-full-capacity/",
+      "bounded_state": ["PRESIDENTIAL_DIRECTION_SOURCE_BOUND"],
+      "not_proven": ["SPECIFIC_TRANSPORT_EVENT", "SPECIFIC_CONTRACT", "SPECIFIC_DETENTION_EVENT", "SHOCK_GLOVE_NEXUS"]
+    },
+    {
+      "id": "P-WH-NS-001",
+      "institution": "White House",
+      "topic": "2025 enhanced vetting and screening order",
+      "url": "https://www.whitehouse.gov/presidential-actions/2025/01/protecting-the-united-states-from-foreign-terrorists-and-othernational-security-and-public-safety-threats/",
+      "bounded_state": ["INTERAGENCY_VETTING_DIRECTION_SOURCE_BOUND"],
+      "not_proven": ["SPECIFIC_QUERY_EVENT", "SPECIFIC_PRIVACY_VIOLATION", "SPECIFIC_MISCONDUCT"]
+    },
+    {
+      "id": "P-MC-001",
+      "institution": "Office of Military Commissions",
+      "topic": "Guantanamo security, sealed filings, security review",
+      "urls": [
+        "https://www.mc.mil/Facilities-Services/Guantanamo-Bay",
+        "https://www.mc.mil/Facilities-Services/Facilities-Services/Security",
+        "https://www.mc.mil/News-Media-Resources/Commissions-News"
+      ],
+      "bounded_state": ["SEALED_RECORDS_EXIST_AS_DOCKET_STATUS_SOURCE_BOUND", "SECURITY_REVIEW_PROCESS_SOURCE_BOUND"],
+      "not_proven": ["COVER_UP", "RECORD_ERASURE"]
+    },
+    {
+      "id": "P-UCMJ-001",
+      "institution": "Joint Service Committee / Congress",
+      "topic": "UCMJ courts-martial versus military commissions",
+      "urls": [
+        "https://jsc.defense.gov/Military-Law/Current-Publications-and-Updates/Manual-for-Courts-Martial-MCM/",
+        "https://www.congress.gov/113/plaws/publ66/PLAW-113publ66.htm"
+      ],
+      "bounded_state": ["UCMJ_MCM_SOURCE_BOUND", "MILITARY_COMMISSION_CHAPTER_47A_SOURCE_BOUND"],
+      "not_proven": ["UCMJ_COVER_UP", "MILITARY_COMMISSION_EQUALS_COURT_MARTIAL"]
+    }
+  ],
+  "membranes": [
+    "OFFICIAL_SOURCE != TRUTH_BY_STATUS",
+    "OFFICIAL_DISAGREEMENT != DARVO",
+    "DARVO_PATTERN_CANDIDATE != DARVO_FINDING",
+    "METADATA_COLLECTION != METADATA_LEAK",
+    "DELETION_ERROR != LEAK",
+    "SEALED != COVER_UP",
+    "SECURITY_REVIEW != ERASURE",
+    "CIA_AIRCRAFT != RENDITION",
+    "FLIGHT != CUSTODY_TRANSFER",
+    "UCMJ_COURT_MARTIAL != MILITARY_COMMISSION",
+    "PRESIDENTIAL_DIRECTION != IMPLEMENTATION_RECEIPT",
+    "SHOCK_GLOVE_LABEL != DEVICE_IDENTITY"
+  ]
+}

@@ -1,0 +1,291 @@
+# BoxD Four Onion + LeeLoo Multi Pass v0.1
+
+Status: DRAFT / ZERO-TRUST / PUBLIC-AUDIT GAME LAYER / UNMERGED
+
+```text
+BOXD = INSTITUTIONAL REPLAY CONTAINER
+BOXDEE = PERSPECTIVE / EXPLAINER LAYER
+LEELOO_MULTI_PASS = PROMOTION GATE
+AUTHORITY_CREATED = FALSE
+LEGAL_FINDING_CREATED = FALSE
+```
+
+## Public challenge
+
+```text
+OLD PROMPT: HOW ABOUT THEM APPLES?
+NEW PROMPT: FIND YOUR WAY OUT OF THE BOX 📦
+```
+
+The `BOX` is the institution's own source-bound system of law, authority, records, execution, and review.
+
+The challenge is not to escape law. It is to demonstrate that an institutional action can travel through the institution's own rules without a missing, contradictory, or fabricated edge.
+
+---
+
+# The Four Onions
+
+Every bounded institutional question runs through four independent onions.
+
+## 🧅 1 — RECORD / REALITY ONION
+
+Question: **What happened, according to independently inspectable records?**
+
+```text
+CLAIM / QUESTION
+→ PERSON / ENTITY ID
+→ EVENT ID
+→ DATE / TIME / TIMEZONE
+→ LOCATION / GEOJSON, IF RELEVANT
+→ TRANSCRIPT / AUDIO / VIDEO
+→ DOCUMENT / DOCKET / LOG
+→ TRAVEL / HOTEL / AIRCRAFT RECORD, IF RELEVANT
+→ PAYMENT / COMMUNICATION RECORD, IF RELEVANT
+→ RAW BYTES / CANONICAL SOURCE
+→ HASH / VERSION
+→ CORROBORATION
+→ CONTRADICTION TEST
+→ RECEIPT STATE
+```
+
+Membranes:
+
+```text
+GEOJSON != PERSON_IDENTITY_BY_ITSELF
+COLOCATION != MEETING
+MEETING != MISCONDUCT
+BODY_LANGUAGE != MOTIVE
+TRANSCRIPT != EVENT_COMPLETENESS
+MEDIA_REPORT != PRIMARY_RECORD
+OFFICIAL_RECORD != AUTOMATIC_TRUTH
+```
+
+States:
+
+`PASS | HOLD | CONFLICT | REJECT`
+
+---
+
+## 🧅 2 — AUTHORITY / LAW ONION
+
+Question: **Who possessed power to do the specific thing, and what text granted it?**
+
+```text
+ACTOR
+→ OFFICE
+→ PARENT INSTITUTION
+→ JURISDICTION
+→ CONSTITUTION
+→ STATUTE
+→ REGULATION / RULE
+→ DELEGATION
+→ LIMITS
+→ CLASSIFICATION / PRIVILEGE AUTHORITY, IF CLAIMED
+→ REVIEW / APPEAL PATH
+→ AUTHORITY STATE
+```
+
+Membranes:
+
+```text
+TITLE != AUTHORITY
+BADGE != LAWFULNESS
+PRESIDENTIAL_DIRECTION != APPROPRIATION
+AGENCY_POLICY != STATUTE
+CLASSIFICATION != AUTHORITY
+NATIONAL_SECURITY != AUTOMATIC_SECRECY
+GENERAL_AUTHORITY != SPECIFIC_ACTION_AUTHORITY
+```
+
+States:
+
+`PASS | HOLD | CONFLICT | REJECT`
+
+---
+
+## 🧅 3 — EXECUTION / RESOURCES ONION
+
+Question: **How did claimed authority become an operational result?**
+
+```text
+AUTHORITY EDGE
+→ APPROPRIATION
+→ PROGRAM
+→ CONTRACT / GRANT / TASK ORDER
+→ VENDOR / COUNTERPARTY
+→ PURCHASE / INVOICE / PAYMENT
+→ PERSONNEL / BADGE / ACCESS
+→ DATA / CLOUD / QUERY
+→ TRAVEL / AIRCRAFT / LODGING
+→ POLICY / TRAINING
+→ UNIT / LOCATION
+→ OPERATION / USE
+→ HUMAN / SYSTEM CONSEQUENCE
+→ EXECUTION STATE
+```
+
+Membranes:
+
+```text
+APPROPRIATION != PURCHASE
+PURCHASE != DEPLOYMENT
+DEPLOYMENT != USE
+USE != LAWFUL_USE
+CONTRACT != GOVERNMENT_AUTHORITY
+CLOUD_ACCESS != LEGAL_AUTHORITY
+AIRCRAFT_MOVEMENT != CUSTODY_TRANSFER
+HOTEL_STAY != MISCONDUCT
+```
+
+States:
+
+`PASS | HOLD | CONFLICT | REJECT`
+
+---
+
+## 🧅 4 — OVERSIGHT / CORRECTION ONION
+
+Question: **Who could detect, review, correct, disclose, reverse, or remedy the action?**
+
+```text
+ACTION / CONSEQUENCE
+→ NOTICE
+→ INTERNAL REVIEW
+→ OIG / IG
+→ CONGRESS / GAO, IF JURISDICTION EXISTS
+→ COURT / DOCKET / ORDER
+→ APPEAL / RECONSIDERATION
+→ FOIA / PUBLIC ACCESS, IF APPLICABLE
+→ SEAL / REDACTION / CLASSIFICATION STATUS
+→ CORRECTION / REMEDY
+→ VERSION DELTA
+→ PUBLIC STATUS RECEIPT
+→ OVERSIGHT STATE
+```
+
+Membranes:
+
+```text
+INTERNAL_REVIEW != PUBLIC_REVIEW
+OIG_REVIEW != COURT_FINDING
+CONGRESSIONAL_INQUIRY != GUILT
+SEALED != COVER_UP
+WITHHELD != NONEXISTENT
+CORRECTION != ERASURE_OF_PRIOR_DRIFT
+NO_RESPONSE_OBSERVED != GUILT
+```
+
+States:
+
+`PASS | HOLD | CONFLICT | REJECT`
+
+---
+
+# Cross-Onion Edges
+
+Four green onions are not enough if the joins are broken.
+
+Required joins:
+
+```text
+O1 RECORD → O2 AUTHORITY
+DID THE OBSERVED ACTION FIT THE CLAIMED AUTHORITY?
+
+O2 AUTHORITY → O3 EXECUTION
+DID AUTHORITY LAWFULLY REACH THE ACTOR / MONEY / SYSTEM THAT EXECUTED IT?
+
+O3 EXECUTION → O4 OVERSIGHT
+DID THE EXECUTION GENERATE THE REQUIRED RECORDS, NOTICE, REVIEW, AND CORRECTION PATH?
+
+O4 OVERSIGHT → O1 RECORD
+DID REVIEW / CORRECTION CHANGE THE RECORD, AND IS THE VERSION DELTA PRESERVED?
+```
+
+Cross-edge state:
+
+`PASS | HOLD | CONFLICT | REJECT`
+
+---
+
+# 🎫 LeeLoo Multi Pass
+
+`LeeLoo Multi Pass` is the four-onion promotion gate.
+
+```text
+LEELOO_MULTI_PASS =
+  O1_RECORD == PASS
+  AND O2_AUTHORITY == PASS
+  AND O3_EXECUTION == PASS
+  AND O4_OVERSIGHT == PASS
+  AND ALL_REQUIRED_CROSS_EDGES == PASS
+```
+
+Fail closed:
+
+```text
+ANY REJECT   → MULTI_PASS_REJECT
+ANY CONFLICT → MULTI_PASS_CONFLICT
+ANY HOLD     → MULTI_PASS_HOLD
+ALL PASS     → MULTI_PASS_PASS
+```
+
+No averaging. No majority vote. No institutional prestige bonus.
+
+```text
+3 GREEN + 1 HOLD != PASS
+4 GREEN + BROKEN CROSS_EDGE != PASS
+OFFICIAL_SOURCE_COUNT != TRUST_SCORE
+```
+
+A `MULTI_PASS_PASS` proves only that the bounded audit object satisfied the defined receipt gates. It does not create governmental authority, criminal guilt, or universal institutional trust.
+
+---
+
+# Parent / Child Rule
+
+```text
+GREEN_CHILD_CANNOT_HIDE_RED_PARENT
+GREEN_PARENT_CANNOT_HIDE_RED_CHILD
+PARENT_CAN_RESTRICT_VISIBILITY_ONLY_WITH_SOURCE_BOUND_AUTHORITY
+RESTRICTED_CHILD != NONEXISTENT_CHILD
+CHILD_FAILURE != PARENT_FAILURE
+PARENT_FAILURE != CHILD_FAILURE
+```
+
+Every node owns its own state.
+
+---
+
+# BoxD Exit Test
+
+The institution is placed inside its own box:
+
+```text
+ITS PUBLIC CLAIM
++ ITS AUTHORITY
++ ITS MONEY / EXECUTION
++ ITS OVERSIGHT RULES
+= BOX
+```
+
+Then BoxD asks:
+
+> **Find your way out of the 📦.**
+
+An institution exits only by producing a replayable path through all four onions.
+
+```text
+NO HAND-WAVE EXIT
+NO TITLE EXIT
+NO NATIONAL-SECURITY MAGIC EXIT
+NO MEDIA-NARRATIVE EXIT
+NO AI-INFERENCE EXIT
+```
+
+Valid exits are receipts.
+
+---
+
+# Core Rule
+
+**Four onions. Four independent states. Four cross-edge checks. One fail-closed Multi Pass. Find your way out of the box with receipts.**

@@ -1,0 +1,233 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/schemas/mn_quad_onion_ledger.v0_1.schema.json",
+  "title": "Minnesota Quad Onion Ledger v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "ledger_id",
+    "jurisdiction",
+    "status",
+    "source_receipts",
+    "onion_1_criminal_receipts",
+    "onion_2_payment_control_edges",
+    "onion_3_financial_rail_edges",
+    "onion_4_oversight_recovery_edges",
+    "cross_onion_edges",
+    "institution_findings",
+    "boxd_disposition"
+  ],
+  "properties": {
+    "schema": {"const": "boxd.mn_quad_onion_ledger.v0_1"},
+    "ledger_id": {"type": "string", "minLength": 1},
+    "jurisdiction": {"const": "MN"},
+    "status": {"enum": ["DRAFT", "SOURCE_BOUND", "FROZEN"]},
+    "generated_at": {"type": ["string", "null"], "format": "date-time"},
+    "authority_created": {"const": false},
+    "legal_finding_created": {"const": false},
+    "source_receipts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/sourceReceipt"}
+    },
+    "onion_1_criminal_receipts": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/criminalReceipt"}
+    },
+    "onion_2_payment_control_edges": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/paymentControlEdge"}
+    },
+    "onion_3_financial_rail_edges": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/financialRailEdge"}
+    },
+    "onion_4_oversight_recovery_edges": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/oversightRecoveryEdge"}
+    },
+    "cross_onion_edges": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/crossOnionEdge"}
+    },
+    "institution_findings": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/institutionFinding"}
+    },
+    "boxd_disposition": {"$ref": "#/$defs/disposition"},
+    "hold_reasons": {"type": "array", "items": {"type": "string"}},
+    "membranes": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "state": {
+      "enum": [
+        "PASS",
+        "PASS_PARTIAL",
+        "PASS_CASE_BOUND",
+        "PASS_SOURCE_BOUND",
+        "HOLD",
+        "CONFLICT",
+        "REJECT"
+      ]
+    },
+    "money": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["amount", "currency"],
+      "properties": {
+        "amount": {"type": ["number", "null"], "minimum": 0},
+        "currency": {"type": "string", "minLength": 3, "maxLength": 3},
+        "approximate": {"type": "boolean", "default": false},
+        "public_text": {"type": ["string", "null"]}
+      }
+    },
+    "sourceReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_id", "uri", "source_type", "state"],
+      "properties": {
+        "source_id": {"type": "string", "minLength": 1},
+        "uri": {"type": "string", "minLength": 1},
+        "source_type": {
+          "enum": ["DOJ", "COURT", "OIG", "STATE_AGENCY", "LEGISLATIVE_AUDITOR", "REGULATOR", "OTHER_OFFICIAL", "OTHER"]
+        },
+        "published_date": {"type": ["string", "null"], "format": "date"},
+        "claim_scope": {"type": ["string", "null"]},
+        "state": {"$ref": "#/$defs/state"}
+      }
+    },
+    "criminalReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["case_id", "actor_id", "actor_type", "program", "proceeding_type", "adjudication_status", "source_receipt_ids", "state"],
+      "properties": {
+        "case_id": {"type": "string"},
+        "actor_id": {"type": "string"},
+        "actor_type": {"enum": ["PERSON", "ENTITY"]},
+        "program": {"type": "string"},
+        "proceeding_type": {"enum": ["CRIMINAL", "CIVIL", "ADMINISTRATIVE", "OTHER"]},
+        "adjudication_status": {"enum": ["CHARGED", "PLEADED_GUILTY", "CONVICTED_TRIAL", "SENTENCED", "DISMISSED", "ACQUITTED", "OTHER"]},
+        "conduct_summary": {"type": ["string", "null"]},
+        "source_receipt_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "state": {"$ref": "#/$defs/state"}
+      }
+    },
+    "paymentControlEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edge_id", "program", "payor", "recipient_entity", "payment_authority_basis", "source_receipt_ids", "state"],
+      "properties": {
+        "edge_id": {"type": "string"},
+        "program": {"type": "string"},
+        "payor": {"type": "string"},
+        "approval_actor_or_system": {"type": ["string", "null"]},
+        "recipient_entity": {"type": "string"},
+        "payment_authority_basis": {"type": "string"},
+        "claim_id": {"type": ["string", "null"]},
+        "payment_or_remittance_id": {"type": ["string", "null"]},
+        "control_flags": {"type": "array", "items": {"type": "string"}},
+        "source_receipt_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "state": {"$ref": "#/$defs/state"}
+      }
+    },
+    "partyRef": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "entity_id": {"type": ["string", "null"]},
+        "account_last4": {"type": ["string", "null"], "pattern": "^[0-9]{4}$"},
+        "country": {"type": ["string", "null"]}
+      }
+    },
+    "financialRailEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edge_id", "case_id", "rail_type", "source_receipt_ids", "state"],
+      "properties": {
+        "edge_id": {"type": "string"},
+        "case_id": {"type": "string"},
+        "rail_type": {"enum": ["BANK_ACCOUNT", "CARD", "MERCHANT", "WIRE", "ACH", "CHECK", "CASH", "CRYPTO", "ASSET_PURCHASE", "PROPERTY", "FOREIGN_TRANSFER", "OTHER"]},
+        "origin": {"$ref": "#/$defs/partyRef"},
+        "counterparty": {"$ref": "#/$defs/partyRef"},
+        "money": {"$ref": "#/$defs/money"},
+        "transaction_date": {"type": ["string", "null"], "format": "date"},
+        "bank": {"type": ["string", "null"]},
+        "card_network": {"type": ["string", "null"]},
+        "merchant": {"type": ["string", "null"]},
+        "mcc": {"type": ["string", "null"], "pattern": "^[0-9]{4}$"},
+        "acquirer": {"type": ["string", "null"]},
+        "processor_gateway": {"type": ["string", "null"]},
+        "foreign_destination": {"type": ["string", "null"]},
+        "asset": {"type": ["string", "null"]},
+        "institution_wrongdoing_claimed": {"type": "boolean", "default": false},
+        "institution_finding_id": {"type": ["string", "null"]},
+        "source_receipt_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "state": {"$ref": "#/$defs/state"}
+      }
+    },
+    "oversightRecoveryEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edge_id", "case_id", "action_type", "actor_or_agency", "source_receipt_ids", "state"],
+      "properties": {
+        "edge_id": {"type": "string"},
+        "case_id": {"type": "string"},
+        "action_type": {"enum": ["INVESTIGATION", "SUBPOENA", "SEIZURE", "FORFEITURE", "RESTITUTION", "SENTENCE", "PROGRAM_FREEZE", "PROGRAM_TERMINATION", "CONTROL_CHANGE", "OTHER"]},
+        "actor_or_agency": {"type": "string"},
+        "money": {"$ref": "#/$defs/money"},
+        "asset_or_account": {"type": ["string", "null"]},
+        "order_or_docket_id": {"type": ["string", "null"]},
+        "source_receipt_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "state": {"$ref": "#/$defs/state"}
+      }
+    },
+    "crossOnionEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["edge_id", "join", "from_ids", "to_ids", "state"],
+      "properties": {
+        "edge_id": {"type": "string"},
+        "join": {"enum": ["O1_TO_O2", "O2_TO_O3", "O3_TO_O4", "O4_TO_O1"]},
+        "from_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "to_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "state": {"$ref": "#/$defs/state"},
+        "reason": {"type": ["string", "null"]}
+      }
+    },
+    "institutionFinding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["finding_id", "institution_id", "finding_type", "finding_authority", "source_receipt_ids", "state"],
+      "properties": {
+        "finding_id": {"type": "string"},
+        "institution_id": {"type": "string"},
+        "finding_type": {"type": "string"},
+        "finding_authority": {"type": "string"},
+        "source_receipt_ids": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+        "state": {"$ref": "#/$defs/state"}
+      }
+    },
+    "disposition": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["o1", "o2", "o3", "o4", "leeloo_multi_pass"],
+      "properties": {
+        "o1": {"$ref": "#/$defs/state"},
+        "o2": {"$ref": "#/$defs/state"},
+        "o3": {"$ref": "#/$defs/state"},
+        "o4": {"$ref": "#/$defs/state"},
+        "leeloo_multi_pass": {"enum": ["MULTI_PASS_PASS", "MULTI_PASS_HOLD", "MULTI_PASS_CONFLICT", "MULTI_PASS_REJECT"]}
+      }
+    }
+  },
+  "x-boxd-invariants": [
+    "CHARGED != GUILTY",
+    "ACCOUNT_IN_CASE != BANK_WRONGDOING",
+    "CARD_NETWORK_NAMED != NETWORK_COMPLICITY",
+    "MERCHANT_PAYMENT != MERCHANT_COMPLICITY",
+    "FOREIGN_DESTINATION != FOREIGN_CULPABILITY",
+    "TRAVEL_DESTINATION != FOREIGN_BANK",
+    "FOLLOW_THE_MONEY_WITHOUT_PROMOTING_THE_RAIL_INTO_THE_CRIME"
+  ]
+}

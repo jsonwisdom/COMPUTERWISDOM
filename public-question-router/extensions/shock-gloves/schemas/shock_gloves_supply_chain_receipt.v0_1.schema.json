@@ -1,0 +1,152 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.local/schemas/shock_gloves_supply_chain_receipt.v0_1.schema.json",
+  "title": "Shock Gloves Supply-Chain Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "question_id",
+    "device_identity",
+    "appropriation_edge",
+    "procurement_edge",
+    "acquisition_edge",
+    "deployment_edge",
+    "use_edge",
+    "oversight_edge",
+    "national_security_edge",
+    "record_onion_state",
+    "power_onion_state",
+    "replay_state",
+    "authority_created"
+  ],
+  "properties": {
+    "schema_version": {"const": "shock_gloves_supply_chain_receipt.v0_1"},
+    "question_id": {"type": "string", "pattern": "^Q-[0-9]{8}-[0-9]{3}$"},
+    "device_identity": {"$ref": "#/$defs/deviceIdentity"},
+    "appropriation_edge": {"$ref": "#/$defs/evidenceEdge"},
+    "procurement_edge": {"$ref": "#/$defs/evidenceEdge"},
+    "acquisition_edge": {"$ref": "#/$defs/evidenceEdge"},
+    "deployment_edge": {"$ref": "#/$defs/evidenceEdge"},
+    "use_edge": {"$ref": "#/$defs/evidenceEdge"},
+    "oversight_edge": {"$ref": "#/$defs/evidenceEdge"},
+    "national_security_edge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "withholding_basis", "segregability_status"],
+      "properties": {
+        "status": {"$ref": "#/$defs/edgeStatus"},
+        "withholding_basis": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["authority", "status"],
+            "properties": {
+              "authority": {"type": "string"},
+              "source_url": {"type": ["string", "null"], "format": "uri"},
+              "classification_level": {"type": ["string", "null"]},
+              "foia_exemption": {"type": ["string", "null"]},
+              "foia_exclusion": {"type": ["string", "null"]},
+              "status": {"$ref": "#/$defs/edgeStatus"}
+            }
+          }
+        },
+        "segregability_status": {
+          "enum": ["UNBOUND", "REVIEW_REQUIRED", "PARTIAL_RELEASE_BOUND", "NO_SEGREGABLE_PORTION_BOUND", "CONFLICT"]
+        },
+        "appeal_or_review_receipts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/sourceReceipt"}
+        }
+      }
+    },
+    "presidential_nexus": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "office_holder": {"type": ["string", "null"]},
+        "specific_action": {"type": ["string", "null"]},
+        "action_source": {"type": ["string", "null"], "format": "uri"},
+        "claimed_authority": {"type": ["string", "null"]},
+        "agency_implementation_receipts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/sourceReceipt"}
+        },
+        "status": {"$ref": "#/$defs/edgeStatus"}
+      }
+    },
+    "record_onion_state": {"$ref": "#/$defs/replayState"},
+    "power_onion_state": {"$ref": "#/$defs/replayState"},
+    "replay_state": {"$ref": "#/$defs/replayState"},
+    "missing_edges": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {"type": "string"}
+    },
+    "contradictions": {
+      "type": "array",
+      "items": {"type": "string"}
+    },
+    "authority_created": {"const": false}
+  },
+  "$defs": {
+    "edgeStatus": {
+      "enum": ["UNBOUND", "HOLD", "SOURCE_BOUND", "PASS", "CONFLICT", "REJECT"]
+    },
+    "replayState": {
+      "enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]
+    },
+    "sourceReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["source_type", "status"],
+      "properties": {
+        "source_type": {"type": "string"},
+        "source_url": {"type": ["string", "null"], "format": "uri"},
+        "record_id": {"type": ["string", "null"]},
+        "observed_at": {"type": ["string", "null"], "format": "date-time"},
+        "sha256": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"},
+        "status": {"$ref": "#/$defs/edgeStatus"}
+      }
+    },
+    "deviceIdentity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["claimed_label", "technology_class", "manufacturer", "model", "sku", "status"],
+      "properties": {
+        "claimed_label": {"type": "string"},
+        "technology_class": {"type": ["string", "null"]},
+        "manufacturer": {"type": ["string", "null"]},
+        "model": {"type": ["string", "null"]},
+        "sku": {"type": ["string", "null"]},
+        "patent_or_product_receipts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/sourceReceipt"}
+        },
+        "technical_spec_receipts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/sourceReceipt"}
+        },
+        "nist_measurement_receipts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/sourceReceipt"}
+        },
+        "status": {"$ref": "#/$defs/edgeStatus"}
+      }
+    },
+    "evidenceEdge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "receipts"],
+      "properties": {
+        "status": {"$ref": "#/$defs/edgeStatus"},
+        "receipts": {
+          "type": "array",
+          "items": {"$ref": "#/$defs/sourceReceipt"}
+        },
+        "notes": {"type": ["string", "null"]}
+      }
+    }
+  }
+}

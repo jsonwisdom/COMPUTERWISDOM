@@ -1,0 +1,99 @@
+{
+  "schema_version": "shock_gloves_supply_chain_receipt.v0_1",
+  "question_id": "Q-20260818-001",
+  "device_identity": {
+    "claimed_label": "Shock Gloves",
+    "technology_class": "electroshock weapon / conducted energy weapon",
+    "manufacturer": null,
+    "model": null,
+    "sku": null,
+    "patent_or_product_receipts": [],
+    "technical_spec_receipts": [],
+    "nist_measurement_receipts": [
+      {
+        "source_type": "NIST_PUBLICATION",
+        "source_url": "https://www.nist.gov/publications/test-method-measuring-electrical-output-electroshock-weapons",
+        "record_id": null,
+        "observed_at": "2026-08-18T23:49:00-05:00",
+        "sha256": null,
+        "status": "SOURCE_BOUND"
+      }
+    ],
+    "status": "HOLD"
+  },
+  "appropriation_edge": {
+    "status": "SOURCE_BOUND",
+    "receipts": [
+      {
+        "source_type": "CONGRESS_APPROPRIATIONS_TEXT",
+        "source_url": "https://www.congress.gov/bill/119th-congress/house-bill/6938/text/pcs",
+        "record_id": "H.R.6938-119-COPS-TECH",
+        "observed_at": "2026-08-18T23:49:00-05:00",
+        "sha256": null,
+        "status": "SOURCE_BOUND"
+      }
+    ],
+    "notes": "General law-enforcement technology/public-safety equipment funding is source-bound; no shock-glove line item is bound."
+  },
+  "procurement_edge": {
+    "status": "HOLD",
+    "receipts": [],
+    "notes": "No contract, award, grant, or task order identifying a shock-glove product is bound."
+  },
+  "acquisition_edge": {
+    "status": "HOLD",
+    "receipts": [],
+    "notes": "No purchase order, invoice, payment, or receiving report is bound."
+  },
+  "deployment_edge": {
+    "status": "HOLD",
+    "receipts": [],
+    "notes": "No policy, training, assignment, or location receipt for a shock-glove product is bound."
+  },
+  "use_edge": {
+    "status": "HOLD",
+    "receipts": [],
+    "notes": "No incident, use-of-force, medical, video, or witness receipt identifying a shock-glove product is bound."
+  },
+  "oversight_edge": {
+    "status": "HOLD",
+    "receipts": [],
+    "notes": "No device-specific OIG, congressional, or court oversight receipt is bound."
+  },
+  "national_security_edge": {
+    "status": "HOLD",
+    "withholding_basis": [],
+    "segregability_status": "UNBOUND",
+    "appeal_or_review_receipts": []
+  },
+  "presidential_nexus": {
+    "office_holder": "Donald J. Trump",
+    "specific_action": null,
+    "action_source": "https://www.whitehouse.gov/administration/donald-j-trump/",
+    "claimed_authority": null,
+    "agency_implementation_receipts": [],
+    "status": "HOLD"
+  },
+  "record_onion_state": "HOLD",
+  "power_onion_state": "HOLD",
+  "replay_state": "HOLD",
+  "missing_edges": [
+    "DEVICE_MANUFACTURER",
+    "DEVICE_MODEL",
+    "DEVICE_SKU",
+    "DEVICE_TECHNICAL_SPEC",
+    "DEVICE_SPECIFIC_APPROPRIATION_OR_PROGRAM_EDGE",
+    "CONTRACT_OR_AWARD",
+    "PURCHASE_ORDER_OR_INVOICE",
+    "RECEIVING_REPORT",
+    "DEPLOYMENT_POLICY",
+    "TRAINING_RECORD",
+    "UNIT_ASSIGNMENT",
+    "USE_EVENT",
+    "DEVICE_SPECIFIC_OVERSIGHT",
+    "SPECIFIC_PRESIDENTIAL_ACTION_IF_ANY",
+    "CLAIMED_AUTHORITY_IF_ANY"
+  ],
+  "contradictions": [],
+  "authority_created": false
+}

@@ -1,0 +1,169 @@
+{
+  "source_map_id": "VA_MEDICAL_LAW_MOBILE_DARVO_SOURCE_MAP_V0_1",
+  "class": "PUBLIC_OFFICIAL_SOURCE_MAP",
+  "authority_created": false,
+  "legal_finding_created": false,
+  "medical_diagnosis_created": false,
+  "darvo_finding_created": false,
+  "shock_glove_law_label": "USER_PROTOCOL_LABEL_NOT_ENACTED_STATUTE",
+  "rails": {
+    "congress_gov": [
+      {
+        "id": "CONGRESS_VA_ACCOUNTABILITY_2017",
+        "url": "https://www.congress.gov/bill/115th-congress/senate-bill/1094",
+        "date": "2017-06-23",
+        "status": "PUBLIC_LAW_115_41",
+        "source_role": "ENACTED_LAW_AND_STATUS",
+        "note": "Department of Veterans Affairs Accountability and Whistleblower Protection Act of 2017; establishes VA Office of Accountability and Whistleblower Protection."
+      },
+      {
+        "id": "CONGRESS_VA_MISSION_2018",
+        "url": "https://www.congress.gov/bill/115th-congress/senate-bill/2372/actions",
+        "date": "2018-06-06",
+        "status": "PUBLIC_LAW_115_182",
+        "source_role": "ENACTED_LAW_AND_STATUS",
+        "note": "VA MISSION Act of 2018; Congress.gov records signed by President and became law June 6, 2018."
+      },
+      {
+        "id": "CONGRESS_VA_BUDGET_SHORTFALL_2026",
+        "url": "https://www.congress.gov/bill/119th-congress/house-bill/1823/all-actions",
+        "date": "2026-01-20",
+        "status": "PUBLIC_LAW_119_71",
+        "source_role": "ENACTED_LAW_AND_STATUS",
+        "note": "VA Budget Shortfall Accountability Act; requires specified VA/GAO review and reporting."
+      }
+    ],
+    "whitehouse_gov": [
+      {
+        "id": "WH_TRUMP_ROLE",
+        "url": "https://www.whitehouse.gov/administration/donald-j-trump/",
+        "retrieved_role": "45TH_AND_47TH_PRESIDENT",
+        "source_role": "CURRENT_OFFICIAL_ROLE"
+      },
+      {
+        "id": "WH_EO_14296_VETERANS",
+        "url": "https://www.whitehouse.gov/presidential-actions/2025/05/keeping-promises-to-veterans-and-establishing-a-national-center-for-warrior-independence/",
+        "date": "2025-05-09",
+        "status": "EXECUTIVE_ORDER_14296",
+        "source_role": "PRESIDENTIAL_DIRECTION",
+        "note": "Directs VA accountability actions and plans to reduce appointment wait times, including exploration of virtual-healthcare options, subject to law and appropriations."
+      }
+    ],
+    "justice_gov": [
+      {
+        "id": "DOJ_VCCP_2026_TAKEDOWN",
+        "url": "https://www.justice.gov/usao-ndia/pr/national-health-care-fraud-takedown-results-455-defendants-charged-connection-more-65",
+        "date": "2026-06-24",
+        "source_role": "ALLEGATION_AND_ENFORCEMENT_RECEIPT",
+        "programs": ["VETERANS_COMMUNITY_CARE", "MEDICARE", "TRICARE"],
+        "presumption_of_innocence_applies": true
+      },
+      {
+        "id": "DOJ_CHAMPVA_PATIENT_DATA_2026",
+        "url": "https://www.justice.gov/opa/pr/medical-supply-company-owner-convicted-30m-medicare-fraud-scheme",
+        "date": "2026-07-22",
+        "source_role": "CONVICTION_RECEIPT",
+        "programs": ["MEDICARE", "TRICARE", "CHAMPVA"],
+        "topics": ["patient_information", "medical_practitioner_signatures", "sham_orders"]
+      },
+      {
+        "id": "DOJ_VETERAN_IMPERSONATION_2026",
+        "url": "https://www.justice.gov/usao-wdwa/pr/pair-convicted-scheme-defraud-seriously-ill-veterans-calling-medical-facilities-steal",
+        "date": "2026-07-13",
+        "source_role": "CONVICTION_RECEIPT",
+        "topics": ["impersonation", "personal_information", "veterans", "phone"]
+      },
+      {
+        "id": "DOJ_TELEMEDICINE_2026",
+        "url": "https://www.justice.gov/opa/pr/telemedicine-company-owner-pleads-guilty-46m-medicare-fraud-scheme",
+        "date": "2026-03-27",
+        "source_role": "GUILTY_PLEA_RECEIPT",
+        "topics": ["telemedicine", "patient_contact", "unnecessary_products", "medicare"]
+      }
+    ],
+    "nist_gov": [
+      {
+        "id": "NIST_SP_800_124_R2",
+        "url": "https://csrc.nist.gov/pubs/sp/800/124/r2/final",
+        "date": "2023-05",
+        "source_role": "TECHNICAL_GUIDANCE_NOT_LAW",
+        "topics": ["mobile_device_security", "device_lifecycle", "endpoint_protection", "enterprise_mobility_management"]
+      },
+      {
+        "id": "NIST_SP_800_63B_4",
+        "url": "https://csrc.nist.gov/pubs/sp/800/63/b/4/final",
+        "date": "2025-07",
+        "source_role": "TECHNICAL_GUIDANCE_NOT_LAW",
+        "topics": ["authentication", "digital_identity", "phishing_resistance"]
+      }
+    ],
+    "va_gov": [
+      {
+        "id": "VA_PRIVACY_POLICIES",
+        "url": "https://department.va.gov/privacy/va-privacy-policies/",
+        "source_role": "FEDERAL_VA_PRIVACY_POLICY_INDEX",
+        "topics": ["privacy_act", "HIPAA", "38_USC_7332"]
+      },
+      {
+        "id": "VA_CONNECTED_APPS",
+        "url": "https://www.va.gov/resources/connected-apps-faqs/",
+        "source_role": "FEDERAL_VA_CONNECTED_APP_POLICY",
+        "topics": ["consent", "third_party_apps", "health_records", "service_records", "disconnect"]
+      },
+      {
+        "id": "VA_MOBILE_PRIVACY",
+        "url": "https://mobile.va.gov/va-web-and-mobile-app-privacy-policy",
+        "source_role": "FEDERAL_VA_MOBILE_PRIVACY_POLICY",
+        "topics": ["mobile_apps", "health_data", "bluetooth", "permissions", "privacy"]
+      }
+    ],
+    "mn_gov": [
+      {
+        "id": "MN_MDVA_SCOPE",
+        "url": "https://mn.gov/mdva/about/what-we-do.jsp",
+        "source_role": "STATE_VETERANS_AFFAIRS_SCOPE",
+        "note": "Minnesota Department of Veterans Affairs is a state agency separate from the federal VA."
+      },
+      {
+        "id": "MN_MDVA_DATA_INVENTORY",
+        "url": "https://mn.gov/mdva/about/reports.jsp",
+        "source_role": "STATE_DATA_PRACTICES_CONTEXT",
+        "topics": ["nonpublic_data", "access_control", "responsible_authority"]
+      },
+      {
+        "id": "MN_HEALTH_RECORDS_ACT",
+        "url": "https://www.health.state.mn.us/facilities/insurance/clearinghouse/medrecords.html",
+        "source_role": "STATE_MEDICAL_RECORDS_LAW_INDEX",
+        "statutes": ["144.291", "144.292", "144.293", "144.294", "144.295", "144.296", "144.297", "144.298"]
+      }
+    ]
+  },
+  "darvo_protocol": {
+    "legal_doctrine": false,
+    "required_fields": ["attributable_denial", "attributable_attack", "attributable_reversal", "same_dispute", "timestamped_sequence"],
+    "pass_rule": "D_AND_A_AND_R_AND_S_AND_T",
+    "silence_is_darvo": false,
+    "institutional_failure_is_darvo": false,
+    "fraud_case_is_darvo": false,
+    "pattern_is_guilt_or_innocence": false
+  },
+  "role_timegraph": {
+    "2016": {"role": "CANDIDATE_PUBLIC_UTTERANCE_RAIL", "executive_authority": false},
+    "2017_2021": {"role": "PRESIDENTIAL_ACTION_RAIL"},
+    "2021_2025": {"role": "PRIVATE_CITIZEN_AND_CANDIDATE_RAIL", "executive_authority": false},
+    "2025_2026": {"role": "PRESIDENTIAL_ACTION_RAIL"}
+  },
+  "hard_membranes": [
+    "NIST_GUIDANCE != LAW",
+    "DOJ_ENFORCEMENT != UNIVERSAL_MEDICAL_STANDARD",
+    "MN_STATE_VA != FEDERAL_VA",
+    "CONNECTED_APP != VA",
+    "CAMPAIGN_PROMISE != LAW",
+    "PRESIDENTIAL_DIRECTION != IMPLEMENTATION_RECEIPT",
+    "ALLEGATION != CONVICTION",
+    "PHONE_RISK != CYBERATTACK_PROVEN",
+    "WAR_METAPHOR != ARMED_CONFLICT_FINDING",
+    "DARVO_PATTERN != GUILT_OR_INNOCENCE",
+    "AUTHORITY_CREATED = FALSE"
+  ]
+}

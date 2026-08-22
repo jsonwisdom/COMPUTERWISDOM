@@ -1,0 +1,71 @@
+{
+  "schema_version": "alpr_max_ledger.v0_1",
+  "ledger_id": "ALPR-MAX-HOLD-0001",
+  "jurisdiction": {
+    "country": "US",
+    "state": null,
+    "scope_type": "MULTI_STATE",
+    "scope_name": "MN_AL_SYNTHETIC_COMPARISON"
+  },
+  "observation_window": {
+    "start_utc": "2025-01-01T00:00:00Z",
+    "end_utc": "2026-05-15T23:59:59Z"
+  },
+  "source_receipts": [
+    {
+      "receipt_id": "SRC-NEW-HANOVER-NETWORK-AUDIT",
+      "source_type": "AUDIT_EXPORT",
+      "source_locator": "PUBLIC_SOURCE_PENDING_FROZEN_BYTES",
+      "sha256": null,
+      "retrieved_at_utc": null,
+      "state": "HOLD"
+    }
+  ],
+  "query_events": [],
+  "network_contacts": [],
+  "derived_metrics": [
+    {
+      "metric_id": "MN-COUNTY-STRESS-001",
+      "label": "Minnesota county-normalized target-network-contact stress model",
+      "value": 259267134,
+      "unit": "TARGET_NETWORK_CONTACT",
+      "model_mode": "SYNTHETIC_STRESS_TEST",
+      "observed_activity": false,
+      "formula": "2980082 * 87",
+      "input_receipt_ids": ["SRC-NEW-HANOVER-NETWORK-AUDIT"],
+      "state": "HOLD"
+    },
+    {
+      "metric_id": "AL-COUNTY-STRESS-001",
+      "label": "Alabama county-normalized target-network-contact stress model",
+      "value": 199665494,
+      "unit": "TARGET_NETWORK_CONTACT",
+      "model_mode": "SYNTHETIC_STRESS_TEST",
+      "observed_activity": false,
+      "formula": "2980082 * 67",
+      "input_receipt_ids": ["SRC-NEW-HANOVER-NETWORK-AUDIT"],
+      "state": "HOLD"
+    }
+  ],
+  "capacity_evidence": {
+    "peak_qps": null,
+    "concurrency_limit": null,
+    "rate_limit": null,
+    "fanout_limit_or_distribution": null,
+    "response_latency_distribution": null,
+    "source_receipt_ids": [],
+    "state": "HOLD"
+  },
+  "disposition": {
+    "unit_identity": "HOLD",
+    "dedupe": "HOLD",
+    "state_comparison": "HOLD",
+    "machine_capacity": "HOLD",
+    "boxd_state": "HOLD",
+    "notes": [
+      "2,980,082 is preserved here only as an input benchmark pending frozen source-byte field mapping.",
+      "County multiplication is synthetic geometry only and must not be labeled observed state search activity.",
+      "No cross-network dedupe key, query-event inventory, returned-record ledger, hit ledger, export ledger, or capacity evidence is bound yet."
+    ]
+  }
+}

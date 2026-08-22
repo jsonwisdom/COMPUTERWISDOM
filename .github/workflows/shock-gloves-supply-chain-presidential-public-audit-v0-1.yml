@@ -1,0 +1,65 @@
+name: shock-gloves-supply-chain-presidential-public-audit-v0-1
+
+on:
+  pull_request:
+    paths:
+      - 'public-question-router/extensions/shock-gloves/**'
+      - '.github/workflows/shock-gloves-supply-chain-presidential-public-audit-v0-1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Parse JSON artifacts
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('public-question-router/extensions/shock-gloves')
+          for path in sorted(root.rglob('*.json')):
+              json.loads(path.read_text(encoding='utf-8'))
+              print(f'JSON PASS: {path}')
+          PY
+      - name: Run Shock Gloves fail-closed fixture regression
+        run: python public-question-router/extensions/shock-gloves/tests/test_shock_gloves_hold_fixture.py
+      - name: Run BoxD four-onion Multi Pass regression
+        run: python public-question-router/extensions/shock-gloves/boxdee/tests/test_boxd_four_onion_multipass.py
+      - name: Run Minnesota Quad Onion ledger regression
+        run: python public-question-router/extensions/shock-gloves/boxdee/minnesota/tests/test_mn_quad_onion_ledger.py
+      - name: Run ALPR MAX unit-identity regression
+        run: python public-question-router/extensions/shock-gloves/boxdee/alpr/tests/test_alpr_max_ledger.py
+      - name: Boundary assertions
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          root = Path('public-question-router/extensions/shock-gloves')
+          text = '\n'.join(p.read_text(encoding='utf-8') for p in root.rglob('*') if p.is_file())
+          required = [
+              'DARVO_PATTERN_CANDIDATE != DARVO_FINDING',
+              'METADATA_COLLECTION != METADATA_LEAK',
+              'SEALED != COVER_UP',
+              'CIA_AIRCRAFT != RENDITION',
+              'UCMJ_COURT_MARTIAL != MILITARY_COMMISSION',
+              'SHOCK_GLOVE_LABEL != DEVICE_IDENTITY',
+              '3 GREEN + 1 HOLD != PASS',
+              'FAFO != RETALIATION',
+              'PHYSICAL_SHOCK = PROHIBITED',
+              'AGE_TARGETED_HARM = FALSE',
+              'FOLLOW_THE_MONEY_WITHOUT_PROMOTING_THE_RAIL_INTO_THE_CRIME',
+              'ORIGIN_SEARCH != TARGET_NETWORK_CONTACT',
+              'AVERAGE_ACTIVITY != MACHINE_CAPACITY',
+              'COUNTY != HOMOGENEOUS_SENSOR_NODE',
+              'FOLLOW THE QUERY WITHOUT PROMOTING THE CONTACT INTO THE SEARCH',
+          ]
+          for marker in required:
+              assert marker in text, marker
+          print('boundary assertions: PASS')
+          PY
