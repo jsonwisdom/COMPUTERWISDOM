@@ -32,7 +32,9 @@ jobs:
           [System.Management.Automation.Language.Parser]::ParseFile("tools/base-bootstrap/ComputerWisdom-Base.ps1", [ref]$tokens, [ref]$errors) | Out-Null
           if ($errors.Count) { $errors | Format-List; exit 1 }
           bash -n tools/base-bootstrap/computerwisdom-base.sh
-          python -m py_compile tools/base-bootstrap/verify_receipt.py
+          python -m py_compile tools/base-bootstrap/verify_receipt.py tools/base-bootstrap/test_verify_receipt_gate2.py
+      - name: Gate 2 assert-free receipt validation
+        run: python tools/base-bootstrap/test_verify_receipt_gate2.py
       - name: Start isolated Base Sepolia replay chain
         run: |
           anvil --chain-id 84532 --port 8545 > "$RUNNER_TEMP/anvil-sepolia.log" 2>&1 &
@@ -65,5 +67,3 @@ jobs:
           name: base-bootstrap-replay
           path: replay/
           if-no-files-found: error
-
-
