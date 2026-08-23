@@ -1,0 +1,42 @@
+{
+  "schema": "computerwisdom.ipfs_promotion_gate_instance.v1",
+  "instance_date": "2026-08-23",
+  "objects": [
+    {
+      "role": "zip",
+      "cid": "bafkreie36be24t5ynnfxb5dtdidhxtfeuudzyxtk4qe5ovokyjug7aqzgy",
+      "cid_codec": "raw",
+      "sha256": "9bf049ae4fb86b4b70f4731a067bcca4a5079c5e6ae409d755cac2686f821936"
+    },
+    {
+      "role": "json",
+      "cid": "bafkreihxdbzggiajwgywt5lwjd7njt4fnwvth7l4k473lqaamyllnew7ha",
+      "cid_codec": "raw",
+      "sha256": "f71872632009b1b169f57648fed4cf856dab33fd7c573fb5c0006616b692df38"
+    }
+  ],
+  "state": {
+    "cid_byte_binding": "PROVED",
+    "local_cid_derivation": "PROVED",
+    "ipfs_upload": "HOLD",
+    "public_retrievability": "FAIL_NOT_OBSERVED",
+    "provider_pinning": "HOLD",
+    "byte_level_proof": "INTACT",
+    "fake_green": false
+  },
+  "promotion_gate": {
+    "status": "CLOSED",
+    "consumer_path": [
+      "gateway_retrieval_success",
+      "retrieved_bytes_hash_match"
+    ],
+    "custody_path": [
+      "provider_pin_confirmation",
+      "independent_retrieval_success",
+      "retrieved_bytes_hash_match"
+    ],
+    "provider_confirmation_without_readback": "INDETERMINATE_FAIL_CLOSED",
+    "current_disposition": "DRAFT_UNSIGNED_EQUIVALENT_HOLD"
+  },
+  "authority_created": false
+}
