@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://jaywisdom.base.eth/contracts/INPUT_EVIDENCE_V1.schema.json",
   "title": "INPUT_EVIDENCE_V1",
-  "description": "Caller-facing evidence input for the P1 verifier. Result, burden, authority, and internal derivation flags are intentionally absent.",
+  "description": "Caller-facing frozen evidence input for the P1 verifier. Result, burden, authority, memory, live-fetch instructions, and internal derivation flags are intentionally absent.",
   "type": "object",
   "additionalProperties": false,
   "required": [
@@ -92,6 +92,13 @@
           },
           "binding": {"enum": ["SOURCE", "OBJECT", "TIME", "ACTION", "READBACK", "OTHER"]},
           "value": {},
+          "assertionKey": {
+            "type": ["string", "null"],
+            "description": "Optional explicit bounded assertion key used for deterministic contradiction checks."
+          },
+          "assertionValue": {
+            "description": "Optional explicit assertion value. Conflicting admissible receipts with the same binding + assertionKey are contradictory."
+          },
           "sha256": {"type": ["string", "null"], "pattern": "^[A-Fa-f0-9]{64}$"}
         }
       }
