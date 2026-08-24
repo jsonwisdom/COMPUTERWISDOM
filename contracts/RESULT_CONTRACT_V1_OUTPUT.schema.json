@@ -2,12 +2,13 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://jaywisdom.base.eth/contracts/RESULT_CONTRACT_V1_OUTPUT.schema.json",
   "title": "RESULT_CONTRACT_V1_OUTPUT",
-  "description": "Verifier-emitted result object. Caller input MUST NOT contain these output-only fields.",
+  "description": "Verifier-emitted deterministic result object. Caller input MUST NOT contain these output-only fields.",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "standard",
     "verifier",
+    "claimClass",
     "inputDigest",
     "internalFlags",
     "burdenSatisfied",
@@ -17,6 +18,10 @@
   "properties": {
     "standard": {"const": "GBS-BOXDEE-BURDEN-V001"},
     "verifier": {"const": "P1_VERIFIER_SPEC_V1"},
+    "claimClass": {
+      "enum": ["FACT_CLAIM", "SELF_REPORT", "RELATION_LABEL", "INTENT_INFERENCE", "MIXED"],
+      "description": "Class-scopes the meaning of derivedResult. MIXED is not PASS-eligible in P1 V1."
+    },
     "inputDigest": {
       "type": "string",
       "pattern": "^[A-Fa-f0-9]{64}$",
@@ -74,6 +79,16 @@
               "hasMissingEvidence": {"const": false}
             }
           }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"claimClass": {"const": "MIXED"}}, "required": ["claimClass"]},
+      "then": {
+        "properties": {
+          "burdenSatisfied": {"const": false},
+          "derivedResult": {"const": "HOLD"},
+          "authority": {"const": false}
         }
       }
     },
