@@ -131,7 +131,41 @@
         "required": ["result"]
       },
       "then": {
-        "properties": {"burdenSatisfied": {"const": true}}
+        "properties": {
+          "burdenSatisfied": {"const": true},
+          "source": {
+            "properties": {"status": {"const": "OBSERVED"}},
+            "required": ["status"]
+          },
+          "object": {
+            "properties": {
+              "status": {"const": "OBSERVED"},
+              "identifier": {"type": "string", "minLength": 1}
+            },
+            "required": ["status", "identifier"]
+          },
+          "time": {
+            "properties": {
+              "status": {"const": "OBSERVED"},
+              "value": {"type": "string", "minLength": 1}
+            },
+            "required": ["status", "value"]
+          },
+          "action": {
+            "properties": {"status": {"const": "OBSERVED"}},
+            "required": ["status"]
+          },
+          "readback": {
+            "properties": {
+              "status": {"const": "MATCH"},
+              "value": {"not": {"type": "null"}}
+            },
+            "required": ["status", "value"]
+          },
+          "provenance": {
+            "minItems": 1
+          }
+        }
       }
     },
     {
