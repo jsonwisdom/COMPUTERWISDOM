@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jaywisdom.base.eth/contracts/INPUT_EVIDENCE_V1.schema.json",
+  "title": "INPUT_EVIDENCE_V1",
+  "description": "Caller-facing evidence input for the P1 verifier. Result, burden, authority, and internal derivation flags are intentionally absent.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "standard",
+    "contractVersion",
+    "claimant",
+    "claim",
+    "source",
+    "object",
+    "time",
+    "action",
+    "readback",
+    "receipts",
+    "replay"
+  ],
+  "properties": {
+    "standard": {"const": "GBS-BOXDEE-BURDEN-V001"},
+    "contractVersion": {"const": "INPUT_EVIDENCE_V1"},
+    "claimant": {"type": "string", "minLength": 1},
+    "claim": {"type": "string", "minLength": 1},
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surface", "status"],
+      "properties": {
+        "surface": {"type": "string", "minLength": 1},
+        "url": {"type": ["string", "null"]},
+        "status": {"enum": ["OBSERVED", "UNOBSERVED", "INVALID", "SEARCH_MISS"]}
+      }
+    },
+    "object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identifier", "status"],
+      "properties": {
+        "identifier": {"type": ["string", "null"]},
+        "description": {"type": ["string", "null"]},
+        "status": {"enum": ["OBSERVED", "UNOBSERVED", "INVALID"]}
+      }
+    },
+    "time": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "status"],
+      "properties": {
+        "value": {"type": ["string", "null"]},
+        "timezone": {"type": ["string", "null"]},
+        "status": {"enum": ["OBSERVED", "UNOBSERVED", "INVALID"]}
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assertedTransition", "status"],
+      "properties": {
+        "assertedTransition": {"type": "string", "minLength": 1},
+        "status": {"enum": ["OBSERVED", "UNOBSERVED", "INVALID", "ASSERTED_ONLY"]}
+      }
+    },
+    "readback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "value"],
+      "properties": {
+        "status": {"enum": ["MATCH", "MISMATCH", "UNAVAILABLE"]},
+        "value": {},
+        "source": {"type": ["string", "null"]}
+      }
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "type", "class", "binding", "value"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "type": {"enum": ["URL", "HASH", "TRANSACTION", "COMMIT", "SCREENSHOT_HASH", "INCIDENT_ID", "OTHER"]},
+          "class": {"enum": ["RECEIPT", "VISUALIZATION", "DRAFT"]},
+          "binding": {"enum": ["SOURCE", "OBJECT", "TIME", "ACTION", "READBACK", "OTHER"]},
+          "value": {},
+          "sha256": {"type": ["string", "null"], "pattern": "^[A-Fa-f0-9]{64}$"}
+        }
+      }
+    },
+    "replay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["chainStatus", "replayStatus"],
+      "properties": {
+        "chainStatus": {"enum": ["COMPLETE", "PARTIAL", "UNAVAILABLE"]},
+        "replayStatus": {"enum": ["COMPLETE", "PARTIAL", "UNAVAILABLE"]}
+      }
+    }
+  }
+}
