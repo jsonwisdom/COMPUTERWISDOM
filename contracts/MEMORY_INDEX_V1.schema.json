@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jaywisdom.base.eth/contracts/MEMORY_INDEX_V1.schema.json",
+  "title": "MEMORY_INDEX_V1",
+  "description": "Advisory ReverseReplayRemember locator. Memory identifies where to replay; it never satisfies P1 burden by itself.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["standard", "contractVersion", "memoryId", "claimHint", "requiredReceipts"],
+  "properties": {
+    "standard": {"const": "GBS-BOXDEE-BURDEN-V001"},
+    "contractVersion": {"const": "MEMORY_INDEX_V1"},
+    "memoryId": {"type": "string", "minLength": 1},
+    "claimHint": {"type": "string", "minLength": 1},
+    "claimClassHint": {
+      "enum": ["FACT_CLAIM", "SELF_REPORT", "RELATION_LABEL", "INTENT_INFERENCE", "MIXED"]
+    },
+    "requiredReceipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "fileName", "sha256"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "fileName": {"type": "string", "minLength": 1},
+          "sha256": {"type": "string", "pattern": "^[A-Fa-f0-9]{64}$"}
+        }
+      }
+    },
+    "lastDerived": {"enum": ["PASS", "HOLD", "DELTA", "FAIL", null]},
+    "lastBurden": {"type": ["boolean", "null"]},
+    "lastInputDigest": {"type": ["string", "null"], "pattern": "^[A-Fa-f0-9]{64}$"},
+    "lastOutputDigest": {"type": ["string", "null"], "pattern": "^[A-Fa-f0-9]{64}$"}
+  }
+}
