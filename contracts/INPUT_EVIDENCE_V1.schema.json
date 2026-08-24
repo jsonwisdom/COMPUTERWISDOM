@@ -10,6 +10,7 @@
     "contractVersion",
     "claimant",
     "claim",
+    "claimClass",
     "source",
     "object",
     "time",
@@ -23,6 +24,10 @@
     "contractVersion": {"const": "INPUT_EVIDENCE_V1"},
     "claimant": {"type": "string", "minLength": 1},
     "claim": {"type": "string", "minLength": 1},
+    "claimClass": {
+      "enum": ["FACT_CLAIM", "SELF_REPORT", "RELATION_LABEL", "INTENT_INFERENCE", "MIXED"],
+      "description": "Semantic proposition class. Distinct from receipts[*].class artifact classification."
+    },
     "source": {
       "type": "object",
       "additionalProperties": false,
@@ -81,7 +86,10 @@
         "properties": {
           "id": {"type": "string", "minLength": 1},
           "type": {"enum": ["URL", "HASH", "TRANSACTION", "COMMIT", "SCREENSHOT_HASH", "INCIDENT_ID", "OTHER"]},
-          "class": {"enum": ["RECEIPT", "VISUALIZATION", "DRAFT"]},
+          "class": {
+            "enum": ["RECEIPT", "VISUALIZATION", "DRAFT"],
+            "description": "Artifact class. Independent from top-level claimClass."
+          },
           "binding": {"enum": ["SOURCE", "OBJECT", "TIME", "ACTION", "READBACK", "OTHER"]},
           "value": {},
           "sha256": {"type": ["string", "null"], "pattern": "^[A-Fa-f0-9]{64}$"}
