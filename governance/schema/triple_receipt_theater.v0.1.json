@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/governance/schema/triple_receipt_theater.v0.1.json",
+  "title": "Triple Receipt Theater v0.1",
+  "description": "Sequential linked receipt-family contract for Franny + Stinker followed by an optional Singularity replay. This object summarizes existing receipts; it does not create authority, erase history, clean corruption, or prove component timestamp non-overlap by itself.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_id",
+    "receipt_type",
+    "theater_components",
+    "order_of_operations",
+    "final_state",
+    "checked_by",
+    "timestamp"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "pattern": "^triple_.+"
+    },
+    "receipt_type": {
+      "const": "triple_receipt_theater_v0.1"
+    },
+    "theater_components": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["base_receipt_id"],
+      "properties": {
+        "base_receipt_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "franny_receipt_id": {
+          "type": "string",
+          "pattern": "^franny_.+"
+        },
+        "stinker_receipt_id": {
+          "type": "string",
+          "pattern": "^stinker_.+"
+        },
+        "dual_receipt_id": {
+          "type": "string",
+          "pattern": "^dual_.+"
+        },
+        "corruption_receipt_id": {
+          "type": "string",
+          "pattern": "^corr_.+"
+        },
+        "cleaning_receipt_id": {
+          "type": "string",
+          "pattern": "^clean_.+"
+        },
+        "singularity_receipt_id": {
+          "type": "string",
+          "pattern": "^sing_.+"
+        }
+      },
+      "allOf": [
+        {
+          "if": {"required": ["dual_receipt_id"]},
+          "then": {"required": ["franny_receipt_id", "stinker_receipt_id"]}
+        },
+        {
+          "if": {"required": ["singularity_receipt_id"]},
+          "then": {"required": ["dual_receipt_id"]}
+        }
+      ]
+    },
+    "order_of_operations": {
+      "const": [
+        "base",
+        "franny_self_audit",
+        "stinker_visibility",
+        "dual_receipt",
+        "corruption_application",
+        "cleaning_attempt",
+        "singularity_replay"
+      ]
+    },
+    "final_state": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["asset_state", "authority_created", "no_fake_green", "membrane"],
+      "properties": {
+        "asset_state": {
+          "enum": ["idle", "active", "corrupted", "cleaned", "locked", "burned"]
+        },
+        "authority_created": {
+          "const": false
+        },
+        "no_fake_green": {
+          "const": true
+        },
+        "membrane": {
+          "const": "INTACT"
+        }
+      }
+    },
+    "checked_by": {
+      "const": [
+        "404_KID",
+        "HASH_SMASHER",
+        "SAFE_CRACKER",
+        "PAYDAY_PAIL",
+        "BOSS_BRENDA"
+      ]
+    },
+    "timestamp": {
+      "type": "integer",
+      "minimum": 0
+    }
+  },
+  "x-constitutional-invariants": {
+    "SIMULTANEOUS_TRIPLE_FORCE": "FORBIDDEN",
+    "SEQUENTIAL_LINKED_RECEIPT_FAMILY": "ALLOWED",
+    "REPLAY_IS_NOT_CLEANING": true,
+    "HISTORY_ERASURE": false,
+    "AUTHORITY_CREATED": false,
+    "WITNESS_OVER_PROJECTION": true,
+    "TIMESTAMP_NON_OVERLAP_REQUIRES_COMPONENT_READBACK": true
+  }
+}
