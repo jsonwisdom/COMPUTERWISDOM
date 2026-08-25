@@ -1,0 +1,31 @@
+name: Triple Receipt Theater membrane
+
+on:
+  pull_request:
+    paths:
+      - 'governance/schema/triple_receipt_theater.v0.1.json'
+      - 'governance/verify-membrane.sh'
+      - '.github/workflows/triple-receipt-theater.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  schema-and-membrane:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Assert exact checkout
+        if: github.event_name == 'pull_request'
+        run: test "$(git rev-parse HEAD)" = "${{ github.event.pull_request.head.sha }}"
+      - name: Verify Triple Receipt Theater membrane contract
+        run: bash governance/verify-membrane.sh
+      - name: State verification boundary
+        run: |
+          echo 'Schema/verifier structure is checked.'
+          echo 'No theater execution receipt is promoted by this workflow.'
+          echo 'Component timestamp reconciliation remains HOLD until component receipts are supplied.'
