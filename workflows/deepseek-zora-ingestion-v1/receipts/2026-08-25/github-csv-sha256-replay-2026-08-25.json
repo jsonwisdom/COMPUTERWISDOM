@@ -1,0 +1,9 @@
+{
+  "authority": false,
+  "source": "https://raw.githubusercontent.com/jsonwisdom/jay-zora-portal/3f0b890db0c45bc5e2212d10cd929f4e9ca99dbc/exports/jay_zora_inventory.csv",
+  "bytes": 560743,
+  "sha256": "9a21b371c4fdf84a0589dff4fa9324bbd6246ee1d6293be92d7b0c46ea887fdf",
+  "named_csv_sha256": "9a21b371c4fdf84a0589dff4fa9324bbd6246ee1d6293be92d7b0c46ea887fdf",
+  "match": true,
+  "status": "OBSERVED_HASH_MATCH"
+}
