@@ -1,0 +1,2375 @@
+{
+  "schema": "ZORA_ARTBOT_RANK_HOLDERS_VOLUME_V0_1",
+  "authority": false,
+  "no_fake_green": true,
+  "size_is_not_identity": true,
+  "source": {
+    "inventory_path": "/workspace/artifacts/wisdom/zora/normalized/artbot-inventory-2026-08-25.json",
+    "inventory_schema": "ZORA_ARTBOT_INVENTORY_V0_1",
+    "inventory_authority": false,
+    "method_from_inventory": "public REST GET api-sdk.zora.engineering only. No HTML scrape. No orders. No wallet signing."
+  },
+  "observed_at": "2026-08-25 19:26:52 CT",
+  "observed_at_source_field": "observed_at_ct",
+  "viewCount": "UNKNOWN",
+  "impressionCount": "UNKNOWN",
+  "rank_basis": {
+    "primary": "uniqueHolders",
+    "then": [
+      "volume24h",
+      "totalVolume"
+    ],
+    "not": "views",
+    "note": "viewCount is UNKNOWN on every item. Do not rank by views. Do not invent view counts. Do not scrape HTML. Size is not identity. Nothing here is labeled a buy or a green status."
+  },
+  "field_availability_from_inventory": {
+    "uniqueHolders": "RETURNED",
+    "volume24h": "RETURNED",
+    "totalVolume": "RETURNED",
+    "marketCap": "RETURNED",
+    "marketCapDelta24h": "RETURNED",
+    "viewCount": "UNKNOWN",
+    "impressionCount": "UNKNOWN",
+    "note": "GraphQLZora20V4Token and coin REST have no view/impression field. Do not scrape HTML to fill it. View-to-collect gap cannot be ranked from this API. Collect proxy is uniqueHolders. Volume proxy is volume24h/totalVolume."
+  },
+  "paging": {
+    "jaywisdom": {
+      "createdCoins_count_field": 1071,
+      "items_returned": 1000,
+      "unpaged_remainder_HOLD": 71
+    },
+    "jaywisdom_chromebook": {
+      "createdCoins_count_field": 325,
+      "items_returned": 325,
+      "unpaged_remainder_HOLD": 0
+    },
+    "note": "Ranks use returned post items only. jaywisdom unpaged remainder 71 is HOLD."
+  },
+  "distributions": {
+    "universe": "posts.items only (creator_coins not mixed into histogram)",
+    "items_in_rank": 1325,
+    "uniqueHolders_histogram": [
+      {
+        "uniqueHolders": 0,
+        "count": 326
+      },
+      {
+        "uniqueHolders": 1,
+        "count": 4
+      },
+      {
+        "uniqueHolders": 2,
+        "count": 681
+      },
+      {
+        "uniqueHolders": 3,
+        "count": 122
+      },
+      {
+        "uniqueHolders": 4,
+        "count": 86
+      },
+      {
+        "uniqueHolders": 5,
+        "count": 60
+      },
+      {
+        "uniqueHolders": 6,
+        "count": 17
+      },
+      {
+        "uniqueHolders": 7,
+        "count": 11
+      },
+      {
+        "uniqueHolders": 8,
+        "count": 9
+      },
+      {
+        "uniqueHolders": 9,
+        "count": 4
+      },
+      {
+        "uniqueHolders": 10,
+        "count": 1
+      },
+      {
+        "uniqueHolders": 12,
+        "count": 1
+      },
+      {
+        "uniqueHolders": 15,
+        "count": 1
+      },
+      {
+        "uniqueHolders": 16,
+        "count": 1
+      },
+      {
+        "uniqueHolders": 23,
+        "count": 1
+      }
+    ],
+    "volume24h_gt_0": 105,
+    "volume24h_eq_0": 1220,
+    "marketCap_gt_0": 499,
+    "marketCap_eq_0": 826,
+    "uniqueHolders_ge_5": 106,
+    "per_account": {
+      "jaywisdom": {
+        "createdCoins_count_field": 1071,
+        "items_returned": 1000,
+        "unpaged_remainder_HOLD": 71,
+        "items_in_this_rank": 1000,
+        "uniqueHolders_histogram": [
+          {
+            "uniqueHolders": 0,
+            "count": 185
+          },
+          {
+            "uniqueHolders": 1,
+            "count": 2
+          },
+          {
+            "uniqueHolders": 2,
+            "count": 543
+          },
+          {
+            "uniqueHolders": 3,
+            "count": 101
+          },
+          {
+            "uniqueHolders": 4,
+            "count": 74
+          },
+          {
+            "uniqueHolders": 5,
+            "count": 54
+          },
+          {
+            "uniqueHolders": 6,
+            "count": 15
+          },
+          {
+            "uniqueHolders": 7,
+            "count": 10
+          },
+          {
+            "uniqueHolders": 8,
+            "count": 9
+          },
+          {
+            "uniqueHolders": 9,
+            "count": 3
+          },
+          {
+            "uniqueHolders": 10,
+            "count": 1
+          },
+          {
+            "uniqueHolders": 12,
+            "count": 1
+          },
+          {
+            "uniqueHolders": 15,
+            "count": 1
+          },
+          {
+            "uniqueHolders": 23,
+            "count": 1
+          }
+        ],
+        "volume24h_gt_0": 101,
+        "volume24h_eq_0": 899,
+        "marketCap_gt_0": 442,
+        "marketCap_eq_0": 558,
+        "uniqueHolders_ge_5": 95,
+        "marketCap_ge_1000": 7,
+        "viewCount_non_null": 0,
+        "viewCount_status_UNKNOWN": 1000
+      },
+      "jaywisdom_chromebook": {
+        "createdCoins_count_field": 325,
+        "items_returned": 325,
+        "unpaged_remainder_HOLD": 0,
+        "items_in_this_rank": 325,
+        "uniqueHolders_histogram": [
+          {
+            "uniqueHolders": 0,
+            "count": 141
+          },
+          {
+            "uniqueHolders": 1,
+            "count": 2
+          },
+          {
+            "uniqueHolders": 2,
+            "count": 138
+          },
+          {
+            "uniqueHolders": 3,
+            "count": 21
+          },
+          {
+            "uniqueHolders": 4,
+            "count": 12
+          },
+          {
+            "uniqueHolders": 5,
+            "count": 6
+          },
+          {
+            "uniqueHolders": 6,
+            "count": 2
+          },
+          {
+            "uniqueHolders": 7,
+            "count": 1
+          },
+          {
+            "uniqueHolders": 9,
+            "count": 1
+          },
+          {
+            "uniqueHolders": 16,
+            "count": 1
+          }
+        ],
+        "volume24h_gt_0": 4,
+        "volume24h_eq_0": 321,
+        "marketCap_gt_0": 57,
+        "marketCap_eq_0": 268,
+        "uniqueHolders_ge_5": 11,
+        "marketCap_ge_1000": 1,
+        "viewCount_non_null": 0,
+        "viewCount_status_UNKNOWN": 325
+      }
+    }
+  },
+  "creator_coins_observed": [
+    {
+      "creator_coins_key": "JAYWISDOM",
+      "name": "jaywisdom",
+      "symbol": "jaywisdom",
+      "address": "0x694ce46c64d9d1a5e9376a9febcf85ec05d72e9f",
+      "coinType": "CREATOR",
+      "uniqueHolders": 107,
+      "volume24h": "37.48",
+      "totalVolume": "2383.406386235617",
+      "marketCap": "18888.36",
+      "zora_url": "https://zora.co/coin/base:0x694ce46c64d9d1a5e9376a9febcf85ec05d72e9f",
+      "viewCount": null,
+      "viewCount_status": "UNKNOWN",
+      "also_in_posts": false
+    },
+    {
+      "creator_coins_key": "jaywisdom_chromebook",
+      "name": "UNKNOWN",
+      "symbol": "UNKNOWN",
+      "address": "0x4c461cffb0600e3f4c9756907caae9c525fa3399",
+      "coinType": "UNKNOWN",
+      "uniqueHolders": "UNKNOWN",
+      "volume24h": "UNKNOWN",
+      "totalVolume": "UNKNOWN",
+      "marketCap": "2149.50",
+      "zora_url": "UNKNOWN",
+      "viewCount": "UNKNOWN",
+      "viewCount_status": "UNKNOWN",
+      "also_in_posts": false
+    },
+    {
+      "creator_coins_key": "DNI_Gross-Intel_Crew",
+      "name": "2026 Midterm Mayhem: DNI Gross-Intel Crew",
+      "symbol": "DNIGROSS",
+      "address": "0xe423ae19fffcee95919dde96a31e828bc060e36f",
+      "coinType": "CONTENT",
+      "uniqueHolders": 2,
+      "volume24h": "0.21",
+      "totalVolume": "0.214299",
+      "marketCap": "375.51",
+      "zora_url": "https://zora.co/coin/base:0xe423ae19fffcee95919dde96a31e828bc060e36f",
+      "viewCount": null,
+      "viewCount_status": "UNKNOWN",
+      "also_in_posts": true,
+      "post_account": "jaywisdom",
+      "post_marketCap": "372.35",
+      "post_uniqueHolders": 2,
+      "post_volume24h": "0.21",
+      "post_totalVolume": "0.214299"
+    }
+  ],
+  "top_15_by_uniqueHolders": [
+    {
+      "account": "jaywisdom",
+      "name": "Sophia ",
+      "symbol": "Sophia ",
+      "address": "0x4abff5a53301b7fb363ffd2c4ab0cd03ff79ecde",
+      "uniqueHolders": 23,
+      "volume24h": "0.0",
+      "totalVolume": "5.987424",
+      "marketCap": "2043.82",
+      "zora_url": "https://zora.co/coin/base:0x4abff5a53301b7fb363ffd2c4ab0cd03ff79ecde"
+    },
+    {
+      "account": "jaywisdom_chromebook",
+      "name": "🚨 MINNESOTA FRAUD APOCALYPSE 🚨",
+      "symbol": "🚨 MINNESOTA FRAUD APOCALYPSE 🚨",
+      "address": "0x7ff6d1f803a63440a068937b6ca34b9cb16cd65d",
+      "uniqueHolders": 16,
+      "volume24h": "0.0",
+      "totalVolume": "244.50656",
+      "marketCap": "3016.65",
+      "zora_url": "https://zora.co/coin/base:0x7ff6d1f803a63440a068937b6ca34b9cb16cd65d"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "White Dove ",
+      "symbol": "White Dove ",
+      "address": "0x0520f368eef96b90aa3aa3ae5df9d5ce2fa08fd5",
+      "uniqueHolders": 15,
+      "volume24h": "0.0",
+      "totalVolume": "4.893767",
+      "marketCap": "0",
+      "zora_url": "https://zora.co/coin/base:0x0520f368eef96b90aa3aa3ae5df9d5ce2fa08fd5"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "25.8 – The Zerocoal Protocol",
+      "symbol": "25.8 – The Zerocoal Protocol",
+      "address": "0x3eea8f0fe2c9a6f0a0c9f35f9f5a2224d3f85adb",
+      "uniqueHolders": 12,
+      "volume24h": "0.0",
+      "totalVolume": "1.539235",
+      "marketCap": "154.03",
+      "zora_url": "https://zora.co/coin/base:0x3eea8f0fe2c9a6f0a0c9f35f9f5a2224d3f85adb"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Rugged Ronnie",
+      "symbol": "Rugged Ronnie",
+      "address": "0x48a3e415ee022f1204c94637cf672cdbbb00686b",
+      "uniqueHolders": 10,
+      "volume24h": "0.0",
+      "totalVolume": "6.483185",
+      "marketCap": "211.23",
+      "zora_url": "https://zora.co/coin/base:0x48a3e415ee022f1204c94637cf672cdbbb00686b"
+    },
+    {
+      "account": "jaywisdom_chromebook",
+      "name": "🚨 CHRISTMAS DAY BLACKOUT: DOJ’S",
+      "symbol": "🚨 CHRISTMAS DAY BLACKOUT: DOJ’S",
+      "address": "0x4f38663a43508bd6bd6735fe5c3620d524887945",
+      "uniqueHolders": 9,
+      "volume24h": "0.0",
+      "totalVolume": "68.747723",
+      "marketCap": "114.70",
+      "zora_url": "https://zora.co/coin/base:0x4f38663a43508bd6bd6735fe5c3620d524887945"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Sophia Wisdom",
+      "symbol": "Sophia Wisdom",
+      "address": "0x8d502bd328647e93324fd080ec0535a0e95bee59",
+      "uniqueHolders": 9,
+      "volume24h": "0.0",
+      "totalVolume": "6.554176",
+      "marketCap": "0",
+      "zora_url": "https://zora.co/coin/base:0x8d502bd328647e93324fd080ec0535a0e95bee59"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Sophia Wisdom",
+      "symbol": "Sophia Wisdom",
+      "address": "0xa6c619ba7397cfca1719fe5073b5fd0d8e1ffd24",
+      "uniqueHolders": 9,
+      "volume24h": "0.0",
+      "totalVolume": "4.100723",
+      "marketCap": "0",
+      "zora_url": "https://zora.co/coin/base:0xa6c619ba7397cfca1719fe5073b5fd0d8e1ffd24"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Infinite Elon [Glitch Frame Edition]",
+      "symbol": "Infinite Elon [Glitch Frame Edition]",
+      "address": "0xeb0673966199ceb333eb56aff76267f29b0a6ac3",
+      "uniqueHolders": 9,
+      "volume24h": "0.0",
+      "totalVolume": "3.554596",
+      "marketCap": "245.64",
+      "zora_url": "https://zora.co/coin/base:0xeb0673966199ceb333eb56aff76267f29b0a6ac3"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Legend of GROK",
+      "symbol": "Legend of GROK",
+      "address": "0xb4914d553b5ad6989d04e550e51a347d0fb4dd35",
+      "uniqueHolders": 8,
+      "volume24h": "0.0",
+      "totalVolume": "19.569532",
+      "marketCap": "2859.08",
+      "zora_url": "https://zora.co/coin/base:0xb4914d553b5ad6989d04e550e51a347d0fb4dd35"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Fortune Unfolds at 8: The Jade Gateway Ritual\n",
+      "symbol": "Fortune Unfolds at 8: The Jade Gateway Ritual\n",
+      "address": "0xa9aee43a08f3226dd0269360d5935940c6cfd71e",
+      "uniqueHolders": 8,
+      "volume24h": "0.0",
+      "totalVolume": "17.11363",
+      "marketCap": "102.17",
+      "zora_url": "https://zora.co/coin/base:0xa9aee43a08f3226dd0269360d5935940c6cfd71e"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Minnesota Audit Comic Tragedy",
+      "symbol": "MNBUG005",
+      "address": "0x85ec3663c37fa770776f4de2180df225aaa1775d",
+      "uniqueHolders": 8,
+      "volume24h": "0.0",
+      "totalVolume": "5.644625",
+      "marketCap": "270.13",
+      "zora_url": "https://zora.co/coin/base:0x85ec3663c37fa770776f4de2180df225aaa1775d"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "COINTEL BRO",
+      "symbol": "COINTEL BRO",
+      "address": "0x545bf751b534ebee44f7ff158efa89ae3714f073",
+      "uniqueHolders": 8,
+      "volume24h": "0.0",
+      "totalVolume": "5.162277",
+      "marketCap": "152.86",
+      "zora_url": "https://zora.co/coin/base:0x545bf751b534ebee44f7ff158efa89ae3714f073"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Zeracle Gate, activated by Zero Cool // Scroll Commander",
+      "symbol": "Zeracle Gate, activated by Zero Cool // Scroll Commander",
+      "address": "0x7d1eb6241a726e17b7bba9147f88f176fa13cecc",
+      "uniqueHolders": 8,
+      "volume24h": "0.0",
+      "totalVolume": "3.29338",
+      "marketCap": "2710.49",
+      "zora_url": "https://zora.co/coin/base:0x7d1eb6241a726e17b7bba9147f88f176fa13cecc"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Bugged Morpheena",
+      "symbol": "Bugged Morpheena",
+      "address": "0x04249f89fd0dd1f7b8614cb9163c81570f6e129a",
+      "uniqueHolders": 8,
+      "volume24h": "0.0",
+      "totalVolume": "3.28018",
+      "marketCap": "29.62",
+      "zora_url": "https://zora.co/coin/base:0x04249f89fd0dd1f7b8614cb9163c81570f6e129a"
+    }
+  ],
+  "top_15_by_volume24h": [
+    {
+      "account": "jaywisdom",
+      "name": "GRAY BABY HORROR — COMPLETE SET",
+      "symbol": "GRAYHORROR",
+      "address": "0xa69cf7cc085204277dcb730ee6d4388fb0574ebd",
+      "uniqueHolders": 3,
+      "volume24h": "2.2",
+      "totalVolume": "2.251427",
+      "marketCap": "439.09",
+      "zora_url": "https://zora.co/coin/base:0xa69cf7cc085204277dcb730ee6d4388fb0574ebd"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "PR #165 MERGED: The Replay Spine Lives",
+      "symbol": "PR #165 MERGED: The Replay Spine Lives",
+      "address": "0x17c7f908a0cbd2d415c44fb4098f229878e3ea7c",
+      "uniqueHolders": 2,
+      "volume24h": "2.04",
+      "totalVolume": "2.044977",
+      "marketCap": "324.38",
+      "zora_url": "https://zora.co/coin/base:0x17c7f908a0cbd2d415c44fb4098f229878e3ea7c"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "NODE 8 GOBLIN 👺 COURT",
+      "symbol": "NODE 8 GOBLIN 👺 COURT",
+      "address": "0x7bc791a7d088e4d31f61e3f36c77c9a69891051b",
+      "uniqueHolders": 2,
+      "volume24h": "2.04",
+      "totalVolume": "2.040092",
+      "marketCap": "349.28",
+      "zora_url": "https://zora.co/coin/base:0x7bc791a7d088e4d31f61e3f36c77c9a69891051b"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "NODE 8 GOBLIN 😈  ARCHIVE",
+      "symbol": "NODE 8 GOBLIN 😈  ARCHIVE",
+      "address": "0xd9bb51c33ff48bc7f37f7725876829a57cbd2dc1",
+      "uniqueHolders": 2,
+      "volume24h": "1.99",
+      "totalVolume": "4.232994",
+      "marketCap": "378.41",
+      "zora_url": "https://zora.co/coin/base:0xd9bb51c33ff48bc7f37f7725876829a57cbd2dc1"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Of Course it’s true",
+      "symbol": "Of Course it’s true",
+      "address": "0x0f8ae7e28cb78ff09a7fb15d3ea63cf5dc082545",
+      "uniqueHolders": 2,
+      "volume24h": "1.0",
+      "totalVolume": "0.0",
+      "marketCap": "0",
+      "zora_url": "https://zora.co/coin/base:0x0f8ae7e28cb78ff09a7fb15d3ea63cf5dc082545"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Pentagon Grok Controls & Rails (Warfare?)",
+      "symbol": "Pentagon Grok Controls & Rails (Warfare?)",
+      "address": "0xe9acfa6ac29660bf29ce963a0fdb0b2e225d42d1",
+      "uniqueHolders": 4,
+      "volume24h": "0.93",
+      "totalVolume": "4.29",
+      "marketCap": "146.68",
+      "zora_url": "https://zora.co/coin/base:0xe9acfa6ac29660bf29ce963a0fdb0b2e225d42d1"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "CMPTRWSDM ",
+      "symbol": "CMPTRWSDM ",
+      "address": "0x73ad550dcb47d254a5b3c335ae39d8999c42ff12",
+      "uniqueHolders": 2,
+      "volume24h": "0.6",
+      "totalVolume": "1.07",
+      "marketCap": "109.11",
+      "zora_url": "https://zora.co/coin/base:0x73ad550dcb47d254a5b3c335ae39d8999c42ff12"
+    },
+    {
+      "account": "jaywisdom_chromebook",
+      "name": "711",
+      "symbol": "711",
+      "address": "0x375baca915a3e7e487c14931c78d134d0f99af79",
+      "uniqueHolders": 7,
+      "volume24h": "0.48",
+      "totalVolume": "3.12616",
+      "marketCap": "81.62",
+      "zora_url": "https://zora.co/coin/base:0x375baca915a3e7e487c14931c78d134d0f99af79"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "BOX D Royal Seal",
+      "symbol": "BOXD",
+      "address": "0x282f132e8e77a72555b5f1d681243886ceffe94c",
+      "uniqueHolders": 3,
+      "volume24h": "0.44",
+      "totalVolume": "1.61054",
+      "marketCap": "212.19",
+      "zora_url": "https://zora.co/coin/base:0x282f132e8e77a72555b5f1d681243886ceffe94c"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "KARENN11",
+      "symbol": "KARENN11",
+      "address": "0x4a7b541a1987c6062fbf3469b408f67936b4ac68",
+      "uniqueHolders": 7,
+      "volume24h": "0.43",
+      "totalVolume": "3.275479",
+      "marketCap": "397.08",
+      "zora_url": "https://zora.co/coin/base:0x4a7b541a1987c6062fbf3469b408f67936b4ac68"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Goblin: The Frost Archivist",
+      "symbol": "Goblin: The Frost Archivist",
+      "address": "0xdce7e8ab9b3c76f0b1d3056b27f170758c297f21",
+      "uniqueHolders": 6,
+      "volume24h": "0.43",
+      "totalVolume": "0.890656",
+      "marketCap": "399.90",
+      "zora_url": "https://zora.co/coin/base:0xdce7e8ab9b3c76f0b1d3056b27f170758c297f21"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "ReceiptOS Genesis • Artifact 0001",
+      "symbol": "ROS",
+      "address": "0xd0c736467e0d496cc56209a36f28264b86c49582",
+      "uniqueHolders": 5,
+      "volume24h": "0.43",
+      "totalVolume": "1.293195",
+      "marketCap": "379.02",
+      "zora_url": "https://zora.co/coin/base:0xd0c736467e0d496cc56209a36f28264b86c49582"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Docket 749-Ω — Evidence Index",
+      "symbol": "INDEX749",
+      "address": "0x8d1066f3b24abcf166d27786b77b752da52edcf2",
+      "uniqueHolders": 3,
+      "volume24h": "0.43",
+      "totalVolume": "0.676",
+      "marketCap": "386.41",
+      "zora_url": "https://zora.co/coin/base:0x8d1066f3b24abcf166d27786b77b752da52edcf2"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "The Goblin of Public Proof",
+      "symbol": "The Goblin of Public Proof",
+      "address": "0xbda122186dc89ae0ba614cede03e3b30f2f5d605",
+      "uniqueHolders": 2,
+      "volume24h": "0.43",
+      "totalVolume": "1.264061",
+      "marketCap": "415.51",
+      "zora_url": "https://zora.co/coin/base:0xbda122186dc89ae0ba614cede03e3b30f2f5d605"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "I REMEMBER EVERYTHING",
+      "symbol": "I REMEMBER EVERYTHING",
+      "address": "0x6a060ffd50315aac603b6c32296ffe7f444a7e15",
+      "uniqueHolders": 2,
+      "volume24h": "0.31",
+      "totalVolume": "0.79",
+      "marketCap": "109.20",
+      "zora_url": "https://zora.co/coin/base:0x6a060ffd50315aac603b6c32296ffe7f444a7e15"
+    }
+  ],
+  "top_15_by_totalVolume": [
+    {
+      "account": "jaywisdom_chromebook",
+      "name": "🚨 MINNESOTA FRAUD APOCALYPSE 🚨",
+      "symbol": "🚨 MINNESOTA FRAUD APOCALYPSE 🚨",
+      "address": "0x7ff6d1f803a63440a068937b6ca34b9cb16cd65d",
+      "uniqueHolders": 16,
+      "volume24h": "0.0",
+      "totalVolume": "244.50656",
+      "marketCap": "3016.65",
+      "zora_url": "https://zora.co/coin/base:0x7ff6d1f803a63440a068937b6ca34b9cb16cd65d"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "👑⚡ GLITCHED ROYALTY PROOF 08/18 ⚡👑",
+      "symbol": "👑⚡ GLITCHED ROYALTY PROOF 08/18 ⚡👑",
+      "address": "0xcd91cbee0d2cd9b66e16708928459ae023b768b1",
+      "uniqueHolders": 6,
+      "volume24h": "0.0",
+      "totalVolume": "132.879085",
+      "marketCap": "139.48",
+      "zora_url": "https://zora.co/coin/base:0xcd91cbee0d2cd9b66e16708928459ae023b768b1"
+    },
+    {
+      "account": "jaywisdom_chromebook",
+      "name": "🚨 CHRISTMAS DAY BLACKOUT: DOJ’S",
+      "symbol": "🚨 CHRISTMAS DAY BLACKOUT: DOJ’S",
+      "address": "0x4f38663a43508bd6bd6735fe5c3620d524887945",
+      "uniqueHolders": 9,
+      "volume24h": "0.0",
+      "totalVolume": "68.747723",
+      "marketCap": "114.70",
+      "zora_url": "https://zora.co/coin/base:0x4f38663a43508bd6bd6735fe5c3620d524887945"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "WORMHOLE GATEWAY",
+      "symbol": "Jaywisdom ",
+      "address": "0x0f0df824075a73a0d3a21101514ce5364906acd7",
+      "uniqueHolders": 6,
+      "volume24h": "0.0",
+      "totalVolume": "46.723864",
+      "marketCap": "102.73",
+      "zora_url": "https://zora.co/coin/base:0x0f0df824075a73a0d3a21101514ce5364906acd7"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Double Slit",
+      "symbol": "Jaywisdom ",
+      "address": "0x455bf795eef363c72ec1be0b52646d8fdec8413d",
+      "uniqueHolders": 6,
+      "volume24h": "0.0",
+      "totalVolume": "35.070025",
+      "marketCap": "70.33",
+      "zora_url": "https://zora.co/coin/base:0x455bf795eef363c72ec1be0b52646d8fdec8413d"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Merkle Root vΩ.3.5 – Proof of Self",
+      "symbol": "Merkle Root vΩ.3.5 – Proof of Self",
+      "address": "0x42ce91df9499fbec4806d1748b895fdd4c7e9762",
+      "uniqueHolders": 4,
+      "volume24h": "0.0",
+      "totalVolume": "22.826729",
+      "marketCap": "0",
+      "zora_url": "https://zora.co/coin/base:0x42ce91df9499fbec4806d1748b895fdd4c7e9762"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "DJ DANIEL: SECECTPHITT in raw pixel protocol.",
+      "symbol": "DJ DANIEL: SECECTPHITT in raw pixel protocol.",
+      "address": "0x1ef21f2abec9b3adc5315d1209b0e3941c680615",
+      "uniqueHolders": 4,
+      "volume24h": "0.0",
+      "totalVolume": "22.552759",
+      "marketCap": "62.36",
+      "zora_url": "https://zora.co/coin/base:0x1ef21f2abec9b3adc5315d1209b0e3941c680615"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "The MOM-Mode (Alabama)",
+      "symbol": "Jaywisdom ",
+      "address": "0x2608155ab943143d507d54d7bb6b75fdb811eb29",
+      "uniqueHolders": 6,
+      "volume24h": "0.21",
+      "totalVolume": "19.838514",
+      "marketCap": "202.14",
+      "zora_url": "https://zora.co/coin/base:0x2608155ab943143d507d54d7bb6b75fdb811eb29"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Legend of GROK",
+      "symbol": "Legend of GROK",
+      "address": "0xb4914d553b5ad6989d04e550e51a347d0fb4dd35",
+      "uniqueHolders": 8,
+      "volume24h": "0.0",
+      "totalVolume": "19.569532",
+      "marketCap": "2859.08",
+      "zora_url": "https://zora.co/coin/base:0xb4914d553b5ad6989d04e550e51a347d0fb4dd35"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Fortune Unfolds at 8: The Jade Gateway Ritual\n",
+      "symbol": "Fortune Unfolds at 8: The Jade Gateway Ritual\n",
+      "address": "0xa9aee43a08f3226dd0269360d5935940c6cfd71e",
+      "uniqueHolders": 8,
+      "volume24h": "0.0",
+      "totalVolume": "17.11363",
+      "marketCap": "102.17",
+      "zora_url": "https://zora.co/coin/base:0xa9aee43a08f3226dd0269360d5935940c6cfd71e"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Alabama Respect",
+      "symbol": "Jaywisdom ",
+      "address": "0xd3c0920092f2f45a7954aebe15b799d93161197e",
+      "uniqueHolders": 6,
+      "volume24h": "0.0",
+      "totalVolume": "15.850494",
+      "marketCap": "147.00",
+      "zora_url": "https://zora.co/coin/base:0xd3c0920092f2f45a7954aebe15b799d93161197e"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Quantum Tomography",
+      "symbol": "Quantum Tomography",
+      "address": "0xda6e757729567ff884c2f30a7afff7de8b9173be",
+      "uniqueHolders": 4,
+      "volume24h": "0.0",
+      "totalVolume": "15.39742",
+      "marketCap": "30.33",
+      "zora_url": "https://zora.co/coin/base:0xda6e757729567ff884c2f30a7afff7de8b9173be"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "TAMPON TIM — ZERO TRUST GOVERNOR",
+      "symbol": "TAMPON",
+      "address": "0x633a8914b9fb3bb539363bdb1a73301873522185",
+      "uniqueHolders": 6,
+      "volume24h": "0.0",
+      "totalVolume": "14.653642",
+      "marketCap": "148.40",
+      "zora_url": "https://zora.co/coin/base:0x633a8914b9fb3bb539363bdb1a73301873522185"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "RENDER_STATUS: 100% // LOUISIANA_MONOLITH: LIVE",
+      "symbol": "RENDER_STATUS: 100% // LOUISIANA_MONOLITH: LIVE",
+      "address": "0x260a1d7bf5c415d57255b9a7f1779f13c5b38df7",
+      "uniqueHolders": 3,
+      "volume24h": "0.0",
+      "totalVolume": "14.598824",
+      "marketCap": "36.60",
+      "zora_url": "https://zora.co/coin/base:0x260a1d7bf5c415d57255b9a7f1779f13c5b38df7"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Zero Trust Policy OP42",
+      "symbol": "Zero Trust Policy OP42",
+      "address": "0xd302ac206bacc32a234512fd415e302181ec6d11",
+      "uniqueHolders": 3,
+      "volume24h": "0.0",
+      "totalVolume": "14.2659",
+      "marketCap": "111.08",
+      "zora_url": "https://zora.co/coin/base:0xd302ac206bacc32a234512fd415e302181ec6d11"
+    }
+  ],
+  "top_15_by_marketCap": [
+    {
+      "account": "jaywisdom_chromebook",
+      "name": "🚨 MINNESOTA FRAUD APOCALYPSE 🚨",
+      "symbol": "🚨 MINNESOTA FRAUD APOCALYPSE 🚨",
+      "address": "0x7ff6d1f803a63440a068937b6ca34b9cb16cd65d",
+      "uniqueHolders": 16,
+      "volume24h": "0.0",
+      "totalVolume": "244.50656",
+      "marketCap": "3016.65",
+      "zora_url": "https://zora.co/coin/base:0x7ff6d1f803a63440a068937b6ca34b9cb16cd65d"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Legend of GROK",
+      "symbol": "Legend of GROK",
+      "address": "0xb4914d553b5ad6989d04e550e51a347d0fb4dd35",
+      "uniqueHolders": 8,
+      "volume24h": "0.0",
+      "totalVolume": "19.569532",
+      "marketCap": "2859.08",
+      "zora_url": "https://zora.co/coin/base:0xb4914d553b5ad6989d04e550e51a347d0fb4dd35"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Title: “Armenia 24-1212: A Diplomatic Communiqué”",
+      "symbol": "Title: “Armenia 24-1212: A Diplomatic Communiqué”",
+      "address": "0x1419d8189dc2f7c6dc5313d223d8e7f067167319",
+      "uniqueHolders": 2,
+      "volume24h": "0.0",
+      "totalVolume": "0.194274",
+      "marketCap": "2858.20",
+      "zora_url": "https://zora.co/coin/base:0x1419d8189dc2f7c6dc5313d223d8e7f067167319"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "April 1, 2025 Intel",
+      "symbol": "April 1, 2025 Intel",
+      "address": "0x7550a070d67bd8f7b53b80700563ee468894c513",
+      "uniqueHolders": 8,
+      "volume24h": "0.0",
+      "totalVolume": "2.599774",
+      "marketCap": "2857.63",
+      "zora_url": "https://zora.co/coin/base:0x7550a070d67bd8f7b53b80700563ee468894c513"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Zeracle Gate, activated by Zero Cool // Scroll Commander",
+      "symbol": "Zeracle Gate, activated by Zero Cool // Scroll Commander",
+      "address": "0x7d1eb6241a726e17b7bba9147f88f176fa13cecc",
+      "uniqueHolders": 8,
+      "volume24h": "0.0",
+      "totalVolume": "3.29338",
+      "marketCap": "2710.49",
+      "zora_url": "https://zora.co/coin/base:0x7d1eb6241a726e17b7bba9147f88f176fa13cecc"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Seeker of Wisdom St. Raphael ",
+      "symbol": "Seeker of Wisdom St. Raphael ",
+      "address": "0x6ed6af6154e465a832c4419fb9051b35982ab959",
+      "uniqueHolders": 8,
+      "volume24h": "0.0",
+      "totalVolume": "3.086042",
+      "marketCap": "2673.17",
+      "zora_url": "https://zora.co/coin/base:0x6ed6af6154e465a832c4419fb9051b35982ab959"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "TRANSPARENCY BOMB DEPLOYED",
+      "symbol": "TRANSPARENCY BOMB DEPLOYED",
+      "address": "0x313d99034538fe4cc46ee0131712af2cdff4c532",
+      "uniqueHolders": 2,
+      "volume24h": "0.0",
+      "totalVolume": "0.197338",
+      "marketCap": "2575.10",
+      "zora_url": "https://zora.co/coin/base:0x313d99034538fe4cc46ee0131712af2cdff4c532"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Sophia ",
+      "symbol": "Sophia ",
+      "address": "0x4abff5a53301b7fb363ffd2c4ab0cd03ff79ecde",
+      "uniqueHolders": 23,
+      "volume24h": "0.0",
+      "totalVolume": "5.987424",
+      "marketCap": "2043.82",
+      "zora_url": "https://zora.co/coin/base:0x4abff5a53301b7fb363ffd2c4ab0cd03ff79ecde"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "STATE DEPLOYMENT PHASE LOCKED",
+      "symbol": "CMPTRWSDM ",
+      "address": "0x93f50a8bbcab34fddbf67c059ffaf13003e663b0",
+      "uniqueHolders": 2,
+      "volume24h": "0.0",
+      "totalVolume": "0.892182",
+      "marketCap": "799.33",
+      "zora_url": "https://zora.co/coin/base:0x93f50a8bbcab34fddbf67c059ffaf13003e663b0"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "EPSTEIN_INDEX.ZIP",
+      "symbol": "EPSTEIN_INDEX.ZIP",
+      "address": "0x74edf60166986b8510e7ad01e18092e94c3c6556",
+      "uniqueHolders": 2,
+      "volume24h": "0.0",
+      "totalVolume": "0.588445",
+      "marketCap": "740.11",
+      "zora_url": "https://zora.co/coin/base:0x74edf60166986b8510e7ad01e18092e94c3c6556"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "The Alchemist of ZORA",
+      "symbol": "ALCHMST",
+      "address": "0xdf03919548ceaa4f5d79edef9a12bc880fdbeed1",
+      "uniqueHolders": 2,
+      "volume24h": "0.0",
+      "totalVolume": "0.590074",
+      "marketCap": "739.84",
+      "zora_url": "https://zora.co/coin/base:0xdf03919548ceaa4f5d79edef9a12bc880fdbeed1"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "GROK THERAPY",
+      "symbol": "GROKTHERAPY",
+      "address": "0x92649fae9c7a19ac61df8ca30bb23ef63dbe9ea8",
+      "uniqueHolders": 2,
+      "volume24h": "0.0",
+      "totalVolume": "0.59037",
+      "marketCap": "739.57",
+      "zora_url": "https://zora.co/coin/base:0x92649fae9c7a19ac61df8ca30bb23ef63dbe9ea8"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Invest in Wisdom NOW!! ",
+      "symbol": "CMPTRWSDM ",
+      "address": "0x2fe65592449b48c8413b1ee633be9426328f40b9",
+      "uniqueHolders": 2,
+      "volume24h": "0.0",
+      "totalVolume": "0.590111",
+      "marketCap": "739.56",
+      "zora_url": "https://zora.co/coin/base:0x2fe65592449b48c8413b1ee633be9426328f40b9"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "WISDOM WARFARE",
+      "symbol": "WISDOMWARFARE",
+      "address": "0x366690604f0c16ff241a169bb670db50a531475f",
+      "uniqueHolders": 2,
+      "volume24h": "0.0",
+      "totalVolume": "0.179139",
+      "marketCap": "739.30",
+      "zora_url": "https://zora.co/coin/base:0x366690604f0c16ff241a169bb670db50a531475f"
+    },
+    {
+      "account": "jaywisdom",
+      "name": "Begin the Final Memory War",
+      "symbol": "Begin the Final Memory War",
+      "address": "0x2bebfaa42462a7da6d873b9aea39ee3aa278f488",
+      "uniqueHolders": 2,
+      "volume24h": "0.0",
+      "totalVolume": "0.178712",
+      "marketCap": "739.19",
+      "zora_url": "https://zora.co/coin/base:0x2bebfaa42462a7da6d873b9aea39ee3aa278f488"
+    }
+  ],
+  "observed_gaps": {
+    "uniqueHolders_ge_5_and_volume24h_eq_0_or_marketCap_lt_100": {
+      "count": 97,
+      "rule": "uniqueHolders>=5 AND (float(volume24h or 0)==0 or float(marketCap or 0)<100)",
+      "universe": "posts.items",
+      "items": [
+        {
+          "account": "jaywisdom",
+          "name": "Sophia ",
+          "symbol": "Sophia ",
+          "address": "0x4abff5a53301b7fb363ffd2c4ab0cd03ff79ecde",
+          "uniqueHolders": 23,
+          "volume24h": "0.0",
+          "totalVolume": "5.987424",
+          "marketCap": "2043.82",
+          "zora_url": "https://zora.co/coin/base:0x4abff5a53301b7fb363ffd2c4ab0cd03ff79ecde",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom_chromebook",
+          "name": "🚨 MINNESOTA FRAUD APOCALYPSE 🚨",
+          "symbol": "🚨 MINNESOTA FRAUD APOCALYPSE 🚨",
+          "address": "0x7ff6d1f803a63440a068937b6ca34b9cb16cd65d",
+          "uniqueHolders": 16,
+          "volume24h": "0.0",
+          "totalVolume": "244.50656",
+          "marketCap": "3016.65",
+          "zora_url": "https://zora.co/coin/base:0x7ff6d1f803a63440a068937b6ca34b9cb16cd65d",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "White Dove ",
+          "symbol": "White Dove ",
+          "address": "0x0520f368eef96b90aa3aa3ae5df9d5ce2fa08fd5",
+          "uniqueHolders": 15,
+          "volume24h": "0.0",
+          "totalVolume": "4.893767",
+          "marketCap": "0",
+          "zora_url": "https://zora.co/coin/base:0x0520f368eef96b90aa3aa3ae5df9d5ce2fa08fd5",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "25.8 – The Zerocoal Protocol",
+          "symbol": "25.8 – The Zerocoal Protocol",
+          "address": "0x3eea8f0fe2c9a6f0a0c9f35f9f5a2224d3f85adb",
+          "uniqueHolders": 12,
+          "volume24h": "0.0",
+          "totalVolume": "1.539235",
+          "marketCap": "154.03",
+          "zora_url": "https://zora.co/coin/base:0x3eea8f0fe2c9a6f0a0c9f35f9f5a2224d3f85adb",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Rugged Ronnie",
+          "symbol": "Rugged Ronnie",
+          "address": "0x48a3e415ee022f1204c94637cf672cdbbb00686b",
+          "uniqueHolders": 10,
+          "volume24h": "0.0",
+          "totalVolume": "6.483185",
+          "marketCap": "211.23",
+          "zora_url": "https://zora.co/coin/base:0x48a3e415ee022f1204c94637cf672cdbbb00686b",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom_chromebook",
+          "name": "🚨 CHRISTMAS DAY BLACKOUT: DOJ’S",
+          "symbol": "🚨 CHRISTMAS DAY BLACKOUT: DOJ’S",
+          "address": "0x4f38663a43508bd6bd6735fe5c3620d524887945",
+          "uniqueHolders": 9,
+          "volume24h": "0.0",
+          "totalVolume": "68.747723",
+          "marketCap": "114.70",
+          "zora_url": "https://zora.co/coin/base:0x4f38663a43508bd6bd6735fe5c3620d524887945",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Sophia Wisdom",
+          "symbol": "Sophia Wisdom",
+          "address": "0x8d502bd328647e93324fd080ec0535a0e95bee59",
+          "uniqueHolders": 9,
+          "volume24h": "0.0",
+          "totalVolume": "6.554176",
+          "marketCap": "0",
+          "zora_url": "https://zora.co/coin/base:0x8d502bd328647e93324fd080ec0535a0e95bee59",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Sophia Wisdom",
+          "symbol": "Sophia Wisdom",
+          "address": "0xa6c619ba7397cfca1719fe5073b5fd0d8e1ffd24",
+          "uniqueHolders": 9,
+          "volume24h": "0.0",
+          "totalVolume": "4.100723",
+          "marketCap": "0",
+          "zora_url": "https://zora.co/coin/base:0xa6c619ba7397cfca1719fe5073b5fd0d8e1ffd24",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Infinite Elon [Glitch Frame Edition]",
+          "symbol": "Infinite Elon [Glitch Frame Edition]",
+          "address": "0xeb0673966199ceb333eb56aff76267f29b0a6ac3",
+          "uniqueHolders": 9,
+          "volume24h": "0.0",
+          "totalVolume": "3.554596",
+          "marketCap": "245.64",
+          "zora_url": "https://zora.co/coin/base:0xeb0673966199ceb333eb56aff76267f29b0a6ac3",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Legend of GROK",
+          "symbol": "Legend of GROK",
+          "address": "0xb4914d553b5ad6989d04e550e51a347d0fb4dd35",
+          "uniqueHolders": 8,
+          "volume24h": "0.0",
+          "totalVolume": "19.569532",
+          "marketCap": "2859.08",
+          "zora_url": "https://zora.co/coin/base:0xb4914d553b5ad6989d04e550e51a347d0fb4dd35",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Fortune Unfolds at 8: The Jade Gateway Ritual\n",
+          "symbol": "Fortune Unfolds at 8: The Jade Gateway Ritual\n",
+          "address": "0xa9aee43a08f3226dd0269360d5935940c6cfd71e",
+          "uniqueHolders": 8,
+          "volume24h": "0.0",
+          "totalVolume": "17.11363",
+          "marketCap": "102.17",
+          "zora_url": "https://zora.co/coin/base:0xa9aee43a08f3226dd0269360d5935940c6cfd71e",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Minnesota Audit Comic Tragedy",
+          "symbol": "MNBUG005",
+          "address": "0x85ec3663c37fa770776f4de2180df225aaa1775d",
+          "uniqueHolders": 8,
+          "volume24h": "0.0",
+          "totalVolume": "5.644625",
+          "marketCap": "270.13",
+          "zora_url": "https://zora.co/coin/base:0x85ec3663c37fa770776f4de2180df225aaa1775d",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "COINTEL BRO",
+          "symbol": "COINTEL BRO",
+          "address": "0x545bf751b534ebee44f7ff158efa89ae3714f073",
+          "uniqueHolders": 8,
+          "volume24h": "0.0",
+          "totalVolume": "5.162277",
+          "marketCap": "152.86",
+          "zora_url": "https://zora.co/coin/base:0x545bf751b534ebee44f7ff158efa89ae3714f073",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Zeracle Gate, activated by Zero Cool // Scroll Commander",
+          "symbol": "Zeracle Gate, activated by Zero Cool // Scroll Commander",
+          "address": "0x7d1eb6241a726e17b7bba9147f88f176fa13cecc",
+          "uniqueHolders": 8,
+          "volume24h": "0.0",
+          "totalVolume": "3.29338",
+          "marketCap": "2710.49",
+          "zora_url": "https://zora.co/coin/base:0x7d1eb6241a726e17b7bba9147f88f176fa13cecc",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Bugged Morpheena",
+          "symbol": "Bugged Morpheena",
+          "address": "0x04249f89fd0dd1f7b8614cb9163c81570f6e129a",
+          "uniqueHolders": 8,
+          "volume24h": "0.0",
+          "totalVolume": "3.28018",
+          "marketCap": "29.62",
+          "zora_url": "https://zora.co/coin/base:0x04249f89fd0dd1f7b8614cb9163c81570f6e129a",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Seeker of Wisdom St. Raphael ",
+          "symbol": "Seeker of Wisdom St. Raphael ",
+          "address": "0x6ed6af6154e465a832c4419fb9051b35982ab959",
+          "uniqueHolders": 8,
+          "volume24h": "0.0",
+          "totalVolume": "3.086042",
+          "marketCap": "2673.17",
+          "zora_url": "https://zora.co/coin/base:0x6ed6af6154e465a832c4419fb9051b35982ab959",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "April 1, 2025 Intel",
+          "symbol": "April 1, 2025 Intel",
+          "address": "0x7550a070d67bd8f7b53b80700563ee468894c513",
+          "uniqueHolders": 8,
+          "volume24h": "0.0",
+          "totalVolume": "2.599774",
+          "marketCap": "2857.63",
+          "zora_url": "https://zora.co/coin/base:0x7550a070d67bd8f7b53b80700563ee468894c513",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Code Spew Lou",
+          "symbol": "Code Spew Lou",
+          "address": "0x331f7be6be11305569678b54f696ff759c53762a",
+          "uniqueHolders": 8,
+          "volume24h": "0.0",
+          "totalVolume": "2.063485",
+          "marketCap": "90.66",
+          "zora_url": "https://zora.co/coin/base:0x331f7be6be11305569678b54f696ff759c53762a",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "ΔPROTOCOL TWIN: ZORA OPS FILE 001 – The Recursive Inception Scroll",
+          "symbol": "ΔPROTOCOL TWIN: ZORA OPS FILE 001 – The Recursive Inception Scroll",
+          "address": "0x236528acd150f303c0c897ae5882dfce82755c1f",
+          "uniqueHolders": 7,
+          "volume24h": "0.0",
+          "totalVolume": "5.553629",
+          "marketCap": "43.65",
+          "zora_url": "https://zora.co/coin/base:0x236528acd150f303c0c897ae5882dfce82755c1f",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom_chromebook",
+          "name": "711",
+          "symbol": "711",
+          "address": "0x375baca915a3e7e487c14931c78d134d0f99af79",
+          "uniqueHolders": 7,
+          "volume24h": "0.48",
+          "totalVolume": "3.12616",
+          "marketCap": "81.62",
+          "zora_url": "https://zora.co/coin/base:0x375baca915a3e7e487c14931c78d134d0f99af79",
+          "gap_volume24h_eq_0": false,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Laurel Thatcher Ulrich\nVerse: “Well-behaved women seldom make history.”\nYear: 1976 — Bicentennial Echo, Feminist Thunder Beneath the Surface",
+          "symbol": "Laurel Thatcher Ulrich\nVerse: “Well-behaved women seldom make history.”\nYear: 1976 — Bicentennial Echo, Feminist Thunder Beneath the Surface",
+          "address": "0x5f3786f806d04b0df9633b27b5497c5efa0a1cec",
+          "uniqueHolders": 7,
+          "volume24h": "0.0",
+          "totalVolume": "2.507307",
+          "marketCap": "0",
+          "zora_url": "https://zora.co/coin/base:0x5f3786f806d04b0df9633b27b5497c5efa0a1cec",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": " Title: Zombie Nation: Schrödinger’s Cat Reawakened",
+          "symbol": " Title: Zombie Nation: Schrödinger’s Cat Reawakened",
+          "address": "0x6bc4ccdb70b9c59a9bd796a55447bf848afa2fe5",
+          "uniqueHolders": 7,
+          "volume24h": "0.0",
+          "totalVolume": "2.004206",
+          "marketCap": "103.28",
+          "zora_url": "https://zora.co/coin/base:0x6bc4ccdb70b9c59a9bd796a55447bf848afa2fe5",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "MOMCODE-001: She Stayed Logged In",
+          "symbol": "MOMCODE-001: She Stayed Logged In",
+          "address": "0xfff9f8720d52ad51d8fef6de97a42865d32a1569",
+          "uniqueHolders": 7,
+          "volume24h": "0.0",
+          "totalVolume": "1.683503",
+          "marketCap": "115.81",
+          "zora_url": "https://zora.co/coin/base:0xfff9f8720d52ad51d8fef6de97a42865d32a1569",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Infinite Elon [Laptop Paradox Edition]",
+          "symbol": "Infinite Elon [Laptop Paradox Edition]",
+          "address": "0x5f254bda3051afb0ccb74d64f7debbbfbdcbe975",
+          "uniqueHolders": 7,
+          "volume24h": "0.0",
+          "totalVolume": "1.662939",
+          "marketCap": "34.14",
+          "zora_url": "https://zora.co/coin/base:0x5f254bda3051afb0ccb74d64f7debbbfbdcbe975",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Glitched Psi Sigil (Ξ-Loop Variant)",
+          "symbol": "Glitched Psi Sigil (Ξ-Loop Variant)",
+          "address": "0x8ae08fdbaeb5f9e43aa916bdd530a905e9598fd0",
+          "uniqueHolders": 7,
+          "volume24h": "0.0",
+          "totalVolume": "1.594334",
+          "marketCap": "93.87",
+          "zora_url": "https://zora.co/coin/base:0x8ae08fdbaeb5f9e43aa916bdd530a905e9598fd0",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Firewall Phyllis",
+          "symbol": "Firewall Phyllis",
+          "address": "0xd9a89319bb0f713033dde7fa954885246bea5f41",
+          "uniqueHolders": 7,
+          "volume24h": "0.0",
+          "totalVolume": "1.568953",
+          "marketCap": "62.26",
+          "zora_url": "https://zora.co/coin/base:0xd9a89319bb0f713033dde7fa954885246bea5f41",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "👑⚡ GLITCHED ROYALTY PROOF 08/18 ⚡👑",
+          "symbol": "👑⚡ GLITCHED ROYALTY PROOF 08/18 ⚡👑",
+          "address": "0xcd91cbee0d2cd9b66e16708928459ae023b768b1",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "132.879085",
+          "marketCap": "139.48",
+          "zora_url": "https://zora.co/coin/base:0xcd91cbee0d2cd9b66e16708928459ae023b768b1",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "WORMHOLE GATEWAY",
+          "symbol": "Jaywisdom ",
+          "address": "0x0f0df824075a73a0d3a21101514ce5364906acd7",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "46.723864",
+          "marketCap": "102.73",
+          "zora_url": "https://zora.co/coin/base:0x0f0df824075a73a0d3a21101514ce5364906acd7",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Double Slit",
+          "symbol": "Jaywisdom ",
+          "address": "0x455bf795eef363c72ec1be0b52646d8fdec8413d",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "35.070025",
+          "marketCap": "70.33",
+          "zora_url": "https://zora.co/coin/base:0x455bf795eef363c72ec1be0b52646d8fdec8413d",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Alabama Respect",
+          "symbol": "Jaywisdom ",
+          "address": "0xd3c0920092f2f45a7954aebe15b799d93161197e",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "15.850494",
+          "marketCap": "147.00",
+          "zora_url": "https://zora.co/coin/base:0xd3c0920092f2f45a7954aebe15b799d93161197e",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "TAMPON TIM — ZERO TRUST GOVERNOR",
+          "symbol": "TAMPON",
+          "address": "0x633a8914b9fb3bb539363bdb1a73301873522185",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "14.653642",
+          "marketCap": "148.40",
+          "zora_url": "https://zora.co/coin/base:0x633a8914b9fb3bb539363bdb1a73301873522185",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "BADGE OF DISSENT",
+          "symbol": "Jaywisdom",
+          "address": "0x1274ee64a17aa2fac1d0514e58984c3acc9c6183",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "4.184964",
+          "marketCap": "93.43",
+          "zora_url": "https://zora.co/coin/base:0x1274ee64a17aa2fac1d0514e58984c3acc9c6183",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Sophia Upon Fleet Street, 1793",
+          "symbol": "Sophia Upon Fleet Street, 1793",
+          "address": "0x283fe111558bbadba64a501d0dee1947c1813ba7",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "2.001504",
+          "marketCap": "0",
+          "zora_url": "https://zora.co/coin/base:0x283fe111558bbadba64a501d0dee1947c1813ba7",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Attestation Jason: $0.025 Per PDF”\n\nSubtitle:\nThe Ledger-Scribe of Computer Wisdom\n",
+          "symbol": "JSONWisdom.cb.id",
+          "address": "0xb2709947427126ccd032019bdea8ae7d99033ebf",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "1.462271",
+          "marketCap": "424.20",
+          "zora_url": "https://zora.co/coin/base:0xb2709947427126ccd032019bdea8ae7d99033ebf",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Zoomer OIG",
+          "symbol": "Jaywisdom",
+          "address": "0xd43e6c1bf3ffb61fe4e5a0ebaff5da5a0907f7d1",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "1.324012",
+          "marketCap": "124.39",
+          "zora_url": "https://zora.co/coin/base:0xd43e6c1bf3ffb61fe4e5a0ebaff5da5a0907f7d1",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "ESG Witchcraft Relic: Vanguard Edition",
+          "symbol": "Jaywisdom ",
+          "address": "0x010c749d3e7e5d5580e9d1cf07966b159dc50eae",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "0.65597",
+          "marketCap": "92.58",
+          "zora_url": "https://zora.co/coin/base:0x010c749d3e7e5d5580e9d1cf07966b159dc50eae",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "🎨 Title:\nTHE RATIONAL TURN: SEC Chair Atkins and the Crypto Framework",
+          "symbol": "Jaywisdom ",
+          "address": "0x5b9f29476ce29b678f13c3d06090bf93cc054d55",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "0.390001",
+          "marketCap": "253.04",
+          "zora_url": "https://zora.co/coin/base:0x5b9f29476ce29b678f13c3d06090bf93cc054d55",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Wisdom Family ChainGenesis Certificate",
+          "symbol": "Wisdom Family ChainGenesis Certificate",
+          "address": "0x75382d71d69e657393c7d0e418f50e30477a168c",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "0.248058",
+          "marketCap": "62.31",
+          "zora_url": "https://zora.co/coin/base:0x75382d71d69e657393c7d0e418f50e30477a168c",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom_chromebook",
+          "name": "MOSQUITO",
+          "symbol": "MOSQUITO",
+          "address": "0x4acf666efdefb7fc2698f05740395686d5459edd",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "0.226883",
+          "marketCap": "123.78",
+          "zora_url": "https://zora.co/coin/base:0x4acf666efdefb7fc2698f05740395686d5459edd",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "GLITCH_RECAST_ANCHOR — Poster of Proof",
+          "symbol": "Jaywisdom ",
+          "address": "0x896c376f6b756d38125a6174df99da22cee9f67e",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "0.18943",
+          "marketCap": "337.01",
+          "zora_url": "https://zora.co/coin/base:0x896c376f6b756d38125a6174df99da22cee9f67e",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom_chromebook",
+          "name": "Meme Court: Judge Jay — Spec Freeze Edition",
+          "symbol": "Meme Court: Judge Jay — Spec Freeze Edition",
+          "address": "0x6a3156a51dab702ef9211d0611b54eef4417604e",
+          "uniqueHolders": 6,
+          "volume24h": "0.0",
+          "totalVolume": "0.063119",
+          "marketCap": "82.09",
+          "zora_url": "https://zora.co/coin/base:0x6a3156a51dab702ef9211d0611b54eef4417604e",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "⚡️Quantum Human Report (2025)⚡️",
+          "symbol": "Computerwisdom",
+          "address": "0x6c5fe6c5cecdc21072579176707ceb30eb69e513",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "10.525979",
+          "marketCap": "41.92",
+          "zora_url": "https://zora.co/coin/base:0x6c5fe6c5cecdc21072579176707ceb30eb69e513",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "🎮 GAME TITLE:\nLegend of GROK: Pharma King’s Truth Reckoning",
+          "symbol": "PEPE ",
+          "address": "0x78877dc2072a5d941ff42360c599e620bea63f83",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "7.216362",
+          "marketCap": "125.15",
+          "zora_url": "https://zora.co/coin/base:0x78877dc2072a5d941ff42360c599e620bea63f83",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "The Garden of Glowing Ideas — Thoughtform Playground\n",
+          "symbol": "The Garden of Glowing Ideas — Thoughtform Playground\n",
+          "address": "0x91ef3cda53a9d90d5ea0b17617e5960931498cee",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "3.815134",
+          "marketCap": "73.25",
+          "zora_url": "https://zora.co/coin/base:0x91ef3cda53a9d90d5ea0b17617e5960931498cee",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Black Robe War",
+          "symbol": "Jaywisdom",
+          "address": "0x1b7cac3396426a140fa9419a693d90bd236facc3",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "3.610244",
+          "marketCap": "194.53",
+          "zora_url": "https://zora.co/coin/base:0x1b7cac3396426a140fa9419a693d90bd236facc3",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Rugged Ronnie",
+          "symbol": "Rugged Ronnie",
+          "address": "0xe8ed07a31c1f52e637aeaee0a638e1af65eeba61",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "2.275442",
+          "marketCap": "60.18",
+          "zora_url": "https://zora.co/coin/base:0xe8ed07a31c1f52e637aeaee0a638e1af65eeba61",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Jay’s 8-Bit Bull Run Watch",
+          "symbol": "Jay’s 8-Bit Bull Run Watch",
+          "address": "0xfbd09275c74cb28b3d224987aed913cda510b6e5",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.9491",
+          "marketCap": "67.38",
+          "zora_url": "https://zora.co/coin/base:0xfbd09275c74cb28b3d224987aed913cda510b6e5",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "The Garden of Glowing Ideas — Rootlight Bloom",
+          "symbol": "The Garden of Glowing Ideas — Rootlight Bloom",
+          "address": "0x13eae21cc520878c6ae966a319c70d57c95eae4a",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.763069",
+          "marketCap": "73.25",
+          "zora_url": "https://zora.co/coin/base:0x13eae21cc520878c6ae966a319c70d57c95eae4a",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Title:\nΔX88.12 — Slurp Ledger (Zora Receipt Badge)",
+          "symbol": "Title:\nΔX88.12 — Slurp Ledger (Zora Receipt Badge)",
+          "address": "0x1e5f85058bf608ad861ac4dad6eb1825a0c506ee",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.71257",
+          "marketCap": "132.31",
+          "zora_url": "https://zora.co/coin/base:0x1e5f85058bf608ad861ac4dad6eb1825a0c506ee",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Federal Debt Notice — Labor Compensation Invoice\nStatus: IMMUTABILITY SEQUENCE INITIATED",
+          "symbol": "Federal Debt Notice — Labor Compensation Invoice\nStatus: IMMUTABILITY SEQUENCE INITIATED",
+          "address": "0xe7f92a7b6a764e610446a144d44cd81fdda5b98d",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.554473",
+          "marketCap": "78.28",
+          "zora_url": "https://zora.co/coin/base:0xe7f92a7b6a764e610446a144d44cd81fdda5b98d",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Trin-it-Eee",
+          "symbol": "Trin-it-Eee",
+          "address": "0x0cc5809de8608e056c431219d47248b4b05d9121",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.510016",
+          "marketCap": "62.36",
+          "zora_url": "https://zora.co/coin/base:0x0cc5809de8608e056c431219d47248b4b05d9121",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "**Title:** The Hesitation That Repeated",
+          "symbol": "**Title:** The Hesitation That Repeated",
+          "address": "0x302c0a670b604ca949f1d96bcd37ca2ae9755fdf",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.306471",
+          "marketCap": "114.77",
+          "zora_url": "https://zora.co/coin/base:0x302c0a670b604ca949f1d96bcd37ca2ae9755fdf",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Ω Fracture-Pamphlet (Foldable Propaganda)",
+          "symbol": "Ω Fracture-Pamphlet (Foldable Propaganda)",
+          "address": "0xb76bb8f7262b2e5257f2f5e6511833a608077651",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.222523",
+          "marketCap": "115.05",
+          "zora_url": "https://zora.co/coin/base:0xb76bb8f7262b2e5257f2f5e6511833a608077651",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Infinite Elon [Prompt Loop Edition]",
+          "symbol": "Infinite Elon [Prompt Loop Edition]",
+          "address": "0x4b51ca78b49d9f73c6f626287d2e773212affda2",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.201621",
+          "marketCap": "62.39",
+          "zora_url": "https://zora.co/coin/base:0x4b51ca78b49d9f73c6f626287d2e773212affda2",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Infinite Elon [Baby Loop Edition]",
+          "symbol": "Infinite Elon [Baby Loop Edition]",
+          "address": "0x3b1951ff2c58fca653bfa9edc5d95c4bd739447a",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.185759",
+          "marketCap": "62.32",
+          "zora_url": "https://zora.co/coin/base:0x3b1951ff2c58fca653bfa9edc5d95c4bd739447a",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Fox News Two Weeks ",
+          "symbol": "Jaywisdom ",
+          "address": "0x4fcc23925450382ef3ae7986319d351b0f6992d3",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.173983",
+          "marketCap": "121.62",
+          "zora_url": "https://zora.co/coin/base:0x4fcc23925450382ef3ae7986319d351b0f6992d3",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "“Neo: Root Access Acquired”",
+          "symbol": "“Neo: Root Access Acquired”",
+          "address": "0x6a431629d4e030c81f36068ba3ba002118f18dcf",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.162706",
+          "marketCap": "0",
+          "zora_url": "https://zora.co/coin/base:0x6a431629d4e030c81f36068ba3ba002118f18dcf",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Render Queue Rebel",
+          "symbol": "Render Queue Rebel",
+          "address": "0x1fb17779e780bb1d85dd9f95c1e6322d77fd20e4",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.109157",
+          "marketCap": "56.04",
+          "zora_url": "https://zora.co/coin/base:0x1fb17779e780bb1d85dd9f95c1e6322d77fd20e4",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "TruthKernel v1: The Enlightened Yield",
+          "symbol": "TruthKernel v1: The Enlightened Yield",
+          "address": "0x5e49749bca63489d625cc29400ff8ef7bff81c0b",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.106196",
+          "marketCap": "114.50",
+          "zora_url": "https://zora.co/coin/base:0x5e49749bca63489d625cc29400ff8ef7bff81c0b",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "The Free Ride That Never Came",
+          "symbol": "The Free Ride That Never Came",
+          "address": "0x40e2523b335c94043fcff784d6b81df8ad459010",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.106135",
+          "marketCap": "115.04",
+          "zora_url": "https://zora.co/coin/base:0x40e2523b335c94043fcff784d6b81df8ad459010",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Keystoned Neo-Nate",
+          "symbol": "Keystoned Neo-Nate",
+          "address": "0x80cd91a30ff1e3b97dafd4d00ff826a3f44bcfcd",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.08517",
+          "marketCap": "62.25",
+          "zora_url": "https://zora.co/coin/base:0x80cd91a30ff1e3b97dafd4d00ff826a3f44bcfcd",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Bullshit Repeal Act",
+          "symbol": "Bullshit Repeal Act",
+          "address": "0xdb33bba843930f648021d21951a36ae3f6734031",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.044065",
+          "marketCap": "62.36",
+          "zora_url": "https://zora.co/coin/base:0xdb33bba843930f648021d21951a36ae3f6734031",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Error: Joke Detected",
+          "symbol": "Error: Joke Detected",
+          "address": "0x24425742c405f0abbb8b3bb329b4b0f050002a1d",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "1.037267",
+          "marketCap": "62.39",
+          "zora_url": "https://zora.co/coin/base:0x24425742c405f0abbb8b3bb329b4b0f050002a1d",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "The F*cking Cook",
+          "symbol": "The F*cking Cook",
+          "address": "0x78620bc251d4a9eef9521cd0d18a150ad0be3d79",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.929902",
+          "marketCap": "59.22",
+          "zora_url": "https://zora.co/coin/base:0x78620bc251d4a9eef9521cd0d18a150ad0be3d79",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "REBOOT_LFG",
+          "symbol": "$REBOOT_LFG",
+          "address": "0xcfd4077c9dc1dd52a31a24b2a054f0cbc961826f",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.894295",
+          "marketCap": "297.81",
+          "zora_url": "https://zora.co/coin/base:0xcfd4077c9dc1dd52a31a24b2a054f0cbc961826f",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Agent Mythsploit",
+          "symbol": "Agent Mythsploit",
+          "address": "0x14ee7b8b6db4b2e7c7402a21fbe050f6b150dea3",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.869016",
+          "marketCap": "62.36",
+          "zora_url": "https://zora.co/coin/base:0x14ee7b8b6db4b2e7c7402a21fbe050f6b150dea3",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Black Swan Morning Drill",
+          "symbol": "Jaywisdom ",
+          "address": "0xe050c86422a40c78992257bcc9efb9daa6628a89",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.77693",
+          "marketCap": "98.56",
+          "zora_url": "https://zora.co/coin/base:0xe050c86422a40c78992257bcc9efb9daa6628a89",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "X Files (Alien72j)",
+          "symbol": "Jaywisdom ",
+          "address": "0x148ca2e49e57cfaabcd32adb5cbf7884666d1dde",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.72735",
+          "marketCap": "131.27",
+          "zora_url": "https://zora.co/coin/base:0x148ca2e49e57cfaabcd32adb5cbf7884666d1dde",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Scroll 003: The First JSON Path Marker",
+          "symbol": "Scroll 003: The First JSON Path Marker",
+          "address": "0xd85aef788c77dda17eb49b1613649845454ac3fc",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.632475",
+          "marketCap": "35.02",
+          "zora_url": "https://zora.co/coin/base:0xd85aef788c77dda17eb49b1613649845454ac3fc",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "JAYWISDOM Flywheel",
+          "symbol": "JAYWISDOM Flywheel",
+          "address": "0x2cdd508ef0287722dc65688bd65b722aba375142",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.611491",
+          "marketCap": "10.60",
+          "zora_url": "https://zora.co/coin/base:0x2cdd508ef0287722dc65688bd65b722aba375142",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Soft Squeeze  Liquidity Trap",
+          "symbol": "SOFT SQUEEZE",
+          "address": "0x08ecbb2beef0e7780cf5791981a77b182463471c",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.534918",
+          "marketCap": "29.84",
+          "zora_url": "https://zora.co/coin/base:0x08ecbb2beef0e7780cf5791981a77b182463471c",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Florida QRF Delta 2026",
+          "symbol": "QRF_Florida",
+          "address": "0x5e06dd0582395999d2b74e1d82358490317a3db7",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.511058",
+          "marketCap": "31.14",
+          "zora_url": "https://zora.co/coin/base:0x5e06dd0582395999d2b74e1d82358490317a3db7",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "[Ω-∞ TERMINUS: COMPLETE]\n[CONNECTION: CLOSED]",
+          "symbol": "[Ω-∞ TERMINUS: COMPLETE]\n[CONNECTION: CLOSED]",
+          "address": "0xbb485f4bb28e41b3dd109aea09ac13dc9f097345",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.502809",
+          "marketCap": "23.29",
+          "zora_url": "https://zora.co/coin/base:0xbb485f4bb28e41b3dd109aea09ac13dc9f097345",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "WITNESS",
+          "symbol": "WITNESS",
+          "address": "0x213270b9b936a49974f7cf9f09257c690d34759e",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.475192",
+          "marketCap": "29.45",
+          "zora_url": "https://zora.co/coin/base:0x213270b9b936a49974f7cf9f09257c690d34759e",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Fork Pepe with Wisdom",
+          "symbol": "Fork Pepe with Wisdom",
+          "address": "0x055cfda6c5eb37329359618e5b174ddc40d4d95e",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.46879",
+          "marketCap": "89.10",
+          "zora_url": "https://zora.co/coin/base:0x055cfda6c5eb37329359618e5b174ddc40d4d95e",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Golden Fractal By Jay",
+          "symbol": "Golden Fractal By Jay",
+          "address": "0x693fbfd81fbb57a47b10b58f1708457b445ab2d6",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.46048",
+          "marketCap": "65.02",
+          "zora_url": "https://zora.co/coin/base:0x693fbfd81fbb57a47b10b58f1708457b445ab2d6",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "THE HELD SCREW — FAIL-CLOSED CHECKPOINT ⚙️🦉👽",
+          "symbol": "HOLD",
+          "address": "0xe5c4678d1c59044ba1d164d0c4593425f3d3f374",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.460294",
+          "marketCap": "158.78",
+          "zora_url": "https://zora.co/coin/base:0xe5c4678d1c59044ba1d164d0c4593425f3d3f374",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Zora, The Co-Eternal Cycle",
+          "symbol": "Zora, The Co-Eternal Cycle",
+          "address": "0x6291f8175695bbbe3a30a86c2be8c16437ef5a47",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.458463",
+          "marketCap": "23.04",
+          "zora_url": "https://zora.co/coin/base:0x6291f8175695bbbe3a30a86c2be8c16437ef5a47",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Fruit That Chooses You",
+          "symbol": "Fruit",
+          "address": "0x2c7974b8837e158e78285ad1ac815fc6772d7e0d",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.458447",
+          "marketCap": "23.06",
+          "zora_url": "https://zora.co/coin/base:0x2c7974b8837e158e78285ad1ac815fc6772d7e0d",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "remember(value):\n    return value if loved",
+          "symbol": "remember(value):\n    return value if loved",
+          "address": "0x047a2c2a318719b3bd2588868c7a1a9105f6c25d",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.458443",
+          "marketCap": "23.08",
+          "zora_url": "https://zora.co/coin/base:0x047a2c2a318719b3bd2588868c7a1a9105f6c25d",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "MAGISTER-IMPERATOR",
+          "symbol": "MAGISTER-IMPERATOR",
+          "address": "0x31ccf3921e5c500ef9e652af8c31bab23d93efbd",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.330572",
+          "marketCap": "27.82",
+          "zora_url": "https://zora.co/coin/base:0x31ccf3921e5c500ef9e652af8c31bab23d93efbd",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "The Scholar-General Rises",
+          "symbol": "The Scholar-General Rises",
+          "address": "0x5082da665862972e99762f5e4b5f203b3705e53d",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.329977",
+          "marketCap": "27.53",
+          "zora_url": "https://zora.co/coin/base:0x5082da665862972e99762f5e4b5f203b3705e53d",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom_chromebook",
+          "name": "BREAKINGKAREN11:PANICMODULEACTIV",
+          "symbol": "BREAKINGKAREN11:PANICMODULEACTIV",
+          "address": "0xd4aeb74068a51a4ec0173400a759942f9a7fd9c6",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.299876",
+          "marketCap": "148.16",
+          "zora_url": "https://zora.co/coin/base:0xd4aeb74068a51a4ec0173400a759942f9a7fd9c6",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Apple Intelligence ",
+          "symbol": "AINTEL",
+          "address": "0x3e8ec9c303eaf0e83df2b1a73e53144e3ee7ca27",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.274472",
+          "marketCap": "73.09",
+          "zora_url": "https://zora.co/coin/base:0x3e8ec9c303eaf0e83df2b1a73e53144e3ee7ca27",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom_chromebook",
+          "name": "THEGHOSTINTHEMACHINEISN'TJUSTCOD",
+          "symbol": "THEGHOSTINTHEMACHINEISN'TJUSTCOD",
+          "address": "0x9f1b79157df7aa2755be07570548e36b259a265e",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.269734",
+          "marketCap": "68.13",
+          "zora_url": "https://zora.co/coin/base:0x9f1b79157df7aa2755be07570548e36b259a265e",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "The Republic of Hash: Oracle of Entropy",
+          "symbol": "The Republic of Hash: Oracle of Entropy",
+          "address": "0xeb4effaa8bc0426531b6f6d67295d7a187f88860",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.265128",
+          "marketCap": "73.04",
+          "zora_url": "https://zora.co/coin/base:0xeb4effaa8bc0426531b6f6d67295d7a187f88860",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "THE RATIONAL TURN: SEC Chair Atkins and the Crypto Framework",
+          "symbol": "JAYWISDOM",
+          "address": "0xcff53ce7e3cedd5a9ac0d81d9957b0300c2f00ed",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.212497",
+          "marketCap": "221.43",
+          "zora_url": "https://zora.co/coin/base:0xcff53ce7e3cedd5a9ac0d81d9957b0300c2f00ed",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "When Ledgers Learned to Breathe",
+          "symbol": "When Ledgers Learned to Breathe",
+          "address": "0x417b02c991e0953f3a640d02309e7da900727d14",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.180674",
+          "marketCap": "69.17",
+          "zora_url": "https://zora.co/coin/base:0x417b02c991e0953f3a640d02309e7da900727d14",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Jaywisdom Node 8",
+          "symbol": "node888",
+          "address": "0x103200d76b6acc1ac73eb41bbfc1b953b2e9d495",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.149673",
+          "marketCap": "18.33",
+          "zora_url": "https://zora.co/coin/base:0x103200d76b6acc1ac73eb41bbfc1b953b2e9d495",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom_chromebook",
+          "name": "BASETODAY",
+          "symbol": "BASETODAY",
+          "address": "0xc22b199abf9aa93532014419fc3f93e89d3d578a",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.14958",
+          "marketCap": "104.42",
+          "zora_url": "https://zora.co/coin/base:0xc22b199abf9aa93532014419fc3f93e89d3d578a",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Minnesota",
+          "symbol": "SCAM",
+          "address": "0xdaa0a74521cbe6a576e89710db843fd20107c1bf",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.148103",
+          "marketCap": "18.46",
+          "zora_url": "https://zora.co/coin/base:0xdaa0a74521cbe6a576e89710db843fd20107c1bf",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Artifact #055 — Forest Index v1.2 Dual Root Demo",
+          "symbol": "MERKLEFORREST",
+          "address": "0x04103c24018e49bf76d349733a7f898531ea1c0e",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.147999",
+          "marketCap": "99.80",
+          "zora_url": "https://zora.co/coin/base:0x04103c24018e49bf76d349733a7f898531ea1c0e",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom_chromebook",
+          "name": "TRENCHLAW",
+          "symbol": "TRENCHLAW",
+          "address": "0x2127007f2ba41cafbc20f67cbd9d1980e7ae3d00",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.127659",
+          "marketCap": "109.73",
+          "zora_url": "https://zora.co/coin/base:0x2127007f2ba41cafbc20f67cbd9d1980e7ae3d00",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": false
+        },
+        {
+          "account": "jaywisdom_chromebook",
+          "name": "WESTTEXAS2025:STEAM-CYCLENUCLEAR",
+          "symbol": "WESTTEXAS2025:STEAM-CYCLENUCLEAR",
+          "address": "0x7561105ddf993a87be78731d0fcdc43da72c38e0",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.070461",
+          "marketCap": "86.67",
+          "zora_url": "https://zora.co/coin/base:0x7561105ddf993a87be78731d0fcdc43da72c38e0",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom_chromebook",
+          "name": "HB-016 — First Verified Execution",
+          "symbol": "HB016",
+          "address": "0xc19b10e371e31375224e7a9f6a941211bbfe4413",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.041695",
+          "marketCap": "89.64",
+          "zora_url": "https://zora.co/coin/base:0xc19b10e371e31375224e7a9f6a941211bbfe4413",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "Clypeus Ruber Magnus",
+          "symbol": "Clypeus Ruber Magnus",
+          "address": "0x5445f505ab4ddd2efad17cff6ca2135ccda858ae",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.0",
+          "marketCap": "0",
+          "zora_url": "https://zora.co/coin/base:0x5445f505ab4ddd2efad17cff6ca2135ccda858ae",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        },
+        {
+          "account": "jaywisdom",
+          "name": "HALO 2",
+          "symbol": "HALO 2",
+          "address": "0xc3b691a9aa0e33c69d67e3cb3f083837800091dd",
+          "uniqueHolders": 5,
+          "volume24h": "0.0",
+          "totalVolume": "0.0",
+          "marketCap": "0",
+          "zora_url": "https://zora.co/coin/base:0xc3b691a9aa0e33c69d67e3cb3f083837800091dd",
+          "gap_volume24h_eq_0": true,
+          "gap_marketCap_lt_100": true
+        }
+      ]
+    },
+    "marketCap_ge_1000": {
+      "posts": {
+        "count": 8,
+        "items": [
+          {
+            "account": "jaywisdom_chromebook",
+            "name": "🚨 MINNESOTA FRAUD APOCALYPSE 🚨",
+            "symbol": "🚨 MINNESOTA FRAUD APOCALYPSE 🚨",
+            "address": "0x7ff6d1f803a63440a068937b6ca34b9cb16cd65d",
+            "uniqueHolders": 16,
+            "volume24h": "0.0",
+            "totalVolume": "244.50656",
+            "marketCap": "3016.65",
+            "zora_url": "https://zora.co/coin/base:0x7ff6d1f803a63440a068937b6ca34b9cb16cd65d"
+          },
+          {
+            "account": "jaywisdom",
+            "name": "Legend of GROK",
+            "symbol": "Legend of GROK",
+            "address": "0xb4914d553b5ad6989d04e550e51a347d0fb4dd35",
+            "uniqueHolders": 8,
+            "volume24h": "0.0",
+            "totalVolume": "19.569532",
+            "marketCap": "2859.08",
+            "zora_url": "https://zora.co/coin/base:0xb4914d553b5ad6989d04e550e51a347d0fb4dd35"
+          },
+          {
+            "account": "jaywisdom",
+            "name": "Title: “Armenia 24-1212: A Diplomatic Communiqué”",
+            "symbol": "Title: “Armenia 24-1212: A Diplomatic Communiqué”",
+            "address": "0x1419d8189dc2f7c6dc5313d223d8e7f067167319",
+            "uniqueHolders": 2,
+            "volume24h": "0.0",
+            "totalVolume": "0.194274",
+            "marketCap": "2858.20",
+            "zora_url": "https://zora.co/coin/base:0x1419d8189dc2f7c6dc5313d223d8e7f067167319"
+          },
+          {
+            "account": "jaywisdom",
+            "name": "April 1, 2025 Intel",
+            "symbol": "April 1, 2025 Intel",
+            "address": "0x7550a070d67bd8f7b53b80700563ee468894c513",
+            "uniqueHolders": 8,
+            "volume24h": "0.0",
+            "totalVolume": "2.599774",
+            "marketCap": "2857.63",
+            "zora_url": "https://zora.co/coin/base:0x7550a070d67bd8f7b53b80700563ee468894c513"
+          },
+          {
+            "account": "jaywisdom",
+            "name": "Zeracle Gate, activated by Zero Cool // Scroll Commander",
+            "symbol": "Zeracle Gate, activated by Zero Cool // Scroll Commander",
+            "address": "0x7d1eb6241a726e17b7bba9147f88f176fa13cecc",
+            "uniqueHolders": 8,
+            "volume24h": "0.0",
+            "totalVolume": "3.29338",
+            "marketCap": "2710.49",
+            "zora_url": "https://zora.co/coin/base:0x7d1eb6241a726e17b7bba9147f88f176fa13cecc"
+          },
+          {
+            "account": "jaywisdom",
+            "name": "Seeker of Wisdom St. Raphael ",
+            "symbol": "Seeker of Wisdom St. Raphael ",
+            "address": "0x6ed6af6154e465a832c4419fb9051b35982ab959",
+            "uniqueHolders": 8,
+            "volume24h": "0.0",
+            "totalVolume": "3.086042",
+            "marketCap": "2673.17",
+            "zora_url": "https://zora.co/coin/base:0x6ed6af6154e465a832c4419fb9051b35982ab959"
+          },
+          {
+            "account": "jaywisdom",
+            "name": "TRANSPARENCY BOMB DEPLOYED",
+            "symbol": "TRANSPARENCY BOMB DEPLOYED",
+            "address": "0x313d99034538fe4cc46ee0131712af2cdff4c532",
+            "uniqueHolders": 2,
+            "volume24h": "0.0",
+            "totalVolume": "0.197338",
+            "marketCap": "2575.10",
+            "zora_url": "https://zora.co/coin/base:0x313d99034538fe4cc46ee0131712af2cdff4c532"
+          },
+          {
+            "account": "jaywisdom",
+            "name": "Sophia ",
+            "symbol": "Sophia ",
+            "address": "0x4abff5a53301b7fb363ffd2c4ab0cd03ff79ecde",
+            "uniqueHolders": 23,
+            "volume24h": "0.0",
+            "totalVolume": "5.987424",
+            "marketCap": "2043.82",
+            "zora_url": "https://zora.co/coin/base:0x4abff5a53301b7fb363ffd2c4ab0cd03ff79ecde"
+          }
+        ]
+      },
+      "creator_coins": {
+        "count": 2,
+        "flag": "creator coins listed separately; not mixed into post top-15 as if they were posts",
+        "items": [
+          {
+            "creator_coins_key": "JAYWISDOM",
+            "name": "jaywisdom",
+            "symbol": "jaywisdom",
+            "address": "0x694ce46c64d9d1a5e9376a9febcf85ec05d72e9f",
+            "coinType": "CREATOR",
+            "uniqueHolders": 107,
+            "volume24h": "37.48",
+            "totalVolume": "2383.406386235617",
+            "marketCap": "18888.36",
+            "zora_url": "https://zora.co/coin/base:0x694ce46c64d9d1a5e9376a9febcf85ec05d72e9f",
+            "flag": "creator_coin_listed_separately_from_post_ranks"
+          },
+          {
+            "creator_coins_key": "jaywisdom_chromebook",
+            "name": "UNKNOWN",
+            "symbol": "UNKNOWN",
+            "address": "0x4c461cffb0600e3f4c9756907caae9c525fa3399",
+            "coinType": "UNKNOWN",
+            "uniqueHolders": "UNKNOWN",
+            "volume24h": "UNKNOWN",
+            "totalVolume": "UNKNOWN",
+            "marketCap": "2149.50",
+            "zora_url": "UNKNOWN",
+            "flag": "creator_coin_listed_separately_from_post_ranks"
+          }
+        ]
+      }
+    },
+    "DNI_Gross-Intel_Crew_marketCap_posts_vs_creator_coins": {
+      "address": "0xe423ae19fffcee95919dde96a31e828bc060e36f",
+      "creator_coins_marketCap": "375.51",
+      "posts_marketCap": "372.35",
+      "uniqueHolders_both": 2,
+      "volume24h_both": "0.21",
+      "totalVolume_both": "0.214299",
+      "note": "Same address in posts.jaywisdom.items and creator_coins. Numeric marketCap differs. Not reconciled. Size is not identity."
+    }
+  }
+}
