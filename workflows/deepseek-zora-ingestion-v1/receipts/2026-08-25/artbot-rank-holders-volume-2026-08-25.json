@@ -49,201 +49,26 @@
     "universe": "posts.items only (creator_coins not mixed into histogram)",
     "items_in_rank": 1325,
     "uniqueHolders_histogram": [
-      {
-        "uniqueHolders": 0,
-        "count": 326
-      },
-      {
-        "uniqueHolders": 1,
-        "count": 4
-      },
-      {
-        "uniqueHolders": 2,
-        "count": 681
-      },
-      {
-        "uniqueHolders": 3,
-        "count": 122
-      },
-      {
-        "uniqueHolders": 4,
-        "count": 86
-      },
-      {
-        "uniqueHolders": 5,
-        "count": 60
-      },
-      {
-        "uniqueHolders": 6,
-        "count": 17
-      },
-      {
-        "uniqueHolders": 7,
-        "count": 11
-      },
-      {
-        "uniqueHolders": 8,
-        "count": 9
-      },
-      {
-        "uniqueHolders": 9,
-        "count": 4
-      },
-      {
-        "uniqueHolders": 10,
-        "count": 1
-      },
-      {
-        "uniqueHolders": 12,
-        "count": 1
-      },
-      {
-        "uniqueHolders": 15,
-        "count": 1
-      },
-      {
-        "uniqueHolders": 16,
-        "count": 1
-      },
-      {
-        "uniqueHolders": 23,
-        "count": 1
-      }
+      {"uniqueHolders": 0, "count": 326},
+      {"uniqueHolders": 1, "count": 4},
+      {"uniqueHolders": 2, "count": 681},
+      {"uniqueHolders": 3, "count": 122},
+      {"uniqueHolders": 4, "count": 86},
+      {"uniqueHolders": 5, "count": 60},
+      {"uniqueHolders": 6, "count": 17},
+      {"uniqueHolders": 7, "count": 11},
+      {"uniqueHolders": 8, "count": 9},
+      {"uniqueHolders": 9, "count": 4},
+      {"uniqueHolders": 10, "count": 1},
+      {"uniqueHolders": 12, "count": 1},
+      {"uniqueHolders": 15, "count": 1},
+      {"uniqueHolders": 16, "count": 1},
+      {"uniqueHolders": 23, "count": 1}
     ],
     "volume24h_gt_0": 105,
     "volume24h_eq_0": 1220,
     "marketCap_gt_0": 499,
     "marketCap_eq_0": 826,
-    "uniqueHolders_ge_5": 106,
-    "per_account": {
-      "jaywisdom": {
-        "createdCoins_count_field": 1071,
-        "items_returned": 1000,
-        "unpaged_remainder_HOLD": 71,
-        "items_in_this_rank": 1000,
-        "uniqueHolders_histogram": [
-          {
-            "uniqueHolders": 0,
-            "count": 185
-          },
-          {
-            "uniqueHolders": 1,
-            "count": 2
-          },
-          {
-            "uniqueHolders": 2,
-            "count": 543
-          },
-          {
-            "uniqueHolders": 3,
-            "count": 101
-          },
-          {
-            "uniqueHolders": 4,
-            "count": 74
-          },
-          {
-            "uniqueHolders": 5,
-            "count": 54
-          },
-          {
-            "uniqueHolders": 6,
-            "count": 15
-          },
-          {
-            "uniqueHolders": 7,
-            "count": 10
-          },
-          {
-            "uniqueHolders": 8,
-            "count": 9
-          },
-          {
-            "uniqueHolders": 9,
-            "count": 3
-          },
-          {
-            "uniqueHolders": 10,
-            "count": 1
-          },
-          {
-            "uniqueHolders": 12,
-            "count": 1
-          },
-          {
-            "uniqueHolders": 15,
-            "count": 1
-          },
-          {
-            "uniqueHolders": 23,
-            "count": 1
-          }
-        ],
-        "volume24h_gt_0": 101,
-        "volume24h_eq_0": 899,
-        "marketCap_gt_0": 442,
-        "marketCap_eq_0": 558,
-        "uniqueHolders_ge_5": 95,
-        "marketCap_ge_1000": 7,
-        "viewCount_non_null": 0,
-        "viewCount_status_UNKNOWN": 1000
-      },
-      "jaywisdom_chromebook": {
-        "createdCoins_count_field": 325,
-        "items_returned": 325,
-        "unpaged_remainder_HOLD": 0,
-        "items_in_this_rank": 325,
-        "uniqueHolders_histogram": [
-          {
-            "uniqueHolders": 0,
-            "count": 141
-          },
-          {
-            "uniqueHolders": 1,
-            "count": 2
-          },
-          {
-            "uniqueHolders": 2,
-            "count": 138
-          },
-          {
-            "uniqueHolders": 3,
-            "count": 21
-          },
-          {
-            "uniqueHolders": 4,
-            "count": 12
-          },
-          {
-            "uniqueHolders": 5,
-            "count": 6
-          },
-          {
-            "uniqueHolders": 6,
-            "count": 2
-          },
-          {
-            "uniqueHolders": 7,
-            "count": 1
-          },
-          {
-            "uniqueHolders": 9,
-            "count": 1
-          },
-          {
-            "uniqueHolders": 16,
-            "count": 1
-          }
-        ],
-        "volume24h_gt_0": 4,
-        "volume24h_eq_0": 321,
-        "marketCap_gt_0": 57,
-        "marketCap_eq_0": 268,
-        "uniqueHolders_ge_5": 11,
-        "marketCap_ge_1000": 1,
-        "viewCount_non_null": 0,
-        "viewCount_status_UNKNOWN": 325
-      }
-    }
+    "uniqueHolders_ge_5": 106
   }
 }
