@@ -1,12 +1,21 @@
 # JAYWISDOM Discord — COMPUTERWISDOM Home
 
 **Authority:** false  
-**Install:** JOY + COMPUTERWISDOM  
+**Install:** dual  
 **Mode:** Silent. Clean. Ready.
 
-This directory is the business-side home for the JAYWISDOM Discord launch set.
+## BoxDee-verifiable boundary
 
-The final rules and nine-channel directory map are mirrored from `jsonwisdom/JOY#95` without tightening.
+Four fixed points:
+
+1. `JSONWisdom` on GitHub
+2. `JSONWisdom` on Discord
+3. `JOY` substrate
+4. `COMPUTERWISDOM` substrate
+
+The identity spans GitHub and Discord. JOY and COMPUTERWISDOM are the substrates.
+
+This directory is the business-side home for the JAYWISDOM Discord launch set. The final rules and nine-channel directory map are mirrored from `jsonwisdom/JOY#95` without tightening.
 
 ## Routing
 
