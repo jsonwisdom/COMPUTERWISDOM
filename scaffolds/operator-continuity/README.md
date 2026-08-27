@@ -15,9 +15,10 @@ The system must preserve which Jason role was speaking:
 - Jason the Creator
 - Jason the Coder
 - Jason the Father
-- JSONWisdom
 
 A single message may invoke multiple roles. Roles are lenses on one human operator, not separate authorities unless Jason explicitly binds authority.
+
+JSONWisdom is not one of these roles and is not the umbrella identity. JSONWisdom is one member of the Wisdom Family Ledger. No member may silently stand for, bind, overwrite, or speak for the complete ledger.
 
 ## Human inclusion rule
 
@@ -40,6 +41,13 @@ Naming a person does not authorize publication, repo inclusion, contact, represe
 
 ```text
 continuity/
+  wisdom-family-ledger/
+    README.md
+    members/
+      jsonwisdom/
+    relationships/
+    consent/
+    corrections/
   people/
     women/
     family/
@@ -50,7 +58,6 @@ continuity/
     jason-creator/
     jason-coder/
     jason-father/
-    jsonwisdom/
   chronology/
     YYYY/
       YYYY-MM/
@@ -119,7 +126,9 @@ Every recovered instruction must be represented without paraphrasing away the op
     "builder",
     "creator",
     "coder",
-    "father",
+    "father"
+  ],
+  "ledger_members_invoked": [
     "jsonwisdom"
   ],
   "exact_ask": "<verbatim operator text>",
@@ -216,6 +225,9 @@ mutation: none until Jason approves the proposed backfill
 
 ```json
 {
+  "wisdom_family_ledger_is_plural": true,
+  "jsonwisdom_is_one_member": true,
+  "single_member_represents_whole_ledger": false,
   "people_are_not_resources": true,
   "women_are_first_class_participants": true,
   "consent_is_explicit": true,
