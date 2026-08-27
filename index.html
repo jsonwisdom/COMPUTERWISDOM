@@ -2,37 +2,90 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>COMPUTERWISDOM</title>
+  <title>COMPUTERWISDOM — ops landing</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="COMPUTERWISDOM ops landing. Cites CHARTER.md and docs/PURPOSE.md. authority:false. Pages are not a proof root.">
   <style>
-    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 40px auto; padding: 20px; line-height: 1.5; }
-    h1 { margin-bottom: 0; }
-    .tag { color: #0a7; font-weight: 700; }
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 40px auto; padding: 20px; line-height: 1.5; color: #1a1a1a; background: #faf9f6; }
+    h1 { margin-bottom: 0.25em; }
+    h2 { margin-top: 1.6em; font-size: 1.15rem; }
+    a { color: #1a4b8c; }
+    .meta { color: #5c5346; }
+    .posture { display: inline-block; border: 1px solid #c4b8a2; background: #f3eee4; color: #4a4033; font-weight: 600; padding: 0.15em 0.5em; }
+    .note { border-left: 3px solid #c4b8a2; padding: 0.2em 0.8em; color: #4a4033; }
+    code, .loc { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 0.92em; }
+    nav ul, .topo, .lane { padding-left: 1.2em; }
+    footer { margin-top: 2.5em; padding-top: 1em; border-top: 1px solid #ddd6c8; color: #5c5346; font-size: 0.95em; }
   </style>
 </head>
 <body>
-  <h1>COMPUTERWISDOM</h1>
-  <p class="tag">3 Daughters Repo Family</p>
-  <p>Simple public index for COMPUTERWISDOM.</p>
-  <ul>
-    <li>AL</li>
-    <li>JOY</li>
-    <li>COMPUTERWISDOM</li>
-  </ul>
-  <p><strong>Rule:</strong> Build. Seal. Verify. Repeat.</p>
+  <header>
+    <h1>COMPUTERWISDOM</h1>
+    <p class="meta">Ops landing for <code>jsonwisdom/COMPUTERWISDOM</code>. Not a proof root. Not HASH_COMMIT. Not constitution canon.</p>
+    <p><span class="posture">authority: false</span> — default and standing posture from <a href="./CHARTER.md">CHARTER.md</a>.</p>
+  </header>
 
-<section id="homepage-navigation-surface-v0-1">
-  <h2>Homepage Navigation Surface V0.1</h2>
-  <p>Status: GREEN_SCOPED — navigation surface only.</p>
-  <nav aria-label="Computer Wisdom replay navigation">
+  <nav aria-label="Primary">
     <ul>
-      <li><a href="./docs/">Docs</a></li>
-      <li><a href="./receipts/">Receipts</a></li>
-      <li><a href="./README.md">README</a></li>
+      <li><a href="./CHARTER.md">CHARTER.md</a></li>
+      <li><a href="./docs/PURPOSE.md">docs/PURPOSE.md</a></li>
+      <li><a href="./ROOT_BINDING.md">ROOT_BINDING.md</a></li>
+      <li><a href="./README.md">README.md</a></li>
+      <li><a href="./receipts/">Receipts index</a></li>
+      <li><a href="./docs/">Docs (Snapback / Trigger Deck surface)</a></li>
     </ul>
   </nav>
-  <p>No fake green: this does not claim workflow success, wallet authority, or full repo certainty.</p>
-</section>
 
+  <section id="purpose">
+    <h2>Purpose</h2>
+    <p>From <a href="./docs/PURPOSE.md">docs/PURPOSE.md</a>:</p>
+    <p><code>COMPUTERWISDOM</code> is the operational control plane for the Computer Wisdom / Sovereign OS architecture. Its purpose is to turn verified records, receipts, deployment actions, signer boundaries, and control-plane events into operational infrastructure that can be audited, repeated, revoked, and trusted without relying on narrative alone.</p>
+    <p>From <a href="./CHARTER.md">CHARTER.md</a>: this repository is the qualified corporate operations root. It exists to make operational claims testable through receipts, not accepted through narrative. It is not the canonical Anchor 001 proof source.</p>
+  </section>
+
+  <section id="charter-topology">
+    <h2>CHARTER topology</h2>
+    <p>Roles from <a href="./CHARTER.md">CHARTER.md</a>. Welcome-to-JSONWISDOM is a different object (canonical Anchor 001 proof source). COMPUTERWISDOM is the ops root.</p>
+    <ol class="topo">
+      <li><strong>Welcome-to-JSONWISDOM</strong> — canonical Anchor 001 proof source, different object. Pages doorway: <a href="https://jsonwisdom.github.io/Welcome-to-JSONWISDOM/">jsonwisdom.github.io/Welcome-to-JSONWISDOM</a>. Repo: <a href="https://github.com/jsonwisdom/Welcome-to-JSONWISDOM">github.com/jsonwisdom/Welcome-to-JSONWISDOM</a>.</li>
+      <li><strong>COMPUTERWISDOM</strong> — ops root / corporate operations control plane. This site. Repo: <a href="https://github.com/jsonwisdom/COMPUTERWISDOM">github.com/jsonwisdom/COMPUTERWISDOM</a>.</li>
+      <li><strong>AL</strong> — receipt / proof machinery. <a href="https://github.com/jsonwisdom/AL">github.com/jsonwisdom/AL</a>.</li>
+      <li><strong>receiptos-base</strong> — replay / frame / receipt rail. <a href="https://github.com/jsonwisdom/receiptos-base">github.com/jsonwisdom/receiptos-base</a>.</li>
+      <li><strong>EAS</strong> — witness layer (not authority).</li>
+      <li><strong>ENS</strong> — discovery layer (not authority).</li>
+    </ol>
+  </section>
+
+  <section id="operator-rule">
+    <h2>Operator rule</h2>
+    <p>From <a href="./CHARTER.md">CHARTER.md</a>:</p>
+    <p class="note">If a claim changes operational state, it needs a receipt. If a receipt changes authority, it needs a separate governance path.</p>
+    <p>Governance loop (names only, not a completed pass): Observe, Capture, Hash, Replay, Attest, Promote, Bind.</p>
+  </section>
+
+  <section id="boundaries">
+    <h2>Boundaries</h2>
+    <ul>
+      <li>Merge != authority.</li>
+      <li>Pages are not a proof root.</li>
+      <li>This page does not claim CI green, test counts, or PUBLIC PROOF.</li>
+      <li>This page does not wear a GREEN_ status as a BoxDee pass.</li>
+      <li>Promotion, merge, replay success, CI success, issue creation, or operator action does not create authority.</li>
+    </ul>
+  </section>
+
+  <section id="family-lane">
+    <h2>Family lane (not CHARTER topology)</h2>
+    <p>JOY is a separate family lane. Names and locators only. Not lived Joy. Not biography.</p>
+    <ul class="lane">
+      <li>JOY — <a href="https://github.com/jsonwisdom/JOY">github.com/jsonwisdom/JOY</a></li>
+      <li>HEIDEE (named place) — <a href="https://github.com/jsonwisdom/HEIDEE">github.com/jsonwisdom/HEIDEE</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    <p><code>authority: false</code> · <code>truth_claim: false</code> · <code>canonical_proof_root: false</code></p>
+    <p>Cited sources: <a href="./CHARTER.md">CHARTER.md</a>, <a href="./docs/PURPOSE.md">docs/PURPOSE.md</a>, <a href="./ROOT_BINDING.md">ROOT_BINDING.md</a>.</p>
+  </footer>
 </body>
 </html>
