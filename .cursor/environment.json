@@ -1,0 +1,14 @@
+{
+  "name": "COMPUTERWISDOM",
+  "install": "python3 -m pip install --user --upgrade pip >/dev/null 2>&1; python3 -m pip install --user pytest jsonschema && npm --prefix agentic-game install --no-audit --no-fund",
+  "terminals": [
+    {
+      "name": "static-site",
+      "command": "python3 -m http.server 8000",
+      "description": "Serves the repository as a static site (index.html ops landing, CHARTER.md, and the HTML dashboards) at http://localhost:8000"
+    }
+  ],
+  "ports": [
+    { "name": "static-site", "port": 8000 }
+  ]
+}
