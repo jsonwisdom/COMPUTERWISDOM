@@ -1,0 +1,17 @@
+{
+  "ACCOUNT_STRING": "jsonwisdom",
+  "AUTHORITY_CREATED": false,
+  "PLATFORM": "github-pages",
+  "PUBLICATION_URL": "https://jsonwisdom.github.io/JOY/",
+  "bytes_github_index": 9658,
+  "bytes_live": 10952,
+  "capture_method": "https_get_user_agent_JSONWisdomPackager/1.0",
+  "default_branch_head_sha_observed": "15769add57c68ae529f0951ea87471d8b4f38214",
+  "github_contents_api_unauthenticated": "HTTP_403",
+  "github_index_git_blob_sha1": "7abb5df16ba8ddf4e7311b4e6011b945738995ec",
+  "github_index_ref_used": "master",
+  "github_index_source": "https://raw.githubusercontent.com/jsonwisdom/JOY/master/index.html",
+  "http_status_live": 200,
+  "live_git_blob_sha1": "5c8fff504ba7d636754716afef49a758b78ebf5b",
+  "readback_method": "https_get_user_agent_JSONWisdomPackager/1.0-readback"
+}
