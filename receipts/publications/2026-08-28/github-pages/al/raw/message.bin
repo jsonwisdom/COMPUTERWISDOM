@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>JSONWisdom — Jay's World Map</title>
+<meta name="description" content="Jay's World Map for JSONWisdom AL: GitHub continuity, ChatGPT replay continuity, live web continuity, receipts, active lanes, and public surfaces.">
+<meta name="cache-bust" content="jay-world-map-mobile-fix-v2-20260622">
+<style>
+:root{--bg:#f7f0df;--panel:#fffaf0;--ink:#17130f;--muted:#665c51;--line:#d7c7aa;--accent:#6f4cff;--accent2:#0f7a4f;--warn:#9f5a00;--shadow:0 24px 70px rgba(23,19,15,.12)}*{box-sizing:border-box}html{scroll-behavior:smooth;overflow-x:hidden}body{margin:0;max-width:100vw;overflow-x:hidden;background:radial-gradient(circle at 12% 0%,rgba(111,76,255,.12),transparent 32%),radial-gradient(circle at 88% 8%,rgba(15,122,79,.12),transparent 28%),var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;line-height:1.5;-webkit-text-size-adjust:100%}a{color:inherit}.wrap{width:min(1120px,calc(100% - 32px));max-width:100%;margin:0 auto}.nav{position:sticky;top:0;z-index:10;background:rgba(247,240,223,.92);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}.nav-inner{min-height:62px;display:flex;align-items:center;justify-content:space-between;gap:16px}.brand{font-weight:900;letter-spacing:-.03em;overflow-wrap:anywhere}.brand span{color:var(--accent)}.nav-links{display:flex;gap:10px;flex-wrap:wrap}.nav-links a{font-size:.88rem;text-decoration:none;border:1px solid var(--line);background:rgba(255,250,240,.72);border-radius:999px;padding:.42rem .72rem}.hero{padding:64px 0 42px}.eyebrow{display:inline-flex;gap:.45rem;align-items:center;border:1px solid var(--line);background:rgba(255,250,240,.74);border-radius:999px;padding:.45rem .75rem;font-size:.86rem;font-weight:800;color:var(--muted);max-width:100%;overflow-wrap:anywhere}h1{font-size:clamp(3rem,10vw,7.6rem);line-height:.88;letter-spacing:-.075em;margin:18px 0;max-width:980px;overflow-wrap:break-word}.lead{font-size:clamp(1.15rem,2.6vw,1.65rem);max-width:900px;color:#342b23;font-weight:650;overflow-wrap:break-word}.actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;border-radius:14px;padding:.78rem 1rem;border:1px solid #221b16;background:var(--ink);color:#fff;text-decoration:none;font-weight:850;box-shadow:0 8px 0 rgba(23,19,15,.18);max-width:100%;text-align:center;overflow-wrap:anywhere}.btn.secondary{background:var(--panel);color:var(--ink);box-shadow:none;border-color:var(--line)}.btn.green{background:var(--accent2);color:#fff}.section{padding:28px 0}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:14px}.section h2{font-size:clamp(1.75rem,4vw,3.4rem);line-height:.95;letter-spacing:-.05em;margin:0;overflow-wrap:break-word}.section p.note{color:var(--muted);margin:.4rem 0 0;max-width:680px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.grid.two{grid-template-columns:1.15fr .85fr}.card{background:rgba(255,250,240,.88);border:1px solid var(--line);border-radius:24px;padding:20px;box-shadow:var(--shadow);min-width:0}.card.flat{box-shadow:none}.card h3{margin:0 0 8px;font-size:1.25rem;letter-spacing:-.02em;overflow-wrap:anywhere}.card p{margin:0;color:var(--muted);overflow-wrap:break-word}.kicker{display:block;font-size:.75rem;font-weight:900;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:10px;overflow-wrap:anywhere}.rule{display:grid;grid-template-columns:36px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--line)}.rule:first-of-type{border-top:0}.num{width:36px;height:36px;border-radius:50%;display:grid;place-items:center;background:#ede5ff;color:var(--accent);font-weight:900}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9rem;word-break:break-word}.status-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.status{border-radius:22px;border:1px solid var(--line);background:var(--panel);padding:18px;min-width:0}.status strong{display:block;color:var(--muted);font-size:.76rem;letter-spacing:.08em;text-transform:uppercase}.status span{display:block;margin-top:6px;font-weight:900;font-size:1.25rem;overflow-wrap:anywhere}.lanes{display:grid;gap:10px}.lane{display:grid;grid-template-columns:170px 1fr;gap:12px;align-items:center;border:1px solid var(--line);background:var(--panel);border-radius:18px;padding:12px 14px;min-width:0}.lane b{font-size:1.02rem}.pill{display:inline-flex;width:max-content;max-width:100%;border-radius:999px;padding:.28rem .58rem;font-size:.76rem;font-weight:900;background:#f3eadb;color:#5a5046;margin-right:.35rem;overflow-wrap:anywhere}.pill.warn{background:#fff3da;color:var(--warn)}.pill.green{background:#e8f6ef;color:#0f6c46}.pill.blocked{background:#ffe4e4;color:#a52222}.link-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.link-card{text-decoration:none;background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:16px;transition:transform .15s ease,box-shadow .15s ease;min-width:0}.link-card:hover{transform:translateY(-2px);box-shadow:0 18px 38px rgba(23,19,15,.1)}.link-card strong{display:block;overflow-wrap:anywhere}.link-card small{display:block;color:var(--muted);margin-top:5px;overflow-wrap:break-word}.banner{border:1px solid var(--line);background:#111;color:#fff;border-radius:22px;padding:18px;margin-top:24px;max-width:100%;overflow-wrap:anywhere}.banner strong{color:#9cffc7}.footer{margin-top:42px;border-top:1px solid var(--line);padding:28px 0 42px;color:var(--muted)}@media(max-width:900px){.grid,.grid.two,.status-grid,.link-grid{grid-template-columns:1fr}.section-head{display:block}.lane{grid-template-columns:1fr}.nav-inner{align-items:flex-start;flex-direction:column;padding:12px 0}.hero{padding-top:42px}}@media(max-width:768px){html,body{overflow-x:hidden;-webkit-overflow-scrolling:touch}.wrap{width:calc(100% - 24px)}.nav-inner{gap:10px}.nav-links{width:100%;display:grid;grid-template-columns:1fr 1fr;gap:7px}.nav-links a{text-align:center;font-size:.78rem;padding:.36rem .58rem}.brand{font-size:.96rem}.hero{padding:32px 0 40px;min-height:unset}.eyebrow{display:block;width:100%;max-width:100%;border-radius:9999px;white-space:normal;text-align:center;padding:8px 16px;font-size:.72rem}.hero h1,h1{font-size:clamp(2.15rem,11vw,3.8rem);line-height:.95;letter-spacing:-.04em;word-break:break-word;max-width:100%;margin:16px 0}.lead{font-size:clamp(1rem,5.4vw,1.25rem);line-height:1.32;max-width:100%}.actions{display:grid;grid-template-columns:1fr;gap:12px;width:100%;margin-top:20px}.btn{width:100%;min-height:52px;box-shadow:0 5px 0 rgba(23,19,15,.16)}.banner{font-size:.82rem;border-radius:18px;padding:14px}.section{padding:22px 0}.section h2{font-size:2rem;line-height:1}.card{border-radius:20px;padding:16px}.status-grid{grid-template-columns:1fr;gap:16px}.status span{font-size:1.05rem}.lane{grid-template-columns:1fr;gap:8px}.pill{margin-top:4px}.mono{font-size:.78rem}.footer{padding-bottom:80px}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">JSON<span>Wisdom</span> / Jay's World Map</div>
+    <div class="nav-links">
+      <a href="WORLD_MAP.md">World Map</a>
+      <a href="CONTINUITY_INDEX.json">Continuity</a>
+      <a href="ACTIVE_LANES.json">Active Lanes</a>
+      <a href="docs/ztvs/index.html">ZTVS</a>
+    </div>
+  </div>
+</nav>
+<header class="wrap hero">
+  <div class="eyebrow">🧽 GitHub continuity · ChatGPT replay continuity · live web continuity</div>
+  <h1>Jay's World Map is the front door.</h1>
+  <p class="lead">This live homepage binds the repository map, the replay conversation, and the public web page into one continuity surface. The page presents the map; the receipts carry authority; replay proves the state.</p>
+  <div class="actions">
+    <a class="btn" href="WORLD_MAP.md">Replay WORLD_MAP.md</a>
+    <a class="btn secondary" href="CONTINUITY_INDEX.json">Open Continuity Index</a>
+    <a class="btn green" href="ACTIVE_LANES.json">Open Active Lanes</a>
+  </div>
+  <div class="banner mono"><strong>Continuity target:</strong> GitHub ↔ ChatGPT ↔ Live Web Page. No fake green. No hidden homepage owner. Jay's World Map stays visible.</div>
+</header>
+<main>
+  <section class="wrap section">
+    <div class="section-head"><div><h2>Operating order</h2><p class="note">The repo is organized so new work starts from the map instead of from memory.</p></div></div>
+    <div class="grid">
+      <article class="card flat"><span class="kicker">Layer 0</span><h3>Family root</h3><p>Family remains the root layer. Project narratives do not outrank family.</p></article>
+      <article class="card flat"><span class="kicker">Layer 1</span><h3>Trust foundation</h3><p>ALMS, proof rules, receipt discipline, and source assets.</p></article>
+      <article class="card flat"><span class="kicker">Layer 2</span><h3>Consumers</h3><p>Goblin Court, Meme Court, Clown Court, and ZTVS Replay Map.</p></article>
+      <article class="card flat"><span class="kicker">Layer 3</span><h3>Public surfaces</h3><p>Pages, receipts, replay maps, Zora artifacts, and identity anchors.</p></article>
+    </div>
+  </section>
+  <section class="wrap section">
+    <div class="grid two">
+      <article class="card">
+        <h2>Replay rules</h2>
+        <div class="rule"><div class="num">1</div><div><b>Receipts over narrative.</b><p>Narrative explains; it does not override the record.</p></div></div>
+        <div class="rule"><div class="num">2</div><div><b>No fake green.</b><p>No status is promoted without a receipt-backed path.</p></div></div>
+        <div class="rule"><div class="num">3</div><div><b>UI is not authority.</b><p>Dashboards and pages are presentation layers. Replay proves.</p></div></div>
+      </article>
+      <aside class="card">
+        <h2>Current state</h2>
+        <div class="status-grid">
+          <div class="status"><strong>Continuity</strong><span>GREEN_ON_MASTER</span></div>
+          <div class="status"><strong>Active Lanes</strong><span>NO GREEN CLAIMS</span></div>
+          <div class="status"><strong>Homepage</strong><span>World Map</span></div>
+        </div>
+        <p class="mono" style="margin-top:16px;color:var(--muted)">Source path: WORLD_MAP.md → CONTINUITY_INDEX.json → ACTIVE_LANES.json → live index.html</p>
+      </aside>
+    </div>
+  </section>
+  <section class="wrap section" id="anchor-001">
+    <div class="section-head"><div><h2>Anchor 001</h2><p class="note">Classified by WORLD_MAP.md commit 2117ead9e0dcf8e4697f3bcef648b6021547e794.</p></div></div>
+    <article class="card">
+      <span class="kicker">Public replayable identity root</span>
+      <h3>jsonwisdom/Welcome-to-JSONWISDOM</h3>
+      <p>Anchor 001 is the public identity root and orientation doorway for Jason Wisdom / Jay Wisdom / JSONWisdom. It is narrator and orientation layer only; it does not promote claims into proof.</p>
+      <div class="banner mono"><strong>Boundary:</strong> Identity may be public and replayable without becoming sacred. No downstream lane goes GREEN without receipts.</div>
+    </article>
+  </section>
+  <section class="wrap section">
+    <div class="section-head"><div><h2>Active lanes</h2><p class="note">Live from ACTIVE_LANES.json. No green claims without receipt. Refresh for latest projection.</p></div><a class="btn secondary" href="ACTIVE_LANES.json">Open JSON source</a></div>
+    <div class="lanes" id="active-lanes" aria-live="polite">
+      <div class="lane"><b>AL</b><span><span class="pill warn">REPORTED_UNVERIFIED</span> <span class="pill">REPORTED_RECEIPT</span></span></div>
+      <div class="lane"><b>ZTVS</b><span><span class="pill warn">REPORTED_UNVERIFIED</span> <span class="pill">REPORTED_RECEIPT</span></span></div>
+      <div class="lane"><b>COMPUTERWISDOM</b><span><span class="pill">REPORTED</span> <span class="pill">INFERRED</span></span></div>
+      <div class="lane"><b>JOY</b><span><span class="pill">REPORTED</span> <span class="pill">INFERRED</span></span></div>
+      <div class="lane"><b>CWaaS</b><span><span class="pill">REPORTED</span> <span class="pill">INFERRED</span></span></div>
+    </div>
+  </section>
+  <section class="wrap section">
+    <div class="section-head"><div><h2>Open the system</h2><p class="note">Fast links to the files and public surfaces that matter.</p></div></div>
+    <div class="link-grid">
+      <a class="link-card" href="WORLD_MAP.md"><strong>WORLD_MAP.md</strong><small>Continuity map and replay entry point.</small></a>
+      <a class="link-card" href="CONTINUITY_INDEX.json"><strong>CONTINUITY_INDEX.json</strong><small>Committed continuity anchor and next actions.</small></a>
+      <a class="link-card" href="ACTIVE_LANES.md"><strong>ACTIVE_LANES.md</strong><small>Generated projection of lane status.</small></a>
+      <a class="link-card" href="docs/ztvs/index.html"><strong>ZTVS Dashboard</strong><small>Verification surface; display is not authority.</small></a>
+      <a class="link-card" href="docs/ztvs/replay-map/index.html"><strong>ZTVS Replay Map</strong><small>Replay map and verification surface.</small></a>
+      <a class="link-card" href="site/data/states/mn.index.json"><strong>Minnesota Docket Data</strong><small>Public-record data lane.</small></a>
+    </div>
+  </section>
+</main>
+<footer class="footer"><div class="wrap"><div class="mono">JSONWisdom / AL · jaywisdom.eth · jaywisdom.base.eth</div><p>Build systems where truth can be tested, not just asserted.</p></div></footer>
+<script src="assets/active-lanes.js"></script>
+</body>
+</html>
