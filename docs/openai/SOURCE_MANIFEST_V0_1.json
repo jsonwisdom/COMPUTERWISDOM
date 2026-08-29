@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "requested_alias": "docs.openai.com",
+  "repository_path": "docs/openai/",
+  "canonical_sources": [
+    "https://developers.openai.com/",
+    "https://developers.openai.com/api/docs",
+    "https://help.openai.com/en/articles/11487775-apps-in-chatgpt",
+    "https://help.openai.com/en/articles/20001494-connecting-and-managing-app-accounts-in-chatgpt"
+  ],
+  "retrieved_at": "2026-08-29T00:00:00Z",
+  "content_mirrored": false,
+  "sync_state": "METADATA_ONLY",
+  "authority_created": false
+}
