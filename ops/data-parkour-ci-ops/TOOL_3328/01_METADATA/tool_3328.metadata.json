@@ -1,0 +1,17 @@
+{
+  "tool_id": 3328,
+  "source": {
+    "platform": "Zora",
+    "chain": "Base",
+    "url": "https://zora.co/coin/base:0xe5c4678d1c59044ba1d164d0c4593425f3d3f374?referrer=0x829adfedbe565f9885a7ea6bc78912acaef055e2",
+    "coin_address_observed_from_url": "0xe5c4678d1c59044ba1d164d0c4593425f3d3f374",
+    "referrer_observed_from_url": "0x829adfedbe565f9885a7ea6bc78912acaef055e2",
+    "zora_page_metadata": "HOLD"
+  },
+  "labels": ["Deeper", "Digger", "Deezer", "Heidee", "Joy", "Dad"],
+  "labels_are_user_supplied_only": true,
+  "identity_inferred": false,
+  "ownership_inferred": false,
+  "authority_created": false,
+  "facts_promoted": 0
+}
