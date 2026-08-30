@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "THE_GIBSON_ROUTE_V0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["from_surface","to_surface","input_locator","output_locator","transformation_type","readback","delta","authority_created"],
+  "properties": {
+    "from_surface": {"type":"string"},
+    "to_surface": {"type":"string"},
+    "input_locator": {"type":"string"},
+    "output_locator": {"type":"string"},
+    "content_digest": {"type":["string","null"]},
+    "transformation_type": {"enum":["COPY","MIRROR","SUMMARY","CLASSIFY","COMPARE","MANUAL"]},
+    "readback": {"type":"string"},
+    "delta": {"enum":["MATCH","DELTA","HOLD"]},
+    "human_approval": {"type":["boolean","null"]},
+    "authority_created": {"const": false}
+  }
+}
