@@ -1,0 +1,19 @@
+{
+  "project": "DATA_PARKOUR_CI_OPS",
+  "version": "0.1",
+  "approach": "directories_first",
+  "question_first": true,
+  "double_dip": ["DESIGN", "REPLAY"],
+  "source_of_first_readback": "Google Drive",
+  "mirror_target": "jsonwisdom/COMPUTERWISDOM",
+  "transport": ["QUESTION", "METADATA", "DRIVE_READBACK", "GITHUB_MIRROR", "RECEIPT"],
+  "meaning_must_not_change_in_transit": true,
+  "historical_creative_library": {
+    "past_cia_operations": ["ARGO", "RESISTANCE"],
+    "public_lane": "RESILIENCE",
+    "program_lane": "Girls Got Talent",
+    "separate_from_ci_ops_authority": true
+  },
+  "facts_promoted": 0,
+  "authority_created": false
+}
