@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "THE_GIBSON_RECEIPT_V0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["object_id","route","result","observed_at","authority_created"],
+  "properties": {
+    "object_id": {"type":"string"},
+    "route": {"type":"string"},
+    "result": {"enum":["MATCH","DELTA","HOLD"]},
+    "observed_at": {"type":"string"},
+    "input_digest": {"type":["string","null"]},
+    "output_digest": {"type":["string","null"]},
+    "notes": {"type":"array","items":{"type":"string"}},
+    "authority_created": {"const": false}
+  }
+}
