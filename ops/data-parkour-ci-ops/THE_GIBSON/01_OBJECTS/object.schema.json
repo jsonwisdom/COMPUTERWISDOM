@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "THE_GIBSON_OBJECT_V0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["object_id","question","source_surface","source_locator","observed_at","route_history","replay_status","authority_created"],
+  "properties": {
+    "object_id": {"type":"string","minLength":1},
+    "question": {"type":"string","minLength":1},
+    "source_surface": {"enum":["drive","github","openai","web","manual"]},
+    "source_locator": {"type":"string"},
+    "observed_at": {"type":"string"},
+    "content_digest": {"type":["string","null"]},
+    "labels": {"type":"array","items":{"type":"string"}},
+    "claims": {"type":"array"},
+    "evidence": {"type":"array"},
+    "route_history": {"type":"array"},
+    "replay_status": {"enum":["MATCH","DELTA","HOLD"]},
+    "authority_created": {"const": false}
+  }
+}
