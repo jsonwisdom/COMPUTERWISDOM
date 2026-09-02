@@ -1,0 +1,18 @@
+{
+  "AUTHORITY_CREATED": false,
+  "PUBLICATION_URL": "https://jsonwisdom.github.io/COMPUTERWISDOM/",
+  "STOP": "PASS",
+  "append_only": true,
+  "files": {
+    "manifest.json": "39b1b8b4a69cfd930aaa80231e384315a119438799d4b3bea472dfd7d6f75118",
+    "publication-response.json": "ad42af5419bc63e9900fbb07774ba9447624c52269d730f6a6aa786169ccb6fa",
+    "raw/github-index.html": "fec471547a2f925ff6d417ca02313a08e27a047edc90e4c78f697c538099acb3",
+    "raw/message.bin": "fec471547a2f925ff6d417ca02313a08e27a047edc90e4c78f697c538099acb3",
+    "raw/publication-response.json": "ad42af5419bc63e9900fbb07774ba9447624c52269d730f6a6aa786169ccb6fa",
+    "raw/publication.html": "fec471547a2f925ff6d417ca02313a08e27a047edc90e4c78f697c538099acb3",
+    "receipt.json": "eb71c3d514fcc3858285aaebd9317b358f168b5a6d203534ebc4119d0325666b"
+  },
+  "overwrite_historical_raw": false,
+  "package_path": "receipts/publications/2026-08-28/github-pages/computerwisdom/",
+  "schema": "JSONWISDOM.publication-manifest.v1"
+}
