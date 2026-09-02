@@ -1,0 +1,78 @@
+{
+  "schema": "JAY_BOT_ROOM_CONTROL_PLANE_V0_1",
+  "status": "DESIGN_CANDIDATE",
+  "date": "2026-09-02",
+  "authority_created": false,
+  "human_operator": {
+    "id": "HUMAN_OPERATOR_JAY_L2_V0_1",
+    "name": "Jay / Jason Wisdom",
+    "can_merge": true,
+    "can_verify": true,
+    "can_sign": true,
+    "can_make_spend_decision": true
+  },
+  "identity_surfaces": {
+    "ens": "jaywisdom.eth",
+    "basename": "jaywisdom.base.eth",
+    "operator_equivalent": false
+  },
+  "wallet_candidate": {
+    "address": "0xa380552a27b0a5a2874ea7aa52cac09f542002e8",
+    "account_type": "COINBASE_SMART_WALLET_CONTRACT",
+    "native_verify_path": "EIP-1271",
+    "controller_signed": false,
+    "seal_state": "OPEN"
+  },
+  "family_membrane": {
+    "id": "BOSS_BRENDA_BOSS_BRE",
+    "purpose": "room_safety_joy_reset_privacy_guard",
+    "allowed": ["HOLD", "SEND_BACK_TO_IDEA_FACTORY", "PASS_ROOM_GATE"],
+    "can_merge": false,
+    "can_sign": false,
+    "can_spend": false,
+    "can_issue_grok_verdict": false,
+    "command_authority": false
+  },
+  "runtime_root": {
+    "id": "COMPUTERWISDOM",
+    "role": "bot_and_mcp_harness",
+    "allowed": ["dispatch", "hash", "batch_receipt", "byte_check", "deny_closed", "route_hold"],
+    "can_inherit_human_operator": false
+  },
+  "agents": [
+    {"id": "GROK_AGENT", "role": "reviewer_counter_player", "can_merge": false, "can_sign": false, "can_spend": false, "can_self_verify_final": false},
+    {"id": "CHATGPT_AGENT", "role": "coauthor_tool_surface", "can_merge": false, "can_sign": false, "can_spend": false},
+    {"id": "GITHUB_BOT", "role": "transport_pr_issue_rail", "can_merge": false, "can_sign": false, "can_spend": false},
+    {"id": "DRIVE_BOT", "role": "file_folder_rail", "can_merge": false, "can_sign": false, "can_spend": false},
+    {"id": "PROOFPOCKET", "role": "packet_completeness_witness", "can_merge": false, "can_sign": false, "can_spend": false},
+    {"id": "ZORA_BOTS", "role": "catalog_render_price_publication_surface", "can_merge": false, "can_sign": false, "can_spend": false},
+    {"id": "TRADER", "role": "market_observer", "can_merge": false, "can_sign": false, "can_spend": false},
+    {"id": "TELEGRAM_BOT", "role": "inbound_rail", "can_merge": false, "can_sign": false, "can_spend": false}
+  ],
+  "factory_order": [
+    "IDEA_FACTORY_PREIMAGE",
+    "BOSS_BRE_ROOM_GATE",
+    "JOY_ARTIFACT",
+    "COMPUTERWISDOM_BYTES_RECEIPTS",
+    "GROK_REVIEW_COUNTER_REVIEW",
+    "HUMAN_OPERATOR_JAY_DECISION",
+    "PUBLICATION_RAILS"
+  ],
+  "invariants": [
+    "MCP_ACCESS != AUTHORITY",
+    "TOOL_OUTPUT != TRUTH",
+    "AGENT_ACTION != MERGE_AUTHORITY",
+    "ENS_NAMESPACE != HUMAN_OPERATOR",
+    "WALLET_ADDRESS != HUMAN_OPERATOR",
+    "WALLET_PRESENT != CONTROLLER_SIGNED",
+    "APP_QR != CONTROL_PROOF",
+    "RECEIPTS_PROMOTE_ONLY_EXPLICIT_EDGES"
+  ],
+  "room_constitution": "Boss Bre runs the room. COMPUTERWISDOM runs the bots. Jay decides merge/sign/spend. Wallets move only after Jay acts. Receipts promote. MCP is access, not authority.",
+  "state": {
+    "facts_promoted": 0,
+    "edges_inferred": 0,
+    "silent_inference": "BLOCKED",
+    "authority_created": false
+  }
+}
