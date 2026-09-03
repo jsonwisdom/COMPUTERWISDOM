@@ -114,10 +114,17 @@ $receipt = [ordered]@{
 }
 
 if ($ReverseReplay) {
-    $bash = Get-Command bash -ErrorAction SilentlyContinue
-    if ($bash) {
+    $bashCandidates = @(
+        (Join-Path $env:ProgramFiles "Git\bin\bash.exe"),
+        (Join-Path $env:ProgramFiles "Git\usr\bin\bash.exe"),
+        $(if (${env:ProgramFiles(x86)}) { Join-Path ${env:ProgramFiles(x86)} "Git\bin\bash.exe" }),
+        $((Get-Command bash.exe -ErrorAction SilentlyContinue).Source)
+    ) | Where-Object { $_ -and (Test-Path -LiteralPath $_) }
+    $bashPath = $bashCandidates | Select-Object -First 1
+    if ($bashPath) {
         $bashScript = (Join-Path $FactoryRoot "bash\reverse-replay.sh") -replace "\\", "/"
-        $bashResult = Invoke-CapturedCommand -FilePath $bash.Source -Arguments @($bashScript, $GithubRoot) -WorkingDirectory $ControlRepo
+        $bashGithubRoot = $GithubRoot -replace "\\", "/"
+        $bashResult = Invoke-CapturedCommand -FilePath $bashPath -Arguments @($bashScript, $bashGithubRoot) -WorkingDirectory $ControlRepo
         $receipt["bash_reverse_replay"] = $bashResult
     }
     else {
