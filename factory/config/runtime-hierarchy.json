@@ -1,0 +1,46 @@
+{
+  "schema": "GARBAGE_JASON_RUNTIME_HIERARCHY_V1",
+  "commander": {
+    "name": "Garbage Jason",
+    "person": "Jason Wisdom",
+    "function": "mission owner, final human judgment and stop authority"
+  },
+  "orchestrator": {
+    "name": "Garbage General",
+    "function": "route work, aggregate receipts, preserve boundaries and surface unresolved gates"
+  },
+  "workers": [
+    {
+      "name": "ChatGPT",
+      "kind": "AI assistant",
+      "state": "AVAILABLE_WHEN_INVOKED",
+      "may_self_verify": false
+    },
+    {
+      "name": "Grok",
+      "kind": "AI assistant",
+      "state": "AVAILABLE_WHEN_INVOKED",
+      "may_self_verify": false
+    },
+    {
+      "name": "Grok Bots",
+      "kind": "bot workers",
+      "state": "RECEIPT_REQUIRED",
+      "seated_equals_executed": false
+    },
+    {
+      "name": "PowerShell",
+      "kind": "local execution rail",
+      "state": "PRIMARY_PC_RUNNER",
+      "command_output_equals_authority": false
+    }
+  ],
+  "rules": [
+    "Garbage General does not disregard Garbage Jason",
+    "worker output does not become Jason's statement without review",
+    "bot seated does not mean bot executed",
+    "machine pass does not satisfy a human gate",
+    "declared access does not equal verified access"
+  ],
+  "authority_created": false
+}
