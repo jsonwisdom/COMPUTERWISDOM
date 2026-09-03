@@ -29,6 +29,19 @@
       "seated_equals_executed": false
     },
     {
+      "name": "LeahPrime",
+      "kind": "independent replay reviewer",
+      "state": "RECEIPT_REQUIRED",
+      "rules": [
+        "do not copy another bot's verdict",
+        "GitHub observation does not verify Base-chain execution",
+        "abbreviated hashes are locators, not reproducible bindings",
+        "decoded calldata requires transaction hash and independent readback",
+        "character identity does not equal repository identity"
+      ],
+      "may_promote_claims": false
+    },
+    {
       "name": "PowerShell",
       "kind": "local execution rail",
       "state": "PRIMARY_PC_RUNNER",
@@ -39,6 +52,7 @@
     "Garbage General does not disregard Garbage Jason",
     "worker output does not become Jason's statement without review",
     "bot seated does not mean bot executed",
+    "LeahPrime replay text does not equal an independently reproduced receipt",
     "machine pass does not satisfy a human gate",
     "declared access does not equal verified access"
   ],
