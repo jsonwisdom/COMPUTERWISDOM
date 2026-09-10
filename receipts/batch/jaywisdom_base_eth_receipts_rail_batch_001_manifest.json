@@ -1,0 +1,20 @@
+{
+  "batch": "jaywisdom_base_eth_receipts_rail_batch_001_ladies_first",
+  "status": "SCAFFOLD_ONLY",
+  "target_address": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+  "target_name": "jaywisdom.base.eth",
+  "ingest_rule": "PRIMARY_EXPORT_REQUIRED",
+  "dedup_key": ["tx_hash", "schema_uid", "attestation_uid"],
+  "order": "block_time ASC",
+  "row_shape": ["uid", "tx_hash", "block_time", "schema_uid", "from", "recipient", "class", "authority"],
+  "authority": false,
+  "rows_emitted": 0,
+  "primary_data_ingested": false,
+  "cross_rail_ftx": null,
+  "cross_rail_doge": null,
+  "notes": [
+    "Capability does not bypass the primary-export gate.",
+    "Web snippets, known UIDs, descriptions, and memory are not ledger rows.",
+    "No R1/R2/R3 promotion occurs in this batch."
+  ]
+}
