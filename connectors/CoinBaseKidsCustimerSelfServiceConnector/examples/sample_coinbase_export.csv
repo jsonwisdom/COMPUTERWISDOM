@@ -1,0 +1,3 @@
+id,timestamp,type,asset,quantity,native_value,fee
+example-1,2024-12-08T09:14:26Z,BUY,PEPE-USD,1000,25,0.25
+example-2,2024-12-09T10:00:00Z,SEND,ETH,0.01,,

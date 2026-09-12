@@ -1,0 +1,77 @@
+[
+  {
+    "path": "README.md",
+    "sha256": "c37ec4d96f65d7f817e85157486979a7347a0c016bf025abedf2b1b46323e569",
+    "bytes": 1302
+  },
+  {
+    "path": "app/csv_ingest.py",
+    "sha256": "bb716f77cd448a07933da9e1bef8f3a47dd307327e76607adf595e06566f7209",
+    "bytes": 374
+  },
+  {
+    "path": "app/full_math.py",
+    "sha256": "764c2f34eda09f875261d6b561b9614d29d4f5fb4473a5ef5001eb7d92fa1efe",
+    "bytes": 1241
+  },
+  {
+    "path": "app/models.py",
+    "sha256": "f2d98145f1085ca1c507d6e638889c1d4707e31c4d76a2141890783ccefd9435",
+    "bytes": 1606
+  },
+  {
+    "path": "app/normalizer.py",
+    "sha256": "235e4224bdfbe0f0200612e500fefc7c50e6708d3bd8e4f437b15d00b829355b",
+    "bytes": 2912
+  },
+  {
+    "path": "app/policy.py",
+    "sha256": "ef6aceaab633371f22775fd7097e9c96651e70a391792d2f5928905e29a0ec30",
+    "bytes": 796
+  },
+  {
+    "path": "app/report.py",
+    "sha256": "b4808da1095ae605447b869bc46b67d90b22a67f0c616c61f08e2f9d260e57a7",
+    "bytes": 661
+  },
+  {
+    "path": "app/sidecar.py",
+    "sha256": "b74a22b83c12d277fe9917a80279ea92a5a6c846a315d34448d9a56d62267b58",
+    "bytes": 1119
+  },
+  {
+    "path": "docs/COMPUTERWISDOM_SIDECAR.md",
+    "sha256": "13ebc5f370de4a6c9d6f8eaf6659cb263d956028caa88c4714ff48f2f81e70e5",
+    "bytes": 680
+  },
+  {
+    "path": "examples/sample_coinbase_export.csv",
+    "sha256": "67d334eb9dacf451bdaf597aea471454040b87780a9a9ea692731549d94d79bb",
+    "bytes": 154
+  },
+  {
+    "path": "examples/sample_report.json",
+    "sha256": "730d96c3518d989f059e5853b41a4ca583e7142433e79974f53dc8e5c028f62c",
+    "bytes": 2481
+  },
+  {
+    "path": "run_demo.py",
+    "sha256": "de180e747d3dfa1316e39d48b53c4a1cc847793e3f6c91eb9f616897fbaef10e",
+    "bytes": 227
+  },
+  {
+    "path": "schemas/event_leaf.schema.json",
+    "sha256": "f772c995a038fc03e4376fe810d981ba2f0c8a802f6c1cefadc32c1bcf2718f5",
+    "bytes": 803
+  },
+  {
+    "path": "tests/test_sidecar.py",
+    "sha256": "3bf92454e47d395e05a75a54e5e7aed2fddcd9de2ec2a6a466b7b1076edb8ba2",
+    "bytes": 339
+  },
+  {
+    "path": "tests/test_unknown_edge_gate.py",
+    "sha256": "95d063e59f06d87a16c0415de518b27792fd0e2213d87f9ff1d4a0dff0b8ba37",
+    "bytes": 1648
+  }
+]

@@ -1,0 +1,99 @@
+{
+  "object": "COINBASE_KIDS_CUSTOMER_SELF_SERVICE_FULL_MATH_REPORT_V0",
+  "denominator": {
+    "event_count": 2,
+    "state_counts": {
+      "PASS": 1,
+      "HOLD": 1
+    },
+    "receipt_state_counts": {
+      "PASS": 2
+    },
+    "identity_state_counts": {
+      "PASS": 1,
+      "HOLD": 1
+    },
+    "fee_state_counts": {
+      "PASS": 1,
+      "HOLD": 1
+    },
+    "event_types": {
+      "BUY": 1,
+      "SEND": 1
+    },
+    "rails": {
+      "COINBASE_MANUAL_EXPORT": 2
+    },
+    "oldest_timestamp": "2024-12-08T09:14:26Z",
+    "newest_timestamp": "2024-12-09T10:00:00Z",
+    "history_complete": false,
+    "history_state": "HOLD",
+    "rule": "EVENT_RECEIPT_PASS != IDENTITY_PASS != HISTORY_PASS; MISSING != ZERO; ONE_RAIL != WHOLE_BOOK"
+  },
+  "events": [
+    {
+      "event_id": "769794a4813ebdbe55878165a9c04637c9ff927de7bf17ab7cdbe4aab4587792",
+      "source": {
+        "rail": "COINBASE_MANUAL_EXPORT",
+        "object_type": "CSV_ROW",
+        "object_id": "example-1",
+        "timestamp": "2024-12-08T09:14:26Z",
+        "raw_locator": null
+      },
+      "event_type": "BUY",
+      "asset": "PEPE-USD",
+      "quantity": "1000",
+      "native_value": "25",
+      "fee": "0.25",
+      "direction": null,
+      "portfolio_id": null,
+      "account_id": null,
+      "counterparty": "UNKNOWN",
+      "receipt_state": "PASS",
+      "identity_state": "PASS",
+      "fee_state": "PASS",
+      "state": "PASS",
+      "missing_fields": [],
+      "notes": []
+    },
+    {
+      "event_id": "8b43d3db5bf622908215bf09627cc1aceba0319cb11bbc026512b665462f49a6",
+      "source": {
+        "rail": "COINBASE_MANUAL_EXPORT",
+        "object_type": "CSV_ROW",
+        "object_id": "example-2",
+        "timestamp": "2024-12-09T10:00:00Z",
+        "raw_locator": null
+      },
+      "event_type": "SEND",
+      "asset": "ETH",
+      "quantity": "0.01",
+      "native_value": null,
+      "fee": null,
+      "direction": null,
+      "portfolio_id": null,
+      "account_id": null,
+      "counterparty": "UNKNOWN",
+      "receipt_state": "PASS",
+      "identity_state": "HOLD",
+      "fee_state": "HOLD",
+      "state": "HOLD",
+      "missing_fields": [
+        "counterparty_identity",
+        "fee"
+      ],
+      "notes": [
+        "TX_PRESENT != COUNTERPARTY_IDENTIFIED",
+        "MISSING_FEE != ZERO"
+      ]
+    }
+  ],
+  "controls": {
+    "write": false,
+    "trade": false,
+    "transfer": false,
+    "sign": false,
+    "authority_created": false,
+    "no_fake_green": true
+  }
+}

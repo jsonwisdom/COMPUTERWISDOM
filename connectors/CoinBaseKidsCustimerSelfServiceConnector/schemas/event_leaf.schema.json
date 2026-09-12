@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Coinbase Full-Math Event Leaf",
+  "type": "object",
+  "required": [
+    "event_id",
+    "source",
+    "event_type",
+    "receipt_state",
+    "identity_state",
+    "fee_state",
+    "state"
+  ],
+  "properties": {
+    "event_id": {"type": "string"},
+    "source": {"type": "object"},
+    "event_type": {"type": "string"},
+    "counterparty": {"type": "string"},
+    "receipt_state": {"enum": ["PASS", "HOLD", "CONFLICT"]},
+    "identity_state": {"enum": ["PASS", "HOLD", "CONFLICT"]},
+    "fee_state": {"enum": ["PASS", "HOLD", "CONFLICT"]},
+    "state": {"enum": ["PASS", "HOLD", "CONFLICT"]},
+    "missing_fields": {"type": "array", "items": {"type": "string"}},
+    "notes": {"type": "array", "items": {"type": "string"}}
+  }
+}
