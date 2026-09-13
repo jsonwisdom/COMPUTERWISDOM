@@ -1,0 +1,152 @@
+name: FBI Fraud Finder — Tom Homan Version Replay
+
+on:
+  push:
+    paths:
+      - "data/fbi-fraud-finder/**"
+      - "docs/boxd/editions/FBI_FRAUD_FINDER_TOM_HOMAN_VERSION_REPLAY_V0_1.md"
+      - ".github/workflows/fbi-fraud-finder.yml"
+  pull_request:
+    paths:
+      - "data/fbi-fraud-finder/**"
+      - "docs/boxd/editions/FBI_FRAUD_FINDER_TOM_HOMAN_VERSION_REPLAY_V0_1.md"
+      - ".github/workflows/fbi-fraud-finder.yml"
+  workflow_dispatch:
+  schedule:
+    - cron: "17 */6 * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate source registry and evidence membrane
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import json, pathlib, sys
+
+          p = pathlib.Path('data/fbi-fraud-finder/TOM_HOMAN_50000_SOURCE_REGISTRY_V0_1.json')
+          row = json.loads(p.read_text(encoding='utf-8'))
+          errors = []
+
+          if row.get('authority_created') is not False:
+              errors.append('authority_created must be false')
+          if row.get('proof_inferred') is not False:
+              errors.append('proof_inferred must be false')
+
+          state = row.get('current_state', {})
+          if state.get('criminal_bribery_finding') == 'PROVEN':
+              errors.append('criminal bribery finding cannot be promoted without adjudicative receipt')
+          if state.get('reported_50000_transfer') == 'PROVEN':
+              errors.append('reported $50,000 transfer cannot be PROVEN until primary byte is acquired')
+
+          sources = row.get('sources', [])
+          if not sources:
+              errors.append('source registry must be non-empty')
+          ids = [s.get('source_id') for s in sources]
+          if len(ids) != len(set(ids)):
+              errors.append('duplicate source_id')
+          for s in sources:
+              for k in ('source_id','kind','publisher','date','uri','authority_role'):
+                  if not s.get(k):
+                      errors.append(f"{s.get('source_id','?')}: missing {k}")
+
+          if errors:
+              print('FBI FRAUD FINDER FAILED CLOSED')
+              for e in errors:
+                  print(' -', e)
+              sys.exit(1)
+          print(f'validated {len(sources)} source pointers')
+          PY
+
+      - name: Restart from public bytes
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import hashlib, json, pathlib, subprocess, time
+          from urllib.parse import urlparse
+
+          reg = json.loads(pathlib.Path('data/fbi-fraud-finder/TOM_HOMAN_50000_SOURCE_REGISTRY_V0_1.json').read_text())
+          out = {
+              'proposition_id': reg['proposition_id'],
+              'run_unix': int(time.time()),
+              'authority_created': False,
+              'proof_inferred': False,
+              'receipts': []
+          }
+
+          pathlib.Path('fbi-fraud-finder-output').mkdir(exist_ok=True)
+          for src in reg['sources']:
+              sid = src['source_id']
+              url = src['uri']
+              dest = pathlib.Path('fbi-fraud-finder-output') / f'{sid}.bin'
+              cmd = ['curl','-L','--silent','--show-error','--max-time','45','--user-agent','BoxD-FBIFraudFinder/0.1 public-record-replay', '-o', str(dest), '-w', '%{http_code}', url]
+              try:
+                  cp = subprocess.run(cmd, capture_output=True, text=True, timeout=55)
+                  code = cp.stdout.strip()[-3:] if cp.stdout.strip() else '000'
+              except Exception as e:
+                  code = '000'
+                  cp = type('X',(object,),{'stderr':str(e)})()
+
+              if dest.exists():
+                  b = dest.read_bytes()
+                  digest = hashlib.sha256(b).hexdigest()
+                  size = len(b)
+              else:
+                  digest = None
+                  size = 0
+
+              out['receipts'].append({
+                  'source_id': sid,
+                  'publisher': src['publisher'],
+                  'kind': src['kind'],
+                  'authority_role': src['authority_role'],
+                  'uri': url,
+                  'http_status': code,
+                  'byte_count': size,
+                  'sha256': digest,
+                  'fetch_state': 'FETCHED' if code.startswith('2') and size else 'FETCH_HOLD',
+                  'stderr': getattr(cp,'stderr','')[-500:]
+              })
+
+          pathlib.Path('fbi-fraud-finder-output/current_receipts.json').write_text(
+              json.dumps(out, indent=2, sort_keys=True), encoding='utf-8'
+          )
+          PY
+
+      - name: Render authority/version summary
+        shell: bash
+        run: |
+          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          x = json.loads(pathlib.Path('fbi-fraud-finder-output/current_receipts.json').read_text())
+          print('# FBI Fraud Finder — restart receipt')
+          print('')
+          print('| Source | Publisher | Role | HTTP | Bytes | SHA-256 | Fetch state |')
+          print('|---|---|---|---:|---:|---|---|')
+          for r in x['receipts']:
+              h = r['sha256'][:16] + '…' if r['sha256'] else '—'
+              print(f"| {r['source_id']} | {r['publisher']} | {r['authority_role']} | {r['http_status']} | {r['byte_count']} | `{h}` | {r['fetch_state']} |")
+          print('')
+          print('**Standing rule:** media snapshot != primary byte; case closure != factual erasure; no new receipt = NO_MATERIAL_PUBLIC_DELTA.')
+          PY
+
+      - name: Upload replay receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: fbi-fraud-finder-receipts-${{ github.run_id }}
+          path: fbi-fraud-finder-output/current_receipts.json
+          if-no-files-found: error
+
+      - name: Standing order
+        run: |
+          echo "RESTART FROM SOURCES"
+          echo "MEDIA VERSION != AUTHORITY"
+          echo "CONGRESSIONAL QUESTION != ANSWER"
+          echo "CASE CLOSED != EVENT ERASED"
+          echo "NO PRIMARY BYTE -> HOLD PRIMARY"

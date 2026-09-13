@@ -1,0 +1,86 @@
+{
+  "artifact": "PUBLIC_SOURCE_MIRROR_REGISTRY_V0_1",
+  "system": "BOXD",
+  "version": "0.1.0",
+  "authority": false,
+  "proof_inferred": false,
+  "mirror_policy": {
+    "raw_bytes_required_for_mirror": true,
+    "source_pointer_without_bytes_is_not_mirror": true,
+    "mirror_does_not_replace_official_source": true,
+    "private_or_classified_access_implied": false,
+    "silent_rewrite_forbidden": true,
+    "version_delta_required": true
+  },
+  "sources": [
+    {
+      "id": "CONGRESS_GOV",
+      "label": "Congress.gov",
+      "canonical_domain": "congress.gov",
+      "source_class": "OFFICIAL_US_LEGISLATIVE_INFORMATION",
+      "entry_url": "https://www.congress.gov/",
+      "machine_data_url": "https://api.congress.gov/",
+      "status": "OFFICIAL_SOURCE_POINTER_BOUND / BYTES_NOT_FROZEN_IN_THIS_ARTIFACT",
+      "mirror_status": "NOT_YET_MIRRORED"
+    },
+    {
+      "id": "JUSTICE_GOV",
+      "label": "United States Department of Justice",
+      "canonical_domain": "justice.gov",
+      "source_class": "OFFICIAL_US_EXECUTIVE_AGENCY_PUBLIC_SURFACE",
+      "entry_url": "https://www.justice.gov/",
+      "status": "OFFICIAL_SOURCE_POINTER_BOUND / BYTES_NOT_FROZEN_IN_THIS_ARTIFACT",
+      "mirror_status": "NOT_YET_MIRRORED"
+    },
+    {
+      "id": "JUSTICE_COM_USER_LABEL",
+      "label": "Justice.com",
+      "canonical_domain": null,
+      "source_class": "UNRESOLVED_USER_LABEL",
+      "entry_url": null,
+      "status": "HOLD_DO_NOT_TREAT_AS_US_DOJ",
+      "candidate_correction": "JUSTICE_GOV"
+    },
+    {
+      "id": "NATO_PUBLIC",
+      "label": "NATO public official texts and archives",
+      "canonical_domain": "nato.int",
+      "source_class": "OFFICIAL_NATO_PUBLIC_SOURCE",
+      "entry_url": "https://www.nato.int/",
+      "official_texts_url": "https://www.nato.int/en/about-us/official-texts-and-resources/official-texts",
+      "public_archives_url": "https://www.nato.int/en/about-us/official-texts-and-resources/NATO-archives",
+      "status": "OFFICIAL_PUBLIC_SOURCE_POINTER_BOUND / BYTES_NOT_FROZEN_IN_THIS_ARTIFACT",
+      "mirror_status": "PUBLICLY_DISCLOSED_MATERIAL_ONLY / NOT_YET_MIRRORED"
+    },
+    {
+      "id": "MN_REVISOR",
+      "label": "Minnesota Office of the Revisor of Statutes",
+      "canonical_domain": "revisor.mn.gov",
+      "source_class": "OFFICIAL_MINNESOTA_LEGAL_PUBLICATION",
+      "entry_url": "https://www.revisor.mn.gov/",
+      "status": "OFFICIAL_SOURCE_POINTER_BOUND / AUTHENTICATED_PDF_PREFERRED_FOR_LEGAL_TEXT",
+      "mirror_status": "NOT_YET_MIRRORED"
+    },
+    {
+      "id": "MN_COURTS",
+      "label": "Minnesota Judicial Branch",
+      "canonical_domain": "mncourts.gov",
+      "source_class": "OFFICIAL_MINNESOTA_JUDICIAL_PUBLIC_SURFACE",
+      "entry_url": "https://mncourts.gov/access-case-records",
+      "status": "OFFICIAL_SOURCE_POINTER_BOUND / ACCESS_LIMITS_APPLY",
+      "mirror_status": "NOT_YET_MIRRORED"
+    }
+  ],
+  "required_mirror_metadata": [
+    "source_url",
+    "source_domain",
+    "retrieved_at_utc",
+    "http_status",
+    "mime_type",
+    "raw_bytes_sha256",
+    "mirror_path",
+    "mirror_version",
+    "previous_mirror_hash",
+    "retrieval_method"
+  ]
+}

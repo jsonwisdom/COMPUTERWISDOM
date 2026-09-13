@@ -1,0 +1,39 @@
+{
+  "artifact": "MINNESOTA_ONION_SACK_EDITION_V0_1",
+  "system": "BOXD",
+  "version": "0.1.0",
+  "class": "STATE_PUBLIC_SOURCE_REPLAY",
+  "opener": "JASONS_DICE_GAMES_OF_HORROR_V0_1",
+  "parent": "GREAT_ONION_SACK_AUDIT_V0_1",
+  "authority": false,
+  "proof_inferred": false,
+  "jurisdiction": "MINNESOTA",
+  "source_roots": [
+    "MN_REVISOR",
+    "MN_COURTS",
+    "MN_STATE_LOCAL_PUBLIC_RECORDS",
+    "FEDERAL_PUBLIC_RECORDS_WHEN_NEXUS_EXISTS"
+  ],
+  "onion_layers": [
+    "RECORD_REALITY",
+    "AUTHORITY",
+    "EXECUTION_MONEY_DATA",
+    "OVERSIGHT_RECOVERY"
+  ],
+  "machine_rails": [
+    "ALMS",
+    "RECEIPTOS_BASE",
+    "GLOBAL_EXECUTION_LEDGER_WHEN_REAL_RECEIPTS_EXIST"
+  ],
+  "hard_boundaries": [
+    "STATE_AUTHORITY_IS_EXTERNAL_TO_BOXD",
+    "GITHUB_IS_NOT_STATE_AUTHORITY",
+    "ENS_IS_NOT_STATE_AUTHORITY",
+    "BASE_IS_NOT_STATE_AUTHORITY",
+    "HASH_IS_NOT_FACTUAL_TRUTH",
+    "MIRROR_IS_NOT_OFFICIAL_SOURCE",
+    "CHARGE_IS_NOT_GUILT",
+    "AUDIT_FINDING_IS_NOT_CRIMINAL_CONVICTION"
+  ],
+  "states": ["PROVEN", "BOUND", "HOLD", "CONFLICT", "REJECT"]
+}
