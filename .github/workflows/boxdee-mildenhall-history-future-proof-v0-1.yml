@@ -1,0 +1,24 @@
+name: BoxDee Mildenhall History Future Proof v0.1
+
+on:
+  pull_request:
+    paths:
+      - "docs/boxdee/mildenhall/**"
+      - "fixtures/boxdee/mildenhall/**"
+      - "tools/verify_boxdee_mildenhall_history_future_proof_v0_1.py"
+      - ".github/workflows/boxdee-mildenhall-history-future-proof-v0-1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify deterministic commitment and boundaries
+        run: python tools/verify_boxdee_mildenhall_history_future_proof_v0_1.py
