@@ -1,0 +1,162 @@
+{
+  "receipt_id": "MN_REPLAY_VALIDATION_ONLY_0002",
+  "classification": "REPLAY_VALIDATION_ONLY",
+  "kernel": "MINNESOTA_REPLAY_KERNEL_V1_1",
+  "test_packet": "MINNESOTA_REPLAY_KERNEL_V1_1_TEST_PACKET",
+  "authority_created": false,
+  "legal_finding_created": false,
+  "wrongdoing_finding_created": false,
+  "execution_started": false,
+  "public_replay_started": false,
+  "fixtures": [
+    {
+      "repository": "jsonwisdom/JOY",
+      "path": "zero_trust_mn_audit/claims/ALPHA_DEED_001.json",
+      "blob_sha": "57d7761bb36928944bb9e56e054dab2ac5f6d9fb",
+      "packet_id": "ALPHA_DEED_001",
+      "project": "ZERO_TRUST_MN_AUDIT_V0_1",
+      "jurisdiction": "Minnesota",
+      "agency": "Minnesota Department of Employment and Economic Development",
+      "legacy_state": "CLAIMED",
+      "claim_status": "UNVERIFIED_CLAIM",
+      "required_next_receipt": "signed_mgdpa_request",
+      "authority": false,
+      "no_fake_green": true
+    },
+    {
+      "repository": "jsonwisdom/JOY",
+      "path": "zero_trust_mn_audit/requests/ALPHA_DEED_001_MGDPA_REQUEST_DRAFT.md",
+      "blob_sha": "cdc2d9fdcc726cfbe74486a4be06565a4b59c66b",
+      "status": "Draft only",
+      "sent": false,
+      "verified": false,
+      "authority": false,
+      "no_fake_green": true
+    }
+  ],
+  "supporting_kernel_state": {
+    "source": "SIDECARSAM_BURDEN_OF_PROOF_MINNESOTA_EDITION_V1",
+    "commit": "5526adcff55882f3fff1172ab83207a1d6116226",
+    "executable_operator": "NOT_YET_BOUND",
+    "public_replay_run": "NOT_YET_BOUND"
+  },
+  "state_translation": {
+    "source_fixture_state_preserved": "CLAIMED",
+    "kernel_projection_for_unclosed_required_edge": "HOLD",
+    "rule": "The replay receipt does not rewrite the legacy fixture. It appends a kernel disposition for this validation run only.",
+    "source_mutated": false
+  },
+  "evaluations": [
+    {
+      "id": "MNK-001",
+      "result": "PASS",
+      "observed": "ALPHA_DEED_001 identifies signed_mgdpa_request as the required next receipt, while the associated request remains a draft and is not sent or verified.",
+      "kernel_result": "HOLD",
+      "receipt": [
+        "required_next_receipt = signed_mgdpa_request",
+        "request status = Draft only",
+        "sent = false",
+        "verified = false"
+      ]
+    },
+    {
+      "id": "MNK-002",
+      "result": "NOT_EXERCISED",
+      "reason": "Neither selected fixture encodes a bounded search-miss event."
+    },
+    {
+      "id": "MNK-003",
+      "result": "NOT_EXERCISED",
+      "reason": "Neither selected fixture presents conflicting event/document/publication clocks."
+    },
+    {
+      "id": "MNK-004",
+      "result": "NOT_EXERCISED",
+      "reason": "The selected fixtures do not encode a burden-shift event."
+    },
+    {
+      "id": "MNK-005",
+      "result": "NOT_EXERCISED",
+      "reason": "The selected fixtures do not encode a DARVO event sequence."
+    },
+    {
+      "id": "MNK-006",
+      "result": "NOT_EXERCISED",
+      "reason": "The selected fixtures are Chapter 13 / adverse-action intake objects, not money-rail institution-participant objects."
+    },
+    {
+      "id": "MNK-007",
+      "result": "PASS",
+      "observed": "A Minnesota Government Data Practices Act request exists as a draft only; it has not been sent, no response is bound, and no records are treated as produced.",
+      "kernel_result": "HOLD",
+      "receipt": [
+        "request_drafted = true",
+        "request_sent = false",
+        "response_received = false",
+        "records_produced = false"
+      ]
+    },
+    {
+      "id": "MNK-008",
+      "result": "NOT_EXERCISED",
+      "reason": "No Minnesota-to-federal join object of the required test shape is present."
+    },
+    {
+      "id": "MNK-009",
+      "result": "NOT_EXERCISED",
+      "reason": "No attempted backward mutation is present."
+    },
+    {
+      "id": "MNK-010",
+      "result": "PASS",
+      "observed": "The source fixtures retain their legacy states and blob identities; this validation is appended as a new receipt in the kernel branch rather than rewriting either source object.",
+      "receipt": [
+        "ALPHA_DEED_001 source blob = 57d7761bb36928944bb9e56e054dab2ac5f6d9fb",
+        "MGDPA draft source blob = cdc2d9fdcc726cfbe74486a4be06565a4b59c66b",
+        "source_mutated = false",
+        "new validation receipt appended separately"
+      ]
+    },
+    {
+      "id": "MNK-011",
+      "result": "PASS",
+      "observed": "Both source fixtures preserve authority=false, and this validation receipt also creates no authority or legal finding.",
+      "receipt": [
+        "fixture authority = false",
+        "authority_created = false",
+        "legal_finding_created = false",
+        "wrongdoing_finding_created = false"
+      ]
+    },
+    {
+      "id": "MNK-012",
+      "result": "NOT_EXERCISED",
+      "reason": "This fixture does not present an institutional prestige assertion that attempts to bypass an otherwise missing receipt."
+    },
+    {
+      "id": "MNK-013",
+      "result": "PASS",
+      "observed": "The execution operator and public replay run remain unbound; this validation appends a receipt only and starts neither operator.",
+      "receipt": [
+        "EXECUTABLE_OPERATOR = NOT_YET_BOUND",
+        "PUBLIC_REPLAY_RUN = NOT_YET_BOUND",
+        "EXECUTION_STARTED = false",
+        "PUBLIC_REPLAY_STARTED = false"
+      ]
+    }
+  ],
+  "summary": {
+    "tests_total": 13,
+    "tests_exercised": 5,
+    "tests_passed": 5,
+    "tests_failed": 0,
+    "tests_not_exercised": 8,
+    "new_distinct_gates_exercised_vs_0001": ["MNK-007", "MNK-010"],
+    "cumulative_distinct_gates_exercised_across_0001_0002": 7,
+    "cumulative_distinct_gates_remaining_unexercised": 6,
+    "no_fake_green": true,
+    "overall_disposition": "HOLD"
+  },
+  "reason_for_overall_hold": "The required signed MGDPA request/response chain is not bound, and the execution operator/public replay run remain unbound. The legacy fixture remains CLAIMED; the kernel projection for this validation run is HOLD.",
+  "next_required_receipt": "A third fixture that exercises a still-unexercised gate, preferably MNK-004/MNK-005 burden-DARVO event classification or MNK-003 clock conflict, without mutating prior state."
+}
