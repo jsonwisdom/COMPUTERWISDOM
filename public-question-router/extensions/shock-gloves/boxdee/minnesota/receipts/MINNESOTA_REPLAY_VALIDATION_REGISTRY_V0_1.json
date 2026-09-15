@@ -1,0 +1,67 @@
+{
+  "registry_id": "MINNESOTA_REPLAY_VALIDATION_REGISTRY_V0_1",
+  "kernel": "MINNESOTA_REPLAY_KERNEL_V1_1",
+  "rubric": "MINNESOTA_FULL_MATH_RUBRIC_V1_1",
+  "authority_created": false,
+  "legal_finding_created": false,
+  "wrongdoing_finding_created": false,
+  "execution_started": false,
+  "public_replay_started": false,
+  "receipts": [
+    {
+      "receipt_id": "MN_REPLAY_VALIDATION_ONLY_0001",
+      "fixture": "MN_QUAD_ONION_LEDGER_HOLD_0001",
+      "exercised": ["MNK-001", "MNK-006", "MNK-011", "MNK-012", "MNK-013"],
+      "passed": 5,
+      "failed": 0,
+      "overall_disposition": "HOLD"
+    },
+    {
+      "receipt_id": "MN_REPLAY_VALIDATION_ONLY_0002",
+      "fixture": "ALPHA_DEED_001 + ALPHA_DEED_001_MGDPA_REQUEST_DRAFT",
+      "exercised": ["MNK-001", "MNK-007", "MNK-010", "MNK-011", "MNK-013"],
+      "passed": 5,
+      "failed": 0,
+      "overall_disposition": "HOLD"
+    }
+  ],
+  "cumulative_gate_state": {
+    "tests_total": 13,
+    "distinct_exercised": 7,
+    "distinct_unexercised": 6,
+    "exercised_ids": [
+      "MNK-001",
+      "MNK-006",
+      "MNK-007",
+      "MNK-010",
+      "MNK-011",
+      "MNK-012",
+      "MNK-013"
+    ],
+    "unexercised_ids": [
+      "MNK-002",
+      "MNK-003",
+      "MNK-004",
+      "MNK-005",
+      "MNK-008",
+      "MNK-009"
+    ],
+    "coverage_fraction": "7/13",
+    "coverage_percent_rounded": 53.85,
+    "coverage_semantics": "validation-gate exercise coverage only",
+    "coverage_not_truth": true,
+    "coverage_not_guilt": true,
+    "coverage_not_execution_authority": true
+  },
+  "no_fake_green": {
+    "overall_disposition": "HOLD",
+    "reason": "Six mandatory gates remain unexercised and the execution operator/public replay run remain unbound."
+  },
+  "next_preferred_validation": {
+    "receipt_id": "MN_REPLAY_VALIDATION_ONLY_0003",
+    "preferred_gates": ["MNK-004", "MNK-005"],
+    "preferred_fixture_class": "event-specific denial/attack/role-or-burden-reversal sequence with exact language, clocks, authority and counterevidence",
+    "fallback_gate": "MNK-003",
+    "fallback_fixture_class": "source object with explicit conflicting event/document/publication/update clocks"
+  }
+}
