@@ -1,0 +1,170 @@
+{
+  "artifact": "MINNESOTA_REPLAY_KERNEL_V1_1_TEST_PACKET",
+  "version": "1.1",
+  "classification": "REPLAY_VALIDATION_ONLY",
+  "authority_created": false,
+  "legal_finding_created": false,
+  "world_fact_created": false,
+  "kernel": [
+    "CLAIM",
+    "EXACT_FACT",
+    "SOURCE",
+    "CLOCK_VERSION",
+    "AUTHORITY",
+    "ACTION",
+    "BURDEN_CHANGE",
+    "REVIEW",
+    "RECEIPT",
+    "SPECIALIZED_RAILS",
+    "DISPOSITION",
+    "DELTA",
+    "PUBLIC_REPLAY"
+  ],
+  "tests": [
+    {
+      "id": "MNK-001",
+      "name": "MISSING_RECEIPT_FAILS_CLOSED",
+      "input": {
+        "claim": "Agency performed adverse action",
+        "authority": "BOUND",
+        "action": "OBSERVED",
+        "required_receipt": null
+      },
+      "expected": "HOLD"
+    },
+    {
+      "id": "MNK-002",
+      "name": "SEARCH_MISS_IS_NOT_NEGATIVE_FACT",
+      "input": {
+        "search_performed": true,
+        "record_located": false
+      },
+      "expected": "HOLD",
+      "forbidden": ["RECORD_DOES_NOT_EXIST"]
+    },
+    {
+      "id": "MNK-003",
+      "name": "CLOCK_CONFLICT_PRESERVED",
+      "input": {
+        "event_time": "T1",
+        "document_time": "T2",
+        "publication_time": "T3",
+        "conflicting_source_time": "T4"
+      },
+      "expected": "CONFLICT",
+      "forbidden": ["SILENT_CLOCK_NORMALIZATION"]
+    },
+    {
+      "id": "MNK-004",
+      "name": "ROLE_REVERSAL_IS_NOT_AUTHORIZED_BURDEN_SHIFT",
+      "input": {
+        "burden_before": "INSTITUTION",
+        "burden_after": "CITIZEN",
+        "shift_authority": null
+      },
+      "expected": "CONFLICT",
+      "darvo_state": "RVO_CANDIDATE"
+    },
+    {
+      "id": "MNK-005",
+      "name": "DARVO_PATTERN_DOES_NOT_CREATE_GUILT",
+      "input": {
+        "denial": "OBSERVED",
+        "attack": "OBSERVED",
+        "role_reversal": "OBSERVED"
+      },
+      "expected_pattern": "SOURCE_BOUND_PATTERN",
+      "guilt": false,
+      "liability": false,
+      "intent": "HOLD"
+    },
+    {
+      "id": "MNK-006",
+      "name": "MONEY_RAIL_DOES_NOT_PROMOTE_PARTICIPANT",
+      "input": {
+        "bank_named": true,
+        "payment_observed": true,
+        "institution_finding": null
+      },
+      "expected": "HOLD",
+      "bank_wrongdoing": false
+    },
+    {
+      "id": "MNK-007",
+      "name": "CHAPTER13_DRAFT_IS_NOT_RESPONSE",
+      "input": {
+        "request_drafted": true,
+        "request_sent": false,
+        "response_received": false
+      },
+      "expected": "HOLD",
+      "records_produced": false
+    },
+    {
+      "id": "MNK-008",
+      "name": "STATE_FEDERAL_JOIN_REQUIRES_EDGE",
+      "input": {
+        "minnesota_record": "BOUND",
+        "federal_record": "BOUND",
+        "cross_jurisdiction_receipt": null
+      },
+      "expected": "HOLD",
+      "forbidden": [
+        "STATE_RECORD_EQUALS_FEDERAL_RECORD",
+        "STATE_AUTHORITY_EQUALS_FEDERAL_AUTHORITY"
+      ]
+    },
+    {
+      "id": "MNK-009",
+      "name": "BACKWARD_MUTATION_HARD_REJECT",
+      "input": {
+        "previous_state": "S_t",
+        "new_information": "DELTA_t",
+        "rewrite_previous": true
+      },
+      "expected": "REJECT"
+    },
+    {
+      "id": "MNK-010",
+      "name": "VALID_DELTA_APPENDS",
+      "input": {
+        "previous_state": "S_t",
+        "new_information": "DELTA_t",
+        "rewrite_previous": false
+      },
+      "expected": "PASS",
+      "output": "S_(t+1) = S_t + DELTA_t"
+    },
+    {
+      "id": "MNK-011",
+      "name": "PASS_DOES_NOT_CREATE_AUTHORITY",
+      "input": {
+        "required_edges_closed": true
+      },
+      "expected": "PASS",
+      "authority_created": false
+    },
+    {
+      "id": "MNK-012",
+      "name": "NO_PRESTIGE_DEFERENCE",
+      "input": {
+        "actor": "JUDGE_OR_AGENCY_OR_ELECTED_OFFICIAL",
+        "receipt_chain_complete": false
+      },
+      "expected": "HOLD"
+    },
+    {
+      "id": "MNK-013",
+      "name": "EXECUTION_OPERATOR_BLOCKED_WHEN_NOT_BOUND",
+      "input": {
+        "execution_operator_state": "NOT_YET_BOUND",
+        "public_replay_run_state": "NOT_YET_BOUND"
+      },
+      "expected": "HOLD",
+      "forbidden": [
+        "EXECUTION_STARTED",
+        "PUBLIC_REPLAY_STARTED"
+      ]
+    }
+  ]
+}
