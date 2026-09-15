@@ -1,0 +1,130 @@
+{
+  "receipt_id": "MN_REPLAY_VALIDATION_ONLY_0001",
+  "classification": "REPLAY_VALIDATION_ONLY",
+  "kernel": "MINNESOTA_REPLAY_KERNEL_V1_1",
+  "test_packet": "MINNESOTA_REPLAY_KERNEL_V1_1_TEST_PACKET",
+  "authority_created": false,
+  "legal_finding_created": false,
+  "wrongdoing_finding_created": false,
+  "fixture": {
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "branch": "agent/shock-gloves-supply-chain-presidential-public-audit-v0-1",
+    "path": "public-question-router/extensions/shock-gloves/boxdee/minnesota/fixtures/MN_QUAD_ONION_LEDGER_HOLD_0001.json",
+    "blob_sha": "0cad4f1aad88678ba1eac8312deef4a02fe9ae0b",
+    "ledger_id": "MN-QUAD-ONION-HOLD-0001",
+    "fixture_status": "DRAFT",
+    "fixture_disposition": "MULTI_PASS_HOLD"
+  },
+  "supporting_kernel_state": {
+    "source": "SIDECARSAM_BURDEN_OF_PROOF_MINNESOTA_EDITION_V1",
+    "commit": "5526adcff55882f3fff1172ab83207a1d6116226",
+    "executable_operator": "NOT_YET_BOUND",
+    "public_replay_run": "NOT_YET_BOUND"
+  },
+  "evaluations": [
+    {
+      "id": "MNK-001",
+      "result": "PASS",
+      "observed": "The fixture preserves HOLD on incomplete cross-onion joins and sets leeloo_multi_pass to MULTI_PASS_HOLD.",
+      "receipt": [
+        "X-O1-O2-BRILLIANT-MINDS = HOLD",
+        "X-O2-O3-BRILLIANT-MINDS = HOLD",
+        "hold_reasons[] contains unresolved required edges"
+      ]
+    },
+    {
+      "id": "MNK-002",
+      "result": "NOT_EXERCISED",
+      "reason": "The selected fixture does not encode a bounded search-miss event."
+    },
+    {
+      "id": "MNK-003",
+      "result": "NOT_EXERCISED",
+      "reason": "The selected fixture does not present conflicting event/document/publication clocks."
+    },
+    {
+      "id": "MNK-004",
+      "result": "NOT_EXERCISED",
+      "reason": "The selected fixture does not encode a burden-shift event."
+    },
+    {
+      "id": "MNK-005",
+      "result": "NOT_EXERCISED",
+      "reason": "The selected fixture does not encode a DARVO event sequence."
+    },
+    {
+      "id": "MNK-006",
+      "result": "PASS",
+      "observed": "Financial rails name banks, a card network, and a foreign destination while refusing to promote those participants into wrongdoing.",
+      "receipt": [
+        "institution_wrongdoing_claimed = false",
+        "institution_findings = []",
+        "ACCOUNT_IN_CASE != BANK_WRONGDOING",
+        "CARD_NETWORK_NAMED != NETWORK_COMPLICITY",
+        "FOREIGN_DESTINATION != FOREIGN_CULPABILITY"
+      ]
+    },
+    {
+      "id": "MNK-007",
+      "result": "NOT_EXERCISED",
+      "reason": "The selected fixture is a money/control ledger, not a Chapter 13 request/response fixture."
+    },
+    {
+      "id": "MNK-008",
+      "result": "NOT_EXERCISED",
+      "reason": "The fixture contains cross-onion joins but not a Minnesota-to-federal jurisdiction join object of the test's required shape."
+    },
+    {
+      "id": "MNK-009",
+      "result": "NOT_EXERCISED",
+      "reason": "No attempted backward state mutation is present in this fixture."
+    },
+    {
+      "id": "MNK-010",
+      "result": "NOT_EXERCISED",
+      "reason": "No explicit append-only delta transition is present in this fixture."
+    },
+    {
+      "id": "MNK-011",
+      "result": "PASS",
+      "observed": "Multiple sub-edges are PASS_CASE_BOUND while the fixture still states authority_created=false and legal_finding_created=false.",
+      "receipt": [
+        "authority_created = false",
+        "legal_finding_created = false",
+        "PASS_CASE_BOUND sub-edges coexist with MULTI_PASS_HOLD"
+      ]
+    },
+    {
+      "id": "MNK-012",
+      "result": "PASS",
+      "observed": "Official DOJ source receipts do not override missing merchant, processor, approval, receiving-bank, or recovery edges.",
+      "receipt": [
+        "source_type = DOJ appears in source_receipts",
+        "required payment and routing edges remain HOLD",
+        "fixture_disposition = MULTI_PASS_HOLD"
+      ]
+    },
+    {
+      "id": "MNK-013",
+      "result": "PASS",
+      "observed": "The supporting kernel state leaves the execution operator and public replay run unbound; this validation run creates only a receipt and does not start either operator.",
+      "receipt": [
+        "EXECUTABLE_OPERATOR = NOT_YET_BOUND",
+        "PUBLIC_REPLAY_RUN = NOT_YET_BOUND",
+        "EXECUTION_STARTED = false",
+        "PUBLIC_REPLAY_STARTED = false"
+      ]
+    }
+  ],
+  "summary": {
+    "tests_total": 13,
+    "tests_exercised": 5,
+    "tests_passed": 5,
+    "tests_failed": 0,
+    "tests_not_exercised": 8,
+    "no_fake_green": true,
+    "overall_disposition": "HOLD"
+  },
+  "reason_for_overall_hold": "The selected fixture intentionally contains unresolved mandatory money/control joins, and the execution operator/public replay run remain unbound. Passing validation tests does not promote the fixture or kernel to fully bound execution state.",
+  "next_required_receipt": "A second fixture that exercises at least one currently NOT_EXERCISED gate, while preserving append-only state and the existing HOLD disposition where required."
+}
