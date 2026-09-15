@@ -248,11 +248,136 @@ WHO_BEARs_THE_BURDEN_FOR_THAT_EDGE
 NEXT_QUESTION
 ```
 
+## Minnesota docket integrity walkback
+
+A public docket/search surface is an observation surface, not the whole legal event.
+
+Minnesota Judicial Branch public materials establish several useful boundaries:
+
+- Minnesota Court Records Online (MCRO) provides remote access to many public district-court records, but Minnesota court pages expressly warn that MCRO information is not the official court record.
+- An MCRO watermark/signature is not a certified copy. Certified or exemplified copies must be obtained through court administration.
+- Minnesota publishes eFile/eServe outage and performance-issue logs, and its case-notification service contains event types for modifications/deletions used to correct clerical errors.
+
+These system facts support cautious verification. They do **not** by themselves establish fabricated dockets, duplicated signatures, intentional concealment, selective manipulation, or a synthetic/weaponized docket scheme.
+
+```text
+MCRO_VIEW != OFFICIAL_COURT_RECORD
+MCRO_WATERMARK != CERTIFIED_COPY
+MCRO_SEARCH_MISS != NO_CASE
+DOCKET_ENTRY != WHOLE_CASE_FILE
+DOCKET_EVENT != ADJUDICATION
+CLERICAL_CORRECTION != FABRICATION
+SYSTEM_OUTAGE != INTENTIONAL_SUPPRESSION
+PUBLIC_ACCESS_LIMIT != SECRET_CASE
+```
+
+Claims such as fabricated service filings, nonexistent motions, duplicated judicial signatures, or deliberate docket manipulation remain:
+
+```text
+USER_REPORTED
+→ RECEIPT_REQUIRED
+→ HOLD
+```
+
+until a primary/certified record closes the edge.
+
+### Docket Integrity Receipt
+
+```text
+DOCKET_INTEGRITY_RECEIPT {
+  jurisdiction
+  court
+  case_id
+  docket_event_id?
+  party_set
+  document_title
+  event_type
+  filing_date?
+  signed_date?
+  entered_date?
+  public_access_date?
+  media_publish_date?
+  source_surface
+  primary_document_url?
+  certified_copy_status
+  document_hash?
+  register_of_actions_match
+  party_match
+  judge_match
+  amount_match?
+  disposition_match?
+  corrections[]
+  outages[]
+  contradictions[]
+  failed_searches[]
+  status
+}
+```
+
+```text
+PASS     = primary/certified edges close
+DELTA    = surfaces differ but source relationship is identified
+HOLD     = required edge or primary document missing
+CONFLICT = primary receipts disagree
+REJECT   = asserted edge contradicted by controlling receipt
+```
+
+### Clock discipline
+
+Do not collapse legal-event clocks:
+
+```text
+SIGNED_DATE
+!= FILED_DATE
+!= ENTERED_DATE
+!= PUBLIC_ACCESS_DATE
+!= MEDIA_PUBLISH_DATE
+```
+
+A later news story or later public-access timestamp does not rewrite the original filing date.
+
+## Reuters / AP observer example
+
+Reuters and AP are media observers in this architecture. They can be excellent discovery and chronology sources, but neither is promoted into the docket itself.
+
+```text
+REUTERS_ARTICLE
+→ EXTRACT_CLAIM
+→ EXTRACT_ATTRIBUTION
+→ EXTRACT_CASE_ID / ACTOR / DATE
+→ LOCATE_PRIMARY_DOCKET_OR_AGENCY_RECEIPT
+→ VERIFY_DOCUMENT
+→ COMPARE_CLOCKS
+→ PASS | DELTA | HOLD | CONFLICT
+```
+
+```text
+REUTERS_REPORT != COURT_ORDER
+AP_REPORT != COURT_ORDER
+MEDIA_REPORT != CERTIFIED_RECORD
+MEDIA_OMISSION != EVENT_ABSENCE
+MEDIA_DELAY != CONCEALMENT
+HEADLINE != DOCKET_DISPOSITION
+```
+
+Reuters homepage / Legal / Litigation surfaces may be used as observer indexes for candidate discovery. The candidate must still walk back to the court, agency, filing, order, judgment, or certified record before legal status is promoted.
+
+Example observer root: https://www.reuters.com/
+
+Minnesota primary-reference roots:
+
+- https://mncourts.gov/access-case-records/mcro
+- https://mncourts.gov/access-case-records/mcro/faqs
+- https://mncourts.gov/help-topics/copy-request
+- https://mncourts.gov/file-a-case/file-in-a-district-trial-court/efs-support-center/efs-outage-log
+
 ## State
 
 ```text
 APPLE_BLOSSOM_AWESOME_AUDIT_SIDECARSAM_SCAM_V1 = DEFINED
 SIDECARSAM = DEFINED
+DOCKET_INTEGRITY_WALKBACK = DEFINED
+REUTERS_AP_OBSERVER_LAYER = DEFINED
 SCAM_TEST = DEFINED_AS_HYPOTHESIS_TEST_ONLY
 FRAUD_FINDING = FALSE
 EXECUTABLE_OPERATOR = NOT_YET_BOUND
