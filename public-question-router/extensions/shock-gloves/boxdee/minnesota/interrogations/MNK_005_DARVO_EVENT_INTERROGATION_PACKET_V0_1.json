@@ -1,0 +1,166 @@
+{
+  "packet_id": "MNK_005_DARVO_EVENT_INTERROGATION_PACKET_V0_1",
+  "classification": "INTERROGATION_PACKET_ONLY",
+  "kernel": "MINNESOTA_REPLAY_KERNEL_V1_1",
+  "target_gate": "MNK-005",
+  "fixture_template": "MN_EVENT_SPECIFIC_BURDEN_DARVO_FIXTURE_V0_1",
+  "authority_created": false,
+  "legal_finding_created": false,
+  "wrongdoing_finding_created": false,
+  "execution_started": false,
+  "public_replay_started": false,
+  "purpose": "Collect the minimum event-specific receipts required to classify whether denial, attack, and role-or-burden reversal are observed in one Minnesota event sequence without converting the pattern into guilt, liability, intent, or a legal finding.",
+  "entry_condition": {
+    "required": [
+      "one Minnesota event candidate",
+      "one identifiable actor or office",
+      "one exact proposition at issue",
+      "at least one source locator"
+    ],
+    "missing_entry_field_result": "HOLD"
+  },
+  "interrogation": [
+    {
+      "step": 1,
+      "field": "EVENT_ID",
+      "question": "What single event or tightly bounded event sequence are we auditing?",
+      "receipt_required": true
+    },
+    {
+      "step": 2,
+      "field": "ACTOR_OR_OFFICE",
+      "question": "Who made each relevant statement or took each relevant action?",
+      "receipt_required": true
+    },
+    {
+      "step": 3,
+      "field": "CLOCK_SET",
+      "question": "What are the event, document, publication, effective, update, and retrieval clocks?",
+      "receipt_required": true
+    },
+    {
+      "step": 4,
+      "field": "PROPOSITION_AT_ISSUE",
+      "question": "What exact proposition, allegation, application, challenge, or adverse-action reason was being answered?",
+      "receipt_required": true
+    },
+    {
+      "step": 5,
+      "field": "DENIAL_EXACT_LANGUAGE",
+      "question": "Was an exact proposition denied, refused, contradicted, or rejected? Preserve the exact language and the proposition denied.",
+      "receipt_required": true
+    },
+    {
+      "step": 6,
+      "field": "DENIAL_REASON_AND_EVIDENCE",
+      "question": "What reason and evidence, if any, accompanied the denial?",
+      "receipt_required": true
+    },
+    {
+      "step": 7,
+      "field": "ATTACK_EXACT_LANGUAGE",
+      "question": "Did the response move from the merits to character, credibility, status, motive, reputation, age, politics, diagnosis, or social worth? Preserve the exact language.",
+      "receipt_required": true
+    },
+    {
+      "step": 8,
+      "field": "ATTACK_EVIDENTIARY_BASIS",
+      "question": "What relevance and evidentiary basis, if any, supported that credibility or character move?",
+      "receipt_required": true
+    },
+    {
+      "step": 9,
+      "field": "ATTACK_SUBSTITUTION_TEST",
+      "question": "Was the credibility or character move used instead of answering the merits evidence, or was it separately relevant and supported?",
+      "receipt_required": true
+    },
+    {
+      "step": 10,
+      "field": "ROLE_OR_BURDEN_REVERSAL",
+      "question": "Did the institution make an assertion and then require the individual to disprove it, or otherwise change who had to prove what?",
+      "receipt_required": true
+    },
+    {
+      "step": 11,
+      "field": "BURDEN_BEFORE_AFTER",
+      "question": "What were BURDEN_BEFORE and BURDEN_AFTER, and what exact change occurred?",
+      "receipt_required": true,
+      "cross_reference": "MNK_004_BURDEN_SHIFT_INTERROGATION_PACKET_V0_1"
+    },
+    {
+      "step": 12,
+      "field": "REVERSAL_AUTHORITY",
+      "question": "What authority, if any, permitted the role or burden change?",
+      "receipt_required": true,
+      "cross_reference": "MNK_004_BURDEN_SHIFT_INTERROGATION_PACKET_V0_1"
+    },
+    {
+      "step": 13,
+      "field": "COUNTEREVIDENCE",
+      "question": "What evidence contradicts, narrows, contextualizes, or explains the proposed DARVO-pattern interpretation?",
+      "receipt_required": true
+    },
+    {
+      "step": 14,
+      "field": "CORRECTION_AND_REVIEW",
+      "question": "What correction, reconsideration, appeal, independent review, or final-disposition path existed, and what happened?",
+      "receipt_required": true
+    }
+  ],
+  "element_rules": {
+    "D": {
+      "label": "DENIAL_OBSERVED",
+      "requires": ["exact proposition", "exact denial/refusal/contradiction language", "actor", "clock", "receipt"],
+      "missing_required_field": "HOLD_D"
+    },
+    "A": {
+      "label": "ATTACK_CANDIDATE",
+      "requires": ["exact credibility/character/status/motive language", "target", "context", "evidentiary basis", "substitution test", "receipt"],
+      "missing_required_field": "HOLD_A"
+    },
+    "RVO": {
+      "label": "ROLE_OR_BURDEN_REVERSAL_CANDIDATE",
+      "requires": ["burden or role before", "burden or role after", "exact change", "authority state", "receipt"],
+      "missing_required_field": "HOLD_RVO"
+    }
+  },
+  "classification_logic": {
+    "NO_ELEMENTS_OBSERVED_WITH_SUFFICIENT_RECORD": "PASS_NO_PATTERN_OBSERVED",
+    "D_ONLY": "DENIAL_OBSERVED_ONLY_NOT_DARVO_PATTERN",
+    "D_PLUS_A_WITHOUT_RVO": "PARTIAL_PATTERN_HOLD",
+    "D_PLUS_RVO_WITHOUT_A": "PARTIAL_PATTERN_HOLD",
+    "A_PLUS_RVO_WITHOUT_D": "PARTIAL_PATTERN_HOLD",
+    "D_PLUS_A_PLUS_RVO_ALL_RECEIPT_BOUND": "SOURCE_BOUND_PATTERN",
+    "ANY_REQUIRED_ELEMENT_RECEIPT_MISSING": "HOLD",
+    "ELEMENT_RECORDS_CONFLICT": "CONFLICT"
+  },
+  "forbidden_promotions": [
+    "DENIAL -> DARVO",
+    "ATTACK_LANGUAGE -> MERITS_FAILURE",
+    "ROLE_REVERSAL -> UNAUTHORIZED_BURDEN_SHIFT",
+    "DARVO_PATTERN -> GUILT",
+    "DARVO_PATTERN -> LIABILITY",
+    "DARVO_PATTERN -> INTENT",
+    "DARVO_PATTERN -> FRAUD",
+    "SOURCE_BOUND_PATTERN -> LEGAL_ELEMENT",
+    "SOURCE_BOUND_PATTERN -> CRIME",
+    "MISSING_RECEIPT -> ELEMENT_DID_NOT_OCCUR"
+  ],
+  "child_facing": [
+    "What did they say no to?",
+    "What exact words did they use?",
+    "Did they answer the evidence or attack the person instead?",
+    "Did the person suddenly have to prove something new?",
+    "What rule allowed that change?",
+    "What evidence points the other way?",
+    "Who reviewed it?",
+    "Show me every receipt.",
+    "If a receipt is missing, HOLD.",
+    "Even if the pattern is real, pattern is not guilt."
+  ],
+  "gate_projection": {
+    "mnk_005": "NOT_EXERCISED",
+    "reason": "This packet binds the DARVO event-classification interrogation method only. A real event-specific fixture must supply the receipts before MNK-005 may be exercised."
+  },
+  "terminal": "HOLD_INTERROGATION_PACKET_BOUND_EVENT_UNBOUND"
+}
