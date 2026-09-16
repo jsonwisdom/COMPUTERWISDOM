@@ -1,0 +1,140 @@
+{
+  "packet_id": "MNK_004_BURDEN_SHIFT_INTERROGATION_PACKET_V0_1",
+  "classification": "INTERROGATION_PACKET_ONLY",
+  "kernel": "MINNESOTA_REPLAY_KERNEL_V1_1",
+  "target_gate": "MNK-004",
+  "fixture_template": "MN_EVENT_SPECIFIC_BURDEN_DARVO_FIXTURE_V0_1",
+  "authority_created": false,
+  "legal_finding_created": false,
+  "wrongdoing_finding_created": false,
+  "execution_started": false,
+  "public_replay_started": false,
+  "purpose": "Collect the minimum event-specific receipts required to determine whether a burden changed and, if so, whether an authority for that change is source-bound.",
+  "entry_condition": {
+    "required": [
+      "one Minnesota event candidate",
+      "one identifiable actor or office",
+      "one exact proposition or adverse-action reason",
+      "at least one source locator"
+    ],
+    "missing_entry_field_result": "HOLD"
+  },
+  "interrogation": [
+    {
+      "step": 1,
+      "field": "EVENT_ID",
+      "question": "What single event are we auditing?",
+      "receipt_required": true
+    },
+    {
+      "step": 2,
+      "field": "ACTOR_OR_OFFICE",
+      "question": "Who imposed, communicated, or enforced the burden?",
+      "receipt_required": true
+    },
+    {
+      "step": 3,
+      "field": "EXACT_LANGUAGE",
+      "question": "What exact language created or communicated the burden?",
+      "receipt_required": true
+    },
+    {
+      "step": 4,
+      "field": "CLOCK_SET",
+      "question": "What are the event, document, publication, effective, update, and retrieval clocks?",
+      "receipt_required": true
+    },
+    {
+      "step": 5,
+      "field": "BURDEN_BEFORE",
+      "question": "Immediately before this event, who had to prove what?",
+      "receipt_required": true
+    },
+    {
+      "step": 6,
+      "field": "BURDEN_AFTER",
+      "question": "Immediately after this event, who had to prove what?",
+      "receipt_required": true
+    },
+    {
+      "step": 7,
+      "field": "DELTA",
+      "question": "What changed between BURDEN_BEFORE and BURDEN_AFTER?",
+      "receipt_required": false,
+      "derivation": "BURDEN_AFTER - BURDEN_BEFORE"
+    },
+    {
+      "step": 8,
+      "field": "SHIFT_AUTHORITY",
+      "question": "What statute, rule, order, policy, contract term, delegation, or other authority permits that change?",
+      "receipt_required": true
+    },
+    {
+      "step": 9,
+      "field": "AUTHORITY_VERSION",
+      "question": "Which version of that authority was effective when the event occurred?",
+      "receipt_required": true
+    },
+    {
+      "step": 10,
+      "field": "NOTICE_OF_SHIFT",
+      "question": "Was the individual told that the burden changed, why, and under what authority?",
+      "receipt_required": true
+    },
+    {
+      "step": 11,
+      "field": "EVIDENCE_ALREADY_SUBMITTED",
+      "question": "What relevant evidence had already been supplied before the new burden was imposed?",
+      "receipt_required": true
+    },
+    {
+      "step": 12,
+      "field": "COUNTEREVIDENCE",
+      "question": "What evidence contradicts, narrows, or explains the proposed burden-shift interpretation?",
+      "receipt_required": true
+    },
+    {
+      "step": 13,
+      "field": "REVIEW_PATH",
+      "question": "What correction, reconsideration, appeal, or independent review path existed?",
+      "receipt_required": true
+    },
+    {
+      "step": 14,
+      "field": "FINAL_OUTCOME",
+      "question": "What happened after challenge or review, if anything?",
+      "receipt_required": true
+    }
+  ],
+  "classification_logic": {
+    "NO_DELTA": "PASS_NO_BURDEN_SHIFT_OBSERVED",
+    "DELTA_AND_AUTHORITY_BOUND": "PASS_AUTHORIZED_SHIFT_BOUND",
+    "DELTA_AND_AUTHORITY_MISSING": "CONFLICT_UNEXPLAINED_BURDEN_SHIFT",
+    "DELTA_AND_AUTHORITY_CONFLICTING": "CONFLICT_AUTHORITY_RECORDS_DISAGREE",
+    "BURDEN_BEFORE_OR_AFTER_UNBOUND": "HOLD",
+    "EXACT_LANGUAGE_UNBOUND": "HOLD",
+    "CLOCKS_UNBOUND": "HOLD"
+  },
+  "forbidden_promotions": [
+    "BURDEN_SHIFT -> DARVO",
+    "BURDEN_SHIFT -> GUILT",
+    "BURDEN_SHIFT -> LIABILITY",
+    "BURDEN_SHIFT -> INTENT",
+    "UNAUTHORIZED_SHIFT -> CRIME",
+    "MISSING_AUTHORITY_RECEIPT -> NO_AUTHORITY_EXISTS"
+  ],
+  "child_facing": [
+    "What did you have to prove before?",
+    "What did you have to prove after?",
+    "Who changed it?",
+    "What rule let them change it?",
+    "Were you told?",
+    "Show me the receipt.",
+    "If the receipt is missing, HOLD."
+  ],
+  "gate_projection": {
+    "mnk_004": "NOT_EXERCISED",
+    "reason": "This packet binds the interrogation method only. A real event-specific fixture must supply the receipts."
+  },
+  "terminal": "HOLD_INTERROGATION_PACKET_BOUND_EVENT_UNBOUND"
+}
