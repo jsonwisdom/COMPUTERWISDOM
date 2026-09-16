@@ -1,0 +1,17 @@
+{
+  "ACCOUNT_STRING": "jsonwisdom",
+  "AUTHORITY_CREATED": false,
+  "PLATFORM": "github-pages",
+  "PUBLICATION_URL": "https://jsonwisdom.github.io/COMPUTERWISDOM/",
+  "bytes_github_index": 1160,
+  "bytes_live": 1160,
+  "capture_method": "https_get_user_agent_JSONWisdomPackager/1.0",
+  "default_branch_head_sha_observed": "b6e55ea0e5b8f089b9f9ddda3a13844b0143f434",
+  "github_contents_api_unauthenticated": "HTTP_403",
+  "github_index_git_blob_sha1": "ce3c959fc89355dfa66e03446d75d834e4c61baf",
+  "github_index_ref_used": "b6e55ea0e5b8f089b9f9ddda3a13844b0143f434",
+  "github_index_source": "https://raw.githubusercontent.com/jsonwisdom/COMPUTERWISDOM/b6e55ea0e5b8f089b9f9ddda3a13844b0143f434/index.html",
+  "http_status_live": 200,
+  "live_git_blob_sha1": "ce3c959fc89355dfa66e03446d75d834e4c61baf",
+  "readback_method": "https_get_user_agent_JSONWisdomPackager/1.0-readback"
+}

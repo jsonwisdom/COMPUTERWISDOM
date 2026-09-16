@@ -1,0 +1,17 @@
+{
+  "ACCOUNT_STRING": "jsonwisdom",
+  "AUTHORITY_CREATED": false,
+  "PLATFORM": "github-pages",
+  "PUBLICATION_URL": "https://jsonwisdom.github.io/AL/",
+  "bytes_github_index": 13748,
+  "bytes_live": 13748,
+  "capture_method": "https_get_user_agent_JSONWisdomPackager/1.0",
+  "default_branch_head_sha_observed": "7295d0aa8b140db61fae249613c5b497769d1ce0",
+  "github_contents_api_unauthenticated": "HTTP_403",
+  "github_index_git_blob_sha1": "27e4ae42774b24a441cacf9477c107802e8ffe76",
+  "github_index_ref_used": "master",
+  "github_index_source": "https://raw.githubusercontent.com/jsonwisdom/AL/master/index.html",
+  "http_status_live": 200,
+  "live_git_blob_sha1": "27e4ae42774b24a441cacf9477c107802e8ffe76",
+  "readback_method": "https_get_user_agent_JSONWisdomPackager/1.0-readback"
+}
