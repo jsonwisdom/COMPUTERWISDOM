@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.invalid/schemas/jaywisdom/fraud_ledger_source_adapter.v0_1.schema.json",
+  "title": "JSONWisdom Fraud Ledger Source Adapter v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "classification",
+    "source",
+    "claims",
+    "claim_truth_proven",
+    "human_guilt_determined",
+    "authority_created"
+  ],
+  "properties": {
+    "format": {
+      "const": "FRAUD_LEDGER_SOURCE_ADAPTER_V0.1"
+    },
+    "classification": {
+      "const": "LIVE_PUBLIC_SOURCE_RECORD"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "url",
+        "fetched_at",
+        "content_type",
+        "byte_length",
+        "sha256",
+        "raw_bytes_preserved"
+      ],
+      "properties": {
+        "url": {"type": "string", "format": "uri"},
+        "fetched_at": {"type": "string", "format": "date-time"},
+        "content_type": {"type": "string", "minLength": 1},
+        "byte_length": {"type": "integer", "minimum": 0},
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "raw_bytes_preserved": {"const": true}
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "claim_id",
+          "claim_class",
+          "agency",
+          "published_value",
+          "disposition"
+        ],
+        "properties": {
+          "claim_id": {"type": "string", "minLength": 1},
+          "claim_class": {
+            "enum": ["UNCOVERED", "STOPPED", "ENFORCED"]
+          },
+          "agency": {"type": "string", "minLength": 1},
+          "location": {"type": ["string", "null"]},
+          "published_value": {},
+          "corroboration_refs": {
+            "type": "array",
+            "items": {"type": "string"}
+          },
+          "disposition": {
+            "enum": ["PASS", "CONFLICT", "GAP"]
+          }
+        }
+      }
+    },
+    "claim_truth_proven": {"const": false},
+    "human_guilt_determined": {"const": false},
+    "authority_created": {"const": false}
+  }
+}

@@ -1,0 +1,55 @@
+{
+  "format": "JASONS_DICE_12_JUSTICE_LANES_V0.1",
+  "classification": "PRECOMMITTED_RANDOMIZED_AUDIT_LANE_MAP",
+  "purpose": "ANTI_CHERRY_PICKING_AUDIT_LANE_SELECTION_ONLY",
+  "dice": {
+    "die_a": "D6_DISTINGUISHABLE_A",
+    "die_b": "D6_DISTINGUISHABLE_B",
+    "ordered_pair_required": true,
+    "sum_is_not_used": true,
+    "outcome_count": 36
+  },
+  "lane_count": 12,
+  "lane_assignment_rule": "index=((die_a-1)*6)+die_b; lane=((index-1)%12)+1",
+  "lanes": [
+    {"lane": 1, "id": "CLAIM_PUBLICATION", "question": "What exactly was publicly claimed or published?"},
+    {"lane": 2, "id": "SOURCE_PROVENANCE", "question": "Can the source bytes, timestamp, URL, and hash be reproduced?"},
+    {"lane": 3, "id": "MONEY_MATH", "question": "Does the amount, time period, and money class replay without category collapse?"},
+    {"lane": 4, "id": "IDENTITY_ELIGIBILITY", "question": "What identity or eligibility control is actually evidenced?"},
+    {"lane": 5, "id": "PROGRAM_PROVIDER", "question": "Is the program, provider, recipient, or transaction linkage evidenced?"},
+    {"lane": 6, "id": "LOCATION_JURISDICTION", "question": "What location and jurisdiction are actually bound to the claim?"},
+    {"lane": 7, "id": "ADMINISTRATIVE_CONTROLS", "question": "What pre-payment, suspension, repayment, exclusion, or other administrative action is evidenced?"},
+    {"lane": 8, "id": "OIG_AUDIT", "question": "Is there an Inspector General, audit, or equivalent independent oversight record?"},
+    {"lane": 9, "id": "CIVIL_ENFORCEMENT", "question": "Is there a civil complaint, settlement, penalty, or recovery record?"},
+    {"lane": 10, "id": "CRIMINAL_ENFORCEMENT", "question": "Is there a criminal charge, indictment, plea, or prosecution record?"},
+    {"lane": 11, "id": "COURT_ADJUDICATION", "question": "What did a court actually adjudicate, if anything?"},
+    {"lane": 12, "id": "APPEAL_OVERSIGHT_CORRECTION", "question": "Is there an appeal, correction, later oversight finding, reversal, or superseding record?"}
+  ],
+  "mapping": [
+    {"die_a":1,"die_b":1,"lane":1},{"die_a":1,"die_b":2,"lane":2},{"die_a":1,"die_b":3,"lane":3},{"die_a":1,"die_b":4,"lane":4},{"die_a":1,"die_b":5,"lane":5},{"die_a":1,"die_b":6,"lane":6},
+    {"die_a":2,"die_b":1,"lane":7},{"die_a":2,"die_b":2,"lane":8},{"die_a":2,"die_b":3,"lane":9},{"die_a":2,"die_b":4,"lane":10},{"die_a":2,"die_b":5,"lane":11},{"die_a":2,"die_b":6,"lane":12},
+    {"die_a":3,"die_b":1,"lane":1},{"die_a":3,"die_b":2,"lane":2},{"die_a":3,"die_b":3,"lane":3},{"die_a":3,"die_b":4,"lane":4},{"die_a":3,"die_b":5,"lane":5},{"die_a":3,"die_b":6,"lane":6},
+    {"die_a":4,"die_b":1,"lane":7},{"die_a":4,"die_b":2,"lane":8},{"die_a":4,"die_b":3,"lane":9},{"die_a":4,"die_b":4,"lane":10},{"die_a":4,"die_b":5,"lane":11},{"die_a":4,"die_b":6,"lane":12},
+    {"die_a":5,"die_b":1,"lane":1},{"die_a":5,"die_b":2,"lane":2},{"die_a":5,"die_b":3,"lane":3},{"die_a":5,"die_b":4,"lane":4},{"die_a":5,"die_b":5,"lane":5},{"die_a":5,"die_b":6,"lane":6},
+    {"die_a":6,"die_b":1,"lane":7},{"die_a":6,"die_b":2,"lane":8},{"die_a":6,"die_b":3,"lane":9},{"die_a":6,"die_b":4,"lane":10},{"die_a":6,"die_b":5,"lane":11},{"die_a":6,"die_b":6,"lane":12}
+  ],
+  "fairness": {
+    "ordered_outcomes_per_lane": 3,
+    "lane_probability": "1/12",
+    "mapping_frozen_before_roll": true,
+    "roll_selects_lane_only": true,
+    "roll_selects_verdict": false,
+    "roll_selects_guilt": false,
+    "roll_creates_authority": false
+  },
+  "laws": [
+    "RANDOMNESS_SELECTS_AUDIT_LANE_ONLY",
+    "AUDIT_LANE != VERDICT",
+    "ROLL != EVIDENCE",
+    "ROLL != GUILT",
+    "ROLL != AUTHORITY",
+    "PASS != CLAIM_IS_TRUE",
+    "PRECOMMITMENT_PRECEDES_SELECTION"
+  ],
+  "authority_created": false
+}

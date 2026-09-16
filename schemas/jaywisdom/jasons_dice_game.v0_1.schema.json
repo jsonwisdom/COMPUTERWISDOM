@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.invalid/schemas/jaywisdom/jasons_dice_game.v0_1.schema.json",
+  "title": "Jason's Dice Game v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "classification",
+    "purpose",
+    "round_id",
+    "candidate_pool",
+    "roll",
+    "selection",
+    "randomness_selects_claim_only",
+    "randomness_generates_disposition",
+    "claim_truth_proven",
+    "human_guilt_determined",
+    "authority_created"
+  ],
+  "properties": {
+    "format": {"const": "JASONS_DICE_GAME_V0.1"},
+    "classification": {"const": "RANDOMIZED_CLAIM_SELECTION_RECORD"},
+    "purpose": {"const": "ANTI_CHERRY_PICKING_SELECTION_ONLY"},
+    "round_id": {"type": "string", "minLength": 1},
+    "candidate_pool": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "freeze_id",
+        "source_adapter_sha256",
+        "candidate_count",
+        "candidate_claim_ids",
+        "frozen_before_roll"
+      ],
+      "properties": {
+        "freeze_id": {"type": "string", "minLength": 1},
+        "source_adapter_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "candidate_count": {"const": 6},
+        "candidate_claim_ids": {
+          "type": "array",
+          "minItems": 6,
+          "maxItems": 6,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "frozen_before_roll": {"const": true}
+      }
+    },
+    "roll": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "die",
+        "observed_value",
+        "randomness_source",
+        "randomness_receipt",
+        "randomness_quality_proven"
+      ],
+      "properties": {
+        "die": {"const": "D6"},
+        "observed_value": {"type": "integer", "minimum": 1, "maximum": 6},
+        "randomness_source": {
+          "enum": ["PHYSICAL_DIE", "CRYPTOGRAPHIC_RNG", "OTHER_RECORDED"]
+        },
+        "randomness_receipt": {"type": "string", "minLength": 1},
+        "randomness_quality_proven": {"type": "boolean"}
+      }
+    },
+    "selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selected_slot", "selected_claim_id", "binding_match"],
+      "properties": {
+        "selected_slot": {"type": "integer", "minimum": 1, "maximum": 6},
+        "selected_claim_id": {"type": "string", "minLength": 1},
+        "binding_match": {"const": true}
+      }
+    },
+    "randomness_selects_claim_only": {"const": true},
+    "randomness_generates_disposition": {"const": false},
+    "claim_truth_proven": {"const": false},
+    "human_guilt_determined": {"const": false},
+    "authority_created": {"const": false}
+  },
+  "allOf": [
+    {"if": {"properties": {"roll": {"properties": {"observed_value": {"const": 1}}}}},
+     "then": {"properties": {"selection": {"properties": {"selected_slot": {"const": 1}}}}}},
+    {"if": {"properties": {"roll": {"properties": {"observed_value": {"const": 2}}}}},
+     "then": {"properties": {"selection": {"properties": {"selected_slot": {"const": 2}}}}}},
+    {"if": {"properties": {"roll": {"properties": {"observed_value": {"const": 3}}}}},
+     "then": {"properties": {"selection": {"properties": {"selected_slot": {"const": 3}}}}}},
+    {"if": {"properties": {"roll": {"properties": {"observed_value": {"const": 4}}}}},
+     "then": {"properties": {"selection": {"properties": {"selected_slot": {"const": 4}}}}}},
+    {"if": {"properties": {"roll": {"properties": {"observed_value": {"const": 5}}}}},
+     "then": {"properties": {"selection": {"properties": {"selected_slot": {"const": 5}}}}}},
+    {"if": {"properties": {"roll": {"properties": {"observed_value": {"const": 6}}}}},
+     "then": {"properties": {"selection": {"properties": {"selected_slot": {"const": 6}}}}}}
+  ]
+}
