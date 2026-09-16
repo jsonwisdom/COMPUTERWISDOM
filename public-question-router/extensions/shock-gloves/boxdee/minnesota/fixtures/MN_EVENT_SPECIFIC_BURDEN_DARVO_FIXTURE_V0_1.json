@@ -1,0 +1,99 @@
+{
+  "fixture_id": "MN_EVENT_SPECIFIC_BURDEN_DARVO_FIXTURE_V0_1",
+  "classification": "REPLAY_FIXTURE_TEMPLATE_ONLY",
+  "kernel": "MINNESOTA_REPLAY_KERNEL_V1_1",
+  "target_gates": ["MNK-004", "MNK-005"],
+  "authority_created": false,
+  "legal_finding_created": false,
+  "wrongdoing_finding_created": false,
+  "execution_started": false,
+  "public_replay_started": false,
+  "event": {
+    "event_id": null,
+    "jurisdiction": "Minnesota",
+    "actor": null,
+    "office_or_entity": null,
+    "exact_language": null,
+    "language_source_locator": null,
+    "event_time": null,
+    "document_time": null,
+    "publication_time": null,
+    "retrieval_time": null
+  },
+  "institution_assertion": {
+    "exact_proposition": null,
+    "evidence_cited": [],
+    "authority_cited": [],
+    "reason_code_or_rule": null,
+    "reason_version": null
+  },
+  "burden_shift": {
+    "burden_before": null,
+    "burden_after": null,
+    "who_must_now_prove_what": null,
+    "shift_authority": null,
+    "shift_authority_state": "HOLD",
+    "notice_of_shift": null,
+    "review_path": null
+  },
+  "darvo_event": {
+    "denial": {
+      "state": "HOLD",
+      "exact_language": null,
+      "proposition_denied": null,
+      "receipt": null
+    },
+    "attack": {
+      "state": "HOLD",
+      "exact_language": null,
+      "target": null,
+      "evidentiary_basis": null,
+      "substituted_for_merits_evidence": "HOLD",
+      "receipt": null
+    },
+    "role_or_burden_reversal": {
+      "state": "HOLD",
+      "exact_change": null,
+      "authority": null,
+      "receipt": null
+    },
+    "pattern_state": "HOLD",
+    "guilt": "HOLD",
+    "liability": "HOLD",
+    "intent": "HOLD"
+  },
+  "counterevidence": [],
+  "review": {
+    "reviewer": null,
+    "independent": null,
+    "correction_path": null,
+    "final_outcome": null,
+    "review_receipt": null
+  },
+  "required_receipts": {
+    "exact_language_receipt": "MISSING",
+    "actor_identity_receipt": "MISSING",
+    "clock_receipts": "MISSING",
+    "burden_before_receipt": "MISSING",
+    "burden_after_receipt": "MISSING",
+    "shift_authority_receipt": "MISSING",
+    "counterevidence_receipt": "MISSING",
+    "review_receipt": "MISSING"
+  },
+  "gate_projection": {
+    "mnk_004": "NOT_EXERCISED",
+    "mnk_005": "NOT_EXERCISED",
+    "reason": "Template only. No event may exercise MNK-004 or MNK-005 until the required event-specific receipts are bound."
+  },
+  "hard_membranes": [
+    "DENIAL != DARVO",
+    "DARVO_PATTERN != GUILT",
+    "DARVO_PATTERN != LIABILITY",
+    "ROLE_REVERSAL != AUTHORIZED_BURDEN_SHIFT",
+    "MISSING_RECEIPT = HOLD",
+    "FRAMEWORK != EVENT",
+    "TEMPLATE != FINDING",
+    "PROCESS_PASS != PROOF"
+  ],
+  "terminal": "HOLD_TEMPLATE_UNBOUND"
+}
