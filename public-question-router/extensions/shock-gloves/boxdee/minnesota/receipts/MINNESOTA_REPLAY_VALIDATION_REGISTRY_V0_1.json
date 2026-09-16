@@ -70,6 +70,9 @@
     "receipt_id": "MN_REPLAY_VALIDATION_ONLY_0004",
     "preferred_gates": ["MNK-004", "MNK-005"],
     "preferred_fixture_class": "event-specific Minnesota denial/attack/role-or-burden-reversal sequence with exact language, actor, clocks, burden before, burden after, shift authority, counterevidence and review receipts",
+    "fixture_template_id": "MN_EVENT_SPECIFIC_BURDEN_DARVO_FIXTURE_V0_1",
+    "fixture_template_path": "public-question-router/extensions/shock-gloves/boxdee/minnesota/fixtures/MN_EVENT_SPECIFIC_BURDEN_DARVO_FIXTURE_V0_1.json",
+    "fixture_template_state": "HOLD_TEMPLATE_UNBOUND",
     "fallback_gate": "MNK-003",
     "fallback_fixture_class": "source object with explicit conflicting event/document/publication/update clocks",
     "search_miss_rule": "If no qualifying fixture is located, retain HOLD; do not convert search miss into nonexistence."
