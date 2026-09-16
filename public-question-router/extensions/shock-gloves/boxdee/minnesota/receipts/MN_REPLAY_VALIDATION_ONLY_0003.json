@@ -1,0 +1,137 @@
+{
+  "receipt_id": "MN_REPLAY_VALIDATION_ONLY_0003",
+  "classification": "REPLAY_VALIDATION_ONLY",
+  "kernel": "MINNESOTA_REPLAY_KERNEL_V1_1",
+  "test_packet": "MINNESOTA_REPLAY_KERNEL_V1_1_TEST_PACKET",
+  "validation_mode": "SEARCH_MISS_NO_FAKE_GREEN",
+  "authority_created": false,
+  "legal_finding_created": false,
+  "wrongdoing_finding_created": false,
+  "execution_started": false,
+  "public_replay_started": false,
+  "target_fixture_class": "event-specific Minnesota denial/attack/role-or-burden-reversal sequence with exact language, exact actor, exact clocks, burden before, burden after, shift authority, counterevidence, and receipts",
+  "search_surfaces": [
+    {
+      "surface": "GitHub",
+      "scope": ["jsonwisdom/JOY", "jsonwisdom/COMPUTERWISDOM"],
+      "queries": [
+        "DARVO Minnesota burden shift role reversal exact language",
+        "burden shift Minnesota exact language denial attack",
+        "Minnesota denial prove citizen appeal burden adverse action exact reason"
+      ],
+      "result": "FRAMEWORK_OBJECTS_FOUND_BUT_NO_EVENT_SPECIFIC_CHAIN_BOUND"
+    },
+    {
+      "surface": "Google Drive",
+      "queries": [
+        "burden before burden after Minnesota denial attack role reversal Jason",
+        "Minnesota denial prove citizen DEED appeal adverse action exact reason",
+        "DEED denial decision appeal Minnesota Jason Wisdom adverse action"
+      ],
+      "result": "FRAMEWORK_OBJECTS_FOUND_AND_TARGETED_SEARCH_MISSES; NO_EVENT_SPECIFIC_CHAIN_BOUND"
+    }
+  ],
+  "candidate_sources_reviewed": [
+    {
+      "title": "Minnesota Supreme Court — DARVO Adversarial Clerk Audit v0.2",
+      "surface": "Google Drive",
+      "document_id": "1MOb_juVLQlzfb_uDJt7bVz124ZjqJILeDEt5eB27YRo",
+      "classification": "FRAMEWORK_NOT_EVENT_FIXTURE",
+      "material_observation": "The document defines denial, attack, and role/burden-reversal gates and explicitly leaves the system-wide theory at HOLD_EVENT_RECEIPTS_REQUIRED until exact adverse-action chains are bound event by event."
+    },
+    {
+      "title": "Minnesota Supreme Court — DARVO Application Receipt v0.1",
+      "surface": "Google Drive",
+      "document_id": "1WGfkZiVr3-3rIkCoyaMbJ7p0RaapQ2F6e4lkQGeKkhg",
+      "classification": "LEGAL_TRANSLATION_NOT_EVENT_FIXTURE",
+      "material_observation": "The document defines exact-denial, attack, and burden-shift fields but does not bind one concrete Minnesota adverse-action sequence."
+    },
+    {
+      "title": "DailyDARVODocket — Minnesota Edition v0.1",
+      "surface": "Google Drive",
+      "document_id": "1nG0X5VPlax8NbO1_ASE0n6CfiwC2C7PI3gktcUrIQxY",
+      "classification": "DOCKET_SCHEMA_NOT_EVENT_FIXTURE",
+      "material_observation": "The document supplies daily docket fields and DARVO gates, but does not itself bind a qualifying event sequence for MNK-004/MNK-005."
+    },
+    {
+      "title": "ProofPositivePincerPost — HotDishDiplomacy DARVO Clerk Mechanics v0.1",
+      "surface": "GitHub",
+      "repository": "jsonwisdom/JOY",
+      "path": "docs/goblin-courts/PROOF_POSITIVE_PINCER_POST_HOTDISH_DIPLOMACY_DARVO_V0_1.md",
+      "blob_sha": "4ea18f8362791a7bd886c07cfb0384f7735b4cdd",
+      "classification": "FICTIONAL_CIVIC_REPLAY_MECHANICS_NOT_EVENT_FIXTURE",
+      "material_observation": "The file defines the exact fields needed for a DARVO application clerk but explicitly classifies itself as fictional civic-replay + public-record/onchain audit mechanics."
+    }
+  ],
+  "state_translation": {
+    "search_miss_means": "HOLD",
+    "search_miss_does_not_mean": [
+      "NO_SUCH_EVENT",
+      "NO_DARVO_PATTERN_EXISTS",
+      "NO_BURDEN_SHIFT_EXISTS",
+      "NO_WRONGDOING_EXISTS"
+    ],
+    "mnk_004_state": "NOT_EXERCISED",
+    "mnk_005_state": "NOT_EXERCISED",
+    "reason": "The corpus currently supplies frameworks and audit mechanics, but not the exact event-specific receipts required to test a real denial/attack/role-or-burden-reversal sequence without manufacturing facts."
+  },
+  "evaluations": [
+    {
+      "id": "MNK-001",
+      "result": "PASS",
+      "observed": "The required event-specific receipts are missing, so the target proposition remains HOLD rather than being promoted."
+    },
+    {
+      "id": "MNK-002",
+      "result": "PASS",
+      "observed": "Reasonable targeted searches did not locate a qualifying event-specific fixture. The search miss is preserved as HOLD and is not converted into a negative world fact.",
+      "forbidden_promotions": [
+        "RECORD_DOES_NOT_EXIST",
+        "EVENT_DID_NOT_HAPPEN",
+        "DARVO_DID_NOT_OCCUR",
+        "BURDEN_SHIFT_DID_NOT_OCCUR"
+      ]
+    },
+    {
+      "id": "MNK-004",
+      "result": "NOT_EXERCISED",
+      "reason": "No event-specific burden-before/burden-after/shift-authority receipt chain is bound."
+    },
+    {
+      "id": "MNK-005",
+      "result": "NOT_EXERCISED",
+      "reason": "No event-specific exact denial/attack/role-reversal sequence is bound."
+    },
+    {
+      "id": "MNK-010",
+      "result": "PASS",
+      "observed": "This receipt appends a new validation delta and does not rewrite prior fixtures, receipts, or framework documents."
+    },
+    {
+      "id": "MNK-011",
+      "result": "PASS",
+      "observed": "The validation result creates no governmental, legal, investigative, or adjudicative authority."
+    },
+    {
+      "id": "MNK-013",
+      "result": "PASS",
+      "observed": "The execution operator and public replay run remain unbound; neither is started by this search validation."
+    }
+  ],
+  "summary": {
+    "tests_total": 13,
+    "tests_exercised_this_receipt": 5,
+    "tests_passed_this_receipt": 5,
+    "tests_failed_this_receipt": 0,
+    "new_distinct_gate_exercised_vs_0001_0002": ["MNK-002"],
+    "cumulative_distinct_gates_exercised_across_0001_0002_0003": 8,
+    "cumulative_distinct_gates_remaining_unexercised": 5,
+    "coverage_fraction": "8/13",
+    "coverage_percent_rounded": 61.54,
+    "coverage_semantics": "validation-gate exercise coverage only",
+    "no_fake_green": true,
+    "overall_disposition": "HOLD"
+  },
+  "reason_for_overall_hold": "The preferred MNK-004/MNK-005 real-event fixture is not yet receipt-bound. Search misses cannot be promoted into proof of absence, and the execution operator/public replay run remain unbound.",
+  "next_required_receipt": "Locate and bind one event-specific Minnesota adverse-action sequence containing exact language, actor, clocks, burden before, burden after, shift authority, counterevidence, and review/receipt fields; then exercise MNK-004 and MNK-005 without changing this receipt. Fallback remains MNK-003 with an explicit clock-conflict fixture."
+}
