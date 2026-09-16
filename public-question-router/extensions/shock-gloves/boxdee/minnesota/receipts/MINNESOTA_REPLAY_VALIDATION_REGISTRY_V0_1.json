@@ -73,6 +73,9 @@
     "fixture_template_id": "MN_EVENT_SPECIFIC_BURDEN_DARVO_FIXTURE_V0_1",
     "fixture_template_path": "public-question-router/extensions/shock-gloves/boxdee/minnesota/fixtures/MN_EVENT_SPECIFIC_BURDEN_DARVO_FIXTURE_V0_1.json",
     "fixture_template_state": "HOLD_TEMPLATE_UNBOUND",
+    "mnk_004_interrogation_packet_id": "MNK_004_BURDEN_SHIFT_INTERROGATION_PACKET_V0_1",
+    "mnk_004_interrogation_packet_path": "public-question-router/extensions/shock-gloves/boxdee/minnesota/interrogations/MNK_004_BURDEN_SHIFT_INTERROGATION_PACKET_V0_1.json",
+    "mnk_004_interrogation_packet_state": "HOLD_INTERROGATION_PACKET_BOUND_EVENT_UNBOUND",
     "fallback_gate": "MNK-003",
     "fallback_fixture_class": "source object with explicit conflicting event/document/publication/update clocks",
     "search_miss_rule": "If no qualifying fixture is located, retain HOLD; do not convert search miss into nonexistence."
