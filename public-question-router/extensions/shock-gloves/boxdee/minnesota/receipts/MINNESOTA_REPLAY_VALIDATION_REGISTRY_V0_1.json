@@ -23,14 +23,24 @@
       "passed": 5,
       "failed": 0,
       "overall_disposition": "HOLD"
+    },
+    {
+      "receipt_id": "MN_REPLAY_VALIDATION_ONLY_0003",
+      "fixture": "TARGETED_GITHUB_DRIVE_SEARCH_FOR_EVENT_SPECIFIC_MNK_004_MNK_005_FIXTURE",
+      "exercised": ["MNK-001", "MNK-002", "MNK-010", "MNK-011", "MNK-013"],
+      "passed": 5,
+      "failed": 0,
+      "overall_disposition": "HOLD",
+      "note": "Frameworks were located, but no qualifying event-specific Minnesota denial/attack/role-or-burden-reversal chain was receipt-bound. Search miss remains HOLD and is not a negative world fact."
     }
   ],
   "cumulative_gate_state": {
     "tests_total": 13,
-    "distinct_exercised": 7,
-    "distinct_unexercised": 6,
+    "distinct_exercised": 8,
+    "distinct_unexercised": 5,
     "exercised_ids": [
       "MNK-001",
+      "MNK-002",
       "MNK-006",
       "MNK-007",
       "MNK-010",
@@ -39,15 +49,14 @@
       "MNK-013"
     ],
     "unexercised_ids": [
-      "MNK-002",
       "MNK-003",
       "MNK-004",
       "MNK-005",
       "MNK-008",
       "MNK-009"
     ],
-    "coverage_fraction": "7/13",
-    "coverage_percent_rounded": 53.85,
+    "coverage_fraction": "8/13",
+    "coverage_percent_rounded": 61.54,
     "coverage_semantics": "validation-gate exercise coverage only",
     "coverage_not_truth": true,
     "coverage_not_guilt": true,
@@ -55,13 +64,14 @@
   },
   "no_fake_green": {
     "overall_disposition": "HOLD",
-    "reason": "Six mandatory gates remain unexercised and the execution operator/public replay run remain unbound."
+    "reason": "Five mandatory gates remain unexercised; the preferred event-specific MNK-004/MNK-005 fixture is not yet receipt-bound; and the execution operator/public replay run remain unbound."
   },
   "next_preferred_validation": {
-    "receipt_id": "MN_REPLAY_VALIDATION_ONLY_0003",
+    "receipt_id": "MN_REPLAY_VALIDATION_ONLY_0004",
     "preferred_gates": ["MNK-004", "MNK-005"],
-    "preferred_fixture_class": "event-specific denial/attack/role-or-burden-reversal sequence with exact language, clocks, authority and counterevidence",
+    "preferred_fixture_class": "event-specific Minnesota denial/attack/role-or-burden-reversal sequence with exact language, actor, clocks, burden before, burden after, shift authority, counterevidence and review receipts",
     "fallback_gate": "MNK-003",
-    "fallback_fixture_class": "source object with explicit conflicting event/document/publication/update clocks"
+    "fallback_fixture_class": "source object with explicit conflicting event/document/publication/update clocks",
+    "search_miss_rule": "If no qualifying fixture is located, retain HOLD; do not convert search miss into nonexistence."
   }
 }
