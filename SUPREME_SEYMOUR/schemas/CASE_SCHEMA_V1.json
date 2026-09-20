@@ -1,0 +1,68 @@
+{
+  "version": "1.0",
+  "type": "CASE CONFORMANCE ENVELOPE",
+  "authority": false,
+  "case_id": "STRING",
+  "case_version": "STRING",
+  "constitution_ref": "CONSTITUTIONAL_REPLAY_JUDGE_V1.md",
+  "constitution_hash": "SHA256_OF_CANONICAL_V1_MD",
+  "claim_objects": [
+    {
+      "claim_id": "STRING",
+      "claim_text": "STRING",
+      "claim_scope": "STRING"
+    }
+  ],
+  "source_objects": [
+    {
+      "source_id": "STRING",
+      "source_type": "STRING",
+      "source_location": "STRING",
+      "transport_log": "STRING"
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "STRING",
+      "receipt_existence": "YES | NO | UNKNOWN",
+      "receipt_authenticity": "AUTHENTIC | UNVERIFIED | DISPUTED | UNKNOWN"
+    }
+  ],
+  "anchors": [
+    {
+      "anchor_id": "STRING",
+      "anchor_type": "STRING",
+      "anchor_trust": "STRING"
+    }
+  ],
+  "application_relations": [
+    {
+      "claim_id": "STRING",
+      "applicability_status": "APPLICABLE | NOT_APPLICABLE | HOLD"
+    }
+  ],
+  "transport_result": "STRING",
+  "claim_provenance_result": "STRING",
+  "applicability_result": "STRING",
+  "receipt_existence": "YES | NO | UNKNOWN",
+  "receipt_authenticity": "AUTHENTIC | UNVERIFIED | DISPUTED | UNKNOWN",
+  "substantive_support": "NOT_EVALUATED_BY_PROTOCOL",
+  "routing_state": "ANSWERED_BY_PROTOCOL | HOLD_INSIDE_PROTOCOL | NOT_APPLICABLE | ROUTED_OUTSIDE_PROTOCOL",
+  "external_review_status": "OBSERVED_ONLY",
+  "invariant_checks": [
+    {
+      "invariant": "STRING",
+      "status": "SATISFIED | VIOLATED"
+    }
+  ],
+  "holds": [
+    "STRING"
+  ],
+  "not_applicable": [
+    "STRING"
+  ],
+  "conflicts": [
+    "STRING"
+  ],
+  "conformance_result": "PASS | HOLD | FAIL | NONCONFORMING_CASE_FORMAT"
+}

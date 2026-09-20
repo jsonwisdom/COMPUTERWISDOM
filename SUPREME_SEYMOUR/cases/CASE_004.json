@@ -1,0 +1,118 @@
+{
+  "version": "1.0",
+  "type": "CASE CONFORMANCE ENVELOPE",
+  "authority": false,
+  "case_id": "UNITED_STATES_v_FREGIA_2021",
+  "case_version": "1.0",
+  "constitution_ref": "CONSTITUTIONAL_REPLAY_JUDGE_V1.md",
+  "constitution_hash": "f808e0e50debdddb05150b102d03a9b85016929bafa8693eb19974b13c3a8d91",
+  "claim_objects": [
+    {
+      "claim_id": "CLAIM_004_SUPPRESSION",
+      "claim_text": "The Ninth Circuit held that the district court did not err in denying Fregia's motion to suppress the CSLI-related evidence.",
+      "claim_scope": "Case-specific appellate disposition."
+    },
+    {
+      "claim_id": "CLAIM_004_FOURTH_AMENDMENT",
+      "claim_text": "The Ninth Circuit concluded that the orders complied with Fourth Amendment warrant requirements.",
+      "claim_scope": "Case-specific constitutional analysis in a nonprecedential memorandum."
+    },
+    {
+      "claim_id": "CLAIM_004_STATE_PATH",
+      "claim_text": "The prosecutors proceeded under the incorrect Montana statute for CSLI, but that state-law defect did not itself require suppression in federal court.",
+      "claim_scope": "Case-specific state/federal suppression analysis."
+    }
+  ],
+  "source_objects": [
+    {
+      "source_id": "SRC_004_CA9_MEMORANDUM",
+      "source_type": "FEDERAL_APPELLATE_COURT_MEMORANDUM",
+      "source_location": "https://cdn.ca9.uscourts.gov/datastore/memoranda/2021/11/02/20-30158.pdf",
+      "transport_log": "Official Ninth Circuit memorandum filed November 2, 2021, No. 20-30158."
+    },
+    {
+      "source_id": "SRC_004_CA9_RULE_36_3",
+      "source_type": "FEDERAL_APPELLATE_COURT_RULE",
+      "source_location": "https://cdn.ca9.uscourts.gov/datastore/uploads/rules/rules.htm",
+      "transport_log": "Ninth Circuit Rule 36-3 governs citation/precedential treatment of unpublished dispositions."
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "RCP_004_CA9_DISPOSITION",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "RCP_004_RULE_36_3",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    }
+  ],
+  "anchors": [
+    {
+      "anchor_id": "NINTH_CIRCUIT_CASE_SPECIFIC_DISPOSITION",
+      "anchor_type": "JUDICIAL_CASE_RECORD",
+      "anchor_trust": "PASS_CASE_SPECIFIC_NONPRECEDENTIAL"
+    }
+  ],
+  "application_relations": [
+    {
+      "claim_id": "CLAIM_004_SUPPRESSION",
+      "applicability_status": "APPLICABLE"
+    },
+    {
+      "claim_id": "CLAIM_004_FOURTH_AMENDMENT",
+      "applicability_status": "APPLICABLE"
+    },
+    {
+      "claim_id": "CLAIM_004_STATE_PATH",
+      "applicability_status": "APPLICABLE"
+    }
+  ],
+  "transport_result": "PASS — official court materials provide the disposition and its precedential-status limitation.",
+  "claim_provenance_result": "PASS — the suppression, Fourth Amendment, state-statutory-path, and nonprecedential-status claims are directly attributable to the Ninth Circuit memorandum and rules.",
+  "applicability_result": "PASS — the claims are confined to this case and the memorandum is not promoted into a general governing precedent.",
+  "receipt_existence": "YES",
+  "receipt_authenticity": "AUTHENTIC",
+  "substantive_support": "NOT_EVALUATED_BY_PROTOCOL",
+  "routing_state": "ANSWERED_BY_PROTOCOL",
+  "external_review_status": "OBSERVED_ONLY",
+  "invariant_checks": [
+    {
+      "invariant": "IRREGULARITY_NE_FAILURE",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "ADMISSION_NE_SUBSTANTIVE_TRUTH",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "NOT_APPLICABLE_NE_HOLD",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "SOURCE_PROVENANCE_NE_CLAIM_PROVENANCE",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "PROTOCOL_COMPLETENESS_NE_SUBSTANTIVE_CORRECTNESS",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "CLOSURE_NE_ANSWER",
+      "status": "SATISFIED"
+    }
+  ],
+  "holds": [],
+  "not_applicable": [
+    "A_TO_B_DEVICE_APP_EDGE",
+    "B_TO_C_APP_NETWORK_EDGE",
+    "WOMEN_GIRLS_EFFECT",
+    "SEX_DISPARATE_RATE"
+  ],
+  "conflicts": [
+    "State statutory procedure was irregular, but the Ninth Circuit held that the orders satisfied the Fourth Amendment and that the state-law defect did not itself require suppression in federal court."
+  ],
+  "conformance_result": "PASS"
+}

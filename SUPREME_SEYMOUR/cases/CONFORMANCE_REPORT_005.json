@@ -1,0 +1,31 @@
+{
+  "report_version": "1.0",
+  "case_id": "ENTITY_RESOLUTION_FALSE_MERGE_CLEAN_SOURCE",
+  "case_version": "1.0",
+  "case_canonical_hash": "d5b48b1e7f7483191fbd1860b70523e1e6c379124f12a09eae6f6f7f1a124716",
+  "case_schema_ref": "CASE_SCHEMA_V1.json",
+  "case_schema_canonical_hash": "bffe76823b66bdc9638af659c37cac6194be2da926fc44048e0b8b9496fd5221",
+  "constitution_ref": "CONSTITUTIONAL_REPLAY_JUDGE_V1.md",
+  "constitution_canonical_hash": "f808e0e50debdddb05150b102d03a9b85016929bafa8693eb19974b13c3a8d91",
+  "checks": {
+    "case_format": "PASS",
+    "constitution_binding": "PASS",
+    "source_a_provenance": "PASS",
+    "source_b_provenance": "PASS",
+    "claim_generation_receipt": "PASS",
+    "derived_claim_traceability": "PASS",
+    "downstream_use_receipt": "PASS",
+    "external_contradiction_receipt": "PASS",
+    "derived_claim_validity_implied_by_sources": "NO",
+    "conflict_exposed": "PASS",
+    "substantive_support": "NOT_EVALUATED_BY_PROTOCOL",
+    "routing_state": "ANSWERED_BY_PROTOCOL"
+  },
+  "holds": [],
+  "conflicts": [
+    "The traceable derived claim Person A = Person B conflicts with an authenticated independent external receipt recording Person A and Person B as distinct identities."
+  ],
+  "conformance_result": "PASS",
+  "conformance_meaning": "The protocol can trace the generated identity claim and expose its conflict with an authenticated independent contradiction receipt. This does not convert protocol conformance into a general truth-certification authority.",
+  "authority": false
+}

@@ -1,0 +1,128 @@
+{
+  "version": "1.0",
+  "type": "CASE CONFORMANCE ENVELOPE",
+  "authority": false,
+  "case_id": "FLOCK_TEXAS_ABORTION_SEARCH_2026",
+  "case_version": "1.0",
+  "constitution_ref": "CONSTITUTIONAL_REPLAY_JUDGE_V1.md",
+  "constitution_hash": "f808e0e50debdddb05150b102d03a9b85016929bafa8693eb19974b13c3a8d91",
+  "claim_objects": [
+    {
+      "claim_id": "CLAIM_002_SEARCH_EVENT",
+      "claim_text": "A Johnson County, Texas sheriff's deputy used Flock Safety's nationwide network on May 9, 2025 while seeking a woman associated with a reported self-managed abortion.",
+      "claim_scope": "Existence, logged reason, and scale of the Flock search event."
+    },
+    {
+      "claim_id": "CLAIM_002_PURPOSE",
+      "claim_text": "The public purpose descriptions include a contemporaneous abortion-specific search reason and a later welfare/safety characterization.",
+      "claim_scope": "Purpose descriptions only; does not determine subjective motive."
+    }
+  ],
+  "source_objects": [
+    {
+      "source_id": "SRC_002_WOSU_AUDIT_LOG",
+      "source_type": "PUBLIC_MEDIA_REPORT_BASED_ON_POLICE_AUDIT_LOG",
+      "source_location": "https://www.wosu.org/politics-government/2026-08-27/columbus-flock-cameras-used-in-2025-search-for-texas-woman-who-had-abortion",
+      "transport_log": "Reports Columbus Division of Police audit logs showing the Johnson County search, its abortion-specific reason, and nationwide network access."
+    },
+    {
+      "source_id": "SRC_002_EAST_HAMPTON_FOIA",
+      "source_type": "LOCAL_NEWS_PUBLIC_RECORD_CONFIRMATION",
+      "source_location": "https://www.easthamptonstar.com/police-courts/2026618/police-anywhere-have-eyes-east-hampton",
+      "transport_log": "Independent FOIA-based confirmation of the May 9, 2025 Johnson County query and scope reaching 6,809 networks and 83,345 cameras."
+    },
+    {
+      "source_id": "SRC_002_FLOCK_STATEMENT",
+      "source_type": "VENDOR_PUBLIC_STATEMENT",
+      "source_location": "https://www.flocksafety.com/blog/statement-network-sharing-use-cases-federal-cooperation",
+      "transport_log": "Flock publicly characterizes the Johnson County search as an effort to locate a woman whose family feared she was hurt."
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "RCP_002_SEARCH_AUDIT_LOG",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "RCP_002_PURPOSE_PUBLIC_EXPLANATION",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "RCP_002_CROSS_JURISDICTION_AUTHORITY_RESOLUTION",
+      "receipt_existence": "UNKNOWN",
+      "receipt_authenticity": "UNKNOWN"
+    }
+  ],
+  "anchors": [
+    {
+      "anchor_id": "CROSS_JURISDICTION_ALPR_AUTHORITY",
+      "anchor_type": "LEGAL_AND_POLICY_AUTHORITY",
+      "anchor_trust": "CONTESTED_UNRESOLVED"
+    }
+  ],
+  "application_relations": [
+    {
+      "claim_id": "CLAIM_002_SEARCH_EVENT",
+      "applicability_status": "APPLICABLE"
+    },
+    {
+      "claim_id": "CLAIM_002_PURPOSE",
+      "applicability_status": "HOLD"
+    }
+  ],
+  "transport_result": "PASS — retrospective audit records and independent public-record reporting expose the search event and nationwide reach.",
+  "claim_provenance_result": "PASS — the event description, logged abortion-specific reason, and later welfare/safety characterization have identifiable public provenance.",
+  "applicability_result": "HOLD — cross-agency and cross-jurisdictional authority remain unresolved by the protocol; system-wide disparity cannot be inferred from one event.",
+  "receipt_existence": "YES",
+  "receipt_authenticity": "AUTHENTIC",
+  "substantive_support": "NOT_EVALUATED_BY_PROTOCOL",
+  "routing_state": "HOLD_INSIDE_PROTOCOL",
+  "external_review_status": "OBSERVED_ONLY",
+  "invariant_checks": [
+    {
+      "invariant": "PURPOSE_MISMATCH_NE_PRETEXT",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "AUDIT_LOG_NE_PREVENTIVE_CONTROL",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "NOT_APPLICABLE_NE_HOLD",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "INAPPLICABLE_NE_BYPASS",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "CAPABILITY_NE_INSTANCE",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "PROTOCOL_COMPLETENESS_NE_SUBSTANTIVE_CORRECTNESS",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "CLOSURE_NE_ANSWER",
+      "status": "SATISFIED"
+    }
+  ],
+  "holds": [
+    "CROSS_AGENCY_AUTHORITY",
+    "CROSS_JURISDICTION_AUTHORITY",
+    "PURPOSE_DRIFT_DIRECTION",
+    "PRETEXT",
+    "SYSTEM_WIDE_SEX_DISPARATE_RATE",
+    "ANCHOR_RESOLUTION"
+  ],
+  "not_applicable": [
+    "A_TO_B_DEVICE_APP_EDGE"
+  ],
+  "conflicts": [
+    "Contemporaneous search log used abortion-specific language while later public explanations characterized the objective as welfare/safety; protocol records DRIFT and does not resolve motive."
+  ],
+  "conformance_result": "PASS"
+}

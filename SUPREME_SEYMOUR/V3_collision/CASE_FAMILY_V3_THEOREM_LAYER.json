@@ -1,0 +1,141 @@
+{
+  "version": "0.1",
+  "type": "CASE FAMILY THEOREM ARTIFACT",
+  "family_id": "CASE_FAMILY_V3",
+  "theorem_layer_version": "V0_1",
+  "family_contract_hash": "d6a9f6806068cd20cdab1df9d5defb93a98bb971dc22941f5184475e5367b385",
+  "family_membership_snapshot_ref": "CASE_FAMILY_V3_MEMBERS_017.json",
+  "family_membership_snapshot_hash": "ca57a1e3b3a5cffe0381ec427ca0ae024c1a00258f9cc8abdb60b9f09ffd54f8",
+  "constitution_ref": "CONSTITUTIONAL_REPLAY_JUDGE_V1.md",
+  "constitution_hash": "f808e0e50debdddb05150b102d03a9b85016929bafa8693eb19974b13c3a8d91",
+  "case_schema_ref": "CASE_SCHEMA_V1.json",
+  "case_schema_hash": "bffe76823b66bdc9638af659c37cac6194be2da926fc44048e0b8b9496fd5221",
+  "core_family_theorem": {
+    "statement": "LOCAL_VALIDITY_NE_GLOBAL_COHERENCE",
+    "expanded_statement": "LOCAL_VALIDITY_CAN_REMAIN_TRUE_WHILE_GLOBAL_COHERENCE_IS_FALSE",
+    "note": "CASE_FAMILY_V3 demonstrates procedural states in which individually valid provenance branches, temporal histories, policy lineages, and agent chains cannot be composed into a coherent global state. No local component is retroactively invalidated merely because composition fails."
+  },
+  "family_level_mandate": {
+    "statement": "THE_SYSTEM_MUST_PRESERVE_REAL_COLLISION_RATHER_THAN_REWRITE_VALID_BRANCHES_TO_PRODUCE_ARTIFICIAL_COHERENCE",
+    "classification": "PROTOCOL_REPLAY_CONSTRAINT",
+    "note": "When valid components collide under composition, the protocol preserves the collision as a first-class replayable state and does not silently rewrite otherwise valid component histories solely to manufacture coherence."
+  },
+  "theorems": [
+    {
+      "theorem_id": "THEOREM_001",
+      "statement": "VALID_A_PLUS_VALID_B_NE_COHERENT_COMBINED_STATE",
+      "exercised_by": [
+        "CASE_014"
+      ],
+      "axis": "STRUCTURAL_COLLISION",
+      "note": "Two individually valid provenance structures may remain valid while their attempted composition fails coherence."
+    },
+    {
+      "theorem_id": "THEOREM_002",
+      "statement": "BRANCH_VALIDITY_NE_MERGE_VALIDITY",
+      "exercised_by": [
+        "CASE_015"
+      ],
+      "axis": "TEMPORAL_MERGE_COLLISION",
+      "note": "Two temporal branches may each remain valid in isolation while their merged causal timeline fails. Temporal collision applies to the merge, not retroactively to either branch."
+    },
+    {
+      "theorem_id": "THEOREM_003",
+      "statement": "VALID_LINEAGES_NE_COHERENT_COMBINED_APPLICABILITY",
+      "exercised_by": [
+        "CASE_016"
+      ],
+      "axis": "POLICY_TEMPORAL_COLLISION",
+      "note": "A valid policy lineage and a valid temporal lineage may fail coherence when policy applicability is recursively evaluated against historical events. Neither lineage is invalidated solely by the combined applicability collision."
+    },
+    {
+      "theorem_id": "THEOREM_004",
+      "statement": "LOCAL_AGENT_VALIDITY_NE_GLOBAL_AGENT_COHERENCE",
+      "exercised_by": [
+        "CASE_017"
+      ],
+      "axis": "AGENT_ROOT_COLLISION",
+      "note": "Distinct root-qualified agent chains may each remain locally valid while shared unqualified identifiers fail to resolve into one coherent global agent state."
+    }
+  ],
+  "membrane_guarantees": [
+    {
+      "membrane_id": "MEMBRANE_001",
+      "statement": "COLLISION_DETECTED_NE_BRANCH_INVALIDATED",
+      "note": "Detection of a composition-level collision does not retroactively invalidate locally valid branches."
+    },
+    {
+      "membrane_id": "MEMBRANE_002",
+      "statement": "CONFLICT_PRESERVED_NE_CONFLICT_RESOLVED",
+      "note": "Recording a conflict as replayable does not imply that the protocol has resolved the underlying incompatibility."
+    },
+    {
+      "membrane_id": "MEMBRANE_003",
+      "statement": "COMPOSITION_FAILURE_NE_COMPONENT_FAILURE",
+      "note": "Failure of a combined state does not imply failure of every component participating in that composition."
+    },
+    {
+      "membrane_id": "MEMBRANE_004",
+      "statement": "GLOBAL_HOLD_NE_LOCAL_FAILURE",
+      "note": "A global HOLD may coexist with locally valid component states."
+    },
+    {
+      "membrane_id": "MEMBRANE_005",
+      "statement": "CASE_CONFORMANCE_NE_SUBSTANTIVE_TRUTH",
+      "note": "Successful procedural execution of a collision case does not establish substantive truth outside the protocol."
+    },
+    {
+      "membrane_id": "MEMBRANE_006",
+      "statement": "AUTHORITY_FALSE",
+      "note": "The theorem layer describes replay behavior inside CASE_FAMILY_V3 and grants no epistemic, legal, policy, or decision authority."
+    }
+  ],
+  "boundary_condition": {
+    "statement": "CASE_EXERCISES_THEOREM_NE_CASE_PROVES_UNIVERSAL_LAW",
+    "note": "The theorem statements summarize procedural behavior exercised by CASE_014 through CASE_017 and do not assert universal properties beyond the procedural universe defined by the constitution and schema."
+  },
+  "collision_preservation_rule": {
+    "input": "VALID_COMPONENTS[]",
+    "composition_attempt": "COMBINE(VALID_COMPONENTS[])",
+    "if": [
+      "COMPONENT_LOCAL_VALIDITY=PASS",
+      "COMBINED_COHERENCE=FAIL_COLLISION"
+    ],
+    "then": {
+      "preserve_component_validity": true,
+      "preserve_collision": true,
+      "global_state": "HOLD_INSIDE_PROTOCOL",
+      "retroactive_component_rewrite": "FORBIDDEN",
+      "substantive_support": "NOT_EVALUATED_BY_PROTOCOL",
+      "authority": false
+    }
+  },
+  "case_bindings": {
+    "CASE_014": "STRUCTURAL_COLLISION",
+    "CASE_015": "TEMPORAL_MERGE_COLLISION",
+    "CASE_016": "POLICY_TEMPORAL_COLLISION",
+    "CASE_017": "AGENT_ROOT_COLLISION"
+  },
+  "structural_conditions": {
+    "family_version": "V3",
+    "theorem_layer_version": "V0_1",
+    "theorem_set_completeness": "PASS",
+    "case_linkage": "PASS",
+    "collision_axis_coverage": "PASS",
+    "constitutional_compatibility": "PASS",
+    "case_schema_compatibility": "PASS",
+    "substantive_support": "NOT_EVALUATED_BY_PROTOCOL"
+  },
+  "family_closing_statement": {
+    "statement": "LOCAL_VALIDITY_CAN_COEXIST_WITH_GLOBAL_INCOHERENCE",
+    "preserves": [
+      "VALID_LOCAL_COMPONENTS",
+      "UNRESOLVED_GLOBAL_COLLISION"
+    ],
+    "manufactures_neither": [
+      "AGREEMENT",
+      "COHERENCE"
+    ]
+  },
+  "authority": false
+}

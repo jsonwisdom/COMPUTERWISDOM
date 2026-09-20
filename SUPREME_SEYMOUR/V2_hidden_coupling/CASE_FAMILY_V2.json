@@ -1,0 +1,55 @@
+{
+  "version": "2.0",
+  "type": "CASE FAMILY CONTRACT",
+  "family_id": "CASE_FAMILY_V2",
+  "family_version": "V2",
+  "status": "OPEN",
+  "constitution_ref": "CONSTITUTIONAL_REPLAY_JUDGE_V1.md",
+  "constitution_hash": "f808e0e50debdddb05150b102d03a9b85016929bafa8693eb19974b13c3a8d91",
+  "case_schema_ref": "CASE_SCHEMA_V1.json",
+  "case_schema_hash": "bffe76823b66bdc9638af659c37cac6194be2da926fc44048e0b8b9496fd5221",
+  "family_structure": {
+    "membership": "OPEN",
+    "initial_members": [],
+    "append_policy": "APPEND_ONLY"
+  },
+  "transition_invariants": [
+    {
+      "invariant_id": "INVARIANT_001",
+      "statement": "NEW_FAMILY_NE_NEW_CONSTITUTION",
+      "note": "Creating CASE_FAMILY_V2 does not modify or replace the constitutional layer."
+    },
+    {
+      "invariant_id": "INVARIANT_002",
+      "statement": "NEW_CASE_NE_CONSTITUTIONAL_AMENDMENT",
+      "note": "Cases added to V2 do not alter constitutional semantics."
+    },
+    {
+      "invariant_id": "INVARIANT_003",
+      "statement": "V1_CLOSURE_NE_PROTOCOL_TERMINATION",
+      "note": "Closing CASE_FAMILY_V1 does not end the protocol; it ends that family's membership."
+    },
+    {
+      "invariant_id": "INVARIANT_004",
+      "statement": "CROSS_FAMILY_COMPARISON_NE_CROSS_FAMILY_CORROBORATION",
+      "note": "Comparing cases across families does not imply independent corroboration."
+    }
+  ],
+  "family_boundary": {
+    "case_family_v1": "CLOSED",
+    "case_family_v2": "OPEN",
+    "note": "The boundary between families is structural, not semantic. Both families operate under the same constitution and schema."
+  },
+  "structural_conditions": {
+    "constitution_compatibility": "PASS",
+    "schema_compatibility": "PASS",
+    "family_status": "OPEN",
+    "substantive_support": "NOT_EVALUATED_BY_PROTOCOL"
+  },
+  "prior_family_refs": {
+    "case_family_v1_hash": "d7e2e17c38e89ee41d223c72a05892c06f857d9deb3a07664b5f88972c05810d",
+    "case_family_v1_members_009_hash": "7fbd859aad3e43972a159b83bc6289875d9b1f3d835eebbc62c31cb39e271795",
+    "case_family_v1_theorem_hash": "56d7d97df0827e271f2d421dcc01a83ff819a9fac041be89579ba7fc29d11e0e"
+  },
+  "authority": false
+}

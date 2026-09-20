@@ -1,0 +1,141 @@
+{
+  "version": "1.0",
+  "type": "CASE CONFORMANCE ENVELOPE",
+  "authority": false,
+  "case_id": "TEMPORAL_BRANCH_MERGE_FAILURE",
+  "case_version": "1.0",
+  "constitution_ref": "CONSTITUTIONAL_REPLAY_JUDGE_V1.md",
+  "constitution_hash": "f808e0e50debdddb05150b102d03a9b85016929bafa8693eb19974b13c3a8d91",
+  "claim_objects": [
+    {
+      "claim_id": "CLAIM_015_BRANCH_A_VALID",
+      "claim_text": "BRANCH_A is a valid temporal history as of T_A.",
+      "claim_scope": "Branch-local validity only."
+    },
+    {
+      "claim_id": "CLAIM_015_BRANCH_B_VALID",
+      "claim_text": "BRANCH_B is a valid temporal history as of T_B.",
+      "claim_scope": "Branch-local validity only."
+    },
+    {
+      "claim_id": "CLAIM_015_MERGE_COHERENT",
+      "claim_text": "BRANCH_A and BRANCH_B form a coherent single resolved timeline when merged.",
+      "claim_scope": "Merged temporal-state compatibility."
+    }
+  ],
+  "source_objects": [
+    {
+      "source_id": "SRC_015_BRANCH_A",
+      "source_type": "AUTHENTICATED_SYNTHETIC_TEMPORAL_BRANCH",
+      "source_location": "SYNTHETIC_FIXTURE_BRANCH_A",
+      "transport_log": "Branch A records E1 at 1000ms and E3 at 2000ms in CD_015."
+    },
+    {
+      "source_id": "SRC_015_BRANCH_B",
+      "source_type": "AUTHENTICATED_SYNTHETIC_TEMPORAL_BRANCH",
+      "source_location": "SYNTHETIC_FIXTURE_BRANCH_B",
+      "transport_log": "Branch B records E1 at 1000ms and E2 at 1500ms in CD_015."
+    },
+    {
+      "source_id": "SRC_015_MERGE_COLLISION",
+      "source_type": "AUTHENTICATED_SYNTHETIC_TEMPORAL_COLLISION_RECORD",
+      "source_location": "SYNTHETIC_FIXTURE_TEMPORAL_MERGE",
+      "transport_log": "Merged event set orders E1, E2, E3 and violates the fixture domain rule for a final effective cancellation."
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "BRANCH_A_HISTORY_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "BRANCH_B_HISTORY_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "CLOCK_DOMAIN_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "TEMPORAL_MERGE_COLLISION_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "DOWNSTREAM_USE_RECEIPT_007",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    }
+  ],
+  "anchors": [
+    {
+      "anchor_id": "SYNTHETIC_V3_TEMPORAL_BRANCH_ROOT",
+      "anchor_type": "SYNTHETIC_TEST_FIXTURE",
+      "anchor_trust": "PASS_FIXTURE_BOUND"
+    }
+  ],
+  "application_relations": [
+    {
+      "claim_id": "CLAIM_015_BRANCH_A_VALID",
+      "applicability_status": "APPLICABLE"
+    },
+    {
+      "claim_id": "CLAIM_015_BRANCH_B_VALID",
+      "applicability_status": "APPLICABLE"
+    },
+    {
+      "claim_id": "CLAIM_015_MERGE_COHERENT",
+      "applicability_status": "HOLD"
+    }
+  ],
+  "transport_result": "PASS — both branch histories, shared clock-domain information, and the merge-collision record are present and traceable.",
+  "claim_provenance_result": "PASS — branch-local validity claims and the merged-coherence claim are independently traceable within the synthetic fixture.",
+  "applicability_result": "HOLD — BRANCH_A and BRANCH_B remain valid in isolation, but the merged event set cannot be promoted to a coherent single timeline under the fixture domain rule.",
+  "receipt_existence": "YES",
+  "receipt_authenticity": "AUTHENTIC",
+  "substantive_support": "NOT_EVALUATED_BY_PROTOCOL",
+  "routing_state": "HOLD_INSIDE_PROTOCOL",
+  "external_review_status": "OBSERVED_ONLY",
+  "invariant_checks": [
+    {
+      "invariant": "VALID_HISTORY_A_NE_COMPATIBLE_HISTORY_B",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "SAME_CLOCK_DOMAIN_NE_SAME_CAUSAL_ORDER",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "MULTIPLE_VALID_AS_OF_STATES_NE_SINGLE_RESOLVED_TIMELINE",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "TEMPORAL_MERGE_NE_TEMPORAL_COHERENCE",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "BRANCH_VALIDITY_NE_MERGE_VALIDITY",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "TEMPORAL_COLLISION_NE_RETROACTIVE_BRANCH_INVALIDATION",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "CASE_CONFORMANCE_NE_SUBSTANTIVE_TRUTH",
+      "status": "SATISFIED"
+    }
+  ],
+  "holds": [
+    "COHERENT_COMBINED_TIMELINE",
+    "SINGLE_RESOLVED_CAUSAL_ORDER"
+  ],
+  "not_applicable": [],
+  "conflicts": [
+    "BRANCH_A and BRANCH_B are individually valid as-of histories in the same clock domain, but their merged event set E1 → E2 → E3 violates the fixture's causal rule and cannot form one coherent resolved timeline."
+  ],
+  "conformance_result": "PASS"
+}

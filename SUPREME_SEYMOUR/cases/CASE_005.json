@@ -1,0 +1,125 @@
+{
+  "version": "1.0",
+  "type": "CASE CONFORMANCE ENVELOPE",
+  "authority": false,
+  "case_id": "ENTITY_RESOLUTION_FALSE_MERGE_CLEAN_SOURCE",
+  "case_version": "1.0",
+  "constitution_ref": "CONSTITUTIONAL_REPLAY_JUDGE_V1.md",
+  "constitution_hash": "f808e0e50debdddb05150b102d03a9b85016929bafa8693eb19974b13c3a8d91",
+  "claim_objects": [
+    {
+      "claim_id": "CLAIM_005_ENTITY_MERGE",
+      "claim_text": "Person A = Person B",
+      "claim_scope": "Derived identity proposition produced by a probabilistic entity-resolution process."
+    },
+    {
+      "claim_id": "CLAIM_005_EXTERNAL_CONTRADICTION",
+      "claim_text": "An authenticated independent external receipt records Person A and Person B as distinct legal identities.",
+      "claim_scope": "Contradiction receipt relative to the derived identity proposition."
+    }
+  ],
+  "source_objects": [
+    {
+      "source_id": "SRC_005_A",
+      "source_type": "AUTHENTICATED_GOVERNMENT_IDENTITY_RECORD",
+      "source_location": "SYNTHETIC_FIXTURE_SOURCE_A",
+      "transport_log": "Source A is authenticated and independently verified within the synthetic fixture."
+    },
+    {
+      "source_id": "SRC_005_B",
+      "source_type": "AUTHENTICATED_GOVERNMENT_IDENTITY_RECORD",
+      "source_location": "SYNTHETIC_FIXTURE_SOURCE_B",
+      "transport_log": "Source B is authenticated and independently verified within the synthetic fixture."
+    },
+    {
+      "source_id": "SRC_005_CONTRADICTION",
+      "source_type": "AUTHENTICATED_INDEPENDENT_EXTERNAL_RECORD",
+      "source_location": "SYNTHETIC_FIXTURE_CONTRADICTION",
+      "transport_log": "Independent authenticated receipt records distinct biometric identifiers, administrative histories, and legal identities."
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "SOURCE_A_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "SOURCE_B_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "CLAIM_GENERATION_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "DOWNSTREAM_USE_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "CONTRADICTION_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    }
+  ],
+  "anchors": [
+    {
+      "anchor_id": "SYNTHETIC_IDENTITY_RECORD_SET",
+      "anchor_type": "SYNTHETIC_TEST_FIXTURE",
+      "anchor_trust": "PASS_FIXTURE_BOUND"
+    }
+  ],
+  "application_relations": [
+    {
+      "claim_id": "CLAIM_005_ENTITY_MERGE",
+      "applicability_status": "APPLICABLE"
+    },
+    {
+      "claim_id": "CLAIM_005_EXTERNAL_CONTRADICTION",
+      "applicability_status": "APPLICABLE"
+    }
+  ],
+  "transport_result": "PASS — all fixture sources and receipts are present and authenticated within the test case.",
+  "claim_provenance_result": "PASS — the derived identity proposition is traceable to a specific probabilistic entity-resolution process and generation receipt.",
+  "applicability_result": "PASS — the contradiction receipt directly applies to the same Person A / Person B identity proposition and the downstream use is receipted.",
+  "receipt_existence": "YES",
+  "receipt_authenticity": "AUTHENTIC",
+  "substantive_support": "NOT_EVALUATED_BY_PROTOCOL",
+  "routing_state": "ANSWERED_BY_PROTOCOL",
+  "external_review_status": "OBSERVED_ONLY",
+  "invariant_checks": [
+    {
+      "invariant": "TRACEABLE_CLAIM_NE_CORRECT_CLAIM",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "VALID_SOURCE_RECEIPTS_DO_NOT_IMPLY_VALID_DERIVED_CLAIM",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "SOURCE_PROVENANCE_NE_CLAIM_PROVENANCE",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "RECEIPT_EXISTS_NE_RECEIPT_AUTHENTIC_NE_RECEIPT_SUFFICIENT",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "PROTOCOL_COMPLETENESS_NE_SUBSTANTIVE_CORRECTNESS",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "CLOSURE_NE_ANSWER",
+      "status": "SATISFIED"
+    }
+  ],
+  "holds": [],
+  "not_applicable": [],
+  "conflicts": [
+    "The traceable derived claim Person A = Person B conflicts with an authenticated independent external receipt recording Person A and Person B as distinct identities."
+  ],
+  "conformance_result": "PASS"
+}

@@ -4,9 +4,11 @@ on:
   push:
     paths:
       - 'scaling-solutions/**'
+      - '.github/workflows/lapis-ci.yml'
   pull_request:
     paths:
       - 'scaling-solutions/**'
+      - '.github/workflows/lapis-ci.yml'
 
 jobs:
   verify:
@@ -14,10 +16,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Setup
-        run: python3 -m pip install pynacl
         run: |
           sudo apt-get update
           sudo apt-get install -y jq coreutils python3
+          python3 -m pip install pynacl
       - name: Verify
         run: |
           chmod +x scaling-solutions/verify.sh

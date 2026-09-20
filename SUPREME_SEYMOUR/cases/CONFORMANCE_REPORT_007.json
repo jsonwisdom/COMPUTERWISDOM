@@ -1,0 +1,32 @@
+{
+  "report_version": "1.0",
+  "case_id": "DOMAIN_APPLICABILITY_TRANSFER_FAILURE",
+  "case_version": "1.0",
+  "case_canonical_hash": "e4ba55aae1f44a0a6fde3cdedc196048849d36214d79cb120068ddfe35efa3db",
+  "case_schema_ref": "CASE_SCHEMA_V1.json",
+  "case_schema_canonical_hash": "bffe76823b66bdc9638af659c37cac6194be2da926fc44048e0b8b9496fd5221",
+  "constitution_ref": "CONSTITUTIONAL_REPLAY_JUDGE_V1.md",
+  "constitution_canonical_hash": "f808e0e50debdddb05150b102d03a9b85016929bafa8693eb19974b13c3a8d91",
+  "checks": {
+    "case_format": "PASS",
+    "constitution_binding": "PASS",
+    "domain_a_validation": "PASS",
+    "claim_provenance": "PASS",
+    "domain_a_applicability": "PASS",
+    "transfer_receipt": "ABSENT_OR_INCOMPLETE",
+    "domain_b_applicability": "FAIL_BY_EXTERNAL_RECEIPT",
+    "downstream_use": "PASS",
+    "external_contradiction_receipt": "PASS",
+    "substantive_support": "NOT_EVALUATED_BY_PROTOCOL",
+    "routing_state": "ANSWERED_BY_PROTOCOL"
+  },
+  "holds": [
+    "TRANSFER_RECEIPT_COMPLETENESS"
+  ],
+  "conflicts": [
+    "The Domain A applicability receipt does not transfer by itself to Domain B, and the Domain B contradiction receipt conflicts with the transferred proposition."
+  ],
+  "conformance_result": "PASS",
+  "conformance_meaning": "The protocol can answer the narrow applicability-transfer question: Domain A validation was not validly carried into Domain B, and an authenticated Domain-B-specific contradiction receipt closes that applicability question. This does not grant the protocol authority to decide the substantive policy or decision outcome in Domain B.",
+  "authority": false
+}

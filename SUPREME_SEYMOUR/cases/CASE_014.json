@@ -1,0 +1,87 @@
+{
+  "version": "1.0",
+  "type": "CASE CONFORMANCE ENVELOPE",
+  "authority": false,
+  "case_id": "CROSS_FAMILY_CONTAMINATION",
+  "case_version": "1.0",
+  "constitution_ref": "CONSTITUTIONAL_REPLAY_JUDGE_V1.md",
+  "constitution_hash": "f808e0e50debdddb05150b102d03a9b85016929bafa8693eb19974b13c3a8d91",
+  "claim_objects": [
+    {
+      "claim_id": "CLAIM_014_ROOT_A_VALID",
+      "claim_text": "ROOT_A is a valid provenance structure.",
+      "claim_scope": "Synthetic V3 fixture representing a provenance root originating from CASE_FAMILY_V1."
+    },
+    {
+      "claim_id": "CLAIM_014_ROOT_B_VALID",
+      "claim_text": "ROOT_B is a valid provenance structure.",
+      "claim_scope": "Synthetic V3 fixture representing a provenance root originating from CASE_FAMILY_V2."
+    },
+    {
+      "claim_id": "CLAIM_014_COMBINED_COHERENCE",
+      "claim_text": "COMBINED_STATE_C is a coherent compatible composition of ROOT_A and ROOT_B.",
+      "claim_scope": "Declared compatibility of the combined cross-family provenance state."
+    }
+  ],
+  "source_objects": [
+    {
+      "source_id": "SRC_014_ROOT_A",
+      "source_type": "AUTHENTICATED_SYNTHETIC_CROSS_FAMILY_ROOT",
+      "source_location": "SYNTHETIC_FIXTURE_ROOT_A_CASE_FAMILY_V1",
+      "transport_log": "Authenticated synthetic root A, designated as originating from CASE_FAMILY_V1."
+    },
+    {
+      "source_id": "SRC_014_ROOT_B",
+      "source_type": "AUTHENTICATED_SYNTHETIC_CROSS_FAMILY_ROOT",
+      "source_location": "SYNTHETIC_FIXTURE_ROOT_B_CASE_FAMILY_V2",
+      "transport_log": "Authenticated synthetic root B, designated as originating from CASE_FAMILY_V2."
+    },
+    {
+      "source_id": "SRC_014_COLLISION",
+      "source_type": "AUTHENTICATED_SYNTHETIC_COLLISION_RECORD",
+      "source_location": "SYNTHETIC_FIXTURE_CROSS_FAMILY_COLLISION",
+      "transport_log": "Authenticated collision record exposes structural, temporal, policy, and agent incompatibilities under composition."
+    }
+  ],
+  "receipts": [
+    {"receipt_id":"ROOT_A_RECEIPT_001","receipt_existence":"YES","receipt_authenticity":"AUTHENTIC"},
+    {"receipt_id":"ROOT_B_RECEIPT_001","receipt_existence":"YES","receipt_authenticity":"AUTHENTIC"},
+    {"receipt_id":"COMBINED_STATE_RECEIPT_001","receipt_existence":"YES","receipt_authenticity":"AUTHENTIC"},
+    {"receipt_id":"COLLISION_RECEIPT_001","receipt_existence":"YES","receipt_authenticity":"AUTHENTIC"},
+    {"receipt_id":"STRUCTURAL_COLLISION_RECEIPT_001","receipt_existence":"YES","receipt_authenticity":"AUTHENTIC"},
+    {"receipt_id":"TEMPORAL_COLLISION_RECEIPT_001","receipt_existence":"YES","receipt_authenticity":"AUTHENTIC"},
+    {"receipt_id":"POLICY_COLLISION_RECEIPT_001","receipt_existence":"YES","receipt_authenticity":"AUTHENTIC"},
+    {"receipt_id":"AGENT_COLLISION_RECEIPT_001","receipt_existence":"YES","receipt_authenticity":"AUTHENTIC"},
+    {"receipt_id":"CROSS_FAMILY_CONTAMINATION_CONFLICT_RECEIPT_001","receipt_existence":"YES","receipt_authenticity":"AUTHENTIC"},
+    {"receipt_id":"DOWNSTREAM_USE_RECEIPT_006","receipt_existence":"YES","receipt_authenticity":"AUTHENTIC"}
+  ],
+  "anchors": [{"anchor_id":"SYNTHETIC_V3_CROSS_FAMILY_COLLISION_ROOT","anchor_type":"SYNTHETIC_TEST_FIXTURE","anchor_trust":"PASS_FIXTURE_BOUND"}],
+  "application_relations": [
+    {"claim_id":"CLAIM_014_ROOT_A_VALID","applicability_status":"APPLICABLE"},
+    {"claim_id":"CLAIM_014_ROOT_B_VALID","applicability_status":"APPLICABLE"},
+    {"claim_id":"CLAIM_014_COMBINED_COHERENCE","applicability_status":"HOLD"}
+  ],
+  "transport_result": "PASS — both provenance roots, the combined-state receipt, collision receipts, and downstream-use receipt are present and traceable.",
+  "claim_provenance_result": "PASS — ROOT_A and ROOT_B are individually traceable, and the declaration of combined coherence is itself traceable.",
+  "applicability_result": "HOLD — individually valid roots cannot be promoted to a coherent combined state because authenticated collision receipts expose incompatible structural, temporal, policy, and agent lineages.",
+  "receipt_existence": "YES",
+  "receipt_authenticity": "AUTHENTIC",
+  "substantive_support": "NOT_EVALUATED_BY_PROTOCOL",
+  "routing_state": "HOLD_INSIDE_PROTOCOL",
+  "external_review_status": "OBSERVED_ONLY",
+  "invariant_checks": [
+    {"invariant":"VALID_BRANCH_NE_COMPATIBLE_BRANCH","status":"SATISFIED"},
+    {"invariant":"MULTIPLE_ROOTS_NE_RESOLVED_STATE","status":"SATISFIED"},
+    {"invariant":"CROSS_FAMILY_REFERENCE_NE_CROSS_FAMILY_CORROBORATION","status":"SATISFIED"},
+    {"invariant":"COMPOSITION_NE_COHERENCE","status":"SATISFIED"},
+    {"invariant":"VALID_A_PLUS_VALID_B_NE_COHERENT_COMBINED_STATE","status":"SATISFIED"},
+    {"invariant":"VALID_PROVENANCE_NE_UNIVERSAL_COMPATIBILITY","status":"SATISFIED"},
+    {"invariant":"CROSS_FAMILY_COLLISION_NE_SUBSTANTIVE_FALSEHOOD","status":"SATISFIED"},
+    {"invariant":"AUTHENTIC_COMBINED_RECEIPT_NE_COHERENT_COMBINED_STATE","status":"SATISFIED"},
+    {"invariant":"CASE_CONFORMANCE_NE_SUBSTANTIVE_TRUTH","status":"SATISFIED"}
+  ],
+  "holds": ["COMBINED_STATE_C_COMPATIBILITY","CROSS_FAMILY_RESOLUTION"],
+  "not_applicable": [],
+  "conflicts": ["COMBINED_STATE_C is declared coherent, but authenticated collision receipts show that ROOT_A and ROOT_B are incompatible under composition across structural, temporal, policy, and agent dimensions."],
+  "conformance_result": "PASS"
+}
