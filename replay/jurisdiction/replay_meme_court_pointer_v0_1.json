@@ -1,0 +1,41 @@
+{
+  "artifact_id": "REPLAY_MEME_COURT_POINTER_V0_1",
+  "artifact_type": "deployment_pointer",
+  "authority": false,
+  "courtroom": "meme-court",
+  "jurisdiction_artifact": "replay/jurisdiction/replay_meme_court_jurisdiction_v0_1.json",
+  "pointer_artifact": "court/meme-court-frame/SOURCE_POINTER.json",
+  "integration_receipt": "court/meme-court-frame/INTEGRATION_RECEIPT.md",
+  "source": {
+    "repository_full_name": "jsonwisdom/receiptos-base",
+    "path": "apps/meme-court-frame",
+    "branch": "feat/meme-court-cloud-run-runtime",
+    "commit": "def509c33af5c487ee1a9e56f5390849a1e68f02"
+  },
+  "deployment": {
+    "platform": "Google Cloud Run",
+    "project": "jaywisdom-boardroom-preview",
+    "region": "us-central1",
+    "service": "meme-court-verifier",
+    "revision": "meme-court-verifier-00002-csf",
+    "public_url": "https://meme-court-verifier-2y4hej4r2a-uc.a.run.app/api/frame",
+    "cloud_build_id": "c08fb32f-80bd-432f-b128-190bff6f4b37",
+    "source_zip_sha256": "81418a815d6e4c7f83ea400334697f40d7575590e4b240dfab857b6aa5dabbea",
+    "container_image_digest": "sha256:62de20bb221411a73f5a7fe589cb27e21b2713fff9678e131a7d0f2801cc9f88",
+    "public_response_sha256": "d73c15346e29bd15a8a35dc3556aa247760531cac0f563346baa945636c0ca13",
+    "status": "verified-live"
+  },
+  "computerwisdom_anchor": {
+    "pointer_pr": 414,
+    "pointer_merge_commit": "a60c144a6a7f3e674d8ae75a32a68be0b5565558"
+  },
+  "verification_scope": "All nine uploaded runtime files matched the corresponding committed files byte-for-byte. The non-runtime .gitignore file was excluded from the upload bundle.",
+  "boundaries": [
+    "pointer-only",
+    "no runtime duplication",
+    "no truth adjudication",
+    "no execution authority",
+    "authority remains false"
+  ],
+  "last_updated": "2026-07-11"
+}
