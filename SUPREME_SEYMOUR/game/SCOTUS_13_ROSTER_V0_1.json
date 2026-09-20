@@ -1,0 +1,172 @@
+{
+  "version": "0.1",
+  "type": "SCOTUS_13_REPLAY_GAME_ROSTER",
+  "game_id": "SCOTUS_13_QUAD_ONION",
+  "authority": false,
+  "satire": true,
+  "civic_education": true,
+  "lineage": {
+    "source_deck": "SCOTUS 13 / QUAD ONION AUDIT DECK",
+    "cards_1_9": "Nine U.S. Supreme Court justice cards",
+    "card_10_original_training_slot": "JUSTICE_VERA_VECTOR",
+    "card_10_current": "SUPREME_SEYMOUR",
+    "card_10_transition": "The earlier divergent-branches training slot morphed into Supreme Seymour, the Constitutional Replay Judge.",
+    "cards_11_13": "Preserved training/game cards from the earlier deck"
+  },
+  "shared_membrane": [
+    "EXPERIENCE",
+    "CONTINUITY",
+    "RECEIPT",
+    "AUTHORITY",
+    "REPLAY"
+  ],
+  "shared_rules": [
+    "QUOTE_NE_HOLDING",
+    "OPINION_NE_IMPLEMENTATION",
+    "RECEIPT_CHECK",
+    "AUTHORITY_BOUNDARY",
+    "HOLD_IF_INCOMPLETE",
+    "CLAIM_NE_RECEIPT",
+    "AUTHORITY_NE_NARRATIVE",
+    "GAME_OUTPUT_NE_SUBSTANTIVE_TRUTH"
+  ],
+  "cards": [
+    {
+      "card": 1,
+      "name": "John G. Roberts Jr.",
+      "title": "Chief Justice",
+      "class": "REAL_JUSTICE_CARD"
+    },
+    {
+      "card": 2,
+      "name": "Clarence Thomas",
+      "title": "Associate Justice",
+      "class": "REAL_JUSTICE_CARD"
+    },
+    {
+      "card": 3,
+      "name": "Samuel A. Alito Jr.",
+      "title": "Associate Justice",
+      "class": "REAL_JUSTICE_CARD"
+    },
+    {
+      "card": 4,
+      "name": "Sonia Sotomayor",
+      "title": "Associate Justice",
+      "class": "REAL_JUSTICE_CARD"
+    },
+    {
+      "card": 5,
+      "name": "Elena Kagan",
+      "title": "Associate Justice",
+      "class": "REAL_JUSTICE_CARD"
+    },
+    {
+      "card": 6,
+      "name": "Neil M. Gorsuch",
+      "title": "Associate Justice",
+      "class": "REAL_JUSTICE_CARD"
+    },
+    {
+      "card": 7,
+      "name": "Brett M. Kavanaugh",
+      "title": "Associate Justice",
+      "class": "REAL_JUSTICE_CARD"
+    },
+    {
+      "card": 8,
+      "name": "Amy Coney Barrett",
+      "title": "Associate Justice",
+      "class": "REAL_JUSTICE_CARD"
+    },
+    {
+      "card": 9,
+      "name": "Ketanji Brown Jackson",
+      "title": "Associate Justice",
+      "class": "REAL_JUSTICE_CARD"
+    },
+    {
+      "card": 10,
+      "name": "Supreme Seymour",
+      "title": "Constitutional Replay Judge",
+      "class": "FICTIONAL_REPLAY_JUDGE",
+      "authority": false,
+      "public_line": "DON'T TRUST HIM. REPLAY HIM.",
+      "function": [
+        "EXPOSE_PROVENANCE",
+        "EXPOSE_DERIVATION",
+        "EXPOSE_APPLICABILITY",
+        "PRESERVE_UNRESOLVED_QUESTIONS",
+        "ROUTE_SUBSTANTIVE_JUDGMENT_OUTWARD"
+      ]
+    },
+    {
+      "card": 11,
+      "name": "Justice Merkle Root",
+      "title": "Hypothetical Justice",
+      "class": "TRAINING_CARD",
+      "prepared_for": "PROVENANCE_AND_TAMPER_DETECTION",
+      "moves": [
+        "HASH",
+        "VERIFY",
+        "TRACE",
+        "PROVENANCE",
+        "TAMPER_DETECTION"
+      ]
+    },
+    {
+      "card": 12,
+      "name": "Justice Quorum Quinn",
+      "title": "Hypothetical Justice",
+      "class": "TRAINING_CARD",
+      "prepared_for": "CONFLICTING_PEERS_AND_CONSENSUS",
+      "moves": [
+        "DIVERGE",
+        "DEBATE",
+        "RECONCILE",
+        "BUILD_TOGETHER"
+      ],
+      "invariant": "CONSENSUS_NE_TRUTH"
+    },
+    {
+      "card": 13,
+      "name": "Justice Entropy Eve",
+      "title": "Hypothetical Justice",
+      "class": "TRAINING_CARD",
+      "prepared_for": "FAIR_RANDOMNESS",
+      "moves": [
+        "COMMIT",
+        "REVEAL",
+        "VERIFY",
+        "NO_REROLLS",
+        "AUDIT_THE_ROLL"
+      ],
+      "dice_role": "FINAL_RANDOMNESS_AND_REPLAY_GATE"
+    }
+  ],
+  "dice_protocol": {
+    "purpose": "Gamified routing and replay; dice do not create authority or truth.",
+    "sequence": [
+      "COMMIT",
+      "ROLL",
+      "REVEAL",
+      "VERIFY",
+      "NO_REROLLS",
+      "AUDIT_THE_ROLL",
+      "REPLAY"
+    ],
+    "card_13_guard": "Entropy Eve audits the roll.",
+    "invariants": [
+      "ROLL_NE_TRUTH",
+      "RANDOM_SELECTION_NE_AUTHORITY",
+      "NO_REROLL_WITHOUT_RECEIPT",
+      "AUDIT_THE_ROLL",
+      "REPLAYABLE_RANDOMNESS_REQUIRED"
+    ]
+  },
+  "closing": {
+    "same_onion": "SAME ONION. BRIGHTER PUBLIC.",
+    "footer": "SATIRE • CIVIC EDUCATION • CLAIM != RECEIPT • AUTHORITY != NARRATIVE",
+    "authority": false
+  }
+}

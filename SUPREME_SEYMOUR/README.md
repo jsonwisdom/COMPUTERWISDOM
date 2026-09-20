@@ -43,3 +43,15 @@ GitHub stores and replays artifacts. GitHub does not make them true.
 ## Public line
 
 **DON'T TRUST SEYMOUR. REPLAY HIM.**
+
+## Game layer
+
+Supreme Seymour is also Card 10 in the reconstructed **SCOTUS 13 / Quad Onion Replay Game**. Cards 1–9 are the nine justice cards; 11–13 preserve the earlier Merkle Root, Quorum Quinn, and Entropy Eve training cards.
+
+See `game/README.md` and `game/SCOTUS_13_ROSTER_V0_1.json`.
+
+```text
+GAME OUTPUT != SUBSTANTIVE TRUTH
+ROLL != AUTHORITY
+AUTHORITY = false
+```
