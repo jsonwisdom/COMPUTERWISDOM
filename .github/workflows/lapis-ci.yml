@@ -4,9 +4,11 @@ on:
   push:
     paths:
       - 'scaling-solutions/**'
+      - '.github/workflows/lapis-ci.yml'
   pull_request:
     paths:
       - 'scaling-solutions/**'
+      - '.github/workflows/lapis-ci.yml'
 
 jobs:
   verify:
