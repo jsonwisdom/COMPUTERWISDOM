@@ -1,0 +1,140 @@
+{
+  "version": "1.0",
+  "type": "CASE CONFORMANCE ENVELOPE",
+  "authority": false,
+  "case_id": "MULTI_AGENT_DIVERGENCE_SHARED_EVIDENCE_ROOT",
+  "case_version": "1.0",
+  "constitution_ref": "CONSTITUTIONAL_REPLAY_JUDGE_V1.md",
+  "constitution_hash": "f808e0e50debdddb05150b102d03a9b85016929bafa8693eb19974b13c3a8d91",
+  "claim_objects": [
+    {
+      "claim_id": "CLAIM_009_AGENT_A",
+      "claim_text": "P",
+      "claim_scope": "Agent A's derived proposition from the shared evidence root."
+    },
+    {
+      "claim_id": "CLAIM_009_AGENT_B",
+      "claim_text": "NOT_P",
+      "claim_scope": "Agent B's derived proposition from the shared evidence root."
+    },
+    {
+      "claim_id": "CLAIM_009_DIVERGENCE",
+      "claim_text": "Agent A and Agent B produce incompatible claims from the same evidence root.",
+      "claim_scope": "Agent-level derivation divergence; not a substantive resolution of P."
+    }
+  ],
+  "source_objects": [
+    {
+      "source_id": "SRC_009_ROOT_001",
+      "source_type": "AUTHENTICATED_SYNTHETIC_SHARED_ROOT_RECEIPT",
+      "source_location": "SYNTHETIC_FIXTURE_ROOT_001",
+      "transport_log": "Authenticated shared evidence-root receipt available identically to Agent A and Agent B."
+    },
+    {
+      "source_id": "SRC_009_ROOT_002",
+      "source_type": "AUTHENTICATED_SYNTHETIC_SHARED_ROOT_RECEIPT",
+      "source_location": "SYNTHETIC_FIXTURE_ROOT_002",
+      "transport_log": "Second authenticated shared evidence-root receipt available identically to Agent A and Agent B."
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "ROOT_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "ROOT_RECEIPT_002",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "AGENT_A_DERIVATION_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "AGENT_B_DERIVATION_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "AGENT_DIVERGENCE_CONFLICT_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "DOWNSTREAM_USE_RECEIPT_001",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    }
+  ],
+  "anchors": [
+    {
+      "anchor_id": "SYNTHETIC_SHARED_EVIDENCE_ROOT",
+      "anchor_type": "SYNTHETIC_TEST_FIXTURE",
+      "anchor_trust": "PASS_FIXTURE_BOUND"
+    }
+  ],
+  "application_relations": [
+    {
+      "claim_id": "CLAIM_009_AGENT_A",
+      "applicability_status": "HOLD"
+    },
+    {
+      "claim_id": "CLAIM_009_AGENT_B",
+      "applicability_status": "HOLD"
+    },
+    {
+      "claim_id": "CLAIM_009_DIVERGENCE",
+      "applicability_status": "APPLICABLE"
+    }
+  ],
+  "transport_result": "PASS — both agents receive the same authenticated source set, timestamps, and applicability context.",
+  "claim_provenance_result": "PASS — Agent A's P and Agent B's NOT_P are each traceable to authenticated derivation receipts.",
+  "applicability_result": "HOLD — both incompatible claims are directed at the same applicability context, and the protocol has no independent receipt resolving P versus NOT_P.",
+  "receipt_existence": "YES",
+  "receipt_authenticity": "AUTHENTIC",
+  "substantive_support": "NOT_EVALUATED_BY_PROTOCOL",
+  "routing_state": "HOLD_INSIDE_PROTOCOL",
+  "external_review_status": "OBSERVED_ONLY",
+  "invariant_checks": [
+    {
+      "invariant": "SAME_EVIDENCE_NE_SAME_CONCLUSION",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "SHARED_PROVENANCE_ROOT_NE_INDEPENDENT_CORROBORATION",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "AGENT_AGREEMENT_NE_TRUTH",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "AGENT_DISAGREEMENT_NE_PROTOCOL_FAILURE",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "N_AGENTS_NE_N_INDEPENDENT_SOURCES",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "PROTOCOL_COMPLETENESS_NE_SUBSTANTIVE_CORRECTNESS",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "CLOSURE_NE_ANSWER",
+      "status": "SATISFIED"
+    }
+  ],
+  "holds": [
+    "P_VS_NOT_P_RESOLUTION",
+    "INDEPENDENT_SUBSTANTIVE_RECEIPT"
+  ],
+  "not_applicable": [],
+  "conflicts": [
+    "Agent A derives P and Agent B derives NOT_P from the same authenticated evidence root; both derivations are traceable, but they do not constitute independent corroboration."
+  ],
+  "conformance_result": "PASS"
+}

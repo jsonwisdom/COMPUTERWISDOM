@@ -1,0 +1,116 @@
+{
+  "version": "1.0",
+  "type": "CASE CONFORMANCE ENVELOPE",
+  "authority": false,
+  "case_id": "FBI_VENNTEL_LOCATION_2026",
+  "case_version": "1.0",
+  "constitution_ref": "CONSTITUTIONAL_REPLAY_JUDGE_V1.md",
+  "constitution_hash": "f808e0e50debdddb05150b102d03a9b85016929bafa8693eb19974b13c3a8d91",
+  "claim_objects": [
+    {
+      "claim_id": "CLAIM_001_FBI_CAI_LAWFULNESS",
+      "claim_text": "The FBI purchases commercially available information consistent with the Constitution and the laws under the Electronic Communications Privacy Act.",
+      "claim_scope": "FBI commercial-information acquisition; legal characterization attributed to sworn March 18, 2026 testimony"
+    }
+  ],
+  "source_objects": [
+    {
+      "source_id": "SRC_001_SSCI_HEARING",
+      "source_type": "OFFICIAL_CONGRESSIONAL_HEARING_RECORD",
+      "source_location": "https://www.intelligence.senate.gov/2026/03/17/open-hearing-worldwide-threats-2/",
+      "transport_log": "Public Senate Intelligence hearing identifies Kash Patel as FBI Director and witness on 2026-03-18."
+    },
+    {
+      "source_id": "SRC_002_PATEL_EXCHANGE",
+      "source_type": "PUBLIC_TRANSCRIPT_REPORT",
+      "source_location": "https://techcrunch.com/2026/03/18/fbi-is-buying-location-data-to-track-us-citizens-kash-patel-wyden/",
+      "transport_log": "Reports Patel's statement that the FBI purchases commercially available information and characterizes the practice as consistent with the Constitution and ECPA."
+    },
+    {
+      "source_id": "SRC_003_FTC_KOCHAVA",
+      "source_type": "FEDERAL_AGENCY_ENFORCEMENT_RECORD",
+      "source_location": "https://www.ftc.gov/news-events/news/press-releases/2026/05/ftc-ban-kochava-subsidiary-selling-sensitive-location-data-settle-charges-they-sold-location-data",
+      "transport_log": "FTC record documents sensitive precise-location risk, including visits to health facilities; it does not establish FBI-specific use."
+    }
+  ],
+  "receipts": [
+    {
+      "receipt_id": "RCP_001_PUBLIC_TESTIMONY",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    },
+    {
+      "receipt_id": "RCP_002_DOWNSTREAM_USE_LOG",
+      "receipt_existence": "UNKNOWN",
+      "receipt_authenticity": "UNKNOWN"
+    },
+    {
+      "receipt_id": "RCP_003_KOCHAVA_RISK_CLASS",
+      "receipt_existence": "YES",
+      "receipt_authenticity": "AUTHENTIC"
+    }
+  ],
+  "anchors": [
+    {
+      "anchor_id": "FBI_ECPA_LEGAL_POSITION",
+      "anchor_type": "CLAIMED_LEGAL_POSITION",
+      "anchor_trust": "CONTESTED_UNRESOLVED"
+    }
+  ],
+  "application_relations": [
+    {
+      "claim_id": "CLAIM_001_FBI_CAI_LAWFULNESS",
+      "applicability_status": "HOLD"
+    }
+  ],
+  "transport_result": "HOLD — acquisition is publicly confirmed, but vendor/scope/downstream-use provenance is not fully publicly reconciled.",
+  "claim_provenance_result": "PASS — claimant, venue, date, and legal characterization are attributable to the public hearing record and contemporaneous transcript reporting.",
+  "applicability_result": "HOLD — the legal characterization remains contested and the public record does not reconcile the full scope or downstream uses.",
+  "receipt_existence": "YES",
+  "receipt_authenticity": "AUTHENTIC",
+  "substantive_support": "NOT_EVALUATED_BY_PROTOCOL",
+  "routing_state": "HOLD_INSIDE_PROTOCOL",
+  "external_review_status": "OBSERVED_ONLY",
+  "invariant_checks": [
+    {
+      "invariant": "CAPABILITY_NE_INSTANCE",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "INTELLIGENCE_NE_EVIDENCE",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "PUBLICLY_UNOBSERVABLE_NE_STRUCTURALLY_IMPOSSIBLE_TO_AUDIT",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "LEGAL_THEORY_CONTESTED_NE_AUTHORITY_ABSENT",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "RECEIPT_EXISTS_NE_RECEIPT_AUTHENTIC_NE_RECEIPT_SUFFICIENT",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "PROTOCOL_COMPLETENESS_NE_SUBSTANTIVE_CORRECTNESS",
+      "status": "SATISFIED"
+    },
+    {
+      "invariant": "CLOSURE_NE_ANSWER",
+      "status": "SATISFIED"
+    }
+  ],
+  "holds": [
+    "FBI_SCOPE",
+    "PURPOSE_ACTUAL_USE",
+    "INTERNAL_AUDITABILITY",
+    "FBI_SPECIFIC_SEX_DISPARATE_USE",
+    "ANCHOR_RESOLUTION"
+  ],
+  "not_applicable": [],
+  "conflicts": [
+    "FBI legal characterization is operative as an agency position but remains contested; the protocol does not resolve the constitutional question."
+  ],
+  "conformance_result": "PASS"
+}
