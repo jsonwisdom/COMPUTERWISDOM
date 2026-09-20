@@ -1,0 +1,81 @@
+{
+  "artifact_id": "LAPIS_TO_SEYMOUR_INHERITANCE_V0_1",
+  "status": "OBSERVED_LINEAGE_MAP",
+  "authority": false,
+  "root_invariant": {
+    "human_controlled": true,
+    "ai_authority": false,
+    "final_decision": "HUMAN"
+  },
+  "lapis": {
+    "role": "EVIDENCE_CONTINUITY_VERIFICATION_ENGINE",
+    "functions": ["PRESERVE", "HASH", "VERIFY", "REPLAY", "WITNESS"],
+    "observed_roots": [
+      {
+        "date": "2026-04-19",
+        "repository": "jsonwisdom/mn-ago-entropy-ledger",
+        "commit": "f4f2e48820adb9d3d44ad06be45adc470a3e8e65",
+        "label": "Lapis CI (Genesis Clean)",
+        "observed_shape": ["LEDGER_INTEGRITY", "INGESTION_VERIFICATION", "DOUBLE_ANCHOR_INVARIANT"]
+      },
+      {
+        "date": "2026-04-21",
+        "repository": "jsonwisdom/COMPUTERWISDOM",
+        "commit": "d70bdc3571ff53991f1407510641cd698c4aac4a",
+        "label": "Lapis CI workflow for verify.sh",
+        "observed_shape": ["RECEIPT_HASH_INTEGRITY", "SIGNATURE_VERIFICATION", "MERKLE_ROOT_INTEGRITY"]
+      },
+      {
+        "date": "2026-05-14",
+        "repository": "jsonwisdom/AL",
+        "commit": "edcec6f55adbd65913f3e6b28c79c81d73ef84b6",
+        "label": "Lapis Protocol stewardship invariant",
+        "observed_shape": ["CHRONOLOGY", "TEXTURE", "MEANING", "NO_SILENT_OVERWRITE", "REPLAY_PATH"]
+      },
+      {
+        "date": "2026-05-14",
+        "repository": "jsonwisdom/AL",
+        "commit": "c7f4bb1caf02e478bafc07c49534302bbc2ccf10",
+        "label": "Lapis evidence court doctrine",
+        "observed_shape": ["CLAIM_AS_EVIDENCE", "HASH_AS_GAVEL", "VERIFIER_AS_WITNESS", "REPLAY_SUMMARY"]
+      },
+      {
+        "date": "2026-05-14",
+        "repository": "jsonwisdom/AL",
+        "commit": "e269e96fc65831b20d4434b0e359ffd39bf95da8",
+        "label": "Lapis Replay Court EAS schema",
+        "observed_shape": ["AUDIT_SCHEMA", "REPLAY_PATH_PRESENT", "SILENT_OVERWRITE_DETECTED_FIELD"]
+      },
+      {
+        "date": "2026-05-14",
+        "repository": "jsonwisdom/AL",
+        "commit": "e07bc9fe2fc037dc308ad8642d7bd042c0c24de3",
+        "label": "Lapis EAS schema registration receipt",
+        "observed_shape": ["SCHEMA_RECEIPT", "ATTESTATION_PENDING_STATE"]
+      },
+      {
+        "date": "2026-05-14",
+        "repository": "jsonwisdom/AL",
+        "commit": "3e3e4f7991c4c5d78da27df5a6dfc60ea88a0673",
+        "label": "Lapis EAS attestation receipt",
+        "observed_shape": ["ATTESTATION_UID", "ATTESTATION_TX_HASH", "CONFIRMED_STATE"]
+      }
+    ]
+  },
+  "seymour": {
+    "role": "HUMAN_CONTROLLED_CONSTITUTIONAL_REPLAY_INTERFACE",
+    "functions": ["TRACK", "COMPARE", "VERIFY", "REPLAY", "FLAG", "PRESERVE"]
+  },
+  "inheritance": {
+    "lapis_supplies": ["EVIDENCE_RAIL", "CONTINUITY_RAIL", "VERIFICATION_RAIL", "WITNESS_RAIL"],
+    "seymour_supplies": ["SEQUENCING", "COLLISION_GEOMETRY", "HOLD_ROUTING", "HUMAN_GATED_REPLAY_INTERFACE"],
+    "human_supplies": ["FINAL_DECISION", "AUTHORIZATION", "OVERRIDE"]
+  },
+  "hard_boundaries": [
+    "LAPIS_OUTPUT_NE_TRUTH",
+    "SEYMOUR_OUTPUT_NE_AUTHORITY",
+    "ATTESTATION_NE_FINAL_DECISION",
+    "REPLAY_NE_JUDGMENT",
+    "FINAL_DECISION_EQ_HUMAN"
+  ]
+}
