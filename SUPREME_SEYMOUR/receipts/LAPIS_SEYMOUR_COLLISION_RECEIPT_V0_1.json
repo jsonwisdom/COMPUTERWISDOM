@@ -1,0 +1,50 @@
+{
+  "receipt_id": "LAPIS_SEYMOUR_COLLISION_RECEIPT_V0_1",
+  "status": "OBSERVED_COLLISION",
+  "authority": false,
+  "claim_of_truth": false,
+  "promotion": "NONE",
+  "collision": {
+    "lapis_functions": ["PRESERVE", "HASH", "VERIFY", "REPLAY", "WITNESS"],
+    "seymour_functions": ["TRACK", "COMPARE", "VERIFY", "REPLAY", "FLAG", "PRESERVE"],
+    "shared_functions": ["PRESERVE", "VERIFY", "REPLAY"],
+    "lapis_distinct": ["HASH", "WITNESS"],
+    "seymour_distinct": ["TRACK", "COMPARE", "FLAG"]
+  },
+  "interpretation_boundary": {
+    "lapis": "EVIDENCE_CONTINUITY_VERIFICATION_ENGINE",
+    "seymour": "HUMAN_CONTROLLED_CONSTITUTIONAL_REPLAY_INTERFACE",
+    "human": "FINAL_DECISION_BOUNDARY"
+  },
+  "lineage_receipts": [
+    "jsonwisdom/mn-ago-entropy-ledger@f4f2e48820adb9d3d44ad06be45adc470a3e8e65",
+    "jsonwisdom/COMPUTERWISDOM@d70bdc3571ff53991f1407510641cd698c4aac4a",
+    "jsonwisdom/AL@edcec6f55adbd65913f3e6b28c79c81d73ef84b6",
+    "jsonwisdom/AL@c7f4bb1caf02e478bafc07c49534302bbc2ccf10",
+    "jsonwisdom/AL@e269e96fc65831b20d4434b0e359ffd39bf95da8",
+    "jsonwisdom/AL@e07bc9fe2fc037dc308ad8642d7bd042c0c24de3",
+    "jsonwisdom/AL@3e3e4f7991c4c5d78da27df5a6dfc60ea88a0673"
+  ],
+  "constitutional_handoff": [
+    "LAPIS_KEEPS_THE_RECEIPTS",
+    "SEYMOUR_SEQUENCES_THE_RECEIPTS",
+    "SEYMOUR_SURFACES_COLLISION_GEOMETRY",
+    "HUMAN_DECIDES"
+  ],
+  "root_invariant": {
+    "human_controlled": true,
+    "ai_authority": false,
+    "final_decision": "HUMAN"
+  },
+  "error_geometry": {
+    "missing_receipt": "HOLD",
+    "conflicting_receipts": "COLLISION",
+    "unexplained_version_change": "AUDIT",
+    "expected_state_ne_observed_state": "AUDIT"
+  },
+  "notes": [
+    "Observed functional overlap does not prove intentional design lineage.",
+    "Repository chronology supports historical continuity between Lapis-era verification work and current Seymour replay architecture.",
+    "No authority or substantive truth claim is created by this receipt."
+  ]
+}
