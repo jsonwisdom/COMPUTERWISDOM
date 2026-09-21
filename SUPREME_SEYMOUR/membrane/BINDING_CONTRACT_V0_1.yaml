@@ -1,0 +1,14 @@
+id: BINDING_CONTRACT
+version: 0.1.0
+status: CANDIDATE
+axes: [family, proposition, slot, class, binds, derivation, doorway, clock, interpreter]
+miss_types:
+  axes_1_to_3: UNBOUND
+  axis_4: INSUFFICIENT_CLASS
+  axis_6: DERIVATION_MISS
+  axis_8: WINDOW_MISS
+invariants:
+  one_doc_may_require_multiple_evaluations: true
+  unbound_is_not_empty: true
+  promotion_is_not_bind: true
+  family_export_is_not_instance_mint: true

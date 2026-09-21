@@ -1,0 +1,22 @@
+id: STEP_ZERO
+version: 0.1.0
+scope: EVERY_USER_TURN
+status: CANDIDATE
+burden_on_machine: true
+sequence:
+  - recover_current_conversation_state
+  - recover_active_hierarchy
+  - orient_by_directories
+  - connect_prior_work
+  - recover_freezes_holds_and_not_this_pass
+  - prove_or_hold_inheritance
+  - only_then_process_question
+failure_states:
+  isolated_prompt_as_root: CONTEXT_GATE_FAILURE
+  directory_bypass: CONTEXT_GATE_FAILURE
+  stale_memory_over_current_state: CONTEXT_GATE_FAILURE
+  unverified_inheritance: HOLD
+  missing_home: HOLD
+optimization:
+  full_reboot_each_turn: false
+  incremental_replay: true

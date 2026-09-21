@@ -1,0 +1,12 @@
+id: SUPREME_SEYMOUR_DEPENDENCY_RULES
+version: 0.1.0
+status: CANDIDATE
+rules:
+  - domain_pack_must_not_reimplement_membrane
+  - domain_B_depends_on_subset_of_core_plus_declared_exports
+  - touch_outside_declared_dependency_set_is_ci_fail
+  - new_slot_on_existing_family_requires_versioned_family_fork
+  - renderer_may_not_mint_slots
+  - owl_inference_may_not_mint_slots
+  - family_export_is_not_instance_mint
+  - bind_success_is_not_promotion

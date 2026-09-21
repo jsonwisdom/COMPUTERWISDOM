@@ -1,0 +1,14 @@
+id: DERIVATION_CONTRACT
+version: 0.1.0
+status: CANDIDATE
+class_b_requires:
+  source_independence: true
+  derivation_independence: true
+  same_proposition: true
+derivation_status: [INDEPENDENT, DERIVED, UNKNOWN, NOT_APPLICABLE]
+test_order: [same_sender, same_proposition, source_independence, own_check_evidenced]
+invariants:
+  different_sender_is_not_second_witness: true
+  quote_present_is_not_derived: true
+  quote_absent_is_not_independent: true
+  guess_independent_is_illegal_promotion: true

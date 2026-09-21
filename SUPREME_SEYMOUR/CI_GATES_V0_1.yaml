@@ -1,0 +1,14 @@
+id: SUPREME_SEYMOUR_CI_GATES
+version: 0.1.0
+status: CANDIDATE
+gates:
+  G0_STEP_ZERO: {rule: every_question_enters_through_step_zero}
+  G1_GREY_GAP_RECEIPT: {requires: [search_denominator, clock_state, interpreter_version]}
+  G2_MOTIVE_CONTROL: {rule: no_motive_or_control_edge_without_internal_receipt}
+  G3_IMMUTABLE_D: {rule: later_fill_cannot_mutate_gap_at_D}
+  G4_DECLARED_SLOT: {rule: undeclared_absence_cannot_render_as_grey_gap}
+  G5_NON_INTERFERENCE: {rule: add_domain_B_does_not_rewrite_domain_A_gap_or_corpus_hashes}
+  G6_INFERENCE_RENDER: {rule: inferred_edges_never_render_as_grey_or_solid_confirmed}
+  G7_REMOVABILITY: {rule: removing_domain_pack_leaves_core_conformant}
+  G8_GRAMMAR_LEAK: {rule: neutral_bootstrap_contains_no_domain_vocabulary}
+  G9_REPLAY_IDENTITY: {rule: captured_receipt_requires_archived_interpreter_identity}

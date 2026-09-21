@@ -1,0 +1,8 @@
+id: EVALUATION_RECEIPT_SCHEMA
+version: 0.1.0
+status: CANDIDATE
+required: [slot_id, proposition_id, rule_hash, interpreter_version, grammar_hash, evidence_hashes, search_denominator, search_result, clock_state, derivation_dag, result]
+invariants:
+  result_is_leaf: true
+  receipt_is_derivation_tree_captured_at_evaluation_time: true
+  later_reconstruction_is_not_original_receipt: true

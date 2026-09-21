@@ -1,0 +1,20 @@
+id: CI_REMOVABLE_TEST
+version: 0.1.0
+status: CANDIDATE_DIRECTORY
+authority: false
+promotion_allowed: false
+path: SUPREME_SEYMOUR/ci/removable_test
+purpose: "remove domain pack; core still conforms"
+step_zero_required: true
+directory_first: true
+inheritance: RECEIPT_BOUND
+writes:
+  automatic_promotion: false
+  silent_rewrite: false
+  backdating: false
+required_metadata:
+  - source
+  - clock_state
+  - version
+  - status
+  - lineage

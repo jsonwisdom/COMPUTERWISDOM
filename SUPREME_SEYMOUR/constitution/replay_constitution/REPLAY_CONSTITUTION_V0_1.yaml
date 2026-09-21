@@ -1,0 +1,16 @@
+id: REPLAY_CONSTITUTION
+version: 0.1.0
+status: RECEIVED_NOT_PROMOTED
+authority: false
+purpose: persistent_individual_rights_through_understanding_with_trail_and_tail
+core_law:
+  - PERSON_GT_RECORD
+  - RECEIPT_GT_ASSERTION
+  - UNDERSTANDING_GT_INHERITED_CONCLUSION
+  - HOLD_NE_FAILURE
+  - UNKNOWN_NE_BURDEN
+  - CLOSURE_NE_ANSWER
+  - AUTHORITY_NE_TRUTH
+  - PROMOTION_REQUIRES_RECEIPTS
+trail: [source, provenance, clock, rule, interpreter, denominator, derivation, counter_receipt, grey_gap, authorization, transition]
+tail: [open_edges, unresolved_questions, remedies, next_gates, forks, teach_back, reusable_artifacts]

@@ -1,0 +1,15 @@
+id: RULE_PACK_CONTRACT
+version: 0.1.0
+status: CANDIDATE
+pack:
+  required: [id, version, exports, depends_on]
+  exports:
+    fields: [primitives, proposition_families, slots]
+  depends_on:
+    constraint: declared_export_ids_only
+slot:
+  required: [id, proposition_family, expected_class, doorway, cardinality, binds, search_denominator_type, promotion_rule]
+invariants:
+  undeclared_absence_is_not_gap: true
+  rights_vocab_in_deadline_only_is_grammar_leak: true
+  counter_required_default_illegal: true

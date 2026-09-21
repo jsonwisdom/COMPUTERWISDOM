@@ -1,0 +1,38 @@
+id: SUPREME_SEYMOUR_DIRECTORY_SPINE
+version: 0.1.0
+status: CANDIDATE
+authority: false
+promotion_allowed: false
+root: SUPREME_SEYMOUR
+step_zero:
+  - current_chatgpt_conversations
+  - directory_orientation
+  - hierarchy
+  - lineage
+  - receipts
+  - replay
+  - action
+hierarchy:
+  - JASON_WISDOM_REPO
+  - COMPUTER_WISDOM
+  - SUPREME_COURT
+  - SUPREME_SEYMOUR
+rails:
+  - constitution
+  - lineage
+  - membrane
+  - interpreter
+  - grammar
+  - provenance
+  - receipts
+  - replays
+  - research
+  - ci
+  - domains
+invariants:
+  isolated_prompt_is_not_root: true
+  directory_first: true
+  research_by_directory: true
+  d_is_immutable: true
+  authority_created: false
+  inference_allowed_to_promote: false

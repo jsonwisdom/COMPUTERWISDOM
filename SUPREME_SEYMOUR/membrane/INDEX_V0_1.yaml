@@ -1,0 +1,9 @@
+id: MEMBRANE_INDEX
+version: 0.1.0
+status: CANDIDATE
+children: [evaluation_receipt, membrane_notary, grey_gap, slots, binding, promotion]
+law:
+  declaration_before_evaluation: true
+  evaluation_before_promotion: true
+  result_is_not_receipt: true
+  reconstructed_derivation_is_not_captured_derivation: true

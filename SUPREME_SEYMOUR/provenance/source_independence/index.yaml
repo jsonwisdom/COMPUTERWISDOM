@@ -1,0 +1,20 @@
+id: PROVENANCE_SOURCE_INDEPENDENCE
+version: 0.1.0
+status: CANDIDATE_DIRECTORY
+authority: false
+promotion_allowed: false
+path: SUPREME_SEYMOUR/provenance/source_independence
+purpose: "who spoke; affiliation/control test"
+step_zero_required: true
+directory_first: true
+inheritance: RECEIPT_BOUND
+writes:
+  automatic_promotion: false
+  silent_rewrite: false
+  backdating: false
+required_metadata:
+  - source
+  - clock_state
+  - version
+  - status
+  - lineage
