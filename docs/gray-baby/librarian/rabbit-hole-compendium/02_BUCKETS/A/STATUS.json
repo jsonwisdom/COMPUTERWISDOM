@@ -1,0 +1,15 @@
+{
+  "bucket": "A",
+  "status": "FROZEN",
+  "bound_start": "00:05:25",
+  "bound_end": "01:19:46",
+  "n_titles_receipted": 50,
+  "n_caption_gist": 12,
+  "n_title_only": 38,
+  "index_coverage": 1.0,
+  "caption_gist_coverage": 0.24,
+  "claim_scoring": "NOT_RUN",
+  "temporal_overlap": "6th Extinction → A8-58 DELTA",
+  "authority": false,
+  "promotion_allowed": false
+}
