@@ -11,7 +11,7 @@
       "pr_state": "OPEN",
       "draft": true,
       "merged": false,
-      "head": "66ac88435ab6552943741180a0a2f517b581d1e8"
+      "head_at_precheck": "66ac88435ab6552943741180a0a2f517b581d1e8"
     },
     "drive": {
       "active": true,
