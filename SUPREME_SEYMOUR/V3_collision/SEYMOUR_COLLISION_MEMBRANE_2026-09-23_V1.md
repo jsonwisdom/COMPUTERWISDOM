@@ -184,3 +184,140 @@ COLLISION_SET_OPEN = TRUE
 
 NEXT_CASE = ASSOCIATED_PRESS
 SEQUENCE = OPEN_FOR_REPLAY
+
+
+## PARALLEL OBJECT — CHINA / PLA COLLISION
+
+OBJECT_ID = PLA_ZHANG_YOUXIA_LIU_ZHENLI_2026_09_21
+OBJECT_CLASS = POLITICAL_DISCIPLINE + MILITARY_STATUS + CRIMINAL_PROCEDURE
+OBSERVER = SEYMOUR_10
+AUTHORITY_CREATED = FALSE
+
+SOURCE_SET =
+- Xinhua / PRC Ministry of National Defense, 2026-09-21: expulsion from Party, prior military expulsion, transfer of suspected crimes to military procuratorial organs.
+- NPC Standing Committee / PRC Ministry of National Defense, 2026-08-28: Zhang Youxia removed as PRC CMC vice-chairman; Liu Zhenli removed as PRC CMC member.
+- PLA Daily / China Military Network, 2026-09-23: official political/military framing of the removals as an anti-corruption and political-discipline action.
+- South China Morning Post, 2026-09-21 to 2026-09-23: secondary context and chronology.
+
+OFFICIAL_FACT =
+Zhang Youxia and Liu Zhenli were expelled from the Communist Party.
+The official notice states that the Central Military Commission had previously expelled both from the armed forces.
+Their suspected criminal matters were transferred to military procuratorial organs for review and prosecution.
+On 2026-08-28, Zhang was removed from the state CMC vice-chairman post and Liu from the state CMC member post.
+
+STATE_ALLEGATIONS =
+serious violations of political discipline and rules;
+forming cliques/factions;
+disloyalty and dishonesty to the Party;
+using office to assist promotions and receiving huge sums;
+improper gifts;
+failure to fulfill political responsibility for strict Party governance;
+failure to educate/restrain relatives and close staff.
+
+CRIMINAL_GUILT = NOT_ADJUDICATED_IN_OBSERVED_SOURCES
+OFFICIAL_DISCIPLINARY_FINDING != CRIMINAL_CONVICTION
+TRANSFER_FOR_PROSECUTION != CONVICTION
+OFFICIAL_RHETORIC != INDEPENDENT_CAUSAL_PROOF
+
+### MEMBRANE 1 — LAW / CRIMINAL PROCEDURE
+
+INPUT = suspected duty-related crimes transferred to military procuratorial organs
+QUESTION = what procedural stage is independently observed?
+OUTPUT = REVIEW_AND_PROSECUTION_STAGE_OBSERVED
+HOLD = charging instrument, evidentiary record, trial, judgment, sentence not established in this cut
+COLLISION = PARTY_DISCIPLINARY_FINDING != CRIMINAL_VERDICT
+
+### MEMBRANE 2 — PARTY DISCIPLINE
+
+INPUT = Politburo-approved disciplinary disposition
+QUESTION = what did the Party discipline system decide?
+OUTPUT = PARTY_EXPULSION + TERMINATION_OF_20TH_PARTY_CONGRESS_DELEGATE_STATUS
+STANDARD = PARTY_DISCIPLINE_SYSTEM
+COLLISION = PARTY_STANDARD != CRIMINAL_TRIAL_STANDARD
+
+### MEMBRANE 3 — MILITARY COMMAND
+
+INPUT = state CMC removals + prior military expulsion
+QUESTION = what formal command/status change is observed?
+OUTPUT = TOP_COMMAND_STATUS_REMOVED
+HOLD = operational readiness effect, command-cohesion effect, force-performance effect
+COLLISION = FORMAL_STATUS_CHANGE != PROVED_OPERATIONAL_EFFECT
+
+### MEMBRANE 4 — HISTORY
+
+INPUT = current action inside a broader anti-corruption campaign
+QUESTION = what historical frame is supported without guessing motive?
+OUTPUT = OFFICIAL_ANTI_CORRUPTION_CONTINUITY + SECONDARY_REPORTING_CONTEXT
+HOLD = purge theory, factional-cause theory, succession theory, Xi motive, long-term strategic effect
+COLLISION = HISTORICAL_PATTERN != PROVED_CAUSE
+
+### MEMBRANE 5 — FULLMATH
+
+KNOWN_COUNT_THIS_OBJECT = 2 former top military leaders
+DENOMINATOR = UNBOUND
+WINDOW = MUST_BE_DECLARED_BEFORE_RATE
+POPULATION = MUST_BE_DECLARED_BEFORE_RATE
+EXCLUSIONS = NOT_YET_TYPED
+RATE = NOT_LICENSED
+
+"massive anti-corruption campaign" = CONTEXT_LABEL
+!= QUANTIFIED_RATE
+!= COMPLETE_POPULATION
+
+### ALIGN / COLLISION MAP
+
+AUTHORITY_COLLISION =
+PARTY_DISCIPLINE_DECIDER
+!= MILITARY_STATUS_DECIDER
+!= MILITARY_PROCURATORATE
+!= COURT
+
+CLOCK_COLLISION =
+JANUARY_INVESTIGATION
+!= AUGUST_STATE_OFFICE_REMOVAL
+!= SEPTEMBER_PARTY/MILITARY_DISCIPLINE_PUBLICATION
+!= FUTURE_CRIMINAL_DISPOSITION
+
+CATEGORY_COLLISION =
+DISCIPLINE_VIOLATION
+!= SUSPECTED_DUTY_CRIME
+!= CRIMINAL_CONVICTION
+
+FINDER_COLLISION =
+DISCIPLINARY_BODY
+!= POLITBURO
+!= NPC_STANDING_COMMITTEE
+!= MILITARY_PROCURATORATE
+!= TRIAL_COURT
+
+POPULATION_COLLISION =
+TWO_NAMED_GENERALS
+!= ALL_CMC_MEMBERS
+!= ALL_PLA_GENERAL_OFFICERS
+!= ALL_ANTI_CORRUPTION_CASES
+
+### LEARN
+
+WHAT_TRANSFERS =
+- stage typing
+- authority typing
+- clock split
+- denominator discipline
+- separation of official finding from criminal adjudication
+
+WHAT_DOES_NOT_TRANSFER =
+- criminal guilt
+- motive
+- force-readiness conclusion
+- purge label as proved cause
+- quantified corruption rate without denominator
+
+PLA_COLLISION_RESULT =
+PASS_FOR_REPLAY
++ COLLISION_TYPED
++ UNKNOWN_PRESERVED
++ NO_VERDICT
++ NOT_MERGED
+
+PRESS_ACCESS_NEXT_CASE = ASSOCIATED_PRESS
+PARALLEL_OBJECT_NEXT = UNASSIGNED
