@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jaywisdom.base.eth/schemas/bama/source_receipt.schema.json",
+  "title": "BAMA Priority Source Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "signal",
+    "observed_at",
+    "source_url",
+    "source_class",
+    "content_sha256",
+    "claim_state",
+    "authority_created"
+  ],
+  "properties": {
+    "signal": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https://"
+    },
+    "source_class": {
+      "enum": ["UA_OFFICIAL", "NEWS", "OPINION"]
+    },
+    "content_sha256": {
+      "oneOf": [
+        { "type": "null" },
+        { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      ]
+    },
+    "claim_state": {
+      "const": "HOLD"
+    },
+    "authority_created": {
+      "const": false
+    }
+  }
+}
