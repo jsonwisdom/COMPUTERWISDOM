@@ -84,3 +84,46 @@ I5_ENS_TEXT_RECORD_POINTER = HOLD_NOT_WRITTEN_PER_CANONICAL_TOPOLOGY
 I6_MASTER_ROOM_OPERATOR_SESSION_BOUND = DESIGN_NOT_IMPLEMENTED
 
 NO_FAKE_GREEN = TRUE
+
+
+## External witness check — 2026-09-23
+
+Public EAS explorer verification observed:
+
+### Sepolia witness
+
+UID:
+0x23b3b97514fa232cfdbcdee7a5031ff11a5fcd36aa874a5f4067805cd0ad6c84
+
+Observed state:
+- created 2026-05-16
+- expiration: never
+- revoked: no
+- attester: 0x1dB2C056c7DeCD9f9fC574692b05F62aE34Fb8b5
+- transaction: 0x4cef493d67d8744d2458fd82c169aa872b14cfe2ecaf13f03329b57bd93acc35
+- raw boundary includes "not ENS anchored yet"
+
+### Base mainnet evidence-only witness
+
+UID:
+0xed2eed117f8b888d597910ed88cda166217babfcdcfc54e4c70b02a49ee2dc25
+
+Observed state:
+- chain: Base
+- attester: 0x1dB2C056c7DeCD9f9fC574692b05F62aE34Fb8b5
+- recipient / subject address: 0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8
+- subject identity text: jaywisdom.eth / jaywisdom.base.eth
+- attester role: delegated_recorder
+- authority model: EVIDENCE_ONLY
+- boundary explicitly does not claim jaywisdom.base.eth signed the schema freeze
+
+### Current identity conclusion
+
+EAS_WITNESS_EXISTS = PROVEN_EXTERNALLY
+BASE_EAS_SUBJECT_BINDING_RECORD_EXISTS = PROVEN_EXTERNALLY
+CONTROLLER_SIGNATURE_BY_0xA380... = NOT_PROVEN_BY_THESE_ATTESTATIONS
+ENS_FORWARD_RESOLUTION = STILL_HOLD
+ENS_REVERSE_PRIMARY = STILL_HOLD
+ENS_TEXT_POINTER_WRITTEN = CONTRADICTED_BY_CURRENT_CANONICAL_TOPOLOGY (PREPARED_NOT_WRITTEN)
+
+Do not collapse a delegated recorder's attestation into controller signature proof.
