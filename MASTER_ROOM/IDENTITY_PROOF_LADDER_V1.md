@@ -1,0 +1,86 @@
+# MASTER ROOM IDENTITY PROOF LADDER V1
+
+## Purpose
+
+Separate identity display, namespace resolution, wallet control, signatures, attestations, and authority.
+
+## Current observed evidence
+
+### ENS / Base names
+
+Declared identity surfaces:
+- jaywisdom.eth
+- jaywisdom.base.eth
+
+Expected identity controller recorded in repo:
+- 0xa380552a27b0a5a2874ea7aa52cac09f542002e8
+
+### Legacy Computer Wisdom anchor
+
+FINAL_ANCHOR_TOPOLOGY_v1.md currently records:
+- state = ENS_POINTER_PREPARED_NOT_WRITTEN
+- EAS attestation = submitted
+- EAS network = base-sepolia
+- ENS = optional discovery prepared
+- mainnet_anchor = false
+
+Therefore:
+ENS_POINTER_PREPARED != ENS_RECORD_WRITTEN
+EAS_WITNESS != ENS_ANCHOR
+TESTNET_WITNESS != MAINNET_IDENTITY_PROOF
+
+### Wallet binding receipt
+
+receipts/wallet_binding_v2.md currently records:
+- STATUS = PREPARED_NOT_SIGNED
+- SHOW_WALLET_PROOF = PENDING
+
+Therefore:
+DECLARED_CONTROLLER != SIGNED_CONTROL_PROOF
+
+### ENS / Chain Voice repo
+
+jsonwisdom/ENS README currently describes:
+- Base mainnet chain id 8453
+- Base EAS control-proof flow
+- expected controller 0xa380552a27b0a5a2874ea7aa52cac09f542002e8
+- deployment status BLOCKED_PENDING_PAGES_ENABLEMENT
+
+Therefore:
+CODE_READY != DEPLOYED
+DEPLOYED != TRANSACTION_CONFIRMED
+TRANSACTION_CONFIRMED != ENS_RECORD_WRITTEN
+
+## Proof ladder
+
+I0 DISPLAYED_NAME
+I1 FORWARD_RESOLUTION_VERIFIED
+I2 REVERSE_PRIMARY_VERIFIED
+I3 CONTROLLER_SIGNATURE_VERIFIED
+I4 EAS_ATTESTATION_VERIFIED
+I5 ENS_TEXT_RECORD_POINTER_VERIFIED
+I6 MASTER_ROOM_OPERATOR_SESSION_BOUND
+
+Master Room may report only the highest rung independently proven in the current replay.
+
+## Non-collapse
+
+ENS_NAME != PERSON
+ENS_RESOLUTION != CONSENT
+WALLET_CONTROL != GLOBAL_AUTHORITY
+SIGNATURE != TRANSACTION
+TRANSACTION != ATTESTATION
+ATTESTATION != LEGAL_AUTHORITY
+BIOMETRIC_UNLOCK != PUBLIC_BIOMETRIC_STORAGE
+
+## Current status
+
+CURRENT_PROVEN_RUNG_FROM_REPO_EVIDENCE = I0_PLUS_DECLARED_CONTROLLER_AND_TESTNET_EAS_RECEIPT
+I1_LIVE_FORWARD_RESOLUTION = NOT_PROVEN_IN_THIS_GITHUB_ONLY_PASS
+I2_REVERSE_PRIMARY = NOT_PROVEN_IN_THIS_GITHUB_ONLY_PASS
+I3_CONTROLLER_SIGNATURE = HOLD
+I4_EAS_TESTNET_WITNESS = REPO_RECORDED
+I5_ENS_TEXT_RECORD_POINTER = HOLD_NOT_WRITTEN_PER_CANONICAL_TOPOLOGY
+I6_MASTER_ROOM_OPERATOR_SESSION_BOUND = DESIGN_NOT_IMPLEMENTED
+
+NO_FAKE_GREEN = TRUE
