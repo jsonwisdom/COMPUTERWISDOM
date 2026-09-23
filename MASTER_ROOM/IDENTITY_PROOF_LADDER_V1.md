@@ -127,3 +127,27 @@ ENS_REVERSE_PRIMARY = STILL_HOLD
 ENS_TEXT_POINTER_WRITTEN = CONTRADICTED_BY_CURRENT_CANONICAL_TOPOLOGY (PREPARED_NOT_WRITTEN)
 
 Do not collapse a delegated recorder's attestation into controller signature proof.
+
+
+## Witness / controller membrane
+
+The identity ladder MUST preserve this hard membrane:
+
+WITNESS SIDE
+- EAS_WITNESS_EXISTS
+- BASE_EAS_SUBJECT_BINDING_RECORD
+
+CONTROLLER SIDE
+- ENS_FORWARD_RESOLUTION
+- ENS_REVERSE_PRIMARY
+- CONTROLLER_SIGNATURE
+- MASTER_ROOM_OPERATOR_SESSION_BOUND
+
+WITNESS_SIDE != CONTROLLER_SIDE
+
+A delegated recorder may establish that a witness record exists and names a subject.
+A delegated recorder cannot, by that act alone, establish that the subject controlled the named key, signed the declaration, consented to the declaration, or authorized a Master Room session.
+
+EAS_EXISTS != IDENTITY_PROVEN
+SUBJECT_NAMED != SUBJECT_SIGNED
+ATTESTER_SIGNATURE != CONTROLLER_SIGNATURE
