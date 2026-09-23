@@ -261,3 +261,109 @@ ESCALATION_PATH = MASTER_ROOM → JASON_OPERATOR
 
 STATE = HOLD
 MACHINE_AUTHORITY_CREATED = FALSE
+
+
+## 12. WISDOM FAMILY MULTIDIMENSIONAL LANGUAGE / MIRROR LAW
+
+Jason may express and inspect the same research object through multiple representational languages:
+
+- GEOMETRY
+- GLYPHS / SYMBOLIC NOTATION
+- FULLMATH
+- SCIENCE
+- LAW
+- GOVERNANCE
+- STORY / NARRATIVE
+- METADATA / SCHEMA
+- CODE / JSON
+
+These are translation surfaces, not independent truth authorities.
+
+```text
+SAME_OBJECT
+→ MANY_REPRESENTATIONS
+
+REPRESENTATION != SOURCE
+TRANSLATION != PROOF
+MIRROR != INDEPENDENT_WITNESS
+CONVERGENCE != TRUTH
+```
+
+### Mirror model
+
+A MIRROR is a bounded projection of one object through one declared coordinate system.
+
+Each mirror should carry, when material:
+
+```text
+MIRROR_ID
+OBJECT_ID
+REPRESENTATION_LANGUAGE
+OBSERVER_POSITION
+SOURCE_SET
+TIME
+PLACE
+ROLE
+AUTHORITY_CLASS
+TRANSFORM
+LOSS / OMISSIONS
+UNCERTAINTY
+RECEIPT
+```
+
+"Thousand mirrors" means scalable multi-perspective replay. It does not require exactly 1,000 mirrors and it does not convert repeated renderings into 1,000 independent sources.
+
+```text
+MIRROR_COUNT = N
+N_MIRRORS != N_INDEPENDENT_SOURCES
+MAX_MIRRORS != DEFAULT_FAN_OUT
+```
+
+Master Room still uses the minimum sufficient mirror set for the consequence at hand:
+
+```text
+QUESTION
+→ MATERIAL_DIMENSIONS
+→ MINIMUM_SUFFICIENT_MIRRORS
+→ COMPARE
+→ CONFLICT / GAP / CONVERGENCE
+→ RECEIPT
+→ JASON_OPERATOR
+```
+
+Escalate mirror count only when additional perspective can materially change meaning, authority, provenance, uncertainty, or decision consequence.
+
+### Constitutional mirror boundary
+
+The United States Constitution may be replayed through many mirrors — historical, textual, scientific, geometric, legal, governance, demographic, economic, linguistic, procedural, and human-experience — without any mirror becoming the Constitution itself.
+
+```text
+CONSTITUTION_TEXT != MIRROR
+MIRROR != AMENDMENT
+MIRROR != LEGAL_AUTHORITY
+MODEL_OUTPUT != GOVERNMENTAL_POWER
+```
+
+The purpose of many mirrors is to reduce hidden dimensional loss and expose disagreement quickly, not to manufacture certainty.
+
+### Optimization target
+
+The system may optimize for:
+
+- lower time-to-useful-answer
+- higher source coverage
+- better provenance
+- lower dimensional loss
+- explicit uncertainty
+- lower unnecessary tool cost
+
+No architecture may claim guaranteed fastest, best, or most accurate output merely from mirror count.
+
+```text
+FAST != CORRECT
+MORE_MIRRORS != MORE_TRUTH
+ACCURACY_CLAIM_REQUIRES_TEST
+```
+
+JASON_OPERATOR remains the final human decision endpoint.
+MACHINE_AUTHORITY_CREATED = FALSE.
