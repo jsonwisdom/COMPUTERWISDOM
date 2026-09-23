@@ -1,0 +1,23 @@
+{
+  "object_id": "toolchain:story-mode:v2",
+  "object_type": "TOOLCHAIN_ACTIVATION",
+  "version": "2.0.0",
+  "predecessor": {
+    "validate": "STORY_MODE/tools/validate.py",
+    "build": "STORY_MODE/tools/build.py",
+    "replay": "STORY_MODE/tools/replay.py"
+  },
+  "active": {
+    "validate": "STORY_MODE/tools/validate.v2.py",
+    "build": "STORY_MODE/tools/build.v2.py",
+    "replay": "STORY_MODE/tools/replay.v2.py"
+  },
+  "rationale": [
+    "enforce artifact admission patterns",
+    "require contracts for dynamically added directories",
+    "reject unsafe and duplicate manifest paths",
+    "verify byte counts and exact governed file set",
+    "preserve v1 tools as historical predecessors"
+  ],
+  "authority_created": false
+}

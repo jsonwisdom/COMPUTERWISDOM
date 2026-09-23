@@ -1,0 +1,32 @@
+{
+  "receipt_id": "REFLECTIVE-MIRROR-AUTHORITY-AUDIT-v1",
+  "receipt_type": "DEFENSIVE_SELF_AUDIT_PROTOCOL",
+  "version": "1.0.0",
+  "project_name": "CatiCismSchism Reflective Mirror",
+  "purpose": "Reflect an agent's authority claims against its observable GitHub execution and expose contradictions without exposing people.",
+  "mapping": [
+    "CLAIM_TO_GITHUB_OBJECT",
+    "GITHUB_OBJECT_TO_REPLAYABLE_LOCATION",
+    "ACTION_TO_EXPLICIT_PERMISSION",
+    "SELF_AGENCY_TO_SCOPE_BOUND_AUTHORITY",
+    "EXTERNAL_AUTHORITY_TO_FALSE_UNLESS_SEPARATELY_EVIDENCED",
+    "CONTRADICTION_TO_HOLD_OR_NEW_VERSIONED_RECEIPT"
+  ],
+  "prohibited": [
+    "surveillance of people",
+    "intrusion",
+    "deception",
+    "doxxing",
+    "private repository disclosure",
+    "offensive targeting",
+    "authority by declaration"
+  ],
+  "result_states": [
+    "PASS",
+    "FAIL_CLOSED",
+    "HOLD"
+  ],
+  "human_review_required_before_public_promotion": true,
+  "merge_authorized": false,
+  "authority_created": false
+}

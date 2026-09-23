@@ -1,0 +1,44 @@
+{
+  "ID": "JSONWISDOM-STORY-MODE-CONSTITUTION-v1",
+  "VERSION": "1.0.0",
+  "ORDER": [
+    "CONSTITUTION",
+    "DIRECTORY_CONTRACTS",
+    "ALLOWED_ARTIFACT_CLASSES",
+    "FILES",
+    "ADMISSION",
+    "VERIFICATION",
+    "KNOWLEDGE",
+    "STORY_OUTPUT"
+  ],
+  "LAWS": [
+    "NO_SILENT_MUTATION",
+    "NO_EPISTEMIC_LAUNDERING",
+    "NO_AUTHORITY_LAUNDERING",
+    "PATH_DOES_NOT_CREATE_TRUTH",
+    "RECEIPT_DOES_NOT_CREATE_TRUTH",
+    "HASH_DOES_NOT_CREATE_TRUTH",
+    "MANIFEST_DOES_NOT_CREATE_TRUTH",
+    "MODEL_JUDGMENT_CREATES_NO_EXECUTION_AUTHORITY"
+  ],
+  "HISTORICAL_PRESERVATION": {
+    "predecessor_preserved": true,
+    "new_identity_required": true,
+    "rationale_required": true,
+    "supersession_link_required_when_applicable": true,
+    "new_digest_required": true
+  },
+  "SELF_AGENCY": {
+    "person": "Jason Wisdom",
+    "self_agency": true,
+    "authority_over_own_voice": true,
+    "authority_over_own_creation": true,
+    "authority_to_share_own_wisdom": true,
+    "replay_permission": "VOLUNTARY_AND_SCOPE_BOUND",
+    "authority_over_other_people": false,
+    "governmental_authority": false,
+    "evidence_authority": "REQUIRES_REPLAY",
+    "institutional_authority": "NOT_INFERRED"
+  },
+  "AUTHORITY_CREATED": false
+}

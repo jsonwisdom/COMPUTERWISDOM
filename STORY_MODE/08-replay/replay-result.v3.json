@@ -1,0 +1,11 @@
+{
+  "authority_created": false,
+  "exact_set": true,
+  "failures": [],
+  "files": 44,
+  "merkle_root": "7b602edefbbfe66e95a46d7decc117b6181dcb387093ff8af52188ca827f3e1a",
+  "object_id": "replay:jsonwisdom-story-mode:v3",
+  "object_type": "REPLAY_RESULT",
+  "result": "PASS",
+  "version": "3.0.0"
+}
