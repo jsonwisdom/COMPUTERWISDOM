@@ -1,0 +1,43 @@
+{
+  "receipt_id": "SSA-DOCKER-LAYOUT-RUN-0002",
+  "receipt_class": "OPERATOR_OBSERVED_REPRODUCIBILITY_RECEIPT",
+  "corpus_id": "SSA_PUBLIC_REPLAY_CORPUS_v0.1",
+  "observed_date_utc": "2026-08-11",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "proposal/ssa-public-replay-v0.1",
+  "output_file": "receipts/docker-layout-run-0002.txt",
+  "output_file_sha256": "e7274ee45776ba523d59e899e938f7c52ad524d122b69fbe6bfaf52b15e97f64",
+  "build_1": {
+    "payload_manifest_sha256": "6c57791ecdda895671edfd350b4236b2c96cd84623af13352442410bd4d2151f",
+    "config_sha256": "79672c451d706781d22750e1b2c658cb0874210afdb7678952d3a20fa67cb7d0",
+    "provenance_attestation_sha256": "90e0942c4c0f57aaedd7203ac07de1b46d68a168359814c25aee513351372ae3",
+    "manifest_list_sha256": "51818c0be385add78eba23a7fa773ea49fc88e5de16faf5910c8a319a9ab9ecf"
+  },
+  "build_2": {
+    "payload_manifest_sha256": "6c57791ecdda895671edfd350b4236b2c96cd84623af13352442410bd4d2151f",
+    "config_sha256": "79672c451d706781d22750e1b2c658cb0874210afdb7678952d3a20fa67cb7d0",
+    "provenance_attestation_sha256": "3ee74029c0ae30c8d69efd8ca29dd9041e0716ee2bac785d6d72020b1447cff3",
+    "manifest_list_sha256": "697f134bee43ed6c34b459dd5b3f8fe5dc978e5ac9c6b10778ebaaba2a500287"
+  },
+  "validated_file_sha256": {
+    "README.md": "9290abb6bf3e7e752d723a0035d554b2e22ef873418fb6c2fc33fdf425f22b45",
+    "Dockerfile": "ee56c826d98a0b802af08c52e138e9ee071ce23f71385135085a5d7a9f33d6a2",
+    "contracts/directory-contract.json": "9afdb474129ffdf4f7f3e2acfdb075052750533241ba8937dad00257cbf0da61",
+    "receipts/scaffold-declaration.json": "c897388ac2ec597fd1d31507b4c8a5b298342cdc1bb2122237d8eb7f5e2f5f8b",
+    "tests/verify-layout.sh": "27c7425688648568a2c6af0684fe3900753bc1551446cabac495e98fb44f1db2"
+  },
+  "assertions": {
+    "scaffold_layout_verified": true,
+    "runtime_receipts_in_image": false,
+    "payload_manifest_stable": true,
+    "config_stable": true,
+    "manifest_list_stable": false,
+    "manifest_list_variance_reason": "BuildKit provenance attestation is event-specific.",
+    "recursion_defect_closed": true,
+    "corpus_created": false,
+    "manifest_created": false,
+    "live_fetch_verified": false,
+    "authority_created": false
+  },
+  "observation_boundary": "Values transcribed from operator-supplied Docker Desktop build and PowerShell output. No live SSA fetch or independent vulnerability scan was performed."
+}
