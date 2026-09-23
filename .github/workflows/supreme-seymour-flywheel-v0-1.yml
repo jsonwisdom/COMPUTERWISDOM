@@ -1,0 +1,63 @@
+name: Supreme Seymour Recursive Learning Flywheel
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "23 12 * * *"
+  push:
+    branches:
+      - supreme-seymour/flywheel-v0-1
+    paths:
+      - "SUPREME_SEYMOUR/flywheel/**"
+      - "MASTER_ROOM/SNAPSHOT_INDEX_V1.json"
+      - ".github/workflows/supreme-seymour-flywheel-v0-1.yml"
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: supreme-seymour-flywheel-v0-1
+  cancel-in-progress: false
+
+jobs:
+  observe-estate-deltas:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      FLYWHEEL_OWNER: jsonwisdom
+
+    steps:
+      - name: Checkout exact triggering ref
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run read-only estate delta observer
+        run: |
+          set -euo pipefail
+          python SUPREME_SEYMOUR/flywheel/recursive_learning_flywheel_v0_1.py
+
+      - name: Add operator summary
+        if: always()
+        run: |
+          if [ -f build/supreme-seymour-flywheel/flywheel-summary.md ]; then
+            cat build/supreme-seymour-flywheel/flywheel-summary.md >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Upload flywheel artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: supreme-seymour-flywheel-v0-1
+          path: |
+            build/supreme-seymour-flywheel/flywheel-report.json
+            build/supreme-seymour-flywheel/flywheel-summary.md
+          if-no-files-found: error
+          retention-days: 30
