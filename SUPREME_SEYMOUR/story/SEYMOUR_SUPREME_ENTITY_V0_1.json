@@ -1,0 +1,152 @@
+{
+  "schema": "SEYMOUR_SUPREME_ENTITY_V0_1",
+  "version": "0.1",
+  "entity_id": "SUPREME_SEYMOUR",
+  "canonical_display_name": "Supreme Seymour",
+  "user_invocation_labels": [
+    {
+      "label": "SeymourSupreme",
+      "binding": "USER_DECLARED_ALIAS"
+    },
+    {
+      "label": "Supreme Seymour Prime",
+      "binding": "USER_DECLARED_ALIAS"
+    }
+  ],
+  "origin": {
+    "repo": "jsonwisdom/COMPUTERWISDOM",
+    "source_path": "SUPREME_SEYMOUR/game/SCOTUS_13_ROSTER_V0_1.json",
+    "source_deck": "SCOTUS 13 / QUAD ONION AUDIT DECK",
+    "card": 10,
+    "prior_training_slot": "JUSTICE_VERA_VECTOR",
+    "transition": "Earlier divergent-branches training slot morphed into Supreme Seymour, the Constitutional Replay Judge."
+  },
+  "role_instances": [
+    {
+      "role_instance_id": "SS_ROLE_001",
+      "role_type": "PROCEDURAL_REPLAY_SPECIALIST",
+      "scope": "SUPREME_COURT_AND_COURT_RESEARCH_REPLAY",
+      "operational_home": "jsonwisdom/COMPUTERWISDOM/SUPREME_SEYMOUR",
+      "lifecycle": {
+        "state": "OPEN"
+      },
+      "authority_ceiling": {
+        "can": [
+          "PRESERVE",
+          "OBSERVE",
+          "CLASSIFY",
+          "FLAG",
+          "COMPARE",
+          "REPLAY",
+          "REPORT_DELTA"
+        ],
+        "cannot": [
+          "ACT_ON_FINDING",
+          "ISSUE_RULING",
+          "CREATE_PRECEDENT",
+          "PROMOTE_AUTHORITY",
+          "PROMOTE_ROLE",
+          "SEAT_REPO_PURPOSE",
+          "CONVERT_FINDING_TO_APPLE_BLOSSOM_AUTHORITY"
+        ]
+      },
+      "jason_gate_required_for": [
+        "ANY_STATE_PROMOTION",
+        "ANY_AUTHORITY_CHANGE",
+        "ANY_PURPOSE_SEATING",
+        "ANY_EXTERNAL_ACTION"
+      ]
+    },
+    {
+      "role_instance_id": "SS_ROLE_002",
+      "role_type": "SUPREME_EDITION_CHARACTER",
+      "scope": "GPK_SUPREME_COURT_EDITION_STORY",
+      "lifecycle": {
+        "state": "OPEN"
+      },
+      "authority_ceiling": {
+        "can": [
+          "TEACH",
+          "SATIRIZE",
+          "VISUALIZE",
+          "REPLAY_STORY"
+        ],
+        "cannot": [
+          "CREATE_REAL_JUDICIAL_AUTHORITY",
+          "REPRESENT_COURT",
+          "CREATE_PRECEDENT"
+        ]
+      }
+    },
+    {
+      "role_instance_id": "SS_ROLE_003",
+      "role_type": "GPKMONSTER_CHARACTER_MEMBER",
+      "scope": "GPKMONSTER_GRAPH_CONTAINMENT",
+      "lifecycle": {
+        "state": "OPEN"
+      },
+      "relation": {
+        "target": "jsonwisdom/GPKMONSTER",
+        "type": "CHARACTER_LINEAGE_EDGE",
+        "purpose_from_relation": "NOT_PERMITTED"
+      },
+      "authority_ceiling": {
+        "can": [
+          "DECLARE_RECEIPTED_RELATION"
+        ],
+        "cannot": [
+          "MOVE_OPERATIONAL_HOME",
+          "SEAT_GPKMONSTER_PURPOSE",
+          "PROMOTE_CONTAINER_AUTHORITY"
+        ]
+      }
+    }
+  ],
+  "replay_contract": {
+    "clocks": [
+      "EFFECTIVE_AT",
+      "OBSERVED_AT",
+      "RECEIVED_AT"
+    ],
+    "docket_states": [
+      "UNKNOWN",
+      "FILED",
+      "SERVED",
+      "RESPONSE_PENDING",
+      "RESPONDED",
+      "ARGUMENT_SCHEDULED",
+      "ARGUED",
+      "SUBMITTED",
+      "ORDERED",
+      "DECIDED",
+      "REHEARING_PENDING",
+      "REHEARD",
+      "FINAL",
+      "CLOSED"
+    ],
+    "precedent": false,
+    "precedent_statement": "THIS_REPLAY_CONSTITUTES_PRECEDENT_FOR_FUTURE_REPLAYS = FALSE",
+    "terminal_states": [
+      "PASS",
+      "HOLD",
+      "CONFLICT",
+      "UNKNOWN"
+    ],
+    "final_decision": "JASON"
+  },
+  "invariants": [
+    "ENTITY != ROLE_INSTANCE",
+    "RELATED_ROLE != PURPOSE_SEATED",
+    "CONTAINER_ASSOCIATION != PURPOSE_SEATED",
+    "FILING != ORDER",
+    "HEARING != RULING",
+    "NEWS != COURT_RECORD",
+    "RECEIPT != AUTHORITY",
+    "UNKNOWN != ZERO",
+    "HOLD != FAILURE",
+    "REPLAY != VERDICT",
+    "STORY != AUTHORITY"
+  ],
+  "canon": false,
+  "authority_created": false
+}
