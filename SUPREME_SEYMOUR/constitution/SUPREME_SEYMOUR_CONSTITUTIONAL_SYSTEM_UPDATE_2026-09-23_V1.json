@@ -1,0 +1,70 @@
+{
+  "artifact_id": "SUPREME_SEYMOUR_CONSTITUTIONAL_SYSTEM_UPDATE_2026_09_23",
+  "version": "1.0",
+  "date": "2026-09-23",
+  "status": "SEATED",
+  "authority_created": false,
+  "final_decision": "HUMAN",
+  "lanes_joined": false,
+  "future_wire": {
+    "state": "HOLD",
+    "open_edges": [
+      "26A388 response",
+      "WH press-access ruling check",
+      "26A349 response"
+    ]
+  },
+  "live_wire": {
+    "state": "HOLD",
+    "hold_count": 6,
+    "collision_count": 0,
+    "objects": [
+      "26A388",
+      "WH_PRESS_ACCESS",
+      "APPLE_EPIC",
+      "SURI",
+      "26A349",
+      "COURTLISTENER_PARTIAL"
+    ]
+  },
+  "yesterday_replay": {
+    "state": "PRIOR_DAY_ABSENT",
+    "invariants": [
+      "ABSENT != ZERO",
+      "REPLAY != VERDICT"
+    ]
+  },
+  "open_edges": [
+    "unverified orders/rulings/dispositions",
+    "CourtListener PARTIAL",
+    "no lane join"
+  ],
+  "storage": {
+    "daily_receipt_sha256": "c74fd32f96893a3c38367c45776c5f0f1d1bfac197f66080ed964d837ac0e8a7",
+    "constitution_sha256_reported": "5cbd598a...",
+    "constitutional_path": "SUPREME_SEYMOUR/CONSTITUTION/",
+    "prior_day_overwritten": false
+  },
+  "constitutional_invariants": [
+    "FILING != ORDER",
+    "HEARING != RULING",
+    "EMERGENCY_POSTURE != MERITS",
+    "NEWS != COURT_RECORD",
+    "PARTIAL != COMPLETE",
+    "UNKNOWN != ZERO",
+    "ABSENCE_OF_INDEXED_EVENT != NO_EVENT",
+    "REPLAY != VERDICT",
+    "NO_PROMOTION_WITHOUT_RECEIPT",
+    "AUTHORITY = HUMAN"
+  ],
+  "master_room": {
+    "mode": "LOW_TOKEN",
+    "default": "SILENT",
+    "fan_out": false,
+    "max_specialists_per_event": 2,
+    "no_recursion": true,
+    "terminal_states": ["PASS", "HOLD", "CONFLICT", "UNKNOWN"]
+  },
+  "source_note": "Seat today as an additive constitutional update. Do not overwrite the frozen top-level invariant.",
+  "authority": false
+}
