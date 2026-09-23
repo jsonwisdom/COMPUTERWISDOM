@@ -7,7 +7,10 @@ libs = ["lib"]
 solc_version = "0.8.24"
 optimizer = true
 optimizer_runs = 200
-remappings = ["@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/"]
+remappings = [
+  "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+  "@eas/=lib/eas-contracts/contracts/"
+]
 
 [fuzz]
 runs = 256
