@@ -1,0 +1,214 @@
+{
+  "schema": "JAYWISDOM_CORPUS_INDEX_V0_1",
+  "status": "CENSUS_IN_PROGRESS",
+  "generated_from": {
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "base_branch": "master",
+    "initiating_pr": 419,
+    "tracking_issue": 421,
+    "as_of": "2026-07-29"
+  },
+  "doctrine": {
+    "verification_over_narrative": true,
+    "github_presence_is_publication": false,
+    "authority_default": false,
+    "unknown_is_valid": true,
+    "silent_exposure": false
+  },
+  "visibility": {
+    "PUBLIC": "Intentionally published for public use",
+    "PRIVATE": "Access restricted; only a high-level public label may be indexed",
+    "PERSONAL": "Jay-controlled; excluded unless explicitly released"
+  },
+  "required_project_fields": [
+    "id",
+    "title",
+    "aliases",
+    "summary",
+    "visibility",
+    "lifecycle",
+    "repositories",
+    "source_paths",
+    "lineage",
+    "receipts",
+    "dependencies",
+    "jurisdictions",
+    "evidence_posture",
+    "unresolved"
+  ],
+  "projects": [
+    {
+      "id": "jw:minnesota-law-monitor",
+      "title": "Minnesota Law Monitor",
+      "aliases": [],
+      "visibility": "PUBLIC",
+      "lifecycle": "PREVIEW",
+      "evidence_posture": "official-sources-first / manual-intake",
+      "source_paths": [],
+      "unresolved": ["canonical implementation paths not yet enumerated"]
+    },
+    {
+      "id": "jw:atomic-dockets",
+      "title": "Atomic Dockets",
+      "aliases": ["Fauci Diaries"],
+      "visibility": "PUBLIC",
+      "lifecycle": "STABLE_HOLD",
+      "evidence_posture": "publication blocked pending defined source gate",
+      "source_paths": [],
+      "unresolved": ["full docket artifact and receipt census pending"]
+    },
+    {
+      "id": "jw:computerwisdom",
+      "title": "COMPUTERWISDOM",
+      "aliases": ["operational control plane", "project map", "governance layer"],
+      "visibility": "PUBLIC",
+      "lifecycle": "RESEARCH",
+      "repositories": ["jsonwisdom/COMPUTERWISDOM"],
+      "source_paths": ["README.md", "jaywisdom/index.html", "jaywisdom/projects/index.html"],
+      "unresolved": ["complete subsystem graph pending"]
+    },
+    {
+      "id": "jw:receiptos",
+      "title": "ReceiptOS",
+      "aliases": ["receipt infrastructure"],
+      "visibility": "PUBLIC",
+      "lifecycle": "CORE_FROZEN_EXECUTION_EVOLVING",
+      "evidence_posture": "receipts-first / replayable / bounded",
+      "source_paths": [],
+      "unresolved": ["cross-repository canonical root and version map pending"]
+    },
+    {
+      "id": "jw:replay-verification",
+      "title": "Replay Verification",
+      "aliases": ["ReplayOS", "deterministic replay"],
+      "visibility": "PUBLIC",
+      "lifecycle": "RESEARCH",
+      "evidence_posture": "MATCH / MISMATCH / INDETERMINATE",
+      "source_paths": [],
+      "unresolved": ["canonical engine, tests, manifests, and receipts pending"]
+    },
+    {
+      "id": "jw:meme-court",
+      "title": "Meme Court",
+      "aliases": ["Replay Meme Court", "Goblin Court"],
+      "visibility": "PUBLIC",
+      "lifecycle": "IN_REVIEW",
+      "evidence_posture": "satire separated from evidence, procedure, and authority",
+      "source_paths": ["public/MEME_COURT_PUBLIC_INDEX.md", "docs/court_replay_audit_v0_1.md", "docs/replay_meme_court_witness_expansion_v0_1.md"],
+      "unresolved": ["alias boundaries and canonical court lineage pending"]
+    },
+    {
+      "id": "jw:gray-baby",
+      "title": "Gray Baby",
+      "aliases": ["Gray Baby Replay OS"],
+      "visibility": "PUBLIC",
+      "lifecycle": "SELECTIVE_PUBLICATION",
+      "evidence_posture": "forensic satire / administrative systems inspection",
+      "source_paths": [],
+      "unresolved": ["episode canon, artifact packages, and release boundaries pending"]
+    },
+    {
+      "id": "jw:public-proof-tools",
+      "title": "Public Proof Tools",
+      "aliases": ["public-proof"],
+      "visibility": "PUBLIC",
+      "lifecycle": "RESEARCH",
+      "evidence_posture": "hashes, manifests, provenance, replay; no fake green",
+      "source_paths": ["services/byte-verification/README.md", "docs/public_proof_surface_correction_v0_1.md"],
+      "unresolved": ["tool inventory and runnable verification matrix pending"]
+    },
+    {
+      "id": "jw:boardroom-governance",
+      "title": "Boardroom Governance",
+      "aliases": ["GCP boardroom governance"],
+      "visibility": "PUBLIC",
+      "lifecycle": "IN_REVIEW",
+      "source_paths": ["docs/gcp/MINIMAL_CONTROL_PLANE.md"],
+      "unresolved": ["reference implementation and template lineage pending"]
+    },
+    {
+      "id": "jw:nonlocal-replay-architecture",
+      "title": "Nonlocal Replay Architecture",
+      "aliases": [],
+      "visibility": "PUBLIC",
+      "lifecycle": "RESEARCH",
+      "evidence_posture": "conceptual; no quantum claim",
+      "source_paths": [],
+      "unresolved": ["canonical architecture documents pending"]
+    },
+    {
+      "id": "jw:cwaas",
+      "title": "Computer Wisdom as a Service",
+      "aliases": ["CWaaS"],
+      "visibility": "PUBLIC",
+      "lifecycle": "RESEARCH",
+      "source_paths": [
+        "projects/cwaas/receipts/CWAAS_RECEIPT_SCHEMA_v1.md",
+        "projects/cwaas/receipts/COMPUTERWISDOM_REBOOT_JAYWISDOM_BASE_0001.md",
+        "projects/cwaas/receipts/JAYWISDOM_BASE_BOSS_BRE_TREASURY_BINDING_0001.md",
+        "projects/cwaas/receipts/TREASURY_REVIEW_0001.md",
+        "projects/cwaas/identity/IDENTITY_REPLAY_TRACE_0001.md",
+        "projects/cwaas/identity/BINDING_HASH_0001.txt"
+      ],
+      "unresolved": ["receipt chain, identity chain, and settlement-state census pending"]
+    },
+    {
+      "id": "jw:identity-token-base-zora",
+      "title": "JAYWISDOM Identity and Distribution Surfaces",
+      "aliases": ["jaywisdom.eth", "jaywisdom.base.eth", "JAYWISDOM token", "Zora"],
+      "visibility": "PUBLIC",
+      "lifecycle": "ACTIVE_WITH_BOUNDARIES",
+      "source_paths": [
+        "JAYWISDOM_IDENTITY_FLYWHEEL_GOBLIN_COURTS_V0_1.md",
+        "receipts/wallet_binding_v2.md",
+        "receipts/wallet_binding_message_v2.txt",
+        "COMPUTERWISDOM/federal/white-house-ai/JAYWISDOM_MCP_REGISTRY_V1.json",
+        "docs/jays-base-artifact-pack-v0-1.md",
+        "docs/base_has_purpose_v0_1.md"
+      ],
+      "unresolved": ["canonical identity registry, attestations, contracts, aliases, and ownership-proof map pending"]
+    },
+    {
+      "id": "jw:family-secure-corridor",
+      "title": "Family Secure Corridor",
+      "aliases": [],
+      "visibility": "PRIVATE",
+      "lifecycle": "NAMED_NOT_EXPOSED",
+      "source_paths": [],
+      "unresolved": ["no private controls or personal records may be auto-indexed"]
+    },
+    {
+      "id": "jw:treasury-wallet-controls",
+      "title": "Treasury & Wallet Controls",
+      "aliases": [],
+      "visibility": "PRIVATE",
+      "lifecycle": "NAMED_NOT_EXPOSED",
+      "source_paths": [],
+      "unresolved": ["public receipts may be indexed only when explicitly released; private controls excluded"]
+    },
+    {
+      "id": "jw:personal-evidence-records",
+      "title": "Personal Evidence & Records",
+      "aliases": [],
+      "visibility": "PERSONAL",
+      "lifecycle": "EXCLUDED_BY_DEFAULT",
+      "source_paths": [],
+      "unresolved": ["requires explicit artifact-level release decision"]
+    }
+  ],
+  "census": {
+    "complete": false,
+    "known_high_signal_paths_seeded": 23,
+    "next_required_passes": [
+      "full repository tree enumeration",
+      "cross-repository enumeration",
+      "PR and issue lineage mapping",
+      "receipt and hash extraction",
+      "duplicate and alias resolution",
+      "orphan detection",
+      "broken-link validation",
+      "public detail-page generation",
+      "deterministic index receipt"
+    ]
+  }
+}
