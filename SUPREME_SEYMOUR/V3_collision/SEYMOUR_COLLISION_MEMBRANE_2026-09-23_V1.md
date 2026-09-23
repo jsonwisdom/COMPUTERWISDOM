@@ -135,5 +135,52 @@ PROMOTION = FALSE
 V1_2_MUTATED = FALSE
 AUTHORITY_CREATED = FALSE
 
-NEXT_CASE = ATEBA
+### CASE_03 — Ateba v. Leavitt
+
+SOURCE_COURT = U.S. Court of Appeals for the D.C. Circuit
+CITATION = 133 F.4th 114
+DECIDED = 2025-04-08
+POSTURE = appeal from summary judgment
+ACCESS_OBJECT = preferred White House hard-pass access; day-pass access remained available
+GOVERNMENT_ACTION = hard-pass policy conditioning hard passes on Supreme Court or congressional press-gallery accreditation
+
+ACTUAL_HOLDING =
+The D.C. Circuit affirmed summary judgment for the government.
+It held the Hard Pass Policy reasonable and viewpoint neutral;
+the external credentialing system did not create unbridled discretion because the relevant gallery rules supplied concrete standards;
+and the First Amendment did not require a processing deadline for the gallery application.
+
+DOCTRINAL_FUNCTION =
+REASONABLENESS + VIEWPOINT_NEUTRALITY + UNBRIDLED_DISCRETION + ACCESS_TIER_DIFFERENCE
+
+TRANSFER_ALLOWED =
+Ateba supplies a comparison rule for a generally applicable credential policy
+where alternate press-area access remains available and the policy is supported by objective credentialing standards.
+
+TRANSFER_LIMIT =
+Ateba != individualized retaliatory exclusion.
+Ateba != complete denial of press-area access.
+Ateba != holding that every White House access restriction is reasonable.
+Ateba's day-pass alternative and policy-wide credentialing structure are material facts.
+Ateba != Karem fair-notice holding.
+Ateba != Sherrill individual security denial.
+
+CURRENT_CASE_COMPARISON =
+SIMILAR_FIELD: White House access and viewpoint-neutrality inquiry.
+DIFFERENT_FIELD: policy-wide credential criterion versus asserted outlet-specific exclusion.
+DIFFERENT_FIELD: day-pass access remained available in Ateba.
+DEPENDS: current case's exact access object, remaining alternatives, criteria, and evidentiary basis.
+UNMAPPED: any current-case national-security assertion unless source-bound.
+
+CASE_03_MEMBRANE_RESULT =
+PASS_FOR_COMPARISON
++ MISMATCH_TYPED
++ DEPENDS_TYPED
++ HOLD_ON_FACT_TRANSFER
++ NOT_MERGED
+
+CASE_01 + CASE_02 + CASE_03 != COMPOSITE_RULE
+COLLISION_SET_OPEN = TRUE
+
+NEXT_CASE = ASSOCIATED_PRESS
 SEQUENCE = OPEN_FOR_REPLAY
