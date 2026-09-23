@@ -11,8 +11,8 @@ FINAL_DECISION_ENDPOINT = JASON_OPERATOR
 ## 1. Root inventory
 
 ACCOUNT = jsonwisdom
-REPOSITORIES_OBSERVED = 88
-PUBLIC = 83
+REPOSITORIES_OBSERVED = 85
+PUBLIC = 80
 PRIVATE = 5
 INVENTORY_SOURCE = GitHub account repository search, page 1, per_page 100
 
@@ -37,7 +37,19 @@ REPLAY = MACHINE
 The same artifact also contains a bare authority:false field.
 Therefore the legacy field is internally ambiguous unless subject scope is supplied.
 
-## 5. Confirmed public broadcast defects
+## 5. Confirmed public authority-bearing repositories
+
+PUBLIC_REPOS_SCOPED = 80
+PUBLIC_REPOS_WITH_AUTHORITY_SEARCH_HITS = 4
+
+- jsonwisdom/COMPUTERWISDOM
+- jsonwisdom/JOY
+- jsonwisdom/receipts-engine-v1
+- jsonwisdom/layered-proofing-state-level-alms
+
+The two saturated search groups were rerun with COMPUTERWISDOM and JOY removed; the remaining neighboring repositories returned zero authority hits.
+
+## 6. Confirmed public broadcast defects
 
 Welcome-to-JSONWISDOM:
 - System Project Arc example used authority_created:false without subject.
@@ -57,7 +69,7 @@ receipts-engine-v1:
 layered-proofing-state-level-alms:
 - Root README was reviewed and already scopes the boundary to AI-generated authority and citizen protection; no equivalent root wording correction required in this pass.
 
-## 6. Repair law
+## 7. Repair law
 
 BARE AUTHORITY = FALSE -> DEPRECATED
 AUTHORITY MUST NAME ITS SUBJECT
@@ -71,7 +83,7 @@ REPLAY_VERDICT != OPERATOR_AUTHORITY
 VERIFICATION_RESULT != LEGAL_AUTHORITY
 ARTIFACT_LEGAL_AUTHORITY_CREATED = FALSE unless an independently valid legal source creates it
 
-## 7. Historical preservation
+## 8. Historical preservation
 
 HISTORY_REWRITE = FALSE
 OLD COMMITS = PRESERVED
@@ -80,7 +92,7 @@ HASHED FIXTURES = PRESERVED
 
 Legacy unscoped authority=false remains byte-for-byte replayable and receives a forward compatibility interpretation rather than silent history rewriting.
 
-## 8. Version ledger
+## 9. Version ledger
 
 Welcome-to-JSONWISDOM repair branch = authority-scope-audit-2026-09-23
 Welcome README repair commit = 80dd46a3008a75ab3ae2aa7a25f92d7e3915222c
@@ -96,9 +108,15 @@ JOY root wording repair commit = f78ab627299298000d9fb8621b15f44279885ff0
 receipts-engine-v1 repair branch = authority-scope-audit-2026-09-23
 receipts-engine root wording repair commit = 13260c7769dd92eebb7d1e3734c0066eed4c5323
 
-## 9. Scan completeness
+layered-proofing-state-level-alms repair branch = authority-scope-audit-2026-09-23
+layered-proofing README compatibility commit = f01e3bd8a9f6f68a7565a0dd79a9c5e383b8c721
+
+## 10. Scan completeness
 
 REPO_INVENTORY = COMPLETE_FOR_RETURNED_ACCOUNT_LIST
+PUBLIC_REPO_PERIMETER = 80
+PUBLIC_REPO_AUTHORITY_HIT_SET = 4
+SATURATED_GROUP_NEIGHBOR_RECHECK = COMPLETE
 OWNER_WIDE_CODE_SEARCH = EXECUTED
 OWNER_WIDE_SEARCH_RESULT_CAP = PRESENT
 PER_REPO_BRUTE_FORCE = ATTEMPTED
@@ -110,7 +128,7 @@ SEARCH_MISS != CLEAN
 SEARCH_CAP != COMPLETE
 ROOT_BROADCAST_REPAIR != ALL_HISTORICAL_BYTES_REWRITTEN
 
-## 10. Supreme Seymour perspective
+## 11. Supreme Seymour perspective
 
 FROM_THEN:
 Legacy artifacts must be replayed with the language and definitions available at that historical point.
@@ -121,7 +139,7 @@ The current interpretation layer scopes unqualified false-authority fields to ma
 LATER_CORRECTION != EARLIER_INTENT_PROVEN
 CURRENT_SCOPE != HISTORICAL_WORDING
 
-## 11. Next audit edge
+## 12. Next audit edge
 
 Next pass should classify every remaining hit by:
 SUBJECT = AI | AGENT | ARTIFACT | REPLAY | RENDER | LEGAL | GOVERNMENT | OPERATOR | UNKNOWN
