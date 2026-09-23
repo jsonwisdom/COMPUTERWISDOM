@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "document_type": "jsonwisdom.public_identity_manifest",
+  "version": "0.3.0",
+  "status": "DRAFT_UNFROZEN",
+  "system_id": "COMPUTERWISDOM",
+  "canonical_storage_model": "operator_controlled_local_directory",
+  "host_dependency": false,
+  "identity_anchors": [
+    {
+      "name": "jaywisdom.eth",
+      "function": "resolvable_identity_pointer",
+      "creates_authority": false
+    },
+    {
+      "name": "jaywisdom.base.eth",
+      "function": "resolvable_identity_pointer",
+      "creates_authority": false
+    }
+  ],
+  "planes": [
+    {
+      "id": "personal",
+      "namespace": "JOY",
+      "visibility": "protected",
+      "public_values_allowed": false,
+      "public_type_reference_allowed": true
+    },
+    {
+      "id": "private",
+      "namespace": "AL",
+      "visibility": "protected",
+      "public_values_allowed": false,
+      "public_type_reference_allowed": true
+    },
+    {
+      "id": "public",
+      "namespace": "COMPUTERWISDOM",
+      "visibility": "public",
+      "public_values_allowed": true,
+      "public_type_reference_allowed": true
+    }
+  ],
+  "wisdom_layer": {
+    "operator": "APPLY_WISDOM",
+    "role": "human_review_before_consequential_action",
+    "pipeline": [
+      "observe",
+      "verify",
+      "understand",
+      "care",
+      "decide",
+      "act",
+      "learn",
+      "replay"
+    ],
+    "questions": [
+      "is_it_true",
+      "is_it_useful",
+      "is_it_kind",
+      "is_it_replayable",
+      "will_it_still_make_sense_in_50_years"
+    ],
+    "care_is_human_review": true,
+    "family_review_required_when_affected": true,
+    "runtime_enforced": false
+  },
+  "distribution": {
+    "canonical_copy_is_hosted_repo": false,
+    "mirrors_optional": true,
+    "vendor_loss_tolerated": true,
+    "portable_export_required": true,
+    "offline_recovery_required": true
+  },
+  "authority": {
+    "ai_decision_authority": false,
+    "ai_execution_authority": false,
+    "human_authorization_required": true,
+    "cross_plane_inference_requires_receipt": true,
+    "verification_does_not_equal_permission": true
+  },
+  "verification_rule": "The hash proves byte identity. The source record supports the claim. The identity pointer helps people locate the record. Human Wisdom Review determines whether an authorized action should proceed.",
+  "operational_claims": {
+    "signed_receipt_ledger_active": false,
+    "append_only_storage_verified": false,
+    "perspective_enforcement_verified": false,
+    "multi_host_recovery_verified": false,
+    "wisdom_operator_runtime_verified": false
+  }
+}
