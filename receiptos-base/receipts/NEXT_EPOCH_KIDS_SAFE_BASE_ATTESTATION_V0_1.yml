@@ -1,0 +1,40 @@
+attestation: NEXT_EPOCH_KIDS_SAFE_BASE_ATTESTATION_V0_1
+repo: jsonwisdom/COMPUTERWISDOM
+pr: 412
+receipt_lane: receiptos-base
+authority: false
+no_fake_green: true
+
+operator:
+  basename: jaywisdom.base.eth
+  role: builder_creator_operator
+  wallet_control_claimed: false
+
+artifact:
+  name: Next Epoch Upgrade for Kids
+  system: KID_REALITY_STUDIO
+  public_name: Imagination Station
+  layer: COMPUTERWISDOM/JOY/ReceiptOS-Base
+  status: R_AND_D_SAFE_EDUCATION
+
+claim:
+  jay_work: protected_as_operator_research
+  jay_impact: kids_can_create_learning_worlds_safely
+  jay_integrity: no_financialization_of_child_lane
+  replay: receipts_before_narrative
+
+boundaries:
+  no_kid_wallets: true
+  no_real_money_for_kids: true
+  no_financial_pepe: true
+  no_private_data: true
+  no_location_leaks: true
+  no_birthdates: true
+  no_family_authority_claim: true
+  no_mrs_wisdom_approval_claim: true
+  no_canonical_merge_claim: true
+
+ruling: >
+  The Next Epoch kids-safe Base lane is recorded as an R&D scaffold for replayable learning receipts.
+  It may use jaywisdom.base.eth as operator identity context but does not claim wallet control,
+  child financial participation, or family approval.
