@@ -46,6 +46,7 @@ jobs:
             revenue_agent/tests/test_parser.py \
             revenue_agent/tests/test_prompt_digest.py \
             revenue_agent/tests/test_canonical_spine.py \
+            revenue_agent/tests/test_prompt_hook.py \
             -rX
 
       - name: Emit qualified membrane state
@@ -63,6 +64,7 @@ jobs:
           echo "- Locality Matrix router: LOCALITY_MATRIX_ROUTER_V0_1" >> "$GITHUB_STEP_SUMMARY"
           echo "- Prompt spine: CANONICAL_PROMPT_SPINE_V0_1" >> "$GITHUB_STEP_SUMMARY"
           echo "- Prompt spine e2e: QUALIFIED" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Prompt hook: CANONICAL_QUERY_HOOK_V0_1" >> "$GITHUB_STEP_SUMMARY"
           echo "- Program mode: RESEARCH_AND_DEVELOPMENT" >> "$GITHUB_STEP_SUMMARY"
           echo "- Production execution: false" >> "$GITHUB_STEP_SUMMARY"
           echo "- Human review: deferred" >> "$GITHUB_STEP_SUMMARY"
