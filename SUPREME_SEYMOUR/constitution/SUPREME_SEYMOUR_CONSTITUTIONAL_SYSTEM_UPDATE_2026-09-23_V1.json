@@ -1,6 +1,6 @@
 {
   "artifact_id": "SUPREME_SEYMOUR_CONSTITUTIONAL_SYSTEM_UPDATE_2026_09_23",
-  "version": "1.0",
+  "version": "1.1",
   "date": "2026-09-23",
   "status": "SEATED",
   "authority_created": false,
@@ -40,6 +40,20 @@
     "no lane join"
   ],
   "storage": {
+    "drive_account": "jaywisdom44@gmail.com",
+    "daily_folder_url": "https://drive.google.com/drive/folders/1etVI-2DowcJhikiYUezLy-4jLYs0Pymm",
+    "daily_folder_id": "1etVI-2DowcJhikiYUezLy-4jLYs0Pymm",
+    "objects": [
+      "FUTURE_WIRE.json",
+      "LIVE_WIRE.json",
+      "YESTERDAY_REPLAY.json",
+      "DAILY_STATE.json",
+      "RECEIPTS/"
+    ],
+    "receipt_objects": [
+      "RECEIPTS/DAILY_RECEIPT.json",
+      "RECEIPTS/DAILY_RECEIPT.sha256"
+    ],
     "daily_receipt_sha256": "c74fd32f96893a3c38367c45776c5f0f1d1bfac197f66080ed964d837ac0e8a7",
     "constitution_sha256_reported": "5cbd598a...",
     "constitutional_path": "SUPREME_SEYMOUR/CONSTITUTION/",
