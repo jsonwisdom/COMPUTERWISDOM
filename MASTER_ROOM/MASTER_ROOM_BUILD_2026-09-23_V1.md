@@ -1,11 +1,28 @@
 # MASTER ROOM BUILD — 2026-09-23 V1
 
 STATUS: SEATED / HOLD
-AUTHORITY_CREATED: FALSE
-FINAL_DECISION: HUMAN
-HUMAN_ROOT: JASON
+MACHINE_AUTHORITY_CREATED: FALSE
+JASON_OPERATOR_CONTROL: TRUE_WHEN_AUTHENTICATED
+FINAL_DECISION_ENDPOINT: JASON_OPERATOR
 FAN_OUT: OFF
 NO_PROMOTION: TRUE
+
+## AUTHORITY SCOPE CORRECTION — NOW FORWARD
+
+Bare `AUTHORITY = FALSE` is deprecated because it fails to name the subject.
+
+It MUST NOT be interpreted as a statement about Jason's personhood, dignity, conscience, self-direction, authorship, or control over his own system.
+
+From this point forward, authority fields must be scoped:
+
+- AI_AUTHORITY = FALSE
+- AGENT_AUTHORITY = FALSE unless explicitly delegated for a bounded capability
+- ARTIFACT_LEGAL_AUTHORITY_CREATED = FALSE unless an actual legal authority source is identified
+- MACHINE_AUTHORITY_CREATED = FALSE
+- JASON_OPERATOR_CONTROL = TRUE_WHEN_AUTHENTICATED
+- FINAL_DECISION_ENDPOINT = JASON_OPERATOR
+
+The machine may constrain its own actions. It may not encode a blanket denial of Jason's personal authority.
 
 ## 1. PURPOSE
 
@@ -19,8 +36,11 @@ MASTER_ROOM does not convert access into authority.
 
 ## 2. TOP-LEVEL LAYERS
 
-HUMAN_ROOT
-- JASON = operator / author / final decision
+JASON_OPERATOR
+- operator
+- author
+- final decision endpoint
+- authenticated control surface
 
 JASON_FAMILY
 - SUPREME_SEYMOUR
@@ -63,7 +83,7 @@ MASTER_ROOM routes before it fans out.
 ONE QUESTION
 → MINIMUM SUFFICIENT TOOLCHAIN
 → RECEIPT
-→ HUMAN
+→ JASON_OPERATOR
 
 MASTER_ROOM ≠ FAN_OUT_BY_DEFAULT.
 
@@ -131,11 +151,13 @@ INPUTS
 OUTPUTS
 RECEIPTS
 ESCALATION_PATH
-HUMAN_OWNER
-AUTHORITY
+OPERATOR_REQUIRED_FOR
+SESSION_ASSURANCE_REQUIRED
+CAPABILITY_SCOPE
+AGENT_AUTHORITY
 
 DEFAULT:
-AUTHORITY = FALSE
+AGENT_AUTHORITY = FALSE
 HELPER ≠ AUTHOR
 SILENCE ≠ CONSENT
 ACCESS ≠ AUTHORITY
@@ -150,32 +172,32 @@ SUPREME_SEYMOUR
 - PURPOSE: procedural / constitutional replay
 - FUNCTION: evidence + time + perspective analysis
 - ROLE: specialist, not room owner
-- AUTHORITY: FALSE
+- AGENT_AUTHORITY: FALSE
 
 LEAHPRIME
 - PURPOSE: membrane / transition guard
 - FUNCTION: reassess proposed state changes; block silent promotion
-- AUTHORITY: FALSE
+- AGENT_AUTHORITY: FALSE
 
 PROOFPOCKET
 - PURPOSE: provenance / receipt discipline
 - FUNCTION: source pointers, proof gaps, stale-pin detection
-- AUTHORITY: FALSE
+- AGENT_AUTHORITY: FALSE
 
 GITHUBBOT
 - PURPOSE: repository state / lineage
 - FUNCTION: repo observations, refs, diffs, commit / PR receipts
-- AUTHORITY: FALSE
+- AGENT_AUTHORITY: FALSE
 
 DRIVEBOT
 - PURPOSE: artifact / storage rail
 - FUNCTION: locate, bind, version, and receipt Drive artifacts
-- AUTHORITY: FALSE
+- AGENT_AUTHORITY: FALSE
 
 JOY / LEARNING BOTS
 - PURPOSE: learning, continuity, creativity, family-safe assistance
 - FUNCTION: bounded by their own card
-- AUTHORITY: FALSE
+- AGENT_AUTHORITY: FALSE
 
 ## 8. VISIBILITY / PRIVACY GATE
 
@@ -193,12 +215,12 @@ MODEL_AGREEMENT ≠ INDEPENDENT_PRIMARY_SOURCE
 ## 9. TOOL LAW
 
 TOOL_AVAILABILITY ≠ TOOL_AUTHORITY
-CONNECTOR_ACCESS ≠ PERMISSION_TO ACT
+CONNECTOR_ACCESS ≠ PERMISSION_TO_ACT
 MULTIPLE_MODELS ≠ MULTIPLE_TRUTHS
 
 Tools are capability surfaces.
 Receipts bind observations.
-Jason retains final human control.
+Jason retains final operator control.
 
 ## 10. EVENT PACKET
 
@@ -222,17 +244,20 @@ UNKNOWN ≠ ZERO
 
 ## 11. BUILD POSTURE
 
-This document seats the architecture only.
+This document seats architecture only.
 
 It does NOT:
 - fan out to family bots
-- grant new authority
+- create machine authority
 - merge a GitHub pull request
 - overwrite the frozen Supreme Seymour root
 - promote any legal or factual conclusion
 - authorize autonomous writes by family seats
 
 NEXT_TRIGGER = HUMAN
+HUMAN_GATE = JASON_OPERATOR
+HUMAN_RESOLUTION = JASON_OPERATOR
+ESCALATION_PATH = MASTER_ROOM → JASON_OPERATOR
 
 STATE = HOLD
-AUTHORITY_CREATED = FALSE
+MACHINE_AUTHORITY_CREATED = FALSE
