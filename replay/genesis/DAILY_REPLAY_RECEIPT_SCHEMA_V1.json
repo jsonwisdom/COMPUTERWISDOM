@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "replay/genesis/DAILY_REPLAY_RECEIPT_SCHEMA_V1.json",
+  "title": "DAILY_REPLAY_RECEIPT_SCHEMA_V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_type",
+    "date",
+    "genesis_key",
+    "source_manifest_root",
+    "factor_map_root",
+    "decision_root",
+    "tally_root",
+    "previous_daily_root",
+    "current_daily_root",
+    "authority"
+  ],
+  "properties": {
+    "receipt_type": {"const": "DAILY_REPLAY_UPDATE"},
+    "date": {"type": "string", "format": "date"},
+    "genesis_key": {"type": "string", "minLength": 1},
+    "source_manifest_root": {"type": "string"},
+    "factor_map_root": {"type": "string"},
+    "decision_root": {"type": "string"},
+    "participant_set_root": {"type": ["string", "null"]},
+    "ballot_commitment_root": {"type": ["string", "null"]},
+    "tally_root": {"type": "string"},
+    "previous_daily_root": {"type": ["string", "null"]},
+    "current_daily_root": {"type": "string"},
+    "top_ten_result_root": {"type": ["string", "null"]},
+    "valid_ballot_count": {"type": "integer", "minimum": 0},
+    "rejected_ballot_count": {"type": "integer", "minimum": 0},
+    "on_chain_commitment": {"type": ["string", "null"]},
+    "official_authority": {"const": false},
+    "authority": {"const": false}
+  }
+}

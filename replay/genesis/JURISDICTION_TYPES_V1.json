@@ -1,0 +1,15 @@
+{
+  "artifact": "JURISDICTION_TYPES_V1",
+  "status": "SHELL_ONLY",
+  "authority": false,
+  "types": [
+    {"level": "G0", "type": "ROOT"},
+    {"level": "G1", "type": "SOVEREIGN_COUNTRY"},
+    {"level": "G2", "type": "STATE_PROVINCE_REGION"},
+    {"level": "G3", "type": "COUNTY_DISTRICT_INTERMEDIATE"},
+    {"level": "G4", "type": "MUNICIPAL_CITY_TOWN_COMMUNE"},
+    {"level": "G5", "type": "TRIBAL_SPECIAL_SERVICE_AUTHORITY"}
+  ],
+  "eligibility_rule": "A key requires authoritative evidence of a distinct jurisdiction/governance node. Place-name existence alone is insufficient.",
+  "normalization_status": "NOT_POPULATED"
+}

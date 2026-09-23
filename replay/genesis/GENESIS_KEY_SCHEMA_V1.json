@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "replay/genesis/GENESIS_KEY_SCHEMA_V1.json",
+  "title": "GENESIS_KEY_SCHEMA_V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "genesis_key",
+    "jurisdiction_id",
+    "level",
+    "canonical_name",
+    "jurisdiction_type",
+    "authority_source",
+    "source_adapter_ids",
+    "effective_from",
+    "authority"
+  ],
+  "properties": {
+    "genesis_key": {"type": "string", "minLength": 1},
+    "jurisdiction_id": {"type": "string", "minLength": 1},
+    "level": {"enum": ["G0", "G1", "G2", "G3", "G4", "G5"]},
+    "parent_genesis_key": {"type": ["string", "null"]},
+    "canonical_name": {"type": "string", "minLength": 1},
+    "jurisdiction_type": {"type": "string", "minLength": 1},
+    "authority_source": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "source_adapter_ids": {"type": "array", "items": {"type": "string"}},
+    "effective_from": {"type": "string", "format": "date-time"},
+    "effective_to": {"type": ["string", "null"], "format": "date-time"},
+    "predecessor_keys": {"type": "array", "items": {"type": "string"}},
+    "successor_keys": {"type": "array", "items": {"type": "string"}},
+    "boundary_ref": {"type": ["string", "null"]},
+    "public_key": {"type": ["string", "null"]},
+    "genesis_receipt_hash": {"type": ["string", "null"]},
+    "authority": {"const": false}
+  }
+}

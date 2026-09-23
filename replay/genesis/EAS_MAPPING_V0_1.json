@@ -1,0 +1,16 @@
+{
+  "artifact": "EAS_MAPPING_V0_1",
+  "status": "REGISTERED_ON_BASE",
+  "authority": false,
+  "network": "base",
+  "chain_id": 8453,
+  "schema_uid": "0xc90097ca9f787edcc5fa2ce0920032abe4c4417cc8356198fa12d397c46a453c",
+  "registration_tx": "0x0a63287506386c6ff8b87621a9435f3993737df09abf34c54eac183945fe2edf",
+  "creator": "0xC345B26094c63C69222Ee775189a3d3eaead5a84",
+  "resolver": "0x0000000000000000000000000000000000000000",
+  "revocable": false,
+  "schema_string": "bytes32 receiptHash,bytes32 lineageHash,bytes32 previousReceiptHash,bytes32 subjectHash,bytes32 sourceRefHash,uint64 createdAt,uint8 evidenceState,uint8 retrievalState",
+  "registration_evidence": "USER_SUPPLIED_EAS_RECORD",
+  "independent_web_replay": "PENDING_INDEX_VISIBILITY",
+  "attestation_count_at_registration": 0
+}
