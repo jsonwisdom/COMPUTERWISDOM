@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Receipts-first verifier for the JayWisdom public proof membrane.">
+  <title>JayWisdom — Receipt Verifier</title>
+  <style>
+    :root{--bg:#07111f;--panel:#0d1b2d;--text:#f4f7fb;--muted:#9fb0c6;--line:#2b3d57;--gold:#f5c65a;--green:#69d79f;--blue:#73b8ff;--red:#ff8d8d}*{box-sizing:border-box}body{margin:0;background:linear-gradient(180deg,#07111f,#0a1728);color:var(--text);font:16px/1.55 system-ui,-apple-system,sans-serif}.wrap{width:min(980px,92vw);margin:auto;padding:56px 0}h1{font-size:clamp(2.4rem,7vw,5rem);line-height:.98;margin:.4rem 0 1rem}.eyebrow{color:var(--gold);font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;font-weight:900}.lede{color:var(--muted);max-width:760px}.boundary{padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--panel);margin:28px 0}.boundary strong{color:var(--red)}.controls{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0}input{flex:1;min-width:240px;padding:13px;border-radius:12px;border:1px solid var(--line);background:#06101d;color:var(--text);font:inherit}button,a.btn{padding:13px 16px;border-radius:12px;border:1px solid var(--line);background:#173b61;color:var(--text);font-weight:800;text-decoration:none;cursor:pointer}.status{color:var(--muted);min-height:1.4em}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:14px}.card{padding:20px;border:1px solid var(--line);border-radius:16px;background:var(--panel)}.card h2{margin:.3rem 0}.tag{color:var(--blue);font-size:.75rem;font-weight:900;letter-spacing:.1em}.state{color:var(--green);font-family:ui-monospace,monospace;font-size:.86rem}.card p,.card li{color:var(--muted)}.card a{color:var(--gold)}code{overflow-wrap:anywhere}footer{margin-top:34px;color:var(--muted);border-top:1px solid var(--line);padding-top:22px}
+  </style>
+</head>
+<body><main class="wrap">
+  <div class="eyebrow">Receipts-first identity membrane</div>
+  <h1>Verify the record.<br>Do not infer authority.</h1>
+  <p class="lede">This page reads the public project index. It displays declared status, source pointers, release records, and explicit non-claims. It does not validate signatures, control wallets, certify identity, or create institutional authority.</p>
+  <div class="boundary"><strong>AUTHORITY = FALSE BY DEFAULT.</strong><br>Unknown, hold, conflict, and deployment-unverified states are valid outcomes—not failures to be hidden.</div>
+  <div class="controls"><input id="query" placeholder="Project ID or title" aria-label="Project ID or title"><button id="find" type="button">Find receipt</button><a class="btn" href="../projects/index.json">Raw JSON</a><a class="btn" href="../projects/">Human-readable map</a></div>
+  <div id="status" class="status" aria-live="polite">Loading public receipt index…</div>
+  <section id="results" class="grid" aria-label="Verification results"></section>
+  <footer>Verification over narrative · Receipts &gt; claims · No fake green · Human release gate remains required.</footer>
+</main>
+<script>
+const results=document.getElementById('results');const statusEl=document.getElementById('status');const query=document.getElementById('query');let index=null;
+function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function render(items){results.innerHTML='';if(!items.length){statusEl.textContent='No matching public receipt. Absence is not proof of nonexistence.';return}statusEl.textContent=`${items.length} public receipt${items.length===1?'':'s'} displayed.`;for(const p of items){const card=document.createElement('article');card.className='card';const claims=(p.what_is_not_claimed||[]).map(x=>`<li>${esc(x)}</li>`).join('');card.innerHTML=`<div class="tag">${esc(p.classification)}</div><h2>${esc(p.title)}</h2><div class="state">${esc(p.verification_state)}</div><p><code>${esc(p.id)}</code></p><p><a href="${esc(p.source_url)}">Source record</a>${p.release_record_url?` · <a href="${esc(p.release_record_url)}">Release record</a>`:''}${p.public_url?` · <a href="${esc(p.public_url)}">Public surface</a>`:''}</p><strong>What is not claimed</strong><ul>${claims}</ul>`;results.appendChild(card)}}
+async function load(){try{const r=await fetch('../projects/index.json',{cache:'no-store'});if(!r.ok)throw new Error(`HTTP ${r.status}`);index=await r.json();render(index.projects||[])}catch(e){statusEl.textContent=`Index unavailable: ${e.message}. Verification state remains UNKNOWN.`}}
+document.getElementById('find').addEventListener('click',()=>{if(!index)return;const q=query.value.trim().toLowerCase();render(!q?index.projects:(index.projects||[]).filter(p=>p.id.toLowerCase().includes(q)||p.title.toLowerCase().includes(q)))});query.addEventListener('keydown',e=>{if(e.key==='Enter')document.getElementById('find').click()});load();
+</script></body></html>
