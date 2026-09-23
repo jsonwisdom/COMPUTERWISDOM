@@ -1,0 +1,127 @@
+{
+  "RULESET_VERSION": "0.1",
+  "MATCH_POLICY": "highest_priority_then_branch_signal_then_path_signal",
+  "UNKNOWN_POLICY": "retain_and_require_manual_review",
+  "rules": [
+    {
+      "id": "ssa_public_replay",
+      "priority": 100,
+      "mission_id": "SSA_PUBLIC_REPLAY_CORPUS_v0.1",
+      "artifact_class": "PUBLIC_REPLAY_CORPUS",
+      "branch_regex": "(?i)(proposal/ssa-public-replay|ssa[-_].*replay|ssa[-_].*corpus)",
+      "path_regex": ["(?i)SSA_PUBLIC_REPLAY_CORPUS", "(?i)ssa.*replay.*corpus"]
+    },
+    {
+      "id": "mn_courts_public_replay",
+      "priority": 100,
+      "mission_id": "MN_COURTS_PUBLIC_REPLAY_v0.1",
+      "artifact_class": "PUBLIC_COURT_REPLAY",
+      "branch_regex": "(?i)(mn[-_].*court|court[-_/].*mn)",
+      "path_regex": ["(?i)MN_COURTS_PUBLIC_REPLAY", "(?i)mn.*courts.*replay"]
+    },
+    {
+      "id": "mn_state_self",
+      "priority": 90,
+      "mission_id": "MN_STATE_SELF_02",
+      "artifact_class": "CIVIC_SYSTEM_MODEL",
+      "branch_regex": "(?i)(mn-state-self|mn[-_].*state[-_].*self)",
+      "path_regex": ["(?i)MN_STATE_SELF", "(?i)mn-state-self"]
+    },
+    {
+      "id": "mn_family",
+      "priority": 70,
+      "mission_id": "MINNESOTA_REPLAY_FAMILY",
+      "artifact_class": "MINNESOTA_REPLAY",
+      "branch_regex": "(?i)(^|/)(mn-first-use-case|mn-law-monitor|mn-portal|mn-mitchell)",
+      "path_regex": ["(?i)mn[-_].*(portal|law|mitchell|replay)"]
+    },
+    {
+      "id": "goblin_court",
+      "priority": 90,
+      "mission_id": "GOBLIN_COURT",
+      "artifact_class": "COURT_REPLAY_SYSTEM",
+      "branch_regex": "(?i)goblin[-_/].*court|goblin-court|goblin-precedent|goblin-runtime",
+      "path_regex": ["(?i)goblin.*court", "(?i)goblin.*precedent"]
+    },
+    {
+      "id": "proof_president",
+      "priority": 90,
+      "mission_id": "PROOF_FOR_THE_PRESIDENT",
+      "artifact_class": "PROOF_PACKET",
+      "branch_regex": "(?i)proof[-_/].*president|proof-president",
+      "path_regex": ["(?i)proof.*president"]
+    },
+    {
+      "id": "public_proof",
+      "priority": 80,
+      "mission_id": "PUBLIC_PROOF",
+      "artifact_class": "PUBLIC_PROOF",
+      "branch_regex": "(?i)public-proof",
+      "path_regex": ["(?i)public[_-]proof"]
+    },
+    {
+      "id": "world_map",
+      "priority": 80,
+      "mission_id": "WORLD_MAP",
+      "artifact_class": "MAP_REPLAY_SYSTEM",
+      "branch_regex": "(?i)world-map|graphiti-world-map",
+      "path_regex": ["(?i)world[_-]map"]
+    },
+    {
+      "id": "receipt_core",
+      "priority": 85,
+      "mission_id": "RECEIPT_CORE",
+      "artifact_class": "PROVENANCE_INFRASTRUCTURE",
+      "branch_regex": "(?i)receipt-core|receipts-pipeline|receipt-chain",
+      "path_regex": ["(?i)receipt[_-]core", "(?i)receipt[_-]chain"]
+    },
+    {
+      "id": "cwaas",
+      "priority": 80,
+      "mission_id": "COMPUTER_WISDOM_AS_A_SERVICE",
+      "artifact_class": "SERVICE_SYSTEM",
+      "branch_regex": "(?i)cwaas|computer-wisdom-as-a-service|computer-wisdom-offer",
+      "path_regex": ["(?i)cwaas", "(?i)computer.*wisdom.*service"]
+    },
+    {
+      "id": "personal_memory",
+      "priority": 85,
+      "mission_id": "PERSONAL_MEMORY_CONSTITUTION",
+      "artifact_class": "MEMORY_GOVERNANCE",
+      "branch_regex": "(?i)pmem|personal-memory|memory-constitution|memory-drift",
+      "path_regex": ["(?i)personal.*memory", "(?i)memory.*constitution"]
+    },
+    {
+      "id": "replay_kernel",
+      "priority": 75,
+      "mission_id": "REPLAY_KERNEL",
+      "artifact_class": "REPLAY_INFRASTRUCTURE",
+      "branch_regex": "(?i)replay-kernel|executable-replay|replay-global-genesis",
+      "path_regex": ["(?i)replay[_-]kernel"]
+    },
+    {
+      "id": "caseflow",
+      "priority": 70,
+      "mission_id": "CASEFLOW",
+      "artifact_class": "CASEFLOW_SYSTEM",
+      "branch_regex": "(?i)caseflow",
+      "path_regex": ["(?i)caseflow"]
+    },
+    {
+      "id": "locality",
+      "priority": 70,
+      "mission_id": "LOCALITY_SYSTEM",
+      "artifact_class": "LOCALITY_ANALYSIS",
+      "branch_regex": "(?i)locality",
+      "path_regex": ["(?i)locality"]
+    },
+    {
+      "id": "jsonwisdom_agents",
+      "priority": 60,
+      "mission_id": "JSONWISDOM_AGENT_SYSTEM",
+      "artifact_class": "AGENT_INFRASTRUCTURE",
+      "branch_regex": "(?i)jsonwisdom-agent|agent-registry",
+      "path_regex": ["(?i)agent[_-]registry"]
+    }
+  ]
+}
