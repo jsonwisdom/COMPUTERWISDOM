@@ -1,0 +1,43 @@
+{
+  "format": "JSONWISDOM_DICE_VERIFIER_SPEC_V0.1",
+  "verifier_id": "MIND_THE_GAP_DICE_VERIFIER_V0_1",
+  "mapping_path": "fixtures/jaywisdom/challenge/MIND_THE_GAP_DICE_V0_1.json",
+  "schema_path": "schemas/jaywisdom/challenge_membrane.v0_1.schema.json",
+  "positive_receipts": [
+    "fixtures/jaywisdom/challenge/dice_receipt_pass_v0_1.json",
+    "fixtures/jaywisdom/challenge/dice_receipt_conflict_v0_1.json",
+    "fixtures/jaywisdom/challenge/dice_receipt_gap_v0_1.json"
+  ],
+  "required_checks": [
+    "MAPPING_FILE_SHA256_MATCH",
+    "ROLL_IN_D6_RANGE",
+    "Q1_ROLL_TO_SNAPSHOT_MAPPING_MATCH",
+    "CHALLENGE_FIXTURE_FILE_SHA256_MATCH",
+    "SNAPSHOT_UTF8_BYTE_LENGTH_MATCH",
+    "SNAPSHOT_SHA256_MATCH",
+    "CLAIM_CHALLENGE_AUTHORITY_RULE_SCOPE_MATCH",
+    "RESPONSE_SUFFICIENCY_TO_DISPOSITION_MATCH",
+    "Q2_EXPECTED_TO_OBSERVED_DISPOSITION_MATCH",
+    "NO_SOURCE_IDENTITY_CLAIM_OR_AUTHORITY_MUTATION"
+  ],
+  "negative_cases": [
+    {
+      "case_id": "Q1_MAPPING_VIOLATION",
+      "mutation": "roll=5 + selected_snapshot_id=EVIDENCE_SNAPSHOT_A",
+      "expected_error": "MAPPING_VIOLATION"
+    },
+    {
+      "case_id": "Q2_REPLAY_VIOLATION",
+      "mutation": "roll=5 + selected_snapshot_id=EVIDENCE_SNAPSHOT_C + observed_disposition=PASS",
+      "expected_error": "REPLAY_VIOLATION"
+    }
+  ],
+  "boundary": {
+    "dice_is_scenario_selector": true,
+    "dice_is_verdict_generator": false,
+    "roll_observed_does_not_prove_randomness_quality": true,
+    "pass_does_not_mean_claim_true": true,
+    "replay_does_not_create_authority": true
+  },
+  "authority_created": false
+}

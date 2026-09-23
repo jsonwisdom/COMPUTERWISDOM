@@ -1,0 +1,56 @@
+{
+  "format": "JSONWISDOM_DICE_MAPPING_V0.1",
+  "mapping_id": "MIND_THE_GAP_DICE_V0_1",
+  "classification": "SYNTHETIC_SCENARIO_SELECTOR",
+  "claim_id": "CLAIM_MIND_THE_GAP_001",
+  "challenge_id": "CHALLENGE_001",
+  "authority_state": "UNCHANGED",
+  "rule_version": "challenge_membrane.v0_1",
+  "scope": "DECLARED_SCOPE_001",
+  "dice": {
+    "type": "D6",
+    "minimum": 1,
+    "maximum": 6
+  },
+  "mapping": [
+    {
+      "rolls": [1, 2],
+      "snapshot_id": "EVIDENCE_SNAPSHOT_A",
+      "challenge_fixture_path": "fixtures/jaywisdom/challenge/challenge_same_claim_pass_v0_1.json",
+      "challenge_fixture_sha256": "d01bbace4f9159d36fb6b00cdf56f1b4f88161723623ebce00ddb8766faa055f",
+      "snapshot_sha256": "6cca539a5cf47b057e89e8c93b610862f82612ec3ecd40c6102f03d785f9da9f",
+      "expected_disposition": "PASS"
+    },
+    {
+      "rolls": [3, 4],
+      "snapshot_id": "EVIDENCE_SNAPSHOT_B",
+      "challenge_fixture_path": "fixtures/jaywisdom/challenge/challenge_same_claim_conflict_v0_1.json",
+      "challenge_fixture_sha256": "381dfbab21fd44d1cfbf07718114cb67618e91888ac17b981a60759306145dd4",
+      "snapshot_sha256": "b9657d4d1f84c7ca1ddc233ace89b81145df63a1201373a9562b5bcd087039d4",
+      "expected_disposition": "CONFLICT"
+    },
+    {
+      "rolls": [5, 6],
+      "snapshot_id": "EVIDENCE_SNAPSHOT_C",
+      "challenge_fixture_path": "fixtures/jaywisdom/challenge/challenge_same_claim_gap_v0_1.json",
+      "challenge_fixture_sha256": "2f49f3a6c97c3d72db85745e4e96042b30d2532659a2a21c6708a2cba9f334a6",
+      "snapshot_sha256": "619745baf0926d0f3be6591e05f816f47cf605cf4371ec306b9f013e1681f2d2",
+      "expected_disposition": "GAP"
+    }
+  ],
+  "dependency_policy": "STANDALONE_NO_REF_TO_DRAFT",
+  "pending_upstream": [
+    "PR_484_AUTHORITY_MEMBRANE",
+    "PR_485_WITNESS_MEMBRANE"
+  ],
+  "laws": {
+    "dice_is_scenario_selector": true,
+    "dice_is_verdict_generator": false,
+    "selection_occurs_before_freeze": true,
+    "replay_after_freeze_is_deterministic": true,
+    "roll_observed_does_not_prove_randomness_quality": true,
+    "contestability_is_multiple_frozen_surfaces": true,
+    "nondeterminism_is_same_frozen_surface_multiple_results": true
+  },
+  "authority_created": false
+}

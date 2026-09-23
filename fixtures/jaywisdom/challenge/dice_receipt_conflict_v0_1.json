@@ -1,0 +1,43 @@
+{
+  "format": "JSONWISDOM_DICE_REPLAY_RECEIPT_V0.1",
+  "receipt_id": "MIND_THE_GAP_DICE_CONFLICT_001",
+  "classification": "SYNTHETIC_REPLAY_RECEIPT",
+  "mapping": {
+    "mapping_id": "MIND_THE_GAP_DICE_V0_1",
+    "path": "fixtures/jaywisdom/challenge/MIND_THE_GAP_DICE_V0_1.json",
+    "sha256": "4e6d73218063b7a75a5939f40c10cd5c6e692e64bb90f793fc2820723c38de0e"
+  },
+  "claim_id": "CLAIM_MIND_THE_GAP_001",
+  "challenge_id": "CHALLENGE_001",
+  "authority_state": "UNCHANGED",
+  "roll": {
+    "observed_value": 4,
+    "die_type": "D6",
+    "randomness_quality_proven": false
+  },
+  "selection": {
+    "expected_snapshot_id": "EVIDENCE_SNAPSHOT_B",
+    "selected_snapshot_id": "EVIDENCE_SNAPSHOT_B",
+    "challenge_fixture_path": "fixtures/jaywisdom/challenge/challenge_same_claim_conflict_v0_1.json",
+    "challenge_fixture_sha256": "381dfbab21fd44d1cfbf07718114cb67618e91888ac17b981a60759306145dd4",
+    "q1_selection_match": true
+  },
+  "replay": {
+    "rule_version": "challenge_membrane.v0_1",
+    "scope": "DECLARED_SCOPE_001",
+    "snapshot_sha256": "b9657d4d1f84c7ca1ddc233ace89b81145df63a1201373a9562b5bcd087039d4",
+    "expected_disposition": "CONFLICT",
+    "observed_disposition": "CONFLICT",
+    "q2_replay_match": true
+  },
+  "response": {
+    "response_state": "RESPONDED",
+    "evidence_sufficiency": "CONFLICTING"
+  },
+  "source_evidence_mutated": false,
+  "assessment_state_changed": true,
+  "claim_state_mutated": false,
+  "identity_state_mutated": false,
+  "authority_state_mutated": false,
+  "authority_created": false
+}

@@ -1,0 +1,112 @@
+{
+  "crosswalk_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+  "institution_observation": {
+    "source_type": "PUBLIC_DOCUMENT",
+    "source_reference": "Barnes Center Enlisted PME Program Description, 2025",
+    "observed_features": {
+      "instructional_method": "guided_discussion",
+      "class_size_observed": null,
+      "evaluation_method": "formative feedback + formal evaluations",
+      "curriculum_authority": "Barnes Center / Air University"
+    }
+  },
+  "conceptual_mapping": {
+    "mapping_rules": [
+      {
+        "observed_feature": "guided_discussion",
+        "delta_concept": "DISCUSSION_CELL",
+        "rationale": "Peer exchange under instructor guidance maps to the DELTA discussion membrane."
+      },
+      {
+        "observed_feature": "formative feedback",
+        "delta_concept": "ZIGGY + GIRL MATH",
+        "rationale": "Continuous feedback parallels challenge and evidence-sufficiency checks."
+      }
+    ],
+    "applied_framework": "Bletchley 2.0 + Replay Comms"
+  },
+  "delta_component": {
+    "components": [
+      {
+        "name": "FREEZE_SCENARIO",
+        "description": "Instructor presents bounded case",
+        "role": "scenario"
+      },
+      {
+        "name": "DICE_LEAHPRIME",
+        "description": "Randomized bounded case selection",
+        "role": "scenario"
+      },
+      {
+        "name": "DISCUSSION_CELL",
+        "description": "Approximately 10 participants as a conceptual DELTA design choice",
+        "role": "discussion"
+      },
+      {
+        "name": "ZIGGY",
+        "description": "Challenge assumptions and missing edges",
+        "role": "challenge"
+      },
+      {
+        "name": "GIRL_MATH",
+        "description": "Check evidence sufficiency",
+        "role": "evidence"
+      },
+      {
+        "name": "PASS_GAP_CONFLICT_HOLD",
+        "description": "Bounded classification states",
+        "role": "decision"
+      },
+      {
+        "name": "DELTA",
+        "description": "Identify what changed in reasoning",
+        "role": "delta"
+      },
+      {
+        "name": "DEBRIEF",
+        "description": "Instructor final review of reasoning",
+        "role": "debrief"
+      }
+    ],
+    "participant_count_conceptual": 10
+  },
+  "training_profile": {
+    "level": "ALS",
+    "learning_objectives": [
+      "reason as supervisor",
+      "apply evidence discipline",
+      "communicate decisions"
+    ],
+    "assessment_criteria": [
+      "ability to articulate reasoning",
+      "identification of gaps",
+      "delta articulation"
+    ]
+  },
+  "boundary": {
+    "class_size_10_is_conceptual": true,
+    "official_affiliation_claimed": false,
+    "institutional_adoption_proven": false,
+    "dice_verdict_authority": false,
+    "human_consequential_authority": true
+  },
+  "evidence_reference": {
+    "evidence_objects": []
+  },
+  "adoption_state": {
+    "status": "NOT_ESTABLISHED",
+    "notes": "Conceptual crosswalk only; no pilot or adoption established by this fixture."
+  },
+  "authority_state": {
+    "authority_created": false,
+    "interception_authority": false,
+    "official_affiliation_claimed": false
+  },
+  "constitutional_invariants": {
+    "DELTA_NEQ_TRUTH": true,
+    "DELTA_NEQ_CAUSATION": true,
+    "DELTA_NEQ_AUTHORITY": true,
+    "DICE_NEQ_VERDICT_GENERATOR": true,
+    "HUMAN_RETAINS_CONSEQUENTIAL_AUTHORITY": true
+  }
+}
