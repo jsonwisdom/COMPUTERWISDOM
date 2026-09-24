@@ -1,0 +1,158 @@
+{
+  "artifact_id": "FAMILY_INFORMATION_BOUNDARY_V0",
+  "version": "0.1",
+  "status": "PROPOSED",
+  "authority": false,
+  "final_decision": "HUMAN",
+  "purpose": "Track how family knowledge, public knowledge, legal records, government-reported information, and security-related claims remain distinct across person, object, time, source, authority, disclosure, and evidence coordinates.",
+  "lineage": {
+    "system": "JASON_FULL_MATH",
+    "research_engine": "SUPREME_SEYMOUR",
+    "parent_branch": "supreme-seymour/flywheel-v0-1",
+    "parent_sha": "1f440bfb3bdd1a11b5be06a1937d8e1e2e2c990d"
+  },
+  "unit": [
+    "PERSON",
+    "OBJECT",
+    "TIME",
+    "SOURCE",
+    "AUTHORITY",
+    "DISCLOSURE_CLASS",
+    "EVIDENCE_STATE"
+  ],
+  "family_roles": {
+    "DAUGHTER_CHILD": "next-generation receiver; asks what can be understood and replayed later",
+    "MOTHER_PARENT": "human purpose and family consequence; asks what the information means for the household",
+    "AUNT_LEAH_TYPE": "math, delta, and verification; asks what changed, what is provable, and what remains unknown",
+    "JOY": "membrane governing what may cross between family and outside information universes"
+  },
+  "external_authority_domains": [
+    "LAW",
+    "NATIONAL_SECURITY",
+    "PUBLIC_NEWS",
+    "GOVERNMENT_RECORD",
+    "COURT_RECORD",
+    "INTELLIGENCE_CLAIM",
+    "PUBLIC_RESEARCH"
+  ],
+  "object_coordinates": {
+    "S": "source",
+    "P": "person_or_population_affected",
+    "A": "authority_domain",
+    "C": "information_class",
+    "D": "disclosure_state",
+    "R": "replay_state",
+    "E": "evidence_state"
+  },
+  "disclosure_states": [
+    "PRIVATE_FAMILY",
+    "PRIVATE_PERSON",
+    "PUBLIC_SOURCE",
+    "PUBLIC_RECORD",
+    "LEGAL_RECORD",
+    "GOVERNMENT_REPORTED",
+    "SECURITY_RESTRICTED",
+    "CLASSIFICATION_UNKNOWN",
+    "DISCLOSURE_UNKNOWN"
+  ],
+  "non_collapse_rules": [
+    "FAMILY_KNOWLEDGE != PUBLIC_KNOWLEDGE",
+    "PUBLIC_KNOWLEDGE != GOVERNMENT_KNOWLEDGE",
+    "GOVERNMENT_KNOWLEDGE != CLASSIFIED_KNOWLEDGE",
+    "CLASSIFIED_KNOWLEDGE != LEGAL_RECORD",
+    "LEGAL_RECORD != NEWS_REPORT",
+    "SAME_PAYLOAD != SAME_EVENT",
+    "SAME_PAYLOAD != SAME_SOURCE",
+    "SAME_PAYLOAD != SAME_AUTHORITY",
+    "SAME_PAYLOAD != SAME_DISCLOSURE_PERMISSION",
+    "PUBLICLY_DISCUSSED != LEGALLY_PUBLIC",
+    "GOVERNMENT_POSSESSES != FAMILY_MAY_DISCLOSE",
+    "NEWS_REPORTED != VERIFIED",
+    "NATIONAL_SECURITY_CLAIM != CLASSIFIED_INFORMATION",
+    "CLASSIFICATION_UNKNOWN != CLASSIFIED"
+  ],
+  "delta_engine": {
+    "rule": "A delta records a typed state transition for one identified object; it never promotes unrelated family knowledge.",
+    "examples": {
+      "PUBLIC_RECORD_APPEARS": "PRIVATE_ONLY -> PUBLIC_RECORD_AVAILABLE",
+      "NEWS_ARTICLE_APPEARS": "DELTA_PUBLIC_NEWS",
+      "COURT_FILING_APPEARS": "DELTA_LEGAL_RECORD",
+      "AGENCY_STATEMENT_APPEARS": "DELTA_GOVERNMENT_REPORTED",
+      "CLASSIFICATION_STATUS_CHANGES": "DELTA_SECURITY_STATUS"
+    }
+  },
+  "human_denominator": [
+    "PEOPLE",
+    "WOMEN",
+    "MEN",
+    "GIRLS",
+    "BOYS",
+    "CHILDREN",
+    "CAREGIVERS",
+    "HUMAN_VOICES"
+  ],
+  "information_denominator": [
+    "TOTAL_OBJECTS",
+    "PRIVATE_OBJECTS",
+    "PUBLIC_OBJECTS",
+    "LEGAL_RECORD_OBJECTS",
+    "GOVERNMENT_REPORTED_OBJECTS",
+    "SECURITY_RESTRICTED_OBJECTS",
+    "CLASSIFICATION_UNKNOWN_OBJECTS",
+    "SOURCE_UNKNOWN_OBJECTS",
+    "DISCLOSURE_UNKNOWN_OBJECTS"
+  ],
+  "crossings_are_distinct_events": [
+    "PRIVATE_TO_PUBLIC",
+    "PRIVATE_TO_LEGAL",
+    "PUBLIC_TO_FAMILY",
+    "GOVERNMENT_TO_FAMILY",
+    "FAMILY_TO_PUBLIC",
+    "LEGAL_TO_NEWS",
+    "NEWS_TO_FAMILY"
+  ],
+  "crossing_fields": [
+    "SOURCE_STATE",
+    "DESTINATION_STATE",
+    "DELTA_TYPE",
+    "LEGAL_BASIS",
+    "PUBLIC_STATUS",
+    "PRIVATE_STATUS",
+    "SECURITY_STATUS",
+    "WHO_OBSERVED",
+    "WHO_DID_NOT_OBSERVE",
+    "CHILD_ACCESSIBLE",
+    "FAMILY_BURDEN",
+    "REPLAYABLE"
+  ],
+  "replay_questions": [
+    "WHO_KNEW",
+    "WHAT_EXACTLY",
+    "WHEN",
+    "FROM_WHAT_SOURCE",
+    "UNDER_WHAT_AUTHORITY",
+    "WHAT_WAS_PUBLIC_THEN",
+    "WHAT_BECAME_PUBLIC_LATER",
+    "WHAT_REMAINED_PRIVATE",
+    "WHO_IN_THE_FAMILY_ACTUALLY_SAW_IT",
+    "WHAT_DID_THE_CHILD_RECEIVE"
+  ],
+  "temporal_invariants": [
+    "KNOWLEDGE_T0 != KNOWLEDGE_T1",
+    "PUBLIC_T0 != PUBLIC_T1",
+    "LEGAL_STATUS_T0 != LEGAL_STATUS_T1",
+    "LATER_DISCLOSURE_MUST_NOT_RETROACTIVELY_REWRITE_EARLIER_KNOWABILITY"
+  ],
+  "hard_locks": [
+    "PUBLIC != TRUE",
+    "PRIVATE != SECRET",
+    "SECRET != CLASSIFIED",
+    "CLASSIFIED != ILLEGAL_TO_DISCUSS_AUTOMATICALLY",
+    "NEWS != GOVERNMENT_POSITION",
+    "GOVERNMENT_POSITION != LAW",
+    "LAW != COURT_FINDING",
+    "COURT_FINDING != FAMILY_CONSENSUS",
+    "FAMILY_CONSENSUS != CHILD_CONSENT"
+  ],
+  "summary": "Full Math counts people x information x time x authority x disclosure state. Delta is the transition engine that records exactly when one coordinate changes without collapsing neighboring states."
+}
