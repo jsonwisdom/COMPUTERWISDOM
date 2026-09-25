@@ -62,10 +62,17 @@ RETURN?
   R01 / R09 → controlled retry lane (reinitiation regulated and limited)
   R02 / R03 / R04 → new account information
   R07 / R10 / R05 / R29 → authorization stop; do not reinitiate on the old mandate
+  R08 → stop-payment lane; no automatic reinitiation; human/customer confirmation required
   R11 → fix mismatch, then corrected submission permitted without a new authorization
+  R51 → authorization/compliance review; no automatic retry; HOLD pending scheme-specific classification
+  OTHER_VALID_R_CODE → NO_AUTO_RETRY → MANUAL_CLASSIFICATION → HOLD
+  UNKNOWN_OR_UNMAPPED_CODE → HOLD → SOURCE / SCHEME CHECK REQUIRED
+
+CODE_OBSERVED ≠ CODE_CLASSIFIED ≠ ACTION_AUTHORIZED
 
 Unauthorized entries cannot simply be retried.
 R01/R09 may be reinitiated only inside Nacha retry limits.
+No fallback lane authorizes retry by itself.
 
 Unauthorized-return monitoring bucket historically: R05, R07, R10, R29, R51.
 R11 was subsequently brought into the unauthorized-return-rate framework.
