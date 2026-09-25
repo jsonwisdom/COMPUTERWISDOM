@@ -1,0 +1,326 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.invalid/schemas/jaywisdom/white_house_nightly_protocol.v0_1.schema.json",
+  "title": "WHITE_HOUSE_NIGHTLY_PROTOCOL_v0_1",
+  "$comment": "Cross-receipt equality, lane-map binding, dependency ordering, and digest recomputation require a protocol verifier; JSON Schema validates structure only. For every receipt_sha256, compute SHA-256 over RFC 8785 JCS canonicalization of that receipt object with the receipt_sha256 member omitted. authority_created is required and false at protocol root and every receipt.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "classification",
+    "claim_selection_receipt",
+    "rng_event_receipt",
+    "lane_selection_receipt",
+    "source_bytes_receipt",
+    "disposition_receipt",
+    "authority_created"
+  ],
+  "properties": {
+    "format": {
+      "const": "WHITE_HOUSE_NIGHTLY_PROTOCOL_V0.1"
+    },
+    "classification": {
+      "const": "NIGHTLY_REPLAY_PROTOCOL"
+    },
+    "claim_selection_receipt": {
+      "$ref": "#/$defs/ClaimSelectionReceipt"
+    },
+    "rng_event_receipt": {
+      "$ref": "#/$defs/RngEventReceipt"
+    },
+    "lane_selection_receipt": {
+      "$ref": "#/$defs/LaneSelectionReceipt"
+    },
+    "source_bytes_receipt": {
+      "$ref": "#/$defs/SourceBytesReceipt"
+    },
+    "disposition_receipt": {
+      "$ref": "#/$defs/DispositionReceipt"
+    },
+    "authority_created": {
+      "const": false
+    }
+  },
+  "$defs": {
+    "ClaimSelectionReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "claim_pool_frozen",
+        "claim_selected_id",
+        "timestamp",
+        "receipt_sha256",
+        "authority_created"
+      ],
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_pool_frozen": {
+          "const": true
+        },
+        "claim_selected_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "receipt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "authority_created": {
+          "const": false
+        }
+      }
+    },
+    "RngEventReceipt": {
+      "$comment": "die_a MUST equal ordered_pair[0] and die_b MUST equal ordered_pair[1]; enforce in protocol verifier.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "die_a",
+        "die_b",
+        "ordered_pair",
+        "generator_type",
+        "generator_implementation",
+        "raw_output",
+        "timestamp",
+        "receipt_sha256",
+        "independently_observable",
+        "rng_source_verified",
+        "randomness_quality_proven",
+        "authority_created"
+      ],
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "die_a": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "die_b": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 6
+        },
+        "ordered_pair": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 6
+            },
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 6
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "generator_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generator_implementation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "raw_output": {
+          "type": "string",
+          "minLength": 1
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "receipt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "independently_observable": {
+          "type": "boolean"
+        },
+        "rng_source_verified": {
+          "type": "boolean"
+        },
+        "randomness_quality_proven": {
+          "type": "boolean"
+        },
+        "authority_created": {
+          "const": false
+        }
+      }
+    },
+    "LaneSelectionReceipt": {
+      "$comment": "ordered_pair MUST match rng_event_receipt.ordered_pair and lane MUST replay from lane_map_sha256; enforce in protocol verifier.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "ordered_pair",
+        "lane",
+        "lane_map_sha256",
+        "timestamp",
+        "receipt_sha256",
+        "authority_created"
+      ],
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ordered_pair": {
+          "type": "array",
+          "prefixItems": [
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 6
+            },
+            {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 6
+            }
+          ],
+          "items": false,
+          "minItems": 2,
+          "maxItems": 2
+        },
+        "lane": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "lane_map_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "receipt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "authority_created": {
+          "const": false
+        }
+      }
+    },
+    "SourceBytesReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "url",
+        "fetched_at",
+        "content_type",
+        "byte_length",
+        "sha256",
+        "raw_bytes_preserved",
+        "receipt_sha256",
+        "authority_created"
+      ],
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "url": {
+          "type": "string",
+          "format": "uri"
+        },
+        "fetched_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "content_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "byte_length": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "raw_bytes_preserved": {
+          "const": true
+        },
+        "receipt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "authority_created": {
+          "const": false
+        }
+      }
+    },
+    "DispositionReceipt": {
+      "$comment": "lane MUST match lane_selection_receipt.lane and claim_id MUST match claim_selection_receipt.claim_selected_id; enforce in protocol verifier.",
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "event_id",
+        "lane",
+        "claim_id",
+        "disposition",
+        "timestamp",
+        "receipt_sha256",
+        "authority_created"
+      ],
+      "properties": {
+        "event_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "lane": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 12
+        },
+        "claim_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "disposition": {
+          "enum": [
+            "PASS",
+            "CONFLICT",
+            "GAP",
+            "FAIL",
+            "HOLD"
+          ]
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "receipt_sha256": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "authority_created": {
+          "const": false
+        }
+      }
+    }
+  }
+}

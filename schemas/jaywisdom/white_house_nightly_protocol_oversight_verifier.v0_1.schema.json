@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WHITE_HOUSE_NIGHTLY_PROTOCOL_OVERSIGHT_VERIFIER_V0_1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "classification",
+    "primary_verifier",
+    "oversight_verifier",
+    "implementation_dependency_on_primary",
+    "oversight_run_performed",
+    "primary_integrity",
+    "oversight_integrity",
+    "oversight_consistent",
+    "oversight_alerts",
+    "receipt_sha256",
+    "claim_truth_proven",
+    "source_authenticity_proven",
+    "human_guilt_determined",
+    "randomness_quality_proven",
+    "authority_created"
+  ],
+  "properties": {
+    "format": { "const": "WHITE_HOUSE_NIGHTLY_PROTOCOL_OVERSIGHT_RECEIPT_V0.1" },
+    "classification": { "const": "INDEPENDENT_PROTOCOL_CROSS_CHECK_ONLY" },
+    "primary_verifier": { "const": "WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_V0.1" },
+    "oversight_verifier": { "const": "WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_V0.1_OVERSIGHT" },
+    "implementation_dependency_on_primary": { "const": false },
+    "oversight_run_performed": { "type": "boolean" },
+    "primary_integrity": { "enum": ["PASS", "FAIL", "UNVERIFIABLE", null] },
+    "oversight_integrity": { "enum": ["PASS", "FAIL", "UNVERIFIABLE", null] },
+    "oversight_consistent": { "type": ["boolean", "null"] },
+    "oversight_alerts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["class", "dimension", "primary", "oversight"],
+        "properties": {
+          "class": { "const": "OVERSIGHT_DIVERGENCE" },
+          "dimension": {
+            "enum": [
+              "PROTOCOL_INTEGRITY",
+              "VIOLATION_CLASS_SET",
+              "CHECK_COUNT",
+              "RECEIPT_DIGEST",
+              "CI_HEAD_SHA"
+            ]
+          },
+          "primary": {},
+          "oversight": {}
+        }
+      }
+    },
+    "receipt_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "claim_truth_proven": { "const": false },
+    "source_authenticity_proven": { "const": false },
+    "human_guilt_determined": { "const": false },
+    "randomness_quality_proven": { "const": false },
+    "authority_created": { "const": false }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "oversight_run_performed": { "const": false }
+        }
+      },
+      "then": {
+        "properties": {
+          "primary_integrity": { "const": null },
+          "oversight_integrity": { "const": null },
+          "oversight_consistent": { "const": null },
+          "oversight_alerts": { "maxItems": 0 }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "oversight_run_performed": { "const": true }
+        }
+      },
+      "then": {
+        "properties": {
+          "primary_integrity": { "enum": ["PASS", "FAIL", "UNVERIFIABLE"] },
+          "oversight_integrity": { "enum": ["PASS", "FAIL", "UNVERIFIABLE"] },
+          "oversight_consistent": { "type": "boolean" }
+        }
+      }
+    }
+  ]
+}
