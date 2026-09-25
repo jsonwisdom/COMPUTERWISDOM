@@ -1,0 +1,818 @@
+{
+  "object": "MASTER_ROOM_SNAPSHOT_INDEX_V1",
+  "observed_at": "2026-09-23",
+  "public_repo_count": 80,
+  "full_recursive_tree_captured": 66,
+  "empty_or_unavailable": 13,
+  "sharded_deep_audit_required": 1,
+  "delta_rule": "COMPARE_CURRENT_HEAD_AND_TREE_TO_THIS_INDEX_BEFORE_ANY_FULL_RESCAN",
+  "repos": [
+    {
+      "repo": "jsonwisdom/-replayos-receiptos-spec",
+      "default_branch": "main",
+      "head_commit": "882042cb704bdd825c2139cf04cdf4829487e6a9",
+      "tree_sha": "7b73213d352fc6e2d2d8d08a2474c74d54624a82",
+      "entry_count": 121,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "source_blob_sha": "2f8adef9a7791348aefb4326735d02dff7614c57"
+    },
+    {
+      "repo": "jsonwisdom/0",
+      "default_branch": "master",
+      "head_commit": "27b1ebca51685cf3fbd52c3a85f5e16cdc2c7ac4",
+      "tree_sha": "b94e7d160def4ac8dcf37ffff1a9d84b0844e2f3",
+      "entry_count": 16,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "source_blob_sha": "0feaf09a54975add6cd2766eb4e6cfffca0e85e7"
+    },
+    {
+      "repo": "jsonwisdom/ABS",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": null,
+      "entry_count": null,
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "source_blob_sha": "762b39355b1a173884abd1181a8dd711e4c1b15b"
+    },
+    {
+      "repo": "jsonwisdom/agentos",
+      "default_branch": "main",
+      "head_commit": "04ae559bab977d28abfcfbd7ec43b39938cd4417",
+      "tree_sha": "98b9b03d9e92715671b9d857e0fe8bf55027f6fd",
+      "entry_count": 4,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "source_blob_sha": "45772801f92c4804513c3ee0e38b2a012a8b747f"
+    },
+    {
+      "repo": "jsonwisdom/agents",
+      "default_branch": "main",
+      "head_commit": "c4a176d24db192c6dee93e2f3c795777ef89f103",
+      "tree_sha": "94e1f9100f49a26a1cb61e7ac3ed2b000548be2f",
+      "entry_count": 2029,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "source_blob_sha": "60f13f89a4d0db32494b33fbff6eba86cc2d265b"
+    },
+    {
+      "repo": "jsonwisdom/AL",
+      "default_branch": "master",
+      "head_commit": "0d5363de038c901e11a56eb11845f837bb0d676a",
+      "tree_sha": "b34edd1fb71a88a3e532e8d1b2e911e285d3f976",
+      "entry_count": 295,
+      "snapshot_state": "SHARDED_DEEP_AUDIT_REQUIRED",
+      "source_file": "MASTER_ROOM/snapshots/AL_ROOT_SNAPSHOT_V1.json"
+    },
+    {
+      "repo": "jsonwisdom/AppleGuice",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": "bbd2bc41bcdc5b1ed233f1b4efe8187b57ba1192",
+      "entry_count": 99,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "source_blob_sha": "b35e01c9dc3ad69409bb64ffedcf6ee0a8088dda",
+      "head_commit_state": "PRESENT_IN_BATCH_FILE_BUT_CONNECTOR_READBACK_TOO_LARGE"
+    },
+    {
+      "repo": "jsonwisdom/AU",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": null,
+      "entry_count": null,
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "source_blob_sha": "f7c9eca7516f099a3d4c159758200bcc77cd5e54"
+    },
+    {
+      "repo": "jsonwisdom/base",
+      "default_branch": "main",
+      "head_commit": "2eb95aa4042826cf10c4148cf20df61a3e6d4072",
+      "tree_sha": "33e9e8300718d554ae319ee8dd15c481501d71aa",
+      "entry_count": 2521,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "source_blob_sha": "762b39355b1a173884abd1181a8dd711e4c1b15b"
+    },
+    {
+      "repo": "jsonwisdom/base-live",
+      "default_branch": "main",
+      "head_commit": "7f62d0c378cf384930960c4b8b74723dcdab41b7",
+      "tree_sha": "47c1d558d52e30543834726fd4b434bc1b6e1f20",
+      "entry_count": 4,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "source_blob_sha": "48bfcfd97a93ff26d815e22cc493795b2a7f3aca"
+    },
+    {
+      "repo": "jsonwisdom/boss-brenda-crawler",
+      "default_branch": "main",
+      "head_commit": "85ca22031759fc5f6106868ed91d0a0a9b934f40",
+      "tree_sha": "65fef016c2af045088bf41838b4763edb76e83ec",
+      "entry_count": 41,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "source_blob_sha": "2f8adef9a7791348aefb4326735d02dff7614c57"
+    },
+    {
+      "repo": "jsonwisdom/BRAELEE",
+      "default_branch": "master",
+      "head_commit": "3336e0929af34367ead4830ac2055b3879090b4d",
+      "tree_sha": "75d2b1df272f5cdf4c919a296b60e2d7e634d2a4",
+      "entry_count": 3,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "source_blob_sha": "f7c9eca7516f099a3d4c159758200bcc77cd5e54"
+    },
+    {
+      "repo": "jsonwisdom/BREANN",
+      "default_branch": "master",
+      "head_commit": "64dba8504a73790b26e63b741fd4bdc6787ef2f1",
+      "tree_sha": "375291a4562ec4e2a76b722d2514df787d7e8fa1",
+      "entry_count": 2,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "source_blob_sha": "8ae661d18bd7b4cae5519787604b1fa2fa3e84d0"
+    },
+    {
+      "repo": "jsonwisdom/BRIGHTHOUSE",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": null,
+      "entry_count": null,
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "source_blob_sha": "48bfcfd97a93ff26d815e22cc493795b2a7f3aca"
+    },
+    {
+      "repo": "jsonwisdom/chainlink-agent-skills",
+      "default_branch": "main",
+      "head_commit": "3864170d0f422b9378340de5732ac8572e786ffa",
+      "tree_sha": "5a14fc93f1fa45553dba448bd93d885990817795",
+      "entry_count": 30,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "source_blob_sha": "762b39355b1a173884abd1181a8dd711e4c1b15b"
+    },
+    {
+      "repo": "jsonwisdom/CITIZEN_ROOT",
+      "default_branch": "main",
+      "head_commit": "6fe7d10699016fe3bec99adf610bdb761f60a171",
+      "tree_sha": "871fa8d41228df08c0656b7f09b84aab030aaf13",
+      "entry_count": 127,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "source_blob_sha": "48bfcfd97a93ff26d815e22cc493795b2a7f3aca"
+    },
+    {
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "default_branch": "master",
+      "head_commit": "52e2199c2a19c60d4f0ea1c68131c93b5ada8313",
+      "tree_sha": "9784d49a39c903a86c0913878b3b2eded75d8741",
+      "entry_count": 1817,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "source_blob_sha": "0feaf09a54975add6cd2766eb4e6cfffca0e85e7"
+    },
+    {
+      "repo": "jsonwisdom/COMPUTERWIZARD",
+      "default_branch": "master",
+      "head_commit": "7c5d4380c1bb84c5ddc4d84e121d68312bd6115e",
+      "tree_sha": "6e5b1bdf34de96444f87afebd25c61daa2ae1479",
+      "entry_count": 45,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "source_blob_sha": "48bfcfd97a93ff26d815e22cc493795b2a7f3aca"
+    },
+    {
+      "repo": "jsonwisdom/crp-v0.1",
+      "default_branch": "main",
+      "head_commit": "f4ea268010da3c73850bb7426fbfb91bc1b17a09",
+      "tree_sha": "2793efa1a74ae63ed3ad3071960adc4fa50ccac8",
+      "entry_count": 8,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "source_blob_sha": "2d587ef3e5f02f03e575d2964455230e7da20871"
+    },
+    {
+      "repo": "jsonwisdom/DDR",
+      "default_branch": "main",
+      "head_commit": "c403e5bf9ee87a653e3c7e28c7cc12e3e416f8e9",
+      "tree_sha": "a70753004a6e8b5e5f3f5c342e9b4b638eff9b24",
+      "entry_count": 6,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "source_blob_sha": "2d587ef3e5f02f03e575d2964455230e7da20871"
+    },
+    {
+      "repo": "jsonwisdom/debate-judge-tee-v1",
+      "default_branch": "main",
+      "head_commit": "71198d28946a2c07dc2a9a39d8a2265c3a2123d7",
+      "tree_sha": "0f072421be156fdd69def02ac9ce3b45221374bc",
+      "entry_count": 1,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "source_blob_sha": "60f13f89a4d0db32494b33fbff6eba86cc2d265b"
+    },
+    {
+      "repo": "jsonwisdom/DESTINEE",
+      "default_branch": "master",
+      "head_commit": "d38d277d0cea236ab4e72a0d012a68586e91d015",
+      "tree_sha": "3f39fa96c9d6b530768f87e640e1bebbb8655611",
+      "entry_count": 1,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "source_blob_sha": "f7c9eca7516f099a3d4c159758200bcc77cd5e54"
+    },
+    {
+      "repo": "jsonwisdom/Direct-Mail",
+      "default_branch": "master",
+      "head_commit": "0d71b29ff0ecc92c4897839065e24f03aca25f61",
+      "tree_sha": "a53829990cf192b03761a64d328cdff030bcc0e3",
+      "entry_count": 1,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "source_blob_sha": "f7c9eca7516f099a3d4c159758200bcc77cd5e54"
+    },
+    {
+      "repo": "jsonwisdom/ELMORE",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": null,
+      "entry_count": null,
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "source_blob_sha": "8ae661d18bd7b4cae5519787604b1fa2fa3e84d0"
+    },
+    {
+      "repo": "jsonwisdom/ENS",
+      "default_branch": "main",
+      "head_commit": "9c0ff08c74801e57c70a163f3c9eea0711566d4a",
+      "tree_sha": "f9305a9583b3b74f58d207f6c22584e21cb6c725",
+      "entry_count": 15,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "source_blob_sha": "60f13f89a4d0db32494b33fbff6eba86cc2d265b"
+    },
+    {
+      "repo": "jsonwisdom/EV-012-ZORA-MARKET-SNAPSHOT",
+      "default_branch": "main",
+      "head_commit": "8a5b91ef2b4aebe0c117c5cd51a8dc9b6995b4bd",
+      "tree_sha": "c3ca20a50c873dadf760a440363d4bba6f113567",
+      "entry_count": 18,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "source_blob_sha": "0feaf09a54975add6cd2766eb4e6cfffca0e85e7"
+    },
+    {
+      "repo": "jsonwisdom/fastenal",
+      "default_branch": "master",
+      "head_commit": "bb7d6caae807ec1f6b96ff82fe76ae9c7802e410",
+      "tree_sha": "784c958d356bbf810623a2622fc52a48b8b80f20",
+      "entry_count": 3,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "source_blob_sha": "45772801f92c4804513c3ee0e38b2a012a8b747f"
+    },
+    {
+      "repo": "jsonwisdom/flywheel-of-wisdom",
+      "default_branch": "main",
+      "head_commit": null,
+      "tree_sha": "9f1a8c867e6f40b493fb42b00659a622bb9ac8aa",
+      "entry_count": 44,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "source_blob_sha": "b35e01c9dc3ad69409bb64ffedcf6ee0a8088dda",
+      "head_commit_state": "PRESENT_IN_BATCH_FILE_BUT_CONNECTOR_READBACK_TOO_LARGE"
+    },
+    {
+      "repo": "jsonwisdom/GAGA",
+      "default_branch": "master",
+      "head_commit": "4d2324de91791e18d9e743efaf0d5ec55b1ac7a9",
+      "tree_sha": "ae54b0ba4abdc71d82cbb7999859ada00eb4ec3f",
+      "entry_count": 2,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "source_blob_sha": "8ae661d18bd7b4cae5519787604b1fa2fa3e84d0"
+    },
+    {
+      "repo": "jsonwisdom/GENESIS",
+      "default_branch": "main",
+      "head_commit": "174c3b2b6e5a8bd5d953aba8ec03273964220b3b",
+      "tree_sha": "d9092b5d44db978d01ecf768fc7c4f68944052eb",
+      "entry_count": 107,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "source_blob_sha": "2f8adef9a7791348aefb4326735d02dff7614c57"
+    },
+    {
+      "repo": "jsonwisdom/global-zne-hybrid",
+      "default_branch": "main",
+      "head_commit": null,
+      "tree_sha": null,
+      "entry_count": null,
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "source_blob_sha": "0feaf09a54975add6cd2766eb4e6cfffca0e85e7"
+    },
+    {
+      "repo": "jsonwisdom/GPKMONSTER",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": "0259a8aa356407f0009dc35c0665b13f5a1cbc29",
+      "entry_count": 7,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "source_blob_sha": "b35e01c9dc3ad69409bb64ffedcf6ee0a8088dda",
+      "head_commit_state": "PRESENT_IN_BATCH_FILE_BUT_CONNECTOR_READBACK_TOO_LARGE"
+    },
+    {
+      "repo": "jsonwisdom/GRAMMY",
+      "default_branch": "master",
+      "head_commit": "a6b824e04aa17093b54e8f6224ac6ba00e287cbe",
+      "tree_sha": "3e9d18f73c4178310e162c071c5426611f4c1d61",
+      "entry_count": 12,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "source_blob_sha": "8ae661d18bd7b4cae5519787604b1fa2fa3e84d0"
+    },
+    {
+      "repo": "jsonwisdom/GRANDADDY",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": null,
+      "entry_count": null,
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "source_blob_sha": "f7c9eca7516f099a3d4c159758200bcc77cd5e54"
+    },
+    {
+      "repo": "jsonwisdom/HEIDEE",
+      "default_branch": "master",
+      "head_commit": "b2607de8decb09594447b1ea3ba3e9c3829f5238",
+      "tree_sha": "57c37218ba6bb27c9621d768b374285597d77a2d",
+      "entry_count": 15,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "source_blob_sha": "48bfcfd97a93ff26d815e22cc493795b2a7f3aca"
+    },
+    {
+      "repo": "jsonwisdom/heretic",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": "07b7c0b76bfa3eeecaf540f38145d0df295ef4c7",
+      "entry_count": 24,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "source_blob_sha": "b35e01c9dc3ad69409bb64ffedcf6ee0a8088dda",
+      "head_commit_state": "PRESENT_IN_BATCH_FILE_BUT_CONNECTOR_READBACK_TOO_LARGE"
+    },
+    {
+      "repo": "jsonwisdom/jason-parallel-drift-auditor",
+      "default_branch": "main",
+      "head_commit": "8dcbf40365c082be8fb3dfeafdd92c44521ce204",
+      "tree_sha": "a755214365dadd30024b92195ef2254700561261",
+      "entry_count": 14,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "source_blob_sha": "48bfcfd97a93ff26d815e22cc493795b2a7f3aca"
+    },
+    {
+      "repo": "jsonwisdom/Jason-t-PL3X",
+      "default_branch": "master",
+      "head_commit": "0ef101566e1098b442a323941479b194a61601bd",
+      "tree_sha": "ef4fa8fe6bff4737c41c1b86a9e73041eaa3345a",
+      "entry_count": 1,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "source_blob_sha": "45772801f92c4804513c3ee0e38b2a012a8b747f"
+    },
+    {
+      "repo": "jsonwisdom/Jason-USB-OFFICE-PC",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": null,
+      "entry_count": null,
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "source_blob_sha": "2d587ef3e5f02f03e575d2964455230e7da20871"
+    },
+    {
+      "repo": "jsonwisdom/Jasons-1st-repository",
+      "default_branch": "Jasonsprivatekeyblock",
+      "head_commit": "a72d961bc6b2317091b7fa1698b86ce17310eea2",
+      "tree_sha": "daebe4635f003412e35605ef9cacd55fc02d3b8a",
+      "entry_count": 2,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "source_blob_sha": "762b39355b1a173884abd1181a8dd711e4c1b15b"
+    },
+    {
+      "repo": "jsonwisdom/jay-zora-portal",
+      "default_branch": "live-zora-ingestion",
+      "head_commit": "d089c88f9fbc40c9cb093f500bf562753b32d5c4",
+      "tree_sha": "0dcf7f20f8550f7536d0ae1b5c84c4275aba5761",
+      "entry_count": 143,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "source_blob_sha": "8ae661d18bd7b4cae5519787604b1fa2fa3e84d0"
+    },
+    {
+      "repo": "jsonwisdom/JAYCEE",
+      "default_branch": "master",
+      "head_commit": "a85ba7dfec5e9e9d996293f630c2483d3fec44f4",
+      "tree_sha": "be06866a4e2768cf5d2ec7960d6d6abe8d4b2b67",
+      "entry_count": 9,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "source_blob_sha": "f7c9eca7516f099a3d4c159758200bcc77cd5e54"
+    },
+    {
+      "repo": "jsonwisdom/JOY",
+      "default_branch": "main",
+      "head_commit": null,
+      "tree_sha": "34405a77833985d85e9c4361532bc5362a6f3df8",
+      "entry_count": 4689,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "source_blob_sha": "b35e01c9dc3ad69409bb64ffedcf6ee0a8088dda",
+      "head_commit_state": "PRESENT_IN_BATCH_FILE_BUT_CONNECTOR_READBACK_TOO_LARGE"
+    },
+    {
+      "repo": "jsonwisdom/jsonwisdom-packet-workbench",
+      "default_branch": "main",
+      "head_commit": "de903fbcbe30c0fddefe77817a82a2f060322ee0",
+      "tree_sha": "8dd5489fbb6dc58bb8ce126f16d03f448c1fa81d",
+      "entry_count": 1,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "source_blob_sha": "762b39355b1a173884abd1181a8dd711e4c1b15b"
+    },
+    {
+      "repo": "jsonwisdom/layered-proofing-state-level-alms",
+      "default_branch": "main",
+      "head_commit": "866c2083116a31dd77773e1f15cdd4a05fe13e35",
+      "tree_sha": "5e19ba224a70941490e13b7f8503bef188e53687",
+      "entry_count": 52,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "source_blob_sha": "45772801f92c4804513c3ee0e38b2a012a8b747f"
+    },
+    {
+      "repo": "jsonwisdom/Learning-GitHub",
+      "default_branch": "master",
+      "head_commit": "a109dbb31c863bb04c8e19893bcb5ed688d69b3b",
+      "tree_sha": "54d98c422de460ded9c28b711a7143e3817272fc",
+      "entry_count": 4,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "source_blob_sha": "f7c9eca7516f099a3d4c159758200bcc77cd5e54"
+    },
+    {
+      "repo": "jsonwisdom/LEEANN",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": "257d27c6720e40aadeb4d2d6ad9eda69e2ed0baf",
+      "entry_count": 64,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "source_blob_sha": "b35e01c9dc3ad69409bb64ffedcf6ee0a8088dda",
+      "head_commit_state": "PRESENT_IN_BATCH_FILE_BUT_CONNECTOR_READBACK_TOO_LARGE"
+    },
+    {
+      "repo": "jsonwisdom/MARYDEE",
+      "default_branch": "master",
+      "head_commit": "44fdfa24056e2c8b4ad51f4454f2861bf206a69b",
+      "tree_sha": "1ee177f17a57070b12f2f5a05a8c7b63411b7c08",
+      "entry_count": 24,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "source_blob_sha": "0feaf09a54975add6cd2766eb4e6cfffca0e85e7"
+    },
+    {
+      "repo": "jsonwisdom/mint-engine-zero",
+      "default_branch": "main",
+      "head_commit": null,
+      "tree_sha": null,
+      "entry_count": null,
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "source_blob_sha": "48bfcfd97a93ff26d815e22cc493795b2a7f3aca"
+    },
+    {
+      "repo": "jsonwisdom/mn-ago-entropy-ledger",
+      "default_branch": "main",
+      "head_commit": "a3a69c28d13aa379dc9fd5902f30fbe4c00286ce",
+      "tree_sha": "ead5725120080bf8b2860799d2889bf4bc39aa0f",
+      "entry_count": 61,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "source_blob_sha": "762b39355b1a173884abd1181a8dd711e4c1b15b"
+    },
+    {
+      "repo": "jsonwisdom/MONTGOMERY",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": null,
+      "entry_count": null,
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "source_blob_sha": "45772801f92c4804513c3ee0e38b2a012a8b747f"
+    },
+    {
+      "repo": "jsonwisdom/NASTYNICK",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": null,
+      "entry_count": null,
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "source_blob_sha": "8ae661d18bd7b4cae5519787604b1fa2fa3e84d0"
+    },
+    {
+      "repo": "jsonwisdom/nuke-launchpad",
+      "default_branch": "main",
+      "head_commit": null,
+      "tree_sha": "53784d3f4fe8a3a1987f9b50f5661b7f4a5a9600",
+      "entry_count": 4,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "source_blob_sha": "b35e01c9dc3ad69409bb64ffedcf6ee0a8088dda",
+      "head_commit_state": "PRESENT_IN_BATCH_FILE_BUT_CONNECTOR_READBACK_TOO_LARGE"
+    },
+    {
+      "repo": "jsonwisdom/openai-chatkit-starter-app",
+      "default_branch": "main",
+      "head_commit": "9cf32e6b264095591523fb026d6fa5e97f4bb20e",
+      "tree_sha": "c4b673d3c3e796622f9360322addc111505a1eb0",
+      "entry_count": 78,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "source_blob_sha": "0feaf09a54975add6cd2766eb4e6cfffca0e85e7"
+    },
+    {
+      "repo": "jsonwisdom/PAPA",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": null,
+      "entry_count": null,
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "source_blob_sha": "2f8adef9a7791348aefb4326735d02dff7614c57"
+    },
+    {
+      "repo": "jsonwisdom/Plesk-Onyx-17.0.17",
+      "default_branch": "master",
+      "head_commit": "caeb45c93b36aa5fa65113c3a6ca13d07dec8193",
+      "tree_sha": "f7774d378dc7d11d4b19c3a8f578a5df07237b81",
+      "entry_count": 4,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "source_blob_sha": "60f13f89a4d0db32494b33fbff6eba86cc2d265b"
+    },
+    {
+      "repo": "jsonwisdom/PRATTVILLE",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": null,
+      "entry_count": null,
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "source_blob_sha": "0feaf09a54975add6cd2766eb4e6cfffca0e85e7"
+    },
+    {
+      "repo": "jsonwisdom/prism-brush-spruce-lake",
+      "default_branch": "main",
+      "head_commit": "73f310b1ac75fe165ea450c2aa0b1be5153c5eea",
+      "tree_sha": "11c359db841c65a68fc91936f6a4455a6e140237",
+      "entry_count": 304,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "source_blob_sha": "60f13f89a4d0db32494b33fbff6eba86cc2d265b"
+    },
+    {
+      "repo": "jsonwisdom/prooflayer-repo",
+      "default_branch": "main",
+      "head_commit": null,
+      "tree_sha": "a9c43738e158e4e0a9aaba49a2fe47d591473df7",
+      "entry_count": 21,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "source_blob_sha": "b35e01c9dc3ad69409bb64ffedcf6ee0a8088dda",
+      "head_commit_state": "PRESENT_IN_BATCH_FILE_BUT_CONNECTOR_READBACK_TOO_LARGE"
+    },
+    {
+      "repo": "jsonwisdom/provenance-audit-kit",
+      "default_branch": "main",
+      "head_commit": "e7615463f7339ee84774fb6a339f736145596869",
+      "tree_sha": "8fa5c6fc17367b1b3bedbb5d6dc5da1d4f0e6274",
+      "entry_count": 175,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "source_blob_sha": "2d587ef3e5f02f03e575d2964455230e7da20871"
+    },
+    {
+      "repo": "jsonwisdom/public-proof",
+      "default_branch": "main",
+      "head_commit": "1d94f9f7b1e566fee5a58a246ad7e6464211e0ff",
+      "tree_sha": "53bd2ab5c0f520adf5281ffb7931aa1c1ccddf59",
+      "entry_count": 209,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "source_blob_sha": "48bfcfd97a93ff26d815e22cc493795b2a7f3aca"
+    },
+    {
+      "repo": "jsonwisdom/receipt-arcade",
+      "default_branch": "master",
+      "head_commit": "5725bc19d20780fa1607060990f68205aa40db87",
+      "tree_sha": "fc3bbc59bdbc36017742daefde58edf92a2d719a",
+      "entry_count": 8,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "source_blob_sha": "45772801f92c4804513c3ee0e38b2a012a8b747f"
+    },
+    {
+      "repo": "jsonwisdom/ReceiptOS",
+      "default_branch": "master",
+      "head_commit": "8938537aaf14d8b947340c33e3070a89b5cf7460",
+      "tree_sha": "9805b4f17570c14899d8e3e9cd695a4407dc31ec",
+      "entry_count": 20,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "source_blob_sha": "2d587ef3e5f02f03e575d2964455230e7da20871"
+    },
+    {
+      "repo": "jsonwisdom/receiptos-base",
+      "default_branch": "main",
+      "head_commit": "e49b946f516e43cd55d79a40c0c21779e3adef59",
+      "tree_sha": "7ec38a14850d60e090532b73eae721bf32e5df6d",
+      "entry_count": 1527,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "source_blob_sha": "2d587ef3e5f02f03e575d2964455230e7da20871"
+    },
+    {
+      "repo": "jsonwisdom/receiptos-replay-proof",
+      "default_branch": "master",
+      "head_commit": "a0c9df5a89f1ad5edde03ca78749691452d86663",
+      "tree_sha": "41b192a3bfb708e7acdf18c981adbc00db43e3e6",
+      "entry_count": 12,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "source_blob_sha": "60f13f89a4d0db32494b33fbff6eba86cc2d265b"
+    },
+    {
+      "repo": "jsonwisdom/receipts-engine-v1",
+      "default_branch": "main",
+      "head_commit": "dd7f012ebee46df93e0789bafea502fb3078fe65",
+      "tree_sha": "2373ee98df10f9162473d4935825d73e918121b7",
+      "entry_count": 280,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "source_blob_sha": "8ae661d18bd7b4cae5519787604b1fa2fa3e84d0"
+    },
+    {
+      "repo": "jsonwisdom/replay-membrane",
+      "default_branch": "main",
+      "head_commit": "805eaaba5d8f52ba7d264312c64fefbe40d1a26b",
+      "tree_sha": "884c43c8f2f40415b901b107386a763f81e971a9",
+      "entry_count": 2,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "source_blob_sha": "45772801f92c4804513c3ee0e38b2a012a8b747f"
+    },
+    {
+      "repo": "jsonwisdom/replay-membrane-v0",
+      "default_branch": "main",
+      "head_commit": "13bf291a4c745eeac851fa702ffa6ecd4be87ca5",
+      "tree_sha": "0abd92c9b96f51d422ba492e6fbc457a62c0b1fd",
+      "entry_count": 52,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "source_blob_sha": "8ae661d18bd7b4cae5519787604b1fa2fa3e84d0"
+    },
+    {
+      "repo": "jsonwisdom/RMT",
+      "default_branch": "main",
+      "head_commit": "7dbe2850b04298c7bd8b06716e756e8062c00256",
+      "tree_sha": "5f69afccc3be38f10d24573c5ca681eb78dc589e",
+      "entry_count": 1985,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "source_blob_sha": "2d587ef3e5f02f03e575d2964455230e7da20871"
+    },
+    {
+      "repo": "jsonwisdom/Server",
+      "default_branch": "master",
+      "head_commit": "4c71393e18fd63009485034da56f90e30a021317",
+      "tree_sha": "4fe1f1c3d8302f24ac26689af5e6ea702fb5d06a",
+      "entry_count": 5,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "source_blob_sha": "762b39355b1a173884abd1181a8dd711e4c1b15b"
+    },
+    {
+      "repo": "jsonwisdom/signal-multisig-zora",
+      "default_branch": "main",
+      "head_commit": "d2b947f7d54fc5e830c67a5fc7e614157878382c",
+      "tree_sha": "bd50806b8eeee0125fb7279b5837ba7a8ff2445c",
+      "entry_count": 13,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "source_blob_sha": "2f8adef9a7791348aefb4326735d02dff7614c57"
+    },
+    {
+      "repo": "jsonwisdom/snapback-mirror",
+      "default_branch": "main",
+      "head_commit": "94821e35de856e359524779a5d1fb38ca42bd9a6",
+      "tree_sha": "f7be5880d5021e18d21383e4f5050ce4a73cc66c",
+      "entry_count": 13,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "source_blob_sha": "2f8adef9a7791348aefb4326735d02dff7614c57"
+    },
+    {
+      "repo": "jsonwisdom/software",
+      "default_branch": "master",
+      "head_commit": "d2f8aefb0885ce5207bea3eb77615b769a24a47c",
+      "tree_sha": "544f3256ee7d93e33a9d6775e4ecde5b4acad049",
+      "entry_count": 1,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "source_blob_sha": "2f8adef9a7791348aefb4326735d02dff7614c57"
+    },
+    {
+      "repo": "jsonwisdom/sovereign-copilot",
+      "default_branch": "main",
+      "head_commit": "0010a234796e3292799e49767c564453c351c7db",
+      "tree_sha": "0799c0c44b84c9a0ee6256a172bdd729b0195aec",
+      "entry_count": 1,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "source_blob_sha": "45772801f92c4804513c3ee0e38b2a012a8b747f"
+    },
+    {
+      "repo": "jsonwisdom/system-risk-detector",
+      "default_branch": "main",
+      "head_commit": "0fc4913a60e6124f040bc8475893efe8dcde836d",
+      "tree_sha": "0fe2190913324b9e885d175121eca9d59f3315b5",
+      "entry_count": 4,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "source_blob_sha": "2d587ef3e5f02f03e575d2964455230e7da20871"
+    },
+    {
+      "repo": "jsonwisdom/tailcat",
+      "default_branch": "main",
+      "head_commit": "c04c5afee401df40e620db8ae108e957ae07bcd9",
+      "tree_sha": "c02bd6406411a5260fb1e97a80b9a6852e7245de",
+      "entry_count": 48,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "source_blob_sha": "762b39355b1a173884abd1181a8dd711e4c1b15b"
+    },
+    {
+      "repo": "jsonwisdom/the-gap",
+      "default_branch": "main",
+      "head_commit": "771263f565a19a9e36cc3ac98082165f0c002d9e",
+      "tree_sha": "7043e883c633f7aa7f7c142ffabe04e4662ab1f9",
+      "entry_count": 1,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "source_blob_sha": "60f13f89a4d0db32494b33fbff6eba86cc2d265b"
+    },
+    {
+      "repo": "jsonwisdom/UNCLED",
+      "default_branch": "master",
+      "head_commit": null,
+      "tree_sha": null,
+      "entry_count": null,
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "source_blob_sha": "0feaf09a54975add6cd2766eb4e6cfffca0e85e7"
+    },
+    {
+      "repo": "jsonwisdom/verifygate",
+      "default_branch": "main",
+      "head_commit": "225692c748de8597aa14e8be4737068aee2fb693",
+      "tree_sha": "7b28b9b07c9aa2a568d1ab5494a04412ecad6605",
+      "entry_count": 15,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "source_blob_sha": "2f8adef9a7791348aefb4326735d02dff7614c57"
+    },
+    {
+      "repo": "jsonwisdom/Welcome-to-JSONWISDOM",
+      "default_branch": "jsonwisdom",
+      "head_commit": "a7631550fb9a401277987a516464c627052d1971",
+      "tree_sha": "c08302cce81edf6f56581c053bdea1231ace3348",
+      "entry_count": 171,
+      "snapshot_state": "FULL_RECURSIVE_TREE_CAPTURED",
+      "source_file": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "source_blob_sha": "f7c9eca7516f099a3d4c159758200bcc77cd5e54"
+    }
+  ]
+}
