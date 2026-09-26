@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://computerwisdom.local/schema/gray-baby-report-record-v0.1.json",
+  "title": "Gray Baby Report Record v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "report_id",
+    "year",
+    "series",
+    "record_class",
+    "status",
+    "receipt_note",
+    "gray_baby_public_jason_binding",
+    "gray_baby_public_darpa_program_binding",
+    "uap_binding",
+    "authority_created",
+    "sources"
+  ],
+  "properties": {
+    "report_id": {
+      "type": "string",
+      "pattern": "^GBR-(19[5-9][0-9]|20[0-2][0-9])$"
+    },
+    "year": {
+      "type": "integer",
+      "minimum": 1950,
+      "maximum": 2027
+    },
+    "series": {
+      "const": "GRAY_BABY_REPORTS_1950_2027"
+    },
+    "record_class": {
+      "enum": [
+        "PRE_JASON",
+        "CONTEXT_EVENT",
+        "UNPOPULATED",
+        "PROJECT_ARTIFACT",
+        "FUTURE_RESERVED"
+      ]
+    },
+    "status": {
+      "enum": ["RECORDED", "RESERVED"]
+    },
+    "receipt_note": {
+      "type": "string",
+      "minLength": 1
+    },
+    "gray_baby_public_jason_binding": {
+      "const": "NONE"
+    },
+    "gray_baby_public_darpa_program_binding": {
+      "const": "NONE"
+    },
+    "uap_binding": {
+      "const": "NONE"
+    },
+    "authority_created": {
+      "const": false
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["kind", "note"],
+        "properties": {
+          "kind": {"type": "string"},
+          "url": {"type": "string", "format": "uri"},
+          "path": {"type": "string"},
+          "note": {"type": "string"}
+        },
+        "anyOf": [
+          {"required": ["url"]},
+          {"required": ["path"]}
+        ]
+      }
+    }
+  }
+}
