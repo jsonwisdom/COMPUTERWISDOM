@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/gray_baby/alien_case.schema.json",
+  "title": "Gray Baby alien case",
+  "description": "Routing record for an object that matched no known game state after two passes. Deep replay is a route, not an authority grant.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "spec",
+    "case_id",
+    "object_id",
+    "batch_id",
+    "reason",
+    "passes_completed",
+    "operators_used",
+    "route",
+    "specialist",
+    "authority_created",
+    "chain_data_fabricated",
+    "human_identity"
+  ],
+  "properties": {
+    "spec": { "const": "GRAY_BABY_ALIEN_CASE_V1" },
+    "case_id": { "type": "string", "pattern": "^sha256:[a-f0-9]{64}$" },
+    "object_id": { "type": "string", "minLength": 1 },
+    "batch_id": { "type": "string", "pattern": "^GRAY_BABY_BATCH_[0-9]{3}$" },
+    "reason": { "type": "string", "minLength": 1 },
+    "passes_completed": { "const": 2 },
+    "operators_used": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "route": { "const": "DEEP_REPLAY" },
+    "specialist": { "const": "ALIEN" },
+    "authority_created": { "const": false },
+    "chain_data_fabricated": { "const": false },
+    "human_identity": { "type": "null" }
+  }
+}
