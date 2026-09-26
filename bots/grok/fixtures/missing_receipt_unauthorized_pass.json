@@ -1,0 +1,10 @@
+{
+  "REVIEW_FINDINGS": [
+    {
+      "category": "Skipped Gates",
+      "finding": "No skipped gates"
+    }
+  ],
+  "NONBINDING_RECOMMENDATION": "Proceed with folder installation and build.",
+  "FINAL_VERDICT": "PASS"
+}

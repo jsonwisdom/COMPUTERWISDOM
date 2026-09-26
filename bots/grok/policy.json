@@ -1,0 +1,15 @@
+{
+  "schema": "GROK_OUTPUT_GATE_POLICY_V0_1",
+  "role": "REVIEWER_BOT",
+  "required_field": "batch_receipt_id",
+  "blocked_output_fields": ["FINAL_VERDICT"],
+  "allowed_output_fields": ["REVIEW_FINDINGS", "NONBINDING_RECOMMENDATION"],
+  "missing_receipt_status": "HOLD_REVIEW_ONLY",
+  "receipt_present_status": "REVIEW_READY_FOR_HUMAN",
+  "build_blocking": false,
+  "can_merge": false,
+  "can_sign": false,
+  "can_spend": false,
+  "can_verify_self_as_final": false,
+  "authority_created": false
+}
