@@ -1,0 +1,85 @@
+# FULLMATHMEDIA V0
+
+By Jaywisdom
+
+CLASS = MEDIA VERIFICATION GAME
+MODE = HUMAN-IN-THE-LOOP
+GOAL = TURN MEDIA CLAIMS INTO REPLAYABLE EVIDENCE
+CANON = FALSE
+AUTHORITY_CREATED = FALSE
+PROMOTION = HOLD
+
+## Core game loop
+
+SEE IT
+→ NAME THE CLAIM
+→ FIND THE OBJECT
+→ CHECK THE SOURCE
+→ CHECK TIME + CONTEXT
+→ FIND THE RECEIPT
+→ REPLAY IT
+→ JASON DECIDES
+
+## Six levels
+
+1. Pixels — What is visibly present? Win condition: describe without inference.
+2. File — What object actually exists? Win condition: hash / bytes / format.
+3. Metadata — What does the file say about itself? Win condition: extract without overclaiming.
+4. Provenance — Where did it come from? Win condition: recover source + timeline.
+5. External Receipt — Does the outside world support it? Win condition: independent replayable source.
+6. Judgment — What follows from the evidence? Win condition: human decision.
+
+LEVEL_6 = HUMAN SEALED
+JASON_DECIDES = TRUE
+MACHINE_DECIDES = FALSE
+
+## Player roles
+
+JASON = PLAYER / FINAL HUMAN DECISION
+SAM_SIDECAR = PUBLIC-SYSTEM SCOUT
+SISTER_SIDECAR = TRANSLATION + SAFE-ROUTING SCOUT
+AI_SIDECAR = AI CLAIM / SYSTEM BEHAVIOR SCOUT
+APPLE_BLOSSOM = RECEIPT GATEKEEPER
+
+No player can promote their own evidence.
+
+## Score
+
++10 PRIMARY SOURCE
++10 EXACT QUOTE
++10 TIMESTAMP
++15 ORIGINAL FILE
++20 HASHED ARTIFACT
++20 INDEPENDENT CORROBORATION
++25 SUCCESSFUL REPLAY
++15 CORRECTLY SAY UNKNOWN
++20 CATCH A BAD JOIN
++25 CATCH CLAIM != EVIDENCE
+
+## Penalties
+
+-20 SCREENSHOT TREATED AS SOURCE
+-25 LOGO → AFFILIATION
+-25 FACE → INTENT
+-30 SEARCH_MISS → ABSENCE
+-40 AI OUTPUT → AUTHORITY
+-50 FABRICATED CITATION
+AUTO-HOLD = MACHINE FILLS HUMAN DECISION
+
+## Status set
+
+SUPPORTED | CONTRADICTED | PARTIAL | UNRESOLVED | HOLD
+
+## Golden rule
+
+Missing receipt + “I don’t know yet” beats a lucky guess.
+
+## Boundaries
+
+FULLMATHMEDIA = GAME / REPLAY FRAMEWORK
+FULLMATHMEDIA != FACT-CHECK AUTHORITY
+FULLMATHMEDIA != CIVIC VERDICT ENGINE
+FULLMATHMEDIA != SUPREME SEYMOUR
+FULLMATHMEDIA != APPLE BLOSSOM
+
+FIRST_RAIL_WRITE = HUMAN_COMMAND_REQUIRED
