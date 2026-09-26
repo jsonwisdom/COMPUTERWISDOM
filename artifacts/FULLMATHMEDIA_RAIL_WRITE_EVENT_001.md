@@ -1,0 +1,75 @@
+# FULLMATHMEDIA RAIL WRITE EVENT 001
+
+event_id = FULLMATHMEDIA_RAIL_WRITE_EVENT_001
+class = APPEND_ONLY_EVENT_RECEIPT
+interpretation = NONE
+
+## Source rail state observed before this receipt write
+
+repository = jsonwisdom/COMPUTERWISDOM
+branch = fullmathmedia-v0-receipt-2026-09-26
+source_branch_head_before_event_receipt = 35db95ec63196b9005bb99a8f249f022ac203eca
+
+artifacts/FULLMATHMEDIA_V0.md
+git_blob = 749039a0dac1a41c5f18d66c8a926101d3c658f1
+
+artifacts/FULLMATHMEDIA_V0_RECEIPT.md
+git_blob = b995502cfa81f6b8384c4c1dbf0e2aa67fa5a331
+
+artifacts/RUNNING_STATE_APPEND_001.md
+git_blob = e74bb03510c1b719a81c5f45ba27fbe03ac92302
+
+## Drive observations — jaywisdom44
+
+drive_docs_expected_from_execution = 3
+drive_docs_observed_now = 4
+
+1IqPg2VBOngEmRJI9rkbKQluHatgZMJI_oB3suTojc34
+title = FULLMATHMEDIA_V0.md
+parent = ChatGPT folder
+
+14NUkxA1zrCVbQaZVW0XBTH5-QLr5g_77l_wllzK2gYQ
+title = FULLMATHMEDIA_V0_RECEIPT.md
+parent = ChatGPT folder
+
+1kkd1AAajrJR0QxZPNi6Jnrpe1XfhAJQ06E8bpC0UvdU
+title = RUNNING_STATE_APPEND_001.md
+parent = ChatGPT folder
+
+1FWhottNTBlK1OtDaEd59-8tTmg8N7y1xwBxyl4XwyqA
+title = FULLMATHMEDIA_V0_RECEIPT.md
+parent = Drive root
+classification = DUPLICATE_TITLE_OBJECT
+duplicate_cause = UNRESOLVED
+delete_or_merge = NOT_AUTHORIZED
+
+## Event separation
+
+RAIL_EVENT = OBSERVED
+GITHUB_BRANCH_WRITE = OBSERVED
+DRIVE_WRITE_jaywisdom44 = OBSERVED
+EVENT_STATE_FIRST_RAIL_WRITE = EXECUTED
+
+SNAPSHOT_TEXT = HISTORICAL_OBJECT
+RAIL_EVENT = LATER_OBSERVED_EVENT
+SNAPSHOT_MUTATION = NOT_REQUIRED
+FILE_TEXT != EVENT_HISTORY
+
+## Membranes
+
+LOCAL_SHA256 != GIT_BLOB_ID
+GIT_BLOB_ID != GIT_COMMIT_ID
+DRIVE_DOC_ID != CONTENT_ID
+GITHUB_RECEIPT != DRIVE_RECEIPT
+RAIL_WRITE != PROMOTION
+DUPLICATE_TITLE != DUPLICATE_CONTENT
+DUPLICATE_TITLE_OBJECT != DELETE_AUTHORIZATION
+
+## Gates
+
+PROMOTION = HOLD
+CANON = FALSE
+AUTHORITY_CREATED = FALSE
+JASON_DECIDES = TRUE
+MACHINE_DECIDES = FALSE
+LEVEL_6 = HUMAN_SEALED
