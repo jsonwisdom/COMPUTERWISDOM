@@ -1,0 +1,40 @@
+name: BoxDee P1 Byte Replay V1
+
+on:
+  pull_request:
+    paths:
+      - 'contracts/**'
+      - 'tools/boxdee_p1_verifier_v1.mjs'
+      - 'tests/boxdee-p1-v1/**'
+      - '.github/workflows/boxdee-p1-byte-replay-v1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  conformance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Run P1 constitutional vectors
+        run: |
+          mkdir -p artifacts/boxdee-p1-v1
+          node tests/boxdee-p1-v1/run.mjs | tee artifacts/boxdee-p1-v1/conformance-receipt.json
+      - name: Byte-identical replay check
+        run: |
+          node tests/boxdee-p1-v1/run.mjs > /tmp/run-a.json
+          node tests/boxdee-p1-v1/run.mjs > /tmp/run-b.json
+          cmp /tmp/run-a.json /tmp/run-b.json
+          sha256sum /tmp/run-a.json | tee artifacts/boxdee-p1-v1/conformance-receipt.sha256
+      - uses: actions/upload-artifact@v4
+        with:
+          name: boxdee-p1-byte-replay-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/boxdee-p1-v1/*
+          if-no-files-found: error
+          retention-days: 180
