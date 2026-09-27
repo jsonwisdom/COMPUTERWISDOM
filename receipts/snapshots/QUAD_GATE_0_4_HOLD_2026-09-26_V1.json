@@ -1,0 +1,53 @@
+{
+  "artifact_id": "QUAD_GATE_0_4_HOLD_2026_09_26_V1",
+  "recorded_date": "2026-09-26",
+  "scope": "Local gate check for 0.4 -> 0.5 promotion. This receipt proves the ceiling state without manufacturing a pass.",
+  "doctrine": {
+    "conjunction_holds": true,
+    "slot_map_holds": false,
+    "rules": [
+      "SLOT_MAP != GATE",
+      "AUTHORITY != PROVENANCE",
+      "UNBOUND_RAIL != GLOBAL_REPLAY_FAILURE",
+      "ONE_ARGUMENT != THE_ONLY_CONTRADICTION"
+    ]
+  },
+  "gate": {
+    "expression": "0.5 = QUAD_PASS AND PROVENANCE AND REPLAYABILITY AND NO_UNRESOLVED_CONTRADICTION",
+    "rule": "One false term keeps the gate false; otherwise unverified terms remain premises, not passes.",
+    "conditions": {
+      "QUAD_PASS": false,
+      "PROVENANCE": "NOT_GLOBALLY_VERIFIED",
+      "REPLAYABILITY": "NOT_GLOBALLY_VERIFIED",
+      "NO_UNRESOLVED_CONTRADICTION": "NOT_GLOBALLY_VERIFIED"
+    }
+  },
+  "mary_dee_check": {
+    "blocker_verification": false,
+    "result": "Aligned as a local ceiling check only.",
+    "drift": "Pinned each conjunct to one example object; that slot map is not the gate.",
+    "notes": {
+      "quad_pass": "Campaign and orchard are not a quad; additionally, Full Math on the California method has not been run.",
+      "provenance": "The waiver has a partial evidence trail. Authority is a separate unresolved hole. Partial provenance is neither no provenance nor authority.",
+      "replayability": "The inmate rail is unbound and cannot be replayed as a bound object. That does not establish global replay failure for other texts.",
+      "contradiction": "The Hill column beside narrower receipts is one open tension, not proof that it is the only contradiction or blocker."
+    }
+  },
+  "invariants": {
+    "MORE_DATA_IS_0_5": false,
+    "MORE_AGENTS_IS_0_5": false,
+    "MORE_CONFIDENCE_IS_0_5": false,
+    "CONSENSUS_IS_0_5": false,
+    "UNCHALLENGED_AGREEMENT_COUNTS_AS_NO_UNRESOLVED_CONTRADICTION": false
+  },
+  "state": {
+    "STATE": "0.4",
+    "TERMINAL": "HOLD",
+    "QUAD_PASS": false,
+    "0.5_RECEIPT": "NOT_WRITTEN",
+    "0.5": "CLOSED",
+    "AUTHORITY_CREATED": false,
+    "COMPOSITION_PERFORMED": false,
+    "OLDER_PURPOSE_BENCHMARK_MOVED": false
+  }
+}
