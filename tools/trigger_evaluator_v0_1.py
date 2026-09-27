@@ -13,11 +13,10 @@ or OBSERVE, and authority:true is not rewritten to false.
 The contract is the canonical trigger and watch-receipt schemas
 (schemas/trigger_v0_1.schema.json, schemas/watch_receipt_v0_1.schema.json):
 every present field must satisfy its property schema, unknown fields are
-rejected, and decision fields are always required. Archival receipt fields
-that the original three state vectors omit (watch_id, collected_at,
-source_url, hash, authority) stay optional unless the caller supplied a
-schema that requires them. Any value that is present is still checked, so
-authority other than false, a bad hash, or a bad identifier is rejected.
+rejected, and decision fields are always required. Archival fields omitted by older state vectors may remain optional for
+MAINTAIN and OBSERVE. Before TRANSITION_READY, both objects must satisfy their
+full canonical schemas and watch_id and trigger_id must match across them.
+Any present field is checked even when no transition is ready.
 
 hostname, date-time, and uri are checked explicitly. The jsonschema build
 used by the watch-trigger CI job does not register those format checkers.
@@ -203,6 +202,8 @@ Draft202012Validator.check_schema(_TRIGGER_DECISION_SCHEMA)
 Draft202012Validator.check_schema(_RECEIPT_DECISION_SCHEMA)
 _TRIGGER_DECISION_VALIDATOR = Draft202012Validator(_TRIGGER_DECISION_SCHEMA)
 _RECEIPT_DECISION_VALIDATOR = Draft202012Validator(_RECEIPT_DECISION_SCHEMA)
+_TRIGGER_CANONICAL_VALIDATOR = Draft202012Validator(_TRIGGER_CANONICAL)
+_RECEIPT_CANONICAL_VALIDATOR = Draft202012Validator(_RECEIPT_CANONICAL)
 
 
 class TriggerEvaluator:
@@ -247,6 +248,13 @@ class TriggerEvaluator:
         if trigger["artifact_type"] != receipt["artifact_type"] or receipt["verified"] is not True:
             result["status"] = "OBSERVE"
             return result
+
+        _validate_instance(_TRIGGER_CANONICAL_VALIDATOR, trigger, "trigger")
+        _validate_instance(_RECEIPT_CANONICAL_VALIDATOR, receipt, "receipt")
+        if trigger["watch_id"] != receipt["watch_id"]:
+            raise TriggerEvaluationRejected("receipt.watch_id rejected: does not match trigger.watch_id")
+        if trigger["trigger_id"] != receipt["trigger_id"]:
+            raise TriggerEvaluationRejected("receipt.trigger_id rejected: does not match trigger.trigger_id")
 
         result["status"] = "TRANSITION_READY"
         result["state_transition"] = True
