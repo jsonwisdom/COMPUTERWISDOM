@@ -541,3 +541,388 @@ ONE REPLAYABLE MULTI-YEAR MEMORY GRAPH
 The next legitimate build target is the binding/index layer, not another isolated memory store.
 
 No Drive mutation was performed by this report.
+
+
+---
+
+## DELTA 2026-09-27 — Purpose Axis: Visual Galleries + Jason's Zora History
+
+This delta adds PURPOSE without rewriting the locked recovery layers above.
+
+### Purpose correction
+
+A recovery graph that only stores artifacts is incomplete for human use.
+
+The purpose layer is:
+
+```text
+PRESERVE
+→ FIND
+→ SEE
+→ REMEMBER
+→ COMPARE
+→ REPLAY
+→ TEACH
+→ REUSE
+→ NEXT QUESTION
+```
+
+Therefore:
+
+```text
+MULTIYEAR_RECOVERY_ROOT != ARCHIVE_ONLY
+VISUAL_GALLERY = HUMAN_MEMORY_INTERFACE
+ZORA_HISTORY = PUBLIC_EXPRESSION_TIMELINE
+SERIES_MAP = THEMATIC_MEMORY_INDEX
+PORTAL = SEARCH / DISCOVERY / REPLAY SURFACE
+```
+
+The gallery is a view over evidence-bearing objects. It is not the evidence authority.
+
+```text
+GALLERY != SOURCE_OF_TRUTH
+IMAGE != RECEIPT
+DISPLAY != CANON
+VISUAL_SIMILARITY != OBJECT_IDENTITY
+```
+
+### GitHub — JaySpace purpose
+
+Source:
+`jsonwisdom/jay-zora-portal/README.md`
+default branch:
+`live-zora-ingestion`
+
+The repository defines JaySpace as:
+
+```text
+human-friendly public proof wall
+```
+
+for Jay Wisdom's:
+
+- Zora culture;
+- ENS/Base identity;
+- GitHub Direct receipts;
+- verifier links;
+- replayable reputation surface.
+
+The README explicitly types the surface as:
+
+```text
+art wall
+link hub
+receipt archive
+Zora ignition surface
+GitHub Direct mirror
+witness layer
+verification membrane
+```
+
+Plain-English role in that file:
+
+```text
+website = human homepage
+repo = proof mirror
+Zora = ignition surface
+Base = anchor
+GitHub Direct = public observation layer
+```
+
+This establishes a purpose beyond storage:
+
+```text
+ZORA_OBJECTS
+→ HUMAN_READABLE_VISUAL_WALL
+→ SEARCH / DISCOVERY
+→ RECEIPT / REPLAY PATH
+```
+
+### GitHub — real visual grid
+
+Source:
+`jsonwisdom/jay-zora-portal/FRONTEND_REAL_ZORA_GRID_RECEIPT.md`
+
+Observed repository declaration:
+
+```text
+FRONTEND_REAL_ZORA_GRID_CONFIRMED
+default grid shows real Zora images
+paginated exporter collected 324 Jay Wisdom Zora coins
+crawler upserted 324 artworks
+FastAPI search served real records
+```
+
+Historical implementation path in that receipt:
+
+```text
+Zora SDK
+→ paginated export
+→ normalized JSON
+→ crawler
+→ Postgres
+→ FastAPI
+→ React portal
+```
+
+Current canonical workflow later simplified the public path to GitHub Direct / static data / GitHub Pages.
+
+Therefore:
+
+```text
+VISUAL_GALLERY_FUNCTION = OBSERVED_IN_REPO_HISTORY
+LEGACY_RUNTIME_PATH != CURRENT_CANONICAL_WORKFLOW
+```
+
+### Current canonical visual/public path
+
+Source:
+`jsonwisdom/jay-zora-portal/CANONICAL_WORKFLOW.md`
+
+```text
+Zora public data / public JSON
+→ GitHub Actions
+→ data/live_zora_items.json
+→ frontend/public/zora-index.json
+→ media normalization
+→ static build
+→ GitHub Pages
+→ JaySpace public homepage
+→ GitHub Direct proof mirror
+```
+
+Purpose consequence:
+
+```text
+THE_GALLERY_IS_A_RENDERED_INDEX_OF_THE_CORPUS
+NOT_A_SEPARATE_TRUTH_STORE
+```
+
+### Drive — Jason's Zora history
+
+Observed:
+`JAY_ZORA_TIMELINE.md`
+
+Run 1 is a reverse-chronology timeline derived from enumerable SDK inventory.
+
+Observed month counts include:
+
+```text
+2025-03 = 2
+2025-04 = 109
+2025-05 = 50
+2025-06 = 22
+2025-07 = 34
+2025-08 = 145
+2025-09 = 56
+2025-10 = 156
+2025-11 = 131
+2025-12 = 51
+2026-01 = 75
+2026-02 = 1
+2026-03 = 10
+2026-04 = 13
+2026-05 = 30
+2026-06 = 61
+2026-07 = 43
+2026-08 = 25
+2026-09 = 1
+```
+
+This is one historical inventory run, not a current exact count.
+
+### Drive — series map
+
+Observed:
+`JAY_ZORA_SERIES_MAP.md`
+
+Coverage declared in that artifact:
+
+```text
+LIVE_SDK_PULL_ENUMERABLE_ONLY = 1,015 contracts
+declared profile count = 1,087
+preserved gap = 72
+```
+
+Tag counts:
+
+```text
+STANDALONE_ART        = 671
+RECEIPT_SYSTEM        = 201
+PROTOCOL_TECHNICAL    = 191
+POLITICAL_PARODY      = 35
+COURT_PROCESS_SATIRE  = 25
+GPK_NEWSROOM_SATIRE   = 21
+GRAY_BABY_UNIVERSE    = 14
+BOARD_GAME_ARTIFACT   = 1
+```
+
+Tags overlap.
+
+Therefore:
+
+```text
+TIMELINE = WHEN
+SERIES_MAP = WHAT_FAMILY
+VISUAL_GALLERY = WHAT_HUMAN_SEES
+RECEIPT_GRAPH = WHY_WE_TRUST_OR_HOLD
+```
+
+### Drive — corpus-scale replay purpose
+
+Observed:
+`Jay's Zora Gambit v0.1 — Corpus-Scale Replay Board`
+
+Core correction:
+
+```text
+THE_GAMBIT = ZORA_CORPUS
+MILDENHALL = ONE_READBACK_MOVE
+MONTGOMERY = ONE_FUTURE_PUBLICATION_MOVE
+```
+
+The artifact defines:
+
+```text
+ZORA POST / PUBLIC EXPRESSION = MOVE CANDIDATE
+ZORA COIN / CONTRACT = ADDRESSABLE POSITION
+SDK / REST READBACK = OBSERVATION
+RAW RESPONSE + SHA-256 = RECEIPT
+CROSS-SURFACE COMPARE = POSITION TEST
+GIT BINDING = VERSIONED CANON-CANDIDATE EDGE
+HUMAN PROMOTION = CANON DECISION
+```
+
+Its loop routes public objects into:
+
+```text
+FAMILY | GOBLIN | CIVIC | ART | SYSTEM
+```
+
+This supplies the missing purpose link:
+
+```text
+ZORA_HISTORY
+→ VISUAL_DISCOVERY
+→ REPLAY
+→ ROUTING
+→ APPLIED_WISDOM
+```
+
+### Drive — emergence / history model
+
+Observed:
+`Zora Reverse Replay — Emergence Audit — 2025-03-31 to 2025-04-30 v0.1`
+
+Its source-bound early slice records motifs beginning in March-April 2025, including memory, affection, protocol seeds, recursion, identity, family, trust, law, satire, tribunal/testing, and later validation language.
+
+The artifact explicitly preserves:
+
+```text
+ZORA_PUBLICATION_TIMESTAMP
++ GIT_COMMIT_TIMESTAMP
++ DRIVE_CONTINUITY
+= SEPARATE_WITNESS_CLASSES
+```
+
+and gives the replay model:
+
+```text
+IDEATION / MEMORY
+→ PUBLIC EXPRESSION
+→ REPEATED MOTIF
+→ NAMED STORY SYSTEM
+→ IMPLEMENTATION
+→ RECEIPT / VALIDATION
+→ LATER COMPRESSION LAYER
+→ REVERSE REPLAY
+```
+
+Therefore Jason's Zora history is not merely a token list.
+
+It is a candidate public chronology of changing ideas, characters, visual systems, receipt systems, and recurring motifs.
+
+### Visual-system artifact
+
+Observed Drive presentation:
+`A Breathing State — JayWisdom Zora Visual System v0.1`
+
+The deck exists.
+In this pass its native text extraction returned no narrative text.
+
+Therefore:
+
+```text
+VISUAL_SYSTEM_ARTIFACT = OBSERVED
+MACHINE_READABLE_PURPOSE_TEXT = NOT_OBSERVED_IN_THIS_PASS
+VISUAL_ARTIFACT_EXISTENCE != SEMANTIC_BINDING
+```
+
+### Linked public Zora object
+
+User-linked public URL:
+
+`https://zora.co/token/base:0x2992521839675ee25b9962dc34192ea6c31c3d83`
+
+Public Zora page observed in this pass:
+
+```text
+Flock Camera Zoom — 2028zora
+$FLOCKZOOM
+Base contract = 0x2992521839675ee25b9962dc34192ea6c31c3d83
+```
+
+Exact-address searches in GitHub and both connected Drive surfaces returned no matching indexed object in this pass.
+
+Therefore:
+
+```text
+FLOCKZOOM_PUBLIC_ZORA_OBJECT = OBSERVED
+FLOCKZOOM_GITHUB_BINDING = SEARCH_MISS_IN_THIS_PASS
+FLOCKZOOM_DRIVE_BINDING = SEARCH_MISS_IN_THIS_PASS
+SEARCH_MISS != ABSENCE
+```
+
+The Run-1 Drive timeline is not sufficient to reject this later object; that timeline's visible latest rows are from 2026-09-01.
+
+Required next binding is a fresh corpus observation / inventory refresh, not retroactive insertion into the older Run-1 artifact.
+
+```text
+OLDER_INVENTORY != CURRENT_CORPUS
+NEW_PUBLIC_OBJECT != ERROR
+PUBLIC_PAGE_OBSERVED != CORPUS_BINDING_COMPLETE
+```
+
+### Purpose lock
+
+```text
+WHY_KEEP_JASONS_ZORA_HISTORY?
+
+NOT merely:
+token inventory
+market history
+post count
+
+BUT:
+visual memory
+idea chronology
+character / series evolution
+receipt chronology
+correction history
+replay training
+family / civic / art / system routing
+public discovery
+future teaching and reuse
+```
+
+Final purpose law:
+
+```text
+THE_HISTORY_STORES_THE_PATH.
+THE_GALLERY_MAKES_THE_PATH_VISIBLE.
+THE_RECEIPTS_MAKE_THE_PATH_REPLAYABLE.
+APPLIED_WISDOM_MAKES_THE_PATH_USEFUL.
+```
+
+Authority remains false.
+No Drive mutation was performed by this delta.
