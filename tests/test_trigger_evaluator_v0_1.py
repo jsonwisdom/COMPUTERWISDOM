@@ -67,11 +67,18 @@ def test_transition_ready_verified_match():
         "state_transition": {"from_level": 2, "to_level": 3},
     }
     receipt = {
+        "watch_id": "TEST_WATCH",
+        "trigger_id": "TEST_TRIGGER",
+        "collected_at": "2026-06-03T10:00:00Z",
+        "source_url": "https://example.gov/omb-memo-001",
         "source_domain": "example.gov",
         "artifact_type": "omb_memo",
+        "hash": _VALID_HASH,
         "verified": True,
         "verifier": "human",
+        "authority": False,
     }
+    trigger["authority"] = False
     result = evaluator.evaluate(trigger, receipt)
     assert result["status"] == "TRANSITION_READY"
     assert result["state_transition"] is True
@@ -300,3 +307,25 @@ def test_schema_conforming_verified_receipt_is_transition_ready():
     assert result["from_level"] == 2
     assert result["to_level"] == 3
     assert result["authority"] is False
+
+
+@pytest.mark.parametrize("field", ["trigger_id", "watch_id"])
+def test_reject_verified_receipt_bound_to_different_trigger(field):
+    trigger, receipt = _schema_conforming_pair()
+    receipt[field] = "OTHER_" + receipt[field]
+    jsonschema.validate(instance=trigger, schema=_TRIGGER_SCHEMA)
+    jsonschema.validate(instance=receipt, schema=_RECEIPT_SCHEMA)
+    _reject(trigger, receipt, field)
+
+
+@pytest.mark.parametrize("field", ["watch_id", "trigger_id", "collected_at", "source_url", "hash", "authority"])
+def test_reject_verified_receipt_missing_canonical_field_with_default_evaluator(field):
+    trigger, receipt = _schema_conforming_pair()
+    receipt.pop(field)
+    _reject(trigger, receipt, field)
+
+
+def test_reject_verified_trigger_missing_canonical_watch_id():
+    trigger, receipt = _schema_conforming_pair()
+    trigger.pop("watch_id")
+    _reject(trigger, receipt, "watch_id")
