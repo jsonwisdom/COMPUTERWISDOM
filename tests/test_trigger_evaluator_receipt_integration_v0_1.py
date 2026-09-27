@@ -63,6 +63,8 @@ def test_schema_valid_verified_matching_receipt_evaluates_transition_ready():
         "state_transition": {"from_level": 2, "to_level": 3},
     }
 
+    trigger["watch_id"] = "WATCH_INT_001"
+    trigger["authority"] = False
     jsonschema.validate(instance=receipt, schema=RECEIPT_SCHEMA)
     evaluator = TriggerEvaluator({}, RECEIPT_SCHEMA)
     result = evaluator.evaluate(trigger, receipt)
