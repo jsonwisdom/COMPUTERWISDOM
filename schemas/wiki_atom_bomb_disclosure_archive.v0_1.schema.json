@@ -2,37 +2,236 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "wiki_atom_bomb_disclosure_archive.v0_1.schema.json",
   "title": "WIKI_ATOM_BOMB_DISCLOSURE_ARCHIVE_V0",
+  "description": "SCHEMA_VALIDITY != RECEIPT_CONTENT_TRUTH. REFERENCE_USE = structure exemplar. NOT = endorsement of any claim inside.",
   "type": "object",
-  "required": ["archive_id", "schema_version", "object_state", "field_states", "relations", "forward_pointers", "revision_model", "guardrails"],
-  "properties": {
-    "archive_id": {"const": "WIKI_ATOM_BOMB_DISCLOSURE_ARCHIVE_V0"},
-    "schema_version": {"const": "0.1"},
-    "object_state": {
+  "required": [
+    "receipt_id",
+    "receipt_version",
+    "schema_version",
+    "archive_id",
+    "status",
+    "object_state",
+    "source_locator",
+    "claim_states",
+    "relations",
+    "forward_pointers",
+    "revision_rule",
+    "guardrails",
+    "root_rule"
+  ],
+  "$defs": {
+    "fieldState": {
+      "type": "string",
+      "enum": [
+        "HOLD",
+        "CAPTURED",
+        "ASSERTED",
+        "ABSENT",
+        "UNKNOWN",
+        "REFUTED",
+        "VERIFIED"
+      ]
+    },
+    "capturableField": {
       "type": "object",
-      "required": ["captured"],
-      "properties": {"captured": {"type": "boolean"}},
+      "required": [
+        "state",
+        "value"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "HOLD",
+            "CAPTURED"
+          ],
+          "default": "HOLD"
+        },
+        "value": {}
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "state": {
+                "const": "HOLD"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "value": {
+                "type": "null"
+              }
+            }
+          }
+        }
+      ],
       "additionalProperties": false
     },
-    "field_states": {
+    "claimState": {
       "type": "object",
-      "description": "State belongs to individual fields, never implicitly to the whole object.",
+      "required": [
+        "asserted_by_source",
+        "verified_by_evidence",
+        "status",
+        "proposition",
+        "stale"
+      ],
+      "properties": {
+        "asserted_by_source": {
+          "type": "boolean"
+        },
+        "verified_by_evidence": {
+          "type": "boolean"
+        },
+        "status": {
+          "$ref": "#/$defs/fieldState"
+        },
+        "proposition": {
+          "type": "string",
+          "minLength": 1
+        },
+        "stale": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "receipt_version": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "schema_version": {
+      "const": "0.1"
+    },
+    "archive_id": {
+      "const": "WIKI_ATOM_BOMB_DISCLOSURE_ARCHIVE_V0"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "FROZEN",
+        "DRAFT",
+        "SUPERSEDED"
+      ]
+    },
+    "object_state": {
+      "type": "object",
+      "required": [
+        "captured"
+      ],
+      "properties": {
+        "captured": {
+          "const": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "source_locator": {
+      "type": "object",
+      "required": [
+        "publisher",
+        "channel",
+        "publication_date",
+        "original_language",
+        "archived_url",
+        "retrieval_timestamp_utc",
+        "snapshot_hash_algo",
+        "snapshot_hash",
+        "capture_method",
+        "translator",
+        "translation_hash"
+      ],
+      "properties": {
+        "publisher": {
+          "type": "string",
+          "minLength": 1
+        },
+        "channel": {
+          "type": "string",
+          "minLength": 1
+        },
+        "publication_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "original_language": {
+          "type": "string",
+          "minLength": 2
+        },
+        "archived_url": {
+          "$ref": "#/$defs/capturableField"
+        },
+        "retrieval_timestamp_utc": {
+          "$ref": "#/$defs/capturableField"
+        },
+        "snapshot_hash_algo": {
+          "type": "object",
+          "required": [
+            "state",
+            "value"
+          ],
+          "properties": {
+            "state": {
+              "const": "CAPTURED"
+            },
+            "value": {
+              "const": "SHA-256"
+            }
+          },
+          "additionalProperties": false
+        },
+        "snapshot_hash": {
+          "$ref": "#/$defs/capturableField"
+        },
+        "capture_method": {
+          "$ref": "#/$defs/capturableField"
+        },
+        "translator": {
+          "$ref": "#/$defs/capturableField"
+        },
+        "translation_hash": {
+          "$ref": "#/$defs/capturableField"
+        }
+      },
+      "additionalProperties": false
+    },
+    "claim_states": {
+      "type": "object",
+      "minProperties": 1,
       "additionalProperties": {
-        "type": "string",
-        "enum": ["HOLD", "CAPTURED", "ASSERTED", "ABSENT", "UNKNOWN", "REFUTED", "VERIFIED", "STALE"]
+        "$ref": "#/$defs/claimState"
       }
     },
     "relations": {
       "type": "object",
-      "required": ["asserted", "verified"],
+      "required": [
+        "asserted",
+        "verified"
+      ],
       "properties": {
         "asserted": {
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["source_object_id", "claim_object_id"],
+            "required": [
+              "source_object_id",
+              "claim_object_id"
+            ],
             "properties": {
-              "source_object_id": {"type": "string"},
-              "claim_object_id": {"type": "string"}
+              "source_object_id": {
+                "type": "string"
+              },
+              "claim_object_id": {
+                "type": "string"
+              }
             },
             "additionalProperties": false
           }
@@ -41,10 +240,17 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["evidence_object_id", "claim_object_id"],
+            "required": [
+              "evidence_object_id",
+              "claim_object_id"
+            ],
             "properties": {
-              "evidence_object_id": {"type": "string"},
-              "claim_object_id": {"type": "string"}
+              "evidence_object_id": {
+                "type": "string"
+              },
+              "claim_object_id": {
+                "type": "string"
+              }
             },
             "additionalProperties": false
           }
@@ -54,48 +260,115 @@
     },
     "forward_pointers": {
       "type": "object",
-      "required": ["translation_to_source", "claim_to_translation", "evidence_to_claim", "status_to_evidence"],
+      "required": [
+        "translation_to_source",
+        "claim_to_translation",
+        "evidence_to_claim",
+        "status_to_evidence"
+      ],
       "properties": {
-        "translation_to_source": {"type": "string"},
-        "claim_to_translation": {"type": "string"},
-        "evidence_to_claim": {"type": "string"},
-        "status_to_evidence": {"type": "string"}
+        "translation_to_source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "claim_to_translation": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_to_claim": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status_to_evidence": {
+          "type": "string",
+          "minLength": 1
+        }
       },
       "additionalProperties": false
     },
-    "revision_model": {
+    "revision_rule": {
       "type": "object",
-      "required": ["event", "effects", "forbidden"],
+      "required": [
+        "formula",
+        "event_flag",
+        "forbidden"
+      ],
       "properties": {
-        "event": {"const": "UPSTREAM_REVISION"},
-        "effects": {
-          "type": "array",
-          "items": {"enum": ["APPEND_REVISION_RECORD", "MARK_DEPENDENTS_STALE", "RE_EVALUATE", "REQUIRE_EXPLICIT_NEW_STATUS"]},
-          "minItems": 4,
-          "uniqueItems": true
+        "formula": {
+          "const": "REVISION = APPEND + MARK_STALE + RE_EVALUATE"
+        },
+        "event_flag": {
+          "const": "STALE"
         },
         "forbidden": {
           "type": "array",
-          "items": {"enum": ["SILENT_REWRITE", "AUTO_PROMOTION", "AUTO_DEMOTION", "VALIDITY_INHERITANCE"]},
           "minItems": 4,
-          "uniqueItems": true
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "SILENT_REWRITE",
+              "AUTO_PROMOTION",
+              "AUTO_DEMOTION",
+              "VALIDITY_INHERITANCE"
+            ]
+          }
         }
       },
       "additionalProperties": false
     },
     "guardrails": {
       "type": "array",
-      "items": {"type": "string"},
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true,
       "allOf": [
-        {"contains": {"const": "SCHEMA_VALIDITY_NE_RECEIPT_CONTENT_TRUTH"}},
-        {"contains": {"const": "REFERENCE_USE_IS_STRUCTURE_EXEMPLAR"}},
-        {"contains": {"const": "CAPTURED_NE_TRUE"}},
-        {"contains": {"const": "ASSERTED_NE_VERIFIED"}},
-        {"contains": {"const": "HOLD_NE_UNKNOWN"}},
-        {"contains": {"const": "REVISION_IS_APPEND_PLUS_STALE_PLUS_RE_EVALUATE"}}
+        {
+          "contains": {
+            "const": "SCHEMA_VALIDITY_NE_RECEIPT_CONTENT_TRUTH"
+          }
+        },
+        {
+          "contains": {
+            "const": "REFERENCE_USE_IS_STRUCTURE_EXEMPLAR"
+          }
+        },
+        {
+          "contains": {
+            "const": "ABSENT_NE_UNKNOWN"
+          }
+        },
+        {
+          "contains": {
+            "const": "ASSERTED_NE_VERIFIED"
+          }
+        },
+        {
+          "contains": {
+            "const": "CAPTURED_NE_TRUE"
+          }
+        },
+        {
+          "contains": {
+            "const": "REVISION_IS_APPEND_PLUS_MARK_STALE_PLUS_RE_EVALUATE"
+          }
+        },
+        {
+          "contains": {
+            "const": "NOT_CASCADE_REWRITE"
+          }
+        }
       ]
+    },
+    "root_rule": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 5,
+      "uniqueItems": true
     }
   },
-  "additionalProperties": true,
-  "$comment": "Root rule: CAPTURE WHAT EXISTS. HASH WHAT WAS CAPTURED. TRANSLATE WHAT WAS CAPTURED. EXTRACT ONLY WHAT THE SOURCE SUPPORTS. PROMOTE NOTHING WITHOUT ITS OWN EVIDENCE."
+  "additionalProperties": false,
+  "$comment": "HOLD = required field not yet captured. ABSENT != UNKNOWN. ASSERTED != VERIFIED. CAPTURED != TRUE. STALE is an orthogonal revision/event flag, not a field truth state."
 }
