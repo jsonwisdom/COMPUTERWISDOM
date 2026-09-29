@@ -1,0 +1,98 @@
+{
+  "replay_id": "REPLAYJAY_ENS_BEFORE_DNS_V0_1",
+  "operator": "Jay",
+  "scope": "IDENTITY_FIRST__RECEIPT_FIRST",
+  "canonical_order": [
+    "HUMAN_JAY",
+    "ENS_BASENAME",
+    "WALLET_CONTROL_PROOF",
+    "ATTESTATION_RECEIPT",
+    "DNS",
+    "AMERICA_GOV_SOURCE_ROUTING",
+    "GARBAGE_GENERAL_PRESS",
+    "GRAY_BABY_REPORT",
+    "APPLE_BLOSSOM_AWESOME",
+    "HUMAN_CHOICE"
+  ],
+  "rule": "ENS identity/discovery binding is evaluated before DNS/network naming. DNS may route traffic; it does not establish the human.",
+  "receipts": {
+    "wallet_binding": {
+      "path": "receipts/wallet_binding_v2.md",
+      "blob_sha": "c4e633a5d5298466c2669fbb655f993acdfa1489",
+      "status": "PREPARED_NOT_SIGNED",
+      "ens_name": "jaywisdom.eth",
+      "basename": "jaywisdom.base.eth",
+      "show_wallet_proof": "PENDING",
+      "arena_status": "YELLOW"
+    },
+    "zora_surface": {
+      "status": "REPOSITORY_POINTER_OBSERVED",
+      "pointer": "https://zora.co/@jaywisdom",
+      "identity_effect": "NONE"
+    }
+  },
+  "rail_status": {
+    "HUMAN_JAY": "DECLARED_OPERATOR",
+    "ENS_BASENAME": "REPOSITORY_BOUND__CONTROL_PROOF_PENDING",
+    "WALLET_CONTROL_PROOF": "PENDING",
+    "ATTESTATION_RECEIPT": "REFERENCE_PRESENT__SIGNER_BINDING_NOT_PROMOTED",
+    "DNS": "NOT_BOUND_IN_THIS_REPLAY",
+    "AMERICA_GOV_SOURCE_ROUTING": "MODEL_DEFINED__LIVE_BINDING_NOT_PROVEN",
+    "GARBAGE_GENERAL_PRESS": "RENDER_NAME_DECLARED__REPOSITORY_ARTIFACT_NOT_RETRIEVED",
+    "GRAY_BABY_REPORT": "RENDER_LAYER_RETRIEVED",
+    "APPLE_BLOSSOM_AWESOME": "RENDER_NAME_DECLARED__REPOSITORY_ARTIFACT_NOT_RETRIEVED",
+    "HUMAN_CHOICE": "REQUIRED"
+  },
+  "render_layers": {
+    "GARBAGE_GENERAL_PRESS": {
+      "authority": false,
+      "role": "SATIRE_AUDIT_RENDER",
+      "may_render": [
+        "CLAIM",
+        "RECEIPT_GAP",
+        "SOURCE_COLLISION",
+        "BUDGET_CLOCK",
+        "HOLD"
+      ],
+      "may_not_create": [
+        "FACT",
+        "AUTHORITY",
+        "LEGAL_FINDING",
+        "IDENTITY_BINDING"
+      ]
+    },
+    "GRAY_BABY_REPORT": {
+      "authority": false,
+      "role": "GAP_OBSERVER_RENDER",
+      "retrieved_precedent": "docs/gray-baby/README.md",
+      "rule": "Preserve what exists; expose what is missing; do not promote platform metadata into authority."
+    },
+    "APPLE_BLOSSOM_AWESOME": {
+      "authority": false,
+      "role": "NO_FAKE_GREEN_AUDIT_RENDER",
+      "rule": "Detect claim promotion beyond receipts; do not infer knowing falsehood or motive without evidence."
+    }
+  },
+  "america_gov_boundary": {
+    "role": "GOVERNMENT_INFORMATION_ENTRY_SURFACE",
+    "identity_authority": false,
+    "rule": "AMERICA_GOV != CITIZEN_ROOT; SEARCH_RESULT != AUTHORITY; ACCESS != CONSENT",
+    "live_source_binding": "NOT_PROVEN_IN_THIS_REPLAY"
+  },
+  "invariants": [
+    "ENS_BEFORE_DNS",
+    "ENS != LEGAL_IDENTITY",
+    "WALLET != PERSON",
+    "WALLET_SIGNATURE != CONSENT_UNLESS_READ_BOUND",
+    "DNS != IDENTITY",
+    "ZORA_OBJECT != FACT",
+    "PUBLISH != ASSERT",
+    "SATIRE != RECEIPT",
+    "RENDER != AUTHORITY",
+    "HUMAN_CHOICE_REQUIRED",
+    "NO_FAKE_GREEN",
+    "APPEND_ONLY",
+    "AUTHORITY_CREATED = FALSE"
+  ],
+  "output_status": "HOLD_ON_UNBOUND_SURFACES"
+}
