@@ -1,0 +1,39 @@
+{
+  "policy_id": "KID_FRIENDLY_TICK_NOTIFICATION_POLICY_V0_1",
+  "identity_anchor": "jaywisdom.base.eth",
+  "recipient_role": "HUMAN_OPERATOR_JAY",
+  "purpose": "Email Jay only when a new tick materially changes the replay state or creates a human-review decision.",
+  "triggers": [
+    "NEW_RECEIPT_CHANGES_REPLAY_STATE",
+    "AUDIT_REVIEW_WORTHY",
+    "INVESTMENT_REVIEW_WORTHY",
+    "SET_ASIDE_REVIEW_WORTHY",
+    "TRANSFER_REVIEW_WORTHY"
+  ],
+  "allowed_human_choices": [
+    "AUDIT",
+    "INVESTIGATE",
+    "INVESTMENT_REVIEW",
+    "SET_ASIDE",
+    "TRANSFER_REVIEW",
+    "DO_NOTHING"
+  ],
+  "prohibited_automatic_actions": [
+    "BUY",
+    "SELL",
+    "SWAP",
+    "TRANSFER_FUNDS",
+    "CHANGE_EXCHANGE",
+    "CHANGE_COUNTRY_OR_JURISDICTION",
+    "CREATE_POLICY",
+    "CLAWBACK"
+  ],
+  "email_rule": "EMAIL_REQUEST_ONLY; no automatic financial or jurisdictional action.",
+  "invariants": {
+    "authority_created": false,
+    "verdict_created": false,
+    "execution_authorized": false,
+    "no_fake_green": true,
+    "append_only": true
+  }
+}
