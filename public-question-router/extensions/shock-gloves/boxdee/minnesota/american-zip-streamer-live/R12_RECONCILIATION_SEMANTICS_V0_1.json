@@ -1,0 +1,41 @@
+{
+  "predicate_id": "R12",
+  "predicate_name": "RECONCILIATION_APPLICABILITY",
+  "function_name": "check_R12_RECONCILIATION_APPLICABILITY",
+  "purpose": "Determine whether a supplied reconciliation receipt is structurally and referentially sufficient to close a specific resolver conflict.",
+  "inputs": {
+    "conflict_id": "conflict.id",
+    "conflict_state": "conflict.state",
+    "reconciliation_receipt": "reconciliation_receipt",
+    "receipts": "receipts.reconciliation"
+  },
+  "outputs": [
+    "PASS",
+    "FAIL",
+    "HOLD"
+  ],
+  "rules": [
+    "No reconciliation receipt -> HOLD.",
+    "Receipt is SHAPE_ONLY/NON_SEMANTIC -> HOLD.",
+    "resolves_conflict_id does not equal conflict_id -> FAIL.",
+    "Required reconciliation fields missing or malformed -> HOLD.",
+    "evidence_receipts empty -> HOLD.",
+    "Valid matching receipt -> PASS.",
+    "PASS means reconciliation receipt is applicable to the conflict; it does not validate the external truth of new_state.",
+    "Prior conflicting states remain preserved.",
+    "A missed deadline alone does not prove external non-response; documented non-response requires its own receipt."
+  ],
+  "terminal_transition": {
+    "from": "CONFLICT",
+    "on_R12_PASS": "RECONCILED",
+    "state_write": "append new_state as a new resolver state event",
+    "historical_rewrite": false,
+    "external_truth_claim": false
+  },
+  "invariants": {
+    "NO_FAKE_GREEN": true,
+    "APPEND_ONLY": true,
+    "AUTHORITY_CREATED": false,
+    "VERDICT_CREATED": false
+  }
+}
