@@ -93,7 +93,8 @@
         },
         "stale": {
           "type": "boolean",
-          "default": false
+          "default": false,
+          "description": "Revision-event flag only; set by UPSTREAM_REVISION and cleared only by explicit downstream re-evaluation. It must never enter FIELD_STATE_ENUM."
         }
       },
       "additionalProperties": false
@@ -298,7 +299,8 @@
           "const": "REVISION = APPEND + MARK_STALE + RE_EVALUATE"
         },
         "event_flag": {
-          "const": "STALE"
+          "const": "STALE",
+          "description": "STALE is an orthogonal revision-event flag, not a field-state value."
         },
         "forbidden": {
           "type": "array",
@@ -370,5 +372,5 @@
     }
   },
   "additionalProperties": false,
-  "$comment": "HOLD = required field not yet captured. ABSENT != UNKNOWN. ASSERTED != VERIFIED. CAPTURED != TRUE. STALE is an orthogonal revision/event flag, not a field truth state."
+  "$comment": "SCHEMA_VALIDITY != RECEIPT_CONTENT_TRUTH. REFERENCE_USE = structure exemplar, not endorsement. HOLD = required field not yet captured. ABSENT != UNKNOWN. ASSERTED != VERIFIED. CAPTURED != TRUE. STALE is an orthogonal revision-event flag set by UPSTREAM_REVISION and cleared by explicit re-evaluation; it must never enter FIELD_STATE_ENUM. REVISION = APPEND + MARK_STALE + RE_EVALUATE; NOT = CASCADE_REWRITE."
 }
