@@ -1,0 +1,25 @@
+{
+  "semantics_id": "RESOLVER_PREDICATE_SEMANTICS_V0_1",
+  "resolver_id": "RESOLVER_V0_1",
+  "classification": "REPLAY_VALIDATION_ONLY",
+  "frozen_invariants": {
+    "NO_FAKE_GREEN": true,
+    "APPEND_ONLY": true,
+    "AUTHORITY_CREATED": false,
+    "VERDICT_CREATED": false,
+    "SHAPE_ONLY_FAILS_CLOSED_TO": "HOLD"
+  },
+  "rules": {
+    "R1": "PASS iff authority_source_id is an exact member of authority_sources; otherwise FAIL; missing/malformed -> HOLD.",
+    "R2": "PASS iff event_domain is an exact member of scope; otherwise FAIL; missing/malformed -> HOLD.",
+    "R3": "PASS iff valid_from <= event_time <= valid_to using ISO-8601 datetimes; outside -> FAIL; missing/malformed -> HOLD.",
+    "R4": "PASS iff actor is an exact member of actor_rules; otherwise FAIL; missing/malformed -> HOLD.",
+    "R5": "PASS iff subject is an exact member of subject_rules; otherwise FAIL; missing/malformed -> HOLD.",
+    "R6": "PASS iff action is an exact member of action_rules; otherwise FAIL; missing/malformed -> HOLD.",
+    "R7": "delegation must explicitly contain authorized boolean; optional actor/action fields must match event actor/action; true -> PASS, false/mismatch -> FAIL, ambiguity -> HOLD.",
+    "R8": "limits/exceptions are lists of objects with applies boolean; any applies=true -> FAIL, otherwise PASS; malformed/ambiguous -> HOLD.",
+    "R9": "trigger_rules are non-empty objects with satisfied boolean; all true -> PASS, any false -> FAIL, malformed/ambiguous -> HOLD.",
+    "R10": "superseded=false -> PASS; superseded=true requires effective_at; effective_at <= event_time -> FAIL, later -> PASS; ambiguity -> HOLD.",
+    "R11": "claim_object.state == runtime_state.state -> PASS; unequal -> CONFLICT; missing/malformed -> HOLD."
+  }
+}
