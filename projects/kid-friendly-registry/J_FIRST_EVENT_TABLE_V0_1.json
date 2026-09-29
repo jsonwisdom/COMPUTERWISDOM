@@ -1,0 +1,90 @@
+{
+  "table_id": "J_FIRST_EVENT_TABLE_V0_1",
+  "event_id": "J_FIRST_EVENT_V0_1",
+  "columns": [
+    "arc_id",
+    "object",
+    "role",
+    "arena",
+    "cognition",
+    "receipt_status",
+    "semantic_status",
+    "human_choice_required",
+    "authority_created"
+  ],
+  "rows": [
+    {
+      "arc_id": "ARC_J",
+      "object": "Jay",
+      "role": "HUMAN_OPERATOR",
+      "arena": "IN",
+      "cognition": "EXTERNAL_RECEIPT_BOUND",
+      "receipt_status": "HOLD_UNTIL_BOUND",
+      "semantic_status": "HOLD",
+      "human_choice_required": false,
+      "authority_created": false
+    },
+    {
+      "arc_id": "ARC_ENS",
+      "object": "jaywisdom.base.eth",
+      "role": "IDENTITY_SURFACE",
+      "arena": "IN",
+      "cognition": "EXTERNAL_RECEIPT_BOUND",
+      "receipt_status": "HOLD_UNTIL_BOUND",
+      "semantic_status": "HOLD",
+      "human_choice_required": true,
+      "authority_created": false
+    },
+    {
+      "arc_id": "ARC_DNS",
+      "object": "DNS",
+      "role": "NETWORK_NAME_RESOLUTION_SURFACE",
+      "arena": "IN",
+      "cognition": "EXTERNAL_RECEIPT_BOUND",
+      "receipt_status": "HOLD_UNTIL_BOUND",
+      "semantic_status": "HOLD",
+      "human_choice_required": true,
+      "authority_created": false
+    },
+    {
+      "arc_id": "ARC_CONSTITUTION",
+      "object": "US_CONSTITUTION",
+      "role": "RULE_CONSTRAINT_SURFACE",
+      "arena": "IN",
+      "cognition": "EXTERNAL_RECEIPT_BOUND",
+      "receipt_status": "HOLD_UNTIL_BOUND",
+      "semantic_status": "HOLD",
+      "human_choice_required": true,
+      "authority_created": false
+    },
+    {
+      "arc_id": "ARC_DICE",
+      "object": "ROLL_THE_DICE",
+      "role": "BRANCH_ENUMERATOR",
+      "arena": "IN",
+      "cognition": "MODEL_INTERNAL",
+      "receipt_status": "HOLD_UNTIL_BOUND",
+      "semantic_status": "HOLD",
+      "human_choice_required": true,
+      "authority_created": false
+    },
+    {
+      "arc_id": "ARC_CONGRESS",
+      "object": "CONGRESS",
+      "role": "INSTITUTIONAL_ACTOR",
+      "arena": "IN",
+      "cognition": "EXTERNAL_RECEIPT_BOUND",
+      "receipt_status": "HOLD_UNTIL_BOUND",
+      "semantic_status": "HOLD",
+      "human_choice_required": true,
+      "authority_created": false
+    }
+  ],
+  "summary": {
+    "total_arcs": 6,
+    "in_arena": 6,
+    "out_of_arena": 0,
+    "holds": 6,
+    "authority_created": false
+  }
+}
