@@ -1,0 +1,115 @@
+{
+  "event_id": "J_FIRST_EVENT_V0_1",
+  "title": "Jay-first Constitution / ENS / DNS / Congress replay event",
+  "scope": "ONE_EVENT_ONLY",
+  "operator": "Jay",
+  "sequence": [
+    "JAY",
+    "ENS",
+    "DNS",
+    "CONSTITUTION_REPLAY",
+    "ROLL_THE_DICE",
+    "CONGRESS",
+    "CONSTITUTION_REPLAY",
+    "ENS",
+    "DNS"
+  ],
+  "arena_model": {
+    "question": "Is this object in the arena for this event?",
+    "values": [
+      "IN",
+      "OUT",
+      "HOLD"
+    ],
+    "rule": "ARENA_STATUS constrains this event only; it does not create truth or authority."
+  },
+  "cognition_model": {
+    "question": "Is this object model-internal or externally receipt-bound?",
+    "values": [
+      "MODEL_INTERNAL",
+      "EXTERNAL_RECEIPT_BOUND",
+      "MIXED",
+      "HOLD"
+    ],
+    "rule": "MODEL_INTERNAL != FACT; EXTERNAL_RECEIPT_BOUND != TRUE_BY_DEFAULT."
+  },
+  "surfaces": [
+    {
+      "arc_id": "ARC_J",
+      "object": "Jay",
+      "role": "HUMAN_OPERATOR",
+      "arena": "IN",
+      "cognition": "EXTERNAL_RECEIPT_BOUND",
+      "authority": false,
+      "receipt_requirement": "human choice / wallet / identity receipts"
+    },
+    {
+      "arc_id": "ARC_ENS",
+      "object": "jaywisdom.base.eth",
+      "role": "IDENTITY_SURFACE",
+      "arena": "IN",
+      "cognition": "EXTERNAL_RECEIPT_BOUND",
+      "authority": false,
+      "receipt_requirement": "ENS/Basename resolution + wallet control proof",
+      "invariant": "ENS != IDENTITY_BY_ITSELF"
+    },
+    {
+      "arc_id": "ARC_DNS",
+      "object": "DNS",
+      "role": "NETWORK_NAME_RESOLUTION_SURFACE",
+      "arena": "IN",
+      "cognition": "EXTERNAL_RECEIPT_BOUND",
+      "authority": false,
+      "receipt_requirement": "DNS records / resolver receipts",
+      "invariant": "DNS != IDENTITY"
+    },
+    {
+      "arc_id": "ARC_CONSTITUTION",
+      "object": "US_CONSTITUTION",
+      "role": "RULE_CONSTRAINT_SURFACE",
+      "arena": "IN",
+      "cognition": "EXTERNAL_RECEIPT_BOUND",
+      "authority": false,
+      "receipt_requirement": "constitutional text + amendment lineage + applicable interpretation receipts",
+      "invariant": "MODEL_INTERPRETATION != CONSTITUTIONAL_AUTHORITY"
+    },
+    {
+      "arc_id": "ARC_DICE",
+      "object": "ROLL_THE_DICE",
+      "role": "BRANCH_ENUMERATOR",
+      "arena": "IN",
+      "cognition": "MODEL_INTERNAL",
+      "authority": false,
+      "receipt_requirement": "none for branch generation; receipts required for branch promotion",
+      "invariant": "SIMULATION != EVIDENCE"
+    },
+    {
+      "arc_id": "ARC_CONGRESS",
+      "object": "CONGRESS",
+      "role": "INSTITUTIONAL_ACTOR",
+      "arena": "IN",
+      "cognition": "EXTERNAL_RECEIPT_BOUND",
+      "authority": false,
+      "receipt_requirement": "bill / vote / committee / statute receipts as applicable",
+      "invariant": "CONGRESS_MEMBER_STATEMENT != LAW"
+    }
+  ],
+  "replay_dimensions": [
+    "ARENA_STATUS",
+    "COGNITION_STATUS",
+    "RECEIPT_STATUS",
+    "IDENTITY_BINDING",
+    "RULE_APPLICABILITY",
+    "INSTITUTIONAL_ACTION",
+    "HUMAN_CHOICE",
+    "AUTHORITY_CREATED"
+  ],
+  "expansion_rule": "One event may fan into many arcs, but each arc must retain its own receipts and status.",
+  "invariants": {
+    "authority_created": false,
+    "no_fake_green": true,
+    "append_only": true,
+    "human_choice_root": true,
+    "one_event_scope": true
+  }
+}
