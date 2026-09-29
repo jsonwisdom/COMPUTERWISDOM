@@ -1,0 +1,174 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/schemas/resolver_v0_1.schema.json",
+  "title": "RESOLVER_V0_1 Schema",
+  "type": "object",
+  "$defs": {
+    "ResolverRule": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "predicate_id",
+        "function_name",
+        "input_map"
+      ],
+      "properties": {
+        "predicate_id": {
+          "type": "string",
+          "pattern": "^R(?:[1-9]|1[01])$"
+        },
+        "function_name": {
+          "type": "string",
+          "pattern": "^check_R(?:[1-9]|1[01])_[A-Z0-9_]+$"
+        },
+        "input_map": {
+          "type": "object",
+          "minProperties": 1,
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "enabled": {
+          "type": "boolean",
+          "default": true
+        }
+      }
+    },
+    "ResolverConfig": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "resolver_id",
+        "contract_id",
+        "fixture_set_id",
+        "invariants",
+        "rules"
+      ],
+      "properties": {
+        "resolver_id": {
+          "const": "RESOLVER_V0_1"
+        },
+        "contract_id": {
+          "const": "AUTHORITY_RESOLUTION_CONTRACT_V0_1"
+        },
+        "fixture_set_id": {
+          "const": "TEST_FIXTURES_V0_1"
+        },
+        "mode": {
+          "enum": [
+            "DRY_RUN",
+            "REPLAY"
+          ]
+        },
+        "invariants": {
+          "type": "object",
+          "required": [
+            "NO_FAKE_GREEN",
+            "APPEND_ONLY",
+            "AUTHORITY_CREATED"
+          ],
+          "properties": {
+            "NO_FAKE_GREEN": {
+              "const": true
+            },
+            "APPEND_ONLY": {
+              "const": true
+            },
+            "AUTHORITY_CREATED": {
+              "const": false
+            },
+            "JURISDICTION_INFERRED": {
+              "const": false
+            },
+            "FACT_ADJUDICATED": {
+              "const": false
+            }
+          },
+          "additionalProperties": false
+        },
+        "rules": {
+          "type": "array",
+          "minItems": 11,
+          "maxItems": 11,
+          "items": {
+            "$ref": "#/$defs/ResolverRule"
+          }
+        }
+      }
+    },
+    "ResolverRuntimeReceipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "receipt_id",
+        "resolver_id",
+        "fixture_id",
+        "predicate_id",
+        "function_name",
+        "dispatch_status",
+        "semantic_status",
+        "authority_created",
+        "verdict_created"
+      ],
+      "properties": {
+        "receipt_id": {
+          "type": "string"
+        },
+        "resolver_id": {
+          "const": "RESOLVER_V0_1"
+        },
+        "fixture_id": {
+          "type": "string"
+        },
+        "predicate_id": {
+          "type": "string"
+        },
+        "function_name": {
+          "type": "string"
+        },
+        "dispatch_status": {
+          "enum": [
+            "DISPATCHED",
+            "REGISTRY_MISS",
+            "INPUT_MAP_ERROR"
+          ]
+        },
+        "semantic_status": {
+          "enum": [
+            "NOT_EVALUATED",
+            "PASS",
+            "FAIL",
+            "HOLD",
+            "CONFLICT"
+          ]
+        },
+        "reason": {
+          "type": "string"
+        },
+        "input_bindings": {
+          "type": "object"
+        },
+        "authority_created": {
+          "const": false
+        },
+        "verdict_created": {
+          "const": false
+        },
+        "append_only": {
+          "const": true
+        }
+      }
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/ResolverConfig"
+    },
+    {
+      "$ref": "#/$defs/ResolverRule"
+    },
+    {
+      "$ref": "#/$defs/ResolverRuntimeReceipt"
+    }
+  ]
+}
