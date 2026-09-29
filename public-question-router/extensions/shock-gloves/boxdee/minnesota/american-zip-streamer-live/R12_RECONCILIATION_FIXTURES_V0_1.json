@@ -1,0 +1,125 @@
+{
+  "fixture_set_id": "R12_RECONCILIATION_FIXTURES_V0_1",
+  "package_id": "AMERICAN_ZIP_STREAMER_LIVE_V0_1",
+  "classification": "REPLAY_VALIDATION_ONLY",
+  "conflict_id": "RESOLVER_RECEIPT_BOUND_SEMANTIC_EVALUATION_V0_1::FIX_ALPHA_DEED_001_STATE_CONFLICT::R11",
+  "fixtures": [
+    {
+      "fixture_id": "FIX_R12_RECONCILIATION_ABSENT",
+      "case": "ABSENT",
+      "inputs": {
+        "conflict_id": "RESOLVER_RECEIPT_BOUND_SEMANTIC_EVALUATION_V0_1::FIX_ALPHA_DEED_001_STATE_CONFLICT::R11",
+        "conflict_state": "CONFLICT",
+        "reconciliation_receipt": null,
+        "receipts": []
+      },
+      "expected_result": "HOLD"
+    },
+    {
+      "fixture_id": "FIX_R12_RECONCILIATION_PARTIAL",
+      "case": "PARTIAL",
+      "inputs": {
+        "conflict_id": "RESOLVER_RECEIPT_BOUND_SEMANTIC_EVALUATION_V0_1::FIX_ALPHA_DEED_001_STATE_CONFLICT::R11",
+        "conflict_state": "CONFLICT",
+        "reconciliation_receipt": {
+          "receipt_id": "AZSL_PARTIAL_V0_1",
+          "receipt_type": "general_reconciliation",
+          "resolves_conflict_id": "RESOLVER_RECEIPT_BOUND_SEMANTIC_EVALUATION_V0_1::FIX_ALPHA_DEED_001_STATE_CONFLICT::R11",
+          "evidence_receipts": []
+        },
+        "receipts": [
+          "AZSL_PARTIAL_V0_1"
+        ]
+      },
+      "expected_result": "HOLD"
+    },
+    {
+      "fixture_id": "FIX_R12_RECONCILIATION_WRONG_CONFLICT",
+      "case": "WRONG_CONFLICT",
+      "inputs": {
+        "conflict_id": "RESOLVER_RECEIPT_BOUND_SEMANTIC_EVALUATION_V0_1::FIX_ALPHA_DEED_001_STATE_CONFLICT::R11",
+        "conflict_state": "CONFLICT",
+        "reconciliation_receipt": {
+          "receipt_id": "AZSL_WRONG_CONFLICT_V0_1",
+          "receipt_type": "general_reconciliation",
+          "resolves_conflict_id": "OTHER_CONFLICT",
+          "new_state": "REQUESTED",
+          "evidence_receipts": [
+            "JOY:ALPHA_DEED_001_CLAIM",
+            "JOY:ALPHA_DEED_001_REQUEST_SENT",
+            "RESOLVER_RECEIPT_BOUND_SEMANTIC_EVALUATION_V0_1"
+          ],
+          "issued_at": "2026-09-29T00:00:00Z",
+          "provenance": {
+            "issuer_class": "resolver_internal",
+            "creation_basis": "Resolve resolver-state disagreement by appending the later receipt-bound REQUESTED state while preserving prior CLAIMED state.",
+            "source_object_ids": [
+              "jsonwisdom/JOY@24f1bc9d6401283d1170f283b7aa3583ad166dae:zero_trust_mn_audit/claims/ALPHA_DEED_001.json",
+              "jsonwisdom/JOY@24f1bc9d6401283d1170f283b7aa3583ad166dae:zero_trust_mn_audit/requests/ALPHA_DEED_001/REQUEST_SENT_RECEIPT.md"
+            ]
+          },
+          "invariants": {
+            "append_only": true,
+            "preserve_prior_states": true,
+            "authority_created": false,
+            "verdict_created": false
+          },
+          "notes": "Internal reconciliation of resolver state lineage only. Does not adjudicate external truth, legality, wrongdoing, or agency response."
+        },
+        "receipts": [
+          "AZSL_WRONG_CONFLICT_V0_1"
+        ]
+      },
+      "expected_result": "FAIL"
+    },
+    {
+      "fixture_id": "FIX_R12_RECONCILIATION_RECEIPT_BOUND",
+      "case": "RECEIPT_BOUND",
+      "inputs": {
+        "conflict_id": "RESOLVER_RECEIPT_BOUND_SEMANTIC_EVALUATION_V0_1::FIX_ALPHA_DEED_001_STATE_CONFLICT::R11",
+        "conflict_state": "CONFLICT",
+        "reconciliation_receipt": {
+          "receipt_id": "AZSL_RECONCILIATION_ALPHA_DEED_001_V0_1",
+          "receipt_type": "general_reconciliation",
+          "resolves_conflict_id": "RESOLVER_RECEIPT_BOUND_SEMANTIC_EVALUATION_V0_1::FIX_ALPHA_DEED_001_STATE_CONFLICT::R11",
+          "new_state": "REQUESTED",
+          "evidence_receipts": [
+            "JOY:ALPHA_DEED_001_CLAIM",
+            "JOY:ALPHA_DEED_001_REQUEST_SENT",
+            "RESOLVER_RECEIPT_BOUND_SEMANTIC_EVALUATION_V0_1"
+          ],
+          "issued_at": "2026-09-29T00:00:00Z",
+          "provenance": {
+            "issuer_class": "resolver_internal",
+            "creation_basis": "Resolve resolver-state disagreement by appending the later receipt-bound REQUESTED state while preserving prior CLAIMED state.",
+            "source_object_ids": [
+              "jsonwisdom/JOY@24f1bc9d6401283d1170f283b7aa3583ad166dae:zero_trust_mn_audit/claims/ALPHA_DEED_001.json",
+              "jsonwisdom/JOY@24f1bc9d6401283d1170f283b7aa3583ad166dae:zero_trust_mn_audit/requests/ALPHA_DEED_001/REQUEST_SENT_RECEIPT.md"
+            ]
+          },
+          "invariants": {
+            "append_only": true,
+            "preserve_prior_states": true,
+            "authority_created": false,
+            "verdict_created": false
+          },
+          "notes": "Internal reconciliation of resolver state lineage only. Does not adjudicate external truth, legality, wrongdoing, or agency response."
+        },
+        "receipts": [
+          "AZSL_RECONCILIATION_ALPHA_DEED_001_V0_1"
+        ]
+      },
+      "expected_result": "PASS",
+      "expected_transition": "CONFLICT -> RECONCILED",
+      "expected_appended_state": "REQUESTED"
+    }
+  ],
+  "invariants": {
+    "case_label_is_not_result": true,
+    "append_only": true,
+    "preserve_prior_states": true,
+    "authority_created": false,
+    "verdict_created": false,
+    "external_truth_created": false
+  }
+}
