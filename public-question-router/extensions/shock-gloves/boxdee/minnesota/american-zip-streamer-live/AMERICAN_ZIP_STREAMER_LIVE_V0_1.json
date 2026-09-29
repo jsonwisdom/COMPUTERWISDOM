@@ -1,0 +1,34 @@
+{
+  "package_id": "AMERICAN_ZIP_STREAMER_LIVE_V0_1",
+  "title": "Jason’s AmericanZipStreamerLIVE",
+  "status": "CONFIRMED_PACKAGE",
+  "purpose": "Close receipt-backed resolver conflicts without rewriting history or manufacturing authority.",
+  "function": [
+    "Accept R11 conflict IDs.",
+    "Evaluate a general-purpose reconciliation receipt via R12.",
+    "On valid matching receipt, append new resolver state and mark conflict RECONCILED.",
+    "Preserve all prior source states and receipts.",
+    "Keep absent/partial reconciliation at HOLD.",
+    "Reject receipts targeting a different conflict."
+  ],
+  "results": {
+    "r11_input_state": "CONFLICT",
+    "r12_fixture_results": "1 PASS / 1 FAIL / 2 HOLD",
+    "valid_reconciliation_transition": "CONFLICT -> RECONCILED",
+    "appended_state": "REQUESTED",
+    "historical_rewrite": false,
+    "authority_created": false,
+    "verdict_created": false,
+    "independent_replay": "NOT_PROVEN"
+  },
+  "selected_design": "(b) general-purpose receipt with resolves_conflict_id and new_state",
+  "components": [
+    "RECONCILIATION_RECEIPT_SCHEMA_V0_1.json",
+    "R12_RECONCILIATION_SEMANTICS_V0_1.json",
+    "resolver_r12_reconciliation.py",
+    "R12_RECONCILIATION_FIXTURES_V0_1.json",
+    "AZSL_RECONCILIATION_ALPHA_DEED_001_V0_1.json",
+    "AMERICAN_ZIP_STREAMER_LIVE_R12_REPLAY_RECEIPT_V0_1.json"
+  ],
+  "discipline_note": "Connector/repository writes are recorded as connector-confirmed. Independent runtime replay remains NOT_PROVEN."
+}
