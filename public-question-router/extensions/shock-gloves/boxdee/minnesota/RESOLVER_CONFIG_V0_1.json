@@ -1,0 +1,129 @@
+{
+  "resolver_id": "RESOLVER_V0_1",
+  "contract_id": "AUTHORITY_RESOLUTION_CONTRACT_V0_1",
+  "fixture_set_id": "TEST_FIXTURES_V0_1",
+  "mode": "DRY_RUN",
+  "invariants": {
+    "NO_FAKE_GREEN": true,
+    "APPEND_ONLY": true,
+    "AUTHORITY_CREATED": false,
+    "JURISDICTION_INFERRED": false,
+    "FACT_ADJUDICATED": false
+  },
+  "rules": [
+    {
+      "predicate_id": "R1",
+      "function_name": "check_R1_SOURCE_IDENTITY",
+      "input_map": {
+        "authority_source_id": "authority_source.id",
+        "authority_sources": "module.authority_sources",
+        "receipts": "receipts.source_identity"
+      },
+      "enabled": true
+    },
+    {
+      "predicate_id": "R2",
+      "function_name": "check_R2_JURISDICTION_SCOPE",
+      "input_map": {
+        "event_domain": "event.domain",
+        "scope": "module.scope",
+        "receipts": "receipts.jurisdiction"
+      },
+      "enabled": true
+    },
+    {
+      "predicate_id": "R3",
+      "function_name": "check_R3_TEMPORAL_APPLICABILITY",
+      "input_map": {
+        "event_time": "event.timestamp",
+        "valid_from": "authority_source.valid_from",
+        "valid_to": "authority_source.valid_to",
+        "receipts": "receipts.temporal"
+      },
+      "enabled": true
+    },
+    {
+      "predicate_id": "R4",
+      "function_name": "check_R4_ACTOR_APPLICABILITY",
+      "input_map": {
+        "actor": "event.actor",
+        "actor_rules": "module.actor_rules",
+        "receipts": "receipts.actor"
+      },
+      "enabled": true
+    },
+    {
+      "predicate_id": "R5",
+      "function_name": "check_R5_SUBJECT_APPLICABILITY",
+      "input_map": {
+        "subject": "event.subject",
+        "subject_rules": "module.subject_rules",
+        "receipts": "receipts.subject"
+      },
+      "enabled": true
+    },
+    {
+      "predicate_id": "R6",
+      "function_name": "check_R6_ACTION_APPLICABILITY",
+      "input_map": {
+        "action": "event.action",
+        "action_rules": "module.action_rules",
+        "receipts": "receipts.action"
+      },
+      "enabled": true
+    },
+    {
+      "predicate_id": "R7",
+      "function_name": "check_R7_DELEGATION_AUTHORIZATION",
+      "input_map": {
+        "delegation": "authority_source.delegation",
+        "actor": "event.actor",
+        "action": "event.action",
+        "receipts": "receipts.delegation"
+      },
+      "enabled": true
+    },
+    {
+      "predicate_id": "R8",
+      "function_name": "check_R8_LIMIT_EXCEPTION_CHECK",
+      "input_map": {
+        "limits": "module.limits",
+        "exceptions": "module.exceptions",
+        "event": "event",
+        "receipts": "receipts.limit_exception"
+      },
+      "enabled": true
+    },
+    {
+      "predicate_id": "R9",
+      "function_name": "check_R9_PROCEDURAL_TRIGGER",
+      "input_map": {
+        "trigger_rules": "module.procedural_triggers",
+        "event": "event",
+        "receipts": "receipts.procedural"
+      },
+      "enabled": true
+    },
+    {
+      "predicate_id": "R10",
+      "function_name": "check_R10_VERSION_SUPERSESSION",
+      "input_map": {
+        "authority_version": "authority_source.version",
+        "event_time": "event.timestamp",
+        "supersession": "authority_source.supersession",
+        "receipts": "receipts.version"
+      },
+      "enabled": true
+    },
+    {
+      "predicate_id": "R11",
+      "function_name": "check_R11_STATE_CONFLICT",
+      "input_map": {
+        "claim_object": "claim",
+        "runtime_state": "runtime.state",
+        "receipts": "receipts.state"
+      },
+      "enabled": true
+    }
+  ]
+}
