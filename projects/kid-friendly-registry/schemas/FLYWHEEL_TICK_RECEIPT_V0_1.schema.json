@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "FLYWHEEL_TICK_RECEIPT_V0_1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "tick_id",
+    "observed_at",
+    "observation_receipts",
+    "hashes",
+    "replay_result",
+    "delta",
+    "publish_state",
+    "human_gate",
+    "authority_created",
+    "append_only"
+  ],
+  "properties": {
+    "tick_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "observation_receipts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "hashes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "replay_result": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "HOLD",
+        "CONFLICT",
+        "NO_DELTA"
+      ]
+    },
+    "delta": {
+      "type": [
+        "object",
+        "null"
+      ]
+    },
+    "publish_state": {
+      "enum": [
+        "NOT_PUBLISHED",
+        "CANDIDATE",
+        "PUBLISHED"
+      ]
+    },
+    "human_gate": {
+      "type": "object",
+      "required": [
+        "required",
+        "choices",
+        "execution_authorized"
+      ],
+      "properties": {
+        "required": {
+          "const": true
+        },
+        "choices": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "AUDIT",
+              "INVESTIGATE",
+              "INVESTMENT_REVIEW",
+              "SET_ASIDE",
+              "TRANSFER_REVIEW",
+              "DO_NOTHING"
+            ]
+          }
+        },
+        "execution_authorized": {
+          "const": false
+        }
+      }
+    },
+    "authority_created": {
+      "const": false
+    },
+    "append_only": {
+      "const": true
+    }
+  }
+}
