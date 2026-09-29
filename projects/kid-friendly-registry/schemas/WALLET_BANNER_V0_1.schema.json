@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "WALLET_BANNER_V0_1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "artifact_id",
+    "display_text",
+    "identity_anchor",
+    "authority",
+    "show_receipts",
+    "sign_only_what_you_can_read",
+    "attestation_surface",
+    "invariants"
+  ],
+  "properties": {
+    "artifact_id": {
+      "const": "WALLET_BANNER_V0_1"
+    },
+    "display_text": {
+      "const": "AUTHORITY = FALSE · SHOW RECEIPTS · SIGN ONLY WHAT YOU CAN READ"
+    },
+    "identity_anchor": {
+      "const": "jaywisdom.base.eth"
+    },
+    "authority": {
+      "const": false
+    },
+    "show_receipts": {
+      "const": true
+    },
+    "sign_only_what_you_can_read": {
+      "const": true
+    },
+    "attestation_surface": {
+      "const": "AttestationStation"
+    },
+    "invariants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ens_not_identity_by_itself",
+        "signature_control_proof_requires_read_binding",
+        "publish_not_assert",
+        "sign_not_authorize"
+      ],
+      "properties": {
+        "ens_not_identity_by_itself": {
+          "const": true
+        },
+        "signature_control_proof_requires_read_binding": {
+          "const": true
+        },
+        "publish_not_assert": {
+          "const": true
+        },
+        "sign_not_authorize": {
+          "const": true
+        }
+      }
+    }
+  }
+}
