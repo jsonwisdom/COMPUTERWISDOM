@@ -1,0 +1,1134 @@
+{
+  "fixture_set_id": "RUNTIME_INPUT_FIXTURES_V0_1",
+  "project": "MinnesotaMath",
+  "classification": "REPLAY_VALIDATION_ONLY",
+  "input_map_status": "PROVISIONAL",
+  "source_resolver_config": {
+    "id": "RESOLVER_CONFIG_V0_1",
+    "blob_sha": "dfc5871ca4a69a11d08c7663f7bc5a6fdfbfc5c5"
+  },
+  "source_fixture_set": {
+    "id": "TEST_FIXTURES_V0_1",
+    "blob_sha": "95f0fc2176d377190fdfa0c6cd61137e3f8048ee"
+  },
+  "invariants": {
+    "no_fake_green": true,
+    "append_only": true,
+    "authority_created": false,
+    "verdict_created": false,
+    "predicate_truth_created": false,
+    "semantic_evaluations": 0,
+    "shape_only": true
+  },
+  "rename_rule": "FUTURE_FIELD_RENAME = APPENDED_MAPPING_OR_NEW_VERSION; NEVER SILENT_REWRITE",
+  "fixture_count": 33,
+  "fixtures": [
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R1_SOURCE_IDENTITY_PASS",
+      "source_fixture_id": "FIX_R1_SOURCE_IDENTITY_PASS",
+      "predicate_id": "R1",
+      "predicate_name": "SOURCE_IDENTITY",
+      "case_label": "PASS",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "authority_source_id": "authority_source.id",
+        "authority_sources": "module.authority_sources",
+        "receipts": "receipts.source_identity"
+      },
+      "runtime_input": {
+        "authority_source": {
+          "id": "SHAPE_ONLY"
+        },
+        "module": {
+          "authority_sources": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "source_identity": [
+            "fixture://shape/R1/pass/receipts/source_identity"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R1_SOURCE_IDENTITY_FAIL",
+      "source_fixture_id": "FIX_R1_SOURCE_IDENTITY_FAIL",
+      "predicate_id": "R1",
+      "predicate_name": "SOURCE_IDENTITY",
+      "case_label": "FAIL",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "authority_source_id": "authority_source.id",
+        "authority_sources": "module.authority_sources",
+        "receipts": "receipts.source_identity"
+      },
+      "runtime_input": {
+        "authority_source": {
+          "id": "SHAPE_ONLY"
+        },
+        "module": {
+          "authority_sources": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "source_identity": [
+            "fixture://shape/R1/fail/receipts/source_identity"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R1_SOURCE_IDENTITY_HOLD",
+      "source_fixture_id": "FIX_R1_SOURCE_IDENTITY_HOLD",
+      "predicate_id": "R1",
+      "predicate_name": "SOURCE_IDENTITY",
+      "case_label": "HOLD",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "authority_source_id": "authority_source.id",
+        "authority_sources": "module.authority_sources",
+        "receipts": "receipts.source_identity"
+      },
+      "runtime_input": {
+        "authority_source": {
+          "id": "SHAPE_ONLY"
+        },
+        "module": {
+          "authority_sources": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "source_identity": [
+            "fixture://shape/R1/hold/receipts/source_identity"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R2_JURISDICTION_SCOPE_PASS",
+      "source_fixture_id": "FIX_R2_JURISDICTION_SCOPE_PASS",
+      "predicate_id": "R2",
+      "predicate_name": "JURISDICTION_SCOPE",
+      "case_label": "PASS",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "event_domain": "event.domain",
+        "scope": "module.scope",
+        "receipts": "receipts.jurisdiction"
+      },
+      "runtime_input": {
+        "event": {
+          "domain": "SHAPE_ONLY"
+        },
+        "module": {
+          "scope": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "jurisdiction": [
+            "fixture://shape/R2/pass/receipts/jurisdiction"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R2_JURISDICTION_SCOPE_FAIL",
+      "source_fixture_id": "FIX_R2_JURISDICTION_SCOPE_FAIL",
+      "predicate_id": "R2",
+      "predicate_name": "JURISDICTION_SCOPE",
+      "case_label": "FAIL",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "event_domain": "event.domain",
+        "scope": "module.scope",
+        "receipts": "receipts.jurisdiction"
+      },
+      "runtime_input": {
+        "event": {
+          "domain": "SHAPE_ONLY"
+        },
+        "module": {
+          "scope": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "jurisdiction": [
+            "fixture://shape/R2/fail/receipts/jurisdiction"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R2_JURISDICTION_SCOPE_HOLD",
+      "source_fixture_id": "FIX_R2_JURISDICTION_SCOPE_HOLD",
+      "predicate_id": "R2",
+      "predicate_name": "JURISDICTION_SCOPE",
+      "case_label": "HOLD",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "event_domain": "event.domain",
+        "scope": "module.scope",
+        "receipts": "receipts.jurisdiction"
+      },
+      "runtime_input": {
+        "event": {
+          "domain": "SHAPE_ONLY"
+        },
+        "module": {
+          "scope": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "jurisdiction": [
+            "fixture://shape/R2/hold/receipts/jurisdiction"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R3_TEMPORAL_APPLICABILITY_PASS",
+      "source_fixture_id": "FIX_R3_TEMPORAL_APPLICABILITY_PASS",
+      "predicate_id": "R3",
+      "predicate_name": "TEMPORAL_APPLICABILITY",
+      "case_label": "PASS",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "event_time": "event.timestamp",
+        "valid_from": "authority_source.valid_from",
+        "valid_to": "authority_source.valid_to",
+        "receipts": "receipts.temporal"
+      },
+      "runtime_input": {
+        "event": {
+          "timestamp": "SHAPE_ONLY_TIMESTAMP"
+        },
+        "authority_source": {
+          "valid_from": "SHAPE_ONLY_TIMESTAMP",
+          "valid_to": "SHAPE_ONLY_TIMESTAMP"
+        },
+        "receipts": {
+          "temporal": [
+            "fixture://shape/R3/pass/receipts/temporal"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R3_TEMPORAL_APPLICABILITY_FAIL",
+      "source_fixture_id": "FIX_R3_TEMPORAL_APPLICABILITY_FAIL",
+      "predicate_id": "R3",
+      "predicate_name": "TEMPORAL_APPLICABILITY",
+      "case_label": "FAIL",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "event_time": "event.timestamp",
+        "valid_from": "authority_source.valid_from",
+        "valid_to": "authority_source.valid_to",
+        "receipts": "receipts.temporal"
+      },
+      "runtime_input": {
+        "event": {
+          "timestamp": "SHAPE_ONLY_TIMESTAMP"
+        },
+        "authority_source": {
+          "valid_from": "SHAPE_ONLY_TIMESTAMP",
+          "valid_to": "SHAPE_ONLY_TIMESTAMP"
+        },
+        "receipts": {
+          "temporal": [
+            "fixture://shape/R3/fail/receipts/temporal"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R3_TEMPORAL_APPLICABILITY_HOLD",
+      "source_fixture_id": "FIX_R3_TEMPORAL_APPLICABILITY_HOLD",
+      "predicate_id": "R3",
+      "predicate_name": "TEMPORAL_APPLICABILITY",
+      "case_label": "HOLD",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "event_time": "event.timestamp",
+        "valid_from": "authority_source.valid_from",
+        "valid_to": "authority_source.valid_to",
+        "receipts": "receipts.temporal"
+      },
+      "runtime_input": {
+        "event": {
+          "timestamp": "SHAPE_ONLY_TIMESTAMP"
+        },
+        "authority_source": {
+          "valid_from": "SHAPE_ONLY_TIMESTAMP",
+          "valid_to": "SHAPE_ONLY_TIMESTAMP"
+        },
+        "receipts": {
+          "temporal": [
+            "fixture://shape/R3/hold/receipts/temporal"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R4_ACTOR_APPLICABILITY_PASS",
+      "source_fixture_id": "FIX_R4_ACTOR_APPLICABILITY_PASS",
+      "predicate_id": "R4",
+      "predicate_name": "ACTOR_APPLICABILITY",
+      "case_label": "PASS",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "actor": "event.actor",
+        "actor_rules": "module.actor_rules",
+        "receipts": "receipts.actor"
+      },
+      "runtime_input": {
+        "event": {
+          "actor": "SHAPE_ONLY"
+        },
+        "module": {
+          "actor_rules": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "actor": [
+            "fixture://shape/R4/pass/receipts/actor"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R4_ACTOR_APPLICABILITY_FAIL",
+      "source_fixture_id": "FIX_R4_ACTOR_APPLICABILITY_FAIL",
+      "predicate_id": "R4",
+      "predicate_name": "ACTOR_APPLICABILITY",
+      "case_label": "FAIL",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "actor": "event.actor",
+        "actor_rules": "module.actor_rules",
+        "receipts": "receipts.actor"
+      },
+      "runtime_input": {
+        "event": {
+          "actor": "SHAPE_ONLY"
+        },
+        "module": {
+          "actor_rules": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "actor": [
+            "fixture://shape/R4/fail/receipts/actor"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R4_ACTOR_APPLICABILITY_HOLD",
+      "source_fixture_id": "FIX_R4_ACTOR_APPLICABILITY_HOLD",
+      "predicate_id": "R4",
+      "predicate_name": "ACTOR_APPLICABILITY",
+      "case_label": "HOLD",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "actor": "event.actor",
+        "actor_rules": "module.actor_rules",
+        "receipts": "receipts.actor"
+      },
+      "runtime_input": {
+        "event": {
+          "actor": "SHAPE_ONLY"
+        },
+        "module": {
+          "actor_rules": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "actor": [
+            "fixture://shape/R4/hold/receipts/actor"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R5_SUBJECT_APPLICABILITY_PASS",
+      "source_fixture_id": "FIX_R5_SUBJECT_APPLICABILITY_PASS",
+      "predicate_id": "R5",
+      "predicate_name": "SUBJECT_APPLICABILITY",
+      "case_label": "PASS",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "subject": "event.subject",
+        "subject_rules": "module.subject_rules",
+        "receipts": "receipts.subject"
+      },
+      "runtime_input": {
+        "event": {
+          "subject": "SHAPE_ONLY"
+        },
+        "module": {
+          "subject_rules": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "subject": [
+            "fixture://shape/R5/pass/receipts/subject"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R5_SUBJECT_APPLICABILITY_FAIL",
+      "source_fixture_id": "FIX_R5_SUBJECT_APPLICABILITY_FAIL",
+      "predicate_id": "R5",
+      "predicate_name": "SUBJECT_APPLICABILITY",
+      "case_label": "FAIL",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "subject": "event.subject",
+        "subject_rules": "module.subject_rules",
+        "receipts": "receipts.subject"
+      },
+      "runtime_input": {
+        "event": {
+          "subject": "SHAPE_ONLY"
+        },
+        "module": {
+          "subject_rules": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "subject": [
+            "fixture://shape/R5/fail/receipts/subject"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R5_SUBJECT_APPLICABILITY_HOLD",
+      "source_fixture_id": "FIX_R5_SUBJECT_APPLICABILITY_HOLD",
+      "predicate_id": "R5",
+      "predicate_name": "SUBJECT_APPLICABILITY",
+      "case_label": "HOLD",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "subject": "event.subject",
+        "subject_rules": "module.subject_rules",
+        "receipts": "receipts.subject"
+      },
+      "runtime_input": {
+        "event": {
+          "subject": "SHAPE_ONLY"
+        },
+        "module": {
+          "subject_rules": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "subject": [
+            "fixture://shape/R5/hold/receipts/subject"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R6_ACTION_APPLICABILITY_PASS",
+      "source_fixture_id": "FIX_R6_ACTION_APPLICABILITY_PASS",
+      "predicate_id": "R6",
+      "predicate_name": "ACTION_APPLICABILITY",
+      "case_label": "PASS",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "action": "event.action",
+        "action_rules": "module.action_rules",
+        "receipts": "receipts.action"
+      },
+      "runtime_input": {
+        "event": {
+          "action": "SHAPE_ONLY"
+        },
+        "module": {
+          "action_rules": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "action": [
+            "fixture://shape/R6/pass/receipts/action"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R6_ACTION_APPLICABILITY_FAIL",
+      "source_fixture_id": "FIX_R6_ACTION_APPLICABILITY_FAIL",
+      "predicate_id": "R6",
+      "predicate_name": "ACTION_APPLICABILITY",
+      "case_label": "FAIL",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "action": "event.action",
+        "action_rules": "module.action_rules",
+        "receipts": "receipts.action"
+      },
+      "runtime_input": {
+        "event": {
+          "action": "SHAPE_ONLY"
+        },
+        "module": {
+          "action_rules": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "action": [
+            "fixture://shape/R6/fail/receipts/action"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R6_ACTION_APPLICABILITY_HOLD",
+      "source_fixture_id": "FIX_R6_ACTION_APPLICABILITY_HOLD",
+      "predicate_id": "R6",
+      "predicate_name": "ACTION_APPLICABILITY",
+      "case_label": "HOLD",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "action": "event.action",
+        "action_rules": "module.action_rules",
+        "receipts": "receipts.action"
+      },
+      "runtime_input": {
+        "event": {
+          "action": "SHAPE_ONLY"
+        },
+        "module": {
+          "action_rules": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "receipts": {
+          "action": [
+            "fixture://shape/R6/hold/receipts/action"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R7_DELEGATION_AUTHORIZATION_PASS",
+      "source_fixture_id": "FIX_R7_DELEGATION_AUTHORIZATION_PASS",
+      "predicate_id": "R7",
+      "predicate_name": "DELEGATION_AUTHORIZATION",
+      "case_label": "PASS",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "delegation": "authority_source.delegation",
+        "actor": "event.actor",
+        "action": "event.action",
+        "receipts": "receipts.delegation"
+      },
+      "runtime_input": {
+        "authority_source": {
+          "delegation": "SHAPE_ONLY"
+        },
+        "event": {
+          "actor": "SHAPE_ONLY",
+          "action": "SHAPE_ONLY"
+        },
+        "receipts": {
+          "delegation": [
+            "fixture://shape/R7/pass/receipts/delegation"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R7_DELEGATION_AUTHORIZATION_FAIL",
+      "source_fixture_id": "FIX_R7_DELEGATION_AUTHORIZATION_FAIL",
+      "predicate_id": "R7",
+      "predicate_name": "DELEGATION_AUTHORIZATION",
+      "case_label": "FAIL",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "delegation": "authority_source.delegation",
+        "actor": "event.actor",
+        "action": "event.action",
+        "receipts": "receipts.delegation"
+      },
+      "runtime_input": {
+        "authority_source": {
+          "delegation": "SHAPE_ONLY"
+        },
+        "event": {
+          "actor": "SHAPE_ONLY",
+          "action": "SHAPE_ONLY"
+        },
+        "receipts": {
+          "delegation": [
+            "fixture://shape/R7/fail/receipts/delegation"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R7_DELEGATION_AUTHORIZATION_HOLD",
+      "source_fixture_id": "FIX_R7_DELEGATION_AUTHORIZATION_HOLD",
+      "predicate_id": "R7",
+      "predicate_name": "DELEGATION_AUTHORIZATION",
+      "case_label": "HOLD",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "delegation": "authority_source.delegation",
+        "actor": "event.actor",
+        "action": "event.action",
+        "receipts": "receipts.delegation"
+      },
+      "runtime_input": {
+        "authority_source": {
+          "delegation": "SHAPE_ONLY"
+        },
+        "event": {
+          "actor": "SHAPE_ONLY",
+          "action": "SHAPE_ONLY"
+        },
+        "receipts": {
+          "delegation": [
+            "fixture://shape/R7/hold/receipts/delegation"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R8_LIMIT_EXCEPTION_CHECK_PASS",
+      "source_fixture_id": "FIX_R8_LIMIT_EXCEPTION_CHECK_PASS",
+      "predicate_id": "R8",
+      "predicate_name": "LIMIT_EXCEPTION_CHECK",
+      "case_label": "PASS",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "limits": "module.limits",
+        "exceptions": "module.exceptions",
+        "event": "event",
+        "receipts": "receipts.limit_exception"
+      },
+      "runtime_input": {
+        "module": {
+          "limits": [
+            "SHAPE_ONLY"
+          ],
+          "exceptions": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "event": {
+          "shape_only": true
+        },
+        "receipts": {
+          "limit_exception": [
+            "fixture://shape/R8/pass/receipts/limit_exception"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R8_LIMIT_EXCEPTION_CHECK_FAIL",
+      "source_fixture_id": "FIX_R8_LIMIT_EXCEPTION_CHECK_FAIL",
+      "predicate_id": "R8",
+      "predicate_name": "LIMIT_EXCEPTION_CHECK",
+      "case_label": "FAIL",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "limits": "module.limits",
+        "exceptions": "module.exceptions",
+        "event": "event",
+        "receipts": "receipts.limit_exception"
+      },
+      "runtime_input": {
+        "module": {
+          "limits": [
+            "SHAPE_ONLY"
+          ],
+          "exceptions": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "event": {
+          "shape_only": true
+        },
+        "receipts": {
+          "limit_exception": [
+            "fixture://shape/R8/fail/receipts/limit_exception"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R8_LIMIT_EXCEPTION_CHECK_HOLD",
+      "source_fixture_id": "FIX_R8_LIMIT_EXCEPTION_CHECK_HOLD",
+      "predicate_id": "R8",
+      "predicate_name": "LIMIT_EXCEPTION_CHECK",
+      "case_label": "HOLD",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "limits": "module.limits",
+        "exceptions": "module.exceptions",
+        "event": "event",
+        "receipts": "receipts.limit_exception"
+      },
+      "runtime_input": {
+        "module": {
+          "limits": [
+            "SHAPE_ONLY"
+          ],
+          "exceptions": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "event": {
+          "shape_only": true
+        },
+        "receipts": {
+          "limit_exception": [
+            "fixture://shape/R8/hold/receipts/limit_exception"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R9_PROCEDURAL_TRIGGER_PASS",
+      "source_fixture_id": "FIX_R9_PROCEDURAL_TRIGGER_PASS",
+      "predicate_id": "R9",
+      "predicate_name": "PROCEDURAL_TRIGGER",
+      "case_label": "PASS",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "trigger_rules": "module.procedural_triggers",
+        "event": "event",
+        "receipts": "receipts.procedural"
+      },
+      "runtime_input": {
+        "module": {
+          "procedural_triggers": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "event": {
+          "shape_only": true
+        },
+        "receipts": {
+          "procedural": [
+            "fixture://shape/R9/pass/receipts/procedural"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R9_PROCEDURAL_TRIGGER_FAIL",
+      "source_fixture_id": "FIX_R9_PROCEDURAL_TRIGGER_FAIL",
+      "predicate_id": "R9",
+      "predicate_name": "PROCEDURAL_TRIGGER",
+      "case_label": "FAIL",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "trigger_rules": "module.procedural_triggers",
+        "event": "event",
+        "receipts": "receipts.procedural"
+      },
+      "runtime_input": {
+        "module": {
+          "procedural_triggers": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "event": {
+          "shape_only": true
+        },
+        "receipts": {
+          "procedural": [
+            "fixture://shape/R9/fail/receipts/procedural"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R9_PROCEDURAL_TRIGGER_HOLD",
+      "source_fixture_id": "FIX_R9_PROCEDURAL_TRIGGER_HOLD",
+      "predicate_id": "R9",
+      "predicate_name": "PROCEDURAL_TRIGGER",
+      "case_label": "HOLD",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "trigger_rules": "module.procedural_triggers",
+        "event": "event",
+        "receipts": "receipts.procedural"
+      },
+      "runtime_input": {
+        "module": {
+          "procedural_triggers": [
+            "SHAPE_ONLY"
+          ]
+        },
+        "event": {
+          "shape_only": true
+        },
+        "receipts": {
+          "procedural": [
+            "fixture://shape/R9/hold/receipts/procedural"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R10_VERSION_SUPERSESSION_PASS",
+      "source_fixture_id": "FIX_R10_VERSION_SUPERSESSION_PASS",
+      "predicate_id": "R10",
+      "predicate_name": "VERSION_SUPERSESSION",
+      "case_label": "PASS",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "authority_version": "authority_source.version",
+        "event_time": "event.timestamp",
+        "supersession": "authority_source.supersession",
+        "receipts": "receipts.version"
+      },
+      "runtime_input": {
+        "authority_source": {
+          "version": "SHAPE_ONLY",
+          "supersession": "SHAPE_ONLY"
+        },
+        "event": {
+          "timestamp": "SHAPE_ONLY_TIMESTAMP"
+        },
+        "receipts": {
+          "version": [
+            "fixture://shape/R10/pass/receipts/version"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R10_VERSION_SUPERSESSION_FAIL",
+      "source_fixture_id": "FIX_R10_VERSION_SUPERSESSION_FAIL",
+      "predicate_id": "R10",
+      "predicate_name": "VERSION_SUPERSESSION",
+      "case_label": "FAIL",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "authority_version": "authority_source.version",
+        "event_time": "event.timestamp",
+        "supersession": "authority_source.supersession",
+        "receipts": "receipts.version"
+      },
+      "runtime_input": {
+        "authority_source": {
+          "version": "SHAPE_ONLY",
+          "supersession": "SHAPE_ONLY"
+        },
+        "event": {
+          "timestamp": "SHAPE_ONLY_TIMESTAMP"
+        },
+        "receipts": {
+          "version": [
+            "fixture://shape/R10/fail/receipts/version"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R10_VERSION_SUPERSESSION_HOLD",
+      "source_fixture_id": "FIX_R10_VERSION_SUPERSESSION_HOLD",
+      "predicate_id": "R10",
+      "predicate_name": "VERSION_SUPERSESSION",
+      "case_label": "HOLD",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "authority_version": "authority_source.version",
+        "event_time": "event.timestamp",
+        "supersession": "authority_source.supersession",
+        "receipts": "receipts.version"
+      },
+      "runtime_input": {
+        "authority_source": {
+          "version": "SHAPE_ONLY",
+          "supersession": "SHAPE_ONLY"
+        },
+        "event": {
+          "timestamp": "SHAPE_ONLY_TIMESTAMP"
+        },
+        "receipts": {
+          "version": [
+            "fixture://shape/R10/hold/receipts/version"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R11_STATE_CONFLICT_PASS",
+      "source_fixture_id": "FIX_R11_STATE_CONFLICT_PASS",
+      "predicate_id": "R11",
+      "predicate_name": "STATE_CONFLICT",
+      "case_label": "PASS",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "claim_object": "claim",
+        "runtime_state": "runtime.state",
+        "receipts": "receipts.state"
+      },
+      "runtime_input": {
+        "claim": {
+          "shape_only": true,
+          "claim_id": "FIX_R11_STATE_CONFLICT_PASS"
+        },
+        "runtime": {
+          "state": {
+            "shape_only": true,
+            "state": "UNBOUND"
+          }
+        },
+        "receipts": {
+          "state": [
+            "fixture://shape/R11/pass/receipts/state"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_ALPHA_DEED_001_STATE_CONFLICT",
+      "source_fixture_id": "FIX_ALPHA_DEED_001_STATE_CONFLICT",
+      "predicate_id": "R11",
+      "predicate_name": "STATE_CONFLICT",
+      "case_label": "CONFLICT",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "claim_object": "claim",
+        "runtime_state": "runtime.state",
+        "receipts": "receipts.state"
+      },
+      "runtime_input": {
+        "claim": {
+          "shape_only": true,
+          "claim_id": "FIX_ALPHA_DEED_001_STATE_CONFLICT"
+        },
+        "runtime": {
+          "state": {
+            "shape_only": true,
+            "state": "UNBOUND"
+          }
+        },
+        "receipts": {
+          "state": [
+            "fixture://shape/R11/conflict/receipts/state"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    },
+    {
+      "runtime_fixture_id": "RUNTIME_FIX_R11_STATE_CONFLICT_HOLD",
+      "source_fixture_id": "FIX_R11_STATE_CONFLICT_HOLD",
+      "predicate_id": "R11",
+      "predicate_name": "STATE_CONFLICT",
+      "case_label": "HOLD",
+      "binding_status": "SHAPE_ONLY",
+      "semantic_evaluation": "BLOCKED",
+      "predicate_truth_created": false,
+      "authority_created": false,
+      "verdict_created": false,
+      "input_map_snapshot": {
+        "claim_object": "claim",
+        "runtime_state": "runtime.state",
+        "receipts": "receipts.state"
+      },
+      "runtime_input": {
+        "claim": {
+          "shape_only": true,
+          "claim_id": "FIX_R11_STATE_CONFLICT_HOLD"
+        },
+        "runtime": {
+          "state": {
+            "shape_only": true,
+            "state": "UNBOUND"
+          }
+        },
+        "receipts": {
+          "state": [
+            "fixture://shape/R11/hold/receipts/state"
+          ]
+        }
+      },
+      "notes": "Provisional shape binding only. Values are synthetic placeholders and MUST NOT be interpreted as predicate evidence."
+    }
+  ]
+}
