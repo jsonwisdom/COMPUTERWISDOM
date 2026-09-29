@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/schemas/reconciliation_receipt_v0_1.schema.json",
+  "title": "RECONCILIATION_RECEIPT_SCHEMA_V0_1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "receipt_id",
+    "receipt_type",
+    "resolves_conflict_id",
+    "new_state",
+    "evidence_receipts",
+    "issued_at",
+    "provenance",
+    "invariants"
+  ],
+  "properties": {
+    "receipt_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "receipt_type": {
+      "const": "general_reconciliation"
+    },
+    "resolves_conflict_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "new_state": {
+      "type": [
+        "string",
+        "number",
+        "boolean",
+        "object",
+        "array",
+        "null"
+      ]
+    },
+    "evidence_receipts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "issued_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "issuer_class",
+        "creation_basis"
+      ],
+      "properties": {
+        "issuer_class": {
+          "enum": [
+            "resolver_internal",
+            "human_adjudication",
+            "external_source"
+          ]
+        },
+        "creation_basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_object_ids": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "invariants": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "append_only",
+        "preserve_prior_states",
+        "authority_created",
+        "verdict_created"
+      ],
+      "properties": {
+        "append_only": {
+          "const": true
+        },
+        "preserve_prior_states": {
+          "const": true
+        },
+        "authority_created": {
+          "const": false
+        },
+        "verdict_created": {
+          "const": false
+        }
+      }
+    },
+    "notes": {
+      "type": "string"
+    }
+  }
+}
