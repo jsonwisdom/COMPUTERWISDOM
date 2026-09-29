@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "wiki_atom_bomb_disclosure_archive.v0_1.schema.json",
+  "title": "WIKI_ATOM_BOMB_DISCLOSURE_ARCHIVE_V0",
+  "type": "object",
+  "required": ["archive_id", "schema_version", "object_state", "field_states", "relations", "forward_pointers", "revision_model", "guardrails"],
+  "properties": {
+    "archive_id": {"const": "WIKI_ATOM_BOMB_DISCLOSURE_ARCHIVE_V0"},
+    "schema_version": {"const": "0.1"},
+    "object_state": {
+      "type": "object",
+      "required": ["captured"],
+      "properties": {"captured": {"type": "boolean"}},
+      "additionalProperties": false
+    },
+    "field_states": {
+      "type": "object",
+      "description": "State belongs to individual fields, never implicitly to the whole object.",
+      "additionalProperties": {
+        "type": "string",
+        "enum": ["HOLD", "CAPTURED", "ASSERTED", "ABSENT", "UNKNOWN", "REFUTED", "VERIFIED", "STALE"]
+      }
+    },
+    "relations": {
+      "type": "object",
+      "required": ["asserted", "verified"],
+      "properties": {
+        "asserted": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["source_object_id", "claim_object_id"],
+            "properties": {
+              "source_object_id": {"type": "string"},
+              "claim_object_id": {"type": "string"}
+            },
+            "additionalProperties": false
+          }
+        },
+        "verified": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["evidence_object_id", "claim_object_id"],
+            "properties": {
+              "evidence_object_id": {"type": "string"},
+              "claim_object_id": {"type": "string"}
+            },
+            "additionalProperties": false
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "forward_pointers": {
+      "type": "object",
+      "required": ["translation_to_source", "claim_to_translation", "evidence_to_claim", "status_to_evidence"],
+      "properties": {
+        "translation_to_source": {"type": "string"},
+        "claim_to_translation": {"type": "string"},
+        "evidence_to_claim": {"type": "string"},
+        "status_to_evidence": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "revision_model": {
+      "type": "object",
+      "required": ["event", "effects", "forbidden"],
+      "properties": {
+        "event": {"const": "UPSTREAM_REVISION"},
+        "effects": {
+          "type": "array",
+          "items": {"enum": ["APPEND_REVISION_RECORD", "MARK_DEPENDENTS_STALE", "RE_EVALUATE", "REQUIRE_EXPLICIT_NEW_STATUS"]},
+          "minItems": 4,
+          "uniqueItems": true
+        },
+        "forbidden": {
+          "type": "array",
+          "items": {"enum": ["SILENT_REWRITE", "AUTO_PROMOTION", "AUTO_DEMOTION", "VALIDITY_INHERITANCE"]},
+          "minItems": 4,
+          "uniqueItems": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "guardrails": {
+      "type": "array",
+      "items": {"type": "string"},
+      "allOf": [
+        {"contains": {"const": "SCHEMA_VALIDITY_NE_RECEIPT_CONTENT_TRUTH"}},
+        {"contains": {"const": "REFERENCE_USE_IS_STRUCTURE_EXEMPLAR"}},
+        {"contains": {"const": "CAPTURED_NE_TRUE"}},
+        {"contains": {"const": "ASSERTED_NE_VERIFIED"}},
+        {"contains": {"const": "HOLD_NE_UNKNOWN"}},
+        {"contains": {"const": "REVISION_IS_APPEND_PLUS_STALE_PLUS_RE_EVALUATE"}}
+      ]
+    }
+  },
+  "additionalProperties": true,
+  "$comment": "Root rule: CAPTURE WHAT EXISTS. HASH WHAT WAS CAPTURED. TRANSLATE WHAT WAS CAPTURED. EXTRACT ONLY WHAT THE SOURCE SUPPORTS. PROMOTE NOTHING WITHOUT ITS OWN EVIDENCE."
+}
