@@ -1,0 +1,565 @@
+{
+  "fixture_set_id": "TEST_FIXTURES_V0_1",
+  "classification": "REPLAY_VALIDATION_ONLY",
+  "project": "MinnesotaMath",
+  "contract": "AUTHORITY_RESOLUTION_CONTRACT_V0_1",
+  "schema": "JSON_SCHEMA_V0_1",
+  "pipeline": [
+    "AUTHORITY_RESOLUTION_CONTRACT_V0_1",
+    "JSON_SCHEMA_V0_1",
+    "TEST_FIXTURES_V0_1",
+    "RESOLVER_V0_1",
+    "INDEPENDENT_REPLAY"
+  ],
+  "membrane": [
+    "RECEIPT",
+    "ASSERTION",
+    "EVENT"
+  ],
+  "invariants": {
+    "authority_created": false,
+    "jurisdiction_inferred": false,
+    "fact_adjudicated": false,
+    "legal_finding_created": false,
+    "wrongdoing_finding_created": false,
+    "no_fake_green": true,
+    "append_only": true
+  },
+  "result_domain": [
+    "authorized",
+    "not_authorized",
+    "hold",
+    "conflict"
+  ],
+  "fixture_count": 33,
+  "fixtures": [
+    {
+      "fixture_id": "FIX_R1_SOURCE_IDENTITY_PASS",
+      "predicate": "R1",
+      "predicate_name": "SOURCE_IDENTITY",
+      "case": "PASS",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R1/pass",
+      "action_receipt": "fixture://action/R1/pass",
+      "assertion_receipt": "fixture://assertion/R1/pass",
+      "event_receipt": "fixture://event/R1/pass",
+      "expected_rules": [
+        "R1"
+      ],
+      "expected_result": "authorized",
+      "notes": "authority source appears in module.authority_sources"
+    },
+    {
+      "fixture_id": "FIX_R1_SOURCE_IDENTITY_FAIL",
+      "predicate": "R1",
+      "predicate_name": "SOURCE_IDENTITY",
+      "case": "FAIL",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R1/fail",
+      "action_receipt": "fixture://action/R1/fail",
+      "assertion_receipt": "fixture://assertion/R1/fail",
+      "event_receipt": "fixture://event/R1/fail",
+      "expected_rules": [
+        "R1"
+      ],
+      "expected_result": "not_authorized",
+      "notes": "authority source is absent from module.authority_sources"
+    },
+    {
+      "fixture_id": "FIX_R1_SOURCE_IDENTITY_HOLD",
+      "predicate": "R1",
+      "predicate_name": "SOURCE_IDENTITY",
+      "case": "HOLD",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R1/hold",
+      "action_receipt": "fixture://action/R1/hold",
+      "assertion_receipt": "fixture://assertion/R1/hold",
+      "event_receipt": "fixture://event/R1/hold",
+      "expected_rules": [
+        "R1"
+      ],
+      "expected_result": "hold",
+      "notes": "module is missing or source receipts are ambiguous"
+    },
+    {
+      "fixture_id": "FIX_R2_JURISDICTION_SCOPE_PASS",
+      "predicate": "R2",
+      "predicate_name": "JURISDICTION_SCOPE",
+      "case": "PASS",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R2/pass",
+      "action_receipt": "fixture://action/R2/pass",
+      "assertion_receipt": "fixture://assertion/R2/pass",
+      "event_receipt": "fixture://event/R2/pass",
+      "expected_rules": [
+        "R2"
+      ],
+      "expected_result": "authorized",
+      "notes": "event.domain is contained in module.scope"
+    },
+    {
+      "fixture_id": "FIX_R2_JURISDICTION_SCOPE_FAIL",
+      "predicate": "R2",
+      "predicate_name": "JURISDICTION_SCOPE",
+      "case": "FAIL",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R2/fail",
+      "action_receipt": "fixture://action/R2/fail",
+      "assertion_receipt": "fixture://assertion/R2/fail",
+      "event_receipt": "fixture://event/R2/fail",
+      "expected_rules": [
+        "R2"
+      ],
+      "expected_result": "not_authorized",
+      "notes": "event.domain is outside module.scope"
+    },
+    {
+      "fixture_id": "FIX_R2_JURISDICTION_SCOPE_HOLD",
+      "predicate": "R2",
+      "predicate_name": "JURISDICTION_SCOPE",
+      "case": "HOLD",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R2/hold",
+      "action_receipt": "fixture://action/R2/hold",
+      "assertion_receipt": "fixture://assertion/R2/hold",
+      "event_receipt": "fixture://event/R2/hold",
+      "expected_rules": [
+        "R2"
+      ],
+      "expected_result": "hold",
+      "notes": "scope fields are missing or unresolved"
+    },
+    {
+      "fixture_id": "FIX_R3_TEMPORAL_APPLICABILITY_PASS",
+      "predicate": "R3",
+      "predicate_name": "TEMPORAL_APPLICABILITY",
+      "case": "PASS",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R3/pass",
+      "action_receipt": "fixture://action/R3/pass",
+      "assertion_receipt": "fixture://assertion/R3/pass",
+      "event_receipt": "fixture://event/R3/pass",
+      "expected_rules": [
+        "R3"
+      ],
+      "expected_result": "authorized",
+      "notes": "event_time is inside the authority validity window"
+    },
+    {
+      "fixture_id": "FIX_R3_TEMPORAL_APPLICABILITY_FAIL",
+      "predicate": "R3",
+      "predicate_name": "TEMPORAL_APPLICABILITY",
+      "case": "FAIL",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R3/fail",
+      "action_receipt": "fixture://action/R3/fail",
+      "assertion_receipt": "fixture://assertion/R3/fail",
+      "event_receipt": "fixture://event/R3/fail",
+      "expected_rules": [
+        "R3"
+      ],
+      "expected_result": "not_authorized",
+      "notes": "event_time is outside the authority validity window"
+    },
+    {
+      "fixture_id": "FIX_R3_TEMPORAL_APPLICABILITY_HOLD",
+      "predicate": "R3",
+      "predicate_name": "TEMPORAL_APPLICABILITY",
+      "case": "HOLD",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R3/hold",
+      "action_receipt": "fixture://action/R3/hold",
+      "assertion_receipt": "fixture://assertion/R3/hold",
+      "event_receipt": "fixture://event/R3/hold",
+      "expected_rules": [
+        "R3"
+      ],
+      "expected_result": "hold",
+      "notes": "required timestamps or temporal receipts are missing"
+    },
+    {
+      "fixture_id": "FIX_R4_ACTOR_APPLICABILITY_PASS",
+      "predicate": "R4",
+      "predicate_name": "ACTOR_APPLICABILITY",
+      "case": "PASS",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R4/pass",
+      "action_receipt": "fixture://action/R4/pass",
+      "assertion_receipt": "fixture://assertion/R4/pass",
+      "event_receipt": "fixture://event/R4/pass",
+      "expected_rules": [
+        "R4"
+      ],
+      "expected_result": "authorized",
+      "notes": "actor satisfies module.actor_rules"
+    },
+    {
+      "fixture_id": "FIX_R4_ACTOR_APPLICABILITY_FAIL",
+      "predicate": "R4",
+      "predicate_name": "ACTOR_APPLICABILITY",
+      "case": "FAIL",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R4/fail",
+      "action_receipt": "fixture://action/R4/fail",
+      "assertion_receipt": "fixture://assertion/R4/fail",
+      "event_receipt": "fixture://event/R4/fail",
+      "expected_rules": [
+        "R4"
+      ],
+      "expected_result": "not_authorized",
+      "notes": "actor does not satisfy module.actor_rules"
+    },
+    {
+      "fixture_id": "FIX_R4_ACTOR_APPLICABILITY_HOLD",
+      "predicate": "R4",
+      "predicate_name": "ACTOR_APPLICABILITY",
+      "case": "HOLD",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R4/hold",
+      "action_receipt": "fixture://action/R4/hold",
+      "assertion_receipt": "fixture://assertion/R4/hold",
+      "event_receipt": "fixture://event/R4/hold",
+      "expected_rules": [
+        "R4"
+      ],
+      "expected_result": "hold",
+      "notes": "actor identity or actor receipts are unresolved"
+    },
+    {
+      "fixture_id": "FIX_R5_SUBJECT_APPLICABILITY_PASS",
+      "predicate": "R5",
+      "predicate_name": "SUBJECT_APPLICABILITY",
+      "case": "PASS",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R5/pass",
+      "action_receipt": "fixture://action/R5/pass",
+      "assertion_receipt": "fixture://assertion/R5/pass",
+      "event_receipt": "fixture://event/R5/pass",
+      "expected_rules": [
+        "R5"
+      ],
+      "expected_result": "authorized",
+      "notes": "subject satisfies module.subject_rules"
+    },
+    {
+      "fixture_id": "FIX_R5_SUBJECT_APPLICABILITY_FAIL",
+      "predicate": "R5",
+      "predicate_name": "SUBJECT_APPLICABILITY",
+      "case": "FAIL",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R5/fail",
+      "action_receipt": "fixture://action/R5/fail",
+      "assertion_receipt": "fixture://assertion/R5/fail",
+      "event_receipt": "fixture://event/R5/fail",
+      "expected_rules": [
+        "R5"
+      ],
+      "expected_result": "not_authorized",
+      "notes": "subject does not satisfy module.subject_rules"
+    },
+    {
+      "fixture_id": "FIX_R5_SUBJECT_APPLICABILITY_HOLD",
+      "predicate": "R5",
+      "predicate_name": "SUBJECT_APPLICABILITY",
+      "case": "HOLD",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R5/hold",
+      "action_receipt": "fixture://action/R5/hold",
+      "assertion_receipt": "fixture://assertion/R5/hold",
+      "event_receipt": "fixture://event/R5/hold",
+      "expected_rules": [
+        "R5"
+      ],
+      "expected_result": "hold",
+      "notes": "subject identity or subject receipts are unresolved"
+    },
+    {
+      "fixture_id": "FIX_R6_ACTION_APPLICABILITY_PASS",
+      "predicate": "R6",
+      "predicate_name": "ACTION_APPLICABILITY",
+      "case": "PASS",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R6/pass",
+      "action_receipt": "fixture://action/R6/pass",
+      "assertion_receipt": "fixture://assertion/R6/pass",
+      "event_receipt": "fixture://event/R6/pass",
+      "expected_rules": [
+        "R6"
+      ],
+      "expected_result": "authorized",
+      "notes": "action is admitted by module.action_rules"
+    },
+    {
+      "fixture_id": "FIX_R6_ACTION_APPLICABILITY_FAIL",
+      "predicate": "R6",
+      "predicate_name": "ACTION_APPLICABILITY",
+      "case": "FAIL",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R6/fail",
+      "action_receipt": "fixture://action/R6/fail",
+      "assertion_receipt": "fixture://assertion/R6/fail",
+      "event_receipt": "fixture://event/R6/fail",
+      "expected_rules": [
+        "R6"
+      ],
+      "expected_result": "not_authorized",
+      "notes": "action is not admitted by module.action_rules"
+    },
+    {
+      "fixture_id": "FIX_R6_ACTION_APPLICABILITY_HOLD",
+      "predicate": "R6",
+      "predicate_name": "ACTION_APPLICABILITY",
+      "case": "HOLD",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R6/hold",
+      "action_receipt": "fixture://action/R6/hold",
+      "assertion_receipt": "fixture://assertion/R6/hold",
+      "event_receipt": "fixture://event/R6/hold",
+      "expected_rules": [
+        "R6"
+      ],
+      "expected_result": "hold",
+      "notes": "action or action rules are missing"
+    },
+    {
+      "fixture_id": "FIX_R7_DELEGATION_AUTHORIZATION_PASS",
+      "predicate": "R7",
+      "predicate_name": "DELEGATION_AUTHORIZATION",
+      "case": "PASS",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R7/pass",
+      "action_receipt": "fixture://action/R7/pass",
+      "assertion_receipt": "fixture://assertion/R7/pass",
+      "event_receipt": "fixture://event/R7/pass",
+      "expected_rules": [
+        "R7"
+      ],
+      "expected_result": "authorized",
+      "notes": "receipts affirm the required delegation"
+    },
+    {
+      "fixture_id": "FIX_R7_DELEGATION_AUTHORIZATION_FAIL",
+      "predicate": "R7",
+      "predicate_name": "DELEGATION_AUTHORIZATION",
+      "case": "FAIL",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R7/fail",
+      "action_receipt": "fixture://action/R7/fail",
+      "assertion_receipt": "fixture://assertion/R7/fail",
+      "event_receipt": "fixture://event/R7/fail",
+      "expected_rules": [
+        "R7"
+      ],
+      "expected_result": "not_authorized",
+      "notes": "receipts contradict the required delegation"
+    },
+    {
+      "fixture_id": "FIX_R7_DELEGATION_AUTHORIZATION_HOLD",
+      "predicate": "R7",
+      "predicate_name": "DELEGATION_AUTHORIZATION",
+      "case": "HOLD",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R7/hold",
+      "action_receipt": "fixture://action/R7/hold",
+      "assertion_receipt": "fixture://assertion/R7/hold",
+      "event_receipt": "fixture://event/R7/hold",
+      "expected_rules": [
+        "R7"
+      ],
+      "expected_result": "hold",
+      "notes": "delegation receipts are absent or ambiguous"
+    },
+    {
+      "fixture_id": "FIX_R8_LIMIT_EXCEPTION_CHECK_PASS",
+      "predicate": "R8",
+      "predicate_name": "LIMIT_EXCEPTION_CHECK",
+      "case": "PASS",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R8/pass",
+      "action_receipt": "fixture://action/R8/pass",
+      "assertion_receipt": "fixture://assertion/R8/pass",
+      "event_receipt": "fixture://event/R8/pass",
+      "expected_rules": [
+        "R8"
+      ],
+      "expected_result": "authorized",
+      "notes": "no applicable limit or exception blocks the action"
+    },
+    {
+      "fixture_id": "FIX_R8_LIMIT_EXCEPTION_CHECK_FAIL",
+      "predicate": "R8",
+      "predicate_name": "LIMIT_EXCEPTION_CHECK",
+      "case": "FAIL",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R8/fail",
+      "action_receipt": "fixture://action/R8/fail",
+      "assertion_receipt": "fixture://assertion/R8/fail",
+      "event_receipt": "fixture://event/R8/fail",
+      "expected_rules": [
+        "R8"
+      ],
+      "expected_result": "not_authorized",
+      "notes": "an applicable limit or exception blocks the action"
+    },
+    {
+      "fixture_id": "FIX_R8_LIMIT_EXCEPTION_CHECK_HOLD",
+      "predicate": "R8",
+      "predicate_name": "LIMIT_EXCEPTION_CHECK",
+      "case": "HOLD",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R8/hold",
+      "action_receipt": "fixture://action/R8/hold",
+      "assertion_receipt": "fixture://assertion/R8/hold",
+      "event_receipt": "fixture://event/R8/hold",
+      "expected_rules": [
+        "R8"
+      ],
+      "expected_result": "hold",
+      "notes": "limit or exception applicability is unresolved"
+    },
+    {
+      "fixture_id": "FIX_R9_PROCEDURAL_TRIGGER_PASS",
+      "predicate": "R9",
+      "predicate_name": "PROCEDURAL_TRIGGER",
+      "case": "PASS",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R9/pass",
+      "action_receipt": "fixture://action/R9/pass",
+      "assertion_receipt": "fixture://assertion/R9/pass",
+      "event_receipt": "fixture://event/R9/pass",
+      "expected_rules": [
+        "R9"
+      ],
+      "expected_result": "authorized",
+      "notes": "required trigger is satisfied"
+    },
+    {
+      "fixture_id": "FIX_R9_PROCEDURAL_TRIGGER_FAIL",
+      "predicate": "R9",
+      "predicate_name": "PROCEDURAL_TRIGGER",
+      "case": "FAIL",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R9/fail",
+      "action_receipt": "fixture://action/R9/fail",
+      "assertion_receipt": "fixture://assertion/R9/fail",
+      "event_receipt": "fixture://event/R9/fail",
+      "expected_rules": [
+        "R9"
+      ],
+      "expected_result": "not_authorized",
+      "notes": "required trigger is not satisfied"
+    },
+    {
+      "fixture_id": "FIX_R9_PROCEDURAL_TRIGGER_HOLD",
+      "predicate": "R9",
+      "predicate_name": "PROCEDURAL_TRIGGER",
+      "case": "HOLD",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R9/hold",
+      "action_receipt": "fixture://action/R9/hold",
+      "assertion_receipt": "fixture://assertion/R9/hold",
+      "event_receipt": "fixture://event/R9/hold",
+      "expected_rules": [
+        "R9"
+      ],
+      "expected_result": "hold",
+      "notes": "trigger state or trigger receipts are unresolved"
+    },
+    {
+      "fixture_id": "FIX_R10_VERSION_SUPERSESSION_PASS",
+      "predicate": "R10",
+      "predicate_name": "VERSION_SUPERSESSION",
+      "case": "PASS",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R10/pass",
+      "action_receipt": "fixture://action/R10/pass",
+      "assertion_receipt": "fixture://assertion/R10/pass",
+      "event_receipt": "fixture://event/R10/pass",
+      "expected_rules": [
+        "R10"
+      ],
+      "expected_result": "authorized",
+      "notes": "authority version is current for the event"
+    },
+    {
+      "fixture_id": "FIX_R10_VERSION_SUPERSESSION_FAIL",
+      "predicate": "R10",
+      "predicate_name": "VERSION_SUPERSESSION",
+      "case": "FAIL",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R10/fail",
+      "action_receipt": "fixture://action/R10/fail",
+      "assertion_receipt": "fixture://assertion/R10/fail",
+      "event_receipt": "fixture://event/R10/fail",
+      "expected_rules": [
+        "R10"
+      ],
+      "expected_result": "not_authorized",
+      "notes": "authority version was superseded before the event"
+    },
+    {
+      "fixture_id": "FIX_R10_VERSION_SUPERSESSION_HOLD",
+      "predicate": "R10",
+      "predicate_name": "VERSION_SUPERSESSION",
+      "case": "HOLD",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R10/hold",
+      "action_receipt": "fixture://action/R10/hold",
+      "assertion_receipt": "fixture://assertion/R10/hold",
+      "event_receipt": "fixture://event/R10/hold",
+      "expected_rules": [
+        "R10"
+      ],
+      "expected_result": "hold",
+      "notes": "version or supersession receipts are unresolved"
+    },
+    {
+      "fixture_id": "FIX_R11_STATE_CONFLICT_PASS",
+      "predicate": "R11",
+      "predicate_name": "STATE_CONFLICT",
+      "case": "PASS",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R11/pass",
+      "action_receipt": "fixture://action/R11/pass",
+      "assertion_receipt": "fixture://assertion/R11/pass",
+      "event_receipt": "fixture://event/R11/pass",
+      "expected_rules": [
+        "R11"
+      ],
+      "expected_result": "authorized",
+      "notes": "runtime state is consistent with the claim object"
+    },
+    {
+      "fixture_id": "FIX_ALPHA_DEED_001_STATE_CONFLICT",
+      "predicate": "R11",
+      "predicate_name": "STATE_CONFLICT",
+      "case": "CONFLICT",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R11/conflict",
+      "action_receipt": "fixture://action/R11/conflict",
+      "assertion_receipt": "fixture://assertion/R11/conflict",
+      "event_receipt": "fixture://event/R11/conflict",
+      "expected_rules": [
+        "R11"
+      ],
+      "expected_result": "conflict",
+      "notes": "contradiction fixture ID preserved from the supplied canonical fixture specification; applicability test only"
+    },
+    {
+      "fixture_id": "FIX_R11_STATE_CONFLICT_HOLD",
+      "predicate": "R11",
+      "predicate_name": "STATE_CONFLICT",
+      "case": "HOLD",
+      "fixture_only": true,
+      "delegation_receipt": "fixture://delegation/R11/hold",
+      "action_receipt": "fixture://action/R11/hold",
+      "assertion_receipt": "fixture://assertion/R11/hold",
+      "event_receipt": "fixture://event/R11/hold",
+      "expected_rules": [
+        "R11"
+      ],
+      "expected_result": "hold",
+      "notes": "required runtime state fields are missing or unresolved"
+    }
+  ]
+}
