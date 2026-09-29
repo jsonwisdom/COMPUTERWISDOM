@@ -1,0 +1,52 @@
+{
+  "registry_id": "KID_FRIENDLY_REGISTRY_V0_1",
+  "operator_name": "Jay",
+  "identity_anchor": "jaywisdom.base.eth",
+  "companion_anchor": "jaywisdom.eth",
+  "attestation_surface": "AttestationStation",
+  "prior_wallet_binding": {
+    "path": "receipts/wallet_binding_v2.md",
+    "blob_sha": "c4e633a5d5298466c2669fbb655f993acdfa1489",
+    "status": "PREPARED_NOT_SIGNED",
+    "wallet_proof": "PENDING"
+  },
+  "constitutional_banner": "AUTHORITY = FALSE · SHOW RECEIPTS · SIGN ONLY WHAT YOU CAN READ",
+  "mode": "KID_FRIENDLY",
+  "chain": [
+    "CONNECT_WALLET",
+    "SHOW_READABLE_MESSAGE",
+    "SHOW_MESSAGE_HASH",
+    "HUMAN_CONFIRMS_READ",
+    "SIGN",
+    "VERIFY_SIGNATURE",
+    "EMIT_RECEIPT",
+    "OPTIONAL_ATTESTATION_RECEIPT",
+    "TICK_REPLAY"
+  ],
+  "tick_motion": [
+    "TICK",
+    "OBSERVE",
+    "RECEIPT",
+    "HASH",
+    "REPLAY",
+    "DELTA",
+    "ZORA_PUBLISH",
+    "NEXT_TICK"
+  ],
+  "human_gate_policy": "KID_FRIENDLY_TICK_NOTIFICATION_POLICY_V0_1",
+  "invariants": {
+    "authority": false,
+    "ens_is_identity_by_itself": false,
+    "signature_is_control_proof_only_if_read_hash_matches": true,
+    "signature_is_key_use_proof_otherwise": true,
+    "control_proof_is_not_consent_without_read_binding": true,
+    "publish_is_not_assert": true,
+    "sign_is_not_authorize": true,
+    "attestation_is_receipt_surface_not_authority": true,
+    "clawback_enabled": false,
+    "policy_creation_enabled": false,
+    "automatic_financial_action": false,
+    "append_only": true,
+    "no_fake_green": true
+  }
+}
