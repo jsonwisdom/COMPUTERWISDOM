@@ -1,0 +1,35 @@
+{
+  "prompt_id": "SCANFORJAY_V0_1",
+  "classification": "PUBLIC_LAYER_IDENTITY_AND_RECEIPT_SWEEP",
+  "instruction": [
+    "Bind identity rails without collapse.",
+    "Evaluate ENS/Basename before DNS.",
+    "Resolve wallet-control, attestation, Zora, GitHub, Drive, X, and other public surfaces only when receipt-bound.",
+    "Return HOLD where no receipt exists.",
+    "Return OBSERVED where a public artifact exists but binding is incomplete.",
+    "Return PROVEN only when the exact proposition is receipt-bound.",
+    "Never treat a render layer as evidence authority."
+  ],
+  "required_output": [
+    "IDENTITY_RAIL",
+    "CONTROL_RAIL",
+    "ATTESTATION_RAIL",
+    "DNS_RAIL",
+    "PUBLISH_RAIL",
+    "RECEIPT_RAIL",
+    "TIMESTAMP_CHAIN",
+    "COLLISION_TABLE",
+    "HUMAN_CHOICE_GATE"
+  ],
+  "frozen_invariants": [
+    "ENS_BEFORE_DNS",
+    "ENS != DNS",
+    "ENS != LEGAL_IDENTITY",
+    "WALLET != PERSON",
+    "ZORA_POST != FACT",
+    "TRANSFER != TRADE",
+    "SCREENSHOT != RECEIPT",
+    "AUTHORITY_CREATED = FALSE",
+    "NO_FAKE_GREEN = TRUE"
+  ]
+}
