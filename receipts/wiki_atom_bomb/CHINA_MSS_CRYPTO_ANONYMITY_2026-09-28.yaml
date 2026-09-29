@@ -1,5 +1,6 @@
 receipt_id: CHINA_MSS_CRYPTO_ANONYMITY_2026-09-28
 receipt_version: 1
+schema_version: "0.1"
 archive_id: WIKI_ATOM_BOMB_DISCLOSURE_ARCHIVE_V0
 status: FROZEN
 
@@ -9,71 +10,54 @@ object_state:
 source_locator:
   publisher: China Ministry of State Security
   channel: Official WeChat / government portal
-  publication_date: 2026-09-28
+  publication_date: "2026-09-28"
   original_language: zh
-  archived_url:
-    state: HOLD
-    value: null
-  retrieval_timestamp_utc:
-    state: HOLD
-    value: null
-  snapshot_hash_algo:
-    state: CAPTURED
-    value: SHA-256
-  snapshot_hash:
-    state: HOLD
-    value: null
-  capture_method:
-    state: HOLD
-    value: null
-  translator:
-    state: HOLD
-    value: null
-  translation_hash:
-    state: HOLD
-    value: null
+  archived_url: {state: HOLD, value: null}
+  retrieval_timestamp_utc: {state: HOLD, value: null}
+  snapshot_hash_algo: {state: CAPTURED, value: SHA-256}
+  snapshot_hash: {state: HOLD, value: null}
+  capture_method: {state: HOLD, value: null}
+  translator: {state: HOLD, value: null}
+  translation_hash: {state: HOLD, value: null}
 
 claim_states:
   MSS_CLAIM_1:
     asserted_by_source: true
     verified_by_evidence: false
     status: ASSERTED
+    stale: false
     proposition: CRYPTO_ANONYMITY_IS_FALSE_PROPOSITION
   MSS_CLAIM_2:
     asserted_by_source: true
     verified_by_evidence: false
     status: ASSERTED
+    stale: false
     proposition: ON_CHAIN_RECORDS_PERSIST
   MSS_CLAIM_3:
     asserted_by_source: true
     verified_by_evidence: false
     status: ASSERTED
+    stale: false
     proposition: OFF_CHAIN_BRIDGES_CAN_BIND_IDENTITY
   MSS_CLAIM_4:
     asserted_by_source: true
     verified_by_evidence: false
     status: ASSERTED
+    stale: false
     proposition: FOREIGN_INTELLIGENCE_USES_CRYPTO_IN_RECRUITMENT
   MSS_CLAIM_5:
     asserted_by_source: false
     verified_by_evidence: false
     status: ABSENT
+    stale: false
     proposition: SPECIFIC_RECRUIT_CASE_TRANSACTION_IDENTIFIERS_PRESENT
-
-field_state_definitions:
-  HOLD: required_field_not_yet_captured
-  CAPTURED: field_or_object_exists_in_archive
-  ASSERTED: source_states_claim_independent_support_absent
-  ABSENT: searched_or_reviewed_expected_artifact_not_found
-  UNKNOWN: review_complete_truth_or_value_indeterminate
-  REFUTED: contradicted_by_stronger_evidence
-  VERIFIED: independently_supported
-  STALE: downstream_field_requires_re_evaluation_after_upstream_revision
 
 relations:
   asserted:
-    - source_object_id: MSS_SOURCE_2026-09-28
-      claim_object_id: MSS_CLAIM_4
+    - {source_object_id: MSS_SOURCE_2026-09-28, claim_object_id: MSS_CLAIM_1}
+    - {source_object_id: MSS_SOURCE_2026-09-28, claim_object_id: MSS_CLAIM_2}
+    - {source_object_id: MSS_SOURCE_2026-09-28, claim_object_id: MSS_CLAIM_3}
+    - {source_object_id: MSS_SOURCE_2026-09-28, claim_object_id: MSS_CLAIM_4}
   verified: []
 
 forward_pointers:
@@ -84,11 +68,8 @@ forward_pointers:
 
 revision_rule:
   formula: REVISION = APPEND + MARK_STALE + RE_EVALUATE
-  forbidden:
-    - SILENT_REWRITE
-    - AUTO_PROMOTION
-    - AUTO_DEMOTION
-    - VALIDITY_INHERITANCE
+  event_flag: STALE
+  forbidden: [SILENT_REWRITE, AUTO_PROMOTION, AUTO_DEMOTION, VALIDITY_INHERITANCE]
 
 guardrails:
   - SOURCE_PROVENANCE_NE_CLAIM_VALIDITY
@@ -103,6 +84,11 @@ guardrails:
   - NO_CASE_IDENTIFIER_NE_CASE_DID_NOT_EXIST
   - SCHEMA_VALIDITY_NE_RECEIPT_CONTENT_TRUTH
   - REFERENCE_USE_IS_STRUCTURE_EXEMPLAR
+  - ABSENT_NE_UNKNOWN
+  - ASSERTED_NE_VERIFIED
+  - CAPTURED_NE_TRUE
+  - REVISION_IS_APPEND_PLUS_MARK_STALE_PLUS_RE_EVALUATE
+  - NOT_CASCADE_REWRITE
 
 root_rule:
   - CAPTURE_WHAT_EXISTS
