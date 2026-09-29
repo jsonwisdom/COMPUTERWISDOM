@@ -4,10 +4,13 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 jobs:
   audit:
@@ -71,16 +74,20 @@ jobs:
             echo '```'
           } > "$OUT"
 
-      - name: Commit audit report
+      - name: Assert auditor is read-only
         shell: bash
         run: |
           set -euo pipefail
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add audits/repo-size-audit.md
-          if git diff --cached --quiet; then
-            echo "No audit changes to commit."
-          else
-            git commit -m "audit: add COMPUTERWISDOM repo size report"
-            git push
+          if git diff -- . ':!audits/repo-size-audit.md' | grep -q .; then
+            echo "Unexpected repository mutation outside audit report."
+            exit 1
           fi
+          echo "AUDITOR_WRITE_BOUNDARY=PASS"
+
+      - name: Upload audit artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: repo-size-audit-${{ github.sha }}
+          path: audits/repo-size-audit.md
+          if-no-files-found: error
+          retention-days: 30
