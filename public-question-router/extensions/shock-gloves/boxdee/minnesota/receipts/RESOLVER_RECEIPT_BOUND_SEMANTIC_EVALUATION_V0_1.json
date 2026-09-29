@@ -1,0 +1,47 @@
+{
+  "receipt_id": "RESOLVER_RECEIPT_BOUND_SEMANTIC_EVALUATION_V0_1",
+  "resolver_id": "RESOLVER_V0_1",
+  "predicate_semantics_id": "RESOLVER_PREDICATE_SEMANTICS_V0_1",
+  "fixture_set_id": "RECEIPT_BOUND_INPUT_FIXTURES_V0_1",
+  "classification": "REPLAY_VALIDATION_ONLY",
+  "summary": {
+    "semantic_evaluations": 33,
+    "pass": 0,
+    "fail": 0,
+    "hold": 32,
+    "conflict": 1,
+    "promoted_fixture_id": "FIX_ALPHA_DEED_001_STATE_CONFLICT",
+    "promoted_predicate_id": "R11",
+    "promoted_result": "CONFLICT",
+    "predicate_truth_created_for_promoted_fixture": true,
+    "authority_created": false,
+    "verdict_created": false,
+    "no_fake_green": true,
+    "append_only": true,
+    "overall_status": "ONE_RECEIPT_BOUND_CONFLICT__THIRTY_TWO_SHAPE_ONLY_HOLD"
+  },
+  "promoted_evaluation": {
+    "predicate_id": "R11",
+    "function_name": "check_R11_STATE_CONFLICT",
+    "inputs": {
+      "claim_object": {
+        "state": "CLAIMED"
+      },
+      "runtime_state": {
+        "state": "REQUESTED"
+      },
+      "receipts": [
+        "JOY:ALPHA_DEED_001_CLAIM",
+        "JOY:ALPHA_DEED_001_REQUEST_SENT"
+      ]
+    },
+    "result": "CONFLICT",
+    "reason": "claim_object.state != runtime_state.state",
+    "interpretation": "A preserved earlier CLAIMED state and a later receipt-bound REQUESTED state differ. This is a state delta/conflict object, not a wrongdoing or legal verdict."
+  },
+  "remaining_fixtures": {
+    "count": 32,
+    "result": "HOLD",
+    "reason": "binding_status remains SHAPE_ONLY"
+  }
+}
