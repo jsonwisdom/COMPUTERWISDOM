@@ -1,0 +1,69 @@
+{
+  "lifecycle_id": "HUMAN_CHOICE_LIFECYCLE_V0_1",
+  "states": [
+    "CHOICE_REQUEST_CREATED",
+    "DELIVERED_TO_HUMAN",
+    "HUMAN_READ_PENDING",
+    "HUMAN_SELECTED",
+    "CHOICE_RECEIPT_EMITTED",
+    "FOLLOW_ON_ACTION_REVIEW",
+    "CLOSED_NO_ACTION"
+  ],
+  "transitions": [
+    {
+      "from": "CHOICE_REQUEST_CREATED",
+      "to": "DELIVERED_TO_HUMAN",
+      "requires": [
+        "delivery_receipt"
+      ]
+    },
+    {
+      "from": "DELIVERED_TO_HUMAN",
+      "to": "HUMAN_READ_PENDING",
+      "requires": []
+    },
+    {
+      "from": "HUMAN_READ_PENDING",
+      "to": "HUMAN_SELECTED",
+      "requires": [
+        "explicit_human_selection"
+      ]
+    },
+    {
+      "from": "HUMAN_SELECTED",
+      "to": "CHOICE_RECEIPT_EMITTED",
+      "requires": [
+        "choice_id",
+        "selected_option",
+        "human_confirmed=true"
+      ]
+    },
+    {
+      "from": "CHOICE_RECEIPT_EMITTED",
+      "to": "FOLLOW_ON_ACTION_REVIEW",
+      "requires": [
+        "separate_action_request"
+      ]
+    },
+    {
+      "from": "CHOICE_RECEIPT_EMITTED",
+      "to": "CLOSED_NO_ACTION",
+      "requires": [
+        "selected_option=DO_NOTHING"
+      ]
+    }
+  ],
+  "forbidden_shortcuts": [
+    "DELIVERED_TO_HUMAN -> ACTION_EXECUTED",
+    "MODEL_RECOMMENDATION -> HUMAN_SELECTED",
+    "EMAIL_SENT -> CONSENT",
+    "DOC_EDITED -> CONSENT",
+    "COMMIT_CREATED -> CONSENT",
+    "SLIDE_RENDERED -> CONSENT"
+  ],
+  "invariants": {
+    "execution_authorized": false,
+    "authority_created": false,
+    "append_only": true
+  }
+}
