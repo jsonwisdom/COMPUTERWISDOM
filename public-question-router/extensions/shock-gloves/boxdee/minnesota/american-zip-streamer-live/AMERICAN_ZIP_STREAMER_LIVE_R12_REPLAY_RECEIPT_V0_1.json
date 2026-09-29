@@ -1,0 +1,25 @@
+{
+  "receipt_id": "AMERICAN_ZIP_STREAMER_LIVE_R12_REPLAY_RECEIPT_V0_1",
+  "package_id": "AMERICAN_ZIP_STREAMER_LIVE_V0_1",
+  "classification": "REPLAY_VALIDATION_ONLY",
+  "reported_execution_scope": "deterministic contract replay of R12 fixture envelope",
+  "results": {
+    "fixture_count": 4,
+    "pass": 1,
+    "fail": 1,
+    "hold": 2,
+    "conflict_exit_fixture": "FIX_R12_RECONCILIATION_RECEIPT_BOUND",
+    "conflict_exit_result": "RECONCILED",
+    "appended_state": "REQUESTED"
+  },
+  "boundaries": {
+    "independent_runtime_replay_proven": false,
+    "connector_write_proven": true,
+    "external_truth_created": false,
+    "authority_created": false,
+    "verdict_created": false,
+    "prior_states_preserved": true,
+    "no_fake_green": true
+  },
+  "note": "This package closes the resolver's internal dangling CONFLICT state only. It does not prove any external agency response or non-response."
+}
