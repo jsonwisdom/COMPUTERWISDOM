@@ -1,0 +1,27 @@
+{
+  "receipt_id": "AZSL_RECONCILIATION_ALPHA_DEED_001_V0_1",
+  "receipt_type": "general_reconciliation",
+  "resolves_conflict_id": "RESOLVER_RECEIPT_BOUND_SEMANTIC_EVALUATION_V0_1::FIX_ALPHA_DEED_001_STATE_CONFLICT::R11",
+  "new_state": "REQUESTED",
+  "evidence_receipts": [
+    "JOY:ALPHA_DEED_001_CLAIM",
+    "JOY:ALPHA_DEED_001_REQUEST_SENT",
+    "RESOLVER_RECEIPT_BOUND_SEMANTIC_EVALUATION_V0_1"
+  ],
+  "issued_at": "2026-09-29T00:00:00Z",
+  "provenance": {
+    "issuer_class": "resolver_internal",
+    "creation_basis": "Resolve resolver-state disagreement by appending the later receipt-bound REQUESTED state while preserving prior CLAIMED state.",
+    "source_object_ids": [
+      "jsonwisdom/JOY@24f1bc9d6401283d1170f283b7aa3583ad166dae:zero_trust_mn_audit/claims/ALPHA_DEED_001.json",
+      "jsonwisdom/JOY@24f1bc9d6401283d1170f283b7aa3583ad166dae:zero_trust_mn_audit/requests/ALPHA_DEED_001/REQUEST_SENT_RECEIPT.md"
+    ]
+  },
+  "invariants": {
+    "append_only": true,
+    "preserve_prior_states": true,
+    "authority_created": false,
+    "verdict_created": false
+  },
+  "notes": "Internal reconciliation of resolver state lineage only. Does not adjudicate external truth, legality, wrongdoing, or agency response."
+}
