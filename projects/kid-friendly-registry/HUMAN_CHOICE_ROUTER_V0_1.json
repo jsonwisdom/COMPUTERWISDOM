@@ -1,0 +1,67 @@
+{
+  "router_id": "HUMAN_CHOICE_ROUTER_V0_1",
+  "registry_id": "KID_FRIENDLY_REGISTRY_V0_1",
+  "operator": "Jay",
+  "purpose": "Carry one human decision receipt across every surface without allowing any surface to manufacture consent, authority, or execution permission.",
+  "universal_rule": "SURFACE_EVENT -> HUMAN_CHOICE_ID -> HUMAN_RECEIPT -> OPTIONAL_FOLLOW_ON_ACTION",
+  "surfaces": {
+    "GMAIL": {
+      "choice_capture": "human reply or explicit in-chat choice bound to choice_id",
+      "receipt_output": "GMAIL_HUMAN_CHOICE_RECEIPT",
+      "automatic_action": false,
+      "rule": "EMAIL != CONSENT; EMAIL_REPLY_WITH_BOUND_CHOICE_ID may record a human choice."
+    },
+    "GOOGLE_DRIVE": {
+      "choice_capture": "append-only decision record referencing choice_id",
+      "receipt_output": "DRIVE_HUMAN_CHOICE_RECEIPT",
+      "automatic_action": false,
+      "rule": "DOCUMENT_EDIT != DECISION unless the decision record explicitly binds choice_id."
+    },
+    "GITHUB": {
+      "choice_capture": "issue/PR/comment/commit receipt referencing choice_id",
+      "receipt_output": "GITHUB_HUMAN_CHOICE_RECEIPT",
+      "automatic_action": false,
+      "rule": "COMMIT != POLICY; MERGE != CONSENT unless separately bound."
+    },
+    "DEVELOPMENT": {
+      "choice_capture": "explicit development gate approval referencing choice_id",
+      "receipt_output": "DEV_HUMAN_CHOICE_RECEIPT",
+      "automatic_action": false,
+      "rule": "CODE_EXISTS != CODE_AUTHORIZED_FOR_EXECUTION."
+    },
+    "DOCUMENTATION": {
+      "choice_capture": "append-only decision block",
+      "receipt_output": "DOC_HUMAN_CHOICE_RECEIPT",
+      "automatic_action": false,
+      "rule": "DOCUMENTED != APPROVED."
+    },
+    "PRESENTATION": {
+      "choice_capture": "presentation decision note referencing choice_id",
+      "receipt_output": "PRESENTATION_HUMAN_CHOICE_RECEIPT",
+      "automatic_action": false,
+      "rule": "SLIDE_CONTENT != DECISION."
+    },
+    "POLITICS": {
+      "choice_capture": "human-only political decision; assistant supplies neutral sourced information only",
+      "receipt_output": "POLITICAL_HUMAN_CHOICE_RECEIPT",
+      "automatic_action": false,
+      "rule": "MODEL_OUTPUT != POLITICAL_CHOICE; POLITICAL_DECISION = HUMAN_ONLY."
+    },
+    "POWERPOINT": {
+      "choice_capture": "PowerPoint decision note or companion receipt referencing choice_id",
+      "receipt_output": "POWERPOINT_HUMAN_CHOICE_RECEIPT",
+      "automatic_action": false,
+      "rule": "POWERPOINT_RENDER != APPROVAL."
+    }
+  },
+  "invariants": {
+    "authority_created": false,
+    "execution_authorized": false,
+    "model_makes_human_choice": false,
+    "political_choice_is_human_only": true,
+    "financial_action_is_human_only": true,
+    "wallet_transfer_requires_fresh_human_receipt": true,
+    "append_only": true,
+    "no_fake_green": true
+  }
+}
