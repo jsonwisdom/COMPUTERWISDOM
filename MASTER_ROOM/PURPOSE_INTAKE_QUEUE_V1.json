@@ -1,0 +1,1613 @@
+{
+  "object": "MASTER_ROOM_PURPOSE_INTAKE_QUEUE_V1",
+  "schema": "PURPOSE_DECLARATION_SCHEMA_V1",
+  "observed_at": "2026-09-23",
+  "total": 80,
+  "existing_purpose_evidence_valid": 10,
+  "purpose_unresolved": 70,
+  "lifecycle_unresolved": 80,
+  "operator_gate": "JASON_OPERATOR",
+  "fan_out": "OFF",
+  "rows": [
+    {
+      "repo": "jsonwisdom/0",
+      "current_registry_index": 1,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "current_registry_index": 2,
+      "purpose_evidence_state": "VALID_EXISTING_PURPOSE_EVIDENCE",
+      "current_purpose": "Operational control plane for Computer Wisdom / Sovereign OS work.",
+      "current_purpose_source": "COMPUTERWISDOM/docs/PURPOSE.md + README.md",
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": "ACTIVE_NAMED_SURFACE",
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_LIFECYCLE_REVALIDATION",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/UNCLED",
+      "current_registry_index": 3,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/openai-chatkit-starter-app",
+      "current_registry_index": 4,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/global-zne-hybrid",
+      "current_registry_index": 5,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/PRATTVILLE",
+      "current_registry_index": 6,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/EV-012-ZORA-MARKET-SNAPSHOT",
+      "current_registry_index": 7,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/MARYDEE",
+      "current_registry_index": 8,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/system-risk-detector",
+      "current_registry_index": 9,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/RMT",
+      "current_registry_index": 10,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/ReceiptOS",
+      "current_registry_index": 11,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/DDR",
+      "current_registry_index": 12,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/crp-v0.1",
+      "current_registry_index": 13,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/provenance-audit-kit",
+      "current_registry_index": 14,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/receiptos-base",
+      "current_registry_index": 15,
+      "purpose_evidence_state": "VALID_EXISTING_PURPOSE_EVIDENCE",
+      "current_purpose": "Replay, frame, and public-docket rail producing replay frames and docket-ready receipt context.",
+      "current_purpose_source": "Welcome-to-JSONWISDOM/README.md Repository Tree of Duties",
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": "ACTIVE_NAMED_SURFACE",
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_LIFECYCLE_REVALIDATION",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/Jason-USB-OFFICE-PC",
+      "current_registry_index": 16,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/nuke-launchpad",
+      "current_registry_index": 17,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/flywheel-of-wisdom",
+      "current_registry_index": 18,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/GPKMONSTER",
+      "current_registry_index": 19,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/heretic",
+      "current_registry_index": 20,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/prooflayer-repo",
+      "current_registry_index": 21,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/JOY",
+      "current_registry_index": 22,
+      "purpose_evidence_state": "VALID_EXISTING_PURPOSE_EVIDENCE",
+      "current_purpose": "Witness, continuity, cultural-memory, and family-safe human-meaning layer.",
+      "current_purpose_source": "JOY/JOY_REPO.md + Welcome-to-JSONWISDOM/README.md",
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": "ACTIVE_NAMED_SURFACE",
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_LIFECYCLE_REVALIDATION",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/LEEANN",
+      "current_registry_index": 23,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/AppleGuice",
+      "current_registry_index": 24,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/tailcat",
+      "current_registry_index": 25,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/mn-ago-entropy-ledger",
+      "current_registry_index": 26,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/Jasons-1st-repository",
+      "current_registry_index": 27,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/Server",
+      "current_registry_index": 28,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/jsonwisdom-packet-workbench",
+      "current_registry_index": 29,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/base",
+      "current_registry_index": 30,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/chainlink-agent-skills",
+      "current_registry_index": 31,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/ABS",
+      "current_registry_index": 32,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/AU",
+      "current_registry_index": 33,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/BRAELEE",
+      "current_registry_index": 34,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/Direct-Mail",
+      "current_registry_index": 35,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/DESTINEE",
+      "current_registry_index": 36,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/GRANDADDY",
+      "current_registry_index": 37,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/JAYCEE",
+      "current_registry_index": 38,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/Learning-GitHub",
+      "current_registry_index": 39,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/Welcome-to-JSONWISDOM",
+      "current_registry_index": 40,
+      "purpose_evidence_state": "VALID_EXISTING_PURPOSE_EVIDENCE",
+      "current_purpose": "Identity root, orientation layer, and canonical public doorway for connected JSONWisdom projects and receipts.",
+      "current_purpose_source": "Welcome-to-JSONWISDOM/README.md",
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": "ACTIVE_NAMED_SURFACE",
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_LIFECYCLE_REVALIDATION",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/BRIGHTHOUSE",
+      "current_registry_index": 41,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/CITIZEN_ROOT",
+      "current_registry_index": 42,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/jason-parallel-drift-auditor",
+      "current_registry_index": 43,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/HEIDEE",
+      "current_registry_index": 44,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/public-proof",
+      "current_registry_index": 45,
+      "purpose_evidence_state": "VALID_EXISTING_PURPOSE_EVIDENCE",
+      "current_purpose": "Public proof publication surface for human-facing receipts and public attestations.",
+      "current_purpose_source": "Welcome-to-JSONWISDOM/README.md Repository Tree of Duties",
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": "ACTIVE_NAMED_SURFACE",
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_LIFECYCLE_REVALIDATION",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/mint-engine-zero",
+      "current_registry_index": 46,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/base-live",
+      "current_registry_index": 47,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/COMPUTERWIZARD",
+      "current_registry_index": 48,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/BREANN",
+      "current_registry_index": 49,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/GRAMMY",
+      "current_registry_index": 50,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/GAGA",
+      "current_registry_index": 51,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/jay-zora-portal",
+      "current_registry_index": 52,
+      "purpose_evidence_state": "VALID_EXISTING_PURPOSE_EVIDENCE",
+      "current_purpose": "Zora media ingestion portal for metadata and artifact acquisition before interpretation.",
+      "current_purpose_source": "Welcome-to-JSONWISDOM/README.md Repository Tree of Duties",
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": "ACTIVE_NAMED_SURFACE",
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_LIFECYCLE_REVALIDATION",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/ELMORE",
+      "current_registry_index": 53,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/replay-membrane-v0",
+      "current_registry_index": 54,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/receipts-engine-v1",
+      "current_registry_index": 55,
+      "purpose_evidence_state": "VALID_EXISTING_PURPOSE_EVIDENCE",
+      "current_purpose": "Public verifier and proof-display surface for deterministic verification of replayable frames.",
+      "current_purpose_source": "receipts-engine-v1/README.md + Welcome-to-JSONWISDOM/README.md",
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": "ACTIVE_NAMED_SURFACE",
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_LIFECYCLE_REVALIDATION",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/NASTYNICK",
+      "current_registry_index": 56,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/Jason-t-PL3X",
+      "current_registry_index": 57,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/replay-membrane",
+      "current_registry_index": 58,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/sovereign-copilot",
+      "current_registry_index": 59,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/receipt-arcade",
+      "current_registry_index": 60,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/MONTGOMERY",
+      "current_registry_index": 61,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/fastenal",
+      "current_registry_index": 62,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/layered-proofing-state-level-alms",
+      "current_registry_index": 63,
+      "purpose_evidence_state": "VALID_EXISTING_PURPOSE_EVIDENCE",
+      "current_purpose": "Adversarial proving ground for state-level civic claims and citizen protection from AI-generated authority.",
+      "current_purpose_source": "layered-proofing-state-level-alms/README.md",
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": "ACTIVE_NAMED_SURFACE",
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_LIFECYCLE_REVALIDATION",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/agentos",
+      "current_registry_index": 64,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/ENS",
+      "current_registry_index": 65,
+      "purpose_evidence_state": "VALID_EXISTING_PURPOSE_EVIDENCE",
+      "current_purpose": "Public development surface for Jason's wallet-control aperture and ENS/Base identity bridge.",
+      "current_purpose_source": "ENS/README.md",
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": "ACTIVE_NAMED_SURFACE",
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_LIFECYCLE_REVALIDATION",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/AL",
+      "current_registry_index": 66,
+      "purpose_evidence_state": "VALID_EXISTING_PURPOSE_EVIDENCE",
+      "current_purpose": "Registry of Record / courthouse for governance records, schemas, receipts, audit trails, and organization-grade evidence.",
+      "current_purpose_source": "Welcome-to-JSONWISDOM/README.md Repository Tree of Duties",
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": "ACTIVE_NAMED_SURFACE",
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_LIFECYCLE_REVALIDATION",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/prism-brush-spruce-lake",
+      "current_registry_index": 67,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/debate-judge-tee-v1",
+      "current_registry_index": 68,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/agents",
+      "current_registry_index": 69,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/Plesk-Onyx-17.0.17",
+      "current_registry_index": 70,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/the-gap",
+      "current_registry_index": 71,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/receiptos-replay-proof",
+      "current_registry_index": 72,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/verifygate",
+      "current_registry_index": 73,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/GENESIS",
+      "current_registry_index": 74,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/software",
+      "current_registry_index": 75,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/-replayos-receiptos-spec",
+      "current_registry_index": 76,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/boss-brenda-crawler",
+      "current_registry_index": 77,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/PAPA",
+      "current_registry_index": 78,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/snapback-mirror",
+      "current_registry_index": 79,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    },
+    {
+      "repo": "jsonwisdom/signal-multisig-zora",
+      "current_registry_index": 80,
+      "purpose_evidence_state": "UNRESOLVED",
+      "current_purpose": null,
+      "current_purpose_source": null,
+      "repo_metadata_description": null,
+      "lifecycle_state": null,
+      "relation_to_master_room": null,
+      "visibility_boundary": "PUBLIC",
+      "authority_subject": "MACHINE_ARTIFACT",
+      "operator_gate": "JASON_OPERATOR",
+      "declaration_state": "HOLD_FOR_PURPOSE_AND_LIFECYCLE",
+      "required_operator_fields": [
+        "lifecycle_state",
+        "relation_to_master_room_confirmation",
+        "authority_subject_confirmation"
+      ],
+      "next_terminal": "HOLD"
+    }
+  ]
+}
