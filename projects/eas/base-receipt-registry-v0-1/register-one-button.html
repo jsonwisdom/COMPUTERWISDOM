@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Replay America — Register Receipt Schema on Base</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:#111;background:#f7f4ea}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:grid;place-items:center;padding:18px;background:#f7f4ea}
+main{width:min(720px,100%);border:6px solid #111;border-radius:28px;background:#fff;box-shadow:9px 10px 0 #111;overflow:hidden}
+header,section,footer{padding:20px}
+header{border-bottom:4px solid #111}
+.eyebrow{font-size:13px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+h1{font-size:clamp(34px,8vw,64px);line-height:.95;margin:8px 0}
+.sub{font-size:18px;font-weight:750;line-height:1.35;margin:0}
+.safe{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.pill{border:3px solid #111;border-radius:999px;padding:7px 10px;font-size:13px;font-weight:900;background:#f5f5f5}
+.action{border-top:4px solid #111;border-bottom:4px solid #111;background:#efe9d6}
+button{width:100%;border:5px solid #111;border-radius:22px;background:#111;color:#fff;padding:25px 18px;font-size:clamp(26px,6vw,44px);font-weight:1000;letter-spacing:-.02em;box-shadow:0 8px 0 #777;cursor:pointer}
+button:disabled{opacity:.55;cursor:not-allowed}
+.tiny{text-align:center;margin:12px 0 0;font-size:14px;font-weight:800}
+.status{margin-top:16px;border:3px solid #111;border-radius:16px;padding:13px;background:#fff;font-weight:800;line-height:1.45;overflow-wrap:anywhere}
+.status.good{background:#dff8d8}.status.bad{background:#ffd9d9}
+a{color:#111;font-weight:900}
+details{border:3px solid #111;border-radius:16px;padding:12px;background:#fff}
+summary{cursor:pointer;font-weight:900}
+code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px;background:#111;color:#f8f3e8;padding:12px;border-radius:12px}
+footer{font-size:12px;font-weight:800;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.bigcheck{font-size:56px;line-height:1;text-align:center;margin-bottom:8px}
+.hidden{display:none}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="eyebrow">Replay America · one-button mainnet mode</div>
+  <h1>Make the receipt schema real.</h1>
+  <p class="sub">No forms. No copy/paste. Your wallet signs one Base transaction.</p>
+  <div class="safe">
+    <span class="pill">BASE · 8453</span>
+    <span class="pill">0 ETH SENT</span>
+    <span class="pill">GAS ONLY</span>
+    <span class="pill">ZERO RESOLVER</span>
+  </div>
+</header>
+
+<section class="action">
+  <button id="go">SIGN &amp; REGISTER</button>
+  <p class="tiny">If your wallet is not connected yet, it may first ask permission to connect. The only on-chain action is the registration transaction you approve.</p>
+  <div id="status" class="status">Ready. Nothing has been sent.</div>
+</section>
+
+<section id="success" class="hidden">
+  <div class="bigcheck">✓</div>
+  <h2>Registered on Base</h2>
+  <p id="txText"></p>
+</section>
+
+<section>
+<details>
+  <summary>What exactly will my wallet sign?</summary>
+  <p><strong>To:</strong> <code>0x4200000000000000000000000000000000000020</code></p>
+  <p><strong>Function:</strong> <code>register(string,address,bool)</code></p>
+  <p><strong>Value:</strong> <code>0 ETH</code></p>
+  <p><strong>Resolver:</strong> <code>0x0000000000000000000000000000000000000000</code></p>
+  <p><strong>Revocable:</strong> <code>true</code></p>
+  <pre id="schema"></pre>
+</details>
+</section>
+
+<footer>
+  <span>Local wallet connection. No private key leaves your wallet.</span>
+  <span>authority_created=false</span>
+</footer>
+</main>
+
+<script src="https://unpkg.com/@base-org/account@2.5.7/dist/base-account.min.js"></script>
+<script>
+(() => {
+'use strict';
+
+const BASE = Object.freeze({
+  chainIdHex: '0x2105',
+  chainId: 8453,
+  chainName: 'Base',
+  nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+  rpcUrls: ['https://mainnet.base.org'],
+  blockExplorerUrls: ['https://basescan.org']
+});
+
+const REGISTRY = '0x4200000000000000000000000000000000000020';
+const ZERO = '0x0000000000000000000000000000000000000000';
+const SELECTOR = '60d7a278';
+
+const SCHEMA =
+  'uint256 chainId,bytes32 schemaUID,bytes32 attestationUID,bytes32 txHash,uint256 blockNumber,bytes32 blockHash,uint256 transactionIndex,address from,address to,uint256 gasUsed,uint256 cumulativeGasUsed,uint256 effectiveGasPrice,uint8 status,address contractAddress,bytes32 logsHash';
+
+const $ = (id) => document.getElementById(id);
+const go = $('go');
+const status = $('status');
+const success = $('success');
+const txText = $('txText');
+$('schema').textContent = SCHEMA;
+
+let activeProvider = null;
+let providerMode = 'NONE';
+const announced = [];
+
+window.addEventListener('eip6963:announceProvider', (event) => {
+  const d = event && event.detail;
+  if (!d || !d.provider || !d.info) return;
+  if (announced.some((x) => x.info.uuid === d.info.uuid)) return;
+  announced.push(d);
+});
+window.dispatchEvent(new Event('eip6963:requestProvider'));
+
+function note(text, kind='') {
+  status.textContent = text;
+  status.className = 'status' + (kind ? ' ' + kind : '');
+}
+
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function utf8Hex(text) {
+  return Array.from(new TextEncoder().encode(text), (b) =>
+    b.toString(16).padStart(2, '0')
+  ).join('');
+}
+
+function word(hex) {
+  return hex.replace(/^0x/, '').padStart(64, '0');
+}
+
+function buildRegisterCalldata() {
+  const schemaHex = utf8Hex(SCHEMA);
+  const lengthWord = word((schemaHex.length / 2).toString(16));
+  const paddedSchema = schemaHex.padEnd(Math.ceil(schemaHex.length / 64) * 64, '0');
+  const offset = word('60');
+  const resolver = word(ZERO);
+  const revocable = word('1');
+
+  return '0x' + SELECTOR + offset + resolver + revocable + lengthWord + paddedSchema;
+}
+
+async function pickProvider() {
+  if (activeProvider) return activeProvider;
+
+  if (announced.length === 1) {
+    activeProvider = announced[0].provider;
+    providerMode = announced[0].info.name || 'EIP-6963 wallet';
+    return activeProvider;
+  }
+
+  if (announced.length > 1 && window.ethereum && typeof window.ethereum.request === 'function') {
+    activeProvider = window.ethereum;
+    providerMode = 'selected browser wallet';
+    return activeProvider;
+  }
+
+  if (window.ethereum && typeof window.ethereum.request === 'function') {
+    activeProvider = window.ethereum;
+    providerMode = 'local injected wallet';
+    return activeProvider;
+  }
+
+  if (typeof window.createBaseAccountSDK === 'function') {
+    activeProvider = window.createBaseAccountSDK({
+      appName: 'Replay America Receipt Schema',
+      appChainIds: [8453]
+    }).getProvider();
+    providerMode = 'Base Account';
+    return activeProvider;
+  }
+
+  throw new Error('No local EVM wallet was found. Open this page inside your wallet browser or use a Base-compatible wallet.');
+}
+
+async function connect(provider) {
+  let accounts = [];
+  try {
+    const result = await provider.request({ method: 'wallet_connect' });
+    const first = result && result.accounts && result.accounts[0];
+    const address = typeof first === 'string' ? first : (first && first.address);
+    if (address) accounts = [address];
+  } catch (_) {
+    accounts = await provider.request({ method: 'eth_requestAccounts' });
+  }
+
+  const account = accounts && accounts[0];
+  if (!account) throw new Error('Wallet returned no account.');
+  return account;
+}
+
+async function useBase(provider) {
+  let chainId = await provider.request({ method: 'eth_chainId' });
+
+  if (String(chainId).toLowerCase() !== BASE.chainIdHex) {
+    try {
+      await provider.request({
+        method: 'wallet_switchEthereumChain',
+        params: [{ chainId: BASE.chainIdHex }]
+      });
+    } catch (err) {
+      if (err && (err.code === 4902 || err.code === -32603)) {
+        await provider.request({
+          method: 'wallet_addEthereumChain',
+          params: [BASE]
+        });
+      } else {
+        throw err;
+      }
+    }
+  }
+
+  chainId = await provider.request({ method: 'eth_chainId' });
+  if (String(chainId).toLowerCase() !== BASE.chainIdHex) {
+    throw new Error('Wallet is not on Base mainnet (8453).');
+  }
+}
+
+async function waitForReceipt(provider, hash) {
+  for (let i = 0; i < 90; i++) {
+    const receipt = await provider.request({
+      method: 'eth_getTransactionReceipt',
+      params: [hash]
+    });
+    if (receipt) return receipt;
+    await sleep(2000);
+  }
+  return null;
+}
+
+async function fullSend() {
+  go.disabled = true;
+  success.classList.add('hidden');
+
+  try {
+    note('Finding your wallet…');
+
+    const provider = await pickProvider();
+    const account = await connect(provider);
+
+    note('Wallet connected. Switching to Base mainnet…');
+    await useBase(provider);
+
+    const tx = {
+      from: account,
+      to: REGISTRY,
+      value: '0x0',
+      data: buildRegisterCalldata()
+    };
+
+    note('Checking the exact transaction…');
+    await provider.request({
+      method: 'eth_estimateGas',
+      params: [tx]
+    });
+
+    note('Check your wallet: Base mainnet · SchemaRegistry · 0 ETH · gas only. Approve to register.');
+
+    const hash = await provider.request({
+      method: 'eth_sendTransaction',
+      params: [tx]
+    });
+
+    note('Signed and broadcast. Waiting for Base confirmation…');
+
+    const receipt = await waitForReceipt(provider, hash);
+    const baseScan = 'https://basescan.org/tx/' + hash;
+
+    if (!receipt) {
+      note('Transaction was broadcast. Confirmation is taking longer than this page waits.');
+      success.classList.remove('hidden');
+      txText.innerHTML = 'Transaction: <a target="_blank" rel="noopener" href="' + baseScan + '">' + hash + '</a>';
+      return;
+    }
+
+    const ok = receipt.status === '0x1' || receipt.status === 1 || receipt.status === '1';
+
+    if (!ok) {
+      throw new Error('Base included the transaction, but it reverted. Transaction: ' + hash);
+    }
+
+    note('Done. Base confirmed the schema registration.', 'good');
+    success.classList.remove('hidden');
+    txText.innerHTML =
+      'Wallet: <code>' + account + '</code><br>' +
+      'Transport: <code>' + providerMode + '</code><br>' +
+      'Transaction: <a target="_blank" rel="noopener" href="' + baseScan + '">' + hash + '</a>';
+  } catch (err) {
+    const message = err && err.message ? err.message : String(err);
+    note(message, 'bad');
+    go.disabled = false;
+  }
+}
+
+go.addEventListener('click', fullSend);
+})();
+</script>
+</body>
+</html>
