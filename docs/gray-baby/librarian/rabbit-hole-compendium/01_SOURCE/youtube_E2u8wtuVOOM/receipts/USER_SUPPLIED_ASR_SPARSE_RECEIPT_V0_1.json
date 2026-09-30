@@ -1,0 +1,14 @@
+{
+  "schema": "GRAY_BABY_ASR_INGEST_RECEIPT_V0_1",
+  "artifact_id": "youtube:E2u8wtuVOOM",
+  "class": "USER_SUPPLIED_SPARSE_ASR",
+  "n_blocks": 22,
+  "completeness": "SPARSE_SAMPLE",
+  "full_transcript": "HOLD",
+  "authority": false,
+  "promotion_allowed": false,
+  "claim_scoring": "NOT_RUN",
+  "children_derived": false,
+  "chapter_A_status": "FROZEN",
+  "note": "Sample matches prior page-tool caption stream for # and early A; later blocks are fragments."
+}

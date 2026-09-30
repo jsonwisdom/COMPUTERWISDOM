@@ -1,0 +1,20 @@
+{
+  "schema": "GRAY_BABY_LIBRARIAN_CORPUS_STATUS_V0_1",
+  "artifact_id": "youtube:E2u8wtuVOOM",
+  "authority": false,
+  "promotion_allowed": false,
+  "chapter_A": {
+    "status": "FROZEN",
+    "index_coverage": 1.0,
+    "caption_gist": 0.24,
+    "claim_score": 0.0,
+    "claim_scoring": "NOT_RUN",
+    "remaining_38_gists": "HOLD_PENDING_ASR",
+    "temporal_overlap": "DELTA"
+  },
+  "buckets_B_to_Z": "DIRECTORY_ONLY",
+  "entry_source_list": "HOLD",
+  "full_transcript": "HOLD",
+  "next_gate": "21:24 Alien Internet → 1:18:12 Aurora Incident",
+  "pr": "#562 DRAFT"
+}
