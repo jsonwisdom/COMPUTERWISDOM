@@ -129,7 +129,29 @@ Truth remains bound to:
 replayable content -> reproducible procedure -> verifiable lineage
 ```
 
-## 10. Closing Statement
+## 10. Orientation Membranes
+
+Scale Math, the Librarian, and Law Librarian V1 are orientation and measurement surfaces only.
+
+They may preserve units, denominators, source boundaries, object identity, variant state, byte HOLDs, and explicit lineage gaps. They may not create authority, legal sufficiency, duty, compliance, adoption, ratification, notice, comprehension, or constitutional meaning.
+
+Their detailed contract is proposed in:
+
+```text
+docs/CONSTITUTION_UPGRADE_SCALE_MATH_LAW_LIBRARIAN_V1.md
+```
+
+Until that proposal is merged, it is a reviewable constitutional upgrade and not an active amendment.
+
+```text
+AUTHORITY           = FALSE
+V0.2_CONTACT        = NONE
+HISTORICAL_MUTATION = NONE
+BYTE_VERIFY         = HOLD
+LINEAGE             = EXPLICIT_OR_HOLD
+```
+
+## 11. Closing Statement
 
 COMPUTERWISDOM may use many observers.
 
