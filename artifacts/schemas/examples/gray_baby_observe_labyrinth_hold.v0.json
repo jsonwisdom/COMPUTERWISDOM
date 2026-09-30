@@ -1,0 +1,74 @@
+{
+  "artifact": "COMPUTERWISDOM_REPLAY_PACKET_V1",
+  "protocol_version": "v1",
+  "claim_id": "GRAY_BABY_OBSERVE_LABYRINTH_0001",
+  "claim_text": "OBSERVE remains unresolved until receipt-bearing observation closes required alternatives.",
+  "claim_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "evidence_layers": {},
+  "routing_layers": {},
+  "replay_steps": [
+    "Inspect OBSERVE alternatives",
+    "Preserve each still-viable branch",
+    "Require a branch-addressing receipt for closure"
+  ],
+  "failure_rules": {
+    "routing_failure": "non_fatal",
+    "evidence_failure": "critical",
+    "partial_evidence": "trigger_recovery"
+  },
+  "classification": {
+    "status": "CANDIDATE_SCHEMA_EXAMPLE",
+    "promotion_allowed": false,
+    "authority": false
+  },
+  "authority": false,
+  "promotion_allowed": false,
+  "counter_receipt_refs": [],
+  "gray_baby": {
+    "step": "OBSERVE",
+    "claim_category": "HOLD",
+    "action": "Preserve viable OBSERVE alternatives without promoting identity or intent.",
+    "receipt_refs": [],
+    "state_change": "NO_TRANSITION",
+    "status": "HOLD",
+    "agency_intact": true,
+    "labyrinth_branches": [
+      {
+        "branch_id": "OBSERVE_CAN_PERCEIVE",
+        "required": true,
+        "state": "OPEN",
+        "receipt_refs": []
+      },
+      {
+        "branch_id": "OBSERVE_CANNOT_PERCEIVE",
+        "required": true,
+        "state": "OPEN",
+        "receipt_refs": []
+      },
+      {
+        "branch_id": "OBSERVE_ENVIRONMENT_UNCERTAIN",
+        "required": false,
+        "state": "OPEN",
+        "receipt_refs": []
+      },
+      {
+        "branch_id": "OBSERVE_SIGNAL_SOURCE_UNRESOLVED",
+        "required": false,
+        "state": "OPEN",
+        "receipt_refs": []
+      }
+    ],
+    "bound_violations": [],
+    "replay_reconstructible": false,
+    "required_branch_open": true,
+    "home_reached": false,
+    "phone_home": {
+      "source": null,
+      "message": null,
+      "channel": null,
+      "destination": null,
+      "ack_present": false,
+      "ack_receipt_ref": null
+    }
+  }
+}
