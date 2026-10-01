@@ -1,0 +1,247 @@
+# leaf_encoding_v0.yaml
+# PROPOSED / NOT CAPTURED / NOT BINDING
+# Child encoding contract for MERIDIAN/Merkle_USA_v0.yaml.
+# No sample leaf, lane root, inclusion proof, or national root is computed here.
+
+leaf_encoding:
+  schema_version: "0.1.0"
+  kind: leaf_encoding
+  binding: proposed
+
+  parent: "MERIDIAN/Merkle_USA_v0.yaml"
+  algorithm_receipt_hash: null
+  raw_capture_id: null
+
+  slot_space:
+    first: "00000"
+    last: "99999"
+    width_bytes: 5
+    encoding: "ASCII"
+
+  zcta_flag:
+    usps_zip: 0x00
+    census_zcta: 0x01
+
+# ---------------------------------------------------------------------------
+# LANE NAMESPACE
+# ---------------------------------------------------------------------------
+#
+# Lane tags are a dedicated namespace:
+#
+#   0x20 = voice
+#   0x21 = source
+#   0x22 = answer
+#   0x23 = render
+#
+# Lane-state tags are positional values within lane_commit preimages:
+#
+#   LANE_UNKNOWN     = 0x00
+#   LANE_UNAVAILABLE = 0x01
+#   LANE_EMPTY       = 0x02
+#   LANE_OCCUPIED    = 0x03
+#
+# These names MUST NOT be treated as aliases for leaf tags merely because
+# some numeric byte values are equal. Position and namespace are part of the
+# encoding contract.
+
+# ---------------------------------------------------------------------------
+# CANONICAL LANE COMMITMENT
+# ---------------------------------------------------------------------------
+#
+# Every lane commitment uses the SAME fixed-width 39-byte preimage:
+#
+#   lane_tag     : 1 byte
+#   z_5ascii     : 5 bytes
+#   lane_state   : 1 byte
+#   lane_root    : 32 bytes
+#
+# Total:
+#
+#   1 + 5 + 1 + 32 = 39 bytes
+#
+# Canonical formula:
+#
+#   lane_commit_32 = SHA256(
+#     lane_tag:1
+#     || z_5ascii:5
+#     || lane_state:1
+#     || lane_root:32
+#   )
+#
+# Rules:
+#
+# - LANE_UNKNOWN:
+#     lane_root MUST be 32 zero bytes.
+# - LANE_UNAVAILABLE:
+#     lane_root MUST be 32 zero bytes.
+# - LANE_EMPTY:
+#     lane_root MUST be 32 zero bytes.
+# - LANE_OCCUPIED:
+#     lane_root MUST be non-zero 32 bytes and MUST be the lane Merkle root
+#     derived from captured receipts for that lane.
+#
+# Fail closed:
+#
+# - non-zero lane_root with UNKNOWN/UNAVAILABLE/EMPTY => META FAIL
+# - zero lane_root with OCCUPIED => META FAIL
+#
+# VOICE_RECEIPT alignment:
+#
+# - no h_V / no captured voice bytes => LANE_UNAVAILABLE
+# - LANE_UNAVAILABLE uses 32 zero bytes in lane_root
+# - it is NOT LANE_EMPTY
+
+# ---------------------------------------------------------------------------
+# SLOT / LEAF TAG — DERIVED ONLY
+# ---------------------------------------------------------------------------
+#
+# Leaf tag values:
+#
+#   0x00 = all four lanes UNKNOWN
+#   0x01 = all four lanes UNAVAILABLE
+#   0x02 = all four lanes EMPTY
+#   0x03 = all four lanes OCCUPIED
+#   0x04 = PARTIAL
+#
+# PARTIAL is derived only.
+#
+# Recompute leaf_tag from the canonical lane-state vector:
+#
+#   all four UNKNOWN       -> 0x00
+#   all four UNAVAILABLE   -> 0x01
+#   all four EMPTY         -> 0x02
+#   all four OCCUPIED      -> 0x03
+#   any other valid mixture -> 0x04
+#
+# An authored/stored leaf_tag MUST equal the recomputed tag.
+# The map/state label is a check, never a second source.
+#
+# If it disagrees:
+#
+#   FAIL MERKLE_DERIVED_SLOT_STATE_MISMATCH
+
+# ---------------------------------------------------------------------------
+# ZCTA FLAG
+# ---------------------------------------------------------------------------
+#
+# zcta_flag is canonical and participates in the leaf preimage.
+#
+#   0x00 = USPS ZIP slot interpretation
+#   0x01 = Census ZCTA slot interpretation
+#
+# Same z_5ascii with different zcta_flag MUST produce different leaf hashes.
+#
+# A leaf_tag of 0x02 with zcta_flag=0x01 means:
+#
+#   measured-empty ZCTA
+#
+# A leaf_tag of 0x02 with zcta_flag=0x00 means:
+#
+#   measured-empty USPS ZIP slot
+#
+# No leaf tag is a ZCTA alias.
+#
+# A "zcta_only" classification, if a higher layer uses that label, is valid
+# only when:
+#
+#   zcta_flag == 0x01
+#   AND all four lanes == LANE_EMPTY
+#
+# The label itself MUST NOT override the canonical lane vector.
+
+# ---------------------------------------------------------------------------
+# CANONICAL LEAF PREIMAGE
+# ---------------------------------------------------------------------------
+#
+# Fixed-width preimage:
+#
+#   schema_version_tag : 1 byte  = 0x01
+#   leaf_tag           : 1 byte  = 0x00..0x04
+#   z_5ascii           : 5 bytes
+#   zcta_flag          : 1 byte  = 0x00 | 0x01
+#   voice_commit_32    : 32 bytes
+#   source_commit_32   : 32 bytes
+#   answer_commit_32   : 32 bytes
+#   render_commit_32   : 32 bytes
+#
+# Total:
+#
+#   1 + 1 + 5 + 1 + 32 + 32 + 32 + 32 = 136 bytes
+#
+# Canonical formula:
+#
+#   leaf_hash = SHA256(leaf_preimage)
+#
+# No nullable strings.
+# No omitted lane commitment.
+# No lane-root inheritance from sibling lanes.
+# No untyped empty hash.
+
+# ---------------------------------------------------------------------------
+# INTERNAL NODE PREIMAGE
+# ---------------------------------------------------------------------------
+#
+# Internal node:
+#
+#   parent = SHA256(
+#     0x10
+#     || left:32
+#     || right:32
+#   )
+#
+# Both children are exactly 32 bytes.
+#
+# Odd-level rule:
+#
+# - pair adjacent hashes left-to-right;
+# - hash complete pairs using the 0x10 rule;
+# - promote an unpaired child UNCHANGED;
+# - do not duplicate the unpaired child.
+
+# ---------------------------------------------------------------------------
+# INCLUSION
+# ---------------------------------------------------------------------------
+#
+# Inclusion verification MUST:
+#
+# 1. recompute each occupied lane_root from that lane's captured receipts;
+# 2. recompute all four lane_commit_32 values;
+# 3. derive leaf_tag from the canonical lane-state vector;
+# 4. include zcta_flag in the leaf preimage;
+# 5. recompute leaf_hash;
+# 6. walk the sibling path using direction and SHA256(0x10||left||right);
+# 7. promote unchanged at explicitly marked unpaired levels;
+# 8. compare final recomputed hash to root_hash.
+#
+# verified is derived output only.
+#
+# stored/asserted verified=true without this recomputation:
+#
+#   FAIL MERKLE_VERIFIED_WITHOUT_RECOMPUTE
+
+# ---------------------------------------------------------------------------
+# ALGORITHM PROVENANCE
+# ---------------------------------------------------------------------------
+#
+# algorithm_receipt_hash remains null until THIS encoding artifact is itself
+# captured under the provenance membrane.
+#
+# Hashing this prose file in an ad hoc way does NOT create the algorithm receipt.
+#
+# Until captured:
+#
+#   algorithm_receipt_hash = null
+#   raw_capture_id = null
+#   binding = proposed
+
+# ---------------------------------------------------------------------------
+# CURRENT STATE
+# ---------------------------------------------------------------------------
+#
+# leaf_encoding_v0 = PROPOSED
+# algorithm_receipt_hash = null
+# raw_capture_id = null
+# sample_leaf_hash = NOT COMPUTED
+# lane_root_sample = NOT COMPUTED
+# inclusion = NOT CHECKABLE AGAINST A CAPTURED LEAF SET
+# Merkle_USA root = UNCOMPUTABLE
