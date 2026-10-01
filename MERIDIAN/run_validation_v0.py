@@ -74,8 +74,8 @@ def main():
     failure_doc = load_yaml(args.failure_registry)
     skip_doc = load_yaml(args.skip_registry)
 
-    failure_codes = registered_codes(failure_doc, "failure_code_registry")
-    skip_codes = registered_codes(skip_doc, "skip_code_registry")
+    failure_codes = registered_codes(failure_doc, "failure_code_registry", "failure_codes")
+    skip_codes = registered_codes(skip_doc, "skip_code_registry", "codes")
 
     docs = {
         "V3": {},
