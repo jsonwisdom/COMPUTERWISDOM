@@ -362,3 +362,93 @@ failure_code_registry:
       deprecated: false
       founding: false
 
+    - code: "MERKLE_DERIVED_SLOT_STATE_MISMATCH"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "derived slot_state disagrees with the canonical four-lane state vector"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_LANE_ROOT_STATE_MISMATCH"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "occupied lane lacks a 32-byte root or non-occupied lane carries a non-null root"
+      class: structural
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_LEAF_BODY_WIDTH_INVALID"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "leaf body length is inconsistent with the derived slot tag"
+      class: structural
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_LEAF_COUNT_MISMATCH"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "national leaf set does not contain exactly 100000 slot records"
+      class: structural
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_SLOT_ORDER_INVALID"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "slot records are missing, duplicated, or not ordered 00000 through 99999"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_ODD_NODE_DUPLICATION_FORBIDDEN"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "an unpaired node was duplicated instead of promoted unchanged"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_VERIFIED_WITHOUT_RECOMPUTE"
+      emit_site: "verify_merkle_inclusion_v0"
+      meaning: "verified true was asserted without recomputing leaf and proof path to the root"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_CAPTURE_REQUIRES_ROOT"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "captured Merkle record lacks a non-null root_hash"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_CAPTURE_REQUIRES_LEAF_SET_CAPTURE"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "captured Merkle record lacks raw_capture_id for the exact canonical leaf-set bytes"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_ROOT_WITHOUT_LEAF_SET_CAPTURE"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "non-null root_hash is presented without captured leaf-set bytes sufficient for replay"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
