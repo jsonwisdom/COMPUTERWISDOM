@@ -1,0 +1,212 @@
+# FailureCode_v0.yaml
+# PROPOSED / NOT CAPTURED / NOT BINDING
+# Registry for ValidationError codes emitted by MERIDIAN/validator.py.
+#
+# Registry provenance:
+# source_class: authored_in_conversation
+# authored_by: Jason
+# transcript_ref: conv://meridian/failure-codes/v0
+# content_hash: null
+# binding: proposed
+
+failure_code_registry:
+  schema_version: "0.1.0"
+  source:
+    source_class: authored_in_conversation
+    authored_by: "Jason"
+    operator: null
+    transcript_ref: "conv://meridian/failure-codes/v0"
+    content_hash: null
+  binding: proposed
+
+  rules:
+    append_only: true
+    removal: forbidden
+    deprecation_requires_flag: true
+    every_validation_error_must_resolve: true
+    every_vector_expected_failure_code_must_resolve: true
+    every_vector_rejected_failure_code_must_resolve: true
+    unregistered_validation_error: meta_fail
+
+  failure_codes:
+    # Founding V7 set
+    - code: "SUPERSEDE_REQUIRES_CAPTURED_SOURCE"
+      emit_site: "check_supersede"
+      meaning: "supersede record is present but the superseding source is not captured"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: true
+
+    - code: "SUPERSEDE_TARGET_MISSING"
+      emit_site: "check_supersede"
+      meaning: "supersede operation lacks a resolvable target event"
+      class: graph
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: true
+
+    - code: "RAW_CAPTURE_NOT_FOUND"
+      emit_site: "check_source_class"
+      meaning: "captured source lacks a resolvable RAW_CAPTURE_v0 reference"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: true
+
+    - code: "CAPTURE_HASH_MISMATCH"
+      emit_site: "check_source_class"
+      meaning: "captured source hash is absent or does not match the referenced RAW_CAPTURE_v0"
+      class: integrity
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: true
+
+    # Additional codes already emitted by the proposed validator.
+    - code: "FORBIDDEN_FIELD_PRESENT"
+      emit_site: "check_forbidden_keys"
+      meaning: "event contains a field explicitly forbidden by the validator membrane"
+      class: structural
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "CAPTURE_URL_MISSING"
+      emit_site: "check_source_class"
+      meaning: "captured source lacks the source URL required from RAW_CAPTURE_v0"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "CAPTURED_OPERATOR_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "captured source improperly carries an operator field"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "CAPTURE_URL_MISMATCH"
+      emit_site: "check_source_class"
+      meaning: "event source URL differs from the referenced RAW_CAPTURE_v0 requested/source URL"
+      class: integrity
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "OPERATOR_RELAY_HASH_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "operator_relayed source improperly carries content_hash"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "OPERATOR_RELAY_CAPTURE_ID_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "operator_relayed source improperly carries raw_capture_id"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "OPERATOR_MISSING"
+      emit_site: "check_source_class"
+      meaning: "operator_relayed source lacks the required operator identifier"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "OPERATOR_RELAY_VERIFICATION_PROMOTION_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "operator_relayed source has verification state stronger than observed"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MIGRATED_LEGACY_WRITE_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "migrated_legacy source_class appeared on an ordinary write path"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MIGRATED_LEGACY_HASH_BACKFILL_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "legacy migration attempted to backfill content_hash"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MIGRATED_LEGACY_CAPTURE_BACKFILL_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "legacy migration attempted to backfill raw_capture_id"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "SOURCE_CLASS_INVALID"
+      emit_site: "check_source_class"
+      meaning: "source_class is absent or outside the accepted source-class enum"
+      class: structural
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "VECTOR_HASH_WITHOUT_CAPTURE"
+      emit_site: "check_vector_provenance"
+      meaning: "non-captured validator vector improperly carries content_hash"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "VECTOR_BINDING_NOT_PROPOSED"
+      emit_site: "check_vector_provenance"
+      meaning: "validator vector binding exceeds the currently permitted proposed state"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "SUPERSEDE_CYCLE"
+      emit_site: "_check_supersede_cycle"
+      meaning: "supersession chain contains a direct or transitive cycle"
+      class: graph
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "SUPERSEDE_SELF"
+      emit_site: "check_supersede"
+      meaning: "supersede record targets its own event id"
+      class: graph
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
