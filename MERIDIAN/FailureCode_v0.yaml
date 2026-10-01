@@ -506,3 +506,12 @@ failure_code_registry:
       deprecated: false
       founding: false
 
+    - code: "MERKLE_PLACEHOLDER_DIGEST_FORBIDDEN"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "stored digest matches a placeholder/string artifact instead of recomputation from the canonical byte preimage"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
