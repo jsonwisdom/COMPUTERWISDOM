@@ -5,65 +5,58 @@
 
 vectors:
   - id: "V1"
-    source_class: authored_in_conversation
+    source_class: migrated_legacy
     authored_by: "Jason"
     operator: null
-    transcript_ref: "conv://meridian/vectors#V1"
     content_hash: null
     expects: pass
     binding: proposed
 
   - id: "V2"
-    source_class: authored_in_conversation
+    source_class: migrated_legacy
     authored_by: "Jason"
     operator: null
-    transcript_ref: "conv://meridian/vectors#V2"
     content_hash: null
     expects: pass
     binding: proposed
 
   - id: "V3"
-    source_class: authored_in_conversation
+    source_class: migrated_legacy
     authored_by: "Jason"
     operator: null
-    transcript_ref: "conv://meridian/vectors#V3"
     content_hash: null
     expects: skip
     binding: proposed
     skip_reason: "migrate_v0_1_to_v0_2.py not implemented; skip is a receipt, not a pass"
 
   - id: "V4"
-    source_class: authored_in_conversation
+    source_class: migrated_legacy
     authored_by: "Jason"
     operator: null
-    transcript_ref: "conv://meridian/vectors#V4"
     content_hash: null
     expects: fail
     binding: proposed
 
   - id: "V5"
-    source_class: authored_in_conversation
+    source_class: migrated_legacy
     authored_by: "Jason"
     operator: null
-    transcript_ref: "conv://meridian/vectors#V5"
     content_hash: null
     expects: fail
     binding: proposed
 
   - id: "V6"
-    source_class: authored_in_conversation
+    source_class: migrated_legacy
     authored_by: "Jason"
     operator: null
-    transcript_ref: "conv://meridian/vectors#V6"
     content_hash: null
     expects: fail
     binding: proposed
 
   - id: "V7"
-    source_class: authored_in_conversation
+    source_class: migrated_legacy
     authored_by: "Jason"
     operator: null
-    transcript_ref: "conv://meridian/vectors#V7"
     content_hash: null
     expects: fail
     binding: proposed
@@ -75,19 +68,17 @@ vectors:
     fixture_note: "fixture must include supersede target so capture rule, not missing-id, throws"
 
   - id: "V8"
-    source_class: authored_in_conversation
+    source_class: migrated_legacy
     authored_by: "Jason"
     operator: null
-    transcript_ref: "conv://meridian/vectors#V8"
     content_hash: null
     expects: fail
     binding: proposed
 
   - id: "V9"
-    source_class: authored_in_conversation
+    source_class: migrated_legacy
     authored_by: "Jason"
     operator: null
-    transcript_ref: "conv://meridian/vectors#V9"
     content_hash: null
     expects: fail
     binding: proposed
@@ -98,10 +89,9 @@ vectors:
         note: "graph_snapshot: null must fail independently"
 
   - id: "V10"
-    source_class: authored_in_conversation
+    source_class: migrated_legacy
     authored_by: "Jason"
     operator: null
-    transcript_ref: "conv://meridian/vectors#V10"
     content_hash: null
     expects: pass
     binding: proposed
