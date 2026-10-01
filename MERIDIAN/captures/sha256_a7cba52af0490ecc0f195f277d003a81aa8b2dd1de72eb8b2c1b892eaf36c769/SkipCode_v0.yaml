@@ -1,0 +1,64 @@
+# SkipCode_v0.yaml
+# SPECIFIED / NOT CAPTURED / NOT BINDING
+# Skip-code registry for validator execution dependencies.
+
+skip_code_registry:
+  schema_version: "0.1.0"
+  kind: skip_code_registry
+  status: specified
+  source_class: operator_relayed
+  operator: "Jason"
+  content_hash: null
+  raw_capture_id: null
+  removal: forbidden
+
+  rules:
+    append_only: true
+    deprecated_instead_of_delete: true
+    every_skip_must_resolve: true
+    actionable_dependency_required: true
+    missing_unblocked_by_and_blocked_until: meta_fail
+
+  codes:
+    - code: "MIGRATION_NOT_IMPLEMENTED"
+      kind: skip_code
+      removable: false
+      deprecated: false
+      unblocked_by: "implement migrate_v0_1_to_v0_2.py"
+      blocked_until: null
+
+    - code: "VALIDATOR_NOT_CAPTURED"
+      kind: skip_code
+      removable: false
+      deprecated: false
+      unblocked_by: "capture exact validator.py bytes as RAW_CAPTURE_v0"
+      blocked_until: null
+
+    - code: "FIXTURE_NOT_CAPTURED"
+      kind: skip_code
+      removable: false
+      deprecated: false
+      unblocked_by: "capture exact validation fixture bytes as RAW_CAPTURE_v0"
+      blocked_until: null
+
+    - code: "REGISTRY_NOT_CAPTURED"
+      kind: skip_code
+      removable: false
+      deprecated: false
+      unblocked_by: "capture exact registry bytes as RAW_CAPTURE_v0"
+      blocked_until: null
+
+    - code: "RUN_LOG_ABSENT"
+      kind: skip_code
+      removable: false
+      deprecated: false
+      unblocked_by: "emit and capture ValidationRun_v0 bytes"
+      blocked_until: null
+
+    - code: "COLLIDER_INPUT_SOURCE_CLASSES_ABSENT"
+      kind: skip_code
+      removable: false
+      deprecated: true
+      unblocked_by: "MERIDIAN/Collider_v0_2_PROVENANCE_ADDENDUM.md"
+      blocked_until: null
+      deprecation_reason: "V13 no longer skips after per-input provenance addendum"
