@@ -35,11 +35,13 @@ meridian_event:
     - other
 
   source:
+    source_class: captured | operator_relayed | migrated_legacy
     url: null
-    source_type: primary | secondary | tip | social
-    retrieved_at: "ISO8601"
-    content_hash: "sha256:..."
-    raw_ref: "storage://..."
+    content_hash: null
+    raw_capture_id: null
+    operator: null
+    relay_note: null
+    capture_failure_id: null
 
   verification:
     status: observed
@@ -83,3 +85,34 @@ meridian_event:
 # - verifier can never be a model id.
 # - canonical collide buckets remain empty; Collider results are immutable sidecars.
 # - resolved_type, effective_status, and collide views are derived/non-authoritative.
+
+# SOURCE-CLASS RULES — FAIL CLOSED
+#
+# captured:
+# - url is required and MUST be copied from the resolved RAW_CAPTURE_v0.
+# - content_hash is required and MUST match ^sha256:[0-9a-f]{64}$.
+# - raw_capture_id is required and MUST resolve to RAW_CAPTURE_v0.
+# - content_hash MUST equal the referenced capture's content_hash.
+# - source.url MUST equal the referenced capture's requested/source url.
+# - operator MUST be null.
+#
+# operator_relayed:
+# - content_hash MUST be null.
+# - raw_capture_id MUST be null.
+# - operator MUST be present.
+# - relay_note MAY record what was said; it is not truth authority.
+# - verification.status MUST equal observed.
+# - promotion requires a NEW captured source plus an explicit supersede record.
+# - source_class is never edited in place.
+#
+# migrated_legacy:
+# - may be set only by MIGRATE_v0_1_to_v0_2.
+# - forbidden on ordinary write-path.
+# - no content_hash backfill.
+# - no raw_capture_id backfill.
+# - no re-fetch, re-hash, or re-verify during migration.
+#
+# capture_failure_id:
+# - optional provenance link to a CAPTURE_FAILURE_v0 absence receipt.
+# - does not promote verification.
+# - does not substitute for raw_capture_id.
