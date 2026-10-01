@@ -1,0 +1,130 @@
+# Vector_v0.yaml
+# PROPOSED / NOT CAPTURED / NOT BINDING
+# Validator-vector provenance namespace.
+# vectors[].source_class is NOT meridian_event.source.source_class.
+
+vectors:
+  - id: "V1"
+    source_class: authored_in_conversation
+    authored_by: "Jason"
+    operator: null
+    transcript_ref: "conv://meridian/vectors#V1"
+    content_hash: null
+    expects: pass
+    binding: proposed
+
+  - id: "V2"
+    source_class: authored_in_conversation
+    authored_by: "Jason"
+    operator: null
+    transcript_ref: "conv://meridian/vectors#V2"
+    content_hash: null
+    expects: pass
+    binding: proposed
+
+  - id: "V3"
+    source_class: authored_in_conversation
+    authored_by: "Jason"
+    operator: null
+    transcript_ref: "conv://meridian/vectors#V3"
+    content_hash: null
+    expects: skip
+    binding: proposed
+    skip_reason: "migrate_v0_1_to_v0_2.py not implemented; skip is a receipt, not a pass"
+
+  - id: "V4"
+    source_class: authored_in_conversation
+    authored_by: "Jason"
+    operator: null
+    transcript_ref: "conv://meridian/vectors#V4"
+    content_hash: null
+    expects: fail
+    binding: proposed
+
+  - id: "V5"
+    source_class: authored_in_conversation
+    authored_by: "Jason"
+    operator: null
+    transcript_ref: "conv://meridian/vectors#V5"
+    content_hash: null
+    expects: fail
+    binding: proposed
+
+  - id: "V6"
+    source_class: authored_in_conversation
+    authored_by: "Jason"
+    operator: null
+    transcript_ref: "conv://meridian/vectors#V6"
+    content_hash: null
+    expects: fail
+    binding: proposed
+
+  - id: "V7"
+    source_class: authored_in_conversation
+    authored_by: "Jason"
+    operator: null
+    transcript_ref: "conv://meridian/vectors#V7"
+    content_hash: null
+    expects: fail
+    binding: proposed
+    fixture_note: "fixture must include supersede target so capture rule, not missing-id, throws"
+
+  - id: "V8"
+    source_class: authored_in_conversation
+    authored_by: "Jason"
+    operator: null
+    transcript_ref: "conv://meridian/vectors#V8"
+    content_hash: null
+    expects: fail
+    binding: proposed
+
+  - id: "V9"
+    source_class: authored_in_conversation
+    authored_by: "Jason"
+    operator: null
+    transcript_ref: "conv://meridian/vectors#V9"
+    content_hash: null
+    expects: fail
+    binding: proposed
+    subcases:
+      - id: "V9a"
+        note: "migrated sidecar confidence outside {legacy_unverified} must fail"
+      - id: "V9b"
+        note: "graph_snapshot: null must fail independently"
+
+  - id: "V10"
+    source_class: authored_in_conversation
+    authored_by: "Jason"
+    operator: null
+    transcript_ref: "conv://meridian/vectors#V10"
+    content_hash: null
+    expects: pass
+    binding: proposed
+
+  - id: "V11"
+    source_class: operator_relayed
+    authored_by: null
+    operator: "Jason"
+    transcript_ref: "conv://meridian/vectors#V11"
+    content_hash: null
+    expects: fail
+    binding: proposed
+
+  - id: "V12"
+    source_class: operator_relayed
+    authored_by: null
+    operator: "Jason"
+    transcript_ref: "conv://meridian/vectors#V12"
+    content_hash: null
+    expects: fail
+    binding: proposed
+
+  - id: "V13"
+    source_class: operator_relayed
+    authored_by: null
+    operator: "Jason"
+    transcript_ref: "conv://meridian/vectors#V13"
+    content_hash: null
+    expects: skip
+    binding: proposed
+    skip_reason: "collider_provenance_field_absent; addendum for input_source_classes/confidence not yet accepted"
