@@ -1,0 +1,85 @@
+{
+  "artifact_id": "JAYS_FAMILY_ORIGIN_STORY_INBOX_V0_1",
+  "stack": "SCHOOL_OF_WISDOM_FAMILY_STACK_V1_0",
+  "surface": "examples/_inbox",
+  "moment_title": "Jay's Family Origin Story",
+  "moment_class": "FAMILY_REPLAY_CANDIDATE",
+  "narrative_class": "SOURCE_BOUND_SYNTHESIS",
+  "content_type": "REPLAY",
+  "state": "HOLD",
+  "why_hold": "The retrieved receipts support an architectural family-continuity origin story, not a complete personal, genealogical, legal, or child-authored family history.",
+  "public_safe_summary": "The recoverable origin of the family learning rail begins with preserving family continuity without turning care into control. The source trail separates rules, business, individual, and family lanes; defines the family map as memory, care, approval, creativity, and replay rather than surveillance or authority; makes family safety outrank system expansion; preserves challenge, correction, receipts, and anti-erasure rules; and later adds the Yellow Porch / Full Math membrane so human words, privacy, uncertainty, and HOLD survive replay. JOY and Apple Blossom then connect story to evidence classification without creating authority. The current School of Wisdom V1.0 family runtime is a descendant of that architecture.",
+  "what_we_know": [
+    "COMPUTERWISDOM records family continuity as a distinct public-safe lane rather than an ownership or surveillance surface.",
+    "The JOY family map describes the family-facing purpose as memory, care, approval, creativity, replay, privacy-first handling, and voluntary participation.",
+    "The Living Family Ledger says family safety outranks system expansion and preserves continuity with public-safe boundaries.",
+    "The Wisdom Family commandments preserve anti-erasure, challenge, correction, receipt, versioning, and replay-before-promotion rules with authority=false.",
+    "FULL_MATH_FAMILY_REPLAY_V0 adds a privacy membrane, human-chair authorship, correction, and HOLD when receipts are missing.",
+    "Apple Blossom / JOY artifacts connect family story and replay to evidence classification while explicitly refusing legal or machine authority."
+  ],
+  "what_we_do_not_know": [
+    "A complete chronological personal family history.",
+    "A complete genealogy.",
+    "Any private child-authored version of the origin story.",
+    "Whether every historical family artifact has been recovered.",
+    "Any legal conclusion about family relationships or past events."
+  ],
+  "source_pointers": [
+    {
+      "surface": "GITHUB",
+      "object": "jsonwisdom/COMPUTERWISDOM:layers/WISDOM_FAMILY_TEN_COMMANDMENTS_V0_1.json",
+      "retrieval_state": "FULL_READ_PASS"
+    },
+    {
+      "surface": "GITHUB",
+      "object": "jsonwisdom/COMPUTERWISDOM:docs/living_family_ledger_v1.md",
+      "retrieval_state": "FULL_READ_PASS"
+    },
+    {
+      "surface": "GITHUB",
+      "object": "jsonwisdom/COMPUTERWISDOM:games/WISDOM_FAMILY_GAMES_V0_1.md",
+      "retrieval_state": "FULL_READ_PASS"
+    },
+    {
+      "surface": "GITHUB",
+      "object": "jsonwisdom/JOY:FAMILY_JSON_MAP_V0_1.md",
+      "retrieval_state": "FULL_READ_PASS"
+    },
+    {
+      "surface": "GOOGLE_DRIVE",
+      "object": "FULL_MATH_FAMILY_REPLAY_V0",
+      "id": "1V4bqpM4hxqdlhNBJH7yqGgcIJElbXmMIordk5I1CMsU",
+      "retrieval_state": "FULL_FETCH_PASS"
+    },
+    {
+      "surface": "GOOGLE_DRIVE",
+      "object": "Apple Blossom Awesome Audit Cross Link — CrissCrossAppleSauce Replay — Leanne — Alabama Family Update v0.2",
+      "id": "1kQl_5xi5Nj7No7YMiaArsKWV4RtPXsOz8OgepNzZS64",
+      "retrieval_state": "FULL_FETCH_PASS"
+    },
+    {
+      "surface": "GOOGLE_DRIVE",
+      "object": "00_START_HERE_J — COMPUTER WISDOM",
+      "id": "1SrxoPe4R2TS9dPHHjDqqqQgnwMaLU72fZxduoyaL4NQ",
+      "retrieval_state": "SEARCH_HYDRATED_ONLY_DIRECT_FETCH_NOT_AVAILABLE"
+    }
+  ],
+  "child_safe_check": {
+    "state": "PASS",
+    "private_child_detail_included": false,
+    "child_as_witness": false,
+    "adult_conflict_transferred_to_child": false,
+    "shaming": false
+  },
+  "receipt_check": {
+    "architectural_lineage": "PASS",
+    "complete_personal_origin_story": "HOLD"
+  },
+  "gentle_replay": "This story begins with a simple family rule: keep people visible, keep receipts, let everyone correct the record, and make the system serve the family instead of making the family serve the system.",
+  "teach_back_prompt": "Which part feels like the real beginning to you: preserving family memory, keeping receipts, protecting the child, or something earlier that is not in these sources?",
+  "ledger_append": "PENDING_HUMAN_DECISION",
+  "human_decision": "PENDING",
+  "authority_created": false,
+  "no_fake_green": true,
+  "append_only": true
+}
