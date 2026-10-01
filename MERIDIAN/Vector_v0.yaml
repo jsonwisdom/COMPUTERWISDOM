@@ -132,5 +132,18 @@ vectors:
     content_hash: null
     expects: fail
     binding: proposed
-    expected_failure_code: "OPERATOR_RELAYED_CONFIDENCE_PROMOTION"
-    fixture_note: "confidence is deliberately invalid test input; canonical Collider still has no confidence field"
+    subcases:
+      - id: "V13a"
+        expects: fail
+        expected_failure_code: "NON_CAPTURED_CONFIDENCE_PROMOTION"
+        rejected_failure_codes:
+          - "COLLIDER_RESULT_NOT_FOUND"
+          - "INPUT_SOURCE_CLASS_UNKNOWN"
+          - "CONFIDENCE_VALUE_INVALID"
+          - "ADDENDUM_SCHEMA_MISMATCH"
+      - id: "V13b"
+        expects: pass
+        rejected_failure_codes:
+          - "NON_CAPTURED_CONFIDENCE_PROMOTION"
+          - "COLLIDER_RESULT_NOT_FOUND"
+          - "INPUT_SOURCE_CLASS_UNKNOWN"
