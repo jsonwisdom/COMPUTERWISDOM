@@ -20,7 +20,7 @@ collider_result_addendum:
 
   input_source_classes:
     - ref: "receipt-or-input-id"
-      source_class: captured | operator_relayed | migrated_legacy
+      source_class: captured | operator_relayed | migrated_legacy | authored
 
   confidence: legacy_unverified | provisional | confirmed | strong
 ```
@@ -58,7 +58,7 @@ Unknown confidence values fail schema validation with `CONFIDENCE_VALUE_INVALID`
 Non-captured means:
 
 ```text
-source_class IN {operator_relayed, migrated_legacy}
+source_class IN {operator_relayed, migrated_legacy, authored}
 ```
 
 If ANY supporting input is non-captured, the maximum allowed addendum confidence is:
@@ -77,6 +77,14 @@ AND confidence IN {confirmed, strong}
 
 This rule is provenance-only. It does not change event verification state, graph edges, legal authority, or canonical Collider output.
 
+## Parent-laundering constraints
+
+- `confidence` exists only on the addendum. Frozen `Collider_v0` has no confidence field.
+- A Collider result with no addendum cannot carry `legacy_unverified`, `provisional`, `confirmed`, or `strong`.
+- Canonical provenance is the per-input `[{ref, source_class}]` list.
+- Any derived source-class set is non-canonical and MUST equal the unique classes derived from those per-input refs.
+- A disagreeing derived set is invalid; derivation is a check, never a source.
+
 ## Seam D — failure-code registry binding
 
 The expected promotion failure is registered as:
@@ -85,8 +93,6 @@ The expected promotion failure is registered as:
 code: NON_CAPTURED_CONFIDENCE_PROMOTION
 class: provenance
 emit_site: check_collider_addendum
-promoted_by: null
-blocked_by: null
 ```
 
 The old `OPERATOR_RELAYED_CONFIDENCE_PROMOTION` code remains in the append-only registry as deprecated and is superseded by the new code.
