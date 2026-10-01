@@ -130,6 +130,7 @@ vectors:
     operator: "Jason"
     transcript_ref: "conv://meridian/vectors#V13"
     content_hash: null
-    expects: skip
+    expects: fail
     binding: proposed
-    skip_reason: "collider_provenance_field_absent; addendum for input_source_classes/confidence not yet accepted"
+    expected_failure_code: "OPERATOR_RELAYED_CONFIDENCE_PROMOTION"
+    fixture_note: "confidence is deliberately invalid test input; canonical Collider still has no confidence field"
