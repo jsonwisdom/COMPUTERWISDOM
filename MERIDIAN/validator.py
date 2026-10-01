@@ -169,6 +169,15 @@ def check_source_class(
 def check_vector_provenance(vector: Dict[str, Any]) -> None:
     cls = vector.get("source_class")
     content_hash = vector.get("content_hash")
+    raw_capture_id = vector.get("raw_capture_id")
+    transcript_ref = vector.get("transcript_ref")
+
+    allowed = {"captured", "operator_relayed", "migrated_legacy", "authored"}
+    if cls not in allowed:
+        raise ValidationError(
+            code="SOURCE_CLASS_INVALID",
+            message=f"unsupported vector source_class: {cls!r}",
+        )
 
     if content_hash is not None and cls != "captured":
         raise ValidationError(
@@ -176,12 +185,23 @@ def check_vector_provenance(vector: Dict[str, Any]) -> None:
             message="non-captured vector must not carry content_hash",
         )
 
+    if transcript_ref is not None and cls != "operator_relayed":
+        raise ValidationError(
+            code="VECTOR_TRANSCRIPT_REF_CLASS_INVALID",
+            message="transcript_ref may appear only on operator_relayed vector provenance",
+        )
+
+    if transcript_ref is not None and (content_hash is not None or raw_capture_id is not None):
+        raise ValidationError(
+            code="VECTOR_TRANSCRIPT_CAPTURE_CONFLICT",
+            message="transcript_ref cannot coexist with captured hash/capture identity",
+        )
+
     if vector.get("binding") != "proposed":
         raise ValidationError(
             code="VECTOR_BINDING_NOT_PROPOSED",
             message="current validator vector lane is proposed-only",
         )
-
 
 def _check_supersede_cycle(
     candidate_id: str,
@@ -282,6 +302,13 @@ def check_collider_addendum(
             message="collider_result_id does not resolve in supplied registry",
         )
 
+    collider_result = collider_results[result_id]
+    if collider_result.get("confidence") is not None:
+        raise ValidationError(
+            code="CANONICAL_COLLIDER_CONFIDENCE_FORBIDDEN",
+            message="confidence may exist only on the child addendum",
+        )
+
     entries = addendum.get("input_source_classes")
     if not isinstance(entries, list) or not entries:
         raise ValidationError(
@@ -289,7 +316,7 @@ def check_collider_addendum(
             message="input_source_classes must contain at least one per-input entry",
         )
 
-    allowed_classes = {"captured", "operator_relayed", "migrated_legacy"}
+    allowed_classes = {"captured", "operator_relayed", "migrated_legacy", "authored"}
     classes = []
     for entry in entries:
         if not isinstance(entry, dict):
@@ -319,7 +346,15 @@ def check_collider_addendum(
             message="confidence must be one of legacy_unverified, provisional, confirmed, strong",
         )
 
-    has_non_captured = any(c in {"operator_relayed", "migrated_legacy"} for c in classes)
+    derived = addendum.get("derived_source_class_set")
+    if derived is not None:
+        if sorted(set(classes)) != sorted(derived):
+            raise ValidationError(
+                code="DERIVED_SOURCE_CLASS_SET_MISMATCH",
+                message="derived source-class set disagrees with canonical per-input refs",
+            )
+
+    has_non_captured = any(c in {"operator_relayed", "migrated_legacy", "authored"} for c in classes)
     if has_non_captured and order[confidence] > order["provisional"]:
         raise ValidationError(
             code="NON_CAPTURED_CONFIDENCE_PROMOTION",
