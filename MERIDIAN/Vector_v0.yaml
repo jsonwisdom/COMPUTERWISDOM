@@ -67,6 +67,11 @@ vectors:
     content_hash: null
     expects: fail
     binding: proposed
+    expected_failure_code: "SUPERSEDE_REQUIRES_CAPTURED_SOURCE"
+    rejected_failure_codes:
+      - "SUPERSEDE_TARGET_MISSING"
+      - "RAW_CAPTURE_NOT_FOUND"
+      - "CAPTURE_HASH_MISMATCH"
     fixture_note: "fixture must include supersede target so capture rule, not missing-id, throws"
 
   - id: "V8"
