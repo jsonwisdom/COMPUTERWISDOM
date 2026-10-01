@@ -258,35 +258,73 @@ def check_supersede(
         )
 
 
-def check_collider_sidecar(sidecar: Dict[str, Any]) -> None:
+def check_collider_addendum(
+    addendum: Dict[str, Any],
+    collider_results: Dict[str, Dict[str, Any]],
+) -> None:
     """
     V13 addendum check.
 
-    input_source_classes are supplied provenance labels, never inferred here.
-    The canonical Collider schema still has no confidence field; a confidence
-    field in this test path is deliberately invalid/non-canonical input.
+    input_source_classes is per-input provenance supplied by the caller.
+    The canonical Collider result still has no confidence field; confidence
+    exists only on this child addendum.
     """
-    entries = sidecar.get("input_source_classes")
-    if not isinstance(entries, list) or not entries:
-        return
-
-    classes = [
-        e.get("source_class")
-        for e in entries
-        if isinstance(e, dict)
-    ]
-
-    confidence = sidecar.get("confidence")
-    if (
-        confidence not in (None, "unverified", "legacy_unverified")
-        and classes
-        and all(c == "operator_relayed" for c in classes)
-    ):
+    if addendum.get("schema_version") != "0.2.0" or addendum.get("kind") != "collider_result_addendum":
         raise ValidationError(
-            code="OPERATOR_RELAYED_CONFIDENCE_PROMOTION",
-            message="operator_relayed inputs cannot be promoted above unverified",
+            code="ADDENDUM_SCHEMA_MISMATCH",
+            message="expected collider_result_addendum schema_version 0.2.0",
         )
 
+    result_id = addendum.get("collider_result_id")
+    if not isinstance(result_id, str) or result_id not in collider_results:
+        raise ValidationError(
+            code="COLLIDER_RESULT_NOT_FOUND",
+            message="collider_result_id does not resolve in supplied registry",
+        )
+
+    entries = addendum.get("input_source_classes")
+    if not isinstance(entries, list) or not entries:
+        raise ValidationError(
+            code="INPUT_SOURCE_CLASS_UNKNOWN",
+            message="input_source_classes must contain at least one per-input entry",
+        )
+
+    allowed_classes = {"captured", "operator_relayed", "migrated_legacy"}
+    classes = []
+    for entry in entries:
+        if not isinstance(entry, dict):
+            raise ValidationError(
+                code="INPUT_SOURCE_CLASS_UNKNOWN",
+                message="input_source_classes entries must be objects",
+            )
+        cls = entry.get("source_class")
+        ref = entry.get("ref")
+        if not isinstance(ref, str) or cls not in allowed_classes:
+            raise ValidationError(
+                code="INPUT_SOURCE_CLASS_UNKNOWN",
+                message="each input must have ref and a registered source_class",
+            )
+        classes.append(cls)
+
+    order = {
+        "legacy_unverified": 0,
+        "provisional": 1,
+        "confirmed": 2,
+        "strong": 3,
+    }
+    confidence = addendum.get("confidence")
+    if confidence not in order:
+        raise ValidationError(
+            code="CONFIDENCE_VALUE_INVALID",
+            message="confidence must be one of legacy_unverified, provisional, confirmed, strong",
+        )
+
+    has_non_captured = any(c in {"operator_relayed", "migrated_legacy"} for c in classes)
+    if has_non_captured and order[confidence] > order["provisional"]:
+        raise ValidationError(
+            code="NON_CAPTURED_CONFIDENCE_PROMOTION",
+            message="any non-captured input caps addendum confidence at provisional",
+        )
 
 def run_vector(
     vector: Dict[str, Any],
@@ -319,7 +357,8 @@ def run_vector(
         events = _index_by_id(registry.get("events", []))
 
         if vid == "V13":
-            check_collider_sidecar(event)
+            collider_results = _index_by_id(registry.get("collider_results", []))
+            check_collider_addendum(event, collider_results)
         else:
             check_forbidden_keys(event)
             check_source_class(event, raw_captures, write_path=True)
@@ -341,7 +380,7 @@ def run_vector(
                 error_code=exc.code,
             )
 
-        if vid == "V13" and exc.code != "OPERATOR_RELAYED_CONFIDENCE_PROMOTION":
+        if vid == "V13" and exc.code != "NON_CAPTURED_CONFIDENCE_PROMOTION":
             return VectorResult(
                 result="fail",
                 reason="V13_WRONG_FAILURE_CODE",
