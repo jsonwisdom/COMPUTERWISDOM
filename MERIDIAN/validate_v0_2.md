@@ -327,3 +327,37 @@ SUPERSEDE_REQUIRES_CAPTURED_SOURCE
 ```
 
 A failure caused by missing target id, missing target capture, or target hash mismatch does not satisfy V7.
+
+
+## Collider v0.2 provenance addendum — V13 boundary
+
+The prior v0.1 provenance addendum is preserved. The proposed child
+`Collider_v0_2_PROVENANCE_ADDENDUM.md` supersedes it for V13 testing.
+
+Resolved rules:
+
+```text
+input provenance = per-input [{ref, source_class}]
+derived source-class set = read-only / non-canonical
+confidence order = legacy_unverified < provisional < confirmed < strong
+invalid_input = NOT a confidence value
+non-captured = operator_relayed OR migrated_legacy
+ANY non-captured input => confidence cap = provisional
+```
+
+V13 is a paired boundary:
+
+```text
+V13a strong + non-captured input      -> FAIL NON_CAPTURED_CONFIDENCE_PROMOTION
+V13b provisional + non-captured input -> PASS
+```
+
+V13a rejected failure codes:
+
+- COLLIDER_RESULT_NOT_FOUND
+- INPUT_SOURCE_CLASS_UNKNOWN
+- CONFIDENCE_VALUE_INVALID
+- ADDENDUM_SCHEMA_MISMATCH
+
+The V13 addendum chain is append-only via `supersedes`; frozen Collider v0
+remains unchanged.
