@@ -11,6 +11,7 @@ leaf_encoding:
   parent: "MERIDIAN/Merkle_USA_v0.yaml"
   algorithm_receipt_hash: null
   raw_capture_id: null
+  promotion_rule: "odd_unchanged"
 
   slot_space:
     first: "00000"
@@ -193,10 +194,22 @@ leaf_encoding:
 #
 # Odd-level rule:
 #
+# promotion_rule: "odd_unchanged"
+#
 # - pair adjacent hashes left-to-right;
 # - hash complete pairs using the 0x10 rule;
-# - promote an unpaired child UNCHANGED;
-# - do not duplicate the unpaired child.
+# - if one child is unpaired, carry it forward unchanged;
+# - promotion is IDENTITY, not transformation;
+# - promoted_hash = child_hash;
+# - no 0x10 tag is applied to a promoted child by itself;
+# - no re-hash, wrapper, or duplication is permitted.
+#
+# Formally:
+#
+#   promote(h) = h
+#
+# Any implementation that computes SHA256(0x10 || h), SHA256(h), duplicates h,
+# or otherwise transforms h during odd promotion is invalid.
 
 # ---------------------------------------------------------------------------
 # INCLUSION
