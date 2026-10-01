@@ -228,8 +228,6 @@ failure_code_registry:
       supersedes: "OPERATOR_RELAYED_CONFIDENCE_PROMOTION"
       deprecated: false
       founding: false
-      promoted_by: null
-      blocked_by: null
 
     - code: "COLLIDER_RESULT_NOT_FOUND"
       emit_site: "check_collider_addendum"
