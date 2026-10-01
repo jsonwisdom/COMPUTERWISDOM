@@ -361,3 +361,50 @@ V13a rejected failure codes:
 
 The V13 addendum chain is append-only via `supersedes`; frozen Collider v0
 remains unchanged.
+
+
+## Transcript references — non-receipt rule
+
+`transcript_ref` is not a capture and MUST NOT satisfy any captured slot.
+
+Rules:
+
+```text
+transcript_ref != receipt
+transcript_ref != raw_capture_id
+transcript_ref != content_hash
+```
+
+- `transcript_ref` may appear only on `operator_relayed` provenance.
+- If `transcript_ref != null`, then `content_hash` and `raw_capture_id` MUST be null.
+- A non-null hash/capture identity beside a transcript ref is a meta-failure.
+- Migrated legacy vectors do not carry transcript refs.
+
+## ValidationRun_v0 — contract only, artifact absent
+
+No `ValidationRun_v0` artifact is emitted by this branch at this time.
+
+When one is eventually defined, each canonical input MUST be represented independently:
+
+```yaml
+inputs:
+  - role: validator | vector_manifest | fixture | failure_registry | skip_registry | collider_addendum
+    ref: null
+    source_class: authored | operator_relayed | captured | migrated_legacy
+    content_hash: null
+    raw_capture_id: null
+    transcript_ref: null
+```
+
+Input rules:
+
+- Exactly one provenance locus is permitted: captured identity OR transcript/operator relay; never both.
+- `source_class == captured` requires `content_hash` and `raw_capture_id`.
+- Non-captured input classes MUST have `content_hash: null` and `raw_capture_id: null`.
+- `transcript_ref` may appear only for `operator_relayed`.
+- Any non-captured input forces run `binding: proposed`.
+- A V13a failure inside such a proposed run does not promote V13a or its vector provenance.
+- `run_provenance` is derived/read-only from the canonical per-input list and MUST NOT be stored as authoritative state.
+- If any vector is skipped, its `skip_code` MUST resolve in `SkipCode_v0.yaml`.
+- V3 remains `SKIP / MIGRATION_NOT_IMPLEMENTED`.
+- No run bytes means no run receipt.
