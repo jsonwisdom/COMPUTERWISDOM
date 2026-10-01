@@ -30,6 +30,7 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p run_artifact/captured_inputs
+          printf 'CAPTURED_AT=%s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> "$GITHUB_ENV"
           files=(
             "MERIDIAN/validator.py"
             "MERIDIAN/run_validation_v0.py"
@@ -110,6 +111,34 @@ jobs:
               })
 
           out = json.loads((root/"validation_output.json").read_text())
+          captured_at = os.environ["CAPTURED_AT"]
+          raw_captures = []
+          for row in rows:
+              raw_captures.append({
+                  "schema_version": "0.1.0",
+                  "kind": "raw_capture",
+                  "id": row["raw_capture_id"],
+                  "capture_method": "manual_upload",
+                  "url": None,
+                  "final_url": None,
+                  "redirects": [],
+                  "captured_at": captured_at,
+                  "bytes_ref": row["bytes_ref"],
+                  "byte_length": row["byte_length"],
+                  "content_hash": row["content_hash"],
+                  "response": {"http_status": None, "headers_ref": None},
+                  "manual_attestation": {
+                      "provided_by": "github_actions",
+                      "local_hash_before_upload": row["content_hash"],
+                      "attested_at": captured_at,
+                  },
+              })
+              row["capture_manifest_ref"] = "run_artifact/input_raw_captures.yaml"
+
+          (root/"input_raw_captures.yaml").write_text(
+              yaml.safe_dump({"raw_captures": raw_captures}, sort_keys=False)
+          )
+
           body = {
               "schema_version": "0.1.0",
               "kind": "validation_run",
@@ -121,6 +150,7 @@ jobs:
                   "head_sha": os.environ["PR_HEAD_SHA"],
                   "workflow_run_id": os.environ["WORKFLOW_RUN_ID"],
                   "workflow_run_attempt": os.environ["WORKFLOW_RUN_ATTEMPT"],
+                  "captured_at": captured_at,
               },
               "inputs": rows,
               "results": out["results"],
@@ -150,7 +180,7 @@ jobs:
                   "url": None,
                   "final_url": None,
                   "redirects": [],
-                  "captured_at": None,
+                  "captured_at": captured_at,
                   "bytes_ref": "run_artifact/ValidationRun_v0.yaml",
                   "byte_length": len(yaml_bytes),
                   "content_hash": "sha256:" + h1,
@@ -158,7 +188,7 @@ jobs:
                   "manual_attestation": {
                       "provided_by": "github_actions",
                       "local_hash_before_upload": "sha256:" + h1,
-                      "attested_at": None,
+                      "attested_at": captured_at,
                   },
               }
           }
