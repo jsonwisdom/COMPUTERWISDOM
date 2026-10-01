@@ -515,3 +515,12 @@ failure_code_registry:
       deprecated: false
       founding: false
 
+    - code: "MERKLE_ODD_PROMOTION_REHASH_FORBIDDEN"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "an unpaired child was transformed or re-hashed during odd promotion instead of carried forward unchanged"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
