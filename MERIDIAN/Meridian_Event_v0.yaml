@@ -1,0 +1,64 @@
+# Meridian_Event_v0.yaml
+# Append-only. No inference. No silent enrichment.
+# status enum is ordered; transitions must be reason-coded.
+
+meridian_event:
+  schema_version: "0.1.0"
+  id: "uuidv7"
+  type:
+    - court_order
+    - doj_filing
+    - agency_action
+    - recusal
+    - appeal
+    - ai_policy
+    - contract
+    - lobbying
+    - public_statement
+    - cyber_incident
+  event_time: null
+  observed_time: "ISO8601"
+  jurisdiction:
+    - minnesota
+    - dc
+    - federal
+    - other
+
+  source:
+    url: null
+    source_type: primary | secondary | tip | social
+    retrieved_at: "ISO8601"
+    content_hash: "sha256:..."
+    raw_ref: "storage://..."
+
+  verification:
+    status: observed
+    verifier: null
+    method: null
+    corroborating_sources: []
+    transition_log:
+      - {from: null, to: observed, at: "ISO8601", reason: "first_observation"}
+
+  entities: []
+
+  collide:
+    roles: []
+    funding: []
+    litigation: []
+    lobbying: []
+    appointments: []
+    publications: []
+
+  notes: null
+  right_of_reply:
+    requested: false
+    requested_at: null
+    response: null
+    response_url: null
+
+# FROZEN INVARIANTS
+# - event_time may be null. Guessing is forbidden.
+# - verifier can never be a model id.
+# - collide is populated by lookup, not by reasoning.
+# - transition_log is append-only. No field on a Meridian_Event_v0 is mutated in place.
+# - Corrections are new events of type correction that reference the original id.
