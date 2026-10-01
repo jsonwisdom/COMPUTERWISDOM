@@ -27,7 +27,7 @@ vectors:
     content_hash: null
     expects: skip
     binding: proposed
-    skip_reason: "migrate_v0_1_to_v0_2.py not implemented; skip is a receipt, not a pass"
+    skip_code: "MIGRATION_NOT_IMPLEMENTED"
 
   - id: "V4"
     source_class: migrated_legacy
