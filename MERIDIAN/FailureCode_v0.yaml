@@ -213,8 +213,55 @@ failure_code_registry:
 
     - code: "OPERATOR_RELAYED_CONFIDENCE_PROMOTION"
       emit_site: "check_collider_sidecar"
-      meaning: "operator_relayed Collider inputs were used to assert confidence above unverified"
+      meaning: "legacy code for operator-relayed confidence promotion; superseded by NON_CAPTURED_CONFIDENCE_PROMOTION"
       class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: true
+      founding: false
+
+    - code: "NON_CAPTURED_CONFIDENCE_PROMOTION"
+      emit_site: "check_collider_addendum"
+      meaning: "one or more non-captured inputs were used to assert confidence above provisional"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: "OPERATOR_RELAYED_CONFIDENCE_PROMOTION"
+      deprecated: false
+      founding: false
+      promoted_by: null
+      blocked_by: null
+
+    - code: "COLLIDER_RESULT_NOT_FOUND"
+      emit_site: "check_collider_addendum"
+      meaning: "collider_result_id does not resolve in the supplied registry"
+      class: integrity
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "INPUT_SOURCE_CLASS_UNKNOWN"
+      emit_site: "check_collider_addendum"
+      meaning: "input_source_classes contains a source class outside the accepted enum"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "CONFIDENCE_VALUE_INVALID"
+      emit_site: "check_collider_addendum"
+      meaning: "addendum confidence is outside the ordered confidence enum"
+      class: structural
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "ADDENDUM_SCHEMA_MISMATCH"
+      emit_site: "check_collider_addendum"
+      meaning: "collider result addendum schema_version or kind does not match the proposed v0.2 addendum"
+      class: structural
       introduced: "0.2.0"
       supersedes: null
       deprecated: false
