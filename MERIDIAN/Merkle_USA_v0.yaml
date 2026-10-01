@@ -10,6 +10,9 @@ merkle_usa:
   source_class: authored
   root_hash: null
   raw_capture_id: null
+  leaf_encoding_ref: "MERIDIAN/leaf_encoding_v0.yaml"
+  leaf_encoding_binding: proposed
+  algorithm_receipt_hash: null
 
   slot_space:
     first: "00000"
@@ -314,3 +317,28 @@ merkle_usa:
 # national root computation = NOT RUN
 # inclusion proof = NONE
 # DISTORTION_v0 = NOT SPECIFIED
+
+
+# ---------------------------------------------------------------------------
+# LEAF ENCODING CHILD CONTRACT
+# ---------------------------------------------------------------------------
+#
+# The canonical leaf encoding for this proposal is delegated to:
+#
+#   MERIDIAN/leaf_encoding_v0.yaml
+#
+# That child contract supersedes the earlier leaf-encoding prose in this file
+# wherever the two differ.
+#
+# Current child decisions:
+#
+# - occupied lanes bind their own captured lane_root;
+# - every lane commitment uses a fixed-width 39-byte preimage;
+# - zcta_flag is a required canonical byte;
+# - canonical leaf preimage is exactly 136 bytes;
+# - partial is derived only;
+# - inclusion is not checkable against a captured national leaf set yet;
+# - algorithm_receipt_hash remains null.
+#
+# This parent remains PROPOSED / NOT CAPTURED / NOT BINDING.
+# No root or sample leaf is asserted by referencing the child contract.
