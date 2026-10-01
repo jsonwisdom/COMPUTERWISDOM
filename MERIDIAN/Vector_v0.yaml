@@ -134,6 +134,11 @@ vectors:
     binding: proposed
     subcases:
       - id: "V13a"
+        source_class: operator_relayed
+        authored_by: null
+        operator: "Jason"
+        content_hash: null
+        binding: proposed
         expects: fail
         expected_failure_code: "NON_CAPTURED_CONFIDENCE_PROMOTION"
         rejected_failure_codes:
@@ -142,6 +147,11 @@ vectors:
           - "CONFIDENCE_VALUE_INVALID"
           - "ADDENDUM_SCHEMA_MISMATCH"
       - id: "V13b"
+        source_class: operator_relayed
+        authored_by: null
+        operator: "Jason"
+        content_hash: null
+        binding: proposed
         expects: pass
         rejected_failure_codes:
           - "NON_CAPTURED_CONFIDENCE_PROMOTION"
