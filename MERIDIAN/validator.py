@@ -356,7 +356,7 @@ def run_vector(
         raw_captures = _index_by_id(registry.get("raw_captures", []))
         events = _index_by_id(registry.get("events", []))
 
-        if vid == "V13":
+        if vid in {"V13", "V13a", "V13b"}:
             collider_results = _index_by_id(registry.get("collider_results", []))
             check_collider_addendum(event, collider_results)
         else:
@@ -380,7 +380,7 @@ def run_vector(
                 error_code=exc.code,
             )
 
-        if vid == "V13" and exc.code != "NON_CAPTURED_CONFIDENCE_PROMOTION":
+        if vid in {"V13", "V13a"} and exc.code != "NON_CAPTURED_CONFIDENCE_PROMOTION":
             return VectorResult(
                 result="fail",
                 reason="V13_WRONG_FAILURE_CODE",
