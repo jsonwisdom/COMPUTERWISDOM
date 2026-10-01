@@ -210,3 +210,12 @@ failure_code_registry:
       supersedes: null
       deprecated: false
       founding: false
+
+    - code: "OPERATOR_RELAYED_CONFIDENCE_PROMOTION"
+      emit_site: "check_collider_sidecar"
+      meaning: "operator_relayed Collider inputs were used to assert confidence above unverified"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
