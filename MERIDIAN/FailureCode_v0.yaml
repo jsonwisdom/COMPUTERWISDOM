@@ -3,19 +3,17 @@
 # Registry for ValidationError codes emitted by MERIDIAN/validator.py.
 #
 # Registry provenance:
-# source_class: authored_in_conversation
-# authored_by: Jason
-# transcript_ref: conv://meridian/failure-codes/v0
+# source_class: operator_relayed
+# operator: Jason
 # content_hash: null
 # binding: proposed
 
 failure_code_registry:
   schema_version: "0.1.0"
   source:
-    source_class: authored_in_conversation
-    authored_by: "Jason"
-    operator: null
-    transcript_ref: "conv://meridian/failure-codes/v0"
+    source_class: operator_relayed
+    authored_by: null
+    operator: "Jason"
     content_hash: null
   binding: proposed
 
@@ -260,6 +258,42 @@ failure_code_registry:
       emit_site: "check_collider_addendum"
       meaning: "collider result addendum schema_version or kind does not match the proposed v0.2 addendum"
       class: structural
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "VECTOR_TRANSCRIPT_REF_CLASS_INVALID"
+      emit_site: "check_vector_provenance"
+      meaning: "transcript_ref appeared on vector provenance that is not operator_relayed"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "VECTOR_TRANSCRIPT_CAPTURE_CONFLICT"
+      emit_site: "check_vector_provenance"
+      meaning: "transcript_ref coexists with content_hash or raw_capture_id"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "CANONICAL_COLLIDER_CONFIDENCE_FORBIDDEN"
+      emit_site: "check_collider_addendum"
+      meaning: "confidence appeared on frozen canonical Collider result instead of child addendum"
+      class: structural
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "DERIVED_SOURCE_CLASS_SET_MISMATCH"
+      emit_site: "check_collider_addendum"
+      meaning: "derived source-class set disagrees with canonical per-input provenance refs"
+      class: integrity
       introduced: "0.2.0"
       supersedes: null
       deprecated: false
