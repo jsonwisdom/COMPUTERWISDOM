@@ -298,3 +298,67 @@ failure_code_registry:
       supersedes: null
       deprecated: false
       founding: false
+
+    - code: "VOICE_HASH_WITHOUT_CLIENT_CAPTURE"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "voice_hash is present without voice_source_class client_raw and a resolving voice_raw_capture_id"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "VOICE_UNAVAILABLE_NON_NULL"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "voice_source_class unavailable carries voice_hash or voice_raw_capture_id"
+      class: structural
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "VOICE_CAPTURE_HASH_MISMATCH"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "client_raw voice bytes do not hash to voice_hash"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "TEXT_CLIENT_CAPTURE_REQUIRED"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "client_transcript lacks resolving text_raw_capture_id and matching text_hash"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "TEXT_SERVER_HASH_WITHOUT_CAPTURE"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "server_transcript carries text_hash without exact stored transcript bytes and resolving text_raw_capture_id"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "CLIENT_DEVICE_REF_CAPTURE_SUBSTITUTION"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "client_device_ref was used as if it satisfied a raw_capture_id requirement"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "LANE_HASH_WITHOUT_CAPTURE"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "question, answer, or render lane carries a hash without a resolving raw_capture_id"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
