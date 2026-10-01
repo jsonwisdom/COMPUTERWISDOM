@@ -1,0 +1,316 @@
+# Merkle_USA_v0.yaml
+# PROPOSED / NOT CAPTURED / NOT BINDING
+# No root has been computed. root_hash: null is a proposal, not a checksum.
+
+merkle_usa:
+  schema_version: "0.1.0"
+  kind: merkle_usa
+  binding: proposed
+
+  source_class: authored
+  root_hash: null
+  raw_capture_id: null
+
+  slot_space:
+    first: "00000"
+    last: "99999"
+    count: 100000
+    meaning: "five-digit index space; not a population and not a claim that every slot is an assigned USPS ZIP"
+
+  leaf_count: 100000
+  leaf_order: "ASCII ascending 00000..99999"
+
+# ---------------------------------------------------------------------------
+# CANONICAL PER-LANE STATE
+# ---------------------------------------------------------------------------
+#
+# Lane order is fixed:
+#
+#   0x00 voice
+#   0x01 source
+#   0x02 answer
+#   0x03 render
+#
+# Each slot carries four canonical lane records:
+#
+# lanes:
+#   voice:  { state: unavailable, root: null }
+#   source: { state: empty,       root: null }
+#   answer: { state: unknown,     root: null }
+#   render: { state: unknown,     root: null }
+#
+# Lane state enum:
+#
+#   unknown      = not measured
+#   unavailable  = measured architecture says source bytes are unavailable
+#   empty        = measured and no receipts/items exist
+#   occupied     = one or more captured items exist and lane root is present
+#
+# These states are not interchangeable.
+#
+# unknown != empty
+# unavailable != empty
+# unavailable != unknown
+#
+# VOICE_RECEIPT alignment:
+#
+# voice.state == unavailable
+# <=> voice.root == null
+# when the applicable VOICE_RECEIPT lane establishes no h_V / no voice capture.
+#
+# A null voice root never means "empty audio."
+#
+# Occupied lane:
+# - root MUST be exactly 32 bytes.
+# - root MUST resolve to/recompute from that lane's own captured receipts.
+#
+# Non-occupied lane:
+# - root MUST be null.
+
+# ---------------------------------------------------------------------------
+# DERIVED SLOT STATE — NON-CANONICAL
+# ---------------------------------------------------------------------------
+#
+# slot_state is derived from the four canonical lanes.
+#
+# Derived enum:
+#
+#   unknown | unavailable | partial | empty | occupied
+#
+# Derivation:
+#
+#   all unknown       -> unknown
+#   all unavailable   -> unavailable
+#   all empty         -> empty
+#   any occupied      -> occupied
+#   otherwise         -> partial
+#
+# Examples:
+#
+#   [unavailable, empty, unknown, unknown] -> partial
+#   [occupied, unavailable, unknown, empty] -> occupied
+#
+# slot_state is a check, never a source.
+# If a stored/declared slot_state disagrees with the lane vector:
+#
+#   FAIL MERKLE_DERIVED_SLOT_STATE_MISMATCH
+
+# ---------------------------------------------------------------------------
+# DOMAIN-SEPARATED LANE COMMITMENTS
+# ---------------------------------------------------------------------------
+#
+# For mixed slots, null lane roots are represented by typed 32-byte commitments.
+#
+# Lane-id bytes:
+#   voice  = 0x00
+#   source = 0x01
+#   answer = 0x02
+#   render = 0x03
+#
+# Lane-state bytes:
+#   unknown     = 0x00
+#   unavailable = 0x01
+#   empty       = 0x02
+#   occupied    = 0x03
+#
+# Typed absence commitment:
+#
+#   lane_commitment =
+#     SHA256(
+#       0x20             # lane commitment domain tag
+#       || lane_id:1
+#       || state:1
+#     )
+#
+# for state in {unknown, unavailable, empty}.
+#
+# Occupied lane commitment is the lane root itself:
+#
+#   lane_commitment = lane.root   # exactly 32 bytes
+#
+# Therefore a null subroot is NEVER replaced by SHA256("") and is NEVER the
+# untyped empty hash.
+
+# ---------------------------------------------------------------------------
+# LEAF ENCODING
+# ---------------------------------------------------------------------------
+#
+# Slot tag bytes:
+#
+#   0x00 = unknown       # all four lanes unknown
+#   0x01 = unavailable   # all four lanes unavailable
+#   0x02 = empty         # all four lanes empty
+#   0x03 = occupied      # at least one lane occupied
+#   0x04 = partial       # mixed non-occupied states
+#
+# slot is exactly 5 ASCII bytes: "00000".."99999".
+#
+# Homogeneous unknown/unavailable/empty:
+#
+#   body = empty byte string
+#
+# Occupied or partial:
+#
+#   body = exactly 128 bytes:
+#
+#     voice_commitment  : 32 bytes
+#     source_commitment : 32 bytes
+#     answer_commitment : 32 bytes
+#     render_commitment : 32 bytes
+#
+# in that order.
+#
+# Canonical leaf preimage:
+#
+#   leaf_preimage =
+#     tag:1
+#     || slot:5
+#     || body:(0 or 128)
+#
+#   leaf_hash = SHA256(leaf_preimage)
+#
+# Fixed one-byte tags and fixed-width slot/body rules provide domain separation.
+# No nullable string concatenation is permitted.
+
+# ---------------------------------------------------------------------------
+# INTERNAL NODE ENCODING
+# ---------------------------------------------------------------------------
+#
+# Internal-node domain tag:
+#
+#   0x10
+#
+# Parent:
+#
+#   parent = SHA256(
+#     0x10
+#     || left:32
+#     || right:32
+#   )
+#
+# A leaf hash can therefore never be interpreted as an internal-node preimage.
+
+# ---------------------------------------------------------------------------
+# ODD-LEVEL RULE
+# ---------------------------------------------------------------------------
+#
+# 100000 is not a power of two.
+#
+# At every tree level:
+# - pair adjacent hashes left-to-right;
+# - hash complete pairs with the 0x10 internal-node rule;
+# - if one unpaired child remains, PROMOTE IT UNCHANGED to the next level;
+# - DO NOT duplicate the odd child.
+#
+# Missing sibling != repeated sibling.
+
+# ---------------------------------------------------------------------------
+# ROOT MEANING
+# ---------------------------------------------------------------------------
+#
+# M_USA commits only to:
+#
+#   exactly 100000 canonical leaf hashes
+#   in exact slot order "00000".."99999"
+#
+# including unassigned/unmeasured five-digit slots.
+#
+# M_USA does NOT by itself commit to:
+#
+# - people
+# - citizens
+# - population
+# - events
+# - votes
+# - audio
+# - geographic assignment validity
+# - USPS assignment status
+#
+# ZIP slot space is an index, not a population.
+
+# ---------------------------------------------------------------------------
+# INCLUSION PROOF
+# ---------------------------------------------------------------------------
+#
+# Inclusion is the operational proof object.
+#
+# merkle_inclusion:
+#   schema_version: "0.1.0"
+#   slot: "00000"
+#   leaf_hash: "sha256:..."
+#   root_hash: "sha256:..."
+#   path:
+#     - level: 0
+#       sibling_side: left | right | promoted
+#       sibling_hash: null | "sha256:..."
+#   verified: null
+#
+# Verification:
+#
+# - recompute canonical leaf_hash from the slot/lane object;
+# - walk the proof path in level order;
+# - left/right sibling uses SHA256(0x10 || left || right);
+# - promoted means no sibling existed at that level and the current hash is
+#   carried upward unchanged;
+# - compare final recomputed hash to root_hash;
+# - only after that comparison may derived verified=true be returned.
+#
+# verified is DERIVED and NON-CANONICAL.
+#
+# A stored/asserted verified:true without path recomputation:
+#
+#   FAIL MERKLE_VERIFIED_WITHOUT_RECOMPUTE
+
+# ---------------------------------------------------------------------------
+# SOURCE CLASS / CAPTURE
+# ---------------------------------------------------------------------------
+#
+# source_class == captured requires BOTH:
+#
+# - root_hash matching ^sha256:[0-9a-f]{64}$
+# - raw_capture_id resolving to the exact canonical leaf-set bytes/manifest
+#   from which the 100000 leaves were recomputed
+#
+# The leaf-set capture must itself preserve exact bytes/order/state/root values.
+#
+# Otherwise:
+#
+#   source_class = authored | operator_relayed
+#   binding = proposed
+#   root_hash may be null
+#   raw_capture_id = null
+#
+# A non-null root_hash without the captured leaf set does not corroborate.
+#
+# root_hash: null means only:
+#
+#   "no national root is asserted by this proposal"
+#
+# It is NOT a checksum and NOT a receipt of computation.
+
+# ---------------------------------------------------------------------------
+# FAIL-CLOSED RULES
+# ---------------------------------------------------------------------------
+#
+# - exactly 100000 slot records are required for a computable national root.
+# - slots MUST be unique and ordered "00000".."99999".
+# - occupied lane => 32-byte root required.
+# - non-occupied lane => root MUST be null.
+# - derived slot_state MUST agree with canonical lane vector.
+# - body width MUST be 0 or exactly 128 bytes according to slot tag.
+# - unknown/unavailable/empty MUST remain distinct.
+# - odd node promotion MUST NOT duplicate.
+# - inclusion verified=true requires actual path recomputation.
+# - captured Merkle record requires captured leaf-set bytes.
+#
+# ---------------------------------------------------------------------------
+# CURRENT STATE
+# ---------------------------------------------------------------------------
+#
+# Merkle_USA_v0 = PROPOSED
+# root_hash = null
+# raw_capture_id = null
+# leaf_set_capture = ABSENT
+# national root computation = NOT RUN
+# inclusion proof = NONE
+# DISTORTION_v0 = NOT SPECIFIED
