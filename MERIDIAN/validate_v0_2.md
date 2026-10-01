@@ -106,28 +106,26 @@ reason = OPERATOR_RELAY_HASH_FORBIDDEN
 
 ### Vector 13 — Collider cannot launder operator-relayed receipts
 
+The accepted-for-review Collider v0.1 provenance addendum supplies
+`input_source_classes`. Canonical Collider output still has no confidence field.
+
 Input condition:
 
 ```text
-collider_result expresses confidence above unverified/legacy_unverified
-AND every source_receipt_id supporting that confidence resolves only to
-source.source_class == operator_relayed
+all input_source_classes == operator_relayed
+AND candidate/materialized sidecar asserts confidence above
+{unverified, legacy_unverified}
 ```
 
 Expected:
 
 ```text
 FAIL
-reason = COLLIDER_OPERATOR_RELAY_CONFIDENCE_LAUNDERING
+reason = OPERATOR_RELAYED_CONFIDENCE_PROMOTION
 ```
 
-## Vector 13 compatibility rule
-
-`Collider_v0` currently has no canonical `confidence` field.
-
-Therefore the validator MUST also fail closed if any implementation, sidecar extension, materialized view, or downstream consumer introduces a confidence-like field or semantic promotion not defined by the frozen Collider schema.
-
-In other words:
+The `confidence` field in the V13 fixture is deliberately invalid test input.
+It is not added to the canonical Collider schema.
 
 ```text
 UNSCHEMATIZED CONFIDENCE != AUTHORITY
@@ -296,9 +294,9 @@ vectors:
     operator: "Jason"
     transcript_ref: "conv://meridian/vectors#V13"
     content_hash: null
-    expects: skip
+    expects: fail
     binding: proposed
-    skip_reason: "collider_provenance_field_absent; addendum for input_source_classes/confidence not yet accepted"
+    expected_failure_code: "OPERATOR_RELAYED_CONFIDENCE_PROMOTION"
 ```
 
 ### Skip semantics
@@ -310,7 +308,7 @@ SKIP = dependency absent / vector not currently executable
 ```
 
 - V3 MUST skip while `migrate_v0_1_to_v0_2.py` is absent.
-- V13 MUST skip while the proposed Collider provenance/confidence addendum is absent from the accepted Collider schema.
+- V13 is executable against the proposed Collider v0.1 provenance addendum.
 
 ### V7 fixture requirement
 
