@@ -16,6 +16,7 @@ vector_set:
     lane_preimage_bytes: 39
     leaf_preimage_bytes: 136
     internal_node_tag: 0x10
+    promotion_rule: odd_unchanged
     odd_node_rule: promote_unpaired_unchanged
 
   vectors:
@@ -97,6 +98,10 @@ vector_set:
       - "685fcca92459b28537566c0c7fbdce8fda9263fedd4ba4c478e515e3bfc4d7f4"
       - "827de5aa0b3bc29000e2bdd52ca05c933515589cc968aff0cd497c09117952c8"
     first_parent_hex: "6576bb7566a7fa41aef290beb0744d0a5bf67d7e22bf445bacfefbf2a16175a5"
+    L00002_leaf_hash_hex: "827de5aa0b3bc29000e2bdd52ca05c933515589cc968aff0cd497c09117952c8"
+    L00002_promoted_hash_hex: "827de5aa0b3bc29000e2bdd52ca05c933515589cc968aff0cd497c09117952c8"
+    promotion_identity: true
+    promotion_transform: null
     promoted_third_leaf_hex: "827de5aa0b3bc29000e2bdd52ca05c933515589cc968aff0cd497c09117952c8"
     synthetic_root_hex: "ff654f4387e309feabbdae62ab334210905a9dbbf88e68b2857bba7bffefe224"
 
@@ -106,4 +111,6 @@ vector_set:
     occupied_vector_recomputable_only_against_declared_synthetic_roots: true
     synthetic_roots_are_captures: false
     synthetic_root_is_M_USA: false
+    odd_promotion_is_identity: true
+    rehash_on_promotion_forbidden: true
     validation_run_created: false
