@@ -258,6 +258,36 @@ def check_supersede(
         )
 
 
+def check_collider_sidecar(sidecar: Dict[str, Any]) -> None:
+    """
+    V13 addendum check.
+
+    input_source_classes are supplied provenance labels, never inferred here.
+    The canonical Collider schema still has no confidence field; a confidence
+    field in this test path is deliberately invalid/non-canonical input.
+    """
+    entries = sidecar.get("input_source_classes")
+    if not isinstance(entries, list) or not entries:
+        return
+
+    classes = [
+        e.get("source_class")
+        for e in entries
+        if isinstance(e, dict)
+    ]
+
+    confidence = sidecar.get("confidence")
+    if (
+        confidence not in (None, "unverified", "legacy_unverified")
+        and classes
+        and all(c == "operator_relayed" for c in classes)
+    ):
+        raise ValidationError(
+            code="OPERATOR_RELAYED_CONFIDENCE_PROMOTION",
+            message="operator_relayed inputs cannot be promoted above unverified",
+        )
+
+
 def run_vector(
     vector: Dict[str, Any],
     event: Dict[str, Any],
@@ -281,11 +311,6 @@ def run_vector(
             reason="MIGRATION_NOT_IMPLEMENTED",
         )
 
-    if vid == "V13":
-        return VectorResult(
-            result="skip",
-            reason="COLLIDER_INPUT_SOURCE_CLASSES_ABSENT",
-        )
 
     try:
         check_vector_provenance(vector)
@@ -293,11 +318,14 @@ def run_vector(
         raw_captures = _index_by_id(registry.get("raw_captures", []))
         events = _index_by_id(registry.get("events", []))
 
-        check_forbidden_keys(event)
-        check_source_class(event, raw_captures, write_path=True)
+        if vid == "V13":
+            check_collider_sidecar(event)
+        else:
+            check_forbidden_keys(event)
+            check_source_class(event, raw_captures, write_path=True)
 
-        if vid == "V7":
-            check_supersede(event, events, raw_captures)
+            if vid == "V7":
+                check_supersede(event, events, raw_captures)
 
         outcome = "pass"
         error_code = None
@@ -310,6 +338,13 @@ def run_vector(
             return VectorResult(
                 result="fail",
                 reason="V7_WRONG_FAILURE_CODE",
+                error_code=exc.code,
+            )
+
+        if vid == "V13" and exc.code != "OPERATOR_RELAYED_CONFIDENCE_PROMOTION":
+            return VectorResult(
+                result="fail",
+                reason="V13_WRONG_FAILURE_CODE",
                 error_code=exc.code,
             )
 
