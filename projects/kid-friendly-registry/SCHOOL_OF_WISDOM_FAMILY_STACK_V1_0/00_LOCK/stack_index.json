@@ -1,0 +1,51 @@
+{
+  "stack_id": "SCHOOL_OF_WISDOM_FAMILY_STACK_V1_0",
+  "version": "1.0",
+  "status": "FROZEN",
+  "source_state": "CHAT_DEFINED",
+  "root": "SCHOOL_OF_WISDOM_FAMILY_STACK_V1_0/",
+  "directories": {
+    "00_LOCK": "freeze + canonical pointer map",
+    "layers": "inherited specifications",
+    "flow": "canonical execution order",
+    "invariants": "non-collapse rules",
+    "examples/_inbox": "unclassified real moments",
+    "examples/PROCEDURE": "classified procedures",
+    "examples/JOKE": "classified jokes",
+    "examples/REPLAY": "classified replays",
+    "examples/DRAMA": "classified dramas",
+    "runs": "execution records",
+    "receipts": "source/readback receipts",
+    "human_decision": "human-approved outcomes",
+    "child_specs": "future inherited child layers",
+    "public_pointers": "non-authoritative references"
+  },
+  "canonical_flow": [
+    "EXPERIENCE",
+    "CLASSIFY",
+    "CHILD_SAFE_CHECK",
+    "RECEIPT_CHECK",
+    "STATE",
+    "GENTLE_REPLAY",
+    "TEACH_BACK",
+    "OPTIONAL_LEDGER_APPEND",
+    "HUMAN_DECISION"
+  ],
+  "states": [
+    "PASS",
+    "DELTA",
+    "HOLD",
+    "CONFLICT"
+  ],
+  "freeze_rules": [
+    "V1_0_NOT_SILENTLY_EDITED",
+    "EMPTY_BODY=HOLD",
+    "POINTER!=BODY",
+    "DIRECTORY!=EVIDENCE",
+    "APPEND_ONLY",
+    "NO_FAKE_GREEN",
+    "HUMAN_DECISION_REQUIRED"
+  ],
+  "examples_state": "EMPTY_HOLD",
+  "authority_created": false
+}
