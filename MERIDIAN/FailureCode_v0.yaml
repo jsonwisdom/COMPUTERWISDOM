@@ -452,3 +452,57 @@ failure_code_registry:
       deprecated: false
       founding: false
 
+    - code: "MERKLE_ZCTA_FLAG_INVALID"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "zcta_flag is absent or outside {0x00,0x01}"
+      class: structural
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_ZCTA_CLASS_MISMATCH"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "a higher-layer ZCTA classification disagrees with zcta_flag or the canonical lane vector"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_OCCUPIED_LANE_ZERO_ROOT"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "LANE_OCCUPIED carries a zero lane_root"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_ABSENCE_LANE_NONZERO_ROOT"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "UNKNOWN, UNAVAILABLE, or EMPTY lane carries a non-zero lane_root"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_LEAF_PREIMAGE_WIDTH_INVALID"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "canonical leaf preimage is not exactly 136 bytes"
+      class: structural
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_ALGORITHM_RECEIPT_UNCAPTURED"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "algorithm_receipt_hash is asserted without captured encoding bytes and resolving raw_capture_id"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
