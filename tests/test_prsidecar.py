@@ -4,6 +4,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from prsidecar.render import canonical, receipt, render, sha256
+from prsidecar.validate import load_schema, validate
 
 ROOT = Path(__file__).resolve().parents[1]
 SRC = json.loads((ROOT / "prsidecar/fixtures/pr_576.source.json").read_text())
@@ -48,6 +49,19 @@ def test_hash_is_of_canonical_bytes():
     frozen = json.loads(canonical(sidecar))
     frozen["renderer"].pop("sidecar_sha256")
     assert sha256(canonical(frozen)) == sidecar["renderer"]["sidecar_sha256"]
+
+def test_schema_json_executed_against_sidecar():
+    schema = load_schema()
+    assert schema["$id"] == "prsidecar.v0"
+    sidecar = render(SRC)
+    validate(sidecar, schema)
+    bad = dict(sidecar)
+    bad["authority_created"] = True
+    try:
+        validate(bad, schema)
+    except ValueError:
+        return
+    raise AssertionError("schema accepted authority_created true")
 
 if __name__ == "__main__":
     tests = [v for k, v in sorted(globals().items()) if k.startswith("test_")]
