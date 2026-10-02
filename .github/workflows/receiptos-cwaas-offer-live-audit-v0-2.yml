@@ -1,0 +1,186 @@
+name: ReceiptOS CWaaS Offer Live Audit v0.2
+
+on:
+  pull_request:
+    paths:
+      - 'projects/cwaas/offers/RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_V1.md'
+      - 'receipts/receiptos/git-native-v0-2/live/receipt_first_agent_workflow_audit_v1.semantic-envelope.json'
+      - '.github/workflows/receiptos-cwaas-offer-live-audit-v0-2.yml'
+      - 'tools/receiptos_git_native_reverse_replay_v0_2.py'
+      - 'schemas/receiptos/git_native_semantic_envelope_v0_2.schema.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-cwaas-offer-live-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Run cold history and semantic replay
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .receiptos-cwaas-offer-v02
+          python3 - <<'PY' 2>&1 | tee .receiptos-cwaas-offer-v02/verify.log
+          from __future__ import annotations
+          import importlib.util
+          import json
+          from pathlib import Path
+          import subprocess
+          import tempfile
+
+          repo = Path('.').resolve()
+          target = 'projects/cwaas/offers/RECEIPT_FIRST_AGENT_WORKFLOW_AUDIT_V1.md'
+          creation = '077efa9a713f97e0c608d45df7135b224f941b49'
+          bound_commit = '0aff025b7efe448d996809ad4f8abcae4622e546'
+          expected_blob = '62a30a9d2209e0f0d9f9b12398e9240541c65e7a'
+          expected_sha256 = 'sha256:b62b742efd14dc70d17bd262ea1185132b2b5c4d9ee337170831ed87e3e8ba3c'
+          envelope_path = Path('receipts/receiptos/git-native-v0-2/live/receipt_first_agent_workflow_audit_v1.semantic-envelope.json')
+          semantic_dir = Path('receipts/receiptos/git-native-v0-2')
+          engine_path = Path('tools/receiptos_git_native_reverse_replay_v0_2.py')
+
+          def git(*args: str, check: bool = True) -> str:
+              cp = subprocess.run(['git', *args], cwd=repo, text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+              if check and cp.returncode != 0:
+                  raise RuntimeError(f"git {' '.join(args)} failed: {cp.stderr}")
+              return cp.stdout.strip()
+
+          spec = importlib.util.spec_from_file_location('receiptos_git_native_v02', engine_path)
+          assert spec is not None and spec.loader is not None
+          engine = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(engine)
+
+          # Cold history pass: prove reachable path-change history, not global historical uniqueness.
+          path_changes = [x for x in git('log', '--reverse', '--format=%H', bound_commit, '--', target).splitlines() if x]
+          assert path_changes == [creation], path_changes
+          creation_status = git('diff-tree', '--root', '--no-commit-id', '--name-status', '-r', creation, '--', target)
+          assert creation_status == f'A\t{target}', creation_status
+          assert git('cat-file', '-e', f'{creation}:{target}', check=False) == ''
+          parent_probe = subprocess.run(['git', 'cat-file', '-e', f'{creation}^:{target}'], cwd=repo)
+          assert parent_probe.returncode != 0
+
+          current_blob = git('rev-parse', f'{bound_commit}:{target}')
+          creation_blob = git('rev-parse', f'{creation}:{target}')
+          assert creation_blob == expected_blob
+          assert current_blob == expected_blob
+          assert git('show', f'{creation}:{target}') == git('show', f'{bound_commit}:{target}')
+
+          creation_text = git('show', f'{creation}:{target}')
+          current_text = git('show', f'{bound_commit}:{target}')
+          required_terms = [
+              'offer_status: SERVICE_OFFER_DRAFT',
+              'payment_execution: false',
+              'token_claim: false',
+              'settlement_claim: false',
+              'price_range: 50-250 USD',
+              'turnaround: 24-72 hours',
+              'deliverable_001: receipt-grade workflow audit',
+              'deliverable_005: GitHub PR or issue summary',
+              'This offer does not provide legal advice, financial advice, custody, investment analysis, token valuation, payment execution, settlement confirmation, Coinbase endorsement, or Base endorsement.',
+          ]
+          assert all(term in creation_text for term in required_terms)
+          assert all(term in current_text for term in required_terms)
+
+          envelope = json.loads(envelope_path.read_text(encoding='utf-8'))
+          assert engine.envelope_errors(envelope) == []
+          binding = envelope['binding']
+          assert binding['git_commit_oid'] == bound_commit
+          assert binding['git_blob_oids'] == [expected_blob]
+          assert binding['content_sha256'] == expected_sha256
+          assert envelope['semantic']['replay_disposition'] == 'HOLD'
+          assert envelope['semantic']['evidence_class'] == 'TEXT_ONLY_STOREFRONT_NO_BOUND_LIVE_FULFILLMENT_RECEIPT'
+          assert envelope['authority_created'] is False
+          assert envelope['merge_authorized'] is False
+          assert 'witness' not in envelope
+
+          # First FIND OUT: no semantic envelope available -> HOLD for missing exact receipt.
+          with tempfile.TemporaryDirectory(prefix='receiptos-cold-semantic-') as tmp:
+              cold_result = engine.find_out(repo, bound_commit, target, Path(tmp))
+          assert cold_result['disposition'] == 'HOLD'
+          assert cold_result['disposition_reason'] == 'NO_EXACT_CURRENT_RECEIPT'
+          assert cold_result['receipts']['exact_current_bindings'] == []
+
+          # Second FIND OUT: exact envelope exists, but its honest disposition remains HOLD.
+          bound_result = engine.find_out(repo, bound_commit, target, semantic_dir)
+          exact = bound_result['receipts']['exact_current_bindings']
+          assert bound_result['disposition'] == 'HOLD'
+          assert bound_result['disposition_reason'] == 'EXACT_RECEIPT_DISPOSITION'
+          assert len(exact) == 1
+          assert exact[0]['receipt_id'] == 'RECEIPTOS_GIT_NATIVE_CWAAS_OFFER_AUDIT_V0_2_001'
+          assert exact[0]['replay_disposition'] == 'HOLD'
+          assert bound_result['current_state']['blob_oid'] == expected_blob
+          assert bound_result['current_state']['content_sha256'] == expected_sha256
+          assert bound_result['current_history']['last_changed_commit'] == creation
+          assert bound_result['witness']['rows'] == []
+
+          # Receipt carrier / workflow head is newer and is not implicitly promoted.
+          head = git('rev-parse', 'HEAD')
+          head_result = engine.find_out(repo, 'HEAD', target, semantic_dir)
+          assert head != bound_commit
+          assert head_result['disposition'] == 'HOLD'
+          assert head_result['disposition_reason'] == 'NO_EXACT_CURRENT_RECEIPT'
+
+          receipt = {
+              'schema': 'RECEIPTOS_CWAAS_OFFER_LIVE_AUDIT_V0_2_MACHINE_RECEIPT',
+              'status': 'PASS',
+              'target_path': target,
+              'creation_commit': creation,
+              'creation_status': 'ADDED_NEW_FILE',
+              'reachable_path_change_commits': path_changes,
+              'terms_changed_since_creation': False,
+              'bound_commit_oid': bound_commit,
+              'bound_tree_oid': binding['git_tree_oid'],
+              'bound_blob_oid': expected_blob,
+              'bound_content_sha256': expected_sha256,
+              'advertised_price_range': '50-250 USD',
+              'advertised_turnaround': '24-72 hours',
+              'advertised_deliverable_count': 5,
+              'cold_find_out_disposition': cold_result['disposition'],
+              'cold_find_out_reason': cold_result['disposition_reason'],
+              'semantic_find_out_disposition': bound_result['disposition'],
+              'semantic_find_out_reason': bound_result['disposition_reason'],
+              'semantic_evidence_class': envelope['semantic']['evidence_class'],
+              'live_fulfillment_evidence_bound': False,
+              'price_exercise_evidence_bound': False,
+              'turnaround_evidence_bound': False,
+              'alms_witness_claimed': False,
+              'receipt_carrier_head': head,
+              'receipt_carrier_head_disposition': head_result['disposition'],
+              'laws': [
+                  'OFFER_DECLARED != OFFER_FULFILLED',
+                  'PRICE_ADVERTISED != PRICE_EXERCISED',
+                  'TURNAROUND_ADVERTISED != TURNAROUND_PROVEN',
+                  'DELIVERABLE_LISTED != DELIVERABLE_DELIVERED',
+                  'TEXT_STABILITY != COMMERCIAL_READINESS',
+                  'CARRIED_FORWARD != CHANGED_HERE',
+                  'REPLAY_RESULT != AUTHORITY',
+              ],
+              'authority_created': False,
+              'merge_authorized': False,
+              'openai_required': False,
+              'network_required_by_engine': False,
+          }
+          rendered = json.dumps(receipt, indent=2, sort_keys=True) + '\n'
+          Path('.receiptos-cwaas-offer-v02/cold_find_out.json').write_text(json.dumps(cold_result, indent=2, sort_keys=True) + '\n')
+          Path('.receiptos-cwaas-offer-v02/semantic_find_out.json').write_text(json.dumps(bound_result, indent=2, sort_keys=True) + '\n')
+          Path('.receiptos-cwaas-offer-v02/head_find_out.json').write_text(json.dumps(head_result, indent=2, sort_keys=True) + '\n')
+          Path('.receiptos-cwaas-offer-v02/machine_receipt.json').write_text(rendered)
+          print(rendered, end='')
+          PY
+
+      - name: Archive CWaaS offer audit receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ReceiptOS_CWaaS_Offer_Live_Audit_V0_2
+          path: .receiptos-cwaas-offer-v02/**
+          retention-days: 14
+          if-no-files-found: error
+          include-hidden-files: true
