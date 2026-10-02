@@ -1,0 +1,22 @@
+{
+  "artifact": "QUADRATIC_PRIORITY_V1",
+  "status": "SHELL_ONLY",
+  "authority": false,
+  "binding": false,
+  "token_weight": false,
+  "seat_or_identity_weight": "UNBOUND",
+  "vote_range": [-3, -2, -1, 0, 1, 2, 3],
+  "cost_rule": "v^2",
+  "budget_rule": "SUM(v_i^2) <= B",
+  "overspend": "REJECT_WHOLE_BALLOT",
+  "server_recomputes_cost": true,
+  "eligible_cell_policy": {
+    "MATCH": "VOTEABLE",
+    "PARTIAL": "OPTIONAL_FLAGGED",
+    "UNRESOLVED": "NULL",
+    "CONFLICT": "REVIEW_LANE",
+    "NOT_APPLICABLE": "EXCLUDED"
+  },
+  "official_vote_replaced": false,
+  "implementation_status": "NOT_IMPLEMENTED"
+}
