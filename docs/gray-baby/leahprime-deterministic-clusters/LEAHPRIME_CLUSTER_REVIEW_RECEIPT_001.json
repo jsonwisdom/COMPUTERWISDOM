@@ -1,0 +1,89 @@
+{
+  "schema": "leahprime_cluster_review_receipt.v0_1",
+  "receipt_id": "LEAHPRIME_CLUSTER_REVIEW_RECEIPT_001",
+  "reviewer": "LeahPrime",
+  "reviewer_type": "SYNTHETIC_CLUSTER_REVIEWER",
+  "container": "BOXD",
+  "operator": "ReverseReplay",
+  "executor": "logicBoy",
+  "review_metaphor": "A girl reviewing her memory",
+  "machine_meaning": "REOPEN_AND_REPLAY_DETERMINISTIC_INFORMATION_CLUSTERS",
+  "input_manifest": "LEAHPRIME_IMAGE_CLUSTER_MANIFEST_2026_08_18.json",
+  "reviewed_clusters": [
+    {
+      "cluster": "ARCHIVE_GAP_REPLAY",
+      "input": "LP_CLUSTER_IMAGE_006",
+      "cluster_replay_status": "PASS",
+      "content_truth_status": "HOLD",
+      "lesson": "MISSING != DESTROYED; archive absence requires provenance and chain-of-custody replay"
+    },
+    {
+      "cluster": "MINNESOTA_STORY_CONTINUITY",
+      "input": "LP_CLUSTER_IMAGE_003",
+      "cluster_replay_status": "PASS",
+      "content_truth_status": "HOLD",
+      "lesson": "FICTIONAL_STORY_CONTINUITY != PUBLIC_RECORD"
+    },
+    {
+      "cluster": "RIVALRY_REPLAY",
+      "input": "LP_CLUSTER_IMAGE_001",
+      "cluster_replay_status": "PASS",
+      "content_truth_status": "HOLD",
+      "lesson": "RIVALRY_MECHANIC != ENEMY_CLASS; SCORE != TRUTH"
+    },
+    {
+      "cluster": "SYNTHETIC_MILITARY_INTERFACE",
+      "input": "LP_CLUSTER_IMAGE_002",
+      "cluster_replay_status": "PASS",
+      "content_truth_status": "HOLD",
+      "lesson": "DEPICTED_RANK_OR_COMMAND != VERIFIED_AUTHORITY"
+    },
+    {
+      "cluster": "PUBLIC_CONTEXT_REPORT_ART",
+      "input": "LP_CLUSTER_IMAGE_007",
+      "cluster_replay_status": "PASS",
+      "content_truth_status": "HOLD",
+      "lesson": "PUBLIC_CONTEXT_STYLE != SOURCE_BINDING; SYNTHETIC_ROLE != REAL_PERSON"
+    },
+    {
+      "cluster": "BOXD_PROVENANCE_ART",
+      "input": "LP_CLUSTER_IMAGE_005",
+      "cluster_replay_status": "PASS",
+      "content_truth_status": "HOLD",
+      "lesson": "DEPICTED_BLOCKCHAIN_VERIFICATION != CHAIN_TRUTH; REPOSITORY_RECORD != CHAIN_TRUTH"
+    },
+    {
+      "cluster": "LOCATION_SELFIE_UNBOUND",
+      "input": "LP_CLUSTER_IMAGE_004",
+      "cluster_replay_status": "PASS",
+      "content_truth_status": "HOLD",
+      "lesson": "VISUAL_LOCATION_CUE != LOCATION_BINDING"
+    }
+  ],
+  "memory_review_state": {
+    "clusters_opened": 7,
+    "clusters_replayed": 7,
+    "clusters_deleted": 0,
+    "clusters_promoted_to_public_record": 0,
+    "clusters_promoted_to_authority": 0,
+    "contradictions_erased": 0,
+    "gaps_filled_by_inference": 0
+  },
+  "disposition": {
+    "cluster_architecture": "PASS",
+    "image_byte_binding": "PASS",
+    "semantic_promotion": "HOLD",
+    "authority_created": false
+  },
+  "boundaries": [
+    "CLUSTER_REPLAY_PASS != CONTENT_TRUTH_PASS",
+    "MEMORY_REVIEW_METAPHOR != HUMAN_MEMORY_CLAIM",
+    "LEAHPRIME != REAL_PERSON",
+    "LEAHPRIME != LEEANN_CHAVERS",
+    "STORY != PUBLIC_RECORD",
+    "ARTWORK != AUTHORITY",
+    "IMAGE_TEXT != RECEIPT",
+    "MISSING != DESTROYED",
+    "AUTHORITY_CREATED = FALSE"
+  ]
+}
