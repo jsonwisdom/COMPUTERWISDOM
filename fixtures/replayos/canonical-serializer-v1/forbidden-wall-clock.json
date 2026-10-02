@@ -1,0 +1,8 @@
+{
+  "name": "forbidden-wall-clock",
+  "valid": false,
+  "inputs": [
+    "{\"schema_version\":\"replayos-snapshot/1\",\"serializer_version\":\"rfc8785-jcs-int53/1\",\"builder_version\":\"replayos-snapshot-builder/1\",\"lanes\":{},\"wall_clock\":\"2026-09-04T00:00:00Z\"}"
+  ],
+  "expected_error": "WALL_CLOCK_IN_SNAPSHOT"
+}
