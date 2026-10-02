@@ -1,0 +1,5 @@
+receipts/*
+!receipts/scaffold-declaration.json
+corpus/
+manifest/
+gate1/
