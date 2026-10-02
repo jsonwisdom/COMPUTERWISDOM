@@ -1,0 +1,107 @@
+corridor: COMPUTERWISDOM_FAMILY_SECURE_CORRIDOR_V0_1
+version: v0.1
+authority: false
+canonical: false
+status: R_AND_D_MODE_WITH_MRS_WISDOM_PURPOSE
+
+repo:
+  full_name: jsonwisdom/COMPUTERWISDOM
+  default_branch: master
+  visibility: public
+
+operator_identity:
+  builder_creator: Jay Wisdom
+  ens: jaywisdom.eth
+  basename: jaywisdom.base.eth
+  zora: jaywisdom
+  identity_claim_scope: operator_self_identification_only
+  wallet_control_claimed_by_file: false
+
+membrane:
+  joy_consent: BLOCKED_PENDING
+  al_court: REVIEW_CHAMBER_NOT_AUTHORITY
+  computerwisdom: COORDINATION_MEMBRANE
+  no_fake_green: true
+  watcher_only_default: true
+
+mode:
+  name: R_AND_D_ONLY_WITH_MRS_WISDOM_PURPOSE
+  mrs_wisdom_approval_required_for_r_and_d: false
+  mrs_wisdom_purpose_preserved: true
+  family_effect_allowed: false
+  public_family_promotion_allowed: false
+  render_allowed: false
+  merge_as_canonical_allowed: false
+  consent_advancement_allowed: false
+
+purpose:
+  jay_work: preserve builder research without fake family approval
+  jay_impact: make the corridor replayable, auditable, and public-safe
+  jay_integrity: separate technical green from governance green
+  replay: receipts_before_narrative
+  receiptos_base: candidate_lane_not_confirmed_in_repo_search
+
+assignments:
+  operator:
+    assignee: jsonwisdom
+    role: r_and_d_corridor_operator
+    permissions_claimed: false
+    duties:
+      - continue_noncanonical_research
+      - confirm_public_safe_language
+      - prevent_promotion_drift
+
+  mrs_wisdom_purpose:
+    assignee: MRS_WISDOM_PURPOSE
+    role: family_safety_purpose_marker
+    authority: false
+    approval_claimed: false
+    duties:
+      - keep_family_safety_visible
+      - prevent_private_data_expansion
+      - require_review_before_family_facing_promotion
+
+  al_review_chamber:
+    assignee: AL
+    role: boundary_review_surface
+    authority: false
+    duties:
+      - check_authority_false
+      - reject_ownership_or_control_language
+      - reject_unwitnessed_promotion
+
+  joy_protection_lane:
+    assignee: JOY
+    role: consent_and_alert_surface
+    authority: false
+    consent_state: BLOCKED_PENDING
+    duties:
+      - preserve_consent_boundary
+      - flag_family_safety_risk
+      - prevent_private_data_expansion
+
+  computerwisdom_coordination:
+    assignee: COMPUTERWISDOM
+    role: coordination_membrane
+    authority: false
+    duties:
+      - map_paths
+      - hold_receipt_pointers
+      - keep_no_fake_green_active
+
+required_checks:
+  - source_path_exists
+  - authority_false_present
+  - no_private_data
+  - no_secrets
+  - no_birthdates
+  - no_addresses
+  - no_family_authority_claims
+  - no_render_claim_without_artifact
+  - no_merge_claim_without_observed_merge
+  - consent_not_upgraded_without_witness
+  - r_and_d_does_not_claim_mrs_wisdom_approval
+
+promotion:
+  allowed: false
+  reason: R&D may continue; family-facing promotion still requires witnessed Mrs Wisdom review

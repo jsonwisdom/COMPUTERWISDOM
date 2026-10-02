@@ -1,0 +1,47 @@
+receipt: ZORA_IMAGINATION_STATION_GOOGILIONAIRRE_BASE_COIN_V0_1
+repo: jsonwisdom/COMPUTERWISDOM
+pr: 412
+corridor: COMPUTERWISDOM_FAMILY_SECURE_CORRIDOR_V0_1
+authority: false
+no_fake_green: true
+
+reported_coin:
+  platform: Zora
+  chain: Base
+  type: content_coin
+  title: "IMAGINATION STATION: WORLD’S FIRST GOOGILIONAIRRE"
+  contract: "0xacd0de7587e3c8bd34fb5195cbbf3729c335e15a"
+  link: "zora.co/coin/..."
+  referrer_context: "same referrer as previous ATOMIC MOMENT coin, reported as 0x829adfed..."
+  verification_state: REPORTED_BY_OPERATOR_NOT_INDEPENDENTLY_VERIFIED_HERE
+
+creative_context:
+  artifact_id: KID_REALITY_STUDIO_GENESIS
+  public_name: Imagination Station
+  economy_term: PEPE_PLAY_ECONOMY
+  economy_meaning: Playful Educational Proof Economy
+  image_context: "World’s First Googilionairre GPK-style parody card"
+  kid_friendly_learning_context: true
+
+risk_boundary:
+  speculative_asset: true
+  high_risk_attention_market: true
+  not_child_finance: true
+  no_wallet_required_for_kids: true
+  no_real_money_for_kids: true
+  no_financial_advice: true
+  no_price_claim: true
+  no_holder_claim: true
+
+safety_boundary:
+  r_and_d_safe_education: true
+  family_facing_promotion_allowed: false
+  render_authorization_claimed_by_receipt: false
+  mrs_wisdom_approval_claimed: false
+  authority: false
+
+ruling: >
+  The Imagination Station Googilionairre Zora/Base content coin is recorded as a reported creator-economy artifact
+  associated with the KID_REALITY_STUDIO / PEPE Playful Educational Proof Economy narrative. This receipt preserves
+  the distinction between a public speculative Zora content coin and the kid-safe education lane, where no child wallet,
+  real-money participation, or financialized PEPE logic is allowed.
