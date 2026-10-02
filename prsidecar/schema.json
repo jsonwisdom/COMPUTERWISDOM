@@ -1,0 +1,24 @@
+{
+  "$id": "prsidecar.v0",
+  "title": "PRSideCar",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "repo", "pr_number", "head_sha", "base_sha", "merge_state", "changed_paths", "evidence_refs", "receipt_refs", "typing", "unresolved_conflicts", "identity_binding", "authority_created", "replay_pointer", "renderer"],
+  "properties": {
+    "schema_version": {"const": "prsidecar.v0"},
+    "repo": {"type": "string"},
+    "pr_number": {"type": "integer"},
+    "head_sha": {"type": "string"},
+    "base_sha": {"type": "string"},
+    "merge_state": {"type": "object"},
+    "changed_paths": {"type": "array"},
+    "evidence_refs": {"type": "array"},
+    "receipt_refs": {"type": "array"},
+    "typing": {"type": "array"},
+    "unresolved_conflicts": {"type": "array"},
+    "identity_binding": {"const": "HOLD"},
+    "authority_created": {"const": false},
+    "replay_pointer": {"type": "string"},
+    "renderer": {"type": "object"}
+  }
+}
