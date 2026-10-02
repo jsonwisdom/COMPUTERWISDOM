@@ -1,0 +1,304 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.local/schemas/jaywisdom/witness_membrane.v0_1.schema.json",
+  "title": "JSONWisdom Typed Witness Membrane v0.1",
+  "description": "Separates observation, witness, attestation, signature, verification, and authority. Progression is possible but never automatic.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "progression",
+    "typed_objects",
+    "role_instances",
+    "evidence_objects",
+    "shared_law",
+    "authority_created"
+  ],
+  "properties": {
+    "format": {"const": "JSONWISDOM_WITNESS_MEMBRANE_V0.1"},
+    "progression": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["stages", "automatic_promotion"],
+      "properties": {
+        "stages": {
+          "type": "array",
+          "prefixItems": [
+            {"const": "OBSERVATION"},
+            {"const": "WITNESS"},
+            {"const": "ATTESTATION"},
+            {"const": "SIGNATURE"},
+            {"const": "VERIFICATION"}
+          ],
+          "items": false,
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "automatic_promotion": {"const": false}
+      }
+    },
+    "typed_objects": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["witness", "attester", "signer", "authority"],
+      "properties": {
+        "witness": {"$ref": "#/$defs/witness_semantics"},
+        "attester": {"$ref": "#/$defs/attester_semantics"},
+        "signer": {"$ref": "#/$defs/signer_semantics"},
+        "authority": {"$ref": "#/$defs/authority_semantics"}
+      }
+    },
+    "role_instances": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/role_instance"}
+    },
+    "evidence_objects": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/evidence_object"}
+    },
+    "shared_law": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["evidence_may_accumulate", "authority_may_emerge_by_accumulation"],
+      "properties": {
+        "evidence_may_accumulate": {"const": true},
+        "authority_may_emerge_by_accumulation": {"const": false}
+      }
+    },
+    "authority_created": {"type": "boolean"}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"authority_created": {"const": true}},
+        "required": ["authority_created"]
+      },
+      "then": {
+        "properties": {
+          "role_instances": {
+            "contains": {"$ref": "#/$defs/active_authority_instance"},
+            "minContains": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"authority_created": {"const": false}},
+        "required": ["authority_created"]
+      },
+      "then": {
+        "properties": {
+          "role_instances": {
+            "not": {
+              "contains": {"$ref": "#/$defs/active_authority_instance"}
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "witness_semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "meaning", "creates_authority", "scope_required"],
+      "properties": {
+        "kind": {"const": "witness"},
+        "meaning": {"const": "records an observation within a defined scope"},
+        "creates_authority": {"const": false},
+        "scope_required": {"const": true}
+      }
+    },
+    "attester_semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "meaning", "creates_authority", "scope_required"],
+      "properties": {
+        "kind": {"const": "attester"},
+        "meaning": {"const": "makes a signed or attributable assertion"},
+        "creates_authority": {"const": false},
+        "scope_required": {"const": true}
+      }
+    },
+    "signer_semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "meaning", "creates_authority", "scope_required"],
+      "properties": {
+        "kind": {"const": "signer"},
+        "meaning": {"const": "demonstrates cryptographic control for a specific signed payload"},
+        "creates_authority": {"const": false},
+        "scope_required": {"const": true}
+      }
+    },
+    "authority_semantics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "meaning", "requires_explicit_grant", "creates_authority", "scope_required"],
+      "properties": {
+        "kind": {"const": "authority"},
+        "meaning": {"const": "separately granted decision power within explicit scope"},
+        "requires_explicit_grant": {"const": true},
+        "creates_authority": {"const": true},
+        "scope_required": {"const": true}
+      }
+    },
+    "witness_instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "record_id", "scope", "event_id", "observation_id", "creates_authority"],
+      "properties": {
+        "kind": {"const": "witness"},
+        "record_id": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "event_id": {"type": "string", "minLength": 1},
+        "observation_id": {"type": "string", "minLength": 1},
+        "creates_authority": {"const": false}
+      }
+    },
+    "attester_instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "record_id", "scope", "claim_id", "attestation_id", "creates_authority"],
+      "properties": {
+        "kind": {"const": "attester"},
+        "record_id": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "claim_id": {"type": "string", "minLength": 1},
+        "attestation_id": {"type": "string", "minLength": 1},
+        "signature_ref": {"type": "string", "minLength": 1},
+        "attribution_ref": {"type": "string", "minLength": 1},
+        "creates_authority": {"const": false}
+      },
+      "anyOf": [
+        {"required": ["signature_ref"]},
+        {"required": ["attribution_ref"]}
+      ]
+    },
+    "signer_instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "record_id", "scope", "payload_sha256", "signature_id", "creates_authority"],
+      "properties": {
+        "kind": {"const": "signer"},
+        "record_id": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "payload_sha256": {"$ref": "#/$defs/sha256"},
+        "signature_id": {"type": "string", "minLength": 1},
+        "creates_authority": {"const": false}
+      }
+    },
+    "authority_instance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "record_id", "scope", "grant_id", "grantor_ref", "grant_status", "requires_explicit_grant", "creates_authority"],
+      "properties": {
+        "kind": {"const": "authority"},
+        "record_id": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "grant_id": {"type": "string", "minLength": 1},
+        "grantor_ref": {"type": "string", "minLength": 1},
+        "grant_status": {"enum": ["GRANTED", "REVOKED"]},
+        "requires_explicit_grant": {"const": true},
+        "creates_authority": {"const": true}
+      }
+    },
+    "active_authority_instance": {
+      "allOf": [
+        {"$ref": "#/$defs/authority_instance"},
+        {
+          "properties": {"grant_status": {"const": "GRANTED"}},
+          "required": ["grant_status"]
+        }
+      ]
+    },
+    "role_instance": {
+      "oneOf": [
+        {"$ref": "#/$defs/witness_instance"},
+        {"$ref": "#/$defs/attester_instance"},
+        {"$ref": "#/$defs/signer_instance"},
+        {"$ref": "#/$defs/authority_instance"}
+      ]
+    },
+    "observation_object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "object_id", "scope", "event_id", "creates_authority"],
+      "properties": {
+        "kind": {"const": "observation"},
+        "object_id": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "event_id": {"type": "string", "minLength": 1},
+        "creates_authority": {"const": false}
+      }
+    },
+    "claim_object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "object_id", "scope", "creates_authority"],
+      "properties": {
+        "kind": {"const": "claim"},
+        "object_id": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "creates_authority": {"const": false}
+      }
+    },
+    "attestation_object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "object_id", "scope", "claim_id", "attester_record_id", "creates_authority"],
+      "properties": {
+        "kind": {"const": "attestation"},
+        "object_id": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "claim_id": {"type": "string", "minLength": 1},
+        "attester_record_id": {"type": "string", "minLength": 1},
+        "creates_authority": {"const": false}
+      }
+    },
+    "signature_object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "object_id", "scope", "payload_sha256", "signer_record_id", "creates_authority"],
+      "properties": {
+        "kind": {"const": "signature"},
+        "object_id": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "payload_sha256": {"$ref": "#/$defs/sha256"},
+        "signer_record_id": {"type": "string", "minLength": 1},
+        "creates_authority": {"const": false}
+      }
+    },
+    "verification_object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["kind", "object_id", "scope", "subject_kind", "subject_id", "verifier_ref", "result", "creates_authority", "human_authority_created", "institutional_authority_created"],
+      "properties": {
+        "kind": {"const": "verification"},
+        "object_id": {"type": "string", "minLength": 1},
+        "scope": {"type": "string", "minLength": 1},
+        "subject_kind": {"enum": ["observation", "claim", "attestation", "signature"]},
+        "subject_id": {"type": "string", "minLength": 1},
+        "verifier_ref": {"type": "string", "minLength": 1},
+        "result": {"enum": ["PASS", "FAIL", "HOLD", "CONFLICT"]},
+        "creates_authority": {"const": false},
+        "human_authority_created": {"const": false},
+        "institutional_authority_created": {"const": false}
+      }
+    },
+    "evidence_object": {
+      "oneOf": [
+        {"$ref": "#/$defs/observation_object"},
+        {"$ref": "#/$defs/claim_object"},
+        {"$ref": "#/$defs/attestation_object"},
+        {"$ref": "#/$defs/signature_object"},
+        {"$ref": "#/$defs/verification_object"}
+      ]
+    }
+  }
+}
