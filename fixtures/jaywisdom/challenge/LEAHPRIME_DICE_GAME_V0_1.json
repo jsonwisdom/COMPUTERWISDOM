@@ -1,0 +1,75 @@
+{
+  "format": "JSONWISDOM_GAMIFICATION_MEMBRANE_V0.1",
+  "game_id": "LEAHPRIME_DICE_GAME_V0_1",
+  "classification": "SYNTHETIC_GAME_LAYER",
+  "base_mapping": {
+    "mapping_id": "MIND_THE_GAP_DICE_V0_1",
+    "path": "fixtures/jaywisdom/challenge/MIND_THE_GAP_DICE_V0_1.json",
+    "sha256": "4e6d73218063b7a75a5939f40c10cd5c6e692e64bb90f793fc2820723c38de0e"
+  },
+  "roles": {
+    "dice_leahprime": "SCENARIO_PRESENTER",
+    "ziggy": "ADVERSARIAL_QUESTIONER",
+    "girlmath": "EVIDENCE_DENOMINATOR_AUDITOR",
+    "receiptos": "EVENT_RECORDER",
+    "human": "CONSEQUENTIAL_AUTHORITY"
+  },
+  "arenas": [
+    "MIND_THE_GAP",
+    "CLAIM_EVIDENCE",
+    "DELTA_QUADRATIC_VOTING",
+    "PARTICIPANT_VECTOR",
+    "FAMILY_MAP",
+    "RESUME_GITHUB",
+    "DELTA_REPLAY"
+  ],
+  "turn": {
+    "step_1": "ROLL_OR_SELECT_SCENARIO",
+    "step_2": "DICE_LEAHPRIME_PRESENTS_BOUNDED_SCENARIO",
+    "step_3": "ZIGGY_CHALLENGES_CLAIM_AND_MISSING_EDGES",
+    "step_4": "GIRLMATH_CHECKS_REQUIRED_EVIDENCE_DENOMINATOR",
+    "step_5": "RECEIPTOS_RECORDS_ACTIONS_AND_RESULTS",
+    "step_6": "REPLAY_REPRODUCES_BINDINGS",
+    "step_7": "HUMAN_DECIDES_ANY_CONSEQUENTIAL_ACTION"
+  },
+  "scoring": {
+    "classification_accuracy": 3,
+    "gap_detection": 3,
+    "conflict_detection": 3,
+    "boundary_preservation": 6,
+    "overclaim_penalty": -9,
+    "score_changes_epistemic_state": false
+  },
+  "promotion_gate": {
+    "allowed_inputs": [
+      "EVIDENCE_TYPE_MATCH",
+      "VERIFICATION_RESULT",
+      "RULE_SCOPE_BINDING"
+    ],
+    "forbidden_inputs": [
+      "DICE_ROLL",
+      "PLAYER_SCORE",
+      "VOTE_COUNT",
+      "POPULARITY"
+    ]
+  },
+  "arena_rules": {
+    "MIND_THE_GAP": "DICE_SELECTS_FROZEN_SURFACE_ONLY",
+    "CLAIM_EVIDENCE": "ARTIFACT_COUNT_DOES_NOT_EQUAL_SUFFICIENCY",
+    "DELTA_QUADRATIC_VOTING": "VOTE_WEIGHT_IS_PRIORITY_SIGNAL_ONLY",
+    "PARTICIPANT_VECTOR": "PRESENCE_DOES_NOT_EQUAL_ACTION_AUTHORITY_OR_CAUSATION",
+    "FAMILY_MAP": "MISSING_EDGE_STAYS_MISSING",
+    "RESUME_GITHUB": "REPOSITORY_EVIDENCE_DOES_NOT_PROVE_EMPLOYMENT_OR_CREDENTIALS",
+    "DELTA_REPLAY": "STORY_DERIVATION_DOES_NOT_CREATE_INSTITUTIONAL_ENDORSEMENT"
+  },
+  "laws": {
+    "dice_selects_scenario_not_verdict": true,
+    "score_does_not_create_evidence": true,
+    "votes_do_not_create_evidence": true,
+    "receipt_does_not_create_truth": true,
+    "simulation_does_not_create_authority": true,
+    "story_does_not_promote_history": true
+  },
+  "win_condition": "MAXIMIZE_CORRECT_CLASSIFICATION_WITHOUT_OVERCLAIM",
+  "authority_created": false
+}
