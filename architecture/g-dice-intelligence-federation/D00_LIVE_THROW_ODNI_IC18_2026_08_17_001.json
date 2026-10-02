@@ -1,0 +1,58 @@
+{
+  "schema": "g-dice-intelligence-federation/d00-live-throw/v0.1",
+  "status": "D00_COMPLETE_AWAITING_LENS_SELECTION",
+  "authority_created": false,
+  "subject_class": "PUBLICLY_OBSERVABLE_EVENT_CLAIM_OR_RECORD",
+  "forbidden_categories": {
+    "person_targeting": false,
+    "nationality_targeting": false,
+    "criminal_presumption": false,
+    "classified_inference": false,
+    "internal_method_guess": false,
+    "authority": false
+  },
+  "throw": {
+    "throw_id": "D00-20260817-ODNI-IC18-001",
+    "hypothesis_id": "HYP-20260817-ODNI-IC18-001",
+    "timestamp": "2026-08-17T14:55:00-05:00",
+    "operator_supplied_subject": "ODNI's public Intelligence Community membership surface identifies 18 organizations.",
+    "selected_interrogative": "HOW_PUBLICLY_VERIFIABLE",
+    "interrogative_block": {
+      "who": "Which public authority or publisher makes the Intelligence Community membership-count claim?",
+      "what": "Does the current ODNI public membership surface state that the U.S. Intelligence Community is composed of 18 organizations?",
+      "when": "What source state was publicly observable on 2026-08-17?",
+      "where": "Which ODNI public page carries the membership statement and member list?",
+      "why_claimed": "What public text or enumerated structure explains the count of 18?",
+      "how_publicly_verifiable": "Can the count be reproduced from the current ODNI membership page and its enumerated member set?",
+      "evidence_missing": "Is any listed member omitted, duplicated, or ambiguous on the current official surface?",
+      "falsifiability_condition": "A current official ODNI source states a total other than 18, or the enumerated membership does not reconcile to 18."
+    },
+    "public_evidence_requirements": [
+      "current_official_odni_membership_surface",
+      "enumerated_public_member_list",
+      "retrieval_timestamp",
+      "content_hash_before_ledger_promotion"
+    ],
+    "candidate_lenses": ["D01"],
+    "routing_notes": "D01 is proposed solely because the claim concerns ODNI's public Intelligence Community membership surface. No lens is activated by this object. Mission relevance is not suspicion; lens selection is not tasking."
+  },
+  "source_probe": {
+    "source_uri_or_identifier": "https://www.odni.gov/index.php/who-we-are/121-dni/intelligence-community",
+    "observed_public_statement": "The U.S. Intelligence Community is composed of the following 18 organizations.",
+    "receipt_promoted": false
+  },
+  "constitutional_invariants": [
+    "RANDOMNESS_MAY_SELECT_THE_QUESTION",
+    "RANDOMNESS_NEVER_DECIDES_TRUTH",
+    "PUBLIC_MISSION_NOT_INTERNAL_METHOD",
+    "HYPOTHESIS_NOT_INTELLIGENCE_FINDING",
+    "INTELLIGENCE_FINDING_NOT_CRIMINAL_FINDING",
+    "CLAIM_NOT_TARGET",
+    "NATIONALITY_NOT_THREAT",
+    "AGENCY_SELECTION_NOT_AGENCY_SUSPICION",
+    "LENS_SELECTION_NOT_TASKING",
+    "RECEIPT_REQUEST_NOT_INVESTIGATION",
+    "AUTHORITY_CREATED_FALSE"
+  ],
+  "promotion_rule": "D00_CREATES_ONLY_REPLAYABLE_QUESTION_AND_EVIDENCE_ENVELOPE"
+}
