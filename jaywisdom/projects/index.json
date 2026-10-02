@@ -1,0 +1,60 @@
+{
+  "schema": "https://jsonwisdom.github.io/COMPUTERWISDOM/schemas/public-project-index-v0.1.json",
+  "index_id": "jaywisdom:public-projects:v0.1",
+  "updated_at": "2026-07-29T20:17:00Z",
+  "authority": false,
+  "publication_rule": "Repository activity is not public publication unless an explicit release record says so.",
+  "statuses": ["PUBLIC", "IN REVIEW", "STABLE HOLD", "RESEARCH", "PRIVATE", "PERSONAL"],
+  "projects": [
+    {
+      "id": "jaywisdom-public-face",
+      "title": "JAYWISDOM Public Face",
+      "classification": "PUBLIC",
+      "verification_state": "DEPLOYMENT_UNVERIFIED",
+      "source_url": "https://github.com/jsonwisdom/COMPUTERWISDOM/tree/master/jaywisdom",
+      "release_record_url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/419",
+      "public_url": "https://jsonwisdom.github.io/COMPUTERWISDOM/jaywisdom/",
+      "what_is_not_claimed": ["No authority is established.", "A merged pull request does not independently prove GitHub Pages deployment."]
+    },
+    {
+      "id": "minnesota-law-monitor",
+      "title": "Minnesota Law Monitor",
+      "classification": "PUBLIC",
+      "verification_state": "MANUAL_INTAKE",
+      "source_url": "https://github.com/jsonwisdom/COMPUTERWISDOM",
+      "what_is_not_claimed": ["No automated completeness claim.", "No legal authority or legal advice claim."]
+    },
+    {
+      "id": "atomic-dockets",
+      "title": "Atomic Dockets",
+      "classification": "STABLE HOLD",
+      "verification_state": "OFFICIAL_SOURCE_PENDING",
+      "source_url": "https://github.com/jsonwisdom/COMPUTERWISDOM",
+      "what_is_not_claimed": ["No final publication claim.", "No unresolved record is converted into fact."]
+    },
+    {
+      "id": "meme-court",
+      "title": "Meme Court",
+      "classification": "IN REVIEW",
+      "verification_state": "HUMAN_REVIEW_REQUIRED",
+      "source_url": "https://github.com/jsonwisdom/COMPUTERWISDOM",
+      "what_is_not_claimed": ["Satire is not evidence.", "No institutional authority is implied."]
+    },
+    {
+      "id": "public-proof-tools",
+      "title": "Public Proof Tools",
+      "classification": "RESEARCH",
+      "verification_state": "EXPLORATORY",
+      "source_url": "https://github.com/jsonwisdom/COMPUTERWISDOM",
+      "what_is_not_claimed": ["Research artifacts are not production proof.", "Unknown and conflict states remain valid outcomes."]
+    },
+    {
+      "id": "computerwisdom-control-plane",
+      "title": "COMPUTERWISDOM Control Plane",
+      "classification": "RESEARCH",
+      "verification_state": "ACTIVE_DEVELOPMENT",
+      "source_url": "https://github.com/jsonwisdom/COMPUTERWISDOM",
+      "what_is_not_claimed": ["Repository access does not grant operational authority.", "Private, personal, treasury, and family lanes are not auto-promoted."]
+    }
+  ]
+}
