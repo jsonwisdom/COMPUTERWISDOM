@@ -1,0 +1,23 @@
+{
+  "schema": "GARBAGE_GENERAL_REPOSITORY_REGISTRY_V1",
+  "repositories": [
+    {
+      "name": "COMPUTERWISDOM",
+      "repository": "jsonwisdom/COMPUTERWISDOM",
+      "local_folder": "COMPUTERWISDOM",
+      "purpose": "business, control plane, factory, shared tools and receipts"
+    },
+    {
+      "name": "GPKMONSTER",
+      "repository": "jsonwisdom/GPKMONSTER",
+      "local_folder": "GPKMONSTER",
+      "purpose": "creative factory workspace and rendered-product development"
+    },
+    {
+      "name": "JOY",
+      "repository": "jsonwisdom/JOY",
+      "local_folder": "JOY",
+      "purpose": "family participation, JoySpace and protected continuity"
+    }
+  ]
+}

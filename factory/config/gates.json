@@ -1,0 +1,26 @@
+{
+  "schema": "GARBAGE_GENERAL_GATES_V1",
+  "default": "HOLD",
+  "human_surface": "TERMINAL",
+  "terminal_decisions": ["ACKNOWLEDGE", "HOLD", "STOP"],
+  "human_required_for": [
+    "family_consent",
+    "merge",
+    "publication",
+    "shopify_write",
+    "external_message",
+    "legal_classification"
+  ],
+  "machine_may": [
+    "inventory",
+    "hash",
+    "diff",
+    "test",
+    "render_draft",
+    "emit_receipt"
+  ],
+  "authority_created": false,
+  "external_write": false,
+  "merge": false,
+  "publication": false
+}
