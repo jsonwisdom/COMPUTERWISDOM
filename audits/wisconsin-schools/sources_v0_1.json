@@ -1,0 +1,46 @@
+{
+  "schema": "southwest-wisconsin-school-budget-sources-v0.1",
+  "observed_on": "2026-08-15",
+  "primary_sources": [
+    {
+      "id": "CESA3_SCOPE",
+      "url": "https://www.cesa3.org/",
+      "role": "geographic and member-district boundary",
+      "observed_claim": "31 districts in the CESA 3 region"
+    },
+    {
+      "id": "DPI_WISFPR",
+      "url": "https://sfs.dpi.wi.gov/WiSFPR/",
+      "role": "Wisconsin school finance public reports",
+      "modules": [
+        "Tax Levy Report",
+        "School District Referenda Report",
+        "Debt Services Report",
+        "Status of Reports",
+        "Shared Cost Comparison Report",
+        "Comparative Revenue/Cost Report"
+      ]
+    },
+    {
+      "id": "DPI_TAX_LEVY",
+      "url": "https://sfs.dpi.wi.gov/wisfpr/TaxLevyReport/DistrictTaxLeviesbyFund",
+      "role": "district tax levies by fund"
+    },
+    {
+      "id": "DPI_REFERENDA",
+      "url": "https://sfs.dpi.wi.gov/WiSFPR/SchoolDistrictReferendaReport?moduleId=11",
+      "role": "district referendum records and outcomes"
+    },
+    {
+      "id": "DPI_DEBT",
+      "url": "https://sfs.dpi.wi.gov/wisfpr/DebtServicesReport",
+      "role": "district debt balances and debt-service reporting"
+    }
+  ],
+  "district_sources": {
+    "discovery_rule": "use each district's official website and official board/budget/audit publication surfaces",
+    "capture_rule": "preserve exact source locator and bytes/hash when available",
+    "missing_rule": "SEARCH_MISS != ABSENCE"
+  },
+  "authority_created": false
+}

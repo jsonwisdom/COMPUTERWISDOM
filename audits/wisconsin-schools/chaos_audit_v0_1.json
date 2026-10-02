@@ -1,0 +1,90 @@
+{
+  "schema": "southwest-wisconsin-school-budget-bitbot-v0.1",
+  "system": "SOUTHWEST_WISCONSIN_SCHOOL_BUDGET_BITBOT_V0_1",
+  "status": "REVIEW_OPEN",
+  "mode": "CHAOS_AUDIT",
+  "scope": {
+    "geography": "CESA_3_SOUTHWEST_WISCONSIN",
+    "district_count_claim": 31,
+    "district_count_source": "CESA_3_OFFICIAL",
+    "all_member_districts": true
+  },
+  "flags": {
+    "chaos_enabled": true,
+    "assume_fraud": false,
+    "search_for_anomalies": true,
+    "automatic_fraud_label": false,
+    "repository_live_fetch": false,
+    "merge_authorized": false,
+    "authority_created": false
+  },
+  "pipeline": [
+    "PUBLIC_SOURCE",
+    "BYTE_IDENTITY",
+    "NUMBER_TYPE",
+    "OWNER_YEAR",
+    "FUND_KIND",
+    "AUTHORIZATION_TRAIL",
+    "LEVY_REFERENDUM_DEBT",
+    "ACTUAL_EXPENDITURE",
+    "INDEPENDENT_AUDIT",
+    "DPI_REPORT",
+    "CRISSCROSS"
+  ],
+  "mandatory_fields": [
+    "source_url",
+    "source_kind",
+    "observed_at",
+    "district",
+    "fiscal_year",
+    "number_type",
+    "raw_value",
+    "unit",
+    "fund_kind",
+    "action_state",
+    "authorization_reference",
+    "provenance_state"
+  ],
+  "allowed_results": [
+    "SUPPORT",
+    "HOLD",
+    "CONTRADICT",
+    "ANOMALY_CANDIDATE",
+    "SOURCE_CHANGED",
+    "AUTHORIZATION_GAP",
+    "REPORTING_GAP",
+    "UNEXPLAINED_VARIANCE"
+  ],
+  "forbidden_automatic_results": [
+    "FRAUD",
+    "CRIME",
+    "CORRUPTION",
+    "MISCONDUCT_BY_NAMED_PERSON"
+  ],
+  "comparison_gate": {
+    "same_type": true,
+    "same_fiscal_year": true,
+    "same_unit": true,
+    "differences_must_remain_visible": [
+      "district",
+      "fund_kind",
+      "proposal_vs_enacted",
+      "accounting_scope",
+      "valuation_context",
+      "debt_structure",
+      "provenance"
+    ]
+  },
+  "invariants": [
+    "ANOMALY != FRAUD",
+    "LEVY != BUDGET",
+    "PROPOSAL != VOTE",
+    "VOTE != CERTIFICATION",
+    "CERTIFICATION != SPEND",
+    "SOURCE_FOUND != TRAIL_CLOSED",
+    "RECEIPT != TRUTH",
+    "OBSERVATION != AUTHORITY",
+    "EVIDENCE_OF_RECORDING_STATE != EVIDENCE_OF_WORLD_STATE"
+  ],
+  "authority_created": false
+}
