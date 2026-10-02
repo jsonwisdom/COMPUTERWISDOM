@@ -1,0 +1,85 @@
+{
+  "artifact_id": "RECEIPTSOS_EPSTEIN_TRUMP_MAXWELL_RELEASE_STATE_V0_1",
+  "version": "0.1",
+  "authority_created": false,
+  "proof_inferred": false,
+  "source_receipts": {
+    "sdny_flight_email": {
+      "document_id": "EFTA00028716",
+      "source_uri": "https://www.justice.gov/epstein/files/DataSet%208/EFTA00028716.pdf",
+      "timestamp_utc": "2020-01-08T00:56:36Z",
+      "publisher": "U.S. Department of Justice",
+      "source_type": "released_SDNY_AUSA_email"
+    },
+    "maxwell_interview": {
+      "source_uri": "https://www.justice.gov/maxwell-interview",
+      "dates": ["2025-07-24", "2025-07-25"],
+      "venue": "Office of the U.S. Attorney for the Northern District of Florida",
+      "source_type": "DOJ_published_proffer_transcripts_and_audio"
+    },
+    "doj_release_process": {
+      "source_uri": "https://www.justice.gov/opa/pr/department-justice-publishes-35-million-responsive-pages-compliance-epstein-files",
+      "publication_date": "2026-01-30",
+      "reviewers_claimed": "500_plus",
+      "sdny_additional_court_order_protocol": true
+    },
+    "house_oversight_production": {
+      "source_uri": "https://oversight.house.gov/release/oversight-committee-releases-epstein-records-provided-by-the-department-of-justice/",
+      "subpoena_date": "2025-08-05",
+      "release_date": "2025-09-02",
+      "released_pages": 33295
+    }
+  },
+  "states": {
+    "trump_flights_1993_1996_ge_8": "BOUND_TO_OFFICIAL_SDNY_EMAIL",
+    "maxwell_copresence_on_those_flights_ge_4": "BOUND_TO_OFFICIAL_SDNY_EMAIL",
+    "row_level_manifest_equivalence": "HOLD",
+    "blanche_interviewed_maxwell": "PROVEN",
+    "ndfl_office_was_proffer_venue": "PROVEN",
+    "court_hearing_occurred_at_proffer": "REJECT",
+    "ndfl_assumed_sdny_case_jurisdiction": "HOLD_NOT_ESTABLISHED",
+    "doj_2026_release_reviewers": "BOUND_500_PLUS",
+    "sdny_court_order_redaction_protocol": "PROVEN_TO_DOJ_RELEASE",
+    "patel_single_point_of_failure_release_model": "REJECTED",
+    "patel_personally_reviewed_every_source": "HOLD",
+    "house_oversight_subpoena_and_33295_page_release": "PROVEN_TO_COMMITTEE_RELEASE",
+    "full_release_byte_for_byte_authentication": "HOLD",
+    "full_corpus_sha256_manifest": "HOLD_NOT_PUBLICLY_ACQUIRED",
+    "sdny_2020_to_doj_2026_corpus_equivalence": "HOLD",
+    "biden_efta_statute_edge": "NOT_APPLICABLE_TO_PRESIDENTIAL_TERM_TIMING",
+    "obama_verified_misconduct_edge": "NOT_ESTABLISHED",
+    "electronic_search_completeness": "HOLD"
+  },
+  "hard_rules": [
+    "PASSENGER != PARTICIPANT_IN_MISCONDUCT",
+    "DOJ_RECORD != CRIMINAL_FINDING",
+    "EXECUTIVE_PROFFER != COURT_HEARING",
+    "NDFL_VENUE != TRANSFER_OF_SDNY_JURISDICTION",
+    "SEARCH_FAILURE != RECORD_ABSENCE",
+    "OFFICIAL_RELEASE != FULL_CORPUS_AUTHENTICATION",
+    "COURT_ORDER_PROTOCOL != PROOF_OF_EACH_REDACTION_DECISION",
+    "500_PLUS_REVIEWERS != ONE_PERSON_CONTROLLED_EVERY_REVIEW",
+    "AGGREGATE_FLIGHT_EMAIL != ROW_LEVEL_MANIFEST",
+    "SAME_ENDPOINT != SAME_HISTORY"
+  ],
+  "processor_membrane": {
+    "allowed": [
+      "extract_exact_statements",
+      "normalize_timestamps",
+      "hash_acquired_bytes",
+      "compare_versions",
+      "map_authority_edges",
+      "map_geojson_only_from_source_bound_rows",
+      "return_PROVEN_BOUND_HOLD_CONFLICT_REJECT"
+    ],
+    "forbidden": [
+      "invent_missing_manifest_rows",
+      "infer_misconduct_from_passenger_status",
+      "infer_jurisdiction_transfer_from_interview_venue",
+      "infer_full_corpus_integrity_from_official_release",
+      "promote_search_failure_to_absence",
+      "create_governmental_authority"
+    ]
+  },
+  "standing_order": "Freeze the date. Name the custodian. Separate court from prosecutor and venue from jurisdiction. Hash the exact bytes. Promote only the edge the receipt actually proves."
+}

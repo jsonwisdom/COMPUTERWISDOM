@@ -1,0 +1,85 @@
+{
+  "artifact": "JASONS_DICE_GAMES_OF_HORROR_V0_1",
+  "system": "BOXD",
+  "class": "SATIRICAL_AUDIT_GAME",
+  "creator_label": "Jay / JASON",
+  "narrator": "LeahPrime",
+  "version": "0.1.0",
+  "authority": false,
+  "proof_inferred": false,
+  "no_fake_green": true,
+  "purpose": "Randomize audit order while preserving source, authority, burden, execution, contradiction, recovery, and replay boundaries.",
+  "hard_rules": [
+    "DICE_DO_NOT_DECIDE_GUILT",
+    "DICE_DO_NOT_DECIDE_TRUTH",
+    "DICE_DO_NOT_CREATE_AUTHORITY",
+    "SEARCH_RESULT_IS_NOT_PROOF",
+    "MIRROR_IS_NOT_OFFICIAL_AUTHORITY",
+    "SATIRE_IS_NOT_ALLEGATION",
+    "NOT_FOUND_YET_DOES_NOT_MEAN_DOES_NOT_EXIST",
+    "RECEIPT_DOES_NOT_EQUAL_VERDICT"
+  ],
+  "dice": {
+    "d8": [
+      {"roll": 1, "gate": "SOURCE", "question": "What is the primary record and can its bytes be frozen?"},
+      {"roll": 2, "gate": "AUTHORITY", "question": "What law, order, delegation, policy, or jurisdiction governed the act?"},
+      {"roll": 3, "gate": "BURDEN", "question": "Who carries the burden and what standard actually applies?"},
+      {"roll": 4, "gate": "EXECUTION", "question": "What action occurred, when, by whom, and through which system?"},
+      {"roll": 5, "gate": "MONEY_DATA", "question": "What payment, access, custody, data, or transaction receipt exists?"},
+      {"roll": 6, "gate": "CONTRADICTION", "question": "Which independent record disagrees with the current story?"},
+      {"roll": 7, "gate": "OVERSIGHT_RECOVERY", "question": "What audit, appeal, correction, inspector, court, or recovery mechanism exists?"},
+      {"roll": 8, "gate": "REVERSE_REPLAY", "question": "Can the public claim be replayed backward to frozen source bytes without filling gaps?"}
+    ]
+  },
+  "horror_states": {
+    "THE_MISSING_PAGE": "Referenced record cannot be located or frozen -> HOLD",
+    "THE_FRIENDLY_SUMMARY": "Summary exists but underlying record is missing -> HOLD",
+    "THE_VERSION_GHOST": "Artifact changed without a bound version delta -> CONFLICT",
+    "THE_GREEN_LIGHT": "Automation says green without required receipts -> REJECT",
+    "THE_POINTER_TO_NOWHERE": "Receipt pointer does not resolve to a real object -> REJECT",
+    "THE_AUTHORITY_MASK": "Narrative, AI, hash, mirror, or platform is presented as legal authority -> REJECT",
+    "THE_THREE_CARD_FILE": "Multiple official/public surfaces disagree -> CONFLICT_AND_REPLAY",
+    "THE_TIME_TRAVELER": "Later information is silently projected backward into an earlier event -> REJECT"
+  },
+  "result_states": [
+    "PROVEN",
+    "BOUND",
+    "HOLD",
+    "CONFLICT",
+    "REJECT"
+  ],
+  "boxd_sequence": [
+    "ROLL",
+    "OBSERVE",
+    "FREEZE_SOURCE",
+    "BIND_AUTHORITY",
+    "CHECK_BURDEN",
+    "REPLAY_EXECUTION",
+    "CHECK_CONTRADICTIONS",
+    "RECOVER_OR_HOLD",
+    "WRITE_RECEIPT"
+  ],
+  "planned_expansion_packs": [
+    "GREAT_ONION_SACK_AUDIT",
+    "EUROPEAN_EDITION",
+    "MINNESOTA_EDITION",
+    "POLITICAL_ALGORITHM_TRANSPARENCY_FAFO",
+    "CONGRESS_GOV_MIRROR",
+    "JUSTICE_GOV_MIRROR",
+    "NATO_PUBLIC_SOURCE_MIRROR",
+    "ROYALE_EDITION",
+    "100THINTELLIGENCEBRO_STORY_LAYER"
+  ],
+  "narrator_lines": [
+    "Roll the dice, sweetheart. We are choosing the audit door, not the defendant.",
+    "If the receipt points to nowhere, congratulations: you found the haunted house.",
+    "The scariest monster in BoxD is an unversioned green check.",
+    "Show me the source bytes before you tell me the ghost did it."
+  ],
+  "boundaries": {
+    "100THINTELLIGENCEBRO": "STORY_PARODY_LABEL_ONLY",
+    "ROYALE_EDITION": "STORY_NARRATIVE_LAYER_ONLY",
+    "LEAHPRIME": "SYNTHETIC_NARRATOR_NO_AUTHORITY",
+    "BOXD": "AUDIT_AND_STORY_FRAME_NO_AUTHORITY"
+  }
+}

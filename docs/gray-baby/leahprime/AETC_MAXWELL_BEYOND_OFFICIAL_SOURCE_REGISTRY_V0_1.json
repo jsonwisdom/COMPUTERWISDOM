@@ -1,0 +1,80 @@
+{
+  "artifact": "AETC_MAXWELL_BEYOND_OFFICIAL_SOURCE_REGISTRY_V0_1",
+  "version": "0.1.0",
+  "observed_date": "2026-08-19",
+  "authority_created": false,
+  "proof_inferred": false,
+  "source_policy": "PRIMARY_PUBLIC_OFFICIAL_ONLY",
+  "entries": [
+    {
+      "id": "AETC_MAXWELL_AIR_UNIVERSITY",
+      "institution": "Air Education and Training Command / Air University",
+      "source": "https://www.aetc.af.mil/About-Us/",
+      "claim_bound": "AETC publicly identifies Air University at Maxwell AFB, Alabama as the Air Force's lead academic institution.",
+      "project_use": "education/replay comparison rail only",
+      "authority_delegated_to_project": false
+    },
+    {
+      "id": "STARCOM_SPACE_DELTA_10",
+      "institution": "U.S. Space Force / STARCOM / Space Delta 10",
+      "source": "https://www.starcom.spaceforce.mil/About-Us/Units/Space-Delta-10-Doctrine-Wargaming/",
+      "claim_bound": "Public STARCOM material assigns Delta 10 wargaming, field experimentation, concept evaluation, doctrine development, lessons learned, and wargame-assessment functions.",
+      "project_use": "experiment/lessons-learned comparison rail only",
+      "authority_delegated_to_project": false
+    },
+    {
+      "id": "RAF_MILDENHALL_100_ARW",
+      "institution": "U.S. Air Force / 100th Air Refueling Wing / RAF Mildenhall",
+      "source": "https://www.mildenhall.af.mil/About-Us/Fact-Sheets/Display/Article/270378/100th-air-refueling-wing/",
+      "claim_bound": "Public USAF material describes the 100th ARW as conducting air-refueling and combat-support operations and supporting U.S. and NATO partners.",
+      "project_use": "public logistics/interoperability comparison rail only",
+      "intelligence_affiliation_claimed": false,
+      "authority_delegated_to_project": false
+    },
+    {
+      "id": "NATO_ALLIED_COMMAND_TRANSFORMATION",
+      "institution": "NATO / Allied Command Transformation",
+      "source": "https://www.nato.int/en/about-us/organization/nato-structure/allied-command-transformation",
+      "claim_bound": "NATO publicly identifies ACT as one of its two Strategic Commands and as the command responsible for military adaptation / warfare development.",
+      "project_use": "allied adaptation/interoperability comparison rail only",
+      "endorsement_claimed": false
+    },
+    {
+      "id": "NATO_DIGITAL_AI",
+      "institution": "NATO",
+      "source": "https://www.nato.int/en/about-us/official-texts-and-resources/official-texts/2026/01/13/alliance-digital-strategy",
+      "claim_bound": "NATO publishes a digital-transformation strategy emphasizing responsible use, interoperability, modern digital technologies, and Allied implementation.",
+      "project_use": "responsible digital/replay comparison rail only",
+      "endorsement_claimed": false
+    },
+    {
+      "id": "UK_10_DOWNING",
+      "institution": "Prime Minister's Office, 10 Downing Street",
+      "source": "https://www.gov.uk/government/organisations/prime-ministers-office-10-downing-street/about",
+      "claim_bound": "GOV.UK identifies 10 Downing Street as the official residence and office of the British Prime Minister and a government strategy/policy communication surface.",
+      "project_use": "UK executive-policy/public-communication comparison rail only",
+      "access_claimed": false,
+      "delivery_claimed": false,
+      "endorsement_claimed": false
+    },
+    {
+      "id": "UCMJ_MCM_CURRENT_PUBLICATION",
+      "institution": "Joint Service Committee on Military Justice",
+      "source": "https://jsc.defense.gov/Military-Law/Current-Publications-and-Updates/Manual-for-Courts-Martial-MCM/",
+      "claim_bound": "The JSC public current-publications page identifies the 2024 Manual for Courts-Martial and published amendment/update surfaces.",
+      "project_use": "authority/policy lookup rail for case-specific UCMJ audits only",
+      "systemic_misconduct_claimed": false
+    }
+  ],
+  "story_labels_not_official_entities": [
+    "100thIntelligencebro",
+    "Boxes of Dee Intel",
+    "100thRoyalIntel",
+    "10Downing",
+    "Trinary Warfare",
+    "CrissCross",
+    "AppleSauce",
+    "AlabamaMachineSpeed"
+  ],
+  "hard_boundary": "OFFICIAL_SOURCE_BINDING_DOES_NOT_CREATE_OFFICIAL_ENDORSEMENT_OR_PROJECT_AUTHORITY"
+}
