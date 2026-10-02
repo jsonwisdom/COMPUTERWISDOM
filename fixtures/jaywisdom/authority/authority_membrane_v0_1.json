@@ -1,0 +1,72 @@
+{
+  "format": "JSONWISDOM_AUTHORITY_MEMBRANE_V0.1",
+  "identity_lattice": [
+    "HUMAN",
+    "IDENTITY_LABEL",
+    "ADDRESS_CONTROL",
+    "IDENTITY_BINDING",
+    "ATTESTATION",
+    "RECEIPT",
+    "VERIFICATION",
+    "HUMAN_OR_INSTITUTIONAL_AUTHORITY"
+  ],
+  "identity_binding": {
+    "identity_root": "JAYWISDOM.eth",
+    "operator_identity": "jaywisdom.base.eth",
+    "github_identity": "jsonwisdom",
+    "binding_status": "DECLARED_PENDING_EXTERNAL_WITNESS",
+    "binding_hash": "a934eb17ce56014155802c2df566f68b878511e71c41c8d722370ed703480be7"
+  },
+  "authority_types": {
+    "protocol_authority": {
+      "meaning": "A deterministic verifier or protocol may treat a replay result as final inside that named protocol only.",
+      "scope": "machine protocol / verifier semantics",
+      "state": "TYPE_DEFINED",
+      "does_not_imply": [
+        "human authority",
+        "institutional authority",
+        "legal identity",
+        "universal truth"
+      ]
+    },
+    "evidence_authority": {
+      "meaning": "Evidence may carry source-scoped or receipt-scoped weight under an explicit evidence policy.",
+      "scope": "evidence evaluation only",
+      "state": "TYPE_DEFINED",
+      "does_not_imply": [
+        "truth by itself",
+        "human authority",
+        "institutional authority",
+        "identity proof"
+      ]
+    },
+    "human_authority": {
+      "meaning": "Permission or decision power explicitly granted by a human within a defined scope.",
+      "scope": "human decision rights",
+      "state": "NOT_CREATED",
+      "does_not_imply": [
+        "institutional authority"
+      ]
+    },
+    "institutional_authority": {
+      "meaning": "Authority attributable to a recognized institution within an explicit jurisdiction and scope.",
+      "scope": "institutional / jurisdictional decision rights",
+      "state": "NOT_CREATED",
+      "does_not_imply": [
+        "human identity",
+        "universal truth"
+      ]
+    }
+  },
+  "non_collapse_rules": [
+    "CONTROL != IDENTITY",
+    "IDENTITY != AUTHORITY",
+    "ATTESTATION_ABOUT_ADDRESS != SIGNATURE_BY_ADDRESS",
+    "CONVENIENCE_LABEL != VERIFIED_CLAIM",
+    "PROTOCOL_AUTHORITY != HUMAN_AUTHORITY",
+    "PROTOCOL_AUTHORITY != INSTITUTIONAL_AUTHORITY",
+    "EVIDENCE_AUTHORITY != HUMAN_AUTHORITY",
+    "VERIFICATION != HUMAN_OR_INSTITUTIONAL_AUTHORITY"
+  ],
+  "authority_created": false
+}

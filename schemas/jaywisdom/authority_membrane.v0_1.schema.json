@@ -1,0 +1,121 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.local/schemas/jaywisdom/authority_membrane.v0_1.schema.json",
+  "title": "JSONWisdom Typed Authority Membrane v0.1",
+  "description": "Separates identity, evidence, verification, and typed authority so no layer silently promotes into human or institutional authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "format",
+    "identity_lattice",
+    "identity_binding",
+    "authority_types",
+    "non_collapse_rules",
+    "authority_created"
+  ],
+  "properties": {
+    "format": {
+      "const": "JSONWISDOM_AUTHORITY_MEMBRANE_V0.1"
+    },
+    "identity_lattice": {
+      "type": "array",
+      "prefixItems": [
+        {"const": "HUMAN"},
+        {"const": "IDENTITY_LABEL"},
+        {"const": "ADDRESS_CONTROL"},
+        {"const": "IDENTITY_BINDING"},
+        {"const": "ATTESTATION"},
+        {"const": "RECEIPT"},
+        {"const": "VERIFICATION"},
+        {"const": "HUMAN_OR_INSTITUTIONAL_AUTHORITY"}
+      ],
+      "items": false,
+      "minItems": 8,
+      "maxItems": 8,
+      "description": "Ordered distinctions only. Array position does not imply promotion."
+    },
+    "identity_binding": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "identity_root",
+        "operator_identity",
+        "github_identity",
+        "binding_status",
+        "binding_hash"
+      ],
+      "properties": {
+        "identity_root": {"const": "JAYWISDOM.eth"},
+        "operator_identity": {"const": "jaywisdom.base.eth"},
+        "github_identity": {"const": "jsonwisdom"},
+        "binding_status": {"const": "DECLARED_PENDING_EXTERNAL_WITNESS"},
+        "binding_hash": {"$ref": "#/$defs/sha256"}
+      }
+    },
+    "authority_types": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "protocol_authority",
+        "evidence_authority",
+        "human_authority",
+        "institutional_authority"
+      ],
+      "properties": {
+        "protocol_authority": {"$ref": "#/$defs/authority_type"},
+        "evidence_authority": {"$ref": "#/$defs/authority_type"},
+        "human_authority": {"$ref": "#/$defs/authority_type"},
+        "institutional_authority": {"$ref": "#/$defs/authority_type"}
+      }
+    },
+    "non_collapse_rules": {
+      "type": "array",
+      "minItems": 4,
+      "items": {"type": "string"}
+    },
+    "authority_created": {
+      "const": false
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "authority_type": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "meaning",
+        "scope",
+        "state",
+        "does_not_imply"
+      ],
+      "properties": {
+        "meaning": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "state": {
+          "enum": [
+            "TYPE_DEFINED",
+            "NOT_CREATED",
+            "DECLARED_WITHIN_SCOPE",
+            "VERIFIED_WITHIN_SCOPE",
+            "GRANTED_WITHIN_SCOPE",
+            "REVOKED"
+          ]
+        },
+        "does_not_imply": {
+          "type": "array",
+          "minItems": 1,
+          "items": {"type": "string"}
+        }
+      }
+    }
+  }
+}
