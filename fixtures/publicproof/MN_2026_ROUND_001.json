@@ -1,0 +1,105 @@
+{
+  "game": "QUANTUM_PUBLIC_PROOF_PRIORITY_PERFECT_PRESS",
+  "round_id": "MN_2026_ROUND_001",
+  "title": "Polling-Place Sting",
+  "player": {
+    "id": "PEGGYPLAYER1",
+    "name": "Peggy Flanagan",
+    "role": "case_label_only",
+    "party_changes_score": false,
+    "involvement_in_claimed_sting": "NOT_ESTABLISHED"
+  },
+  "election_context": {
+    "election_date": "2026-08-11",
+    "office": "U.S. Senator",
+    "party": "Democratic-Farmer-Labor",
+    "results_status": "UNOFFICIAL_PENDING_STATE_CANVASS",
+    "state_canvass_date": "2026-08-18",
+    "precincts_reporting_percent": 100,
+    "flanagan_votes": 411541,
+    "flanagan_percent": 59.02
+  },
+  "scoring": {
+    "primary_government_record": 100,
+    "full_original_video": 80,
+    "independent_corroboration": 60,
+    "complete_contextual_quote": 40,
+    "campaign_party_assertion": 10,
+    "cropped_viral_clip": 0,
+    "unsupported_accusation": -50,
+    "proven_fabrication": -100
+  },
+  "claims": [
+    {
+      "id": "CLAIMED_STING",
+      "status": "HOLD",
+      "reason": "Original full video has not been supplied to this fixture."
+    },
+    {
+      "id": "NO_ID_ACTIVE_VOTER",
+      "status": "VERIFIED",
+      "reason": "Minnesota Secretary of State states that a current and active registered voter does not need to bring identification."
+    },
+    {
+      "id": "8_PERSON_VOUCHING",
+      "status": "VERIFIED",
+      "reason": "Minnesota law permits an ordinary registered precinct voter to sign up to eight proof-of-residence oaths on an election day."
+    },
+    {
+      "id": "VOUCH_PROVES_CITIZENSHIP",
+      "status": "FALSE",
+      "reason": "The voucher oath described in section 201.061 attests to precinct residence; voter eligibility, including citizenship, is a separate legal requirement."
+    },
+    {
+      "id": "IMPERSONATION_OCCURRED",
+      "status": "VIDEO_NEEDED",
+      "reason": "The claimed interaction requires the complete original recording and sufficient context for independent replay."
+    },
+    {
+      "id": "ILLEGAL_BALLOT_CAST",
+      "status": "NOT_PROVEN",
+      "reason": "No evidence in this fixture establishes that an illegal ballot was actually cast or counted."
+    },
+    {
+      "id": "PEGGY_INVOLVEMENT",
+      "status": "NOT_ESTABLISHED",
+      "reason": "No evidence in this fixture connects Peggy Flanagan to the claimed polling-place conduct."
+    }
+  ],
+  "evidence": [
+    {
+      "id": "MN_SOS_ID_RULE",
+      "type": "primary_government_record",
+      "points": 100,
+      "supports": ["NO_ID_ACTIVE_VOTER"],
+      "url": "https://www.sos.mn.gov/elections-voting/election-day-voting/do-i-need-to-bring-id/"
+    },
+    {
+      "id": "MN_STATUTE_201_061",
+      "type": "primary_government_record",
+      "points": 100,
+      "supports": ["8_PERSON_VOUCHING", "VOUCH_PROVES_CITIZENSHIP"],
+      "url": "https://www.revisor.mn.gov/statutes/?id=201.061"
+    },
+    {
+      "id": "MN_SOS_2026_PRIMARY_RESULTS",
+      "type": "primary_government_record",
+      "points": 100,
+      "supports": ["ELECTION_CONTEXT"],
+      "url": "https://electionresults.sos.mn.gov/Results/Index?ErsElectionId=200&electionDate=08%2F11%2F2026+00%3A00%3A00&officeInElectionIdList=-1&officeInElectionIdList=38485&scenario=USSenate"
+    }
+  ],
+  "missing_receipts": [
+    "full_original_video",
+    "video_metadata_or_chain_of_custody",
+    "independent_corroboration_of_claimed_impersonation",
+    "evidence_of_any_illegal_ballot_being_cast_or_counted",
+    "evidence_connecting_peggy_flanagan_to_the_claimed_event"
+  ],
+  "public_verdict": {
+    "rule": "Winning a claim requires replayable evidence; unresolved claims remain unresolved.",
+    "guilt_inference_allowed": false,
+    "party_based_scoring_allowed": false,
+    "authority_created": false
+  }
+}
