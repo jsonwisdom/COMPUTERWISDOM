@@ -1,0 +1,67 @@
+{
+  "hash_algorithm": "SHA-256",
+  "hash_scope": "UTF-8 bytes of JSON.stringify(payload) with recursively sorted object keys, separators=(',', ':'), ensure_ascii=false",
+  "payload_sha256": "b54d9ac7b7c22bc3ed9f59cfa3373a73391edf0afc2ec8b693bab9d5b4b74361",
+  "payload": {
+    "schema": "gray-baby-zora-binding-v0",
+    "artifact_id": "GRAY_BABY_ZORA_BINDING_V0",
+    "generated_at": "2026-08-14T14:42:00Z",
+    "identity_root": "jaywisdom.eth",
+    "authority_created": false,
+    "doctrine": [
+      "hash_binding != truth",
+      "identity_relationship != wallet_equality",
+      "candidate_neighbor != series_member",
+      "unresolved_parent != invented_lineage"
+    ],
+    "gray_baby": {
+      "project_status": "RESEARCH",
+      "archive": {
+        "repository": "jsonwisdom/COMPUTERWISDOM",
+        "path": "ARCHIVE/GB-QUANTUM-NETWORK-01.md",
+        "file_id": "GB-QUANTUM-NETWORK-01",
+        "blob_sha": "e248d70689b3b9e508645eafdbf3d9f35c9f0789",
+        "observed_at_commit": "e471c4dc9ed6a10831be2d46e90b33d217f4b216",
+        "creation_commit": "05b7afc49ac03d036aa4b085cab318577ec3d4de"
+      },
+      "declared_parent": {
+        "file_id": "GB-COMMS-EVOLUTION-01",
+        "relationship_status": "DECLARED_AT_CHILD_CREATION",
+        "creation_commit_message_declares_parent": true,
+        "creation_commit": "05b7afc49ac03d036aa4b085cab318577ec3d4de",
+        "parent_artifact_resolved": false,
+        "resolution_status": "DECLARATION_VERIFIED_ARTIFACT_UNRESOLVED",
+        "search_notes": "Exact identifier resolves in the child archive and its creation commit; no separately resolved parent artifact or matching historical commit was found in the current GitHub searches."
+      }
+    },
+    "identity_surfaces": {
+      "jaywisdom.base.eth": {
+        "address": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+        "relationship": "PUBLIC_BASE_IDENTITY_ANCHOR"
+      },
+      "zora.co/@jaywisdom": {
+        "address": "0x829adfedbe565f9885a7ea6bc78912acaef055e2",
+        "relationship": "PUBLIC_ZORA_CREATOR_SURFACE"
+      },
+      "wallet_equality_claim": false
+    },
+    "zora_inventory": {
+      "repository": "jsonwisdom/jay-zora-portal",
+      "source_profile": "https://zora.co/@jaywisdom",
+      "workflow_run": 31809119137,
+      "workflow_commit": "bbf5701968e452666d5fb85d6777caec339ccf9a",
+      "item_count": 857,
+      "dataset_sha256": "f9f128c25e4368f7881949cafbfa5f86632699f182bd620f1f5c7add53f3eace",
+      "pages_artifact_id": 9222382149,
+      "pages_artifact_sha256": "9a1c0a967f7cf267d078c8539e44b9330472d586ae0d0065460146b4769ff49c",
+      "manifest_binding": "PASS"
+    },
+    "gray_baby_zora_binding": {
+      "literal_title_or_description_matches": 0,
+      "binding_status": "HOLD",
+      "series_membership_established": false,
+      "reason": "No literal Gray Baby or gray-baby match observed in the 857-record hash-bound inventory."
+    },
+    "promotion": "NONE"
+  }
+}
