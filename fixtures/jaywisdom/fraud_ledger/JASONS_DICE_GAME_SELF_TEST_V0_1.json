@@ -1,0 +1,37 @@
+{
+  "format": "JASONS_DICE_GAME_V0.1",
+  "classification": "RANDOMIZED_CLAIM_SELECTION_RECORD",
+  "purpose": "ANTI_CHERRY_PICKING_SELECTION_ONLY",
+  "round_id": "JDG_SELF_TEST_0001",
+  "candidate_pool": {
+    "freeze_id": "SYNTHETIC_POOL_FOR_MECHANICAL_SELF_TEST_ONLY",
+    "source_adapter_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "candidate_count": 6,
+    "candidate_claim_ids": [
+      "SYNTHETIC_CLAIM_1",
+      "SYNTHETIC_CLAIM_2",
+      "SYNTHETIC_CLAIM_3",
+      "SYNTHETIC_CLAIM_4",
+      "SYNTHETIC_CLAIM_5",
+      "SYNTHETIC_CLAIM_6"
+    ],
+    "frozen_before_roll": true
+  },
+  "roll": {
+    "die": "D6",
+    "observed_value": 4,
+    "randomness_source": "OTHER_RECORDED",
+    "randomness_receipt": "SYNTHETIC_RECORDED_ROLL_FOR_MECHANICAL_SELF_TEST_ONLY",
+    "randomness_quality_proven": false
+  },
+  "selection": {
+    "selected_slot": 4,
+    "selected_claim_id": "SYNTHETIC_CLAIM_4",
+    "binding_match": true
+  },
+  "randomness_selects_claim_only": true,
+  "randomness_generates_disposition": false,
+  "claim_truth_proven": false,
+  "human_guilt_determined": false,
+  "authority_created": false
+}
