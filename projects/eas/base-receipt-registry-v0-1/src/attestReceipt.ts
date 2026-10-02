@@ -8,6 +8,7 @@ import {
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
 import { base } from "viem/chains";
+import { parseExplicitBoolean } from "./explicitBoolean.js";
 import {
   EAS_ADDRESS,
   easAbi,
@@ -21,7 +22,7 @@ const receiptSchemaUID = process.env.RECEIPT_SCHEMA_UID as Hex | undefined;
 const sourceSchemaUID = process.env.SOURCE_SCHEMA_UID as Hex | undefined;
 const sourceAttestationUID = process.env.SOURCE_ATTESTATION_UID as Hex | undefined;
 const sourceTxHash = process.env.SOURCE_TX_HASH as Hex | undefined;
-const revocable = (process.env.ATTESTATION_REVOCABLE ?? "true") === "true";
+const revocable = parseExplicitBoolean("ATTESTATION_REVOCABLE", process.env.ATTESTATION_REVOCABLE, "true");
 
 if (!privateKey) throw new Error("Missing PRIVATE_KEY.");
 if (!rpcUrl) throw new Error("Missing BASE_RPC_URL.");

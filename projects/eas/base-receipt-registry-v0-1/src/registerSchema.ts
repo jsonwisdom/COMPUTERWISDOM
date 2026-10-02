@@ -14,11 +14,12 @@ import {
   computeSchemaUID,
   schemaRegistryAbi,
 } from "./baseReceiptSchema.js";
+import { parseExplicitBoolean } from "./explicitBoolean.js";
 
 const privateKey = process.env.PRIVATE_KEY as Hex | undefined;
 const rpcUrl = process.env.BASE_RPC_URL;
 const resolver = (process.env.RESOLVER_ADDRESS ?? zeroAddress) as Address;
-const revocable = (process.env.SCHEMA_REVOCABLE ?? "true") === "true";
+const revocable = parseExplicitBoolean("SCHEMA_REVOCABLE", process.env.SCHEMA_REVOCABLE, "true");
 
 if (!privateKey) throw new Error("Missing PRIVATE_KEY.");
 if (!rpcUrl) throw new Error("Missing BASE_RPC_URL.");

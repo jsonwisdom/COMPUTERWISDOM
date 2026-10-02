@@ -181,7 +181,7 @@ contract BaseReceiptResolverV0_1 {
         }
         if (
             source.expirationTime != 0 &&
-            source.expirationTime < uint64(block.timestamp)
+            source.expirationTime <= uint64(block.timestamp)
         ) {
             revert SourceAttestationExpired();
         }
