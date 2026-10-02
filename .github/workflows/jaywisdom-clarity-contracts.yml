@@ -33,6 +33,14 @@ jobs:
             https://github.com/OpenZeppelin/openzeppelin-contracts.git \
             lib/openzeppelin-contracts
 
+      - name: Install pinned EAS Contracts
+        run: |
+          git clone --depth 1 --branch v1.4.0 \
+            https://github.com/ethereum-attestation-service/eas-contracts.git \
+            lib/eas-contracts
+          test "$(git -C lib/eas-contracts rev-parse HEAD)" = \
+            "d223e17208aa110dd5ec694d77324a2321d93201"
+
       - name: Normalize Solidity formatting in runner
         run: forge fmt
 
