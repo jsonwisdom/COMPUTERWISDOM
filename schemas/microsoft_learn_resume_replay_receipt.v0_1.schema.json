@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.dev/schemas/microsoft_learn_resume_replay_receipt.v0_1.schema.json",
+  "title": "Microsoft Learn → Gray Baby → ResumeReplay Append-Only Receipt v0.1",
+  "type": "object",
+  "required": [
+    "receipt_id",
+    "source_hash",
+    "source_type",
+    "normalized_object_hash",
+    "evidence_state",
+    "observer_verdict",
+    "observer_reason",
+    "rendered_language_hash",
+    "timestamp",
+    "prior_receipt_hash",
+    "authority_claim",
+    "employment_claim",
+    "production_proof_claim"
+  ],
+  "properties": {
+    "receipt_id": {"type": "string", "format": "uuid"},
+    "source_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "source_type": {
+      "enum": [
+        "TRAINING_MODULE",
+        "LEARNING_PATH",
+        "TRANSCRIPT",
+        "APPLIED_SKILL",
+        "CERTIFICATION",
+        "ONLINE_VERIFIABLE_CREDENTIAL",
+        "EXECUTION_RECEIPT"
+      ]
+    },
+    "normalized_object_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "evidence_state": {
+      "enum": ["PROVEN", "BOUND", "PROVEN_BOUND", "PROVEN_OPERATION", "HOLD", "CONFLICT"]
+    },
+    "observer_verdict": {"enum": ["PASS", "HOLD", "REJECT"]},
+    "observer_reason": {"type": "string", "minLength": 1},
+    "rendered_language_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "prior_receipt_hash": {
+      "anyOf": [
+        {"type": "null"},
+        {"type": "string", "pattern": "^[a-f0-9]{64}$"}
+      ]
+    },
+    "authority_claim": {"const": false},
+    "employment_claim": {"const": false},
+    "production_proof_claim": {"type": "boolean"}
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.dev/schemas/microsoft_learn_resume_replay.v0_3.schema.json",
+  "title": "ResumeReplay Execution Source v0.3",
+  "type": "object",
+  "required": ["schema_version", "source_type", "evidence_state", "scope", "limitations", "allowed_resume_language", "production_proof_created", "employment_created", "authority_created"],
+  "properties": {
+    "schema_version": {"const": "0.3"},
+    "source_type": {"type": "string"},
+    "execution_subtype": {"enum": ["CI_RUN", "ATTESTATION_RUN", "VERIFIER_RUN", "DEPLOYMENT_RECEIPT", "LIVE_SYSTEM_OPERATION"]},
+    "execution": {
+      "type": "object",
+      "required": ["provider", "workflow_name", "run_id", "run_number", "head_sha", "result"],
+      "properties": {
+        "provider": {"type": "string", "minLength": 1},
+        "workflow_name": {"type": "string", "minLength": 1},
+        "run_id": {"type": "integer", "minimum": 1},
+        "run_number": {"type": "integer", "minimum": 1},
+        "head_sha": {"type": "string", "pattern": "^[0-9a-fA-F]{40}$"},
+        "result": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
+    "source_receipt_hash": {"type": "string", "pattern": "^[0-9a-fA-F]{64}$"},
+    "evidence_state": {"enum": ["PROVEN", "BOUND", "PROVEN_BOUND", "PROVEN_EXECUTION", "PROVEN_OPERATION", "HOLD", "CONFLICT"]},
+    "scope": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "limitations": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "external_witness": {"type": ["object", "null"]},
+    "allowed_resume_language": {"type": "string"},
+    "production_proof_created": {"type": "boolean"},
+    "employment_created": {"const": false},
+    "authority_created": {"const": false}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"source_type": {"const": "EXECUTION_RECEIPT"}}, "required": ["source_type"]},
+      "then": {"required": ["execution_subtype", "execution", "source_receipt_hash"]},
+      "else": {"not": {"anyOf": [{"required": ["execution_subtype"]}, {"required": ["execution"]}, {"required": ["source_receipt_hash"]}]}}
+    }
+  ],
+  "additionalProperties": false
+}

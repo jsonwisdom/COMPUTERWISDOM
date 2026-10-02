@@ -1,0 +1,20 @@
+{
+  "schema_version": "0.2",
+  "ledger_entry": "LEDGER_ENTRY_004",
+  "provider": "GitHub Actions",
+  "source_type": "EXECUTION_RECEIPT",
+  "execution_subtype": "CI_RUN",
+  "workflow_name": "watch-trigger-engine-v0-1",
+  "run_id": 32243549731,
+  "run_number": 922,
+  "head_sha": "351ef6b63a970330b3c2df485f0c89f30f68cd84",
+  "result": "success",
+  "evidence_state": "PROVEN_EXECUTION",
+  "observer_verdict": "PASS",
+  "scope": ["GitHub Actions workflow execution on PR #510 head"],
+  "limitations": ["CI execution does not prove production deployment", "CI execution does not prove employment", "CI execution does not create institutional authority"],
+  "allowed_resume_language": "Verified successful execution of the watch-trigger-engine-v0-1 workflow on GitHub Actions for the bounded repository commit.",
+  "production_proof_created": false,
+  "employment_created": false,
+  "authority_created": false
+}
