@@ -1,0 +1,21 @@
+{
+  "CONTRACT_VERSION": "1.0.0",
+  "DIRECTORY": "STORY_MODE/02-characters",
+  "PURPOSE": "Govern 02-characters artifacts for Story Mode Building.",
+  "MAY_CONTAIN": [
+    "DIRECTORY_CONTRACT.json",
+    "versioned character records and relationship references"
+  ],
+  "MUST_NOT_CONTAIN": [
+    "unclassified artifacts",
+    "silent replacements of versioned predecessors",
+    "claims promoted beyond their evidence or authority scope"
+  ],
+  "ENTRY_PRECONDITIONS": [
+    "valid JSON when machine-readable",
+    "stable object identity",
+    "declared artifact type",
+    "explicit provenance or NOT_APPLICABLE"
+  ],
+  "AUTHORITY_NOT_CREATED": true
+}

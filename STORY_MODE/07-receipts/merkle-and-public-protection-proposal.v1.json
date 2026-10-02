@@ -1,0 +1,16 @@
+{
+  "receipt_id": "MERKLE-AND-PUBLIC-PROTECTION-PROPOSAL-v1",
+  "receipt_type": "IMPLEMENTATION_SCOPE_RECEIPT",
+  "version": "1.0.0",
+  "requirements": [
+    "create a new Story Mode Merkle root",
+    "do not reuse Anchor 001 root for new bytes",
+    "apply Jason's CENTER_ALWAYS rubric",
+    "withhold private repository identities from the public inventory",
+    "preserve no_fake_green and human review hold"
+  ],
+  "anchor_001_merkle_root": "ff55160908ff41d23f7af0df8873ef7a0dcf8163d1a308f58941e87b5a95bad9",
+  "anchor_001_applies_to_story_mode": false,
+  "public_promotion_authorized": false,
+  "authority_created": false
+}

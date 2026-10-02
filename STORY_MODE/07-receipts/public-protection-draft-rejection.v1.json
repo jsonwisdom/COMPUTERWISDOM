@@ -1,0 +1,11 @@
+{
+  "receipt_id": "PUBLIC-PROTECTION-DRAFT-REJECTION-v1",
+  "receipt_type": "FAILURE_AVOIDANCE_RECEIPT",
+  "version": "1.0.0",
+  "rejected_draft": "uncommitted inventory containing four private repository names and metadata",
+  "rejection_stage": "BEFORE_GITHUB_BLOB_CREATION",
+  "public_exposure_occurred": false,
+  "successor": "STORY_MODE/03-projects/repositories/jsonwisdom-repository-inventory.public.2026-08-12.v1.json",
+  "reason": "Public audit does not require exposing private repository identities or operational surfaces.",
+  "authority_created": false
+}

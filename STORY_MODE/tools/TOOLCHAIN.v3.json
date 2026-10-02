@@ -1,0 +1,24 @@
+{
+  "object_id": "toolchain:story-mode:v3",
+  "object_type": "TOOLCHAIN_ACTIVATION",
+  "version": "3.0.0",
+  "predecessor": "STORY_MODE/tools/TOOLCHAIN.v2.json",
+  "active": {
+    "validate": "STORY_MODE/tools/validate.v2.py",
+    "build": "STORY_MODE/tools/build.v3.py",
+    "replay": "STORY_MODE/tools/replay.v3.py"
+  },
+  "adds": [
+    "domain-separated SHA-256 Merkle tree",
+    "public Merkle root statement",
+    "exact-set replay against committed source artifacts",
+    "public-protection rubric inputs"
+  ],
+  "exclusions_are_explicit_and_replayed": [
+    "08-replay/story-mode.manifest.v3.json",
+    "08-replay/merkle-root.v1.json",
+    "08-replay/replay-result.v3.json",
+    "**/__pycache__/**"
+  ],
+  "authority_created": false
+}
