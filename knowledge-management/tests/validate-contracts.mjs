@@ -70,13 +70,16 @@ const schemaByFixture = {
   'minimal-repository-evidence.json': 'https://jsonwisdom.example/contracts/JSONWisdom-Repository-Evidence.v0.1.0.json',
   'missing-authority.json': 'https://jsonwisdom.example/contracts/JSONWisdom-Repository-Evidence.v0.1.0.json',
   'trinity-confidence-without-evidence.json': 'https://jsonwisdom.example/contracts/JSONWisdom-Trinity-Classification.v0.1.0.json',
-  'auditor-claiming-authority.json': 'https://jsonwisdom.example/contracts/auditor/AuditorEvidenceBase.v0.1.0.json'
+  'auditor-claiming-authority.json': 'https://jsonwisdom.example/contracts/auditor/AuditorEvidenceBase.v0.1.0.json',
+  'arena-round-minimal.json': 'https://jsonwisdom.example/contracts/arena/ArenaRound.v0.1.0.json',
+  'arena-round-claiming-authority.json': 'https://jsonwisdom.example/contracts/arena/ArenaRound.v0.1.0.json'
 };
 
 const expectedInvalidReason = {
   'missing-authority.json': { type: 'keyword', value: 'required' },
   'trinity-confidence-without-evidence.json': { type: 'keyword', value: 'minItems' },
-  'auditor-claiming-authority.json': { type: 'authority-separation' }
+  'auditor-claiming-authority.json': { type: 'authority-separation' },
+  'arena-round-claiming-authority.json': { type: 'authority-separation' }
 };
 
 function authoritySeparationViolation(data, relativeFilename) {
