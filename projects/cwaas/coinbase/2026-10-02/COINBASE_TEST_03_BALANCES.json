@@ -1,0 +1,996 @@
+{
+  "show_zero": false,
+  "portfolio_id": "09bcd23b-4b26-50ea-8bee-f4f107657834",
+  "rows": [
+    {
+      "asset": "1INCH",
+      "available": "0.0000000047981755",
+      "held": "0",
+      "total": "0.0000000047981755",
+      "account_uuid": "7be9a9d1-13b3-53dd-8ad3-725d7cc00394",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "AAVE",
+      "available": "0.0813015623154281",
+      "held": "0",
+      "total": "0.0813015623154281",
+      "account_uuid": "61e02932-2554-59e3-b6f6-98bfa56986ce",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "ADA",
+      "available": "0.0000000043507645",
+      "held": "0",
+      "total": "0.0000000043507645",
+      "account_uuid": "1ac2aa9e-79e2-5d56-9171-35010e076d01",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "AERO",
+      "available": "0.000000007483159",
+      "held": "0",
+      "total": "0.000000007483159",
+      "account_uuid": "18b2a903-7cd9-5396-a836-0e42dc8fa3e0",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "AKT",
+      "available": "0.008535",
+      "held": "0",
+      "total": "0.008535",
+      "account_uuid": "247f4b50-a216-5c00-a591-5b5afebf19ea",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "ALGO",
+      "available": "213.6567684299586525",
+      "held": "0",
+      "total": "213.6567684299586525",
+      "account_uuid": "069a3f58-e544-54f8-a0ff-579fb502a393",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "AMP",
+      "available": "0.85871092",
+      "held": "0",
+      "total": "0.85871092",
+      "account_uuid": "070720b6-167b-55b4-81a5-9c5707d2cce0",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "APE",
+      "available": "0.0000000004820233",
+      "held": "0",
+      "total": "0.0000000004820233",
+      "account_uuid": "06193938-cd7d-5c9b-a856-7470c0b74af8",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "ARB",
+      "available": "0.000000001496823005",
+      "held": "0",
+      "total": "0.000000001496823005",
+      "account_uuid": "5600ee21-120f-5694-8736-8ba06a09803d",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "ATH",
+      "available": "0.0000000016528398",
+      "held": "0",
+      "total": "0.0000000016528398",
+      "account_uuid": "a6883a9d-2d47-5088-991f-cb0f1509b2cd",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "AVAX",
+      "available": "1.281452654636613",
+      "held": "0",
+      "total": "1.281452654636613",
+      "account_uuid": "d39b611a-56be-5924-a13c-8b7dfe79a422",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "AXL",
+      "available": "0.008758",
+      "held": "0",
+      "total": "0.008758",
+      "account_uuid": "073df914-eae4-5251-ab83-0722ef120534",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "AXS",
+      "available": "0.0000000056388752",
+      "held": "0",
+      "total": "0.0000000056388752",
+      "account_uuid": "024e9679-2f12-5675-8c8b-9e3897acb0f5",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "BAL",
+      "available": "36.31694791",
+      "held": "0",
+      "total": "36.31694791",
+      "account_uuid": "5e9abad8-99a2-547a-b416-f4f5a852adbd",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "BCH",
+      "available": "0.0000000095186397",
+      "held": "0",
+      "total": "0.0000000095186397",
+      "account_uuid": "d3dce84b-9e16-5c10-a66d-2c25a95591b9",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "BIO",
+      "available": "0.0000000034682178",
+      "held": "0",
+      "total": "0.0000000034682178",
+      "account_uuid": "e43f45ed-838d-5fd6-98fb-acf7352b7e93",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "BLAST",
+      "available": "6907.7827910309118602",
+      "held": "0",
+      "total": "6907.7827910309118602",
+      "account_uuid": "76c62a4a-1a21-5275-8667-ac20cb1a29d8",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "BONK",
+      "available": "0.0000006163113722",
+      "held": "0",
+      "total": "0.0000006163113722",
+      "account_uuid": "e95358d2-05e0-5a99-9dfa-2107aedaf9c0",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "BTC",
+      "available": "0.0047209454003287",
+      "held": "0",
+      "total": "0.0047209454003287",
+      "account_uuid": "a361803b-eac5-52bf-bac8-36d0d9bf148a",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "CBETH",
+      "available": "0.00000000830521668",
+      "held": "0",
+      "total": "0.00000000830521668",
+      "account_uuid": "a0be1a4a-3b50-5625-b997-e8e699aae9d4",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "COSMOSDYDX",
+      "available": "0.05817541",
+      "held": "0",
+      "total": "0.05817541",
+      "account_uuid": "8b2649f6-1775-5ab8-a35f-efed99d9d725",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "DASH",
+      "available": "0.0002659706852207",
+      "held": "0",
+      "total": "0.0002659706852207",
+      "account_uuid": "052adf3b-57df-5c21-9bad-3d94f40e3bab",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "DOGE",
+      "available": "1252.511812708611096",
+      "held": "0",
+      "total": "1252.511812708611096",
+      "account_uuid": "0a198149-5ae3-527e-a62e-f4bb498dbbb8",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "DOT",
+      "available": "0.00977659",
+      "held": "0",
+      "total": "0.00977659",
+      "account_uuid": "a74b9f84-e305-5371-b8e0-c8a992832d8d",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "EOS",
+      "available": "0.0251",
+      "held": "0",
+      "total": "0.0251",
+      "account_uuid": "59f76bda-53e6-5a72-aec4-09016a94ecfe",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "ETH",
+      "available": "0.000021630842509396",
+      "held": "0",
+      "total": "0.000021630842509396",
+      "account_uuid": "8d816c6a-2c13-5f27-922c-ce845caed0df",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "FET",
+      "available": "6.09901605",
+      "held": "0",
+      "total": "6.09901605",
+      "account_uuid": "37e3aa99-83e3-5898-9d68-50682824191d",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "FIL",
+      "available": "0.0000000072921842",
+      "held": "0",
+      "total": "0.0000000072921842",
+      "account_uuid": "a77ef182-2f4c-5d57-974f-647499bfe4e8",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "FLOKI",
+      "available": "70829.6373626373925471",
+      "held": "0",
+      "total": "70829.6373626373925471",
+      "account_uuid": "b28586d3-7168-5b5d-aaf4-ba11908e3fe0",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "FLOW",
+      "available": "0.098824",
+      "held": "0",
+      "total": "0.098824",
+      "account_uuid": "af786654-a920-5a58-ae43-d0f91a544c22",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "FOX",
+      "available": "1102.8",
+      "held": "0",
+      "total": "1102.8",
+      "account_uuid": "9cae29f3-6840-5db9-bff9-5b994072fee7",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "GIGA",
+      "available": "2608.026034906284373",
+      "held": "0",
+      "total": "2608.026034906284373",
+      "account_uuid": "8277d746-21df-5362-a01b-e751cd6a42d5",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "GMT",
+      "available": "0.0636756466509759",
+      "held": "0",
+      "total": "0.0636756466509759",
+      "account_uuid": "d2361ea2-887a-5d85-bf76-f74d91bd0ce0",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "HBAR",
+      "available": "0.0000000084595854",
+      "held": "0",
+      "total": "0.0000000084595854",
+      "account_uuid": "a7bb7507-b0ab-5bb7-aa3a-f126a806188b",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "HNT",
+      "available": "0.01456418",
+      "held": "0",
+      "total": "0.01456418",
+      "account_uuid": "bb0c71f7-12a5-5d1e-bdea-e838fac14e35",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "HONEY",
+      "available": "10041.672817176",
+      "held": "0",
+      "total": "10041.672817176",
+      "account_uuid": "cd43e598-978f-5b88-a54f-3c040e4b90bc",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "HYPE",
+      "available": "0.0000000035533441",
+      "held": "0",
+      "total": "0.0000000035533441",
+      "account_uuid": "f40c9f39-af6f-5048-85f2-acb9029d5c8a",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "ICP",
+      "available": "0.0019771",
+      "held": "0",
+      "total": "0.0019771",
+      "account_uuid": "4298c8ec-1caf-5858-9834-76b9efa8b70c",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "INJ",
+      "available": "0.00254368",
+      "held": "0",
+      "total": "0.00254368",
+      "account_uuid": "b83fecdc-804a-5054-bdbe-43ada9a80a5c",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "IO",
+      "available": "82.34198413",
+      "held": "0",
+      "total": "82.34198413",
+      "account_uuid": "a0a16529-4d8d-5be7-8ebd-cb5ffa515dab",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "IOTX",
+      "available": "311.29411765",
+      "held": "0",
+      "total": "311.29411765",
+      "account_uuid": "fb9865f6-6084-551e-af4c-1139bf0ea6dc",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "IP",
+      "available": "57.9155917891268655",
+      "held": "0",
+      "total": "57.9155917891268655",
+      "account_uuid": "7e57ddd7-de7c-5755-b4e1-5071db5bcf50",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "JASMY",
+      "available": "0.0000000005685225",
+      "held": "0",
+      "total": "0.0000000005685225",
+      "account_uuid": "9071c57b-c51f-5627-ba89-d0105f0f6581",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "JITOSOL",
+      "available": "0.000066891",
+      "held": "0",
+      "total": "0.000066891",
+      "account_uuid": "811286ff-c42b-577b-8e1d-db9c0b570e50",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "KSM",
+      "available": "0.00023755783",
+      "held": "0",
+      "total": "0.00023755783",
+      "account_uuid": "49d7dcc6-2fa9-5c9b-8af3-9e4a76ef1464",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "LINK",
+      "available": "1.511734769010892515",
+      "held": "0",
+      "total": "1.511734769010892515",
+      "account_uuid": "97ceee7a-b0c4-52fd-b705-76a6c5a8398f",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "LOKA",
+      "available": "0.18705716",
+      "held": "0",
+      "total": "0.18705716",
+      "account_uuid": "a236e42f-d858-59f8-bd90-879bed7eca96",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "LPT",
+      "available": "0.0008849434648825",
+      "held": "0",
+      "total": "0.0008849434648825",
+      "account_uuid": "94f7660c-e549-5844-8460-e736629d0ec8",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "LTC",
+      "available": "0.1894146615065543",
+      "held": "0",
+      "total": "0.1894146615065543",
+      "account_uuid": "f720ef61-d0dc-532d-90ac-a161d4294387",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "MANA",
+      "available": "0.00000001",
+      "held": "0",
+      "total": "0.00000001",
+      "account_uuid": "80886f53-7dbf-5798-a810-ade265f3ddb3",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "MASK",
+      "available": "4.41262846",
+      "held": "0",
+      "total": "4.41262846",
+      "account_uuid": "4e1b5369-0fe5-5670-8b0e-0b43963a095a",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "MNDE",
+      "available": "0.098879026",
+      "held": "0",
+      "total": "0.098879026",
+      "account_uuid": "47c1fbe4-6d82-5098-aa42-db1c89e82a7e",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "MOG",
+      "available": "0.0000000045807012",
+      "held": "0",
+      "total": "0.0000000045807012",
+      "account_uuid": "9c1378c5-1bd2-57a0-8759-a3457e76e75c",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "MOVE",
+      "available": "0.0337029655265772",
+      "held": "0",
+      "total": "0.0337029655265772",
+      "account_uuid": "7bcef9f1-08e9-5758-9165-dbad1f7ab930",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "NCT",
+      "available": "0.00000000123506",
+      "held": "0",
+      "total": "0.00000000123506",
+      "account_uuid": "041f4767-d7c3-50bb-82c5-ae41cae9f3de",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "NEAR",
+      "available": "0.015016244234619",
+      "held": "0",
+      "total": "0.015016244234619",
+      "account_uuid": "0cfb9232-1c3f-5284-8105-a3be5ace820f",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "OP",
+      "available": "7.639517894529878636",
+      "held": "0",
+      "total": "7.639517894529878636",
+      "account_uuid": "ddb5f0cc-975d-545e-8bb7-732c3d721ff3",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "PEPE",
+      "available": "4040738.749808029643624",
+      "held": "0",
+      "total": "4040738.749808029643624",
+      "account_uuid": "04d20b39-d74f-5d2f-8952-f7ea4bd36011",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "POL",
+      "available": "170.842518790220510726",
+      "held": "0",
+      "total": "170.842518790220510726",
+      "account_uuid": "62acf579-46db-5586-b046-f42ce6887ae4",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "POND",
+      "available": "0.0000000008617665",
+      "held": "0",
+      "total": "0.0000000008617665",
+      "account_uuid": "b3ad95b3-1ad7-514f-a3c7-dbb86db2e718",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "POWR",
+      "available": "0.0000000817675734",
+      "held": "0",
+      "total": "0.0000000817675734",
+      "account_uuid": "003ce0cb-70fc-531f-8705-fa30d8345f73",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "QNT",
+      "available": "0.0000000025090467",
+      "held": "0",
+      "total": "0.0000000025090467",
+      "account_uuid": "edccfdcd-856b-5d27-9fe6-dea349b580cf",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "REZ",
+      "available": "1",
+      "held": "0",
+      "total": "1",
+      "account_uuid": "fc0edaee-f2c8-51c7-9b5f-b6f72ff90e1b",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "RLC",
+      "available": "0.0071813296199642",
+      "held": "0",
+      "total": "0.0071813296199642",
+      "account_uuid": "ed6fc46b-dbc1-5b8b-91b4-84482e6b4d38",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "RNDR",
+      "available": "0.0000000072731427",
+      "held": "0",
+      "total": "0.0000000072731427",
+      "account_uuid": "d91930d6-eb9c-5629-b99a-7b7b71a154ea",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "RONIN",
+      "available": "0.00624996",
+      "held": "0",
+      "total": "0.00624996",
+      "account_uuid": "06b86c33-1032-586d-b6de-90bc5f53db7f",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "SAFE",
+      "available": "0.0062896005009112",
+      "held": "0",
+      "total": "0.0062896005009112",
+      "account_uuid": "87684831-007a-5974-872d-58317d1f2532",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "SAND",
+      "available": "213.30190083",
+      "held": "0",
+      "total": "213.30190083",
+      "account_uuid": "89d82b2f-d3e7-582f-9c97-818536013cad",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "SHIB",
+      "available": "0.0000000002141516",
+      "held": "0",
+      "total": "0.0000000002141516",
+      "account_uuid": "fb81458a-642a-5a70-92d1-3c1d1b822113",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "SKY",
+      "available": "0.161112",
+      "held": "0",
+      "total": "0.161112",
+      "account_uuid": "65840591-6133-5ad2-b016-bd7d4c0e847f",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "SOL",
+      "available": "0.0000000007981471",
+      "held": "0",
+      "total": "0.0000000007981471",
+      "account_uuid": "e77c78c4-ddd8-5a75-8316-add3cac9e869",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "STRK",
+      "available": "0.27712376",
+      "held": "0",
+      "total": "0.27712376",
+      "account_uuid": "d288c285-766f-542a-82a4-167df26a3bd9",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "STX",
+      "available": "0.000000137694251",
+      "held": "0",
+      "total": "0.000000137694251",
+      "account_uuid": "f5c6a1a2-59ef-59e3-bca4-ea08c47c55d4",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "SUI",
+      "available": "1.236928123",
+      "held": "0",
+      "total": "1.236928123",
+      "account_uuid": "7f96eec1-4a9f-56cc-bd1d-52e828985a2d",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "SUSHI",
+      "available": "25.5549819352164176",
+      "held": "0",
+      "total": "25.5549819352164176",
+      "account_uuid": "c944120d-3089-5185-b3df-03cd4dd7bb4a",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "SWELL",
+      "available": "0.9982616580140655",
+      "held": "0",
+      "total": "0.9982616580140655",
+      "account_uuid": "ddd2278f-2b9e-5cf6-bbf5-4ecf51c4b78a",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "SYRUP",
+      "available": "0.08933002",
+      "held": "0",
+      "total": "0.08933002",
+      "account_uuid": "349710ac-8535-5035-b906-fdde07282cd5",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "TAO",
+      "available": "0.00010322",
+      "held": "0",
+      "total": "0.00010322",
+      "account_uuid": "41d0613d-895d-54e9-9a35-365c1dddefd6",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "TIA",
+      "available": "0.001983",
+      "held": "0",
+      "total": "0.001983",
+      "account_uuid": "b0915cd3-c43c-5f95-9a59-af20e20ad404",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "TON",
+      "available": "15.553748338",
+      "held": "0",
+      "total": "15.553748338",
+      "account_uuid": "c662e73b-50d2-5305-ad6d-34c60ec42c38",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "TOSHI",
+      "available": "42009",
+      "held": "0",
+      "total": "42009",
+      "account_uuid": "8565c453-1ccb-5e6f-892e-3f053d657014",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "TURBO",
+      "available": "1909.8266815433308645",
+      "held": "0",
+      "total": "1909.8266815433308645",
+      "account_uuid": "ad94a4c7-09e3-5a80-95be-91b5eecf0fff",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "UNI",
+      "available": "1.7031379029237393",
+      "held": "0",
+      "total": "1.7031379029237393",
+      "account_uuid": "c06c39ef-b1e8-50fe-a2c3-53e859f8ee73",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "USD",
+      "available": "387.3404121835991198",
+      "held": "0",
+      "total": "387.3404121835991198",
+      "account_uuid": "5cdf038c-9a15-5283-845d-f49ea6a8fbca",
+      "account_type": "ACCOUNT_TYPE_FIAT",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "USD1",
+      "available": "0.000000008095789",
+      "held": "0",
+      "total": "0.000000008095789",
+      "account_uuid": "d7ab3aa0-60ad-5a9b-9acc-2f0f488f6f92",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "USDC",
+      "available": "658.4313695291940448",
+      "held": "0",
+      "total": "658.4313695291940448",
+      "account_uuid": "3c76a2be-9598-5c8f-90b9-be22e25a31ab",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "USDS",
+      "available": "0.000000008961269169",
+      "held": "0",
+      "total": "0.000000008961269169",
+      "account_uuid": "559ace43-d877-5d7f-8e5d-97966d9e532d",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "USDT",
+      "available": "0.990185531205098",
+      "held": "0",
+      "total": "0.990185531205098",
+      "account_uuid": "c95b40a6-2c5e-5fda-b62f-d117c5266e12",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "W",
+      "available": "199.918587",
+      "held": "0",
+      "total": "199.918587",
+      "account_uuid": "039a120b-dd02-50e6-ba9d-310652f53d0d",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "WAXL",
+      "available": "0.008165",
+      "held": "0",
+      "total": "0.008165",
+      "account_uuid": "eb52fbf1-c226-5d39-aa87-cbf812bcb4e2",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "WCFG",
+      "available": "0.00142624",
+      "held": "0",
+      "total": "0.00142624",
+      "account_uuid": "e234894c-710c-5d06-8a5a-27b5e925160d",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "WELL",
+      "available": "0.0000000000197196",
+      "held": "0",
+      "total": "0.0000000000197196",
+      "account_uuid": "b8318fa9-1965-5d5d-ab1a-7b2d4b11b737",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "WLFI",
+      "available": "0.0000000015937176",
+      "held": "0",
+      "total": "0.0000000015937176",
+      "account_uuid": "edbd5306-8ff2-5a0c-a8f7-e882fa205f24",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "XCN",
+      "available": "0.5",
+      "held": "0",
+      "total": "0.5",
+      "account_uuid": "dcf05e0f-b279-51f6-ae4c-82c4cddc528f",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "XLM",
+      "available": "0.09312989",
+      "held": "0",
+      "total": "0.09312989",
+      "account_uuid": "3f95fa7b-762a-5faa-910d-6406a75bea75",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "XRP",
+      "available": "0.0000006790600828",
+      "held": "0",
+      "total": "0.0000006790600828",
+      "account_uuid": "00d4dbc1-c2f8-534c-a7b8-37ef29a26486",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "XTZ",
+      "available": "0.0078978876345319",
+      "held": "0",
+      "total": "0.0078978876345319",
+      "account_uuid": "1806ee6c-5a7d-5c3a-9bda-c876d8487c35",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "ZETACHAIN",
+      "available": "0.0126503560012779",
+      "held": "0",
+      "total": "0.0126503560012779",
+      "account_uuid": "684dc1c1-240b-515f-bded-f82ca6090c2c",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    },
+    {
+      "asset": "ZORA",
+      "available": "0.000000008318952405",
+      "held": "0",
+      "total": "0.000000008318952405",
+      "account_uuid": "bc22b221-31df-5c8d-8766-d967601c751b",
+      "account_type": "ACCOUNT_TYPE_CRYPTO",
+      "active": true,
+      "ready": true
+    }
+  ]
+}
