@@ -1,0 +1,28 @@
+{
+  "schema_version": "prsidecar.v0",
+  "repo": "jsonwisdom/COMPUTERWISDOM",
+  "pr_number": 576,
+  "head_sha": "ca87a7e9aec5d67c8694585d221df9a2a59a5296",
+  "base_sha": "33ca735424f3092c6c4c1b240a3ba5ebf8be61b7",
+  "merge_state": {
+    "pull_request_read_get": {"state": "closed", "merged": true, "merged_at": "2026-09-27T20:51:02Z"},
+    "list_pull_requests": {"state": "closed", "merged": false, "merged_at": "2026-09-27T20:51:02Z"}
+  },
+  "changed_paths": ["jaywisdom/projects/index.html", "jaywisdom/projects/gray-baby.html"],
+  "evidence_refs": [
+    "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/576",
+    "github.pull_request_read.get:576",
+    "github.pull_request_read.get_files:576"
+  ],
+  "receipt_refs": ["prsidecar/fixtures/pr_576.receipt.json"],
+  "typing": [
+    {"path": "jaywisdom/projects/gray-baby.html", "type": "H_MERIT", "reason": "added file observed; page claims are not promoted"},
+    {"path": "jaywisdom/projects/index.html", "type": "H_MERIT", "reason": "link edit observed; not a merit promotion"}
+  ],
+  "unresolved_conflicts": ["LIST_MERGED_FALSE vs GET_MERGED_TRUE on PR 576"],
+  "identity_binding": "HOLD",
+  "authority_created": false,
+  "replay_pointer": "prsidecar/fixtures/pr_576.source.json",
+  "source_observation": "github.pull_request_read get+get_files 2026-10-02",
+  "namespace_labels_not_identity": ["jaywisdom.eth", "jaywisdom.base.eth", "computerwisdom.eth.limo"]
+}
