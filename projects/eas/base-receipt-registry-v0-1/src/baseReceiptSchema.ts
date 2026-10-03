@@ -10,6 +10,12 @@ import {
 } from "viem";
 
 export const BASE_CHAIN_ID = 8453n;
+export const BASE_SEPOLIA_CHAIN_ID = 84532n;
+
+/**
+ * EAS predeploys. Base (8453) and Base Sepolia (84532) are both OP Stack
+ * chains and expose EAS / SchemaRegistry at the same predeploy addresses.
+ */
 
 export const EAS_ADDRESS =
   "0x4200000000000000000000000000000000000021" as const;
@@ -21,6 +27,15 @@ export const BASE_RECEIPT_SCHEMA =
   "uint256 chainId,bytes32 schemaUID,bytes32 attestationUID,bytes32 txHash,uint256 blockNumber,bytes32 blockHash,uint256 transactionIndex,address from,address to,uint256 gasUsed,uint256 cumulativeGasUsed,uint256 effectiveGasPrice,uint8 status,address contractAddress,bytes32 logsHash";
 
 export const BASE_RECEIPT_SCHEMA_FIELD_COUNT = 15;
+
+/**
+ * S07 receipt lifecycle policy. These mirror the resolver constants
+ * RECEIPT_REVOCABLE and RECEIPT_EXPIRATION_TIME and are not configurable
+ * from the environment. The scripts also read them back from the deployed
+ * resolver and refuse to proceed on any mismatch.
+ */
+export const RECEIPT_REVOCABLE = true as const;
+export const RECEIPT_EXPIRATION_TIME = 0n;
 
 export const BASE_RECEIPT_PARAMS = parseAbiParameters(BASE_RECEIPT_SCHEMA);
 
@@ -78,6 +93,53 @@ export const schemaRegistryAbi = [
   },
 ] as const;
 
+export const receiptResolverAbi = [
+  { type: "function", name: "EAS", stateMutability: "view", inputs: [], outputs: [{ name: "", type: "address" }] },
+  { type: "function", name: "CHAIN_ID", stateMutability: "view", inputs: [], outputs: [{ name: "", type: "uint256" }] },
+  {
+    type: "function",
+    name: "RECEIPT_SCHEMA",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "string" }],
+  },
+  {
+    type: "function",
+    name: "RECEIPT_SCHEMA_UID",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "bytes32" }],
+  },
+  {
+    type: "function",
+    name: "RECEIPT_REVOCABLE",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "bool" }],
+  },
+  {
+    type: "function",
+    name: "RECEIPT_EXPIRATION_TIME",
+    stateMutability: "view",
+    inputs: [],
+    outputs: [{ name: "", type: "uint64" }],
+  },
+  {
+    type: "function",
+    name: "isAuthorizedAttester",
+    stateMutability: "view",
+    inputs: [{ name: "attester", type: "address" }],
+    outputs: [{ name: "", type: "bool" }],
+  },
+  {
+    type: "function",
+    name: "isReceiptValid",
+    stateMutability: "view",
+    inputs: [{ name: "receiptUID", type: "bytes32" }],
+    outputs: [{ name: "", type: "bool" }],
+  },
+] as const;
+
 export const easAbi = [
   {
     type: "function",
@@ -119,10 +181,20 @@ export const easAbi = [
   },
 ] as const;
 
+/**
+ * Deterministic EAS schema UID, as computed by SchemaRegistry:
+ * keccak256(abi.encodePacked(schema, resolver, revocable)).
+ * The resolver is required and must be nonzero (S01); revocability is the
+ * fixed receipt policy (S07). The resolver computes the same value for
+ * address(this) in its constructor (S06).
+ */
 export function computeSchemaUID(
-  resolver: Address = zeroAddress,
-  revocable = true,
+  resolver: Address,
+  revocable: boolean = RECEIPT_REVOCABLE,
 ): Hex {
+  if (resolver.toLowerCase() === zeroAddress) {
+    throw new Error("Receipt schema UID requires a nonzero resolver (S01).");
+  }
   return keccak256(
     encodePacked(
       ["string", "address", "bool"],
@@ -147,7 +219,7 @@ export function receiptToFields(args: {
   receipt: TransactionReceipt;
   sourceSchemaUID: Hex;
   sourceAttestationUID: Hex;
-  chainId?: bigint;
+  chainId: bigint;
 }): BaseReceiptFields {
   const { receipt, sourceSchemaUID, sourceAttestationUID } = args;
 
@@ -160,7 +232,7 @@ export function receiptToFields(args: {
   }
 
   return {
-    chainId: args.chainId ?? BASE_CHAIN_ID,
+    chainId: args.chainId,
     schemaUID: sourceSchemaUID,
     attestationUID: sourceAttestationUID,
     txHash: receipt.transactionHash,

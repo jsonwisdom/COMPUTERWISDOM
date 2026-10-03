@@ -4,12 +4,14 @@
   "type": "module",
   "scripts": {
     "register": "tsx src/registerSchema.ts",
-    "attest": "tsx src/attestReceipt.ts"
+    "attest": "tsx src/attestReceipt.ts",
+    "typecheck": "tsc -p tsconfig.json"
   },
   "dependencies": {
     "viem": "^2.37.9"
   },
   "devDependencies": {
+    "@types/node": "^22.18.0",
     "tsx": "^4.20.5",
     "typescript": "^5.9.2"
   }

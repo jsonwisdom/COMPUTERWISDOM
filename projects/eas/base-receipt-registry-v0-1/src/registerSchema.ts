@@ -1,43 +1,51 @@
-import {
-  createPublicClient,
-  createWalletClient,
-  http,
-  zeroAddress,
-  type Address,
-  type Hex,
-} from "viem";
+import { createPublicClient, createWalletClient, http, type Hex } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { base } from "viem/chains";
 import {
   BASE_RECEIPT_SCHEMA,
+  RECEIPT_REVOCABLE,
   SCHEMA_REGISTRY_ADDRESS,
-  computeSchemaUID,
   schemaRegistryAbi,
 } from "./baseReceiptSchema.js";
-import { parseExplicitBoolean } from "./explicitBoolean.js";
+import {
+  assertConnectedChain,
+  requireEnv,
+  requireNonzeroResolver,
+  selectReceiptRegistryChain,
+} from "./chainConfig.js";
+import { verifyResolverBinding } from "./resolverBinding.js";
 
-const privateKey = process.env.PRIVATE_KEY as Hex | undefined;
-const rpcUrl = process.env.BASE_RPC_URL;
-const resolver = (process.env.RESOLVER_ADDRESS ?? zeroAddress) as Address;
-const revocable = parseExplicitBoolean("SCHEMA_REVOCABLE", process.env.SCHEMA_REVOCABLE, "true");
+// S05: explicit chain selection, no default, mainnet needs ALLOW_BASE_MAINNET="true".
+const selected = selectReceiptRegistryChain();
+// S01: a nonzero resolver is required; there is no zero-address fallback.
+const resolver = requireNonzeroResolver(process.env.RESOLVER_ADDRESS);
+// S07: revocability is the fixed receipt policy, not an environment default.
+const revocable = RECEIPT_REVOCABLE;
 
-if (!privateKey) throw new Error("Missing PRIVATE_KEY.");
-if (!rpcUrl) throw new Error("Missing BASE_RPC_URL.");
+const privateKey = requireEnv("PRIVATE_KEY") as Hex;
+const rpcUrl = requireEnv("RPC_URL");
 
 const account = privateKeyToAccount(privateKey);
 
 const publicClient = createPublicClient({
-  chain: base,
+  chain: selected.chain,
   transport: http(rpcUrl),
 });
 
 const walletClient = createWalletClient({
   account,
-  chain: base,
+  chain: selected.chain,
   transport: http(rpcUrl),
 });
 
-const expectedSchemaUID = computeSchemaUID(resolver, revocable);
+assertConnectedChain(selected, await publicClient.getChainId());
+
+// S01 / S06 / S07: the resolver must be deployed, bound to this chain, and
+// must compute the same receipt schema UID we are about to register.
+const { receiptSchemaUID: expectedSchemaUID } = await verifyResolverBinding(
+  publicClient,
+  resolver,
+  selected,
+);
 
 const { request } = await publicClient.simulateContract({
   account,
@@ -77,7 +85,8 @@ if (record.revocable !== revocable) {
 console.log(
   JSON.stringify(
     {
-      chainId: base.id,
+      chain: selected.name,
+      chainId: selected.chainId.toString(),
       schemaRegistry: SCHEMA_REGISTRY_ADDRESS,
       resolver,
       revocable,

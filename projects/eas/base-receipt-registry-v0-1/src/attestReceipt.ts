@@ -7,46 +7,88 @@ import {
   type Hex,
 } from "viem";
 import { privateKeyToAccount } from "viem/accounts";
-import { base } from "viem/chains";
-import { parseExplicitBoolean } from "./explicitBoolean.js";
 import {
   EAS_ADDRESS,
+  RECEIPT_EXPIRATION_TIME,
+  RECEIPT_REVOCABLE,
+  SCHEMA_REGISTRY_ADDRESS,
   easAbi,
   encodeReceiptData,
+  receiptResolverAbi,
   receiptToFields,
+  schemaRegistryAbi,
 } from "./baseReceiptSchema.js";
+import {
+  assertConnectedChain,
+  requireBytes32,
+  requireEnv,
+  requireNonzeroResolver,
+  selectReceiptRegistryChain,
+} from "./chainConfig.js";
+import { verifyResolverBinding } from "./resolverBinding.js";
 
-const privateKey = process.env.PRIVATE_KEY as Hex | undefined;
-const rpcUrl = process.env.BASE_RPC_URL;
-const receiptSchemaUID = process.env.RECEIPT_SCHEMA_UID as Hex | undefined;
-const sourceSchemaUID = process.env.SOURCE_SCHEMA_UID as Hex | undefined;
-const sourceAttestationUID = process.env.SOURCE_ATTESTATION_UID as Hex | undefined;
-const sourceTxHash = process.env.SOURCE_TX_HASH as Hex | undefined;
-const revocable = parseExplicitBoolean("ATTESTATION_REVOCABLE", process.env.ATTESTATION_REVOCABLE, "true");
+// S05: explicit chain selection, no default, mainnet needs ALLOW_BASE_MAINNET="true".
+const selected = selectReceiptRegistryChain();
+// S01: the receipt schema must be bound to a nonzero resolver.
+const resolver = requireNonzeroResolver(process.env.RESOLVER_ADDRESS);
 
-if (!privateKey) throw new Error("Missing PRIVATE_KEY.");
-if (!rpcUrl) throw new Error("Missing BASE_RPC_URL.");
-if (!receiptSchemaUID) throw new Error("Missing RECEIPT_SCHEMA_UID.");
-if (!sourceSchemaUID) throw new Error("Missing SOURCE_SCHEMA_UID.");
-if (!sourceAttestationUID) throw new Error("Missing SOURCE_ATTESTATION_UID.");
-if (!sourceTxHash) throw new Error("Missing SOURCE_TX_HASH.");
+const privateKey = requireEnv("PRIVATE_KEY") as Hex;
+const rpcUrl = requireEnv("RPC_URL");
+const receiptSchemaUID = requireBytes32("RECEIPT_SCHEMA_UID");
+const sourceSchemaUID = requireBytes32("SOURCE_SCHEMA_UID");
+const sourceAttestationUID = requireBytes32("SOURCE_ATTESTATION_UID");
+const sourceTxHash = requireBytes32("SOURCE_TX_HASH");
 
 const account = privateKeyToAccount(privateKey);
 
 const publicClient = createPublicClient({
-  chain: base,
+  chain: selected.chain,
   transport: http(rpcUrl),
 });
 
 const walletClient = createWalletClient({
   account,
-  chain: base,
+  chain: selected.chain,
   transport: http(rpcUrl),
 });
 
 const chainId = BigInt(await publicClient.getChainId());
-if (chainId !== 8453n) {
-  throw new Error(`Wrong chain: expected 8453, got ${chainId}`);
+assertConnectedChain(selected, chainId);
+
+// S06: RECEIPT_SCHEMA_UID must be exactly the schema the resolver binds to.
+const binding = await verifyResolverBinding(publicClient, resolver, selected);
+if (binding.receiptSchemaUID.toLowerCase() !== receiptSchemaUID.toLowerCase()) {
+  throw new Error(
+    `RECEIPT_SCHEMA_UID ${receiptSchemaUID} != resolver-bound schema UID ${binding.receiptSchemaUID}.`,
+  );
+}
+
+// S01: the schema must be registered on-chain with this exact nonzero resolver.
+const schemaRecord = await publicClient.readContract({
+  address: SCHEMA_REGISTRY_ADDRESS,
+  abi: schemaRegistryAbi,
+  functionName: "getSchema",
+  args: [receiptSchemaUID],
+});
+if (schemaRecord.uid.toLowerCase() !== receiptSchemaUID.toLowerCase()) {
+  throw new Error(`Receipt schema ${receiptSchemaUID} is not registered on ${selected.name}.`);
+}
+if (schemaRecord.resolver.toLowerCase() !== resolver.toLowerCase()) {
+  throw new Error(`Registered schema resolver ${schemaRecord.resolver} != RESOLVER_ADDRESS ${resolver}.`);
+}
+if (schemaRecord.revocable !== RECEIPT_REVOCABLE) {
+  throw new Error("Registered schema revocability does not match the receipt lifecycle policy.");
+}
+
+// S03: fail early if this signer is not an authorized receipt attester.
+const authorized = await publicClient.readContract({
+  address: resolver,
+  abi: receiptResolverAbi,
+  functionName: "isAuthorizedAttester",
+  args: [account.address],
+});
+if (!authorized) {
+  throw new Error(`Signer ${account.address} is not an authorized attester on resolver ${resolver}.`);
 }
 
 const sourceReceipt = await publicClient.getTransactionReceipt({
@@ -72,8 +114,9 @@ const { request } = await publicClient.simulateContract({
       schema: receiptSchemaUID,
       data: {
         recipient: zeroAddress,
-        expirationTime: 0n,
-        revocable,
+        // S07: fixed lifecycle policy, enforced again by the resolver.
+        expirationTime: RECEIPT_EXPIRATION_TIME,
+        revocable: RECEIPT_REVOCABLE,
         refUID: sourceAttestationUID,
         data: encodedData,
         value: 0n,
@@ -110,11 +153,23 @@ if (!event?.args.uid) {
   throw new Error("Attested event UID not found in EAS transaction logs.");
 }
 
+// S02: report current validity through the resolver's source re-check.
+const receiptValidNow = await publicClient.readContract({
+  address: resolver,
+  abi: receiptResolverAbi,
+  functionName: "isReceiptValid",
+  args: [event.args.uid],
+});
+
 console.log(
   JSON.stringify(
     {
+      chain: selected.name,
+      chainId: chainId.toString(),
+      resolver,
       receiptSchemaUID,
       attestationUID: event.args.uid,
+      receiptValidNow,
       easTxHash: txHash,
       sourceTxHash,
       sourceSchemaUID,
