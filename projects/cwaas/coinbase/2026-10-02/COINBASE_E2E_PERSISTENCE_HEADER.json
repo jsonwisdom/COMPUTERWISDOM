@@ -1,0 +1,13 @@
+{
+  "object": "COINBASE_E2E_PERSISTENCE_HEADER",
+  "source_disk": "sandbox /dev/vdc",
+  "source_session": "bd53a4ba-a923-50a5-80d4-b766882e0ced",
+  "portfolio_uuid": "09bcd23b-4b26-50ea-8bee-f4f107657834",
+  "retrieval_window": "2026-10-02 23:15 CDT",
+  "cross_session": "NOT_CLAIMED",
+  "tokens_included": false,
+  "canon": false,
+  "authority_created": false,
+  "coinbase_mutation": false,
+  "merge": "NONE"
+}
