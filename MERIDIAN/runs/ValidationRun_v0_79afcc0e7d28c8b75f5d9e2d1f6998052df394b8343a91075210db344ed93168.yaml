@@ -1,0 +1,106 @@
+validation_run:
+  schema_version: 0.1.0
+  kind: validation_run
+  binding: proposed
+  execution:
+    provider: github_actions
+    repository: jsonwisdom/COMPUTERWISDOM
+    pr_number: 592
+    head_sha: 785defa4054b6bb5ff6560f6a6deed7ecfee4675
+    workflow_run_id: '36915382206'
+    workflow_run_attempt: '1'
+    captured_at: '2026-10-01T19:35:28Z'
+  inputs:
+  - role: validator
+    source_class: captured
+    raw_capture_id: sha256:68ae88f7dfe0201ca047865ae508a57a7248d9a30b429c827d3eebbf618a1f72
+    content_hash: sha256:68ae88f7dfe0201ca047865ae508a57a7248d9a30b429c827d3eebbf618a1f72
+    byte_length: 14851
+    bytes_ref: run_artifact/captured_inputs/sha256_68ae88f7dfe0201ca047865ae508a57a7248d9a30b429c827d3eebbf618a1f72/validator.py
+    source_path: MERIDIAN/validator.py
+    capture_manifest_ref: run_artifact/input_raw_captures.yaml
+  - role: runner
+    source_class: captured
+    raw_capture_id: sha256:7ba87683d9d7937ac62512799db989a3c65b92e66bc0a7f4cc71fc1f7b9bbb6f
+    content_hash: sha256:7ba87683d9d7937ac62512799db989a3c65b92e66bc0a7f4cc71fc1f7b9bbb6f
+    byte_length: 3737
+    bytes_ref: run_artifact/captured_inputs/sha256_7ba87683d9d7937ac62512799db989a3c65b92e66bc0a7f4cc71fc1f7b9bbb6f/run_validation_v0.py
+    source_path: MERIDIAN/run_validation_v0.py
+    capture_manifest_ref: run_artifact/input_raw_captures.yaml
+  - role: vector_set
+    source_class: captured
+    raw_capture_id: sha256:9d5d4e5fe70fe1d10d761d50640abca854733d08d4289266485292eba5d5101c
+    content_hash: sha256:9d5d4e5fe70fe1d10d761d50640abca854733d08d4289266485292eba5d5101c
+    byte_length: 3675
+    bytes_ref: run_artifact/captured_inputs/sha256_9d5d4e5fe70fe1d10d761d50640abca854733d08d4289266485292eba5d5101c/Vector_v0.yaml
+    source_path: MERIDIAN/Vector_v0.yaml
+    capture_manifest_ref: run_artifact/input_raw_captures.yaml
+  - role: failure_registry
+    source_class: captured
+    raw_capture_id: sha256:6bf3d01ad515b6e8294d4a8eca56f243e49f35a203adee56fcbc1266a4b1e79c
+    content_hash: sha256:6bf3d01ad515b6e8294d4a8eca56f243e49f35a203adee56fcbc1266a4b1e79c
+    byte_length: 16985
+    bytes_ref: run_artifact/captured_inputs/sha256_6bf3d01ad515b6e8294d4a8eca56f243e49f35a203adee56fcbc1266a4b1e79c/FailureCode_v0.yaml
+    source_path: MERIDIAN/FailureCode_v0.yaml
+    capture_manifest_ref: run_artifact/input_raw_captures.yaml
+  - role: skip_registry
+    source_class: captured
+    raw_capture_id: sha256:a7cba52af0490ecc0f195f277d003a81aa8b2dd1de72eb8b2c1b892eaf36c769
+    content_hash: sha256:a7cba52af0490ecc0f195f277d003a81aa8b2dd1de72eb8b2c1b892eaf36c769
+    byte_length: 1834
+    bytes_ref: run_artifact/captured_inputs/sha256_a7cba52af0490ecc0f195f277d003a81aa8b2dd1de72eb8b2c1b892eaf36c769/SkipCode_v0.yaml
+    source_path: MERIDIAN/SkipCode_v0.yaml
+    capture_manifest_ref: run_artifact/input_raw_captures.yaml
+  - role: fixture_v7
+    source_class: captured
+    raw_capture_id: sha256:b665c4570bfb714a3c2c766b79fb1efaa745c6de10adce88e9b21468519ced6e
+    content_hash: sha256:b665c4570bfb714a3c2c766b79fb1efaa745c6de10adce88e9b21468519ced6e
+    byte_length: 3972
+    bytes_ref: run_artifact/captured_inputs/sha256_b665c4570bfb714a3c2c766b79fb1efaa745c6de10adce88e9b21468519ced6e/V7_supersede_requires_captured_source.yaml
+    source_path: MERIDIAN/fixtures/validate_v0_2/V7_supersede_requires_captured_source.yaml
+    capture_manifest_ref: run_artifact/input_raw_captures.yaml
+  - role: fixture_v13a
+    source_class: captured
+    raw_capture_id: sha256:616f54f2b0b3182f16699a4cfe1fbc93fa13a9f0d37dd71284cd7636b4609223
+    content_hash: sha256:616f54f2b0b3182f16699a4cfe1fbc93fa13a9f0d37dd71284cd7636b4609223
+    byte_length: 1552
+    bytes_ref: run_artifact/captured_inputs/sha256_616f54f2b0b3182f16699a4cfe1fbc93fa13a9f0d37dd71284cd7636b4609223/V13a_non_captured_confidence_promotion.yaml
+    source_path: MERIDIAN/fixtures/validate_v0_2/V13a_non_captured_confidence_promotion.yaml
+    capture_manifest_ref: run_artifact/input_raw_captures.yaml
+  - role: fixture_v13b
+    source_class: captured
+    raw_capture_id: sha256:93d52d30f084af01c5dc1338411174a9fc3127a368df9644918d0f7d3d547836
+    content_hash: sha256:93d52d30f084af01c5dc1338411174a9fc3127a368df9644918d0f7d3d547836
+    byte_length: 1114
+    bytes_ref: run_artifact/captured_inputs/sha256_93d52d30f084af01c5dc1338411174a9fc3127a368df9644918d0f7d3d547836/V13b_non_captured_confidence_at_cap.yaml
+    source_path: MERIDIAN/fixtures/validate_v0_2/V13b_non_captured_confidence_at_cap.yaml
+    capture_manifest_ref: run_artifact/input_raw_captures.yaml
+  results:
+  - failure_code: null
+    outcome: skip
+    reason: MIGRATION_NOT_IMPLEMENTED
+    skip_code: MIGRATION_NOT_IMPLEMENTED
+    vector_id: V3
+  - failure_code: SUPERSEDE_REQUIRES_CAPTURED_SOURCE
+    outcome: fail
+    reason: null
+    skip_code: null
+    vector_id: V7
+  - failure_code: NON_CAPTURED_CONFIDENCE_PROMOTION
+    outcome: fail
+    reason: null
+    skip_code: null
+    vector_id: V13a
+  - failure_code: null
+    outcome: pass
+    reason: null
+    skip_code: null
+    vector_id: V13b
+  summary:
+    fail: 2
+    meta_fail: 0
+    pass: 1
+    skip: 1
+  meta_failures: []
+  promotion: NONE
+  id: sha256:79afcc0e7d28c8b75f5d9e2d1f6998052df394b8343a91075210db344ed93168

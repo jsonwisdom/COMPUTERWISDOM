@@ -1,0 +1,149 @@
+# Vector_v0.yaml
+# PROPOSED / NOT CAPTURED / NOT BINDING
+# Validator-vector provenance namespace.
+# vectors[].source_class is NOT meridian_event.source.source_class.
+
+vectors:
+  - id: "V1"
+    source_class: migrated_legacy
+    authored_by: "Jason"
+    operator: null
+    content_hash: null
+    expects: pass
+    binding: proposed
+
+  - id: "V2"
+    source_class: migrated_legacy
+    authored_by: "Jason"
+    operator: null
+    content_hash: null
+    expects: pass
+    binding: proposed
+
+  - id: "V3"
+    source_class: migrated_legacy
+    authored_by: "Jason"
+    operator: null
+    content_hash: null
+    expects: skip
+    binding: proposed
+    skip_code: "MIGRATION_NOT_IMPLEMENTED"
+
+  - id: "V4"
+    source_class: migrated_legacy
+    authored_by: "Jason"
+    operator: null
+    content_hash: null
+    expects: fail
+    binding: proposed
+
+  - id: "V5"
+    source_class: migrated_legacy
+    authored_by: "Jason"
+    operator: null
+    content_hash: null
+    expects: fail
+    binding: proposed
+
+  - id: "V6"
+    source_class: migrated_legacy
+    authored_by: "Jason"
+    operator: null
+    content_hash: null
+    expects: fail
+    binding: proposed
+
+  - id: "V7"
+    source_class: migrated_legacy
+    authored_by: "Jason"
+    operator: null
+    content_hash: null
+    expects: fail
+    binding: proposed
+    expected_failure_code: "SUPERSEDE_REQUIRES_CAPTURED_SOURCE"
+    rejected_failure_codes:
+      - "SUPERSEDE_TARGET_MISSING"
+      - "RAW_CAPTURE_NOT_FOUND"
+      - "CAPTURE_HASH_MISMATCH"
+    fixture_note: "fixture must include supersede target so capture rule, not missing-id, throws"
+
+  - id: "V8"
+    source_class: migrated_legacy
+    authored_by: "Jason"
+    operator: null
+    content_hash: null
+    expects: fail
+    binding: proposed
+
+  - id: "V9"
+    source_class: migrated_legacy
+    authored_by: "Jason"
+    operator: null
+    content_hash: null
+    expects: fail
+    binding: proposed
+    subcases:
+      - id: "V9a"
+        note: "migrated sidecar confidence outside {legacy_unverified} must fail"
+      - id: "V9b"
+        note: "graph_snapshot: null must fail independently"
+
+  - id: "V10"
+    source_class: migrated_legacy
+    authored_by: "Jason"
+    operator: null
+    content_hash: null
+    expects: pass
+    binding: proposed
+
+  - id: "V11"
+    source_class: operator_relayed
+    authored_by: null
+    operator: "Jason"
+    transcript_ref: "conv://meridian/vectors#V11"
+    content_hash: null
+    expects: fail
+    binding: proposed
+
+  - id: "V12"
+    source_class: operator_relayed
+    authored_by: null
+    operator: "Jason"
+    transcript_ref: "conv://meridian/vectors#V12"
+    content_hash: null
+    expects: fail
+    binding: proposed
+
+  - id: "V13"
+    source_class: operator_relayed
+    authored_by: null
+    operator: "Jason"
+    transcript_ref: "conv://meridian/vectors#V13"
+    content_hash: null
+    expects: fail
+    binding: proposed
+    subcases:
+      - id: "V13a"
+        source_class: operator_relayed
+        authored_by: null
+        operator: "Jason"
+        content_hash: null
+        binding: proposed
+        expects: fail
+        expected_failure_code: "NON_CAPTURED_CONFIDENCE_PROMOTION"
+        rejected_failure_codes:
+          - "COLLIDER_RESULT_NOT_FOUND"
+          - "INPUT_SOURCE_CLASS_UNKNOWN"
+          - "CONFIDENCE_VALUE_INVALID"
+          - "ADDENDUM_SCHEMA_MISMATCH"
+      - id: "V13b"
+        source_class: operator_relayed
+        authored_by: null
+        operator: "Jason"
+        content_hash: null
+        binding: proposed
+        expects: pass
+        rejected_failure_codes:
+          - "NON_CAPTURED_CONFIDENCE_PROMOTION"
+          - "COLLIDER_RESULT_NOT_FOUND"
+          - "INPUT_SOURCE_CLASS_UNKNOWN"

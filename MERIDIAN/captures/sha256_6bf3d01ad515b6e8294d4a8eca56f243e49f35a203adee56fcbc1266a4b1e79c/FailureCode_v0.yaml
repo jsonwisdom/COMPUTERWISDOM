@@ -1,0 +1,526 @@
+# FailureCode_v0.yaml
+# PROPOSED / NOT CAPTURED / NOT BINDING
+# Registry for ValidationError codes emitted by MERIDIAN/validator.py.
+#
+# Registry provenance:
+# source_class: operator_relayed
+# operator: Jason
+# content_hash: null
+# binding: proposed
+
+failure_code_registry:
+  schema_version: "0.1.0"
+  source:
+    source_class: operator_relayed
+    authored_by: null
+    operator: "Jason"
+    content_hash: null
+  binding: proposed
+
+  rules:
+    append_only: true
+    removal: forbidden
+    deprecation_requires_flag: true
+    every_validation_error_must_resolve: true
+    every_vector_expected_failure_code_must_resolve: true
+    every_vector_rejected_failure_code_must_resolve: true
+    unregistered_validation_error: meta_fail
+
+  failure_codes:
+    # Founding V7 set
+    - code: "SUPERSEDE_REQUIRES_CAPTURED_SOURCE"
+      emit_site: "check_supersede"
+      meaning: "supersede record is present but the superseding source is not captured"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: true
+
+    - code: "SUPERSEDE_TARGET_MISSING"
+      emit_site: "check_supersede"
+      meaning: "supersede operation lacks a resolvable target event"
+      class: graph
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: true
+
+    - code: "RAW_CAPTURE_NOT_FOUND"
+      emit_site: "check_source_class"
+      meaning: "captured source lacks a resolvable RAW_CAPTURE_v0 reference"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: true
+
+    - code: "CAPTURE_HASH_MISMATCH"
+      emit_site: "check_source_class"
+      meaning: "captured source hash is absent or does not match the referenced RAW_CAPTURE_v0"
+      class: integrity
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: true
+
+    # Additional codes already emitted by the proposed validator.
+    - code: "FORBIDDEN_FIELD_PRESENT"
+      emit_site: "check_forbidden_keys"
+      meaning: "event contains a field explicitly forbidden by the validator membrane"
+      class: structural
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "CAPTURE_URL_MISSING"
+      emit_site: "check_source_class"
+      meaning: "captured source lacks the source URL required from RAW_CAPTURE_v0"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "CAPTURED_OPERATOR_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "captured source improperly carries an operator field"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "CAPTURE_URL_MISMATCH"
+      emit_site: "check_source_class"
+      meaning: "event source URL differs from the referenced RAW_CAPTURE_v0 requested/source URL"
+      class: integrity
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "OPERATOR_RELAY_HASH_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "operator_relayed source improperly carries content_hash"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "OPERATOR_RELAY_CAPTURE_ID_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "operator_relayed source improperly carries raw_capture_id"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "OPERATOR_MISSING"
+      emit_site: "check_source_class"
+      meaning: "operator_relayed source lacks the required operator identifier"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "OPERATOR_RELAY_VERIFICATION_PROMOTION_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "operator_relayed source has verification state stronger than observed"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MIGRATED_LEGACY_WRITE_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "migrated_legacy source_class appeared on an ordinary write path"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MIGRATED_LEGACY_HASH_BACKFILL_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "legacy migration attempted to backfill content_hash"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MIGRATED_LEGACY_CAPTURE_BACKFILL_FORBIDDEN"
+      emit_site: "check_source_class"
+      meaning: "legacy migration attempted to backfill raw_capture_id"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "SOURCE_CLASS_INVALID"
+      emit_site: "check_source_class"
+      meaning: "source_class is absent or outside the accepted source-class enum"
+      class: structural
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "VECTOR_HASH_WITHOUT_CAPTURE"
+      emit_site: "check_vector_provenance"
+      meaning: "non-captured validator vector improperly carries content_hash"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "VECTOR_BINDING_NOT_PROPOSED"
+      emit_site: "check_vector_provenance"
+      meaning: "validator vector binding exceeds the currently permitted proposed state"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "SUPERSEDE_CYCLE"
+      emit_site: "_check_supersede_cycle"
+      meaning: "supersession chain contains a direct or transitive cycle"
+      class: graph
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "SUPERSEDE_SELF"
+      emit_site: "check_supersede"
+      meaning: "supersede record targets its own event id"
+      class: graph
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "OPERATOR_RELAYED_CONFIDENCE_PROMOTION"
+      emit_site: "check_collider_sidecar"
+      meaning: "legacy code for operator-relayed confidence promotion; superseded by NON_CAPTURED_CONFIDENCE_PROMOTION"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: true
+      founding: false
+
+    - code: "NON_CAPTURED_CONFIDENCE_PROMOTION"
+      emit_site: "check_collider_addendum"
+      meaning: "one or more non-captured inputs were used to assert confidence above provisional"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: "OPERATOR_RELAYED_CONFIDENCE_PROMOTION"
+      deprecated: false
+      founding: false
+
+    - code: "COLLIDER_RESULT_NOT_FOUND"
+      emit_site: "check_collider_addendum"
+      meaning: "collider_result_id does not resolve in the supplied registry"
+      class: integrity
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "INPUT_SOURCE_CLASS_UNKNOWN"
+      emit_site: "check_collider_addendum"
+      meaning: "input_source_classes contains a source class outside the accepted enum"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "CONFIDENCE_VALUE_INVALID"
+      emit_site: "check_collider_addendum"
+      meaning: "addendum confidence is outside the ordered confidence enum"
+      class: structural
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "ADDENDUM_SCHEMA_MISMATCH"
+      emit_site: "check_collider_addendum"
+      meaning: "collider result addendum schema_version or kind does not match the proposed v0.2 addendum"
+      class: structural
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "VECTOR_TRANSCRIPT_REF_CLASS_INVALID"
+      emit_site: "check_vector_provenance"
+      meaning: "transcript_ref appeared on vector provenance that is not operator_relayed"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "VECTOR_TRANSCRIPT_CAPTURE_CONFLICT"
+      emit_site: "check_vector_provenance"
+      meaning: "transcript_ref coexists with content_hash or raw_capture_id"
+      class: provenance
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "CANONICAL_COLLIDER_CONFIDENCE_FORBIDDEN"
+      emit_site: "check_collider_addendum"
+      meaning: "confidence appeared on frozen canonical Collider result instead of child addendum"
+      class: structural
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "DERIVED_SOURCE_CLASS_SET_MISMATCH"
+      emit_site: "check_collider_addendum"
+      meaning: "derived source-class set disagrees with canonical per-input provenance refs"
+      class: integrity
+      introduced: "0.2.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "VOICE_HASH_WITHOUT_CLIENT_CAPTURE"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "voice_hash is present without voice_source_class client_raw and a resolving voice_raw_capture_id"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "VOICE_UNAVAILABLE_NON_NULL"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "voice_source_class unavailable carries voice_hash or voice_raw_capture_id"
+      class: structural
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "VOICE_CAPTURE_HASH_MISMATCH"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "client_raw voice bytes do not hash to voice_hash"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "TEXT_CLIENT_CAPTURE_REQUIRED"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "client_transcript lacks resolving text_raw_capture_id and matching text_hash"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "TEXT_SERVER_HASH_WITHOUT_CAPTURE"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "server_transcript carries text_hash without exact stored transcript bytes and resolving text_raw_capture_id"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "CLIENT_DEVICE_REF_CAPTURE_SUBSTITUTION"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "client_device_ref was used as if it satisfied a raw_capture_id requirement"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "LANE_HASH_WITHOUT_CAPTURE"
+      emit_site: "validate_voice_receipt_v0"
+      meaning: "question, answer, or render lane carries a hash without a resolving raw_capture_id"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_DERIVED_SLOT_STATE_MISMATCH"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "derived slot_state disagrees with the canonical four-lane state vector"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_LANE_ROOT_STATE_MISMATCH"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "occupied lane lacks a 32-byte root or non-occupied lane carries a non-null root"
+      class: structural
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_LEAF_BODY_WIDTH_INVALID"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "leaf body length is inconsistent with the derived slot tag"
+      class: structural
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_LEAF_COUNT_MISMATCH"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "national leaf set does not contain exactly 100000 slot records"
+      class: structural
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_SLOT_ORDER_INVALID"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "slot records are missing, duplicated, or not ordered 00000 through 99999"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_ODD_NODE_DUPLICATION_FORBIDDEN"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "an unpaired node was duplicated instead of promoted unchanged"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_VERIFIED_WITHOUT_RECOMPUTE"
+      emit_site: "verify_merkle_inclusion_v0"
+      meaning: "verified true was asserted without recomputing leaf and proof path to the root"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_CAPTURE_REQUIRES_ROOT"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "captured Merkle record lacks a non-null root_hash"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_CAPTURE_REQUIRES_LEAF_SET_CAPTURE"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "captured Merkle record lacks raw_capture_id for the exact canonical leaf-set bytes"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_ROOT_WITHOUT_LEAF_SET_CAPTURE"
+      emit_site: "validate_merkle_usa_v0"
+      meaning: "non-null root_hash is presented without captured leaf-set bytes sufficient for replay"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_ZCTA_FLAG_INVALID"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "zcta_flag is absent or outside {0x00,0x01}"
+      class: structural
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_ZCTA_CLASS_MISMATCH"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "a higher-layer ZCTA classification disagrees with zcta_flag or the canonical lane vector"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_OCCUPIED_LANE_ZERO_ROOT"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "LANE_OCCUPIED carries a zero lane_root"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_ABSENCE_LANE_NONZERO_ROOT"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "UNKNOWN, UNAVAILABLE, or EMPTY lane carries a non-zero lane_root"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_LEAF_PREIMAGE_WIDTH_INVALID"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "canonical leaf preimage is not exactly 136 bytes"
+      class: structural
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_ALGORITHM_RECEIPT_UNCAPTURED"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "algorithm_receipt_hash is asserted without captured encoding bytes and resolving raw_capture_id"
+      class: provenance
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_PLACEHOLDER_DIGEST_FORBIDDEN"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "stored digest matches a placeholder/string artifact instead of recomputation from the canonical byte preimage"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
+    - code: "MERKLE_ODD_PROMOTION_REHASH_FORBIDDEN"
+      emit_site: "validate_leaf_encoding_v0"
+      meaning: "an unpaired child was transformed or re-hashed during odd promotion instead of carried forward unchanged"
+      class: integrity
+      introduced: "0.1.0"
+      supersedes: null
+      deprecated: false
+      founding: false
+
