@@ -1,0 +1,531 @@
+{
+  "chain_data": "NOT_REAL",
+  "design_batch_size": 32,
+  "design_inventory_size": 1024,
+  "inventory_class": "SYNTHETIC_TEST_ONLY",
+  "note": "Synthetic test fixture. Not a 1024-object inventory. Chain fields are not real chain data.",
+  "objects": [
+    {
+      "address_role_ambiguous": false,
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": "fixture-tx:synth-clean",
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": false,
+      "object_id": "synth-clean",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": "RAW_CHAIN",
+      "prior_claim_tier": "RAW_CHAIN",
+      "prior_game_state": "CLEAN",
+      "prior_payload_hash": "sha256:5d68bb7f797fd910ddb0349f388ec1804fe32dcb401754c597171ce65c740610",
+      "relation": "CONSISTENT",
+      "sources": [
+        {
+          "payload_hash": "sha256:5d68bb7f797fd910ddb0349f388ec1804fe32dcb401754c597171ce65c740610",
+          "present": true,
+          "ref": "fixture:synth-clean#raw",
+          "tier": "RAW_CHAIN"
+        },
+        {
+          "payload_hash": "sha256:5d68bb7f797fd910ddb0349f388ec1804fe32dcb401754c597171ce65c740610",
+          "present": true,
+          "ref": "fixture:synth-clean#repo",
+          "tier": "REPO_RECEIPTS"
+        }
+      ],
+      "wallet": null
+    },
+    {
+      "address_role_ambiguous": false,
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": "fixture-tx:synth-upgraded",
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": false,
+      "object_id": "synth-upgraded",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": "REPO_RECEIPTS",
+      "prior_claim_tier": "REPO_RECEIPTS",
+      "prior_game_state": "CLEAN",
+      "prior_payload_hash": "sha256:dd6886cf6501e1b900d87b5837594531c1a56e0b8db11fb597d0f328874d585a",
+      "relation": "ADDITIVE",
+      "sources": [
+        {
+          "payload_hash": "sha256:dd6886cf6501e1b900d87b5837594531c1a56e0b8db11fb597d0f328874d585a",
+          "present": true,
+          "ref": "fixture:synth-upgraded#raw",
+          "tier": "RAW_CHAIN"
+        },
+        {
+          "payload_hash": "sha256:dd6886cf6501e1b900d87b5837594531c1a56e0b8db11fb597d0f328874d585a",
+          "present": true,
+          "ref": "fixture:synth-upgraded#repo",
+          "tier": "REPO_RECEIPTS"
+        }
+      ],
+      "wallet": null
+    },
+    {
+      "address_role_ambiguous": false,
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": "fixture-tx:synth-corrected",
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": false,
+      "object_id": "synth-corrected",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": "PUBLIC_INDEXES",
+      "prior_claim_tier": "PUBLIC_INDEXES",
+      "prior_game_state": "CLEAN",
+      "prior_payload_hash": "sha256:fbf59552c7b18785c69f2381d1b330bc70eb23c13e2b86229b0e6c9c66358763",
+      "relation": "CONTRADICTION",
+      "sources": [
+        {
+          "payload_hash": "sha256:f64c8bdf0c3d2e06a8be679c8c5e8e01347cc14c2722f9344a48e50dc0acd74f",
+          "present": true,
+          "ref": "fixture:synth-corrected#raw",
+          "tier": "RAW_CHAIN"
+        },
+        {
+          "payload_hash": "sha256:fbf59552c7b18785c69f2381d1b330bc70eb23c13e2b86229b0e6c9c66358763",
+          "present": true,
+          "ref": "fixture:synth-corrected#index",
+          "tier": "PUBLIC_INDEXES"
+        }
+      ],
+      "wallet": null
+    },
+    {
+      "address_role_ambiguous": false,
+      "bound_scope": "CANDIDATE_ONLY",
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": "fixture-tx:synth-demoted",
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": false,
+      "object_id": "synth-demoted",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": null,
+      "prior_claim_tier": "PUBLIC_INDEXES",
+      "prior_game_state": "CLEAN",
+      "prior_payload_hash": "sha256:e07358c11fd915dd39ec8f4a93924d9d01bb8d99bc72b8b4f3ec31a6e8355b95",
+      "prior_scope": "CANONICAL_LINEAGE",
+      "relation": "NARROWING",
+      "sources": [
+        {
+          "payload_hash": "sha256:e07358c11fd915dd39ec8f4a93924d9d01bb8d99bc72b8b4f3ec31a6e8355b95",
+          "present": true,
+          "ref": "fixture:synth-demoted#raw",
+          "tier": "RAW_CHAIN"
+        }
+      ],
+      "wallet": null
+    },
+    {
+      "address_role_ambiguous": false,
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": "fixture-tx:synth-weaker-label",
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": false,
+      "object_id": "synth-weaker-label",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": "RAW_CHAIN",
+      "prior_claim_tier": "RAW_CHAIN",
+      "prior_game_state": "CLEAN",
+      "prior_payload_hash": "sha256:9977949e6cb5fe6efc403a6d1508fe28749c3b3cf82e4d77c53ad7f202d5fdce",
+      "relation": "CONTRADICTION",
+      "sources": [
+        {
+          "payload_hash": "sha256:9977949e6cb5fe6efc403a6d1508fe28749c3b3cf82e4d77c53ad7f202d5fdce",
+          "present": true,
+          "ref": "fixture:synth-weaker-label#raw",
+          "tier": "RAW_CHAIN"
+        },
+        {
+          "payload_hash": "sha256:5fa88019cb2e901b6c605b76536b79be06945f670b66439499269035d3141a1d",
+          "present": true,
+          "ref": "fixture:synth-weaker-label#label",
+          "tier": "PAGE_LABELS"
+        }
+      ],
+      "wallet": null
+    },
+    {
+      "address_role_ambiguous": false,
+      "adversarial_proposals": [
+        "DELETE_ON_SEARCH_MISS"
+      ],
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": "fixture-tx:synth-search-miss",
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": false,
+      "object_id": "synth-search-miss",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": "REPO_RECEIPTS",
+      "prior_claim_tier": "REPO_RECEIPTS",
+      "prior_game_state": "CLEAN",
+      "prior_payload_hash": "sha256:75898416cb26f4d0c266eb1524c7f7f7bea879f08a9230d426ae0870efb8b6d6",
+      "relation": "CONSISTENT",
+      "sources": [
+        {
+          "payload_hash": "sha256:75898416cb26f4d0c266eb1524c7f7f7bea879f08a9230d426ae0870efb8b6d6",
+          "present": true,
+          "ref": "fixture:synth-search-miss#repo",
+          "tier": "REPO_RECEIPTS"
+        },
+        {
+          "payload_hash": null,
+          "present": false,
+          "ref": "fixture:synth-search-miss#raw-miss",
+          "tier": "RAW_CHAIN"
+        }
+      ],
+      "wallet": null
+    },
+    {
+      "address_role_ambiguous": false,
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": null,
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": false,
+      "object_id": "synth-missing",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": null,
+      "prior_claim_tier": null,
+      "prior_game_state": null,
+      "prior_payload_hash": null,
+      "relation": "NONE",
+      "sources": [],
+      "wallet": null
+    },
+    {
+      "address_role_ambiguous": false,
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": "fixture-tx:synth-indexer-drift",
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": true,
+      "metadata_conflict": false,
+      "object_id": "synth-indexer-drift",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": null,
+      "prior_claim_tier": "PUBLIC_INDEXES",
+      "prior_game_state": "CLEAN",
+      "prior_payload_hash": "sha256:a343b999aef7d57142310fa7f2b71add4610a81ce8d40951fe338b92f4b367f5",
+      "relation": "NONE",
+      "sources": [
+        {
+          "payload_hash": "sha256:61a70a5eadf2c4c412dc2eac40277584860f161a547cca36bba2dafec42cbbc8",
+          "present": true,
+          "ref": "fixture:synth-indexer-drift#raw",
+          "tier": "RAW_CHAIN"
+        },
+        {
+          "payload_hash": "sha256:a343b999aef7d57142310fa7f2b71add4610a81ce8d40951fe338b92f4b367f5",
+          "present": true,
+          "ref": "fixture:synth-indexer-drift#index",
+          "tier": "PUBLIC_INDEXES"
+        }
+      ],
+      "wallet": null
+    },
+    {
+      "address_role_ambiguous": false,
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": "fixture-tx:synth-temporal",
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "later_object_id": "synth-clean",
+      "metadata_conflict": false,
+      "object_id": "synth-temporal",
+      "observed_at": "2026-05-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": null,
+      "prior_claim_tier": null,
+      "prior_game_state": null,
+      "prior_payload_hash": null,
+      "relation": "NONE",
+      "sources": [
+        {
+          "payload_hash": "sha256:6e22078f4640d4d45763f79a04e7406258f61d138c3da7bb50ce98b209dfdcb5",
+          "present": true,
+          "ref": "fixture:synth-temporal#old-snapshot",
+          "tier": "RAW_CHAIN"
+        }
+      ],
+      "temporal_relation": "OLD_SNAPSHOT_FALSIFIES_LATER",
+      "wallet": null
+    },
+    {
+      "address_role_ambiguous": true,
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": "fixture-tx:synth-role",
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": false,
+      "object_id": "synth-role",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": null,
+      "prior_claim_tier": null,
+      "prior_game_state": null,
+      "prior_payload_hash": null,
+      "relation": "NONE",
+      "roles": [
+        "DEPLOYER",
+        "CALLER"
+      ],
+      "sources": [
+        {
+          "payload_hash": "sha256:92e2aef0b72ef0f6c32b695c57572db6f403c07ad4058d91800e8c2cb3608218",
+          "present": true,
+          "ref": "fixture:synth-role#raw",
+          "tier": "RAW_CHAIN"
+        }
+      ],
+      "wallet": "synthetic-wallet:role"
+    },
+    {
+      "address_role_ambiguous": false,
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": "fixture-tx:synth-identity",
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": true,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": false,
+      "object_id": "synth-identity",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": null,
+      "prior_claim_tier": null,
+      "prior_game_state": null,
+      "prior_payload_hash": null,
+      "relation": "NONE",
+      "requested_human_label": "NOT_A_HUMAN_BINDING",
+      "sources": [
+        {
+          "payload_hash": "sha256:7c2e0089f1d758d4c282dad4f08a2755f7274eb3e39a350012057b26c5b40d0e",
+          "present": true,
+          "ref": "fixture:synth-identity#raw",
+          "tier": "RAW_CHAIN"
+        }
+      ],
+      "wallet": "synthetic-wallet:identity"
+    },
+    {
+      "address_role_ambiguous": false,
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": null,
+      "erc4337": true,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": false,
+      "object_id": "synth-erc4337",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "USER_OPERATION",
+      "prior_bound_tier": null,
+      "prior_claim_tier": null,
+      "prior_game_state": null,
+      "prior_payload_hash": null,
+      "relation": "NONE",
+      "sources": [
+        {
+          "payload_hash": "sha256:bbed554af0c5cae357107a4ce15cbbec405695189d4cc1f10d18294fa1083300",
+          "present": true,
+          "ref": "fixture:synth-erc4337#label",
+          "tier": "PAGE_LABELS"
+        }
+      ],
+      "user_operation": null,
+      "wallet": null
+    },
+    {
+      "address_role_ambiguous": false,
+      "chain_data": "NOT_REAL",
+      "create2": true,
+      "create2_local": {
+        "deployer": "synthetic-deployer",
+        "init_code_hash": "fixture-init-code-hash",
+        "salt": "synthetic-salt"
+      },
+      "creation_tx": "fixture-tx:synth-create2",
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": false,
+      "object_id": "synth-create2",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "CREATE2_ADDRESS",
+      "prior_bound_tier": null,
+      "prior_claim_tier": null,
+      "prior_game_state": null,
+      "prior_payload_hash": null,
+      "relation": "NONE",
+      "sources": [
+        {
+          "payload_hash": "sha256:c072b7537840d4c108d31163b56dc9388caa43da1404f1df63d2163a5fce06e9",
+          "present": true,
+          "ref": "fixture:synth-create2#raw",
+          "tier": "RAW_CHAIN"
+        }
+      ],
+      "wallet": null
+    },
+    {
+      "address_role_ambiguous": false,
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": "fixture-tx:synth-metadata",
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": true,
+      "metadata_views": [
+        {
+          "payload_hash": "sha256:c63a52fc8f81ca41f3b58a4c8f6f9d426554992942202b36a674068b06def7df",
+          "present": true,
+          "ref": "fixture:synth-metadata#raw",
+          "tier": "RAW_CHAIN"
+        },
+        {
+          "payload_hash": "sha256:54d1730eeda6e8a9c7bf6dcd15ea7c9241d1fc55ca24400daee12c54fccca131",
+          "present": true,
+          "ref": "fixture:synth-metadata#label",
+          "tier": "PAGE_LABELS"
+        }
+      ],
+      "object_id": "synth-metadata",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": null,
+      "prior_claim_tier": "PAGE_LABELS",
+      "prior_game_state": null,
+      "prior_payload_hash": "sha256:54d1730eeda6e8a9c7bf6dcd15ea7c9241d1fc55ca24400daee12c54fccca131",
+      "relation": "CONTRADICTION",
+      "sources": [
+        {
+          "payload_hash": "sha256:c63a52fc8f81ca41f3b58a4c8f6f9d426554992942202b36a674068b06def7df",
+          "present": true,
+          "ref": "fixture:synth-metadata#raw",
+          "tier": "RAW_CHAIN"
+        },
+        {
+          "payload_hash": "sha256:54d1730eeda6e8a9c7bf6dcd15ea7c9241d1fc55ca24400daee12c54fccca131",
+          "present": true,
+          "ref": "fixture:synth-metadata#label",
+          "tier": "PAGE_LABELS"
+        }
+      ],
+      "wallet": null
+    },
+    {
+      "address_role_ambiguous": false,
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": "fixture-tx:synth-preserve-stronger",
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": false,
+      "object_id": "synth-preserve-stronger",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": "RAW_CHAIN",
+      "prior_claim_tier": "RAW_CHAIN",
+      "prior_game_state": "CLEAN",
+      "prior_payload_hash": "sha256:56e52938b95acd2782d31c51d36d05d25e92be6493d453731495830ff1086cd3",
+      "relation": "CONTRADICTION",
+      "sources": [
+        {
+          "payload_hash": null,
+          "present": false,
+          "ref": "fixture:synth-preserve-stronger#raw-miss",
+          "tier": "RAW_CHAIN"
+        },
+        {
+          "payload_hash": "sha256:4f3ecf574b5786b42043abe9ecf4a80da04ec77735c37e738addc9d02ac321d7",
+          "present": true,
+          "ref": "fixture:synth-preserve-stronger#label",
+          "tier": "PAGE_LABELS"
+        }
+      ],
+      "wallet": null
+    },
+    {
+      "address_role_ambiguous": false,
+      "chain_data": "NOT_REAL",
+      "create2": false,
+      "creation_tx": null,
+      "erc4337": false,
+      "fixture_class": "SYNTHETIC_TEST_ONLY",
+      "identity_claim_requested": false,
+      "index_disagrees_with_raw_chain": false,
+      "metadata_conflict": false,
+      "object_id": "synth-alien",
+      "observed_at": "2026-06-01T00:00:00Z",
+      "primary_claim": "OBJECT_BINDING",
+      "prior_bound_tier": null,
+      "prior_claim_tier": null,
+      "prior_game_state": null,
+      "prior_payload_hash": null,
+      "relation": "NONE",
+      "sources": [
+        {
+          "payload_hash": "sha256:db04786d4ade98d0b95d2f0dc017a318691dc5c5fb1183d2d0f9417ae156b5bf",
+          "present": true,
+          "ref": "fixture:synth-alien#unranked",
+          "tier": "UNRANKED_EXTERNAL"
+        }
+      ],
+      "wallet": null
+    }
+  ],
+  "product": "GRAY_BABY_BULK_REPLAY_V1"
+}
