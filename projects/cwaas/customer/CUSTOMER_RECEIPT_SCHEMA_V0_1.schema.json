@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "projects/cwaas/customer/CUSTOMER_RECEIPT_SCHEMA_V0_1.schema.json",
+  "title": "CUSTOMER_RECEIPT_SCHEMA_V0_1",
+  "description": "Local customer-side receipt schema. CANON=false. AUTHORITY_CREATED=false. EXECUTION=NONE. CUSTOMER_RECEIPTS=0 / NOT_ESTABLISHED. Does not mutate RECEIPT_SCHEMA_V1 or CWAAS_RECEIPT_SCHEMA_v1. A repo recovery receipt is not a customer receipt. Payment does not create commitment. Commitment does not create permission. Permission does not create market size. One customer is not market size.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_id",
+    "canon",
+    "authority_created",
+    "execution",
+    "customer_receipts",
+    "payment_status",
+    "commitment_status",
+    "claim_allowed",
+    "testimonial_allowed",
+    "public_claim_scope"
+  ],
+  "properties": {
+    "schema_id": {
+      "const": "CUSTOMER_RECEIPT_SCHEMA_V0_1"
+    },
+    "canon": {
+      "const": false
+    },
+    "authority_created": {
+      "const": false
+    },
+    "execution": {
+      "const": "NONE"
+    },
+    "customer_receipts": {
+      "const": 0,
+      "description": "Count of established external customer receipts under this schema. Zero is the frozen state of this file. A later instance may not raise this field without a separate receipt."
+    },
+    "paid_customer_evidence": {
+      "const": "NOT_ESTABLISHED"
+    },
+    "committed_customer_evidence": {
+      "const": "NOT_ESTABLISHED"
+    },
+    "willingness_to_pay": {
+      "const": "NOT_ESTABLISHED"
+    },
+    "proven_demand": {
+      "const": "NOT_ESTABLISHED"
+    },
+    "payment_status": {
+      "enum": ["PAID", "INVOICED", "UNPAID", "NONE"],
+      "description": "Independent of commitment_status, claim_allowed, and testimonial_allowed. Payment does not grant naming or quote rights."
+    },
+    "commitment_status": {
+      "enum": ["NONE", "INTEREST", "WRITTEN_ACCEPTANCE", "SIGNED_ORDER", "INVOICE_ACCEPTANCE"],
+      "description": "INTEREST is not commitment. A value above INTEREST requires commitment_artifact_ref. Commitment is not payment."
+    },
+    "commitment_artifact_ref": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Required when commitment_status is WRITTEN_ACCEPTANCE, SIGNED_ORDER, or INVOICE_ACCEPTANCE. Absent or empty is not a commitment."
+    },
+    "claim_allowed": {
+      "type": "boolean",
+      "description": "Not inferred from payment_status. Must be true before public_claim_scope NAMED."
+    },
+    "testimonial_allowed": {
+      "type": "boolean",
+      "description": "Not inferred from payment_status. Must be true before public_claim_scope VERBATIM."
+    },
+    "public_claim_scope": {
+      "enum": ["NONE", "CATEGORY", "NAMED", "VERBATIM"],
+      "description": "NAMED requires claim_allowed true. VERBATIM requires testimonial_allowed true. Scope does not create market size."
+    },
+    "customer_ref": {
+      "type": "string",
+      "description": "Optional pointer. Presence is not proof of payment, commitment, or permission."
+    },
+    "notes": {
+      "type": "string",
+      "description": "Explanatory only. Notes are not authority and do not upgrade any field."
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "commitment_status": {
+            "enum": ["WRITTEN_ACCEPTANCE", "SIGNED_ORDER", "INVOICE_ACCEPTANCE"]
+          }
+        },
+        "required": ["commitment_status"]
+      },
+      "then": {
+        "required": ["commitment_artifact_ref"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "public_claim_scope": { "const": "NAMED" }
+        },
+        "required": ["public_claim_scope"]
+      },
+      "then": {
+        "properties": {
+          "claim_allowed": { "const": true }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "public_claim_scope": { "const": "VERBATIM" }
+        },
+        "required": ["public_claim_scope"]
+      },
+      "then": {
+        "properties": {
+          "testimonial_allowed": { "const": true }
+        }
+      }
+    }
+  ],
+  "x-membrane": {
+    "PAYMENT_STATUS_NE_COMMITMENT_STATUS": true,
+    "COMMITMENT_ABOVE_INTEREST_REQUIRES_ARTIFACT": true,
+    "PAYMENT_DOES_NOT_IMPLY_CLAIM_ALLOWED": true,
+    "PAYMENT_DOES_NOT_IMPLY_TESTIMONIAL_ALLOWED": true,
+    "NAMED_REQUIRES_CLAIM_ALLOWED": true,
+    "VERBATIM_REQUIRES_TESTIMONIAL_ALLOWED": true,
+    "REPO_RECEIPT_NE_CUSTOMER_RECEIPT": true,
+    "ONE_CUSTOMER_NE_MARKET_SIZE": true
+  },
+  "x-neighbors-observed": {
+    "RECEIPT_SCHEMA_V1": {
+      "path": "projects/cwaas/specs/RECEIPT_SCHEMA_V1.md",
+      "blob_sha": "bc08c2374589f9fb4a1894ec3e40d6fcc793ee03",
+      "mutated": false
+    },
+    "CWAAS_RECEIPT_SCHEMA_v1": {
+      "path": "projects/cwaas/receipts/CWAAS_RECEIPT_SCHEMA_v1.md",
+      "blob_sha": "9eb2ddbf42f3d523e89e42042791f3922cd77395",
+      "mutated": false
+    },
+    "SALE_VERIFY_0001": {
+      "path": "receipts/sales/SALE_VERIFY_0001.canonical.json",
+      "blob_sha": "cb3097efa818c450f6aae699a22ee6106f6850b2",
+      "payment_status_observed": "NOT_ROUTED",
+      "commitment_semantics": "NOT_DEFINED_THERE"
+    }
+  },
+  "x-placement": {
+    "recommended_repo_path": "projects/cwaas/customer/",
+    "branch": "customer-receipt-schema-v0-1",
+    "merge": "NONE",
+    "github_write": "BRANCH_ONLY",
+    "drive_write": false,
+    "coinbase_01_04_rail": "UNTOUCHED",
+    "orders_05": "NOT_OPENED"
+  }
+}
