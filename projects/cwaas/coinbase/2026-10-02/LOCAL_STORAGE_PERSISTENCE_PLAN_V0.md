@@ -1,14 +1,17 @@
 # LOCAL_STORAGE_PERSISTENCE_PLAN_V0
 
 ```text
-STATUS                 = EXECUTING
+STATUS                 = EXECUTED
 APPROVED_AT            = 2026-10-02 23:25 CDT
-EXECUTION_REQUESTED   = 2026-10-02 23:25 CDT
+EXECUTED_AT            = 2026-10-02 23:26 CDT
 CANON                  = false
 AUTHORITY_CREATED      = false
 COINBASE_MUTATION      = NONE
 TOKEN_COPY             = false
 MERGE                  = NONE
+BRANCH                 = coinbase-e2e-read-2026-10-02
+HEAD                   = 75c0d6fe8dd54bbabac28f6bbed11344f0663fd1
+DRIVE_FOLDER           = 122IUlDyjfE9E6OKJQupThxK3as8ZbyUw
 ```
 
 ## What is on disk now
