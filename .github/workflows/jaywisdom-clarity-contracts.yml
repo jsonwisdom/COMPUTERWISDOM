@@ -33,6 +33,13 @@ jobs:
             https://github.com/OpenZeppelin/openzeppelin-contracts.git \
             lib/openzeppelin-contracts
 
+      - name: Install pinned forge-std
+        run: |
+          mkdir -p lib
+          git clone --depth 1 --branch v1.9.6 \
+            https://github.com/foundry-rs/forge-std.git \
+            lib/forge-std
+
       - name: Normalize Solidity formatting in runner
         run: forge fmt
 
