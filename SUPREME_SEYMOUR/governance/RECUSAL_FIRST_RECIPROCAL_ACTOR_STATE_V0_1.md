@@ -228,3 +228,136 @@ FUNCTION_IS_AUDITED = TRUE
 AUTHORITY_CREATED = FALSE
 FINAL_DECISION = HUMAN
 ```
+
+
+## V0.3 CARDINALITY + OBSERVATION PROVENANCE PATCH
+
+STATUS = PROVISIONAL_SCHEMA_PATCH
+CANON = FALSE
+AUTHORITY_CREATED = FALSE
+FINAL_DECISION = HUMAN
+
+### Proposition is the unit
+
+A proposition is distinct from any receipt that carries, repeats, quotes, reports, or contradicts it.
+
+```text
+PROPOSITION != RECEIPT
+REPETITION != CORROBORATION
+COPY_COUNT != INDEPENDENT_SOURCE_COUNT
+```
+
+One receipt may carry multiple propositions. One proposition may be carried by multiple receipts. Repetition through one source chain does not create independent corroboration.
+
+Canonical replay example:
+
+```text
+ONE_SOURCE_CHAIN
+  -> SAME_PROPOSITION x 5
+  -> CORROBORATION = SINGLE
+```
+
+Minor punctuation drift does not create a new proposition unless it changes the typed meaning being tested.
+
+### Receipt dimensions are orthogonal
+
+```yaml
+source_receipt:
+source_type:
+  - PRIMARY
+  - SECONDARY
+  - MIXED
+  - UNKNOWN
+corroboration:
+  - SINGLE
+  - MULTIPLE_INDEPENDENT
+  - UNKNOWN
+proposition_state:
+  - ASSERTION_OCCURRED
+  - ALLEGATION_UNADJUDICATED
+  - FINDING
+  - ADJUDICATED
+  - CONTRADICTED
+  - UNKNOWN
+```
+
+SOURCE_TYPE answers what kind of record the receipt is.
+CORROBORATION answers how many structurally independent receipt chains support the proposition.
+PROPOSITION_STATE describes the state of the proposition, not the source.
+
+```text
+PRIMARY != TRUE
+MULTIPLE_INDEPENDENT != PRIMARY
+ASSERTION_OCCURRED != FINDING
+ALLEGATION_UNADJUDICATED != FINDING
+```
+
+### Cardinality and attribution
+
+```yaml
+proposition:
+  proposition_id:
+  proposition_text:
+  proposition_state:
+
+receipt_assertion_edge:
+  receipt_id:
+  proposition_id:
+  asserted_by:
+  observation_provenance:
+```
+
+`asserted_by` points to the actor/source making the assertion. It does not replace proposition identity.
+
+### Observation provenance
+
+Preserve each observation layer separately:
+
+```text
+SOURCE_RECEIPT
+!= CONNECTOR_OR_TOOL_READBACK
+!= HUMAN_READBACK_OF_TOOL_REPORT
+!= REPEATED_PASTE_OR_QUOTATION
+```
+
+Not seeing an upstream record is an observation boundary. It is not evidence that the upstream record is absent.
+
+### Contradiction rule
+
+CONTRADICTED is a proposition state, not a source type.
+
+Independent receipts that disagree may coexist. A later receipt does not rewrite an earlier receipt or its historical observation state.
+
+```text
+LATER_RECEIPT != RETROACTIVE_REWRITE
+CONTRADICTION -> PRESERVE_BOTH -> RESOLUTION_GATE
+```
+
+### Open valves
+
+These remain provisional and do not close through repetition alone:
+
+1. PROPOSITION_AS_OBJECT
+2. CONTRADICTED_RESOLUTION_RULE
+3. RECIPROCAL_ACTOR_PREFLIGHT
+4. ACTOR_STATE_SCHEMA
+
+Promotion requires the already defined qualifying trigger: structurally independent evidence/recurrence without a shared receipt chain, or an authoritative rule where applicable.
+
+### Post-seal test
+
+A repeated sealing declaration appearing five times with only minor punctuation drift is typed as:
+
+```text
+PROPOSITION_COUNT = 1
+SOURCE_CHAIN_COUNT = 1
+CORROBORATION = SINGLE
+PROPOSITION_STATE = ASSERTION_OCCURRED
+```
+
+The repetition is an observation artifact or emphasis unless independent provenance establishes otherwise.
+
+NO_BACK_EDGES = TRUE
+COLLABORATION_NOT_COLLISION = TRUE
+CANON = FALSE
+AUTHORITY_CREATED = FALSE
