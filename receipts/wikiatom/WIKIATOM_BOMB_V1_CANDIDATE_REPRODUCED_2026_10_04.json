@@ -1,0 +1,32 @@
+{
+  "receipt_id": "WIKIATOM_BOMB_V1_CANDIDATE_REPRODUCED_2026_10_04",
+  "candidate_origin": "REPRODUCED_IN_CURRENT_EXECUTION_ENVIRONMENT",
+  "original_user_candidate_bytes": "NOT_AVAILABLE",
+  "source_protocol": "docs/clawback-machine/CLAWBACK_MACHINE_PROTOCOLS_V1.md",
+  "source_commit": "e396de00ca6b759024f36f5f174250209dd6272c",
+  "implementation_commit": "824191b7444e64bebe226cf2b6b5451ce577cd64",
+  "local_test_command": "python -m pytest -q tests/test_wikiatom_bomb_v1.py",
+  "test_count": 8,
+  "pass_count": 8,
+  "fail_count": 0,
+  "runner_version": "Python 3.13.5",
+  "execution_clock": "2026-10-04T21:42:36Z",
+  "fixture_input_path": "fixtures/wikiatom/simple_fanout_input.json",
+  "fixture_output_path": "fixtures/wikiatom/simple_fanout_output.json",
+  "fixture_input_sha256": "31fee84b70d35262925f4c971bf2282399a1f94a992759b86f78c9937ff3a8b8",
+  "fixture_output_sha256": "e7c46016f74f1740baa39e84ded9cb46e491280bc1cc90cfea78be255f2e0016",
+  "engine_output_hash": "ffa6175c9105d97162fed752f7fc78f62898a618df78186d3e49bf7fe2509505",
+  "source_file_sha256_local_reproduction": "b78c9600bdf34dc8aa16b968295d137ef2cf4bb06bfc934a22bedf4a40aaa513",
+  "test_file_sha256_local_reproduction": "c18c02b48fbb73864eca7967ce1a484a6f82a6c98be23cddb1247c7626ebba42",
+  "workflow_file_sha256_local_reproduction": "0324dec1fc21a9b616dad04e83fbe9a1f40f144a420acf7b2e7652007498de17",
+  "formal_alias": "HOLD",
+  "executable_implementation": "CANDIDATE_REPRODUCED",
+  "public_replay_run": "NOT_YET_BOUND",
+  "authority_created": false,
+  "invariants": [
+    "CODE_WRITTEN != IMPLEMENTATION_BOUND",
+    "TEST_PASS != PUBLIC_REPLAY_RUN",
+    "PR_CREATED != MERGED",
+    "MERGED != DEPLOYED"
+  ]
+}
