@@ -18,7 +18,7 @@ Auditing the initiating actor does not negate the complaint. The complaint does 
 
 ## Receipt-status boundary
 
-The receipt classifications below are preserved as supplied in the integration record. This artifact does not silently promote them to independently replayed GitHub facts.
+The receipt classifications below are typed against current evidence. Two prior softer labels were upgraded only after direct primary-source readback: the DOJ Attorney General biography for prior representation and the DOJ Sept. 30, 2026 press release/complaint for the Minnesota recusal filing. Source type and corroboration count remain distinct properties.
 
 | Assertion | Receipt status |
 | --- | --- |
@@ -27,9 +27,9 @@ The receipt classifications below are preserved as supplied in the integration r
 | DAG or delegee is Agency Designee for the AG | PRIMARY |
 | Only the President may grant the AG a financial-conflict waiver | PRIMARY |
 | Formal ethics determination uses DDAEO recommendation then Agency Designee written decision | PRIMARY |
-| DOJ sought Minnesota judges' recusal Sept. 30, 2026 | CORROBORATED |
+| DOJ sought Minnesota judges' recusal Sept. 30, 2026 | PRIMARY (DOJ press release + linked complaint) |
 | OPR 2022 Investigative Summary 7 found recusal-boundary misconduct involving briefings | PRIMARY |
-| Blanche prior Trump criminal representation appears in the cited record set | SINGLE_SOURCE pending direct DOJ bio readback |
+| Blanche prior Trump criminal representation | PRIMARY (DOJ Attorney General biography, updated Aug. 14, 2026) |
 
 ## Reciprocal rail
 
@@ -209,7 +209,7 @@ The watcher should track:
 
 | Item | State | Promotion gate |
 | --- | --- | --- |
-| Direct DOJ bio readback for prior-representation statement | SINGLE_SOURCE | Direct DOJ primary receipt |
+| Direct DOJ bio readback for prior-representation statement | PRIMARY / CLOSED | DOJ Attorney General biography directly states representation in three 2023-2024 criminal cases |
 | RECIPROCAL_ACTOR_PREFLIGHT as permanent anomaly type | PROVISIONAL | Structurally independent recurrence with no shared receipt chain, or authoritative rule |
 | FIREWALL_STATE as monitored object | PROVISIONAL | Receipted application or breach under the integrated watcher |
 
