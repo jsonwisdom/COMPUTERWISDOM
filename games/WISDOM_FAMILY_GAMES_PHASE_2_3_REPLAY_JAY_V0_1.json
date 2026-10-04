@@ -1,0 +1,95 @@
+{
+  "schema": "WISDOM_FAMILY_GAMES_PHASE_2_3_REPLAY_JAY_V0_1",
+  "parent": "games/WISDOM_FAMILY_GAMES_V0_1.json",
+  "additive": true,
+  "authority": false,
+  "promotion": false,
+  "base_surface": {
+    "name": "jaywisdom.base.eth",
+    "network": "Base Mainnet",
+    "chain_id": 8453,
+    "role": "discovery_and_operational_game_anchor",
+    "wallet_control_proven": false,
+    "human_identity_proven": false,
+    "authority": false
+  },
+  "core_game_order": [
+    "DETECTIVE",
+    "MAZE",
+    "GARDEN",
+    "BUILDER",
+    "REPAIR_SHOP",
+    "TREASURE_HUNT",
+    "CHESS",
+    "ESCAPE_ROOM",
+    "MATCHING",
+    "SIMULATION",
+    "CRAFTING",
+    "TEACH_BACK"
+  ],
+  "syntax_rerun": {
+    "apple_blossom": "grow_question_preserve_curiosity",
+    "awesome": "human_dignity_and_curiosity_first",
+    "audit": "compare_claim_receipts_counter_receipts",
+    "replay": "walk_back_then_forward",
+    "teach_back": "explain_for_reproduction",
+    "snapchat": "snapshot_card_mechanic_only_no_platform_integration",
+    "super_secret_sister": "story_or_protected_team_namespace_only",
+    "syntax": "machine_readable_replay_pattern",
+    "reruns": "same_declared_inputs_compare_outputs"
+  },
+  "math_engine": {
+    "graph_theory": "paths_and_missing_edges",
+    "combinatorics": "possible_routes",
+    "probability": "uncertainty_updates_only",
+    "logic": "contradiction_detection",
+    "set_theory": "classification",
+    "optimization": "shortest_valid_proof_path",
+    "cryptography": "integrity_checks",
+    "state_machines": "permitted_transitions",
+    "statistics": "denominator_discipline",
+    "recursion": "replay_the_replay"
+  },
+  "score_reduction": [
+    "UNKNOWN_COUNT",
+    "CONFLICT_COUNT",
+    "FALSE_JOIN_COUNT",
+    "UNREPRODUCED_COUNT",
+    "TEACHBACK_FAILURE_COUNT"
+  ],
+  "successful_moves": [
+    "CORRECT_HOLD",
+    "FOUND_CONFLICT",
+    "CAUGHT_FALSE_JOIN",
+    "CHANGED_MIND_FROM_BETTER_EVIDENCE",
+    "I_DONT_KNOW_YET_WHEN_EVIDENCE_ABSENT"
+  ],
+  "invariants": [
+    "HELPER != FAMILY_CONSENT_SEAT",
+    "STORY != EVIDENCE",
+    "XP != EVIDENCE",
+    "BADGE != CREDENTIAL",
+    "QUEST_COMPLETE != EDGE_PASS",
+    "BASE_8453 != APPLE_BLOSSOM_L3"
+  ],
+  "future_l3": {
+    "deployed": false,
+    "requires": [
+      "distinct_chain_id",
+      "genesis",
+      "execution",
+      "settlement",
+      "receipts"
+    ]
+  },
+  "family_membrane": {
+    "pass": true,
+    "private": true,
+    "replay": true,
+    "family_graph_creation": false,
+    "silent_kinship_inference": false
+  },
+  "family_facts_promoted": 0,
+  "kinship_inference": "BLOCKED",
+  "ledger_advance": false
+}
