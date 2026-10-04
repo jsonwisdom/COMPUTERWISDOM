@@ -6,7 +6,6 @@ on:
       - 'src/wikiatom_bomb_v1.py'
       - 'tests/test_wikiatom_bomb_v1.py'
       - 'fixtures/wikiatom/**'
-      - 'receipts/wikiatom/**'
       - '.github/workflows/wikiatom-bomb-v1-test.yml'
 jobs:
   test:
