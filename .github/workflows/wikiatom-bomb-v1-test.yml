@@ -17,3 +17,40 @@ jobs:
           python-version: '3.12'
       - run: python -m pip install pytest
       - run: python -m pytest -q tests/test_wikiatom_bomb_v1.py
+      - name: Replay bounded fixture bytes
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import pathlib
+          import sys
+
+          root = pathlib.Path('.')
+          sys.path.insert(0, str(root / 'src'))
+          from wikiatom_bomb_v1 import canonical_json, run_wikiatom_bomb_v1
+
+          input_path = root / 'fixtures/wikiatom/simple_fanout_input.json'
+          expected_path = root / 'fixtures/wikiatom/simple_fanout_output.json'
+
+          input_bytes = input_path.read_bytes()
+          expected_bytes = expected_path.read_bytes()
+          data = json.loads(input_bytes)
+
+          result = run_wikiatom_bomb_v1(
+              data['atom'],
+              branch_payloads=data.get('branch_payloads'),
+              max_depth=data.get('max_depth', 1),
+              promotion_requested=data.get('promotion_requested', False),
+          )
+          actual_bytes = (canonical_json(result) + '\n').encode('utf-8')
+
+          assert actual_bytes == expected_bytes
+          assert hashlib.sha256(input_bytes).hexdigest() == '31fee84b70d35262925f4c971bf2282399a1f94a992759b86f78c9937ff3a8b8'
+          assert hashlib.sha256(actual_bytes).hexdigest() == 'e7c46016f74f1740baa39e84ded9cb46e491280bc1cc90cfea78be255f2e0016'
+          assert result['output_hash'] == 'ffa6175c9105d97162fed752f7fc78f62898a618df78186d3e49bf7fe2509505'
+
+          print('fixture_replay=PASS')
+          print('input_sha256=31fee84b70d35262925f4c971bf2282399a1f94a992759b86f78c9937ff3a8b8')
+          print('output_sha256=e7c46016f74f1740baa39e84ded9cb46e491280bc1cc90cfea78be255f2e0016')
+          print('engine_output_hash=ffa6175c9105d97162fed752f7fc78f62898a618df78186d3e49bf7fe2509505')
+          PY
