@@ -261,3 +261,4 @@ jobs:
           name: wikiatom-audit-receipts
           path: .ci/wikiatom_audit_receipt_generation_*.json
           if-no-files-found: error
+          include-hidden-files: true
