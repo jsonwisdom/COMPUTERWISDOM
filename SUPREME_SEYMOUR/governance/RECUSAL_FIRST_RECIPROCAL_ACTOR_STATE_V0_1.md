@@ -155,19 +155,20 @@ Example typing for the government/litigant rail:
 ```yaml
 actor_class: PARTY
 actor_role: Attorney General / DOJ
-conflict_state: DISCLOSED
+relationship_fact: PRIOR_REPRESENTATION_VERIFIED
+conflict_state: UNKNOWN
 composition_delta: NOT_APPLICABLE
 affects_resolution: UNRESOLVED
 ```
 
-The screening input does not establish misconduct or require a particular recusal outcome.
+The verified prior-representation fact is a screening input only. It does not itself establish a matter-specific conflict, misconduct, or a required recusal outcome.
 
 ## AG recusal authority path
 
 ```text
 AG_ACTOR_STATE
         |
-        +--> AG_SELF_DETERMINES? INVALID
+        +--> AG_SELF_APPROVES_FORMAL_DETERMINATION? INVALID
         |
         +--> AGENCY_DESIGNEE = DAG_OR_DELEGEE
                    |
