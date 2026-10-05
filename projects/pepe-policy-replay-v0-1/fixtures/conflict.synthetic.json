@@ -1,0 +1,18 @@
+{
+  "synthetic": true,
+  "fixture_id": "PEPE_POLICY_FIXTURE_CONFLICT",
+  "observations": [
+    {
+      "source_id": "MACHINE_A",
+      "result_state": "PRESENT",
+      "pointer": "synthetic://policy/a"
+    },
+    {
+      "source_id": "MACHINE_B",
+      "result_state": "CONFLICT",
+      "pointer": "synthetic://policy/b"
+    }
+  ],
+  "expected_replay_state": "CONFLICT",
+  "authority_created": false
+}
