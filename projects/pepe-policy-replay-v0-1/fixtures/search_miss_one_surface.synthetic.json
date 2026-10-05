@@ -1,0 +1,10 @@
+{
+  "synthetic": true,
+  "fixture_id": "PEPE_POLICY_FIXTURE_SEARCH_MISS_ONE_SURFACE",
+  "source_id": "MACHINE_A",
+  "query": "PEPE policy",
+  "result_state": "SEARCH_MISS",
+  "global_absence": false,
+  "expected_replay_state": "HOLD",
+  "invariant": "SEARCH_MISS(MACHINE_A) != ABSENT_EVERYWHERE"
+}
