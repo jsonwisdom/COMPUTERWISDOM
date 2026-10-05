@@ -21,6 +21,7 @@
   ],
   "allowed_result_states": [
     "PRESENT",
+    "IRRELEVANT_HIT",
     "SEARCH_MISS",
     "NOT_SEARCHED",
     "UNREACHABLE",
@@ -28,6 +29,7 @@
   ],
   "rules": [
     "Do not convert SEARCH_MISS into ABSENT.",
+    "Do not convert IRRELEVANT_HIT into PRESENT policy evidence.",
     "Do not inherit a result across machines or accounts.",
     "Do not treat a repository branch as the user's local computer.",
     "Preserve conflicting results instead of selecting one silently."
