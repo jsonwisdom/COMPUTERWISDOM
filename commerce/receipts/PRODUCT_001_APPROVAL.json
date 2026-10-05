@@ -1,0 +1,14 @@
+﻿{
+    "artifact":  "PRODUCT_001_APPROVAL",
+    "product_id":  "PRODUCT_001",
+    "creator":  "JAY",
+    "decision":  "APPROVED_FOR_PUBLIC_SALE",
+    "digital_asset":  "commerce\\assets\\JAY_CREATOR_AUDIT_PACK_V0_1.zip",
+    "digital_asset_bytes":  1894,
+    "digital_asset_sha256":  "3b7b6c40e61f9139357a9b80c1fb875f10704739bb0a27edceb5537efb980d81",
+    "consent_state":  "NOT_APPLICABLE",
+    "human_input_required":  true,
+    "machine_approved":  false,
+    "system_recorded_at":  "2026-10-05T03:20:26.8313934Z",
+    "authority_created":  false
+}
