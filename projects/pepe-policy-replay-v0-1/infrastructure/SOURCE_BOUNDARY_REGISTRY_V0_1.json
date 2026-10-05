@@ -19,6 +19,25 @@
       "scope_rule": "This branch contains replay infrastructure; its existence is not proof of a real PEPE policy."
     },
     {
+      "source_id": "GH_COMPUTERWISDOM_PEPE_GOBLIN_MEMBRANE",
+      "source_class": "GITHUB_COMMIT_BOUND_ARTIFACT",
+      "repository": "jsonwisdom/COMPUTERWISDOM",
+      "ref": "circular-mission-parent-scaffold-v0-1-20261005",
+      "commit_sha": "e094df28805620d76d38411a879f2b3afbba2e55",
+      "path": "docs/runtime/CMPTRWSDM_PARENT_SCAFFOLD_V0_1.md",
+      "blob_sha": "afd50b5b82258d6214ff332b83fc4700f59a75bd",
+      "observed_state": "PRESENT",
+      "object_class": "PEPE_GOBLIN_EXTERNAL_MEMBRANE",
+      "policy_object": false,
+      "flags": {
+        "EMPLOYEE_RELATIONSHIP": "NOT_ESTABLISHED",
+        "PAYROLL_AUTHORITY": false,
+        "TOKEN_RELATIONSHIP_TO_COMPUTER_WISDOM": "NOT_ESTABLISHED",
+        "JOIN": false
+      },
+      "scope_rule": "This receipt binds the external membrane only. It does not create or establish a PEPE employment, payroll, bonus, token, or other policy object."
+    },
+    {
       "source_id": "DRIVE_JAYWISDOM44",
       "source_class": "GOOGLE_DRIVE_ACCOUNT",
       "account_label": "jaywisdom44@gmail.com",
