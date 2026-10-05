@@ -11,7 +11,7 @@
     "price_cents":  900,
     "currency":  "USD",
     "checkout_provider":  "PAYHIP",
-    "checkout_url":  null,
+    "checkout_url":  "https://payhip.com/b/5lqVE",
     "fulfillment_type":  "DIGITAL",
     "digital_asset":  "commerce\\assets\\JAY_CREATOR_AUDIT_PACK_V0_1.zip",
     "sales_count":  0,
@@ -23,5 +23,10 @@
     "profit_state":  "NOT_ESTABLISHED",
     "authority_created":  false,
     "digital_asset_sha256":  "3b7b6c40e61f9139357a9b80c1fb875f10704739bb0a27edceb5537efb980d81",
-    "digital_asset_bytes":  1894
+    "digital_asset_bytes":  1894,
+    "checkout_state":  "TESTED_PASS",
+    "fulfillment_state":  "TESTED_PASS",
+    "payment_provider":  "PAYPAL",
+    "payment_state":  "CONNECTED",
+    "payment_capture_state":  "NOT_YET_OBSERVED"
 }
