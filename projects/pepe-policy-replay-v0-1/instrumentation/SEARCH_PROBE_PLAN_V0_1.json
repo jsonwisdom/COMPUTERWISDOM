@@ -1,0 +1,35 @@
+{
+  "instrument_id": "PEPE_POLICY_SEARCH_PROBE_V0_1",
+  "mode": "OBSERVE_ONLY",
+  "authority_created": false,
+  "required_queries": [
+    "PEPE",
+    "PEPE policy",
+    "PEPE Goblin",
+    "PEPE employee",
+    "PEPE bonus",
+    "PAYROLL_AUTHORITY",
+    "EMPLOYEE_RELATIONSHIP"
+  ],
+  "required_record_fields": [
+    "source_id",
+    "query",
+    "ref_or_scope",
+    "observed_at",
+    "result_state",
+    "result_pointers"
+  ],
+  "allowed_result_states": [
+    "PRESENT",
+    "SEARCH_MISS",
+    "NOT_SEARCHED",
+    "UNREACHABLE",
+    "CONFLICT"
+  ],
+  "rules": [
+    "Do not convert SEARCH_MISS into ABSENT.",
+    "Do not inherit a result across machines or accounts.",
+    "Do not treat a repository branch as the user's local computer.",
+    "Preserve conflicting results instead of selecting one silently."
+  ]
+}
