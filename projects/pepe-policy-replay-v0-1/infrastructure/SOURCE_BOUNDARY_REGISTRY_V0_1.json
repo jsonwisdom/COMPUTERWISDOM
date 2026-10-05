@@ -1,0 +1,40 @@
+{
+  "registry_id": "PEPE_POLICY_SOURCE_BOUNDARY_REGISTRY_V0_1",
+  "authority_created": false,
+  "canon": false,
+  "global_absence_claim_allowed": false,
+  "sources": [
+    {
+      "source_id": "GH_COMPUTERWISDOM_DEFAULT",
+      "source_class": "GITHUB_REPOSITORY_BRANCH",
+      "repository": "jsonwisdom/COMPUTERWISDOM",
+      "ref": "default_branch",
+      "scope_rule": "A miss here is bounded to the searched ref/query and is not repo-wide absence."
+    },
+    {
+      "source_id": "GH_COMPUTERWISDOM_PEPE_REPLAY_BRANCH",
+      "source_class": "GITHUB_REPOSITORY_BRANCH",
+      "repository": "jsonwisdom/COMPUTERWISDOM",
+      "ref": "pepe-policy-replay-v0-1-20261005",
+      "scope_rule": "This branch contains replay infrastructure; its existence is not proof of a real PEPE policy."
+    },
+    {
+      "source_id": "DRIVE_JAYWISDOM44",
+      "source_class": "GOOGLE_DRIVE_ACCOUNT",
+      "account_label": "jaywisdom44@gmail.com",
+      "scope_rule": "Search results are bounded to this connected Drive surface."
+    },
+    {
+      "source_id": "DRIVE_COMPUTERWISDOM408",
+      "source_class": "GOOGLE_DRIVE_ACCOUNT",
+      "account_label": "computerwisdom408@gmail.com",
+      "scope_rule": "Search results are bounded to this connected Drive surface."
+    },
+    {
+      "source_id": "USER_LOCAL_MACHINE",
+      "source_class": "LOCAL_DEVICE",
+      "status": "NOT_BOUND_NOT_SEARCHED",
+      "scope_rule": "No local disk absence may be inferred from remote connector searches."
+    }
+  ]
+}
