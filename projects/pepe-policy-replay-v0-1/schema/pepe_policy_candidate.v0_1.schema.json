@@ -41,7 +41,7 @@
           "source_id": { "type": "string", "minLength": 1 },
           "pointer": { "type": "string", "minLength": 1 },
           "observed_state": {
-            "enum": ["PRESENT", "SEARCH_MISS", "NOT_SEARCHED", "UNREACHABLE", "CONFLICT"]
+            "enum": ["PRESENT", "IRRELEVANT_HIT", "SEARCH_MISS", "NOT_SEARCHED", "UNREACHABLE", "CONFLICT"]
           }
         }
       }
