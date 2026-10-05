@@ -1,0 +1,59 @@
+{
+  "audit_run": "NOT_RUN",
+  "authority_created": false,
+  "canon": false,
+  "chain_definition": {
+    "append_only": true,
+    "backward_rewrite": false,
+    "canonicalization": "RFC8785_JCS",
+    "hash_algorithm": "SHA-256",
+    "hash_encoding": "lowercase_hex_prefixed_sha256",
+    "ordering": [
+      "CLASSIFICATION_CORE_RECEIPT",
+      "REPLAY_RECEIPT",
+      "AUDIT_RECEIPT",
+      "CLASSIFICATION_RECEIPT_BUNDLE"
+    ],
+    "rules": [
+      "later_receipts_bind_earlier_receipt_hashes",
+      "earlier_receipts_are_never_mutated_to_add_later_pointers",
+      "hash_valid_does_not_prove_underlying_event_true",
+      "replay_match_means_prior_result_reproduced_not_world_state_truth",
+      "audit_verified_means_audit_procedure_passed_not_object_class_true",
+      "receipt_status_is_separate_from_classification_disposition",
+      "missing_input_does_not_become_negative_finding"
+    ]
+  },
+  "classification_run": "NOT_RUN",
+  "existing_repo_schema": {
+    "observed_blob_sha": "69640a7c952dc60d84f13d146988f2e91d5c782c",
+    "path": "schemas/classification_receipt.v0_1.schema.json",
+    "relationship": "COEXISTS_DOES_NOT_REPLACE"
+  },
+  "issued_at": "2026-10-05T10:48:26Z",
+  "join": false,
+  "mode": "RECORDING_ONLY",
+  "mutation": false,
+  "persistence_targets": {
+    "github": {
+      "base_commit": "57e7cd7eaebb0a8d8a53b203877e7fb7913c58ba",
+      "branch": "classification-receipt-chain-v0-1-20261005",
+      "receipt_path": "receipts/classification/CLASSIFICATION_RECEIPT_CHAIN_SCHEMA_DEFINITION_2026-10-05.json",
+      "repository": "jsonwisdom/COMPUTERWISDOM",
+      "schema_definition_commit": "6fae0f634083c915b9fbfc1cbaf4bf53854a1873",
+      "schema_path": "docs/protocols/classification/CLASSIFICATION_RECEIPT_CHAIN_V0_1.md"
+    },
+    "google_drive": {
+      "account": "jaywisdom44@gmail.com",
+      "file_id": "1--wJmqRfHn2iftzvQ1SZPLiX9RLVYAlGAPaK9BOVYzQ",
+      "file_title": "CLASSIFICATION_RECEIPT_CHAIN_V0_1 — Recording Receipt",
+      "folder_id": "1ynkQ03b8O4Oh6tudggxyiWF_ooWsACAR"
+    }
+  },
+  "receipt_hash": "sha256:32f220f4906f80113aa0557d9896b929562598fe3d4177ef588fb5107c03faa5",
+  "receipt_instance_scope": "SCHEMA_DEFINITION_ONLY",
+  "receipt_type": "CLASSIFICATION_RECEIPT_CHAIN_SCHEMA_DEFINITION_RECEIPT",
+  "replay_run": "NOT_RUN",
+  "schema_id": "CLASSIFICATION_RECEIPT_CHAIN_V0_1",
+  "version": "0.1"
+}
