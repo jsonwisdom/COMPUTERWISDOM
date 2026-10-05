@@ -1,0 +1,11 @@
+{
+  "synthetic": true,
+  "fixture_id": "PEPE_POLICY_FIXTURE_IRRELEVANT_SEARCH_HIT",
+  "source_id": "DRIVE_SEMANTIC_SEARCH",
+  "query": "PEPE policy",
+  "returned_document": "UNRELATED_DOCUMENT",
+  "result_state": "IRRELEVANT_HIT",
+  "policy_evidence_created": false,
+  "expected_replay_state": "HOLD",
+  "invariant": "SEARCH_HIT != RELEVANT_EVIDENCE"
+}
