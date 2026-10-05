@@ -1,0 +1,144 @@
+{
+  "schema_id": "CMPTRWSDM_CIRCULAR_MISSION_BUS_B0_REGISTRY_V0_1",
+  "parent": "CMPTRWSDM_PARENT_SCAFFOLD_V0_1",
+  "bus": "CMPTRWSDM_CIRCULAR_MISSION_BUS_V0_1",
+  "mode": "B0_OBJECT_BINDING_ONLY",
+  "authority_created": false,
+  "canon": false,
+  "join": false,
+  "trade_performed": false,
+  "classification_performed": false,
+  "rows": [
+    {
+      "rail": "GitHub",
+      "job": "version_source_receipt_spine",
+      "canonical_id_form": "repository + commit_sha + path + blob_sha",
+      "current_id": {
+        "repository": "jsonwisdom/CITIZEN_ROOT",
+        "commit_sha": "62a8c5c9c99b904c65b9a904d079f982f6726589",
+        "path": "docs/JASONS_CITIZEN_ROOT_PROJECT_V1.md",
+        "blob_sha": "4d1e0f6545eda21b79b8270296925e318717de77"
+      },
+      "status": "BOUND_RE_READ_THIS_RUN",
+      "feeds_bit": "B0",
+      "b0": 1
+    },
+    {
+      "rail": "Google_Drive",
+      "job": "human_readable_working_archive",
+      "canonical_id_form": "drive_file_id",
+      "current_id": "1sRm_yOO-xKNZEIEoA5Ijsu1pt6CxOoT2CTQexe39acg",
+      "status": "BOUND_RE_READ_THIS_RUN",
+      "feeds_bit": "B0",
+      "b0": 1
+    },
+    {
+      "rail": "Base",
+      "job": "settlement_execution_receipt",
+      "canonical_id_form": "eip155:8453/tx:<tx_hash>",
+      "current_id": {
+        "chain_id": 8453,
+        "transaction_id": "ABSENT"
+      },
+      "status": "CONTEXT_ONLY_OBJECT_ID_ABSENT",
+      "feeds_bit": "B0",
+      "b0": 0
+    },
+    {
+      "rail": "Zora",
+      "job": "publication_object",
+      "canonical_id_form": "eip155:8453/erc20:<contract> OR exact_zora_publication_reference",
+      "current_id": "0x694cE46C64D9D1a5e9376A9feBcF85Ec05D72e9F",
+      "class": "UNASSIGNED",
+      "do_not_silently_promote": true,
+      "status": "CARRIED_NOT_RE_FETCHED_THIS_B0_RUN",
+      "feeds_bit": "B0",
+      "b0": 0
+    },
+    {
+      "rail": "Grok",
+      "job": "bounded_external_model_input_surface",
+      "canonical_id_form": "interface_id + captured_object_hash",
+      "current_id": {
+        "interface_id": "GROK_AGENT_L2_INTERFACE_V0_1",
+        "blob_sha": "eb504442a936696269de09aba3187ee09f6e1421"
+      },
+      "status": "BOUND_RE_READ_THIS_RUN",
+      "feeds_bit": "B0",
+      "b0": 1
+    },
+    {
+      "rail": "Farcaster",
+      "job": "framed_social_interaction",
+      "canonical_id_form": "fid + cast_hash",
+      "current_id": "ABSENT",
+      "status": "ABSENT",
+      "feeds_bit": "B0",
+      "b0": 0
+    },
+    {
+      "rail": "X",
+      "job": "public_broadcast_object",
+      "canonical_id_form": "x_post_id",
+      "current_id": "ABSENT",
+      "context": {
+        "metricool_brand_id": 6954480,
+        "brand_label": "jaywisdom44",
+        "x_binding": "HOLD",
+        "note": "brand_id_is_not_post_id"
+      },
+      "status": "ABSENT_BINDING_HOLD",
+      "feeds_bit": "B0",
+      "b0": 0
+    },
+    {
+      "rail": "Email",
+      "job": "private_intake_notification",
+      "canonical_id_form": "gmail_message_id + thread_id",
+      "current_id": "ABSENT",
+      "status": "ABSENT",
+      "feeds_bit": "B0",
+      "b0": 0
+    },
+    {
+      "rail": "Replay",
+      "job": "temporal_reconstruction",
+      "canonical_id_form": "replay_bundle_id + receipt_hash",
+      "current_id": "ABSENT",
+      "status": "ABSENT",
+      "feeds_bit": "B0",
+      "b0": 0
+    }
+  ],
+  "register": {
+    "B0": "PARTIAL",
+    "B1": 0,
+    "B2": 0,
+    "B3": 0,
+    "B4": 0,
+    "B5": 0,
+    "B6": 0,
+    "B7": 0,
+    "B8": 0,
+    "B4_B6_attachment": "DEFERRED_UNTIL_REQUIRED_B0_ROWS_BOUND",
+    "next_action": "HOLD"
+  },
+  "side_gates": {
+    "zora_classification": {
+      "object": "0x694cE46C64D9D1a5e9376A9feBcF85Ec05D72e9F",
+      "status": "UNASSIGNED",
+      "required_receipts": [
+        "factory",
+        "backing_asset",
+        "surface_pointer_profile_or_post"
+      ],
+      "liquidity_gate": "CLOSED"
+    },
+    "pepe_goblin_external_membrane": {
+      "relationship_to_jay_rail": "NOT_ESTABLISHED",
+      "payroll_authority": false,
+      "join": false,
+      "public_details": "USER_DECLARED_NOT_REVERIFIED_THIS_RUN"
+    }
+  }
+}
