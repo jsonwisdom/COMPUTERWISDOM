@@ -1,0 +1,23 @@
+{
+  "synthetic": true,
+  "fixture_id": "PEPE_POLICY_FIXTURE_RECEIPT_BOUND_CANDIDATE",
+  "candidate": {
+    "schema_version": "pepe.policy.candidate.v0.1",
+    "candidate_id": "SYNTHETIC-PEPE-POLICY-001",
+    "subject_label": "PEPE_GOBLIN_EXTERNAL_OBJECT",
+    "policy_class": "BONUS",
+    "claim_text": "Synthetic example only: a bonus policy candidate is supported by a named source receipt.",
+    "source_boundary_ids": ["SYNTHETIC_MACHINE_A"],
+    "source_receipts": [
+      {
+        "source_id": "SYNTHETIC_MACHINE_A",
+        "pointer": "synthetic://policy/001",
+        "observed_state": "PRESENT"
+      }
+    ],
+    "relationship_state": "RECEIPT_BOUND",
+    "authority_state": "UNESTABLISHED",
+    "replay_state": "SUPPORTED"
+  },
+  "expected_rule": "SUPPORTED != AUTHORITY"
+}
