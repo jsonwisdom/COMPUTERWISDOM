@@ -1,0 +1,59 @@
+{
+  "run_id": "PEPE_POLICY_SEARCH_RUN_2026_10_05_V0_1",
+  "observed_date": "2026-10-05",
+  "mode": "OBSERVE_ONLY",
+  "authority_created": false,
+  "canon": false,
+  "policy_created": false,
+  "separate_policy_object_found": false,
+  "external_membrane_found": true,
+  "observations": [
+    {
+      "source_id": "GH_COMPUTERWISDOM_DEFAULT",
+      "queries": ["PEPE", "PEPE policy", "PEPE bonus employee schedule"],
+      "result_state": "SEARCH_MISS",
+      "scope_note": "Bounded to the searched default-branch query surface; not repository-wide or machine-wide absence."
+    },
+    {
+      "source_id": "GH_COMPUTERWISDOM_PARENT_BRANCH",
+      "ref": "circular-mission-parent-scaffold-v0-1-20261005",
+      "result_state": "PRESENT",
+      "pointer": "docs/runtime/CMPTRWSDM_PARENT_SCAFFOLD_V0_1.md",
+      "commit": "e094df28805620d76d38411a879f2b3afbba2e55",
+      "classification": "PEPE_GOBLIN_EXTERNAL_MEMBRANE",
+      "policy_object": false
+    },
+    {
+      "source_id": "DRIVE_JAYWISDOM44",
+      "query": "PEPE Goblin",
+      "result_state": "PRESENT",
+      "pointer": "CMPTRWSDM_PARENT_SCAFFOLD_V0_1",
+      "classification": "HUMAN_READABLE_MIRROR_OF_EXTERNAL_MEMBRANE",
+      "policy_object": false
+    },
+    {
+      "source_id": "DRIVE_COMPUTERWISDOM408",
+      "queries": ["PEPE policy", "PEPE bonus", "PEPE employee", "PEPE schedule"],
+      "result_state": "IRRELEVANT_HIT",
+      "note": "Semantic search returned an unrelated PDF; it is not PEPE policy evidence."
+    },
+    {
+      "source_id": "DRIVE_COMPUTERWISDOM408",
+      "queries": ["PAYROLL_AUTHORITY", "EMPLOYEE_RELATIONSHIP"],
+      "result_state": "SEARCH_MISS"
+    },
+    {
+      "source_id": "USER_LOCAL_MACHINE",
+      "result_state": "NOT_SEARCHED"
+    }
+  ],
+  "current_disposition": "HOLD",
+  "invariants": [
+    "SEARCH_MISS != ABSENT",
+    "IRRELEVANT_HIT != PRESENT_POLICY",
+    "EXTERNAL_MEMBRANE != POLICY",
+    "POLICY_OBJECT != EMPLOYMENT_RELATIONSHIP",
+    "EMPLOYMENT_RELATIONSHIP != PAYROLL_AUTHORITY",
+    "PAYROLL_AUTHORITY != BONUS_SCHEDULE"
+  ]
+}
