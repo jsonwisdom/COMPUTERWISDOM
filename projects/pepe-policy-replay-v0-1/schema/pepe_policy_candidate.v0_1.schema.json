@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jsonwisdom/COMPUTERWISDOM/projects/pepe-policy-replay-v0-1/schema/pepe_policy_candidate.v0_1.schema.json",
+  "title": "PEPE Policy Candidate v0.1",
+  "description": "Fail-closed schema for a candidate policy claim. Validation does not establish that the policy exists or is authoritative.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "candidate_id",
+    "subject_label",
+    "policy_class",
+    "claim_text",
+    "source_boundary_ids",
+    "source_receipts",
+    "relationship_state",
+    "authority_state",
+    "replay_state"
+  ],
+  "properties": {
+    "schema_version": { "const": "pepe.policy.candidate.v0.1" },
+    "candidate_id": { "type": "string", "minLength": 1 },
+    "subject_label": { "const": "PEPE_GOBLIN_EXTERNAL_OBJECT" },
+    "policy_class": {
+      "enum": ["EMPLOYMENT", "PAYROLL", "BONUS", "TOKEN_RELATIONSHIP", "OTHER"]
+    },
+    "claim_text": { "type": "string", "minLength": 1 },
+    "source_boundary_ids": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "source_receipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["source_id", "pointer", "observed_state"],
+        "properties": {
+          "source_id": { "type": "string", "minLength": 1 },
+          "pointer": { "type": "string", "minLength": 1 },
+          "observed_state": {
+            "enum": ["PRESENT", "SEARCH_MISS", "NOT_SEARCHED", "UNREACHABLE", "CONFLICT"]
+          }
+        }
+      }
+    },
+    "relationship_state": {
+      "enum": ["NOT_ESTABLISHED", "CANDIDATE", "RECEIPT_BOUND", "CONFLICT"]
+    },
+    "authority_state": {
+      "enum": ["FALSE", "UNESTABLISHED", "RECEIPT_BOUND"]
+    },
+    "replay_state": {
+      "enum": ["HOLD", "SUPPORTED", "CONFLICT", "UNREACHABLE"]
+    }
+  }
+}
