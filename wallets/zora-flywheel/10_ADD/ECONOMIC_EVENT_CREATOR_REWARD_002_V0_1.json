@@ -1,0 +1,20 @@
+{
+  "format": "ECONOMIC_EVENT_V0_1",
+  "status": "BOUND_FOR_THIS_EVENT",
+  "wallet_slot": "001",
+  "wallet": "0x829AdfEdBe565F9885a7eA6Bc78912acAef055E2",
+  "asset_symbol": "ZORA",
+  "event_type": "CREATOR_REWARD",
+  "amount": "0.000230801515746887",
+  "raw_amount": "230801515746887",
+  "decimals": 18,
+  "tx_hash_or_reward_id": "0xf88e2c9db2c9373c76bd64a0439ed1725936aca95d65c3c4a4a4dee0056d0e43",
+  "timestamp": "2026-10-05T21:45:17.000000Z",
+  "event_name": "CreatorCoinRewards",
+  "coin": "0x694cE46C64D9D1a5e9376A9feBcF85Ec05D72e9F",
+  "creator": "0x829AdfEdBe565F9885a7eA6Bc78912acAef055E2",
+  "protocol_amount": "230801515746888",
+  "cost_basis": "UNKNOWN",
+  "pnl_licensed": false,
+  "not_collapsed_with": "ECONOMIC_EVENT_CREATOR_REWARD_001"
+}
