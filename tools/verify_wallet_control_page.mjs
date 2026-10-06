@@ -103,6 +103,10 @@ const zoraSigner = verifyPage('wallet-control/zora-signer/index.html', {
     'CoinbaseSmartWalletMessage',
     'Coinbase Smart Wallet',
     'replay_safe_hash',
+    'const draft = {',
+    'challenge = draft;',
+    "if(sameAddress(nextAccount, account)) return;",
+    "if(String(nextChainId).toLowerCase() === String(chainId || '').toLowerCase()) return;",
     'contract_replay_safe_hash',
     'replay_safe_hash_match',
     'replaySafeHash',
@@ -144,5 +148,7 @@ console.log(JSON.stringify({
   neutral_result_banner_conditional: true,
   zora_subject_signer_separated: true,
   zora_owner_index_resolved_at_challenge_block: true,
-  zora_replay_safe_typed_data: true
+  zora_replay_safe_typed_data: true,
+  zora_challenge_preflight_local_draft: true,
+  zora_duplicate_provider_events_ignored: true
 }, null, 2));

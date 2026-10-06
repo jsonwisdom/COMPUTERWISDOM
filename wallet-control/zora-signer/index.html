@@ -30,7 +30,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111;color:#f8f3e8;bo
 <main>
 <header>
   <div class="brand">COMPUTER WISDOM</div>
-  <div class="sub">Zora Smart Wallet Proof • v0.2</div>
+  <div class="sub">Zora Smart Wallet Proof • v0.2.2</div>
 </header>
 
 <section>
@@ -187,12 +187,16 @@ function attachListeners(p){
   if(!p || p === listenersProvider || typeof p.on !== 'function') return;
   listenersProvider = p;
   p.on('accountsChanged', accounts => {
-    account = accounts && accounts[0] ? ethers.getAddress(accounts[0]) : null;
+    const nextAccount = accounts && accounts[0] ? ethers.getAddress(accounts[0]) : null;
+    if(sameAddress(nextAccount, account)) return;
+    account = nextAccount;
     resetEvidence();
     updateUi();
   });
   p.on('chainChanged', id => {
-    chainId = id;
+    const nextChainId = id;
+    if(String(nextChainId).toLowerCase() === String(chainId || '').toLowerCase()) return;
+    chainId = nextChainId;
     resetEvidence();
     updateUi();
   });
@@ -312,8 +316,8 @@ async function buildChallenge(){
     const now = new Date().toISOString();
     const nonce = crypto.randomUUID();
 
-    challenge = {
-      format:'ZORA_SMART_WALLET_CONTROL_CHALLENGE_V0_2',
+    const draft = {
+      format:'ZORA_SMART_WALLET_CONTROL_CHALLENGE_V0_2_2',
       purpose:'READ_ONLY_SMART_WALLET_CONTROL_OBSERVATION',
       repository:'jsonwisdom/COMPUTERWISDOM',
       surface:'wallet-control/zora-signer/index.html',
@@ -339,21 +343,21 @@ async function buildChallenge(){
     };
 
     const lines = [
-      'COMPUTER_WISDOM_ZORA_SMART_WALLET_CONTROL_V0_2',
-      'purpose=' + challenge.purpose,
-      'repository=' + challenge.repository,
-      'surface=' + challenge.surface,
+      'COMPUTER_WISDOM_ZORA_SMART_WALLET_CONTROL_V0_2_2',
+      'purpose=' + draft.purpose,
+      'repository=' + draft.repository,
+      'surface=' + draft.surface,
       'chain_id=8453',
-      'subject_smart_wallet=' + challenge.subject_smart_wallet,
-      'connected_signer=' + challenge.connected_signer,
-      'expected_signer=' + challenge.expected_signer,
-      'signer_owner_index=' + challenge.signer_owner_index,
-      'base_block_number=' + challenge.base_block_number_hex,
-      'base_block_hash=' + challenge.base_block_hash,
-      'base_block_timestamp=' + challenge.base_block_timestamp_hex,
-      'nonce=' + challenge.nonce,
-      'page_origin=' + challenge.page_origin,
-      'challenge_created_at=' + challenge.challenge_created_at,
+      'subject_smart_wallet=' + draft.subject_smart_wallet,
+      'connected_signer=' + draft.connected_signer,
+      'expected_signer=' + draft.expected_signer,
+      'signer_owner_index=' + draft.signer_owner_index,
+      'base_block_number=' + draft.base_block_number_hex,
+      'base_block_hash=' + draft.base_block_hash,
+      'base_block_timestamp=' + draft.base_block_timestamp_hex,
+      'nonce=' + draft.nonce,
+      'page_origin=' + draft.page_origin,
+      'challenge_created_at=' + draft.challenge_created_at,
       'human_binding_proof=false',
       'identity_join=false',
       'authority_created=false',
@@ -362,35 +366,40 @@ async function buildChallenge(){
       'transfer=false',
       'statement=I sign this exact message with the connected Privy EVM signer to test whether the fixed Zora smart-wallet subject accepts this signature for this observation only. This does not establish human identity, ENS ownership, legal authority, or permission to transact.'
     ];
-    challenge.message = lines.join('\n');
-    challenge.original_hash_eip191 = ethers.hashMessage(challenge.message);
-    challenge.typed_data_domain = {
+    draft.message = lines.join('\n');
+    draft.original_hash_eip191 = ethers.hashMessage(draft.message);
+    draft.typed_data_domain = {
       name:'Coinbase Smart Wallet',
       version:'1',
       chainId:8453,
       verifyingContract:SUBJECT
     };
-    challenge.typed_data_types = {
+    draft.typed_data_types = {
       CoinbaseSmartWalletMessage:[{name:'hash',type:'bytes32'}]
     };
-    challenge.typed_data_value = {hash:challenge.original_hash_eip191};
-    challenge.replay_safe_hash = ethers.TypedDataEncoder.hash(
-      challenge.typed_data_domain,
-      challenge.typed_data_types,
-      challenge.typed_data_value
+    draft.typed_data_value = {hash:draft.original_hash_eip191};
+    draft.replay_safe_hash = ethers.TypedDataEncoder.hash(
+      draft.typed_data_domain,
+      draft.typed_data_types,
+      draft.typed_data_value
     );
 
     const replaySafeRaw = await ethCall(
       SUBJECT,
-      smartWalletIface.encodeFunctionData('replaySafeHash',[challenge.original_hash_eip191]),
+      smartWalletIface.encodeFunctionData('replaySafeHash',[draft.original_hash_eip191]),
       block.number
     );
-    challenge.contract_replay_safe_hash = String(
+    draft.contract_replay_safe_hash = String(
       smartWalletIface.decodeFunctionResult('replaySafeHash',replaySafeRaw)[0]
     ).toLowerCase();
-    if(challenge.contract_replay_safe_hash !== challenge.replay_safe_hash.toLowerCase()){
+    if(draft.contract_replay_safe_hash !== draft.replay_safe_hash.toLowerCase()){
       throw new Error('Local Coinbase typed-data digest does not match the smart wallet replaySafeHash at the challenge block.');
     }
+
+    // Publish the global challenge only after every awaited preflight has succeeded.
+    // Provider events can fire during RPC calls; keeping this draft local prevents
+    // resetEvidence() from nulling an in-progress build.
+    challenge = draft;
 
     ui.ownerStatus.textContent = 'SMART WALLET OWNER: SIGNER INDEX ' + challenge.signer_owner_index;
     ui.ownerStatus.className = 'pill good';
