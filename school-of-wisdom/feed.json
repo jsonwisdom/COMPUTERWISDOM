@@ -1,0 +1,15 @@
+{
+  "version": "https://jsonfeed.org/version/1.1",
+  "title": "School of Wisdom Updates",
+  "home_page_url": "https://jsonwisdom.github.io/COMPUTERWISDOM/school-of-wisdom/",
+  "feed_url": "https://jsonwisdom.github.io/COMPUTERWISDOM/school-of-wisdom/feed.json",
+  "items": [
+    {
+      "id": "SOW-20261005-001",
+      "url": "https://jsonwisdom.github.io/COMPUTERWISDOM/school-of-wisdom/",
+      "title": "Zora Flywheel Reboot",
+      "date_published": "2026-10-06T03:00:00Z",
+      "content_text": "Computer Wizard query-net loop, append-only audit/fix progression, School of Wisdom public beacon, and terminal-only human signing gate."
+    }
+  ]
+}
