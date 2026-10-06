@@ -1,0 +1,47 @@
+name: FULLMATH Public 200 Audit
+
+on:
+  push:
+    branches: ["master"]
+    paths:
+      - "public/fullmath/**"
+      - "public-record-verification/**"
+      - "tools/fullmath/**"
+      - ".github/workflows/fullmath-public-200-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Wait for Pages and replay public routes
+        env:
+          MAX_WAIT_SECONDS: "600"
+          POLL_SECONDS: "10"
+        run: |
+          chmod +x tools/fullmath/audit-public-200.sh
+          tools/fullmath/audit-public-200.sh \
+            "https://jsonwisdom.github.io/COMPUTERWISDOM/public/fullmath/" \
+            "$RUNNER_TEMP/fullmath-public-audit"
+
+      - name: Require all declared routes HTTP 200
+        run: |
+          RECEIPT=$(find "$RUNNER_TEMP/fullmath-public-audit" -name audit.json | head -n 1)
+          test -n "$RECEIPT"
+          cat "$RECEIPT"
+          jq -e '.all_required_200 == true' "$RECEIPT"
+
+      - name: Upload public proof render
+        uses: actions/upload-artifact@v4
+        with:
+          name: fullmath-public-200-proof
+          path: |
+            ${{ runner.temp }}/fullmath-public-audit/**/audit.json
+            ${{ runner.temp }}/fullmath-public-audit/**/links.csv
+            ${{ runner.temp }}/fullmath-public-audit/**/proof.html
