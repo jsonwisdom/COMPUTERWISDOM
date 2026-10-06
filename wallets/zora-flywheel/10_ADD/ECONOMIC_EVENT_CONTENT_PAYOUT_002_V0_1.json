@@ -1,0 +1,20 @@
+{
+  "format": "ECONOMIC_EVENT_V0_1",
+  "status": "BOUND_FOR_THIS_EVENT",
+  "wallet_slot": "001",
+  "wallet": "0x829AdfEdBe565F9885a7eA6Bc78912acAef055E2",
+  "asset_symbol": "ZORA",
+  "event_type": "CONTENT_COIN_MARKET_PAYOUT",
+  "amount": "0.011217138835621143",
+  "raw_amount": "11217138835621143",
+  "decimals": 18,
+  "tx_hash_or_reward_id": "0xf88e2c9db2c9373c76bd64a0439ed1725936aca95d65c3c4a4a4dee0056d0e43",
+  "timestamp": "2026-10-05T21:45:17.000000Z",
+  "event_name": "CoinMarketRewardsV4",
+  "emitter": "0x9ea932730A7787000042e34390B8E435dD839040",
+  "coin": "0xa7A039A1d83Ba0E6e879192BdAbA8a0f4977328b",
+  "payout_recipient": "0x829AdfEdBe565F9885a7eA6Bc78912acAef055E2",
+  "cost_basis": "UNKNOWN",
+  "pnl_licensed": false,
+  "not_collapsed_with": "ECONOMIC_EVENT_CONTENT_PAYOUT_001"
+}
