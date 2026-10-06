@@ -108,7 +108,7 @@ const zoraSigner = verifyPage('wallet-control/zora-signer/index.html', {
     'replaySafeHash',
     'typed_data_recovered_signer',
     'ZORA_SMART_WALLET_CONTROL_OBSERVATION_RECEIPT_V0_2',
-    '0x829AdfEdbe565f9885A7Ea6Bc78912ACaEF055E2',
+    "ethers.getAddress('0x829adfedbe565f9885a7ea6bc78912acaef055e2')",
     '0xb3B9CC668e997209e914309FF525535203EaD4dA',
     'isOwnerAddress',
     'ownerAtIndex',
