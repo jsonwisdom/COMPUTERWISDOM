@@ -1,0 +1,13 @@
+# NAMING CONVENTIONS V0_1
+
+RECEIPT = holds/<OBJECT>_<ROLE>_V0_1.md
+COMMIT_REF = 40 hex Git commit id
+BLOB_SHA1 = 40 hex Git blob id
+RAW_SHA256 = 64 hex digest of file bytes
+FACT_NNN = a named proposition
+CANDIDATE != PROMOTED
+SEARCH_MISS != ABSENCE
+NOT_INSTANTIATED != SEARCH_MISS
+P_DOC != P_TRUE
+AUTHORITY_CREATED = false
+CANON = false
