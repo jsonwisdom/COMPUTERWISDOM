@@ -1,0 +1,6 @@
+{"id":"FACT-20261005-001","observed_at":"2026-10-05","source_class":"HUMAN_DECLARATION","subject":"SCHOOL_OF_WISDOM","predicate":"operating_mode","object":"APPEND_ONLY_DAILY","status":"REPORTED"}
+{"id":"FACT-20261005-002","observed_at":"2026-10-05","source_class":"HUMAN_DECLARATION","subject":"FINANCIAL_CONNECTOR_ORDER","predicate":"position_1","object":"COINBASE","status":"REPORTED"}
+{"id":"FACT-20261005-003","observed_at":"2026-10-05","source_class":"HUMAN_DECLARATION","subject":"FINANCIAL_CONNECTOR_ORDER","predicate":"position_2","object":"HUNTINGTON","status":"REPORTED"}
+{"id":"FACT-20261005-004","observed_at":"2026-10-05","source_class":"HUMAN_DECLARATION","subject":"ZORA","predicate":"system_role","object":"CREATOR_AND_WALLET_LAYER_ON_TOP_OF_CONNECTOR_SYSTEM","status":"REPORTED"}
+{"id":"FACT-20261005-005","observed_at":"2026-10-05","source_class":"HUMAN_DECLARATION","subject":"SCHOOL_OF_WISDOM","predicate":"public_output","object":"LIVE_200_OK_WEBSITE_WITH_FAMILY_AND_BOT_RECOMMENDATIONS","status":"REPORTED"}
+{"id":"FACT-20261005-006","observed_at":"2026-10-05","source_class":"BUILD","subject":"SCHOOL_OF_WISDOM","predicate":"notification_primary","object":"PUBLIC_UPDATE_BEACON_PLUS_ATOM_JSON_FEEDS","status":"IMPLEMENTED_ON_BRANCH"}
