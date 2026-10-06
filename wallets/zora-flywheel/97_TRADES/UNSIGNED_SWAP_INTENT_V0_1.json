@@ -1,0 +1,30 @@
+{
+  "format": "ZORA_FLYWHEEL_UNSIGNED_SWAP_INTENT_V0_1",
+  "mode": "PREPARE_ONLY_UNTIL_TERMINAL_HUMAN_SIGNING_GATE",
+  "status": "WAITING_FOR_TRADE_PARAMETERS",
+  "source_wallet": null,
+  "chain": null,
+  "token_in": null,
+  "token_out": null,
+  "amount_in": null,
+  "amount_out": null,
+  "slippage_bps": null,
+  "quote": null,
+  "route": null,
+  "fees": null,
+  "min_received": null,
+  "quote_observed_at": null,
+  "evidence_refs": [],
+  "signer_required": true,
+  "signed": false,
+  "submitted": false,
+  "confirmed": false,
+  "transaction_hash": null,
+  "invariants": [
+    "QUOTE != TRADE",
+    "TRADE_INTENT != SIGNED_TRANSACTION",
+    "SIGNED_TRANSACTION != CONFIRMED_SWAP",
+    "CONNECTOR_ACCESS != WALLET_CONTROL",
+    "WALLET_CONTROL != HUMAN_IDENTITY"
+  ]
+}
