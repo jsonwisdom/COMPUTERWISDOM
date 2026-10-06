@@ -93,7 +93,12 @@ function short(a){return a?a.slice(0,6)+'…'+a.slice(-4):'NOT CONNECTED'}
 function onBase(){return !!chainId&&String(chainId).toLowerCase()===BASE.chainId}
 function resetReceipt(){receipt=null;ui.receiptSection.classList.add('hidden');ui.downloadBtn.disabled=true;ui.receiptDownloadBtn.disabled=true;ui.verifyStatus.textContent='SIGNATURE: NOT VERIFIED';ui.verifyStatus.className='pill warn'}
 function attachListeners(p){if(!p||p===listenersProvider||typeof p.on!=='function')return;listenersProvider=p;p.on('accountsChanged',a=>{account=a&&a[0]?ethers.getAddress(a[0]):null;resetReceipt();updateUi()});p.on('chainChanged',id=>{chainId=id;resetReceipt();updateUi()})}
-function updateUi(){ui.providerStatus.textContent=provider?'PROVIDER: INJECTED EIP-1193':'PROVIDER: NONE';ui.providerStatus.className='pill '+(provider?'good':'warn');ui.walletStatus.textContent='SIGNER: '+short(account);ui.walletStatus.className='pill '+(account?'good':'warn');ui.chainStatus.textContent=chainId?'CHAIN: '+(onBase()?'BASE 8453':chainId):'CHAIN: UNKNOWN';ui.chainStatus.className='pill '+(onBase()?'good':'warn');ui.fileStatus.textContent=fileRecord?'FILE: HASHED':'FILE: NONE';ui.fileStatus.className='pill '+(fileRecord?'good':'warn');ui.baseBtn.disabled=!account||onBase();ui.signBtn.disabled=!(provider&&account&&onBase()&&fileRecord&&ui.understand.checked)||!!receipt}
+function updateUi(){ui.providerStatus.textContent=provider?'PROVIDER: INJECTED EIP-1193':'PROVIDER: NONE';ui.providerStatus.className='pill '+(provider?'good':'warn');ui.walletStatus.textContent='SIGNER: '+short(account);ui.walletStatus.className='pill '+(account?'good':'warn');ui.chainStatus.textContent=chainId?'CHAIN: '+(onBase()?'BASE 8453':chainId):'CHAIN: UNKNOWN';ui.chainStatus.className='pill '+(onBase()?'good':'warn');ui.fileStatus.textContent=fileRecord?'FILE: HASHED':'FILE: NONE';ui.fileStatus.className='pill '+(fileRecord?'good':'warn');ui.connectBtn.textContent=account?'1 — WALLET CONNECTED':'1 — CONNECT BROWSER SIGNER';
+ui.connectBtn.disabled=!!account;
+ui.baseBtn.textContent=onBase()?'2 — BASE MAINNET ACTIVE':'2 — USE BASE MAINNET';
+ui.baseBtn.disabled=!account||onBase();
+ui.baseBtn.className=onBase()?'primary':'';
+ui.signBtn.disabled=!(provider&&account&&onBase()&&fileRecord&&ui.understand.checked)||!!receipt}
 function showMobile(){ui.mobileLaunch.classList.remove('hidden');ui.connectBtn.disabled=true;setNotice('No injected wallet provider in this browser. Tap OPEN IN COINBASE WALLET to continue on iPhone.','warn')}
 if(provider&&typeof provider.request==='function'){attachListeners(provider);setNotice('Wallet provider detected. Tap CONNECT BROWSER SIGNER.','good')}else{provider=null;showMobile()}
 
