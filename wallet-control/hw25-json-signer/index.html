@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="color-scheme" content="light">
-<title>Computer Wisdom — HW 25/3 JSON Signer</title>
+<title>Computer Wisdom — HW 25/3 Coinbase Signer</title>
 <style>
-:root{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;color:#111;background:#eef3f1}
-*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:16px;background:#eef3f1}
-main{width:min(900px,100%);margin:auto;border:6px solid #111;border-radius:26px;background:#f7fffb;box-shadow:8px 9px 0 #111;overflow:hidden}
-header,section,footer{padding:20px;border-bottom:4px solid #111}footer{border-bottom:0}
-.brand{font:900 clamp(28px,7vw,56px)/.95 system-ui,sans-serif}.sub{font-weight:900;margin-top:6px}
+:root{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;color:#111;background:#f4f1e8}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:10px;background:#f4f1e8}
+main{width:min(900px,100%);margin:auto;border:6px solid #111;border-radius:24px;background:#f7fffb;box-shadow:8px 9px 0 #111;overflow:hidden}
+header,section,footer{padding:16px;border-bottom:4px solid #111}footer{border-bottom:0}
+.brand{font:900 clamp(28px,7vw,54px)/.95 system-ui,sans-serif}.sub{font-weight:900;margin-top:6px}
 .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cell{border:3px solid #111;border-radius:13px;padding:10px;background:white}
 .cell b{display:block;font-size:11px;text-transform:uppercase;margin-bottom:5px}.value{overflow-wrap:anywhere;font-size:13px}
 .status{display:flex;gap:8px;flex-wrap:wrap}.pill{border:3px solid #111;border-radius:999px;background:white;padding:8px 10px;font-weight:900}
@@ -18,98 +18,96 @@ header,section,footer{padding:20px;border-bottom:4px solid #111}footer{border-bo
 .boundary{background:#111;color:white;text-align:center;font-weight:900}
 .notice{margin:14px 0;border-left:6px solid #111;background:white;padding:12px;line-height:1.45}
 .controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
-button,input[type=file],a.wallet{width:100%}
-a.wallet{display:block;text-align:center;text-decoration:none;border-radius:14px;padding:14px;margin-top:10px;font:900 15px system-ui,sans-serif;background:#111;color:#fff;border:4px solid #111}
-.walletRow{display:grid;grid-template-columns:1fr;gap:10px}
-button{border:4px solid #111;border-radius:14px;background:white;padding:14px;font:900 15px system-ui,sans-serif;box-shadow:0 5px 0 #111;cursor:pointer}
-button.primary{background:#111;color:white}button:disabled{opacity:.45;cursor:not-allowed}
+button,a.button{width:100%;display:block;text-align:center;text-decoration:none;border:4px solid #111;border-radius:14px;background:white;color:#111;padding:14px;font:900 15px system-ui,sans-serif;box-shadow:0 5px 0 #111;cursor:pointer}
+button.primary,a.primary{background:#111;color:#fff}button:disabled{opacity:.45;cursor:not-allowed}
 .confirm{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-weight:800;line-height:1.4}.confirm input{width:22px;height:22px;flex:none}
 pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111;color:#f8f3e8;border-radius:12px;padding:13px;max-height:360px;overflow:auto;font-size:12px}
 .hidden{display:none!important}.small{font-size:12px;line-height:1.45}
-@media(max-width:650px){body{padding:9px}.grid,.controls{grid-template-columns:1fr}header,section,footer{padding:14px}}
+@media(max-width:650px){.grid,.controls{grid-template-columns:1fr}header,section,footer{padding:14px}}
 </style>
 </head>
 <body>
 <main>
-<header><div class="brand">COMPUTER WISDOM</div><div class="sub">HW 25/3 Exact JSON Signer • v0.1</div></header>
+<header><div class="brand">COMPUTER WISDOM</div><div class="sub">HW 25/3 • Coinbase / Base iPhone Signer v0.3</div></header>
+
 <section>
-<h1>Hash exact JSON bytes, then sign the hash statement — no transaction</h1>
-<p>Select the JSON file you want to attest to. This page reads raw file bytes locally, computes SHA-256, and signs only the exact filename / byte-count / digest statement.</p>
+<h1>Jason packet → Coinbase signature → receipt</h1>
+<p>No file picker. The prepared Jason packet is frozen below. Download it, connect with Coinbase/Base, then sign a fresh challenge that contains the packet's exact SHA-256.</p>
 <div class="grid">
-<div class="cell"><b>Network</b><div class="value">Base mainnet • chain 8453</div></div>
-<div class="cell"><b>File handling</b><div class="value">Local browser only • no upload</div></div>
-<div class="cell"><b>Parsing</b><div class="value">NONE</div></div>
-<div class="cell"><b>Normalization</b><div class="value">NONE</div></div>
-</div>
-</section>
-<section class="boundary">SIGNATURE = WALLET ATTESTATION TO EXACT HASH STATEMENT • SIGNATURE ≠ TNA PROVENANCE • CONTROL ≠ AUTHORITY • NO TRANSACTION • NEVER ENTER A PRIVATE KEY HERE</section>
-<section>
-<div class="status">
-<span class="pill warn" id="providerStatus">PROVIDER: NONE</span>
-<span class="pill warn" id="walletStatus">SIGNER: NOT CONNECTED</span>
-<span class="pill warn" id="chainStatus">CHAIN: UNKNOWN</span>
-<span class="pill warn" id="fileStatus">FILE: NONE</span>
-<span class="pill warn" id="verifyStatus">SIGNATURE: NOT VERIFIED</span>
-</div>
-<div id="notice" class="notice">iPhone mode: if this browser has no wallet provider, tap OPEN IN COINBASE WALLET below. The same page will reopen inside Coinbase Wallet, where signing can occur.</div>
-<div id="mobileLaunch" class="hidden">
-  <div class="walletRow">
-    <a id="coinbaseLink" class="wallet" href="#">OPEN IN COINBASE WALLET</a>
-  </div>
-  <button id="copyLinkBtn">COPY THIS PAGE LINK</button>
+<div class="cell"><b>Jason packet</b><div class="value">JASON_HW25_3_BINDING_PACKET_V0_1.json</div></div>
+<div class="cell"><b>Packet bytes</b><div class="value">1150</div></div>
+<div class="cell" style="grid-column:1/-1"><b>Packet SHA-256</b><div class="value">e9ee74810c4af97a78ab1bb01472c3dda56f02663110dec0aed83e95b6a354c6</div></div>
+<div class="cell"><b>Expected Coinbase smart wallet</b><div class="value">0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8</div></div>
+<div class="cell"><b>Network</b><div class="value">Base mainnet • 8453</div></div>
 </div>
 <div class="controls">
-<button id="connectBtn" class="primary">1 — CONNECT BROWSER SIGNER</button>
-<button id="baseBtn" disabled>2 — USE BASE MAINNET</button>
+<a class="button primary" download href="./JASON_HW25_3_BINDING_PACKET_V0_1.json">1 — DOWNLOAD JASON PACKET</a>
+<a class="button" target="_blank" href="./JASON_HW25_3_BINDING_PACKET_V0_1.json">VIEW PACKET</a>
 </div>
-<div style="margin-top:14px"><b>3 — SELECT JSON FILE</b><input id="fileInput" type="file" accept=".json,application/json"></div>
-<div id="fileSection" class="hidden"><div class="grid" style="margin-top:14px">
-<div class="cell"><b>Filename</b><div class="value" id="filename"></div></div>
-<div class="cell"><b>Bytes</b><div class="value" id="byteCount"></div></div>
-<div class="cell" style="grid-column:1/-1"><b>SHA-256</b><div class="value" id="sha256"></div></div>
-</div></div>
-<div id="messageSection" class="hidden"><h2>Exact signing statement</h2><pre id="messageText"></pre></div>
-<label class="confirm"><input id="understand" type="checkbox"><span>I understand this signs only the exact filename / byte-count / SHA-256 statement shown above. It does not prove that The National Archives issued the file, does not bind this file to Kew, and does not create authority.</span></label>
-<div class="controls"><button id="signBtn" class="primary" disabled>4 — SIGN EXACT HASH STATEMENT</button><button id="downloadBtn" disabled>DOWNLOAD JSON RECEIPT</button></div>
 </section>
-<section id="receiptSection" class="hidden">
-<h2>Signature receipt</h2><div id="receiptBanner" class="notice warn"><b>Pending.</b></div><pre id="receiptJson"></pre>
-<div class="controls"><button id="receiptDownloadBtn" class="primary" disabled>DOWNLOAD JSON RECEIPT</button><button id="copyBtn">COPY RECEIPT JSON</button></div>
+
+<section class="boundary">PACKET HASH + CHALLENGE CODE ARE SIGNED • SIGNATURE ≠ TNA PROVENANCE • CONTROL ≠ AUTHORITY • NO TRANSACTION</section>
+
+<section>
+<div class="status">
+<span id="providerStatus" class="pill warn">PROVIDER: NOT SELECTED</span>
+<span id="walletStatus" class="pill warn">WALLET: NOT CONNECTED</span>
+<span id="chainStatus" class="pill warn">CHAIN: UNKNOWN</span>
+<span id="signStatus" class="pill warn">SIGNATURE: NOT CREATED</span>
+</div>
+<div id="notice" class="notice">Tap Connect Coinbase / Base. On iPhone, if there is no injected provider, this page uses the Base Account SDK fallback directly.</div>
+
+<div class="controls">
+<button id="connectBtn" class="primary">2 — CONNECT COINBASE / BASE</button>
+<button id="networkBtn" disabled>3 — USE BASE MAINNET</button>
+</div>
+
+<div class="grid" style="margin-top:14px">
+<div class="cell"><b>Session challenge code</b><div id="challengeCode" class="value"></div></div>
+<div class="cell"><b>Packet SHA prefix</b><div class="value">e9ee74810c4af97a</div></div>
+</div>
+
+<label class="confirm"><input id="understand" type="checkbox"><span>I understand this signs the exact Jason packet hash plus the session challenge code. It does not prove TNA issued either candidate or bind either candidate to Kew.</span></label>
+<div class="controls">
+<button id="signBtn" class="primary" disabled>4 — SIGN PACKET HASH + CODE</button>
+<button id="downloadBtn" disabled>DOWNLOAD SIGNED RECEIPT</button>
+</div>
 </section>
-<footer class="small">Exact-byte hashing is local. Signing uses the connected browser wallet. VERIFIED means the signature recovered to that same wallet for this exact statement. archive_provenance_established=false. authority_created=false. No transaction.</footer>
+
+<section id="signedSection" class="hidden">
+<h2>Exact signed message</h2><pre id="signedMessage"></pre>
+<h2>Signed receipt</h2><pre id="receiptJson"></pre>
+<div class="controls"><button id="copyBtn">COPY RECEIPT JSON</button><button id="newCodeBtn">NEW CHALLENGE CODE</button></div>
+</section>
+
+<footer class="small">Provider fallback: injected EIP-1193 → Base Account SDK 2.5.7. authority_created=false • archive_provenance_established=false • transaction_requested=false</footer>
 </main>
-<script src="https://cdn.jsdelivr.net/npm/ethers@6.17.0/dist/ethers.umd.min.js" integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi" crossorigin="anonymous"></script>
+
+<script src="https://unpkg.com/@base-org/account@2.5.7/dist/base-account.min.js"></script>
 <script>
 (()=>{'use strict';
+const PACKET={name:'JASON_HW25_3_BINDING_PACKET_V0_1.json',path:'wallet-control/hw25-json-signer/JASON_HW25_3_BINDING_PACKET_V0_1.json',bytes:1150,sha256:'e9ee74810c4af97a78ab1bb01472c3dda56f02663110dec0aed83e95b6a354c6'};
+const EXPECTED='0xa380552a27b0a5a2874ea7aa52cac09f542002e8';
 const BASE={chainId:'0x2105',chainIdNumber:8453,chainName:'Base',nativeCurrency:{name:'Ether',symbol:'ETH',decimals:18},rpcUrls:['https://mainnet.base.org'],blockExplorerUrls:['https://basescan.org']};
 const $=id=>document.getElementById(id);
-const ui={providerStatus:$('providerStatus'),walletStatus:$('walletStatus'),chainStatus:$('chainStatus'),fileStatus:$('fileStatus'),verifyStatus:$('verifyStatus'),notice:$('notice'),connectBtn:$('connectBtn'),baseBtn:$('baseBtn'),fileInput:$('fileInput'),fileSection:$('fileSection'),filename:$('filename'),byteCount:$('byteCount'),sha256:$('sha256'),messageSection:$('messageSection'),messageText:$('messageText'),understand:$('understand'),signBtn:$('signBtn'),downloadBtn:$('downloadBtn'),receiptSection:$('receiptSection'),receiptBanner:$('receiptBanner'),receiptJson:$('receiptJson'),receiptDownloadBtn:$('receiptDownloadBtn'),copyBtn:$('copyBtn'),mobileLaunch:$('mobileLaunch'),coinbaseLink:$('coinbaseLink'),copyLinkBtn:$('copyLinkBtn')};
-let provider=window.ethereum||null,account=null,chainId=null,fileRecord=null,receipt=null,listenersProvider=null;
-const pageUrl=location.href.split('#')[0];
-ui.coinbaseLink.href='https://go.cb-w.com/dapp?cb_url='+encodeURIComponent(pageUrl);
-ui.copyLinkBtn.onclick=async()=>{try{await navigator.clipboard.writeText(pageUrl);setNotice('Page link copied. Paste it into Coinbase Wallet if needed.','good')}catch(_){setNotice('Copy blocked. Use the share button and open this page in Coinbase Wallet.','warn')}};
-function setNotice(t,k=''){ui.notice.textContent=t;ui.notice.className='notice'+(k?' '+k:'')}
+const ui={providerStatus:$('providerStatus'),walletStatus:$('walletStatus'),chainStatus:$('chainStatus'),signStatus:$('signStatus'),notice:$('notice'),connectBtn:$('connectBtn'),networkBtn:$('networkBtn'),understand:$('understand'),signBtn:$('signBtn'),downloadBtn:$('downloadBtn'),challengeCode:$('challengeCode'),signedSection:$('signedSection'),signedMessage:$('signedMessage'),receiptJson:$('receiptJson'),copyBtn:$('copyBtn'),newCodeBtn:$('newCodeBtn')};
+let activeProvider=null,providerMode='NONE',account=null,chainId=null,receipt=null,listenersAttached=false,challengeCode='';
+function notice(t,k=''){ui.notice.textContent=t;ui.notice.className='notice'+(k?' '+k:'')}
 function short(a){return a?a.slice(0,6)+'…'+a.slice(-4):'NOT CONNECTED'}
+function same(a,b){return !!a&&!!b&&a.toLowerCase()===b.toLowerCase()}
 function onBase(){return !!chainId&&String(chainId).toLowerCase()===BASE.chainId}
-function resetReceipt(){receipt=null;ui.receiptSection.classList.add('hidden');ui.downloadBtn.disabled=true;ui.receiptDownloadBtn.disabled=true;ui.verifyStatus.textContent='SIGNATURE: NOT VERIFIED';ui.verifyStatus.className='pill warn'}
-function attachListeners(p){if(!p||p===listenersProvider||typeof p.on!=='function')return;listenersProvider=p;p.on('accountsChanged',a=>{account=a&&a[0]?ethers.getAddress(a[0]):null;resetReceipt();updateUi()});p.on('chainChanged',id=>{chainId=id;resetReceipt();updateUi()})}
-function updateUi(){ui.providerStatus.textContent=provider?'PROVIDER: INJECTED EIP-1193':'PROVIDER: NONE';ui.providerStatus.className='pill '+(provider?'good':'warn');ui.walletStatus.textContent='SIGNER: '+short(account);ui.walletStatus.className='pill '+(account?'good':'warn');ui.chainStatus.textContent=chainId?'CHAIN: '+(onBase()?'BASE 8453':chainId):'CHAIN: UNKNOWN';ui.chainStatus.className='pill '+(onBase()?'good':'warn');ui.fileStatus.textContent=fileRecord?'FILE: HASHED':'FILE: NONE';ui.fileStatus.className='pill '+(fileRecord?'good':'warn');ui.connectBtn.textContent=account?'1 — WALLET CONNECTED':'1 — CONNECT BROWSER SIGNER';
-ui.connectBtn.disabled=!!account;
-ui.baseBtn.textContent=onBase()?'2 — BASE MAINNET ACTIVE':'2 — USE BASE MAINNET';
-ui.baseBtn.disabled=!account||onBase();
-ui.baseBtn.className=onBase()?'primary':'';
-ui.signBtn.disabled=!(provider&&account&&onBase()&&fileRecord&&ui.understand.checked)||!!receipt}
-function showMobile(){ui.mobileLaunch.classList.remove('hidden');ui.connectBtn.disabled=true;setNotice('No injected wallet provider in this browser. Tap OPEN IN COINBASE WALLET to continue on iPhone.','warn')}
-if(provider&&typeof provider.request==='function'){attachListeners(provider);setNotice('Wallet provider detected. Tap CONNECT BROWSER SIGNER.','good')}else{provider=null;showMobile()}
-
-async function connectSigner(){try{if(!provider||typeof provider.request!=='function'){showMobile();return;}attachListeners(provider);const a=await provider.request({method:'eth_requestAccounts'});account=a&&a[0]?ethers.getAddress(a[0]):null;if(!account)throw new Error('Browser wallet returned no account.');chainId=await provider.request({method:'eth_chainId'});resetReceipt();setNotice('Wallet connected. No transaction was requested.','good');updateUi()}catch(e){setNotice(e?.message||String(e),'bad')}}
-async function useBase(){try{if(!provider)throw new Error('Connect the signer first.');try{await provider.request({method:'wallet_switchEthereumChain',params:[{chainId:BASE.chainId}]})}catch(e){if(e&&(e.code===4902||e.code===-32603))await provider.request({method:'wallet_addEthereumChain',params:[BASE]});else throw e}chainId=await provider.request({method:'eth_chainId'});if(!onBase())throw new Error('Wallet did not switch to Base mainnet (8453).');resetReceipt();setNotice('Base mainnet selected. No transaction was submitted.','good');updateUi()}catch(e){setNotice(e?.message||String(e),'bad')}}
-function hex(buf){return Array.from(new Uint8Array(buf),b=>b.toString(16).padStart(2,'0')).join('')}
-async function readFile(file){const raw=await file.arrayBuffer();const digest=await crypto.subtle.digest('SHA-256',raw);const sha=hex(digest);const loadedAt=new Date().toISOString();const message=['COMPUTER_WISDOM_HW_25_3_EXACT_JSON_SIGNATURE_V0_1','purpose=ATTEST_TO_EXACT_LOCAL_JSON_BYTES','filename='+file.name,'bytes='+file.size,'sha256='+sha,'chain_id=8453','page_origin='+location.origin,'loaded_at='+loadedAt,'json_parsed=false','normalization_performed=false','archive_provenance_established=false','kew_binding_established=false','authority_created=false','transaction_requested=false','statement=I sign this exact statement to attest that I observed the local file with the filename, byte count, and SHA-256 shown above. This signature does not prove that The National Archives issued the file and does not bind it to the Kew HW 25/3 body.'].join('\n');fileRecord={filename:file.name,bytes:file.size,sha256:sha,loaded_at:loadedAt,message};ui.filename.textContent=file.name;ui.byteCount.textContent=String(file.size);ui.sha256.textContent=sha;ui.messageText.textContent=message;ui.fileSection.classList.remove('hidden');ui.messageSection.classList.remove('hidden');resetReceipt();setNotice('Exact raw bytes hashed locally. Review the signing statement before signing.','good');updateUi()}
-async function signExact(){try{if(!provider||!account)throw new Error('Connect the wallet first.');if(!onBase())throw new Error('Switch to Base mainnet first.');if(!fileRecord)throw new Error('Select the JSON file first.');if(!ui.understand.checked)throw new Error('Confirm the signature boundary first.');setNotice('Your wallet should ask for a message signature only. Reject anything showing gas, approvals, asset movement, or a transaction.','warn');const signature=await provider.request({method:'personal_sign',params:[fileRecord.message,account]});const recovered=ethers.verifyMessage(fileRecord.message,signature);const valid=recovered.toLowerCase()===account.toLowerCase();receipt={format:'HW_25_3_EXACT_JSON_SIGNATURE_RECEIPT_V0_1',disposition:valid?'SIGNATURE_VERIFIED':'SIGNATURE_NOT_VERIFIED',scope:'CONNECTED_WALLET_ATTESTS_TO_EXACT_LOCAL_JSON_HASH_STATEMENT_ONLY',filename:fileRecord.filename,bytes:fileRecord.bytes,sha256:fileRecord.sha256,signer:account,recovered_signer:recovered,signer_match:valid,chain_id:8453,page_origin:location.origin,loaded_at:fileRecord.loaded_at,signed_at:new Date().toISOString(),signing_method:'personal_sign',signed_message:fileRecord.message,signature,json_parsed:false,normalization_performed:false,archive_provenance_established:false,kew_binding_established:false,authority_created:false,transaction_requested:false,transaction_hash:null,invariants:['SIGNATURE != TNA_PROVENANCE','SIGNER_CONTROL != ARCHIVE_AUTHORITY','EXACT_HASH_ATTESTATION != KEW_BINDING','CONTENT_EVIDENCE != PROVENANCE_EVIDENCE']};ui.receiptJson.textContent=JSON.stringify(receipt,null,2);ui.receiptBanner.className='notice '+(valid?'good':'bad');ui.receiptBanner.innerHTML=valid?'<b>Signature verified.</b> The connected wallet signed this exact file-hash statement.':'<b>Signature failed local recovery.</b> Do not promote the receipt.';ui.receiptSection.classList.remove('hidden');ui.downloadBtn.disabled=!valid;ui.receiptDownloadBtn.disabled=!valid;ui.verifyStatus.textContent=valid?'SIGNATURE: VERIFIED':'SIGNATURE: NOT VERIFIED';ui.verifyStatus.className='pill '+(valid?'good':'bad');setNotice(valid?'Wallet signature verified locally. Download the exact JSON receipt.':'Signature returned but did not recover to the connected wallet.',valid?'good':'bad');updateUi()}catch(e){setNotice(e?.message||String(e),'bad')}}
-function downloadReceipt(){if(!receipt)return;const blob=new Blob([JSON.stringify(receipt,null,2)+'\n'],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='hw-25-3-exact-json-signature-receipt-v0.1.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
-async function copyReceipt(){if(!receipt)return;try{await navigator.clipboard.writeText(JSON.stringify(receipt,null,2));setNotice('Receipt copied.','good')}catch(_){setNotice('Clipboard blocked. Use Download JSON Receipt.','bad')}}
-ui.connectBtn.addEventListener('click',connectSigner);ui.baseBtn.addEventListener('click',useBase);ui.fileInput.addEventListener('change',async e=>{try{const f=e.target.files&&e.target.files[0];if(f)await readFile(f)}catch(err){setNotice(err?.message||String(err),'bad')}});ui.understand.addEventListener('change',updateUi);ui.signBtn.addEventListener('click',signExact);ui.downloadBtn.addEventListener('click',downloadReceipt);ui.receiptDownloadBtn.addEventListener('click',downloadReceipt);ui.copyBtn.addEventListener('click',copyReceipt);updateUi();
+function newCode(){challengeCode=(crypto.randomUUID?crypto.randomUUID():Date.now().toString(36)+'-'+Math.random().toString(36).slice(2));ui.challengeCode.textContent=challengeCode;receipt=null;ui.signedSection.classList.add('hidden');ui.downloadBtn.disabled=true;ui.signStatus.textContent='SIGNATURE: NOT CREATED';ui.signStatus.className='pill warn';updateUi()}
+function attach(p){if(listenersAttached||!p||typeof p.on!=='function')return;listenersAttached=true;p.on('accountsChanged',a=>{account=a&&a[0]?a[0]:null;receipt=null;updateUi()});p.on('chainChanged',id=>{chainId=id;receipt=null;updateUi()})}
+function provider(){if(activeProvider)return activeProvider;if(window.ethereum&&typeof window.ethereum.request==='function'){activeProvider=window.ethereum;providerMode='INJECTED_EIP1193';attach(activeProvider);return activeProvider}if(typeof window.createBaseAccountSDK==='function'){activeProvider=window.createBaseAccountSDK({appName:'Computer Wisdom HW25 Signer',appChainIds:[8453]}).getProvider();providerMode='BASE_ACCOUNT_SDK_2.5.7';attach(activeProvider);return activeProvider}throw new Error('Neither an injected provider nor the Base Account SDK is available.')}
+function updateUi(){ui.providerStatus.textContent='PROVIDER: '+(providerMode==='NONE'?'NOT SELECTED':providerMode);ui.providerStatus.className='pill '+(providerMode==='NONE'?'warn':'good');ui.walletStatus.textContent='WALLET: '+short(account);ui.walletStatus.className='pill '+(account?(same(account,EXPECTED)?'good':'bad'):'warn');ui.chainStatus.textContent=chainId?'CHAIN: '+(onBase()?'BASE 8453':chainId):'CHAIN: UNKNOWN';ui.chainStatus.className='pill '+(onBase()?'good':'warn');ui.networkBtn.textContent=onBase()?'3 — BASE MAINNET ACTIVE':'3 — USE BASE MAINNET';ui.networkBtn.disabled=!account||onBase();ui.connectBtn.textContent=account?'2 — WALLET CONNECTED':'2 — CONNECT COINBASE / BASE';ui.connectBtn.disabled=!!account;ui.signBtn.disabled=!(account&&same(account,EXPECTED)&&onBase()&&ui.understand.checked)||!!receipt}
+async function connect(){try{const p=provider();let addr=null;if(providerMode.startsWith('BASE_ACCOUNT_SDK')){try{const result=await p.request({method:'wallet_connect'});const first=result&&result.accounts&&result.accounts[0];addr=typeof first==='string'?first:(first&&first.address?first.address:null)}catch(_){const a=await p.request({method:'eth_requestAccounts'});addr=a&&a[0]}}else{const a=await p.request({method:'eth_requestAccounts'});addr=a&&a[0]}if(!addr)throw new Error('Wallet returned no account.');account=addr;chainId=await p.request({method:'eth_chainId'});if(!same(account,EXPECTED)){notice('Connected wallet does not match the expected Jason Coinbase smart wallet 0xA380…002E8. Switch accounts and retry.','bad')}else{notice('Jason Coinbase smart wallet connected. No transaction requested.','good')}updateUi()}catch(e){notice(e?.message||String(e),'bad')}}
+async function useBase(){try{const p=provider();try{await p.request({method:'wallet_switchEthereumChain',params:[{chainId:BASE.chainId}]})}catch(e){if(e&&(e.code===4902||e.code===-32603))await p.request({method:'wallet_addEthereumChain',params:[BASE]});else throw e}chainId=await p.request({method:'eth_chainId'});if(!onBase())throw new Error('Wallet did not switch to Base mainnet 8453.');notice('Base mainnet active. No transaction submitted.','good');updateUi()}catch(e){notice(e?.message||String(e),'bad')}}
+function buildMessage(ts){return ['COMPUTER_WISDOM_HW25_3_JASON_PACKET_SIGNATURE_V0_3','packet_name='+PACKET.name,'packet_path='+PACKET.path,'packet_bytes='+PACKET.bytes,'packet_sha256='+PACKET.sha256,'challenge_code='+challengeCode,'expected_signer='+EXPECTED,'connected_signer='+account,'chain_id=8453','signed_at='+ts,'archive_provenance_established=false','kew_binding_established=false','authority_created=false','transaction_requested=false','statement=I sign this exact Jason HW 25/3 packet hash and fresh challenge code with the connected Coinbase/Base wallet. This proves only this bounded wallet signature and does not establish TNA provenance or Kew byte identity.'].join('\n')}
+function utf8hex(s){return '0x'+Array.from(new TextEncoder().encode(s),b=>b.toString(16).padStart(2,'0')).join('')}
+async function sha256(s){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s));return Array.from(new Uint8Array(d),b=>b.toString(16).padStart(2,'0')).join('')}
+async function sign(){try{if(!ui.understand.checked)throw new Error('Confirm the signature boundary first.');if(!account||!same(account,EXPECTED))throw new Error('Connect the expected Jason Coinbase wallet first.');if(!onBase())throw new Error('Base mainnet 8453 must be active.');const ts=new Date().toISOString();const msg=buildMessage(ts);ui.signedMessage.textContent=msg;ui.signedSection.classList.remove('hidden');notice('Approve a MESSAGE SIGNATURE only. Reject any prompt showing gas, approval, transfer, or transaction.','warn');const sig=await provider().request({method:'personal_sign',params:[utf8hex(msg),account]});receipt={format:'JASON_HW25_3_COINBASE_SIGNATURE_RECEIPT_V0_3',packet_name:PACKET.name,packet_path:PACKET.path,packet_bytes:PACKET.bytes,packet_sha256:PACKET.sha256,challenge_code:challengeCode,signer_address:account,expected_signer:EXPECTED,signer_match:same(account,EXPECTED),provider_mode:providerMode,wallet_chain_id:8453,signing_method:'personal_sign',signed_at:ts,signed_message:msg,signed_message_sha256:await sha256(msg),signature:sig,signature_state:'CAPTURED_PENDING_INDEPENDENT_EIP1271_VERIFICATION',verification_mechanism:'EIP1271_COINBASE_SMART_WALLET',archive_provenance_established:false,kew_binding_established:false,authority_created:false,transaction_requested:false,transaction_hash:null};ui.receiptJson.textContent=JSON.stringify(receipt,null,2);ui.signStatus.textContent='SIGNATURE: CAPTURED';ui.signStatus.className='pill good';ui.downloadBtn.disabled=false;ui.signBtn.disabled=true;notice('Signature captured. Download the signed receipt and upload it back here for independent EIP-1271 verification.','good');updateUi()}catch(e){notice(e?.message||String(e),'bad')}}
+function download(){if(!receipt)return;const blob=new Blob([JSON.stringify(receipt,null,2)+'\n'],{type:'application/json'});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download='JASON_HW25_3_COINBASE_SIGNATURE_RECEIPT_V0_3.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+ui.connectBtn.onclick=connect;ui.networkBtn.onclick=useBase;ui.signBtn.onclick=sign;ui.downloadBtn.onclick=download;ui.copyBtn.onclick=async()=>{if(receipt){await navigator.clipboard.writeText(JSON.stringify(receipt,null,2));notice('Receipt copied.','good')}};ui.newCodeBtn.onclick=newCode;ui.understand.onchange=updateUi;newCode();updateUi();
 })();
 </script>
 </body>
