@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0b1020">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="alternate" type="application/atom+xml" title="School of Wisdom Updates" href="./feed.xml">
+<title>School of Wisdom — Jason's Morning Beacon</title>
+<style>
+:root{color-scheme:dark}body{font-family:system-ui,sans-serif;background:#0b1020;color:#edf3ff;max-width:900px;margin:0 auto;padding:32px 20px;line-height:1.55}
+.card{border:1px solid #6e7da8;border-radius:18px;padding:20px;margin:18px 0;background:#111831}
+.row{display:flex;gap:16px;align-items:center;flex-wrap:wrap}
+.flywheel{width:86px;height:86px;border:8px dotted #9fb5ff;border-radius:50%;animation:spin 5s linear infinite;box-shadow:0 0 28px #758fff55}
+@keyframes spin{to{transform:rotate(360deg)}} .new{display:none;background:#b9ffcf;color:#092013;font-weight:800;padding:6px 10px;border-radius:999px}
+code{background:#080d1a;padding:2px 6px;border-radius:6px}.muted{opacity:.75}button,a.button{display:inline-block;border:1px solid #aab8e8;background:#1a2448;color:#fff;border-radius:10px;padding:9px 12px;text-decoration:none;cursor:pointer}
+ul{padding-left:22px}
+</style>
+</head>
+<body>
+<div class="row">
+  <div class="flywheel" aria-hidden="true"></div>
+  <div>
+    <h1>School of Wisdom</h1>
+    <p>Jason's append-only morning beacon.</p>
+    <span id="newBadge" class="new">NEW SINCE LAST VISIT</span>
+  </div>
+</div>
+
+<section class="card">
+  <h2 id="title">Loading latest update…</h2>
+  <p id="summary"></p>
+  <p class="muted"><span id="updateId"></span> · <span id="published"></span></p>
+  <button id="markSeen">Mark this update seen</button>
+</section>
+
+<section class="card">
+  <h2>Computer Wizard Net Loop</h2>
+  <p><code>QUESTION → QUERY → CAST NET → SPIN → ALIGN → CAPTURE → RECEIPT → SCHOOL UPDATE → 200 OK → REVIEW ↺</code></p>
+  <p>The flywheel keeps observations spinning until provenance and type gates line up. HOLD stays HOLD.</p>
+</section>
+
+<section class="card">
+  <h2>Recommendations</h2>
+  <ul id="recommendations"></ul>
+</section>
+
+<section class="card">
+  <h2>No email required</h2>
+  <p>This page is its own update beacon. It compares the newest public update with the last update marked seen in this browser.</p>
+  <p><a class="button" href="./feed.xml">Atom feed</a> <a class="button" href="./feed.json">JSON feed</a> <a class="button" href="./updates.jsonl">Append-only ledger</a></p>
+</section>
+
+<script>
+const KEY='school-of-wisdom:last-seen';
+async function load(){
+  const r=await fetch('./latest.json?ts='+Date.now(),{cache:'no-store'});
+  if(!r.ok) throw new Error('latest.json HTTP '+r.status);
+  const x=await r.json();
+  title.textContent=x.title||x.id;
+  summary.textContent=x.summary||'';
+  updateId.textContent=x.id||'';
+  published.textContent=x.published_at||'';
+  recommendations.innerHTML='';
+  for(const rec of (x.recommendations||[])){
+    const li=document.createElement('li'); li.textContent=rec; recommendations.appendChild(li);
+  }
+  const seen=localStorage.getItem(KEY);
+  newBadge.style.display=(x.id && x.id!==seen)?'inline-block':'none';
+  markSeen.onclick=()=>{localStorage.setItem(KEY,x.id);newBadge.style.display='none';};
+}
+load().catch(err=>{title.textContent='Update check failed';summary.textContent=err.message;});
+if('serviceWorker' in navigator){navigator.serviceWorker.register('./sw.js').catch(()=>{});}
+</script>
+</body>
+</html>
