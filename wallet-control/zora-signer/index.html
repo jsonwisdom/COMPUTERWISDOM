@@ -1,0 +1,559 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Computer Wisdom — Zora Smart Wallet Proof</title>
+<style>
+:root{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;color:#111;background:#eef3f1}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:16px;background:#eef3f1}
+main{width:min(900px,100%);margin:auto;border:6px solid #111;border-radius:26px;background:#f7fffb;box-shadow:8px 9px 0 #111;overflow:hidden}
+header,section,footer{padding:20px;border-bottom:4px solid #111}footer{border-bottom:0}
+.brand{font:900 clamp(28px,7vw,56px)/.95 system-ui,sans-serif}.sub{font-weight:900;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cell{border:3px solid #111;border-radius:13px;padding:10px;background:white}
+.cell b{display:block;font-size:11px;text-transform:uppercase;margin-bottom:5px}.value{overflow-wrap:anywhere;font-size:13px}
+.status{display:flex;gap:8px;flex-wrap:wrap}.pill{border:3px solid #111;border-radius:999px;background:white;padding:8px 10px;font-weight:900}
+.good{background:#dff8d8}.warn{background:#ffe9a8}.bad{background:#ffd9d9}
+.boundary{background:#111;color:white;text-align:center;font-weight:900}
+.notice{margin:14px 0;border-left:6px solid #111;background:white;padding:12px;line-height:1.45}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+button{border:4px solid #111;border-radius:14px;background:white;padding:14px;font:900 15px system-ui,sans-serif;box-shadow:0 5px 0 #111;cursor:pointer}
+button.primary{background:#111;color:white}button:disabled{opacity:.45;cursor:not-allowed}
+.confirm{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-weight:800;line-height:1.4}.confirm input{width:22px;height:22px;flex:none}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111;color:#f8f3e8;border-radius:12px;padding:13px;max-height:360px;overflow:auto;font-size:12px}
+.hidden{display:none!important}.small{font-size:12px;line-height:1.45}
+@media(max-width:650px){body{padding:9px}.grid,.controls{grid-template-columns:1fr}header,section,footer{padding:14px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="brand">COMPUTER WISDOM</div>
+  <div class="sub">Zora Smart Wallet Proof • v0.1</div>
+</header>
+
+<section>
+  <h1>Prove the Privy signer controls the Zora smart wallet — without a transaction</h1>
+  <p>This page connects only the imported Privy EVM signer in your browser wallet. The smart-wallet subject is fixed separately and is verified by ERC-1271.</p>
+  <div class="grid">
+    <div class="cell"><b>Smart-wallet subject</b><div class="value" id="subjectAddress"></div></div>
+    <div class="cell"><b>Expected signer</b><div class="value" id="expectedSigner"></div></div>
+    <div class="cell"><b>Network</b><div class="value">Base mainnet • chain 8453</div></div>
+    <div class="cell"><b>Signer source</b><div class="value">Privy EVM signer imported into browser wallet</div></div>
+  </div>
+</section>
+
+<section class="boundary">SIGNER ≠ HUMAN IDENTITY • SIGNER RELATIONSHIP ≠ ENS OWNERSHIP • CONTROL ≠ AUTHORITY • NO TRANSACTION • NEVER ENTER A PRIVATE KEY HERE</section>
+
+<section>
+  <div class="status">
+    <span class="pill warn" id="providerStatus">PROVIDER: NONE</span>
+    <span class="pill warn" id="walletStatus">SIGNER: NOT CONNECTED</span>
+    <span class="pill warn" id="chainStatus">CHAIN: UNKNOWN</span>
+    <span class="pill warn" id="ownerStatus">SMART WALLET OWNER: NOT CHECKED</span>
+    <span class="pill warn" id="verifyStatus">CONTROL: NOT VERIFIED</span>
+  </div>
+
+  <div id="notice" class="notice">Connect MetaMask with the imported Privy EVM signer. Do not paste a private key into this page.</div>
+
+  <div class="controls">
+    <button id="connectBtn" class="primary">1 — CONNECT BROWSER SIGNER</button>
+    <button id="baseBtn" disabled>2 — USE BASE MAINNET</button>
+  </div>
+  <div class="controls">
+    <button id="challengeBtn" disabled>3 — BUILD + INSPECT LIVE CHALLENGE</button>
+  </div>
+
+  <label class="confirm">
+    <input id="understand" type="checkbox">
+    <span>I understand this requests a message signature from the connected signer only. It does not send ETH, trade, transfer, alter Zora, alter ENS, create an attestation, join a human identity, or grant authority.</span>
+  </label>
+
+  <div class="controls">
+    <button id="signBtn" class="primary" disabled>4 — SIGN + VERIFY 0x829A CONTROL</button>
+    <button id="downloadBtn" disabled>DOWNLOAD JSON RECEIPT</button>
+  </div>
+</section>
+
+<section id="challengeSection" class="hidden">
+  <h2>Exact challenge</h2>
+  <pre id="challengeText"></pre>
+</section>
+
+<section id="receiptSection" class="hidden">
+  <h2>Verification receipt</h2>
+  <div id="receiptResultBanner" class="notice warn"><b>Verification result pending.</b></div>
+  <pre id="receiptJson"></pre>
+  <div class="controls">
+    <button id="receiptDownloadBtn" class="primary" disabled>DOWNLOAD JSON RECEIPT</button>
+    <button id="copyBtn">COPY RECEIPT JSON</button>
+  </div>
+  <div class="controls">
+    <button id="newChallengeBtn">NEW CHALLENGE</button>
+  </div>
+</section>
+
+<footer class="small">
+  Client-side only. The private key never belongs in this page.
+  A VERIFIED result means the connected signer produced a signature accepted by the fixed smart-wallet subject for this exact signed challenge only.
+  human_binding_proof=false. identity_join=false. authority_created=false. No transaction.
+</footer>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.17.0/dist/ethers.umd.min.js" integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi" crossorigin="anonymous"></script>
+<script>
+(() => {
+'use strict';
+
+const SUBJECT = '0x829AdfEdbe565f9885A7Ea6Bc78912ACaEF055E2';
+const EXPECTED_SIGNER = '0xb3B9CC668e997209e914309FF525535203EaD4dA';
+const BASE = Object.freeze({
+  chainId: '0x2105',
+  chainIdNumber: 8453,
+  chainName: 'Base',
+  nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+  rpcUrls: ['https://mainnet.base.org'],
+  blockExplorerUrls: ['https://basescan.org']
+});
+const ERC1271_MAGIC = '0x1626ba7e';
+const $ = id => document.getElementById(id);
+const ui = {
+  subjectAddress: $('subjectAddress'),
+  expectedSigner: $('expectedSigner'),
+  providerStatus: $('providerStatus'),
+  walletStatus: $('walletStatus'),
+  chainStatus: $('chainStatus'),
+  ownerStatus: $('ownerStatus'),
+  verifyStatus: $('verifyStatus'),
+  notice: $('notice'),
+  connectBtn: $('connectBtn'),
+  baseBtn: $('baseBtn'),
+  challengeBtn: $('challengeBtn'),
+  understand: $('understand'),
+  signBtn: $('signBtn'),
+  downloadBtn: $('downloadBtn'),
+  challengeSection: $('challengeSection'),
+  challengeText: $('challengeText'),
+  receiptSection: $('receiptSection'),
+  receiptResultBanner: $('receiptResultBanner'),
+  receiptJson: $('receiptJson'),
+  receiptDownloadBtn: $('receiptDownloadBtn'),
+  copyBtn: $('copyBtn'),
+  newChallengeBtn: $('newChallengeBtn')
+};
+
+const smartWalletIface = new ethers.Interface([
+  'function isOwnerAddress(address account) view returns (bool)',
+  'function nextOwnerIndex() view returns (uint256)',
+  'function ownerAtIndex(uint256 index) view returns (bytes)',
+  'function isValidSignature(bytes32 hash, bytes signature) view returns (bytes4)'
+]);
+
+let provider = null;
+let account = null;
+let chainId = null;
+let challenge = null;
+let receipt = null;
+let listenersProvider = null;
+
+ui.subjectAddress.textContent = SUBJECT;
+ui.expectedSigner.textContent = EXPECTED_SIGNER;
+
+function setNotice(text, kind='') {
+  ui.notice.textContent = text;
+  ui.notice.className = 'notice' + (kind ? ' ' + kind : '');
+}
+function short(a){ return a ? a.slice(0,6) + '…' + a.slice(-4) : 'NOT CONNECTED'; }
+function sameAddress(a,b){ return !!a && !!b && a.toLowerCase() === b.toLowerCase(); }
+function onBase(){ return !!chainId && String(chainId).toLowerCase() === BASE.chainId; }
+function signerMatches(){ return sameAddress(account, EXPECTED_SIGNER); }
+
+function resetEvidence(){
+  challenge = null;
+  receipt = null;
+  ui.challengeSection.classList.add('hidden');
+  ui.receiptSection.classList.add('hidden');
+  ui.downloadBtn.disabled = true;
+  ui.receiptDownloadBtn.disabled = true;
+  ui.ownerStatus.textContent = 'SMART WALLET OWNER: NOT CHECKED';
+  ui.ownerStatus.className = 'pill warn';
+  ui.verifyStatus.textContent = 'CONTROL: NOT VERIFIED';
+  ui.verifyStatus.className = 'pill warn';
+}
+
+function attachListeners(p){
+  if(!p || p === listenersProvider || typeof p.on !== 'function') return;
+  listenersProvider = p;
+  p.on('accountsChanged', accounts => {
+    account = accounts && accounts[0] ? ethers.getAddress(accounts[0]) : null;
+    resetEvidence();
+    updateUi();
+  });
+  p.on('chainChanged', id => {
+    chainId = id;
+    resetEvidence();
+    updateUi();
+  });
+}
+
+function updateUi(){
+  ui.providerStatus.textContent = provider ? 'PROVIDER: INJECTED EIP-1193' : 'PROVIDER: NONE';
+  ui.providerStatus.className = 'pill ' + (provider ? 'good' : 'warn');
+  ui.walletStatus.textContent = 'SIGNER: ' + short(account);
+  ui.walletStatus.className = 'pill ' + (account ? (signerMatches() ? 'good' : 'bad') : 'warn');
+  ui.chainStatus.textContent = chainId ? 'CHAIN: ' + (onBase() ? 'BASE 8453' : chainId) : 'CHAIN: UNKNOWN';
+  ui.chainStatus.className = 'pill ' + (onBase() ? 'good' : 'warn');
+  ui.baseBtn.disabled = !account || onBase();
+  ui.challengeBtn.disabled = !(account && signerMatches() && onBase());
+  ui.signBtn.disabled = !(challenge && account && signerMatches() && onBase() && ui.understand.checked) || !!receipt;
+}
+
+async function connectSigner(){
+  try{
+    if(!window.ethereum || typeof window.ethereum.request !== 'function') throw new Error('No injected browser wallet found. Open this page in the browser where MetaMask is installed.');
+    provider = window.ethereum;
+    attachListeners(provider);
+    const accounts = await provider.request({method:'eth_requestAccounts'});
+    account = accounts && accounts[0] ? ethers.getAddress(accounts[0]) : null;
+    if(!account) throw new Error('Browser wallet returned no account.');
+    chainId = await provider.request({method:'eth_chainId'});
+    resetEvidence();
+    if(!signerMatches()){
+      setNotice('Connected account does not match the expected Privy signer. In MetaMask switch to ' + EXPECTED_SIGNER + ' and reconnect.', 'bad');
+    } else {
+      setNotice('Expected Privy signer connected. No transaction was requested.', 'good');
+    }
+    updateUi();
+  }catch(err){ setNotice(err?.message || String(err), 'bad'); }
+}
+
+async function useBase(){
+  try{
+    if(!provider) throw new Error('Connect the signer first.');
+    try{
+      await provider.request({method:'wallet_switchEthereumChain',params:[{chainId:BASE.chainId}]});
+    }catch(err){
+      if(err && (err.code === 4902 || err.code === -32603)){
+        await provider.request({method:'wallet_addEthereumChain',params:[BASE]});
+      } else throw err;
+    }
+    chainId = await provider.request({method:'eth_chainId'});
+    if(!onBase()) throw new Error('Wallet did not switch to Base mainnet (8453).');
+    resetEvidence();
+    setNotice('Base mainnet selected. No transaction was submitted.', 'good');
+    updateUi();
+  }catch(err){ setNotice(err?.message || String(err), 'bad'); }
+}
+
+async function ethCall(to, data, blockTag){
+  return await provider.request({
+    method:'eth_call',
+    params:[{to, data}, blockTag]
+  });
+}
+
+async function resolveOwnerAt(blockTag){
+  const code = await provider.request({method:'eth_getCode',params:[SUBJECT,blockTag]});
+  if(!code || code === '0x') throw new Error('Smart-wallet subject has no contract code at the challenge block.');
+
+  const isOwnerRaw = await ethCall(
+    SUBJECT,
+    smartWalletIface.encodeFunctionData('isOwnerAddress',[account]),
+    blockTag
+  );
+  const isOwner = smartWalletIface.decodeFunctionResult('isOwnerAddress',isOwnerRaw)[0];
+  if(!isOwner) throw new Error('Connected signer is not registered as an address owner of the smart-wallet subject at this block.');
+
+  const nextRaw = await ethCall(
+    SUBJECT,
+    smartWalletIface.encodeFunctionData('nextOwnerIndex',[]),
+    blockTag
+  );
+  const nextOwnerIndex = smartWalletIface.decodeFunctionResult('nextOwnerIndex',nextRaw)[0];
+  if(nextOwnerIndex > 256n) throw new Error('Owner index scan exceeds safety limit (256).');
+
+  let matchedIndex = null;
+  for(let i = 0n; i < nextOwnerIndex; i++){
+    const ownerRaw = await ethCall(
+      SUBJECT,
+      smartWalletIface.encodeFunctionData('ownerAtIndex',[i]),
+      blockTag
+    );
+    const ownerBytes = smartWalletIface.decodeFunctionResult('ownerAtIndex',ownerRaw)[0];
+    if(!ownerBytes || ownerBytes === '0x') continue;
+    if(ethers.dataLength(ownerBytes) !== 32) continue;
+    try{
+      const ownerAddress = ethers.AbiCoder.defaultAbiCoder().decode(['address'],ownerBytes)[0];
+      if(sameAddress(ownerAddress, account)){
+        matchedIndex = i;
+        break;
+      }
+    }catch(_){}
+  }
+  if(matchedIndex === null) throw new Error('Signer isOwnerAddress=true, but its owner index could not be resolved safely.');
+
+  return {
+    subject_contract_code_present:true,
+    signer_is_owner_address:true,
+    next_owner_index:nextOwnerIndex.toString(),
+    signer_owner_index:matchedIndex.toString()
+  };
+}
+
+async function buildChallenge(){
+  try{
+    if(!provider || !account || !signerMatches() || !onBase()) throw new Error('Connect the expected Privy signer on Base first.');
+    const blockHex = await provider.request({method:'eth_blockNumber'});
+    const block = await provider.request({method:'eth_getBlockByNumber',params:[blockHex,false]});
+    if(!block || !block.hash) throw new Error('Could not read the current Base block.');
+    const owner = await resolveOwnerAt(block.number);
+    const now = new Date().toISOString();
+    const nonce = crypto.randomUUID();
+
+    challenge = {
+      format:'ZORA_SMART_WALLET_CONTROL_CHALLENGE_V0_1',
+      purpose:'READ_ONLY_SMART_WALLET_CONTROL_OBSERVATION',
+      repository:'jsonwisdom/COMPUTERWISDOM',
+      surface:'wallet-control/zora-signer/index.html',
+      chain_id:8453,
+      subject_smart_wallet:SUBJECT,
+      connected_signer:account,
+      expected_signer:EXPECTED_SIGNER,
+      signer_match:true,
+      signer_owner_index:owner.signer_owner_index,
+      signer_is_owner_address:true,
+      base_block_number_hex:block.number,
+      base_block_hash:block.hash,
+      base_block_timestamp_hex:block.timestamp,
+      nonce,
+      page_origin:location.origin,
+      challenge_created_at:now,
+      human_binding_proof:false,
+      identity_join:false,
+      authority_created:false,
+      transaction_requested:false,
+      trade:false,
+      transfer:false
+    };
+
+    const lines = [
+      'COMPUTER_WISDOM_ZORA_SMART_WALLET_CONTROL_V0_1',
+      'purpose=' + challenge.purpose,
+      'repository=' + challenge.repository,
+      'surface=' + challenge.surface,
+      'chain_id=8453',
+      'subject_smart_wallet=' + challenge.subject_smart_wallet,
+      'connected_signer=' + challenge.connected_signer,
+      'expected_signer=' + challenge.expected_signer,
+      'signer_owner_index=' + challenge.signer_owner_index,
+      'base_block_number=' + challenge.base_block_number_hex,
+      'base_block_hash=' + challenge.base_block_hash,
+      'base_block_timestamp=' + challenge.base_block_timestamp_hex,
+      'nonce=' + challenge.nonce,
+      'page_origin=' + challenge.page_origin,
+      'challenge_created_at=' + challenge.challenge_created_at,
+      'human_binding_proof=false',
+      'identity_join=false',
+      'authority_created=false',
+      'transaction_requested=false',
+      'trade=false',
+      'transfer=false',
+      'statement=I sign this exact message with the connected Privy EVM signer to test whether the fixed Zora smart-wallet subject accepts this signature for this observation only. This does not establish human identity, ENS ownership, legal authority, or permission to transact.'
+    ];
+    challenge.message = lines.join('\n');
+
+    ui.ownerStatus.textContent = 'SMART WALLET OWNER: SIGNER INDEX ' + challenge.signer_owner_index;
+    ui.ownerStatus.className = 'pill good';
+    ui.challengeText.textContent = challenge.message;
+    ui.challengeSection.classList.remove('hidden');
+    setNotice('Signer is registered as an address owner at the anchored Base block. Review the exact message, then sign.', 'good');
+    updateUi();
+  }catch(err){
+    resetEvidence();
+    setNotice(err?.message || String(err), 'bad');
+    updateUi();
+  }
+}
+
+function utf8Hex(text){
+  return '0x' + Array.from(new TextEncoder().encode(text), b => b.toString(16).padStart(2,'0')).join('');
+}
+async function sha256Hex(text){
+  const d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(d), b => b.toString(16).padStart(2,'0')).join('');
+}
+
+async function verifySmartWallet(message, signature){
+  const digest = ethers.hashMessage(message);
+  const ownerIndex = BigInt(challenge.signer_owner_index);
+  const wrappedSignature = ethers.AbiCoder.defaultAbiCoder().encode(
+    ['tuple(uint256 ownerIndex,bytes signatureData)'],
+    [{ownerIndex, signatureData:signature}]
+  );
+  const callData = smartWalletIface.encodeFunctionData('isValidSignature',[digest,wrappedSignature]);
+
+  let challengeResult = null;
+  let challengeError = null;
+  try{
+    challengeResult = await ethCall(SUBJECT,callData,challenge.base_block_number_hex);
+  }catch(err){
+    challengeError = err?.message || String(err);
+  }
+
+  let latestResult = null;
+  let latestError = null;
+  try{
+    latestResult = await ethCall(SUBJECT,callData,'latest');
+  }catch(err){
+    latestError = err?.message || String(err);
+  }
+
+  const decodeMagic = raw => {
+    if(!raw) return null;
+    try{
+      return String(smartWalletIface.decodeFunctionResult('isValidSignature',raw)[0]).toLowerCase();
+    }catch(_){ return null; }
+  };
+  const challengeMagic = decodeMagic(challengeResult);
+  const latestMagic = decodeMagic(latestResult);
+
+  return {
+    verification_method:'ERC1271_COINBASE_SMART_WALLET_SIGNATURE_WRAPPER',
+    eip191_message_digest:digest,
+    signer_owner_index:challenge.signer_owner_index,
+    wrapped_signature:wrappedSignature,
+    challenge_block_result_raw:challengeResult,
+    challenge_block_magic:challengeMagic,
+    challenge_block_error:challengeError,
+    latest_result_raw:latestResult,
+    latest_magic:latestMagic,
+    latest_error:latestError,
+    verified_at_challenge_block:challengeMagic === ERC1271_MAGIC,
+    verified_at_latest:latestMagic === ERC1271_MAGIC,
+    verified:challengeMagic === ERC1271_MAGIC
+  };
+}
+
+async function signAndVerify(){
+  try{
+    if(!ui.understand.checked) throw new Error('Confirm the signature boundary first.');
+    if(!challenge) throw new Error('Build a fresh challenge first.');
+    if(!provider || !account || !signerMatches() || !onBase()) throw new Error('Expected signer must remain connected on Base.');
+    if(!sameAddress(account,challenge.connected_signer)) throw new Error('Connected signer changed. Build a new challenge.');
+
+    setNotice('MetaMask should ask for a message signature only. Reject anything that looks like a transaction.', 'warn');
+    const signature = await provider.request({
+      method:'personal_sign',
+      params:[utf8Hex(challenge.message), account]
+    });
+
+    const verification = await verifySmartWallet(challenge.message, signature);
+    const messageSha256 = await sha256Hex(challenge.message);
+    const verifiedAt = new Date().toISOString();
+
+    receipt = {
+      format:'ZORA_SMART_WALLET_CONTROL_OBSERVATION_RECEIPT_V0_1',
+      disposition:verification.verified ? 'VERIFIED_FOR_THIS_MESSAGE' : 'NOT_VERIFIED',
+      wallet_control:verification.verified ? 'VERIFIED_FOR_THIS_MESSAGE' : 'NOT_VERIFIED',
+      scope:'CONTROL_OF_FIXED_SMART_WALLET_FOR_SIGNED_CHALLENGE_ONLY',
+      subject_smart_wallet:SUBJECT,
+      connected_signer:account,
+      expected_signer:EXPECTED_SIGNER,
+      signer_match:sameAddress(account,EXPECTED_SIGNER),
+      signer_owner_index:challenge.signer_owner_index,
+      signer_relationship_proof:'IS_OWNER_ADDRESS_AT_CHALLENGE_BLOCK',
+      human_binding_proof:false,
+      ens_binding_proof:false,
+      identity_join:false,
+      authority_created:false,
+      joins:0,
+      trade:false,
+      transfer:false,
+      transaction_hash:null,
+      attestation_uid:null,
+      chain_id:8453,
+      challenge:{
+        nonce:challenge.nonce,
+        base_block_number_hex:challenge.base_block_number_hex,
+        base_block_hash:challenge.base_block_hash,
+        base_block_timestamp_hex:challenge.base_block_timestamp_hex,
+        page_origin:challenge.page_origin,
+        challenge_created_at:challenge.challenge_created_at
+      },
+      signing_method:'personal_sign',
+      signed_message:challenge.message,
+      signed_message_sha256:messageSha256,
+      signer_signature:signature,
+      verification,
+      verified_at:verifiedAt,
+      invariants:[
+        'SIGNER != HUMAN_IDENTITY',
+        'SIGNER_RELATIONSHIP != ENS_OWNERSHIP',
+        'CONTROL != AUTHORITY',
+        'VERIFIED_FOR_THIS_MESSAGE != UNIVERSAL_CONTROL'
+      ]
+    };
+
+    ui.receiptJson.textContent = JSON.stringify(receipt,null,2);
+    ui.receiptResultBanner.className = 'notice ' + (verification.verified ? 'good' : 'bad');
+    ui.receiptResultBanner.innerHTML = verification.verified
+      ? '<b>Verified for this message only.</b> The fixed smart-wallet subject accepted the wrapped signer signature at the challenge block.'
+      : '<b>Not verified.</b> Save this only as a failed/HOLD observation. Do not promote wallet control.';
+    ui.receiptSection.classList.remove('hidden');
+    ui.downloadBtn.disabled = false;
+    ui.receiptDownloadBtn.disabled = false;
+    ui.verifyStatus.textContent = verification.verified ? 'CONTROL: VERIFIED FOR MESSAGE' : 'CONTROL: NOT VERIFIED';
+    ui.verifyStatus.className = 'pill ' + (verification.verified ? 'good' : 'bad');
+    try { ui.receiptSection.scrollIntoView({behavior:'smooth',block:'start'}); } catch(_) {}
+    setNotice(
+      verification.verified
+        ? 'ERC-1271 verification succeeded at the challenge block. Download the exact JSON before leaving.'
+        : 'Signature returned, but the smart-wallet subject did not verify it at the challenge block.',
+      verification.verified ? 'good' : 'bad'
+    );
+    updateUi();
+  }catch(err){ setNotice(err?.message || String(err), 'bad'); }
+}
+
+function downloadReceipt(){
+  if(!receipt) return;
+  const blob = new Blob([JSON.stringify(receipt,null,2)+'\n'],{type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'zora-smart-wallet-control-observation-receipt-v0.1.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+
+async function copyReceipt(){
+  if(!receipt) return;
+  try{
+    await navigator.clipboard.writeText(JSON.stringify(receipt,null,2));
+    setNotice('Receipt copied.', 'good');
+  }catch(_){ setNotice('Clipboard blocked. Use Download JSON Receipt.', 'bad'); }
+}
+
+function newChallenge(){
+  resetEvidence();
+  setNotice('Previous local receipt cleared. Build a new live challenge when ready.');
+  updateUi();
+}
+
+ui.connectBtn.addEventListener('click',connectSigner);
+ui.baseBtn.addEventListener('click',useBase);
+ui.challengeBtn.addEventListener('click',buildChallenge);
+ui.signBtn.addEventListener('click',signAndVerify);
+ui.downloadBtn.addEventListener('click',downloadReceipt);
+ui.receiptDownloadBtn.addEventListener('click',downloadReceipt);
+ui.copyBtn.addEventListener('click',copyReceipt);
+ui.newChallengeBtn.addEventListener('click',newChallenge);
+ui.understand.addEventListener('change',updateUi);
+updateUi();
+})();
+</script>
+</body>
+</html>
