@@ -4,7 +4,14 @@
   <id>https://jsonwisdom.github.io/COMPUTERWISDOM/school-of-wisdom/</id>
   <link href="https://jsonwisdom.github.io/COMPUTERWISDOM/school-of-wisdom/feed.xml" rel="self"/>
   <link href="https://jsonwisdom.github.io/COMPUTERWISDOM/school-of-wisdom/"/>
-  <updated>2026-10-06T03:00:00Z</updated>
+  <updated>2026-10-06T03:48:00Z</updated>
+  <entry>
+    <id>SOW-20261006-002</id>
+    <title>Cycle 1 readback appended; Pages 200 still false</title>
+    <updated>2026-10-06T03:48:00Z</updated>
+    <link href="https://jsonwisdom.github.io/COMPUTERWISDOM/school-of-wisdom/"/>
+    <summary>Cycle 2 appended the cycle-1 receipt, a Make-J-money HOLD, and two audit rows. GitHub Pages for this beacon returned 404. Raw branch latest.json returned 200. No revenue figure.</summary>
+  </entry>
   <entry>
     <id>SOW-20261005-001</id>
     <title>Zora Flywheel Reboot</title>
