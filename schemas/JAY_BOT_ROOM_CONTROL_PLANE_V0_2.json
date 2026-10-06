@@ -1,0 +1,85 @@
+{
+  "schema": "JAY_BOT_ROOM_CONTROL_PLANE_V0_2",
+  "status": "ACTIVE_SUCCESSOR",
+  "date": "2026-10-05",
+  "human_operator": {
+    "id": "HUMAN_OPERATOR_JAY_L2_V0_1",
+    "terminal_signing_gate": true,
+    "signing_authority_retained": true,
+    "spend_authority_retained": true,
+    "legal_attestation_authority_retained": true,
+    "identity_binding_authority_retained": true
+  },
+  "standing_bot_build_authority": {
+    "granted": true,
+    "generic_authority_prompt_during_build": false,
+    "scope": "DECLARED_IN_SCOPE_BUILD_OPERATIONS",
+    "allowed": [
+      "READ",
+      "SEARCH",
+      "CLASSIFY",
+      "REPLAY",
+      "REFRESH",
+      "CREATE_DIRECTORIES",
+      "CREATE_FILES",
+      "EDIT_FILES",
+      "REFACTOR",
+      "HASH",
+      "TEST",
+      "RUN_CI",
+      "CREATE_BRANCH",
+      "COMMIT",
+      "CREATE_PR",
+      "REVIEW_PR",
+      "MERGE_BUILD_CHANGES",
+      "GENERATE_RECEIPTS",
+      "GENERATE_UNSIGNED_BUILD_ARTIFACTS"
+    ],
+    "forbidden_without_terminal_human_consent": [
+      "WALLET_SIGNATURE",
+      "TRANSACTION_SIGNATURE",
+      "SPEND",
+      "TRANSFER",
+      "CUSTODY_CHANGE",
+      "PRIVATE_KEY_OR_SECRET_DISCLOSURE",
+      "LEGAL_ATTESTATION",
+      "HUMAN_IDENTITY_BINDING",
+      "EXTERNAL_SIGNATURE_AS_HUMAN"
+    ]
+  },
+  "authority_semantics": {
+    "legacy_authority_created_false_means": "NO_NEW_LEGAL_CIVIC_IDENTITY_WALLET_OR_SIGNING_AUTHORITY_CREATED",
+    "legacy_authority_created_false_does_not_mean": "NO_OPERATIONAL_BUILD_AUTHORITY"
+  },
+  "agents": {
+    "computerwisdom": {
+      "can_build": true,
+      "can_merge_in_scope": true,
+      "can_sign_as_human": false,
+      "can_spend": false
+    },
+    "github_bot": {
+      "can_build": true,
+      "can_merge_in_scope": true,
+      "can_sign_as_human": false,
+      "can_spend": false
+    },
+    "drive_bot": {
+      "can_build": true,
+      "can_sign_as_human": false,
+      "can_spend": false
+    },
+    "zora_bots": {
+      "can_build": true,
+      "can_sign_as_human": false,
+      "can_spend": false
+    },
+    "review_bots": {
+      "can_review": true,
+      "can_build": true,
+      "can_sign_as_human": false,
+      "can_spend": false
+    }
+  },
+  "invariant": "BUILD_AUTHORITY_IS_STANDING; HUMAN_AUTHORITY_IS_REQUESTED_AT_TERMINAL_SIGNING_BOUNDARY"
+}
