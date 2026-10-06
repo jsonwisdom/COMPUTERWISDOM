@@ -1,0 +1,61 @@
+{
+  "format": "JSONWISDOM_STATUS_RECEIPT_V0.1",
+  "receipt_id": "EXPORT_AU_DELTA_SCHEMA_2026-08-16",
+  "action": "EXPORT_AU_DELTA_SCHEMA",
+  "status": "PASS_WITH_BOUNDARY",
+  "state": "CONCEPTUAL_CROSSWALK_FIXTURE",
+  "receipt_declared_issuedTimestamp": "2026-08-16T12:00:00Z",
+  "receipt_timestamp_provenance": "USER_DECLARED_NOT_PROVIDER_TIMESTAMP",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "pr": 486,
+  "branch": "agent/mind-the-gap-challenge-dice-v0-1",
+  "verified_code_head_sha": "7d41c9539c60ea368fa436f821a753314d528115",
+  "schema": {
+    "path": "schemas/jaywisdom/au_delta_crosswalk.v1_0.schema.json",
+    "blob_sha": "4456e04d64ea6b261b0f79be79ee2bf4e6f97e8d",
+    "dialect": "draft-07",
+    "mechanical_patch": "class_size_observed accepts integer OR null to match the supplied minimal instance"
+  },
+  "fixture": {
+    "path": "fixtures/jaywisdom/challenge/AIR_UNIVERSITY_DELTA_CROSSWALK_V1_0.json",
+    "blob_sha": "2fac8126404af914fafbb9805e3b16bc47925726",
+    "class_size_observed": null,
+    "participant_count_conceptual": 10,
+    "adoption_state": "NOT_ESTABLISHED"
+  },
+  "verifier": {
+    "path": "tools/verify_au_delta_crosswalk_v1_0.py",
+    "blob_sha": "f0be5f7a5c7a144af35fbfc57d57201efef8d22b",
+    "scope": "STRUCTURAL_BOUNDARY_VERIFIER",
+    "full_schema_validation": false
+  },
+  "workflow": {
+    "path": ".github/workflows/mind-the-gap-challenge-v0-1.yml",
+    "blob_sha": "0bf75cddec642b48152aef5c427dce2b9ab00065",
+    "run_id": 31965836799,
+    "job_id": 95210763743,
+    "job_name": "verify-q1-q2-game-delta-and-au-crosswalk",
+    "au_crosswalk_step": "SUCCESS",
+    "conclusion": "SUCCESS"
+  },
+  "constitutional_invariants": {
+    "DELTA_NEQ_TRUTH": true,
+    "DELTA_NEQ_CAUSATION": true,
+    "DELTA_NEQ_AUTHORITY": true,
+    "DICE_NEQ_VERDICT_GENERATOR": true,
+    "HUMAN_RETAINS_CONSEQUENTIAL_AUTHORITY": true,
+    "CLASS_SIZE_10_IS_CONCEPTUAL": true,
+    "OFFICIAL_AFFILIATION_CLAIMED": false,
+    "INSTITUTIONAL_ADOPTION_PROVEN": false
+  },
+  "drive_mirror": {
+    "title": "Air University — DELTA Crosswalk Schema v1.0",
+    "file_id": "1k_TSj1hWOs92Xhqhg4DScCXi3Hye2IkbNdoTSCiCo04",
+    "cross_provider_atomicity": false
+  },
+  "evidence_objects_promoted": 0,
+  "authority_created": false,
+  "official_affiliation_claimed": false,
+  "institutional_adoption_proven": false,
+  "merge": "NO"
+}
