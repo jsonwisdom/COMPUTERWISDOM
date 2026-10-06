@@ -29,7 +29,6 @@ function verifyPage(path, options = {}) {
   assert(missingHandlers.length === 0, `${path}: undefined event handler(s): ${missingHandlers.join(', ')}`);
 
   const required = [
-    'personal_sign',
     'receiptDownloadBtn',
     'transaction_hash:null',
     'trade:false',
@@ -60,6 +59,7 @@ function verifyPage(path, options = {}) {
 
 const main = verifyPage('wallet-control/index.html', {
   required: [
+    'personal_sign',
     'ERC1271_IS_VALID_SIGNATURE',
     'verification_block_tag',
     'verification_block_fallback',
@@ -77,6 +77,7 @@ const main = verifyPage('wallet-control/index.html', {
 
 const neutral = verifyPage('wallet-control/neutral/index.html', {
   required: [
+    'personal_sign',
     'ERC1271_IS_VALID_SIGNATURE',
     'verification_block_tag',
     'verification_block_fallback',
@@ -98,18 +99,26 @@ const neutral = verifyPage('wallet-control/neutral/index.html', {
 
 const zoraSigner = verifyPage('wallet-control/zora-signer/index.html', {
   required: [
-    'ZORA_SMART_WALLET_CONTROL_OBSERVATION_RECEIPT_V0_1',
+    'eth_signTypedData_v4',
+    'CoinbaseSmartWalletMessage',
+    'Coinbase Smart Wallet',
+    'replay_safe_hash',
+    'contract_replay_safe_hash',
+    'replay_safe_hash_match',
+    'replaySafeHash',
+    'typed_data_recovered_signer',
+    'ZORA_SMART_WALLET_CONTROL_OBSERVATION_RECEIPT_V0_2',
     '0x829AdfEdbe565f9885A7Ea6Bc78912ACaEF055E2',
     '0xb3B9CC668e997209e914309FF525535203EaD4dA',
     'isOwnerAddress',
     'ownerAtIndex',
     'nextOwnerIndex',
-    'ERC1271_COINBASE_SMART_WALLET_SIGNATURE_WRAPPER',
+    'ERC1271_COINBASE_SMART_WALLET_REPLAY_SAFE_TYPED_DATA',
     'wrapped_signature',
     'identity_join:false',
     'challenge_block_magic',
     'latest_magic',
-    "a.download = 'zora-smart-wallet-control-observation-receipt-v0.1.json'"
+    "a.download = 'zora-smart-wallet-control-observation-receipt-v0.2.json'"
   ],
   sriChecks: [
     'integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi"',
@@ -120,7 +129,8 @@ const zoraSigner = verifyPage('wallet-control/zora-signer/index.html', {
     'PRIVATE_KEY',
     'eth_sendTransaction',
     'wallet_sendCalls',
-    'eth_sendRawTransaction'
+    'eth_sendRawTransaction',
+    "method:'personal_sign'"
   ]
 });
 
@@ -133,5 +143,6 @@ console.log(JSON.stringify({
   neutral_erc6492_fail_closed: true,
   neutral_result_banner_conditional: true,
   zora_subject_signer_separated: true,
-  zora_owner_index_resolved_at_challenge_block: true
+  zora_owner_index_resolved_at_challenge_block: true,
+  zora_replay_safe_typed_data: true
 }, null, 2));

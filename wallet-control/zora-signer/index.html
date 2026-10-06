@@ -30,7 +30,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111;color:#f8f3e8;bo
 <main>
 <header>
   <div class="brand">COMPUTER WISDOM</div>
-  <div class="sub">Zora Smart Wallet Proof • v0.1</div>
+  <div class="sub">Zora Smart Wallet Proof • v0.2</div>
 </header>
 
 <section>
@@ -67,11 +67,11 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111;color:#f8f3e8;bo
 
   <label class="confirm">
     <input id="understand" type="checkbox">
-    <span>I understand this requests a message signature from the connected signer only. It does not send ETH, trade, transfer, alter Zora, alter ENS, create an attestation, join a human identity, or grant authority.</span>
+    <span>I understand this requests a Coinbase Smart Wallet replay-safe typed-data signature from the connected signer only. It does not send ETH, trade, transfer, alter Zora, alter ENS, create an attestation, join a human identity, or grant authority.</span>
   </label>
 
   <div class="controls">
-    <button id="signBtn" class="primary" disabled>4 — SIGN + VERIFY 0x829A CONTROL</button>
+    <button id="signBtn" class="primary" disabled>4 — SIGN REPLAY-SAFE DATA + VERIFY</button>
     <button id="downloadBtn" disabled>DOWNLOAD JSON RECEIPT</button>
   </div>
 </section>
@@ -147,6 +147,7 @@ const smartWalletIface = new ethers.Interface([
   'function isOwnerAddress(address account) view returns (bool)',
   'function nextOwnerIndex() view returns (uint256)',
   'function ownerAtIndex(uint256 index) view returns (bytes)',
+  'function replaySafeHash(bytes32 hash) view returns (bytes32)',
   'function isValidSignature(bytes32 hash, bytes signature) view returns (bytes4)'
 ]);
 
@@ -312,7 +313,7 @@ async function buildChallenge(){
     const nonce = crypto.randomUUID();
 
     challenge = {
-      format:'ZORA_SMART_WALLET_CONTROL_CHALLENGE_V0_1',
+      format:'ZORA_SMART_WALLET_CONTROL_CHALLENGE_V0_2',
       purpose:'READ_ONLY_SMART_WALLET_CONTROL_OBSERVATION',
       repository:'jsonwisdom/COMPUTERWISDOM',
       surface:'wallet-control/zora-signer/index.html',
@@ -338,7 +339,7 @@ async function buildChallenge(){
     };
 
     const lines = [
-      'COMPUTER_WISDOM_ZORA_SMART_WALLET_CONTROL_V0_1',
+      'COMPUTER_WISDOM_ZORA_SMART_WALLET_CONTROL_V0_2',
       'purpose=' + challenge.purpose,
       'repository=' + challenge.repository,
       'surface=' + challenge.surface,
@@ -362,6 +363,34 @@ async function buildChallenge(){
       'statement=I sign this exact message with the connected Privy EVM signer to test whether the fixed Zora smart-wallet subject accepts this signature for this observation only. This does not establish human identity, ENS ownership, legal authority, or permission to transact.'
     ];
     challenge.message = lines.join('\n');
+    challenge.original_hash_eip191 = ethers.hashMessage(challenge.message);
+    challenge.typed_data_domain = {
+      name:'Coinbase Smart Wallet',
+      version:'1',
+      chainId:8453,
+      verifyingContract:SUBJECT
+    };
+    challenge.typed_data_types = {
+      CoinbaseSmartWalletMessage:[{name:'hash',type:'bytes32'}]
+    };
+    challenge.typed_data_value = {hash:challenge.original_hash_eip191};
+    challenge.replay_safe_hash = ethers.TypedDataEncoder.hash(
+      challenge.typed_data_domain,
+      challenge.typed_data_types,
+      challenge.typed_data_value
+    );
+
+    const replaySafeRaw = await ethCall(
+      SUBJECT,
+      smartWalletIface.encodeFunctionData('replaySafeHash',[challenge.original_hash_eip191]),
+      block.number
+    );
+    challenge.contract_replay_safe_hash = String(
+      smartWalletIface.decodeFunctionResult('replaySafeHash',replaySafeRaw)[0]
+    ).toLowerCase();
+    if(challenge.contract_replay_safe_hash !== challenge.replay_safe_hash.toLowerCase()){
+      throw new Error('Local Coinbase typed-data digest does not match the smart wallet replaySafeHash at the challenge block.');
+    }
 
     ui.ownerStatus.textContent = 'SMART WALLET OWNER: SIGNER INDEX ' + challenge.signer_owner_index;
     ui.ownerStatus.className = 'pill good';
@@ -376,22 +405,18 @@ async function buildChallenge(){
   }
 }
 
-function utf8Hex(text){
-  return '0x' + Array.from(new TextEncoder().encode(text), b => b.toString(16).padStart(2,'0')).join('');
-}
 async function sha256Hex(text){
   const d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
   return Array.from(new Uint8Array(d), b => b.toString(16).padStart(2,'0')).join('');
 }
 
-async function verifySmartWallet(message, signature){
-  const digest = ethers.hashMessage(message);
+async function verifySmartWallet(originalHash, signature, replaySafeHash, recoveredSigner){
   const ownerIndex = BigInt(challenge.signer_owner_index);
   const wrappedSignature = ethers.AbiCoder.defaultAbiCoder().encode(
     ['tuple(uint256 ownerIndex,bytes signatureData)'],
     [{ownerIndex, signatureData:signature}]
   );
-  const callData = smartWalletIface.encodeFunctionData('isValidSignature',[digest,wrappedSignature]);
+  const callData = smartWalletIface.encodeFunctionData('isValidSignature',[originalHash,wrappedSignature]);
 
   let challengeResult = null;
   let challengeError = null;
@@ -460,8 +485,10 @@ async function verifySmartWallet(message, signature){
   const latestMagic = decodeMagic(latestResult);
 
   return {
-    verification_method:'ERC1271_COINBASE_SMART_WALLET_SIGNATURE_WRAPPER',
-    eip191_message_digest:digest,
+    verification_method:'ERC1271_COINBASE_SMART_WALLET_REPLAY_SAFE_TYPED_DATA',
+    erc1271_input_hash:originalHash,
+    replay_safe_hash:replaySafeHash,
+    typed_data_recovered_signer:recoveredSigner,
     signer_owner_index:challenge.signer_owner_index,
     wrapped_signature:wrappedSignature,
     challenge_block_result_raw:challengeResult,
@@ -486,18 +513,48 @@ async function signAndVerify(){
     if(!provider || !account || !signerMatches() || !onBase()) throw new Error('Expected signer must remain connected on Base.');
     if(!sameAddress(account,challenge.connected_signer)) throw new Error('Connected signer changed. Build a new challenge.');
 
-    setNotice('MetaMask should ask for a message signature only. Reject anything that looks like a transaction.', 'warn');
+    const typedData = {
+      types:{
+        EIP712Domain:[
+          {name:'name',type:'string'},
+          {name:'version',type:'string'},
+          {name:'chainId',type:'uint256'},
+          {name:'verifyingContract',type:'address'}
+        ],
+        CoinbaseSmartWalletMessage:challenge.typed_data_types.CoinbaseSmartWalletMessage
+      },
+      primaryType:'CoinbaseSmartWalletMessage',
+      domain:challenge.typed_data_domain,
+      message:challenge.typed_data_value
+    };
+
+    setNotice('MetaMask should ask you to sign typed data for Coinbase Smart Wallet. Reject anything showing gas, asset movement, approvals, or a transaction.', 'warn');
     const signature = await provider.request({
-      method:'personal_sign',
-      params:[utf8Hex(challenge.message), account]
+      method:'eth_signTypedData_v4',
+      params:[account, JSON.stringify(typedData)]
     });
 
-    const verification = await verifySmartWallet(challenge.message, signature);
+    const recoveredSigner = ethers.verifyTypedData(
+      challenge.typed_data_domain,
+      challenge.typed_data_types,
+      challenge.typed_data_value,
+      signature
+    );
+    if(!sameAddress(recoveredSigner, account)){
+      throw new Error('Typed-data signature did not recover to the connected signer.');
+    }
+
+    const verification = await verifySmartWallet(
+      challenge.original_hash_eip191,
+      signature,
+      challenge.replay_safe_hash,
+      recoveredSigner
+    );
     const messageSha256 = await sha256Hex(challenge.message);
     const verifiedAt = new Date().toISOString();
 
     receipt = {
-      format:'ZORA_SMART_WALLET_CONTROL_OBSERVATION_RECEIPT_V0_1',
+      format:'ZORA_SMART_WALLET_CONTROL_OBSERVATION_RECEIPT_V0_2',
       disposition:verification.verified ? 'VERIFIED_FOR_THIS_MESSAGE' : 'NOT_VERIFIED',
       wallet_control:verification.verified ? 'VERIFIED_FOR_THIS_MESSAGE' : 'NOT_VERIFIED',
       scope:'CONTROL_OF_FIXED_SMART_WALLET_FOR_SIGNED_CHALLENGE_ONLY',
@@ -525,9 +582,19 @@ async function signAndVerify(){
         page_origin:challenge.page_origin,
         challenge_created_at:challenge.challenge_created_at
       },
-      signing_method:'personal_sign',
+      signing_method:'eth_signTypedData_v4',
       signed_message:challenge.message,
       signed_message_sha256:messageSha256,
+      original_hash_eip191:challenge.original_hash_eip191,
+      typed_data:{
+        domain:challenge.typed_data_domain,
+        primary_type:'CoinbaseSmartWalletMessage',
+        types:challenge.typed_data_types,
+        value:challenge.typed_data_value
+      },
+      replay_safe_hash:challenge.replay_safe_hash,
+      contract_replay_safe_hash:challenge.contract_replay_safe_hash,
+      replay_safe_hash_match:challenge.contract_replay_safe_hash === challenge.replay_safe_hash.toLowerCase(),
       signer_signature:signature,
       verification,
       verified_at:verifiedAt,
@@ -566,7 +633,7 @@ function downloadReceipt(){
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
-  a.download = 'zora-smart-wallet-control-observation-receipt-v0.1.json';
+  a.download = 'zora-smart-wallet-control-observation-receipt-v0.2.json';
   document.body.appendChild(a);
   a.click();
   a.remove();
