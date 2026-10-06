@@ -30,7 +30,6 @@ function verifyPage(path, options = {}) {
 
   const required = [
     'personal_sign',
-    'ERC1271_IS_VALID_SIGNATURE',
     'verification_block_tag',
     'verification_block_fallback',
     'challenge_block_call_error',
@@ -68,6 +67,7 @@ function verifyPage(path, options = {}) {
 
 const main = verifyPage('wallet-control/index.html', {
   required: [
+    'ERC1271_IS_VALID_SIGNATURE',
     'script_integrity',
     "a.download = 'wallet-control-observation-receipt-v0.1.json'"
   ],
@@ -76,6 +76,7 @@ const main = verifyPage('wallet-control/index.html', {
 
 const neutral = verifyPage('wallet-control/neutral/index.html', {
   required: [
+    'ERC1271_IS_VALID_SIGNATURE',
     'WALLET_CONTROL_NEUTRAL_OBSERVATION_RECEIPT_V0_1',
     'identity_join:false',
     'expected_pointer_address:challenge.expected_pointer_address',
