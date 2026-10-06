@@ -1,5 +1,11 @@
 name: wallet-shelf-policy
 on:
+  push:
+    branches:
+      - zora-flywheel-reboot-v0-3
+    paths:
+      - "wallets/zora-flywheel/policy/**"
+      - ".github/workflows/wallet-shelf-policy.yml"
   pull_request:
   workflow_dispatch:
 jobs:
