@@ -1,13 +1,15 @@
 {
-  "id": "SOW-20261006-003",
-  "published_at": "2026-10-05T22:50:00-05:00",
-  "title": "School beacon copied to Pages source",
-  "summary": "Beacon files were copied toward master, the GitHub Pages source. Authority gate body was not recovered. No creator revenue was bound. public_200_ok stays false until the live route is checked.",
+  "id": "SOW-20261006-004",
+  "published_at": "2026-10-05T22:53:00-05:00",
+  "title": "Pages route observed 200; prior file flag kept",
+  "summary": "After PR 634 merged, the School routes returned 200. SOW-20261006-003 still says public_200_ok false. That pre-check statement stays. One slot 001 ERC-20 inflow was bound as OTHER_INFLOW, not creator reward or sale. P&L not licensed.",
   "status": "PUBLIC_BUILD_UPDATE",
-  "public_200_ok": false,
+  "public_200_ok": true,
+  "public_200_scope": "route_check_after_c1915877",
+  "prior_file_public_200_ok": false,
   "recommendations": [
-    "Treat Pages 200 as live-route evidence only.",
-    "Do not treat the authority path repair as a recovered gate body.",
-    "Do not compute P&L from an unbound event."
+    "Do not erase the pre-check false flag.",
+    "Do not treat the Only Trump transfer as creator revenue.",
+    "Do not compute P&L without cost basis."
   ]
 }
