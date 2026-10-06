@@ -1,0 +1,21 @@
+{
+  "format": "ECONOMIC_EVENT_V0_1",
+  "status": "BOUND_FOR_THIS_EVENT",
+  "wallet_slot": "001",
+  "wallet": "0x829AdfEdBe565F9885a7eA6Bc78912acAef055E2",
+  "asset_symbol": "ZORA",
+  "event_type": "CREATOR_REWARD",
+  "amount": "0.012347527706797368",
+  "raw_amount": "12347527706797368",
+  "decimals": 18,
+  "tx_hash_or_reward_id": "0xdb2da9a688ed495a81a8ba2cdb5af13bca1f0e1aedaba976ded1c562537e0d70",
+  "timestamp": "2026-10-04T10:55:01.000000Z",
+  "event_name": "CreatorCoinRewards",
+  "coin": "0x694cE46C64D9D1a5e9376A9feBcF85Ec05D72e9F",
+  "creator": "0x829AdfEdBe565F9885a7eA6Bc78912acAef055E2",
+  "protocol_amount": "12347527706797369",
+  "listed_transfer_not_on_page_1": "6030952547106756 from 0x0469a4Bd3724DC86C9542F4694c976DA13C450c0",
+  "cost_basis": "UNKNOWN",
+  "pnl_licensed": false,
+  "reason": "Page 1 decoded CreatorCoinRewards for a different amount than the token-transfer row that selected this tx."
+}
