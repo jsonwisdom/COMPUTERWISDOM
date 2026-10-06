@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>School of Wisdom — Jason's Morning Beacon</title>
+<style>
+body{font-family:system-ui,sans-serif;background:#0b1020;color:#edf3ff;max-width:900px;margin:0 auto;padding:32px 20px;line-height:1.55}
+.card{border:1px solid #6e7da8;border-radius:18px;padding:20px;margin:18px 0;background:#111831}
+code{background:#080d1a;padding:2px 6px;border-radius:6px}.muted{opacity:.75}
+</style>
+</head>
+<body>
+<h1>School of Wisdom</h1>
+<p>Jason's append-only morning beacon.</p>
+<section class="card">
+  <h2 id="title">Loading latest update…</h2>
+  <p id="summary"></p>
+  <p class="muted"><span id="updateId"></span> · <span id="published"></span></p>
+</section>
+<section class="card">
+  <p>Pages 200 is a route check. It is not a recovered authority gate and not a revenue receipt.</p>
+  <p><a href="./latest.json">latest.json</a></p>
+</section>
+<script>
+async function load(){
+  const r=await fetch('./latest.json?ts='+Date.now(),{cache:'no-store'});
+  if(!r.ok) throw new Error('latest.json HTTP '+r.status);
+  const x=await r.json();
+  title.textContent=x.title||x.id;
+  summary.textContent=x.summary||'';
+  updateId.textContent=x.id||'';
+  published.textContent=x.published_at||'';
+}
+load().catch(err=>{title.textContent='Update check failed';summary.textContent=err.message;});
+</script>
+</body>
+</html>
