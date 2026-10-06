@@ -1,0 +1,14 @@
+{
+  "schema": "FULLMATH_GITHUB_PUBLIC_OUTPUT_INDEX_V0_1",
+  "generated_at": "2026-10-06",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "source_branch": "master",
+  "route": "public/fullmath/index.html",
+  "purpose": "Burden of Proof public replay index",
+  "builder_label": "jaywisdom.eth",
+  "gamification_label": "jaywisdom.base.eth",
+  "authority_created": false,
+  "identity_join": false,
+  "promotion": "none",
+  "public_verification": "PENDING_DEPLOY"
+}
