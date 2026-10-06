@@ -147,6 +147,7 @@ const smartWalletIface = new ethers.Interface([
   'function isOwnerAddress(address account) view returns (bool)',
   'function nextOwnerIndex() view returns (uint256)',
   'function ownerAtIndex(uint256 index) view returns (bytes)',
+  'function replaySafeHash(bytes32 hash) view returns (bytes32)',
   'function isValidSignature(bytes32 hash, bytes signature) view returns (bytes4)'
 ]);
 
@@ -379,6 +380,18 @@ async function buildChallenge(){
       challenge.typed_data_value
     );
 
+    const replaySafeRaw = await ethCall(
+      SUBJECT,
+      smartWalletIface.encodeFunctionData('replaySafeHash',[challenge.original_hash_eip191]),
+      block.number
+    );
+    challenge.contract_replay_safe_hash = String(
+      smartWalletIface.decodeFunctionResult('replaySafeHash',replaySafeRaw)[0]
+    ).toLowerCase();
+    if(challenge.contract_replay_safe_hash !== challenge.replay_safe_hash.toLowerCase()){
+      throw new Error('Local Coinbase typed-data digest does not match the smart wallet replaySafeHash at the challenge block.');
+    }
+
     ui.ownerStatus.textContent = 'SMART WALLET OWNER: SIGNER INDEX ' + challenge.signer_owner_index;
     ui.ownerStatus.className = 'pill good';
     ui.challengeText.textContent = challenge.message;
@@ -580,6 +593,8 @@ async function signAndVerify(){
         value:challenge.typed_data_value
       },
       replay_safe_hash:challenge.replay_safe_hash,
+      contract_replay_safe_hash:challenge.contract_replay_safe_hash,
+      replay_safe_hash_match:challenge.contract_replay_safe_hash === challenge.replay_safe_hash.toLowerCase(),
       signer_signature:signature,
       verification,
       verified_at:verifiedAt,
