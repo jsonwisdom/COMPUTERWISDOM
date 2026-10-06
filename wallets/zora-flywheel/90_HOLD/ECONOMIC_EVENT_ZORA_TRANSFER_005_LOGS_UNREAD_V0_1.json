@@ -1,0 +1,20 @@
+{
+  "format": "ECONOMIC_EVENT_V0_1",
+  "status": "TRANSFER_OBSERVED_LOGS_UNREAD",
+  "wallet_slot": "001",
+  "wallet": "0x829AdfEdBe565F9885a7eA6Bc78912acAef055E2",
+  "asset_symbol": "ZORA",
+  "event_type": null,
+  "amount": "0.123314695774412412",
+  "raw_amount": "123314695774412412",
+  "decimals": 18,
+  "tx_hash_or_reward_id": "0xf6b9950fe8323570f970ace56c7cb38e2a748967855242b7ccf0ab87fb13ce60",
+  "timestamp": "2026-10-05T11:16:25.000000Z",
+  "from": "0x5e5D19d22c85A4aef7C1FdF25fB22A5a38f71040",
+  "source": "Base Blockscout token-transfers",
+  "log_decode": "TIMEOUT",
+  "creator_reward_proven": false,
+  "cost_basis": "UNKNOWN",
+  "pnl_licensed": false,
+  "reason": "Token transfer into slot 001 was listed. Log endpoint timed out twice. Sender match is not an event decode."
+}
