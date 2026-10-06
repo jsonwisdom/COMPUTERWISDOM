@@ -395,10 +395,51 @@ async function verifySmartWallet(message, signature){
 
   let challengeResult = null;
   let challengeError = null;
+  let challengeCallMode = null;
+  let blockHashReconfirmed = false;
+
+  // Prefer EIP-1898 block-hash binding so the historical call is tied to
+  // the exact block hash that was signed, not merely to a reusable height.
   try{
-    challengeResult = await ethCall(SUBJECT,callData,challenge.base_block_number_hex);
-  }catch(err){
-    challengeError = err?.message || String(err);
+    challengeResult = await provider.request({
+      method:'eth_call',
+      params:[
+        {to:SUBJECT,data:callData},
+        {blockHash:challenge.base_block_hash,requireCanonical:true}
+      ]
+    });
+    challengeCallMode = 'EIP1898_BLOCK_HASH';
+    blockHashReconfirmed = true;
+  }catch(hashSelectorErr){
+    // Some injected providers do not expose EIP-1898. Fail closed around
+    // a height fallback by checking the block hash immediately before and
+    // immediately after the eth_call.
+    try{
+      const before = await provider.request({
+        method:'eth_getBlockByNumber',
+        params:[challenge.base_block_number_hex,false]
+      });
+      if(!before || !before.hash || before.hash.toLowerCase() !== challenge.base_block_hash.toLowerCase()){
+        throw new Error('Challenge block hash no longer matches the canonical block before verification.');
+      }
+
+      challengeResult = await ethCall(SUBJECT,callData,challenge.base_block_number_hex);
+
+      const after = await provider.request({
+        method:'eth_getBlockByNumber',
+        params:[challenge.base_block_number_hex,false]
+      });
+      if(!after || !after.hash || after.hash.toLowerCase() !== challenge.base_block_hash.toLowerCase()){
+        throw new Error('Challenge block hash changed during historical verification.');
+      }
+
+      challengeCallMode = 'BLOCK_NUMBER_WITH_HASH_RECONFIRMATION';
+      blockHashReconfirmed = true;
+    }catch(err){
+      challengeResult = null;
+      challengeError = err?.message || String(err);
+      blockHashReconfirmed = false;
+    }
   }
 
   let latestResult = null;
@@ -426,12 +467,15 @@ async function verifySmartWallet(message, signature){
     challenge_block_result_raw:challengeResult,
     challenge_block_magic:challengeMagic,
     challenge_block_error:challengeError,
+    challenge_call_mode:challengeCallMode,
+    block_hash_reconfirmed:blockHashReconfirmed,
+    signed_block_hash:challenge.base_block_hash,
     latest_result_raw:latestResult,
     latest_magic:latestMagic,
     latest_error:latestError,
-    verified_at_challenge_block:challengeMagic === ERC1271_MAGIC,
+    verified_at_challenge_block:blockHashReconfirmed && challengeMagic === ERC1271_MAGIC,
     verified_at_latest:latestMagic === ERC1271_MAGIC,
-    verified:challengeMagic === ERC1271_MAGIC
+    verified:blockHashReconfirmed && challengeMagic === ERC1271_MAGIC
   };
 }
 
