@@ -73,7 +73,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111;color:#f8f3e8;bo
 
   <div class="controls">
     <button id="signBtn" class="primary" disabled>4 — SIGN + VERIFY CONTROL</button>
-    <button id="downloadBtn" disabled>DOWNLOAD RECEIPT JSON</button>
+    <button id="downloadBtn" disabled>SAVE RECEIPT JSON ↓</button>
   </div>
 </section>
 
@@ -84,9 +84,13 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111;color:#f8f3e8;bo
 
 <section id="receiptSection" class="hidden">
   <h2>Verification receipt</h2>
+  <div class="notice good"><b>Verified.</b> Save or share this receipt before leaving the page. The page does not upload it automatically.</div>
   <pre id="receiptJson"></pre>
   <div class="controls">
+    <button id="shareBtn" class="primary" disabled>SHARE / SAVE TO FILES</button>
     <button id="copyBtn">COPY RECEIPT JSON</button>
+  </div>
+  <div class="controls">
     <button id="newChallengeBtn">NEW CHALLENGE</button>
   </div>
 </section>
@@ -134,6 +138,7 @@ const ui = {
   challengeText: $('challengeText'),
   receiptSection: $('receiptSection'),
   receiptJson: $('receiptJson'),
+  shareBtn: $('shareBtn'),
   copyBtn: $('copyBtn'),
   newChallengeBtn: $('newChallengeBtn')
 };
@@ -162,6 +167,7 @@ function resetEvidence(){
   ui.challengeSection.classList.add('hidden');
   ui.receiptSection.classList.add('hidden');
   ui.downloadBtn.disabled = true;
+  if(ui.shareBtn) ui.shareBtn.disabled = true;
   ui.verifyStatus.textContent = 'CONTROL: NOT VERIFIED';
   ui.verifyStatus.className = 'pill warn';
 }
@@ -426,8 +432,10 @@ async function signAndVerify(){
     ui.receiptJson.textContent = JSON.stringify(receipt,null,2);
     ui.receiptSection.classList.remove('hidden');
     ui.downloadBtn.disabled = false;
+    if(ui.shareBtn) ui.shareBtn.disabled = false;
     ui.verifyStatus.textContent = verification.verified ? 'CONTROL: VERIFIED FOR MESSAGE' : 'CONTROL: NOT VERIFIED';
     ui.verifyStatus.className = 'pill ' + (verification.verified ? 'good' : 'bad');
+    try { ui.receiptSection.scrollIntoView({behavior:'smooth',block:'start'}); } catch(_) {}
     setNotice(
       verification.verified
         ? 'Signature verified. This is a scoped wallet-control receipt only; no transaction or ENS/EAS write occurred.'
@@ -469,6 +477,7 @@ ui.baseBtn.addEventListener('click',useBase);
 ui.challengeBtn.addEventListener('click',buildChallenge);
 ui.signBtn.addEventListener('click',signAndVerify);
 ui.downloadBtn.addEventListener('click',downloadReceipt);
+if(ui.shareBtn) ui.shareBtn.addEventListener('click',shareReceipt);
 ui.copyBtn.addEventListener('click',copyReceipt);
 ui.newChallengeBtn.addEventListener('click',newChallenge);
 ui.understand.addEventListener('change',updateUi);
