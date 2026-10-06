@@ -1,0 +1,31 @@
+{
+  "kernel": "FACT_KERNEL_V0_1",
+  "facts_promoted": 1,
+  "authority_created": false,
+  "canon": false,
+  "facts": [
+    {
+      "id": "FACT_001",
+      "state": "PROMOTED",
+      "scope": "P_DOC",
+      "source": "NIST AI 600-1 footnote 1",
+      "commit_ref": "2a5b0adc58382c961f7a5b44aeab0ff2094880e5"
+    },
+    {
+      "id": "FACT_002",
+      "state": "CANDIDATE_HOLD",
+      "scope": "P_DOC",
+      "source": "NIST AI 100-1",
+      "commit_ref": "4936e63e7ed4e81e7e1358ef334bb9f0bfa5cd6f"
+    },
+    {
+      "id": "FACT_003",
+      "state": "CANDIDATE",
+      "scope": "P_DOC",
+      "source": "NIST AI 100-3",
+      "commit_ref": "5c33fd6e1a680174330bfb8773250e8975e3fbdc"
+    }
+  ],
+  "not_instantiated": ["FACT_004"],
+  "search_miss": ["FACT_005", "FACT_006"]
+}
