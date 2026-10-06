@@ -81,7 +81,7 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111;color:#f8f3e8;bo
 </section>
 <section id="receiptSection" class="hidden">
   <h2>Verification receipt</h2>
-  <div class="notice good"><b>Verified for this message only.</b> Save the JSON before leaving. This page does not upload it.</div>
+  <div id="receiptResultBanner" class="notice warn"><b>Verification result pending.</b></div>
   <pre id="receiptJson"></pre>
   <div class="controls">
     <button id="receiptDownloadBtn" class="primary" disabled>SAVE RECEIPT JSON</button>
@@ -112,6 +112,7 @@ const BASE = Object.freeze({
   blockExplorerUrls: ['https://basescan.org']
 });
 const ERC1271_MAGIC = '0x1626ba7e';
+const ERC6492_SUFFIX = '6492649264926492649264926492649264926492649264926492649264926492';
 const ADDRESS_RE = /^0x[a-fA-F0-9]{40}$/;
 const $ = id => document.getElementById(id);
 const ui = {
@@ -135,6 +136,7 @@ const ui = {
   challengeText: $('challengeText'),
   receiptSection: $('receiptSection'),
   receiptJson: $('receiptJson'),
+  receiptResultBanner: $('receiptResultBanner'),
   receiptDownloadBtn: $('receiptDownloadBtn'),
   shareBtn: $('shareBtn'),
   copyBtn: $('copyBtn'),
@@ -347,6 +349,26 @@ async function verifySignature(message, signature){
   const code = await provider.request({method:'eth_getCode',params:[account,challengeBlock]});
   const isContract = !!code && code !== '0x';
   if(!isContract){
+    const normalizedSignature = String(signature || '').toLowerCase().replace(/^0x/, '');
+    const wrapped6492 = normalizedSignature.endsWith(ERC6492_SUFFIX);
+    const isStandardEcdsa = normalizedSignature.length === 130;
+
+    if(wrapped6492 || !isStandardEcdsa){
+      return {
+        account_type:'UNDEPLOYED_OR_WRAPPED',
+        verification_method: wrapped6492 ? 'ERC6492_SAFE_HOLD_NOT_VERIFIED' : 'NONSTANDARD_SIGNATURE_SAFE_HOLD',
+        recovered_address:null,
+        verified:false,
+        contract_code_present:false,
+        contract_code_block_tag:challengeBlock,
+        verification_block_tag:null,
+        verification_block_fallback:false,
+        challenge_block_call_error:null,
+        erc6492_wrapped:wrapped6492,
+        erc1271_result:null
+      };
+    }
+
     const recovered = ethers.verifyMessage(message, signature);
     return {
       account_type:'EOA',
@@ -358,6 +380,7 @@ async function verifySignature(message, signature){
       verification_block_tag:'LOCAL_EIP191',
       verification_block_fallback:false,
       challenge_block_call_error:null,
+      erc6492_wrapped:false,
       erc1271_result:null
     };
   }
@@ -439,6 +462,10 @@ async function signAndVerify(){
       verified_at:verifiedAt
     };
     ui.receiptJson.textContent = JSON.stringify(receipt,null,2);
+    ui.receiptResultBanner.className = 'notice ' + (verification.verified ? 'good' : 'bad');
+    ui.receiptResultBanner.innerHTML = verification.verified
+      ? '<b>Verified for this message only.</b> Save the JSON before leaving. This page does not upload it.'
+      : '<b>Not verified.</b> Save the JSON only as a failed/HOLD observation. Do not promote wallet control.';
     ui.receiptSection.classList.remove('hidden');
     ui.downloadBtn.disabled = false;
     ui.receiptDownloadBtn.disabled = false;
