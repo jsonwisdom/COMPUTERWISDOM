@@ -30,9 +30,6 @@ function verifyPage(path, options = {}) {
 
   const required = [
     'personal_sign',
-    'verification_block_tag',
-    'verification_block_fallback',
-    'challenge_block_call_error',
     'receiptDownloadBtn',
     'transaction_hash:null',
     'trade:false',
@@ -51,11 +48,7 @@ function verifyPage(path, options = {}) {
   ];
   for (const token of forbidden) assert(!html.includes(token), `${path}: forbidden or stale token present: ${token}`);
 
-  const sriChecks = [
-    'integrity="sha384-Jcaa5XJIs34lC6Co7Ye/mAuxCGLTEdUYQuIyl4UrwRduYb6mOmW7SUCOPX/jdsKV"',
-    'integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi"',
-    'crossorigin="anonymous"'
-  ];
+  const sriChecks = options.sriChecks || [];
   for (const token of sriChecks) assert(html.includes(token), `${path}: missing script-integrity boundary: ${token}`);
 
   return {
@@ -68,15 +61,26 @@ function verifyPage(path, options = {}) {
 const main = verifyPage('wallet-control/index.html', {
   required: [
     'ERC1271_IS_VALID_SIGNATURE',
+    'verification_block_tag',
+    'verification_block_fallback',
+    'challenge_block_call_error',
     'script_integrity',
     "a.download = 'wallet-control-observation-receipt-v0.1.json'"
   ],
-  forbidden: ['shareReceipt']
+  forbidden: ['shareReceipt'],
+  sriChecks: [
+    'integrity="sha384-Jcaa5XJIs34lC6Co7Ye/mAuxCGLTEdUYQuIyl4UrwRduYb6mOmW7SUCOPX/jdsKV"',
+    'integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi"',
+    'crossorigin="anonymous"'
+  ]
 });
 
 const neutral = verifyPage('wallet-control/neutral/index.html', {
   required: [
     'ERC1271_IS_VALID_SIGNATURE',
+    'verification_block_tag',
+    'verification_block_fallback',
+    'challenge_block_call_error',
     'WALLET_CONTROL_NEUTRAL_OBSERVATION_RECEIPT_V0_1',
     'identity_join:false',
     'expected_pointer_address:challenge.expected_pointer_address',
@@ -84,6 +88,11 @@ const neutral = verifyPage('wallet-control/neutral/index.html', {
     'ERC6492_SAFE_HOLD_NOT_VERIFIED',
     'receiptResultBanner',
     "a.download = 'wallet-control-neutral-observation-receipt-v0.1.json'"
+  ],
+  sriChecks: [
+    'integrity="sha384-Jcaa5XJIs34lC6Co7Ye/mAuxCGLTEdUYQuIyl4UrwRduYb6mOmW7SUCOPX/jdsKV"',
+    'integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi"',
+    'crossorigin="anonymous"'
   ]
 });
 
@@ -98,7 +107,13 @@ const zoraSigner = verifyPage('wallet-control/zora-signer/index.html', {
     'ERC1271_COINBASE_SMART_WALLET_SIGNATURE_WRAPPER',
     'wrapped_signature',
     'identity_join:false',
+    'challenge_block_magic',
+    'latest_magic',
     "a.download = 'zora-smart-wallet-control-observation-receipt-v0.1.json'"
+  ],
+  sriChecks: [
+    'integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi"',
+    'crossorigin="anonymous"'
   ],
   forbidden: [
     'privateKey',
