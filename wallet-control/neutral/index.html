@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Computer Wisdom — Neutral Wallet Control</title>
+<style>
+:root{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;color:#111;background:#eef3f1}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:16px;background:#eef3f1}
+main{width:min(900px,100%);margin:auto;border:6px solid #111;border-radius:26px;background:#f7fffb;box-shadow:8px 9px 0 #111;overflow:hidden}
+header,section,footer{padding:20px;border-bottom:4px solid #111}footer{border-bottom:0}
+.brand{font:900 clamp(28px,7vw,56px)/.95 system-ui,sans-serif}.sub{font-weight:900;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cell{border:3px solid #111;border-radius:13px;padding:10px;background:white}
+.cell b{display:block;font-size:11px;text-transform:uppercase;margin-bottom:5px}.value{overflow-wrap:anywhere;font-size:13px}
+label.field{display:block;font-weight:900;font-size:12px;text-transform:uppercase;margin:12px 0 6px}
+input[type=text]{width:100%;border:3px solid #111;border-radius:12px;padding:12px;font:600 14px ui-monospace,monospace}
+.status{display:flex;gap:8px;flex-wrap:wrap}.pill{border:3px solid #111;border-radius:999px;background:white;padding:8px 10px;font-weight:900}
+.good{background:#dff8d8}.warn{background:#ffe9a8}.bad{background:#ffd9d9}
+.boundary{background:#111;color:white;text-align:center;font-weight:900}
+.notice{margin:14px 0;border-left:6px solid #111;background:white;padding:12px;line-height:1.45}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+button{border:4px solid #111;border-radius:14px;background:white;padding:14px;font:900 15px system-ui,sans-serif;box-shadow:0 5px 0 #111;cursor:pointer}
+button.primary{background:#111;color:white}button:disabled{opacity:.45;cursor:not-allowed}
+.confirm{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-weight:800;line-height:1.4}.confirm input{width:22px;height:22px;flex:none}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111;color:#f8f3e8;border-radius:12px;padding:13px;max-height:340px;overflow:auto;font-size:12px}
+.hidden{display:none!important}.small{font-size:12px;line-height:1.45}
+@media(max-width:650px){body{padding:9px}.grid,.controls{grid-template-columns:1fr}header,section,footer{padding:14px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+  <div class="brand">COMPUTER WISDOM</div>
+  <div class="sub">Neutral Wallet Control • v0.1</div>
+</header>
+<section>
+  <h1>Prove the connected wallet — no baked-in pointer</h1>
+  <p>This page is a separate surface from the 0xA380 wallet-control page. Subject is whatever wallet connects. Expected pointer and ENS pointer stay null unless you type them.</p>
+  <div class="grid">
+    <div class="cell"><b>Subject address</b><div class="value" id="subjectAddress">CONNECTED WALLET — NOT YET</div></div>
+    <div class="cell"><b>Network</b><div class="value">Base mainnet • chain 8453</div></div>
+    <div class="cell"><b>Expected pointer</b><div class="value">optional / null</div></div>
+    <div class="cell"><b>ENS pointer</b><div class="value">optional / null</div></div>
+  </div>
+  <label class="field" for="expectedInput">Expected pointer (optional)</label>
+  <input id="expectedInput" type="text" autocomplete="off" spellcheck="false" placeholder="leave blank — do not assume 0xA380">
+  <label class="field" for="ensInput">ENS pointer (optional)</label>
+  <input id="ensInput" type="text" autocomplete="off" spellcheck="false" placeholder="leave blank — do not assume jaywisdom.base.eth">
+</section>
+<section class="boundary">SUBJECT = CONNECTED WALLET • POINTER MATCH NULL UNLESS SUPPLIED • CONTROL ≠ IDENTITY • CONTROL ≠ AUTHORITY • NO TRANSACTION</section>
+<section>
+  <div class="status">
+    <span class="pill warn" id="providerStatus">PROVIDER: NONE</span>
+    <span class="pill" id="walletStatus">WALLET: NOT CONNECTED</span>
+    <span class="pill warn" id="chainStatus">CHAIN: UNKNOWN</span>
+    <span class="pill warn" id="matchStatus">POINTER: NULL</span>
+    <span class="pill warn" id="verifyStatus">CONTROL: NOT VERIFIED</span>
+  </div>
+  <div id="notice" class="notice">Connect the wallet you intend to test. This page does not check a hardcoded address and does not write jaywisdom.base.eth into the receipt.</div>
+  <div class="controls">
+    <button id="coinbaseBtn" class="primary">1A — CONNECT COINBASE WALLET</button>
+    <button id="browserBtn">1B — CONNECT BROWSER WALLET</button>
+  </div>
+  <div class="controls">
+    <button id="baseBtn" disabled>2 — USE BASE MAINNET</button>
+    <button id="challengeBtn" disabled>3 — BUILD LIVE CHALLENGE</button>
+  </div>
+  <label class="confirm">
+    <input id="understand" type="checkbox">
+    <span>I understand this requests a message signature only. It does not send ETH, trade, transfer, create an ENS record, create an EAS attestation, join an identity, or grant authority.</span>
+  </label>
+  <div class="controls">
+    <button id="signBtn" class="primary" disabled>4 — SIGN + VERIFY CONTROL</button>
+    <button id="downloadBtn" disabled>SAVE RECEIPT JSON</button>
+  </div>
+</section>
+<section id="challengeSection" class="hidden">
+  <h2>Exact challenge</h2>
+  <pre id="challengeText"></pre>
+</section>
+<section id="receiptSection" class="hidden">
+  <h2>Verification receipt</h2>
+  <div id="receiptResultBanner" class="notice warn"><b>Verification result pending.</b></div>
+  <pre id="receiptJson"></pre>
+  <div class="controls">
+    <button id="receiptDownloadBtn" class="primary" disabled>SAVE RECEIPT JSON</button>
+    <button id="shareBtn">SHARE / SAVE TO FILES</button>
+  </div>
+  <div class="controls">
+    <button id="copyBtn">COPY RECEIPT JSON</button>
+    <button id="newChallengeBtn">NEW CHALLENGE</button>
+  </div>
+</section>
+<footer class="small">
+  Client-side only. Separate from wallet-control/index.html. A verified result proves control of the connected address for this signed challenge only.
+  Empty pointer fields stay null. pointer_match is null unless an expected pointer was supplied.
+  identity_join=false. authority_created=false. No ENS ownership proof. No human identity proof.
+</footer>
+</main>
+<script src="https://unpkg.com/@base-org/account@2.5.10/dist/base-account.min.js" integrity="sha384-Jcaa5XJIs34lC6Co7Ye/mAuxCGLTEdUYQuIyl4UrwRduYb6mOmW7SUCOPX/jdsKV" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.17.0/dist/ethers.umd.min.js" integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi" crossorigin="anonymous"></script>
+<script>
+(() => {
+'use strict';
+const BASE = Object.freeze({
+  chainId: '0x2105',
+  chainIdNumber: 8453,
+  chainName: 'Base',
+  nativeCurrency: { name: 'Ether', symbol: 'ETH', decimals: 18 },
+  rpcUrls: ['https://mainnet.base.org'],
+  blockExplorerUrls: ['https://basescan.org']
+});
+const ERC1271_MAGIC = '0x1626ba7e';
+const ERC6492_SUFFIX = '6492649264926492649264926492649264926492649264926492649264926492';
+const ADDRESS_RE = /^0x[a-fA-F0-9]{40}$/;
+const $ = id => document.getElementById(id);
+const ui = {
+  subjectAddress: $('subjectAddress'),
+  expectedInput: $('expectedInput'),
+  ensInput: $('ensInput'),
+  providerStatus: $('providerStatus'),
+  walletStatus: $('walletStatus'),
+  chainStatus: $('chainStatus'),
+  matchStatus: $('matchStatus'),
+  verifyStatus: $('verifyStatus'),
+  notice: $('notice'),
+  coinbaseBtn: $('coinbaseBtn'),
+  browserBtn: $('browserBtn'),
+  baseBtn: $('baseBtn'),
+  challengeBtn: $('challengeBtn'),
+  understand: $('understand'),
+  signBtn: $('signBtn'),
+  downloadBtn: $('downloadBtn'),
+  challengeSection: $('challengeSection'),
+  challengeText: $('challengeText'),
+  receiptSection: $('receiptSection'),
+  receiptJson: $('receiptJson'),
+  receiptResultBanner: $('receiptResultBanner'),
+  receiptDownloadBtn: $('receiptDownloadBtn'),
+  shareBtn: $('shareBtn'),
+  copyBtn: $('copyBtn'),
+  newChallengeBtn: $('newChallengeBtn')
+};
+let provider = null;
+let providerMode = 'NONE';
+let account = null;
+let chainId = null;
+let challenge = null;
+let receipt = null;
+let listenersProvider = null;
+function setNotice(text, kind='') {
+  ui.notice.textContent = text;
+  ui.notice.className = 'notice' + (kind ? ' ' + kind : '');
+}
+function short(a){ return a ? a.slice(0,6) + '\u2026' + a.slice(-4) : 'NOT CONNECTED'; }
+function sameAddress(a,b){ return !!a && !!b && a.toLowerCase() === b.toLowerCase(); }
+function onBase(){ return !!chainId && String(chainId).toLowerCase() === BASE.chainId; }
+function optionalAddress(){
+  const raw = ui.expectedInput.value.trim();
+  if(!raw) return null;
+  if(!ADDRESS_RE.test(raw)) throw new Error('Expected pointer must be a 0x address or blank.');
+  return raw;
+}
+function optionalEns(){
+  const raw = ui.ensInput.value.trim();
+  return raw ? raw : null;
+}
+function pointerMatch(subject, expected){
+  if(!expected) return null;
+  return sameAddress(subject, expected);
+}
+function resetEvidence(){
+  challenge = null;
+  receipt = null;
+  ui.challengeSection.classList.add('hidden');
+  ui.receiptSection.classList.add('hidden');
+  ui.downloadBtn.disabled = true;
+  ui.receiptDownloadBtn.disabled = true;
+  ui.shareBtn.disabled = true;
+  ui.verifyStatus.textContent = 'CONTROL: NOT VERIFIED';
+  ui.verifyStatus.className = 'pill warn';
+}
+function attachListeners(p){
+  if(!p || p === listenersProvider || typeof p.on !== 'function') return;
+  listenersProvider = p;
+  p.on('accountsChanged', accounts => {
+    account = accounts && accounts[0] ? accounts[0] : null;
+    resetEvidence();
+    updateUi();
+  });
+  p.on('chainChanged', id => {
+    chainId = id;
+    resetEvidence();
+    updateUi();
+  });
+}
+function updateUi(){
+  ui.providerStatus.textContent = 'PROVIDER: ' + providerMode;
+  ui.providerStatus.className = 'pill ' + (provider ? 'good' : 'warn');
+  ui.walletStatus.textContent = 'WALLET: ' + short(account);
+  ui.walletStatus.className = 'pill ' + (account ? 'good' : '');
+  ui.subjectAddress.textContent = account || 'CONNECTED WALLET \u2014 NOT YET';
+  ui.chainStatus.textContent = chainId ? 'CHAIN: ' + (onBase() ? 'BASE 8453' : chainId) : 'CHAIN: UNKNOWN';
+  ui.chainStatus.className = 'pill ' + (onBase() ? 'good' : 'warn');
+  let expected = null;
+  try { expected = optionalAddress(); } catch(_) { expected = 'INVALID'; }
+  if(!account){
+    ui.matchStatus.textContent = 'POINTER: NULL';
+    ui.matchStatus.className = 'pill warn';
+  } else if(expected === 'INVALID'){
+    ui.matchStatus.textContent = 'POINTER: INVALID INPUT';
+    ui.matchStatus.className = 'pill bad';
+  } else if(!expected){
+    ui.matchStatus.textContent = 'POINTER: NULL';
+    ui.matchStatus.className = 'pill warn';
+  } else {
+    const match = sameAddress(account, expected);
+    ui.matchStatus.textContent = match ? 'POINTER: MATCH' : 'POINTER: DIFFERENT';
+    ui.matchStatus.className = 'pill ' + (match ? 'good' : 'warn');
+  }
+  ui.baseBtn.disabled = !account || onBase();
+  ui.challengeBtn.disabled = !(account && onBase());
+  ui.signBtn.disabled = !(challenge && account && onBase() && ui.understand.checked) || !!receipt;
+}
+async function connectCoinbase(){
+  try{
+    if(typeof window.createBaseAccountSDK !== 'function') throw new Error('Coinbase Wallet / Base Account SDK failed to load.');
+    provider = window.createBaseAccountSDK({
+      appName: 'Computer Wisdom Neutral Wallet Control',
+      appChainIds: [8453]
+    }).getProvider();
+    providerMode = 'COINBASE_WALLET_BASE_ACCOUNT_SDK_2.5.10';
+    attachListeners(provider);
+    const accounts = await provider.request({method:'eth_requestAccounts'});
+    account = accounts && accounts[0] ? accounts[0] : null;
+    if(!account) throw new Error('Coinbase Wallet returned no account.');
+    chainId = await provider.request({method:'eth_chainId'});
+    resetEvidence();
+    setNotice('Wallet connected. Subject is this address only. Pointer fields stay null unless you filled them.', 'good');
+    updateUi();
+  }catch(err){ setNotice(err?.message || String(err), 'bad'); }
+}
+async function connectBrowser(){
+  try{
+    if(!window.ethereum || typeof window.ethereum.request !== 'function') throw new Error('No injected browser wallet found.');
+    provider = window.ethereum;
+    providerMode = 'INJECTED_EIP1193';
+    attachListeners(provider);
+    const accounts = await provider.request({method:'eth_requestAccounts'});
+    account = accounts && accounts[0] ? accounts[0] : null;
+    if(!account) throw new Error('Browser wallet returned no account.');
+    chainId = await provider.request({method:'eth_chainId'});
+    resetEvidence();
+    setNotice('Browser wallet connected. This proves only the injected address.', 'good');
+    updateUi();
+  }catch(err){ setNotice(err?.message || String(err), 'bad'); }
+}
+async function useBase(){
+  try{
+    if(!provider) throw new Error('Connect a wallet first.');
+    try{
+      await provider.request({method:'wallet_switchEthereumChain',params:[{chainId:BASE.chainId}]});
+    }catch(err){
+      if(err && (err.code === 4902 || err.code === -32603)){
+        await provider.request({method:'wallet_addEthereumChain',params:[BASE]});
+      } else throw err;
+    }
+    chainId = await provider.request({method:'eth_chainId'});
+    if(!onBase()) throw new Error('Wallet did not switch to Base mainnet (8453).');
+    resetEvidence();
+    setNotice('Base mainnet selected. No transaction was submitted.', 'good');
+    updateUi();
+  }catch(err){ setNotice(err?.message || String(err), 'bad'); }
+}
+async function buildChallenge(){
+  try{
+    if(!provider || !account || !onBase()) throw new Error('Connect the intended wallet on Base first.');
+    const expected = optionalAddress();
+    const ens = optionalEns();
+    const blockHex = await provider.request({method:'eth_blockNumber'});
+    const block = await provider.request({method:'eth_getBlockByNumber',params:[blockHex,false]});
+    if(!block || !block.hash) throw new Error('Could not read the current Base block.');
+    const now = new Date().toISOString();
+    const nonce = crypto.randomUUID();
+    challenge = {
+      format: 'WALLET_CONTROL_NEUTRAL_CHALLENGE_V0_1',
+      purpose: 'READ_ONLY_WALLET_CONTROL_OBSERVATION',
+      surface: 'wallet-control/neutral/index.html',
+      repository: 'jsonwisdom/COMPUTERWISDOM',
+      subject_address: account,
+      expected_pointer_address: expected,
+      pointer_match: pointerMatch(account, expected),
+      ens_pointer: ens,
+      chain_id: 8453,
+      base_block_number_hex: block.number,
+      base_block_hash: block.hash,
+      base_block_timestamp_hex: block.timestamp,
+      nonce,
+      page_origin: location.origin,
+      challenge_created_at: now,
+      identity_join: false,
+      authority_created: false,
+      dns_opened: false,
+      transaction_requested: false,
+      attestation_requested: false
+    };
+    const lines = [
+      'COMPUTER_WISDOM_WALLET_CONTROL_NEUTRAL_V0_1',
+      'purpose=' + challenge.purpose,
+      'surface=' + challenge.surface,
+      'repository=' + challenge.repository,
+      'subject_address=' + challenge.subject_address,
+      'expected_pointer_address=' + String(challenge.expected_pointer_address),
+      'pointer_match=' + String(challenge.pointer_match),
+      'ens_pointer=' + String(challenge.ens_pointer),
+      'chain_id=8453',
+      'base_block_number=' + challenge.base_block_number_hex,
+      'base_block_hash=' + challenge.base_block_hash,
+      'base_block_timestamp=' + challenge.base_block_timestamp_hex,
+      'nonce=' + challenge.nonce,
+      'page_origin=' + challenge.page_origin,
+      'challenge_created_at=' + challenge.challenge_created_at,
+      'identity_join=false',
+      'authority_created=false',
+      'dns_opened=false',
+      'transaction_requested=false',
+      'attestation_requested=false',
+      'statement=I sign this exact message to demonstrate current control of the connected address for this observation only. This signature does not establish human identity, ENS ownership, legal authority, or permission to transact. Null pointer fields are not a match.'
+    ];
+    challenge.message = lines.join('\n');
+    ui.challengeText.textContent = challenge.message;
+    ui.challengeSection.classList.remove('hidden');
+    ui.receiptSection.classList.add('hidden');
+    receipt = null;
+    setNotice('Challenge built from a live Base block. Review the exact message, then sign it.', 'good');
+    updateUi();
+  }catch(err){ setNotice(err?.message || String(err), 'bad'); }
+}
+function utf8Hex(text){
+  return '0x' + Array.from(new TextEncoder().encode(text), b => b.toString(16).padStart(2,'0')).join('');
+}
+async function sha256Hex(text){
+  const d = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
+  return Array.from(new Uint8Array(d), b => b.toString(16).padStart(2,'0')).join('');
+}
+async function verifySignature(message, signature){
+  const challengeBlock = challenge.base_block_number_hex;
+  const code = await provider.request({method:'eth_getCode',params:[account,challengeBlock]});
+  const isContract = !!code && code !== '0x';
+  if(!isContract){
+    const normalizedSignature = String(signature || '').toLowerCase().replace(/^0x/, '');
+    const wrapped6492 = normalizedSignature.endsWith(ERC6492_SUFFIX);
+    const isStandardEcdsa = normalizedSignature.length === 130;
+
+    if(wrapped6492 || !isStandardEcdsa){
+      return {
+        account_type:'UNDEPLOYED_OR_WRAPPED',
+        verification_method: wrapped6492 ? 'ERC6492_SAFE_HOLD_NOT_VERIFIED' : 'NONSTANDARD_SIGNATURE_SAFE_HOLD',
+        recovered_address:null,
+        verified:false,
+        contract_code_present:false,
+        contract_code_block_tag:challengeBlock,
+        verification_block_tag:null,
+        verification_block_fallback:false,
+        challenge_block_call_error:null,
+        erc6492_wrapped:wrapped6492,
+        erc1271_result:null
+      };
+    }
+
+    const recovered = ethers.verifyMessage(message, signature);
+    return {
+      account_type:'EOA',
+      verification_method:'EIP191_ECDSA_RECOVERY',
+      recovered_address:recovered,
+      verified:sameAddress(recovered, account),
+      contract_code_present:false,
+      contract_code_block_tag:challengeBlock,
+      verification_block_tag:'LOCAL_EIP191',
+      verification_block_fallback:false,
+      challenge_block_call_error:null,
+      erc6492_wrapped:false,
+      erc1271_result:null
+    };
+  }
+  const digest = ethers.hashMessage(message);
+  const iface = new ethers.Interface(['function isValidSignature(bytes32 hash, bytes signature) view returns (bytes4)']);
+  const data = iface.encodeFunctionData('isValidSignature',[digest,signature]);
+  let result = null;
+  let verificationBlockTag = challengeBlock;
+  let verificationBlockFallback = false;
+  let challengeBlockCallError = null;
+  try{
+    result = await provider.request({method:'eth_call',params:[{to:account,data},challengeBlock]});
+  }catch(firstErr){
+    challengeBlockCallError = firstErr && firstErr.message ? firstErr.message : String(firstErr);
+    verificationBlockTag = 'latest';
+    verificationBlockFallback = true;
+    result = await provider.request({method:'eth_call',params:[{to:account,data},'latest']});
+  }
+  const normalized = String(result || '').toLowerCase();
+  return {
+    account_type:'CONTRACT',
+    verification_method:'ERC1271_IS_VALID_SIGNATURE',
+    message_digest:digest,
+    recovered_address:null,
+    verified:normalized.startsWith(ERC1271_MAGIC),
+    contract_code_present:true,
+    contract_code_block_tag:challengeBlock,
+    verification_block_tag:verificationBlockTag,
+    verification_block_fallback:verificationBlockFallback,
+    challenge_block_call_error:challengeBlockCallError,
+    erc1271_result:result
+  };
+}
+async function signAndVerify(){
+  try{
+    if(!ui.understand.checked) throw new Error('Confirm the signature boundary first.');
+    if(!challenge) throw new Error('Build a fresh challenge first.');
+    if(!provider || !account || !onBase()) throw new Error('Wallet must remain connected on Base.');
+    if(!sameAddress(account, challenge.subject_address)) throw new Error('Connected address changed. Build a new challenge.');
+    setNotice('Check the wallet prompt carefully: this must be a message signature, not a transaction.', 'warn');
+    const signature = await provider.request({method:'personal_sign',params:[utf8Hex(challenge.message), account]});
+    const verification = await verifySignature(challenge.message, signature);
+    const messageSha256 = await sha256Hex(challenge.message);
+    const verifiedAt = new Date().toISOString();
+    receipt = {
+      format:'WALLET_CONTROL_NEUTRAL_OBSERVATION_RECEIPT_V0_1',
+      disposition: verification.verified ? 'VERIFIED_FOR_THIS_MESSAGE' : 'NOT_VERIFIED',
+      wallet_control: verification.verified ? 'VERIFIED_FOR_THIS_MESSAGE' : 'NOT_VERIFIED',
+      scope:'CONTROL_OF_CONNECTED_ADDRESS_FOR_SIGNED_CHALLENGE_ONLY',
+      surface:'wallet-control/neutral/index.html',
+      subject_address:account,
+      expected_pointer_address:challenge.expected_pointer_address,
+      pointer_match:challenge.pointer_match,
+      ens_pointer:challenge.ens_pointer,
+      ens_binding_proof:false,
+      human_binding_proof:false,
+      identity_join:false,
+      authority_created:false,
+      joins:0,
+      dns_opened:false,
+      trade:false,
+      transfer:false,
+      transaction_hash:null,
+      attestation_uid:null,
+      provider_mode:providerMode,
+      chain_id:8453,
+      signed_message:challenge.message,
+      signed_message_sha256:messageSha256,
+      signature,
+      verification,
+      challenge:{
+        nonce:challenge.nonce,
+        base_block_number_hex:challenge.base_block_number_hex,
+        base_block_hash:challenge.base_block_hash,
+        base_block_timestamp_hex:challenge.base_block_timestamp_hex,
+        page_origin:challenge.page_origin,
+        challenge_created_at:challenge.challenge_created_at
+      },
+      verified_at:verifiedAt
+    };
+    ui.receiptJson.textContent = JSON.stringify(receipt,null,2);
+    ui.receiptResultBanner.className = 'notice ' + (verification.verified ? 'good' : 'bad');
+    ui.receiptResultBanner.innerHTML = verification.verified
+      ? '<b>Verified for this message only.</b> Save the JSON before leaving. This page does not upload it.'
+      : '<b>Not verified.</b> Save the JSON only as a failed/HOLD observation. Do not promote wallet control.';
+    ui.receiptSection.classList.remove('hidden');
+    ui.downloadBtn.disabled = false;
+    ui.receiptDownloadBtn.disabled = false;
+    ui.shareBtn.disabled = false;
+    ui.verifyStatus.textContent = verification.verified ? 'CONTROL: VERIFIED FOR THIS MESSAGE' : 'CONTROL: NOT VERIFIED';
+    ui.verifyStatus.className = 'pill ' + (verification.verified ? 'good' : 'bad');
+    try { ui.receiptSection.scrollIntoView({behavior:'smooth',block:'start'}); } catch(_) {}
+    setNotice(
+      verification.verified
+        ? 'Signature verified for this challenge only. Pointer fields are unchanged. No identity join.'
+        : 'A signature was returned but verification failed. Do not promote wallet control.',
+      verification.verified ? 'good' : 'bad'
+    );
+    updateUi();
+  }catch(err){ setNotice(err?.message || String(err), 'bad'); }
+}
+function receiptFile(){
+  return new File([JSON.stringify(receipt,null,2)+'\n'], 'wallet-control-neutral-observation-receipt-v0.1.json', {type:'application/json'});
+}
+function downloadReceipt(){
+  if(!receipt) return;
+  const blob = new Blob([JSON.stringify(receipt,null,2)+'\n'],{type:'application/json'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'wallet-control-neutral-observation-receipt-v0.1.json';
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  setTimeout(()=>URL.revokeObjectURL(url),1000);
+}
+async function shareReceipt(){
+  if(!receipt) return;
+  const file = receiptFile();
+  try{
+    if(navigator.canShare && navigator.canShare({files:[file]})){
+      await navigator.share({files:[file], title:'Neutral wallet control receipt'});
+      setNotice('Share sheet opened. Save to Files if that is the destination.', 'good');
+      return;
+    }
+  }catch(err){
+    if(err && err.name === 'AbortError') return;
+  }
+  downloadReceipt();
+  setNotice('Share unavailable. Receipt download started instead.', 'warn');
+}
+async function copyReceipt(){
+  if(!receipt) return;
+  try{
+    await navigator.clipboard.writeText(JSON.stringify(receipt,null,2));
+    setNotice('Receipt copied.', 'good');
+  }catch(_){ setNotice('Clipboard blocked. Use Save Receipt JSON.', 'bad'); }
+}
+function newChallenge(){
+  resetEvidence();
+  setNotice('Previous local receipt cleared from the page. Build a new live challenge when ready.');
+  updateUi();
+}
+ui.coinbaseBtn.addEventListener('click',connectCoinbase);
+ui.browserBtn.addEventListener('click',connectBrowser);
+ui.baseBtn.addEventListener('click',useBase);
+ui.challengeBtn.addEventListener('click',buildChallenge);
+ui.signBtn.addEventListener('click',signAndVerify);
+ui.downloadBtn.addEventListener('click',downloadReceipt);
+ui.receiptDownloadBtn.addEventListener('click',downloadReceipt);
+ui.shareBtn.addEventListener('click',shareReceipt);
+ui.copyBtn.addEventListener('click',copyReceipt);
+ui.newChallengeBtn.addEventListener('click',newChallenge);
+ui.understand.addEventListener('change',updateUi);
+ui.expectedInput.addEventListener('input', () => { resetEvidence(); updateUi(); });
+ui.ensInput.addEventListener('input', () => { resetEvidence(); updateUi(); });
+updateUi();
+})();
+</script>
+</body>
+</html>
