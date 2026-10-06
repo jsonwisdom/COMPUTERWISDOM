@@ -1,0 +1,22 @@
+# FACT 003 CANDIDATE
+
+FACT_003 = CANDIDATE
+FACT_003_PROMOTED = false
+SOURCE_READ != PROMOTED
+
+SOURCE = NIST AI 100-3
+DATE = 2023-03
+P_DOC = NIST AI 100-3 says the glossary aim is not to declare one specific meaning for identified terms, but to show multiple meanings.
+P_TRUE = NOT_ON_THE_TABLE
+ML_SYSTEM_DEFINITION = NOT_PRESENT_IN_THIS_PUBLICATION
+RELATED_OTHER_SOURCE = CSRC machine learning entry, attributed to NIST SP 800-55v1, not this fact
+FRAMEWORK = GLOSSARY_GUIDE
+CAPABILITY_PROVEN = false
+LEGAL_DUTY_CREATED = false
+
+FACT_001 = PROMOTED
+FACT_002 = CANDIDATE
+FACTS_PROMOTED = 1
+PRIOR_RECEIPTS_CHANGED = false
+AUTHORITY_CREATED = false
+CANON = false
