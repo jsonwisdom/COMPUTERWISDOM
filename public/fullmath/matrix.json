@@ -1,0 +1,58 @@
+{
+  "schema": "INDEX_SCAFFOLD_MATRIX_V0_2",
+  "generated_at": "2026-10-06",
+  "base_public_url": "https://jsonwisdom.github.io/COMPUTERWISDOM/public/fullmath/",
+  "authority_created": false,
+  "identity_join": false,
+  "links": [
+    {
+      "id": "HOME",
+      "label": "Burden of Proof public index",
+      "href": "./index.html",
+      "purpose": "PUBLIC_GAME_HOME",
+      "expected_http": 200
+    },
+    {
+      "id": "PLAY",
+      "label": "Verification Game",
+      "href": "../../public-record-verification/game.html",
+      "purpose": "PLAYABLE_GAME",
+      "expected_http": 200
+    },
+    {
+      "id": "KERNEL",
+      "label": "Replay Kernel V0.1",
+      "href": "../../docs/replay_kernel_v0_1.md",
+      "purpose": "PROTOCOL",
+      "expected_http": 200
+    },
+    {
+      "id": "ZORA",
+      "label": "Zora Drop Receipt",
+      "href": "../../public/zora/CWAAS-FLYWHEEL-001_ZORA_DROP_RECEIPT.md",
+      "purpose": "CREATOR_RECEIPT",
+      "expected_http": 200
+    },
+    {
+      "id": "MACHINE",
+      "label": "Machine Speed Blueprint",
+      "href": "../../docs/layered-machine-speed-scale-blueprint-v0-1.md",
+      "purpose": "BLUEPRINT",
+      "expected_http": 200
+    },
+    {
+      "id": "SOURCE",
+      "label": "COMPUTERWISDOM Repository",
+      "href": "https://github.com/jsonwisdom/COMPUTERWISDOM",
+      "purpose": "SOURCE_REPO",
+      "expected_http": 200
+    },
+    {
+      "id": "REPORT",
+      "label": "Report a Mistake",
+      "href": "https://github.com/jsonwisdom/COMPUTERWISDOM/issues/new?title=%5BPublic%20Replay%5D%20Mistake%20or%20broken%20path",
+      "purpose": "REPAIR_ENTRY",
+      "expected_http": 200
+    }
+  ]
+}
