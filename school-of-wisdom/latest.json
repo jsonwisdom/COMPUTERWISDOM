@@ -1,0 +1,13 @@
+{
+  "id": "SOW-20261006-003",
+  "published_at": "2026-10-05T22:50:00-05:00",
+  "title": "School beacon copied to Pages source",
+  "summary": "Beacon files were copied toward master, the GitHub Pages source. Authority gate body was not recovered. No creator revenue was bound. public_200_ok stays false until the live route is checked.",
+  "status": "PUBLIC_BUILD_UPDATE",
+  "public_200_ok": false,
+  "recommendations": [
+    "Treat Pages 200 as live-route evidence only.",
+    "Do not treat the authority path repair as a recovered gate body.",
+    "Do not compute P&L from an unbound event."
+  ]
+}
