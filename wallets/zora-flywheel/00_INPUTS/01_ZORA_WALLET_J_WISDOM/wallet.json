@@ -1,0 +1,23 @@
+{
+  "format": "ZORA_FLYWHEEL_WALLET_INPUT_V0_1",
+  "replay_context": "JASONS_PROVIDENCE_ZORA_MULTI_WALLETS",
+  "position": 1,
+  "wallet_class": "ZORA_SMART_WALLET",
+  "role": "CREATOR_WALLET",
+  "address": "0x829AdfEdBe565F9885a7eA6Bc78912acAef055E2",
+  "chain": "BASE",
+  "chain_id": 8453,
+  "creator_coin": {
+    "label": "J WISDOM",
+    "contract": null,
+    "status": "HOLD_UNTIL_RECEIPT"
+  },
+  "control": {
+    "connected_signer": "0xb3B9CC668e997209e914309FF525535203EaD4dA",
+    "signer_owner_index": 0,
+    "proof_scope": "VERIFIED_FOR_ONE_SIGNED_CHALLENGE"
+  },
+  "human_identity_proof": false,
+  "identity_join": false,
+  "authority_created": false
+}
