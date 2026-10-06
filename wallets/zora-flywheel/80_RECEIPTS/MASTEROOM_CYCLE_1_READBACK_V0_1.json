@@ -1,0 +1,39 @@
+{
+  "format": "MASTEROOM_PUSH_PULL_RECEIPT_V0_1",
+  "cycle": 1,
+  "mode": "READ_ONLY",
+  "issue": 632,
+  "bot_id": "MASTEROOM_BOT_V0_1",
+  "observed_ref": "zora-flywheel-reboot-v0-3",
+  "observed_sha": "8b4c18b51b07106b27a83514b6ecadc16986591d",
+  "written_at": "2026-10-06T03:47:00Z",
+  "push_tasks": [
+    "historical Zora replay without collapse",
+    "Zora Flywheel object graph",
+    "School of Wisdom publication inputs/outputs",
+    "public page and latest.json HTTP 200",
+    "Make J money evidence gap"
+  ],
+  "pull_results": [
+    "services/zora-flywheel candidate shelf kept separate from wallets/zora-flywheel reboot scaffold",
+    "Gray Baby 2026-08-14 binding not re-fetched",
+    "slot 001 0x829A registry file present; 0xA380 not in that registry",
+    "97_TRADES unsigned intent all null",
+    "school latest.json matches updates.jsonl SOW-20261005-001 on branch",
+    "Pages route 404; raw branch latest.json 200"
+  ],
+  "holds": [
+    "PUBLIC_PAGES_200 FALSE",
+    "SLOT_001_CONTROL_PROOF FILE_DECLARED_NOT_REPLAYED",
+    "BOT_BUILD_AUTHORITY_GATE_V0_2 PATH ABSENT ON BRANCH",
+    "MAKE_J_MONEY NO SOURCED INFLOW"
+  ],
+  "contradictions": [],
+  "school_refresh": {
+    "performed": false,
+    "public_200_ok": false
+  },
+  "next_task": "bind one sourced creator-reward or sale event before any P&L",
+  "facts_promoted": 0,
+  "authority_created": false
+}
