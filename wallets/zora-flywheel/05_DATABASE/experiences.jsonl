@@ -1,0 +1,2 @@
+{"id":"EXP-20261005-001","observed_at":"2026-10-05","source_class":"HUMAN_DESIGN","actor":"JASON","experience":"MORNING_LOOP","sequence":["WEB_PAGE_REFRESHED","UPDATE_BEACON_SHOWS_NEW","JAY_REVIEWS_PAGE","JAY_RETURNS_TO_WORK"],"status":"DESIGNED"}
+{"id":"EXP-20261005-002","observed_at":"2026-10-05","source_class":"BUILD","actor":"COMPUTER_WIZARD","experience":"QUERY_NET_LOOP","sequence":["QUESTION","QUERY","CAST_NET","SPIN","ALIGN","CAPTURE","RECEIPT","SCHOOL_UPDATE"],"status":"IMPLEMENTED_AS_ARCHITECTURE"}
