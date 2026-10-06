@@ -1,0 +1,30 @@
+name: Wallet Control Page
+
+on:
+  pull_request:
+    paths:
+      - "wallet-control/**"
+      - "tools/verify_wallet_control_page.mjs"
+      - ".github/workflows/wallet-control-page.yml"
+  push:
+    branches: ["master"]
+    paths:
+      - "wallet-control/**"
+      - "tools/verify_wallet_control_page.mjs"
+      - ".github/workflows/wallet-control-page.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify-wallet-control-page:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Verify wallet-control page
+        run: node tools/verify_wallet_control_page.mjs
