@@ -1,0 +1,50 @@
+SOURCE_EXCERPT_SNAPSHOT_V0_1
+source_url=https://www.gov.uk/government/publications/statement-of-changes-to-the-immigration-rules-hc-584-3-september-2026/statement-of-changes-to-the-immigration-rules-hc-584-3-september-2026-accessible
+publisher=Home Office
+title=Statement of changes to the Immigration Rules: HC 584, 3 September 2026 (accessible)
+published=3 September 2026
+retrieved=2026-10-06
+
+## Implementation
+
+The following paragraphs shall take effect on 8 October 2026:
+
+* INTRO1 and INTRO2
+* APP A1 to APP A32
+* APP AR1
+* APP AR(EU)1
+* APP EU1 to APP EU15
+* APP EU(FP)1 to APP EU(FP)3
+* APP SW1 and APP SW2
+* APP SU1 to APP SU4
+* APP HK1
+* APP CRP1 to APP CRP4
+* APP LR1 to APP LR3
+* APP VDA1 to APP VDA4
+
+The following paragraphs shall take effect on 8 October 2026. In relation to those changes, if an application for entry clearance, for an Electronic Travel Authorisation, for permission to enter or for permission to stay, a claim, or an application for administrative review has been made before 8 October 2026, such applications will be decided in accordance with the Immigration Rules in force on 7 October 2026:
+
+* INTRO3 to INTRO11
+* 1.1 and 1.2
+* APP SUI1 and APP SUI2
+* APP FM1
+* APP V1 to APP V4
+* APP PA1 to APP PA7
+* APP ST1 to APP ST7
+* APP ST11 to APP ST14
+* APP CS1 and APP CS2
+* APP GAES1 and APP GAES2
+* APP PL1
+
+The following paragraphs shall take effect on 29 October 2026. In relation to those changes, if an application for entry clearance, for an Electronic Travel Authorisation, for permission to enter or for permission to stay, a claim, or an application for administrative review has been made before 29 October 2026, such applications will be decided in accordance with the Immigration Rules in force on 28 October 2026:
+
+* APP MOR1 to APP MOR10
+* APP RW1 to APP RW10
+
+The following paragraphs shall take effect on 30 November 2026. In relation to those changes, if an application for entry clearance, for an Electronic Travel Authorisation, for permission to enter or for permission to stay, a claim, or an application for administrative review has been made before 30 November 2026, such applications will be decided in accordance with the Immigration Rules in force on 29 November 2026:
+
+* APP ST8 to APP ST10
+
+The following paragraphs shall take effect on 9 December 2026:
+
+* APP EU16
