@@ -86,12 +86,36 @@ const neutral = verifyPage('wallet-control/neutral/index.html', {
   ]
 });
 
+const zoraSigner = verifyPage('wallet-control/zora-signer/index.html', {
+  required: [
+    'ZORA_SMART_WALLET_CONTROL_OBSERVATION_RECEIPT_V0_1',
+    '0x829AdfEdbe565f9885A7Ea6Bc78912ACaEF055E2',
+    '0xb3B9CC668e997209e914309FF525535203EaD4dA',
+    'isOwnerAddress',
+    'ownerAtIndex',
+    'nextOwnerIndex',
+    'ERC1271_COINBASE_SMART_WALLET_SIGNATURE_WRAPPER',
+    'wrapped_signature',
+    'identity_join:false',
+    "a.download = 'zora-smart-wallet-control-observation-receipt-v0.1.json'"
+  ],
+  forbidden: [
+    'privateKey',
+    'PRIVATE_KEY',
+    'eth_sendTransaction',
+    'wallet_sendCalls',
+    'eth_sendRawTransaction'
+  ]
+});
+
 console.log('WALLET_CONTROL_PAGE_VERIFY_PASS');
 console.log(JSON.stringify({
-  pages: [main, neutral],
+  pages: [main, neutral, zoraSigner],
   replay_hardened_fields: true,
   download_receipt: true,
   transaction_methods_present: false,
   neutral_erc6492_fail_closed: true,
-  neutral_result_banner_conditional: true
+  neutral_result_banner_conditional: true,
+  zora_subject_signer_separated: true,
+  zora_owner_index_resolved_at_challenge_block: true
 }, null, 2));
