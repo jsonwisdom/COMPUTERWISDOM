@@ -1,0 +1,35 @@
+{
+  "format": "JASON_HW25_3_BINDING_PACKET_V0_1",
+  "purpose": "BOUND_WALLET_ATTESTATION_PACKET_FOR_HW_25_3_RESEARCH_STATE",
+  "subject": "HW 25/3",
+  "layer": "PROVENANCE_CHALLENGE_PACKET",
+  "catalogue_pin": {
+    "host": "The National Archives Discovery",
+    "record_id": "C6136633",
+    "reference": "HW 25/3",
+    "pin_type": "CATALOGUE_PIN"
+  },
+  "candidate_c1": {
+    "sha256": "71b51d4a8ad127082a8f46ecf469b34b35799b6e8d181f866e59843dfb4a3ca4",
+    "bytes": 4554354,
+    "pdf_pages": 155,
+    "bind_test": "INDETERMINATE"
+  },
+  "candidate_c2": {
+    "sha256": "d20ddd56fe52ec0b36799d0550d7dc4137fe8aae45491faa33ebb1213d8e4df3",
+    "bytes": 39652660,
+    "pdf_pages": 156,
+    "bind_test": "INDETERMINATE"
+  },
+  "c1_equals_c2": false,
+  "either_equals_tna_body": "NOT_ESTABLISHED",
+  "archive_provenance": "NOT_BOUND",
+  "hw_25_3_body": "HOLD",
+  "rights_layer_hold": "UNCHANGED",
+  "content_evidence_not_provenance_evidence": true,
+  "signature_scope": "WALLET_ATTESTS_TO_THIS_PACKET_HASH_AND_SESSION_CHALLENGE_ONLY",
+  "signature_not_tna_provenance": true,
+  "authority_created": false,
+  "canon": false,
+  "identity_collapse": false
+}
