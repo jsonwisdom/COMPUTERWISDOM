@@ -1,0 +1,22 @@
+{
+  "format": "ECONOMIC_EVENT_V0_1",
+  "status": "BOUND_FOR_THIS_EVENT",
+  "wallet_slot": "001",
+  "wallet": "0x829AdfEdBe565F9885a7eA6Bc78912acAef055E2",
+  "asset_symbol": "ZORA",
+  "event_type": "CREATOR_REWARD",
+  "amount": "0.123314695774412412",
+  "raw_amount": "123314695774412412",
+  "decimals": 18,
+  "tx_hash_or_reward_id": "0xf6b9950fe8323570f970ace56c7cb38e2a748967855242b7ccf0ab87fb13ce60",
+  "timestamp": "2026-10-05T11:16:25.000000Z",
+  "event_name": "CreatorCoinRewards",
+  "coin": "0x694cE46C64D9D1a5e9376A9feBcF85Ec05D72e9F",
+  "creator": "0x829AdfEdBe565F9885a7eA6Bc78912acAef055E2",
+  "protocol_amount": "123314695774412412",
+  "log_page_index": 1691,
+  "prior_hold_preserved": "wallets/zora-flywheel/90_HOLD/ECONOMIC_EVENT_ZORA_TRANSFER_005_LOGS_UNREAD_V0_1.json",
+  "cost_basis": "UNKNOWN",
+  "pnl_licensed": false,
+  "reason": "Cycle 15 log retry decoded CreatorCoinRewards for the amount Cycle 14 could only list."
+}
