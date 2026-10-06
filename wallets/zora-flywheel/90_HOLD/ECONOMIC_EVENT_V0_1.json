@@ -1,0 +1,16 @@
+{
+  "format": "ECONOMIC_EVENT_V0_1",
+  "status": "UNBOUND",
+  "wallet_slot": null,
+  "asset": null,
+  "event_type": null,
+  "amount": null,
+  "token_or_currency": null,
+  "tx_hash_or_reward_id": null,
+  "timestamp": null,
+  "source": null,
+  "receipt": null,
+  "cost_basis": "UNKNOWN",
+  "pnl_licensed": false,
+  "reason": "No creator-reward or sale event with amount, asset, time, and tx or reward id was observed this cycle."
+}
