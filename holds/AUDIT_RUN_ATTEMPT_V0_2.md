@@ -1,0 +1,16 @@
+# AUDIT RUN ATTEMPT 2
+
+RUN = NOT_STARTED
+REASON = PROCEDURE_BODY_STILL_NOT_RECOVERED
+PRIOR = holds/AUDIT_RUN_ATTEMPT_V0_1.md
+
+SEARCHES
+- Apple Blossom audit / AwesomeAudit / APPLEBLOSSOM in org:jsonwisdom = MISS
+- FullMath audit / FULLMATHDEWEY constitutional in org:jsonwisdom = MISS
+- local workspace name search = MISS
+
+SEARCH_MISS != ABSENCE
+SECOND_MISS != PROOF_OF_ABSENCE
+RESULT = NOT_RUN
+FACTS_PROMOTED = 0
+AUTHORITY_CREATED = false
