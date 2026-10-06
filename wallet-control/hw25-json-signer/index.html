@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Computer Wisdom — HW 25/3 JSON Signer</title>
+<style>
+:root{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono",monospace;color:#111;background:#eef3f1}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;padding:16px;background:#eef3f1}
+main{width:min(900px,100%);margin:auto;border:6px solid #111;border-radius:26px;background:#f7fffb;box-shadow:8px 9px 0 #111;overflow:hidden}
+header,section,footer{padding:20px;border-bottom:4px solid #111}footer{border-bottom:0}
+.brand{font:900 clamp(28px,7vw,56px)/.95 system-ui,sans-serif}.sub{font-weight:900;margin-top:6px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.cell{border:3px solid #111;border-radius:13px;padding:10px;background:white}
+.cell b{display:block;font-size:11px;text-transform:uppercase;margin-bottom:5px}.value{overflow-wrap:anywhere;font-size:13px}
+.status{display:flex;gap:8px;flex-wrap:wrap}.pill{border:3px solid #111;border-radius:999px;background:white;padding:8px 10px;font-weight:900}
+.good{background:#dff8d8}.warn{background:#ffe9a8}.bad{background:#ffd9d9}
+.boundary{background:#111;color:white;text-align:center;font-weight:900}
+.notice{margin:14px 0;border-left:6px solid #111;background:white;padding:12px;line-height:1.45}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px}
+button,input[type=file]{width:100%}
+button{border:4px solid #111;border-radius:14px;background:white;padding:14px;font:900 15px system-ui,sans-serif;box-shadow:0 5px 0 #111;cursor:pointer}
+button.primary{background:#111;color:white}button:disabled{opacity:.45;cursor:not-allowed}
+.confirm{display:flex;gap:10px;align-items:flex-start;margin-top:14px;font-weight:800;line-height:1.4}.confirm input{width:22px;height:22px;flex:none}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111;color:#f8f3e8;border-radius:12px;padding:13px;max-height:360px;overflow:auto;font-size:12px}
+.hidden{display:none!important}.small{font-size:12px;line-height:1.45}
+@media(max-width:650px){body{padding:9px}.grid,.controls{grid-template-columns:1fr}header,section,footer{padding:14px}}
+</style>
+</head>
+<body>
+<main>
+<header><div class="brand">COMPUTER WISDOM</div><div class="sub">HW 25/3 Exact JSON Signer • v0.1</div></header>
+<section>
+<h1>Hash exact JSON bytes, then sign the hash statement — no transaction</h1>
+<p>Select the JSON file you want to attest to. This page reads raw file bytes locally, computes SHA-256, and signs only the exact filename / byte-count / digest statement.</p>
+<div class="grid">
+<div class="cell"><b>Network</b><div class="value">Base mainnet • chain 8453</div></div>
+<div class="cell"><b>File handling</b><div class="value">Local browser only • no upload</div></div>
+<div class="cell"><b>Parsing</b><div class="value">NONE</div></div>
+<div class="cell"><b>Normalization</b><div class="value">NONE</div></div>
+</div>
+</section>
+<section class="boundary">SIGNATURE = WALLET ATTESTATION TO EXACT HASH STATEMENT • SIGNATURE ≠ TNA PROVENANCE • CONTROL ≠ AUTHORITY • NO TRANSACTION • NEVER ENTER A PRIVATE KEY HERE</section>
+<section>
+<div class="status">
+<span class="pill warn" id="providerStatus">PROVIDER: NONE</span>
+<span class="pill warn" id="walletStatus">SIGNER: NOT CONNECTED</span>
+<span class="pill warn" id="chainStatus">CHAIN: UNKNOWN</span>
+<span class="pill warn" id="fileStatus">FILE: NONE</span>
+<span class="pill warn" id="verifyStatus">SIGNATURE: NOT VERIFIED</span>
+</div>
+<div id="notice" class="notice">Open this deployed page inside your wallet browser, then connect.</div>
+<div class="controls">
+<button id="connectBtn" class="primary">1 — CONNECT BROWSER SIGNER</button>
+<button id="baseBtn" disabled>2 — USE BASE MAINNET</button>
+</div>
+<div style="margin-top:14px"><b>3 — SELECT JSON FILE</b><input id="fileInput" type="file" accept=".json,application/json"></div>
+<div id="fileSection" class="hidden"><div class="grid" style="margin-top:14px">
+<div class="cell"><b>Filename</b><div class="value" id="filename"></div></div>
+<div class="cell"><b>Bytes</b><div class="value" id="byteCount"></div></div>
+<div class="cell" style="grid-column:1/-1"><b>SHA-256</b><div class="value" id="sha256"></div></div>
+</div></div>
+<div id="messageSection" class="hidden"><h2>Exact signing statement</h2><pre id="messageText"></pre></div>
+<label class="confirm"><input id="understand" type="checkbox"><span>I understand this signs only the exact filename / byte-count / SHA-256 statement shown above. It does not prove that The National Archives issued the file, does not bind this file to Kew, and does not create authority.</span></label>
+<div class="controls"><button id="signBtn" class="primary" disabled>4 — SIGN EXACT HASH STATEMENT</button><button id="downloadBtn" disabled>DOWNLOAD JSON RECEIPT</button></div>
+</section>
+<section id="receiptSection" class="hidden">
+<h2>Signature receipt</h2><div id="receiptBanner" class="notice warn"><b>Pending.</b></div><pre id="receiptJson"></pre>
+<div class="controls"><button id="receiptDownloadBtn" class="primary" disabled>DOWNLOAD JSON RECEIPT</button><button id="copyBtn">COPY RECEIPT JSON</button></div>
+</section>
+<footer class="small">Exact-byte hashing is local. Signing uses the connected browser wallet. VERIFIED means the signature recovered to that same wallet for this exact statement. archive_provenance_established=false. authority_created=false. No transaction.</footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.17.0/dist/ethers.umd.min.js" integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi" crossorigin="anonymous"></script>
+<script>
+(()=>{'use strict';
+const BASE={chainId:'0x2105',chainIdNumber:8453,chainName:'Base',nativeCurrency:{name:'Ether',symbol:'ETH',decimals:18},rpcUrls:['https://mainnet.base.org'],blockExplorerUrls:['https://basescan.org']};
+const $=id=>document.getElementById(id);
+const ui={providerStatus:$('providerStatus'),walletStatus:$('walletStatus'),chainStatus:$('chainStatus'),fileStatus:$('fileStatus'),verifyStatus:$('verifyStatus'),notice:$('notice'),connectBtn:$('connectBtn'),baseBtn:$('baseBtn'),fileInput:$('fileInput'),fileSection:$('fileSection'),filename:$('filename'),byteCount:$('byteCount'),sha256:$('sha256'),messageSection:$('messageSection'),messageText:$('messageText'),understand:$('understand'),signBtn:$('signBtn'),downloadBtn:$('downloadBtn'),receiptSection:$('receiptSection'),receiptBanner:$('receiptBanner'),receiptJson:$('receiptJson'),receiptDownloadBtn:$('receiptDownloadBtn'),copyBtn:$('copyBtn')};
+let provider=null,account=null,chainId=null,fileRecord=null,receipt=null,listenersProvider=null;
+function setNotice(t,k=''){ui.notice.textContent=t;ui.notice.className='notice'+(k?' '+k:'')}
+function short(a){return a?a.slice(0,6)+'…'+a.slice(-4):'NOT CONNECTED'}
+function onBase(){return !!chainId&&String(chainId).toLowerCase()===BASE.chainId}
+function resetReceipt(){receipt=null;ui.receiptSection.classList.add('hidden');ui.downloadBtn.disabled=true;ui.receiptDownloadBtn.disabled=true;ui.verifyStatus.textContent='SIGNATURE: NOT VERIFIED';ui.verifyStatus.className='pill warn'}
+function attachListeners(p){if(!p||p===listenersProvider||typeof p.on!=='function')return;listenersProvider=p;p.on('accountsChanged',a=>{account=a&&a[0]?ethers.getAddress(a[0]):null;resetReceipt();updateUi()});p.on('chainChanged',id=>{chainId=id;resetReceipt();updateUi()})}
+function updateUi(){ui.providerStatus.textContent=provider?'PROVIDER: INJECTED EIP-1193':'PROVIDER: NONE';ui.providerStatus.className='pill '+(provider?'good':'warn');ui.walletStatus.textContent='SIGNER: '+short(account);ui.walletStatus.className='pill '+(account?'good':'warn');ui.chainStatus.textContent=chainId?'CHAIN: '+(onBase()?'BASE 8453':chainId):'CHAIN: UNKNOWN';ui.chainStatus.className='pill '+(onBase()?'good':'warn');ui.fileStatus.textContent=fileRecord?'FILE: HASHED':'FILE: NONE';ui.fileStatus.className='pill '+(fileRecord?'good':'warn');ui.baseBtn.disabled=!account||onBase();ui.signBtn.disabled=!(provider&&account&&onBase()&&fileRecord&&ui.understand.checked)||!!receipt}
+async function connectSigner(){try{if(!window.ethereum||typeof window.ethereum.request!=='function')throw new Error('No injected browser wallet found. Open this GitHub Pages link inside MetaMask/Coinbase Wallet browser, or a browser extension wallet.');provider=window.ethereum;attachListeners(provider);const a=await provider.request({method:'eth_requestAccounts'});account=a&&a[0]?ethers.getAddress(a[0]):null;if(!account)throw new Error('Browser wallet returned no account.');chainId=await provider.request({method:'eth_chainId'});resetReceipt();setNotice('Wallet connected. No transaction was requested.','good');updateUi()}catch(e){setNotice(e?.message||String(e),'bad')}}
+async function useBase(){try{if(!provider)throw new Error('Connect the signer first.');try{await provider.request({method:'wallet_switchEthereumChain',params:[{chainId:BASE.chainId}]})}catch(e){if(e&&(e.code===4902||e.code===-32603))await provider.request({method:'wallet_addEthereumChain',params:[BASE]});else throw e}chainId=await provider.request({method:'eth_chainId'});if(!onBase())throw new Error('Wallet did not switch to Base mainnet (8453).');resetReceipt();setNotice('Base mainnet selected. No transaction was submitted.','good');updateUi()}catch(e){setNotice(e?.message||String(e),'bad')}}
+function hex(buf){return Array.from(new Uint8Array(buf),b=>b.toString(16).padStart(2,'0')).join('')}
+async function readFile(file){const raw=await file.arrayBuffer();const digest=await crypto.subtle.digest('SHA-256',raw);const sha=hex(digest);const loadedAt=new Date().toISOString();const message=['COMPUTER_WISDOM_HW_25_3_EXACT_JSON_SIGNATURE_V0_1','purpose=ATTEST_TO_EXACT_LOCAL_JSON_BYTES','filename='+file.name,'bytes='+file.size,'sha256='+sha,'chain_id=8453','page_origin='+location.origin,'loaded_at='+loadedAt,'json_parsed=false','normalization_performed=false','archive_provenance_established=false','kew_binding_established=false','authority_created=false','transaction_requested=false','statement=I sign this exact statement to attest that I observed the local file with the filename, byte count, and SHA-256 shown above. This signature does not prove that The National Archives issued the file and does not bind it to the Kew HW 25/3 body.'].join('\n');fileRecord={filename:file.name,bytes:file.size,sha256:sha,loaded_at:loadedAt,message};ui.filename.textContent=file.name;ui.byteCount.textContent=String(file.size);ui.sha256.textContent=sha;ui.messageText.textContent=message;ui.fileSection.classList.remove('hidden');ui.messageSection.classList.remove('hidden');resetReceipt();setNotice('Exact raw bytes hashed locally. Review the signing statement before signing.','good');updateUi()}
+async function signExact(){try{if(!provider||!account)throw new Error('Connect the wallet first.');if(!onBase())throw new Error('Switch to Base mainnet first.');if(!fileRecord)throw new Error('Select the JSON file first.');if(!ui.understand.checked)throw new Error('Confirm the signature boundary first.');setNotice('Your wallet should ask for a message signature only. Reject anything showing gas, approvals, asset movement, or a transaction.','warn');const signature=await provider.request({method:'personal_sign',params:[fileRecord.message,account]});const recovered=ethers.verifyMessage(fileRecord.message,signature);const valid=recovered.toLowerCase()===account.toLowerCase();receipt={format:'HW_25_3_EXACT_JSON_SIGNATURE_RECEIPT_V0_1',disposition:valid?'SIGNATURE_VERIFIED':'SIGNATURE_NOT_VERIFIED',scope:'CONNECTED_WALLET_ATTESTS_TO_EXACT_LOCAL_JSON_HASH_STATEMENT_ONLY',filename:fileRecord.filename,bytes:fileRecord.bytes,sha256:fileRecord.sha256,signer:account,recovered_signer:recovered,signer_match:valid,chain_id:8453,page_origin:location.origin,loaded_at:fileRecord.loaded_at,signed_at:new Date().toISOString(),signing_method:'personal_sign',signed_message:fileRecord.message,signature,json_parsed:false,normalization_performed:false,archive_provenance_established:false,kew_binding_established:false,authority_created:false,transaction_requested:false,transaction_hash:null,invariants:['SIGNATURE != TNA_PROVENANCE','SIGNER_CONTROL != ARCHIVE_AUTHORITY','EXACT_HASH_ATTESTATION != KEW_BINDING','CONTENT_EVIDENCE != PROVENANCE_EVIDENCE']};ui.receiptJson.textContent=JSON.stringify(receipt,null,2);ui.receiptBanner.className='notice '+(valid?'good':'bad');ui.receiptBanner.innerHTML=valid?'<b>Signature verified.</b> The connected wallet signed this exact file-hash statement.':'<b>Signature failed local recovery.</b> Do not promote the receipt.';ui.receiptSection.classList.remove('hidden');ui.downloadBtn.disabled=!valid;ui.receiptDownloadBtn.disabled=!valid;ui.verifyStatus.textContent=valid?'SIGNATURE: VERIFIED':'SIGNATURE: NOT VERIFIED';ui.verifyStatus.className='pill '+(valid?'good':'bad');setNotice(valid?'Wallet signature verified locally. Download the exact JSON receipt.':'Signature returned but did not recover to the connected wallet.',valid?'good':'bad');updateUi()}catch(e){setNotice(e?.message||String(e),'bad')}}
+function downloadReceipt(){if(!receipt)return;const blob=new Blob([JSON.stringify(receipt,null,2)+'\n'],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='hw-25-3-exact-json-signature-receipt-v0.1.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+async function copyReceipt(){if(!receipt)return;try{await navigator.clipboard.writeText(JSON.stringify(receipt,null,2));setNotice('Receipt copied.','good')}catch(_){setNotice('Clipboard blocked. Use Download JSON Receipt.','bad')}}
+ui.connectBtn.addEventListener('click',connectSigner);ui.baseBtn.addEventListener('click',useBase);ui.fileInput.addEventListener('change',async e=>{try{const f=e.target.files&&e.target.files[0];if(f)await readFile(f)}catch(err){setNotice(err?.message||String(err),'bad')}});ui.understand.addEventListener('change',updateUi);ui.signBtn.addEventListener('click',signExact);ui.downloadBtn.addEventListener('click',downloadReceipt);ui.receiptDownloadBtn.addEventListener('click',downloadReceipt);ui.copyBtn.addEventListener('click',copyReceipt);updateUi();
+})();
+</script>
+</body>
+</html>
