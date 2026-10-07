@@ -80,3 +80,50 @@ No game move creates a family graph, family consent, identity proof, payment rig
   "ledger_advance": false
 }
 ```
+
+
+## ThreeDaughtersPath — BoxDee visual receipt
+
+This extension turns the ThreeDaughtersPath structural replay into a family-safe game receipt. The rendered image is a game artifact and visual receipt; it is not photographic evidence, identity proof, genealogy proof, School promotion, or authority.
+
+```text
+SCHOOL_OF_WISDOM
+→ FAMILY_GATE
+→ DAUGHTER_1 → OBSERVE_1 → VERIFY_1
+→ DAUGHTER_2 → OBSERVE_2 → VERIFY_2
+→ DAUGHTER_3 → OBSERVE_3 → VERIFY_3
+→ HUMAN_DECISION
+```
+
+The three daughter lanes share the School/family entry and the final human-decision gate while remaining distinct through their daughter-specific observe/verify segments.
+
+```text
+PATH_COUNT                         = 3
+ACYCLIC                            = TRUE
+SHARED_PREFIX                      = TRUE
+PAIRWISE_DISJOINT_DAUGHTER_SEGMENTS = TRUE
+SHARED_TERMINAL                    = TRUE
+JOIN_BEFORE_GATE                   = FALSE
+IDENTITY_COLLAPSE                  = FALSE
+AUTHORITY_CREATED                  = FALSE
+PROMOTION_ALLOWED                  = FALSE
+```
+
+Game rules:
+
+- Shared membership does not collapse lane identity.
+- A rendered family-game image is a visual receipt of the game moment, not evidence that a depicted person or relationship exists in the world.
+- The only permitted common join in this path is `HUMAN_DECISION`.
+- `PASS / PRIVATE / REPLAY` remain available.
+- SchoolOfWisdom remains `NOT_PASSED_GLOBAL`; a scoped structural pass does not become a global pass.
+- The previously retracted `REPLAYABLE_DISCARD_LEAF` branch remains outside the School/game corpus.
+
+Visual receipt:
+
+```text
+ASSET_NAME = a_wide_high_resolution_poster_like_infographic.png
+SHA256     = 87e01aba1ad862ab03919621247b4613a5af8575b6385445fd1b5f23b3965739
+CLASS      = RENDERED_GAME_VISUAL_RECEIPT
+TITLE      = BoxDee Approved Family Propaganda / Three Daughters Path
+TRUTH_CLAIM_FROM_IMAGE = NONE
+```
