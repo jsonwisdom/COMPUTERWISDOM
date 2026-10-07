@@ -1,0 +1,22 @@
+{
+  "artifact": "NIGHTWOLF_REPLAY_TRIGGER_V0_1",
+  "class": "USER_INVOKED_EXECUTION_TRIGGER",
+  "purpose": "Trigger the existing COMPUTERWISDOM GitHub Pages deployment and FULLMATH Public 200 Audit without asserting that an exact NightWolf workflow file exists.",
+  "source_state": {
+    "exact_nightwolf_workflow_found": false,
+    "night_wolfe_drive_rail_found": true,
+    "computerwisdom_fullmath_200_audit_found": true
+  },
+  "execution_route": [
+    "TRIGGER_COMMIT",
+    "PAGES_DEPLOY",
+    "FULLMATH_PUBLIC_200_AUDIT"
+  ],
+  "invariants": {
+    "no_fake_green": true,
+    "authority_created": false,
+    "canon": false,
+    "deploy_success_does_not_imply_http_200": true,
+    "http_200_does_not_imply_semantic_correctness": true
+  }
+}
