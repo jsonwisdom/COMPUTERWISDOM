@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 set -u
 
-BASE_URL="\${1:-https://jsonwisdom.github.io/COMPUTERWISDOM/public/fullmath/}"
-REPORT_ROOT="\${2:-./_machine-sync/JASON_STORY_WORK_SYNC_20261005-210908}"
-MAX_WAIT="\${MAX_WAIT_SECONDS:-600}"
-POLL="\${POLL_SECONDS:-10}"
+BASE_URL="${1:-https://jsonwisdom.github.io/COMPUTERWISDOM/public/fullmath/}"
+REPORT_ROOT="${2:-./_machine-sync/JASON_STORY_WORK_SYNC_20261005-210908}"
+MAX_WAIT="${MAX_WAIT_SECONDS:-600}"
+POLL="${POLL_SECONDS:-10}"
 
 RUN="FULLMATH_PUBLIC_AUDIT_$(date -u +%Y%m%d-%H%M%S)"
 OUT="$REPORT_ROOT/$RUN"
@@ -12,7 +12,7 @@ mkdir -p "$OUT"
 
 targets=(
   "HOME|$BASE_URL"
-  "MATRIX|\${BASE_URL}matrix.html"
+  "MATRIX|${BASE_URL}matrix.html"
   "PLAY|https://jsonwisdom.github.io/COMPUTERWISDOM/public-record-verification/game.html"
   "KERNEL|https://jsonwisdom.github.io/COMPUTERWISDOM/docs/replay_kernel_v0_1.md"
   "ZORA|https://jsonwisdom.github.io/COMPUTERWISDOM/public/zora/CWAAS-FLYWHEEL-001_ZORA_DROP_RECEIPT.md"
@@ -40,12 +40,12 @@ printf 'id,url,status,pass\n' > "$OUT/links.csv"
 json_rows=""
 all=true
 i=0
-total=\${#targets[@]}
+total=${#targets[@]}
 
-for item in "\${targets[@]}"; do
+for item in "${targets[@]}"; do
   i=$((i+1))
-  id="\${item%%|*}"
-  url="\${item#*|}"
+  id="${item%%|*}"
+  url="${item#*|}"
   code=$(curl -L -sS -o /dev/null -w "%{http_code}" "$url" || true)
   pass=false
   if [ "$code" = "200" ]; then pass=true; else all=false; fi
