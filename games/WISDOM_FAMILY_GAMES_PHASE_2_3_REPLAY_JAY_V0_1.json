@@ -120,6 +120,26 @@
     "title": "BoxDee Approved Family Propaganda / Three Daughters Path",
     "truth_claim_from_image": "NONE",
     "school_standard": "NOT_PASSED_GLOBAL",
-    "leaf_branch_join": "ABSENT"
+    "leaf_branch_join": "ABSENT",
+    "github_asset": {
+      "path": "assets/wisdom-family-games/THREEDAUGHTERS_PATH_BOXDEE_VISUAL_RECEIPT_GITHUB_PREVIEW_V0_1.webp",
+      "branch": "game/wisdom-family-replay-jay-phase-2-3",
+      "role": "PREVIEW_DERIVATIVE",
+      "format": "WEBP",
+      "width": 256,
+      "height": 171,
+      "sha256": "e1e8e7a79853dde2a13d78a655eb8e3460b903278d56865e99d63b4618d7cade",
+      "git_blob_sha": "85b11d8dd56f84b9697aa166fbd0c8bed84dc352",
+      "commit": "94ad287e65889681ae4a2f3eb88d477526ab7635",
+      "source_full_png_sha256": "87e01aba1ad862ab03919621247b4613a5af8575b6385445fd1b5f23b3965739",
+      "exact_source_asset_in_github": false,
+      "asset_join": "BOUND"
+    },
+    "asset_invariants": [
+      "PREVIEW_DERIVATIVE != SOURCE_FULL_RENDER",
+      "GIT_BLOB_SHA != SHA256_CONTENT_DIGEST",
+      "ASSET_PRESENT != TRUTH_PROMOTION",
+      "VISUAL_RECEIPT != IDENTITY_PROOF"
+    ]
   }
 }
