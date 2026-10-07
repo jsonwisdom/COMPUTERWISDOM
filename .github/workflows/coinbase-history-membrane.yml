@@ -1,0 +1,43 @@
+name: Coinbase History Membrane
+
+on:
+  workflow_dispatch:
+  repository_dispatch:
+    types: [coinbase_archive_metadata_changed]
+  schedule:
+    - cron: "17 * * * *"
+
+permissions:
+  contents: read
+
+jobs:
+  validate-control-plane:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Assert no execution posture
+        shell: bash
+        run: |
+          set -euo pipefail
+          grep -q 'auto_execution: false' projects/cwaas/coinbase-history-membrane/membrane.yaml
+          grep -q 'human_approval_required: true' projects/cwaas/coinbase-history-membrane/membrane.yaml
+          grep -q 'execution_performed: false' projects/cwaas/coinbase-history-membrane/state.schema.yaml
+
+      - name: Syntax check archive auditor
+        run: python -m py_compile scripts/audit_coinbase_history_archive.py
+
+      - name: Control-plane receipt
+        run: |
+          printf '%s\n'             'mode=READ_ONLY'             'private_financial_data_committed=false'             'auto_execution=false'             'human_approval_required=true'             'status=CONTROL_PLANE_PASS'
+
+  trigger-membrane:
+    needs: validate-control-plane
+    runs-on: ubuntu-latest
+    steps:
+      - name: Emit safe trigger posture
+        run: |
+          echo "TRIGGER != TRADE"
+          echo "TIMESTAMP_DIFF != CAUSE"
+          echo "SIGNAL != ORDER"
+          echo "RESULT=REVIEW_ONLY"
