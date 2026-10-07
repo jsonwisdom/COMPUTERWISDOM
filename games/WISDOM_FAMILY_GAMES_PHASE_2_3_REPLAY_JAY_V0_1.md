@@ -127,3 +127,23 @@ CLASS      = RENDERED_GAME_VISUAL_RECEIPT
 TITLE      = BoxDee Approved Family Propaganda / Three Daughters Path
 TRUTH_CLAIM_FROM_IMAGE = NONE
 ```
+
+
+### GitHub asset join
+
+![BoxDee ThreeDaughtersPath visual receipt preview](../assets/wisdom-family-games/THREEDAUGHTERS_PATH_BOXDEE_VISUAL_RECEIPT_GITHUB_PREVIEW_V0_1.webp)
+
+```text
+GITHUB_ASSET_PATH        = assets/wisdom-family-games/THREEDAUGHTERS_PATH_BOXDEE_VISUAL_RECEIPT_GITHUB_PREVIEW_V0_1.webp
+GITHUB_ASSET_ROLE        = PREVIEW_DERIVATIVE
+GITHUB_ASSET_FORMAT      = WEBP
+GITHUB_ASSET_DIMENSIONS  = 256x171
+GITHUB_ASSET_SHA256      = e1e8e7a79853dde2a13d78a655eb8e3460b903278d56865e99d63b4618d7cade
+GITHUB_GIT_BLOB_SHA      = 85b11d8dd56f84b9697aa166fbd0c8bed84dc352
+GITHUB_ASSET_COMMIT      = 94ad287e65889681ae4a2f3eb88d477526ab7635
+SOURCE_FULL_PNG_SHA256   = 87e01aba1ad862ab03919621247b4613a5af8575b6385445fd1b5f23b3965739
+PREVIEW_DERIVATIVE      != SOURCE_FULL_RENDER
+ASSET_JOIN               = BOUND
+```
+
+The full rendered PNG remains the source visual receipt. The repository asset is a compact display derivative bound back to that source digest; neither image creates identity, genealogy, authority, canon, or promotion.
