@@ -1,0 +1,42 @@
+version: "0.1"
+type: state_schema
+
+required:
+  - run_id
+  - observed_at
+  - surface_states
+  - trigger_state
+  - execution_performed
+  - authority_created
+
+surface_state:
+  fields:
+    name: string
+    chunks_observed: integer
+    rows_observed: integer
+    next_cursor_present: boolean_or_unknown
+    explicit_terminus: boolean
+    completeness: "COMPLETE|BOUNDED_NOT_COMPLETE|HOLD"
+    newest_timestamp: timestamp_or_unknown
+    oldest_timestamp: timestamp_or_unknown
+    schema_hash: sha256_or_unknown
+    manifest_hash: sha256_or_unknown
+
+trigger_state:
+  fields:
+    triggered: boolean
+    classes: list
+    evidence: list
+    requires_human_review: boolean
+
+forbidden_public_fields:
+  - account_id
+  - order_id
+  - trade_id
+  - wallet_address
+  - raw_balance
+  - raw_transaction
+  - pagination_cursor
+
+execution_performed: false
+authority_created: false
