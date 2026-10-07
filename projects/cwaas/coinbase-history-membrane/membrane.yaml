@@ -1,0 +1,57 @@
+version: "0.1"
+name: coinbase-full-history-membrane
+mode: read_only
+authority_created: false
+
+surfaces:
+  drive:
+    role: private_archive
+    may_hold_private_financial_data: true
+  github:
+    role: public_control_plane
+    may_hold_private_financial_data: false
+  wolfram:
+    role: deterministic_verifier
+    input_policy: sanitized_metadata_or_private_local_materialization
+  human:
+    role: final_decision_gate
+
+invariants:
+  - PRIVATE_FINANCIAL_DATA != PUBLIC_GITHUB_DATA
+  - OBSERVATION != AUTHORITY
+  - SIGNAL != ORDER
+  - ORDER_CANDIDATE != EXECUTION
+  - TIMESTAMP_DIFF != CAUSE
+  - TRIGGER != TRADE
+  - PAGE_END != HISTORY_END
+  - CURSOR_PRESENT => HISTORY_INCOMPLETE
+  - FIELD_NAME != FIELD_SEMANTIC
+  - UNKNOWN != EMPTY
+
+trigger_classes:
+  - NEW_CHUNK
+  - CURSOR_ADVANCED
+  - CURSOR_ENDED
+  - HASH_CHANGED
+  - SCHEMA_DRIFT
+  - TIMESTAMP_GAP
+  - TIMESTAMP_OVERLAP
+  - DUPLICATE_STABLE_ID
+  - HISTORY_COMPLETE
+  - HISTORY_INCOMPLETE
+  - FIELD_SEMANTICS_HOLD
+  - WOLFRAM_DIVERGENCE
+  - REVIEW_REQUIRED
+
+execution:
+  auto_execution: false
+  human_approval_required: true
+  execution_receipt_required: true
+
+completion:
+  requires:
+    - explicit_pagination_terminus_per_surface
+    - chunk_hashes_present
+    - no_unresolved_schema_drift
+    - stable_id_audit_complete
+    - timestamp_continuity_audit_complete
