@@ -91,5 +91,35 @@
   },
   "family_facts_promoted": 0,
   "kinship_inference": "BLOCKED",
-  "ledger_advance": false
+  "ledger_advance": false,
+  "three_daughters_path": {
+    "schema": "THREEDAUGHTERS_PATH_V0_1",
+    "path_count": 3,
+    "acyclic": true,
+    "shared_prefix": true,
+    "pairwise_disjoint_daughter_segments": true,
+    "shared_terminal": "HUMAN_DECISION",
+    "join_before_gate": false,
+    "identity_collapse": false,
+    "authority_created": false,
+    "promotion_allowed": false,
+    "invariants": [
+      "SHARED_MEMBERSHIP != LANE_IDENTITY",
+      "DAUGHTER_1 != DAUGHTER_2",
+      "DAUGHTER_1 != DAUGHTER_3",
+      "DAUGHTER_2 != DAUGHTER_3",
+      "SCOPED_PASS != GLOBAL_PASS",
+      "RENDERED_IMAGE != PHOTOGRAPHIC_EVIDENCE",
+      "VISUAL_RECEIPT != IDENTITY_PROOF"
+    ]
+  },
+  "visual_receipt": {
+    "asset_name": "a_wide_high_resolution_poster_like_infographic.png",
+    "sha256": "87e01aba1ad862ab03919621247b4613a5af8575b6385445fd1b5f23b3965739",
+    "class": "RENDERED_GAME_VISUAL_RECEIPT",
+    "title": "BoxDee Approved Family Propaganda / Three Daughters Path",
+    "truth_claim_from_image": "NONE",
+    "school_standard": "NOT_PASSED_GLOBAL",
+    "leaf_branch_join": "ABSENT"
+  }
 }
