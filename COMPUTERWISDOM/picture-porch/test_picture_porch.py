@@ -9,6 +9,7 @@ Note: Some environments block localhost navigation
 (ERR_BLOCKED_BY_ADMINISTRATOR). A blocked run must not be reported as PASS.
 """
 from pathlib import Path
+import time
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from threading import Thread
 from playwright.sync_api import sync_playwright
@@ -121,40 +122,72 @@ try:
         assert "1 of 8" in page.locator("#counter").inner_text()
         print("GUARD: contact-details prompt blocked")
 
-        # Fill remaining painting slots to the daily cap
+        # Stage seven paintings: the first seven slots are occupied.
+        # The two tabs must both observe an available eighth slot.
         page.locator("#prompt").fill("A happy rainbow duck in rain boots!")
-        for i in range(7):
+        for i in range(6):
             page.locator("#paint").click()
             page.wait_for_function(
                 f'document.querySelector("#counter").textContent.includes("{i + 2} of 8")'
             )
-        assert page.locator("#paint").is_disabled()
-        assert page.locator(".shelf-item").count() == 9  # 1 word + 8 paints
-        print("CAP: eighth painting allowed; ninth disabled")
+        assert page.locator(".shelf-item").count() == 8  # one word + seven paints
+        assert page.locator("#paint").is_enabled()
+        print("CAP: seven paintings saved, one slot remains")
 
-        # --- Concurrent-tab quota contention ---
+        # --- Actual cross-tab contention at 7/8 (not post-cap disabled clicks) ---
+        # Both tabs share an origin and IndexedDB, observe 7/8, and queue a
+        # painting attempt for the same wall-clock deadline.
         page2 = context.new_page()
+        page2.on("pageerror", lambda e: errors.append("tab2: " + str(e)))
+        page2.on("request", lambda r: requests.append(r.url))
         page2.goto(url, wait_until="load")
         page2.wait_for_function(
-            'document.querySelector("#counter").textContent.includes("8 of 8")'
+            'document.querySelector("#counter").textContent.includes("7 of 8")'
         )
-        assert page2.locator("#paint").is_disabled()
-        # Attempt to paint from second tab must be blocked by shared quota
+        assert page2.locator("#paint").is_enabled()
+
+        page.locator("#prompt").fill("A rainbow duck dances with a spoon!")
         page2.locator("#prompt").fill("A silly robot waves from another tab!")
-        page2.locator("#paint").click()
-        page2.wait_for_timeout(600)
-        # Counter must stay at 8; paint button remains disabled
-        assert "8 of 8" in page2.locator("#counter").inner_text()
-        assert page2.locator("#paint").is_disabled()
-        # First tab still consistent after second-tab attempt
-        page.reload()
-        page.wait_for_function(
-            'document.querySelector("#counter").textContent.includes("8 of 8")'
-        )
-        assert page.locator("#paint").is_disabled()
-        assert page.locator(".shelf-item").count() == 9
+        for tab in (page, page2):
+            tab.evaluate(
+                'document.querySelector("#notice").textContent = "RACE_PENDING"'
+            )
+        deadline_ms = int(time.time() * 1000) + 1500
+        for tab in (page, page2):
+            tab.evaluate(
+                """deadline => {
+                    const button = document.querySelector("#paint");
+                    setTimeout(() => button.click(), Math.max(0, deadline - Date.now()));
+                }""",
+                deadline_ms,
+            )
+
+        for tab in (page, page2):
+            tab.wait_for_function(
+                """() => {
+                    const notice = document.querySelector("#notice").textContent;
+                    return notice.includes("Your little cartoon is on your private Shelf!")
+                        || notice.includes("Eight paintings are already");
+                }"""
+            )
+        notices = [tab.locator("#notice").inner_text() for tab in (page, page2)]
+        winners = sum("Your little cartoon is on your private Shelf!" in n for n in notices)
+        losers = sum("Eight paintings are already" in n for n in notices)
+        assert (winners, losers) == (1, 1), notices
+
+        # Read back from storage in BOTH tabs. Exactly one eighth painting
+        # is committed; the denied write creates no ninth painting.
+        for tab in (page, page2):
+            tab.reload()
+            tab.wait_for_function(
+                'document.querySelector("#counter").textContent.includes("8 of 8")'
+            )
+            tab.wait_for_function(
+                'document.querySelectorAll(".shelf-item").length === 9'
+            )
+            assert tab.locator("#paint").is_disabled()
+        print("MULTI_TAB: both attempted at 7/8; one succeeded; one denied; total 8")
         page2.close()
-        print("MULTI_TAB: concurrent tab cannot exceed eight saved paintings")
 
         # Final consistency checks
         page.reload()
