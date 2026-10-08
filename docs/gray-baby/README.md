@@ -8,6 +8,7 @@ Gray Baby is the gap-observer layer: preserve what exists, expose what is missin
 
 ## Canonical docs
 
+- `GBS_BOXDEE_BURDEN_V001.md` — universal burden-of-proof rule for asserted transitions; companion machine contract: `GBS_BOXDEE_BURDEN_V001.schema.json`.
 - `PLATFORM_PREPAREDNESS_V0_1.md` — current platform boundaries for Base, GitHub, Farcaster, Zora, and Lean.
 - `MINNESOTA_SUPREME_SUBSTRATES_ORDER_V0_1.md` — return path into the Minnesota Phase 04 hierarchy.
 - `SAINT_CLOUD_MAPPING_V0_1.md` — Saint Cloud as the first local observation/replay anchor inside Minnesota Public Sandbox → BoxD Minnesota → Jay's Minnesota Gambit.
