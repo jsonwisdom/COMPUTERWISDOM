@@ -63,7 +63,7 @@ Both scripts use Playwright-managed Chromium. There is no hard-coded OS browser 
 | Check | Result |
 |-------|--------|
 | Fallback (opaque-origin) browser test | **PASS** (re-run confirmed) |
-| Normal-origin suite | **HOLD** — a local earlier-suite attempt using system Chromium reached localhost navigation and was blocked by `ERR_BLOCKED_BY_ADMINISTRATOR`; this newly corrected test version was not executed |
+| Normal-origin suite | **PASS in GitHub Actions only** — run [`37771984179`](https://github.com/jsonwisdom/COMPUTERWISDOM/actions/runs/37771984179), exact checkout `61019571dc16222c6394c390eed4c94352cb7c5b`; Shelf persistence, 7→8 two-tab race, PNG/TXT content checks, and no external requests all passed |
 | Committed `index.html` byte SHA-256 | **VERIFIED:** `853da020c2f4befa1674f37234b81c9ba3fa316884bc083d759a97aa0700a087` |
 | Local HTML export vs committed `index.html` | **DIFFERENT BY ONE FINAL LF:** export `ba6c71cd7172165e63e3e3203da896e1c3c06dba2bd2078eb80c043be9d104d1` (with LF); committed file has no final LF |
 | JOY placeholder | **UNCHANGED** |
@@ -75,7 +75,7 @@ A code change or successful CI workflow that does **not** execute the browser su
 - Corrected `test_picture_porch.py` to prepare **seven** saved paintings, open two tabs while both buttons are enabled, schedule competing save attempts for the last slot, assert **exactly one success and one quota-denial**, then reload both tabs to prove **eight total**. No disabled-button click masquerades as a race.
 - Static review and independent adult/family decision checklist: [FAMILY_PRIVACY_CONSENT_REVIEW_V0_1.md](FAMILY_PRIVACY_CONSENT_REVIEW_V0_1.md). A prepared checklist is **not** parental consent or family approval.
 - Environment preflight: Python Playwright and system Chromium present; Playwright-managed Chromium missing at `/home/oai/.cache/ms-playwright/chromium-1200/chrome-linux64/chrome`. An older normal-origin attempt using system Chromium failed at `page.goto` with `net::ERR_BLOCKED_BY_ADMINISTRATOR` before the app loaded.
-- **DO NOT** promote: this corrected concurrency test has not produced a runtime receipt. Storage persistence, quota, download acceptance, and child/family safety remain **HOLD**. Run the corrected suite with managed Chromium from an environment permitting localhost navigation and attach full stdout/stderr with test source commit and timestamp. GitHub CI for unrelated workflows is not acceptance evidence.
+- **Browser acceptance PASS (bounded to runner + tested source):** Run [`37771984179`](https://github.com/jsonwisdom/COMPUTERWISDOM/actions/runs/37771984179) checked out `61019571dc16222c6394c390eed4c94352cb7c5b`, successfully ran both Python suites, and uploaded a synthetic-only receipt. See [receipts/PICTURE_PORCH_CI_ACCEPTANCE_20261008_V0_1.md](receipts/PICTURE_PORCH_CI_ACCEPTANCE_20261008_V0_1.md). This does **not** certify content safety or adult consent. Family-safety approval, merge and deployment remain **HOLD**. GitHub CI for unrelated workflows is not acceptance evidence.
 - No wallet, child-generated content, private family details, or child consent claims are added to this source-only draft PR. No JOY mutation, merge or deployment.
 
 ## Exact-byte provenance correction (2026-10-08)
