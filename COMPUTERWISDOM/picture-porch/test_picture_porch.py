@@ -12,7 +12,8 @@ from pathlib import Path
 import time
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from threading import Thread
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import sync_playwright, expect
+import re
 
 root = Path(__file__).parent
 
@@ -44,9 +45,7 @@ try:
         page.on("request", lambda r: requests.append(r.url))
 
         page.goto(url, wait_until="load")
-        page.wait_for_function(
-            'document.querySelector("#counter").textContent.includes("0 of 8")'
-        )
+        expect(page.locator("#counter")).to_contain_text("0 of 8")
         page.screenshot(
             path=str(root / "picture-porch-desktop.png"), full_page=True
         )
@@ -59,12 +58,9 @@ try:
         # Word pictures deliberately consume ZERO paintings. Waiting for
         # "0 of 8" is insufficient because it was already displayed before
         # the asynchronous IndexedDB commit and Shelf refresh completed.
-        page.wait_for_function(
-            """() => document.querySelectorAll(".shelf-item").length === 1
-                && document.querySelector("#notice").textContent.includes(
-                    "Your word picture is on your private Shelf"
-                )""",
-            timeout=15000,
+        expect(page.locator(".shelf-item")).to_have_count(1, timeout=15000)
+        expect(page.locator("#notice")).to_contain_text(
+            "Your word picture is on your private Shelf", timeout=15000
         )
         assert "0 of 8" in page.locator("#counter").inner_text()
         assert page.locator(".shelf-item").count() == 1
@@ -85,19 +81,13 @@ try:
 
         # Shelf persistence after reload
         page.reload()
-        page.wait_for_function(
-            'document.querySelectorAll(".shelf-item").length === 1'
-        )
-        page.wait_for_function(
-            'document.querySelector("#counter").textContent.includes("0 of 8")'
-        )
+        expect(page.locator(".shelf-item")).to_have_count(1)
+        expect(page.locator("#counter")).to_contain_text("0 of 8")
         print("RELOAD: shelf persists; counter still 0 of 8")
 
         # --- First painting + PNG download ---
         page.locator("#paint").click()
-        page.wait_for_function(
-            'document.querySelector("#counter").textContent.includes("1 of 8")'
-        )
+        expect(page.locator("#counter")).to_contain_text("1 of 8")
         assert page.locator(".shelf-item").count() == 2
         assert page.locator("#joy").is_visible()
         assert page.locator("#art").is_visible()
@@ -132,9 +122,7 @@ try:
         page.locator("#prompt").fill("A happy rainbow duck in rain boots!")
         for i in range(6):
             page.locator("#paint").click()
-            page.wait_for_function(
-                f'document.querySelector("#counter").textContent.includes("{i + 2} of 8")'
-            )
+            expect(page.locator("#counter")).to_contain_text(f"{i + 2} of 8")
         assert page.locator(".shelf-item").count() == 8  # one word + seven paints
         assert page.locator("#paint").is_enabled()
         print("CAP: seven paintings saved, one slot remains")
@@ -146,9 +134,7 @@ try:
         page2.on("pageerror", lambda e: errors.append("tab2: " + str(e)))
         page2.on("request", lambda r: requests.append(r.url))
         page2.goto(url, wait_until="load")
-        page2.wait_for_function(
-            'document.querySelector("#counter").textContent.includes("7 of 8")'
-        )
+        expect(page2.locator("#counter")).to_contain_text("7 of 8")
         assert page2.locator("#paint").is_enabled()
 
         page.locator("#prompt").fill("A rainbow duck dances with a spoon!")
@@ -168,12 +154,9 @@ try:
             )
 
         for tab in (page, page2):
-            tab.wait_for_function(
-                """() => {
-                    const notice = document.querySelector("#notice").textContent;
-                    return notice.includes("Your little cartoon is on your private Shelf!")
-                        || notice.includes("Eight paintings are already");
-                }"""
+            expect(tab.locator("#notice")).to_contain_text(
+                re.compile(r"Your little cartoon is on your private Shelf!|Eight paintings are already"),
+                timeout=15000,
             )
         notices = [tab.locator("#notice").inner_text() for tab in (page, page2)]
         winners = sum("Your little cartoon is on your private Shelf!" in n for n in notices)
@@ -184,21 +167,15 @@ try:
         # is committed; the denied write creates no ninth painting.
         for tab in (page, page2):
             tab.reload()
-            tab.wait_for_function(
-                'document.querySelector("#counter").textContent.includes("8 of 8")'
-            )
-            tab.wait_for_function(
-                'document.querySelectorAll(".shelf-item").length === 9'
-            )
+            expect(tab.locator("#counter")).to_contain_text("8 of 8")
+            expect(tab.locator(".shelf-item")).to_have_count(9)
             assert tab.locator("#paint").is_disabled()
         print("MULTI_TAB: both attempted at 7/8; one succeeded; one denied; total 8")
         page2.close()
 
         # Final consistency checks
         page.reload()
-        page.wait_for_function(
-            'document.querySelector("#counter").textContent.includes("8 of 8")'
-        )
+        expect(page.locator("#counter")).to_contain_text("8 of 8")
         assert page.locator("#paint").is_disabled()
         assert page.locator(".shelf-item").count() == 9
         assert not errors, errors
