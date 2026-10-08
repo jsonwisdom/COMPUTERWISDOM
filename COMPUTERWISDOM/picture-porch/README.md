@@ -64,10 +64,15 @@ Both scripts use Playwright-managed Chromium. There is no hard-coded OS browser 
 |-------|--------|
 | Fallback (opaque-origin) browser test | **PASS** (re-run confirmed) |
 | Normal-origin suite | **BLOCKED** in restricted environments that reject localhost navigation (`ERR_BLOCKED_BY_ADMINISTRATOR`) |
-| Source package SHA-256 | **MATCH** |
+| Committed `index.html` byte SHA-256 | **VERIFIED:** `853da020c2f4befa1674f37234b81c9ba3fa316884bc083d759a97aa0700a087` |
+| Local HTML export vs committed `index.html` | **DIFFERENT BY ONE FINAL LF:** export `ba6c71cd7172165e63e3e3203da896e1c3c06dba2bd2078eb80c043be9d104d1` (with LF); committed file has no final LF |
 | JOY placeholder | **UNCHANGED** |
 
 A code change or successful CI workflow that does **not** execute the browser suite does **not** convert a blocked or un-run check into PASS.
+
+## Exact-byte provenance correction (2026-10-08)
+
+The earlier PR receipt incorrectly labeled the local exported HTML SHA-256 as the SHA-256 of the committed `index.html`. The text matched but the bytes did not: GitHub's `index.html` has **no terminal LF**. The unchanged Git blob is `8f89e5a605522abda190838f6772bd53e133487d`, and its content SHA-256 is `853da020c2f4befa1674f37234b81c9ba3fa316884bc083d759a97aa0700a087`. The local exported HTML includes one terminal LF, producing `ba6c71cd7172165e63e3e3203da896e1c3c06dba2bd2078eb80c043be9d104d1`. The earlier **MATCH to committed bytes** claim is withdrawn. Neither `index.html` nor child-facing behavior was changed by this documentation correction.
 
 ## Verification status
 
