@@ -27,10 +27,53 @@ The local web server serves the file to this device only; no cloud host is neede
 - The HTML has a restrictive CSP (`connect-src 'none'`) and no external script, image, font, API, wallet, analytics, or publish action. The *code* can be public; children should not put private details into it. Browser-local data is not encrypted or password-protected, and is visible to anyone using that browser profile.
 - Source code is not deployment, test output is not child-safety certification, and a Git blob SHA is not a SHA-256 content digest. Preserve no-fake-green.
 
+## Running the verification suite
+
+Install Playwright and its managed Chromium once (portable across Linux, macOS, and Windows):
+
+```sh
+pip install playwright
+python -m playwright install chromium
+```
+
+Then, from `COMPUTERWISDOM/picture-porch/`:
+
+```sh
+# Opaque-origin / storage-unavailable smoke test (no local server required)
+python test_fallback.py
+
+# Normal-origin acceptance suite (local HTTP server started by the script)
+python test_picture_porch.py
+```
+
+Both scripts use Playwright-managed Chromium. There is no hard-coded OS browser path.
+
+### What the normal-origin suite checks
+
+- Shelf persistence after page reload
+- Daily painting cap (8 saved paintings; word pictures do not count)
+- Concurrent-tab quota: a second tab sharing the same origin/storage cannot exceed eight paintings
+- PNG download content (valid PNG signature + non-trivial size)
+- TXT download content (word-picture text present)
+- Contact-details guard sample
+- No external network requests; no uncaught JavaScript errors
+
+### Observed results (as of verification patch)
+
+| Check | Result |
+|-------|--------|
+| Fallback (opaque-origin) browser test | **PASS** (re-run confirmed) |
+| Normal-origin suite | **BLOCKED** in restricted environments that reject localhost navigation (`ERR_BLOCKED_BY_ADMINISTRATOR`) |
+| Source package SHA-256 | **MATCH** |
+| JOY placeholder | **UNCHANGED** |
+
+A code change or successful CI workflow that does **not** execute the browser suite does **not** convert a blocked or un-run check into PASS.
+
 ## Verification status
 
-- **PASS (local Chromium opaque-origin fallback test):** UI renders; fails closed without IndexedDB; word-picture/JOY question appears; sample phone-number prompt blocked; no JavaScript exceptions; no network requests. See `test_fallback.py` for the standalone test (uses Python Playwright + Chromium).
-- **NOT RUN IN A REAL ORIGIN:** IndexedDB persistence across reload; atomic quota under concurrent tabs; download handling; complete prompt-safety/adult review. The controlled test browser blocked HTTP and file navigation with `ERR_BLOCKED_BY_ADMINISTRATOR`. The normal-origin Playwright test (`test_picture_porch.py`) is included for a developer to run in an environment permitting localhost browser access.
+- **PASS (local Chromium opaque-origin fallback test):** UI renders; fails closed without IndexedDB; word-picture/JOY question appears; sample phone-number prompt blocked; no JavaScript exceptions; no network requests. See `test_fallback.py`.
+- **HOLD (normal-origin runtime):** IndexedDB persistence across reload, concurrent-tab quota, download handling, and full eighth/ninth-paint behaviour require a real-origin browser run. The controlled test environment previously blocked HTTP/file navigation. The suite in `test_picture_porch.py` is ready for any developer environment that permits localhost browser access.
+- **HOLD (family / privacy / consent review):** Independent adult review is required before any child-facing use. The text guard is incomplete and is not a safety certification.
 - **NO LIVE IMAGE PROVIDER:** No external credits are required; no claim of AI image generation.
 
 ## Role separation
