@@ -56,12 +56,17 @@ try:
 
         # --- Word picture (does not consume painting quota) ---
         page.locator("#words").click()
+        # Word pictures deliberately consume ZERO paintings. Waiting for
+        # "0 of 8" is insufficient because it was already displayed before
+        # the asynchronous IndexedDB commit and Shelf refresh completed.
         page.wait_for_function(
-            'document.querySelector("#counter").textContent.includes("0 of 8")'
+            """() => document.querySelectorAll(".shelf-item").length === 1
+                && document.querySelector("#notice").textContent.includes(
+                    "Your word picture is on your private Shelf"
+                )""",
+            timeout=15000,
         )
-        assert "Your word picture is on your private Shelf" in page.locator(
-            "#notice"
-        ).inner_text()
+        assert "0 of 8" in page.locator("#counter").inner_text()
         assert page.locator(".shelf-item").count() == 1
         assert page.locator("#joy").is_visible()
 
