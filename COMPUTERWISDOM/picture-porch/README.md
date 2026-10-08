@@ -52,23 +52,31 @@ Both scripts use Playwright-managed Chromium. There is no hard-coded OS browser 
 
 - Shelf persistence after page reload
 - Daily painting cap (8 saved paintings; word pictures do not count)
-- Concurrent-tab quota: a second tab sharing the same origin/storage cannot exceed eight paintings
+- Two-tab last-slot contention: both tabs observe **7 of 8**, both issue an attempted eighth painting, exactly one succeeds, the other receives quota rejection; each tab reloads with **8 of 8** and the expected Shelf size. This test is not verified until actually run.
 - PNG download content (valid PNG signature + non-trivial size)
 - TXT download content (word-picture text present)
 - Contact-details guard sample
 - No external network requests; no uncaught JavaScript errors
 
-### Observed results (as of verification patch)
+### Observed results (after Option D test correction)
 
 | Check | Result |
 |-------|--------|
 | Fallback (opaque-origin) browser test | **PASS** (re-run confirmed) |
-| Normal-origin suite | **BLOCKED** in restricted environments that reject localhost navigation (`ERR_BLOCKED_BY_ADMINISTRATOR`) |
+| Normal-origin suite | **HOLD** — a local earlier-suite attempt using system Chromium reached localhost navigation and was blocked by `ERR_BLOCKED_BY_ADMINISTRATOR`; this newly corrected test version was not executed |
 | Committed `index.html` byte SHA-256 | **VERIFIED:** `853da020c2f4befa1674f37234b81c9ba3fa316884bc083d759a97aa0700a087` |
 | Local HTML export vs committed `index.html` | **DIFFERENT BY ONE FINAL LF:** export `ba6c71cd7172165e63e3e3203da896e1c3c06dba2bd2078eb80c043be9d104d1` (with LF); committed file has no final LF |
 | JOY placeholder | **UNCHANGED** |
 
 A code change or successful CI workflow that does **not** execute the browser suite does **not** convert a blocked or un-run check into PASS.
+
+## Option D test correction and family-review gate (2026-10-08)
+
+- Corrected `test_picture_porch.py` to prepare **seven** saved paintings, open two tabs while both buttons are enabled, schedule competing save attempts for the last slot, assert **exactly one success and one quota-denial**, then reload both tabs to prove **eight total**. No disabled-button click masquerades as a race.
+- Static review and independent adult/family decision checklist: [FAMILY_PRIVACY_CONSENT_REVIEW_V0_1.md](FAMILY_PRIVACY_CONSENT_REVIEW_V0_1.md). A prepared checklist is **not** parental consent or family approval.
+- Environment preflight: Python Playwright and system Chromium present; Playwright-managed Chromium missing at `/home/oai/.cache/ms-playwright/chromium-1200/chrome-linux64/chrome`. An older normal-origin attempt using system Chromium failed at `page.goto` with `net::ERR_BLOCKED_BY_ADMINISTRATOR` before the app loaded.
+- **DO NOT** promote: this corrected concurrency test has not produced a runtime receipt. Storage persistence, quota, download acceptance, and child/family safety remain **HOLD**. Run the corrected suite with managed Chromium from an environment permitting localhost navigation and attach full stdout/stderr with test source commit and timestamp. GitHub CI for unrelated workflows is not acceptance evidence.
+- No wallet, child-generated content, private family details, or child consent claims are added to this source-only draft PR. No JOY mutation, merge or deployment.
 
 ## Exact-byte provenance correction (2026-10-08)
 
