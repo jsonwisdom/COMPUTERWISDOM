@@ -17,13 +17,13 @@ jobs:
           python-version: '3.12'
       - name: Build read-only dated JSON and Markdown morning packet
         env:
-          GITHUB_TOKEN: \${{ github.token }}
+          GITHUB_TOKEN: ${{ github.token }}
         run: python scripts/build_operator_morning.py
       - name: Upload independently inspectable packet
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: cwaas-morning-packet-\${{ github.run_id }}
+          name: cwaas-morning-packet-${{ github.run_id }}
           path: out/operator/
           if-no-files-found: error
           retention-days: 30
