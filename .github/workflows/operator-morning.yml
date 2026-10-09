@@ -1,0 +1,32 @@
+name: CWaaS Operator Morning
+on:
+  schedule:
+    # 13:30 UTC: 08:30 CDT / 07:30 CST. GitHub cron does not guarantee exact delivery.
+    - cron: "30 13 * * *"
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  operator_packet:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Build read-only dated JSON and Markdown morning packet
+        env:
+          GITHUB_TOKEN: \${{ github.token }}
+        run: python scripts/build_operator_morning.py
+      - name: Upload independently inspectable packet
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: cwaas-morning-packet-\${{ github.run_id }}
+          path: out/operator/
+          if-no-files-found: error
+          retention-days: 30
+# No wallet commands, signing RPC, GitHub contents writes or Drive credentials.
+# Google Drive auto-upload is not configured. Use a separately approved Drive
+# integration with least-privilege delegated credentials, not secrets in source.
