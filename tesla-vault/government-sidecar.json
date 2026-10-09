@@ -1,0 +1,13 @@
+{
+  "purpose": "Government source discovery separated from evidence",
+  "government_endorsement": false,
+  "source_portal_not_warrant": true,
+  "links": [
+    "https://vault.fbi.gov/nikola-tesla",
+    "https://npgallery.nps.gov/AssetDetail/NRIS/100002744",
+    "https://findingaids.loc.gov/repositories/19/resources/5743",
+    "https://www.uspto.gov/",
+    "https://www.usa.gov/"
+  ],
+  "museum_source": "https://tesla-museum.org/en/museum/history/"
+}

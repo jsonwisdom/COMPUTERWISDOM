@@ -1,0 +1,37 @@
+{
+  "object": "TESLA_WIKIATOMBOMB_FBI_VAULT_SITE_V0_1",
+  "source": "FBI_VAULT_ORIGINAL",
+  "files": [
+    {
+      "part": "Part 01",
+      "pages": 249,
+      "bytes": 46181214,
+      "fbi_view": "https://vault.fbi.gov/nikola-tesla/Nikola%20Tesla%20Part%2001/view",
+      "pdf": "https://vault.fbi.gov/nikola-tesla/Nikola%20Tesla%20Part%2001/at_download/file"
+    },
+    {
+      "part": "Part 02",
+      "pages": 41,
+      "bytes": 9881092,
+      "fbi_view": "https://vault.fbi.gov/nikola-tesla/Nikola%20Tesla%20Part%2002/view",
+      "pdf": "https://vault.fbi.gov/nikola-tesla/Nikola%20Tesla%20Part%2002/at_download/file"
+    },
+    {
+      "part": "Part 03 (Final)",
+      "pages": 64,
+      "bytes": 4124834,
+      "fbi_view": "https://vault.fbi.gov/nikola-tesla/Nikola%20Tesla%20Part%2003%20%28Final%29/view",
+      "pdf": "https://vault.fbi.gov/nikola-tesla/Nikola%20Tesla%20Part%2003%20%28Final%29/at_download/file"
+    }
+  ],
+  "total_pages": 354,
+  "all_pages_audited": false,
+  "records": 14,
+  "reported_1943_trunks": "~80 (unreconciled FBI report)",
+  "confirmed_1951_shipping_containers": "60 mixed packages per Tesla Museum",
+  "causal_join": "HOLD",
+  "primary_1943_scan_replay": "PENDING",
+  "authority_created": false,
+  "canon": false,
+  "human_final_decision": "JASON"
+}
