@@ -53,6 +53,14 @@
       "blob_sha": null,
       "state": "DRAFT_UNAPPROVED",
       "permitted_instead_of_649": false
+    },
+    {
+      "path": "operator/sign-neutral/index.html",
+      "name": "Operator Neutral Signer",
+      "signer_type": "New candidate neutral EIP-191 capture-only, expected address blank",
+      "blob_sha": null,
+      "state": "DRAFT_UNAPPROVED",
+      "permitted_instead_of_649": false
     }
   ]
 }
