@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; img-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<title>COMPUTERWISDOM — Message-Only Signing Workbench (Review Candidate)</title>
+<style>
+:root{font-family:system-ui,sans-serif;color-scheme:dark;background:#081225;color:#eaf3ff}*{box-sizing:border-box}
+main{max-width:850px;margin:auto;padding:32px 16px 80px}h1{font-size:clamp(1.7rem,4vw,2.6rem)}
+section{border:1px solid #31516f;background:#12233a;border-radius:14px;padding:18px;margin:14px 0}
+.warning{border-color:#b99232;background:#332b19}p,small{line-height:1.55;color:#bbd0e3}
+input,textarea,button,select{font:inherit}input,textarea,select{width:100%;padding:12px;background:#071426;color:#f1f7ff;border:1px solid #48738d;border-radius:8px;margin:7px 0}
+textarea{min-height:170px;resize:vertical}button{padding:11px 17px;background:#46d8bf;border:0;border-radius:8px;color:#092222;font-weight:750;cursor:pointer;margin:7px 5px 7px 0}
+button:disabled{opacity:.35;cursor:not-allowed}button.secondary{background:#263e57;color:#d2e8ef;border:1px solid #5c7a93}
+label{display:block;font-weight:650;margin-top:8px}.mono,pre{font:12px/1.5 ui-monospace,monospace;overflow-wrap:anywhere;white-space:pre-wrap}
+pre{background:#071426;padding:14px;border-radius:7px;max-height:320px;overflow:auto}
+#status{font-weight:700;padding:12px;background:#17344b;border-radius:8px}a{color:#7af7e1}
+</style></head><body><main>
+<p class="mono">COMPUTERWISDOM / DRAFT REVIEW SURFACE / NOT AN IDENTITY AUTHORITY</p>
+<h1>Message-only signing workbench</h1>
+<section class="warning"><strong>Security boundary</strong>
+<p>This is a NEW candidate. It does not unlock or replace the disabled <code>wallet-control/jaywisdom-base/</code> page. Only use after independent code review and explicit human approval. Never type your seed phrase or private key here. This page only requests a message signature, not a transaction.</p>
+<p>Signing proves neither human identity nor ENS ownership nor institutional authority. The downloaded receipt is <b>CAPTURED_NOT_INDEPENDENTLY_VERIFIED</b>, not a verified proof.</p></section>
+<section>
+<label for="purpose">1. Purpose</label><select id="purpose">
+<option value="BASE_WALLET_CONTROL">Base wallet message-control proof</option>
+<option value="NEUTRAL_EVM_CONTROL">Neutral EVM wallet message receipt</option>
+<option value="HW25_PACKET_REFERENCE_ONLY">HW25 packet reference (no packet hash binding)</option>
+</select>
+<label for="expected">Expected wallet address (optional, but required for claimed address match)</label>
+<input id="expected" spellcheck="false" autocomplete="off" value="0xa380552a27b0a5a2874ea7aa52cac09f542002e8" aria-label="Expected wallet address">
+<small>Clear this address for neutral mode. This page does NOT verify Basename resolution, packet hashes, or smart-wallet ERC-1271 signatures.</small>
+<div><button id="connect">2. Connect injected browser wallet</button><button id="prepare" disabled>3. Create 10-minute challenge</button></div>
+<p id="status" role="status">No wallet connected.</p>
+</section>
+<section><h2>4. Read exactly what you will sign</h2><pre id="message">Connect wallet and create a challenge.</pre>
+<label><input style="width:auto" id="consent" type="checkbox"> I inspected the exact message and consent to a message signature only.</label>
+<button id="sign" disabled>5. Sign message, then recheck expiry</button><button id="reset" class="secondary">Reset</button>
+<p class="mono" id="countdown"></p></section>
+<section><h2>6. Local JSON receipt</h2>
+<p>Nothing is uploaded from this page. You choose where to save the receipt. Never publish a signature or a wallet-associated receipt as an identity proof without separate approval.</p>
+<pre id="receipt">No signature captured.</pre><button id="download" disabled>Download JSON receipt</button>
+</section>
+<script>
+(function(){
+'use strict';
+const $=id=>document.getElementById(id);let wallet=null,addr=null,chain=null,challenge=null,saved=null,epoch=0;
+const BASE_ID='0x2105',maxAge=10*60*1000;
+function setStatus(t){$('status').textContent=t}
+function same(a,b){return a&&b&&String(a).toLowerCase()===String(b).toLowerCase()}
+function addrOK(a){return /^0x[0-9a-fA-F]{40}$/.test(a)}
+function hex(bytes){return '0x'+Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('')}
+function utf8Hex(t){return hex(new TextEncoder().encode(t))}
+function clear(){epoch++;challenge=null;saved=null;$('message').textContent='Connect wallet and create a challenge.';$('receipt').textContent='No signature captured.';$('consent').checked=false;$('sign').disabled=true;$('download').disabled=true;$('prepare').disabled=!addr}
+function expiryValid(){return !!challenge&&Date.now()<=challenge.deadline}
+function ensureExpected(){const e=$('expected').value.trim();if(e&&!addrOK(e))throw Error('Expected address must be 0x + 40 hex characters, or blank.');if(e&&!same(e,addr))throw Error('Connected wallet does not match expected address.');return e||null}
+async function connect(){
+  clear();if(!window.isSecureContext){setStatus('Use an HTTPS URL or localhost. Wallet connection blocked in insecure context.');return}
+  if(!window.ethereum||typeof window.ethereum.request!=='function'){setStatus('No injected EIP-1193 wallet detected. Open in your wallet browser or install a compatible wallet.');return}
+  try{const p=window.ethereum;const accounts=await p.request({method:'eth_requestAccounts'});const id=await p.request({method:'eth_chainId'});const a=accounts&&accounts[0];
+    if(!addrOK(a))throw Error('Wallet returned no valid address.');
+    if(String(id).toLowerCase()!==BASE_ID)throw Error('Connect Base mainnet (chain 8453) in your wallet first.');
+    wallet=p;addr=a;chain=id;p.on?.('accountsChanged',()=>{addr=null;clear();setStatus('Account changed. Reconnect.')});
+    p.on?.('chainChanged',()=>{addr=null;clear();setStatus('Chain changed. Reconnect.')});
+    $('prepare').disabled=false;setStatus('Connected '+addr+' on Base (8453). No signing performed.');
+  }catch(e){setStatus('Connection blocked: '+e.message)}
+}
+function prepare(){try{
+  if(!wallet||!addr)throw Error('Connect a wallet first.');const expected=ensureExpected();
+  const purpose=$('purpose').value;const now=Date.now();const nonce=hex(crypto.getRandomValues(new Uint8Array(32)));
+  const msg=['COMPUTERWISDOM MESSAGE CONTROL RECEIPT V0.1','Purpose: '+purpose,'Chain: Base mainnet (8453)',
+  'Connected address: '+addr,'Expected address: '+(expected||'NOT_SPECIFIED'),'Origin: '+location.origin,
+  'Nonce: '+nonce,'Issued at: '+new Date(now).toISOString(),'Expires at: '+new Date(now+maxAge).toISOString(),
+  'This message is NOT a transaction. It grants no authority, ENS ownership, DNS control, human identity, or permission to spend funds.'].join('\n');
+  clear();challenge={message:msg,nonce,issued:new Date(now).toISOString(),expires:new Date(now+maxAge).toISOString(),deadline:now+maxAge,origin:location.origin,purpose,expected,addr,chain};
+  $('message').textContent=msg;$('sign').disabled=false;setStatus('Fresh challenge ready. Review exact message before signing.');
+  }catch(e){setStatus('Challenge blocked: '+e.message)}
+}
+async function sign(){
+  const c=challenge,version=epoch;if(!c||!wallet||!addr){setStatus('Create a challenge first.');return}
+  try{
+    if(!$('consent').checked)throw Error('Consent checkbox required.');
+    if(!expiryValid())throw Error('Challenge expired before wallet prompt. Generate a fresh one.');
+    if(!same(c.addr,addr))throw Error('Account changed.');ensureExpected();
+    $('sign').disabled=true;setStatus('Awaiting wallet message-signature prompt...');
+    const signature=await wallet.request({method:'personal_sign',params:[utf8Hex(c.message),c.addr]});
+    if(version!==epoch||challenge!==c)throw Error('Wallet or challenge changed while signing.');
+    if(!expiryValid())throw Error('Challenge expired during wallet prompt. Signature discarded. Generate a fresh challenge.');
+    if(!/^0x[0-9a-fA-F]+$/.test(signature))throw Error('Wallet returned an invalid-looking signature.');
+    const [accounts,id]=await Promise.all([wallet.request({method:'eth_accounts'}),wallet.request({method:'eth_chainId'})]);
+    if(!expiryValid())throw Error('Challenge expired during post-sign checks. Signature discarded.');
+    if(version!==epoch||!same(accounts&&accounts[0],c.addr)||String(id).toLowerCase()!==BASE_ID)
+      throw Error('Account or chain changed. Signature discarded.');
+    saved={schema:'COMPUTERWISDOM_MESSAGE_SIGNATURE_CAPTURE_V0_1',status:'CAPTURED_NOT_INDEPENDENTLY_VERIFIED',
+      created_at:new Date().toISOString(),purpose:c.purpose,chain_id:8453,
+      claimed_connected_address:c.addr,expected_address:c.expected,expected_address_match:c.expected?same(c.expected,c.addr):null,
+      message:c.message,nonce:c.nonce,issued_at:c.issued,expires_at:c.expires,page_origin:c.origin,
+      signature,signature_method:'personal_sign',signature_verified:false,erc1271_verified:false,
+      identity_verified:false,ens_ownership_verified:false,authority_created:false,automatic_upload:false};
+    $('receipt').textContent=JSON.stringify({...saved,signature:saved.signature.slice(0,24)+'… (hidden in preview; included in downloaded file)'},null,2);
+    $('download').disabled=false;setStatus('Message signature captured within deadline. Independently verify receipt before using as evidence.');
+  }catch(e){saved=null;$('download').disabled=true;$('receipt').textContent='No valid receipt issued.';setStatus('Signing HOLD: '+e.message)}
+  finally{$('sign').disabled=true}
+}
+function download(){if(!saved)return;const blob=new Blob([JSON.stringify(saved,null,2)+'\n'],{type:'application/json'});
+  const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='computerwisdom-signature-'+Date.now()+'.json';
+  document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$('connect').addEventListener('click',connect);$('prepare').addEventListener('click',prepare);
+$('sign').addEventListener('click',sign);$('reset').addEventListener('click',()=>{clear();setStatus(addr?'Connected. Create a new challenge.':'No wallet connected.')});
+$('download').addEventListener('click',download);
+['expected','purpose'].forEach(id=>$(id).addEventListener('change',()=>{clear();setStatus('Settings changed. Generate new challenge.')}));
+})();
+</script></main></body></html>
