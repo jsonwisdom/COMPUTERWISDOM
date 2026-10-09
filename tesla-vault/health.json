@@ -1,0 +1,6 @@
+{
+  "name": "Tesla WikiAtomBomb",
+  "build": "V0_1",
+  "note": "HTTP status must be observed by client; JSON existence does not certify 200",
+  "pages_indexed": 354
+}

@@ -1,0 +1,62 @@
+name: Tesla Vault Public HTTP 200 Proof
+on:
+  push:
+    branches: [master]
+    paths:
+      - 'tesla-vault/**'
+      - '.github/workflows/tesla-vault-public-200.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  public-200:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check source HTML and JSON structure
+        run: |
+          python - <<'PY'
+          import json,pathlib
+          base=pathlib.Path('tesla-vault')
+          h=(base/'index.html').read_text()
+          assert '<!doctype html>' in h.lower()
+          assert 'vault.fbi.gov/nikola-tesla/' in h
+          assert 'tesla-museum.org/en/museum/history/' in h
+          assert 'source' in h.lower()
+          for p in ['health.json','evidence-manifest.json','government-sidecar.json']:
+              json.loads((base/p).read_text())
+          assert json.loads((base/'evidence-manifest.json').read_text())['total_pages']==354
+          print('STATIC_SOURCE_ASSERTIONS_PASS')
+          PY
+      - name: Wait for deployment and prove all public URLs return HTTP 200
+        run: |
+          set -euo pipefail
+          base='https://jsonwisdom.github.io/COMPUTERWISDOM/tesla-vault/'
+          paths=('' 'health.json' 'evidence-manifest.json' 'government-sidecar.json')
+          for i in $(seq 1 48); do
+            all=1
+            printf 'Attempt %s\n' "$i"
+            for path in "${paths[@]}"; do
+              code=$(curl --location --silent --show-error --max-time 20 --output /dev/null --write-out '%{http_code}' "${base}${path}" || true)
+              echo "HTTP $code ${base}${path}"
+              if [ "$code" != '200' ]; then all=0; fi
+            done
+            if [ "$all" -eq 1 ]; then
+              python - <<'PY'
+          import json,datetime
+          x={'schema':'TESLA_VAULT_PUBLIC_200_RECEIPT_V0_1','public_url':'https://jsonwisdom.github.io/COMPUTERWISDOM/tesla-vault/','required_http_status':200,'checked_paths':['','health.json','evidence-manifest.json','government-sidecar.json'],'all_required_200':True,'captured_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'claim_scope':'HTTP GET responses observed from GitHub Actions runner; not source-truth promotion','canon':False,'authority_created':False}
+          with open('tesla_vault_public_200_receipt.json','w') as f:json.dump(x,f,indent=2)
+          print(json.dumps(x,indent=2))
+          PY
+              exit 0
+            fi
+            sleep 15
+          done
+          echo 'FAIL: public HTTP 200 endpoints not proven after wait' >&2
+          exit 1
+      - name: Upload HTTP receipt
+        if: success()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tesla-vault-public-200-receipt
+          path: tesla_vault_public_200_receipt.json
