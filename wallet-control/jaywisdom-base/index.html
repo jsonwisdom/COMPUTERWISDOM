@@ -2,115 +2,60 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="color-scheme" content="dark">
-<title>JayWisdom Base · Wallet Control Proof</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; img-src 'self'; script-src 'none'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'">
+<title>Jason's FullMath — Wallet Proof on HOLD</title>
 <style>
-:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;color:#f3f8ff;background:#070e1d}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 75% 0%,#16386e 0%,transparent 40%),#070e1d}main{max-width:780px;margin:auto;padding:24px 16px 80px}.eyebrow{color:#6fe7e5;letter-spacing:.14em;text-transform:uppercase;font-size:12px;font-weight:800}.header{padding:26px 12px 22px}h1{font-size:clamp(30px,7vw,47px);line-height:1.05;letter-spacing:-.035em;margin:8px 0 12px}h2{font-size:18px;margin:0 0 12px}.muted,p{color:#b8c8de;line-height:1.55}.card{background:#101c32;border:1px solid #294263;border-radius:22px;padding:23px;margin:14px 0;box-shadow:0 12px 40px #0002}.tag{display:inline-flex;align-items:center;gap:8px;border:1px solid #3b7d86;border-radius:100px;padding:6px 11px;color:#9bf6d5;background:#183d45;font-size:12px;font-weight:700}.identity{padding:17px 18px;background:#091424;border:1px solid #29466c;border-radius:15px}.name{font-weight:900;font-size:clamp(22px,5.5vw,31px);overflow-wrap:anywhere}.address{font-family:ui-monospace,monospace;font-size:12px;color:#adc6e6;overflow-wrap:anywhere;margin-top:8px}.steps{display:flex;gap:7px;flex-wrap:wrap;margin-top:18px}.steps span{border:1px solid #39506e;background:#18253c;border-radius:20px;padding:7px 10px;font-size:12px;color:#afc0d6}.steps .done{background:#124e4a;color:#9ef2da;border-color:#27897a}button{border:0;border-radius:13px;padding:15px 17px;font-weight:800;font-size:15px;background:#193759;color:#f4faff;cursor:pointer;min-height:51px}button.primary{background:#16e0d5;color:#001b25}button.secondary{background:#244368}button:disabled{opacity:.38;cursor:not-allowed}.buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:13px}.buttons.one{grid-template-columns:1fr}.status{border:1px solid #50698a;background:#0c1c32;border-radius:14px;padding:14px;color:#dde8fa;margin:16px 0;line-height:1.5}.status.good{border-color:#238d74;color:#9ff1cf;background:#0f3030}.status.bad{border-color:#b66365;color:#ffd4d8;background:#351e2a}.status.warn{border-color:#866b43;color:#ffe3a6}.checks{list-style:none;padding:0;margin:16px 0}.checks li{padding:7px 0;color:#bdcce0}.checks li:before{content:'✓';color:#4be2bf;padding-right:12px;font-weight:900}label.confirm{display:flex;align-items:flex-start;gap:12px;margin:17px 0;line-height:1.45;color:#d9e8fb;font-size:14px}label.confirm input{width:22px;height:22px;accent-color:#13d4ca;flex:none}pre{white-space:pre-wrap;word-break:break-word;background:#060d19;border:1px solid #355071;border-radius:15px;padding:14px;font:12px/1.6 ui-monospace,monospace;max-height:370px;overflow:auto;color:#d3e7ff}.hidden{display:none!important}.small{font-size:12px}a{color:#77eeec}.guide{font-size:14px;line-height:1.5}code{color:#cde5fc}@media(max-width:580px){.buttons{grid-template-columns:1fr}.card{padding:18px}.header{padding:22px 5px 14px}}
+:root{color-scheme:dark;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#07101d;color:#f1f7ff}
+*{box-sizing:border-box}body{margin:0;background:#07101d;min-height:100vh}
+main{max-width:760px;padding:36px 18px 70px;margin:0 auto}
+header{margin-bottom:26px}.eyebrow{color:#71e6e4;text-transform:uppercase;font-size:.78rem;font-weight:800;letter-spacing:.14em}
+h1{font-size:clamp(2.1rem,7vw,3.4rem);letter-spacing:-.04em;line-height:1.1;margin:10px 0 18px}
+h2{font-size:1.15rem;margin:0 0 12px}p,li{color:#c5d3e5;line-height:1.55}
+.panel{padding:24px;margin:16px 0;background:#102139;border:1px solid #345379;border-radius:19px}
+.hold{background:#2f271b;border-color:#a08342;color:#ffe4a7}
+.state{color:#ffe4a7;font-weight:800;letter-spacing:.08em}
+code{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;color:#cceeff}
+.data{border-left:4px solid #1ad6cc;padding:11px 14px;background:#091729;border-radius:7px}
+a{color:#7deae6;overflow-wrap:anywhere}
+small{color:#a9bbd2}footer{padding-top:22px;border-top:1px solid #345379;color:#a9bbd2;font-size:.84rem;line-height:1.55}
 </style>
 </head>
 <body>
 <main>
-<div class="header">
- <div class="eyebrow">COMPUTERWISDOM / CWaaS · Proof 001</div>
- <h1>Verify wallet control.<br>Keep authority separate.</h1>
- <p>Sign a fresh, non-transaction message to demonstrate control of the wallet that <strong>jaywisdom.base.eth</strong> currently resolves to.</p>
- <span class="tag">🔒 Signature only · Base mainnet 8453</span>
-</div>
-<section class="card">
- <div class="eyebrow">Target identity · locked</div>
- <div class="identity"><div class="name">jaywisdom.base.eth</div><div class="address">0xa380552a27b0a5a2874ea7aa52cac09f542002e8</div></div>
- <div class="steps"><span id="s1">1. Connect</span><span id="s2">2. Base</span><span id="s3">3. Challenge</span><span id="s4">4. Sign</span><span id="s5">5. Download</span></div>
- <div id="status" class="status" role="status" aria-live="polite">Ready. Open this page in your Coinbase Wallet browser or use Connect Coinbase Wallet.</div>
- <div class="buttons"><button id="connectCoinbase" class="primary">Connect Coinbase Wallet</button><button id="connectBrowser">Connect browser wallet</button></div>
- <div class="buttons one"><button id="switchBase" disabled>Switch to Base mainnet (8453)</button><button id="build" disabled>Generate fresh challenge</button></div>
- <label class="confirm"><input type="checkbox" id="confirm"><span>I will check the wallet prompt and approve <strong>only a message signature</strong>, not a transaction. This does not grant permission to spend tokens or establish human/legal identity.</span></label>
- <div class="buttons one"><button id="sign" class="primary" disabled>Sign message and verify control</button></div>
+<header>
+<div class="eyebrow">ComputerWisdom / CWaaS · Jason's FullMath</div>
+<h1>Wallet signing on HOLD</h1>
+<p>The proof flow at this path is paused for security review. No wallet connection, signature request, or proof issuance is available from this page.</p>
+</header>
+<section class="panel hold" aria-label="Security hold">
+<div class="state">SECURITY HOLD · REVIEW REQUIRED</div>
+<h2>Reason: expired-challenge acceptance</h2>
+<p>In the historical implementation from pull request #648, the 15-minute challenge deadline was checked before the wallet prompt. A late signature could incorrectly be labeled verified. The historical record is preserved; this proposed quarantine is not a correction to earlier receipts.</p>
 </section>
-<section class="card hidden" id="challengeSection"><h2>Read the exact message before signing</h2><pre id="challengeText"></pre></section>
-<section class="card hidden" id="resultSection"><h2 id="resultTitle">Verification result</h2><p class="small">A receipt is generated in this browser. Nothing is uploaded automatically.</p><pre id="receiptText"></pre><div class="buttons"><button id="download" class="primary">Download JSON</button><button id="share">Share / Save to Files</button></div><div class="buttons"><button id="copy">Copy receipt</button><button id="reset">New challenge</button></div></section>
-<section class="card">
- <h2>What this proves—and what it doesn't</h2>
- <ul class="checks"><li>Address match to the independently observed Basename resolver output</li><li>Valid EIP-191 signature or ERC-1271 contract-wallet signature for this challenge</li><li>Timestamp, unique nonce, origin and Base block reference in the downloaded JSON</li></ul>
- <p class="guide">This page cannot independently prove current ENS ownership, DNS control, legal identity, account reputation, or Coinbase endorsement. Smart wallets that return unsupported ERC-6492 signatures are placed on HOLD, not falsely marked verified.</p>
- <p class="small">Only read-only JSON-RPC requests and <code>personal_sign</code> are used; no <code>eth_sendTransaction</code>, token approval or signing permission is requested. No password, recovery phrase, or private key is ever needed.</p>
- <p class="small">Source project: <a href="https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/wallet-control/index.html" rel="noopener noreferrer" target="_blank">COMPUTERWISDOM wallet-control</a>. This independently packaged page has not been published to GitHub by downloading it. Host only on a GitHub Pages site you control before connecting a wallet.</p>
+<section class="panel">
+<h2>Identity reference — not a claim of authority</h2>
+<p><strong>Basename:</strong> <code>jaywisdom.base.eth</code></p>
+<p class="data"><strong>Address reference:</strong><br><code>0xa380552a27b0a5a2874ea7aa52cac09f542002e8</code></p>
+<p>These labels are evidence pointers, not proof of current ENS registration control, natural-person identity, DNS ownership, payment permission, or reputation.</p>
 </section>
+<section class="panel">
+<h2>FullMath safety boundary</h2>
+<ul>
+<li>No third-party JavaScript is loaded here.</li>
+<li>No inline executable JavaScript, wallet SDK, RPC call, transaction or token approval is available.</li>
+<li>No receipt can be marked verified by this static page.</li>
+<li>The historical file remains inspectable in Git history.</li>
+<li>Any restored signing flow requires separately reviewed, reproducible local code, expiry tests, receipt binding and an explicit human-approved merge.</li>
+</ul>
+<p><a href="https://github.com/jsonwisdom/COMPUTERWISDOM/pull/648">Original PR #648</a> · <a href="https://github.com/jsonwisdom/COMPUTERWISDOM/pull/648#discussion_r4228499313">Codex expiry finding</a></p>
+</section>
+<footer>
+READ-ONLY NOTICE · NO SIGNATURE · NO AUTOMATIC AUTHORITY<br>
+BNS before ENS before DNS before reputation.<br>
+JASON_FINAL_DECISION=REQUIRED · CANON_PROMOTION=FALSE · AUTHORITY_CREATED=FALSE
+</footer>
 </main>
-<script src="https://unpkg.com/@base-org/account@2.5.10/dist/base-account.min.js" integrity="sha384-Jcaa5XJIs34lC6Co7Ye/mAuxCGLTEdUYQuIyl4UrwRduYb6mOmW7SUCOPX/jdsKV" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/ethers@6.17.0/dist/ethers.umd.min.js" integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi" crossorigin="anonymous"></script>
-<script>
-(() => {
-'use strict';
-const TARGET='0xa380552a27b0a5a2874ea7aa52cac09f542002e8';
-const BASENAME='jaywisdom.base.eth';
-const BASE={chainId:'0x2105',chainName:'Base',nativeCurrency:{name:'Ether',symbol:'ETH',decimals:18},rpcUrls:['https://mainnet.base.org'],blockExplorerUrls:['https://basescan.org']};
-const MAGIC='0x1626ba7e';
-const SUFFIX='6492649264926492649264926492649264926492649264926492649264926492';
-const $=id=>document.getElementById(id);
-let provider=null,providerType='NONE',address=null,chainId=null,challenge=null,receipt=null;
-let listenerProvider=null;
-function same(a,b){return !!a&&!!b&&a.toLowerCase()===b.toLowerCase()}
-function short(a){return a?a.slice(0,6)+'…'+a.slice(-4):'none'}
-function onBase(){return String(chainId).toLowerCase()==='0x2105'}
-function isSecure(){return location.protocol==='https:'||location.hostname==='localhost'}
-function status(s,kind=''){const el=$('status');el.textContent=s;el.className='status '+kind}
-function clearProof(){challenge=null;receipt=null;$('challengeSection').classList.add('hidden');$('resultSection').classList.add('hidden');$('challengeText').textContent='';$('receiptText').textContent='';refresh()}
-function refresh(){
- $('s1').className=address?'done':'';
- $('s2').className=address&&onBase()?'done':'';
- $('s3').className=challenge?'done':'';
- $('s4').className=receipt&&receipt.verification?.verified?'done':'';
- $('s5').className='';
- $('switchBase').disabled=!address||onBase();
- $('build').disabled=!(address&&same(address,TARGET)&&onBase()&&isSecure());
- $('sign').disabled=!(challenge&&same(address,TARGET)&&onBase()&&$('confirm').checked)||!!receipt;
-}
-function attach(p){if(listenerProvider&&typeof listenerProvider.removeListener==='function'){listenerProvider.removeListener('accountsChanged',changed);listenerProvider.removeListener('chainChanged',networkChanged)}listenerProvider=p;if(typeof p.on==='function'){p.on('accountsChanged',changed);p.on('chainChanged',networkChanged)}}
-function changed(acc){address=acc?.[0]||null;clearProof();status('Wallet account changed. New proof required.','warn')}
-function networkChanged(c){chainId=c;clearProof();status('Network changed. New challenge required.','warn')}
-async function connected(p,mode){if(!isSecure())throw Error('For signing, use the HTTPS GitHub Pages version of this file; file:// is not a safe wallet origin.');provider=p;providerType=mode;attach(p);const accounts=await p.request({method:'eth_requestAccounts'});address=accounts?.[0]||null;chainId=await p.request({method:'eth_chainId'});clearProof();if(!address)throw Error('Wallet provided no account.');if(!same(address,TARGET)){status('Wrong address connected: '+short(address)+'. Switch to '+short(TARGET)+' in your wallet. Signing is locked.','bad');return;}status('Address matches '+BASENAME+'. '+(onBase()?'Base mainnet selected.':'Switch to Base mainnet next.'),'good')}
-async function connectCoinbase(){try{if(typeof window.createBaseAccountSDK!=='function')throw Error('Coinbase Wallet SDK did not load. Try the Coinbase Wallet in-app browser.');const sdk=window.createBaseAccountSDK({appName:'JayWisdom Wallet Proof',appChainIds:[8453]});await connected(sdk.getProvider(),'BASE_ACCOUNT_SDK_2_5_10')}catch(e){status(e.message||String(e),'bad')}}
-async function connectBrowser(){try{if(!window.ethereum?.request)throw Error('No browser wallet detected. Open this HTTPS page inside your Coinbase Wallet browser.');await connected(window.ethereum,'INJECTED_EIP1193')}catch(e){status(e.message||String(e),'bad')}}
-async function switchBase(){try{if(!provider)throw Error('Connect first.');try{await provider.request({method:'wallet_switchEthereumChain',params:[{chainId:'0x2105'}]})}catch(e){if(e.code===4902){await provider.request({method:'wallet_addEthereumChain',params:[BASE]})}else throw e}chainId=await provider.request({method:'eth_chainId'});clearProof();status(onBase()?'Base mainnet connected.':'Wallet did not switch to Base. ',onBase()?'good':'warn')}catch(e){status(e.message||String(e),'bad')}}
-function utf8Hex(text){return '0x'+Array.from(new TextEncoder().encode(text),b=>b.toString(16).padStart(2,'0')).join('')}
-async function sha(text){const buffer=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(text));return '0x'+Array.from(new Uint8Array(buffer),b=>b.toString(16).padStart(2,'0')).join('')}
-async function buildChallenge(){try{
- if(!provider||!same(address,TARGET)||!onBase()||!isSecure())throw Error('Correct wallet and HTTPS Base session required.');
- const currentBlock=await provider.request({method:'eth_blockNumber'});const block=await provider.request({method:'eth_getBlockByNumber',params:[currentBlock,false]});if(!block?.hash)throw Error('Base block reference unavailable.');
- const now=new Date();const expires=new Date(now.getTime()+15*60000).toISOString();const nonce=Array.from(crypto.getRandomValues(new Uint8Array(32)),b=>b.toString(16).padStart(2,'0')).join('');
- const message=['CWaaS WALLET CONTROL PROOF V1','Operation: PROVE CONTROL ONLY — NO TRANSACTION','Name: '+BASENAME,'Expected address: '+TARGET,'Signer address: '+address,'Chain: Base mainnet (8453)','Repository: jsonwisdom/COMPUTERWISDOM','Origin: '+location.origin,'Nonce: 0x'+nonce,'Base block: '+block.number,'Base block hash: '+block.hash,'Issued at (UTC): '+now.toISOString(),'Expires at (UTC): '+expires,'Wallet signature only. No transfer, approval, transaction, ENS ownership, DNS, reputation, human identity, or authority is granted.'].join('\n');
- challenge={message,nonce:'0x'+nonce,block_number:block.number,block_hash:block.hash,issued_at:now.toISOString(),expires_at:expires,origin:location.origin};receipt=null;$('challengeText').textContent=message;$('challengeSection').classList.remove('hidden');$('resultSection').classList.add('hidden');refresh();status('Challenge ready. Review exact message and tick the checkbox before signing.','warn');
- }catch(e){status(e.message||String(e),'bad')}}
-async function verify(message,sig){
- if(!window.ethers)throw Error('Signature verification library did not load. Do not submit an unverified receipt.');
- const code=await provider.request({method:'eth_getCode',params:[address,challenge.block_number]});
- if(!code||code==='0x'){
-  const hex=String(sig).toLowerCase().replace(/^0x/,'');if(hex.endsWith(SUFFIX)||hex.length!==130)return {verified:false,verification_method:hex.endsWith(SUFFIX)?'ERC6492_NOT_VERIFIED':'NONSTANDARD_SIGNATURE_HOLD',account_type:'UNDEPLOYED_OR_WRAPPED',recovered_address:null};
-  const recovered=ethers.verifyMessage(message,sig);return {verified:same(recovered,address),verification_method:'EIP191_ECDSA_RECOVERY',account_type:'EOA',recovered_address:recovered};
- }
- const digest=ethers.hashMessage(message);const iface=new ethers.Interface(['function isValidSignature(bytes32 hash, bytes signature) view returns (bytes4)']);const data=iface.encodeFunctionData('isValidSignature',[digest,sig]);
- let blockTag=challenge.block_number,response;try{response=await provider.request({method:'eth_call',params:[{to:address,data},blockTag]})}catch(e){blockTag='latest';response=await provider.request({method:'eth_call',params:[{to:address,data},blockTag]})}
- return {verified:String(response).toLowerCase().startsWith(MAGIC),verification_method:'ERC1271_IS_VALID_SIGNATURE',account_type:'CONTRACT',message_digest:digest,verification_block_tag:blockTag,contract_result:response,recovered_address:null};
-}
-async function sign(){try{
- if(!provider||!challenge||!same(address,TARGET)||!onBase()||!$('confirm').checked)throw Error('Complete earlier steps first.');
- if(Date.now()>Date.parse(challenge.expires_at))throw Error('Challenge expired. Generate a new one.');
- const selected=await provider.request({method:'eth_accounts'});if(!same(selected?.[0],address))throw Error('Account changed. Generate new challenge.');
- status('Approve MESSAGE SIGNATURE only. Reject any transaction prompt.','warn');
- const signature=await provider.request({method:'personal_sign',params:[utf8Hex(challenge.message),address]});
- const check=await verify(challenge.message,signature);
- receipt={schema:'CWAAS_BASENAME_WALLET_CONTROL_PROOF_V1',created_at:new Date().toISOString(),disposition:check.verified?'VERIFIED_FOR_THIS_CHALLENGE':'HOLD_SIGNATURE_NOT_VERIFIED',name:BASENAME,expected_address:TARGET,connected_address:address,address_match:same(address,TARGET),chain_id:8453,chain_name:'base-mainnet',wallet_provider:providerType,signed_message:challenge.message,signed_message_sha256:await sha(challenge.message),signature,verification:check,challenge:{nonce:challenge.nonce,issued_at:challenge.issued_at,expires_at:challenge.expires_at,base_block_number:challenge.block_number,base_block_hash:challenge.block_hash,page_origin:challenge.origin},scope:'EVM_ADDRESS_CONTROL_FOR_THIS_SIGNATURE_ONLY',ens_ownership_verified:false,dns_verified:false,reputation_verified:false,human_identity_verified:false,authority_created:false,ens_binding_source:'PRIOR_INDEPENDENT_BLOCKSCOUT_LOOKUP_NOT_RECHECKED_BY_THIS_PAGE',transaction_hash:null,attestation_uid:null,signature_automatically_uploaded:false};
- $('receiptText').textContent=JSON.stringify(receipt,null,2);$('resultSection').classList.remove('hidden');$('resultTitle').textContent=check.verified?'✓ Wallet signature verified':'⚠ Signature on HOLD';refresh();status(check.verified?'Signature checks out for this wallet and challenge. Download the JSON and upload it into ChatGPT.':'Signature could not be independently verified by this page. Save the HOLD receipt if needed.',check.verified?'good':'warn');
- }catch(e){status(e.message||String(e),'bad')}}
-function filename(){return 'JAYWISDOM_BASE_WALLET_CONTROL_'+new Date().toISOString().slice(0,10)+'.json'}
-function json(){if(!receipt)throw Error('Sign first.');return JSON.stringify(receipt,null,2)+'\n'}
-function download(){try{const blob=new Blob([json()],{type:'application/json'});const u=URL.createObjectURL(blob);const a=document.createElement('a');a.href=u;a.download=filename();document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000);$('s5').className='done';status('Receipt downloaded. Upload the JSON file to this ChatGPT conversation.','good')}catch(e){status(e.message||String(e),'bad')}}
-async function share(){try{const file=new File([json()],filename(),{type:'application/json'});if(!navigator.share||!navigator.canShare?.({files:[file]})){download();status('File downloaded. On iPhone, use Files or the browser Share menu to upload it to ChatGPT.','warn');return;}await navigator.share({files:[file],title:'CWaaS Wallet Control Receipt'});$('s5').className='done'}catch(e){status(e.message||String(e),'warn')}}
-async function copy(){try{await navigator.clipboard.writeText(json());status('JSON copied. You can paste it back into ChatGPT.','good')}catch(e){status(e.message||String(e),'warn')}}
-$('connectCoinbase').addEventListener('click',connectCoinbase);$('connectBrowser').addEventListener('click',connectBrowser);$('switchBase').addEventListener('click',switchBase);$('build').addEventListener('click',buildChallenge);$('confirm').addEventListener('change',refresh);$('sign').addEventListener('click',sign);$('download').addEventListener('click',download);$('share').addEventListener('click',share);$('copy').addEventListener('click',copy);$('reset').addEventListener('click',()=>{clearProof();status('Fresh challenge required.','warn')});refresh();
-if(!isSecure())status('Downloadable source is ready. For wallet connection, host this file on an HTTPS GitHub Pages site; do not sign from file://.','warn');
-})();
-</script>
 </body>
 </html>

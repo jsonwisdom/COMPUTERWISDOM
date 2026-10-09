@@ -1,0 +1,65 @@
+{
+  "schema": "FULLMATH_CWAAS_LOCKDOWN_REVIEW_V0_1",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "status": "DRAFT_PR_CANDIDATE",
+  "parent_pr": 648,
+  "parent_merge_commit": "6fc04b3ac94a75caccdd020bfae4282e740d075f",
+  "original_page_blob_sha": "0f77cff47b3cf17c9b0cc34f18513b9626fbee16",
+  "target_path": "wallet-control/jaywisdom-base/index.html",
+  "scope": "ISOLATED_WALLET_PAGE_QUARANTINE_ONLY",
+  "discovered_defect": {
+    "type": "CHALLENGE_EXPIRY_CHECK_PRE_SIGN_ONLY",
+    "severity": "P2_REVIEW_COMMENT",
+    "status": "CODE_CONFIRMED",
+    "reference": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/648#discussion_r4228499313",
+    "remediation": "DISABLE_SIGNING_PENDING_REVIEW"
+  },
+  "proposed_runtime": {
+    "active_wallet_connection": false,
+    "active_signing": false,
+    "active_proof_generation": false,
+    "third_party_script_tags": 0,
+    "inline_executable_scripts": 0,
+    "csp_script_src": "none",
+    "csp_connect_src": "none",
+    "operational_status": "HOLD"
+  },
+  "external_code_removed_from_page_only": [
+    "https://unpkg.com/@base-org/account@2.5.10/dist/base-account.min.js",
+    "https://cdn.jsdelivr.net/npm/ethers@6.17.0/dist/ethers.umd.min.js"
+  ],
+  "evidence_boundaries": {
+    "previous_private_signature_receipt": "UNCHANGED_NOT_PUBLISHED",
+    "historical_wallet_control_proof": "NOT_REWRITTEN",
+    "basename_resolution": "SEPARATE_EVIDENCE_GATE",
+    "ens_ownership": "NOT_ESTABLISHED_BY_THIS_CHANGE",
+    "dns_control": "HOLD",
+    "reputation_score": "UNSCORED",
+    "identity_join": false,
+    "authority_created": false,
+    "canon_promotion": false
+  },
+  "not_in_scope": [
+    "existing other wallet-control pages",
+    "GitHub Actions permissions",
+    "Codex / other installed GitHub App access",
+    "repository history",
+    "wallet onchain state",
+    "branch deletion",
+    "production deployment"
+  ],
+  "release_gate": {
+    "draft_only": true,
+    "merge_permitted_without_new_human_approval": false,
+    "requires": "JASON_EXPLICIT_FINAL_DECISION",
+    "tests_required": [
+      "ZERO_REMOTE_EXECUTABLE_JS",
+      "CSP_NO_SCRIPT_NO_CONNECT",
+      "MISSING_SIGNING_UI",
+      "EXPIRED_CHALLENGE_REJECTION_FOR_FUTURE_REPLACEMENT",
+      "NO_UNAUTHORIZED_REPO_WRITES"
+    ]
+  },
+  "provenance": "COMPUTERWISDOM_CHAT_ASSISTANT_PROPOSED_FROM_USER_AUTHORIZED_DRAFT_ONLY_ACTION",
+  "purpose": "Quarantine a known unsafe proof issuing flow while preserving history and existing valid evidence"
+}
