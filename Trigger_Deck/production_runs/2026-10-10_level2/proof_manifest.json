@@ -8,7 +8,7 @@
   "canonical_ledger_changed": false,
   "render_method": "deterministic-original-cartoon-illustrations",
   "two_card_gate": "Firefly 2-card text legibility failed, so outputs rejected and replaced",
-  "sha256_zip": "671f74dd43b059d8c3c814e8f210036debe6f60089c624dfa4d004fc5912129f",
+  "sha256_zip": "31dedaa496edd96a865df29b76b6c1c98fe736c8bc6b81d00a7a6593a6e6fa3a",
   "validation": {
     "unique_ids": true,
     "seven_cards": true,
@@ -110,5 +110,6 @@
       ],
       "canon": false
     }
-  ]
+  ],
+  "pack_contents": "7 PNG cards + contact sheet + local manifest + README + reproducible build_source.py + requirements.txt"
 }
