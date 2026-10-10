@@ -1,0 +1,118 @@
+# Meridian_Event_v0_2.yaml
+# PROPOSED superseding schema for Meridian_Event_v0.yaml
+# Append-only. No inference. No silent enrichment.
+
+meridian_event:
+  schema_version: "0.2.0"
+  id: "uuidv7"
+
+  # Axis 1: what happened in the world.
+  # Non-null iff record_operation == emit.
+  type: null
+  # world_event_enum:
+  # court_order | doj_filing | agency_action | recusal | appeal |
+  # ai_policy | contract | lobbying | public_statement | cyber_incident
+
+  # Axis 2: what Meridian did to its own record.
+  record_operation: emit | correct | retract | supersede
+  supersedes: null
+
+  # Present for correct | retract | supersede.
+  correction:
+    patch: []
+    reason_code: null
+    # source_error | transcription_error | stale_status | misattribution |
+    # hash_mismatch | methodology_revision | operator_error | court_instruction
+    reason_text: null
+    public_note: null
+
+  event_time: null
+  observed_time: "ISO8601"
+  jurisdiction:
+    - minnesota
+    - dc
+    - federal
+    - other
+
+  source:
+    source_class: captured | operator_relayed | migrated_legacy
+    url: null
+    content_hash: null
+    raw_capture_id: null
+    operator: null
+    relay_note: null
+    capture_failure_id: null
+
+  verification:
+    status: observed
+    verifier: null
+    method: null
+    corroborating_sources: []
+    transition_log:
+      - {from: null, to: observed, at: "ISO8601", reason: "first_observation"}
+
+  entities: []
+
+  # Canonical event records do not receive post-write Collider mutation.
+  # This field MUST remain empty in canonical storage.
+  # Query/materialized views MAY expose collision results by joining immutable
+  # Collider_Result_v0 sidecars keyed by event_id.
+  collide:
+    roles: []
+    funding: []
+    litigation: []
+    lobbying: []
+    appointments: []
+    publications: []
+
+  notes: null
+  right_of_reply:
+    requested: false
+    requested_at: null
+    response: null
+    response_url: null
+
+# PROPOSED INVARIANTS
+# - record_operation == emit <=> type != null.
+# - record_operation != emit => type == null.
+# - record_operation != emit => supersedes is a valid event_id.
+# - record_operation != emit => correction.patch is present; [] allowed for pure retract.
+# - retract never deletes the target; materialized views exclude retracted heads.
+# - supersede requires a new verified capture/content hash.
+# - no direct or transitive supersession cycles.
+# - target verification state is never mutated in place; effective status is derived from the chain.
+# - event_time may be null; guessing is forbidden.
+# - verifier can never be a model id.
+# - canonical collide buckets remain empty; Collider results are immutable sidecars.
+# - resolved_type, effective_status, and collide views are derived/non-authoritative.
+
+# SOURCE-CLASS RULES — FAIL CLOSED
+#
+# captured:
+# - url is required and MUST be copied from the resolved RAW_CAPTURE_v0.
+# - content_hash is required and MUST match ^sha256:[0-9a-f]{64}$.
+# - raw_capture_id is required and MUST resolve to RAW_CAPTURE_v0.
+# - content_hash MUST equal the referenced capture's content_hash.
+# - source.url MUST equal the referenced capture's requested/source url.
+# - operator MUST be null.
+#
+# operator_relayed:
+# - content_hash MUST be null.
+# - raw_capture_id MUST be null.
+# - operator MUST be present.
+# - relay_note MAY record what was said; it is not truth authority.
+# - verification.status MUST equal observed.
+# - promotion requires a NEW captured source plus an explicit supersede record.
+# - source_class is never edited in place.
+#
+# migrated_legacy:
+# - may be set only by MIGRATE_v0_1_to_v0_2.
+# - forbidden on ordinary write-path.
+# - no content_hash backfill.
+# - no raw_capture_id backfill.
+# - no re-fetch, re-hash, or re-verify during migration.
+#
+# capture_failure_id:
+# - optional provenance link to a CAPTURE_FAILURE_v0 absence receipt.
+# - does not promote verification.
+# - does not substitute for raw_capture_id.

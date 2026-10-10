@@ -1,0 +1,116 @@
+# leaf_encoding_vectors_v0.yaml
+# AUTHORED IN CONVERSATION / NOT CAPTURED / NOT BINDING
+# Mechanically recomputed against MERIDIAN/leaf_encoding_v0.yaml.
+# This is NOT a ValidationRun and NOT a national Merkle root.
+
+vector_set:
+  schema_version: "0.1.0"
+  kind: leaf_encoding_vector_set
+  binding: proposed
+  source_class: authored
+  content_hash: null
+  raw_capture_id: null
+  algorithm_receipt_hash: null
+
+  encoding:
+    lane_preimage_bytes: 39
+    leaf_preimage_bytes: 136
+    internal_node_tag: 0x10
+    promotion_rule: odd_unchanged
+    odd_node_rule: promote_unpaired_unchanged
+
+  vectors:
+    - id: "ZIP_00000_UNKNOWN_USPS"
+      slot: "00000"
+      zcta_flag: 0x00
+      leaf_tag: 0x00
+      lanes:
+        voice:
+          lane_state: 0x00
+          lane_root: "00x32"
+          lane_commit_hex: "20e9c6d6fc6df3033d947f3d1590777e77e51adaf29ba7d6640295e6d4c2eeb5"
+        source:
+          lane_state: 0x00
+          lane_root: "00x32"
+          lane_commit_hex: "4cd36f979b23c42a68f73253befee6c824cfafd9be6b69e7c6d36628295ef6c0"
+        answer:
+          lane_state: 0x00
+          lane_root: "00x32"
+          lane_commit_hex: "15a0b81fad8a576e06574652f75a8c28f146ebcf3bb915df7bc12ea77a8ef8ca"
+        render:
+          lane_state: 0x00
+          lane_root: "00x32"
+          lane_commit_hex: "700496a9557690aa020948e09d9ba89a3f3476af96b6234070298faa4e04c769"
+      leaf_hash_hex: "045565162943b1ef2c27ef26056471a649cf46034ff15769512a8779d4178f35"
+
+    - id: "ZIP_00001_EMPTY_USPS"
+      slot: "00001"
+      zcta_flag: 0x00
+      leaf_tag: 0x02
+      lanes:
+        voice:
+          lane_state: 0x02
+          lane_root: "00x32"
+          lane_commit_hex: "ce7fcaaae82521326c688ae68fa53520486088112ecb23017f58c3379582a426"
+        source:
+          lane_state: 0x02
+          lane_root: "00x32"
+          lane_commit_hex: "ce92948b399e7ac1b696ae3f2dcc0efb787a56b925fe0f5089eff1ddfd3855d6"
+        answer:
+          lane_state: 0x02
+          lane_root: "00x32"
+          lane_commit_hex: "88c535cde20c9bec990eb582eb76f29d3481f2089d519402a6b4913b00a4962b"
+        render:
+          lane_state: 0x02
+          lane_root: "00x32"
+          lane_commit_hex: "ec85e7dd79eb731fd32e71532ce5f23522af34d8da6e401d673e091853ef49b7"
+      leaf_hash_hex: "685fcca92459b28537566c0c7fbdce8fda9263fedd4ba4c478e515e3bfc4d7f4"
+
+    - id: "ZIP_00002_OCCUPIED_SYNTHETIC"
+      slot: "00002"
+      zcta_flag: 0x00
+      leaf_tag: 0x03
+      synthetic: true
+      synthetic_roots_are_receipts: false
+      lanes:
+        voice:
+          lane_state: 0x03
+          lane_root_hex: "1111111111111111111111111111111111111111111111111111111111111111"
+          lane_commit_hex: "80fa1aee55be32b08cf4a480d85d50ceb065dc12ab01bed8157c3d0166d9bc4e"
+        source:
+          lane_state: 0x03
+          lane_root_hex: "2222222222222222222222222222222222222222222222222222222222222222"
+          lane_commit_hex: "d051c45b15a56767ea9c2649dd3eab4aefdbfbff5f1e2a62f00a61296fef9379"
+        answer:
+          lane_state: 0x03
+          lane_root_hex: "3333333333333333333333333333333333333333333333333333333333333333"
+          lane_commit_hex: "34d0a501ba54e23b735a782f404a2f446d2109c2433bb13dc7f3f052f05258fc"
+        render:
+          lane_state: 0x03
+          lane_root_hex: "4444444444444444444444444444444444444444444444444444444444444444"
+          lane_commit_hex: "9860b179490947fa8a96d4475534b28ad97489f7da457065467d046b45451754"
+      leaf_hash_hex: "827de5aa0b3bc29000e2bdd52ca05c933515589cc968aff0cd497c09117952c8"
+
+  synthetic_three_leaf_tree:
+    national_root: false
+    leaves_in_order:
+      - "045565162943b1ef2c27ef26056471a649cf46034ff15769512a8779d4178f35"
+      - "685fcca92459b28537566c0c7fbdce8fda9263fedd4ba4c478e515e3bfc4d7f4"
+      - "827de5aa0b3bc29000e2bdd52ca05c933515589cc968aff0cd497c09117952c8"
+    first_parent_hex: "6576bb7566a7fa41aef290beb0744d0a5bf67d7e22bf445bacfefbf2a16175a5"
+    L00002_leaf_hash_hex: "827de5aa0b3bc29000e2bdd52ca05c933515589cc968aff0cd497c09117952c8"
+    L00002_promoted_hash_hex: "827de5aa0b3bc29000e2bdd52ca05c933515589cc968aff0cd497c09117952c8"
+    promotion_identity: true
+    promotion_transform: null
+    promoted_third_leaf_hex: "827de5aa0b3bc29000e2bdd52ca05c933515589cc968aff0cd497c09117952c8"
+    synthetic_root_hex: "ff654f4387e309feabbdae62ab334210905a9dbbf88e68b2857bba7bffefe224"
+
+  assertions:
+    unknown_vector_recomputable: true
+    empty_vector_recomputable: true
+    occupied_vector_recomputable_only_against_declared_synthetic_roots: true
+    synthetic_roots_are_captures: false
+    synthetic_root_is_M_USA: false
+    odd_promotion_is_identity: true
+    rehash_on_promotion_forbidden: true
+    validation_run_created: false
