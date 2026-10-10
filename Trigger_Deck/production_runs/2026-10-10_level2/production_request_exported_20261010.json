@@ -1,0 +1,87 @@
+{
+  "kind": "triggerdeck-production-request-v0.1",
+  "prepared_at": "2026-10-10T06:18:35.749Z",
+  "executed": false,
+  "render_backend": "UNBOUND",
+  "github_automation": "UNBOUND",
+  "requires": [
+    "GitHub automation binding",
+    "Rendering backend binding",
+    "JASON final approval"
+  ],
+  "canvas": {
+    "width": 900,
+    "height": 1200,
+    "aspect": "3:4 portrait"
+  },
+  "batch": "GARBAGE_PRESS_LEVEL_TWO",
+  "manifest_url": "https://raw.githubusercontent.com/jsonwisdom/COMPUTERWISDOM/triggerdeck/level2-20261010-proof/Trigger_Deck/production_runs/2026-10-10_level2/proof_manifest.json",
+  "manifest_source": "LIVE",
+  "cards": [
+    {
+      "id": "TD-199",
+      "title": "THE UNDERWEAR AIRLINE",
+      "source_url": "https://www.cbsnews.com/miami/news/miami-international-airport-bird-smuggling-underwear-arrest-customs-havana-flight/",
+      "evidence_status": "REPORTED_FROM_COURT_DOCUMENTS",
+      "expected_sha256": "e35f1c5b6fac26b5ebe1264a0ed146e4f32f53ee54d8b06625b8d084c0070418",
+      "local_decision": "UNREVIEWED",
+      "operator_note": ""
+    },
+    {
+      "id": "TD-200",
+      "title": "THE DOUBLE-COUNT COUNT",
+      "source_url": "https://www.carbonbrief.org/factcheck-uk-conservatives-double-the-cost-of-net-zero-after-spreadsheet-blunder",
+      "evidence_status": "INDEPENDENT_FACTCHECK",
+      "expected_sha256": "acaa80a722645b53958ed7fce30414353f9e304d0d1a4c179cdd59ce31985fc3",
+      "local_decision": "UNREVIEWED",
+      "operator_note": ""
+    },
+    {
+      "id": "TD-201",
+      "title": "AUTONOMOUSLY EMPLOYED",
+      "source_url": "https://www.mprnews.org/story/2026/10/01/waymo-robotaxi-regulation-up-for-minneapolis-city-council-vote",
+      "evidence_status": "REPORTED_PUBLIC_VOTE_AND_VETO",
+      "expected_sha256": "7ea1e4ab1f79c474e886fba50d87a44be2ff07e89cf3a3bcad7eeadb3fc02fda",
+      "local_decision": "UNREVIEWED",
+      "operator_note": ""
+    },
+    {
+      "id": "TD-202",
+      "title": "YOU WIN! GET NOTHING!",
+      "source_url": "https://www.theguardian.com/australia-news/2026/oct/09/sydney-currency-trader-sacked-for-working-from-singapore-without-permission-wins-unfair-dismissal-case",
+      "evidence_status": "REPORTED_TRIBUNAL_DECISION",
+      "expected_sha256": "802556617cda4bbcd18ccb31cc8a82a58262263159618ab226b867d584999128",
+      "local_decision": "UNREVIEWED",
+      "operator_note": ""
+    },
+    {
+      "id": "TD-203",
+      "title": "THE GOLDEN SPURTLE",
+      "source_url": "https://www.goldenspurtle.com/press-releases-2/",
+      "evidence_status": "PRIMARY_EVENT_ORGANIZER",
+      "expected_sha256": "559336235d2f5d05fdbd2d91fb1421fa805f427b364809501b9e92d44247aa29",
+      "local_decision": "UNREVIEWED",
+      "operator_note": ""
+    },
+    {
+      "id": "TD-204",
+      "title": "STRIPE COURT",
+      "source_url": "https://aapnews.aap.com.au/news/fashion-feud-adidas-aims-to-tear-stripes-off-white-fox",
+      "evidence_status": "REPORTED_CIVIL_LAWSUIT_DISPUTED",
+      "expected_sha256": "fea6cff8041feae8ff6cd3c6078f76bff985cd5d731b1498e25ec7f8503990e7",
+      "local_decision": "UNREVIEWED",
+      "operator_note": ""
+    },
+    {
+      "id": "TD-205",
+      "title": "FROGMAN PUBLIC WORKS",
+      "source_url": "https://lovelandoh.gov/m/newsflash/home/detail/809",
+      "evidence_status": "PRIMARY_CITY_ANNOUNCEMENT",
+      "expected_sha256": "b3d6dc068207999c8ae7b1c7dc09829686e278ae474c42315444065bb8e4a552",
+      "local_decision": "UNREVIEWED",
+      "operator_note": ""
+    }
+  ],
+  "authority": false,
+  "canon": false
+}
