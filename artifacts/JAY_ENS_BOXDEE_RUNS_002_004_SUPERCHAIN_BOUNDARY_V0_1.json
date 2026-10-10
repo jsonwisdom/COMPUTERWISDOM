@@ -1,0 +1,204 @@
+{
+  "artifact": "JAY_ENS_BOXDEE_RUNS_002_004_SUPERCHAIN_BOUNDARY_V0_1",
+  "operator": "JAY",
+  "status": "RECEIPT_PACKAGE",
+  "canon": false,
+  "authority_created": false,
+  "final_decision": "JAY",
+  "write_policy": {
+    "additive_only": true,
+    "merge_authorized": false,
+    "dns_opened": false,
+    "signature_requested": false,
+    "wallet_write": false,
+    "join_created": false
+  },
+  "source_layers": {
+    "boxdee_runs_002_004": "USER_REPORTED_INTERVALS_IN_CHAT",
+    "public_protocol_research": "CURRENT_GITHUB_READBACK",
+    "wallet_control": "NOT_ESTABLISHED",
+    "live_base_deployment_pin": "NOT_ESTABLISHED"
+  },
+  "invariants": [
+    "ENS_BEFORE_DNS",
+    "SEARCH_MISS != ABSENCE",
+    "GATEWAY_OBSERVATION != WALLET_CONTROL",
+    "FORWARD_RESOLUTION != REVERSE_PRIMARY",
+    "BASENAME != CONTROL",
+    "CONTROL != AUTHORITY",
+    "DEPENDENCY_SET != MEMBERSHIP_PROOF",
+    "UNSAFE != SAFE != FINALIZED",
+    "GAME_WIN != WITHDRAWAL_FINALIZED",
+    "OP_MAINNET != BASE",
+    "PUBLIC_SPEC != LIVE_BASE_DEPLOYMENT",
+    "SHARED_ADMIN != SHARED_AUTHORITY_OVER_A_WALLET"
+  ],
+  "boxdee_runs": {
+    "RUN_002": {
+      "interval": "NEW_READ_ONLY",
+      "refires_RUN_001": false,
+      "structure": "PASS",
+      "artifact": "PASS_FOR_PRIOR_REPORTED_BUNDLE_ONLY",
+      "screenshot_rehashed_this_interval": false,
+      "crypto": "HOLD",
+      "short_circuit": "3_CRYPTO",
+      "terminal": "HOLD",
+      "stages_4_through_7": "NOT_EVALUATED",
+      "facts_promoted": 0,
+      "joins_created": 0,
+      "observations": [
+        {
+          "object": "jaywisdom.eth",
+          "source": "user-reported ENS-side gateway",
+          "result": "ENS Ideas address null; euc.li not found on mainnet",
+          "classification": "PARTIAL_GATEWAY_OBSERVATION"
+        },
+        {
+          "object": "os.jaywisdom.eth",
+          "source": "user-reported ENS-side gateway",
+          "result": "same pattern",
+          "classification": "PARTIAL_GATEWAY_OBSERVATION"
+        },
+        {
+          "object": "app.jaywisdom.eth",
+          "source": "user-reported ENS-side gateway",
+          "result": "ENS Ideas address null",
+          "classification": "PARTIAL_GATEWAY_OBSERVATION"
+        },
+        {
+          "object": "data.jaywisdom.eth",
+          "source": "user-reported ENS-side gateway",
+          "result": "ENS Ideas address null",
+          "classification": "PARTIAL_GATEWAY_OBSERVATION"
+        },
+        {
+          "object": "computerwisdom.eth",
+          "source": "user-reported ENS-side gateway",
+          "result": "ENS Ideas address null; euc.li not found on mainnet",
+          "classification": "PARTIAL_GATEWAY_OBSERVATION"
+        },
+        {
+          "object": "computercourtwindows98.eth",
+          "source": "user-reported state",
+          "result": "separate unresolved object",
+          "classification": "UNRESOLVED"
+        },
+        {
+          "object": "jaywisdom.base.eth",
+          "source": "not run in RUN_002",
+          "result": "Basename excluded from mainnet check",
+          "classification": "NOT_RUN"
+        }
+      ]
+    },
+    "RUN_003": {
+      "interval": "NEW_READ_ONLY",
+      "refires_RUN_002": false,
+      "structure": "PASS",
+      "artifact": "UNCHANGED_FROM_001",
+      "crypto": "HOLD",
+      "short_circuit": "3_CRYPTO",
+      "terminal": "HOLD",
+      "stages_4_through_7": "NOT_EVALUATED",
+      "facts_promoted": 0,
+      "joins_created": 0,
+      "basename_forward": {
+        "source": "user-reported ENS Ideas observation",
+        "name": "jaywisdom.base.eth",
+        "address": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+        "state": "OBSERVED_NON_NORMATIVE",
+        "proves_wallet_control": false,
+        "proves_reverse_primary": false,
+        "proves_attestation": false,
+        "joins_to_jaywisdom_eth": false
+      }
+    },
+    "RUN_004": {
+      "interval": "NEW_READ_ONLY",
+      "refires_RUN_003": false,
+      "structure": "PASS",
+      "artifact": "UNCHANGED_FROM_001",
+      "crypto": "HOLD",
+      "short_circuit": "3_CRYPTO",
+      "terminal": "HOLD",
+      "stages_4_through_7": "NOT_EVALUATED",
+      "facts_promoted": 0,
+      "joins_created": 0,
+      "reverse_gateway": {
+        "source": "user-reported gateway observations",
+        "address": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+        "ens_ideas_result": "jaywisdom.base.eth",
+        "eucli_result": "address not found on mainnet",
+        "classification": "SPLIT_BY_CHAIN_SCOPE",
+        "proves_wallet_control": false,
+        "proves_custody": false,
+        "joins_to_jaywisdom_eth": false
+      }
+    }
+  },
+  "public_protocol_readback": {
+    "superchain_config_current_develop": {
+      "source_url": "https://github.com/ethereum-optimism/optimism/blob/develop/packages/contracts-bedrock/src/L1/SuperchainConfig.sol",
+      "blob_sha": "a032a68817d6729af8a3c0fc289eb2c7b20543dc",
+      "semver": "2.5.0",
+      "pause_expiry_seconds": 7884000,
+      "guardian_can_pause": true,
+      "guardian_can_unpause": true,
+      "guardian_can_extend": true,
+      "note": "Current develop readback. Earlier 2.4.3 references exist in Upgrade 20 validation history and are not silently rewritten."
+    },
+    "interop_dependency_set": {
+      "source_url": "https://github.com/ethereum-optimism/specs/blob/main/specs/interop/dependency-set.md",
+      "blob_sha": "d9b7bf30e10fc78995874158abd50d6766ec033f",
+      "summary": "Dependency set defines valid source chains for executing messages and is configured per cluster as a mesh.",
+      "membership_rule": "CONFIGURED_DEPENDENCY != NAMED_CHAIN_MEMBERSHIP_PROOF"
+    },
+    "interop_derivation": {
+      "source_url": "https://github.com/ethereum-optimism/specs/blob/main/specs/interop/derivation.md",
+      "blob_sha": "33168f3b7fa60e30178339e14d5a571ae32b80e4",
+      "rules": [
+        "executing message requires corresponding initiating message",
+        "initiating chain must be in dependency set",
+        "block with invalid executing message is invalid",
+        "invalid executing-message blocks must not become safe",
+        "deposit transactions cannot trigger executing messages",
+        "message expiry window = 604800 seconds"
+      ]
+    },
+    "fault_proof_standard_defaults": {
+      "source_url": "https://github.com/ethereum-optimism/optimism/blob/develop/docs/public-docs/op-stack/fault-proofs/reference.mdx",
+      "blob_sha": "ba663dc04c14e6dc2400b9216dc9e0cefe663de7",
+      "proof_maturity_delay_seconds": 604800,
+      "dispute_game_finality_delay_seconds": 302400,
+      "caution": "Defaults only; chain-specific live deployment must be checked independently."
+    },
+    "upgrade_20": {
+      "source_url": "https://github.com/ethereum-optimism/optimism/blob/develop/docs/public-docs/notices/upgrade-20.mdx",
+      "blob_sha": "dc1a711dd023d8fcd472bb81089b39fa0faae7f4",
+      "mainnet_execution_target": "2026-09-24",
+      "moves_fault_proofs_to_super_root_games": true,
+      "enables_interop": false,
+      "shared_dispute_game_migration": false,
+      "each_post_upgrade_game_still_contains_one_chain_output_root": true,
+      "note": "This corrects any reading that Upgrade 20 itself enabled shared interop. Date is the documented mainnet execution target, distinct from later release notes dated Sep 25."
+    },
+    "base_interop_cluster_membership": {
+      "state": "NOT_ESTABLISHED_IN_THIS_PACKAGE",
+      "rule": "OP_STACK_USAGE != INTEROP_CLUSTER_MEMBERSHIP",
+      "no_inference_from_superchain_label": true
+    }
+  },
+  "base_account_boundary": {
+    "address": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+    "pointer_name_user_reported": "jaywisdom.base.eth",
+    "wallet_control": "NOT_VERIFIED",
+    "custody": "NOT_VERIFIED",
+    "stack_membership_does_not_prove_control": true
+  },
+  "boxdee_disposition": {
+    "normative_gate": "3_CRYPTO",
+    "terminal": "HOLD",
+    "reason": "No wallet-control/signature package supplied.",
+    "later_protocol_research_changes_gate": false
+  }
+}
