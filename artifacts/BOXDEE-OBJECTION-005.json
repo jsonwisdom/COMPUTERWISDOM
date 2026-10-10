@@ -1,0 +1,29 @@
+{
+  "object_id": "BOXDEE-OBJECTION-005",
+  "operator": "JAY",
+  "objection_class": "STATE_COLLAPSE",
+  "claim_under_test": "Schema, instance, binding, custody proof, and authority may be silently collapsed into one state.",
+  "missing_edge": "EXPLICIT_TRANSITION_AND_AUTHORITY_RECEIPT",
+  "disposition": "HOLD",
+  "ruling_state": "NOT_ADJUDICATED",
+  "required_receipts": [
+    "schema_identity",
+    "instance_identity",
+    "binding_receipt",
+    "custody_proof when claimed",
+    "authority_source when claimed"
+  ],
+  "invariants": [
+    "SCHEMA != INSTANCE",
+    "INSTANCE != BINDING",
+    "BINDING != CUSTODY_PROOF",
+    "CUSTODY_PROOF != AUTHORITY",
+    "UNSUPPORTED_TRANSITION = FALSE",
+    "FAKE_GREEN = FALSE",
+    "DEFAULT = HOLD"
+  ],
+  "source_artifact": "Jay’s Objection Proofs & Naming Conventions — ReverseReply v0.1.md",
+  "source_status": "FILE_READBACK",
+  "canon": false,
+  "authority_created": false
+}
