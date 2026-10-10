@@ -1,0 +1,55 @@
+{
+  "kind": "TRIGGERDECK_LEVEL2_ARCHIVE_BIND_RECEIPT_V0_1",
+  "run_date": "2026-10-10",
+  "state": "STAGED_REVIEW",
+  "source_repo": "jsonwisdom/COMPUTERWISDOM",
+  "source_branch": "triggerdeck/level2-20261010-proof",
+  "private_storage_alias": "CW408",
+  "google_drive_folder": "TRIGGERDECK_LEVEL2_2026-10-10_STAGED_REVIEW",
+  "storage_visibility": "OWNER_ONLY_READBACK",
+  "drive_archive_upload": {
+    "success": true,
+    "readback": true,
+    "mime_type": "application/zip",
+    "size_bytes": 565793,
+    "local_sha256": "31dedaa496edd96a865df29b76b6c1c98fe736c8bc6b81d00a7a6593a6e6fa3a",
+    "remote_sha256_recomputed": false
+  },
+  "drive_request_upload": {
+    "success": true,
+    "readback": true,
+    "mime_type": "application/json",
+    "size_bytes": 3523,
+    "local_sha256": "bf0dd1254491ddd1d988c486668606ff784bb1c1996748403f859ad08a3520c0",
+    "remote_sha256_recomputed": false
+  },
+  "comparison": {
+    "cards": 7,
+    "request_manifest_ids_match": true,
+    "titles_match": true,
+    "source_urls_match": true,
+    "evidence_labels_match": true,
+    "expected_sha256_match": true,
+    "locally_verified_png_sha256_match": true,
+    "png_dimensions_all_900x1200": true,
+    "zip_integrity_test": true
+  },
+  "mathematica": {
+    "ids_sequential": true,
+    "ids_unique": true,
+    "exact_ratio_3_4": true,
+    "bns_before_ens_before_dns": "ROUTING_ORDER_ONLY"
+  },
+  "approvals": {
+    "cards_human_approved": 0,
+    "canon": false,
+    "authority_created": false
+  },
+  "execution": {
+    "dashboard_request_executed": false,
+    "new_render_backend": "UNBOUND",
+    "github_automation": "UNBOUND",
+    "drive_to_dashboard_autosync": false
+  },
+  "note": "Evidence is storage and file integrity, not editorial truth, human artistic approval, or a live seven-card renderer. Do not claim public Drive visibility. GitHub stores redacted receipt metadata, not private Drive IDs."
+}
