@@ -2,7 +2,7 @@
 
 > **Status:** OPERATIONAL CONTROL PLANE  
 > **Classification:** CORPORATE_OPERATIONS_ROOT_QUALIFIED  
-> **Authority:** false by default  
+> **AI / machine authority:** false by default  
 > **Canonical proof root:** `jsonwisdom/Welcome-to-JSONWISDOM`
 
 `COMPUTERWISDOM` is the qualified corporate operations root for Computer Wisdom / Sovereign OS work. It coordinates operational records, replay receipts, signer boundaries, deployment surfaces, workflow gates, revocation tooling, and machine-auditable control-plane events.
@@ -54,24 +54,28 @@ Merge != authority
 
 ## Authority Boundary
 
-The default posture is:
+The default machine posture is:
 
 ```text
-authority: false
+ai_authority: false
+machine_authority_created: false
 truth_claim: false
 ```
 
-Authority is never implied by:
+Bare `authority:false` is deprecated because it does not identify the subject.
 
-- issue creation;
-- merge;
-- CI success;
-- replay success;
-- EAS witness;
-- ENS discovery;
-- operator action.
+Machine or artifact authority is never implied by issue creation, merge, CI success, replay success, EAS witness, ENS discovery, or an agent action.
 
-Authority can only be elevated through a separate governance path with a dedicated authority-elevation PR, machine-readable receipt, replay instructions, review, merge commit, and follow-up witness record.
+Authenticated operator action is a separate concept:
+
+```text
+JASON_OPERATOR_CONTROL = TRUE_WHEN_AUTHENTICATED
+AI_AUTHORITY = FALSE
+MACHINE_AUTHORITY_CREATED = FALSE
+OPERATOR_DECISION != MACHINE_AUTHORITY
+```
+
+A repository, replay, receipt, or agent cannot manufacture legal or institutional authority. Any such authority claim must identify its external source, scope, time window, and receipt.
 
 ## Security Boundary
 
@@ -104,10 +108,11 @@ source_issue: jsonwisdom/receiptos-base#55
 ## Operational Principle
 
 ```text
-No receipt, no authority.
+No receipt, no machine promotion.
 No replay, no promotion.
 No secret in repo.
 No fake green.
+No unscoped authority field.
 ```
 
 ## Author
