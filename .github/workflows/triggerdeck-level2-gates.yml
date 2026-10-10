@@ -1,0 +1,30 @@
+name: TriggerDeck Level Two Math Gate
+
+on:
+  push:
+    branches:
+      - triggerdeck/level2-20261010-proof
+    paths:
+      - 'Trigger_Deck/production_runs/2026-10-10_level2/**'
+      - '.github/workflows/triggerdeck-level2-gates.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout staged source
+        uses: actions/checkout@v4
+      - name: Validate Level Two request against manifest
+        run: python Trigger_Deck/production_runs/2026-10-10_level2/validate_request.py
+      - name: Preserve non-authoritative validation receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: triggerdeck-level2-math-gate-receipt
+          path: validation_result.json
+          if-no-files-found: warn
