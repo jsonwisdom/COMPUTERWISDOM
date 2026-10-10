@@ -1,0 +1,77 @@
+{
+  "schema": "TRIGGERDECK_RELEASE_READINESS_HOLD_V0_1",
+  "batch": "GARBAGE_PRESS_LEVEL_TWO",
+  "source": "actual 7 PNG images and SHA-256 review; operator rejection from ChatGPT session",
+  "evidence_date": "2026-10-10",
+  "stage": "STAGED_REVIEW",
+  "release_decision": "BLOCKED_PENDING_HUMAN_VISUAL_ACCEPTANCE",
+  "public_claim": "METADATA_CI_PASS_ONLY_NOT_FINAL_DELIVERY",
+  "gates": {
+    "image_file_count": {
+      "actual": 7,
+      "required": 7,
+      "state": "PASS"
+    },
+    "image_exact_portrait_3_4": {
+      "actual": "900x1200",
+      "count": 7,
+      "state": "PASS"
+    },
+    "individual_png_sha256": {
+      "actual_matches": 7,
+      "required": 7,
+      "state": "PASS"
+    },
+    "archive_sha256": {
+      "sha256": "31dedaa496edd96a865df29b76b6c1c98fe736c8bc6b81d00a7a6593a6e6fa3a",
+      "state": "PASS_LOCAL"
+    },
+    "archival_drive_metadata": {
+      "state": "PASS_PRIVATE_FILE_PRESENT",
+      "remote_byte_hash": "NOT_RECOMPUTED"
+    },
+    "wolfram_arithmetic": {
+      "expression": "478+478",
+      "correct_sum": 956,
+      "card_printed": "957?!",
+      "state": "FAIL_LITERAL_MATH"
+    },
+    "artistic_quality": {
+      "status": "HOLD",
+      "reason": "Flat geometric cartoon style does not meet established grotesque vintage collectible-card visual standard"
+    },
+    "operator_visual_approval": {
+      "approved_count": 0,
+      "total": 7,
+      "state": "HOLD"
+    },
+    "live_render_worker": {
+      "state": "UNBOUND"
+    },
+    "github_ci_metadata": {
+      "state": "PASS_METADATA_ONLY",
+      "run_url": "https://github.com/jsonwisdom/COMPUTERWISDOM/actions/runs/38031367247"
+    },
+    "production_complete": {
+      "state": "FAIL"
+    }
+  },
+  "operator_decision": "REVIEW_PENDING",
+  "human_authority": "JASON",
+  "changes": {
+    "canon": false,
+    "merge": false,
+    "wallet": false,
+    "artifact_replacement": false
+  },
+  "card_ids": [
+    "TD-199",
+    "TD-200",
+    "TD-201",
+    "TD-202",
+    "TD-203",
+    "TD-204",
+    "TD-205"
+  ],
+  "needed_next_action": "Re-render visual quality to approved standard, correct or explicitly label satirical arithmetic, show full-size image previews, test two-card pilot, obtain operator review, and record binary hashes and release receipts."
+}
