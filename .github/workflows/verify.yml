@@ -81,6 +81,12 @@ jobs:
           if receipt["result"] != "MATCH":
               sys.exit(1)
 
+      - name: Recovery floor validation
+        run: python scripts/check_github_floor.py --self-test
+
+      - name: Shared hold ledger validation
+        run: python scripts/validate_hold_ledger.py --self-test
+
       - name: Upload verify receipt
         uses: actions/upload-artifact@v4
         if: always()
