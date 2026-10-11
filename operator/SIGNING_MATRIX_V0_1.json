@@ -1,0 +1,66 @@
+{
+  "schema": "CW_OPERATOR_SIGNING_MATRIX_V0_1",
+  "source_repo": "jsonwisdom/COMPUTERWISDOM",
+  "observed_base_commit": "1c85eec47beb71e8e8010f93cb9427998fcc7cac",
+  "purpose": "REAL_PATH_INVENTORY_NOT_SECURITY_APPROVAL",
+  "authority_created": false,
+  "identity_verified": false,
+  "paths": [
+    {
+      "path": "wallet-control/index.html",
+      "name": "Wallet Control",
+      "signer_type": "Base EIP-191 wallet-control",
+      "blob_sha": "665a01e4f17d704a6b81d4cb43eda17a1dc854f2",
+      "state": "PRESENT_UNREVIEWED",
+      "permitted_instead_of_649": false
+    },
+    {
+      "path": "wallet-control/hw25-json-signer/index.html",
+      "name": "HW25/3 Packet Signer",
+      "signer_type": "HW25 packet-specific signature",
+      "blob_sha": "3ece5c5addfc95445d636b6e57f3731ac1028806",
+      "state": "PRESENT_UNREVIEWED",
+      "permitted_instead_of_649": false
+    },
+    {
+      "path": "wallet-control/neutral/index.html",
+      "name": "Neutral EVM Signer",
+      "signer_type": "Connected-wallet control",
+      "blob_sha": "7f33b4c846d7644896b06f6a595c256b59da526b",
+      "state": "PRESENT_UNREVIEWED",
+      "permitted_instead_of_649": false
+    },
+    {
+      "path": "wallet-control/zora-signer/index.html",
+      "name": "Zora Signer",
+      "signer_type": "Typed data + smart-wallet",
+      "blob_sha": "13824d584a8379672203aad97114af6e3e11f89b",
+      "state": "PRESENT_UNREVIEWED",
+      "permitted_instead_of_649": false
+    },
+    {
+      "path": "wallet-control/jaywisdom-base/index.html",
+      "name": "JayWisdom Base (quarantined)",
+      "signer_type": "Previously wallet-control",
+      "blob_sha": "1be2154e286ccea2547627ca92f6f4850248cd7c",
+      "state": "DISABLED_BY_PR649",
+      "permitted_instead_of_649": false
+    },
+    {
+      "path": "operator/sign/index.html",
+      "name": "Operator Signing Workbench",
+      "signer_type": "New candidate, EIP-191 capture only, not independently verified",
+      "blob_sha": null,
+      "state": "DRAFT_UNAPPROVED",
+      "permitted_instead_of_649": false
+    },
+    {
+      "path": "operator/sign-neutral/index.html",
+      "name": "Operator Neutral Signer",
+      "signer_type": "New candidate neutral EIP-191 capture-only, expected address blank",
+      "blob_sha": null,
+      "state": "DRAFT_UNAPPROVED",
+      "permitted_instead_of_649": false
+    }
+  ]
+}
