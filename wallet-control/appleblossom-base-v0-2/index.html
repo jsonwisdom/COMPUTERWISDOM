@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; connect-src 'none'; img-src 'none'; object-src 'none'; frame-src 'none'; form-action 'none'; base-uri 'none'">
+<title>AppleBlossom — Base Wallet Observation v0.2</title>
+<style>
+:root{color-scheme:dark;font:16px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;background:#101722;color:#eef4f4}*{box-sizing:border-box}body{margin:0;padding:24px 13px 60px}main{max-width:860px;margin:auto}h1{font-size:clamp(29px,5vw,45px);line-height:1.13;letter-spacing:-.03em;margin:7px 0 14px}h2{font-size:18px;margin:0 0 12px}.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:12px;color:#8adacc;font-weight:800}.muted{color:#c2ced6}.panel{background:#1a2937;border:1px solid #3d5364;border-radius:18px;padding:22px;margin:17px 0}code,pre{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere}code{color:#a2e9da}pre{white-space:pre-wrap;max-height:290px;overflow:auto;background:#0d1722;border:1px solid #3a5060;border-radius:12px;padding:15px;font-size:12px}.hold{border-color:#b99950;background:#29271d}.badge{display:inline-block;border-radius:99px;padding:4px 10px;background:#3c3220;color:#ffe3a3;font-size:12px;font-weight:800}.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.kv{padding:11px;background:#0f1b28;border:1px solid #334b5b;border-radius:10px}.kv small{display:block;color:#afc0cb;margin-bottom:5px}.kv code{display:block;font-size:12px}button{font:700 15px system-ui;background:#a8f2d9;color:#071b21;border:0;border-radius:10px;padding:13px 15px;cursor:pointer;margin:6px 7px 6px 0}button.secondary{background:#384e60;color:#f7fbff}button:disabled{opacity:.38;cursor:not-allowed}label.agree{display:flex;gap:10px;align-items:flex-start;margin:15px 0}input[type=checkbox]{width:19px;height:19px;flex:none;margin-top:3px}.status{font-weight:700;background:#172534;border-left:5px solid #d0ac58;padding:14px;border-radius:7px;overflow-wrap:anywhere}.status.good{border-color:#7cd6b7}.status.bad{border-color:#ee8383}.steps{padding-left:23px}.steps li{margin-bottom:8px}a{color:#a8f2d9}.hidden{display:none}footer{color:#aab8c6;font-size:12px;padding:12px 4px}@media(max-width:600px){.grid{grid-template-columns:1fr}.panel{padding:16px}}
+</style>
+</head>
+<body>
+<main>
+<div class="eyebrow">Computer Wisdom · AppleBlossom · read-only evidence</div>
+<h1>Base wallet observation</h1>
+<p class="muted">Connect Coinbase Wallet, sign a narrowly scoped challenge, download a JSON receipt, then privately upload it to ChatGPT for independent verification.</p>
+<div class="panel hold"><span class="badge">EVIDENCE HOLD</span>
+<p><strong>This is NOT a Base on-chain join transaction.</strong> A local <code>personal_sign</code> signature can support a wallet-control check, but does not meet the separate requirement for an on-chain Base join receipt. It does not prove the missing 20-cell board or a human identity.</p>
+</div>
+<div class="panel"><h2>Scope and target</h2><div class="grid">
+<div class="kv"><small>Only permitted chain</small><strong>Base mainnet (8453)</strong></div>
+<div class="kv"><small>Reference address</small><code>0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8</code></div>
+<div class="kv"><small>Reference label</small><code>jaywisdom.base.eth</code></div>
+<div class="kv"><small>Join state</small><strong>NOT AUTHORIZED / NOT SUBMITTED</strong></div>
+</div></div>
+<div class="panel"><h2>1. Connect Coinbase Wallet</h2>
+<p class="muted">Open this HTTPS page in Coinbase Wallet's browser or in a desktop browser with the Coinbase Wallet extension. No seed phrase is ever needed.</p>
+<button id="connect">Connect Coinbase Wallet</button> <button class="secondary" id="build" disabled>2. Build fresh Base challenge</button>
+<div id="status" class="status">No wallet connected. No evidence created.</div>
+</div>
+<div class="panel"><h2>2. Review and sign the exact message</h2>
+<pre id="challenge">Build a challenge to view its complete text here.</pre>
+<label class="agree"><input id="consent" type="checkbox"><span>I checked that this is a <strong>message signature only</strong>, not a transaction, token approval, authorization to move assets, or EAS attestation.</span></label>
+<button id="sign" disabled>3. Sign message (NO transaction)</button>
+<p class="muted">The 10-minute deadline is checked both before and after the wallet prompt. Local signing is never labeled cryptographically verified. No transaction is broadcast by this page.</p>
+</div>
+<div class="panel"><h2>3. Save privately and return for independent replay</h2>
+<button id="download" disabled>Download JSON receipt</button> <button class="secondary" id="reset">Start new challenge</button>
+<pre id="output">No JSON receipt yet.</pre>
+<p class="muted">Do not publish a receipt containing the complete signature until it has been reviewed and a separate public-redaction plan is agreed. Never upload a recovery phrase, private key, or wallet backup.</p>
+</div>
+<footer>Versioned public source · no analytics · no third-party libraries · no built-in upload endpoint · no blockchain writes · SHA-256 of message is integrity metadata, not proof of truth.</footer>
+</main>
+<script>
+(()=>{'use strict';
+const ADDRESS='0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8',CHAIN='0x2105',TTL=10*60*1000;
+const $=id=>document.getElementById(id);let provider=null,account=null,challenge=null,receipt=null,providers=[];
+const status=(s,kind='')=>{$('status').textContent=s;$('status').className='status '+kind};
+const eq=(a,b)=>String(a).toLowerCase()===String(b).toLowerCase();
+const hex=bytes=>'0x'+Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
+async function sha256(str){const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));return hex(new Uint8Array(buf));}
+async function onBase(){return provider && eq(await provider.request({method:'eth_chainId'}),CHAIN);}
+function reset(){challenge=null;receipt=null;$('build').disabled=!account;$('sign').disabled=true;$('download').disabled=true;$('challenge').textContent='Build a challenge to view its complete text here.';$('output').textContent='No JSON receipt yet.';$('consent').checked=false;}
+window.addEventListener('eip6963:announceProvider',event=>{const detail=event.detail;if(detail?.provider && detail?.info && !providers.some(x=>x.provider===detail.provider))providers.push(detail);});
+async function selectProvider(){
+ window.dispatchEvent(new Event('eip6963:requestProvider'));
+ await new Promise(resolve=>setTimeout(resolve,350));
+ let d=providers.find(x=>/coinbase/i.test((x.info.rdns||'')+' '+(x.info.name||'')));
+ if(d)return d.provider;
+ const ps=window.ethereum?.providers||[window.ethereum].filter(Boolean);
+ return ps.find(x=>x&&x.isCoinbaseWallet)||null;
+}
+$('connect').onclick=async()=>{try{
+ if(!crypto?.randomUUID || !crypto?.subtle)throw Error('Secure-context browser required. Open via HTTPS.');
+ provider=await selectProvider();if(!provider)throw Error('Coinbase Wallet provider not found. Use its extension or in-app browser; do not use an unknown website.');
+ const acc=await provider.request({method:'eth_requestAccounts'});if(!acc?.[0])throw Error('No wallet address returned');account=acc[0];
+ if(!eq(account,ADDRESS))throw Error('Connected address differs from the stated Base pointer. No challenge issued.');
+ if(!(await onBase())){await provider.request({method:'wallet_switchEthereumChain',params:[{chainId:CHAIN}]});}
+ if(!(await onBase()))throw Error('Only Base mainnet 8453 is allowed.');
+ reset();status('Coinbase wallet connected on Base 8453. Address matched. This is NOT a verified control proof.','good');
+ }catch(e){account=null;reset();status('HOLD: '+(e?.message||e),'bad');}
+};
+$('build').onclick=async()=>{try{
+ if(!provider||!account||!(await onBase()))throw Error('Reconnect on Base 8453.');
+ const current=(await provider.request({method:'eth_accounts'}))?.[0];if(!eq(current,account))throw Error('Wallet address changed.');
+ const blk=await provider.request({method:'eth_getBlockByNumber',params:['latest',false]});
+ if(!blk?.hash||!blk?.number||!blk?.timestamp)throw Error('Could not obtain Base block identity.');
+ const now=Date.now(),blockMs=parseInt(blk.timestamp,16)*1000;
+ if(!Number.isFinite(blockMs)||blockMs>now+120000||blockMs<now-15*60000)throw Error('Stale or future Base block. Challenge refused.');
+ const created=new Date(now).toISOString(),expires=new Date(now+TTL).toISOString(),nonce=crypto.randomUUID();
+ const lines=['APPLEBLOSSOM_BASE_WALLET_OBSERVATION_V0_2','purpose=READ_ONLY_WALLET_CONTROL','chain_id=8453','expected_pointer_address='+ADDRESS,'connected_address='+account,'basenamed_pointer=jaywisdom.base.eth','block_number_hex='+blk.number,'block_hash='+blk.hash,'block_timestamp_hex='+blk.timestamp,'created_at='+created,'expires_at='+expires,'nonce='+nonce,'board_artifact_identity=NOT_ESTABLISHED','rubric_identity_join=NOT_ESTABLISHED','join_authorization=FALSE','onchain_transaction=NONE','statement=I only demonstrate control of this wallet for this exact message. I do not authorize spending, asset approvals, transfers, EAS attestations, joins, governance actions, identity claims, or commercialization.'];
+ const msg=lines.join('\n');challenge={message:msg,created_at:created,expires_at:expires,block_number_hex:blk.number,block_hash:blk.hash,block_timestamp_hex:blk.timestamp,nonce,account};
+ receipt=null;$('download').disabled=true;$('output').textContent='No JSON receipt yet.';$('challenge').textContent=msg;$('sign').disabled=false;status('Fresh Base challenge created. Inspect the complete message before signing.');
+ }catch(e){reset();status('HOLD: '+(e?.message||e),'bad');}
+};
+$('sign').onclick=async()=>{try{
+ if(!provider||!challenge||!$('consent').checked)throw Error('Review message and check consent.');
+ if(Date.now()>Date.parse(challenge.expires_at))throw Error('Challenge expired before signing. Build a new challenge.');
+ if(!(await onBase()))throw Error('Wallet chain changed. Only Base 8453 allowed.');
+ const a=(await provider.request({method:'eth_accounts'}))?.[0];if(!eq(a,challenge.account))throw Error('Wallet address changed.');
+ const sig=await provider.request({method:'personal_sign',params:[hex(new TextEncoder().encode(challenge.message)),challenge.account]});
+ if(Date.now()>Date.parse(challenge.expires_at))throw Error('Challenge expired during wallet prompt. Discard signature and build a new challenge.');
+ if(!(await onBase()))throw Error('Chain changed during signing.');
+ const b=(await provider.request({method:'eth_accounts'}))?.[0];if(!eq(b,challenge.account))throw Error('Wallet address changed during signing.');
+ if(typeof sig!=='string'||!/^0x[0-9a-fA-F]+$/.test(sig)||sig.length<132)throw Error('Wallet did not return a valid-looking signature.');
+ const signedAt=new Date().toISOString();
+ receipt={format:'APPLEBLOSSOM_BASE_WALLET_OBSERVATION_RECEIPT_V0_2',disposition:'SIGNATURE_CAPTURED_UNVERIFIED',scope:'WALLET_CONTROL_ONLY',chain_id:8453,reference_pointer:{name:'jaywisdom.base.eth',address:ADDRESS,identity_binding:false},connected_address:challenge.account,challenge:{message:challenge.message,message_sha256:await sha256(challenge.message),nonce:challenge.nonce,created_at:challenge.created_at,expires_at:challenge.expires_at,base_block_number_hex:challenge.block_number_hex,base_block_hash:challenge.block_hash,base_block_timestamp_hex:challenge.block_timestamp_hex},signature:{method:'personal_sign',hex:sig,received_at_client_clock:signedAt},independent_erc1271_replay:'PENDING',historical_board_identity:'NOT_ESTABLISHED',rubric_identity_join:'NOT_ESTABLISHED',base_onchain_join_transaction:null,base_onchain_join:'NOT_SUBMITTED',browser_clock_is_trusted:false,authority_created:false,canonicalization:'HOLD',commercialization:'HOLD'};
+ $('output').textContent=JSON.stringify(receipt,null,2);$('download').disabled=false;$('sign').disabled=true;status('Signature captured. NOT independently verified and NOT a Base on-chain join. Download JSON for private review.','good');
+ }catch(e){reset();status('HOLD: '+(e?.message||e),'bad');}
+};
+$('download').onclick=()=>{if(!receipt)return;const blob=new Blob([JSON.stringify(receipt,null,2)+'\n'],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='APPLEBLOSSOM_BASE_WALLET_OBSERVATION_'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)};
+$('reset').onclick=()=>{reset();status(account?'Ready for a fresh Base challenge.':'No wallet connected.');};
+})();
+</script>
+</body>
+</html>
