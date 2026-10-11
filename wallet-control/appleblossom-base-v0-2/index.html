@@ -34,8 +34,11 @@
 <p class="muted">The 10-minute deadline is checked both before and after the wallet prompt. Local signing is never labeled cryptographically verified. No transaction is broadcast by this page.</p>
 </div>
 <div class="panel"><h2>3. Save privately and return for independent replay</h2>
-<button id="download" disabled>Download JSON receipt</button> <button class="secondary" id="reset">Start new challenge</button>
+<button id="copy" disabled>Copy JSON (iPhone)</button> <button id="share" class="secondary" disabled>Share / Save JSON</button> <button id="download" class="secondary" disabled>Download JSON receipt</button>
+<p id="copyHelp" class="muted">On iPhone, use Copy JSON, then paste it into this chat. If your wallet browser blocks clipboard access, a manual Select All fallback will appear.</p>
+<textarea id="manualJson" class="hidden" readonly aria-label="Receipt JSON for manual iPhone copying" style="width:100%;height:210px;border-radius:12px;border:1px solid #7ecbbb;background:#0d1722;color:#eef4f4;padding:12px;font:12px ui-monospace,monospace"></textarea>
 <pre id="output">No JSON receipt yet.</pre>
+<button id="reset" class="secondary">Start new challenge</button>
 <p class="muted">Do not publish a receipt containing the complete signature until it has been reviewed and a separate public-redaction plan is agreed. Never upload a recovery phrase, private key, or wallet backup.</p>
 </div>
 <footer>Versioned public source · no analytics · no third-party libraries · no built-in upload endpoint · no blockchain writes · SHA-256 of message is integrity metadata, not proof of truth.</footer>
@@ -49,7 +52,7 @@ const eq=(a,b)=>String(a).toLowerCase()===String(b).toLowerCase();
 const hex=bytes=>'0x'+Array.from(bytes,b=>b.toString(16).padStart(2,'0')).join('');
 async function sha256(str){const buf=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(str));return hex(new Uint8Array(buf));}
 async function onBase(){return provider && eq(await provider.request({method:'eth_chainId'}),CHAIN);}
-function reset(){challenge=null;receipt=null;$('build').disabled=!account;$('sign').disabled=true;$('download').disabled=true;$('challenge').textContent='Build a challenge to view its complete text here.';$('output').textContent='No JSON receipt yet.';$('consent').checked=false;}
+function reset(){challenge=null;receipt=null;$('build').disabled=!account;$('sign').disabled=true;$('download').disabled=true;$('copy').disabled=true;$('share').disabled=true;$('manualJson').classList.add('hidden');$('manualJson').value='';$('copyHelp').textContent='On iPhone, use Copy JSON, then paste it into this chat. If clipboard access is blocked, manual Select All will appear.';$('challenge').textContent='Build a challenge to view its complete text here.';$('output').textContent='No JSON receipt yet.';$('consent').checked=false;}
 window.addEventListener('eip6963:announceProvider',event=>{const detail=event.detail;if(detail?.provider && detail?.info && !providers.some(x=>x.provider===detail.provider))providers.push(detail);});
 async function selectProvider(){
  window.dispatchEvent(new Event('eip6963:requestProvider'));
@@ -79,7 +82,7 @@ $('build').onclick=async()=>{try{
  const created=new Date(now).toISOString(),expires=new Date(now+TTL).toISOString(),nonce=crypto.randomUUID();
  const lines=['APPLEBLOSSOM_BASE_WALLET_OBSERVATION_V0_2','purpose=READ_ONLY_WALLET_CONTROL','chain_id=8453','expected_pointer_address='+ADDRESS,'connected_address='+account,'basenamed_pointer=jaywisdom.base.eth','block_number_hex='+blk.number,'block_hash='+blk.hash,'block_timestamp_hex='+blk.timestamp,'created_at='+created,'expires_at='+expires,'nonce='+nonce,'board_artifact_identity=NOT_ESTABLISHED','rubric_identity_join=NOT_ESTABLISHED','join_authorization=FALSE','onchain_transaction=NONE','statement=I only demonstrate control of this wallet for this exact message. I do not authorize spending, asset approvals, transfers, EAS attestations, joins, governance actions, identity claims, or commercialization.'];
  const msg=lines.join('\n');challenge={message:msg,created_at:created,expires_at:expires,block_number_hex:blk.number,block_hash:blk.hash,block_timestamp_hex:blk.timestamp,nonce,account};
- receipt=null;$('download').disabled=true;$('output').textContent='No JSON receipt yet.';$('challenge').textContent=msg;$('sign').disabled=false;status('Fresh Base challenge created. Inspect the complete message before signing.');
+ receipt=null;$('download').disabled=true;$('copy').disabled=true;$('share').disabled=true;$('manualJson').classList.add('hidden');$('output').textContent='No JSON receipt yet.';$('challenge').textContent=msg;$('sign').disabled=false;status('Fresh Base challenge created. Inspect the complete message before signing.');
  }catch(e){reset();status('HOLD: '+(e?.message||e),'bad');}
 };
 $('sign').onclick=async()=>{try{
@@ -94,8 +97,36 @@ $('sign').onclick=async()=>{try{
  if(typeof sig!=='string'||!/^0x[0-9a-fA-F]+$/.test(sig)||sig.length<132)throw Error('Wallet did not return a valid-looking signature.');
  const signedAt=new Date().toISOString();
  receipt={format:'APPLEBLOSSOM_BASE_WALLET_OBSERVATION_RECEIPT_V0_2',disposition:'SIGNATURE_CAPTURED_UNVERIFIED',scope:'WALLET_CONTROL_ONLY',chain_id:8453,reference_pointer:{name:'jaywisdom.base.eth',address:ADDRESS,identity_binding:false},connected_address:challenge.account,challenge:{message:challenge.message,message_sha256:await sha256(challenge.message),nonce:challenge.nonce,created_at:challenge.created_at,expires_at:challenge.expires_at,base_block_number_hex:challenge.block_number_hex,base_block_hash:challenge.block_hash,base_block_timestamp_hex:challenge.block_timestamp_hex},signature:{method:'personal_sign',hex:sig,received_at_client_clock:signedAt},independent_erc1271_replay:'PENDING',historical_board_identity:'NOT_ESTABLISHED',rubric_identity_join:'NOT_ESTABLISHED',base_onchain_join_transaction:null,base_onchain_join:'NOT_SUBMITTED',browser_clock_is_trusted:false,authority_created:false,canonicalization:'HOLD',commercialization:'HOLD'};
- $('output').textContent=JSON.stringify(receipt,null,2);$('download').disabled=false;$('sign').disabled=true;status('Signature captured. NOT independently verified and NOT a Base on-chain join. Download JSON for private review.','good');
+ $('output').textContent=JSON.stringify(receipt,null,2);$('download').disabled=false;$('copy').disabled=false;$('share').disabled=false;$('sign').disabled=true;status('Signature captured, but NOT independently verified. On iPhone tap Copy JSON, then paste into this chat.','good');
  }catch(e){reset();status('HOLD: '+(e?.message||e),'bad');}
+};
+async function copyReceipt(){
+ if(!receipt)return;
+ const value=JSON.stringify(receipt,null,2);
+ try{
+  if(!navigator.clipboard?.writeText)throw Error('Clipboard API unavailable');
+  await navigator.clipboard.writeText(value);
+  $('copyHelp').textContent='Copied! Return to ChatGPT, long-press the message box, and tap Paste. Keep the receipt private until verified.';
+  status('Receipt copied to clipboard. No on-chain join has occurred.','good');
+ }catch(err){
+  const field=$('manualJson');field.value=value;field.classList.remove('hidden');field.focus();field.select();field.setSelectionRange(0,value.length);
+  let copied=false;
+  try{copied=!!document.execCommand('copy')}catch(_){/* Some wallet browsers block execCommand */}
+  if(copied){$('copyHelp').textContent='Copied through fallback. Return to ChatGPT and Paste.';status('Receipt copied through fallback. No on-chain join.','good');}
+  else{$('copyHelp').textContent='Wallet browser blocked clipboard access. The entire JSON is selected below; choose Copy from the iPhone text menu. Do not manually retype or omit fields.';status('Manual copy required; JSON remains in the text box below.','');}
+ }
+}
+$('copy').onclick=copyReceipt;
+$('share').onclick=async()=>{
+ if(!receipt)return;
+ const value=JSON.stringify(receipt,null,2)+'\n';
+ const file=new File([value],'APPLEBLOSSOM_BASE_WALLET_OBSERVATION_'+new Date().toISOString().slice(0,10)+'.json',{type:'application/json'});
+ if(typeof navigator.share!=='function'||!navigator.canShare?.({files:[file]})){
+   $('copyHelp').textContent='iPhone wallet browser cannot share a JSON file here. Use Copy JSON instead.';
+   return;
+ }
+ try{await navigator.share({files:[file],title:'Private Base wallet observation receipt'});$('copyHelp').textContent='Share sheet closed. Check that the receipt was saved or sent to your intended private destination.';}
+ catch(e){if(e?.name!=='AbortError')$('copyHelp').textContent='File share unavailable. Use Copy JSON instead.';}
 };
 $('download').onclick=()=>{if(!receipt)return;const blob=new Blob([JSON.stringify(receipt,null,2)+'\n'],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='APPLEBLOSSOM_BASE_WALLET_OBSERVATION_'+new Date().toISOString().slice(0,10)+'.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000)};
 $('reset').onclick=()=>{reset();status(account?'Ready for a fresh Base challenge.':'No wallet connected.');};
