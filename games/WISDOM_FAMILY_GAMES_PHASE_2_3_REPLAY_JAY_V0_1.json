@@ -1,0 +1,145 @@
+{
+  "schema": "WISDOM_FAMILY_GAMES_PHASE_2_3_REPLAY_JAY_V0_1",
+  "parent": "games/WISDOM_FAMILY_GAMES_V0_1.json",
+  "additive": true,
+  "authority": false,
+  "promotion": false,
+  "base_surface": {
+    "name": "jaywisdom.base.eth",
+    "network": "Base Mainnet",
+    "chain_id": 8453,
+    "role": "discovery_and_operational_game_anchor",
+    "wallet_control_proven": false,
+    "human_identity_proven": false,
+    "authority": false
+  },
+  "core_game_order": [
+    "DETECTIVE",
+    "MAZE",
+    "GARDEN",
+    "BUILDER",
+    "REPAIR_SHOP",
+    "TREASURE_HUNT",
+    "CHESS",
+    "ESCAPE_ROOM",
+    "MATCHING",
+    "SIMULATION",
+    "CRAFTING",
+    "TEACH_BACK"
+  ],
+  "syntax_rerun": {
+    "apple_blossom": "grow_question_preserve_curiosity",
+    "awesome": "human_dignity_and_curiosity_first",
+    "audit": "compare_claim_receipts_counter_receipts",
+    "replay": "walk_back_then_forward",
+    "teach_back": "explain_for_reproduction",
+    "snapchat": "snapshot_card_mechanic_only_no_platform_integration",
+    "super_secret_sister": "story_or_protected_team_namespace_only",
+    "syntax": "machine_readable_replay_pattern",
+    "reruns": "same_declared_inputs_compare_outputs"
+  },
+  "math_engine": {
+    "graph_theory": "paths_and_missing_edges",
+    "combinatorics": "possible_routes",
+    "probability": "uncertainty_updates_only",
+    "logic": "contradiction_detection",
+    "set_theory": "classification",
+    "optimization": "shortest_valid_proof_path",
+    "cryptography": "integrity_checks",
+    "state_machines": "permitted_transitions",
+    "statistics": "denominator_discipline",
+    "recursion": "replay_the_replay"
+  },
+  "score_reduction": [
+    "UNKNOWN_COUNT",
+    "CONFLICT_COUNT",
+    "FALSE_JOIN_COUNT",
+    "UNREPRODUCED_COUNT",
+    "TEACHBACK_FAILURE_COUNT"
+  ],
+  "successful_moves": [
+    "CORRECT_HOLD",
+    "FOUND_CONFLICT",
+    "CAUGHT_FALSE_JOIN",
+    "CHANGED_MIND_FROM_BETTER_EVIDENCE",
+    "I_DONT_KNOW_YET_WHEN_EVIDENCE_ABSENT"
+  ],
+  "invariants": [
+    "HELPER != FAMILY_CONSENT_SEAT",
+    "STORY != EVIDENCE",
+    "XP != EVIDENCE",
+    "BADGE != CREDENTIAL",
+    "QUEST_COMPLETE != EDGE_PASS",
+    "BASE_8453 != APPLE_BLOSSOM_L3"
+  ],
+  "future_l3": {
+    "deployed": false,
+    "requires": [
+      "distinct_chain_id",
+      "genesis",
+      "execution",
+      "settlement",
+      "receipts"
+    ]
+  },
+  "family_membrane": {
+    "pass": true,
+    "private": true,
+    "replay": true,
+    "family_graph_creation": false,
+    "silent_kinship_inference": false
+  },
+  "family_facts_promoted": 0,
+  "kinship_inference": "BLOCKED",
+  "ledger_advance": false,
+  "three_daughters_path": {
+    "schema": "THREEDAUGHTERS_PATH_V0_1",
+    "path_count": 3,
+    "acyclic": true,
+    "shared_prefix": true,
+    "pairwise_disjoint_daughter_segments": true,
+    "shared_terminal": "HUMAN_DECISION",
+    "join_before_gate": false,
+    "identity_collapse": false,
+    "authority_created": false,
+    "promotion_allowed": false,
+    "invariants": [
+      "SHARED_MEMBERSHIP != LANE_IDENTITY",
+      "DAUGHTER_1 != DAUGHTER_2",
+      "DAUGHTER_1 != DAUGHTER_3",
+      "DAUGHTER_2 != DAUGHTER_3",
+      "SCOPED_PASS != GLOBAL_PASS",
+      "RENDERED_IMAGE != PHOTOGRAPHIC_EVIDENCE",
+      "VISUAL_RECEIPT != IDENTITY_PROOF"
+    ]
+  },
+  "visual_receipt": {
+    "asset_name": "a_wide_high_resolution_poster_like_infographic.png",
+    "sha256": "87e01aba1ad862ab03919621247b4613a5af8575b6385445fd1b5f23b3965739",
+    "class": "RENDERED_GAME_VISUAL_RECEIPT",
+    "title": "BoxDee Approved Family Propaganda / Three Daughters Path",
+    "truth_claim_from_image": "NONE",
+    "school_standard": "NOT_PASSED_GLOBAL",
+    "leaf_branch_join": "ABSENT",
+    "github_asset": {
+      "path": "assets/wisdom-family-games/THREEDAUGHTERS_PATH_BOXDEE_VISUAL_RECEIPT_GITHUB_PREVIEW_V0_1.webp",
+      "branch": "game/wisdom-family-replay-jay-phase-2-3",
+      "role": "PREVIEW_DERIVATIVE",
+      "format": "WEBP",
+      "width": 256,
+      "height": 171,
+      "sha256": "e1e8e7a79853dde2a13d78a655eb8e3460b903278d56865e99d63b4618d7cade",
+      "git_blob_sha": "85b11d8dd56f84b9697aa166fbd0c8bed84dc352",
+      "commit": "94ad287e65889681ae4a2f3eb88d477526ab7635",
+      "source_full_png_sha256": "87e01aba1ad862ab03919621247b4613a5af8575b6385445fd1b5f23b3965739",
+      "exact_source_asset_in_github": false,
+      "asset_join": "BOUND"
+    },
+    "asset_invariants": [
+      "PREVIEW_DERIVATIVE != SOURCE_FULL_RENDER",
+      "GIT_BLOB_SHA != SHA256_CONTENT_DIGEST",
+      "ASSET_PRESENT != TRUTH_PROMOTION",
+      "VISUAL_RECEIPT != IDENTITY_PROOF"
+    ]
+  }
+}
