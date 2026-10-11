@@ -1,0 +1,151 @@
+{
+  "index_id": "TRIGGERCHATGPT_OS_RUNTIME_QUERY_INDEX_V0_1",
+  "version": "0.1",
+  "scope": "PUBLIC_SAFE_SEARCH_ROUTING_ONLY",
+  "status": "PROPOSED_INDEX_NOT_CANON",
+  "goal": "Find runtime/OS lineage via chat-history clues and pinned repo records without inventing executable CitizenRoot runtime.",
+  "capture_scope": "BOUNDED_CHAT_RECALL_AND_SCOPED_GITHUB_DRIVE_READS_NOT_FULL_CHAT_EXPORT",
+  "keywords": {
+    "primary": [
+      "runtime",
+      "OS",
+      "TriggerChatGPT",
+      "Trigger ChatGPT",
+      "Jason OS"
+    ],
+    "os_aliases": [
+      "Jay's AL OS",
+      "AgentOS",
+      "ReceiptOS",
+      "ReplayOS",
+      "ALMS",
+      "MANIC",
+      "Sovereign OS",
+      "Constitutional Runtime",
+      "Runtime Lattice",
+      "JSONWisdom Control Center",
+      "JASON_OS"
+    ],
+    "file_paths": [
+      "RUNTIMES.md",
+      "BOOT_OS.md",
+      "runtime_lattice",
+      "constitutional-runtime",
+      "audit-zero-state/src/runtime.ts",
+      "runtime_governance",
+      "verification/canonicalize.py",
+      "verification/canonicalize.mjs",
+      "scripts/l3_runtime_execution_gate_v0_1.py"
+    ],
+    "query_terms": [
+      "chat search",
+      "conversation compiler",
+      "query index",
+      "keyword alias",
+      "receipt replay",
+      "input source bytes",
+      "validator",
+      "TR-015",
+      "TR-016",
+      "TR-017",
+      "NOT_RUN",
+      "HOLD"
+    ]
+  },
+  "priority": "EXACT_LITERAL > VERIFIED_PATH > NAMED_ALIAS > CONCEPTUAL_SIMILARITY",
+  "chat_leads": [
+    {
+      "date": "2026-05-28",
+      "lead": "OS/runtime code-path names retrieved in chat; execution not proven"
+    },
+    {
+      "date": "2026-09-02",
+      "lead": "AgentOS and ReceiptOS; ReplayOS recorded as spec-only"
+    },
+    {
+      "date": "2026-09-19",
+      "lead": "Jason OS V0 discovery/map, not confirmed runtime; private details withheld"
+    },
+    {
+      "date": "2026-09-21",
+      "lead": "ALMS, MANIC and multiple distinct OS families"
+    },
+    {
+      "date": "2026-10-04",
+      "lead": "'Trigger ChatGPT' found as search vocabulary, not deployed engine"
+    },
+    {
+      "date": "2026-10-11",
+      "lead": "Original CitizenRoot validator unidentified; local synthetic TR suite is separate"
+    }
+  ],
+  "repo_pointers": [
+    {
+      "repo": "jsonwisdom/AL",
+      "commit": "8673b27c21416a1a7cbd137e79c61be3ec62f75a",
+      "path": "RUNTIMES.md",
+      "class": "DECLARED_RUNTIME_REGISTRY"
+    },
+    {
+      "repo": "jsonwisdom/AL",
+      "commit": "8673b27c21416a1a7cbd137e79c61be3ec62f75a",
+      "path": "BOOT_OS.md",
+      "class": "BOOT_MANIFEST"
+    },
+    {
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "commit": "eb382e835e8a9b0def08c80bf0165207381ffafd",
+      "path": "artifacts/JASON_OS_CONVERSATION_COMPILER_INGESTION_STATUS_V0_1.md",
+      "class": "FULL_CHAT_INGESTION_HOLD"
+    },
+    {
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "commit": "eb382e835e8a9b0def08c80bf0165207381ffafd",
+      "path": "docs/protocols/manic/MANIC_RUNTIME_V0_1.md",
+      "class": "PROTOCOL_DESIGN"
+    },
+    {
+      "repo": "jsonwisdom/JOY",
+      "commit": "0dd0448b761e0311abae2c48035bd9a93bb92a06",
+      "path": "scripts/l3_runtime_execution_gate_v0_1.py",
+      "class": "EXECUTABLE_CODE_NOT_CITIZENROOT_VALIDATOR"
+    },
+    {
+      "repo": "jsonwisdom/CITIZEN_ROOT",
+      "commit": "1ea88cf165259988edee2b42ccfc98a8b0542015",
+      "path": "verification/canonicalize.py",
+      "class": "CANONICALIZER_NOT_TR_RUNTIME"
+    },
+    {
+      "repo": "jsonwisdom/CITIZEN_ROOT",
+      "commit": "1ea88cf165259988edee2b42ccfc98a8b0542015",
+      "path": "verification/canonicalize.mjs",
+      "class": "CANONICALIZER_NOT_TR_RUNTIME"
+    }
+  ],
+  "drive_titles_only": [
+    "JASON'S DAILY — CHATGPT MAP — JSONWISDOM REPLAY",
+    "SUPREME SEYMOUR — CONSTITUTIONAL RUNTIME V1",
+    "RECEIPTS_OS_FULLMATH_V0_1"
+  ],
+  "search_templates": [
+    "Search prior chats: exact 'runtime' and 'OS'; then 'Jason OS', 'Trigger ChatGPT', 'ReceiptOS', 'ReplayOS', 'AgentOS', 'ALMS', 'MANIC'; preserve dates and labels.",
+    "Search GitHub: exact file names first; pin commit and path; inspect implementation and tests separately.",
+    "Search Drive: metadata/title and scope; avoid treating synthesized Docs as original chat export.",
+    "For CitizenRoot TR-015/016/017 demand original script path plus test location before execution; else NOT_RUN/HOLD."
+  ],
+  "boundaries": {
+    "private_chat_transcripts_included": false,
+    "drive_document_ids_included": false,
+    "full_chat_export_ingested": false,
+    "keyword_index_is_chat_history_export": false,
+    "keyword_index_means_automatic_chatgpt_memory": false,
+    "triggerchatgpt_runtime_implemented": "NOT_ESTABLISHED",
+    "citizenroot_original_validator": "NOT_IDENTIFIED",
+    "TR_015_TR_016_TR_017": "NOT_RUN_HOLD",
+    "canon": false,
+    "authority_created": false,
+    "promotion": "NONE",
+    "human_decider": "JASON"
+  }
+}
