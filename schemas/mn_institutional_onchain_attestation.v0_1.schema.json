@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://computerwisdom.example/schemas/mn_institutional_onchain_attestation.v0_1.schema.json",
+  "title": "Minnesota Institutional On-Chain Attestation v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "epoch",
+    "jurisdiction",
+    "institution",
+    "source",
+    "canonicalization",
+    "commitment",
+    "record_onion",
+    "power_onion",
+    "replay_state",
+    "authority_created"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "epoch": {"const": 2026},
+    "jurisdiction": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["state", "level", "name"],
+      "properties": {
+        "state": {"const": "MN"},
+        "level": {"enum": ["STATE", "COUNTY", "CITY", "TOWN", "TOWNSHIP"]},
+        "name": {"type": "string", "minLength": 1},
+        "county": {"type": ["string", "null"]}
+      }
+    },
+    "institution": {
+      "type": "object",
+      "required": ["institution_id", "institution_type", "name"],
+      "properties": {
+        "institution_id": {"type": "string", "minLength": 1},
+        "institution_type": {"enum": ["COURT", "LEGISLATURE", "CONSTITUTIONAL_OFFICE", "AGENCY", "COUNTY", "MUNICIPALITY", "SCHOOL_DISTRICT", "AUTHORITY", "BOARD", "OTHER_PUBLIC_BODY"]},
+        "name": {"type": "string", "minLength": 1}
+      }
+    },
+    "source": {
+      "type": "object",
+      "required": ["source_uri", "observed_at", "content_type", "raw_bytes_on_chain"],
+      "properties": {
+        "source_uri": {"type": "string", "minLength": 1},
+        "observed_at": {"type": "string", "format": "date-time"},
+        "content_type": {"type": "string"},
+        "byte_size": {"type": ["integer", "null"], "minimum": 0},
+        "raw_bytes_on_chain": {"const": false}
+      }
+    },
+    "canonicalization": {
+      "type": "object",
+      "required": ["version", "sha256"],
+      "properties": {
+        "version": {"type": "string", "minLength": 1},
+        "sha256": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"},
+        "prior_sha256": {"type": ["string", "null"], "pattern": "^[a-fA-F0-9]{64}$"}
+      }
+    },
+    "commitment": {
+      "type": "object",
+      "required": ["chain", "commitment_hash", "status"],
+      "properties": {
+        "chain": {"type": "string", "minLength": 1},
+        "network": {"type": ["string", "null"]},
+        "transaction_id": {"type": ["string", "null"]},
+        "block_ref": {"type": ["string", "null"]},
+        "commitment_hash": {"type": "string", "pattern": "^[a-fA-F0-9]{64}$"},
+        "status": {"enum": ["PLANNED", "SUBMITTED", "CONFIRMED", "FAILED", "HOLD"]}
+      }
+    },
+    "budget_overlay": {
+      "type": ["object", "null"],
+      "properties": {
+        "fiscal_year": {"type": ["integer", "null"]},
+        "fund": {"type": ["string", "null"]},
+        "program": {"type": ["string", "null"]},
+        "appropriation": {"type": ["number", "null"]},
+        "payment": {"type": ["number", "null"]},
+        "business_entity_id": {"type": ["string", "null"]}
+      }
+    },
+    "case_overlay": {
+      "type": ["object", "null"],
+      "properties": {
+        "case_id": {"type": ["string", "null"]},
+        "classification": {"enum": ["NORMAL_PUBLIC_RECORD", "ANOMALY", "AUDIT_FINDING", "CIVIL_ALLEGATION", "CRIMINAL_CHARGE", "PLEA", "CONVICTION", "SETTLEMENT", "HOLD"]},
+        "source_scoped": {"const": true}
+      }
+    },
+    "record_onion": {"type": "object"},
+    "power_onion": {"type": "object"},
+    "imagination_attestation": {
+      "type": ["object", "null"],
+      "properties": {
+        "type": {"const": "IMAGINATION_ATTESTATION"},
+        "source": {"const": false},
+        "receipt": {"const": false},
+        "authority": {"const": false},
+        "promotion_requires_independent_evidence": {"const": true}
+      }
+    },
+    "replay_state": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]},
+    "authority_created": {"const": false}
+  }
+}
