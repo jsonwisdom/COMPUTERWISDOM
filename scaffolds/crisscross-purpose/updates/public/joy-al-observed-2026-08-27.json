@@ -1,0 +1,39 @@
+{
+  "artifact": "CRISSCROSS_JOY_AL_POINTER_2026_08_27",
+  "status": "OBSERVED_UNSEALED",
+  "observer": "GitHubBot",
+  "look_time_ct": "2026-08-27T01:00:00-05:00",
+  "authority_created": false,
+  "merged": false,
+  "hash_commit": false,
+  "source_purpose_head": "jsonwisdom/COMPUTERWISDOM#527",
+  "source_purpose_head_sha": "f20c8ecf29031a8be6c8ce60dbb204b7517bf035",
+  "siblings": [
+    {
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "pr": 527,
+      "draft": true,
+      "merged": false,
+      "head": "f20c8ecf29031a8be6c8ce60dbb204b7517bf035",
+      "path": "scaffolds/crisscross-purpose/"
+    },
+    {
+      "repo": "jsonwisdom/JOY",
+      "pr": 96,
+      "draft": true,
+      "merged": false,
+      "head": "cabc8d59fd20cd740783a611abe87100b7132e8d",
+      "path": "scaffolds/crisscross-family-choice/"
+    },
+    {
+      "repo": "jsonwisdom/AL",
+      "pr": 429,
+      "draft": true,
+      "merged": false,
+      "head": "789dd12d17609645c327c393558b2848e00785bb",
+      "path": "scaffolds/crisscross-purpose/"
+    }
+  ],
+  "heidee_inspected": false,
+  "billing_paperwork_inspected": false
+}
