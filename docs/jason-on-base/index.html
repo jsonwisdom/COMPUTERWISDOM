@@ -58,7 +58,11 @@ input,textarea,select{background:#081421;border:1px solid #899fb4;color:var(--in
       </select>
       <p id="film-context" class="small">Archival US Army footage. View the footage at the museum's site; licensing and viewing rights remain with the source.</p>
       <p><a id="film-link" href="https://encyclopedia.ushmm.org/content/en/film/german-civilians-forced-to-view-atrocities-committed-in-buchenwald" target="_blank" rel="noopener noreferrer">Open official source in another tab ↗</a></p>
-      <p class="small">The video isn't embedded or remotely controlled. If you're watching on a TV or laptop, you can type the scene time below.</p>
+      <p class="small">Official sources open in their own site. For a film file you already have permission to view, you can play it <em>only in this browser</em> and automatically capture its playback time. The file is never uploaded.</p>
+      <label for="local-film">Optional local video file (not uploaded)</label>
+      <input id="local-film" type="file" accept="video/*" aria-describedby="local-tip">
+      <p class="small" id="local-tip">If watching on a TV or laptop instead, type the scene time manually.</p>
+      <video id="local-player" controls playsinline preload="metadata" hidden style="max-width:100%;margin-top:12px" aria-label="Local video player"></video>
     </div>
     <div class="panel">
       <h3>Mark your moment</h3>
