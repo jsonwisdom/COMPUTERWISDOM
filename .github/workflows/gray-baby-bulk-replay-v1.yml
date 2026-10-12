@@ -1,0 +1,123 @@
+name: Gray Baby Bulk Replay V1
+
+# Additive workflow. Does not modify, disable, or replace any other workflow.
+# Manual dispatch only. Read-only. No cron, push, or pull_request trigger.
+# Replay steps use local fixtures and receipts. They do not read secrets.
+
+on:
+  workflow_dispatch:
+    inputs:
+      batch_start:
+        description: "Start index into the inventory (zero-based)"
+        required: false
+        default: "0"
+      batch_size:
+        description: "Objects per batch"
+        required: false
+        default: "32"
+      mode:
+        description: "Replay mode"
+        required: false
+        default: "evidence_reexamination"
+        type: choice
+        options:
+          - evidence_reexamination
+      expected_sha:
+        description: "Optional expected commit SHA. If set, fail when GITHUB_SHA or HEAD differs."
+        required: false
+        default: ""
+
+permissions:
+  contents: read
+
+jobs:
+  bulk-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v4
+
+      - name: assert_expected_sha
+        if: ${{ inputs.expected_sha != '' }}
+        env:
+          EXPECTED_SHA: ${{ inputs.expected_sha }}
+        run: |
+          set -eu
+          test "$GITHUB_SHA" = "$EXPECTED_SHA"
+          test "$(git rev-parse HEAD)" = "$EXPECTED_SHA"
+
+      - name: setup_python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: install_schema_validator
+        run: python -m pip install --no-cache-dir jsonschema
+
+      - name: build_batch
+        env:
+          BATCH_START: ${{ inputs.batch_start }}
+          BATCH_SIZE: ${{ inputs.batch_size }}
+          MODE: ${{ inputs.mode }}
+        run: |
+          set -eu
+          python tools/gray_baby/build_batch.py \
+            --workdir "$RUNNER_TEMP/gray-baby" \
+            --inventory fixtures/gray_baby/synthetic_inventory_v1.json \
+            --batch-start "$BATCH_START" \
+            --batch-size "$BATCH_SIZE" \
+            --mode "$MODE"
+
+      - name: replay_batch
+        env:
+          MODE: ${{ inputs.mode }}
+        run: |
+          set -eu
+          python tools/gray_baby/replay_batch.py \
+            --workdir "$RUNNER_TEMP/gray-baby" \
+            --mode "$MODE"
+
+      - name: validate_membranes
+        env:
+          MODE: ${{ inputs.mode }}
+        run: |
+          set -eu
+          python tools/gray_baby/validate_membranes.py \
+            --workdir "$RUNNER_TEMP/gray-baby" \
+            --mode "$MODE"
+
+      - name: classify_deltas
+        env:
+          MODE: ${{ inputs.mode }}
+        run: |
+          set -eu
+          python tools/gray_baby/classify_deltas.py \
+            --workdir "$RUNNER_TEMP/gray-baby" \
+            --mode "$MODE"
+
+      - name: write_receipts
+        env:
+          MODE: ${{ inputs.mode }}
+        run: |
+          set -eu
+          python tools/gray_baby/write_receipts.py \
+            --workdir "$RUNNER_TEMP/gray-baby" \
+            --mode "$MODE"
+
+      - name: build_scoreboard
+        env:
+          MODE: ${{ inputs.mode }}
+        run: |
+          set -eu
+          python tools/gray_baby/build_scoreboard.py \
+            --workdir "$RUNNER_TEMP/gray-baby" \
+            --mode "$MODE"
+
+      - name: upload_receipts
+        uses: actions/upload-artifact@v4
+        with:
+          name: gray-baby-batch-receipts
+          path: |
+            ${{ runner.temp }}/gray-baby/receipts/
+            ${{ runner.temp }}/gray-baby/scoreboard.json
+          if-no-files-found: error
