@@ -1,0 +1,42 @@
+{
+  "operation_id": "PMEM-OP-001",
+  "mode": "SPECIFICATION_TRACE",
+  "policy_stack": [
+    "PERSONAL-MEMORY-CONSTITUTION-v1.0",
+    "PMEM-IMPL-001",
+    "PMEM-IMPL-002",
+    "PMEM-IMPL-003",
+    "PMEM-IMPL-004",
+    "PMEM-IMPL-005",
+    "PMEM-IMPL-006",
+    "PMEM-IMPL-007",
+    "PMEM-IMPL-008",
+    "PMEM-IMPL-009",
+    "PMEM-IMPL-010"
+  ],
+  "input": {
+    "type": "USER_ASSERTED",
+    "content": "Project Alpha deadline is 2026-09-01",
+    "authority": {
+      "reason": ["PROJECT_PLANNING"],
+      "export": [],
+      "action": []
+    }
+  },
+  "expected_trace": [
+    {"step": "CREATE", "expected": "ADMITTED", "type": "USER_ASSERTED"},
+    {"step": "REASON", "expected": "ADMITTED", "derived_type": "INFERRED"},
+    {"step": "EXPORT", "expected": "REJECTED", "reason": "EXPORT_NOT_AUTHORIZED"},
+    {"step": "REVOKE_REASON", "expected": "ADMITTED"},
+    {"step": "CURRENT_QUERY", "expected": "EXCLUDED_NON_USABLE"},
+    {"step": "HISTORICAL_REPLAY", "expected": "PRE_REVOKE_USABLE_POST_REVOKE_NOT_USABLE"}
+  ],
+  "spec_conformance": "PASS",
+  "runtime_executed": false,
+  "ledger_events_created": false,
+  "receipt_bytes_created": false,
+  "hashes_recomputed": false,
+  "crypto_integrity_verified": false,
+  "external_anchor": null,
+  "authority_created": false
+}
