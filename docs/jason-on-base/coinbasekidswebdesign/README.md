@@ -16,7 +16,7 @@ Scale: ONLY after reproducible source, Node tests, real-browser and accessibilit
 
 Then open http://127.0.0.1:8787/
 
-The Node preview binds to localhost and serves only six whitelisted public files. GitHub Pages runs the same static site, not a persistent Node server, and the app does not collect interaction data on a backend.
+The Node preview binds to localhost and serves only five whitelisted public files. GitHub Pages runs the same static site, not a persistent Node server, and the app does not collect interaction data on a backend.
 
 ## Zora concept corridor
 
