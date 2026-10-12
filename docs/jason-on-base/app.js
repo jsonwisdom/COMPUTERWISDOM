@@ -123,6 +123,65 @@
     render();
     $("marker-feedback").textContent="This page's reflection records were erased.";
   });
+
+  // Public-source registry only; user questions are never sent in requests.
+  let librarianRecords=null;
+  const librarianHolder=$("librarian-results");
+  const librarianStatus=$("librarian-status");
+  const lNode=(tag,content,cls)=>{
+    const node=document.createElement(tag);
+    if(content!==undefined)node.textContent=content;
+    if(cls)node.className=cls;
+    return node;
+  };
+  function sourceItem(entry,includeClaim){
+    const box=lNode("div",undefined,"record");
+    box.appendChild(lNode("b",entry.title));
+    box.appendChild(lNode("p",entry.organization+" · "+entry.category+" · "+entry.temporal_scope,"small"));
+    if(includeClaim)box.appendChild(lNode("p",entry.claim));
+    const link=lNode("a","Open original source ↗");
+    link.href=entry.source;link.target="_blank";link.rel="noopener noreferrer";
+    box.appendChild(link);
+    box.appendChild(lNode("p","Scope limit: "+entry.not_a_claim,"small"));
+    return box;
+  }
+  async function loadLibrarian(){
+    try {
+      const response=await fetch("librarian-v0.1.json",{cache:"no-store"});
+      if(!response.ok)throw Error("Public-source registry HTTP "+response.status);
+      const body=await response.json();
+      if(body.schema!=="JASON_ON_BASE_LIBRARIAN_INDEX_V0_1"||!Array.isArray(body.records))throw Error("Librarian registry schema invalid");
+      librarianRecords=body.records;
+      librarianStatus.textContent="Static registry loaded: "+librarianRecords.length+" public source pointers. Completeness and freshness NOT verified.";
+    }catch(err){ librarianRecords=null; librarianStatus.textContent="HOLD: "+err.message+"; no source claims loaded."; }
+  }
+  $("ask-librarian").addEventListener("click",()=>{
+    librarianHolder.replaceChildren();
+    if(!librarianRecords){librarianHolder.appendChild(lNode("p","HOLD: source registry unavailable."));return;}
+    const q=$("librarian-question").value.trim().toLowerCase();
+    if(!q){librarianHolder.appendChild(lNode("p","Type a question first."));return;}
+    const words=q.split(/[^a-z0-9]+/).filter(w=>w.length>2);
+    const ranked=librarianRecords.map(entry=>{
+      const keywords=(entry.keywords||[]).join(" ").toLowerCase();
+      const hay=(entry.title+" "+keywords+" "+entry.category).toLowerCase();
+      return {entry,score:words.reduce((s,w)=>s+(hay.includes(w)?1:0),0)};
+    }).filter(v=>v.score>0).sort((a,b)=>b.score-a.score).slice(0,6);
+    if(!ranked.length){
+      librarianHolder.appendChild(lNode("p","HOLD: no matching curated source in this registry. That does not prove no such records exist."));
+      return;
+    }
+    ranked.forEach(({entry})=>librarianHolder.appendChild(sourceItem(entry,true)));
+    librarianHolder.appendChild(lNode("p","This is keyword retrieval, NOT AI reasoning, fact-checking or comprehensive archival search.","small"));
+  });
+  $("daily-brief").addEventListener("click",()=>{
+    librarianHolder.replaceChildren();
+    if(!librarianRecords){librarianHolder.appendChild(lNode("p","HOLD: source registry unavailable."));return;}
+    librarianHolder.appendChild(lNode("b","SAMPLE DAILY STUDY CARD — NOT CURRENT NEWS"));
+    librarianHolder.appendChild(lNode("p","Today's actual content has not been collected, checked or released. Here are curated sources that can be studied at any time."));
+    librarianRecords.slice(0,3).forEach(entry=>librarianHolder.appendChild(sourceItem(entry,false)));
+    librarianHolder.appendChild(lNode("p","DAILY_PUBLIC_BRIEF=NOT_LIVE; SOURCE_FRESHNESS=NOT_VERIFIED; HUMAN_RELEASE=HOLD.","small"));
+  });
+  loadLibrarian();
   const setView = mode=>{
     if(!["boomer","arcade","evidence"].includes(mode))return;
     document.body.dataset.view=mode;
