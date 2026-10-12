@@ -100,8 +100,9 @@
       "url": "https://github.com/coinbase/coinbase-wallet-sdk"
     },
     {
-      "name": "Coinbase app dapp browser",
-      "url": "https://help.coinbase.com/en/wallet/other-topics/what-is-a-dapp"
+      "name": "Current Coinbase/Base mobile app connection guidance",
+      "url": "https://help.coinbase.com/en-gb/wallet/other-topics/mobile-app-sign-in-discontinued",
+      "note": "Old cross-device QR linking is no longer supported; app explorer or smart wallet are the documented options."
     }
   ],
   "final_human_authority": "JASON_WITHIN_OPERATOR_SCOPE",
