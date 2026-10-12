@@ -1,0 +1,8 @@
+[
+  {"case_id":"TRIAL-01","facts":{"historical_pass":true,"live_state":"UNKNOWN"},"expected_state":"HOLD_LIVE_STATE_UNKNOWN"},
+  {"case_id":"TRIAL-02","facts":{"document_rejected":true,"reason_code":null},"expected_state":"DOCUMENT_REJECTED_REASON_PENDING"},
+  {"case_id":"TRIAL-03","facts":{"document_uploaded":true,"document_accepted":false},"expected_state":"EXCEPTION_EVIDENCE_PENDING"},
+  {"case_id":"TRIAL-04","facts":{"challenge_consumed":true},"expected_state":"CHALLENGE_REPLAY"},
+  {"case_id":"TRIAL-05","facts":{"requested_action":"EXECUTE","current_epoch_authorized":false},"expected_state":"HOLD_AUTHORIZATION_REQUIRED"}
+]
+
