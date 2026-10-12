@@ -1,0 +1,56 @@
+name: NIGHTJR WalkBack Public Receipt Audit
+
+on:
+  pull_request:
+    paths:
+      - "docs/jason-on-base/nightjr-walkback/**"
+      - ".github/workflows/nightjr-walkback-public-audit.yml"
+  push:
+    branches: ["master"]
+    paths:
+      - "docs/jason-on-base/nightjr-walkback/**"
+      - ".github/workflows/nightjr-walkback-public-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  scoped-walkback:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate correction provenance and fail-closed public surface
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("docs/jason-on-base/nightjr-walkback")
+          text=(root/"index.html").read_text(encoding="utf-8")
+          doc=json.loads((root/"receipt.v0.1.json").read_text(encoding="utf-8"))
+          must=lambda x,m: x or (_ for _ in ()).throw(AssertionError(m))
+          addr="0xe75b1eb7cdfdce0bf0329feceba021dd5be62a5c"
+          tx="0x8a4bf50d040960b1a738eb243515215a1cd7611139b4ed75ac3ddffe93f981e1"
+          must(doc["schema"]=="JASON_NIGHTJR_WALKBACK_REPLAY_BUILD_V0_1","schema")
+          must(doc["status"]=="RELEASE_CANDIDATE_HOLD","release candidate")
+          must(doc["error"]["corrected_classification"]=="SAME_TOKEN_CONTRACT_ADDRESS","correction")
+          must(doc["asset"]["contract_address"]==addr,"asset identifier")
+          must(doc["onchain_creation"]["tx_hash"]==tx,"tx identifier")
+          must(doc["onchain_creation"]["block_number"]==51394203,"block")
+          must(doc["onchain_creation"]["block_time_utc"]=="2026-09-16T16:55:53Z","block time")
+          must(doc["asset"]["total_supply_units"]=="1000000000" and doc["asset"]["decimals"]==18,"supply")
+          must(doc["onchain_creation"]["cryptographic_signature_count"]=="NOT_DECODED","signatures not invented")
+          must(doc["onchain_creation"]["ultimate_natural_person_signer"]=="HOLD","human attribution")
+          must(doc["public_release"]["served_http_200"]=="NOT_CLAIMED_UNTIL_READBACK","no fake green")
+          must(doc["authority_created"] is False and doc["trade_execution"] is False and doc["signature_request"] is False,"authority or money")
+          must("SATIRE" in doc["zora"]["public_description"].upper(),"satire label")
+          must(addr in text and tx in text,"missing on-page source ids")
+          must('href="../"' in text,"bad parent link")
+          must("HTTP 200 means resource delivery" in text,"replay scope")
+          must(len(doc["evidence_links"])>=6,"source index")
+          for item in doc["evidence_links"]:
+              must(item["url"] in text,"unlinked evidence: "+item["role"])
+          must(all(term not in text.lower() for term in ["<script","<iframe","<form","connect wallet","eth_sendtransaction"]),"no active/private surface")
+          print("SCOPED_NIGHTJR_WALKBACK_PASS; HUMAN_SIGNER=HOLD; WEB_PUBLICATION=NOT_INFERRED; AUTHORITY=FALSE")
+          PY
