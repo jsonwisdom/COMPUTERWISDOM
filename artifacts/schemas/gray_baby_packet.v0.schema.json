@@ -1,0 +1,317 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "artifacts/schemas/gray_baby_packet.v0.schema.json",
+  "title": "GRAY_BABY_PACKET_V0",
+  "description": "Candidate additive packet schema for Gray Baby over the COMPUTERWISDOM_REPLAY_PACKET_V1 spine. Structural freeze only; not a seated validator and creates no authority.",
+  "type": "object",
+  "required": [
+    "artifact",
+    "protocol_version",
+    "claim_id",
+    "claim_text",
+    "claim_hash",
+    "evidence_layers",
+    "routing_layers",
+    "replay_steps",
+    "failure_rules",
+    "classification",
+    "authority",
+    "promotion_allowed",
+    "gray_baby"
+  ],
+  "properties": {
+    "artifact": {
+      "const": "COMPUTERWISDOM_REPLAY_PACKET_V1"
+    },
+    "protocol_version": {
+      "const": "v1"
+    },
+    "claim_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim_text": {
+      "type": "string"
+    },
+    "claim_hash": {
+      "type": "string",
+      "pattern": "^sha256:[0-9a-fA-F]{64}$"
+    },
+    "evidence_layers": {
+      "type": "object"
+    },
+    "routing_layers": {
+      "type": "object"
+    },
+    "replay_steps": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "failure_rules": {
+      "type": "object",
+      "required": ["routing_failure", "evidence_failure"],
+      "properties": {
+        "routing_failure": { "const": "non_fatal" },
+        "evidence_failure": { "const": "critical" },
+        "partial_evidence": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "classification": {
+      "type": "object",
+      "required": ["authority"],
+      "properties": {
+        "authority": { "const": false }
+      },
+      "additionalProperties": true
+    },
+    "authority": {
+      "const": false
+    },
+    "promotion_allowed": {
+      "const": false
+    },
+    "counter_receipt_refs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true,
+      "default": []
+    },
+    "gray_baby": {
+      "type": "object",
+      "required": [
+        "step",
+        "claim_category",
+        "action",
+        "receipt_refs",
+        "state_change",
+        "status",
+        "agency_intact",
+        "labyrinth_branches",
+        "bound_violations",
+        "replay_reconstructible",
+        "required_branch_open"
+      ],
+      "properties": {
+        "step": {
+          "enum": [
+            "OBSERVE",
+            "PRESERVE",
+            "IDENTIFY",
+            "MIRROR",
+            "BUILD_SHARED_SIGNAL",
+            "VERIFY",
+            "HOLD_GAPS",
+            "BUILD_CHANNEL",
+            "RECEIVE_ACK",
+            "PROTECT_AGENCY",
+            "ROUTE_EXIT",
+            "REPLAY"
+          ]
+        },
+        "claim_category": {
+          "enum": [
+            "OFFICIAL",
+            "OBSERVED",
+            "VARIANT",
+            "CONFLICT",
+            "HOLD",
+            "INFERENCE"
+          ]
+        },
+        "action": {
+          "type": "string"
+        },
+        "receipt_refs": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 },
+          "uniqueItems": true
+        },
+        "state_change": {
+          "type": "string"
+        },
+        "status": {
+          "enum": ["HOLD", "PASS", "CONFLICT", "REJECT", "PROVEN"]
+        },
+        "agency_intact": {
+          "type": "boolean"
+        },
+        "labyrinth_branches": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["branch_id", "required", "state"],
+            "properties": {
+              "branch_id": { "type": "string", "minLength": 1 },
+              "required": { "type": "boolean" },
+              "state": { "enum": ["OPEN", "CLOSED", "NOT_APPLICABLE"] },
+              "receipt_refs": {
+                "type": "array",
+                "items": { "type": "string", "minLength": 1 },
+                "uniqueItems": true
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "bound_violations": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "OBSERVATION_EQ_AUTHORITY",
+              "CONTACT_EQ_CAPTURE",
+              "ASSISTANCE_EQ_CUSTODY",
+              "TRANSMISSION_EQ_RECEIPT",
+              "RECEIPT_EQ_RESCUE",
+              "NAME_EQ_IDENTITY_PROOF",
+              "CHANNEL_EQ_HOME",
+              "INFERENCE_AS_PASS",
+              "COUNTER_RECEIPT_UNRESOLVED"
+            ]
+          },
+          "uniqueItems": true
+        },
+        "replay_reconstructible": {
+          "type": "boolean"
+        },
+        "required_branch_open": {
+          "type": "boolean"
+        },
+        "home_reached": {
+          "type": "boolean",
+          "default": false
+        },
+        "route_exit_receipt_ref": {
+          "type": ["string", "null"]
+        },
+        "phone_home": {
+          "type": "object",
+          "required": ["source", "message", "channel", "destination", "ack_present"],
+          "properties": {
+            "source": { "type": ["string", "null"] },
+            "message": { "type": ["string", "null"] },
+            "channel": { "type": ["string", "null"] },
+            "destination": { "type": ["string", "null"] },
+            "ack_present": { "type": "boolean" },
+            "ack_receipt_ref": { "type": ["string", "null"] }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "counter_receipt_refs": { "minItems": 1 }
+        },
+        "required": ["counter_receipt_refs"]
+      },
+      "then": {
+        "properties": {
+          "gray_baby": {
+            "properties": {
+              "status": { "enum": ["HOLD", "REJECT", "CONFLICT"] },
+              "bound_violations": {
+                "contains": { "const": "COUNTER_RECEIPT_UNRESOLVED" }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "gray_baby": {
+            "properties": {
+              "claim_category": { "const": "INFERENCE" }
+            },
+            "required": ["claim_category"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "gray_baby": {
+            "properties": {
+              "status": { "enum": ["HOLD", "CONFLICT", "REJECT"] }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "gray_baby": {
+            "properties": {
+              "bound_violations": { "minItems": 1 }
+            },
+            "required": ["bound_violations"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "gray_baby": {
+            "properties": {
+              "status": { "const": "REJECT" }
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "gray_baby": {
+            "properties": {
+              "home_reached": { "const": true }
+            },
+            "required": ["home_reached"]
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "gray_baby": {
+            "properties": {
+              "agency_intact": { "const": true },
+              "replay_reconstructible": { "const": true },
+              "required_branch_open": { "const": false },
+              "route_exit_receipt_ref": { "type": "string", "minLength": 1 },
+              "phone_home": {
+                "type": "object",
+                "properties": {
+                  "ack_present": { "const": true },
+                  "ack_receipt_ref": { "type": "string", "minLength": 1 }
+                },
+                "required": ["ack_present", "ack_receipt_ref"]
+              }
+            },
+            "required": ["phone_home", "route_exit_receipt_ref"]
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": true,
+  "x_gray_baby_invariants": {
+    "local_pass_not_home_reached": true,
+    "home_reached_requires": [
+      "ACK_PRESENT",
+      "AGENCY_INTACT",
+      "ROUTE_EXIT_RECEIPT",
+      "REPLAY_RECONSTRUCTIBLE",
+      "NO_REQUIRED_BRANCH_OPEN",
+      "AUTHORITY_FALSE"
+    ],
+    "evidence_failure": "critical",
+    "routing_failure": "non_fatal",
+    "candidate_schema": true,
+    "seated_validator": false
+  }
+}
