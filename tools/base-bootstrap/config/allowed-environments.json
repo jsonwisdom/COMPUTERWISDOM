@@ -1,0 +1,18 @@
+{
+  "allowed_env_names": [
+    "ci-test",
+    "local-dev",
+    "base-sepolia"
+  ],
+  "default": "ci-test",
+  "allowed_dotenv_keys": [
+    "ENV_NAME",
+    "CW_CHAIN",
+    "CW_BASE_RPC_URL",
+    "CW_BASE_SEPOLIA_RPC_URL",
+    "CW_WALLET_MODE",
+    "CW_KEYSTORE",
+    "CW_WALLET_ADDRESS",
+    "CW_HARDWARE_WALLET"
+  ]
+}

@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.org/schemas/computerwisdom-receipt/1.0.0",
+  "title": "COMPUTERWISDOM Receipt",
+  "description": "Full receipt schema for COMPUTERWISDOM operations. Strict mode: no additional properties.",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "receipt_id",
+    "timestamp",
+    "operation",
+    "inputs",
+    "outputs",
+    "execution",
+    "integrity",
+    "authority"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {"type": "string", "const": "1.0.0"},
+    "receipt_id": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "operation": {
+      "type": "object",
+      "required": ["action", "chain", "env_name"],
+      "additionalProperties": false,
+      "properties": {
+        "action": {"type": "string", "enum": ["check", "address", "balance", "read", "simulate", "send", "receipt"]},
+        "chain": {"type": "string", "enum": ["base", "base-sepolia"]},
+        "env_name": {"type": "string", "enum": ["ci-test", "local-dev", "base-sepolia"]}
+      }
+    },
+    "inputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "address": {"type": "string", "pattern": "^0x[a-fA-F0-9]{40}$"},
+        "calldata": {"type": "string", "pattern": "^0x[a-fA-F0-9]*$"},
+        "value_wei": {"type": "string", "pattern": "^[0-9]+$"}
+      }
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "balance_wei": {"type": "string", "pattern": "^[0-9]+$"},
+        "resolved_address": {"type": "string", "pattern": "^0x[a-fA-F0-9]{40}$"},
+        "simulation_success": {"type": "boolean"},
+        "tx_hash": {"type": "string", "pattern": "^0x[a-fA-F0-9]{64}$"}
+      }
+    },
+    "execution": {
+      "type": "object",
+      "required": ["exit_code", "duration_ms"],
+      "additionalProperties": false,
+      "properties": {
+        "exit_code": {"type": "integer"},
+        "duration_ms": {"type": "integer", "minimum": 0},
+        "tool_versions": {"type": "object", "additionalProperties": {"type": "string"}}
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "required": ["content_hash"],
+      "additionalProperties": false,
+      "properties": {
+        "content_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "previous_receipt_hash": {"type": ["string", "null"], "pattern": "^[a-f0-9]{64}$"}
+      }
+    },
+    "authority": {
+      "type": "object",
+      "required": ["authority_created"],
+      "additionalProperties": false,
+      "properties": {
+        "authority_created": {"type": "boolean", "const": false}
+      }
+    }
+  }
+}
