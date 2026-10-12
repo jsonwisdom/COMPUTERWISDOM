@@ -1,0 +1,66 @@
+name: Jason on Base Public-Safe Audit
+
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "docs/jason-on-base/**"
+      - ".github/workflows/jason-on-base-audit.yml"
+  push:
+    branches: ["master"]
+    paths:
+      - "index.html"
+      - "docs/jason-on-base/**"
+      - ".github/workflows/jason-on-base-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-safe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Verify public static semantics, no fake green, and privacy boundaries
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("docs/jason-on-base")
+          m=json.loads((root/"public-learning.v0.1.json").read_text("utf-8"))
+          l=json.loads((root/"librarian-v0.1.json").read_text("utf-8"))
+          j=json.loads((root/"justice-v0.1.json").read_text("utf-8"))
+          html=(root/"index.html").read_text("utf-8")
+          js=(root/"app.js").read_text("utf-8")
+          index=Path("index.html").read_text("utf-8")
+          errors=[]
+          def check(condition,code):
+              if not condition:errors.append(code)
+          check(m["status"]=="DESIGN_HOLD" and m["authority_created"] is False,"MANIFEST_HOLD")
+          check(len(m["layers"])==15 and all(item["original_identity_preserved"] for item in m["layers"]),"ALIAS_ORIGINALS")
+          check(m["quarter_model"]["real_payment"] is False and m["quarter_model"]["cryptocurrency_prizes"] is False,"NO_REAL_WAGERS")
+          check(l["status"]=="DESIGN_HOLD" and l["daily_public_brief"]["automatic_daily_generation"] is False,"NO_FAKE_DAILY_FEED")
+          check(l["privacy"]["queries_sent_to_server"] is False and len(l["records"])>=4,"LIBRARIAN_SCOPE")
+          check(j["status"]=="DESIGN_HOLD" and j["authority_created"] is False,"SEYMOUR_AUTHORITY")
+          check(j["safe_behavior"]["legal_advice"] is False and j["safe_behavior"]["legal_protection_guarantee"] is False,"NO_FAKE_LEGAL_PROTECTION")
+          check(j["safe_behavior"]["automatic_filing"] is False and j["safe_behavior"]["law_firm_or_attorney"] is False,"NO_AI_LAWYER")
+          check('href="./docs/jason-on-base/"' in index,"ROOT_LINK_MISSING")
+          check(all(x in html for x in ['id="didnt-know"','id="ask-librarian"','id="seymour-assess"','id="seymour-export"','id="local-film"']),"FEATURE_IDS_MISSING")
+          check(all(x in js for x in ['librarian-v0.1.json','IMPORTED_USER_FILE_NOT_AUTHENTICATED','USER_SUPPLIED_UNVERIFIED','case_state:"HOLD"']),"FAIL_CLOSED_LOGIC")
+          check(not any(x in js for x in ['localStorage','sessionStorage','navigator.geolocation','sendBeacon','eth_sendTransaction','fetch("https://']),"UNEXPECTED_DATA_OR_EXECUTION_SURFACE")
+          check("JSON.stringify(seymourPacket" in js and 'response:"I_DIDNT_KNOW"' in js,"LOCAL_EXPORT_LOGIC")
+          check(m["disclosure_reflection"]["cohort_comparison"]["current_implementation"] is False,"NO_PROXIMITY")
+          if errors:
+              print("PUBLIC_AUDIT_HOLD "+",".join(errors))
+              raise SystemExit(1)
+          print("SCOPED_SOURCE_CHECK_PASS; HUMAN_REVIEW=HOLD; LEGAL_OUTCOME=UNKNOWN; PAGES_BYTES=UNTESTED; AUTHORITY=false")
+          PY
+      - name: Check JavaScript syntax
+        shell: bash
+        run: |
+          if command -v node >/dev/null 2>&1; then node --check docs/jason-on-base/app.js; else echo "node unavailable; JS check NOT_PERFORMED"; exit 1; fi
