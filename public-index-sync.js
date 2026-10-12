@@ -48,9 +48,16 @@
     const evidence = document.createElement("p");
     evidence.className = "wi-small";
     evidence.textContent = "Human visual acceptance: HOLD";
-    section.append(heading, links, commit, served, evidence);
+    const changes = document.createElement("div");
+    changes.className = "wi-small";
+    changes.textContent = "Latest changed paths: NOT_CHECKED";
+    const historyLink = document.createElement("a");
+    historyLink.href = "https://github.com/" + owner + "/" + name + "/commits/" + (name === "JOY" ? "main" : "master");
+    historyLink.textContent = "Full change history";
+    links.append(document.createTextNode(" · "), historyLink);
+    section.append(heading, links, commit, served, evidence, changes);
     grid.appendChild(section);
-    cards[name] = { commit: commit, served: served, evidence: evidence };
+    cards[name] = { commit: commit, served: served, evidence: evidence, changes: changes };
   });
   function central(date) {
     if (!date) return "date unavailable";
@@ -75,17 +82,29 @@
   async function check(name) {
     const card = cards[name];
     card.commit.textContent = "Source HEAD: CHECKING";
+    card.changes.textContent = "Latest changed paths: CHECKING";
     card.served.textContent = "Public byte check: CHECKING";
     card.evidence.textContent = "Human visual acceptance: HOLD";
     try {
       const repoUrl = "https://api.github.com/repos/" + owner + "/" + name;
-      const history = await jsonAt(repoUrl + "/commits?per_page=1");
-      if (!Array.isArray(history) || !history[0]?.sha) throw new Error("No commit receipt");
-      const head = history[0];
+      const head = await jsonAt(repoUrl + "/commits/" + (name === "JOY" ? "main" : "master"));
+      if (!head?.sha) throw new Error("No commit receipt");
       const sha = head.sha;
       const message = head.commit?.message?.split("\n")[0] || "message unavailable";
       card.commit.textContent = "Source HEAD: " + sha.slice(0,12) + " · " +
         central(head.commit?.committer?.date) + " · " + message;
+      const changedFiles = Array.isArray(head.files) ? head.files : [];
+      card.changes.replaceChildren(document.createTextNode("Latest changed paths: "));
+      if (changedFiles.length === 0) card.changes.append(document.createTextNode("NOT_AVAILABLE"));
+      changedFiles.slice(0,6).forEach(function (file, i) {
+        if (i) card.changes.append(document.createTextNode(" · "));
+        const link = document.createElement("a");
+        link.href = "https://github.com/" + owner + "/" + name + "/blob/" + sha + "/" + file.filename.split("/").map(encodeURIComponent).join("/");
+        link.textContent = file.filename;
+        card.changes.append(link);
+      });
+      if (changedFiles.length > 6) card.changes.append(document.createTextNode(" · +" + (changedFiles.length - 6) + " more in commit history"));
+
       const detail = await jsonAt(repoUrl + "/contents/index.html?ref=" + encodeURIComponent(sha));
       if (!/^[a-f0-9]{40}$/i.test(detail.sha || "")) throw new Error("Missing committed blob SHA");
       const url = base + name + "/index.html?evidence_check=" + Date.now();
@@ -105,7 +124,10 @@
       card.served.textContent = "HOLD: PUBLIC BYTE PROOF UNAVAILABLE";
       card.served.style.color = "#ffe2a1";
       card.evidence.textContent = "Check blocked: " + String(err.message || err).slice(0,90) + ". No inferred PASS.";
-      if (card.commit.textContent === "Source HEAD: CHECKING") card.commit.textContent = "Source HEAD: UNVERIFIED";
+      if (card.commit.textContent === "Source HEAD: CHECKING") {
+        card.commit.textContent = "Source HEAD: UNVERIFIED";
+        card.changes.textContent = "Latest changed paths: HOLD";
+      }
     }
   }
   async function schoolAudit() {
