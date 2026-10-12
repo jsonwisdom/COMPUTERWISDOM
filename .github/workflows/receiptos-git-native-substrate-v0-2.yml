@@ -1,0 +1,83 @@
+name: ReceiptOS Git-Native Substrate v0.2
+
+on:
+  pull_request:
+    paths:
+      - 'docs/receiptos/GIT_NATIVE_SUBSTRATE_V0_2.md'
+      - 'schemas/receiptos/git_native_semantic_envelope_v0_2.schema.json'
+      - 'tools/receiptos_git_native_reverse_replay_v0_2.py'
+      - 'tools/verify_receiptos_git_native_substrate_v0_2.py'
+      - '.github/workflows/receiptos-git-native-substrate-v0-2.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-git-native-substrate-v0-2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+
+      - name: Capture toolchain
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p .receiptos-git-native-v02
+          git --version | tee .receiptos-git-native-v02/git-version.txt
+          python3 --version | tee .receiptos-git-native-v02/python-version.txt
+          git rev-parse HEAD | tee .receiptos-git-native-v02/head-sha.txt
+
+      - name: Compile deterministic engine
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 -m py_compile \
+            tools/receiptos_git_native_reverse_replay_v0_2.py \
+            tools/verify_receiptos_git_native_substrate_v0_2.py
+
+      - name: Parse semantic envelope schema
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY' | tee .receiptos-git-native-v02/schema-parse.txt
+          import json
+          from pathlib import Path
+          p = Path("schemas/receiptos/git_native_semantic_envelope_v0_2.schema.json")
+          data = json.loads(p.read_text(encoding="utf-8"))
+          assert data["properties"]["authority_created"]["const"] is False
+          assert data["properties"]["merge_authorized"]["const"] is False
+          print("SCHEMA_PARSE = PASS")
+          print("AUTHORITY_CREATED_CONST_FALSE = PASS")
+          print("MERGE_AUTHORIZED_CONST_FALSE = PASS")
+          PY
+
+      - name: Re-run sealed v0.1 native law
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/verify_receiptos_git_native_history_v0_1.py \
+            --receipt-out .receiptos-git-native-v02/v0_1_compat.receipt.json \
+            2>&1 | tee .receiptos-git-native-v02/v0_1_compat.log
+
+      - name: Verify FIND OUT reverse replay v0.2
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/verify_receiptos_git_native_substrate_v0_2.py \
+            --receipt-out .receiptos-git-native-v02/receiptos_git_native_substrate_v0_2.receipt.json \
+            2>&1 | tee .receiptos-git-native-v02/v0_2_verify.log
+
+      - name: Archive v0.2 machine receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ReceiptOS_Git_Native_Substrate_V0_2
+          path: .receiptos-git-native-v02/**
+          retention-days: 14
+          if-no-files-found: error
+          include-hidden-files: true

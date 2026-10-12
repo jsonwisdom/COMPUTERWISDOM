@@ -1,0 +1,52 @@
+{
+  "$id": "https://jsonwisdom.example/schemas/receiptos/git-native-semantic-envelope-v0.2.schema.json",
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "additionalProperties": false,
+  "properties": {
+    "authority_created": {"const": false},
+    "binding": {
+      "additionalProperties": false,
+      "properties": {
+        "content_sha256": {"pattern": "^sha256:[0-9a-f]{64}$", "type": "string"},
+        "git_blob_oids": {"items": {"minLength": 4, "type": "string"}, "minItems": 1, "type": "array", "uniqueItems": true},
+        "git_commit_oid": {"minLength": 4, "type": "string"},
+        "git_object_format": {"enum": ["sha1", "sha256"], "type": "string"},
+        "git_parent_oids": {"items": {"minLength": 4, "type": "string"}, "type": "array", "uniqueItems": true},
+        "git_ref_observed": {"minLength": 1, "type": "string"},
+        "git_tag_oid": {"minLength": 4, "type": ["string", "null"]},
+        "git_tree_oid": {"minLength": 4, "type": "string"},
+        "target_path": {"minLength": 1, "type": "string"}
+      },
+      "required": ["git_object_format", "git_blob_oids", "git_tree_oid", "git_commit_oid", "git_parent_oids", "git_ref_observed", "target_path", "content_sha256"],
+      "type": "object"
+    },
+    "merge_authorized": {"const": false},
+    "receipt_id": {"minLength": 1, "type": "string"},
+    "schema": {"const": "RECEIPTOS_GIT_NATIVE_SEMANTIC_ENVELOPE_V0_2"},
+    "semantic": {
+      "additionalProperties": false,
+      "properties": {
+        "authority_state": {"minLength": 1, "type": "string"},
+        "claim_class": {"minLength": 1, "type": "string"},
+        "consent_state": {"minLength": 1, "type": "string"},
+        "evidence_class": {"minLength": 1, "type": "string"},
+        "replay_disposition": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"], "type": "string"},
+        "source_binding": {"items": {"minLength": 1, "type": "string"}, "minItems": 1, "type": "array"}
+      },
+      "required": ["claim_class", "evidence_class", "source_binding", "authority_state", "consent_state", "replay_disposition"],
+      "type": "object"
+    },
+    "witness": {
+      "additionalProperties": false,
+      "properties": {
+        "alms_entry": {"type": ["string", "null"]},
+        "alms_inclusion_proof": {"type": ["object", "array", "string", "null"]},
+        "alms_merkle_root": {"type": ["string", "null"]}
+      },
+      "type": "object"
+    }
+  },
+  "required": ["schema", "receipt_id", "binding", "semantic", "authority_created", "merge_authorized"],
+  "title": "ReceiptOS Git-Native Semantic Envelope v0.2",
+  "type": "object"
+}

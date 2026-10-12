@@ -1,0 +1,33 @@
+{
+  "authority_created": false,
+  "binding": {
+    "content_sha256": "sha256:b1cc2d738eefe26ff0fe5d7883c63cb212152eb415c1af09bd04a6c6a477d948",
+    "git_blob_oids": [
+      "53ffaf12116d408634e0ee44c243c9e3eb658e8c"
+    ],
+    "git_commit_oid": "4dfb181d6021a27accb0e508f0801035110bf69f",
+    "git_object_format": "sha1",
+    "git_parent_oids": [
+      "728c6671dfafdad6859f7c9794e9d8729f98c38b"
+    ],
+    "git_ref_observed": "refs/heads/agent/receiptos-git-native-memory-substrate-v0-1",
+    "git_tag_oid": null,
+    "git_tree_oid": "60b362216160975194642db7022b4436bda71bee",
+    "target_path": "docs/receiptos/GIT_NATIVE_MEMORY_SUBSTRATE_V0_1.md"
+  },
+  "merge_authorized": false,
+  "receipt_id": "RECEIPTOS_GIT_NATIVE_LIVE_BINDING_V0_2_001",
+  "schema": "RECEIPTOS_GIT_NATIVE_SEMANTIC_ENVELOPE_V0_2",
+  "semantic": {
+    "authority_state": "NONE",
+    "claim_class": "REPOSITORY_ARTIFACT_BINDING",
+    "consent_state": "NOT_APPLICABLE",
+    "evidence_class": "OBSERVED_GIT_OBJECT",
+    "replay_disposition": "PASS",
+    "source_binding": [
+      "git:jsonwisdom/COMPUTERWISDOM@4dfb181d6021a27accb0e508f0801035110bf69f:docs/receiptos/GIT_NATIVE_MEMORY_SUBSTRATE_V0_1.md",
+      "github-actions:32473395431:RECEIPTOS_GIT_NATIVE_HISTORY_V0_1=PASS",
+      "github-actions:32474391268:RECEIPTOS_GIT_NATIVE_SUBSTRATE_V0_2=PASS"
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+name: ReceiptOS Git-Native History v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'docs/receiptos/GIT_NATIVE_MEMORY_SUBSTRATE_V0_1.md'
+      - 'tools/verify_receiptos_git_native_history_v0_1.py'
+      - '.github/workflows/receiptos-git-native-history-v0-1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-git-native-history:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Capture toolchain
+        run: |
+          set -euo pipefail
+          mkdir -p .receiptos-git-native
+          git --version | tee .receiptos-git-native/git-version.txt
+          python3 --version | tee .receiptos-git-native/python-version.txt
+          git rev-parse HEAD | tee .receiptos-git-native/head-sha.txt
+
+      - name: Prove same tree, different history
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 tools/verify_receiptos_git_native_history_v0_1.py \
+            --receipt-out .receiptos-git-native/receiptos_git_native_history_v0_1.receipt.json \
+            2>&1 | tee .receiptos-git-native/verify.log
+
+      - name: Archive machine receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: ReceiptOS_Git_Native_History_V0_1
+          path: .receiptos-git-native/**
+          retention-days: 14
+          if-no-files-found: error
+          include-hidden-files: true
