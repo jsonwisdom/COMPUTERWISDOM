@@ -1,0 +1,42 @@
+{
+  "artifact": "POLITICAL_ALGORITHM_TRANSPARENCY_FAFO_V0_1",
+  "system": "BOXD",
+  "version": "0.1.0",
+  "class": "ALGORITHMIC_ACCOUNTABILITY_AUDIT_GAME",
+  "fafo_expansion": "FIND_ALGORITHMIC_FACTS_AND_OUTPUTS",
+  "authority": false,
+  "proof_inferred": false,
+  "questions": [
+    "WHAT_SYSTEM_PRODUCED_THE_OUTPUT",
+    "WHAT_VERSION_OR_RULESET_WAS_RUNNING",
+    "WHAT_INPUTS_WERE_USED",
+    "WHICH_INPUTS_WERE_PUBLIC_PRIVATE_INFERRED_OR_UNAVAILABLE",
+    "WHAT_HUMAN_AUTHORITY_ACTED_ON_THE_OUTPUT",
+    "WHAT_AUDIT_LOG_EXISTS",
+    "WHAT_APPEAL_OR_CORRECTION_PATH_EXISTS",
+    "CAN_THE_OUTPUT_BE_REPRODUCED",
+    "DID_A_VERSION_CHANGE_ALTER_THE_RESULT",
+    "IS_MACHINE_RECOMMENDATION_BEING_MISLABELED_AS_AUTHORITY"
+  ],
+  "required_metadata": [
+    "system_name",
+    "system_version",
+    "model_or_ruleset_version",
+    "decision_timestamp",
+    "input_classes",
+    "output",
+    "human_reviewer_role",
+    "authority_source",
+    "audit_log_pointer",
+    "appeal_or_correction_pointer",
+    "version_delta_pointer"
+  ],
+  "hard_rules": [
+    "ALGORITHM_OUTPUT_NE_AUTHORITY",
+    "RANKING_NE_FACT",
+    "MODEL_CONFIDENCE_NE_BURDEN_OF_PROOF",
+    "AUTOMATION_GREEN_NE_CLAIM_TRUE",
+    "NO_RETALIATION_OR_PUNISHMENT_MEANING_IN_FAFO"
+  ],
+  "states": ["PROVEN", "BOUND", "HOLD", "CONFLICT", "REJECT"]
+}

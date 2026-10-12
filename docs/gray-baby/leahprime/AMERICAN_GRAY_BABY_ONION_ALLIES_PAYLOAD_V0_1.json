@@ -1,0 +1,130 @@
+{
+  "payload_type": "AMERICAN_GRAY_BABY_ONION_ALLIES_MARKETING_PAYLOAD",
+  "version": "0.1.0",
+  "epoch": "2026-08-19",
+  "campaign_id": "LMFAO67",
+  "edition": "ROYALE",
+  "operator_identity": "jaywisdom.base.eth",
+  "campaign_class": "PARODY_MARKETING_PUBLIC_EDUCATION",
+  "authority_created": false,
+  "proof_inferred": false,
+  "official_endorsement_claimed": false,
+  "military_movement_claimed": false,
+  "intelligence_affiliation_claimed": false,
+  "primary_tagline": "THE AMERICANS ARE COMING — WITH RECEIPTS.",
+  "secondary_tagline": "Observe. Receipt. Verify. Check authority. Replay.",
+  "allied_message": "We do not export authority. We export replayable evidence contracts.",
+  "developer_wedge": "Speak → plan → confirm → tool → verify.",
+  "voice_control": {
+    "status": "VISION_DECLARED_NOT_IMPLEMENTED",
+    "implemented": false,
+    "authorization_verified": false,
+    "command_receipts_implemented": false,
+    "proposed_verbs": [
+      "OBSERVE",
+      "SCAN",
+      "OPEN",
+      "REPLAY",
+      "VERIFY",
+      "DIFF",
+      "FREEZE",
+      "HASH",
+      "HOLD",
+      "ROUTE",
+      "REPORT"
+    ],
+    "human_confirmation_required_for_writes": true
+  },
+  "onion": {
+    "layer_1_record_reality": "Public source, event, artifact, or observed developer action.",
+    "layer_2_authority": "Who may act, under what permission, scope, or delegation.",
+    "layer_3_execution": "What actually ran, changed, shipped, or failed.",
+    "layer_4_oversight_recovery": "Receipt, contradiction, correction, replay, and recovery."
+  },
+  "gray_baby_role": {
+    "observer": true,
+    "authority": false,
+    "judge": false,
+    "ruler": false,
+    "functions": [
+      "observe",
+      "receipt",
+      "verify",
+      "check_authority",
+      "replay",
+      "hold_or_promote"
+    ]
+  },
+  "audiences": [
+    "allied developers",
+    "public-sector technologists",
+    "open-source maintainers",
+    "auditors and assurance teams",
+    "educators and research teams"
+  ],
+  "story_labels": [
+    {"label": "100thIntelligencebro", "status": "STORY_LABEL_NON_CLAIM"},
+    {"label": "Boxes of Dee Intel", "status": "STORY_LABEL_NON_CLAIM"},
+    {"label": "100thRoyalIntel", "status": "STORY_LABEL_NON_CLAIM"},
+    {"label": "10Downing", "status": "STORY_LABEL_NON_CLAIM"},
+    {"label": "Delta10", "status": "STORY_LABEL_NON_CLAIM"},
+    {"label": "Trinary Warfare", "status": "STORY_LABEL_NON_CLAIM"},
+    {"label": "CrissCross", "status": "STORY_LABEL_NON_CLAIM"},
+    {"label": "AppleSauce", "status": "STORY_LABEL_NON_CLAIM"},
+    {"label": "AlabamaMachineSpeed", "status": "STORY_LABEL_NON_CLAIM"},
+    {"label": "NATO Allies", "status": "AUDIENCE_THEME_NOT_ENDORSEMENT"}
+  ],
+  "campaign_copy": {
+    "hero": "HEY ALLIES — THE AMERICANS ARE COMING. RELAX. WE BROUGHT THE RECEIPTS. 👽🇺🇸📦",
+    "developer": "Voice in. Scoped action out. Receipt attached. Replay whenever you want.",
+    "audit": "Activity is not evidence. Evidence is not a verdict. A correction is not a failure.",
+    "royale": "Royale Edition: the crown gets no special authority. The receipt still has to pass.",
+    "short_social": "🇺🇸👽 ALLIES: the Americans are coming — with receipts. Observe → verify → authority check → replay. No magic green. No fake authority. LMFAO67"
+  },
+  "distribution": {
+    "github": "canonical public review payload",
+    "google_drive": "mirrored campaign/design payload",
+    "social": "public campaign copy only",
+    "external_government_delivery": false,
+    "nato_delivery": false,
+    "downing_street_delivery": false
+  },
+  "platform_roles": {
+    "github": "versioned public memory and review surface",
+    "google_drive": "mirrored human-readable continuity surface",
+    "openai_platform": "assistive access surface only; not authority or deployment proof",
+    "ens": "identity/discovery pointer only",
+    "base": "optional commitment/provenance rail only"
+  },
+  "source_assets": {
+    "voice_agent_gtm": {"filename": "Voice-Agent GTM for Jaywisdom.base.eth", "bytes": 433968, "sha256": "166feedbe598c650897314ebe2fe939b70183dd939b0734adb627f9268c0313c"},
+    "ens_vocabulary": {"filename": "ENS_VOCABULARY_MATRIX_VOICE_CONTROLLED_MINNESOTA_V0_1.jsonl", "bytes": 6540, "sha256": "561b87bf7a0461d54c23fbc83e45155adbc72e0a26f3483a58381fb391bf49ef"},
+    "boxd_promotion_receipt": {"filename": "BOXD_V3_4_CANONICAL_PROMOTION_RECEIPT.json", "bytes": 1193, "sha256": "307af9152c4f87e03dc9e2366fee156560b55e57cbb4cde2ae6be301245470d2"},
+    "replay_system_image": {"filename": "Replay System: Waiting for Reality.png", "bytes": 1709694, "sha256": "f6b4391cb16c8a339c90451deb82c4a7e93068034c3701fbb50c30b8cbee53c0"},
+    "metacognition_crosswalk_image": {"filename": "Metacognition Replay Structural Crosswalk(2).png", "bytes": 2207147, "sha256": "d105e73aeb16e6b08ebce4276b8fd885f7fd3f218c982d6a5c0a13343d3a29f3"},
+    "american_gray_baby_image": {"filename": "American Gray Baby: Evidence Console.png", "bytes": 2336875, "sha256": "96a1c5daabd548c1a37fbc73d1a31b299d1e8b8bc44a75dc54c49c606d7cc376"}
+  },
+  "source_contracts": {
+    "boxd_v3_4_designation": "Metacognition ↔ Replay Structural Crosswalk",
+    "boxd_v3_4_internal_designation": "Equivalence Ledger v1.0",
+    "boxd_v3_4_classification": ["CONCEPTUAL_CROSSWALK", "ANALOGY_SAFE", "NON_CLAIM"],
+    "boxd_v3_4_authority_created": false,
+    "ens_matrix_scope": "JSONWisdom core architecture + ENS + ALMS + Minnesota + voice-control vocabulary",
+    "ens_voice_execution_implemented": false,
+    "voice_gtm_wedge": "Speak → verified developer action"
+  },
+  "hard_boundaries": {
+    "not_official_us_government": true,
+    "not_official_aetc": true,
+    "not_official_usaf": true,
+    "not_official_100th_arw": true,
+    "not_official_uk_government": true,
+    "not_official_nato": true,
+    "not_intelligence_product": true,
+    "not_operational_warfare_instruction": true,
+    "not_military_movement_notice": true,
+    "not_investment_promise": true
+  },
+  "payload_sha256": "a4d5d9e2c1e3f58e3b32d64ac59c791359761b20d68cbe00d417f589b2dd5d0e",
+  "canonicalization": {"method": "JSON_SORTED_KEYS_COMPACT_UTF8_V0_1", "rfc8785_jcs_claimed": false}
+}

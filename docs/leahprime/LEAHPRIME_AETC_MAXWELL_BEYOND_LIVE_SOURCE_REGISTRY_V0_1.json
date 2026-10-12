@@ -1,0 +1,150 @@
+{
+  "artifact": "LEAHPRIME_AETC_MAXWELL_BEYOND_LIVE_SOURCE_REGISTRY",
+  "version": "0.1.0",
+  "retrieved_utc_date": "2026-08-19",
+  "authority_created": false,
+  "proof_inferred": false,
+  "rules": [
+    "OFFICIAL nodes require an official public source URL",
+    "STORY_ONLY labels do not inherit authority from nearby official nodes",
+    "PUBLIC_SOURCE does not imply classified access",
+    "RETRIEVAL is observation; later source changes require version diff"
+  ],
+  "official_nodes": [
+    {
+      "node_id": "AETC_AIR_UNIVERSITY_MAXWELL",
+      "classification": "OFFICIAL",
+      "institution": "Air Education and Training Command / Air University / Maxwell AFB",
+      "public_claim": "AETC identifies Air University, headquartered at Maxwell AFB, Alabama, as the Air Force's lead academic institution and lists Maxwell AFB among AETC installations.",
+      "source_url": "https://www.aetc.af.mil/About-Us/lang/en/",
+      "source_domain": "aetc.af.mil",
+      "retrieved_utc_date": "2026-08-19"
+    },
+    {
+      "node_id": "AETC_MAXWELL_FACT_SHEET",
+      "classification": "OFFICIAL",
+      "institution": "Air Education and Training Command",
+      "public_claim": "AETC's public fact-sheet surface includes Air University - Maxwell Air Force Base.",
+      "source_url": "https://www.aetc.af.mil/About-Us/Fact-Sheets/Article/558883/maxwell-air-force-base/",
+      "source_domain": "aetc.af.mil",
+      "retrieved_utc_date": "2026-08-19"
+    },
+    {
+      "node_id": "USSF_SPACE_DELTA_10",
+      "classification": "OFFICIAL",
+      "institution": "Space Training and Readiness Command / Space Delta 10",
+      "public_claim": "STARCOM describes Delta 10 as responsible for wargaming, field experimentation, concept evaluation, doctrine development, lessons learned, and wargame assessments.",
+      "source_url": "https://www.starcom.spaceforce.mil/About-Us/Units/Space-Delta-10-Doctrine-Wargaming/",
+      "source_domain": "starcom.spaceforce.mil",
+      "retrieved_utc_date": "2026-08-19"
+    },
+    {
+      "node_id": "RAF_MILDENHALL_100_ARW",
+      "classification": "OFFICIAL",
+      "institution": "100th Air Refueling Wing / RAF Mildenhall",
+      "public_claim": "RAF Mildenhall identifies the 100th Air Refueling Wing as its host wing and describes its air-refueling and combat-support role across Europe and Africa, including support to U.S. and NATO partners.",
+      "source_url": "https://www.mildenhall.af.mil/About-Us/Fact-Sheets/Display/Article/270378/100th-air-refueling-wing/",
+      "source_domain": "mildenhall.af.mil",
+      "retrieved_utc_date": "2026-08-19"
+    },
+    {
+      "node_id": "UK_PRIME_MINISTERS_OFFICE_10_DOWNING",
+      "classification": "OFFICIAL",
+      "institution": "Prime Minister's Office, 10 Downing Street",
+      "public_claim": "GOV.UK identifies the Prime Minister's Office, 10 Downing Street, as an organization associated with the Prime Minister and describes the Prime Minister's government responsibilities.",
+      "source_url": "https://www.gov.uk/government/ministers/prime-minister",
+      "source_domain": "gov.uk",
+      "retrieved_utc_date": "2026-08-19"
+    },
+    {
+      "node_id": "NATO_PURPOSE",
+      "classification": "OFFICIAL",
+      "institution": "North Atlantic Treaty Organization",
+      "public_claim": "NATO describes itself as a political and military alliance whose purpose is the freedom and security of its members through political and military means.",
+      "source_url": "https://www.nato.int/en/what-is-nato",
+      "source_domain": "nato.int",
+      "retrieved_utc_date": "2026-08-19"
+    },
+    {
+      "node_id": "NATO_ARTICLE_5",
+      "classification": "OFFICIAL",
+      "institution": "North Atlantic Treaty Organization",
+      "public_claim": "NATO describes collective defence and Article 5 as the Alliance's fundamental mutual-defence principle.",
+      "source_url": "https://www.nato.int/en/what-we-do/introduction-to-nato/collective-defence-and-article-5",
+      "source_domain": "nato.int",
+      "retrieved_utc_date": "2026-08-19"
+    }
+  ],
+  "project_labels": [
+    {
+      "term": "LeahPrime",
+      "classification": "STORY_ONLY",
+      "authority": false
+    },
+    {
+      "term": "Gray Baby",
+      "classification": "STORY_ONLY",
+      "authority": false
+    },
+    {
+      "term": "BoxesOfDeeIntel",
+      "classification": "STORY_ONLY",
+      "meaning": "public-source receipt intelligence metaphor",
+      "authority": false
+    },
+    {
+      "term": "100thRoyalIntel",
+      "classification": "STORY_ONLY",
+      "authority": false,
+      "non_claim": "Not a real intelligence organization or intelligence-sharing agreement"
+    },
+    {
+      "term": "100thIntelligencebro",
+      "classification": "STORY_ONLY",
+      "authority": false,
+      "non_claim": "Parody shorthand only; not the official name or mission of the 100th Air Refueling Wing"
+    },
+    {
+      "term": "10Downing",
+      "classification": "UI_VOCABULARY",
+      "meaning": "shortcut to the official public UK government source lane",
+      "authority": false
+    },
+    {
+      "term": "CrissCross",
+      "classification": "PROJECT_METHOD",
+      "meaning": "cross-source/cross-institution replay comparison",
+      "authority": false
+    },
+    {
+      "term": "AppleSauce",
+      "classification": "PROJECT_METHOD",
+      "meaning": "simplification pass that removes story labels and restates source/authority/receipt in ordinary language",
+      "authority": false
+    },
+    {
+      "term": "Trinary Warfare",
+      "classification": "PROJECT_METHOD",
+      "meaning": "Reality / Authority / Replay analytical planes; not claimed as official doctrine",
+      "authority": false
+    },
+    {
+      "term": "AlabamaMachineSpeed",
+      "classification": "PROJECT_METHOD",
+      "meaning": "AL/ALMS machine-speed validation and replay substrate",
+      "authority": false
+    },
+    {
+      "term": "ReplayReverseReceiptsRecoveryResponsibility",
+      "classification": "PROJECT_METHOD",
+      "meaning": "reverse-trace consequence to action, authority, source, receipt, correction owner and recovery state",
+      "authority": false
+    },
+    {
+      "term": "JaysVoiceEnabledOnionSackRoyaleEdition",
+      "classification": "UI_VOCABULARY",
+      "status": "VISION_NOT_VERIFIED_VOICE_AUTHORIZATION",
+      "authority": false
+    }
+  ]
+}
