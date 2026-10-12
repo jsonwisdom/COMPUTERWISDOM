@@ -1,0 +1,163 @@
+{
+  "schema": "JASON_ON_BASE_LIBRARIAN_INDEX_V0_1",
+  "status": "DESIGN_HOLD",
+  "role": "QUESTION_TO_SOURCE_TO_BOUNDED_EXPLANATION_TO_REPLAY",
+  "description": "Static source index and offline local query demo, not a real-time national feed or a DNS replacement.",
+  "scope": "PUBLIC_ONLY",
+  "private_user_data_collected": false,
+  "privacy": {
+    "queries_sent_to_server": false,
+    "local_query_only": true,
+    "location": false,
+    "anonymous_proximity": false,
+    "cohort_analytics": false,
+    "persisted_queries": false
+  },
+  "records": [
+    {
+      "id": "USHMM_BUCHENWALD_FILM",
+      "title": "Weimar civilians visit liberated Buchenwald",
+      "organization": "United States Holocaust Memorial Museum",
+      "category": "History / Film",
+      "temporal_scope": "April 1945",
+      "keywords": [
+        "buchenwald",
+        "weimar",
+        "liberation",
+        "holocaust",
+        "1945",
+        "film",
+        "disclosure",
+        "didn't know",
+        "history"
+      ],
+      "claim": "Museum archive describes US soldiers escorting German civilians from Weimar through the liberated Buchenwald camp in April 1945.",
+      "claim_class": "SOURCE_DESCRIPTIVE",
+      "source": "https://encyclopedia.ushmm.org/content/en/film/german-civilians-forced-to-view-atrocities-committed-in-buchenwald",
+      "not_a_claim": "No inference about the knowledge or guilt of every German civilian."
+    },
+    {
+      "id": "NARA_CIA",
+      "title": "CIA established September 18, 1947",
+      "organization": "National Archives",
+      "category": "Institutional history",
+      "temporal_scope": "1942–1947",
+      "keywords": [
+        "cia",
+        "oss",
+        "intelligence",
+        "1947",
+        "1942",
+        "war",
+        "history"
+      ],
+      "claim": "CIA was established effective September 18, 1947; OSS is a predecessor organization.",
+      "claim_class": "SOURCE_DESCRIPTIVE",
+      "source": "https://www.archives.gov/research/intelligence/cia",
+      "not_a_claim": "The CIA was not an agency operating during World War II."
+    },
+    {
+      "id": "NARA_OSS_TIMELINE",
+      "title": "Office of Strategic Services timeline",
+      "organization": "National Archives",
+      "category": "Institutional history",
+      "temporal_scope": "World War II–1947",
+      "keywords": [
+        "oss",
+        "1945",
+        "1946",
+        "1947",
+        "wartime",
+        "timeline",
+        "cia",
+        "intelligence"
+      ],
+      "claim": "National Archives tracks the OSS and its postwar transitions; its timeline records OSS ending in September 1945.",
+      "claim_class": "SOURCE_DESCRIPTIVE",
+      "source": "https://www.archives.gov/research/military/ww2/oss/timeline",
+      "not_a_claim": "Do not assign OSS actions to the CIA without institutional and date-specific evidence."
+    },
+    {
+      "id": "LOC_SCREENING_ROOM",
+      "title": "Watch historical films via Library of Congress",
+      "organization": "Library of Congress",
+      "category": "Film / Sources",
+      "temporal_scope": "Historical films; access varies",
+      "keywords": [
+        "library",
+        "congress",
+        "movies",
+        "cinema",
+        "film",
+        "research",
+        "public domain",
+        "national screening room"
+      ],
+      "claim": "The Library provides selected historical films for viewing, but rights prevent the Library from posting every National Film Registry film.",
+      "claim_class": "SOURCE_DESCRIPTIVE",
+      "source": "https://www.loc.gov/programs/national-film-preservation-board/film-registry/watch-films-on-the-national-film-registry/",
+      "not_a_claim": "Library film access is not universal copyright permission."
+    },
+    {
+      "id": "READY_GOV",
+      "title": "Make an emergency preparedness plan",
+      "organization": "Ready.gov",
+      "category": "Emergency preparedness",
+      "temporal_scope": "General reference; check current notices",
+      "keywords": [
+        "ready",
+        "preparedness",
+        "emergency",
+        "evacuation",
+        "storm",
+        "plan",
+        "family",
+        "oda",
+        "ooda"
+      ],
+      "claim": "Ready.gov is an official source for general emergency preparedness resources.",
+      "claim_class": "SOURCE_LINK",
+      "source": "https://www.ready.gov/",
+      "not_a_claim": "Not an operational warning or a replacement for local emergency alerts."
+    },
+    {
+      "id": "CW_COINBASE_MEMBRANE",
+      "title": "Coinbase full-history audit controls",
+      "organization": "COMPUTERWISDOM (independent project)",
+      "category": "Financial verification method",
+      "temporal_scope": "Repository source",
+      "keywords": [
+        "coinbase",
+        "wallet",
+        "jason",
+        "trades",
+        "swaps",
+        "reconciliation",
+        "fees",
+        "fills",
+        "finance"
+      ],
+      "claim": "Public audit membrane requires complete bounded history and stable-ID reconciliation before claiming coverage.",
+      "claim_class": "PROJECT_POLICY",
+      "source": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/audits/COINBASE_HISTORY_MEMBRANE_AUDIT_V0_1.md",
+      "not_a_claim": "Does not prove any actual personal trade, cause, cost basis, or balance."
+    }
+  ],
+  "daily_public_brief": {
+    "implementation": "STATIC_DEMONSTRATION_ONLY",
+    "automatic_daily_generation": false,
+    "real_time_news": false,
+    "sync_verified": false,
+    "source_freshness_verified": false,
+    "deployment_verified": false,
+    "delivery_notification": false,
+    "policy": "An actual dated brief must bind every claim to date-scoped sources and digest receipts, disclose content-time versus retrieval-time, preserve conflicts and coverage gaps, and pass privacy and human release review.",
+    "privacy": "No personal watch history, financial balances, demographics, or film reflections.",
+    "release_authority": "HUMAN_APPROVED_PUBLIC_EDITION_ONLY"
+  },
+  "dns_note": "This interface provides source discovery and organization. DNS resolves domain names; it is not replaced.",
+  "firewall_note": "Privacy boundaries and opt-in authorization; no assertion of a new US national firewall or citizenship requirement.",
+  "identity_note": "Independent learning project; not US government or agency endorsed.",
+  "authority_created": false,
+  "human_adopted": false
+}
