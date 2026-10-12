@@ -175,7 +175,8 @@ $("import").addEventListener("change",async e=>{
 });
 $("feedback-copy").addEventListener("click",async()=>{
  const note=$("feedback").value.trim().slice(0,1200);
- const plain="Jay CoinBaseKidsWebDesign feedback\nVersion: "+VERSION+"\nManual note: "+(note||"(empty)")+"\nNo wallet address included by app.\nReport sensitive vulnerabilities privately, never via a public issue.";
+ const redacted=note.replace(/0x[a-fA-F0-9]{40}/g,"[REDACTED_WALLET_ADDRESS]").replace(/\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}\b/gi,"[REDACTED_EMAIL]");
+ const plain="Jay CoinBaseKidsWebDesign feedback\nVersion: "+VERSION+"\nManual note: "+(redacted||"(empty)")+"\nReview this note before sharing. Do not submit sensitive details.\nReport vulnerabilities privately, never via a public issue.";
  try{await navigator.clipboard.writeText(plain);$("feedback-status").textContent="Copied. Nothing submitted to Coinbase or GitHub."}
  catch(e){$("feedback-status").textContent="Clipboard unavailable. Select and copy your note manually."}
 });
