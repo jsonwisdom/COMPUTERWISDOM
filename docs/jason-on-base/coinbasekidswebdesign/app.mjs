@@ -85,6 +85,7 @@ function show(){
  $("scratch-cover").hidden=true;
  $("reveal").disabled=true;$("like").disabled=false;$("download-art").disabled=false;$("export").disabled=false;
  state.reveals++;state.draws.push(state.receipt);logRender();
+ $("current-concept").textContent=state.item.title+" — art inspired by this public Zora concept.";
  status("Satirical art revealed. All plays receive art. No payouts, rarity prize, token mint or price.");
 }
 const cover=$("scratch-cover"),ctx=cover.getContext("2d");
@@ -111,7 +112,8 @@ $("draw").addEventListener("click",()=>{
   state.draw=drawIndex(state.catalog.items.length,browserRand32);
   state.item=state.catalog.items[state.draw.index];
   state.receipt=createReceipt(state.draw,state.item);
-  $("art").replaceChildren();
+  const preview=new DOMParser().parseFromString(svgCard(state.item),"image/svg+xml");
+  $("art").replaceChildren(document.importNode(preview.documentElement,true));
   $("current-concept").textContent="A public concept has been selected. Scratch to reveal the art.";
   $("reveal").disabled=false;$("like").disabled=true;$("download-art").disabled=true;$("export").disabled=true;
   resetCover();status("Scratch or use the accessible Reveal button. Nothing costs money.");
