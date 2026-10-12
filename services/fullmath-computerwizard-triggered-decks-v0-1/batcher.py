@@ -44,12 +44,37 @@ def no_duplicate_keys(pairs):
     return result
 
 
+MAX_JSON_DEPTH = 16
+
+
+def json_depth_ok(value, limit=MAX_JSON_DEPTH):
+    # Iterative (no recursion) nesting check on the parsed value.
+    # Only containers are pushed; scalars are never stacked.
+    if not isinstance(value, (dict, list)):
+        return True
+    stack = [(value, 1)]
+    while stack:
+        item, depth = stack.pop()
+        if depth > limit:
+            return False
+        children = item.values() if isinstance(item, dict) else item
+        for child in children:
+            if isinstance(child, (dict, list)):
+                stack.append((child, depth + 1))
+    return True
+
+
 def strict_json(data):
     try:
-        return json.loads(data, object_pairs_hook=no_duplicate_keys,
-                          parse_constant=lambda _: (_ for _ in ()).throw(GateError('NONFINITE_JSON')))
+        value = json.loads(data, object_pairs_hook=no_duplicate_keys,
+                           parse_constant=lambda _: (_ for _ in ()).throw(GateError('NONFINITE_JSON')))
+    except RecursionError as exc:
+        raise GateError('JSON_TOO_DEEP') from exc
     except (json.JSONDecodeError, UnicodeDecodeError) as exc:
         raise GateError('BAD_JSON') from exc
+    if not json_depth_ok(value):
+        raise GateError('JSON_TOO_DEEP')
+    return value
 
 
 def read_relative(root, relative):
@@ -266,6 +291,12 @@ def main(argv=None):
             print(json.dumps(verify_candidate(manifest,Path(a.root),candidate),sort_keys=True))
     except (GateError,OSError,TypeError,ValueError) as exc:
         print('DENY: '+str(exc),file=sys.stderr)
+        return 1
+    except RecursionError:
+        print('DENY: JSON_TOO_DEEP',file=sys.stderr)
+        return 1
+    except MemoryError:
+        print('DENY: MEMORY_LIMIT',file=sys.stderr)
         return 1
     return 0
 

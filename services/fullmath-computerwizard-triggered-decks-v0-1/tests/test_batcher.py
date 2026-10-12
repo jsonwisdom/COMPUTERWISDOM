@@ -8,7 +8,7 @@ import zlib
 from pathlib import Path
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]))
-from batcher import (CANON_FREEZE, GateError, SCHEMA, PURPOSE, build_candidate, canonical,
+from batcher import (CANON_FREEZE, GateError, MAX_JSON_DEPTH, SCHEMA, PURPOSE, build_candidate, canonical, json_depth_ok,
                      merkle_root, no_duplicate_keys, strict_json, strict_png_size,
                      verify_candidate)
 
@@ -153,6 +153,67 @@ class BatcherTests(unittest.TestCase):
         finally:
             tracemalloc.stop()
         self.assertLess(peak,2*len(bomb)+(1<<20))
+    def _bounded_bomb(self,idats):
+        import tracemalloc
+        def chunk(name,data):
+            return len(data).to_bytes(4,'big')+name+data+(zlib.crc32(name+data)&0xffffffff).to_bytes(4,'big')
+        hdr=(3).to_bytes(4,'big')+(4).to_bytes(4,'big')+bytes([8,6,0,0,0])
+        bomb=b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',hdr)+b''.join(chunk(b'IDAT',x) for x in idats)+chunk(b'IEND',b'')
+        tracemalloc.start()
+        try:
+            with self.assertRaisesRegex(GateError,'PNG_PIXELS_EXCEED_EXPECTED'):strict_png_size(bomb)
+            peak=tracemalloc.get_traced_memory()[1]
+        finally:
+            tracemalloc.stop()
+        self.assertLess(peak,2*len(bomb)+(1<<20))
+    def test_denies_split_idat_bomb_bounded_memory(self):
+        c=zlib.compressobj(9)
+        z=b''.join(c.compress(b'\0'*(1<<20)) for _ in range(64))+c.flush()
+        n=len(z)//7+1
+        self._bounded_bomb([z[i:i+n] for i in range(0,len(z),n)])
+    def test_denies_stored_block_bomb_bounded_memory(self):
+        self._bounded_bomb([zlib.compress(b'\0'*(1<<18),0)])
+    def test_denies_deeply_nested_json(self):
+        with self.assertRaisesRegex(GateError,'JSON_TOO_DEEP'):strict_json(b'['*200000+b']'*200000)
+        with self.assertRaisesRegex(GateError,'JSON_TOO_DEEP'):strict_json(b'{"a":'*17+b'1'+b'}'*17)
+    def test_json_depth_boundary_exact(self):
+        self.assertEqual(MAX_JSON_DEPTH,16)
+        d16=strict_json(b'{"a":'*16+b'1'+b'}'*16)
+        for _ in range(16): d16=d16['a']
+        self.assertEqual(d16,1)
+        with self.assertRaisesRegex(GateError,'JSON_TOO_DEEP'):strict_json(b'{"a":'*17+b'1'+b'}'*17)
+        self.assertEqual(strict_json(b'['*16+b']'*16),[[[[[[[[[[[[[[[[]]]]]]]]]]]]]]]])
+        with self.assertRaisesRegex(GateError,'JSON_TOO_DEEP'):strict_json(b'['*17+b']'*17)
+        self.assertEqual(strict_json(b'[1,{"a":[2,3]}]'),[1,{'a':[2,3]}])
+        self.assertTrue(json_depth_ok(5))
+    def test_json_depth_check_wide_array_bounded_memory(self):
+        # Test tolerance on Python allocations of the depth check only (not parse, not process RSS).
+        import tracemalloc
+        wide=list(range(1_000_000))
+        tracemalloc.start()
+        try:
+            self.assertTrue(json_depth_ok(wide))
+            self.assertTrue(json_depth_ok({'cards':wide}))
+            peak=tracemalloc.get_traced_memory()[1]
+        finally:
+            tracemalloc.stop()
+        self.assertLess(peak,1<<20)
+    def _run_main_with(self,exc):
+        import contextlib,io
+        from unittest import mock
+        import batcher
+        mf=self.root/'m.json';mf.write_text('{}')
+        err=io.StringIO()
+        with mock.patch.object(batcher,'strict_json',side_effect=exc),contextlib.redirect_stderr(err):
+            rc=batcher.main(['build','--manifest',str(mf),'--root',str(self.root),'--report',str(self.root/'r.json')])
+        self.assertFalse((self.root/'r.json').exists())
+        return rc,err.getvalue()
+    def test_cli_memoryerror_clean_deny(self):
+        rc,err=self._run_main_with(MemoryError())
+        self.assertEqual(rc,1);self.assertEqual(err.strip(),'DENY: MEMORY_LIMIT')
+    def test_cli_recursionerror_clean_deny(self):
+        rc,err=self._run_main_with(RecursionError())
+        self.assertEqual(rc,1);self.assertEqual(err.strip(),'DENY: JSON_TOO_DEEP')
     def test_denies_png_crc_failure(self):
         b=bytearray(png());b[24]^=1
         with self.assertRaisesRegex(GateError,'PNG_CRC_MISMATCH'):strict_png_size(bytes(b))
@@ -162,6 +223,13 @@ class BatcherTests(unittest.TestCase):
     def test_bool_instances_not_count(self):
         m=copy.deepcopy(self.manifest);m['cards'][0]['instances']=True
         with self.assertRaisesRegex(GateError,'INSTANCE_LIMIT'):self.make(m)
+    def test_denies_run_total_overflow_isolated(self):
+        m=copy.deepcopy(self.manifest)
+        base=m['cards'][0]
+        m['cards']=[dict(base,card_id=f'CWTD-SYN-{i:03d}',instances=1501) for i in range(6)]
+        with self.assertRaisesRegex(GateError,'INSTANCE_LIMIT'):self.make(m)
+        for c in m['cards']:c['instances']=1500
+        self.assertEqual(self.make(m)['instance_count'],9000)
     def test_denies_run_over_budget(self):
         m=copy.deepcopy(self.manifest)
         for c in m['cards']:c['instances']=3000
