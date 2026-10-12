@@ -1,0 +1,31 @@
+{
+  "format": "JSONWISDOM_STATUS_RECEIPT_V0.1",
+  "receipt_id": "DELTA_WORK_REPLAY_2026-08-16",
+  "receipt_date": "2026-08-16",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "agent/mind-the-gap-challenge-dice-v0-1",
+  "pr": 486,
+  "pre_delta_head_sha": "e6eb95392f81e041888044bd2080b1affb625c76",
+  "delta_artifact_path": "fixtures/jaywisdom/challenge/DELTA_WORK_REPLAY_V0_1.json",
+  "delta_artifact_creation_commit": "7449f7ed24fb4df455de98c826c26d9083a6a32b",
+  "delta_classification": "SYNTHETIC_WORK_TRAINING_ORCHESTRATOR",
+  "delta_purpose": "Replay bounded before/after state changes while preserving evidence, causation, authority, and institutional boundaries.",
+  "work_context_profiles": [
+    "AFRL_STYLE_RESEARCH_ASSURANCE",
+    "USAF_STYLE_OPERATIONAL_TRAINING",
+    "USSF_STYLE_CONTESTED_DATA",
+    "AETC_STYLE_INSTRUCTION",
+    "MAXWELL_STYLE_PME",
+    "AIR_UNIVERSITY_STYLE_SYSTEMS_EDUCATION"
+  ],
+  "institutional_adoption_claimed": false,
+  "institutional_endorsement_claimed": false,
+  "personnel_decision_use_authorized": false,
+  "dedicated_delta_verifier": "NOT_CREATED",
+  "workflow_wiring": "NOT_PERFORMED",
+  "merge": "NO",
+  "pr_484_mutation": "NONE",
+  "pr_485_mutation": "NONE",
+  "authority_created": false,
+  "status": "DELTA_CREATED_PENDING_POST_WRITE_READBACK"
+}
