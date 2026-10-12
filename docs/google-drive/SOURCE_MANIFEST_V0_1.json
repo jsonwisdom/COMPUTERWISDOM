@@ -1,0 +1,15 @@
+{
+  "schema_version": "0.1",
+  "requested_alias": "docs.drive.com",
+  "repository_path": "docs/google-drive/",
+  "canonical_sources": [
+    "https://developers.google.com/workspace/drive/api/guides/about-sdk",
+    "https://developers.google.com/workspace/drive/api/reference/rest/v3",
+    "https://help.openai.com/en/articles/10929079"
+  ],
+  "retrieved_at": "2026-08-29T00:00:00Z",
+  "content_mirrored": false,
+  "connector_identity_required": "computerwisdom408@gmail.com",
+  "connector_state": "HOLD_WRONG_ACCOUNT",
+  "authority_created": false
+}
