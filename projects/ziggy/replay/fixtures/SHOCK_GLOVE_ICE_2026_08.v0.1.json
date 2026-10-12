@@ -1,0 +1,67 @@
+{
+  "schema_version": "0.1",
+  "instrument": "SHOCK_GLOVE_BUDGET_POLICY_DEPLOYMENT_REPLAY_V0_1",
+  "fixture_id": "ICE_GLOVE_AUGUST_2026",
+  "status": "REVIEW_OPEN",
+  "system_author": "Jay",
+  "declared_identity_label": "jaywisdom.base.eth",
+  "authority_created": false,
+  "scope": "Public accountability replay only; no operational device-use instructions.",
+  "procurement": {
+    "agency": "U.S. Immigration and Customs Enforcement",
+    "device": "G.L.O.V.E. / Generated Low Output Voltage Emitter",
+    "planned_ceiling_usd": 20000000,
+    "planned_ceiling_status": "OBSERVED_IN_PUBLIC_REPORTING",
+    "competition_posture": "CONTEMPLATED_NO_BID_OR_SOLE_SOURCE_REPORTED",
+    "solicitation_status": "NOT_ESTABLISHED",
+    "award_status": "NOT_ESTABLISHED",
+    "obligated_amount_usd": null,
+    "outlayed_amount_usd": null,
+    "vendor": "Compliant Technologies LLC",
+    "vendor_status": "REPORTED"
+  },
+  "policy": {
+    "dhs_department_wide_use_of_force_anchor": "OBSERVED",
+    "ice_device_specific_policy": "NOT_ESTABLISHED",
+    "policy_development": "REPORTED_PENDING_AS_OF_2026_08_13",
+    "authorized_equipment_listing": "NOT_ESTABLISHED",
+    "training_program": "REPORTED_REQUIRED",
+    "individual_certifications": "NOT_ESTABLISHED"
+  },
+  "deployment": {
+    "unit_level_issuance": "NOT_ESTABLISHED",
+    "task_force_assignment": "NOT_ESTABLISHED",
+    "field_deployment": "NOT_ESTABLISHED",
+    "incident_use_under_contemplated_acquisition": "NOT_ESTABLISHED"
+  },
+  "required_task_force_fields": [
+    "parent_agency",
+    "unit_name",
+    "mission_authority",
+    "command_chain",
+    "mou_or_task_force_agreement",
+    "funding_source",
+    "equipment_owner",
+    "issuing_authority",
+    "controlling_use_of_force_policy",
+    "individual_certification",
+    "incident_report_destination",
+    "complaint_and_professional_standards_jurisdiction"
+  ],
+  "invariants": [
+    "PURCHASE != AUTHORIZATION_TO_CARRY",
+    "AUTHORIZATION_TO_CARRY != AUTHORIZATION_TO_USE",
+    "TRAINING != LAWFUL_USE_IN_A_GIVEN_INCIDENT",
+    "TASK_FORCE_MEMBERSHIP != INDEPENDENT_FORCE_AUTHORITY",
+    "NO_VISIBLE_MARK != NO_FORCE",
+    "BUDGET_LINE != LEGAL_AUTHORITY"
+  ],
+  "result": "HOLD_AT_POLICY",
+  "sources": [
+    "Associated Press reporting dated 2026-08-11 and 2026-08-13",
+    "DHS department-wide Use of Force Policy update dated 2023-02-07",
+    "Wisconsin Stat. 66.0511",
+    "Wisconsin Stat. 941.295",
+    "Wisconsin DOJ / WILENET UFAD reporting program"
+  ]
+}
