@@ -1,0 +1,199 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.dev/schemas/microsoft_learn_resume_replay.v0_1.schema.json",
+  "title": "Microsoft Learn → Gray Baby → ResumeReplay v0.1",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "provider",
+    "source_type",
+    "evidence_state",
+    "scope",
+    "limitations",
+    "allowed_resume_language",
+    "gray_baby"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.1"},
+    "provider": {"const": "Microsoft Learn"},
+    "identity": {
+      "type": "object",
+      "properties": {
+        "profile_url": {"type": ["string", "null"], "format": "uri"},
+        "transcript_url": {"type": ["string", "null"], "format": "uri"},
+        "display_name": {"type": ["string", "null"]}
+      },
+      "additionalProperties": false
+    },
+    "source_type": {
+      "enum": [
+        "TRAINING_MODULE",
+        "LEARNING_PATH",
+        "TRANSCRIPT",
+        "APPLIED_SKILL",
+        "CERTIFICATION",
+        "ONLINE_VERIFIABLE_CREDENTIAL",
+        "EXECUTION_RECEIPT"
+      ]
+    },
+    "credential": {
+      "type": ["object", "null"],
+      "properties": {
+        "name": {"type": ["string", "null"]},
+        "credential_id": {"type": ["string", "null"]},
+        "verified_url": {"type": ["string", "null"], "format": "uri"},
+        "issue_date": {"type": ["string", "null"], "format": "date"},
+        "expiration_date": {"type": ["string", "null"], "format": "date"},
+        "status": {"enum": ["ACTIVE", "EXPIRED", "RETIRED", "UNKNOWN", null]}
+      },
+      "additionalProperties": false
+    },
+    "training": {
+      "type": ["object", "null"],
+      "properties": {
+        "title": {"type": ["string", "null"]},
+        "topic": {"type": ["string", "null"]},
+        "completion_date": {"type": ["string", "null"], "format": "date"},
+        "module_url": {"type": ["string", "null"], "format": "uri"}
+      },
+      "additionalProperties": false
+    },
+    "scope": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "limitations": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "evidence_state": {
+      "enum": ["PROVEN", "BOUND", "PROVEN_BOUND", "PROVEN_OPERATION", "HOLD", "CONFLICT"]
+    },
+    "external_witness": {
+      "type": "object",
+      "properties": {
+        "witness_type": {
+          "enum": [
+            "MICROSOFT_PROFILE",
+            "MICROSOFT_TRANSCRIPT",
+            "MICROSOFT_CREDENTIAL_PAGE",
+            "DEPLOYMENT_LOG",
+            "CI_RECEIPT",
+            "TELEMETRY",
+            "OTHER"
+          ]
+        },
+        "url": {"type": ["string", "null"], "format": "uri"},
+        "observed_at": {"type": ["string", "null"], "format": "date-time"},
+        "sha256": {"type": ["string", "null"], "pattern": "^[a-fA-F0-9]{64}$"}
+      },
+      "additionalProperties": false
+    },
+    "execution_receipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["system", "state"],
+        "properties": {
+          "system": {"type": "string", "minLength": 1},
+          "repo": {"type": ["string", "null"]},
+          "path": {"type": ["string", "null"]},
+          "commit": {"type": ["string", "null"]},
+          "deployment_receipt": {"type": ["string", "null"]},
+          "telemetry_receipt": {"type": ["string", "null"]},
+          "state": {"enum": ["PROVEN_OPERATION", "BOUND", "HOLD", "CONFLICT"]}
+        },
+        "additionalProperties": false
+      }
+    },
+    "allowed_resume_language": {"type": "string", "minLength": 1},
+    "forbidden_promotions": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "EMPLOYMENT",
+          "PRODUCTION_OPERATION",
+          "UNBOUNDED_EXPERTISE",
+          "INSTITUTIONAL_AUTHORITY",
+          "CREDENTIAL_NOT_PRESENT"
+        ]
+      },
+      "uniqueItems": true
+    },
+    "gray_baby": {
+      "type": "object",
+      "required": [
+        "observer_result",
+        "authority_created",
+        "employment_created",
+        "production_proof_created"
+      ],
+      "properties": {
+        "observer_result": {"enum": ["PROVEN", "BOUND", "HOLD", "CONFLICT"]},
+        "authority_created": {"const": false},
+        "employment_created": {"const": false},
+        "production_proof_created": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"source_type": {"const": "TRAINING_MODULE"}}, "required": ["source_type"]},
+      "then": {"properties": {"evidence_state": {"const": "PROVEN"}}}
+    },
+    {
+      "if": {"properties": {"source_type": {"const": "LEARNING_PATH"}}, "required": ["source_type"]},
+      "then": {"properties": {"evidence_state": {"const": "PROVEN"}}}
+    },
+    {
+      "if": {"properties": {"source_type": {"const": "TRANSCRIPT"}}, "required": ["source_type"]},
+      "then": {"properties": {"evidence_state": {"const": "BOUND"}}}
+    },
+    {
+      "if": {"properties": {"source_type": {"const": "APPLIED_SKILL"}}, "required": ["source_type"]},
+      "then": {"properties": {"evidence_state": {"const": "PROVEN"}}}
+    },
+    {
+      "if": {"properties": {"source_type": {"const": "CERTIFICATION"}}, "required": ["source_type"]},
+      "then": {"properties": {"evidence_state": {"const": "PROVEN"}}}
+    },
+    {
+      "if": {"properties": {"source_type": {"const": "ONLINE_VERIFIABLE_CREDENTIAL"}}, "required": ["source_type"]},
+      "then": {"properties": {"evidence_state": {"const": "PROVEN_BOUND"}}}
+    },
+    {
+      "if": {"properties": {"source_type": {"const": "EXECUTION_RECEIPT"}}, "required": ["source_type"]},
+      "then": {"properties": {"evidence_state": {"const": "PROVEN_OPERATION"}}}
+    },
+    {
+      "if": {
+        "properties": {
+          "gray_baby": {
+            "properties": {"production_proof_created": {"const": true}},
+            "required": ["production_proof_created"]
+          }
+        },
+        "required": ["gray_baby"]
+      },
+      "then": {
+        "required": ["execution_receipts"],
+        "properties": {
+          "execution_receipts": {
+            "minItems": 1,
+            "contains": {
+              "type": "object",
+              "properties": {"state": {"const": "PROVEN_OPERATION"}},
+              "required": ["state"]
+            }
+          }
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

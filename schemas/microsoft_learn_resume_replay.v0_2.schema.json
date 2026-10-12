@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.dev/schemas/microsoft_learn_resume_replay.v0_2.schema.json",
+  "title": "Microsoft Learn → Gray Baby → ResumeReplay v0.2",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "provider",
+    "source_type",
+    "evidence_state",
+    "scope",
+    "limitations",
+    "allowed_resume_language"
+  ],
+  "properties": {
+    "schema_version": {"const": "0.2"},
+    "provider": {"type": "string", "minLength": 1},
+    "source_type": {
+      "enum": [
+        "TRAINING_MODULE",
+        "LEARNING_PATH",
+        "TRANSCRIPT",
+        "APPLIED_SKILL",
+        "CERTIFICATION",
+        "ONLINE_VERIFIABLE_CREDENTIAL",
+        "EXECUTION_RECEIPT"
+      ]
+    },
+    "execution_subtype": {
+      "enum": [
+        "CI_RUN",
+        "ATTESTATION_RUN",
+        "VERIFIER_RUN",
+        "DEPLOYMENT_RECEIPT",
+        "LIVE_SYSTEM_OPERATION"
+      ]
+    },
+    "evidence_state": {
+      "enum": [
+        "PROVEN",
+        "BOUND",
+        "PROVEN_BOUND",
+        "PROVEN_EXECUTION",
+        "PROVEN_OPERATION",
+        "HOLD",
+        "CONFLICT"
+      ]
+    },
+    "scope": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "limitations": {"type": "array", "items": {"type": "string"}, "minItems": 1},
+    "allowed_resume_language": {"type": "string", "minLength": 1},
+    "production_proof_created": {"type": "boolean"},
+    "authority_created": {"const": false},
+    "employment_created": {"const": false}
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "source_type": {"const": "EXECUTION_RECEIPT"},
+          "execution_subtype": {"enum": ["CI_RUN", "ATTESTATION_RUN", "VERIFIER_RUN"]}
+        },
+        "required": ["execution_subtype"]
+      },
+      "then": {
+        "properties": {
+          "evidence_state": {"const": "PROVEN_EXECUTION"},
+          "production_proof_created": {"const": false}
+        },
+        "required": ["production_proof_created"]
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "source_type": {"const": "EXECUTION_RECEIPT"},
+          "execution_subtype": {"enum": ["DEPLOYMENT_RECEIPT", "LIVE_SYSTEM_OPERATION"]}
+        },
+        "required": ["execution_subtype"]
+      },
+      "then": {
+        "properties": {
+          "evidence_state": {"const": "PROVEN_OPERATION"}
+        }
+      }
+    }
+  ],
+  "additionalProperties": false
+}

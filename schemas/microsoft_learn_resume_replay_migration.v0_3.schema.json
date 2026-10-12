@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.dev/schemas/microsoft_learn_resume_replay_migration.v0_3.schema.json",
+  "title": "ResumeReplay v0.2 → v0.3 Migration Receipt",
+  "type": "object",
+  "required": ["schema_version","migration_type","source","target","preservation","historical_derived_state","migration_result","migration_reason","timestamp","prior_migration_receipt_hash","migration_receipt_hash"],
+  "properties": {
+    "schema_version": {"const": "0.3"},
+    "migration_type": {"const": "V0_2_TO_V0_3"},
+    "source": {"type":"object","required":["path","source_receipt_hash","source_schema_version"],"properties":{"path":{"type":"string"},"source_receipt_hash":{"type":"string","pattern":"^[0-9a-fA-F]{64}$"},"source_schema_version":{"const":"0.2"}},"additionalProperties":false},
+    "target": {"type":"object","required":["normalized_object_hash","target_schema_version"],"properties":{"normalized_object_hash":{"type":"string","pattern":"^[0-9a-fA-F]{64}$"},"target_schema_version":{"const":"0.3"}},"additionalProperties":false},
+    "preservation": {"type":"object","required":["source_hash_match","execution_identity_preserved","evidence_state_unchanged","production_flag_unchanged","employment_flag_unchanged","authority_flag_unchanged"],"properties":{"source_hash_match":{"type":"boolean"},"execution_identity_preserved":{"type":"boolean"},"evidence_state_unchanged":{"type":"boolean"},"production_flag_unchanged":{"type":"boolean"},"employment_flag_unchanged":{"type":"boolean"},"authority_flag_unchanged":{"type":"boolean"}},"additionalProperties":false},
+    "historical_derived_state": {"type":"object","required":["old_ledger_entry","old_observer_verdict"],"properties":{"old_ledger_entry":{"type":"string"},"old_observer_verdict":{"type":"string"}},"additionalProperties":false},
+    "migration_result": {"enum":["PASS","HOLD","REJECT"]},
+    "migration_reason": {"type":"string"},
+    "timestamp": {"type":"string","format":"date-time"},
+    "prior_migration_receipt_hash": {"type":["string","null"],"pattern":"^[0-9a-fA-F]{64}$"},
+    "migration_receipt_hash": {"type":"string","pattern":"^[0-9a-fA-F]{64}$"}
+  },
+  "additionalProperties": false
+}
