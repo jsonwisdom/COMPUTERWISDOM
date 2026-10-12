@@ -211,8 +211,8 @@ def build_candidate(manifest, root):
                  'onchain':False,'publication':False,'sales':False,'external_send':False,
                  'batch_count_cards':len(cards),'instance_count':total,
                  'card_count_divisibility':'ENFORCED',
-                 'total_instance_divisibility_requirement':'UNRESOLVED',
-                 'total_instance_divisibility_gate':'HOLD',
+                 'total_instance_divisibility_requirement':'NOT_REQUIRED',
+                 'total_instance_divisibility_gate':'CLOSED_NOT_REQUIRED',
                  'target_1m_per_min_verified':False,
                  'master_receipts':masters,'leaves':leaves,'merkle_root':merkle_root(leaves),
                  'manifest_sha256':sha256(canonical(manifest))}
