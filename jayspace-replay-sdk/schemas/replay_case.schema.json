@@ -1,0 +1,56 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://computerwisdom.example/schemas/jayspace-replay-case-v0.1.json",
+  "title": "JaySpace Replay Case v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "claim", "nodes", "edges", "authority_created"],
+  "properties": {
+    "case_id": {"type": "string", "minLength": 1},
+    "claim": {"type": "string", "minLength": 1},
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "kind", "source_status"],
+        "properties": {
+          "id": {"type": "string", "minLength": 1},
+          "kind": {
+            "enum": [
+              "HISTORICAL_IDENTITY",
+              "RELATIONSHIP_ROLE",
+              "ALTERNATE_IDENTITY_RECORD",
+              "PUBLIC_PERSON_RECORD",
+              "CONTEXT_SPECIFIC_DERIVATION",
+              "GENERAL_SYNTHETIC_EXPLAINER",
+              "GENERATED_VARIANT"
+            ]
+          },
+          "source_status": {"enum": ["BOUND", "UNBOUND", "CONFLICT", "REJECTED"]},
+          "authority": {"type": "boolean", "const": false},
+          "metadata": {"type": "object"}
+        }
+      }
+    },
+    "edges": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["from", "to", "relation", "status"],
+        "properties": {
+          "from": {"type": "string"},
+          "to": {"type": "string"},
+          "relation": {
+            "enum": ["DERIVED_FROM", "EXPLAINS", "CITES", "ROLE_OF", "IDENTITY_EQUIVALENCE", "CONTRADICTS"]
+          },
+          "status": {"enum": ["BOUND", "UNBOUND", "CONFLICT", "REJECTED"]},
+          "receipt_ref": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "authority_created": {"type": "boolean", "const": false}
+  }
+}

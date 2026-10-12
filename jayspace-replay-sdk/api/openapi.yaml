@@ -1,0 +1,25 @@
+openapi: 3.1.0
+info:
+  title: JaySpace Replay API
+  version: 0.1.0
+  description: Deterministic evidence replay API. It returns typed receipts, not declarations of truth or authority.
+paths:
+  /v0/replay/evaluate:
+    post:
+      operationId: evaluateReplayCase
+      summary: Evaluate one replay case deterministically
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: ../schemas/replay_case.schema.json
+      responses:
+        '200':
+          description: Deterministic replay receipt
+          content:
+            application/json:
+              schema:
+                $ref: ../schemas/replay_receipt.schema.json
+        '400':
+          description: Invalid request shape

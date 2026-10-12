@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://computerwisdom.example/schemas/jayspace-replay-receipt-v0.1.json",
+  "title": "JaySpace Replay Receipt v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["case_id", "disposition", "signals", "laws_applied", "authority_created"],
+  "properties": {
+    "case_id": {"type": "string"},
+    "disposition": {"enum": ["PASS", "HOLD", "CONFLICT", "REJECT"]},
+    "signals": {"type": "array", "items": {"type": "string"}},
+    "laws_applied": {"type": "array", "items": {"type": "string"}},
+    "authority_created": {"type": "boolean", "const": false}
+  }
+}
