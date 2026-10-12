@@ -1,0 +1,15 @@
+{
+  "artifact": "SUCCESSION_RULES_V1",
+  "status": "SHELL_ONLY",
+  "authority": false,
+  "rules": [
+    "Historical genesis keys are immutable.",
+    "A dissolved or superseded node receives effective_to; it is not deleted.",
+    "A successor node receives a new genesis key.",
+    "Mergers may reference multiple predecessor_keys.",
+    "Splits may reference one predecessor from multiple successor_keys.",
+    "Parent changes require a new effective relationship interval.",
+    "No succession relationship is admitted without authoritative source evidence."
+  ],
+  "examples_populated": false
+}

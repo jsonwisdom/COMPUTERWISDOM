@@ -1,0 +1,26 @@
+{
+  "artifact": "GENESIS_NAMESPACE_V1",
+  "status": "SHELL_ONLY",
+  "authority": false,
+  "data_populated": false,
+  "keys_issued": 0,
+  "capacity": {
+    "active_target": 1000000,
+    "design_limit": 10000000
+  },
+  "levels": {
+    "G0": "ROOT",
+    "G1": "SOVEREIGN_COUNTRY",
+    "G2": "STATE_PROVINCE_REGION",
+    "G3": "COUNTY_DISTRICT_INTERMEDIATE",
+    "G4": "MUNICIPAL_CITY_TOWN_COMMUNE",
+    "G5": "TRIBAL_SPECIAL_SERVICE_AUTHORITY"
+  },
+  "invariants": [
+    "PLACE_EXISTS != GOVERNMENT_EXISTS",
+    "JURISDICTION_KEY != LEGAL_AUTHORITY",
+    "HISTORY != OVERWRITTEN",
+    "UNVERIFIED_JURISDICTION = UNRESOLVED",
+    "AUTHORITY_CREATED = FALSE"
+  ]
+}
