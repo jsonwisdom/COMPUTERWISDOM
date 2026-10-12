@@ -1,0 +1,67 @@
+{
+  "schema": "g-dice-intelligence-federation/d00-throw-template/v0.1",
+  "status": "FROZEN_REPLAY_GRADE",
+  "authority_created": false,
+  "subject_class": "PUBLICLY_OBSERVABLE_EVENT_CLAIM_OR_RECORD",
+  "forbidden_categories": {
+    "person_targeting": false,
+    "nationality_targeting": false,
+    "criminal_presumption": false,
+    "classified_inference": false,
+    "internal_method_guess": false,
+    "authority": false
+  },
+  "throw": {
+    "throw_id": "",
+    "hypothesis_id": "",
+    "timestamp": "",
+    "operator_supplied_subject": "",
+    "selected_interrogative": "",
+    "interrogative_block": {
+      "who": "",
+      "what": "",
+      "when": "",
+      "where": "",
+      "why_claimed": "",
+      "how_publicly_verifiable": "",
+      "evidence_missing": "",
+      "falsifiability_condition": ""
+    },
+    "public_evidence_requirements": [],
+    "candidate_lenses": [],
+    "routing_notes": ""
+  },
+  "allowed_questions": [
+    "WHO",
+    "WHAT",
+    "WHEN",
+    "WHERE",
+    "WHY_CLAIMED",
+    "HOW_PUBLICLY_VERIFIABLE",
+    "WHAT_EVIDENCE_IS_MISSING",
+    "WHAT_WOULD_FALSIFY_IT"
+  ],
+  "routing": [
+    "D00_QUESTION",
+    "HYPOTHESIS_ID",
+    "PUBLIC_EVIDENCE_REQUIREMENTS",
+    "D01_D18_ONLY_WHERE_PUBLIC_MISSION_RELEVANCE_EXISTS",
+    "COMMON_EVIDENCE_LEDGER",
+    "D19_RECONCILIATION",
+    "OPERATOR_OR_HUMAN_REVIEW"
+  ],
+  "constitutional_invariants": [
+    "RANDOMNESS_MAY_SELECT_THE_QUESTION",
+    "RANDOMNESS_NEVER_DECIDES_TRUTH",
+    "PUBLIC_MISSION_NOT_INTERNAL_METHOD",
+    "HYPOTHESIS_NOT_INTELLIGENCE_FINDING",
+    "INTELLIGENCE_FINDING_NOT_CRIMINAL_FINDING",
+    "CLAIM_NOT_TARGET",
+    "NATIONALITY_NOT_THREAT",
+    "AGENCY_SELECTION_NOT_AGENCY_SUSPICION",
+    "LENS_SELECTION_NOT_TASKING",
+    "RECEIPT_REQUEST_NOT_INVESTIGATION",
+    "AUTHORITY_CREATED_FALSE"
+  ],
+  "promotion_rule": "D00_CREATES_ONLY_REPLAYABLE_QUESTION_AND_EVIDENCE_ENVELOPE"
+}

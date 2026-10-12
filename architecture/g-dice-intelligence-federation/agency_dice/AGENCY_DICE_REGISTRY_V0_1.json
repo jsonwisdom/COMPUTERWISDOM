@@ -1,0 +1,39 @@
+{
+  "schema": "g-dice-intelligence-federation/agency-dice-registry/v0.1",
+  "status": "PUBLIC_EDUCATIONAL_HYPOTHESIS_REPLAY",
+  "official_ic_organization_count": 18,
+  "logical_dice_count": 20,
+  "authority_created": false,
+  "internal_methods_claimed": false,
+  "dice": [
+    {"id":"D00","label":"G_DICE","class":"TOP_LEVEL_QUESTION_GRAMMAR"},
+    {"id":"D01","label":"ODNI","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D02","label":"CIA","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D03","label":"DIA","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D04","label":"NSA","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D05","label":"NGA","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D06","label":"NRO","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D07","label":"ARMY_INTELLIGENCE","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D08","label":"NAVY_INTELLIGENCE","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D09","label":"MARINE_CORPS_INTELLIGENCE","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D10","label":"AIR_FORCE_INTELLIGENCE","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D11","label":"SPACE_FORCE_INTELLIGENCE","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D12","label":"DOE_INTELLIGENCE","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D13","label":"DHS_I_AND_A","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D14","label":"COAST_GUARD_INTELLIGENCE","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D15","label":"FBI","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D16","label":"DEA_ONSI","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D17","label":"STATE_INR","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D18","label":"TREASURY_OIA","class":"IC_LOCAL_PUBLIC_MISSION_DIE"},
+    {"id":"D19","label":"CROSS_IC_RECONCILIATION","class":"RECONCILIATION_DIE"}
+  ],
+  "invariants": [
+    "RANDOMNESS_MAY_SELECT_QUESTION",
+    "RANDOMNESS_MUST_NOT_DECIDE_TRUTH",
+    "PUBLIC_MISSION_MAPPING_NOT_INTERNAL_METHOD",
+    "HYPOTHESIS_NOT_INTELLIGENCE_FINDING",
+    "INTELLIGENCE_FINDING_NOT_CRIMINAL_FINDING",
+    "NATIONALITY_NOT_THREAT",
+    "PARTICULARIZED_EVIDENCE_REQUIRED"
+  ]
+}
