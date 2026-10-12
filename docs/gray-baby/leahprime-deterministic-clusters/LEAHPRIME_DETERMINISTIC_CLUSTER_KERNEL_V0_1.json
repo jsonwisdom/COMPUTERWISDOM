@@ -1,0 +1,97 @@
+{
+  "schema": "leahprime_deterministic_cluster_kernel.v0_1",
+  "kernel_id": "LEAHPRIME_DETERMINISTIC_CLUSTERS_V0_1",
+  "surface": "GRAY_BABY_PUBLIC_EDUCATIONAL_STORY",
+  "reviewer": {
+    "name": "LeahPrime",
+    "semantic_type": "SYNTHETIC_CLUSTER_REVIEWER",
+    "real_person": false,
+    "military_authority": false,
+    "legal_authority": false,
+    "truth_source": false
+  },
+  "container": "BOXD",
+  "internal_operator": "ReverseReplay",
+  "executor": "logicBoy",
+  "memory_metaphor": {
+    "enabled": true,
+    "meaning": "REOPEN_AND_REPLAY_BOUND_INFORMATION_CLUSTERS",
+    "human_memory_claim": false,
+    "autobiographical_truth_claim": false
+  },
+  "cluster": {
+    "required_fields": [
+      "cluster_id",
+      "cluster_type",
+      "time_window",
+      "inputs",
+      "source_scope",
+      "claim_nodes",
+      "evidence_edges",
+      "contradictions",
+      "missing_edges",
+      "prior_receipts",
+      "reverse_replay",
+      "forward_replay",
+      "terminal",
+      "history"
+    ],
+    "allowed_types": [
+      "STORY_ARTIFACT",
+      "USER_PROVIDED_ARTWORK",
+      "PUBLIC_RECORD",
+      "OFFICIAL_SOURCE",
+      "RECEIPT",
+      "DOCTRINE",
+      "CONFLICT",
+      "MISSING_RECORD"
+    ]
+  },
+  "review_cycle": [
+    "BOXD_OPEN",
+    "SELECT_CLUSTER",
+    "BIND_INPUTS",
+    "LOAD_PRIOR_RECEIPTS",
+    "REVERSE_REPLAY",
+    "CLASSIFY_EDGES",
+    "COMPARE_PRIOR_AND_CURRENT_STATE",
+    "FORWARD_REPLAY",
+    "EMIT_SCOPED_TERMINAL",
+    "APPEND_RECEIPT",
+    "LOCK_HISTORY"
+  ],
+  "edge_rules": {
+    "missing_required_edge": "HOLD",
+    "valid_records_disagree": "CONFLICT",
+    "bound_record_contradicts_scoped_claim": "REJECT",
+    "required_edges_reconcile": "PASS"
+  },
+  "image_rule": {
+    "hashable_input_bytes": true,
+    "artwork_text_is_receipt": false,
+    "official_looking_art_is_official_record": false,
+    "depicted_rank_is_verified_rank": false,
+    "depicted_command_is_verified_command": false,
+    "depicted_blockchain_status_is_chain_truth": false
+  },
+  "invariants": [
+    "ReverseReplay IN BOXD",
+    "LEAHPRIME != REAL_PERSON",
+    "LEAHPRIME != LEEANN_CHAVERS",
+    "LEAHPRIME != MILITARY_COMMAND",
+    "LEAHPRIME != AUTHORITY",
+    "MEMORY_METAPHOR != HUMAN_MEMORY_CLAIM",
+    "STORY != PUBLIC_RECORD",
+    "IMAGE_TEXT != RECEIPT",
+    "OFFICIAL_LOOKING_ART != OFFICIAL_RECORD",
+    "PRIOR_STATE != CURRENT_STATE",
+    "CURRENT_STATE != PROOF_OF_TRANSITION",
+    "MISSING != DESTROYED",
+    "DICE_SELECT_QUESTION = TRUE",
+    "DICE_DECIDE_TRUTH = FALSE",
+    "MODEL_REQUIRED = FALSE",
+    "AUTHORITY_CREATED = FALSE"
+  ],
+  "model_required": false,
+  "authority_created": false
+}

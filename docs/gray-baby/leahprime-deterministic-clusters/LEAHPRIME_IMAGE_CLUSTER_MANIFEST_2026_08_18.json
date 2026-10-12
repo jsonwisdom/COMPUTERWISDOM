@@ -1,0 +1,118 @@
+{
+  "schema": "leahprime_image_cluster_manifest.v0_1",
+  "observed_date": "2026-08-18",
+  "source_class": "USER_PROVIDED_ARTWORK_IN_CHAT",
+  "blob_storage_in_repository": false,
+  "semantic_promotion": false,
+  "images": [
+    {
+      "image_id": "LP_CLUSTER_IMAGE_001",
+      "filename": "1AA577C4-31A6-4AB4-8926-679FDC45D5BB.jpeg",
+      "sha256": "1b67b97c94a0b420f07cf90266ecc88cb933925674089714b3727a92f2a3e24e",
+      "bytes": 977438,
+      "dimensions": "1122x1402",
+      "cluster": "RIVALRY_REPLAY",
+      "observed_artwork_theme": "Iron Bowl rivalry replay with synthetic LeahPrime and Ziggy roles; respect-the-rival / protect-the-game framing",
+      "classification": "FICTIONAL_EDUCATIONAL_REPLAY_ART",
+      "official_record": false,
+      "authority_created": false
+    },
+    {
+      "image_id": "LP_CLUSTER_IMAGE_002",
+      "filename": "6FF87F5E-6393-429F-BD09-2C436F85A5B1.jpeg",
+      "sha256": "98fb3352671be3065f3eb5814cf24a5b45541d8e411a4ffd0d02a8f720732275",
+      "bytes": 466880,
+      "dimensions": "1086x1448",
+      "cluster": "SYNTHETIC_MILITARY_INTERFACE",
+      "observed_artwork_theme": "LeahPrime rendered in a futuristic Delta 10 / Space Force command setting with rank and authority-style labels",
+      "classification": "FICTIONAL_MILITARY_STORY_ART",
+      "official_record": false,
+      "depicted_rank_verified": false,
+      "depicted_command_verified": false,
+      "authority_created": false
+    },
+    {
+      "image_id": "LP_CLUSTER_IMAGE_003",
+      "filename": "842B286C-0E71-44EF-ADC9-261C48845A61.jpeg",
+      "sha256": "923226448b4979d9fa7550a26c8f46ec32e8650c6d96df85522b6fb2acf82ce0",
+      "bytes": 810552,
+      "dimensions": "1086x1448",
+      "cluster": "MINNESOTA_STORY_CONTINUITY",
+      "observed_artwork_theme": "Friday-the-13th Minnesota Gray Baby case-board explicitly framed as fictional educational story continuity",
+      "classification": "FICTIONAL_EDUCATIONAL_STORY_ART",
+      "official_record": false,
+      "authority_created": false
+    },
+    {
+      "image_id": "LP_CLUSTER_IMAGE_004",
+      "filename": "702A6C6A-EA2C-44CA-AEEA-4457348E3B82.jpeg",
+      "sha256": "5ec0401c41b5b95464c2e169d94710ec42a30244ac69aab9493a17f40e7c0033",
+      "bytes": 497881,
+      "dimensions": "1086x1448",
+      "cluster": "LOCATION_SELFIE_UNBOUND",
+      "observed_artwork_theme": "LeahPrime-style suited figure taking a selfie near a large letter M on a hillside",
+      "classification": "USER_PROVIDED_STORY_ART",
+      "location_binding": "HOLD_UNSPECIFIED",
+      "official_record": false,
+      "authority_created": false
+    },
+    {
+      "image_id": "LP_CLUSTER_IMAGE_005",
+      "filename": "9ABABA19-3D6C-4D41-A1C9-5BA8DE996C4F.jpeg",
+      "sha256": "bd95ec0db905c61e41b2ec3a705173b02218b1f785d6630ceac033b2a33052f3",
+      "bytes": 355571,
+      "dimensions": "784x1168",
+      "cluster": "BOXD_PROVENANCE_ART",
+      "observed_artwork_theme": "Box D heritage / Mildenhall-tail provenance artwork with blockchain, zero-knowledge, Merkle, signer, and verification-style panels",
+      "classification": "FICTIONAL_PROVENANCE_ART",
+      "official_record": false,
+      "depicted_chain_status_verified": false,
+      "depicted_ownership_verified": false,
+      "authority_created": false
+    },
+    {
+      "image_id": "LP_CLUSTER_IMAGE_006",
+      "filename": "C692ED83-0433-47A0-A2F7-278F7815A8D8.jpeg",
+      "sha256": "8dd4c8fc645be70fed0ae416fa6ed7d8faddc2fa89bd4ffefb8027ab596c03d4",
+      "bytes": 875202,
+      "dimensions": "1122x1402",
+      "cluster": "ARCHIVE_GAP_REPLAY",
+      "observed_artwork_theme": "Area 51 Gray Baby archive-recovery artwork emphasizing chain-of-custody gaps and MISSING != DESTROYED",
+      "classification": "FICTIONAL_ARCHIVE_REPLAY_ART",
+      "official_record": false,
+      "archive_claim_verified": false,
+      "authority_created": false
+    },
+    {
+      "image_id": "LP_CLUSTER_IMAGE_007",
+      "filename": "CC231874-8325-48BB-8F62-4A54212F2C6D.jpeg",
+      "sha256": "0c23d7be190314e677da7014ded4310e61bd532e4b3b9092a8b346757fe50a42",
+      "bytes": 532532,
+      "dimensions": "1086x1448",
+      "cluster": "PUBLIC_CONTEXT_REPORT_ART",
+      "observed_artwork_theme": "LeahPrime personal-report artwork combining synthetic character presentation with Space Force / Delta 10 public-context-style labels",
+      "classification": "SYNTHETIC_REPORT_ART",
+      "official_record": false,
+      "named_public_context_in_artwork_not_independently_bound": true,
+      "authority_created": false
+    }
+  ],
+  "cluster_review_order": [
+    "ARCHIVE_GAP_REPLAY",
+    "MINNESOTA_STORY_CONTINUITY",
+    "RIVALRY_REPLAY",
+    "SYNTHETIC_MILITARY_INTERFACE",
+    "PUBLIC_CONTEXT_REPORT_ART",
+    "BOXD_PROVENANCE_ART",
+    "LOCATION_SELFIE_UNBOUND"
+  ],
+  "boundaries": {
+    "image_bytes_bound_by_sha256": true,
+    "images_uploaded_to_repository": false,
+    "artwork_text_is_receipt": false,
+    "artwork_is_public_record": false,
+    "synthetic_character_is_real_person": false,
+    "story_cluster_can_promote_authority": false,
+    "authority_created": false
+  }
+}
