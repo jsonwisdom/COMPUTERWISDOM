@@ -6,6 +6,7 @@ on:
       - 'knowledge-management/contracts/**'
       - 'knowledge-management/fixtures/**'
       - 'knowledge-management/tests/**'
+      - 'knowledge-management/arena/**'
       - '.github/workflows/validate-auditor-contracts.yml'
   workflow_dispatch:
 
@@ -29,3 +30,6 @@ jobs:
 
       - name: Validate contracts and fixtures
         run: node knowledge-management/tests/validate-contracts.mjs
+
+      - name: Test Sentinel Arena runtime
+        run: python3 knowledge-management/tests/test_arena.py

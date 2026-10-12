@@ -1,0 +1,61 @@
+{
+  "contract_version": "v0.1",
+  "arena_id": "sentinel-arena",
+  "round_id": "round-001",
+  "authority": false,
+  "remediation_applied": false,
+  "question": "Is the reported growth signal durable or attribution drift?",
+  "decision_policy": {
+    "minimum_evidence_items": 2,
+    "disagreement_threshold": 0.15,
+    "escalation_severity": "critical"
+  },
+  "instruments": [
+    {
+      "id": "growth-durable",
+      "role": "proponent",
+      "hypothesis": "The growth signal is durable.",
+      "confidence": 0.82,
+      "evidence_refs": ["cohort-30d", "attribution-audit", "retention-curve"]
+    },
+    {
+      "id": "growth-drift",
+      "role": "challenger",
+      "hypothesis": "The growth signal is mostly attribution drift.",
+      "confidence": 0.74,
+      "evidence_refs": ["cohort-30d", "attribution-audit", "retention-curve"]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "cohort-30d",
+      "kind": "telemetry",
+      "source": "analytics/cohorts/30d",
+      "claim": "Thirty-day retained users increased after the launch cohort.",
+      "reliability": 0.85,
+      "severity": "medium",
+      "supports": ["growth-durable"],
+      "contradicts": ["growth-drift"]
+    },
+    {
+      "id": "attribution-audit",
+      "kind": "research",
+      "source": "audit/attribution-v3",
+      "claim": "A channel mapping change explains part of the top-line increase.",
+      "reliability": 0.95,
+      "severity": "high",
+      "supports": ["growth-drift"],
+      "contradicts": ["growth-durable"]
+    },
+    {
+      "id": "retention-curve",
+      "kind": "telemetry",
+      "source": "analytics/retention/curve",
+      "claim": "Retention improvement persists after attribution normalization.",
+      "reliability": 0.8,
+      "severity": "medium",
+      "supports": ["growth-durable"],
+      "contradicts": []
+    }
+  ]
+}
