@@ -138,6 +138,21 @@ class BatcherTests(unittest.TestCase):
         self.assertEqual(strict_png_size(data), (3,4))
     def test_denies_truncated_png(self):
         with self.assertRaises(GateError):strict_png_size(png()[:-6])
+    def test_denies_decompression_bomb_bounded_memory(self):
+        import tracemalloc
+        def chunk(name,data):
+            return len(data).to_bytes(4,'big')+name+data+(zlib.crc32(name+data)&0xffffffff).to_bytes(4,'big')
+        c=zlib.compressobj(9)
+        z=b''.join(c.compress(b'\0'*(1<<20)) for _ in range(64))+c.flush()
+        hdr=(3).to_bytes(4,'big')+(4).to_bytes(4,'big')+bytes([8,6,0,0,0])
+        bomb=b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',hdr)+chunk(b'IDAT',z)+chunk(b'IEND',b'')
+        tracemalloc.start()
+        try:
+            with self.assertRaisesRegex(GateError,'PNG_PIXELS_EXCEED_EXPECTED'):strict_png_size(bomb)
+            peak=tracemalloc.get_traced_memory()[1]
+        finally:
+            tracemalloc.stop()
+        self.assertLess(peak,2*len(bomb)+(1<<20))
     def test_denies_png_crc_failure(self):
         b=bytearray(png());b[24]^=1
         with self.assertRaisesRegex(GateError,'PNG_CRC_MISMATCH'):strict_png_size(bytes(b))

@@ -122,14 +122,28 @@ def strict_png_size(data):
     expected_len = height * (1 + 4*width)
     if expected_len > 80_000_000:
         raise GateError('PNG_TOO_LARGE')
+    # Bounded inflate: never call flush() (unbounded). Output is capped at
+    # expected_len + 1 bytes in total; anything beyond expected_len is denied.
     decomp = zlib.decompressobj()
+    pending = b''.join(idat)
+    out = bytearray()
     try:
-        pixels = decomp.decompress(b''.join(idat), expected_len + 1)
-        pixels += decomp.flush()
+        while pending and not decomp.eof:
+            room = expected_len + 1 - len(out)
+            if room <= 0:
+                raise GateError('PNG_PIXELS_EXCEED_EXPECTED')
+            piece = decomp.decompress(pending, room)
+            out += piece
+            pending = decomp.unconsumed_tail
+            if not piece and pending:
+                raise GateError('PNG_CORRUPT_PIXELS')
     except zlib.error as exc:
         raise GateError('PNG_CORRUPT_PIXELS') from exc
-    if len(pixels) != expected_len or not decomp.eof or decomp.unused_data:
+    if len(out) > expected_len:
+        raise GateError('PNG_PIXELS_EXCEED_EXPECTED')
+    if len(out) != expected_len or not decomp.eof or decomp.unused_data or decomp.unconsumed_tail:
         raise GateError('PNG_CORRUPT_PIXELS')
+    pixels = bytes(out)
     for i in range(height):
         if pixels[i*(4*width+1)] > 4:
             raise GateError('PNG_INVALID_FILTER')
