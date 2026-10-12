@@ -1,0 +1,107 @@
+{
+  "schema": "JASON_NIGHTJR_WALKBACK_REPLAY_BUILD_V0_1",
+  "kind": "PUBLIC_SOURCE_CORRECTION_AND_EVIDENCE_MAP",
+  "title": "AppleBlossomAwesomeAuditSeymour — NIGHTJR WalkBackReplayBuild",
+  "status": "RELEASE_CANDIDATE_HOLD",
+  "purpose": "Learning",
+  "function": "Teaching Replay",
+  "error": {
+    "original_category_error": "Earlier assistant treated NIGHT WOLFE Drive audit files as potentially different from NIGHT WOLF/NIGHTJR Zora content coin rather than first comparing exact contract addresses.",
+    "corrected_classification": "SAME_TOKEN_CONTRACT_ADDRESS",
+    "correction_basis": "Exact Base contract identifier matches across user-supplied NIGHTJR, inspected Google Drive NIGHT WOLFE records, Zora URL and Base RPC."
+  },
+  "asset": {
+    "chain_id": 8453,
+    "contract_address": "0xe75b1eb7cdfdce0bf0329feceba021dd5be62a5c",
+    "token_name": "NIGHT WOLF 💒",
+    "token_symbol": "NIGHTJR",
+    "token_class": "ZORA_CONTENT_COIN_EIP1167_PROXY",
+    "decimals": 18,
+    "total_supply_units": "1000000000",
+    "implementation": "0x5dbd43785954d43c1643a0caf2ecef9e0056ff13",
+    "satire_label_verified_in_public_zora_html": true,
+    "offchain_human_creator_verified": false
+  },
+  "onchain_creation": {
+    "chain_id": 8453,
+    "tx_hash": "0x8a4bf50d040960b1a738eb243515215a1cd7611139b4ed75ac3ddffe93f981e1",
+    "block_number": 51394203,
+    "block_time_utc": "2026-09-16T16:55:53Z",
+    "transaction_index": 58,
+    "outer_sender": "0x8d47ba07ff9ccccf58c7e8810ee42c0dc8b8b123",
+    "transaction_to": "0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789",
+    "transaction_success": true,
+    "receipt_log_count": 54,
+    "contract_emitted_log_count": 15,
+    "observed_entrypoint_user_operation_events": 1,
+    "cryptographic_signature_count": "NOT_DECODED",
+    "ultimate_natural_person_signer": "HOLD",
+    "historical_ens_controller": "HOLD",
+    "userop_signature_count_not_equivalent_to_event_count": true,
+    "source_class": "INDEPENDENT_PUBLIC_BASE_RPC_OBSERVATION",
+    "transport": "FREE_JSON_RPC_READ_ONLY"
+  },
+  "zora": {
+    "uri": "https://zora.co/coin/base:0xe75b1eb7cdfdce0bf0329feceba021dd5be62a5c",
+    "public_description": "Don Jr. rides into a Russian-funded island wedding storm—motorcycles, fireworks, cake, and cash. Pattern ≠ causation. Fund trace remains HOLD. Satire only. AUTHORITY=false",
+    "description_source": "PUBLIC_ZORA_HTML",
+    "content_is_satire": true,
+    "description_establishes_human_gang_membership": false,
+    "number_of_holders": "NOT_INDEPENDENTLY_VERIFIED"
+  },
+  "evidence_links": [
+    {
+      "role": "PUBLIC_SATIRE_PAGE",
+      "url": "https://zora.co/coin/base:0xe75b1eb7cdfdce0bf0329feceba021dd5be62a5c"
+    },
+    {
+      "role": "CHAIN_TX_RECEIPT",
+      "url": "https://basescan.org/tx/0x8a4bf50d040960b1a738eb243515215a1cd7611139b4ed75ac3ddffe93f981e1"
+    },
+    {
+      "role": "CHAIN_CONTRACT",
+      "url": "https://basescan.org/address/0xe75b1eb7cdfdce0bf0329feceba021dd5be62a5c"
+    },
+    {
+      "role": "EXISTING_WALKBACK_DRIVE",
+      "url": "https://docs.google.com/document/d/1FtuVUiOQUjAmRYKf2rWRyznqDlK0_o80k_B_cv86D9k/edit"
+    },
+    {
+      "role": "ABI_ROLE_DECODE_DRIVE",
+      "url": "https://docs.google.com/document/d/1JAmoQ8t0qo0CswizaF1MtYGWFSvo7MlAVlkeWxsr_FI/edit"
+    },
+    {
+      "role": "EXISTING_NIGHTWOLF_GITHUB_TRIGGER",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/public/fullmath/nightwolf-replay-trigger-v0-1.json"
+    }
+  ],
+  "source_boundaries": [
+    "HTTP_200 != CONTENT_TRUE",
+    "GIT_BLOB_MATCH != HISTORICAL_TRUTH",
+    "CONTRACT_MATCH_CORRECTS_ASSET_CLASSIFICATION_ONLY",
+    "OUTER_TRANSACTION_SENDER != USEROP_SIGNER",
+    "ONE_USEROP_EVENT != ONE_CRYPTOGRAPHIC_SIGNATURE",
+    "TOKEN_METADATA != HUMAN_NETWORK_IDENTITY",
+    "SATIRE != MEMBERSHIP_ACCUSATION",
+    "PUBLISHED_REPORT != PAYMENT_ORDER",
+    "MISSING_EVIDENCE != EXONERATION",
+    "REPLAY != AUTHORITY"
+  ],
+  "supreme_seymour_v1_to_v4": {
+    "V1": "Separate contract, satire, headline, document label and human roles",
+    "V2": "Correct unwarranted distinct-token treatment using exact contract identifier",
+    "V3": "Preserve original erroneous assistant statement and independent counterevidence",
+    "V4": "Append correction, compare public live bytes to merged source, leave human origin and ENS/signature questions on HOLD"
+  },
+  "public_release": {
+    "pr_state": "CANDIDATE_UNTIL_INDEPENDENTLY_MERGED",
+    "served_http_200": "NOT_CLAIMED_UNTIL_READBACK",
+    "live_blob_sha_match": "NOT_CLAIMED_UNTIL_READBACK",
+    "real_device_qa": "NOT_PERFORMED"
+  },
+  "private_wallet_access": false,
+  "trade_execution": false,
+  "signature_request": false,
+  "authority_created": false,
+  "human_release_required": true
+}
