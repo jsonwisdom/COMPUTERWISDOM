@@ -182,6 +182,117 @@
     librarianHolder.appendChild(lNode("p","DAILY_PUBLIC_BRIEF=NOT_LIVE; SOURCE_FRESHNESS=NOT_VERIFIED; HUMAN_RELEASE=HOLD.","small"));
   });
   loadLibrarian();
+
+  // Supreme Seymour: a deterministic local evidence organizer, not a legal AI adviser.
+  // All private case content stays in page memory until user initiates an export.
+  let seymourPacket=null;
+  const seymourHolder=$("seymour-results");
+  const seymourStatus=$("seymour-status");
+  function renderSeymour(){
+    seymourHolder.replaceChildren();
+    $("seymour-export").disabled=!seymourPacket;
+    if(!seymourPacket){
+      seymourHolder.appendChild(lNode("p","No case loaded. V1 Distinctions → V2 Hidden coupling → V3 Collision → V4 Resolution attempts.","small"));
+      return;
+    }
+    seymourHolder.appendChild(lNode("b","CASE "+seymourPacket.case_id+" · HOLD"));
+    seymourHolder.appendChild(lNode("p","Question (user-reported): "+seymourPacket.question));
+    seymourHolder.appendChild(lNode("p","Jurisdiction: "+seymourPacket.jurisdiction+" · Unknowns remain unresolved.","small"));
+    const steps=[
+      ["V1 Distinctions","The supplied question is not a verified fact. Confirm actors, alleged act, object and date with evidence."],
+      ["V2 Hidden coupling","Check that names, accounts, institutions, dates and propositions have not been improperly merged."],
+      ["V3 Collisions","Search for independent contrary records. One pointer cannot prove no contradiction exists."],
+      ["V4 Resolution attempts","Identify legal scope and primary authority, authenticate originals and preserve competing interpretations for human review."]
+    ];
+    steps.forEach(([heading,detail])=>{
+      const panel=lNode("div",undefined,"record");
+      panel.appendChild(lNode("b",heading));
+      panel.appendChild(lNode("p",detail,"small"));
+      seymourHolder.appendChild(panel);
+    });
+    if(seymourPacket.source_url){
+      const link=lNode("a","User-supplied source pointer (NOT VERIFIED) ↗");
+      link.href=seymourPacket.source_url;link.target="_blank";link.rel="noopener noreferrer";
+      seymourHolder.appendChild(link);
+    }
+    seymourHolder.appendChild(lNode("p","OUTPUT=HOLD · LEGAL_ADVICE=FALSE · CASE_OUTCOME=UNKNOWN · COURT_ADMISSIBILITY=NOT_ASSESSED · HUMAN_REVIEW=REQUIRED.","small"));
+  }
+  $("seymour-assess").addEventListener("click",()=>{
+    const question=$("justice-question").value.trim();
+    if(!question){seymourStatus.textContent="Enter a single claim or evidence question first.";return;}
+    const jurisdiction=$("justice-jurisdiction").value.trim()||"UNKNOWN";
+    const pointer=$("justice-source").value.trim();
+    if(pointer){
+      try {
+        const u=new URL(pointer);
+        if(!["https:","http:"].includes(u.protocol))throw Error("Not HTTP URL");
+      }catch(err){seymourStatus.textContent="Use an HTTP(S) evidence URL or leave the field blank.";return;}
+    }
+    const now=new Date().toISOString();
+    const id=(typeof crypto!=="undefined"&&crypto.randomUUID)?crypto.randomUUID():("user-"+Date.now());
+    // A fresh note is intentional; previous notes must be exported if they matter.
+    seymourPacket={
+      schema:"JASON_ON_BASE_SEYMOUR_CASE_NOTE_V0_1",
+      case_id:id,created_at_utc:now,question:question,jurisdiction:jurisdiction,
+      source_url:pointer||null,source_class:"USER_REPORTED",
+      evidence_inspected:false,source_hash_recomputed:false,
+      counterevidence_checked:false,applicable_law_verified:false,
+      provenance:"USER_ENTERED_NOT_AUTHENTICATED",
+      steps:["V1_DISTINCTIONS","V2_HIDDEN_COUPLING","V3_COLLISION_CHECK_REQUIRED","V4_RESOLUTION_ATTEMPTS_ONLY"],
+      case_state:"HOLD",human_decision_status:"NOT_PROVIDED",
+      court_admissibility:"NOT_ASSESSED",lawyer_review:false,
+      legal_protection_guarantee:false,authority_created:false
+    };
+    renderSeymour();
+    seymourStatus.textContent="Case question organized locally. No legal research, court action, verification, or advice performed.";
+  });
+  $("seymour-export").addEventListener("click",()=>{
+    if(!seymourPacket)return;
+    const output=JSON.stringify(seymourPacket,null,2)+"\n";
+    const url=URL.createObjectURL(new Blob([output],{type:"application/json"}));
+    const link=document.createElement("a");
+    link.href=url;link.download="seymour-private-case-hold.json";
+    document.body.appendChild(link);link.click();link.remove();
+    requestAnimationFrame(()=>requestAnimationFrame(()=>URL.revokeObjectURL(url)));
+    seymourStatus.textContent="Private HOLD case packet export requested. No network upload.";
+  });
+  $("seymour-import").addEventListener("change",async event=>{
+    const file=event.target.files && event.target.files[0];
+    if(!file)return;
+    if(file.size>100000){seymourStatus.textContent="File exceeds 100 KB import limit.";event.target.value="";return;}
+    try{
+      const candidate=JSON.parse(await file.text());
+      if(!candidate||candidate.schema!=="JASON_ON_BASE_SEYMOUR_CASE_NOTE_V0_1" ||
+         typeof candidate.question!=="string" || candidate.question.length>1200 ||
+         typeof candidate.jurisdiction!=="string" || candidate.jurisdiction.length>100 ||
+         typeof candidate.case_id!=="string" || candidate.case_id.length>150){
+         throw Error("Case packet schema or field length invalid.");
+      }
+      if(candidate.source_url!==null && candidate.source_url!==undefined){
+        const u=new URL(candidate.source_url);
+        if(!["http:","https:"].includes(u.protocol))throw Error("Invalid source URL.");
+      }
+      // Never inherit claims of verification, verdict, privilege or authority from
+      // uploaded content, even if the file falsely contains such fields.
+      seymourPacket={
+        schema:"JASON_ON_BASE_SEYMOUR_CASE_NOTE_V0_1",
+        case_id:candidate.case_id,
+        created_at_utc:typeof candidate.created_at_utc==="string"?candidate.created_at_utc:"UNKNOWN",
+        question:candidate.question,jurisdiction:candidate.jurisdiction,
+        source_url:candidate.source_url||null,
+        source_class:"USER_REPORTED",
+        evidence_inspected:false,source_hash_recomputed:false,
+        counterevidence_checked:false,applicable_law_verified:false,
+        provenance:"IMPORTED_USER_FILE_NOT_AUTHENTICATED",
+        steps:["V1_DISTINCTIONS","V2_HIDDEN_COUPLING","V3_COLLISION_CHECK_REQUIRED","V4_RESOLUTION_ATTEMPTS_ONLY"],
+        case_state:"HOLD",human_decision_status:"NOT_PROVIDED",court_admissibility:"NOT_ASSESSED",
+        lawyer_review:false,legal_protection_guarantee:false,authority_created:false
+      };
+      seymourStatus.textContent="User packet reloaded as HOLD; the import did not verify its claims.";
+      renderSeymour();
+    }catch(err){seymourStatus.textContent="HOLD: "+err.message;}
+    event.target.value="";
+  });
   const setView = mode=>{
     if(!["boomer","arcade","evidence"].includes(mode))return;
     document.body.dataset.view=mode;
