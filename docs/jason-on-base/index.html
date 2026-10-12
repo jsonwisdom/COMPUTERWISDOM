@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Jason on Base: purpose learning, function teaching replay. An opt-in film reflection and virtual-quarter education prototype.">
+<title>Jason on Base — Purpose Learning / Function Teaching Replay</title>
+<style>
+:root{--bg:#0b1421;--panel:#172538;--edge:#516984;--ink:#f8f5df;--muted:#d5d9de;--gold:#ffe08e;--aqua:#91e4ff;font:16px/1.55 system-ui,-apple-system,Arial,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 24% -8%,#254d65,transparent 40%),var(--bg);color:var(--ink)}a{color:var(--aqua)}a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:3px solid #fff;outline-offset:3px}
+main{max-width:1120px;margin:auto;padding:20px 18px 80px}header,section{border:1px solid var(--edge);border-radius:18px;padding:clamp(18px,3vw,34px);margin:16px 0;background:var(--panel)}header{padding-top:40px;padding-bottom:40px}
+nav{display:flex;flex-wrap:wrap;gap:16px;margin-top:20px}.top{letter-spacing:.12em;font-size:.79rem;text-transform:uppercase;font-weight:800;color:var(--aqua)}h1{font-size:clamp(2.1rem,7vw,5.2rem);line-height:1.08;margin:12px 0}h2{font-size:clamp(1.4rem,3vw,2rem);margin:0 0 14px}h3{margin:12px 0 4px}p,li{color:var(--muted)}strong{color:var(--ink)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:14px}.panel{background:#0d1a2b;border:1px solid var(--edge);border-radius:12px;padding:18px}.note{border-left:4px solid var(--gold);padding:8px 16px;background:#252d37}.stat{color:var(--gold);font-weight:800}
+button,.buttonlink{background:var(--gold);color:#152333;font:inherit;font-weight:800;border:0;border-radius:9px;padding:11px 17px;cursor:pointer;display:inline-block;text-decoration:none}button.secondary{background:transparent;border:1px solid var(--edge);color:var(--ink)}button[disabled]{opacity:.55;cursor:not-allowed}
+input,textarea,select{background:#081421;border:1px solid #899fb4;color:var(--ink);font:inherit;border-radius:7px;padding:10px;width:100%;max-width:480px}textarea{min-height:72px}label{display:block;color:var(--ink);font-weight:650;margin:8px 0 4px}.controls{display:flex;gap:8px;flex-wrap:wrap}.controls>button{flex-shrink:0}
+.small{font-size:.89rem}.muted{color:var(--muted)}.record{background:#0c1b28;border:1px solid #37536d;border-radius:9px;padding:12px;margin:9px 0}.record b{color:var(--gold)}.status{display:inline-block;background:#443917;color:var(--gold);border:1px solid #a98737;border-radius:6px;padding:3px 10px;font-weight:800}
+.visually-hidden{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+[data-view=boomer] main{max-width:980px}[data-view=boomer] p,[data-view=boomer] li,[data-view=boomer] button,[data-view=boomer] label{font-size:1.12rem}
+[data-view=arcade]{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;--bg:#060c15;--panel:#091a22;--edge:#7ad4fa;--aqua:#83f8cf;--gold:#fff489}[data-view=arcade] header,[data-view=arcade] section,[data-view=arcade] .panel{border-radius:3px;box-shadow:4px 4px 0 #254c5d}
+[data-view=evidence] main{max-width:1280px}[data-view=evidence] section{padding:18px}[data-view=evidence] p,[data-view=evidence] li{font-size:.95rem}[data-view=evidence] .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media(max-width:550px){button{width:100%}nav{display:grid}main{padding:12px 12px 60px}}
+</style>
+</head>
+<body data-view="boomer">
+<main>
+<header>
+  <div class="top">Jason on Base · Public learning concept v0.1</div>
+  <h1>Purpose: Learning.<br>Function: Teaching Replay.</h1>
+  <p>History, money, emergency preparedness, math, research, and arcade-style learning. Different views of the same evidence—with private data kept private.</p>
+  <span class="status">DESIGN HOLD · FREE DEMO · NO LIVE ACCOUNT CONNECTION</span>
+  <nav aria-label="Site navigation">
+    <a href="#movie">Movie replay</a><a href="#quarters">Quarter Day</a><a href="#lenses">Knowledge views</a><a href="#sources">Primary sources</a>
+    <a href="../../index.html">COMPUTERWISDOM</a>
+  </nav>
+</header>
+<section aria-labelledby="viewtitle">
+  <h2 id="viewtitle">A view that fits the learner</h2>
+  <p>Simple text for boomers. Pixel arcade for players. Dense evidence view for researchers. Display changes do not alter underlying provenance.</p>
+  <div class="controls" role="group" aria-label="View preference">
+    <button type="button" id="view-boomer" aria-pressed="true">🔎 Boomer</button>
+    <button type="button" id="view-arcade" class="secondary" aria-pressed="false">🎮 8-bit</button>
+    <button type="button" id="view-evidence" class="secondary" aria-pressed="false">∑ FullMath</button>
+  </div>
+</section>
+<section id="movie" aria-labelledby="movietitle">
+  <div class="top">Disclosure cinema · privacy-first reflection</div>
+  <h2 id="movietitle">“I DIDN'T KNOW”</h2>
+  <p>Watch a source-linked film on its official site. During a scene, record what <em>you</em> learned by tapping one button. Your response stays in this browser page's temporary memory until you explicitly export it. No server account, location tracking, or silent sharing.</p>
+  <div class="note"><strong>Historical care:</strong> Sources about the Holocaust may contain disturbing images. This is a serious documentation lesson, not a scoring game about victims. The CIA was created in 1947; World War II intelligence sources should be labeled OSS where appropriate.</div>
+  <div class="grid">
+    <div class="panel">
+      <h3>Choose an official source</h3>
+      <label for="film">Film / archival collection</label>
+      <select id="film">
+        <option value="ushmm">USHMM: Weimar civilians at Buchenwald, April 1945</option>
+        <option value="loc">Library of Congress: National Screening Room (choose film there)</option>
+        <option value="cia">CIA: OSS → CIA chronology (reading source)</option>
+      </select>
+      <p id="film-context" class="small">Archival US Army footage. View the footage at the museum's site; licensing and viewing rights remain with the source.</p>
+      <p><a id="film-link" href="https://encyclopedia.ushmm.org/content/en/film/german-civilians-forced-to-view-atrocities-committed-in-buchenwald" target="_blank" rel="noopener noreferrer">Open official source in another tab ↗</a></p>
+      <p class="small">The video isn't embedded or remotely controlled. If you're watching on a TV or laptop, you can type the scene time below.</p>
+    </div>
+    <div class="panel">
+      <h3>Mark your moment</h3>
+      <label for="scene">What part are you watching?</label>
+      <input id="scene" maxlength="130" value="April 1945 — Weimar civilian viewing" placeholder="Short chapter / scene label">
+      <label for="film-time">Movie position (optional, MM:SS or HH:MM:SS)</label>
+      <input id="film-time" inputmode="numeric" placeholder="04:32" maxlength="8">
+      <label for="note">Private note (optional)</label>
+      <textarea id="note" maxlength="500" placeholder="What did you learn? What still needs checking?"></textarea>
+      <button type="button" id="didnt-know">💡 I DIDN'T KNOW</button>
+      <p class="small" id="marker-feedback" role="status" aria-live="polite">Nothing recorded yet.</p>
+    </div>
+  </div>
+  <div class="grid">
+    <div class="panel">
+      <h3>Your private replay</h3>
+      <p class="small">Only your reflections in this open page are shown. Closing or reloading it clears them.</p>
+      <div id="entries" aria-live="polite"><p class="small">No reflections yet.</p></div>
+      <div class="controls">
+        <button id="export" type="button" class="secondary" disabled>Export my JSON</button>
+        <button id="clear" type="button" class="secondary" disabled>Erase this session</button>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>Other viewers near me?</h3>
+      <p><strong>Not activated.</strong> The demonstration cannot detect nearby viewers or share their responses. A future voluntary, invite-based cohort might share privacy-reviewed <em>aggregate</em> learning counts—not identities, locations, opinions of identifiable people, or proximity traces.</p>
+      <p class="small">Minimum group size alone does not guarantee anonymity. Separate review, explicit consent, and a real privacy-preserving design are required before any group statistics.</p>
+      <p><span class="status">PROXIMITY=OFF · GROUP_SYNC=OFF</span></p>
+    </div>
+  </div>
+</section>
+<section id="quarters" aria-labelledby="quartertitle">
+  <div class="top">Boomer Quarter Day · no cash or chance prizes</div>
+  <h2 id="quartertitle">A purse full of *virtual* quarters 🪙</h2>
+  <p>Learn in levels. Higher levels have more questions. FullMath uses the transparent demonstration rule <strong>level²</strong>. These are learning counters, not dollars, pricing, wagering, wallets, transfers, sweepstakes entries, or reward claims.</p>
+  <div class="grid">
+    <div class="panel">
+      <h3>Quarter math</h3>
+      <label for="level">Choose a lesson level (0–8)</label>
+      <input id="level" type="range" min="0" max="8" step="1" value="2" aria-describedby="qout">
+      <p id="qout" class="stat" aria-live="polite">LEVEL 2 → 4 virtual quarters</p>
+      <p class="small">Level 3 = 9 virtual quarters. Level 4 = 16. It is a sample display scaling rule, not a real charge.</p>
+    </div>
+    <div class="panel">
+      <h3>Common sense questions</h3>
+      <p>Gambling, cheating, stealing, divorce, alcohol, money: different lives bring different questions. The arcade can teach evidence literacy without making unsupported accusations against real people.</p>
+      <p><strong>Public Display of Affection (Based)</strong> is the joke. Verification is the lesson. 😂</p>
+    </div>
+  </div>
+</section>
+<section id="lenses" aria-labelledby="lenstitle">
+  <h2 id="lenstitle">One identity. Many learning rooms.</h2>
+  <div class="grid">
+    <div class="panel"><h3>👛 Money Lessons</h3><p>Coinbase, other exchanges, wallets, Zora, swaps, UNI and Base: explain only source-confirmed activity and explicitly approved history. No API keys or account actions.</p><p class="small">Wallet reconciliation remains HOLD.</p></div>
+    <div class="panel"><h3>📚 Proof Judge</h3><p>Supreme Seymour and School of Wisdom methods: claim → source → scope → contradiction → human decision. Original records remain unchanged.</p></div>
+    <div class="panel"><h3>🧮 FullMathJason</h3><p>Wolfram, algebra, quadratic scales and mathematical replay. Show inputs and operations; never confuse a computation with proof about real-world events.</p></div>
+    <div class="panel"><h3>🚨 ComputerWisdomOODA</h3><p>Observe → Orient → Decide → Act. Learn practical emergency preparedness and evidence-checked decisions. Official warnings always take precedence.</p></div>
+    <div class="panel"><h3>🎥 History Replay</h3><p>Ask “Who knew what, when?” by inspecting records in their actual date and institutional context. Preserve uncertainty and dignity.</p></div>
+    <div class="panel"><h3>🏠 Family and Ideas</h3><p>Consent-based learning history, builder updates, research and projects. Private family information stays private unless deliberately approved for release.</p></div>
+  </div>
+</section>
+<section id="sources" aria-labelledby="sourcetitle">
+  <h2 id="sourcetitle">Start with primary sources</h2>
+  <ul>
+    <li><a href="https://encyclopedia.ushmm.org/content/en/film/german-civilians-forced-to-view-atrocities-committed-in-buchenwald">USHMM: Weimar civilians and Buchenwald archival film</a> — April 1945</li>
+    <li><a href="https://www.cia.gov/legacy/cia-history">CIA: institutional history, OSS during WWII and CIA established in 1947</a></li>
+    <li><a href="https://www.loc.gov/programs/national-film-preservation-board/film-registry/watch-films-on-the-national-film-registry/">Library of Congress: film archive and viewing limitations</a></li>
+    <li><a href="https://www.ready.gov/">Ready.gov: emergency preparedness</a></li>
+    <li><a href="public-learning.v0.1.json">Jason on Base manifest and evidence boundaries</a></li>
+  </ul>
+  <p class="small">This is not an official government, CIA, Library of Congress, Coinbase, or financial services website; links do not imply affiliation or endorsement.</p>
+</section>
+<footer><p class="small">DESIGN_HOLD · SOURCE-LINKED DEMONSTRATION · NO WALLET EXECUTION · NO COHORT TRACKING · NO AUTOMATIC UPLOAD · NO AUTHORITY CREATED</p></footer>
+</main>
+<script defer src="app.js"></script>
+</body>
+</html>
