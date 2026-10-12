@@ -1,0 +1,58 @@
+# VOICE_RECEIPT_EMPTY_ENVELOPE_v0.yaml
+# PROPOSED / SYNTHETIC / NOT CAPTURED / NOT BINDING
+
+fixture:
+  schema_version: "0.1.0"
+  kind: voice_receipt_fixture
+  fixture_id: "VOICE_RECEIPT_EMPTY_ENVELOPE_V0"
+  expected: pass
+
+  target:
+    schema_version: "0.1.0"
+    kind: voice_receipt
+    binding: proposed
+    started_at: null
+    finished_at: null
+
+    structural_properties:
+      VOICE_AUDIO_NOT_SERVER_INPUT: true
+
+    voice:
+      voice_source_class: unavailable
+      voice_hash: null
+      voice_raw_capture_id: null
+      client_device_ref: null
+
+    text:
+      text_source_class: unavailable
+      text_hash: null
+      text_raw_capture_id: null
+
+    question:
+      question_source_class: unavailable
+      question_hash: null
+      question_raw_capture_id: null
+
+    answer:
+      answer_source_class: unavailable
+      answer_hash: null
+      answer_raw_capture_id: null
+
+    render:
+      render_source_class: unavailable
+      render_hash: null
+      render_raw_capture_id: null
+
+    verification:
+      status: observed
+      verifier: null
+      promotion_authority: false
+
+  assertions:
+    valid_envelope: true
+    transcript_exists: false
+    audio_exists: false
+    corroboration_created: false
+    promotion_created: false
+    merkle_leaf_created: false
+    distortion_measurement_created: false

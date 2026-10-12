@@ -1,0 +1,212 @@
+name: Meridian Captured Validation Run
+
+on:
+  pull_request:
+    branches: [ master ]
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact PR commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install YAML parser
+        run: python -m pip install --disable-pip-version-check pyyaml
+
+      - name: Capture exact validation inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p run_artifact/captured_inputs
+          printf 'CAPTURED_AT=%s\n' "$(date -u +'%Y-%m-%dT%H:%M:%SZ')" >> "$GITHUB_ENV"
+          files=(
+            "MERIDIAN/validator.py"
+            "MERIDIAN/run_validation_v0.py"
+            "MERIDIAN/Vector_v0.yaml"
+            "MERIDIAN/FailureCode_v0.yaml"
+            "MERIDIAN/SkipCode_v0.yaml"
+            "MERIDIAN/fixtures/validate_v0_2/V7_supersede_requires_captured_source.yaml"
+            "MERIDIAN/fixtures/validate_v0_2/V13a_non_captured_confidence_promotion.yaml"
+            "MERIDIAN/fixtures/validate_v0_2/V13b_non_captured_confidence_at_cap.yaml"
+          )
+          : > run_artifact/input_capture.tsv
+          for src in "${files[@]}"; do
+            h="$(sha256sum "$src" | awk '{print $1}')"
+            n="$(wc -c < "$src" | tr -d ' ')"
+            base="$(basename "$src")"
+            dst="run_artifact/captured_inputs/sha256_${h}/${base}"
+            mkdir -p "$(dirname "$dst")"
+            cp -- "$src" "$dst"
+            h2="$(sha256sum "$dst" | awk '{print $1}')"
+            test "$h" = "$h2"
+            printf '%s\t%s\t%s\t%s\n' "$src" "$h" "$n" "$dst" >> run_artifact/input_capture.tsv
+          done
+
+      - name: Execute captured validator inputs
+        shell: bash
+        run: |
+          set -euo pipefail
+          cap() {
+            local src="$1"
+            local h
+            h="$(sha256sum "$src" | awk '{print $1}')"
+            printf 'run_artifact/captured_inputs/sha256_%s/%s' "$h" "$(basename "$src")"
+          }
+          python "$(cap MERIDIAN/run_validation_v0.py)" \
+            --validator "$(cap MERIDIAN/validator.py)" \
+            --vectors "$(cap MERIDIAN/Vector_v0.yaml)" \
+            --failure-registry "$(cap MERIDIAN/FailureCode_v0.yaml)" \
+            --skip-registry "$(cap MERIDIAN/SkipCode_v0.yaml)" \
+            --v7 "$(cap MERIDIAN/fixtures/validate_v0_2/V7_supersede_requires_captured_source.yaml)" \
+            --v13a "$(cap MERIDIAN/fixtures/validate_v0_2/V13a_non_captured_confidence_promotion.yaml)" \
+            --v13b "$(cap MERIDIAN/fixtures/validate_v0_2/V13b_non_captured_confidence_at_cap.yaml)" \
+            > run_artifact/validation_output.json
+          cat run_artifact/validation_output.json
+
+      - name: Build ValidationRun v0 receipt
+        shell: bash
+        env:
+          PR_HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+          WORKFLOW_RUN_ID: ${{ github.run_id }}
+          WORKFLOW_RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          import hashlib, json, os, pathlib, yaml
+
+          root = pathlib.Path("run_artifact")
+          rows = []
+          role_map = {
+              "MERIDIAN/validator.py": "validator",
+              "MERIDIAN/run_validation_v0.py": "runner",
+              "MERIDIAN/Vector_v0.yaml": "vector_set",
+              "MERIDIAN/FailureCode_v0.yaml": "failure_registry",
+              "MERIDIAN/SkipCode_v0.yaml": "skip_registry",
+              "MERIDIAN/fixtures/validate_v0_2/V7_supersede_requires_captured_source.yaml": "fixture_v7",
+              "MERIDIAN/fixtures/validate_v0_2/V13a_non_captured_confidence_promotion.yaml": "fixture_v13a",
+              "MERIDIAN/fixtures/validate_v0_2/V13b_non_captured_confidence_at_cap.yaml": "fixture_v13b",
+          }
+          for line in (root/"input_capture.tsv").read_text().splitlines():
+              src, h, n, dst = line.split("\t")
+              rows.append({
+                  "role": role_map[src],
+                  "source_class": "captured",
+                  "raw_capture_id": f"sha256:{h}",
+                  "content_hash": f"sha256:{h}",
+                  "byte_length": int(n),
+                  "bytes_ref": dst,
+                  "source_path": src,
+              })
+
+          out = json.loads((root/"validation_output.json").read_text())
+          captured_at = os.environ["CAPTURED_AT"]
+          raw_captures = []
+          for row in rows:
+              raw_captures.append({
+                  "schema_version": "0.1.0",
+                  "kind": "raw_capture",
+                  "id": row["raw_capture_id"],
+                  "capture_method": "manual_upload",
+                  "url": None,
+                  "final_url": None,
+                  "redirects": [],
+                  "captured_at": captured_at,
+                  "bytes_ref": row["bytes_ref"],
+                  "byte_length": row["byte_length"],
+                  "content_hash": row["content_hash"],
+                  "response": {"http_status": None, "headers_ref": None},
+                  "manual_attestation": {
+                      "provided_by": "github_actions",
+                      "local_hash_before_upload": row["content_hash"],
+                      "attested_at": captured_at,
+                  },
+              })
+              row["capture_manifest_ref"] = "run_artifact/input_raw_captures.yaml"
+
+          (root/"input_raw_captures.yaml").write_text(
+              yaml.safe_dump({"raw_captures": raw_captures}, sort_keys=False)
+          )
+
+          body = {
+              "schema_version": "0.1.0",
+              "kind": "validation_run",
+              "binding": "proposed",
+              "execution": {
+                  "provider": "github_actions",
+                  "repository": "jsonwisdom/COMPUTERWISDOM",
+                  "pr_number": 592,
+                  "head_sha": os.environ["PR_HEAD_SHA"],
+                  "workflow_run_id": os.environ["WORKFLOW_RUN_ID"],
+                  "workflow_run_attempt": os.environ["WORKFLOW_RUN_ATTEMPT"],
+                  "captured_at": captured_at,
+              },
+              "inputs": rows,
+              "results": out["results"],
+              "summary": out["summary"],
+              "meta_failures": out["meta_failures"],
+              "promotion": "NONE",
+          }
+          canonical = json.dumps(body, sort_keys=True, separators=(",", ":")).encode()
+          body["id"] = "sha256:" + hashlib.sha256(canonical).hexdigest()
+          yaml_bytes = yaml.safe_dump(
+              {"validation_run": body},
+              sort_keys=False,
+              allow_unicode=True,
+          ).encode()
+          run_path = root/"ValidationRun_v0.yaml"
+          run_path.write_bytes(yaml_bytes)
+          h1 = hashlib.sha256(yaml_bytes).hexdigest()
+          reread = run_path.read_bytes()
+          h2 = hashlib.sha256(reread).hexdigest()
+          assert h1 == h2
+          capture = {
+              "raw_capture": {
+                  "schema_version": "0.1.0",
+                  "kind": "raw_capture",
+                  "id": "sha256:" + h1,
+                  "capture_method": "manual_upload",
+                  "url": None,
+                  "final_url": None,
+                  "redirects": [],
+                  "captured_at": captured_at,
+                  "bytes_ref": "run_artifact/ValidationRun_v0.yaml",
+                  "byte_length": len(yaml_bytes),
+                  "content_hash": "sha256:" + h1,
+                  "response": {"http_status": None, "headers_ref": None},
+                  "manual_attestation": {
+                      "provided_by": "github_actions",
+                      "local_hash_before_upload": "sha256:" + h1,
+                      "attested_at": captured_at,
+                  },
+              }
+          }
+          (root/"ValidationRun_v0.raw_capture.yaml").write_text(
+              yaml.safe_dump(capture, sort_keys=False)
+          )
+          print(json.dumps({
+              "validation_run_id": body["id"],
+              "run_raw_capture_id": "sha256:" + h1,
+              "run_bytes": len(yaml_bytes),
+              "summary": body["summary"],
+          }, sort_keys=True))
+          PY
+
+      - name: Upload immutable run artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: meridian-validation-run-${{ github.event.pull_request.head.sha }}
+          path: run_artifact/
+          if-no-files-found: error
+          retention-days: 90
