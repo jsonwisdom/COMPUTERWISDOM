@@ -34,6 +34,7 @@ export function replayReceipt(receipt,items){
  if(receipt.schema!==VERSION||receipt.kind!=="FREE_ART_REVEAL_RECEIPT"||receipt.catalog_version!==CATALOG_VERSION)return {valid:false,reason:"SCHEMA"};
  if(receipt.no_money!==true||receipt.prize_value_usd!==0||receipt.crypto_transfer!==false||receipt.wallet_identity!==null||receipt.authority!==false)return {valid:false,reason:"BOUNDS"};
  if(receipt.server_attestation!==false||receipt.entropy_proof!==false||typeof receipt.liked!=="boolean")return {valid:false,reason:"BOUNDS"};
+ if(receipt.draw_method!=="UINT32_REJECTION_SAMPLING")return {valid:false,reason:"METHOD_MISMATCH"};
  if(receipt.catalog_count!==items.length)return {valid:false,reason:"CATALOG_COUNT_MISMATCH"};
  const word=receipt.accepted_random_word,limit=Math.floor(SPACE/items.length)*items.length;
  if(!Number.isSafeInteger(word)||word<0||word>=limit)return {valid:false,reason:"BAD_RANDOM_WORD"};
