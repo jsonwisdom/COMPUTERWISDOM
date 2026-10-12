@@ -50,6 +50,14 @@ class BatcherTests(unittest.TestCase):
         self.assertFalse(c['external_send'])
         self.assertFalse(c['target_1m_per_min_verified'])
         self.assertEqual(c['canon_freeze_unchanged'],CANON_FREEZE)
+    def test_nondivisible_total_instances_accepted(self):
+        m=copy.deepcopy(self.manifest);m['cards'][0]['instances']=3
+        c=self.make(m)
+        self.assertEqual(c['instance_count'],7)
+        self.assertEqual(len(c['leaves']),7)
+        self.assertEqual(c['instance_remainder_mod_3'],1)
+    def test_divisible_total_remainder_zero(self):
+        self.assertEqual(self.make()['instance_remainder_mod_3'],0)
     def test_determinism(self): self.assertEqual(self.make(),self.make())
     def test_verify_replay(self): self.assertTrue(verify_candidate(self.manifest,self.root,self.make())['replay_verified'])
     def test_replay_tampering(self):

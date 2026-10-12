@@ -30,8 +30,8 @@ Verify: \`python3 batcher.py verify --manifest /tmp/cwtd-fixture/manifest.json -
 ### FullMath target distinction
 
 - 1,000,000 instances/minute = 50,000/3 per second is an **unmeasured future goal**.
-- 1,000,000 % 3 = 1, so 999,999 grouped instances + one unassigned carry is the strict three-divisibility bookkeeping case.
-- **Resolved:** card-count divisibility is ENFORCED (`len(cards) % 3 == 0`). Total-instance divisibility is NOT_REQUIRED; remainder is carry, not a rejection. Gate CLOSED_NOT_REQUIRED.
+- 1,000,000 % 3 = 1; such a total is accepted, and the output reports `instance_remainder_mod_3` = 1.
+- **Resolved:** card-count divisibility is ENFORCED (`len(cards) % 3 == 0`). Total-instance divisibility is NOT_REQUIRED (JASON decision, chat t536u, 2026-10-12). Every instance becomes a leaf; the output field `instance_remainder_mod_3` (= instance_count % 3) is informational only and never rejects. Gate CLOSED_NOT_REQUIRED.
 - 83% soft cap and 17% reserve are planning policies only; provider terms, meters, actual budgets and economics are unverified.
 - Asset checks do not prove border/font/visual quality, legal rights, truth, authorization, consent, or real-world delivery.
 

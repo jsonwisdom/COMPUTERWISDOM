@@ -213,6 +213,7 @@ def build_candidate(manifest, root):
                  'card_count_divisibility':'ENFORCED',
                  'total_instance_divisibility_requirement':'NOT_REQUIRED',
                  'total_instance_divisibility_gate':'CLOSED_NOT_REQUIRED',
+                 'instance_remainder_mod_3':total % 3,
                  'target_1m_per_min_verified':False,
                  'master_receipts':masters,'leaves':leaves,'merkle_root':merkle_root(leaves),
                  'manifest_sha256':sha256(canonical(manifest))}
