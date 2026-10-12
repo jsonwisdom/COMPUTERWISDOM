@@ -133,6 +133,20 @@
       "purpose": "Practice evidence-based decisions, alerts and family plans without claiming an emergency service",
       "data_class": "PUBLIC_SOURCES",
       "status": "PROTOTYPE"
+    },
+    {
+      "id": "librarian",
+      "name": "Everyone Gets a Librarian",
+      "purpose": "A read-only public source registry can organize questions and provide evidence-bounded daily briefing templates.",
+      "data_class": "PUBLIC_SOURCE_INDEX",
+      "status": "STATIC_DEMO"
+    },
+    {
+      "id": "justice",
+      "name": "Supreme Seymour Justice Bot",
+      "purpose": "Reuse Supreme Seymour V1-V4 to assemble HOLD case packets, highlight missing evidence and jurisdiction, and export private case questions for counsel review; no legal opinions or guaranteed protection.",
+      "data_class": "LOCAL_PRIVATE_CASE_QUESTION",
+      "status": "PROTOTYPE"
     }
   ],
   "quarter_model": {
@@ -220,8 +234,26 @@
     "NO_HOLOCAUST_GAMIFICATION",
     "NO_AUTO_AUTHORITY",
     "NO_GOVERNMENT_AFFILIATION_CLAIM",
-    "NO_AUTOMATIC_PERSONAL_DATA_PUBLISHING"
+    "NO_AUTOMATIC_PERSONAL_DATA_PUBLISHING",
+    "NO_AUTOMATED_LEGAL_VERDICTS",
+    "NO_COURT_FILING",
+    "NO_CLAIM_OF_LEGAL_PROTECTION",
+    "NO_AI_LAWYER_IMPERSONATION"
   ],
   "human_adopted": false,
-  "authority_created": false
+  "authority_created": false,
+  "justice_bot": {
+    "contract": "justice-v0.1.json",
+    "original_scaffold": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/SUPREME_SEYMOUR/constitution/SUPREME_SEYMOUR_TOP_LEVEL_INVARIANT_V1.md",
+    "mode": "HOLD_CASE_PACKET_NOT_LEGAL_ADVICE",
+    "lawyer_client_relationship_created": false,
+    "legal_protection_guaranteed": false,
+    "authority_created": false
+  },
+  "librarian_bot": {
+    "contract": "librarian-v0.1.json",
+    "live_news": false,
+    "personalization": false,
+    "server_queries": false
+  }
 }
