@@ -1,0 +1,112 @@
+{
+  "schema": "JASON_ON_BASE_CLAWBACKJACKMICKJAGGER_MATRIX_SENTINEL_V0_1",
+  "status": "DESIGN_HOLD",
+  "display_name": "ClawBackJackMickJagger",
+  "subtitle": "Matrix Sentinel Charging System",
+  "project": "JASON_ON_BASE",
+  "integration": "COINBASE_WALLET_EIP_1193",
+  "architecture": {
+    "web_host": "STATIC_GITHUB_PAGES",
+    "wallet_provider_discovery": [
+      "EIP_6963_ANNOUNCEMENT",
+      "window.ethereum.providers_COINBASE_ONLY",
+      "window.ethereum_COINBASE_ONLY"
+    ],
+    "wallet_authentication": "WALLET_SELF_ASSERTED_NOT_INDEPENDENTLY_VERIFIED",
+    "wallet_permission": "USER_CLICK_ONLY",
+    "allowed_provider_rpc_methods": [
+      "eth_requestAccounts",
+      "eth_chainId"
+    ],
+    "provider_event_listeners": [
+      "accountsChanged",
+      "chainChanged",
+      "disconnect"
+    ],
+    "persist_connected_account": false,
+    "show_public_wallet_address": false,
+    "show_masked_wallet_address": true,
+    "server_account_collection": false,
+    "onchain_data_sync": false,
+    "automated_balance_reads": false,
+    "centralized_coinbase_exchange_api_connection": false,
+    "mobile_sdk_or_qr_pairing": "NOT_IMPLEMENTED",
+    "chain_read": "ANY_EVM_CHOICE_NO_AUTOMATIC_SWITCH",
+    "base_chain_hex": "0x2105"
+  },
+  "sentinel": {
+    "matrix_dimensions": [
+      8,
+      8
+    ],
+    "input": "existing Boomer Quarter Day level 0 to 8",
+    "scoring_rule": "virtual_quarters=level^2",
+    "virtual_points_only": true,
+    "price_display_dollars": "0.00",
+    "payer": "NOT_CONFIGURED",
+    "payee": "NOT_CONFIGURED",
+    "payment_currency": "NOT_CONFIGURED",
+    "charge_endpoint": "NONE",
+    "payment_processor": "NONE",
+    "smart_contract_address": "NONE",
+    "payment_quote_status": "NOT_AVAILABLE",
+    "billing_terms_status": "NOT_APPROVED",
+    "transfer_reversal_or_clawback": "NOT_IMPLEMENTED",
+    "charging_system_status": "DESIGN_HOLD",
+    "subscription_status": "DISABLED",
+    "transfer_status": "DISABLED",
+    "approvals_status": "DISABLED",
+    "invoice_status": "NONE",
+    "receipts_status": "NOT_ISSUED",
+    "no_auto_spend": true,
+    "no_signature_requests": true,
+    "no_request_to_switch_chain": true,
+    "charge_attempts_allowed": false,
+    "simulated_charge_count": 0,
+    "payment_receipt_count": 0
+  },
+  "future_gates": [
+    "PUBLIC_PRICE_AND_DESCRIPTION",
+    "USER_SELECTION_AND_CONSENT",
+    "PAYER_IDENTITY_AND_PAYEE_RIGHTS",
+    "JURISDICTION_AND_CONSUMER_PROTECTION",
+    "EXACT_TRANSACTION_PREVIEW_AND_HASH_BINDING",
+    "INDIVIDUAL_PAYMENT_AUTHORIZATION",
+    "INDEPENDENT_RECEIPT_RECONCILIATION",
+    "REFUND_AND_CHARGEBACK_POLICY",
+    "PRIVACY_AND_SECURITY_REVIEW",
+    "HUMAN_RELEASE"
+  ],
+  "collateral": "NO_PROJECT_FUNDS_OR_USER_FUNDS_ARE_HELD_BY_THIS_PROTOTYPE",
+  "disclaimers": [
+    "A Coinbase Wallet address is a public onchain address, not proof of a specific human, portfolio ownership across accounts, identity or consent beyond the provider permission.",
+    "EIP-6963 metadata and isCoinbaseWallet flags are self-assertions that can be spoofed; wallet identity cannot be strongly attested here.",
+    "Local disconnect clears webpage connection only. Remove dapp permissions inside wallet separately if needed.",
+    "Coinbase Wallet connection is not a Coinbase exchange login or authenticated access to Coinbase trading history.",
+    "The Matrix Sentinel is simulated and cannot bill, transfer, reverse or claw back funds.",
+    "The name ClawBackJackMickJagger implies no artist endorsement or rights affiliation."
+  ],
+  "external_sources": [
+    {
+      "name": "EIP-1193",
+      "url": "https://eips.ethereum.org/EIPS/eip-1193"
+    },
+    {
+      "name": "EIP-6963",
+      "url": "https://eips.ethereum.org/EIPS/eip-6963"
+    },
+    {
+      "name": "Coinbase Wallet SDK",
+      "url": "https://github.com/coinbase/coinbase-wallet-sdk"
+    },
+    {
+      "name": "Coinbase app dapp browser",
+      "url": "https://help.coinbase.com/en/wallet/other-topics/what-is-a-dapp"
+    }
+  ],
+  "final_human_authority": "JASON_WITHIN_OPERATOR_SCOPE",
+  "human_release_approval": false,
+  "live_payment_authority": false,
+  "trading_authority": false,
+  "authority_created": false
+}
