@@ -29,7 +29,7 @@ input,textarea,select{background:#081421;border:1px solid #899fb4;color:var(--in
   <p>History, money, emergency preparedness, math, research, and arcade-style learning. Different views of the same evidence—with private data kept private.</p>
   <span class="status">DESIGN HOLD · FREE DEMO · NO LIVE ACCOUNT CONNECTION</span>
   <nav aria-label="Site navigation">
-    <a href="#movie">Movie replay</a><a href="#quarters">Quarter Day</a><a href="#lenses">Knowledge views</a><a href="#sources">Primary sources</a>
+    <a href="#librarian">Ask the Librarian</a><a href="#movie">Movie replay</a><a href="#quarters">Quarter Day</a><a href="#lenses">Knowledge views</a><a href="#sources">Primary sources</a>
     <a href="../../index.html">COMPUTERWISDOM</a>
   </nav>
 </header>
@@ -41,6 +41,30 @@ input,textarea,select{background:#081421;border:1px solid #899fb4;color:var(--in
     <button type="button" id="view-arcade" class="secondary" aria-pressed="false">🎮 8-bit</button>
     <button type="button" id="view-evidence" class="secondary" aria-pressed="false">∑ FullMath</button>
   </div>
+</section>
+<section id="librarian" aria-labelledby="librariantitle">
+  <div class="top">Your librarian bot · privately queried public-source index</div>
+  <h2 id="librariantitle">Ask the Librarian. Get organized evidence.</h2>
+  <p>Every learner deserves a librarian: ask a question, get a source, check the date and scope, then replay what the source actually supports. This demonstration searches only a curated static source index <strong>inside your browser</strong>. It does not send your typed question to a server or pretend to answer from all American records.</p>
+  <div class="grid">
+    <div class="panel">
+      <h3>Ask a question</h3>
+      <label for="librarian-question">Research question (stays on this page)</label>
+      <input id="librarian-question" maxlength="200" placeholder="Who was the OSS?">
+      <div class="controls" style="margin-top:12px">
+        <button type="button" id="ask-librarian">📚 Search source index</button>
+        <button type="button" id="daily-brief" class="secondary">📰 Preview daily briefing</button>
+      </div>
+      <p class="small">Real daily editions need fresh, timestamped records, independent replay and human release. This button makes a <strong>non-live example preview</strong>, not today's verified news.</p>
+      <p id="librarian-status" role="status" aria-live="polite">Public source index has not loaded.</p>
+    </div>
+    <div class="panel">
+      <h3>Source results / librarian replay</h3>
+      <div id="librarian-results" aria-live="polite"><p class="small">Ask about CIA, OSS, Buchenwald, films, emergency readiness, or Coinbase history audits.</p></div>
+      <p class="small">Source links identify the publishers. This independent site is not an American government service; no credentials, citizenship check, geolocation, nearby-device scan or AI-generated source impersonation.</p>
+    </div>
+  </div>
+  <div class="note"><strong>About DNS and the “firewall”:</strong> DNS still resolves the website. The librarian organizes knowledge above it. Here “firewall” means a consent and privacy boundary—not a government-run or citizens-only internet.</div>
 </section>
 <section id="movie" aria-labelledby="movietitle">
   <div class="top">Disclosure cinema · privacy-first reflection</div>
