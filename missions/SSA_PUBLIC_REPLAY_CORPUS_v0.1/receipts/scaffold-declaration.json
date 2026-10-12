@@ -1,0 +1,17 @@
+{
+  "receipt_id": "SSA-SCAFFOLD-DECLARATION-0001",
+  "receipt_class": "DESIGN_SCAFFOLD_DECLARATION",
+  "corpus_id": "SSA_PUBLIC_REPLAY_CORPUS_v0.1",
+  "created_date_utc": "2026-08-11",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "proposal/ssa-public-replay-v0.1",
+  "evidence_state": "DECLARED_ONLY",
+  "runtime_verified": false,
+  "corpus_created": false,
+  "manifest_created": false,
+  "live_fetch_executed": false,
+  "authority_created": false,
+  "self_hash": null,
+  "self_hash_reason": "A file cannot contain the stable hash of its own finished bytes.",
+  "next_gate": "LOCAL_DOCKER_BUILD_AND_RUN"
+}

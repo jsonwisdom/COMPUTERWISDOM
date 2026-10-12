@@ -1,0 +1,12 @@
+FROM ubuntu@sha256:678c6550cc43645e08669028bc177f50be4e7c5b8cca677067b1914d4afc7a03
+
+WORKDIR /replay
+
+COPY README.md Dockerfile ./
+COPY contracts ./contracts
+COPY receipts/scaffold-declaration.json ./receipts/scaffold-declaration.json
+COPY tests ./tests
+
+RUN chmod 0555 tests/verify-layout.sh tests/route-http-observation.sh tests/verify-router-matrix.sh
+
+ENTRYPOINT ["/bin/bash", "tests/verify-layout.sh"]
