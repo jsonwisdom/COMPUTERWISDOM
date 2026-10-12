@@ -1,0 +1,71 @@
+attestation: KID_REALITY_STUDIO_IMAGINATION_STATION_ATTESTATION_V0_1
+artifact_id: KID_REALITY_STUDIO_GENESIS
+ledger_receipt: KID_REALITY_STUDIO_V0_1
+repo: jsonwisdom/COMPUTERWISDOM
+pr: 412
+layer: COMPUTERWISDOM/JOY
+authority: false
+no_fake_green: true
+
+identity_context:
+  attested_by: Jason Wisdom
+  project_identity: JSONWisdom
+  role_markers:
+    - Mr Wisdom
+    - Builder
+    - Creator
+    - Replay steward
+  scope: operator_attestation_not_family_approval
+
+system_definition:
+  system: KID_REALITY_STUDIO
+  public_name: Imagination Station
+  status: ARCHIVED_R_AND_D_SAFE_EDUCATION
+  truth_state: YELLOW_PROTECTED
+  economy: PEPE_PLAY_ECONOMY
+  economy_type: Playful Educational Proof Economy
+  real_money: false
+  kid_friendly: true
+  ai_enabled: true
+  advanced_learning: true
+
+safety_rules:
+  no_real_money_for_kids: true
+  no_wallet_required_for_kids: true
+  no_public_private_data: true
+  no_birthdates: true
+  no_location_leaks: true
+  no_adult_financial_pressure: true
+  parent_guardian_review: true
+  mrs_wisdom_purpose: family_safety_marker
+
+pepe_doctrine:
+  meaning: Playful Educational Proof Economy
+  proof_logic:
+    - helping
+    - fixing
+    - creating
+    - learning
+    - explaining
+    - kindness
+  denied_logic:
+    - speculation
+    - gambling
+    - trading_pressure
+    - wallet_required_child_access
+    - transaction_based_financialization
+
+replay:
+  principle: receipts_before_narrative
+  ledger_update: provided_by_operator
+  github_commit_witness: true
+  family_promotion_allowed: false
+  render_allowed: false
+  canonical_merge_allowed: false
+
+ruling: >
+  Imagination Station / KID_REALITY_STUDIO is recorded as an R&D-safe education concept
+  where kids can write imaginative realities inside protected learning boundaries.
+  PEPE is locked as a Playful Educational Proof Economy, not financial speculation.
+  This receipt does not claim Mrs Wisdom approval, family consent, render authorization,
+  or canonical promotion.
