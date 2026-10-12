@@ -1,0 +1,18 @@
+{
+  "AUTHORITY_CREATED": false,
+  "PUBLICATION_URL": "https://jsonwisdom.github.io/AL/",
+  "STOP": "PASS",
+  "append_only": true,
+  "files": {
+    "manifest.json": "740cea5407afa16864d1afc5855a8f52287c4a9363d1f2cdc3a61f9be592e464",
+    "publication-response.json": "9132644a21821bf630517896649beee732c72671a47a580603dc82f0ba5365ce",
+    "raw/github-index.html": "75f340b21cd13780d57340ea0d29f5db4a214e3232f05aac61177c33ec51a41f",
+    "raw/message.bin": "75f340b21cd13780d57340ea0d29f5db4a214e3232f05aac61177c33ec51a41f",
+    "raw/publication-response.json": "9132644a21821bf630517896649beee732c72671a47a580603dc82f0ba5365ce",
+    "raw/publication.html": "75f340b21cd13780d57340ea0d29f5db4a214e3232f05aac61177c33ec51a41f",
+    "receipt.json": "3998a25720909580c4ac18fa0946e5e007c4b0040fc64de44c59fa01320b7e38"
+  },
+  "overwrite_historical_raw": false,
+  "package_path": "receipts/publications/2026-08-28/github-pages/al/",
+  "schema": "JSONWISDOM.publication-manifest.v1"
+}
