@@ -76,10 +76,12 @@ def read_relative(root, relative):
 def strict_png_size(data):
     """Check container, CRCs, RGBA8 zlib stream, scanline length, and dimensions.
 
+    Rejects unknown critical chunks (first letter uppercase, not in known set).
     Not a substitute for review of artwork, rights, pixel border, caption or identity.
     """
     if not data.startswith(PNG_SIGNATURE):
         raise GateError('NOT_PNG')
+    KNOWN_CRITICAL = {b'IHDR', b'PLTE', b'IDAT', b'IEND'}
     offset, chunks, idat, width, height, seen_iend = 8, 0, [], None, None, False
     while offset < len(data):
         if offset + 12 > len(data):
@@ -93,6 +95,9 @@ def strict_png_size(data):
         expected_crc = struct.unpack('>I', data[end-4:end])[0]
         if zlib.crc32(kind+raw) & 0xffffffff != expected_crc:
             raise GateError('PNG_CRC_MISMATCH')
+        # Critical chunks: first byte has bit 5 clear (uppercase).
+        if kind[0] & 0x20 == 0 and kind not in KNOWN_CRITICAL:
+            raise GateError('UNKNOWN_CRITICAL_PNG_CHUNK')
         chunks += 1
         if chunks == 1:
             if kind != b'IHDR' or length != 13:
@@ -205,6 +210,9 @@ def build_candidate(manifest, root):
                  'family_data':False,'canon_freeze_unchanged':CANON_FREEZE,
                  'onchain':False,'publication':False,'sales':False,'external_send':False,
                  'batch_count_cards':len(cards),'instance_count':total,
+                 'card_count_divisibility':'ENFORCED',
+                 'total_instance_divisibility_requirement':'UNRESOLVED',
+                 'total_instance_divisibility_gate':'HOLD',
                  'target_1m_per_min_verified':False,
                  'master_receipts':masters,'leaves':leaves,'merkle_root':merkle_root(leaves),
                  'manifest_sha256':sha256(canonical(manifest))}

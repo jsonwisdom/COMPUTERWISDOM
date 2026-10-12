@@ -52,7 +52,12 @@ class BatcherTests(unittest.TestCase):
     def test_replay_tampering(self):
         x=self.make();x['instance_count']=999
         with self.assertRaisesRegex(GateError,'REPLAY_MISMATCH'):verify_candidate(self.manifest,self.root,x)
-    def test_merkle_odd(self): self.assertEqual(merkle_root(['00'*32]*3),merkle_root(['00'*32]*3))
+    def test_merkle_odd(self):
+        # Explicit expected root for three distinct 32-byte leaves (00, 01, 02 filled).
+        # Duplicate-last on odd levels. Not a self-comparison.
+        leaves = ['00'*32, '01'*32, '02'*32]
+        expected = '8a8c93750e7a7d298c88831313eb93289412b6cb4ec79d0ca0bcedc5edc7539e'
+        self.assertEqual(merkle_root(leaves), expected)
     def test_duplicate_json_keys(self):
         with self.assertRaisesRegex(GateError,'DUPLICATE_JSON_KEY'):strict_json(b'{"a":1,"a":2}')
     def test_denies_live_mode(self):
@@ -97,6 +102,29 @@ class BatcherTests(unittest.TestCase):
         m=copy.deepcopy(self.manifest)
         for c in m['cards']:c['asset_sha256']=hashlib.sha256(png(4,4)).hexdigest()
         with self.assertRaisesRegex(GateError,'PORTRAIT_RATIO_REQUIRED'):self.make(m)
+    def test_denies_unknown_critical_png_chunk(self):
+        # ABCD is critical (uppercase first letter) and unknown; must be rejected.
+        def chunk(name, data):
+            return len(data).to_bytes(4,'big')+name+data+(zlib.crc32(name+data)&0xffffffff).to_bytes(4,'big')
+        w,h=3,4
+        hdr=w.to_bytes(4,'big')+h.to_bytes(4,'big')+bytes([8,6,0,0,0])
+        rows=b''.join(b'\x00'+b'\xff\xff\xff\xff'*w for _ in range(h))
+        data = (b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',hdr)
+                +chunk(b'ABCD', b'regression')
+                +chunk(b'IDAT',zlib.compress(rows))+chunk(b'IEND',b''))
+        with self.assertRaisesRegex(GateError,'UNKNOWN_CRITICAL_PNG_CHUNK'):
+            strict_png_size(data)
+    def test_accepts_ancillary_png_chunk(self):
+        # tEXt is ancillary (lowercase); accepted (ignored for critical check).
+        def chunk(name, data):
+            return len(data).to_bytes(4,'big')+name+data+(zlib.crc32(name+data)&0xffffffff).to_bytes(4,'big')
+        w,h=3,4
+        hdr=w.to_bytes(4,'big')+h.to_bytes(4,'big')+bytes([8,6,0,0,0])
+        rows=b''.join(b'\x00'+b'\xff\xff\xff\xff'*w for _ in range(h))
+        data = (b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',hdr)
+                +chunk(b'tEXt', b'Comment\x00regression')
+                +chunk(b'IDAT',zlib.compress(rows))+chunk(b'IEND',b''))
+        self.assertEqual(strict_png_size(data), (3,4))
     def test_denies_truncated_png(self):
         with self.assertRaises(GateError):strict_png_size(png()[:-6])
     def test_denies_png_crc_failure(self):
