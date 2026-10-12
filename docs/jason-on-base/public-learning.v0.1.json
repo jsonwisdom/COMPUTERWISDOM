@@ -1,0 +1,259 @@
+{
+  "schema": "JASON_ON_BASE_PUBLIC_LEARNING_V0_1",
+  "title": "Jason on Base",
+  "purpose": "LEARNING",
+  "function": "TEACHING_REPLAY",
+  "status": "DESIGN_HOLD",
+  "public_claim": "A public educational interface concept, not official government, a CIA or Coinbase service, wallet authority, financial advice, or Base blockchain deployment.",
+  "original_systems_preserved": true,
+  "layers": [
+    {
+      "original": "Supreme Seymour",
+      "display": "Proof Judge",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "School of Wisdom",
+      "display": "Learning Campus",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "Finances",
+      "display": "Money Lessons",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "Coinbase",
+      "display": "Coinbase Lessons",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "Jason's Wallet",
+      "display": "Wallet Replay",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "Jay's Game",
+      "display": "Quarter Arcade",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "Jay's Business",
+      "display": "Business Workbench",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "Jason's Family",
+      "display": "Family Window",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "Jay's Assets",
+      "display": "Asset Ledger",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "Jason's Ideas",
+      "display": "Idea Laboratory",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "Wolfram",
+      "display": "Computation Lab",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "Quantum",
+      "display": "Quantum Questions",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "Algebraic",
+      "display": "Algebra Workshop",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "Quadratic",
+      "display": "Quadratic Quarter Lab",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    },
+    {
+      "original": "Gaming",
+      "display": "8-Bit Gameboard",
+      "relation": "DISPLAY_ALIAS_ONLY",
+      "original_identity_preserved": true
+    }
+  ],
+  "learning": [
+    {
+      "id": "film",
+      "name": "I Didn't Know",
+      "purpose": "Reflect on source-linked historical film with a private per-scene and optional video-time acknowledgment",
+      "data_class": "PRIVATE_REFLECTION",
+      "status": "PROTOTYPE"
+    },
+    {
+      "id": "arcade",
+      "name": "Boomer Quarter Day",
+      "purpose": "Use no-cost virtual quarters to motivate evidence checking; not a betting or prize system",
+      "data_class": "GAME_ONLY",
+      "status": "PROTOTYPE"
+    },
+    {
+      "id": "money",
+      "name": "CoinbaseLessonsOfWisdom",
+      "purpose": "Reconcile only consented, historically verified trade and on-chain records before publishing approved lessons",
+      "data_class": "PRIVATE_FINANCIAL",
+      "status": "HOLD"
+    },
+    {
+      "id": "research",
+      "name": "FullMathJason OODA",
+      "purpose": "Observe source, orient in chronology, decide what can be concluded, act by asking a better question",
+      "data_class": "PUBLIC_SOURCES",
+      "status": "PROTOTYPE"
+    },
+    {
+      "id": "preparedness",
+      "name": "Emergency Preparedness",
+      "purpose": "Practice evidence-based decisions, alerts and family plans without claiming an emergency service",
+      "data_class": "PUBLIC_SOURCES",
+      "status": "PROTOTYPE"
+    },
+    {
+      "id": "librarian",
+      "name": "Everyone Gets a Librarian",
+      "purpose": "A read-only public source registry can organize questions and provide evidence-bounded daily briefing templates.",
+      "data_class": "PUBLIC_SOURCE_INDEX",
+      "status": "STATIC_DEMO"
+    },
+    {
+      "id": "justice",
+      "name": "Supreme Seymour Justice Bot",
+      "purpose": "Reuse Supreme Seymour V1-V4 to assemble HOLD case packets, highlight missing evidence and jurisdiction, and export private case questions for counsel review; no legal opinions or guaranteed protection.",
+      "data_class": "LOCAL_PRIVATE_CASE_QUESTION",
+      "status": "PROTOTYPE"
+    }
+  ],
+  "quarter_model": {
+    "real_payment": false,
+    "real_gambling": false,
+    "transferable_rewards": false,
+    "cryptocurrency_prizes": false,
+    "units": "VIRTUAL_ONLY",
+    "pricing_status": "UNSPECIFIED",
+    "level_rule": "virtual_quarter_score=level^2",
+    "examples": [
+      0,
+      1,
+      4,
+      9,
+      16
+    ]
+  },
+  "disclosure_reflection": {
+    "action": "I_DIDNT_KNOW",
+    "recording_default": "LOCAL_MEMORY_ONLY",
+    "export": "EXPLICIT_USER_INITIATED_JSON_FILE",
+    "fields": [
+      "schema",
+      "film_reference",
+      "scene_id",
+      "movie_timestamp_seconds_optional",
+      "recorded_at_utc",
+      "response",
+      "user_note_optional",
+      "source_url"
+    ],
+    "excluded": [
+      "name",
+      "age",
+      "precise_location",
+      "ip_address",
+      "wallet_address",
+      "device_id",
+      "contact_list",
+      "proximity_scan"
+    ],
+    "server_telemetry": false,
+    "geolocation": false,
+    "automatic_upload": false,
+    "proximity_discovery": false,
+    "cohort_comparison": {
+      "design_only": true,
+      "current_implementation": false,
+      "opt_in_required": true,
+      "direct_person_identification": false,
+      "nearby_location_required": false,
+      "initial_aggregation_minimum": 20,
+      "requirement": "Independent privacy/security assessment, consent, revocation/deletion and robust aggregation protections before live use; threshold alone insufficient"
+    },
+    "content_notice": "Historical films may depict atrocities. Do not score, sensationalize, or trivialize victims."
+  },
+  "sources": [
+    {
+      "title": "USHMM film: German civilians forced to view atrocities at Buchenwald",
+      "url": "https://encyclopedia.ushmm.org/content/en/film/german-civilians-forced-to-view-atrocities-committed-in-buchenwald",
+      "scope": "APRIL_1945"
+    },
+    {
+      "title": "CIA historical chronology",
+      "url": "https://www.cia.gov/legacy/cia-history",
+      "scope": "OSS_1942_CIA_1947"
+    },
+    {
+      "title": "Library of Congress National Screening Room",
+      "url": "https://www.loc.gov/programs/national-film-preservation-board/film-registry/watch-films-on-the-national-film-registry/",
+      "scope": "SOURCE_LINKED_WATCHING_RIGHTS_VARY"
+    },
+    {
+      "title": "Ready.gov preparedness",
+      "url": "https://www.ready.gov/",
+      "scope": "PUBLIC_SAFETY"
+    }
+  ],
+  "restrictions": [
+    "NO_FACE_OR_PROXIMITY_SCANS",
+    "NO_SILENT_SOCIAL_PROFILING",
+    "NO_WALLET_READ_OR_WRITE",
+    "NO_CRYPTO_PRIZES",
+    "NO_HOLOCAUST_GAMIFICATION",
+    "NO_AUTO_AUTHORITY",
+    "NO_GOVERNMENT_AFFILIATION_CLAIM",
+    "NO_AUTOMATIC_PERSONAL_DATA_PUBLISHING",
+    "NO_AUTOMATED_LEGAL_VERDICTS",
+    "NO_COURT_FILING",
+    "NO_CLAIM_OF_LEGAL_PROTECTION",
+    "NO_AI_LAWYER_IMPERSONATION"
+  ],
+  "human_adopted": false,
+  "authority_created": false,
+  "justice_bot": {
+    "contract": "justice-v0.1.json",
+    "original_scaffold": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/SUPREME_SEYMOUR/constitution/SUPREME_SEYMOUR_TOP_LEVEL_INVARIANT_V1.md",
+    "mode": "HOLD_CASE_PACKET_NOT_LEGAL_ADVICE",
+    "lawyer_client_relationship_created": false,
+    "legal_protection_guaranteed": false,
+    "authority_created": false
+  },
+  "librarian_bot": {
+    "contract": "librarian-v0.1.json",
+    "live_news": false,
+    "personalization": false,
+    "server_queries": false
+  }
+}
