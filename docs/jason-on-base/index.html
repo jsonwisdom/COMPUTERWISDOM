@@ -29,7 +29,7 @@ input,textarea,select{background:#081421;border:1px solid #899fb4;color:var(--in
   <p>History, money, emergency preparedness, math, research, and arcade-style learning. Different views of the same evidence—with private data kept private.</p>
   <span class="status">DESIGN HOLD · FREE DEMO · NO LIVE ACCOUNT CONNECTION</span>
   <nav aria-label="Site navigation">
-    <a href="#librarian">Ask the Librarian</a><a href="#movie">Movie replay</a><a href="#quarters">Quarter Day</a><a href="#lenses">Knowledge views</a><a href="#sources">Primary sources</a>
+    <a href="#justice">⚖️ Supreme Seymour</a><a href="#librarian">Ask the Librarian</a><a href="#movie">Movie replay</a><a href="#quarters">Quarter Day</a><a href="#lenses">Knowledge views</a><a href="#sources">Primary sources</a>
     <a href="../../index.html">COMPUTERWISDOM</a>
   </nav>
 </header>
@@ -40,6 +40,37 @@ input,textarea,select{background:#081421;border:1px solid #899fb4;color:var(--in
     <button type="button" id="view-boomer" aria-pressed="true">🔎 Boomer</button>
     <button type="button" id="view-arcade" class="secondary" aria-pressed="false">🎮 8-bit</button>
     <button type="button" id="view-evidence" class="secondary" aria-pressed="false">∑ FullMath</button>
+  </div>
+</section>
+<section id="justice" aria-labelledby="justicetitle">
+  <div class="top">Supreme Seymour · Justice Bot · Local-only case packet builder</div>
+  <h2 id="justicetitle">DON'T TRUST SEYMOUR. REPLAY HIM. ⚖️</h2>
+  <p>Tell the bot one legal or evidence question. It organizes an <strong>unverified case note</strong>, points to the right checks, and makes a reusable JSON packet. Nothing here is a court ruling, a lawyer-client relationship, legal advice, or guaranteed legal protection.</p>
+  <div class="note"><strong>The law does not protect a claim just because a bot packaged it.</strong> Jurisdiction, admissible evidence, accurate citations, procedural rules, and human/legal review still matter. Do not enter sensitive information on a shared device.</div>
+  <div class="grid">
+    <div class="panel">
+      <h3>One question → four Seymour passes</h3>
+      <label for="justice-question">What needs to be proved or challenged?</label>
+      <textarea id="justice-question" maxlength="1200" placeholder="What exact claim or event should be evaluated? Avoid names and confidential details in this example."></textarea>
+      <label for="justice-jurisdiction">Applicable legal jurisdiction</label>
+      <input id="justice-jurisdiction" maxlength="100" placeholder="Example: Minnesota, US federal, or UNKNOWN">
+      <label for="justice-source">Optional public evidence URL (not fetched)</label>
+      <input id="justice-source" maxlength="800" type="url" placeholder="https://official-source.example">
+      <div class="controls" style="margin-top:12px">
+        <button id="seymour-assess" type="button">⚖️ Create HOLD case note</button>
+        <button id="seymour-export" type="button" class="secondary" disabled>Export private case JSON</button>
+      </div>
+      <label for="seymour-import" class="small">Resume from a previous private JSON export (processed on this device only)</label>
+      <input id="seymour-import" type="file" accept=".json,application/json">
+      <p class="small" id="seymour-status" role="status" aria-live="polite">No case created; AI / legal authority = FALSE.</p>
+    </div>
+    <div class="panel">
+      <h3>Seymour's evidence replay</h3>
+      <div id="seymour-results" aria-live="polite"><p class="small">V1 Distinctions → V2 Hidden coupling → V3 Collision → V4 Resolution attempts</p></div>
+      <p class="small">Stored in this page's temporary memory. Export if you want to keep the packet; reopening this site does not restore it. Imported claims are not verified by the import.</p>
+      <p><a href="https://www.uscourts.gov/rules-policies/current-rules-practice-procedure/federal-rules-evidence" target="_blank" rel="noopener noreferrer">U.S. Courts: Federal Rules of Evidence ↗</a> (federal scope, not state legal advice)</p>
+      <p><a href="justice-v0.1.json">Open the machine-readable Supreme Seymour boundary contract</a></p>
+    </div>
   </div>
 </section>
 <section id="librarian" aria-labelledby="librariantitle">
