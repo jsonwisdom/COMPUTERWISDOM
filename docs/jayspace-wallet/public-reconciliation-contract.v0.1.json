@@ -1,0 +1,118 @@
+{
+  "schema": "JAYSPACE_WALLET_PUBLIC_RECONCILIATION_V0_1",
+  "lane": "JAYSPACE_WALLET_PUBLIC_CONTROL_PLANE",
+  "status": "DESIGN_HOLD",
+  "live_wallet_connection": false,
+  "purpose": "Explain evidence-backed asset quantity reconciliation without exposing the personal exchange ledger.",
+  "function": "For each scoped account and asset, reconcile two snapshots against event-level receipts and preserve unexplained residuals.",
+  "public_strategy": "Public method/status/coverage/approved redacted receipts; private balances and transaction history never auto-publish.",
+  "invariants": [
+    "SNAPSHOT_DELTA != TRANSACTION_CAUSE",
+    "NO_ADVANCED_TRADE_FILLS != NO_ACCOUNT_ACTIVITY",
+    "NO_OPEN_ORDERS != NO_PAST_ACTIVITY",
+    "QUANTITY_DELTA != VALUE_CHANGE",
+    "GIT_BLOB_MATCH != FINANCIAL_VERIFICATION",
+    "WALLET_ADDRESS != WALLET_CONTROL",
+    "PUBLIC_STATUS != EXECUTION_AUTHORITY",
+    "COVERAGE_UNKNOWN != ZERO_ACTIVITY"
+  ],
+  "snapshot_requirements": [
+    "source_id",
+    "account_scope",
+    "asset_id",
+    "network_when_applicable",
+    "timestamp_utc",
+    "quantity_unit",
+    "precision",
+    "independent_source_hash"
+  ],
+  "reconciliation_event_requirements": [
+    "provider_surface",
+    "provider_event_id",
+    "event_type",
+    "asset_id",
+    "signed_net_quantity",
+    "fee_asset",
+    "fee_quantity",
+    "event_timestamp_utc",
+    "account_scope",
+    "source_receipt_id",
+    "source_digest",
+    "verification_status"
+  ],
+  "event_types": [
+    "ADVANCED_TRADE_FILL",
+    "APP_SPOT_TRADE",
+    "RECURRING_BUY",
+    "CONVERSION",
+    "DEPOSIT",
+    "WITHDRAWAL",
+    "INTERNAL_TRANSFER",
+    "ONCHAIN_TRANSFER",
+    "REWARD",
+    "FEE",
+    "REVERSAL",
+    "CORRECTION",
+    "UNCLASSIFIED"
+  ],
+  "formula": "unexplained_residual = quantity_at_t1 - quantity_at_t0 - sum(verified_signed_event_quantities)",
+  "coverage_requirements": [
+    "Advanced Trade fills + pagination terminus",
+    "Coinbase app spot/order history",
+    "recurring buys",
+    "conversions",
+    "deposits/withdrawals",
+    "internal account transfers",
+    "on-chain transfers if applicable",
+    "rewards",
+    "fees/reversals",
+    "corporate actions for equities where relevant",
+    "timestamp gap and duplicate event checks"
+  ],
+  "gates": {
+    "source_snapshot_evidence": "NOT_ATTACHED",
+    "event_coverage_complete": false,
+    "event_receipts_bound": false,
+    "unexplained_residuals_cleared": false,
+    "provider_history_independently_checked": false,
+    "source_hashes_recomputed": false,
+    "human_visual_approval": false,
+    "public_privacy_review": false
+  },
+  "public_allowed_fields": [
+    "schema",
+    "status",
+    "coverage_state",
+    "reason_codes",
+    "audit_date_utc",
+    "sanitized_receipt_ids",
+    "review_state"
+  ],
+  "private_never_autopublish": [
+    "quantities",
+    "fiat_balances",
+    "portfolio_value",
+    "account_ids",
+    "provider_transaction_ids",
+    "private_trade_history",
+    "tax_lots",
+    "wallet_identifiers_without_separate_release",
+    "secrets"
+  ],
+  "execution": {
+    "automated_trading": false,
+    "wallet_connection": false,
+    "fund_transfer": false,
+    "signing": false,
+    "human_execution_approval_required": true,
+    "treasury_permission_created": false
+  },
+  "links": {
+    "prior_history_policy": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/audits/COINBASE_HISTORY_MEMBRANE_AUDIT_V0_1.md",
+    "cwaas": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/projects/cwaas/CWaaS_V0_1_COINBASE_ENABLED.md",
+    "jayspace": "https://github.com/jsonwisdom/JOY/blob/main/FAMILY/JAYSPACE/README.md"
+  },
+  "authority_created": false,
+  "no_fake_green": true,
+  "human_adoption": false
+}
