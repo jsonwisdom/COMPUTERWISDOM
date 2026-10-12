@@ -1,0 +1,102 @@
+{
+  "format": "BOXDEE_MILDENHALL_HISTORY_FUTURE_PROOF_V0.1",
+  "classification": "PUBLIC_RECORD_STORY_REPLAY_WITH_HASH_COMMITMENT",
+  "operator_label": "jaywisdom.base.eth",
+  "captured_at": "2026-08-18T17:48:00-05:00",
+  "subject": {
+    "place": "RAF Mildenhall",
+    "country": "United Kingdom",
+    "story_interface": "BoxDee",
+    "translator_interface": "LeahPrime",
+    "authority_created": false
+  },
+  "image_receipt": {
+    "source": "user_uploaded_image",
+    "drive_file_id": "1rdP7Ao5RznpMa32l7l4dIqdP__3gthwi",
+    "filename": "BOXDEE_FOR_BYTE_MILDENHALL_V0_1.jpeg",
+    "byte_length": 911961,
+    "sha256": "c1ea704cefa4281e39202c463302648f37fe808ea3b4a9ef6502902d00525e17",
+    "drive_roundtrip_byte_length": 911961,
+    "drive_roundtrip_sha256": "c1ea704cefa4281e39202c463302648f37fe808ea3b4a9ef6502902d00525e17",
+    "byte_identity_verified": true
+  },
+  "temporal_claims": [
+    {
+      "id": "MILDENHALL_1934_OPENING",
+      "state": "SOURCE_BOUND_TEXT",
+      "claim": "RAF Station Mildenhall opened on 1934-10-16 and was officially dedicated by King George V on 1934-10-19; the British government had purchased land in 1929 and construction began in October 1930.",
+      "source_url": "https://www.mildenhall.af.mil/About-Us/Fact-Sheets/Display/Article/270389/raf-mildenhall-history/",
+      "source_class": "OFFICIAL_USAF_PUBLIC_RECORD",
+      "page_bytes_sealed": false
+    },
+    {
+      "id": "MILDENHALL_1992_100_ARW",
+      "state": "SOURCE_BOUND_TEXT",
+      "claim": "The 100th Air Refueling Wing activated at RAF Mildenhall on 1992-02-01 and became the host wing.",
+      "source_url": "https://www.mildenhall.af.mil/About-Us/Fact-Sheets/Display/Article/270390/100th-air-refueling-wing-history/",
+      "source_class": "OFFICIAL_USAF_PUBLIC_RECORD",
+      "page_bytes_sealed": false
+    },
+    {
+      "id": "MILDENHALL_2015_DIVEST_PLAN",
+      "state": "SOURCE_BOUND_TEXT",
+      "claim": "In 2015 DoD announced a plan to divest RAF Mildenhall and relocate major operational units.",
+      "source_url": "https://www.defense.gov/News/Releases/Release/Article/605338/dod-announces-european-infrastructure-consolidation-actions-and-f-35-basing-in/",
+      "source_class": "OFFICIAL_DOD_PUBLIC_RECORD",
+      "page_bytes_sealed": false
+    },
+    {
+      "id": "MILDENHALL_2020_RETAIN",
+      "state": "SOURCE_BOUND_TEXT",
+      "claim": "In the 2020 EUCOM force-posture update, DoD said roughly 2,500 Airmen at Mildenhall responsible for aerial refueling and special operations, previously scheduled to re-base to Germany, would remain in the United Kingdom.",
+      "source_url": "https://www.defense.gov/News/Speeches/Speech/Article/2292081/us-european-command-force-posture-policy-press-conference-secretary-espers-open/",
+      "source_class": "OFFICIAL_DOD_PUBLIC_RECORD",
+      "page_bytes_sealed": false
+    },
+    {
+      "id": "MILDENHALL_2024_MOD_LAND",
+      "state": "SOURCE_BOUND_TEXT",
+      "claim": "In 2024 the UK Ministry of Defence purchased land adjacent to RAF Mildenhall for base-defense/security space; the USAF release said no firm future development plan existed until survey and assessment.",
+      "source_url": "https://www.mildenhall.af.mil/News/Press-Releases/Display/Article/3932050/mod-land-purchase-at-raf-mildenhall/",
+      "source_class": "OFFICIAL_USAF_PUBLIC_RECORD",
+      "page_bytes_sealed": false
+    },
+    {
+      "id": "MILDENHALL_2026_ACTIVE",
+      "state": "SOURCE_BOUND_TEXT",
+      "claim": "In July 2026 the Air Force Chief of Staff and Chief Master Sergeant of the Air Force visited RAF Mildenhall and highlighted the roles of the 100th Air Refueling Wing and 352nd Special Operations Wing in European and neighboring theaters.",
+      "source_url": "https://www.mildenhall.af.mil/News/Article-Display/Article/4548788/csaf-cmsaf-visit-raf-mildenhall/",
+      "source_class": "OFFICIAL_USAF_PUBLIC_RECORD",
+      "page_bytes_sealed": false
+    }
+  ],
+  "future_proof_rule": {
+    "current_state": "ACTIVE_AS_OF_CAPTURE",
+    "future_state": "OPEN_TO_LATER_OFFICIAL_RECEIPTS",
+    "law": "PAST_PLAN != CURRENT_STATE != GUARANTEED_FUTURE",
+    "append_only": true
+  },
+  "story_boundary": {
+    "BOXDEE": "FREEZE_ORIGINAL_ROUTE_REVERSE_FORWARD_REPLAY",
+    "LEAHPRIME": "EXPLAIN_HUMANIZE_TRANSLATE_REPLAY_ONLY",
+    "NATO_REFERENCE": "PUBLIC_RECORD_CONTEXT_ONLY",
+    "ALLY_REFERENCE": "RELATIONSHIP_CLASS_REQUIRES_SOURCE",
+    "STORY": "INTERFACE_NOT_EVIDENCE",
+    "AUTHORITY_CREATED": false
+  },
+  "on_chain": {
+    "raw_bytes_on_chain": false,
+    "commitment_ready": true,
+    "published": false,
+    "chain_id": null,
+    "transaction_hash": null,
+    "attestation_uid": null,
+    "rule": "ON_CHAIN_COMMITMENT != WORLD_TRUTH != AUTHORITY"
+  },
+  "openai": {
+    "runtime_required": false,
+    "platform_role": "OPTIONAL_EXPLANATION_AND_PRESENTATION_ONLY",
+    "model_output_creates_disposition": false
+  },
+  "canonical_attestation_sha256": "e48dd9b0bffef7e9ac07c30f49883c704233e9936e03e8e815deceeee120edb5"
+}
