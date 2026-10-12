@@ -1,0 +1,27 @@
+{
+  "object_id": "identity:jason-wisdom:v1",
+  "object_type": "SELF_AGENCY_IDENTITY",
+  "version": "1.0.0",
+  "person": "Jason Wisdom",
+  "aliases": [
+    "Jay Wisdom",
+    "JSONWisdom"
+  ],
+  "voice_anchors": [
+    "jaywisdom.eth",
+    "jaywisdom.base.eth"
+  ],
+  "self_agency": true,
+  "authority_over_own_voice": true,
+  "authority_over_own_creation": true,
+  "authority_to_share_own_wisdom": true,
+  "replay_permission": "VOLUNTARY_AND_SCOPE_BOUND",
+  "authority_over_other_people": false,
+  "governmental_authority": false,
+  "evidence_authority": "REQUIRES_REPLAY",
+  "institutional_authority": "NOT_INFERRED",
+  "epistemic_type": "USER_ASSERTED",
+  "predecessor": null,
+  "proposal_issue": 459,
+  "authority_created": false
+}

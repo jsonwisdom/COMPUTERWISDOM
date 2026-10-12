@@ -1,0 +1,22 @@
+{
+  "CONTRACT_VERSION": "1.0.0",
+  "PURPOSE": "Directory-first governed front door for JSONWisdom Story Mode Building.",
+  "MAY_CONTAIN": [
+    "CONSTITUTION.json",
+    "README.md",
+    "DIRECTORY_CONTRACT.json",
+    "governed subdirectories"
+  ],
+  "MUST_NOT_CONTAIN": [
+    "silently mutated historical artifacts",
+    "untyped claims presented as observed facts",
+    "authority manufactured by path, receipt, hash, manifest, or model judgment"
+  ],
+  "ENTRY_PRECONDITIONS": [
+    "proposal is linked",
+    "artifact class is declared",
+    "provenance is preserved",
+    "scope is explicit"
+  ],
+  "AUTHORITY_NOT_CREATED": true
+}

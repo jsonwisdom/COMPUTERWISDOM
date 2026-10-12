@@ -1,0 +1,72 @@
+{
+  "authority_created": false,
+  "blueprint_state": "BOUNDED_CONCEPTUAL_DRAFT",
+  "canonical_string": "MISSING",
+  "canonicalization_procedure": "MISSING",
+  "constitutional_invariants": {
+    "AUTHORITY_CREATED": false,
+    "EXTERNAL_ACTION": "NONE",
+    "PROOF_INFERRED": false,
+    "YOUTH_FACING_WORK": "BLOCKED"
+  },
+  "content_verification": "NOT_PERFORMED",
+  "correction_scope": "DIGEST_FORMAT_CLASSIFICATION_ONLY",
+  "digest_replacement": {
+    "artifact_binding": "UNKNOWN",
+    "blueprint_sha256": "NOT_COMPUTED",
+    "canonical_bytes": "MISSING",
+    "independent_computation": "NOT_PERFORMED",
+    "status": "NO_REPLACEMENT_DIGEST_EXISTS"
+  },
+  "external_action": "GITHUB_CORRECTION_RECEIPT_ONLY",
+  "family_testing_authorized": false,
+  "implementation_authorized": false,
+  "object_id": "receipt:replay-rebellion-blueprint-invalid:v1",
+  "object_type": "VERSIONED_CORRECTION_RECEIPT",
+  "predecessor": {
+    "identity": "chat-receipt:GIRLMATH_REPLAY_PATCHES_ACCEPTED",
+    "preserved": true,
+    "preserved_sha256_like_value": "9f8e7d6c5b4a3f2e1d0c9b8a7f6e5d4c3b2a1f0e9d8c7b6a5f4e3d2c1b0a9f8e7",
+    "repository_artifact_status": "NOT_FOUND_BY_INDEXED_GITHUB_SEARCH",
+    "source": "USER_SUPPLIED_IN_CHAT"
+  },
+  "proof_inferred": false,
+  "rationale": "The preserved predecessor value contains 65 hexadecimal characters. A SHA-256 digest represented in hexadecimal must contain exactly 64 hexadecimal characters.",
+  "receipt_status": "RECEIPT_INVALID",
+  "recorded_date": "2026-08-14",
+  "replacement_receipt_binding": {
+    "binding_location": "STORY_MODE/08-replay/story-mode.manifest.v3.json",
+    "digest_scope": "THIS_CORRECTION_RECEIPT_BYTES_ONLY",
+    "status": "COMPUTED_IN_VERSIONED_MANIFEST",
+    "truth_or_authority_created": false
+  },
+  "safeguarding": {
+    "accessible_adult_testing": "NOT_PERFORMED",
+    "appeal_access_architecture": "NOT_IMPLEMENTED",
+    "family_game_safety_audit": "NOT_PERFORMED",
+    "independent_review": "NOT_PERFORMED",
+    "paid_lived_experience_review": "NOT_PERFORMED",
+    "youth_facing_work": "BLOCKED"
+  },
+  "state": "AWAITING_EXPLICIT_COMMAND",
+  "supersession": {
+    "predecessor_preserved": true,
+    "scope": "SUPERSEDES_PRIOR_DIGEST_FORMAT_CLASSIFICATION_ONLY",
+    "target": "chat-receipt:GIRLMATH_REPLAY_PATCHES_ACCEPTED"
+  },
+  "validation": {
+    "hex_character_count": 65,
+    "hex_charset": true,
+    "method": "COUNT_EXACT_PRESERVED_LITERAL_AND_CHECK_LOWERCASE_HEX",
+    "sha256_hex_format": "FAIL"
+  },
+  "version": "1.0.0",
+  "what_was_not_shared": [
+    "exact canonical bytes",
+    "canonicalization procedure",
+    "independent SHA-256 computation",
+    "safeguarding review records",
+    "implementation authorization",
+    "youth-facing unblock instruction"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "receipt_id": "STORY-MODE-WORKFLOW-AGENT-REPORT-v1",
+  "receipt_type": "WORKFLOW_ENABLEMENT_RECEIPT",
+  "version": "1.0.0",
+  "workflow": ".github/workflows/story-mode-agent-report.yml",
+  "workflow_sha256": "981c5edacd1b520a4998a70025d0215e3fd6b2228785838a9645ff0f22c03fd9",
+  "trigger": [
+    "workflow_dispatch",
+    "pull_request STORY_MODE/**"
+  ],
+  "permissions": [
+    "contents:read",
+    "actions:read"
+  ],
+  "writes_to_repository": false,
+  "artifact": "story-mode-agent-report",
+  "grok_connector_available": false,
+  "grok_live_execution_status": "NOT_EXECUTED_NO_GROK_CONNECTOR",
+  "prompt": "STORY_MODE/09-publication/grok-live-agent-prompt.v1.md",
+  "private_repository_names_published": 0,
+  "merge_authorized": false,
+  "authority_created": false
+}
