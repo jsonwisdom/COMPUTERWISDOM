@@ -25,6 +25,29 @@ function candidate(){
  if(e&&Array.isArray(e.providers))return e.providers.find(p=>p&&p.isCoinbaseWallet&&typeof p.request==="function")||null;
  return e&&e.isCoinbaseWallet&&typeof e.request==="function"?e:null;
 }
+function onAccountsChanged(accounts){
+ const account=Array.isArray(accounts)?accounts[0]:null;
+ if(typeof account!=="string"||!/^0x[a-fA-F0-9]{40}$/.test(account)){
+  clearWallet("Wallet reports no permitted account. Local display disconnected.");return;
+ }
+ state.account=account;walletDisplay();
+ $("wallet-status").textContent="Wallet account changed. Preferences still remain independent and local.";
+}
+function onChainChanged(chain){
+ state.chain=typeof chain==="string"?chain.toLowerCase():null;walletDisplay();
+ $("wallet-status").textContent="Wallet network changed. No automatic chain switch or money movement.";
+}
+function onWalletDisconnect(){clearWallet("Wallet provider disconnected. Local display cleared.")}
+function clearWallet(message){
+ state.serial++;
+ if(state.provider&&typeof state.provider.removeListener==="function"){
+  state.provider.removeListener("accountsChanged",onAccountsChanged);
+  state.provider.removeListener("chainChanged",onChainChanged);
+  state.provider.removeListener("disconnect",onWalletDisconnect);
+ }
+ state.provider=null;state.account=null;state.chain=null;walletDisplay();
+ $("wallet-status").textContent=message;
+}
 function walletDisplay(){
  $("wallet-account").textContent=state.account?masked(state.account):"Anonymous / not connected";
  $("wallet-chain").textContent=state.account?label(state.chain):"No network requested";
@@ -47,6 +70,11 @@ $("wallet-connect").addEventListener("click",async()=>{
   try{chain=await provider.request({method:"eth_chainId"})}catch(e){}
   if(ticket!==state.serial)return;
   state.provider=provider;state.account=account;state.chain=typeof chain==="string"?chain.toLowerCase():null;
+  if(typeof provider.on==="function"){
+   provider.on("accountsChanged",onAccountsChanged);
+   provider.on("chainChanged",onChainChanged);
+   provider.on("disconnect",onWalletDisconnect);
+  }
   walletDisplay();$("wallet-status").textContent="Account displayed locally. No signing, payments, preference upload or family permission.";
  }catch(e){
   if(ticket!==state.serial)return;
@@ -55,8 +83,7 @@ $("wallet-connect").addEventListener("click",async()=>{
  }finally{if(ticket===state.serial)$("wallet-connect").disabled=!!state.account}
 });
 $("wallet-clear").addEventListener("click",()=>{
- state.serial++;state.provider=null;state.account=null;state.chain=null;walletDisplay();
- $("wallet-status").textContent="Local account display cleared. Revoke site permissions in wallet settings separately if needed.";
+ clearWallet("Local account display cleared. Revoke site permissions in wallet settings separately if needed.");
 });
 walletDisplay();
 function showCatalog(items){
