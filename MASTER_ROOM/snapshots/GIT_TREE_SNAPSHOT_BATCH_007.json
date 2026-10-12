@@ -1,0 +1,3515 @@
+{
+  "object": "MASTER_ROOM_GIT_TREE_SNAPSHOT_BATCH_007",
+  "observed_at": "2026-09-23",
+  "repos": [
+    {
+      "repo": "jsonwisdom/BREANN",
+      "default_branch": "master",
+      "head_commit": "64dba8504a73790b26e63b741fd4bdc6787ef2f1",
+      "tree_sha": "375291a4562ec4e2a76b722d2514df787d7e8fa1",
+      "entry_count": 2,
+      "truncated": false,
+      "entries": [
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2e3ec5d6042fc41ebe316e5508d7717dfe063dd1",
+          "size": 801
+        },
+        {
+          "path": "index.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7bbe387aab0ae5815085597b01a7bd8e92b4be8e",
+          "size": 923
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/GRAMMY",
+      "default_branch": "master",
+      "head_commit": "a6b824e04aa17093b54e8f6224ac6ba00e287cbe",
+      "tree_sha": "3e9d18f73c4178310e162c071c5426611f4c1d61",
+      "entry_count": 12,
+      "truncated": false,
+      "entries": [
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2a4a9d6283f779fbdb0a696d3583f5ee1ce927b4",
+          "size": 522
+        },
+        {
+          "path": "contracts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "adc9be16d6d20578d02747305d7f45edf10eb4dd",
+          "size": null
+        },
+        {
+          "path": "contracts/DeezerbotResolver.sol",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d901b6b33397bf5bce924a918237dceb18f7b5f3",
+          "size": 2103
+        },
+        {
+          "path": "contracts/DeezerbotResolverV3.sol",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c58bb51b6cfd94766c0e88a50e4b76a3d021ede1",
+          "size": 2680
+        },
+        {
+          "path": "deezerbot",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "3b7d0b238a5774db56b34fedde0ab97e6ccef629",
+          "size": null
+        },
+        {
+          "path": "deezerbot/GOLD_GATE_TEST_FRAMEWORK.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f06d8085826de215ef2fd62678be2fdc77dbe9e2",
+          "size": 3088
+        },
+        {
+          "path": "deezerbot/PROOF_OF_FAN_SCHEMA.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5997ebfbb6681ab17fb5783318472ffbff422b2d",
+          "size": 1108
+        },
+        {
+          "path": "deezerbot/RESOLVER_SPEC.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a4b631fec148a1d9e2141b718cff29d82bf7ba9d",
+          "size": 1472
+        },
+        {
+          "path": "foundry.toml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6769c73aa3ed926ef9a544f8e22d5df15ce22cee",
+          "size": 105
+        },
+        {
+          "path": "index.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bee4d0e53461f779e08e3b6e7a1d4f4b81bd143e",
+          "size": 615
+        },
+        {
+          "path": "script",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "e75194c25ac5eb0e7f005057cf873cb36b4bde9e",
+          "size": null
+        },
+        {
+          "path": "script/DeployResolver.s.sol",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "70850218fc78c1bb49194d736669e194eb7047fe",
+          "size": 580
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/GAGA",
+      "default_branch": "master",
+      "head_commit": "4d2324de91791e18d9e743efaf0d5ec55b1ac7a9",
+      "tree_sha": "ae54b0ba4abdc71d82cbb7999859ada00eb4ec3f",
+      "entry_count": 2,
+      "truncated": false,
+      "entries": [
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5f13e09c89879abcfead90c097703a60e878b13b",
+          "size": 510
+        },
+        {
+          "path": "index.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "918abed197c9b20093259bb3c0f82f701274ec74",
+          "size": 611
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/jay-zora-portal",
+      "default_branch": "live-zora-ingestion",
+      "head_commit": "d089c88f9fbc40c9cb093f500bf562753b32d5c4",
+      "tree_sha": "0dcf7f20f8550f7536d0ae1b5c84c4275aba5761",
+      "entry_count": 143,
+      "truncated": false,
+      "entries": [
+        {
+          "path": ".dockerignore",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "de414c906b5ad28afff482442cdedbbd30bba10b",
+          "size": 48
+        },
+        {
+          "path": ".env.example",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "761957ab7d724f69636fa68001d53c2a963d40d8",
+          "size": 259
+        },
+        {
+          "path": ".github",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f78ce1ba0adb0876a62ebf7b06c48775c7915dc4",
+          "size": null
+        },
+        {
+          "path": ".github/workflows",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "450c497c7437bbc8a5a294fe42f13fb85098ba9e",
+          "size": null
+        },
+        {
+          "path": ".github/workflows/diagnose-zora-sdk-080.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c8ea91bef116d8804f2f288a9d58c6f6abb89ac0",
+          "size": 5798
+        },
+        {
+          "path": ".github/workflows/export-zora-inventory.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "50a150033ec980170c6841e3e93e6ec09ecf5ac9",
+          "size": 10510
+        },
+        {
+          "path": ".github/workflows/jay-agent-sleep-console.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fb79a3d065a4082dfd0c1716145ca12967ca05fa",
+          "size": 640
+        },
+        {
+          "path": ".github/workflows/jayform-self-title-index.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4a3cde1728fb73d9b42c0ce3ca70e110d0caf88a",
+          "size": 2843
+        },
+        {
+          "path": ".github/workflows/pages.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1bebdcc2f3dc22339c7835a469ddc48314ba6380",
+          "size": 5747
+        },
+        {
+          "path": ".gitignore",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2e25f89733b1fffafb81a6eccd6b371e4eb38389",
+          "size": 102
+        },
+        {
+          "path": "CANONICAL_WORKFLOW.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e53631bdc8945c950e452ebee49a0a977a939571",
+          "size": 2696
+        },
+        {
+          "path": "Dockerfile.fly",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "db14aece61983af37ddeb5a1fae498fc9e6bb5f3",
+          "size": 889
+        },
+        {
+          "path": "FRONTEND_REAL_ZORA_GRID_RECEIPT.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c1d148346bf727d5a94064d695ad21a530c34012",
+          "size": 623
+        },
+        {
+          "path": "LIVE_JSON_INGESTION_RECEIPT.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c52e1d76abc2e383050c8344a6d18572f4b1e631",
+          "size": 609
+        },
+        {
+          "path": "LOCAL_PROOF_RECEIPT.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "94e972d00bfc5e33d9340a098f2a1522ddf2172c",
+          "size": 523
+        },
+        {
+          "path": "MERKLE_REBOOT_RECEIPT.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c45758d6a6adf38e78428eaf7fdb0a761a5eb12e",
+          "size": 1493
+        },
+        {
+          "path": "PAGINATED_ZORA_EXPORT_RECEIPT.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e34c83d886f967bf7918b460629107c721506525",
+          "size": 879
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a91f999b442e07f0e017adce44a5794e15b734fd",
+          "size": 2803
+        },
+        {
+          "path": "REAL_ZORA_EXPORT_INGEST_RECEIPT.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "766f32651c1822674ebce1caffbed3442e11ae19",
+          "size": 658
+        },
+        {
+          "path": "SOLUTION_ROOT_ENS_SCHEMA_ATTEST_VERIFIER.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "839df817a38c00c027da25299e55077180e5102d",
+          "size": 3846
+        },
+        {
+          "path": "agents",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "43a9d4a45e86b85f9de139102da60a6c97d743c0",
+          "size": null
+        },
+        {
+          "path": "agents/jay-agent",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "c3c234acb8e9e95cdcf8309091545d53a69ff86a",
+          "size": null
+        },
+        {
+          "path": "agents/jay-agent/SLEEP_GOAL_ZORA_MAINTENANCE_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6f9adfd0051229f003868e44803004e735fc01d3",
+          "size": 1279
+        },
+        {
+          "path": "api",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "0f86c873077cadbc694592ce7ce2a3a2947480ed",
+          "size": null
+        },
+        {
+          "path": "api/Dockerfile",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f8fda52b7b9d5ecc546dabd242901887b675ade5",
+          "size": 186
+        },
+        {
+          "path": "api/main.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ea63098c5e74aa160efaf13e296b785ebb720f44",
+          "size": 3473
+        },
+        {
+          "path": "api/requirements.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c25f9c91cf5948f6abf54e6c5382f21ce1562e41",
+          "size": 42
+        },
+        {
+          "path": "crawler",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d35ac9509c7ce89bee376a4bae258c87647e69bc",
+          "size": null
+        },
+        {
+          "path": "crawler/Dockerfile",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "77ea076672d5bb2287152ea28cc5e52015e3fd98",
+          "size": 146
+        },
+        {
+          "path": "crawler/crawl.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8e14088cbff5e04ce81a2369d3fcfcdb6e77fda0",
+          "size": 4395
+        },
+        {
+          "path": "crawler/requirements.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4a6aa4efbcbff3b114018d31d5f8b655675ad3d2",
+          "size": 32
+        },
+        {
+          "path": "data",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "6b4da0538b550e3a758966a00aaf7a9195c20ca9",
+          "size": null
+        },
+        {
+          "path": "data/live_zora_items.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "affbefe026a842114a66f4d3f234ff6491e7044b",
+          "size": 1763107
+        },
+        {
+          "path": "discovery",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "5fb72a91d06da9e3ffe5e656e2b2f896341c85e8",
+          "size": null
+        },
+        {
+          "path": "discovery/zora",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "79b33d4cdce0e84d945d414210b2b01fa8f1be87",
+          "size": null
+        },
+        {
+          "path": "discovery/zora/docs_home.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "67e247fb6de132906c73abf969f347ed6fc018ee",
+          "size": 15560
+        },
+        {
+          "path": "discovery/zora/docs_profile_query.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dcd0f1637351851e9f05bc7afde3392b81b2f8fd",
+          "size": 225674
+        },
+        {
+          "path": "discovery/zora/graphql_typename.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3d3faa9bd117a75f8c87e56f752b1fe3c63a668e",
+          "size": 271
+        },
+        {
+          "path": "discovery/zora/latest_profile_coins_edges.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "101a35ab1e53c1204a935607996e16cefde71b8e",
+          "size": 4188359
+        },
+        {
+          "path": "discovery/zora/latest_profile_coins_response.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6d1808d4cd1d1d3ad3168071255e8a32baeef3b3",
+          "size": 26429
+        },
+        {
+          "path": "discovery/zora/profile_coins_probe.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4d7ba9668cdb2a80e95e601ccd4166cf1c48e056",
+          "size": 1821
+        },
+        {
+          "path": "discovery/zora/profile_coins_response.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6d799b6fa348f118bfa733f27d4eda26c411c219",
+          "size": 23727
+        },
+        {
+          "path": "discovery/zora/search_pink_goblin.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "30db0718240bef7d3e9f20410aab472975e50d6e",
+          "size": 236
+        },
+        {
+          "path": "docker-compose.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6521c0a360eea625aac14ff2b0454e8f8cc59a5e",
+          "size": 975
+        },
+        {
+          "path": "docs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "ca1b2c73fb80776d37e9d4b64a0aa6d96ce5120b",
+          "size": null
+        },
+        {
+          "path": "docs/BASE_R2_GITHUB_JAYSPACE_STACK.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ea99abe5245a97913f652a93757e76b28f4c2fed",
+          "size": 1493
+        },
+        {
+          "path": "docs/JAYSPACE_GPU_COMPOSITING_MAP.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c07327fc8f7b65216a23418cb76b7eed41cfcd6d",
+          "size": 1690
+        },
+        {
+          "path": "docs/JAYSPACE_JSONL_MACHINE_SPEED_STANDARD.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8b309707603a0044ff7bc35468c1c4bcd99bbd50",
+          "size": 6002
+        },
+        {
+          "path": "docs/JAYSPACE_QUIET_TELEMETRY_SPEC.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c66d0c00cd4cf968efc3d16a949ea7d591136ee4",
+          "size": 2932
+        },
+        {
+          "path": "docs/Launch_Layer_Felt_Governance.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ad8978c979bbca5ae22fefc183d2e16e74f5d900",
+          "size": 554
+        },
+        {
+          "path": "docs/REPLAY-PUMPFUN-MANUAL-DAY-ONE.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "50c0e2ef5a46af980c25b4c11b90cdcdea1c6c19",
+          "size": 1980
+        },
+        {
+          "path": "docs/receipts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "4ee96fe6b82a1a667b1794015d7bca9e18a0faec",
+          "size": null
+        },
+        {
+          "path": "docs/receipts/GIRTH_BIRTH_CLASS.RAIL.LOCK.2026-09-11.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b6b9d5a41af9e54383ca85f7a01800a34945e84b",
+          "size": 1194
+        },
+        {
+          "path": "docs/receipts/JAY_ZORA_FULL_AUDIT_RUN1_2026-09-02",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "a2e9ed022412317f0d00bae0abae5c3938d74d02",
+          "size": null
+        },
+        {
+          "path": "docs/receipts/JAY_ZORA_FULL_AUDIT_RUN1_2026-09-02/JAY_ZORA_FULL_AUDIT_RUN1_RECEIPT.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "948064638cdbfcddb12dfa3074575bfe7763b3e5",
+          "size": 1619
+        },
+        {
+          "path": "docs/receipts/JAY_ZORA_FULL_AUDIT_RUN1_2026-09-02/JAY_ZORA_MASTER_CATALOG.csv",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2cc4ec1f8f7405339164f7dc870e066f45c22a30",
+          "size": 216228
+        },
+        {
+          "path": "docs/receipts/JAY_ZORA_FULL_AUDIT_RUN1_2026-09-02/JAY_ZORA_MASTER_CATALOG.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5d106419ab9e1c49cb82d90bd4f3171bd50efa48",
+          "size": 1034154
+        },
+        {
+          "path": "docs/receipts/JAY_ZORA_FULL_AUDIT_RUN1_2026-09-02/JAY_ZORA_RISK_AND_REUSE_QUEUE.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f419f39e9ec937da63da2b0d57fcf437ebeb4c6e",
+          "size": 15011
+        },
+        {
+          "path": "docs/receipts/JAY_ZORA_FULL_AUDIT_RUN1_2026-09-02/JAY_ZORA_SERIES_MAP.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e9439214a1d9af2ae13ac0d4ad1127effb812f47",
+          "size": 1844
+        },
+        {
+          "path": "docs/receipts/JAY_ZORA_FULL_AUDIT_RUN1_2026-09-02/JAY_ZORA_TIMELINE.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9d72dcfd351fbfbaaa994b5ec068546210faf3a7",
+          "size": 10829
+        },
+        {
+          "path": "docs/receipts/JAY_ZORA_FULL_AUDIT_RUN1_2026-09-02/SHA256SUMS.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3a077ab087c98724135a904fd394c2b35079e9f8",
+          "size": 568
+        },
+        {
+          "path": "docs/receipts/K11RUN_RUN2_RECEIPT_2026-09-02.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69a541247a5b6481bb754c2d77831b1016850e3",
+          "size": 1827
+        },
+        {
+          "path": "docs/receipts/K11RUN_RUN2_RECEIPT_2026-09-02.json.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dd489763f4863c8ccd4e83cf2cf1362c5bab22f2",
+          "size": 102
+        },
+        {
+          "path": "docs/receipts/ZIGGY_ZORA_PROMOTION_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "44c2a3b0339db406453d2d37013fdcc3a0c089f2",
+          "size": 1445
+        },
+        {
+          "path": "docs/receipts/ZORA_BACKFILL_STATE.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d2082142e5e7ca3086db671af16ab90a2b0c8721",
+          "size": 4563
+        },
+        {
+          "path": "exports",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "85e67318f628b791c40debb4e54a7b35666ace3b",
+          "size": null
+        },
+        {
+          "path": "exports/jay_zora_inventory.csv",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "44d030f2d80e29c1983515ff11895e018ff0d8fa",
+          "size": 915029
+        },
+        {
+          "path": "exports/jay_zora_inventory.manifest.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c24bd9459112dc8d1d9f9976bd0a165bbc4ed0dd",
+          "size": 1359
+        },
+        {
+          "path": "fly.toml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fb0fe61b89e26ab26ddbbdca5e9eea123d9d821f",
+          "size": 506
+        },
+        {
+          "path": "frontend",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "e89e0ea13cb5ef7d17121b085184408891687528",
+          "size": null
+        },
+        {
+          "path": "frontend/Dockerfile",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5f1924a915119930c8c04a2eefdb6041a9276ddd",
+          "size": 118
+        },
+        {
+          "path": "frontend/index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "961415d6d3c0feb49d404b49c8f4f3c365aebfc1",
+          "size": 325
+        },
+        {
+          "path": "frontend/package-lock.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "81159c02c0857749dd62ffa2bb28346ce3ff0383",
+          "size": 57933
+        },
+        {
+          "path": "frontend/package.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b2375da051ea7f6d5b62409e6aa6c2594c807187",
+          "size": 441
+        },
+        {
+          "path": "frontend/public",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "7ca809501f25c16ae2fae611f8fcbd70390dfd99",
+          "size": null
+        },
+        {
+          "path": "frontend/public/data",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "da30123b2ed8370537ba08266c38f17f31e037a6",
+          "size": null
+        },
+        {
+          "path": "frontend/public/data/activity.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c2200d1e9563d99e4bbc4572e400afd6ccb318e6",
+          "size": 171
+        },
+        {
+          "path": "frontend/public/data/constitutional-memory.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ed9baf2f7fe7ff999a1e38f8dd61f09753df665a",
+          "size": 1884
+        },
+        {
+          "path": "frontend/public/data/heatmap.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "91972fc20c9799f0c0633663a15e6e125199389b",
+          "size": 1038
+        },
+        {
+          "path": "frontend/public/data/history.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dfb70096d88fb5b22a390f9028bfaf64d4fbccd3",
+          "size": 112
+        },
+        {
+          "path": "frontend/public/data/observer-config.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8e8e86e6d9824d7ffd1d57bab7ffc85135ff0d54",
+          "size": 546
+        },
+        {
+          "path": "frontend/public/data/observers.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bc9d4996e2ca83950968d74fb83f57424b0001fa",
+          "size": 1136
+        },
+        {
+          "path": "frontend/public/data/permissions.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c96199c4762e2adb360dc771ec233b11ff7a983f",
+          "size": 705
+        },
+        {
+          "path": "frontend/public/data/replay-events.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "14d9ff589db098393503ea35dfef3e18221053a4",
+          "size": 2508
+        },
+        {
+          "path": "frontend/public/data/replay-lineage.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1a1fd96f977545f2ace6070fce6b150e85b3871a",
+          "size": 748
+        },
+        {
+          "path": "frontend/public/data/snapshots",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "3c353373eb5d55bc5ec396848924c30ff24cc9c3",
+          "size": null
+        },
+        {
+          "path": "frontend/public/data/snapshots/run-53.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9858bb45ad043d5fdadec9a8fc7653356daedf57",
+          "size": 497
+        },
+        {
+          "path": "frontend/public/data/snapshots/run-54.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "05e02c512fe601cd91863446c3303fa37abb5823",
+          "size": 504
+        },
+        {
+          "path": "frontend/public/forest.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c163ea6e97658fe3f97ae6ed6257c4bd86bb6eff",
+          "size": 650
+        },
+        {
+          "path": "frontend/public/identity-index.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ea3825d30194a7fc00c2d32891ae4fe608521fe4",
+          "size": 2902
+        },
+        {
+          "path": "frontend/public/leaves",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "68f4b1cf9e5684c3fc899e4977621a22f75f8248",
+          "size": null
+        },
+        {
+          "path": "frontend/public/leaves/leaf-cw-001.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "910df86d7cdb877d3d73e2f7bed2821feb792c84",
+          "size": 585
+        },
+        {
+          "path": "frontend/public/leaves/leaf-flywheel-001.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "31e0bab8580e92ec87459948f9239b334b2e2a8a",
+          "size": 915
+        },
+        {
+          "path": "frontend/public/leaves/leaf-merkle-001.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b817843d7636712dd6e73ed4984731ea425c5ecd",
+          "size": 526
+        },
+        {
+          "path": "frontend/public/leaves/schema.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "27dc6c88777a3347e30275ab94b2af9c793fd39f",
+          "size": 1120
+        },
+        {
+          "path": "frontend/public/zora-index.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "37d3633f701f7e16ab4625f54860d51fe589c59a",
+          "size": 489
+        },
+        {
+          "path": "frontend/src",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d81a29645a3ab2d8d284704c35bb77a27ca2bc92",
+          "size": null
+        },
+        {
+          "path": "frontend/src/girl-physics.js",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "06bde1e309f671d3d30a0807c01c26557ee9d068",
+          "size": 3218
+        },
+        {
+          "path": "frontend/src/main.jsx",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7b7b34198895e4d7acd5fa4430c573887b2e1c25",
+          "size": 13303
+        },
+        {
+          "path": "frontend/src/styles.css",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1919c9f1c4322a1d6626955f5885f37557b3a82e",
+          "size": 5273
+        },
+        {
+          "path": "frontend/vite.config.js",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "74e53ec00bd8d9c79770abfdb2668c7c8cfbec19",
+          "size": 430
+        },
+        {
+          "path": "package-lock.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b5c17b3ffd27020e84c4852ca77be08762d51747",
+          "size": 9296
+        },
+        {
+          "path": "package.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5283b738a7d2e7fb2b14650b436773c444e24c17",
+          "size": 712
+        },
+        {
+          "path": "promotions",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "0c8b9bb98f5ff7257f8ee666d4e624e983a42f1c",
+          "size": null
+        },
+        {
+          "path": "promotions/ziggy-v0.1",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d12b61ec6fd12bc3983caa90f016c55d0bcc97b2",
+          "size": null
+        },
+        {
+          "path": "promotions/ziggy-v0.1/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e4d7a8022eebcd5321af3d26619ca49def03f1ad",
+          "size": 1504
+        },
+        {
+          "path": "promotions/ziggy-v0.1/zora-promotion.v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f71136031a70847f8659ea6ab9457c826b063f9a",
+          "size": 2133
+        },
+        {
+          "path": "public",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f076ce1c54e19203d106c38361a82fcc153e0582",
+          "size": null
+        },
+        {
+          "path": "public/chess-court-referee-log.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "370ae291c362b3b14d6ed4fbaa75c9a3fc160726",
+          "size": 1924
+        },
+        {
+          "path": "public/coins",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "b7edc736906ecc77fb04d5374cb5a2cae243d926",
+          "size": null
+        },
+        {
+          "path": "public/coins/NODE_008.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9d6c4cf6a73dc3d79a1d208238bd98c70a7a521c",
+          "size": 1609
+        },
+        {
+          "path": "public/index.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fcb29b43012bac05b2bfad298ffef4b5124b809c",
+          "size": 1047
+        },
+        {
+          "path": "public/rounds",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "e6ac4672a870b724cad4fb7ab9d296102bc09337",
+          "size": null
+        },
+        {
+          "path": "public/rounds/ROUND_006.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f0c26f831f25c2d1b9c9bf34d05ac3bc970e5987",
+          "size": 1172
+        },
+        {
+          "path": "queries",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "87ac7d2f269522a0a1869f8a25e8883643786a50",
+          "size": null
+        },
+        {
+          "path": "queries/zora_micropool_backfill_v1.sql",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d3e2047b2247421412f9f1a910beee557a099380",
+          "size": 3117
+        },
+        {
+          "path": "receipts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f0c8ca69171545b6c1bd98ff13161da6574221c1",
+          "size": null
+        },
+        {
+          "path": "receipts/K11RUN_QUAD_ONION_INVENTORY_SYNC_2026-09-02.csv",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4323e9f954a9b33e9b10c7277783fdb88910ab4c",
+          "size": 4774
+        },
+        {
+          "path": "receipts/gray-baby",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "491de09efbb70f035de754e899b31cfc05bf4294",
+          "size": null
+        },
+        {
+          "path": "receipts/gray-baby/CAST_OBS_0x32c770d1_v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "99273b21c98e1cc5cbb027a4e2c6df64a3983b54",
+          "size": 2402
+        },
+        {
+          "path": "receipts/gray-baby/CAST_OBS_0x32c770d1_v0.1_RECEIPT.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "573c88175179c5f27d3703bd2f036e43132db16d",
+          "size": 485
+        },
+        {
+          "path": "receipts/gray-baby/GRAY_BABY_RULEBOOK_v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "000836b4d09b7b5d5ab0df601b128e21f5022199",
+          "size": 2920
+        },
+        {
+          "path": "receipts/gray-baby/GRAY_BABY_ZORA_EVM_MAP_v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4014605872d1dc700409a5768f97ac7a15275ffe",
+          "size": 3691
+        },
+        {
+          "path": "receipts/gray-baby/GRAY_BABY_ZORA_EVM_MAP_v0.1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d19572631685f11c078c2cb7063485d7f6a3f14c",
+          "size": 724
+        },
+        {
+          "path": "receipts/gray-baby/GRAY_BABY_ZORA_EVM_MAP_v0.1_FREEZE.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e3a7fc56e86f11ae01cedcb364638ab3fc71525a",
+          "size": 963
+        },
+        {
+          "path": "receipts/gray-baby/GRAY_BABY_ZORA_EVM_MAP_v0.1_manifest.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4a03666ac6b109970a7989ab8bdf6f475dd38ef3",
+          "size": 674
+        },
+        {
+          "path": "receipts/gray-baby/MEDIA_RECEIPT_v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "46f6989459969be657d550718073ab2b32292f6d",
+          "size": 1121
+        },
+        {
+          "path": "receipts/gray-baby/SECOND_GATEWAY_COMPARISON_v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6c5a7d52462dbdb2623fd7bb327c519231b49818",
+          "size": 1077
+        },
+        {
+          "path": "scripts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "53264ce44850dd008c745a7a76912c269051a0f5",
+          "size": null
+        },
+        {
+          "path": "scripts/base_getlogs_window.sh",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "f8db709a1315d96587d2b5f7a624a5534ca78353",
+          "size": 921
+        },
+        {
+          "path": "scripts/base_rpc_probe.sh",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "ad55d9cd2167774089c4c57a42c2612556725889",
+          "size": 336
+        },
+        {
+          "path": "scripts/decode_coincreated_v4_logs.py",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "37473242c1fb50a3b942bcb2eab8bc15423cd6bd",
+          "size": 1186
+        },
+        {
+          "path": "scripts/decode_coincreated_v4_mapped.py",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "846812dff4e5f43f57caa803410f854e7c68d691",
+          "size": 1318
+        },
+        {
+          "path": "scripts/jay_agent_sleep_console.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "669de04fd693f8fb54c6c2d871bb782871cb7d00",
+          "size": 1642
+        },
+        {
+          "path": "scripts/parse_base_logs_summary.py",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "c75e89d2c377354f43c04a89abcac9cfb64d4aff",
+          "size": 553
+        },
+        {
+          "path": "scripts/run_zora_backfill_10k.sh",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "54d551ce9b4460130dcec58be45c6ce6e484be1c",
+          "size": 677
+        },
+        {
+          "path": "scripts/summarize_entrypoint_logs.py",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "da6f92bb1e6627232b74355782a5fdcd097332c8",
+          "size": 1119
+        },
+        {
+          "path": "tools",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "c0c8931daee2b8220002b8633c24e4f624a0177e",
+          "size": null
+        },
+        {
+          "path": "tools/build-forest.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "143b6b985baa1a50265f005b13856b07af78267a",
+          "size": 2784
+        },
+        {
+          "path": "tools/build-jayform-self-title-index.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "25904775432121bb65266216df231763b4b62844",
+          "size": 10780
+        },
+        {
+          "path": "tools/export_zora_profile_coins.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "53c459db606ad6afd7541e1ff983025c91574e66",
+          "size": 11037
+        },
+        {
+          "path": "tools/observe-participation.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "82bce85368ec08cb6513f3d0856712f087454405",
+          "size": 1911
+        },
+        {
+          "path": "tools/refresh-zora-from-public.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f677d3e6306e6373e98c2c24c497bc0805abd0a0",
+          "size": 4554
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/ELMORE",
+      "default_branch": "master",
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "error": "CONFLICT: Error code: CONFLICT; Error: GitHub API error 409: {\"message\":\"Git Repository is empty.\",\"documentation_url\":\"https://docs.github.com/rest/commits/commits#get-a-commit\",\"status\":\"409\"}"
+    },
+    {
+      "repo": "jsonwisdom/replay-membrane-v0",
+      "default_branch": "main",
+      "head_commit": "13bf291a4c745eeac851fa702ffa6ecd4be87ca5",
+      "tree_sha": "0abd92c9b96f51d422ba492e6fbc457a62c0b1fd",
+      "entry_count": 52,
+      "truncated": false,
+      "entries": [
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "aed708fded218da074f30d1ee6e1ed4bf94d516d",
+          "size": 896
+        },
+        {
+          "path": "REPLAY_RECEIPT_001.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "657c54e7dd830f070cca92859c8f2f39320143e2",
+          "size": 532
+        },
+        {
+          "path": "adversarial",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "71ac85ab6b1dec4a0e62648f0fd53d06267552eb",
+          "size": null
+        },
+        {
+          "path": "adversarial/ADVERSARIAL_INDEX_V1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2920f487840ec481fd031dbcdaedffa1ca19db24",
+          "size": 3537
+        },
+        {
+          "path": "adversarial/ATTESTATION_NODE_ALPHA_001.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "07e5a5a2e9e0580cf307518c7ae7f8a8e670488d",
+          "size": 513
+        },
+        {
+          "path": "adversarial/ATTESTATION_NODE_BETA_001.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1086432bc6f8d4dc6c72b6fb0b69da6befb28f6e",
+          "size": 511
+        },
+        {
+          "path": "adversarial/ATTESTATION_V1_SCHEMA.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d794eb7f86f7fd10bc2389b3ae285e8d4e4ab97c",
+          "size": 938
+        },
+        {
+          "path": "adversarial/CROSS_VALIDATION_V1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1363597d0bb773040200a94022ae614ed7445b0e",
+          "size": 577
+        },
+        {
+          "path": "adversarial/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b3315767eb1ea37a676bae86e31a78c7bbdd0315",
+          "size": 532
+        },
+        {
+          "path": "adversarial/RECEIPT_CONNECTOR_POLICY_001.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "37a0c5a730e3b573ad4e6cc0af3cfad8526e5876",
+          "size": 1799
+        },
+        {
+          "path": "adversarial/REPLAY_RECEIPT_BINARY_001.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "17b03f3ca09bd77e2d2d0c32b06d10e59e2acf89",
+          "size": 404
+        },
+        {
+          "path": "adversarial/REPLAY_RECEIPT_FORBIDDEN_JSON_001.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "627be56f13837fc2c19ce83222c8384cc8105df1",
+          "size": 662
+        },
+        {
+          "path": "adversarial/REPLAY_RECEIPT_NUMERIC_JSON_001.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f9eb8909d4057754d46cc6ff35826b6e2e266cb2",
+          "size": 528
+        },
+        {
+          "path": "adversarial/REPLAY_RECEIPT_SCHEMA_EXTRA_FIELDS_001.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "776fce5251e496479893792766ed241442898d2a",
+          "size": 464
+        },
+        {
+          "path": "adversarial/REPLAY_RECEIPT_WHITESPACE_001.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f266fe4d33427d859e1feca367c08e521c500449",
+          "size": 420
+        },
+        {
+          "path": "adversarial/WITNESS_ATTESTATION_V1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "88d68380d547502e2ed9d68df8dbf52785ee1001",
+          "size": 760
+        },
+        {
+          "path": "adversarial/add_attestation.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5a71fdafc9c2d4c397b622160112ddea6e8689eb",
+          "size": 627
+        },
+        {
+          "path": "adversarial/canonicalize_attestation.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6f71ef54f87ccfcb82e9441066f1c5d63e4d8e60",
+          "size": 574
+        },
+        {
+          "path": "adversarial/forbidden-json",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9a4eadb8b1e7d5a77f097e1fbe636c90d5cd3bc4",
+          "size": null
+        },
+        {
+          "path": "adversarial/forbidden-json/harness.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8031a2f15b00f60032b93485726794183d5c6c38",
+          "size": 694
+        },
+        {
+          "path": "adversarial/forbidden-json/infinity.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a7a3ebdc04189105151d6b8df5c3e734af61715c",
+          "size": 15
+        },
+        {
+          "path": "adversarial/forbidden-json/nan.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "13f79117cb9cc751649c59f68193b6939e4e4385",
+          "size": 10
+        },
+        {
+          "path": "adversarial/forbidden-json/negative_infinity.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7b89859848aa74a20ac54090c4a4e1cc8e6b1d9f",
+          "size": 16
+        },
+        {
+          "path": "adversarial/forbidden-json/trailing_comma.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "39aaa09c65d4cfadea3dc110e4182d2ae21a9d7f",
+          "size": 9
+        },
+        {
+          "path": "adversarial/generate_witness_attestation.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "48e25eefcfe304944efc2bbae40128b82b0c9f68",
+          "size": 950
+        },
+        {
+          "path": "adversarial/independent_replay.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "97e793d5b51ffd0b7268a8c74baf3087cec10bd8",
+          "size": 687
+        },
+        {
+          "path": "adversarial/numeric-json",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "165a0be546157b31640278cd8a1cf505061230cb",
+          "size": null
+        },
+        {
+          "path": "adversarial/numeric-json/exponent.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0cf465314e3424ed0a120dd12b877a3ddd3817f4",
+          "size": 10
+        },
+        {
+          "path": "adversarial/numeric-json/float.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "56cbf7cffd50dd5055ca749be86ae782de25446c",
+          "size": 10
+        },
+        {
+          "path": "adversarial/numeric-json/int.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a636c9bd1d02e152beea3a5ac30fefa2d9056d60",
+          "size": 8
+        },
+        {
+          "path": "adversarial/numeric-json/negative_zero.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "85024866b7b74e163e809a3db6973897adc98c17",
+          "size": 9
+        },
+        {
+          "path": "adversarial/schema-extra-fields",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "e0d563dfb0e8e82485f8c6b07ea915f0da5aa3e5",
+          "size": null
+        },
+        {
+          "path": "adversarial/schema-extra-fields/canonical.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "79f0a5351bb44dc5624d056fda9f3342d2714a33",
+          "size": 27
+        },
+        {
+          "path": "adversarial/schema-extra-fields/duplicate_key.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "570ad5770d480a289011d76943e3d72e98db86db",
+          "size": 34
+        },
+        {
+          "path": "adversarial/schema-extra-fields/extra_field.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ef08de69412ba5010e8919744ac7909f717d5f38",
+          "size": 40
+        },
+        {
+          "path": "adversarial/schema-extra-fields/harness.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fea0298dc7ac203e9d24fbedd4c365f00777469e",
+          "size": 1291
+        },
+        {
+          "path": "adversarial/schema-extra-fields/reordered.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "daf724da8201e4cccd82f97b27a801f256e090a2",
+          "size": 27
+        },
+        {
+          "path": "adversarial/trusted_nodes.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "643b9349c5c60aa47add53a024005f5014412f8c",
+          "size": 32
+        },
+        {
+          "path": "adversarial/unicode",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "350bfaf870a6fed50403eb0bf52d9de377ec5986",
+          "size": null
+        },
+        {
+          "path": "adversarial/unicode/composed.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "235d728401093a942ee93d900be7d6869fe3394c",
+          "size": 8
+        },
+        {
+          "path": "adversarial/unicode/decomposed.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a809e2d8865a8de7d46ef653ffa6dd283e162479",
+          "size": 9
+        },
+        {
+          "path": "adversarial/unicode/harness.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6b9231b9903b65303583364e4c47fd9f2a4cdd01",
+          "size": 1466
+        },
+        {
+          "path": "adversarial/update_receipt_with_quorum.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2d8cfd7a549c764d605cdb96b9993262abf5854c",
+          "size": 350
+        },
+        {
+          "path": "adversarial/verify_attestation.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f529f3d09a3abc1ccf5cc31827a5ee895d79c6e5",
+          "size": 1258
+        },
+        {
+          "path": "adversarial/verify_leaderboard.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b5ed07399da6dc23e517cce3d52b22420d9e5059",
+          "size": 4801
+        },
+        {
+          "path": "adversarial/verify_receipt_connector_policy_001.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fcba855376881f84b0aea6d781814344c4410562",
+          "size": 1578
+        },
+        {
+          "path": "fixture",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "7953850d17f9ccd41be4df9ab0f7d73c690eb16a",
+          "size": null
+        },
+        {
+          "path": "fixture/seed.env",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "23112a9b6d1509dc08f437f142849aa03ed729e0",
+          "size": 8
+        },
+        {
+          "path": "fixture/seed.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "23112a9b6d1509dc08f437f142849aa03ed729e0",
+          "size": 8
+        },
+        {
+          "path": "fixture/static.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a622777fce4c727bf7bc3d1d6231f09ec0232643",
+          "size": 12
+        },
+        {
+          "path": "harness.sh",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "c9baa473b8c05f0ad5c35550ddbee863eb7a453a",
+          "size": 627
+        },
+        {
+          "path": "root.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2201ab91881d3688dece7e6526112c637325e415",
+          "size": 65
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/receipts-engine-v1",
+      "default_branch": "main",
+      "head_commit": "dd7f012ebee46df93e0789bafea502fb3078fe65",
+      "tree_sha": "2373ee98df10f9162473d4935825d73e918121b7",
+      "entry_count": 280,
+      "truncated": false,
+      "entries": [
+        {
+          "path": ".github",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "04b7953f8ed62ce62b7670b98d0df048f5fc299d",
+          "size": null
+        },
+        {
+          "path": ".github/PULL_REQUEST_TEMPLATE",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "0cf2138ce217bce92ceb1421e96e70b45e7fb0b4",
+          "size": null
+        },
+        {
+          "path": ".github/PULL_REQUEST_TEMPLATE/verifier_report.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e2ff8848db964f10fe363e8d790bd7d1412e7aac",
+          "size": 944
+        },
+        {
+          "path": ".github/scripts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "6b0f11af9e700855e9677c87cdce05bcbe7fe0c6",
+          "size": null
+        },
+        {
+          "path": ".github/scripts/post_feedback_comment.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c378fb81670fb6cc14209125b31a5ba97f7a0e6e",
+          "size": 1823
+        },
+        {
+          "path": ".github/workflows",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f74df69fd26aab3f5a6278a882a4d7bd123c4446",
+          "size": null
+        },
+        {
+          "path": ".github/workflows/apple-observer.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "181c4a875c4bf338be2195f6ba79f66d43c673fe",
+          "size": 2053
+        },
+        {
+          "path": ".github/workflows/audit-gate.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b07c14ca58ab222a9cadef035f1fa77b2b2c73b2",
+          "size": 7763
+        },
+        {
+          "path": ".github/workflows/autonomous-verification-final.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "647900a409a038c3f578983d546459ac15434b2c",
+          "size": 2615
+        },
+        {
+          "path": ".github/workflows/autonomous-verification-fixed.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6078a7ee4ed37972da67406de7e9f0ad9521d5f8",
+          "size": 2589
+        },
+        {
+          "path": ".github/workflows/autonomous-verification.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2012305596d53a106599fba57f6c4f02b398b7b3",
+          "size": 2573
+        },
+        {
+          "path": ".github/workflows/case-study-001-digest.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1f1aec653c3e80355ae8bc0620ac08734646248a",
+          "size": 1501
+        },
+        {
+          "path": ".github/workflows/case-study-001-independent-verify.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0de0d4cb1d91b44a1f50f567d490ebe39ab06645",
+          "size": 2637
+        },
+        {
+          "path": ".github/workflows/case-study-001-tally-verifiers.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0ebc48264154afc9aa6c910f25a3e501aff96cf0",
+          "size": 1912
+        },
+        {
+          "path": ".github/workflows/deterministic-verify.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8a47a67c8261849ec478f53e7b4e4e731d2db8b8",
+          "size": 6219
+        },
+        {
+          "path": ".github/workflows/ens-update.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5f68849dada7976678e2fce3af761a18b845e08a",
+          "size": 665
+        },
+        {
+          "path": ".github/workflows/genesis.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3edc5f9a3c4ae63a31fc291ac57ea71587154b8a",
+          "size": 1088
+        },
+        {
+          "path": ".github/workflows/phase3-continuity-replay.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fa660e1ec87a7bbd0c7dff6a0ece8640629cdb48",
+          "size": 4563
+        },
+        {
+          "path": ".github/workflows/release-gate.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "322190088c2932b1c5aafc776c1b540e4325a1da",
+          "size": 581
+        },
+        {
+          "path": ".github/workflows/replay-goblin.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ed9eff3ab2d94a91c9076aaebca759e670cf6856",
+          "size": 954
+        },
+        {
+          "path": ".github/workflows/signal-core.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "96f2321181c8ebd3854353ab26cb178e33c1ca92",
+          "size": 637
+        },
+        {
+          "path": ".github/workflows/trust-membrane-conformance-v1.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "33023e2f7e46ca903e784391db42c79a9570ed55",
+          "size": 1887
+        },
+        {
+          "path": ".github/workflows/verify-pin.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e85affc43a573ac6cc40167e57f84b8cbe431b20",
+          "size": 542
+        },
+        {
+          "path": ".github/workflows/witness-replay.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "76ab4b8c9b0307357040e26c061ba2f34b14e793",
+          "size": 637
+        },
+        {
+          "path": "COURT_LEDGER.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f5d0854d3e36fc4a09787cf23f1fbd972a3686cd",
+          "size": 4009
+        },
+        {
+          "path": "META_PROMPT_GITHUB_GOBLIN_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d5d9c22d5f6e87634477577288ae001df32187ef",
+          "size": 2054
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3df17e26d460782dd873ceadadf5f6a96b06db8c",
+          "size": 3935
+        },
+        {
+          "path": "SHA256_MANIFEST.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7c5a44e060a328b908a99fe5b2cba753dd572277",
+          "size": 2828
+        },
+        {
+          "path": "WHITEPAPER.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9ef0a8919d28e6135bb475ccd208c7eb063411b1",
+          "size": 2117
+        },
+        {
+          "path": "_tasks",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9ee667a2f93e01e4d9772785f0bed32cb46fad91",
+          "size": null
+        },
+        {
+          "path": "_tasks/task.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c9293baa702d45db889df270f325e49cc002401b",
+          "size": 150
+        },
+        {
+          "path": "_truth",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8cb15e63ae1cf9ea7a967710437de4213a9ac99c",
+          "size": null
+        },
+        {
+          "path": "_truth/state.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1efea4b2438f543693b52e92b8f2b266cc84bd55",
+          "size": 104
+        },
+        {
+          "path": "adapter_v0_1_witness.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7bcae5ab6a06c69cb0f5326e26774056cae64130",
+          "size": 1246
+        },
+        {
+          "path": "agentic-tournament",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f614e3690ae45bfcf67f874ff017c0acc2ab5c06",
+          "size": null
+        },
+        {
+          "path": "agentic-tournament/cycle-001",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "1daee564e8e3654e7731c436a4a0f9a9fadb3c17",
+          "size": null
+        },
+        {
+          "path": "agentic-tournament/cycle-001/CYCLE_001_RECEIPT_ENVELOPE.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6875d2947218c004e135209eff45dd7e2f65291d",
+          "size": 2514
+        },
+        {
+          "path": "agentic-tournament/cycle-001/CYCLE_001_SEALED_RECEIPT.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b18ad33a00ed632d14829ed1e2125b470164a1f5",
+          "size": 2001
+        },
+        {
+          "path": "agentic-tournament/cycle-001/CYCLE_001_SEAL_FIELDS_SPEC.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3526ab5e3dac4a34650c84c1777efc71d29ac7d4",
+          "size": 3229
+        },
+        {
+          "path": "agentic-tournament/cycle-001/SEAL_VERIFICATION_CYCLE_001.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6abaac124c993a745792355a701682691a7d19dd",
+          "size": 1757
+        },
+        {
+          "path": "agentic-tournament/cycle-001/cycle_001_receipt.ingested.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3fc665f51ef164b5b3eaa2e646393469d4905b3a",
+          "size": 3088
+        },
+        {
+          "path": "agentic-tournament/cycle-002",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "76c130967673b490c8b3f4c3a8fd8d9734449f25",
+          "size": null
+        },
+        {
+          "path": "agentic-tournament/cycle-002/CYCLE_002_FIRST_PACKET_INTAKE.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "94867f552350946ed97366a164144c4de08ca43f",
+          "size": 2161
+        },
+        {
+          "path": "agentic-tournament/cycle-002/CYCLE_002_INITIALIZATION.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f85c79d876b96c9ae6f437892dbf19acc6b4ca2a",
+          "size": 1475
+        },
+        {
+          "path": "agentic-tournament/cycle-002/CYCLE_002_TELEMETRY_WATCH_STATUS.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "510f77701eb49be2d940bc6a71c784a19e5709fe",
+          "size": 1292
+        },
+        {
+          "path": "agentic-tournament/v0.1",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "940b86321ec60f1da1e48e52536d69da9dfebc8d",
+          "size": null
+        },
+        {
+          "path": "agentic-tournament/v0.1/AGENTIC_TOURNAMENT_RECEIPT_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "baf1b64af9df3b1c42182e97b62f55d8b7287d22",
+          "size": 2723
+        },
+        {
+          "path": "agentic-tournament/v0.1/agentic_tournament_receipt.schema.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "84320a71b611aed3d19e2c3455c10ddc5cdadf89",
+          "size": 3850
+        },
+        {
+          "path": "agentic-tournament/v0.1/cycle_001_receipt.template.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "25458f24467c51a4e497c2027284aecdb17ec9e9",
+          "size": 2257
+        },
+        {
+          "path": "agentic-tournament/v0.2",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8308bb15b7c3d281cffcc23d7c91c02582110276",
+          "size": null
+        },
+        {
+          "path": "agentic-tournament/v0.2/PROVISIONAL_CANDIDATE_V0_2_WINDOW_SCORING.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0a6bed76bde0d2de8238e2b6e10224ea192faaef",
+          "size": 2390
+        },
+        {
+          "path": "agentic-tournament/v0.2/PROVISIONAL_DELTA_V0_2_ADVANTAGE_WINDOW.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ee4ef9d1e27156faeaf99c1fbfc8b66ec99d3318",
+          "size": 2505
+        },
+        {
+          "path": "agentic-tournament/v0.2/PROVISIONAL_DELTA_V0_2_ANTI_RECURSION_GUARD.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "29d06f1bb1b63b91a34a5f7995b7947581734059",
+          "size": 2895
+        },
+        {
+          "path": "agentic-tournament/v0.2/PROVISIONAL_DELTA_V0_2_SYNCHRONIZATION_DRIFT_GUARD.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f07930256c543b3b5e19b17e9bf77f7e46625c7c",
+          "size": 2918
+        },
+        {
+          "path": "agentic-tournament/v0.2/V0_2_REFINEMENT_REVIEW_ADVANTAGE_WINDOW.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c54b448c5c3fc5b8951162ac23bed01e688e4e28",
+          "size": 1890
+        },
+        {
+          "path": "analysis",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "98c7459b4649e114add28d82266012a52f2cd7d7",
+          "size": null
+        },
+        {
+          "path": "analysis/campaign_map.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6f0ec74a43627349ab892b497bbadbd684234c20",
+          "size": 2660
+        },
+        {
+          "path": "analysis/detect_patterns.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e87376f62ca7a6c0159f7c139980531e0329811c",
+          "size": 5135
+        },
+        {
+          "path": "analysis/feedback_schema.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fa68bbf39f05f139f698bce8783dd10769d8c48c",
+          "size": 2093
+        },
+        {
+          "path": "analysis/ingest.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b26ecbbf521d6fc6fcdbc9f4c4a722c467cc1950",
+          "size": 5075
+        },
+        {
+          "path": "analysis/input.example.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "efcffcd0d00416b97a1e11a7a9462f674e729080",
+          "size": 2862
+        },
+        {
+          "path": "analysis/pipeline.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6a6d0cd8663ce7f3a1a1fa27428a9cad4ad67988",
+          "size": 2800
+        },
+        {
+          "path": "analysis/query.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "65bcad11dfa45918daa886140eb7274cced1c0b0",
+          "size": 1296
+        },
+        {
+          "path": "analysis/rank_report.py",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "fa0ef3df5a112d428a74fd1820788cb27a660098",
+          "size": 7021
+        },
+        {
+          "path": "analysis/taxonomy.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6ee82f474d2a161e235a33f38bbf9d2d8748c436",
+          "size": 1201
+        },
+        {
+          "path": "anchors",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "19b6d44e89cb12a45f3c398aa33595525601ae88",
+          "size": null
+        },
+        {
+          "path": "anchors/README_ANCHORS.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4e07d9026db2fb282b21892179ee0ad0eb7933a0",
+          "size": 1298
+        },
+        {
+          "path": "anchors/anchor_manifest.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "023f9e27c93b3647b735b7c7998b197769fcb007",
+          "size": 621
+        },
+        {
+          "path": "anchors/anchors.jsonl",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "feb91e5685afb0f53e176fb01c5ba80dbbf830d8",
+          "size": 589
+        },
+        {
+          "path": "app",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "489394a59e586da487481fec43aeca25e0ed6c83",
+          "size": null
+        },
+        {
+          "path": "app/api",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "bfbf4739e9e85dd2c4f525feecb537ce35d654a9",
+          "size": null
+        },
+        {
+          "path": "app/api/verify",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "4ed52b289d8da8794e06e35ae055b5899535a86b",
+          "size": null
+        },
+        {
+          "path": "app/api/verify/brief_v1",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "aa7dfce0e728ad4a240a53593b4182064bae720a",
+          "size": null
+        },
+        {
+          "path": "app/api/verify/brief_v1/route.ts",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "220558f36b741cb3872d8dd84c101ddb77fadf3f",
+          "size": 676
+        },
+        {
+          "path": "app/layout.tsx",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9bc830599e4784b2def5712cdceb77fda6704e51",
+          "size": 380
+        },
+        {
+          "path": "app/verify",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "49cdd30c15058f4522540330ceeb66d860966ace",
+          "size": null
+        },
+        {
+          "path": "app/verify/brief_v1",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "2d494a3cd1a152e04ece6c371f95fe33d1225e2e",
+          "size": null
+        },
+        {
+          "path": "app/verify/brief_v1/page.tsx",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "90bbcdbf0e3b031245a1524ab5a4805b20964992",
+          "size": 1100
+        },
+        {
+          "path": "attestations",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "6f6ab868e4b74fd80b23aeeca4ad786e57262a22",
+          "size": null
+        },
+        {
+          "path": "attestations/anchors.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "attestations/phase3-release.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1b105d0ae1ef804a2c4d013eedef7758367fc086",
+          "size": 264
+        },
+        {
+          "path": "autonomous-verification.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2012305596d53a106599fba57f6c4f02b398b7b3",
+          "size": 2573
+        },
+        {
+          "path": "batch.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "91194193395e50e35f642076fefde00298ebc328",
+          "size": 684
+        },
+        {
+          "path": "batch_emit.sh",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "fb4dfae2fd16e5701f70aac7f9a80e9d9f79e8b7",
+          "size": 914
+        },
+        {
+          "path": "build.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2bfd9337c50e85c2fd42f5912ef6bd84bd92d268",
+          "size": 247
+        },
+        {
+          "path": "cache",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "2388cd618ce1c0d6c91553062b23245060e470bd",
+          "size": null
+        },
+        {
+          "path": "cache/solidity-files-cache.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "749f5695089c8bb6d39a9cc2a0c726f86f76e4e8",
+          "size": 1147
+        },
+        {
+          "path": "checkpoint",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "2e4ea4cb5487829d8e9d9e0103eee7d96bbe9164",
+          "size": null
+        },
+        {
+          "path": "checkpoint/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "224f91759900e1b83ecfc29befda051a14b76e51",
+          "size": 558
+        },
+        {
+          "path": "checkpoint/payload.example.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "15a7431647cf01fef093ce533fd91e8aa29c9e60",
+          "size": 714
+        },
+        {
+          "path": "checkpoint/payload.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "efa3fcd11654743698acc6dcf6f88027203155a2",
+          "size": 973
+        },
+        {
+          "path": "components",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "fa68ee11682a4c9dc7910813e2011d6e01f756d7",
+          "size": null
+        },
+        {
+          "path": "components/AnchorTable.tsx",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cf9d1c46002986cb58881d54a24cc2bdae43ce72",
+          "size": 862
+        },
+        {
+          "path": "components/JsonViewer.tsx",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b0b90da06aaebe51b22499fb09dd1aa71b8feed4",
+          "size": 314
+        },
+        {
+          "path": "components/StatusBadge.tsx",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "40c68cb9a3811f8164aad0a0b728ccdd6e613802",
+          "size": 688
+        },
+        {
+          "path": "constitution",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "e601652f5a102675050ad34c2f147ef20826ef13",
+          "size": null
+        },
+        {
+          "path": "constitution/FINALITY_PROTOCOL_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "79f8af7f10c2fcf3ff637a2acf35bfaaf0703d8c",
+          "size": 6152
+        },
+        {
+          "path": "contracts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f17cf7bf2d554d2758af7d77a93131cc1df01f3b",
+          "size": null
+        },
+        {
+          "path": "contracts/SovereignBatch.sol",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c742dfb7db26763fcf42dd4a49e2973be2bacff9",
+          "size": 551
+        },
+        {
+          "path": "court.backup.jsonl",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fa2c34417abec267fc757e9cc97a63c23dae38ef",
+          "size": 3943
+        },
+        {
+          "path": "court.jsonl",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fa2c34417abec267fc757e9cc97a63c23dae38ef",
+          "size": 3943
+        },
+        {
+          "path": "court_v2.jsonl",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5e5445fa8bd59480d7dbb6c30c21f20379519448",
+          "size": 5525
+        },
+        {
+          "path": "decode_logs.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "914536d37e902bf8c895e46bf62f7dc7c0a2691a",
+          "size": 1227
+        },
+        {
+          "path": "decode_logs_v2.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "docs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "cf92f126b572b2e0b2f9eb41ed409b93b29ae3cf",
+          "size": null
+        },
+        {
+          "path": "docs/ALMS_RECEIPT_SIGNING_CLI_SPEC_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "28f73f571367a90904357ffe33373b5a6d6d56e3",
+          "size": 304
+        },
+        {
+          "path": "docs/ALMS_TRANSPARENCY_LOG_SPEC_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2c4962e2885172b63ae7c1a7143ed4353dfd9b91",
+          "size": 686
+        },
+        {
+          "path": "docs/ANCHOR_001_COMPATIBILITY.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ff7ed18ee46f38633eca8329e1b2be9f67955277",
+          "size": 2017
+        },
+        {
+          "path": "docs/BADGER_CAMP_HQ.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "99a47f592d4a062b19cc08a743964d4929abcdf3",
+          "size": 9298
+        },
+        {
+          "path": "docs/ERC1155_PAYMENT_ADAPTER_DISPATCH_INTEGRATION_PLAN_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bfe7e14d5fa64caa9f1e827b0fbfa96d7679aaf1",
+          "size": 5240
+        },
+        {
+          "path": "docs/ERC1155_PAYMENT_ADAPTER_EXECUTION_CHECKLIST_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "80ff56b900c25d3aa25b84923efb12b03218a2a0",
+          "size": 5314
+        },
+        {
+          "path": "docs/ERC1155_PAYMENT_ADAPTER_IMPLEMENTATION_MANIFEST_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "30b9a48db2617c419225d7d1f3d2c83dbf4b44d7",
+          "size": 5707
+        },
+        {
+          "path": "docs/ERC1155_PAYMENT_ADAPTER_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0727b2900a7edb49d932cfe8bf05b9906933ba2c",
+          "size": 4859
+        },
+        {
+          "path": "docs/ERC20_PAYMENT_PROFILE_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9988dbfa0916d8fa46f35558c88fce77c03d57a9",
+          "size": 1234
+        },
+        {
+          "path": "docs/GITHUB_GOBLIN_ROLE_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5f2a53b8a46c67136f9695e117c5ff0473be3628",
+          "size": 505
+        },
+        {
+          "path": "docs/RECEIPT_RENDER_SPEC_V1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "42101177bb0fafdbec4412aea66624f4e8495d95",
+          "size": 2610
+        },
+        {
+          "path": "docs/TRUST_MEMBRANE_VALIDATOR_CONFORMANCE_V1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7a32d41bd0e8617504eb31a7cb43043848a4b55e",
+          "size": 4506
+        },
+        {
+          "path": "docs/case_study_001_three_verifier_request.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5df02339efbb0f73f97d4ae9a0ff8d0d6ad097e9",
+          "size": 2319
+        },
+        {
+          "path": "docs/reference_replayer_spec_v1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e36f7cadfa9f66acf03572ad2a2f82ea3ed2b7ee",
+          "size": 469
+        },
+        {
+          "path": "emit.sh",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "18a132d000ac0655f761e85c8b7ac3969aa6aab8",
+          "size": 393
+        },
+        {
+          "path": "examples",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "2ad80016dd588aebb0df19e51dea11acd5e55df6",
+          "size": null
+        },
+        {
+          "path": "examples/open_source_release_receipt_001.receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ca152fad3e1fd748b4a84791b8a480aa79364f57",
+          "size": 1341
+        },
+        {
+          "path": "fixtures",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f466364d5a0444745c3bf94139ac9f333df3f77e",
+          "size": null
+        },
+        {
+          "path": "fixtures/hello_world",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "ae25de40b07c4c9b137774d0d762acd0c951801a",
+          "size": null
+        },
+        {
+          "path": "fixtures/hello_world/conformance_package.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bb09b46d72043b2b1681f194a9e2a77bd5d40b28",
+          "size": 1470
+        },
+        {
+          "path": "fixtures/hello_world/expected.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "df731711376ea966041b9293b038edf1e3399bbc",
+          "size": 189
+        },
+        {
+          "path": "fixtures/logs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "13e216c0351fb8564dec533fbf8e527f8c82f39d",
+          "size": null
+        },
+        {
+          "path": "fixtures/logs/adapter_v0_1_witness.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7bcae5ab6a06c69cb0f5326e26774056cae64130",
+          "size": 1246
+        },
+        {
+          "path": "fixtures/payments",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "be5be1e2667893ac65b294caf703a42457b14863",
+          "size": null
+        },
+        {
+          "path": "fixtures/payments/erc1155_payment.batch_disallowed.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d249a6e5f97273f21fb6751627ef09b19257b158",
+          "size": 631
+        },
+        {
+          "path": "fixtures/payments/erc1155_payment.invalid_token_id.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bc1fff43af2016078ddf0fd928441a77a29ded3d",
+          "size": 636
+        },
+        {
+          "path": "fixtures/payments/erc1155_payment.reference_mismatch.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cfbdd2d5cc5412e9d2e4955a89db0bd2fbcaf24b",
+          "size": 634
+        },
+        {
+          "path": "fixtures/payments/erc1155_payment.valid.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "63cb3267bb72cd4dec40c117c18476852ce7893a",
+          "size": 634
+        },
+        {
+          "path": "fixtures/payments/erc1155_payment.valid_batch.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4765cac69f905aee0ab525202720c72e0d58f2db",
+          "size": 631
+        },
+        {
+          "path": "fixtures/payments/erc1155_profile.batch_allowed.v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5f398e9ef59acb09d01225e6edf9481c7346596f",
+          "size": 334
+        },
+        {
+          "path": "fixtures/payments/erc1155_profile.v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "18b4b09ff079fff4f3a8a73a25d57252db19a9ae",
+          "size": 335
+        },
+        {
+          "path": "fixtures/payments/erc20_payment.valid.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "456d7e381003932e67cc67a8d24a9d25b3500c9f",
+          "size": 618
+        },
+        {
+          "path": "fixtures/payments/erc20_profile.v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e167eaf5ba61215d82c2acd2d34793a6c559d056",
+          "size": 303
+        },
+        {
+          "path": "fixtures/receipts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "adc6895c6b31ee11eaece3276b7bc18fa4609a8b",
+          "size": null
+        },
+        {
+          "path": "fixtures/receipts/valid_signed.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ed8ebc0e2f764d7846c1fa1fe908ed5f478cf727",
+          "size": 556
+        },
+        {
+          "path": "fixtures/receipts/valid_unsigned.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c580bc81b4016f666b5612dbc1016b9cfd134561",
+          "size": 230
+        },
+        {
+          "path": "fixtures/render",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "964b4f06ef88eb48d04772f2cc690ab5651b32ab",
+          "size": null
+        },
+        {
+          "path": "fixtures/render/discriminated_union.witness.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "92c6e8137262762bf6bc4063146e82a461c1ac6f",
+          "size": 616
+        },
+        {
+          "path": "fixtures/render/erc1155_batch.witness.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b6236715dec206130e91e2f5ab6ec738d376af6e",
+          "size": 702
+        },
+        {
+          "path": "fixtures/render/erc20_basic.witness.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1c7ae558fa7515aabe41310bd45dc5a89847f333",
+          "size": 656
+        },
+        {
+          "path": "fixtures/render/token_id_collapse.witness.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "02bc07159d60265d24f7241c5b8cf6c79b066210",
+          "size": 624
+        },
+        {
+          "path": "fixtures/render/verify_fail.witness.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "25b411c0fd45f17cd0dcfcf0e90dd2985a0b8090",
+          "size": 526
+        },
+        {
+          "path": "genesis_state.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b386a9b4029a45bb74ba4c849dad402af0ff36fc",
+          "size": 4235
+        },
+        {
+          "path": "index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "353d2a7bf022285ee9730318cb36496862748109",
+          "size": 190
+        },
+        {
+          "path": "jay-agent",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "79b84f89416a9cb2c4f074ad52b232a3d9dabc75",
+          "size": null
+        },
+        {
+          "path": "jay-agent/.foundry_version",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b32f6644c565e1072222217d52190b568858477f",
+          "size": 24
+        },
+        {
+          "path": "jay-agent/.gitignore",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "515cdfd85cfa232611be9044176dbaacc5f23314",
+          "size": 765
+        },
+        {
+          "path": "jay-agent/.gitkeep",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "jay-agent/README.verify.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f6aa7847dc013bc62dd123943551171dd63712f5",
+          "size": 3889
+        },
+        {
+          "path": "jay-agent/jay.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a248385f1af2c1911a4fd7ba4df3e2dcbb789f16",
+          "size": 18723
+        },
+        {
+          "path": "jay-agent/src",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "167df794ce7caaed932ae876fe76789aeb0270ef",
+          "size": null
+        },
+        {
+          "path": "jay-agent/src/Anchor.sol",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8b6f9769d6435f07e2ad4b5626624e1a3729211b",
+          "size": 601
+        },
+        {
+          "path": "jay-agent/testdata",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "ae3d47624472c6e2a3e7eafd6267fb2f3aa9b77f",
+          "size": null
+        },
+        {
+          "path": "jay-agent/testdata/golden_expected.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b02f7a13edbbf77f366568f83c63a631a9eba5fe",
+          "size": 556
+        },
+        {
+          "path": "jay-agent/testdata/golden_receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fa636eab6d2978163b1b5ab3d30246dfb5a427c6",
+          "size": 491
+        },
+        {
+          "path": "lib",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "83f09aa80056c1b7a6c51498af8d3680791d5aa0",
+          "size": null
+        },
+        {
+          "path": "lib/base.ts",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7f1dd184cc1ea5d30f6e1121579940b6a6032e03",
+          "size": 1540
+        },
+        {
+          "path": "lib/ens.ts",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "96f58ddcd9a0f7e2afa8d4b9f89e822861d795c2",
+          "size": 2637
+        },
+        {
+          "path": "lib/ipfs.ts",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "596bbec58d8f5e4e05cf3c3aa6ec21e85151cb2a",
+          "size": 2201
+        },
+        {
+          "path": "lib/triangulate.ts",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5c38bed40be380a96edd290123a5eead97a6d252",
+          "size": 2342
+        },
+        {
+          "path": "next-env.d.ts",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "28e5a01437fc9ceb24196112784789e4aa837bac",
+          "size": 125
+        },
+        {
+          "path": "next.config.js",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d30898768aef8d5679b8e04cc9702e5b9c31d25c",
+          "size": 118
+        },
+        {
+          "path": "orphan_echoes.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e1730ea90b6aa8e1b81bd5a5075e293843965a85",
+          "size": 775
+        },
+        {
+          "path": "out",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "aa17c4a8fd1b84db35ecd287854bd59f56afaea5",
+          "size": null
+        },
+        {
+          "path": "out/Genesis.sol",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d720d4d3c125e7289279fc42982802a718d98375",
+          "size": null
+        },
+        {
+          "path": "out/Genesis.sol/Genesis.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8c1ee44e3da7f8249e3c5978983b980184c26534",
+          "size": 9587
+        },
+        {
+          "path": "out/build-info",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "92721f3bb2b624686442e52a9f7e0e57d278748e",
+          "size": null
+        },
+        {
+          "path": "out/build-info/f763b0afb5f161e5.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8307573b967ddc7b6f780bc66f9d9a71ba8be965",
+          "size": 91
+        },
+        {
+          "path": "package.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "83d59284eb60bb79d6c82ad4f99bcb1837d48a95",
+          "size": 498
+        },
+        {
+          "path": "prototype",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "215fd580f4c4ae2cf27b03d1021db28e2535e76d",
+          "size": null
+        },
+        {
+          "path": "prototype/verify_swarm.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "91ea32743f6c444e1d01ab02a88f59b83b62a8b1",
+          "size": 7749
+        },
+        {
+          "path": "raw_logs.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2d7ecaea95f6299294734c3c0a1ed1799182620f",
+          "size": 12244
+        },
+        {
+          "path": "receipts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "83da7b69622ea4ea25d5a0e8388676bdf3da2247",
+          "size": null
+        },
+        {
+          "path": "receipts/003_genesis_seal.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8f60fa1b04bc4381146c729844764eac4fe79ac0",
+          "size": 802
+        },
+        {
+          "path": "receipts/004_next_event.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ea5126487704ddd071b1c4b6338ae2053c8eeb1f",
+          "size": 205
+        },
+        {
+          "path": "receipts/006_principal_reassertion.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c565427b05da58694ec9cd35f9e9c154fb79755b",
+          "size": 741
+        },
+        {
+          "path": "receipts/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d6dbde299ca12a802fedbdc0adce707aae888092",
+          "size": 85
+        },
+        {
+          "path": "receipts/SLAM_DUNK_RECEIPT_SCHEMA_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1e9070250757f5e79694dc3a6568d11a39c82eea",
+          "size": 1445
+        },
+        {
+          "path": "receipts_engine_v1.tar.gz",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0b583dd274f1840efbc6c8cbcdd26df0326314f8",
+          "size": 1778
+        },
+        {
+          "path": "receipts_engine_v1.tar.gz.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8aaa27546995174721cc723ee911fa2111c246fd",
+          "size": 92
+        },
+        {
+          "path": "render_ledger.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c6c39ff8f61c79eb8e7b3b6666ab654a90e73dd2",
+          "size": 955
+        },
+        {
+          "path": "replay",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "6de5338c6031fe0b5bbda4b175763c2f9d4e39e0",
+          "size": null
+        },
+        {
+          "path": "replay/Dockerfile",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0f0995e9f2014b3efdc77b3971e7fcd1887ba320",
+          "size": 452
+        },
+        {
+          "path": "replay/replay_manifest.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "55c4afb60cd9d1610c548968eeec13307561268c",
+          "size": 1037
+        },
+        {
+          "path": "replay/replay_manifest.schema.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7e8f706d3cbb589308b99b9ce32a10198bd39f94",
+          "size": 1905
+        },
+        {
+          "path": "replay/verify_replay.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4af2a244e92de28aab81b288e3043f6ae340ee18",
+          "size": 2324
+        },
+        {
+          "path": "reports",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "50f3380c3af97050fd55663a13fd046c83c1c798",
+          "size": null
+        },
+        {
+          "path": "reports/case_study_001",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "a494d026516a378afe97c1f599c390ac99b4a4d1",
+          "size": null
+        },
+        {
+          "path": "reports/case_study_001/.gitkeep",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "reports/case_study_001/verifier_report_example.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dadf0094de916b333cfb9d0b8160e08b16cc7944",
+          "size": 935
+        },
+        {
+          "path": "reports/divergence",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f0ce9eec9bb00269a13d179ef30e004c3ff9ff9a",
+          "size": null
+        },
+        {
+          "path": "reports/divergence/hello_world_divergence_d005.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a68a226b6d1fe3f0255a0770561cfabf6463361b",
+          "size": 682
+        },
+        {
+          "path": "schema",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "1694453ba9e60b1779e54a469229d0f2e1412c90",
+          "size": null
+        },
+        {
+          "path": "schema/kill-chain-receipt-v022.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1b81c01ac9d425be1910c18f2b78c67f3a73ce19",
+          "size": 8050
+        },
+        {
+          "path": "schemas",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "a9521e7106f4bfc696800de80f0dcbeff728233e",
+          "size": null
+        },
+        {
+          "path": "schemas/artifact.schema.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c96dd0e7cdc2223b2e41b93976ef12a06cbc0de9",
+          "size": 307
+        },
+        {
+          "path": "scripts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "ea10e0b11ef2039152d4a4f81edc4b5edd8591c9",
+          "size": null
+        },
+        {
+          "path": "scripts/backfill_pattern_severities.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1f585edca454581e8f55fd6b871095dc1a100c32",
+          "size": 2158
+        },
+        {
+          "path": "scripts/build-apple-receipt.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0cd760b5fb5f9529d2d087261f52acafd47b44d6",
+          "size": 2742
+        },
+        {
+          "path": "scripts/diff-apple-leaf.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8e249a44e4121723c578651faccfd082564d63a3",
+          "size": 2292
+        },
+        {
+          "path": "scripts/pin-receipt-to-pinata.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4a57a62fdb5580427c58a2aad6c823b3668654af",
+          "size": 848
+        },
+        {
+          "path": "scripts/promote_candidates.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a790b530f9c4330c9534543e8ebe77b7cfc1a532",
+          "size": 3747
+        },
+        {
+          "path": "scripts/sign_lineage.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d3252829ffeca40ecf1eb69d29e169bf67b44481",
+          "size": 4148
+        },
+        {
+          "path": "scripts/trust-membrane-validator-node.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "67d6a917254d0f1349d77bf89d0fe16ba96e49b5",
+          "size": 2772
+        },
+        {
+          "path": "scripts/trust_membrane_validator.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "72e6baf062c335e61d70d6a86e4b36ff607e2745",
+          "size": 3207
+        },
+        {
+          "path": "scripts/update-ens-records.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e312bf6ce4c545344080b2322a3d2f1dcc8f59b4",
+          "size": 4658
+        },
+        {
+          "path": "scripts/verify_consensus.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "951c751022c351684da65a7325d087474971250c",
+          "size": 6506
+        },
+        {
+          "path": "scripts/verify_strict_mode.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "20af1d06767ff7e9ae52c9377e668f24263d05d0",
+          "size": 1827
+        },
+        {
+          "path": "signal-core",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8c3fe4b9163ef420abc99e2ba6c82e2d6bae1635",
+          "size": null
+        },
+        {
+          "path": "signal-core/README_SIGNAL_CORE_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9945629f64b0102497b2f992814b4bb6d059cc03",
+          "size": 2247
+        },
+        {
+          "path": "signal-core/canonicalizer",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "5bdbf99b50527f097bb57e0256f69b916cfdc122",
+          "size": null
+        },
+        {
+          "path": "signal-core/canonicalizer/canonicalize_claim_graph.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "13991a1bfa430173f3ffe46391b005e85c9403a1",
+          "size": 4038
+        },
+        {
+          "path": "signal-core/canonicalizer/null_normalization_note.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "981378c1c80b589340eaf22affae4f4e89814adb",
+          "size": 596
+        },
+        {
+          "path": "signal-core/cli",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "ba97f6163c22297b39bfacb963b6e148e028e0ff",
+          "size": null
+        },
+        {
+          "path": "signal-core/cli/receipts.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "16bb652850f91d1671d419d86d71b01824339fb0",
+          "size": 2714
+        },
+        {
+          "path": "signal-core/examples",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "31d7fa4287b2623729e1cfe3fb18ce06b4b57f24",
+          "size": null
+        },
+        {
+          "path": "signal-core/examples/canonical_claim_graph_v0.1.example.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e5afc4eae345c90704331a02abf15a7cd7003fef",
+          "size": 848
+        },
+        {
+          "path": "signal-core/examples/raw_claim_graph_v0.1.example.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f61229f169def573251a1a07ed70f7ff9acd08b1",
+          "size": 810
+        },
+        {
+          "path": "signal-core/examples/verification-receipt-v0.1.example.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "16d5c8563f51d697e20965a01372b5bba325b70c",
+          "size": 2006
+        },
+        {
+          "path": "signal-core/schema",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "cd34c695b10f37c923f8fde82f7e22f15d4bad64",
+          "size": null
+        },
+        {
+          "path": "signal-core/schema/verification-receipt-v0.1.schema.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9240a1a2ab39d9f8c6098d2b6b8eca3fe091b1cb",
+          "size": 4776
+        },
+        {
+          "path": "signal-core/sealer",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "27470854c4ea3923f60c44604d8c0235f3a90dbd",
+          "size": null
+        },
+        {
+          "path": "signal-core/sealer/seal_receipt_v0_1.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3a4fdaa77395533d942f9179d0d68b4b7bb87d95",
+          "size": 4406
+        },
+        {
+          "path": "signal-core/tests",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "46bee26e0f656938d08d8c9d98a7053106dc1518",
+          "size": null
+        },
+        {
+          "path": "signal-core/tests/manifest.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2c6aaf0c5ad3ce2fc07d7b321032a06225c4a47a",
+          "size": 2019
+        },
+        {
+          "path": "signal-core/tests/mutation_runner.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9c28c7156f614bb93a3006c05aee6feb40bef170",
+          "size": 5723
+        },
+        {
+          "path": "signal-core/tests/run_gauntlet.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ecac51d46246b00f50494b478b0d8fa802fd8b60",
+          "size": 3754
+        },
+        {
+          "path": "signal-core/tests/run_pipeline_integration.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9f6f8ac1074d7d46529d41d5c918d90eff95706f",
+          "size": 1804
+        },
+        {
+          "path": "signal-core/tests/test_receipt_pipeline.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a51f0f8eb64d032e776c6b62bc58cd5ad83b0fba",
+          "size": 2249
+        },
+        {
+          "path": "signal-core/tests/vectors",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "b57cf6bc1b327e1d8824fdaf658075b592220a2a",
+          "size": null
+        },
+        {
+          "path": "signal-core/tests/vectors/tc-01_commutative_order.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5cb0760100b307ce293b5b4593e07c8d8ee983e5",
+          "size": 2336
+        },
+        {
+          "path": "signal-core/tests/vectors/tc-02_provenance_permute.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cfea9408a494d839cc843546cf1a319c123235e9",
+          "size": 2336
+        },
+        {
+          "path": "signal-core/tests/vectors/tc-03_authority_violation.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d727bae8e57405f128a251143aa64c36aefd130f",
+          "size": 423
+        },
+        {
+          "path": "signal-core/tests/vectors/tc-04_claim_mutation.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a2ca662e19f8aa780d89848106b87d8bab495ea2",
+          "size": 2338
+        },
+        {
+          "path": "signal-core/tests/vectors/tc-05_null_normalization.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a972dd9c37aefbb1558b1b3b972078e2ab96f99b",
+          "size": 2462
+        },
+        {
+          "path": "signal-core/tests/vectors/tc-06_nested_pointers.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "de811c03fd43b612796a0e3ef40082e6dde05212",
+          "size": 2336
+        },
+        {
+          "path": "signal-core/tests/vectors/tc-07_cycle_violation.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f1587e79cb8db99231eb98afd57b7e885f16ad73",
+          "size": 1647
+        },
+        {
+          "path": "signal-core/validator",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "6197b6ccf3127e7269d982df631a872c9bf40e35",
+          "size": null
+        },
+        {
+          "path": "signal-core/validator/validate_receipt_v0_1.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e5044419a8dd29862b8c4950bf828c46ba6abcf2",
+          "size": 2977
+        },
+        {
+          "path": "signal-core/validator/validator_strict_v0_1.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1d357ad3035f8bb23e8280cc62bfddd51909c53d",
+          "size": 5899
+        },
+        {
+          "path": "simulate_swarm.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f7c1ae18098bd7cb75b6ce34e1fd7d2d2da73087",
+          "size": 979
+        },
+        {
+          "path": "site",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "b10665bdce8ba3235e181256eb01fa0f14ab89d8",
+          "size": null
+        },
+        {
+          "path": "site/app.js",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4506273feafd88b1199fd54f892b489f06d612a5",
+          "size": 4721
+        },
+        {
+          "path": "site/batches.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cc1178b7d8cd6bc2dcd35ae064e563883c582592",
+          "size": 242
+        },
+        {
+          "path": "site/config.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b8d7bbacc2bfb80e27b7635debda93f43487b3b4",
+          "size": 314
+        },
+        {
+          "path": "site/index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cc8a05df67380bbac11cc7c2a4ff631299cddb25",
+          "size": 3918
+        },
+        {
+          "path": "specs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "4eef498e6d058ac495216d99260125ee865692d4",
+          "size": null
+        },
+        {
+          "path": "specs/conformance_suite_v1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b5b3c6ab34d8a519735344d426225cb0385c4463",
+          "size": 2214
+        },
+        {
+          "path": "specs/divergence_proof_v1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bc8f2aae0ed0b0cd3be55c503e40069342c0025c",
+          "size": 81
+        },
+        {
+          "path": "specs/trust_membrane_validator_vectors_v1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "aebb1b530f26d44511bfda2d96abb90257b07fbb",
+          "size": 5960
+        },
+        {
+          "path": "specs/witness_certificate_v1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1e4eb3f72c2405971ad75d1ca20f46438db4883c",
+          "size": 1661
+        },
+        {
+          "path": "src",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f2b9c399b47ce4373093dd3145e9bb1236df0951",
+          "size": null
+        },
+        {
+          "path": "src/Genesis.sol",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d6964131c1266b0cef5277e23cc8eddcefd35428",
+          "size": 449
+        },
+        {
+          "path": "tests",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "5a6d42e83823773c559192ef8abedfc34604f78d",
+          "size": null
+        },
+        {
+          "path": "tests/adversarial_spoof_test.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1cfdf28f3b823a24df909340029d4c76a586f6fc",
+          "size": 3155
+        },
+        {
+          "path": "tests/swarm_failure_test.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "57a2e4bb950958b0bef1a674124d3fdc11b014f7",
+          "size": 4229
+        },
+        {
+          "path": "tools",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "79bf0b3f8c483b451579e4aff3e04ee7da4f9c88",
+          "size": null
+        },
+        {
+          "path": "tools/alms.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "07838e1055d243ef826c874824526c32db88986e",
+          "size": 17425
+        },
+        {
+          "path": "tools/replay_goblin.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b1f8314d3d9556620e2dbb50aeb11d624d52bae6",
+          "size": 3764
+        },
+        {
+          "path": "tsconfig.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e0d07bdadd2c60c11b4a16fcd016ca720ceae8bf",
+          "size": 593
+        },
+        {
+          "path": "verifier_index.tsv",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "49e30a9a6b83127f6736839af8d0da80db701871",
+          "size": 1813
+        },
+        {
+          "path": "verifier_report.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a510bfe8f43063919c32c595d6b0a27ccf7f4092",
+          "size": 3600
+        },
+        {
+          "path": "verifier_report_v2.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "454e8250d2cc38894cc317bcbed8c1ac1cb7f13c",
+          "size": 3704
+        },
+        {
+          "path": "verifier_summary.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "537e1534d83cb2760d14bef46f07abdb168e665f",
+          "size": 1882
+        },
+        {
+          "path": "verify-anchors.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b5230ba5caf62550f00ce3613c2f55eadc842092",
+          "size": 1590
+        },
+        {
+          "path": "verify-phase3.sh",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "687d664896457aa0447e82aab1835b78b8671233",
+          "size": 1434
+        },
+        {
+          "path": "watchers",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "de203934744d362e765f3ba7716ee62e65fd8b14",
+          "size": null
+        },
+        {
+          "path": "watchers/anchor_root.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8143ab7437888f742fb0f8befe9d51947c0ab90e",
+          "size": 1582
+        },
+        {
+          "path": "watchers/apple",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "4457e33019ed36e6cd70669ad17b209a327fc21c",
+          "size": null
+        },
+        {
+          "path": "watchers/apple/watch_hello_april26.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ad74d49270502cd3909f4c3e21811887606f2713",
+          "size": 1797
+        },
+        {
+          "path": "watchers/build_leaf.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "508058ce8862fd797b37818fa15a2fda9ffb664a",
+          "size": 1158
+        },
+        {
+          "path": "watchers/build_tree.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c66111a6f706feab1cef6f27eba32dee404eb56d",
+          "size": 1693
+        },
+        {
+          "path": "watchers/extract_text.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "db79f80853d58fa9a38c5b751056e8c132ed23da",
+          "size": 368
+        },
+        {
+          "path": "watchers/verify_batch.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b3293f545cde7955a4574f03d5179002fe4fb6c6",
+          "size": 2662
+        },
+        {
+          "path": "watchers/verify_leaf.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a9813bb377e0483428b4ea4dbbb313772f6ff428",
+          "size": 1081
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/NASTYNICK",
+      "default_branch": "master",
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "error": "CONFLICT: Error code: CONFLICT; Error: GitHub API error 409: {\"message\":\"Git Repository is empty.\",\"documentation_url\":\"https://docs.github.com/rest/commits/commits#get-a-commit\",\"status\":\"409\"}"
+    }
+  ]
+}

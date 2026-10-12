@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "MASTER_ROOM/PURPOSE_DECLARATION_SCHEMA_V1.json",
+  "title": "Master Room Purpose Declaration V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "repo",
+    "visibility",
+    "default_branch",
+    "purpose",
+    "purpose_status",
+    "purpose_evidence",
+    "lifecycle_state",
+    "relation_to_master_room",
+    "visibility_boundary",
+    "authority_subject",
+    "operator_gate",
+    "audit_state",
+    "effective_at",
+    "receipt"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "PURPOSE_DECLARATION_SCHEMA_V1"
+    },
+    "repo": {
+      "type": "string",
+      "pattern": "^jsonwisdom/[^/]+$"
+    },
+    "visibility": {
+      "enum": [
+        "public",
+        "private"
+      ]
+    },
+    "default_branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose_status": {
+      "enum": [
+        "VERIFIED_FROM_CURRENT_PUBLIC_TEXT",
+        "DECLARED_BY_JASON_OPERATOR",
+        "PURPOSE_UNRESOLVED"
+      ]
+    },
+    "purpose_evidence": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "evidence_class",
+          "locator",
+          "observed_at",
+          "claim"
+        ],
+        "properties": {
+          "evidence_class": {
+            "enum": [
+              "REPO_LOCAL_TEXT",
+              "ACCOUNT_ROOT_TEXT",
+              "REPO_METADATA",
+              "JASON_OPERATOR_DECLARATION"
+            ]
+          },
+          "locator": {
+            "type": "string",
+            "minLength": 1
+          },
+          "observed_at": {
+            "type": "string",
+            "minLength": 1
+          },
+          "claim": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "lifecycle_state": {
+      "enum": [
+        "ACTIVE",
+        "ARCHIVE",
+        "KEEP",
+        "FREEZE",
+        "RETIRE",
+        "HOLD"
+      ]
+    },
+    "relation_to_master_room": {
+      "enum": [
+        "CONTROL_PLANE",
+        "IDENTITY_RAIL",
+        "EVIDENCE_RAIL",
+        "REPLAY_RAIL",
+        "WITNESS_RAIL",
+        "PUBLICATION_RAIL",
+        "INGESTION_RAIL",
+        "SPECIALIST_RAIL",
+        "FAMILY_RAIL",
+        "EXTERNAL_TOOL_RAIL",
+        "UNRESOLVED"
+      ]
+    },
+    "visibility_boundary": {
+      "enum": [
+        "PUBLIC",
+        "PRIVATE",
+        "MIXED",
+        "UNKNOWN"
+      ]
+    },
+    "authority_subject": {
+      "enum": [
+        "AI_AGENT",
+        "MACHINE_ARTIFACT",
+        "REPLAY_VERIFIER",
+        "OPERATOR",
+        "EXTERNAL_LEGAL_AUTHORITY",
+        "NONE",
+        "UNKNOWN"
+      ]
+    },
+    "operator_gate": {
+      "const": "JASON_OPERATOR"
+    },
+    "audit_state": {
+      "enum": [
+        "PURPOSE_SEATED",
+        "HOLD_FOR_PURPOSE",
+        "HOLD_FOR_OPERATOR",
+        "ARCHIVED",
+        "FROZEN",
+        "RETIRED"
+      ]
+    },
+    "effective_at": {
+      "type": "string",
+      "minLength": 1
+    },
+    "receipt": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_type",
+        "source_pointer",
+        "version_pointer"
+      ],
+      "properties": {
+        "source_type": {
+          "enum": [
+            "GITHUB_FILE",
+            "GITHUB_REPO_METADATA",
+            "JASON_OPERATOR"
+          ]
+        },
+        "source_pointer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version_pointer": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    }
+  }
+}

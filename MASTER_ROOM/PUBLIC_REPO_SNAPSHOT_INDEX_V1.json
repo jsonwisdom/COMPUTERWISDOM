@@ -1,0 +1,497 @@
+{
+  "object": "MASTER_ROOM_PUBLIC_REPO_SNAPSHOT_INDEX_V1",
+  "observed_at": "2026-09-23",
+  "public_repo_count": 80,
+  "indexed_repo_count": 80,
+  "snapshot_rule": "BASELINE_ONCE_DELTA_THEREAFTER",
+  "full_rescan_triggers": [
+    "HISTORY_REWRITE",
+    "SNAPSHOT_CORRUPTION",
+    "HIGH_SIGNAL_STRUCTURAL_CHANGE",
+    "PURPOSE_CONFLICT",
+    "UNEXPLAINED_EXTERNAL_POINTER_CHANGE",
+    "JASON_REQUEST"
+  ],
+  "rows": [
+    {
+      "repo": "jsonwisdom/-replayos-receiptos-spec",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/0",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/ABS",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/agentos",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/agents",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/AL",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_AL_ROOT_V1.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/AppleGuice",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/AU",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/base",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/base-live",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/boss-brenda-crawler",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/BRAELEE",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/BREANN",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/BRIGHTHOUSE",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/chainlink-agent-skills",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/CITIZEN_ROOT",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/COMPUTERWIZARD",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/crp-v0.1",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/DDR",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/debate-judge-tee-v1",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/DESTINEE",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/Direct-Mail",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/ELMORE",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/ENS",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/EV-012-ZORA-MARKET-SNAPSHOT",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/fastenal",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/flywheel-of-wisdom",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/GAGA",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/GENESIS",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/global-zne-hybrid",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/GPKMONSTER",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/GRAMMY",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/GRANDADDY",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/HEIDEE",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/heretic",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/jason-parallel-drift-auditor",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/Jason-t-PL3X",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/Jason-USB-OFFICE-PC",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/Jasons-1st-repository",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/jay-zora-portal",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/JAYCEE",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/JOY",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/jsonwisdom-packet-workbench",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/layered-proofing-state-level-alms",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/Learning-GitHub",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/LEEANN",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/MARYDEE",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/mint-engine-zero",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/mn-ago-entropy-ledger",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/MONTGOMERY",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/NASTYNICK",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/nuke-launchpad",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/openai-chatkit-starter-app",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/PAPA",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/Plesk-Onyx-17.0.17",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/PRATTVILLE",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/prism-brush-spruce-lake",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/prooflayer-repo",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_003.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/provenance-audit-kit",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/public-proof",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_006.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/receipt-arcade",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/ReceiptOS",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/receiptos-base",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/receiptos-replay-proof",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/receipts-engine-v1",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/replay-membrane",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/replay-membrane-v0",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_007.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/RMT",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/Server",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/signal-multisig-zora",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/snapback-mirror",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/software",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/sovereign-copilot",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_008.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/system-risk-detector",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_002.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/tailcat",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_004.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/the-gap",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_009.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/UNCLED",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_001.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/verifygate",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_010.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    },
+    {
+      "repo": "jsonwisdom/Welcome-to-JSONWISDOM",
+      "snapshot_manifest": "MASTER_ROOM/snapshots/GIT_TREE_SNAPSHOT_BATCH_005.json",
+      "delta_mode": "HEAD_TREE_FIRST",
+      "deep_trigger": "APPLE_BLOSSOM_DEEP_PURPOSE_AUDIT_V1"
+    }
+  ]
+}

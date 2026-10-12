@@ -1,0 +1,2976 @@
+{
+  "object": "MASTER_ROOM_GIT_TREE_SNAPSHOT_BATCH_006",
+  "observed_at": "2026-09-23",
+  "repos": [
+    {
+      "repo": "jsonwisdom/BRIGHTHOUSE",
+      "default_branch": "master",
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "error": "CONFLICT: Error code: CONFLICT; Error: GitHub API error 409: {\"message\":\"Git Repository is empty.\",\"documentation_url\":\"https://docs.github.com/rest/commits/commits#get-a-commit\",\"status\":\"409\"}"
+    },
+    {
+      "repo": "jsonwisdom/CITIZEN_ROOT",
+      "default_branch": "main",
+      "head_commit": "6fe7d10699016fe3bec99adf610bdb761f60a171",
+      "tree_sha": "871fa8d41228df08c0656b7f09b84aab030aaf13",
+      "entry_count": 127,
+      "truncated": false,
+      "entries": [
+        {
+          "path": "CITIZEN_ROOT_INDEX.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c1d1de0ac600feb49f5438f200e59950f23c6b21",
+          "size": 4235
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6324668b9e69d2995e4cc14ab37508c3df5de29a",
+          "size": 3862
+        },
+        {
+          "path": "agent_discovery",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "b9f5c5d66733d266c323da8b65d289adc0f6c0f8",
+          "size": null
+        },
+        {
+          "path": "agent_discovery/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cac5a4e14db7b36a437b2ce08864abfe685d1ca1",
+          "size": 185
+        },
+        {
+          "path": "artifacts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8f98bbe351e0568bea99444ffda38e60aef0e463",
+          "size": null
+        },
+        {
+          "path": "artifacts/JAYWISDOM_BASE_ETH_RESEARCH_ARCADE_V0_2.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8e8e8904115f2349daadf9b83f59562afed088bf",
+          "size": 1544
+        },
+        {
+          "path": "artifacts/gavel-grifter",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "7708dbee31dda32d733fb30f271dbe3db0b1966e",
+          "size": null
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "889daf2b1f3eb65b271e3d5d3630a0c4a32ea5cc",
+          "size": null
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/negative",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9079c1481233b3e3c9a75e9fa070800f6388b1f6",
+          "size": null
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/negative/N01_wrongdoing_inference_true.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9823dfb1a24c2bc66c2f88cc93998f456ae9743e",
+          "size": 750
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/negative/N02_guilt_score_field.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dbe3f244527cac23ab2ea264ee568c0d60d6bc1b",
+          "size": 778
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/negative/N03_private_aggregate_named.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fc0bf71f83926e4581c910f379ab32e61478595b",
+          "size": 798
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/negative/N04_full_replay_incomplete_checklist.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "19a312863e5c508a19078bcee5f39970e38e8a15",
+          "size": 775
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/negative/N05_public_hit_wrong_existence.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a5830f44d10cba9f79dddce3c2a3c96bedf9de49",
+          "size": 769
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/negative/N06_stage3_missing_system_role.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9d2e1dba6d5073584c7279c859da58664271e768",
+          "size": 787
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/negative/N07_stage1_has_system_role.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ae96f51768fb610355860af33cba21bbc2f23960",
+          "size": 820
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/negative/N08_stage_source_mismatch.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "aaada57453fd3c97317f6750a50fb6188098ceda",
+          "size": 766
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/negative/N09_red_equals_guilt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "788c5b48c70b54c298696298f27ec78f9a131d95",
+          "size": 824
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/negative/N10_public_hit_auto_full_replay.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "96d6580bbceafaf726c0c87cc33c34f10b54c25b",
+          "size": 842
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/positive",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "76edb2c247739c8a449b2659bed650a081e35135",
+          "size": null
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/positive/P01_bjs_public_partial.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f2bb3213419c7023941eb9f3863f5681443e17ef",
+          "size": 873
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/positive/P02_bjs_private_aggregate.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "29a374c7737401148f7a85be036f8932234cc429",
+          "size": 842
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/positive/P03_pmacs_stage3.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ff1688867f3f9fa3976615e74636bf0541c71731",
+          "size": 966
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/positive/P04_full_replay.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9b97515e34908566e87b88f3669c2d5bcd38d62d",
+          "size": 840
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/positive/P05_mcro_remote_blocked.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5376e6ec2c11cbe2c16283e399bd0d990ad02be4",
+          "size": 886
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/positive/P06_courthouse_check.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d7cf5ba21a707805a2019f5781e30b5aa2c9856f",
+          "size": 984
+        },
+        {
+          "path": "artifacts/gavel-grifter/fixtures/positive/P07_retention_confirmed.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a9c778f3096564068cbe17395d6958f685aa7a8a",
+          "size": 962
+        },
+        {
+          "path": "artifacts/gavel-grifter/receipts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8f122a8b873c5a487891ff2e9f6c2142a7addaed",
+          "size": null
+        },
+        {
+          "path": "artifacts/gavel-grifter/receipts/validator_receipt_v1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7e22604d725042dc0aab15708f12e53a0312100b",
+          "size": 5093
+        },
+        {
+          "path": "artifacts/gavel-grifter/validate_fixtures.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "eed14587de838727c810629d874fb8462ebc1d97",
+          "size": 4184
+        },
+        {
+          "path": "claim_status",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "02ede08b6504f4ac9f525a08471e390e55259125",
+          "size": null
+        },
+        {
+          "path": "claim_status/CLAIM_20260916_100448.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0d33d88df0c1231c1f8bec310db3bbc20b813059",
+          "size": 458
+        },
+        {
+          "path": "claim_status/CLAIM_STATUS_CHANGE_LOG.jsonl",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "claim_status/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cc19e162fde1913298cfc418bcaf71f8aa875a3d",
+          "size": 253
+        },
+        {
+          "path": "docs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "c43b73237ab75f64cd6d1f829d643e633f20ec2c",
+          "size": null
+        },
+        {
+          "path": "docs/APPLE_BLOSSOM_QUAD_ONION_LOCKSET_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "60b9b45aefc298af032e8fb2e3328c075678a078",
+          "size": 7526
+        },
+        {
+          "path": "docs/AUTHORITY_BOUNDARY_CLOSURE_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "55e88e31289c81c2f568ba9825e7b7cbdb456e55",
+          "size": 2312
+        },
+        {
+          "path": "docs/CHAMBERS_SOURCE_LOCATOR_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "aa3d2c53a011fa2e33c10ffc968afa77c8d42a5a",
+          "size": 1485
+        },
+        {
+          "path": "docs/CLARITY_ACT_GAMEBOARD_STATE_FORMAL_RECORD_2026-09-16.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2a789d717179431cd35a9e92e0738f7c8304a448",
+          "size": 5707
+        },
+        {
+          "path": "docs/CLARITY_ACT_REPLAY_PACKET_2026-09-15.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e399c42cc7be3c6943fecba7c3a497a3393ce7cf",
+          "size": 5460
+        },
+        {
+          "path": "docs/COPILOT_DISCOVER_STORIES_INTAKE_RECEIPT_2026_09_17.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bcde5205b9d959c493a9bbf2892c8ef0f245505a",
+          "size": 1735
+        },
+        {
+          "path": "docs/COUNTER_RECEIPT_PROTOCOL_V0_CANDIDATE.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0d53743872692d40b1cd4ec3e44f30260903bf92",
+          "size": 3789
+        },
+        {
+          "path": "docs/COUNTER_RECEIPT_VERSION_RESOLUTION_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f187a3f3117568f1f5a255f70541dd83d6e74c03",
+          "size": 3787
+        },
+        {
+          "path": "docs/JASONS_ACCOUNTABILITY_REPLAY_MACHINE_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "23ceb0d1c55f7b658c4ee031597b1ca7121ad5a0",
+          "size": 2002
+        },
+        {
+          "path": "docs/JASONS_BURDEN_OF_PROOF_MACHINE_GARBAGE_GENERAL_OFFENSE_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a9882ac276c8652fb54df8f39338f6c6ce8cde18",
+          "size": 4395
+        },
+        {
+          "path": "docs/JASONS_JANUSIAN_THINKING_MODEL_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "380d2f3c6f6042077011037d0ef22dd161727830",
+          "size": 6279
+        },
+        {
+          "path": "docs/JASONS_LIVING_LEDGER_ARTIFACT_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "db1c82eb85d480964b96e102f91d296c2e03cd91",
+          "size": 5642
+        },
+        {
+          "path": "docs/JAYS_GITHUB_AS_A_SERVICE_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b0fb9c4713ea08108c1d290cfb7784cc35c5c8c2",
+          "size": 3597
+        },
+        {
+          "path": "docs/JAYS_OXFORD_GAMBIT_FIRST_APOCALYPSE_FULLMATH_REPLAY_2026-09-17.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "03236c826c26de7343029e02683328b73fe8a93f",
+          "size": 11642
+        },
+        {
+          "path": "docs/KINDERGARTEN_KONGRESS_FIRST_GRADE_LEGAL_CLASS_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "487e7abef338e24a115a07a85f25a9c934e3005d",
+          "size": 1359
+        },
+        {
+          "path": "docs/MN_REVERSE_APPLE_BLOSSOM_2026_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fe3d2c4314cc10b34918828aa5ca545ce3b06b40",
+          "size": 4022
+        },
+        {
+          "path": "docs/NIGHT_WOLFE_ABI_ROLE_DECODE_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6af7cbda1629d6b41ceeca8f76326f1ef18d0140",
+          "size": 5174
+        },
+        {
+          "path": "docs/NIGHT_WOLFE_ADVERSARIAL_AUDIT_CORRECTION_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "118e6e6e53697850e33d035969b78c92ba94893a",
+          "size": 7976
+        },
+        {
+          "path": "docs/NIGHT_WOLFE_GUARD_STATE_READBACK_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7446b2a496b0bd9a39df071c59fc8259e6667288",
+          "size": 1111
+        },
+        {
+          "path": "docs/NIGHT_WOLFE_GUARD_STATE_RECEIPT_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "521f21d904a6842915b71fa32459b62b3d509cc8",
+          "size": 1313
+        },
+        {
+          "path": "docs/NIGHT_WOLFE_MONEY_RAIL_V0_2.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ec7bd633da7de091ba32a7d7148e5ab64023bd90",
+          "size": 5634
+        },
+        {
+          "path": "docs/PROMOTION_PACKET_SCHEMA_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "08922b241d45d74f337090a73eecb5646ac9ff04",
+          "size": 3415
+        },
+        {
+          "path": "docs/RAIL_3_NEWS_SOURCE_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dd90f16e1230b421571b4ddd0f8fbb47ca7d955b",
+          "size": 2948
+        },
+        {
+          "path": "docs/RAIL_3_UNDEFINED_HOLD_RECEIPT_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c6e508b08520f86fad8cc7dc8683810da9f6fdec",
+          "size": 1655
+        },
+        {
+          "path": "docs/RECEIPTS_MACHINE_OS_OODA_369_GAMEBOARD_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8ff1a900b7e5b7af04345edc559cc10458214027",
+          "size": 5924
+        },
+        {
+          "path": "docs/RECEIPTS_MACHINE_OS_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7bd862cb01c1a5dcad053cd7126c8fd0848448d9",
+          "size": 2939
+        },
+        {
+          "path": "docs/RESOLUTION_RECEIPT_SCHEMA_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9119b06db45d5ce6b3608354e01bdb528cce0fae",
+          "size": 1646
+        },
+        {
+          "path": "docs/RUNG_GATE_PREDICATES_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a240e3c22e7dd301e7162c48b873896c3e4e92d9",
+          "size": 5189
+        },
+        {
+          "path": "docs/SEED_TO_INSTITUTION_LADDER_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "27710c8cb6479d834444f17da590c3ac2cc5bae0",
+          "size": 6544
+        },
+        {
+          "path": "docs/TALLY_VERIFIER_PROTOCOL_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8a36152ec599519914117a2cc84b8801d739ee8d",
+          "size": 2056
+        },
+        {
+          "path": "docs/TARGET_ACCEPTANCE_RECEIPT_SCHEMA_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "41c39e56023019f8d5a7c7995edc5b12f6c461a8",
+          "size": 3329
+        },
+        {
+          "path": "docs/UMAR_KREMLEV_TRUMP_FAMILY_ACCESS_RESEARCH_PACKET_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "368cec465a46646e79e6e95b12c853100d2f8ca7",
+          "size": 6077
+        },
+        {
+          "path": "docs/WEEKLY_SYNC_BACKFILL_2026-09-09_TO_2026-09-16.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4404a10f29abdf4ceb1a4cd5db790d91cfd6b090",
+          "size": 6141
+        },
+        {
+          "path": "docs/ZERODAYTODAYJAY_GOLD_BOOK_MARKET_ACCORD_SUPPLEMENT_2026-09-17.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "77f6394dad1a74ca2be2147d6bbc35345516f0fb",
+          "size": 7860
+        },
+        {
+          "path": "docs/ZERODAYTODAYJAY_TREASURY_RESET_CLAIM_REPLAY_2026-09-17.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "10bfe1f4c4dec4cea6fb6be6db55cd2ca6ca1deb",
+          "size": 6605
+        },
+        {
+          "path": "docs/ZERO_DAY_CREATION_MACHINE_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "98a21672413de03b838b36b272fefeee1cb9b4f3",
+          "size": 13096
+        },
+        {
+          "path": "docs/apple-blossom",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d7dddf65d4368841a42d2960fdc98f2e7e0268c3",
+          "size": null
+        },
+        {
+          "path": "docs/apple-blossom/CHAPTER_13_ON_TRIAL_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3e4c14aa9316eea07dbcf82eccfb7c67e20dbd4f",
+          "size": 6901
+        },
+        {
+          "path": "docs/goblin-court",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "fbeab751b91b5928e27d7a739700bd2da6f102ba",
+          "size": null
+        },
+        {
+          "path": "docs/goblin-court/GAVEL_GRIFTER_BUILD_TIME_INVARIANTS_V1_0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f1c20d27a03cae27bdb416ac81950e0cefc27011",
+          "size": 4343
+        },
+        {
+          "path": "jurisdictions",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9b29838ca7b29329e76d0312eb963de64675dd08",
+          "size": null
+        },
+        {
+          "path": "jurisdictions/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "be6963f9d656c338920fc413c527cdd5d63821c3",
+          "size": 194
+        },
+        {
+          "path": "languages",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "859fc0ec14698bab4c469bd226efeb4635f76ea8",
+          "size": null
+        },
+        {
+          "path": "languages/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b93102b6a8091d5f365950960fde7bcc0bff2e98",
+          "size": 175
+        },
+        {
+          "path": "mirrors",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "1f9963dd6b8198f2f5cefc2dd9fd47008957c169",
+          "size": null
+        },
+        {
+          "path": "mirrors/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bf0e2cb16b6d9587a255b9d5359a239acf1913e8",
+          "size": 206
+        },
+        {
+          "path": "receipts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "0c3962282a998df3f0505b42544bfb7982cd4e11",
+          "size": null
+        },
+        {
+          "path": "receipts/CITIZEN_ROOT_INDEX_ROOT_RECEIPT_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "360ae60beb4c2e2a3ecaabf48d372c6e507aa6fa",
+          "size": 249
+        },
+        {
+          "path": "receipts/gavel-grifter",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "725e6c4ecfee942d73ffa0664ce01bf53c254a93",
+          "size": null
+        },
+        {
+          "path": "receipts/gavel-grifter/validator_receipt_v1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6a42401f39c0fe759906806480810d75bd8794fb",
+          "size": 8
+        },
+        {
+          "path": "registry",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f9a6634a6d120dc99f4f09c25b2f449ec0602338",
+          "size": null
+        },
+        {
+          "path": "registry/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "223a3b1537452619b19aad081dc41e281bcc22e4",
+          "size": 186
+        },
+        {
+          "path": "registry/REPOSITORY_SERVICE_INDEX_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6be39fe08a1f45dbfe44fe4fd3a5abbe686a66ee",
+          "size": 3065
+        },
+        {
+          "path": "releases",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d8f26d9a58db83c29420ca49a1a471d25b10fcbd",
+          "size": null
+        },
+        {
+          "path": "releases/FROZEN_LOCAL_RESOLVER_V0.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f316e841e25e3e13c37c0dd2aa778a8900a7d48e",
+          "size": 770
+        },
+        {
+          "path": "releases/JASONS_369_ACCOUNTABILITY_STACK_RELEASE_V0.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a5544de0f7bb288a9484491a00e00e15c4b56173",
+          "size": 1229
+        },
+        {
+          "path": "runs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "e9b9e8f753d978746a84892b49cb58e1b5c272c1",
+          "size": null
+        },
+        {
+          "path": "runs/FIRST_PUBLIC_CLAIM_RUN_GATE_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7294a98407b34c99078d89fcb4a5e1a871c04953",
+          "size": 893
+        },
+        {
+          "path": "runs/JASON_QUAD_ONION_CLAIM_V0",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "58552c83a7626097ceb2e400825110913911d344",
+          "size": null
+        },
+        {
+          "path": "runs/JASON_QUAD_ONION_CLAIM_V0/CLAIM.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9c57b14b2bf827aa2456cdc4298dd5197c0b4c2b",
+          "size": 2040
+        },
+        {
+          "path": "runs/JASON_QUAD_ONION_CLAIM_V0/ONE_PUBLIC_CLAIM_TEST_PACKET_V0.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "af8f078d9c7c6b620f0187933fc19132bc24a556",
+          "size": 10035
+        },
+        {
+          "path": "runs/JASON_QUAD_ONION_CLAIM_V0/RENDER_ADULT_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b2d2c672c9f36da6f39122a2bd4f185a3b03a8e5",
+          "size": 2150
+        },
+        {
+          "path": "runs/JASON_QUAD_ONION_CLAIM_V0/RUN_LOG_V0.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "afe1aff9f29e4090d5fc7c50330ac90f1099fbfc",
+          "size": 3934
+        },
+        {
+          "path": "scenarios",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "742f56a1fbcd7f18ed0209006f9966d3edccc820",
+          "size": null
+        },
+        {
+          "path": "scenarios/SCENARIO_RAIL_X_MISSING_001.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "91170469a2910a16c70c684b9a2c560b50453a9f",
+          "size": 1888
+        },
+        {
+          "path": "schemas",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8f60bb90320e59ee719a9c259a133deae7d1385c",
+          "size": null
+        },
+        {
+          "path": "schemas/JASONS_369_ACCOUNTABILITY_STACK_V0.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d068ce414289fded74df4d2f7bed95178fa0ec85",
+          "size": 1361
+        },
+        {
+          "path": "schemas/JASONS_369_RAILS_V0.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b82725cfa5898945c7f3b8ff5ec1a9f48d007adb",
+          "size": 7215
+        },
+        {
+          "path": "schemas/ONE_PUBLIC_CLAIM_TEST_PACKET_V0.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7ca95132940bda27983a54d4ebddea9bb69190c6",
+          "size": 3526
+        },
+        {
+          "path": "schemas/RUN_LOG_V0.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "537e370e116767ddd22c80fdaaf7622ff6aad43e",
+          "size": 1381
+        },
+        {
+          "path": "schemas/TALLY_VERIFIER_PROTOCOL_V0.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9494ca780405728fb9ba39185d6d2ad40452857b",
+          "size": 1617
+        },
+        {
+          "path": "schemas/YEAR_ZERO_RESET_SCHEMA_V0.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "94154bbf54b217de621a9f20e7ceaf4d11a09162",
+          "size": 1290
+        },
+        {
+          "path": "schemas/gavel-grifter-tile-v1.0.schema.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "31fafc84886140952f7ec2d43fc0bae6d39f6a60",
+          "size": 7286
+        },
+        {
+          "path": "verification",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "b14e3c858191f881d0e4e4396803b3ad4bf99f87",
+          "size": null
+        },
+        {
+          "path": "verification/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "738b244ba55289c74357385653285a97cfd309e0",
+          "size": 2206
+        },
+        {
+          "path": "verification/canonicalize.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a584da02c4b129b919b029459f9f9e435268517b",
+          "size": 6581
+        },
+        {
+          "path": "verification/canonicalize.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6afdd5e0160a1224b1749a526493e2325a5e2f8a",
+          "size": 7474
+        },
+        {
+          "path": "verification/hash.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "970eac8d813c1e45eafdb60a3c47d358ca13272c",
+          "size": 552
+        },
+        {
+          "path": "verification/hash.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "11a5302fae33d8698be59c72a854896ebb726506",
+          "size": 525
+        },
+        {
+          "path": "verification/merkle.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1a848aeb124b103580ebab8ed6ffcbb44df683d8",
+          "size": 3707
+        },
+        {
+          "path": "verification/merkle.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8ab5299bf590e6d7351aa8012715fa79e93c9b4d",
+          "size": 5214
+        },
+        {
+          "path": "verification/selftest_canonicalize.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8e594f44e8906eff5ad69cd26f88c97c285c3eb9",
+          "size": 4604
+        },
+        {
+          "path": "verification/selftest_canonicalize.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ecb706b4786a03a6d69d66392251971ca737896d",
+          "size": 5404
+        },
+        {
+          "path": "verification/test_vectors",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "ccfd0f8592c5f2e40453954d5624060c8c4cbeda",
+          "size": null
+        },
+        {
+          "path": "verification/test_vectors/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a2f8350b7ffc3b4b95666bab3465865f99efe17c",
+          "size": 897
+        },
+        {
+          "path": "verification/test_vectors/basic.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "69afdafc07fd550e27fced4cccf9bcf78eb64174",
+          "size": 2186
+        },
+        {
+          "path": "verification/test_vectors/canonicalization.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9b79a722c6f63da742556d61b4110308978509cc",
+          "size": 6448
+        },
+        {
+          "path": "verification/test_vectors/nested.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8a5a0a485c68f12267e40a7177b9090a9c6543e3",
+          "size": 1462
+        },
+        {
+          "path": "verification/test_vectors/run_canonicalization_mjs.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "14b1fd5f15a9c2666b7896c58cd0f329fd331625",
+          "size": 1473
+        },
+        {
+          "path": "verification/test_vectors/run_canonicalization_py.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9e7b5ca19c32ed9c5065800f2594e1ab2a64277f",
+          "size": 1397
+        },
+        {
+          "path": "verification/test_vectors/unicode.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9cb1c72bd4b09c57b6320b8358f256f4a69ffd11",
+          "size": 1547
+        },
+        {
+          "path": "verification/test_vectors/whitespace.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "194845e1f2095cf6edcf7f2cb23fdb86d698401e",
+          "size": 1965
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/jason-parallel-drift-auditor",
+      "default_branch": "main",
+      "head_commit": "8dcbf40365c082be8fb3dfeafdd92c44521ce204",
+      "tree_sha": "a755214365dadd30024b92195ef2254700561261",
+      "entry_count": 14,
+      "truncated": false,
+      "entries": [
+        {
+          "path": ".github",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "014d146a21f42685391b42651a89d659cf10ec02",
+          "size": null
+        },
+        {
+          "path": ".github/jpa-audit.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "80e29a7f9b6b0d4e034eb9ede9c05ab50cc3a436",
+          "size": 454
+        },
+        {
+          "path": ".github/workflows",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "7b97e8832612db95b7a86bad73b9cbedcd13c5f5",
+          "size": null
+        },
+        {
+          "path": ".github/workflows/jpa-audit.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a595b2f004669e3114a9214202bd4d3b098fae7b",
+          "size": 2523
+        },
+        {
+          "path": ".gitignore",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bd8c578faf339e7048fdb30ddf195dd90b246322",
+          "size": 38
+        },
+        {
+          "path": "LICENSE",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c5793408ca7010115a7bf78c3ddf14bca87d7c80",
+          "size": 1069
+        },
+        {
+          "path": "MISSION.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "715fd2c1d39c554e6fb2fdbfe54bec9c9ea531f8",
+          "size": 1317
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "161a62f5e048a4e690d139ac4b211bb71baf0b46",
+          "size": 2455
+        },
+        {
+          "path": "auditor",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "4bb6e1c7d9c3d21f88b3b806151a88e417717006",
+          "size": null
+        },
+        {
+          "path": "auditor/audit.py",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "258f0fb7191ec96236bd05079739fa992fa16398",
+          "size": 18774
+        },
+        {
+          "path": "schemas",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "84c40ffd1e529c9a946840ad581ee3d7efec3361",
+          "size": null
+        },
+        {
+          "path": "schemas/audit-report.schema.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f768bbb67bcf5bf57c1452bb86e376669742f342",
+          "size": 1442
+        },
+        {
+          "path": "tests",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "b47201c6710b6024b3d753e1396d99435c0edad0",
+          "size": null
+        },
+        {
+          "path": "tests/test_audit.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "245f32026ce6201e47402849e4f0f77bb1542dcd",
+          "size": 4217
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/HEIDEE",
+      "default_branch": "master",
+      "head_commit": "b2607de8decb09594447b1ea3ba3e9c3829f5238",
+      "tree_sha": "57c37218ba6bb27c9621d768b374285597d77a2d",
+      "entry_count": 15,
+      "truncated": false,
+      "entries": [
+        {
+          "path": ".github",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "b0ff1935981e67700fbb6d126a4495b301836286",
+          "size": null
+        },
+        {
+          "path": ".github/workflows",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "06a1c8c95de2b2fa17b963a64c3db3a6184ff3c0",
+          "size": null
+        },
+        {
+          "path": ".github/workflows/builder-boundary-sentinel.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a7c45b0c23fe487db5b6249dd6daff679171ffb2",
+          "size": 777
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "73d0baf807a81246022db15a049518528e87c983",
+          "size": 833
+        },
+        {
+          "path": "WISDOM_GIRL_JSON_TV_POINTER_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "99778b3ffd8f4b54020c1b258cb1a2ea6c272c18",
+          "size": 1682
+        },
+        {
+          "path": "artifacts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "1549ba93d0231e4938799102c10e3d1ad25d2196",
+          "size": null
+        },
+        {
+          "path": "artifacts/HEIDEE_FAMILY_LEARNING_RAIL_BIND_V0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d05fb243d44b05fef6be502cbaaf0ee4dded8285",
+          "size": 1998
+        },
+        {
+          "path": "docs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "51760b55124d3a1be5d53b5b95f9b2a9654dbc24",
+          "size": null
+        },
+        {
+          "path": "docs/joyspace",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "cb22088f9b1fa9386df767c5dba888dc2ea54ed9",
+          "size": null
+        },
+        {
+          "path": "docs/joyspace/ZIGGY_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f98d339f648644c7090d712b4403a3c39dcfe18a",
+          "size": 1503
+        },
+        {
+          "path": "docs/joyspace/members",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "15af43b9f8ac524c895436adcef7828efb5b52ec",
+          "size": null
+        },
+        {
+          "path": "docs/joyspace/members/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dd0c64ebf2dc61176f2b2e9af6cfffd2f5567cf2",
+          "size": 417
+        },
+        {
+          "path": "docs/joyspace_v1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e8e14716460de4f399d9c8c143cff6de06349551",
+          "size": 721
+        },
+        {
+          "path": "index.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ab05fa37a90593364b972b7083130e4c95e5f81b",
+          "size": 702
+        },
+        {
+          "path": "metadata.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5055850a7facf7a55ce5f9477d2ffb6477dd211f",
+          "size": 1779
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/public-proof",
+      "default_branch": "main",
+      "head_commit": "1d94f9f7b1e566fee5a58a246ad7e6464211e0ff",
+      "tree_sha": "53bd2ab5c0f520adf5281ffb7931aa1c1ccddf59",
+      "entry_count": 209,
+      "truncated": false,
+      "entries": [
+        {
+          "path": ".firebaserc",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8572bc4261fd88b2ed3e8844a4d979bd5b5b64ac",
+          "size": 293
+        },
+        {
+          "path": ".github",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "33eeba66978b1eb6ea341c3e87edbb5242d8c27b",
+          "size": null
+        },
+        {
+          "path": ".github/workflows",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "33ff9c2d1f5edcd9b19599d395111b2b001640db",
+          "size": null
+        },
+        {
+          "path": ".github/workflows/external-replay-gate.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8340655179ea92f84e5d68f13edb1391d8679065",
+          "size": 1818
+        },
+        {
+          "path": ".github/workflows/firebase-preview.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4fdf95b82fe9ded3e428572e65ee14f097c2431c",
+          "size": 3899
+        },
+        {
+          "path": ".github/workflows/firebase-production.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "52cd3f5b22960e0885806cb57f6cfb02bc285158",
+          "size": 3021
+        },
+        {
+          "path": ".github/workflows/hash-coordinate-002.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5901354b157c483b65f0e50cde314f4ebc0a15a7",
+          "size": 1134
+        },
+        {
+          "path": ".github/workflows/hash-coordinate-004.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cd48b20cd2f4a8d013505d6978d3bf008dd23309",
+          "size": 1212
+        },
+        {
+          "path": ".github/workflows/hash-coordinate-005.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4719a77bbca8d5964a702c3d7b116d667b630524",
+          "size": 1165
+        },
+        {
+          "path": ".github/workflows/pages.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fb18e2964066175e2104d01a274b54ff93fe6cd8",
+          "size": 1581
+        },
+        {
+          "path": ".github/workflows/structural-replay-audit.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "72ba644bfe32a2e00ae3fc5b92c6fce6e3356457",
+          "size": 2357
+        },
+        {
+          "path": ".github/workflows/ugs8-ui-gate.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f26c8fd4fb9309aab3e9ac4e66ae7bedb59ba259",
+          "size": 1133
+        },
+        {
+          "path": ".github/workflows/uwdiploma128-local-gate.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "07b57a22a354a42aedc5a106ff58e73e87dfa892",
+          "size": 5866
+        },
+        {
+          "path": ".gitignore",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "97e58a1cdb8eb821a3b028614e70e71cad3d38b9",
+          "size": 34
+        },
+        {
+          "path": ".nojekyll",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9503d98e094f7a073e0fefbe4a6899c0a5031cf3",
+          "size": 669
+        },
+        {
+          "path": "action.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "449b62f76a31872eb9bcf298cf13ef994bf0616b",
+          "size": 959
+        },
+        {
+          "path": "artifacts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "0e814f914ec5accfa1fae95506fbd5e8b86033ea",
+          "size": null
+        },
+        {
+          "path": "artifacts/atomic-vatican",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "21c49e648cff0f2d4e86fe9473a81e9355e60353",
+          "size": null
+        },
+        {
+          "path": "artifacts/atomic-vatican/VAT-EXPORT-V5-2026-08-10.zip",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7e8c893e8264093fc3200b1230467641512cc569",
+          "size": 11272
+        },
+        {
+          "path": "artifacts/atomic-vatican/VAT-EXPORT-V6-2026-08-10.zip",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f250ac6b4882dfb24d0940e3c135ddccf82538e5",
+          "size": 13316
+        },
+        {
+          "path": "artifacts/crp",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "5e1e45e69fa4f7c5458f3decb380a0ec9c1827da",
+          "size": null
+        },
+        {
+          "path": "artifacts/crp/CRP_REPLAY_REGISTRY_UPDATE_PROTOCOL_V0_2.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "887210faba7ee78c111e62c54d2adee8d2ff74fa",
+          "size": 7226
+        },
+        {
+          "path": "artifacts/crp/CRP_REPLAY_REGISTRY_V0_2.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2bc27f0cfefc21a2906af1413ee3bd47a3aa9502",
+          "size": 2459
+        },
+        {
+          "path": "artifacts/crp/CRP_V0_1_COMPATIBILITY_NOTE.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fe5de860837b57d423e535a675e8bce429f41d5d",
+          "size": 1678
+        },
+        {
+          "path": "artifacts/crp/CRP_V0_1_SPECIFICATION_ARCHIVE_RECEIPT.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ece3d44ab9378199efe45dfeb004c14d89fc2d92",
+          "size": 4049
+        },
+        {
+          "path": "artifacts/crp/CRP_V0_1_SPEC_FREEZE_README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "59fd17a5748bba54f2eff3ae0657567da5b58171",
+          "size": 2643
+        },
+        {
+          "path": "artifacts/crp/CRP_VALIDATION_CI_WORKFLOW_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dbdc4c4b8237cc6cf147b61104850dc5e22b38b8",
+          "size": 7244
+        },
+        {
+          "path": "artifacts/crp/CRP_VALIDATION_FIXTURE_SET_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ce5c4ce4443e62b32d10baa3869f1e3482472dda",
+          "size": 6615
+        },
+        {
+          "path": "artifacts/crp/CRP_VALIDATION_RUNNER_SOURCE_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4c0a5b159cbc8dcf790c58dbd945051f0dcce419",
+          "size": 12088
+        },
+        {
+          "path": "artifacts/crp/CRP_WITNESS_002_ADMISSION_WORKFLOW_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "15c0ba86f5f0ec5bfda1bab11115c02b8b5d93e6",
+          "size": 3538
+        },
+        {
+          "path": "artifacts/crp/CRP_WITNESS_002_WORKFLOW_MERGE_RECEIPT_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "df40a459623f251f0c69091ffcbd68cdb19ec5f8",
+          "size": 425
+        },
+        {
+          "path": "artifacts/crp/CRP_WITNESS_CONTINUITY_RECEIPT_V0_1_TO_V0_2.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e72306fe7c22f9c91198d7bfa2dc738726790361",
+          "size": 1322
+        },
+        {
+          "path": "artifacts/crp/L2_TO_L3_SETTLEMENT_HOOK_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "97cb5f6e0da89982ade7748a78ffac595111c7cb",
+          "size": 1944
+        },
+        {
+          "path": "artifacts/crp/MERGE_EVENT_REPLAY_CHECKLIST_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5b8a0bebd76bfaeadba3ca327e7a48f79b2ea3de",
+          "size": 2634
+        },
+        {
+          "path": "artifacts/crp/MERGE_RECEIPT_TEMPLATE_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "130b308d17e951b0a73b44f4ba99c3320fe30fad",
+          "size": 1312
+        },
+        {
+          "path": "artifacts/crp/POST_MERGE_RECEIPT_TEMPLATE_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b7cf4fbada2f31e07ee972a90f43adfb6bea3e6c",
+          "size": 2310
+        },
+        {
+          "path": "artifacts/crp/POST_MERGE_RECEIPT_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4cfd4b6aa6c7b3220e1c264de418f4a0b88404a9",
+          "size": 2046
+        },
+        {
+          "path": "artifacts/crp/REPLAY_RECEIPT_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "acf999598f187fd20c71db4393f6aab72a20f5de",
+          "size": 953
+        },
+        {
+          "path": "artifacts/crp/REPLAY_RECEIPT_V0_1.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a9461497cd399afb18878379902818d0dec6a87f",
+          "size": 939
+        },
+        {
+          "path": "artifacts/crp/crp-seed-002-the-second-witness.accepted.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6541a1f8f8b6ff9c142595e9f50abc6ebedc21cb",
+          "size": 472
+        },
+        {
+          "path": "artifacts/crp/crp-seed-002-the-second-witness.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "abec0114b27b7b23bdd84fa1696f89cac86932bc",
+          "size": 215
+        },
+        {
+          "path": "audits",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "1146db79e9c2c05bad915def7d8b719982c2ae82",
+          "size": null
+        },
+        {
+          "path": "audits/structural-replay",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "b04dc40ba96a9cc41cab88b65d7c1e7846d49fd8",
+          "size": null
+        },
+        {
+          "path": "audits/structural-replay/v0_1",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "fd64b3983924f5ed42f0670add3d4f01adda852e",
+          "size": null
+        },
+        {
+          "path": "audits/structural-replay/v0_1/EXTERNAL_WITNESS_ADMISSION_CHECK_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d1260c013fc7c05a336b2b18e665899487f726d7",
+          "size": 2489
+        },
+        {
+          "path": "audits/structural-replay/v0_1/EXTERNAL_WITNESS_PAYLOAD_V0_1_TEMPLATE.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "febe6d6616e8d290848d3edaad402a3e1ed6d7c5",
+          "size": 2713
+        },
+        {
+          "path": "audits/structural-replay/v0_1/MASTER_REPLAY_AUDIT_INDEX_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c451757600a4e3ed4bc5573a69bc5fc744dd447e",
+          "size": 842
+        },
+        {
+          "path": "audits/structural-replay/v0_1/NEXT_STATE_TRANSITION_BLUEPRINT_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d3f1566220a8ee5b1579eca8a92de857afa25300",
+          "size": 2016
+        },
+        {
+          "path": "audits/structural-replay/v0_1/REPLAY_SURFACE_INDEX_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bb2f90686f440fa61a23b28964b3e28bc276a92c",
+          "size": 1116
+        },
+        {
+          "path": "audits/structural-replay/v0_1/STRUCTURAL_REPLAY_AUDIT_PUBLICATION_DECISION_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0db4c3f802e80dc7eee4b720f4e5724ab30aa279",
+          "size": 1391
+        },
+        {
+          "path": "audits/structural-replay/v0_1/STRUCTURAL_REPLAY_MAP_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "58e5fc2acd5697d5391daf4078a2cebadcc7c2c4",
+          "size": 1123
+        },
+        {
+          "path": "audits/structural-replay/v0_1/STRUCTURAL_REPLAY_RECEIPT_V0_1_run_27325829459.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dd26428639331c45458e2afec19c3b0cd4755d67",
+          "size": 2035
+        },
+        {
+          "path": "audits/structural-replay/v0_1/STRUCTURAL_REPLAY_SUMMARY_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bb9b0170f4c0d7060f49b1b60463044c367ea69f",
+          "size": 1428
+        },
+        {
+          "path": "audits/structural-replay/v0_1/index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "57533455e04b8ff84ae03779923cf182f4fc6548",
+          "size": 1214
+        },
+        {
+          "path": "bridge",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f24276bd7cb8f34c84e9294e05605b6e93808e39",
+          "size": null
+        },
+        {
+          "path": "bridge/.env.example",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "171aa07a83757b39824437dadba9b710659c7b91",
+          "size": 164
+        },
+        {
+          "path": "bridge/laughter-oracle-bridge.js",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "583f11d1a35b7e201ace0aae8075446c83a6a510",
+          "size": 6160
+        },
+        {
+          "path": "bridge/package-lock.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7ff541c602ef0b7401d447bcecbb63ef8955eb6e",
+          "size": 4544
+        },
+        {
+          "path": "bridge/package.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e54bac18fb01d22ce80abde6e7afae96367eab16",
+          "size": 492
+        },
+        {
+          "path": "bridge/register-schema-v0_1.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2ba55b4417ce061be41048e52b73272e60313214",
+          "size": 1745
+        },
+        {
+          "path": "bridge/test-fixture.js",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f7c33860365d98575ae3cb1cb980eb11624cab1b",
+          "size": 4541
+        },
+        {
+          "path": "constitution",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9185d40dd0c658c236111a33e66bf54dee6a0f40",
+          "size": null
+        },
+        {
+          "path": "constitution/GOBLIN_LAWYERIN_UNION_CONSTITUTION_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ce19a73d46eb82403a465030b0112f6d92770670",
+          "size": 8017
+        },
+        {
+          "path": "contracts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "e85ee845e61951a5a2004f13e5b0ef540f078ea2",
+          "size": null
+        },
+        {
+          "path": "contracts/UWDiploma128.sol",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "23aee855e32b5110ff4b0d96b7fe47ead08a091c",
+          "size": 4259
+        },
+        {
+          "path": "coordinates",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "5dd6fc1e15a713a8f1ea31f821de3e7822e005c4",
+          "size": null
+        },
+        {
+          "path": "coordinates/001",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "432e210a8b089a5e7bffb3539e248cc5c8e351a4",
+          "size": null
+        },
+        {
+          "path": "coordinates/001/v1",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "7950371d0c8f41def422219ac903d8ad8c8cbecb",
+          "size": null
+        },
+        {
+          "path": "coordinates/001/v1/payload.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ed8acb34760bc844b365cf62f97141f4cace9211",
+          "size": 466
+        },
+        {
+          "path": "coordinates/002",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f9dba24d04e89875fd8f07622ed8e337de17b3af",
+          "size": null
+        },
+        {
+          "path": "coordinates/002/source",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "2c4c1588f2c2608af3158b56db49d2f15d6b9cbd",
+          "size": null
+        },
+        {
+          "path": "coordinates/002/source/mn_feb_2026.pdf",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2921d1b5f23786b0aab6dc0ab82f815e76205361",
+          "size": 2416758
+        },
+        {
+          "path": "coordinates/002/v1",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "1987cd46005a419e16a904327769aa91a82f7970",
+          "size": null
+        },
+        {
+          "path": "coordinates/002/v1/hash.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "917689bafd8aa6d22c7a0a642bc94920af9e97ac",
+          "size": 105
+        },
+        {
+          "path": "coordinates/004",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "0e92fc6b24a69fc2265d2f2f1249d6a930574015",
+          "size": null
+        },
+        {
+          "path": "coordinates/004/source",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "3116870bc37ae852c1efc35d99636afcb9096905",
+          "size": null
+        },
+        {
+          "path": "coordinates/004/source/mn_feb_2026_debt_capacity.pdf",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "174cf3a7d52da3dfb0317db03ccae94bb71befdf",
+          "size": 425984
+        },
+        {
+          "path": "coordinates/004/v1",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "590d4fdddc269fb13046cd3007f947c5616eac0f",
+          "size": null
+        },
+        {
+          "path": "coordinates/004/v1/hash.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5ebb3b147622683104e4dd1bd2d33ff27d8ac342",
+          "size": 119
+        },
+        {
+          "path": "coordinates/005",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "73efda5fbdd9a99759f56fe8b0e89f801da4d71e",
+          "size": null
+        },
+        {
+          "path": "coordinates/005/source",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "6bf9b8c8eae8737039028ae2b2165095d8f73490",
+          "size": null
+        },
+        {
+          "path": "coordinates/005/source/mn_april_2026_update.pdf",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "25abccf7bfe663687b8553184b7ae663d5f7738b",
+          "size": 5147
+        },
+        {
+          "path": "coordinates/005/v1",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "a7db223fd77705ac77959e341fd45be55c80e4c1",
+          "size": null
+        },
+        {
+          "path": "coordinates/005/v1/hash.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0d4809abd6dc35c4f0ffa1f5de96b1871e18a0f4",
+          "size": 114
+        },
+        {
+          "path": "court",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9106fda796c85cf98885d18be02bd350aa2a9b4f",
+          "size": null
+        },
+        {
+          "path": "court/meme-court-frame",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f5b053492e0061448a3574bc882ffc3162a091ce",
+          "size": null
+        },
+        {
+          "path": "court/meme-court-frame/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "61e51955135e8f60a6a2f5ee7dc2ac4b26f7f168",
+          "size": 124
+        },
+        {
+          "path": "court/meme-court-frame/SOURCE_POINTER.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9f416440dff31baeba37711534df335d5f721dfa",
+          "size": 490
+        },
+        {
+          "path": "docs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "921ff20fc7f8a7a4ad7ddb7d170e95b3600aeb03",
+          "size": null
+        },
+        {
+          "path": "docs/ANCHOR_001_CANONICAL_REFERENCE.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2f5e136b2078596fe70e23c847d89446f205684b",
+          "size": 1343
+        },
+        {
+          "path": "docs/CLOUD_DEPLOYMENT_STATE_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a1aaa8fb7e3e52a449d9b11d60b94e9757e2be68",
+          "size": 4703
+        },
+        {
+          "path": "docs/DEPLOYMENT_RECEIPT_SCHEMA_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0694a459aeb4046e2137eca90fc952bb6bb96933",
+          "size": 1489
+        },
+        {
+          "path": "docs/PUBLIC_PROOF_PORTAL_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "88f040f01c45aad7bb81236a540c703a50da4786",
+          "size": 3946
+        },
+        {
+          "path": "docs/PUBLIC_PROOF_PUBLICATION_CONTRACT_V1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b105b677105dc438b63a3d32d8152253e6455bc4",
+          "size": 1744
+        },
+        {
+          "path": "docs/goblin-proof-factory",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "50b8ff45696e97e1e8eb153422c5a37faff64135",
+          "size": null
+        },
+        {
+          "path": "docs/goblin-proof-factory/expansion-packs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f14456320a95f1ba3a64509a476472967511481e",
+          "size": null
+        },
+        {
+          "path": "docs/goblin-proof-factory/expansion-packs/alms-ci-alabama-proof-monster-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dcc4978cbcb73560c5ea2f4cdf610be6ced252f0",
+          "size": 2521
+        },
+        {
+          "path": "docs/goblin-proof-factory/expansion-packs/gitfix-hypertext-pack-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bcc22cd3a35c8bc744d6fe97bc3e5c39c36978c5",
+          "size": 3865
+        },
+        {
+          "path": "docs/goblin-proof-factory/index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1c00ccc750276bde497df3d6a190e4e6dc01b965",
+          "size": 10306
+        },
+        {
+          "path": "docs/new-york-comedy",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "78adb06b53aad6c2c135cd6646136b0abd8b7cc1",
+          "size": null
+        },
+        {
+          "path": "docs/new-york-comedy/index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ed6ca37dd6850b50259cedae5a50de1c382657a2",
+          "size": 8336
+        },
+        {
+          "path": "docs/public",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8c58e6b842a6079a5258235fe0ab35f230f82858",
+          "size": null
+        },
+        {
+          "path": "docs/public/GITHUB_WORK_TRAIL_LAST_7_DAYS_2026_06_11.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "38a57654047207886a1db4bba18ce14c0746c7fe",
+          "size": 19067
+        },
+        {
+          "path": "docs/public/HOW_TO_READ_A_GITHUB_WORK_TRAIL_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "503a5b242c01fb333e0e15c56e97dc65a588d766",
+          "size": 2020
+        },
+        {
+          "path": "docs/runbooks",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "222a6bc85942da9e051eca20c8c4db0143cebe50",
+          "size": null
+        },
+        {
+          "path": "docs/runbooks/BASE_FOCUSED_PHASE_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4f56eb24829ae4bee150f6f1c80cf83cd9237c7a",
+          "size": 3680
+        },
+        {
+          "path": "docs/runbooks/GCLOUD_IDENTITY_AND_WALLET_PARALLEL_LANES_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f1d9782e437f24f5b33d76a0bba19c61365188ab",
+          "size": 4815
+        },
+        {
+          "path": "docs/runbooks/UWDIPLOMA128_BASE_DEPLOYMENT_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f981c4e7fa1e96c8bba1e2ec9606c86e14c65a99",
+          "size": 6996
+        },
+        {
+          "path": "docs/runbooks/UWDIPLOMA128_LOCAL_BUILD_GATE_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c3cc20cd1650bf515cd5f5edfea69b53d4832dc0",
+          "size": 2471
+        },
+        {
+          "path": "docs/runbooks/UWDIPLOMA128_SIGNER_BOUNDARY_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "300b241033aca843c665f3cbd92f421163557053",
+          "size": 4533
+        },
+        {
+          "path": "docs/sdny-replay",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "5818bb5fa4e084688cbd114a51e7b741be3e8097",
+          "size": null
+        },
+        {
+          "path": "docs/sdny-replay/JAYS_PINCER_STATE_LEVEL_REPUTATION_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7da43832a69e90772f7e89de2807afcd2d76fd7f",
+          "size": 5395
+        },
+        {
+          "path": "executive-game.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f1a51ffccc5fec3239859b5ea67f602e22b0770d",
+          "size": 12211
+        },
+        {
+          "path": "firebase.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ea2453a36e2ed4e91515c3b091ce97cdf7185c3a",
+          "size": 579
+        },
+        {
+          "path": "foundry.toml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "93e53210762848928cc0c3fce63cbe7ab89b429f",
+          "size": 362
+        },
+        {
+          "path": "hashes",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "c21db2e852a28d7502180e7aecfdf36b53534bef",
+          "size": null
+        },
+        {
+          "path": "hashes/jay_identity_50_50_manifest.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "70287cd193fd10b3e5236bcf0f1f138843a66633",
+          "size": 108
+        },
+        {
+          "path": "index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ac780f718d100fc223687e19e01bc6b3e3ff1a40",
+          "size": 10128
+        },
+        {
+          "path": "marketplace",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "4b6bd82fdec920f9a9c9ef54ffba544e614ad298",
+          "size": null
+        },
+        {
+          "path": "marketplace/JAY_WALLET_ALLOCATION_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "12df47d1c127f28c1d08da52c41d1e932c5467f1",
+          "size": 2233
+        },
+        {
+          "path": "marks-portal",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "ee7507118af7033c7ee3dd22c29d1258a7cab655",
+          "size": null
+        },
+        {
+          "path": "marks-portal/index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3fa57c5a567bd0e7d3b02865fd6caf5a883ff0d9",
+          "size": 7426
+        },
+        {
+          "path": "motions",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "116ecc73adaff2e3ad61458bfc3b81423c6ec103",
+          "size": null
+        },
+        {
+          "path": "motions/MOTION_001_ADMIT_CONSTITUTION_AS_FOUNDING_EXHIBIT.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "360af2b53d5b653c8a48aa6807e72517f6fa388e",
+          "size": 3280
+        },
+        {
+          "path": "package.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "be7aeec7035672c8244606c843c290a101f3789c",
+          "size": 232
+        },
+        {
+          "path": "public",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9d823846bce6062f04e3481e6a35373ba4b96a45",
+          "size": null
+        },
+        {
+          "path": "public/governance-state.js",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6b94557ac76c9d28dbe0ecec69e4c0e430f124d2",
+          "size": 4208
+        },
+        {
+          "path": "public/governance.css",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f4c7cc213c739fe5a797a963faa88a8c59cb32cb",
+          "size": 1481
+        },
+        {
+          "path": "public/governance.js",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "19c0756a0eed46995ec277a919418a7d14c5d371",
+          "size": 7371
+        },
+        {
+          "path": "public/index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3351d6dc6d89d254b4753bd3fbec012934c2a0b1",
+          "size": 8302
+        },
+        {
+          "path": "receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ab6a42855d748fd9213ee111ec2cd0cd3d42c791",
+          "size": 338
+        },
+        {
+          "path": "receipts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "3c802a55ab9b52069906323f06a5c28d8c262822",
+          "size": null
+        },
+        {
+          "path": "receipts/JAY_WISDOM_50_50_PROOF_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "57f767c39abb902a69d326934c5e834747e7fccb",
+          "size": 8255
+        },
+        {
+          "path": "receipts/bridge_node_syntax_check_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "83544bbc2315453d2d178bbe6d43e744b67bcb84",
+          "size": 1486
+        },
+        {
+          "path": "receipts/bridge_schema_uid_local_env_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0f2bb70c1af9710d0bf34e3cfa2a438450f3adfa",
+          "size": 1488
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "1916a7a671dd218bcc0b9f64f356cb397ef3bcec",
+          "size": null
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260710T223832Z",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "ca778ac3028bcb82e63817e5f696448c396e792b",
+          "size": null
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260710T223832Z/active_account.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2ecd56915bef9336695ed07f74cc3151b736acb2",
+          "size": 158
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260710T223832Z/billing_project_link.json.log",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "afde547c30010920c6710f2301158840c138a464",
+          "size": 394
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260710T223832Z/enabled_services.json.log",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2757961bc9dcdcb127b92ccb6e9f02ee1f3899a9",
+          "size": 390
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260710T223832Z/evidence_manifest.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3f41bc79f6870df6661eb9426f97a278a69cd1a4",
+          "size": 653
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260710T223832Z/evidence_manifest.sha256.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "132ef0096c1e98e77082da49afe7cf13fb471679",
+          "size": 91
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260710T223832Z/jay_velocity_json_trial_v0_2.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "603a6a18ad28b9a63e4f87c433905a21811b0911",
+          "size": 822
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260710T223832Z/jay_velocity_json_trial_v0_2.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "eeb48a8a1a2e8c6f97f7c893a13191794383bf7d",
+          "size": 100
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260710T223832Z/project_describe.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "053d4e7c668375036af2a9aca1e3ee466278a216",
+          "size": 371
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260710T223832Z/state.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2e221b79b00b6b8e937906bb78713c9b1ee8def2",
+          "size": 587
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260711T001150Z",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "55a1695235cbc79f8ca6abc93f5873811e55c108",
+          "size": null
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260711T001150Z/active_account.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2ecd56915bef9336695ed07f74cc3151b736acb2",
+          "size": 158
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260711T001150Z/auth_inventory.json.log",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "06b85920d3d6d3a2f84c4b6f6e35985ccb7fd51d",
+          "size": 49
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260711T001150Z/billing_project_link.json.log",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "afde547c30010920c6710f2301158840c138a464",
+          "size": 394
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260711T001150Z/configured_account.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6d370f374ad33c64e3ac4de00aed6c8356852261",
+          "size": 104
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260711T001150Z/configured_project.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0d6344756abe02760f2840e2f4698341bdababa0",
+          "size": 104
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260711T001150Z/enabled_services.json.log",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2757961bc9dcdcb127b92ccb6e9f02ee1f3899a9",
+          "size": 390
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260711T001150Z/evidence_manifest.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "61d8c0d96fbe76dbc894bf60d93aa1325548d3e3",
+          "size": 927
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260711T001150Z/evidence_manifest.sha256.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "699fb48b98bc67764a839e2bbc0a743a0ae54026",
+          "size": 91
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260711T001150Z/jay_velocity_json_trial_v0_2.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3b95eb6baaf385dffe9f4d8b70018f375e25bc0f",
+          "size": 822
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260711T001150Z/jay_velocity_json_trial_v0_2.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6b4aaaee90ba80dc62010989ab8bb467f6fa837a",
+          "size": 100
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260711T001150Z/project_describe.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "053d4e7c668375036af2a9aca1e3ee466278a216",
+          "size": 371
+        },
+        {
+          "path": "receipts/cloud_velocity_v0_2/20260711T001150Z/state.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "13361939cfae6f8d215de8f873e6902287c4c468",
+          "size": 818
+        },
+        {
+          "path": "receipts/eas_laughter_schema_registration_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "954290486e0d8347e21b93fa90ba469caf43a644",
+          "size": 1668
+        },
+        {
+          "path": "receipts/external-replay",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "60fa6c20fc92608132a99029b95738993603910b",
+          "size": null
+        },
+        {
+          "path": "receipts/external-replay/EXTERNAL_REPLAY_GREEN_RECEIPT.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "19b079b1cb97efd20704f826075a094649424772",
+          "size": 1236
+        },
+        {
+          "path": "receipts/external-replay/EXTERNAL_REPLAY_GREEN_RECEIPT.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c1fe17a00ae96211cb1e7719e1c11d9aba6db698",
+          "size": 1380
+        },
+        {
+          "path": "receipts/foundry_cast_install_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b2ba5c4cc43bb2383bbe72206e881b9458dca1ca",
+          "size": 1369
+        },
+        {
+          "path": "receipts/gcloud_identity_v0_1",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "0747fec6e1db2d3bf765a3c62a9d1bfd0b684f0f",
+          "size": null
+        },
+        {
+          "path": "receipts/gcloud_identity_v0_1/20260710T224305Z",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f6ed770f3ccf0d62b528b93c6bfd32794fff16f3",
+          "size": null
+        },
+        {
+          "path": "receipts/gcloud_identity_v0_1/20260710T224305Z/auth_inventory.json.log",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "06b85920d3d6d3a2f84c4b6f6e35985ccb7fd51d",
+          "size": 49
+        },
+        {
+          "path": "receipts/gcloud_identity_v0_1/20260710T224305Z/configured_account.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c883e5e327702f87781c072c03bfb83438f5775c",
+          "size": 104
+        },
+        {
+          "path": "receipts/gcloud_identity_v0_1/20260710T224305Z/configured_project.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7e0a3fefe6f771cdd389782114d7222f188b7892",
+          "size": 104
+        },
+        {
+          "path": "receipts/gcloud_identity_v0_1/20260710T224305Z/evidence_manifest.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2d2f8025212de80a452f7168e60a286803eecb77",
+          "size": 353
+        },
+        {
+          "path": "receipts/gcloud_identity_v0_1/20260710T224305Z/evidence_manifest.sha256.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "de166c25a9e8d0934a2fe8f1e6648b8135eb71c8",
+          "size": 91
+        },
+        {
+          "path": "receipts/gcloud_identity_v0_1/20260710T224305Z/state.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f1ace4426f436c7f34f59d2c4fb5cae3f6957513",
+          "size": 587
+        },
+        {
+          "path": "receipts/google_cloud_shell_velocity_assistant_report_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2aa6d23940962ad8fedee6db0496a80910049db3",
+          "size": 2515
+        },
+        {
+          "path": "receipts/google_cloud_shell_velocity_evidence_update_v0_2.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "058ff439ab85a5e29b3f70b3623700f13aa27750",
+          "size": 4510
+        },
+        {
+          "path": "receipts/google_iam_day_closeout_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "37d22d93cced0bf17b33a4446388014731b681d7",
+          "size": 4035
+        },
+        {
+          "path": "receipts/jay_identity_50_50_manifest.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d50632316709de71a82929aae06eceff315f1a85",
+          "size": 1985
+        },
+        {
+          "path": "receipts/jaywisdom_base_eth_wallet_receive_surface_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cb6591a9ab8ecf926fa6e530bf52b51e9f43b242",
+          "size": 2373
+        },
+        {
+          "path": "receipts/policy",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "e1c98f24f75f782b6063a35d796faab1860f4b8f",
+          "size": null
+        },
+        {
+          "path": "receipts/policy/2026-07-14-us-uk-ttmf-recommendations.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0813335232f88acc45c87943d911fc9ea9496c90",
+          "size": 2559
+        },
+        {
+          "path": "receipts/receipt_court",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f394629583794a9ef50897775672d7468378d370",
+          "size": null
+        },
+        {
+          "path": "receipts/receipt_court/RECEIPT_COURT_FUSION_LAYER_V1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5dcb18241ce65df67257cca51c7496b41a27cb4e",
+          "size": 1722
+        },
+        {
+          "path": "receipts/signing_message_canonical_v0_1.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0af28cd4f26a84453ee6b9a804b25694a37a91a0",
+          "size": 356
+        },
+        {
+          "path": "receipts/signing_message_hex_v0_1.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9f0ea1af8ba60690544ef2eeb2b83f51149dba3b",
+          "size": 714
+        },
+        {
+          "path": "receipts/uwdiploma128_artifact_hashes_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "75120d2fc86ef2cba51888051aedf36f4166fcfe",
+          "size": 1645
+        },
+        {
+          "path": "receipts/uwdiploma128_ci_two_build_reproducibility_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7e53a5f3cbfe586abaf0882ba246f31d874f6a99",
+          "size": 2820
+        },
+        {
+          "path": "receipts/uwdiploma128_forge_build_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cfed67e2fa07f0c0f85aef37b623ab887341bbd8",
+          "size": 1281
+        },
+        {
+          "path": "receipts/uwdiploma128_forge_test_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2b8fd609d087a019b0c4242d2157fd49ed9afe6c",
+          "size": 1981
+        },
+        {
+          "path": "receipts/uwdiploma128_local_ci_hardened_match_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "da40766b856a035fe5f6eeaede99d8a81e0701d2",
+          "size": 2711
+        },
+        {
+          "path": "receipts/uwdiploma128_preflight_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8e3dcc8de0e790ef0484041975f40eb53417d90a",
+          "size": 2217
+        },
+        {
+          "path": "receipts/uwdiploma128_unsigned_deployment_bundle_v0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4c399957f176268b02568f519546a70c636dd43c",
+          "size": 1855
+        },
+        {
+          "path": "receipts/uwdiploma128_unsigned_deployment_bundle_v0_2.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "810732ad5f1d90488be4511ca66ddc1b3d2a791a",
+          "size": 1855
+        },
+        {
+          "path": "replay",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "2e46cf48ca42e4ac7bfe83fe0e9275e5ed5bdf11",
+          "size": null
+        },
+        {
+          "path": "replay/GITFIX_REPLAY_README_INGESTION_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c031800b4b1cc1fef35259fcfa53954d4022d048",
+          "size": 3664
+        },
+        {
+          "path": "replay/JAYWISDOM_ETH_GOOGLE_PROJECT_STEREO_REPLAY_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2237999b0412e2dea59d1af9a0501227fd884803",
+          "size": 4595
+        },
+        {
+          "path": "repo_inventory.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "438d99c4f2d10b0d631c3b96354683a3e80a0a9f",
+          "size": 6007
+        },
+        {
+          "path": "scripts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "829977315ca1862dfa7adc2df1156324b4bff5bd",
+          "size": null
+        },
+        {
+          "path": "scripts/capture_cloud_velocity_v0_2.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "aec6dd538f20b3a6746f7bd555d79410d299c22d",
+          "size": 5448
+        },
+        {
+          "path": "scripts/capture_gcloud_identity_v0_1.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a88c2712e245144bb2245e03b0f8660e8cc2b048",
+          "size": 3188
+        },
+        {
+          "path": "scripts/export_uwdiploma128_deployment_bundle.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "78424a518c98deaff820fd4f0d1ac80b060cf47d",
+          "size": 3664
+        },
+        {
+          "path": "scripts/github-proof-marketplace-verify.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "267144a067de14c456cca79a519b25f3d0c7a0da",
+          "size": 2607
+        },
+        {
+          "path": "scripts/validate-governance-ui.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a6b0578fa60b3367ade127d22a91f7edca5be331",
+          "size": 1117
+        },
+        {
+          "path": "scripts/verify_50_50_wallet_v0_1.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "61988df1aabc1ed9b6e9cd369e3174c8b53dfed5",
+          "size": 2891
+        },
+        {
+          "path": "sign-controller-v2.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a4c9b103674321295becf7b8c7f60678966d916f",
+          "size": 7710
+        },
+        {
+          "path": "sign-t06.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3250a57cb136861ad24f89d46f85bca6c3da6a99",
+          "size": 8599
+        },
+        {
+          "path": "test",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "a3a666096440b3bbcdb30944270e5a3cf68f7243",
+          "size": null
+        },
+        {
+          "path": "test/UWDiploma128.t.sol",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c5489a921e79425998bdc03763123af9e929aee8",
+          "size": 4591
+        },
+        {
+          "path": "tests",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "0dca602f27a548aac239b78af0d175c8f6c1da6d",
+          "size": null
+        },
+        {
+          "path": "tests/governance-state.test.mjs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "79254791b56707daf20be816a125d5aa43ae3c52",
+          "size": 2286
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/mint-engine-zero",
+      "default_branch": "main",
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "error": "CONFLICT: Error code: CONFLICT; Error: GitHub API error 409: {\"message\":\"Git Repository is empty.\",\"documentation_url\":\"https://docs.github.com/rest/commits/commits#get-a-commit\",\"status\":\"409\"}"
+    },
+    {
+      "repo": "jsonwisdom/base-live",
+      "default_branch": "main",
+      "head_commit": "7f62d0c378cf384930960c4b8b74723dcdab41b7",
+      "tree_sha": "47c1d558d52e30543834726fd4b434bc1b6e1f20",
+      "entry_count": 4,
+      "truncated": false,
+      "entries": [
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1b1ba7335ae8617291727e4f137d43a91e0e095b",
+          "size": 946
+        },
+        {
+          "path": "docs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "2d93b87615713e683c5ef174409b1bf7e5c1abf5",
+          "size": null
+        },
+        {
+          "path": "docs/ANCHOR_001_DEPLOYMENT_BOUNDARY.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0fc33928717b56e82a13bfbf7baaf7b28ac5f85c",
+          "size": 1321
+        },
+        {
+          "path": "index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7a73784c858dfd96d5c557c4d91ebd7fbb201f36",
+          "size": 2686
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/COMPUTERWIZARD",
+      "default_branch": "master",
+      "head_commit": "7c5d4380c1bb84c5ddc4d84e121d68312bd6115e",
+      "tree_sha": "6e5b1bdf34de96444f87afebd25c61daa2ae1479",
+      "entry_count": 45,
+      "truncated": false,
+      "entries": [
+        {
+          "path": ".github",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "6a81cc07b14d4d6d77872a5745005a3f337e79eb",
+          "size": null
+        },
+        {
+          "path": ".github/workflows",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "45b07396882840e88c380e37f4d34e584f60fc03",
+          "size": null
+        },
+        {
+          "path": ".github/workflows/deploy-pages.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d49ad46dec46bd79db6031b73204afd2fcbf3171",
+          "size": 898
+        },
+        {
+          "path": ".github/workflows/mirror_heartbeat.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "68054d7f8543262547fbb0c828ffc22c5a3cbd22",
+          "size": 1249
+        },
+        {
+          "path": "AR-001",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "90833321caea67d2a48f1f16508d06222443895e",
+          "size": null
+        },
+        {
+          "path": "AR-001/generate_receipt.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2736ed2106f72db736f30e761aa236fd4a2013e3",
+          "size": 2108
+        },
+        {
+          "path": "AR-001/receipt.v1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "76199086590ead664175deef8745ce9d92185d0a",
+          "size": 448
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "99e6719475c51aa007960d71a8469b6a2f29379a",
+          "size": 1320
+        },
+        {
+          "path": "assets",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "ba88646e06088fe266e0a6bcdc949e9b5f289541",
+          "size": null
+        },
+        {
+          "path": "assets/attention-on-base-2026-04-22.jpeg",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dc11bbf7401fc9c6ff301f49abaaf71a1f611275",
+          "size": 16
+        },
+        {
+          "path": "docs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "ecb3d38dc5f371149de9afbec9c625f93779470e",
+          "size": null
+        },
+        {
+          "path": "docs/ARCHITECTURE.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3bd3aa2526a3c7d0bd3372d73296e2654373dcfa",
+          "size": 1592
+        },
+        {
+          "path": "docs/boxd",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "5d0d742e96fc5735491698763015451cea5e9730",
+          "size": null
+        },
+        {
+          "path": "docs/boxd/governance",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "214445e8a7aa6925b43982870937a8637483eac8",
+          "size": null
+        },
+        {
+          "path": "docs/boxd/governance/MULTI_OVERSIGHT_MESH_V0_1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6035a3f4a7fe3674dea0ab844138dd982ece6072",
+          "size": 7733
+        },
+        {
+          "path": "docs/manifesto.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ab5daaa4229304551d68e338886abcb8b35672d7",
+          "size": 1242
+        },
+        {
+          "path": "docs/visual_language.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1843608792bf2c162db278dc6a33d24ed97bb97c",
+          "size": 322
+        },
+        {
+          "path": "index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8a26649b81293eb1314fd9877cfdc9c4a7b66dd0",
+          "size": 5094
+        },
+        {
+          "path": "ledgers",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8f65bf5bab5df8e59467ec558805891e84fa80c4",
+          "size": null
+        },
+        {
+          "path": "ledgers/system_events.jsonl",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0c880518d885d9ca1ffeafbc750b39d6fd728311",
+          "size": 1526
+        },
+        {
+          "path": "receipts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "069b253e0b704b7eab5228418592f8d36effd5b7",
+          "size": null
+        },
+        {
+          "path": "receipts/.template.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "edf89f0bd84062ff56ac53428012708af5c0bcb4",
+          "size": 834
+        },
+        {
+          "path": "receipts/001_genesis.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "80885aedd85375f0e35e3471231ed687fdadd558",
+          "size": 687
+        },
+        {
+          "path": "receipts/001_platform_genesis.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3c7a1b98c27da2ceb06607ddcf584e66e4936ac1",
+          "size": 606
+        },
+        {
+          "path": "receipts/002_attestation.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ef9b89f7b809ac5a1518af3e42021157e3ed14e2",
+          "size": 1162
+        },
+        {
+          "path": "receipts/002_manifesto_commit.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8eb41814c835392f17ee7cc16a57b1df72909e32",
+          "size": 1308
+        },
+        {
+          "path": "receipts/003_verification_run.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8d4b4e0e2dc1ef0f9e7de2cdb1b2dcb24cfc7ecb",
+          "size": 352
+        },
+        {
+          "path": "scripts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "10b7db9753ad792f7eefb61a82243c3d3eed4968",
+          "size": null
+        },
+        {
+          "path": "scripts/generate_verify_json.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1b0f10c33ee566580c1bee79808b6567ae8ec289",
+          "size": 1337
+        },
+        {
+          "path": "site",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "94cf63ed1ba47bc2e9eab097ce1f3483a36b7a56",
+          "size": null
+        },
+        {
+          "path": "site/filecoin-purpose.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "60928f30034a0b7245443ee4994d7bc70a13e1ce",
+          "size": 1925
+        },
+        {
+          "path": "site/friar-ooda.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "48223965377bbac7c3f4a647d6d618803a8fd074",
+          "size": 3177
+        },
+        {
+          "path": "site/friar-verifier.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a3673c623416a07f3a550dcc96c3caa89ab953bd",
+          "size": 6736
+        },
+        {
+          "path": "site/index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a77fcac8e43eeac8685770f3dccd3b908d5d74d3",
+          "size": 30308
+        },
+        {
+          "path": "verify.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5ba5f6e4029cc9f0d88d945ad97fcf9e4f1edf4f",
+          "size": 1432
+        },
+        {
+          "path": "verify_signature.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "66308b4d66f55f8b0ea2383a31b10e9f3ad2f2ae",
+          "size": 1866
+        },
+        {
+          "path": "web",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "1ddfed8a335b738c1cdccfdc3347167cc9866a91",
+          "size": null
+        },
+        {
+          "path": "web/consensus.config.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8bded72f226c0cc4307617fab90379932f2f76fb",
+          "size": 716
+        },
+        {
+          "path": "web/index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8fff65823ef06a777658550a4688e3d763da7ecf",
+          "size": 11506
+        },
+        {
+          "path": "web/manifesto.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "626e22bf3a219631d050dcee7c5e27ad76e5c455",
+          "size": 4138
+        },
+        {
+          "path": "web/projects.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1c924be558bfcdc9f5fcc1959d4b443c1aa9755b",
+          "size": 2228
+        },
+        {
+          "path": "web/receipts.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "56a8c495d4fc6dcd106457c9185aee8928e18892",
+          "size": 159
+        },
+        {
+          "path": "web/styles.css",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f2f7f4a20a8175462ed7c0da8f6f9e93ab8d88d5",
+          "size": 4683
+        },
+        {
+          "path": "web/verify.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f384b6101d429df5d5d97fab3c1201f6931d7b99",
+          "size": 452
+        },
+        {
+          "path": "web/verify.mirror.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b6d056de59bc515325ed1e9af4107c1b0632faa5",
+          "size": 631
+        }
+      ]
+    }
+  ]
+}
