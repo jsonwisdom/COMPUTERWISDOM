@@ -80,8 +80,10 @@
     const record={
       schema:"JASON_ON_BASE_PRIVATE_REFLECTION_V0_1",
       local_event_id:id,
-      source_title:source.title,
-      film_reference:source.url,
+      source_title:localFileObjectUrl?"Local film, user supplied and source unverified":source.title,
+      film_reference:localFileObjectUrl?"LOCAL_VIDEO_USER_SUPPLIED_UNVERIFIED":source.url,
+      selected_research_reference:source.url,
+      source_identity_verified:false,
       scene_id:scene,
       movie_timestamp_seconds:timestamp,
       recorded_at_utc:new Date().toISOString(),
