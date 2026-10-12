@@ -1,0 +1,33 @@
+name: DOJ CrissCross Clerk Lanes v0.2
+
+on:
+  pull_request:
+    paths:
+      - 'docs/jaywisdom/DOJ_CRISSCROSS_PLAYBOOKPINCER_GLOSSARY_V0_1.md'
+      - 'fixtures/jaywisdom/fraud_ledger/STACK_TERMS_CLERK_REPLAY_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/DOJ_CRISSCROSS_PLAYBOOKPINCER_CLERK_LANE_BINDINGS_V0_2.json'
+      - 'tools/verify_doj_crisscross_playbookpincer_clerk_lane_bindings_v0_2.py'
+      - '.github/workflows/doj-crisscross-playbookpincer-clerk-lanes-v0-2.yml'
+  push:
+    branches:
+      - 'agent/fraud-ledger-jasons-dice-game-v0-1'
+    paths:
+      - 'docs/jaywisdom/DOJ_CRISSCROSS_PLAYBOOKPINCER_GLOSSARY_V0_1.md'
+      - 'fixtures/jaywisdom/fraud_ledger/STACK_TERMS_CLERK_REPLAY_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/DOJ_CRISSCROSS_PLAYBOOKPINCER_CLERK_LANE_BINDINGS_V0_2.json'
+      - 'tools/verify_doj_crisscross_playbookpincer_clerk_lane_bindings_v0_2.py'
+      - '.github/workflows/doj-crisscross-playbookpincer-clerk-lanes-v0-2.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  clerk-lane-bindings:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact event head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify glossary to Clerk lane bindings
+        run: python tools/verify_doj_crisscross_playbookpincer_clerk_lane_bindings_v0_2.py

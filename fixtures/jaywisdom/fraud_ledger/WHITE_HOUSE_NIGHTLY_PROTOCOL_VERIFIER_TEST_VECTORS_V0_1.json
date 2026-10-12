@@ -1,0 +1,19 @@
+{
+  "format": "WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_TEST_VECTORS_V0.1",
+  "classification": "SYNTHETIC_PROTOCOL_INTEGRITY_TESTS_ONLY",
+  "purpose": "Test clerk behavior without executing Roll #002 or asserting world truth.",
+  "baseline": "SYNTHETIC_IN_MEMORY_PROTOCOL_BUILT_BY_VERIFIER",
+  "vectors": [
+    {"id": "PASS_BASELINE", "mutation": "NONE", "expected_integrity": "PASS", "expected_violation_class": null},
+    {"id": "FAIL_HASH_VIOLATION", "mutation": "CLAIM_HASH_TAMPER", "expected_integrity": "FAIL", "expected_violation_class": "HASH_VIOLATION"},
+    {"id": "FAIL_BINDING_VIOLATION", "mutation": "RNG_LANE_PAIR_MISMATCH", "expected_integrity": "FAIL", "expected_violation_class": "BINDING_VIOLATION"},
+    {"id": "FAIL_ORDERING_VIOLATION", "mutation": "DISPOSITION_TIMESTAMP_REWIND", "expected_integrity": "FAIL", "expected_violation_class": "ORDERING_VIOLATION"},
+    {"id": "FAIL_LANE_MAP_VIOLATION", "mutation": "LANE_MAP_MISMATCH", "expected_integrity": "FAIL", "expected_violation_class": "LANE_MAP_VIOLATION"},
+    {"id": "FAIL_AUTHORITY_VIOLATION", "mutation": "AUTHORITY_PROMOTION", "expected_integrity": "FAIL", "expected_violation_class": "AUTHORITY_VIOLATION"},
+    {"id": "UNVERIFIABLE_SOURCE_BYTES", "mutation": "SOURCE_BYTES_MISSING", "expected_integrity": "UNVERIFIABLE", "expected_violation_class": null}
+  ],
+  "roll_002_live": false,
+  "claim_truth_proven": false,
+  "human_guilt_determined": false,
+  "authority_created": false
+}
