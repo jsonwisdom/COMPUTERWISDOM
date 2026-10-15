@@ -45,5 +45,23 @@
   "joy_deployment_enabled": false,
   "authority_created": false,
   "gate_001_execution": "HOLD",
-  "deployment_state": "DEPLOYMENT_HOLD"
+  "deployment_state": "DEPLOYMENT_HOLD",
+  "wallet_anchor": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+  "basename_forward_resolution_observed": true,
+  "basename_forward_resolution_source": "Blockscout get_address_by_ens_name",
+  "shared_address_with_jaywisdom_eth_observed": true,
+  "basename_registry_owner_proven": false,
+  "smart_wallet_controller_proven": false,
+  "ens_primary_screenshot_reference": "CRISSCROSS_JASON_PRIMARY_NAME_001",
+  "do_not_equate_basename_with_ens_registration": true,
+  "identity_order": [
+    "verified receipt origins",
+    "exact smart-wallet address",
+    "ENS and Basename FORWARD source links independently",
+    "ENS reverse primary HOLD",
+    "ENS and Basename controller ownership HOLD",
+    "public X account mapping HOLD",
+    "MaryDee purpose seat (not invoked)",
+    "Jason operator and final decision"
+  ]
 }
