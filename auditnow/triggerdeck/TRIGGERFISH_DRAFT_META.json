@@ -2,7 +2,7 @@
   "schema": "TRIGGERDECK_DRAFT_META_V0_1",
   "card_name": "TRIGGERFISH",
   "series": "DualFishyQueefLanes",
-  "card_id": "TD-TBD",
+  "card_id": "ID PENDING",
   "id_uniqueness": "HOLD",
   "portrait_ratio_required": "3:4",
   "white_pixel_border_required": true,
@@ -17,5 +17,15 @@
   "authority_created": false,
   "approved_by_jason": false,
   "art_review": "HOLD",
-  "print_ready": false
+  "print_ready": false,
+  "artifact_sha256": "e055fca7b9f8d5aa75a185ca9b60da67e148b4c865ceb8f94dad9aee9705ba0e",
+  "render_dimensions": [
+    1086,
+    1448
+  ],
+  "geometry_3_4": "PASS",
+  "visual_single_gag": "OBSERVED",
+  "white_pixel_border": "OBSERVED",
+  "true_pixel_font_provenance": "NOT_VERIFIED",
+  "asset_committed_to_repository": false
 }
