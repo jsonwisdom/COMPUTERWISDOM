@@ -1,0 +1,66 @@
+{
+  "schema": "GARBAGE_GENERAL_PRESS_ENS_PURPOSE_V0_1",
+  "project_id": "GARBAGE_GENERAL_PRESS",
+  "project_name": "Garbage General Press",
+  "project_label": "jaywisdom.eth",
+  "namespace_type": "ENS_LABEL_USER_DECLARED",
+  "network_control_proven": false,
+  "purpose_steward_seat": "MaryDeeBot",
+  "marydeebot_real_dispatch_observed": false,
+  "purpose": "Maintain an editorial question-and-evidence desk for public-interest claims, satire of bad inference, and provenance-first research; separate human subjects from procedural critique.",
+  "open_state": "OPENED_AS_UNMERGED_DRAFT_PROJECT_RECORD",
+  "privacy_scope": "PUBLIC_SAFE_METADATA_ONLY",
+  "evidence_order": [
+    "EXACT_CLAIM",
+    "SOURCE_BYTES_OR_PUBLIC_URL",
+    "INDEPENDENCE_GRAPH",
+    "CONTRARY_SOURCES",
+    "REPLAYABLE_TESTS",
+    "PRIVACY_AND_FAIRNESS",
+    "JASON_HUMAN_DECISION"
+  ],
+  "rotating_review_seats": [
+    {
+      "seat": "MaryDeeBot",
+      "assignment": "question intake, purpose and audit task index",
+      "type": "proposed_analytic_seat"
+    },
+    {
+      "seat": "Leanne",
+      "assignment": "challenge framing, missing questions",
+      "type": "proposed_analytic_seat"
+    },
+    {
+      "seat": "LeahPrime",
+      "assignment": "source lineage and underlying-origin graph",
+      "type": "proposed_analytic_seat"
+    },
+    {
+      "seat": "BoxDee",
+      "assignment": "backward-forward deterministic replay",
+      "type": "proposed_analytic_seat"
+    },
+    {
+      "seat": "Supreme Seymour",
+      "assignment": "adversarial reduction, fail-closed review",
+      "type": "proposed_analytic_seat"
+    },
+    {
+      "seat": "Boss Brenda",
+      "assignment": "privacy and consent review",
+      "type": "proposed_analytic_seat"
+    }
+  ],
+  "trigger_type": "RECEIPT_OR_CONTRADICTION_EVENT_ONLY",
+  "timer_or_schedule_enabled": false,
+  "source_claims_verified_by_this_file": false,
+  "bot_fanout_enabled": false,
+  "editorial_release_approved": false,
+  "joy_deployment_enabled": false,
+  "authority_created": false,
+  "final_release_authority": "Jason",
+  "gate_001_execution": "HOLD",
+  "gate_001_deployment": "DEPLOYMENT_HOLD",
+  "linked_operator_project": "GARBAGE_PRESS_BNS",
+  "link_is_ownership_proof": false
+}
