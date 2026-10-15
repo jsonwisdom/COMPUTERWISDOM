@@ -62,5 +62,27 @@
   "gate_001_execution": "HOLD",
   "gate_001_deployment": "DEPLOYMENT_HOLD",
   "linked_operator_project": "GARBAGE_PRESS_BNS",
-  "link_is_ownership_proof": false
+  "link_is_ownership_proof": false,
+  "primary_name_intent": "jaywisdom.eth",
+  "wallet_anchor": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+  "forward_resolution_observed": true,
+  "forward_resolution_source": "Blockscout get_address_by_ens_name (source network/coin-type not specified)",
+  "ui_set_primary_transaction_report": "SCREENSHOT_REPORTED_SUCCESS",
+  "ui_screenshot_sha256": "2a93d4157e2e17b66137d3a1d589cf488ffc53cc662450cf1a7f6b341c0fa363",
+  "primary_reverse_record_independently_verified": false,
+  "ens_registry_owner_verified": false,
+  "smart_wallet_controller_verified": false,
+  "primary_name_final_verified": false,
+  "crisscross_checkpoint": "CRISSCROSS_JASON_PRIMARY_NAME_001",
+  "identity_order": [
+    "hashed source observation",
+    "shared address reference (smart contract)",
+    "ENS forward lookup",
+    "reverse-record / chain proof",
+    "smart-wallet controller evidence",
+    "separate Basename lookup and ownership check",
+    "independent X identity",
+    "MaryDee review-only question routing",
+    "Jason human editorial decision"
+  ]
 }
