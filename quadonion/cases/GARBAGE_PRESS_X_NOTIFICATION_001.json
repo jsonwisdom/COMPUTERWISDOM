@@ -1,0 +1,52 @@
+{
+  "case_id": "GARBAGE_PRESS_X_NOTIFICATION_001",
+  "topic": "general",
+  "exact_claim": "The uploaded screenshot displays an X app notification stating 'Your blue checkmark is here!' and 'Your account is now verified.' It does not display the account @handle, independently establish live badge status, or bind any ENS/Basename controller.",
+  "fixture_only": false,
+  "claim_type": "USER_SUPPLIED_PLATFORM_NOTIFICATION_IMAGE",
+  "platform": "X",
+  "image_sha256": "d43e5eafb74c5ad4685d1f60bd75cfaf4feb6b789b6624e1033306c9ce12472b",
+  "image_dimensions_px": [
+    1170,
+    2532
+  ],
+  "image_preservation": "CHAT_UPLOAD_ONLY_NOT_COMMITTED_TO_GITHUB",
+  "x_notification_text_as_displayed": [
+    "Your blue checkmark is here!",
+    "Your account is now verified."
+  ],
+  "relative_age_label_in_screenshot": "2d",
+  "platform_profile_handle": "UNBOUND_NOT_VISIBLE_IN_SCREENSHOT",
+  "candidate_handle_from_separate_project_references": "@jaywisdom12",
+  "candidate_handle_authenticated_by_screenshot": false,
+  "ens": "jaywisdom.eth",
+  "basename": "jaywisdom.base.eth",
+  "ens_basename_bindings_verified": false,
+  "verification_status": "SCREENSHOT_CONTENT_OBSERVED__PLATFORM_LIVE_STATE_UNVERIFIED",
+  "source_bytes_inspected": true,
+  "external_platform_bytes_fetched": false,
+  "independent_origin_review_receipt": null,
+  "human_review_receipt": null,
+  "contrary_receipts": [],
+  "sources": [
+    {
+      "observation_id": "X_SCREENSHOT_UPLOADED_20261014",
+      "medium": "USER_UPLOADED_SCREENSHOT",
+      "declared_origin_id": "ONE_UNVERIFIED_APP_NOTIFICATION_SCREENSHOT",
+      "receipt_sha256": "d43e5eafb74c5ad4685d1f60bd75cfaf4feb6b789b6624e1033306c9ce12472b",
+      "content_sha256": "d43e5eafb74c5ad4685d1f60bd75cfaf4feb6b789b6624e1033306c9ce12472b",
+      "witness_independent": false,
+      "proof_of_live_platform_state": false
+    }
+  ],
+  "events": [
+    {
+      "event_id": "x_badge_notification_001",
+      "kind": "REVIEW_RECEIPT_ADDED",
+      "receipt_ref": "CHAT_UPLOAD_IMG_4867_PNG_LOCAL_IMAGE_SHA256_D43E5E",
+      "receipt_sha256": "d43e5eafb74c5ad4685d1f60bd75cfaf4feb6b789b6624e1033306c9ce12472b"
+    }
+  ],
+  "publication_enabled": false,
+  "authority_created": false
+}
