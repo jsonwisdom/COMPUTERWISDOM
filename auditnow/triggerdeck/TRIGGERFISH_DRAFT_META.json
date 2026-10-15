@@ -1,0 +1,21 @@
+{
+  "schema": "TRIGGERDECK_DRAFT_META_V0_1",
+  "card_name": "TRIGGERFISH",
+  "series": "DualFishyQueefLanes",
+  "card_id": "TD-TBD",
+  "id_uniqueness": "HOLD",
+  "portrait_ratio_required": "3:4",
+  "white_pixel_border_required": true,
+  "dominant_pixel_type_required": true,
+  "single_gag": "A cartoon triggerfish feeds duplicate source links into a courtroom copier; one hearing wearing seven witness badges gets caught.",
+  "short_caption": "ONE HEARING ≠ SEVEN WITNESSES",
+  "satire_notice": "SATIRE • COUNTING AUDIT • NOT A VERDICT",
+  "art_created": true,
+  "art_as_evidence": false,
+  "publication_authorized": false,
+  "canon": false,
+  "authority_created": false,
+  "approved_by_jason": false,
+  "art_review": "HOLD",
+  "print_ready": false
+}
