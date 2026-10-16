@@ -1,0 +1,33 @@
+{
+  "schema_id": "FACT_PREDICATE_LEAF_V0_1",
+  "schema_version": "v0.1",
+  "class": "SEMANTIC_PREDICATE_RECEIPT_LEAF",
+  "relation": "NOT_IDENTICAL",
+  "required_fields": [
+    "predicate_id",
+    "left",
+    "right",
+    "relation",
+    "receipt",
+    "truth_status",
+    "authority_status"
+  ],
+  "receipt_required_fields": [
+    "source",
+    "witness",
+    "hash"
+  ],
+  "default_receipt_state": {
+    "witness": "PENDING",
+    "hash": "PENDING_HASH"
+  },
+  "default_truth_status": "PENDING_RECEIPT",
+  "default_authority_status": "NONE",
+  "invariants": [
+    "MERKLE_ROOT != FACT",
+    "HASH_MATCH != TRUTH",
+    "PUBLICATION != AUTHORITY"
+  ],
+  "authority_created": false,
+  "canon": false
+}
