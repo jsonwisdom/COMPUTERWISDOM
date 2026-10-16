@@ -1,0 +1,183 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jaywisdom.base.eth/schemas/GBS_BOXDEE_BURDEN_V001.schema.json",
+  "title": "GBS-BOXDEE-BURDEN-V001 Transition Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "standard",
+    "designNamespace",
+    "claimant",
+    "claim",
+    "source",
+    "object",
+    "time",
+    "action",
+    "readback",
+    "provenance",
+    "burdenSatisfied",
+    "result",
+    "authorityCreated"
+  ],
+  "properties": {
+    "standard": {
+      "const": "GBS-BOXDEE-BURDEN-V001"
+    },
+    "designNamespace": {
+      "const": "jaywisdom.base.eth"
+    },
+    "claimant": {
+      "type": "string",
+      "minLength": 1
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["surface", "status"],
+      "properties": {
+        "surface": {"type": "string", "minLength": 1},
+        "url": {"type": ["string", "null"]},
+        "status": {
+          "enum": ["OBSERVED", "UNOBSERVED", "SEARCH_MISS"]
+        }
+      }
+    },
+    "object": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["identifier", "status"],
+      "properties": {
+        "identifier": {"type": ["string", "null"]},
+        "description": {"type": ["string", "null"]},
+        "status": {
+          "enum": ["OBSERVED", "UNOBSERVED"]
+        }
+      }
+    },
+    "time": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "status"],
+      "properties": {
+        "value": {"type": ["string", "null"]},
+        "status": {
+          "enum": ["OBSERVED", "UNOBSERVED"]
+        }
+      }
+    },
+    "action": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["assertedTransition", "status"],
+      "properties": {
+        "assertedTransition": {"type": "string", "minLength": 1},
+        "status": {
+          "enum": ["OBSERVED", "UNOBSERVED", "ASSERTED_ONLY"]
+        }
+      }
+    },
+    "readback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["value", "status"],
+      "properties": {
+        "value": {},
+        "status": {
+          "enum": ["OBSERVED", "UNOBSERVED", "MATCH", "DELTA"]
+        },
+        "source": {"type": ["string", "null"]}
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["type", "value"],
+        "properties": {
+          "type": {
+            "enum": [
+              "URL",
+              "HASH",
+              "TRANSACTION",
+              "COMMIT",
+              "SCREENSHOT_HASH",
+              "INCIDENT_ID",
+              "OTHER"
+            ]
+          },
+          "value": {"type": "string", "minLength": 1}
+        }
+      }
+    },
+    "burdenSatisfied": {
+      "type": "boolean"
+    },
+    "result": {
+      "enum": ["PASS", "DELTA", "HOLD"]
+    },
+    "authorityCreated": {
+      "const": false
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {"result": {"const": "PASS"}},
+        "required": ["result"]
+      },
+      "then": {
+        "properties": {
+          "burdenSatisfied": {"const": true},
+          "source": {
+            "properties": {"status": {"const": "OBSERVED"}},
+            "required": ["status"]
+          },
+          "object": {
+            "properties": {
+              "status": {"const": "OBSERVED"},
+              "identifier": {"type": "string", "minLength": 1}
+            },
+            "required": ["status", "identifier"]
+          },
+          "time": {
+            "properties": {
+              "status": {"const": "OBSERVED"},
+              "value": {"type": "string", "minLength": 1}
+            },
+            "required": ["status", "value"]
+          },
+          "action": {
+            "properties": {"status": {"const": "OBSERVED"}},
+            "required": ["status"]
+          },
+          "readback": {
+            "properties": {
+              "status": {"const": "MATCH"},
+              "value": {"not": {"type": "null"}}
+            },
+            "required": ["status", "value"]
+          },
+          "provenance": {
+            "minItems": 1
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {"burdenSatisfied": {"const": false}},
+        "required": ["burdenSatisfied"]
+      },
+      "then": {
+        "properties": {
+          "result": {"enum": ["DELTA", "HOLD"]}
+        }
+      }
+    }
+  ]
+}
