@@ -20,7 +20,16 @@ h2{font-size:1.12rem;margin:0 0 10px}p{line-height:1.52;color:#c9d5e6;margin:8px
 .state{font-size:.73rem;font-weight:800;letter-spacing:.03em;color:#ffdc94;margin-top:12px;display:block}
 button{width:100%;border:2px solid #82e6d7;border-radius:12px;padding:15px 12px;margin:7px 0;background:#80e7d8;color:#0c171b;font-size:1.01rem;font-weight:850;cursor:pointer}
 button.alt{background:transparent;color:#cefbf5}button:disabled{opacity:.42;cursor:not-allowed}
-pre{white-space:pre-wrap;overflow-wrap:anywhere;border-radius:10px;padding:13px;font-size:.73rem;background:#050b14;border:1px solid #263b56;max-height:280px;overflow:auto}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;border-radius:10px;padding:13px;font-size:.8rem;line-height:1.5;background:#050b14;border:1px solid #263b56;max-height:50vh;overflow:auto;-webkit-overflow-scrolling:touch}
+.receipt-summary{border:1px solid #345c64;background:#0c2330;border-radius:12px;padding:12px;margin:12px 0;overflow-wrap:anywhere}
+.receipt-summary strong{display:block;color:#93efde}
+.receipt-summary small{display:block;margin-top:5px}
+details.receipt-details{margin:15px 0}
+details.receipt-details summary{cursor:pointer;color:#a4eee8;font-weight:800;padding:12px 10px;border:1px solid #3a506c;border-radius:10px}
+details.receipt-details[open] summary{margin-bottom:10px}
+.privacy-hint{font-size:.84rem;color:#f4dea8}
+#receiptWrap button{min-height:48px}
+@media(max-width:480px){#receiptWrap h2{line-height:1.25}#receiptWrap button{font-size:.94rem;padding:14px 8px}}
 #notice{font-weight:650;color:#f5d895}#notice.ok{color:#91f3cd}#notice.error{color:#ffaaaa}
 label{display:flex;gap:10px;align-items:flex-start;line-height:1.4;margin:10px 0 16px;color:#f0f4fa;font-size:.94rem}
 input[type=checkbox]{width:20px;height:20px;flex:none;accent-color:#80e7d8}
@@ -66,8 +75,16 @@ small,footer{font-size:.8rem;color:#a9bad0;line-height:1.53}footer{margin-top:25
 <section class="panel" id="receiptWrap" hidden>
 <h2>4 · Local receipt — not independently verified</h2>
 <p>The same signed statement is recorded as two independent review candidates. <strong>No branch was verified or transmitted.</strong> Save the receipt for separate verification; never post signatures or receipts publicly without considering their privacy impact.</p>
-<pre id="receipt"></pre>
-<button type="button" id="download">Download receipt JSON (local only)</button>
+<div class="receipt-summary" id="receiptMeta" aria-live="polite">Signature returned. Both name-control paths remain HOLD.</div>
+<div class="rows" aria-label="Independent name checks still pending">
+<div class="lane"><strong>BASE / BNS</strong><code>jaywisdom.base.eth</code><span class="state">CONTROL HOLD</span></div>
+<div class="lane"><strong>ETH / ENS</strong><code>jaywisdom.eth</code><span class="state">CONTROL HOLD</span></div>
+</div>
+<details class="receipt-details" id="receiptDetails"><summary>View full JSON receipt (includes signature)</summary><pre id="receipt"></pre></details>
+<p class="privacy-hint">Private receipt: it contains a wallet signature. On iPhone, use Save to Files in the share sheet. Do not publish or send it to strangers.</p>
+<button type="button" id="save">iPhone · Save to Files / Share privately</button>
+<button type="button" id="download" class="alt">Download JSON (local only)</button>
+<button type="button" id="copy" class="alt">Copy private JSON (clipboard)</button>
 <button type="button" class="alt" id="reset">New challenge</button>
 </section>
 <footer>
@@ -86,7 +103,7 @@ BNS → ENS → Third Rail News → DNS → ORDER. No external scripts, analytic
   const show = (message, cls='') => { $('notice').textContent=message; $('notice').className=cls; };
   const clear = () => {
     generation++;
-    pending=null;signedReceipt=null;$('challengeWrap').hidden=true;$('receiptWrap').hidden=true;
+    pending=null;signedReceipt=null;$('challengeWrap').hidden=true;$('receiptWrap').hidden=true;$('receiptDetails').open=false;
     $('ack').checked=false;$('sign').disabled=true;$('prepare').disabled=!address;
     $('baseState').textContent='HOLD · NOT TRIGGERED';$('ensState').textContent='HOLD · NOT TRIGGERED';
   };
@@ -158,7 +175,9 @@ BNS → ENS → Third Rail News → DNS → ORDER. No external scripts, analytic
       if(typeof signature!=='string'||!/^0x(?:[0-9a-fA-F]{2})+$/.test(signature)||signature.length>8194) throw new Error('Wallet did not return a hex signature');
       if(Date.now()>=Date.parse(current.expires_at)) throw new Error('Challenge expired after wallet response; signature discarded');
       signedReceipt={schema:'JASON_FULLMATH_DUAL_PATH_CANDIDATE_V0_1',state:'SIGNED_NOT_INDEPENDENTLY_VERIFIED',signed_at_utc:new Date().toISOString(),address:current.address,chain_id:8453,challenge:current.message,nonce:current.nonce,expires_at_utc:current.expires_at,signature,paths:{basename:{name:'jaywisdom.base.eth',state:'CANDIDATE_READY_FOR_INDEPENDENT_REVIEW',name_control:'HOLD'},ens:{name:'jaywisdom.eth',state:'CANDIDATE_READY_FOR_INDEPENDENT_REVIEW',name_control:'HOLD'}},smart_wallet_erc1271_check:'NOT_RUN',signature_verification:'NOT_RUN',review_dispatch:'NOT_RUN',third_rail:'HOLD',dns:'HOLD',order:'HOLD',human_identity:'NOT_VERIFIED',authority_created:false,canon:false,final_decision:'JASON'};
-      $('receipt').textContent=JSON.stringify(signedReceipt,null,2);$('receiptWrap').hidden=false;
+      $('receipt').textContent=JSON.stringify(signedReceipt,null,2);
+      $('receiptMeta').textContent='One signature returned on Base (8453) at '+signedReceipt.signed_at_utc+'. Wallet: '+current.address.slice(0,6)+'…'+current.address.slice(-4)+'. Two review candidates; zero name-control checks.';
+      $('receiptWrap').hidden=false;
       $('baseState').textContent='CANDIDATE READY · CONTROL HOLD';$('ensState').textContent='CANDIDATE READY · CONTROL HOLD';
       $('challengeWrap').hidden=true;
       show('ONE signature returned. TWO local review candidates. ZERO ownership checks executed.','ok');
@@ -166,10 +185,44 @@ BNS → ENS → Third Rail News → DNS → ORDER. No external scripts, analytic
       clear();show('Signature cancelled/rejected: '+String(err?.message||err).slice(0,200),'error');
     }
   });
-  $('download').addEventListener('click',()=>{
+  // User-initiated local save only. No network upload or automatic sharing.
+  const receiptFilename='jason-fullmath-dual-path-candidate.json';
+  const receiptText=()=>JSON.stringify(signedReceipt,null,2)+'\n';
+  const localDownload=()=>{
     if(!signedReceipt)return;
-    const blob=new Blob([JSON.stringify(signedReceipt,null,2)+'\n'],{type:'application/json'});
-    const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='jason-fullmath-dual-path-candidate.json';document.body.append(link);link.click();link.remove();URL.revokeObjectURL(url);
+    const url=URL.createObjectURL(new Blob([receiptText()],{type:'application/json'}));
+    const link=document.createElement('a');link.href=url;link.download=receiptFilename;
+    document.body.append(link);link.click();
+    setTimeout(()=>{link.remove();URL.revokeObjectURL(url);},15000);
+  };
+  $('download').addEventListener('click',()=>{
+    localDownload();show('JSON download requested. On iPhone, check Files → Downloads.','ok');
+  });
+  $('save').addEventListener('click',async()=>{
+    if(!signedReceipt)return;
+    const file=new File([receiptText()],receiptFilename,{type:'application/json'});
+    if(typeof navigator.share==='function' && (!navigator.canShare || navigator.canShare({files:[file]}))){
+      try {
+        await navigator.share({files:[file],title:'Private Jason Full Math receipt'});
+        show('Share sheet completed. Confirm the JSON is saved privately in Files.','ok');
+      } catch(e){
+        show(e?.name==='AbortError'?'Save cancelled. Receipt is still available here.':'Save/Share unavailable. Try Download JSON or Copy private JSON.','error');
+      }
+    } else {
+      localDownload();
+      show('Share-to-Files is unavailable in this browser. Download requested; check Files → Downloads.','ok');
+    }
+  });
+  $('copy').addEventListener('click',async()=>{
+    if(!signedReceipt)return;
+    try {
+      if(!navigator.clipboard?.writeText)throw Error('Clipboard API unavailable');
+      await navigator.clipboard.writeText(receiptText());
+      show('Private receipt copied. Clipboard may be visible to other apps; paste into a private location.','ok');
+    } catch(e) {
+      $('receiptDetails').open=true;
+      show('Automatic copy unavailable. Open the full JSON above and select/copy manually.','error');
+    }
   });
   $('reset').addEventListener('click',()=>{clear();show('Ready for a new challenge.');});
 })();
