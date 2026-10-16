@@ -34,12 +34,12 @@ small,footer{font-size:.8rem;color:#a9bad0;line-height:1.53}footer{margin-top:25
 <header>
 <div class="eyebrow">Jason's Full Math · Ground Zero</div>
 <h1>ONE SIGNATURE.<br>TWO PATHS.</h1>
-<p>Connect inside Coinbase Wallet / Base app. Review and sign one readable message to start two independent evidence checks. No transfer, approval, or contract interaction.</p>
+<p>Connect inside Coinbase Wallet / Base app. Review and sign one readable message to prepare two independent verification paths. Both stay on HOLD until separately verified. No transfer, approval, or contract interaction.</p>
 <div class="badge">REVIEW CANDIDATE · NOT CANON · NO AUTO-PASS</div>
 </header>
 <section class="panel warn">
 <div class="tag">SECURITY AND PROOF BOUNDARY</div>
-<p>A wallet signature does not prove you are Jason, own both names, or authorize any funds movement. This page <strong>does not independently verify smart-wallet signatures</strong>. For contract wallets, EIP-1271 (and, when applicable, counterfactual-account verification) must be replayed separately. The previous wallet-control quarantine remains untouched.</p>
+<p>A wallet signature does not prove you are Jason, own both names, or authorize any funds movement. Do not sign if the wallet is unfamiliar or its activity is suspicious. This page <strong>does not independently verify smart-wallet signatures</strong>. For contract wallets, EIP-1271 (and, when applicable, counterfactual-account verification) must be replayed separately. The previous wallet-control quarantine remains untouched.</p>
 </section>
 <section class="panel" aria-label="Two verification paths">
 <h2>Trigger paths — outward and inward</h2>
@@ -47,7 +47,7 @@ small,footer{font-size:.8rem;color:#a9bad0;line-height:1.53}footer{margin-top:25
 <div class="lane"><strong>① BASE / BNS</strong><code>jaywisdom.base.eth</code><span id="baseState" class="state">HOLD · NOT TRIGGERED</span></div>
 <div class="lane"><strong>② ETH / ENS</strong><code>jaywisdom.eth</code><span id="ensState" class="state">HOLD · NOT TRIGGERED</span></div>
 </div>
-<p><small>Both names are pointers until separately resolved and checked for control. The Third Rail → DNS / ORDER stage remains HOLD until these independent checks pass under Jason's Full Math.</small></p>
+<p><small>Both names are pointers until independently resolved and checked for control. This static page does not run those checks or notify any bot. Third Rail → DNS / ORDER remains HOLD.</small></p>
 </section>
 <section class="panel">
 <h2>1 · Connect and inspect</h2>
@@ -65,7 +65,7 @@ small,footer{font-size:.8rem;color:#a9bad0;line-height:1.53}footer{margin-top:25
 </section>
 <section class="panel" id="receiptWrap" hidden>
 <h2>4 · Local receipt — not independently verified</h2>
-<p>The same signed statement now feeds two independent review candidates. <strong>Neither branch passed.</strong> Save the receipt for separate verification; never post signatures or receipts publicly without considering their privacy impact.</p>
+<p>The same signed statement is recorded as two independent review candidates. <strong>No branch was verified or transmitted.</strong> Save the receipt for separate verification; never post signatures or receipts publicly without considering their privacy impact.</p>
 <pre id="receipt"></pre>
 <button type="button" id="download">Download receipt JSON (local only)</button>
 <button type="button" class="alt" id="reset">New challenge</button>
@@ -98,7 +98,7 @@ BNS → ENS → Third Rail News → DNS → ORDER. No external scripts, analytic
   }
   $('connect').addEventListener('click', async()=> {
     clear();
-    const p=window.ethereum;
+    const p=(window.coinbaseWalletExtension?.request ? window.coinbaseWalletExtension : window.ethereum);
     if(!p || typeof p.request!=='function') {show('No injected wallet provider. Open this page inside Coinbase Wallet’s in-app browser.','error');return;}
     try {
       const accounts=await p.request({method:'eth_requestAccounts'});
@@ -121,7 +121,7 @@ BNS → ENS → Third Rail News → DNS → ORDER. No external scripts, analytic
       const issued=new Date();const expires=new Date(issued.getTime()+10*60*1000);
       const message=[
         "JASON FULL MATH — DUAL-PATH REVIEW INTENT v0.1",
-        "Purpose: start two independent name-control reviews, not approve either.",
+        "Purpose: prepare two independent name-control review candidates, not approve either.",
         "This is NOT a login, transfer, approval, delegation, or identity credential.",
         "Origin: "+location.origin,
         "Page path: "+location.pathname,
@@ -147,20 +147,21 @@ BNS → ENS → Third Rail News → DNS → ORDER. No external scripts, analytic
     if(Date.now()>=Date.parse(current.expires_at)) {clear();show('Challenge expired before signing. Prepare a new challenge.','error');return;}
     $('sign').disabled=true;show('Waiting for wallet signature. Review the EXACT message in Coinbase.');
     try {
-      const signature=await currentProvider.request({method:'personal_sign',params:[current.message,current.address]});
+      const encodedMessage='0x'+Array.from(new TextEncoder().encode(current.message),b=>b.toString(16).padStart(2,'0')).join('');
+      const signature=await currentProvider.request({method:'personal_sign',params:[encodedMessage,current.address]});
       // SECURITY: recheck everything AFTER the wallet prompt, including expiration.
       if(!pending||pending!==current||generation!==current.generation) throw new Error('Challenge changed during wallet prompt');
       if(Date.now()>=Date.parse(current.expires_at)) throw new Error('Challenge expired during signing; signature discarded');
       const nowAccounts=await currentProvider.request({method:'eth_accounts'});
       const nowChain=await currentProvider.request({method:'eth_chainId'});
       if(!nowAccounts?.some(x=>x.toLowerCase()===current.address.toLowerCase())||String(nowChain).toLowerCase()!==CHAIN_ID) throw new Error('Wallet address or chain changed; signature discarded');
-      if(typeof signature!=='string'||!/^0x[0-9a-fA-F]+$/.test(signature)) throw new Error('Wallet did not return a hex signature');
+      if(typeof signature!=='string'||!/^0x(?:[0-9a-fA-F]{2})+$/.test(signature)||signature.length>8194) throw new Error('Wallet did not return a hex signature');
       if(Date.now()>=Date.parse(current.expires_at)) throw new Error('Challenge expired after wallet response; signature discarded');
-      signedReceipt={schema:'JASON_FULLMATH_DUAL_PATH_CANDIDATE_V0_1',state:'SIGNED_NOT_INDEPENDENTLY_VERIFIED',signed_at_utc:new Date().toISOString(),address:current.address,chain_id:8453,challenge:current.message,nonce:current.nonce,expires_at_utc:current.expires_at,signature,paths:{basename:{name:'jaywisdom.base.eth',state:'TRIGGERED_FOR_INDEPENDENT_REVIEW',name_control:'HOLD'},ens:{name:'jaywisdom.eth',state:'TRIGGERED_FOR_INDEPENDENT_REVIEW',name_control:'HOLD'}},smart_wallet_erc1271_check:'NOT_RUN',signature_verification:'NOT_RUN',third_rail:'HOLD',dns:'HOLD',order:'HOLD',human_identity:'NOT_VERIFIED',authority_created:false,canon:false,final_decision:'JASON'};
+      signedReceipt={schema:'JASON_FULLMATH_DUAL_PATH_CANDIDATE_V0_1',state:'SIGNED_NOT_INDEPENDENTLY_VERIFIED',signed_at_utc:new Date().toISOString(),address:current.address,chain_id:8453,challenge:current.message,nonce:current.nonce,expires_at_utc:current.expires_at,signature,paths:{basename:{name:'jaywisdom.base.eth',state:'CANDIDATE_READY_FOR_INDEPENDENT_REVIEW',name_control:'HOLD'},ens:{name:'jaywisdom.eth',state:'CANDIDATE_READY_FOR_INDEPENDENT_REVIEW',name_control:'HOLD'}},smart_wallet_erc1271_check:'NOT_RUN',signature_verification:'NOT_RUN',review_dispatch:'NOT_RUN',third_rail:'HOLD',dns:'HOLD',order:'HOLD',human_identity:'NOT_VERIFIED',authority_created:false,canon:false,final_decision:'JASON'};
       $('receipt').textContent=JSON.stringify(signedReceipt,null,2);$('receiptWrap').hidden=false;
-      $('baseState').textContent='REVIEW TRIGGERED · CONTROL HOLD';$('ensState').textContent='REVIEW TRIGGERED · CONTROL HOLD';
+      $('baseState').textContent='CANDIDATE READY · CONTROL HOLD';$('ensState').textContent='CANDIDATE READY · CONTROL HOLD';
       $('challengeWrap').hidden=true;
-      show('ONE signature returned. TWO reviews queued locally. ZERO ownership claims verified.','ok');
+      show('ONE signature returned. TWO local review candidates. ZERO ownership checks executed.','ok');
     } catch(err) {
       clear();show('Signature cancelled/rejected: '+String(err?.message||err).slice(0,200),'error');
     }
