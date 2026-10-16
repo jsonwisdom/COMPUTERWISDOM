@@ -28,8 +28,10 @@ if [[ "$inv_ids" != "$state_ids" ]]; then
 fi
 
 # 4) Receipt hash integrity
+# Preimage excludes both receipt_hash and signature so the signature can be
+# attached after the hash is computed (matches receipts_adapter.py construction).
 jq -c '.receipts[]?' "$STATE" | while read -r r; do
-  canon=$(echo "$r" | jq 'del(.receipt_hash)' | jq -cS .)
+  canon=$(echo "$r" | jq 'del(.receipt_hash, .signature)' | jq -cS .)
   calc=$(printf "%s" "$canon" | sha256sum | awk '{print $1}')
   given=$(echo "$r" | jq -r '.receipt_hash')
   if [[ "$calc" != "$given" ]]; then
