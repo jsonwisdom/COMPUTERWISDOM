@@ -20,7 +20,11 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y jq coreutils python3
           python3 -m pip install pynacl
-      - name: Verify
+      - name: Verify (empty-state baseline)
         run: |
           chmod +x scaling-solutions/verify.sh
           ./scaling-solutions/verify.sh
+      - name: Two-receipt Merkle regression
+        run: |
+          chmod +x scaling-solutions/test_merkle_two_receipt_regression.sh
+          ./scaling-solutions/test_merkle_two_receipt_regression.sh
