@@ -28,8 +28,10 @@ if [[ "$inv_ids" != "$state_ids" ]]; then
 fi
 
 # 4) Receipt hash integrity
+# Preimage excludes both receipt_hash and signature so the signature can be
+# attached after the hash is computed (matches receipts_adapter.py construction).
 jq -c '.receipts[]?' "$STATE" | while read -r r; do
-  canon=$(echo "$r" | jq 'del(.receipt_hash)' | jq -cS .)
+  canon=$(echo "$r" | jq 'del(.receipt_hash, .signature)' | jq -cS .)
   calc=$(printf "%s" "$canon" | sha256sum | awk '{print $1}')
   given=$(echo "$r" | jq -r '.receipt_hash')
   if [[ "$calc" != "$given" ]]; then
@@ -61,8 +63,10 @@ print("signatures OK")
 PY
 
 # 6) Merkle root integrity
+# REVIEW FIX: heredoc consumed stdin; switch to python3 -c so pipe supplies leaves.
+# Tree rule unchanged (duplicate-last padding, no domain separation).
 leafs=$(jq -r '.receipts[]?.receipt_hash' "$STATE")
-calc_root=$(printf "%s\n" "$leafs" | python3 - <<'PY'
+calc_root=$(printf "%s\n" "$leafs" | python3 -c '
 import hashlib, sys
 leaves=[l.strip() for l in sys.stdin if l.strip()]
 if not leaves:
@@ -77,8 +81,7 @@ while len(level)>1:
     nxt.append(hashlib.sha256(level[i]+level[i+1]).digest())
   level=nxt
 print(level[0].hex())
-PY
-)
+')
 state_root=$(jq -r '.last_merkle_root // ""' "$STATE")
 if [[ "$calc_root" != "$state_root" ]]; then
   echo "merkle root mismatch"; exit 1
