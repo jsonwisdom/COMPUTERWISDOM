@@ -61,8 +61,10 @@ print("signatures OK")
 PY
 
 # 6) Merkle root integrity
+# REVIEW FIX: heredoc consumed stdin; switch to python3 -c so pipe supplies leaves.
+# Tree rule unchanged (duplicate-last padding, no domain separation).
 leafs=$(jq -r '.receipts[]?.receipt_hash' "$STATE")
-calc_root=$(printf "%s\n" "$leafs" | python3 - <<'PY'
+calc_root=$(printf "%s\n" "$leafs" | python3 -c '
 import hashlib, sys
 leaves=[l.strip() for l in sys.stdin if l.strip()]
 if not leaves:
@@ -77,8 +79,7 @@ while len(level)>1:
     nxt.append(hashlib.sha256(level[i]+level[i+1]).digest())
   level=nxt
 print(level[0].hex())
-PY
-)
+')
 state_root=$(jq -r '.last_merkle_root // ""' "$STATE")
 if [[ "$calc_root" != "$state_root" ]]; then
   echo "merkle root mismatch"; exit 1
