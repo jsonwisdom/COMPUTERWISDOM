@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; object-src 'none'; form-action 'none'; base-uri 'none'; frame-src 'none'">
+<title>Jason's Full Math — One Signature / Two Paths</title>
+<style>
+:root{font-family:system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:dark;background:#080e19;color:#f6f8fc}
+*{box-sizing:border-box}body{margin:0;background:#080e19}main{width:min(680px,100%);margin:auto;padding:24px 16px 55px}
+.eyebrow{font-size:.8rem;letter-spacing:.16em;font-weight:850;color:#86e7dd;text-transform:uppercase}
+h1{font-weight:900;font-size:clamp(2.15rem,8vw,3.25rem);letter-spacing:-.055em;line-height:1.04;margin:12px 0}
+h2{font-size:1.12rem;margin:0 0 10px}p{line-height:1.52;color:#c9d5e6;margin:8px 0 14px}
+.panel{background:#111d30;border:1px solid #3a506c;border-radius:17px;padding:19px;margin:16px 0}
+.warn{border-color:#b19b54;background:#26241c}.mono,code,pre{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.tag{font-weight:900;letter-spacing:.08em;color:#ffe2a0;font-size:.75rem}.rows{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.lane{border:1px solid #426487;border-radius:12px;background:#0b1424;padding:15px 11px;min-width:0}
+.lane strong{display:block;font-size:.87rem;margin-bottom:8px}.lane code{font-size:.74rem;overflow-wrap:anywhere;color:#d6f5ff}
+.state{font-size:.73rem;font-weight:800;letter-spacing:.03em;color:#ffdc94;margin-top:12px;display:block}
+button{width:100%;border:2px solid #82e6d7;border-radius:12px;padding:15px 12px;margin:7px 0;background:#80e7d8;color:#0c171b;font-size:1.01rem;font-weight:850;cursor:pointer}
+button.alt{background:transparent;color:#cefbf5}button:disabled{opacity:.42;cursor:not-allowed}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;border-radius:10px;padding:13px;font-size:.73rem;background:#050b14;border:1px solid #263b56;max-height:280px;overflow:auto}
+#notice{font-weight:650;color:#f5d895}#notice.ok{color:#91f3cd}#notice.error{color:#ffaaaa}
+label{display:flex;gap:10px;align-items:flex-start;line-height:1.4;margin:10px 0 16px;color:#f0f4fa;font-size:.94rem}
+input[type=checkbox]{width:20px;height:20px;flex:none;accent-color:#80e7d8}
+small,footer{font-size:.8rem;color:#a9bad0;line-height:1.53}footer{margin-top:25px;border-top:1px solid #3c546f;padding-top:16px}
+.badge{display:inline-block;border:1px solid #a28b48;background:#252118;color:#fce5ab;padding:6px 10px;border-radius:50px;font-size:.72rem;font-weight:850}
+@media(max-width:480px){.rows{grid-template-columns:1fr}main{padding-top:18px}.panel{padding:16px}}
+</style>
+</head>
+<body>
+<main>
+<header>
+<div class="eyebrow">Jason's Full Math · Ground Zero</div>
+<h1>ONE SIGNATURE.<br>TWO PATHS.</h1>
+<p>Connect inside Coinbase Wallet / Base app. Review and sign one readable message to prepare two independent verification paths. Both stay on HOLD until separately verified. No transfer, approval, or contract interaction.</p>
+<div class="badge">REVIEW CANDIDATE · NOT CANON · NO AUTO-PASS</div>
+</header>
+<section class="panel warn">
+<div class="tag">SECURITY AND PROOF BOUNDARY</div>
+<p>A wallet signature does not prove you are Jason, own both names, or authorize any funds movement. Do not sign if the wallet is unfamiliar or its activity is suspicious. This page <strong>does not independently verify smart-wallet signatures</strong>. For contract wallets, EIP-1271 (and, when applicable, counterfactual-account verification) must be replayed separately. The previous wallet-control quarantine remains untouched.</p>
+</section>
+<section class="panel" aria-label="Two verification paths">
+<h2>Trigger paths — outward and inward</h2>
+<div class="rows">
+<div class="lane"><strong>① BASE / BNS</strong><code>jaywisdom.base.eth</code><span id="baseState" class="state">HOLD · NOT TRIGGERED</span></div>
+<div class="lane"><strong>② ETH / ENS</strong><code>jaywisdom.eth</code><span id="ensState" class="state">HOLD · NOT TRIGGERED</span></div>
+</div>
+<p><small>Both names are pointers until independently resolved and checked for control. This static page does not run those checks or notify any bot. Third Rail → DNS / ORDER remains HOLD.</small></p>
+</section>
+<section class="panel">
+<h2>1 · Connect and inspect</h2>
+<p id="wallet">Wallet: not connected</p>
+<p id="chain">Chain: unknown — select Base mainnet (8453) in your wallet</p>
+<button type="button" id="connect">Connect wallet</button>
+<button type="button" id="prepare" class="alt" disabled>2 · Prepare single challenge</button>
+<div id="challengeWrap" hidden>
+<p><strong>Exact message that Coinbase will ask you to sign:</strong></p>
+<pre id="challenge"></pre>
+<label><input id="ack" type="checkbox">I read the exact message. I understand this creates a candidate signature receipt, <strong>not</strong> a verified identity, an approval, or permission to spend.</label>
+<button type="button" id="sign" disabled>3 · Sign ONE off-chain message</button>
+</div>
+<p id="notice" role="status" aria-live="polite">Nothing signed. No wallet data sent to this website.</p>
+</section>
+<section class="panel" id="receiptWrap" hidden>
+<h2>4 · Local receipt — not independently verified</h2>
+<p>The same signed statement is recorded as two independent review candidates. <strong>No branch was verified or transmitted.</strong> Save the receipt for separate verification; never post signatures or receipts publicly without considering their privacy impact.</p>
+<pre id="receipt"></pre>
+<button type="button" id="download">Download receipt JSON (local only)</button>
+<button type="button" class="alt" id="reset">New challenge</button>
+</section>
+<footer>
+BNS → ENS → Third Rail News → DNS → ORDER. No external scripts, analytics, uploads, chain switches, transactions, token allowances, or automated verification. No GitHub merge or publication occurs from this page.<br>
+<strong>AUTHORITY_CREATED=false · CANON=false · FINAL_DECISION=JASON</strong>
+</footer>
+</main>
+<script>
+'use strict';
+(() => {
+  const $ = id => document.getElementById(id);
+  const CHAIN_ID = '0x2105'; // Base mainnet, 8453
+  const ADDR = /^0x[0-9a-fA-F]{40}$/;
+  const expected = '0xa380552a27b0a5a2874ea7aa52cac09f542002e8';
+  let provider = null, address = null, pending = null, signedReceipt = null, generation = 0;
+  const show = (message, cls='') => { $('notice').textContent=message; $('notice').className=cls; };
+  const clear = () => {
+    generation++;
+    pending=null;signedReceipt=null;$('challengeWrap').hidden=true;$('receiptWrap').hidden=true;
+    $('ack').checked=false;$('sign').disabled=true;$('prepare').disabled=!address;
+    $('baseState').textContent='HOLD · NOT TRIGGERED';$('ensState').textContent='HOLD · NOT TRIGGERED';
+  };
+  function chainReady(chain) { const ok=String(chain).toLowerCase()===CHAIN_ID; $('chain').textContent=ok?'Chain: Base mainnet (8453)':'Chain: '+String(chain)+' — manually select Base (8453)'; return ok; }
+  function resetOnWalletChange() { clear();address=null;$('wallet').textContent='Wallet changed — reconnect';$('prepare').disabled=true;show('Wallet changed. Previous challenge invalidated.','error'); }
+  function attachEvents(p) {
+    if(typeof p.on!=='function') return;
+    p.on('accountsChanged', resetOnWalletChange);p.on('chainChanged', resetOnWalletChange);p.on('disconnect', resetOnWalletChange);
+  }
+  $('connect').addEventListener('click', async()=> {
+    clear();
+    const p=(window.coinbaseWalletExtension?.request ? window.coinbaseWalletExtension : window.ethereum);
+    if(!p || typeof p.request!=='function') {show('No injected wallet provider. Open this page inside Coinbase Wallet’s in-app browser.','error');return;}
+    try {
+      const accounts=await p.request({method:'eth_requestAccounts'});
+      const chain=await p.request({method:'eth_chainId'});
+      if(!Array.isArray(accounts)||!ADDR.test(accounts[0]||'')){show('Wallet returned no valid account.','error');return;}
+      if(provider!==p) {provider=p;attachEvents(p);}
+      address=accounts[0];$('wallet').textContent='Connected wallet: '+address+ (address.toLowerCase()===expected?' (matches declared candidate pointer)':' (does not match declared candidate pointer)');
+      const ok=chainReady(chain);$('prepare').disabled=!ok;
+      show(ok?'Wallet connected. Review a fresh message before signing.':'Wrong network. Select Base in your wallet and reconnect.',ok?'ok':'error');
+    } catch(err) {show('Connection cancelled or unavailable: '+String(err?.message||err).slice(0,200),'error');}
+  });
+  $('prepare').addEventListener('click', async()=>{
+    if(!provider||!address) return;
+    try {
+      if(!chainReady(await provider.request({method:'eth_chainId'}))) {show('Base chain required.','error');return;}
+      const accounts=await provider.request({method:'eth_accounts'});
+      if(!accounts?.some(x=>x.toLowerCase()===address.toLowerCase())) {resetOnWalletChange();return;}
+      if(!crypto?.getRandomValues) {show('Secure random generator unavailable.','error');return;}
+      clear();const nonce=Array.from(crypto.getRandomValues(new Uint8Array(16)),x=>x.toString(16).padStart(2,'0')).join('');
+      const issued=new Date();const expires=new Date(issued.getTime()+10*60*1000);
+      const message=[
+        "JASON FULL MATH — DUAL-PATH REVIEW INTENT v0.1",
+        "Purpose: prepare two independent name-control review candidates, not approve either.",
+        "This is NOT a login, transfer, approval, delegation, or identity credential.",
+        "Origin: "+location.origin,
+        "Page path: "+location.pathname,
+        "Connected address: "+address,
+        "Connected chain: eip155:8453 (Base)",
+        "Path 1: jaywisdom.base.eth — independent resolution/control required",
+        "Path 2: jaywisdom.eth — independent resolution/control required",
+        "Third Rail / DNS / ORDER: HOLD pending separate proofs and Jason's decision",
+        "Nonce: "+nonce,
+        "Issued UTC: "+issued.toISOString(),
+        "Expires UTC: "+expires.toISOString(),
+        "No spend. No wallet authority. No automatic promotion."
+      ].join('\n');
+      pending={address,nonce,message,issued_at:issued.toISOString(),expires_at:expires.toISOString(),generation};
+      $('challenge').textContent=message;$('challengeWrap').hidden=false;
+      show('Challenge prepared. Read the complete message, then decide whether to sign.');
+    } catch(err){show('Challenge preparation failed: '+String(err?.message||err).slice(0,200),'error');}
+  });
+  $('ack').addEventListener('change',()=>{$('sign').disabled=!$('ack').checked || !pending;});
+  $('sign').addEventListener('click',async()=>{
+    if(!provider||!pending||!$('ack').checked) return;
+    const current=pending;const currentProvider=provider;
+    if(Date.now()>=Date.parse(current.expires_at)) {clear();show('Challenge expired before signing. Prepare a new challenge.','error');return;}
+    $('sign').disabled=true;show('Waiting for wallet signature. Review the EXACT message in Coinbase.');
+    try {
+      const encodedMessage='0x'+Array.from(new TextEncoder().encode(current.message),b=>b.toString(16).padStart(2,'0')).join('');
+      const signature=await currentProvider.request({method:'personal_sign',params:[encodedMessage,current.address]});
+      // SECURITY: recheck everything AFTER the wallet prompt, including expiration.
+      if(!pending||pending!==current||generation!==current.generation) throw new Error('Challenge changed during wallet prompt');
+      if(Date.now()>=Date.parse(current.expires_at)) throw new Error('Challenge expired during signing; signature discarded');
+      const nowAccounts=await currentProvider.request({method:'eth_accounts'});
+      const nowChain=await currentProvider.request({method:'eth_chainId'});
+      if(!nowAccounts?.some(x=>x.toLowerCase()===current.address.toLowerCase())||String(nowChain).toLowerCase()!==CHAIN_ID) throw new Error('Wallet address or chain changed; signature discarded');
+      if(typeof signature!=='string'||!/^0x(?:[0-9a-fA-F]{2})+$/.test(signature)||signature.length>8194) throw new Error('Wallet did not return a hex signature');
+      if(Date.now()>=Date.parse(current.expires_at)) throw new Error('Challenge expired after wallet response; signature discarded');
+      signedReceipt={schema:'JASON_FULLMATH_DUAL_PATH_CANDIDATE_V0_1',state:'SIGNED_NOT_INDEPENDENTLY_VERIFIED',signed_at_utc:new Date().toISOString(),address:current.address,chain_id:8453,challenge:current.message,nonce:current.nonce,expires_at_utc:current.expires_at,signature,paths:{basename:{name:'jaywisdom.base.eth',state:'CANDIDATE_READY_FOR_INDEPENDENT_REVIEW',name_control:'HOLD'},ens:{name:'jaywisdom.eth',state:'CANDIDATE_READY_FOR_INDEPENDENT_REVIEW',name_control:'HOLD'}},smart_wallet_erc1271_check:'NOT_RUN',signature_verification:'NOT_RUN',review_dispatch:'NOT_RUN',third_rail:'HOLD',dns:'HOLD',order:'HOLD',human_identity:'NOT_VERIFIED',authority_created:false,canon:false,final_decision:'JASON'};
+      $('receipt').textContent=JSON.stringify(signedReceipt,null,2);$('receiptWrap').hidden=false;
+      $('baseState').textContent='CANDIDATE READY · CONTROL HOLD';$('ensState').textContent='CANDIDATE READY · CONTROL HOLD';
+      $('challengeWrap').hidden=true;
+      show('ONE signature returned. TWO local review candidates. ZERO ownership checks executed.','ok');
+    } catch(err) {
+      clear();show('Signature cancelled/rejected: '+String(err?.message||err).slice(0,200),'error');
+    }
+  });
+  $('download').addEventListener('click',()=>{
+    if(!signedReceipt)return;
+    const blob=new Blob([JSON.stringify(signedReceipt,null,2)+'\n'],{type:'application/json'});
+    const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download='jason-fullmath-dual-path-candidate.json';document.body.append(link);link.click();link.remove();URL.revokeObjectURL(url);
+  });
+  $('reset').addEventListener('click',()=>{clear();show('Ready for a new challenge.');});
+})();
+</script>
+</body>
+</html>
