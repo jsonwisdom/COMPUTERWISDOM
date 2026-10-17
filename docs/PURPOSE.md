@@ -74,6 +74,33 @@ Computer Wisdom is not:
 - a production deployment claim without receipts
 - a substitute for revocation, attestation, or byte-level verification
 
+## Computer Wizard Handoff Compiler
+
+The repository also defines **Computer Wizard** as a handoff compiler for source-grounded research and replay work.
+
+Computer Wizard must bind an already-known active target before sending work to a downstream model. It must not replace known context with placeholders such as `TARGET = [INSERT TARGET HERE]`.
+
+The detailed contract lives in:
+
+- [`docs/COMPUTER_WIZARD_REPO_PURPOSE_V1.md`](./COMPUTER_WIZARD_REPO_PURPOSE_V1.md)
+
+Its controlling rule is:
+
+```text
+HUMAN INTENT
+→ ACTIVE TARGET
+→ SOURCE DECK
+→ IDENTIFIERS
+→ CLAIM
+→ GAP LEDGER
+→ OUTPUT CONTRACT
+→ DOWNSTREAM MODEL
+
+NO RECEIPT → NO JOIN
+```
+
+If the target is genuinely undefined, the compiler must stop at `HOLD`; it must not invent one.
+
 ## Operating Principle
 
 Verification must survive the operator.

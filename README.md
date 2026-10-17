@@ -17,6 +17,7 @@ It is **not** the canonical Anchor 001 proof source.
 | Root topology / binding map | [`ROOT_BINDING.md`](./ROOT_BINDING.md) |
 | Constitutional discovery route | [`docs/discovery_path_v1.md`](./docs/discovery_path_v1.md) |
 | Purpose statement | [`docs/PURPOSE.md`](./docs/PURPOSE.md) |
+| Computer Wizard target-binding / handoff compiler | [`docs/COMPUTER_WIZARD_REPO_PURPOSE_V1.md`](./docs/COMPUTER_WIZARD_REPO_PURPOSE_V1.md) |
 | Security policy | [`SECURITY.md`](./SECURITY.md) |
 | Security boundary | [`SECURITY_BOUNDARY.md`](./SECURITY_BOUNDARY.md) |
 | Anchor topology | [`FINAL_ANCHOR_TOPOLOGY_v1.md`](./FINAL_ANCHOR_TOPOLOGY_v1.md) |
