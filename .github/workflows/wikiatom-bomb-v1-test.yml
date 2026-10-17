@@ -1,0 +1,264 @@
+name: wikiatom-bomb-v1-test
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'src/wikiatom_bomb_v1.py'
+      - 'tests/test_wikiatom_bomb_v1.py'
+      - 'fixtures/wikiatom/**'
+      - '.github/workflows/wikiatom-bomb-v1-test.yml'
+
+permissions:
+  contents: read
+
+env:
+  FIXTURE_INPUT_SHA256: 31fee84b70d35262925f4c971bf2282399a1f94a992759b86f78c9937ff3a8b8
+  FIXTURE_OUTPUT_SHA256: e7c46016f74f1740baa39e84ded9cb46e491280bc1cc90cfea78be255f2e0016
+  ENGINE_OUTPUT_HASH: ffa6175c9105d97162fed752f7fc78f62898a618df78186d3e49bf7fe2509505
+  SOURCE_PROTOCOL_COMMIT: e396de00ca6b759024f36f5f174250209dd6272c
+  MAX_AUDIT_GENERATIONS: '2'
+
+jobs:
+  execution_lane:
+    name: execution-lane
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - run: python -m pip install pytest
+
+      - name: Execute candidate and emit receipt
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import re
+          import subprocess
+          import sys
+
+          root = pathlib.Path('.')
+          ci = root / '.ci'
+          ci.mkdir(exist_ok=True)
+          sys.path.insert(0, str(root / 'src'))
+
+          from wikiatom_bomb_v1 import canonical_json, run_wikiatom_bomb_v1
+
+          test = subprocess.run(
+              [sys.executable, '-m', 'pytest', '-q', 'tests/test_wikiatom_bomb_v1.py'],
+              capture_output=True,
+              text=True,
+          )
+          print(test.stdout, end='')
+          if test.stderr:
+              print(test.stderr, file=sys.stderr, end='')
+
+          passed = re.search(r'(\d+) passed', test.stdout)
+          failed = re.search(r'(\d+) failed', test.stdout)
+          pass_count = int(passed.group(1)) if passed else 0
+          fail_count = int(failed.group(1)) if failed else 0
+
+          input_path = root / 'fixtures/wikiatom/simple_fanout_input.json'
+          expected_path = root / 'fixtures/wikiatom/simple_fanout_output.json'
+          core_path = root / 'src/wikiatom_bomb_v1.py'
+
+          input_bytes = input_path.read_bytes()
+          expected_bytes = expected_path.read_bytes()
+          input_sha = hashlib.sha256(input_bytes).hexdigest()
+          expected_sha = hashlib.sha256(expected_bytes).hexdigest()
+          core_sha = hashlib.sha256(core_path.read_bytes()).hexdigest()
+
+          fixture_ok = False
+          replay_error = None
+          engine_hash = None
+
+          try:
+              data = json.loads(input_bytes)
+              result = run_wikiatom_bomb_v1(
+                  data['atom'],
+                  branch_payloads=data.get('branch_payloads'),
+                  max_depth=data.get('max_depth', 1),
+                  promotion_requested=data.get('promotion_requested', False),
+              )
+              actual_bytes = (canonical_json(result) + '\n').encode('utf-8')
+              actual_sha = hashlib.sha256(actual_bytes).hexdigest()
+              engine_hash = result['output_hash']
+              fixture_ok = (
+                  actual_bytes == expected_bytes
+                  and input_sha == os.environ['FIXTURE_INPUT_SHA256']
+                  and actual_sha == os.environ['FIXTURE_OUTPUT_SHA256']
+                  and engine_hash == os.environ['ENGINE_OUTPUT_HASH']
+              )
+              if not fixture_ok:
+                  replay_error = 'FIXTURE_BYTE_OR_HASH_MISMATCH'
+          except Exception as exc:
+              actual_sha = None
+              replay_error = f'{type(exc).__name__}: {exc}'
+
+          overall = (
+              test.returncode == 0
+              and pass_count == 8
+              and fail_count == 0
+              and fixture_ok
+          )
+
+          receipt = {
+              'receipt_type': 'WIKIATOM_BOMB_V1_EXECUTION_RECEIPT',
+              'lane': 'EXECUTION',
+              'audit_generation': 0,
+              'tested_checkout_sha': os.environ.get('GITHUB_SHA'),
+              'source_protocol_commit': os.environ['SOURCE_PROTOCOL_COMMIT'],
+              'test_command': 'python -m pytest -q tests/test_wikiatom_bomb_v1.py',
+              'test_exit_code': test.returncode,
+              'test_count_expected': 8,
+              'pass_count': pass_count,
+              'fail_count': fail_count,
+              'fixture_replay': 'PASS' if fixture_ok else 'FAIL',
+              'fixture_input_sha256': input_sha,
+              'fixture_expected_output_sha256': expected_sha,
+              'fixture_actual_output_sha256': actual_sha,
+              'engine_output_hash': engine_hash,
+              'core_sha256': core_sha,
+              'replay_error': replay_error,
+              'disposition': 'PASS' if overall else 'HOLD',
+              'side_effects': False,
+              'authority_created': False,
+              'promotion': 'NONE',
+          }
+
+          out = ci / 'wikiatom_execution_receipt.json'
+          out.write_text(json.dumps(receipt, sort_keys=True, indent=2) + '\n')
+          print(f'execution_receipt={out}')
+          print(f'execution_disposition={receipt["disposition"]}')
+
+          if not overall:
+              raise SystemExit(1)
+          PY
+
+      - name: Upload execution receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wikiatom-execution-receipt
+          path: .ci/wikiatom_execution_receipt.json
+          if-no-files-found: error
+
+  audit_lane:
+    name: audit-lane-bounded-recursion
+    runs-on: ubuntu-latest
+    needs: execution_lane
+    if: always()
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Download execution receipt
+        uses: actions/download-artifact@v4
+        with:
+          name: wikiatom-execution-receipt
+          path: .ci
+
+      - name: Recursively audit receipts and replay fixture
+        run: |
+          python - <<'PY'
+          import hashlib
+          import json
+          import os
+          import pathlib
+          import sys
+
+          root = pathlib.Path('.')
+          ci = root / '.ci'
+          sys.path.insert(0, str(root / 'src'))
+
+          from wikiatom_bomb_v1 import canonical_json, run_wikiatom_bomb_v1
+
+          def sha256_bytes(data):
+              return hashlib.sha256(data).hexdigest()
+
+          input_path = root / 'fixtures/wikiatom/simple_fanout_input.json'
+          expected_path = root / 'fixtures/wikiatom/simple_fanout_output.json'
+          core_path = root / 'src/wikiatom_bomb_v1.py'
+
+          input_bytes = input_path.read_bytes()
+          expected_bytes = expected_path.read_bytes()
+          data = json.loads(input_bytes)
+
+          parent_path = ci / 'wikiatom_execution_receipt.json'
+          parent_bytes = parent_path.read_bytes()
+          parent_obj = json.loads(parent_bytes)
+          all_pass = True
+
+          max_generations = int(os.environ['MAX_AUDIT_GENERATIONS'])
+
+          for generation in range(1, max_generations + 1):
+              result = run_wikiatom_bomb_v1(
+                  data['atom'],
+                  branch_payloads=data.get('branch_payloads'),
+                  max_depth=data.get('max_depth', 1),
+                  promotion_requested=data.get('promotion_requested', False),
+              )
+              actual_bytes = (canonical_json(result) + '\n').encode('utf-8')
+
+              checks = {
+                  'parent_disposition_pass': parent_obj.get('disposition') == 'PASS',
+                  'fixture_input_hash_locked': sha256_bytes(input_bytes) == os.environ['FIXTURE_INPUT_SHA256'],
+                  'fixture_output_hash_locked': sha256_bytes(expected_bytes) == os.environ['FIXTURE_OUTPUT_SHA256'],
+                  'fixture_replay_byte_identity': actual_bytes == expected_bytes,
+                  'engine_output_hash_locked': result.get('output_hash') == os.environ['ENGINE_OUTPUT_HASH'],
+                  'core_is_side_effect_free': result.get('side_effects') is False,
+                  'authority_not_created': parent_obj.get('authority_created') is False,
+              }
+
+              generation_pass = all(checks.values())
+              all_pass = all_pass and generation_pass
+
+              receipt = {
+                  'receipt_type': 'WIKIATOM_BOMB_V1_AUDIT_RECEIPT',
+                  'lane': 'AUDIT',
+                  'audit_generation': generation,
+                  'max_audit_generations': max_generations,
+                  'parent_receipt_sha256': sha256_bytes(parent_bytes),
+                  'checks': checks,
+                  'fixture_input_sha256': sha256_bytes(input_bytes),
+                  'fixture_output_sha256': sha256_bytes(actual_bytes),
+                  'engine_output_hash': result.get('output_hash'),
+                  'core_sha256': sha256_bytes(core_path.read_bytes()),
+                  'disposition': 'PASS' if generation_pass else 'HOLD',
+                  'side_effects': False,
+                  'authority_created': False,
+                  'promotion': 'NONE',
+              }
+
+              audit_path = ci / f'wikiatom_audit_receipt_generation_{generation}.json'
+              audit_bytes = (json.dumps(receipt, sort_keys=True, indent=2) + '\n').encode('utf-8')
+              audit_path.write_bytes(audit_bytes)
+
+              print(f'audit_generation={generation}')
+              print(f'audit_disposition={receipt["disposition"]}')
+              print(f'audit_receipt_sha256={sha256_bytes(audit_bytes)}')
+
+              parent_bytes = audit_bytes
+              parent_obj = receipt
+
+          if not all_pass:
+              raise SystemExit(1)
+          PY
+
+      - name: Upload recursive audit receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wikiatom-audit-receipts
+          path: .ci/wikiatom_audit_receipt_generation_*.json
+          if-no-files-found: error
+          include-hidden-files: true
