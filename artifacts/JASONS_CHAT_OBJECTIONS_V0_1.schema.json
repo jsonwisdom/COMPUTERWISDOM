@@ -1,0 +1,92 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://computerwisdom.local/schemas/JASONS_CHAT_OBJECTIONS_V0_1.schema.json",
+  "title": "JASONS_CHAT_OBJECTIONS_V0_1",
+  "description": "Schema derived from Jay’s Objection Proofs & Naming Conventions — ReverseReply v0.1. Artifact/title wording may contain Jason; operator remains JAY.",
+  "type": "object",
+  "required": [
+    "object_id",
+    "operator",
+    "objection_class",
+    "claim_under_test",
+    "missing_edge",
+    "disposition",
+    "ruling_state",
+    "invariants",
+    "canon",
+    "authority_created"
+  ],
+  "properties": {
+    "object_id": {
+      "type": "string",
+      "pattern": "^BOXDEE-OBJECTION-[0-9]{3}$"
+    },
+    "operator": {
+      "const": "JAY"
+    },
+    "objection_class": {
+      "enum": [
+        "SEARCH_FAILURE",
+        "ZORA_TESTIMONY",
+        "OBJECT_IDENTITY",
+        "CONNECTIVITY",
+        "STATE_COLLAPSE"
+      ]
+    },
+    "claim_under_test": {
+      "type": "string",
+      "minLength": 1
+    },
+    "missing_edge": {
+      "type": "string",
+      "minLength": 1
+    },
+    "disposition": {
+      "enum": [
+        "PASS",
+        "HOLD",
+        "CONFLICT",
+        "NOT_FOUND",
+        "NOT_APPLICABLE"
+      ]
+    },
+    "ruling_state": {
+      "enum": [
+        "SUSTAINED",
+        "OVERRULED",
+        "HOLD",
+        "NOT_ADJUDICATED"
+      ]
+    },
+    "required_receipts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "invariants": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_artifact": {
+      "const": "Jay’s Objection Proofs & Naming Conventions — ReverseReply v0.1.md"
+    },
+    "source_status": {
+      "enum": [
+        "FILE_READBACK",
+        "HUMAN_DECLARATION",
+        "CONNECTOR_READBACK"
+      ]
+    },
+    "canon": {
+      "const": false
+    },
+    "authority_created": {
+      "const": false
+    }
+  },
+  "additionalProperties": false
+}

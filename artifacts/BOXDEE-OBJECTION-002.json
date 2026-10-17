@@ -1,0 +1,30 @@
+{
+  "object_id": "BOXDEE-OBJECTION-002",
+  "operator": "JAY",
+  "objection_class": "ZORA_TESTIMONY",
+  "claim_under_test": "A Zora profile, coin, or URL by itself proves transcript, creator authority, or content witness.",
+  "missing_edge": "TESTIMONY_BINDING_RECEIPT",
+  "disposition": "HOLD",
+  "ruling_state": "NOT_ADJUDICATED",
+  "required_receipts": [
+    "ZORA_OBJECT",
+    "CONTRACT",
+    "CREATOR",
+    "PUBLICATION_TEXT",
+    "MEDIA",
+    "TIMESTAMP",
+    "TRANSACTION",
+    "RAW_READBACK",
+    "HASH",
+    "SOURCE_URL"
+  ],
+  "invariants": [
+    "ZORA PROFILE != TRANSCRIPT",
+    "ZORA COIN != CREATOR AUTHORITY",
+    "ZORA URL != CONTENT WITNESS"
+  ],
+  "source_artifact": "Jay’s Objection Proofs & Naming Conventions — ReverseReply v0.1.md",
+  "source_status": "FILE_READBACK",
+  "canon": false,
+  "authority_created": false
+}
