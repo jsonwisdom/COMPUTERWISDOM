@@ -1,0 +1,12 @@
+capture_failure:
+  schema_version: "0.1.0"
+  id: "sha256:f589fd1aa794119ca11a9d22b7221967f32d6889d0ec85e1939854803a2a13f1"
+  kind: capture_failure
+  target_label: "executive order, reported by operator, date unconfirmed"
+  url_intended: null
+  reported_by: operator
+  stage: unavailable
+  reason: "no byte-level artifact in store; operator report only"
+  receipt_of_absence: true
+  observed_at: "2026-10-01T18:22:00Z"
+  supersedes: null

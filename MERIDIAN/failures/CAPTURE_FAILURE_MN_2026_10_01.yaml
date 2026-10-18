@@ -1,0 +1,12 @@
+capture_failure:
+  schema_version: "0.1.0"
+  id: "sha256:5c92f2cb03dad35e2ae9b14ae1a3250dec4b21e2b59da5e6c8d26a599057b7f6"
+  kind: capture_failure
+  target_label: "DOJ judicial-misconduct complaint, reported 2026-09-30"
+  url_intended: null
+  reported_by: operator
+  stage: unavailable
+  reason: "no byte-level artifact in store; operator report only"
+  receipt_of_absence: true
+  observed_at: "2026-10-01T18:22:00Z"
+  supersedes: null
