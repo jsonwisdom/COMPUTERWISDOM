@@ -1,0 +1,922 @@
+{
+  "object": "MASTER_ROOM_PURPOSE_AUDIT_QUEUE_V1",
+  "observed_date": "2026-09-23",
+  "total_public_repos": 80,
+  "purpose_seated": 10,
+  "purpose_unresolved": 70,
+  "fan_out": "OFF",
+  "scheduled_task": false,
+  "next_trigger": "JASON_OPERATOR",
+  "items": [
+    {
+      "repo": "jsonwisdom/0",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/UNCLED",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/openai-chatkit-starter-app",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/global-zne-hybrid",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/PRATTVILLE",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/EV-012-ZORA-MARKET-SNAPSHOT",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/MARYDEE",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/system-risk-detector",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/RMT",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/ReceiptOS",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/DDR",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/crp-v0.1",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/provenance-audit-kit",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/Jason-USB-OFFICE-PC",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/nuke-launchpad",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/flywheel-of-wisdom",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/GPKMONSTER",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/heretic",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/prooflayer-repo",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/LEEANN",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/AppleGuice",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/tailcat",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/mn-ago-entropy-ledger",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/Jasons-1st-repository",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/Server",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/jsonwisdom-packet-workbench",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/base",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/chainlink-agent-skills",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/ABS",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/AU",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/BRAELEE",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/Direct-Mail",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/DESTINEE",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/GRANDADDY",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/JAYCEE",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/Learning-GitHub",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/BRIGHTHOUSE",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/CITIZEN_ROOT",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/jason-parallel-drift-auditor",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/HEIDEE",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/mint-engine-zero",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/base-live",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/COMPUTERWIZARD",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/BREANN",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/GRAMMY",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/GAGA",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/ELMORE",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/replay-membrane-v0",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/NASTYNICK",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/Jason-t-PL3X",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/replay-membrane",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/sovereign-copilot",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/receipt-arcade",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/MONTGOMERY",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/fastenal",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/agentos",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/prism-brush-spruce-lake",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/debate-judge-tee-v1",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/agents",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/Plesk-Onyx-17.0.17",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/the-gap",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/receiptos-replay-proof",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/verifygate",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/GENESIS",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/software",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/-replayos-receiptos-spec",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/boss-brenda-crawler",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/PAPA",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/snapback-mirror",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    },
+    {
+      "repo": "jsonwisdom/signal-multisig-zora",
+      "current_state": "HOLD_FOR_PURPOSE",
+      "next_trigger": "JASON_OPERATOR_OR_REPO_LOCAL_EVIDENCE",
+      "required_fields": [
+        "PURPOSE",
+        "ACTIVE_OR_ARCHIVE",
+        "KEEP_MERGE_FREEZE_OR_RETIRE",
+        "RELATION_TO_MASTER_ROOM",
+        "VISIBILITY_BOUNDARY",
+        "AUTHORITY_SUBJECT"
+      ]
+    }
+  ]
+}
