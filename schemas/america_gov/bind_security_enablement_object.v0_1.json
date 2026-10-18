@@ -1,0 +1,67 @@
+{
+  "object_id": "Bind_Security_enablement_object",
+  "version": "0.1",
+  "purpose_rail": "SuperIntelligence America.gov Purpose",
+  "enablement_class": "SECURITY",
+  "status": "SCHEMA_ONLY",
+  "authority": false,
+  "capabilities": [],
+  "actor_binding": null,
+  "receipts_issued": false,
+  "rail_effect": "NONE",
+  "boundaries": {
+    "legacy": "CONTINUITY_ONLY_NO_NARRATIVE_SYNTHESIS",
+    "security": "PROCESS_INTEGRITY_ONLY_NO_SURVEILLANCE_OR_ENFORCEMENT",
+    "lfg": "MECHANICAL_MOMENTUM_ONLY_NO_DECISION_OR_POLICY_ACCELERATION",
+    "evidentiary_promotion": "NONE"
+  },
+  "gates": {
+    "receipt_integrity": {
+      "reject_if": [
+        "REQUIRED_EVIDENCE_RELATION_UNRESOLVED",
+        "BOUNDED_SOURCE_SNAPSHOT_ABSENT"
+      ],
+      "required_outcome": "REJECT",
+      "evaluation_status": "DEFINED_UNWIRED"
+    },
+    "provenance_integrity": {
+      "reject_if": [
+        "FORWARD_POINTER_DANGLING",
+        "RELATION_CLAIM_ID_MISSING"
+      ],
+      "required_outcome": "REJECT",
+      "evaluation_status": "DEFINED_UNWIRED"
+    },
+    "evidence_class_integrity": {
+      "reject_if": [
+        "VERIFIED_WITHOUT_RESOLVABLE_VERIFIED_RELATION",
+        "VERIFIED_WITHOUT_VERIFIED_BY_EVIDENCE_TRUE",
+        "VERIFIED_RELATION_WITHOUT_BOUNDED_EVIDENCE_OBJECT"
+      ],
+      "required_outcome": "REJECT",
+      "evaluation_status": "DEFINED_UNWIRED"
+    },
+    "revision_integrity": {
+      "reject_if": [
+        "STALE_CLEARED_WITHOUT_APPENDED_REEVALUATION_EVENT",
+        "REVISION_SILENTLY_REWRITES_PRIOR_STATE"
+      ],
+      "required_outcome": "REJECT",
+      "evaluation_status": "DEFINED_UNWIRED"
+    },
+    "answer_capture_integrity": {
+      "reject_if": [
+        "CAPTURED_URL_NULL",
+        "CAPTURED_SNAPSHOT_HASH_MISSING",
+        "CAPTURED_RETRIEVAL_TIME_MISSING"
+      ],
+      "required_outcome": "REJECT",
+      "evaluation_status": "DEFINED_UNWIRED"
+    }
+  },
+  "external_enforcement": {
+    "status": "UNWIRED",
+    "reason": "Cross-object resolution, snapshot binding, and event-history checks require a bounded corpus and explicit validator.",
+    "claim": "DEFINITION_VALIDITY_NE_CANDIDATE_VALIDITY"
+  }
+}
