@@ -1,0 +1,51 @@
+{
+  "schema": "GRAY_BABY_REPLAY_SAFE_STATE_VECTOR_V0_1",
+  "authority": false,
+  "promotion_allowed": false,
+  "state": "CLEAN",
+  "rails": {
+    "github": {
+      "active": true,
+      "repository": "jsonwisdom/COMPUTERWISDOM",
+      "pr": 562,
+      "pr_state": "OPEN",
+      "draft": true,
+      "merged": false,
+      "head_at_precheck": "66ac88435ab6552943741180a0a2f517b581d1e8"
+    },
+    "drive": {
+      "active": true,
+      "root": "GRAY_BABY_LIBRARIAN/rabbit-hole-compendium"
+    }
+  },
+  "invariants": {
+    "merge": false,
+    "authority": false,
+    "promotion": false,
+    "truth_score": "FORBIDDEN",
+    "diagnostic_vocabulary": "ENABLED",
+    "buckets_A_Z": "VERIFIED",
+    "bucket_hash": "VERIFIED",
+    "children_lanes": "VERIFIED",
+    "source_research_separation": true,
+    "claim_research_separation": true,
+    "lesson_claim_separation": true,
+    "root_math_seated": true
+  },
+  "membranes": [
+    "SOURCE != RESEARCH",
+    "RESEARCH != CLAIM_STATUS",
+    "CLAIM_STATUS != CHILD_LESSON",
+    "WRITE != PROMOTION",
+    "MERGE != AUTHORITY"
+  ],
+  "next_clean_move": "BETTER_RECEIPT",
+  "next_move_contract": [
+    "Acquire primary artifact",
+    "Seat in 01_SOURCE",
+    "Bind to claim in 03_CLAIMS",
+    "Route independent research through 04_RESEARCH",
+    "Teach from 06_LESSONS only if appropriate",
+    "Never auto-promote"
+  ]
+}
