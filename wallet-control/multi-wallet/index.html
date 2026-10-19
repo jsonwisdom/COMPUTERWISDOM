@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>JayWisdom — Multi-Wallet Control Lab</title>
+<style>
+:root{font:16px system-ui,sans-serif;color:#f5f6ff;background:#101323}*{box-sizing:border-box}body{margin:0;padding:18px}main{max-width:880px;margin:auto}h1{font-size:clamp(26px,5vw,42px);margin-bottom:5px}.sub{color:#bec6df}section{background:#1b2034;border:1px solid #434b68;border-radius:16px;padding:20px;margin:18px 0}button,select{font:inherit;border-radius:9px;padding:12px;border:1px solid #8b9ed9;background:#2b375b;color:white;cursor:pointer}button:hover{background:#3a4e80}button:disabled{opacity:.45;cursor:not-allowed}button.primary{background:#345ce5}button.danger{background:#673746}label{display:block;margin:10px 0}.row{display:flex;flex-wrap:wrap;gap:10px;margin:12px 0}.row>*{flex:1 1 200px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#0d1020;padding:15px;border-radius:10px;font-size:12px}.notice{background:#2c3653;border-left:4px solid #91adff;padding:12px;margin:12px 0}.good{border-left-color:#53d7a0}.bad{border-left-color:#fb8c90}small{color:#bcc8dc}.entry{border-top:1px solid #56607e;padding:14px 0;overflow-wrap:anywhere}code{overflow-wrap:anywhere}.pill{font-size:12px;border:1px solid #7382a3;padding:5px 8px;border-radius:99px}.hidden{display:none}
+</style>
+</head><body><main>
+<header><h1>⚙️ JayWisdom Multi-Wallet Control Lab</h1><div class="sub">v2.0 test • read-only signatures • individual evidence receipts • no transactions</div></header>
+<section><strong>Verification ≠ human identity ≠ ownership of other assets ≠ authority.</strong>
+<p>Choose a signing wallet. This is a local browser tool: your challenges, signatures and receipts stay on your device unless you export/share them. A valid signed challenge demonstrates address control for that particular observation only.</p>
+<div class="notice">Never enter seed phrases or private keys. Verify this site's URL before connecting. Signing a message is not a transaction, but always inspect the exact message before approving it.</div>
+</section>
+<section><h2>1 · Connect</h2>
+<label for="mode">Wallet method</label><select id="mode">
+<option value="coinbase">Coinbase / Base Account SDK — EVM</option>
+<option value="injected">Browser wallet — EVM (MetaMask, Uniswap, 1inch, Phantom EVM, Kraken Wallet, Zora)</option>
+<option value="solana">Phantom — Solana</option>
+<option value="ton">TON — Not yet implemented (HOLD)</option>
+<option value="custody">Custodial Kraken / PayPal — Not a signing wallet (HOLD)</option></select>
+<div class="row"><button id="discover">Find EVM browser wallets</button><select id="providerPicker" aria-label="Detected EVM providers"><option value="">Default injected provider</option></select></div>
+<div class="row"><button id="connect" class="primary">Connect selected wallet</button><button id="clear">Disconnect from page</button></div>
+<div class="notice" id="status">Not connected.</div><div id="account"></div>
+</section>
+<section><h2>2 · Fresh signed challenge</h2>
+<p>For EVM proofs, Base mainnet (8453) is required. The page uses live block evidence and checks EOA recovery or ERC-1271 on the challenge block. Solana proof requires Ed25519 verification.</p>
+<div class="row"><button id="switch">Switch to Base (EVM)</button><button id="build">Build fresh challenge</button></div>
+<pre id="message">Connect an account to build the challenge.</pre>
+<label><input type="checkbox" id="consent"> I reviewed this exact message and agree to sign a non-transactional control challenge.</label>
+<div class="row"><button id="sign" class="primary" disabled>Sign + independently verify</button><button id="download" disabled>Download last JSON receipt</button></div>
+<div class="notice" id="result">No verification completed in this session.</div>
+</section>
+<section><h2>3 · Local proof inventory</h2><p><small>One record per chain + normalized address, even if multiple apps use that address. Only independently verified records enter this list. This page does not automatically scan balances, transmit receipts, or prove custody of exchange assets. Closing/reloading clears this list.</small></p>
+<div id="ledger">No verified entries yet.</div><div class="row"><button id="export" disabled>Export session ledger (JSON)</button><button id="erase" class="danger">Erase local session evidence</button></div></section>
+<footer><small>Source: jsonwisdom/COMPUTERWISDOM • original Coinbase verifier preserved at /wallet-control/ • no eth_sendTransaction, approvals, transfers, or auto-upload. Browser wallet connection can expose your public address to this page. External CDN assets and wallet providers must be trusted; review source before signing.</small></footer>
+</main>
+<script src="https://unpkg.com/@base-org/account@2.5.10/dist/base-account.min.js" integrity="sha384-Jcaa5XJIs34lC6Co7Ye/mAuxCGLTEdUYQuIyl4UrwRduYb6mOmW7SUCOPX/jdsKV" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.17.0/dist/ethers.umd.min.js" integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi" crossorigin="anonymous"></script>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id), BASE='0x2105', MAGIC='0x1626ba7e', TTL=300000;
+let mode='',wallet=null,address='',chain='',challenge=null,receipt=null,session=new Map(),choices=new Map(),epoch=0;
+const enc=s=>new TextEncoder().encode(s),hex=b=>'0x'+Array.from(b,x=>x.toString(16).padStart(2,'0')).join(''),eq=(a,b)=>!!a&&!!b&&a.toLowerCase()===b.toLowerCase();
+function notify(t,bad=false,id='status'){const el=$(id);el.textContent=t;el.className='notice '+(bad?'bad':'good')}
+function invalidate(){epoch++;challenge=null;receipt=null;$('message').textContent='Build a fresh challenge.';$('sign').disabled=true;$('download').disabled=true;$('consent').checked=false;$('result').textContent='No current proof.'}
+function reset(){wallet=null;address='';chain='';invalidate();$('account').textContent='';notify('Disconnected from this page. Wallet app sessions may remain authorized.');}
+function render(){let el=$('ledger');el.replaceChildren();if(!session.size){el.textContent='No verified entries yet.'}for(const r of session.values()){const d=document.createElement('div');d.className='entry';d.textContent=r.chain_family+' · '+r.address+' · '+r.verification_method+' · '+r.verified_at+' · '+r.wallet_label;el.append(d)}$('export').disabled=!session.size;}
+function saveJSON(obj,name){const b=new Blob([JSON.stringify(obj,null,2)],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(u),1000)}
+function selectMode(){mode=$('mode').value;reset();$('switch').disabled=mode==='solana'||mode==='ton'||mode==='custody';$('build').disabled=mode==='ton'||mode==='custody';$('discover').disabled=mode!=='injected';$('providerPicker').disabled=mode!=='injected';}
+function discover(){choices.clear();const p=$('providerPicker');p.replaceChildren();let d=document.createElement('option');d.value='';d.textContent='Default injected provider';p.append(d);window.dispatchEvent(new Event('eip6963:requestProvider'))}
+window.addEventListener('eip6963:announceProvider',e=>{const v=e.detail;if(!v||!v.provider||!v.info?.uuid)return;choices.set(v.info.uuid,v.provider);let x=document.createElement('option');x.value=v.info.uuid;x.textContent=v.info.name+' ('+v.info.uuid.slice(0,8)+')';$('providerPicker').append(x)});
+async function connect(){
+try{reset();const m=$('mode').value;mode=m;if(m==='ton'||m==='custody')throw Error('HOLD: This signing method is not implemented. No ownership verification was attempted.');
+if(m==='solana'){wallet=window.phantom?.solana;if(!wallet?.isPhantom||typeof wallet.signMessage!=='function')throw Error('Phantom Solana provider unavailable. Open the page in Phantom browser.');const x=await wallet.connect();address=x.publicKey.toString();chain='solana-mainnet';}
+else {if(m==='coinbase'){if(typeof createBaseAccountSDK!=='function')throw Error('Base Account SDK unavailable');wallet=createBaseAccountSDK({appName:'JayWisdom Multi-Wallet Proof',appChainIds:[8453]}).getProvider()}else wallet=choices.get($('providerPicker').value)||window.ethereum;
+if(!wallet?.request)throw Error('No compatible EIP-1193 wallet provider. Open in wallet browser or choose provider.');const a=await wallet.request({method:'eth_requestAccounts'});address=a?.[0];chain=await wallet.request({method:'eth_chainId'});if(!address)throw Error('Wallet returned no address.');if(typeof wallet.on==='function'){const current=wallet;current.on('accountsChanged',()=>{if(wallet===current)reset()});current.on('chainChanged',()=>{if(wallet===current)reset()})}}
+$('account').textContent='Address: '+address+' | Chain: '+chain;notify('Connected. This does not yet prove control. Build a fresh challenge.');
+}catch(e){reset();notify(String(e.message||e),true)}}
+async function useBase(){try{if(!wallet||mode==='solana')throw Error('Connect an EVM wallet first.');await wallet.request({method:'wallet_switchEthereumChain',params:[{chainId:BASE}]});chain=await wallet.request({method:'eth_chainId'});invalidate();if(chain.toLowerCase()!==BASE)throw Error('Base mainnet not selected.');$('account').textContent='Address: '+address+' | Base mainnet 8453';notify('Base selected; no transaction sent.')}catch(e){notify(String(e.message||e),true)}}
+async function build(){try{invalidate();if(!wallet||!address)throw Error('Connect a wallet first.');let block='none',hash='none';if(mode!=='solana'){chain=await wallet.request({method:'eth_chainId'});if(chain.toLowerCase()!==BASE)throw Error('Switch to Base chain 8453 first.');block=await wallet.request({method:'eth_blockNumber'});let obj=await wallet.request({method:'eth_getBlockByNumber',params:[block,false]});if(!obj?.hash)throw Error('Base block unavailable');hash=obj.hash;}
+const created=new Date().toISOString(),expiry=new Date(Date.now()+TTL).toISOString(),nonce=crypto.randomUUID(),fam=mode==='solana'?'solana':'evm';
+const message=['JAYWISDOM_MULTI_WALLET_CONTROL_V2','purpose=READ_ONLY_ADDRESS_CONTROL_OBSERVATION','chain_family='+fam,'chain_id='+(fam==='evm'?'8453':'solana-mainnet'),'address='+address,'base_block='+block,'base_block_hash='+hash,'nonce='+nonce,'origin='+location.origin,'issued_at='+created,'expires_at='+expiry,'no_transaction=true','no_approval=true','authority_created=false','statement=This signature proves control for this specific challenge only; it does not establish legal identity, ongoing control, asset ownership, or permission to transact.'].join('\n');
+challenge={message,address,chain_family:fam,chain_id:fam==='evm'?8453:'solana-mainnet',block,hash,nonce,created,expiry,origin:location.origin,method:mode,epoch};$('message').textContent=message;$('sign').disabled=false;notify('Challenge created. Expires in 5 minutes. Review before signing.');
+}catch(e){notify(String(e.message||e),true)}}
+async function checkEVM(sig,ch){
+if(!window.ethers)throw Error('Ethers verification library unavailable');const c=await wallet.request({method:'eth_getCode',params:[ch.address,ch.block]});if(c&&c!=='0x'){const digest=ethers.hashMessage(ch.message),iface=new ethers.Interface(['function isValidSignature(bytes32,bytes) view returns (bytes4)']);const data=iface.encodeFunctionData('isValidSignature',[digest,sig]);const out=await wallet.request({method:'eth_call',params:[{to:ch.address,data},ch.block]});const decoded=iface.decodeFunctionResult('isValidSignature',out)[0];if(decoded.toLowerCase()!==MAGIC)throw Error('ERC-1271 rejection');return 'ERC1271_AT_CHALLENGE_BLOCK'}
+const recovered=ethers.verifyMessage(ch.message,sig);if(!eq(recovered,ch.address))throw Error('ECDSA recovered address mismatch');return 'EIP191_ECDSA_RECOVERY'}
+async function checkSolana(sig,ch){if(!crypto.subtle)throw Error('WebCrypto unavailable');if(!window.phantom?.solana?.publicKey)throw Error('Phantom disconnected');if(ch.address!==window.phantom.solana.publicKey.toString())throw Error('Address changed');const pub=window.phantom.solana.publicKey.toBytes();const key=await crypto.subtle.importKey('raw',pub,{name:'Ed25519'},false,['verify']);const ok=await crypto.subtle.verify('Ed25519',key,sig,enc(ch.message));if(!ok)throw Error('Ed25519 signature failed');return 'ED25519_WEBCRYPTO'}
+async function sign(){let ch=challenge;try{if(!ch||!wallet)throw Error('No challenge');if(!$('consent').checked)throw Error('Review and confirm the exact challenge first.');if(Date.now()>Date.parse(ch.expiry))throw Error('Challenge expired; rebuild.');if(ch.epoch!==epoch||!eq(ch.address,address))throw Error('Wallet state changed.');
+$('sign').disabled=true;let sig,method;if(ch.chain_family==='evm'){const a=await wallet.request({method:'eth_accounts'}),id=await wallet.request({method:'eth_chainId'});if(!a.some(x=>eq(x,ch.address))||id.toLowerCase()!==BASE)throw Error('Wallet or chain changed');sig=await wallet.request({method:'personal_sign',params:[hex(enc(ch.message)),ch.address]});method=await checkEVM(sig,ch)}
+else {const out=await wallet.signMessage(enc(ch.message),'utf8');sig=out.signature;method=await checkSolana(sig,ch)}
+if(ch!==challenge||ch.epoch!==epoch||Date.now()>Date.parse(ch.expiry))throw Error('Challenge changed or expired during signing');
+receipt={schema:'JAYWISDOM_WALLET_CONTROL_RECEIPT_V2',status:'VERIFIED_FOR_THIS_MESSAGE',chain_family:ch.chain_family,chain_id:ch.chain_id,address:ch.address,wallet_label:ch.method,verification_method:method,challenge:ch.message,signature:typeof sig==='string'?sig:hex(sig),base_block:ch.block,base_block_hash:ch.hash,nonce:ch.nonce,issued_at:ch.created,expires_at:ch.expiry,verified_at:new Date().toISOString(),authority_created:false,transaction_requested:false};
+session.set(ch.chain_family+':'+ch.address.toLowerCase(),receipt);render();$('download').disabled=false;notify('VERIFIED FOR THIS MESSAGE ONLY. Download JSON evidence.','', 'result');notify('Cryptographic signature checked. No transaction sent.');
+}catch(e){notify('HOLD / FAIL: '+String(e.message||e),true,'result');$('sign').disabled=false}}
+$('mode').addEventListener('change',selectMode);$('discover').onclick=discover;$('connect').onclick=connect;$('clear').onclick=reset;$('switch').onclick=useBase;$('build').onclick=build;$('sign').onclick=sign;$('consent').onchange=()=>{$('sign').disabled=!challenge||!$('consent').checked||!!receipt};$('download').onclick=()=>receipt&&saveJSON(receipt,'wallet-control-'+receipt.chain_family+'-'+receipt.address.slice(0,10)+'.json');$('export').onclick=()=>saveJSON({schema:'JAYWISDOM_WALLET_LEDGER_V2',status:'SESSION_VERIFIED_ONLY',records:[...session.values()]},'jaywisdom-wallet-ledger-v2.json');$('erase').onclick=()=>{session.clear();reset();render()};discover();selectMode();render();
+})();
+</script></body></html>
