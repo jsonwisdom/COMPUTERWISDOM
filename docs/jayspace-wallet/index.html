@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="JaySpace Wallet: public purpose, function, and receipt-first reconciliation strategy. No private financial data.">
+  <title>JaySpace Wallet · Purpose / Function / Public Strategy</title>
+  <style>
+    :root{color-scheme:dark;--bg:#08121e;--panel:#142437;--ink:#f2f7fb;--muted:#c7d5e1;--line:#52708a;--accent:#a6e4ff;--warn:#ffe2a4;font:16px/1.55 system-ui,-apple-system,sans-serif}
+    *{box-sizing:border-box}body{margin:0;color:var(--ink);background:radial-gradient(circle at 18% 8%,#174763,transparent 42%),var(--bg)}a{color:var(--accent)}main{max-width:1020px;margin:auto;padding:24px 20px 90px}
+    header,section{border:1px solid var(--line);background:var(--panel);border-radius:20px;padding:clamp(20px,4vw,38px);margin:16px 0}
+    h1{font-size:clamp(2.2rem,8vw,5rem);line-height:1.07;margin:12px 0}h2{font-size:1.42rem;margin:0 0 12px}h3{font-size:1.1rem}p{margin:10px 0;color:var(--muted)}
+    .eyebrow{font-weight:800;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;font-size:.82rem}
+    .state{font-weight:900;color:var(--warn)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:12px}.tile{background:#0b1b2c;padding:18px;border-radius:14px;border:1px solid var(--line)}
+    code{color:#fff5c9;word-break:break-word}nav{display:flex;flex-wrap:wrap;gap:15px;margin:12px 0}ul{padding-left:1.5rem}.tiny{font-size:.87rem}.rule{border-left:4px solid var(--warn);padding-left:16px}
+  </style>
+</head>
+<body><main>
+<header>
+  <div class="eyebrow">JaySpace · public wallet proof lab · v0.1 candidate</div>
+  <h1>Purpose. Function. Proof.</h1>
+  <p>Understand quantity changes without pretending a balance snapshot explains the underlying events.</p>
+  <p class="state">PUBLIC RELEASE STATUS: DESIGN_HOLD · NOT A LIVE WALLET CONNECTOR</p>
+  <nav aria-label="Project navigation">
+    <a href="../../index.html">COMPUTERWISDOM index</a>
+    <a href="https://github.com/jsonwisdom/JOY/blob/main/FAMILY/JAYSPACE/README.md">JaySpace source definition</a>
+    <a href="https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/audits/COINBASE_HISTORY_MEMBRANE_AUDIT_V0_1.md">History membrane</a>
+    <a href="https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/projects/cwaas/CWaaS_V0_1_COINBASE_ENABLED.md">CWaaS boundary</a>
+  </nav>
+</header>
+<div class="grid">
+<section class="tile"><h2>Purpose</h2><p>Give builders an inspectable explanation of what changed, which records support it, and which questions remain unanswered.</p></section>
+<section class="tile"><h2>Function</h2><p>Compare same-account, same-asset, timestamped snapshots. Bind fills, transfers, conversions, rewards, fees, and corrections to unique event receipts. Preserve the residual.</p></section>
+<section class="tile"><h2>Public strategy</h2><p>Publish method, source coverage, audit status, and redacted evidence references only. Do not expose exchange balances, private transaction rows, addresses, keys, or account identifiers.</p></section>
+</div>
+<section>
+  <h2>One critical audit question</h2>
+  <p class="rule"><strong>What event-level records explain each change in asset quantity between the two provider snapshots, across every applicable account and transaction surface?</strong></p>
+  <p>Quantity reconciliation is performed per asset and account. Value change additionally depends on market price, fee basis, and timestamp. Neither an empty Advanced Trade fill search nor zero open orders proves that no activity occurred.</p>
+  <p><code>quantity_change = net_fills + net_converts + net_transfers + rewards - fees + documented_corrections + unexplained_residual</code></p>
+  <p>Conservation cannot be claimed until event signs, unique IDs, quantities, timestamps, fees, currency units, and account scope have been verified.</p>
+</section>
+<section>
+  <h2>Separated evidence gates</h2>
+  <div class="grid">
+    <div class="tile"><h3>1. Observed</h3><p>Two snapshots exist, with explicit timestamps, provider, account scope, units, and source hashes. A reported difference alone is not an event explanation.</p></div>
+    <div class="tile"><h3>2. Covered</h3><p>Define whether order fills, regular app activity, recurring buys, converts, transfers, rewards, and deposits are actually available. Missing endpoints remain NOT_CHECKED.</p></div>
+    <div class="tile"><h3>3. Reconciled</h3><p>Match unique transactions to each asset delta, net fees and reversals, prevent duplicate rows, and leave every non-zero unexplained residual visible.</p></div>
+    <div class="tile"><h3>4. Released</h3><p>A human approves a redacted public receipt after evidence and privacy checks. Public release never creates treasury authority.</p></div>
+  </div>
+</section>
+<section>
+  <h2>Public / private membrane</h2>
+  <ul>
+    <li><strong>Public:</strong> purpose, methodology, evidence-class definitions, coverage gaps, release status, code/version pointers.</li>
+    <li><strong>Private:</strong> full Coinbase history, exact balances and quantities, trade IDs, export files, account numbers, addresses associated with private exchange accounts, tax lots.</li>
+    <li><strong>Execution:</strong> no trades, signatures, approvals, scheduled buys, conversions, treasury transfers, or execution authority from this page.</li>
+  </ul>
+  <p class="tiny">This is a reviewable design candidate, not a live account view, a financial performance claim, or a certification. Any missing receipt or conflicting record means HOLD or CONFLICT, not invented zero activity.</p>
+  <p><code>AUDIT_PUBLISHED != FUNDS_VERIFIED != WALLET_CONTROL != EXECUTION_AUTHORIZED</code></p>
+</section>
+<footer><p class="tiny">Source: COMPUTERWISDOM · adjacent to JOY JaySpace; no merge or authority is implied by this candidate. AUTHORITY_CREATED=false · NO_FAKE_GREEN=true · HUMAN_REVIEW_REQUIRED=true.</p></footer>
+</main></body></html>
