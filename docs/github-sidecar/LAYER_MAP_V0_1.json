@@ -1,0 +1,131 @@
+{
+  "schema": "JASON_GITHUB_SIDECAR_LAYER_MAP_V0_1",
+  "status": "DESIGN_HOLD",
+  "target_repository": "jsonwisdom/COMPUTERWISDOM",
+  "baseline_commit": "e954c165a5d18dba78e6e63dd86f84b1428a31a8",
+  "human_release_authority": "JASON",
+  "default_operation": "READ_ONLY",
+  "layers": [
+    {
+      "level": 0,
+      "name": "human_mandate",
+      "down": "scope repositories and task",
+      "up": "final decision"
+    },
+    {
+      "level": 1,
+      "name": "repository",
+      "down": "inspect repo identity, visibility and permissions",
+      "up": "return verified repository context"
+    },
+    {
+      "level": 2,
+      "name": "branch_policy",
+      "down": "inspect refs, branch rules and protected policy",
+      "up": "record exact SHA and applied rulesets"
+    },
+    {
+      "level": 3,
+      "name": "workflow_and_site",
+      "down": "inspect workflow, Pages source, environments and URLs",
+      "up": "record trigger and deployment state"
+    },
+    {
+      "level": 4,
+      "name": "artifact",
+      "down": "inspect file, line, commit, diff, CI and receipt",
+      "up": "hash and replay scoped evidence"
+    },
+    {
+      "level": 5,
+      "name": "isolated_proposal",
+      "down": "draft branch/PR only under scoped authorization",
+      "up": "test reviewable diff and proposed rollback"
+    },
+    {
+      "level": 6,
+      "name": "reducer",
+      "down": "evaluate independent checks and blockers",
+      "up": "PASS/HOLD/FAIL with no authority promotion"
+    },
+    {
+      "level": 7,
+      "name": "human_release",
+      "down": "JASON explicit separate approval for merge or production",
+      "up": "independent post-release verification"
+    }
+  ],
+  "allowed_read_only": [
+    "repo",
+    "branch",
+    "ruleset",
+    "workflow",
+    "pages_metadata_if_authorized",
+    "commit",
+    "file",
+    "pull_request",
+    "ci_logs",
+    "provider_dns_query"
+  ],
+  "draft_write_requirements": [
+    "scoped_user_request",
+    "exact_base_sha",
+    "new_isolated_branch",
+    "files_changed_limited_to_approved_scope",
+    "draft_pull_request",
+    "baseline_preserved",
+    "no_secrets"
+  ],
+  "forbidden_automatic_actions": [
+    "direct_master_commit",
+    "ruleset_disablement",
+    "pr_merge",
+    "deployment",
+    "dns_write",
+    "wallet_signing",
+    "token_allowance",
+    "wallet_transaction",
+    "canon_promotion",
+    "secrets_publication"
+  ],
+  "pages_incident": {
+    "observed_message": "Unable to commit CNAME because the Pages branch is protected.",
+    "branch_protection": "VERIFIED",
+    "github_actions_workflow": ".github/workflows/static.yml",
+    "github_pages_source": "NOT_INDEPENDENTLY_READ",
+    "hypothesis": "Pages settings may still be using Deploy from a branch",
+    "candidate_remediation": "Verify Pages publishing source; if branch, authorized owner switches to GitHub Actions, then claims custom domain before DNS writes",
+    "production_changes": "NONE",
+    "primary_domain_candidate": "jsonwisdom.com",
+    "secondary_domain_candidate": "jsonwisdom.io"
+  },
+  "gates": {
+    "independent_evidence": "REQUIRED",
+    "source_pin": "REQUIRED",
+    "branch_policy": "PRESERVE",
+    "ci": "NOT_RUN_FOR_SIDECAR",
+    "change_authorization": "HUMAN_SCOPED",
+    "merge_authorization": "HUMAN_SEPARATE",
+    "system_green": false,
+    "authority_created": false,
+    "canon": false
+  },
+  "receipt_template": {
+    "event_time_utc": null,
+    "actor": null,
+    "action": null,
+    "object": null,
+    "repository": null,
+    "branch": null,
+    "base_commit": null,
+    "source_pointer": null,
+    "source_digest": null,
+    "observed_state": "HOLD",
+    "counter_evidence": [],
+    "verification_status": "NOT_RUN",
+    "independent_replay": "HOLD",
+    "mutation": false,
+    "human_approval_ref": null,
+    "final_decision": "JASON"
+  }
+}
