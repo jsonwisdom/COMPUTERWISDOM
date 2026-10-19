@@ -1,0 +1,29 @@
+name: FullMath CWTD V0.1 local-candidate CI
+
+on:
+  push:
+    paths:
+      - 'services/fullmath-computerwizard-triggered-decks-v0-1/**'
+  pull_request:
+    paths:
+      - 'services/fullmath-computerwizard-triggered-decks-v0-1/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run unit tests
+        run: |
+          cd services/fullmath-computerwizard-triggered-decks-v0-1
+          python3 -m unittest discover -s tests -v
+      - name: Synthetic 3-card/9-instance replay
+        run: |
+          cd services/fullmath-computerwizard-triggered-decks-v0-1
+          python3 tests/make_synthetic_fixture.py /tmp/cwtd-fixture
+          python3 batcher.py build --manifest /tmp/cwtd-fixture/manifest.json --root /tmp/cwtd-fixture --report /tmp/cwtd-fixture/candidate.json
+          python3 batcher.py verify --manifest /tmp/cwtd-fixture/manifest.json --root /tmp/cwtd-fixture --report /tmp/cwtd-fixture/candidate.json
