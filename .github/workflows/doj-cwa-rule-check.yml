@@ -2,9 +2,16 @@ name: DOJ CWA Rule Check
 
 on:
   schedule:
-    # Mondays at 12:00 UTC
-    - cron: '0 12 * * 1'
+    - cron: '0 12 * * 1'   # Mondays 12:00 UTC (runs from the default branch only)
   workflow_dispatch:
+  # Temporary, for pre-merge testing on the feature branch. Remove after merge.
+  # push:
+  #   branches: [doj-cwa-rule-check]
+  #   paths: ['.github/workflows/doj-cwa-rule-check.yml', 'scripts/**']
+
+concurrency:
+  group: doj-cwa-rule-check
+  cancel-in-progress: false
 
 permissions:
   contents: write
@@ -12,235 +19,49 @@ permissions:
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Install tools
         run: |
           sudo apt-get update -qq
-          sudo apt-get install -y -qq poppler-utils curl python3-pip
-          pip3 install --quiet beautifulsoup4
+          sudo apt-get install -y -qq poppler-utils jq python3-bs4
 
-      - name: Fetch, hash, and receipt
+      - name: Fetch, hash, receipt
+        id: check
+        env:
+          DEADLINE_SECONDS: '600'
+        run: bash scripts/doj-cwa-check.sh
+
+      # Runs only if the script succeeded, so a crash never commits a
+      # half-updated baseline. A HOLD receipt is a normal, committed result.
+      - name: Commit receipts
+        run: bash scripts/doj-cwa-commit.sh normal
+
+      # On failure, commit ONLY the crash receipt. The script first resets the
+      # tree to the remote tip, so anything staged or committed locally earlier
+      # in the job cannot ride along.
+      - name: Commit crash receipt only
+        if: failure()
+        run: bash scripts/doj-cwa-commit.sh crash
+
+      - name: Upload receipts (always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: doj-cwa-receipts-${{ github.run_id }}
+          if-no-files-found: warn
+          path: |
+            receipts/doj-cwa/latest_receipt.json
+            receipts/doj-cwa/history/
+            receipts/doj-cwa/crash/
+            receipts/doj-cwa/check_log.txt
+            receipts/doj-cwa/promotion_log.jsonl
+
+      - name: Fail visibly on HOLD
+        if: steps.check.outputs.overall == 'INCOMPLETE_HOLD'
         run: |
-          set -euo pipefail
-          mkdir -p receipts/doj-cwa/archive
-
-          PDF_URL="https://www.justice.gov/criminal/media/1454776/dl?inline"
-          FAQ_PDF_URL="https://www.justice.gov/criminal/media/1454771/dl?inline"
-          PAGE_URL="https://www.justice.gov/criminal/criminal-division-corporate-whistleblower-awards-pilot-program"
-          FAQ_URL="https://www.justice.gov/criminal/whistleblower/frequently-asked-questions"
-          PORTAL_URL="https://www.justice.gov/criminal/whistleblower/submitting-information-doj"
-          PROCESS_URL="https://www.justice.gov/criminal/whistleblower/whistleblower-submission-and-award-process"
-          RESOURCES_URL="https://www.justice.gov/criminal/whistleblower/additional-resources"
-
-          TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-          TS_FILE=$(date -u +%Y%m%dT%H%M%SZ)
-
-          # Helper: extract main content text (title to Updated line) and hash it
-          extract_main() {
-            local infile="$1"
-            python3 - <<'PY'
-          import sys, hashlib
-          from bs4 import BeautifulSoup
-          html = open(sys.argv[1], 'rb').read()
-          soup = BeautifulSoup(html, 'html.parser')
-          # Prefer main content area; fall back to body text between first h1 and "Updated"
-          main = soup.find('main') or soup.find(id='main-content') or soup.body
-          text = main.get_text(separator='\n', strip=True) if main else soup.get_text(separator='\n', strip=True)
-          # Cut from first substantial heading to the Updated line
-          lines = [ln for ln in text.splitlines() if ln.strip()]
-          start = 0
-          for i, ln in enumerate(lines):
-              if ln.startswith('#') or 'Whistleblower' in ln or 'Submission' in ln or 'Frequently' in ln or 'Additional' in ln:
-                  start = i
-                  break
-          end = len(lines)
-          for i, ln in enumerate(lines[start:], start):
-              if ln.startswith('Updated '):
-                  end = i + 1
-                  break
-          main_text = '\n'.join(lines[start:end]).encode()
-          print(hashlib.sha256(main_text).hexdigest())
-          PY
-            "$infile"
-          }
-
-          # --- Guidance PDF ---
-          PDF_OK=false; PDF_HASH=""; ISSUED="NOT_EXTRACTED"
-          if curl -fsSL --max-time 60 -o /tmp/guidance.pdf "$PDF_URL"; then
-            PDF_HASH=$(sha256sum /tmp/guidance.pdf | awk '{print $1}')
-            ISSUED=$(pdftotext -f 1 -l 1 /tmp/guidance.pdf - 2>/dev/null | grep -E 'Issued:|Revised:' | head -1 | sed 's/^[[:space:]]*//;s/[[:space:]]*$//' || echo "NOT_FOUND")
-            PDF_OK=true
-          fi
-
-          # --- FAQ PDF ---
-          FAQ_PDF_OK=false; FAQ_PDF_HASH=""
-          if curl -fsSL --max-time 60 -o /tmp/faq.pdf "$FAQ_PDF_URL"; then
-            FAQ_PDF_HASH=$(sha256sum /tmp/faq.pdf | awk '{print $1}')
-            FAQ_PDF_OK=true
-          fi
-
-          # HTML targets (whole + main-content)
-          fetch_html() {
-            local url="$1" tmp="$2"
-            local ok=false hash="" mainhash=""
-            if curl -fsSL --max-time 60 -o "$tmp" "$url"; then
-              hash=$(sha256sum "$tmp" | awk '{print $1}')
-              mainhash=$(extract_main "$tmp" || echo "")
-              ok=true
-            fi
-            echo "$ok|$hash|$mainhash"
-          }
-
-          # Fetch all HTML
-          PAGE_RES=$(fetch_html "$PAGE_URL" /tmp/landing.html)
-          FAQ_RES=$(fetch_html "$FAQ_URL" /tmp/faq.html)
-          PORTAL_RES=$(fetch_html "$PORTAL_URL" /tmp/portal.html)
-          PROCESS_RES=$(fetch_html "$PROCESS_URL" /tmp/process.html)
-          RESOURCES_RES=$(fetch_html "$RESOURCES_URL" /tmp/resources.html)
-
-          IFS='|' read -r PAGE_OK PAGE_HASH PAGE_MAIN <<< "$PAGE_RES"
-          IFS='|' read -r FAQ_OK FAQ_HASH FAQ_MAIN <<< "$FAQ_RES"
-          IFS='|' read -r PORTAL_OK PORTAL_HASH PORTAL_MAIN <<< "$PORTAL_RES"
-          IFS='|' read -r PROCESS_OK PROCESS_HASH PROCESS_MAIN <<< "$PROCESS_RES"
-          IFS='|' read -r RESOURCES_OK RESOURCES_HASH RESOURCES_MAIN <<< "$RESOURCES_RES"
-
-          # Load previous (whole + main)
-          load_prev() { [ -f "$1" ] && cat "$1" || echo ""; }
-          PREV_PDF=$(load_prev receipts/doj-cwa/current.pdf.sha)
-          PREV_FAQ_PDF=$(load_prev receipts/doj-cwa/current.faq-pdf.sha)
-          PREV_PAGE=$(load_prev receipts/doj-cwa/current.page.sha)
-          PREV_PAGE_MAIN=$(load_prev receipts/doj-cwa/current.page.main.sha)
-          PREV_FAQ=$(load_prev receipts/doj-cwa/current.faq.sha)
-          PREV_FAQ_MAIN=$(load_prev receipts/doj-cwa/current.faq.main.sha)
-          PREV_PORTAL=$(load_prev receipts/doj-cwa/current.portal.sha)
-          PREV_PORTAL_MAIN=$(load_prev receipts/doj-cwa/current.portal.main.sha)
-          PREV_PROCESS=$(load_prev receipts/doj-cwa/current.process.sha)
-          PREV_PROCESS_MAIN=$(load_prev receipts/doj-cwa/current.process.main.sha)
-          PREV_RESOURCES=$(load_prev receipts/doj-cwa/current.resources.sha)
-          PREV_RESOURCES_MAIN=$(load_prev receipts/doj-cwa/current.resources.main.sha)
-
-          # Classification helper (uses main hash for change detection on HTML)
-          classify() {
-            local ok="$1" hash="$2" main="$3" prev="$4" prevmain="$5" name="$6"
-            if [ "$ok" != true ]; then echo "fetch_failed"; return; fi
-            if [ -z "$prevmain" ]; then echo "first_observation"; return; fi
-            if [ "$main" = "$prevmain" ]; then echo "unchanged"; else echo "bytes_changed"; fi
-          }
-
-          PDF_OBS=$(classify $PDF_OK "$PDF_HASH" "$PDF_HASH" "$PREV_PDF" "$PREV_PDF" pdf)
-          FAQ_PDF_OBS=$(classify $FAQ_PDF_OK "$FAQ_PDF_HASH" "$FAQ_PDF_HASH" "$PREV_FAQ_PDF" "$PREV_FAQ_PDF" faqpdf)
-          PAGE_OBS=$(classify $PAGE_OK "$PAGE_HASH" "$PAGE_MAIN" "$PREV_PAGE" "$PREV_PAGE_MAIN" page)
-          FAQ_OBS=$(classify $FAQ_OK "$FAQ_HASH" "$FAQ_MAIN" "$PREV_FAQ" "$PREV_FAQ_MAIN" faq)
-          PORTAL_OBS=$(classify $PORTAL_OK "$PORTAL_HASH" "$PORTAL_MAIN" "$PREV_PORTAL" "$PREV_PORTAL_MAIN" portal)
-          PROCESS_OBS=$(classify $PROCESS_OK "$PROCESS_HASH" "$PROCESS_MAIN" "$PREV_PROCESS" "$PREV_PROCESS_MAIN" process)
-          RESOURCES_OBS=$(classify $RESOURCES_OK "$RESOURCES_HASH" "$RESOURCES_MAIN" "$PREV_RESOURCES" "$PREV_RESOURCES_MAIN" resources)
-
-          # Archive + update current only on success
-          archive_and_update() {
-            local ok="$1" obs="$2" src="$3" destbase="$4" hash="$5" main="$6"
-            if [ "$ok" != true ]; then return; fi
-            if [ "$obs" = "bytes_changed" ] && [ -f "${destbase}.html" ]; then
-              mv "${destbase}.html" "receipts/doj-cwa/archive/$(basename $destbase).$TS_FILE.html"
-              [ -f "${destbase}.sha" ] && mv "${destbase}.sha" "receipts/doj-cwa/archive/$(basename $destbase).$TS_FILE.sha"
-              [ -f "${destbase}.main.sha" ] && mv "${destbase}.main.sha" "receipts/doj-cwa/archive/$(basename $destbase).$TS_FILE.main.sha"
-            fi
-            cp "$src" "${destbase}.html" 2>/dev/null || cp "$src" "${destbase}"
-            echo "$hash" > "${destbase}.sha"
-            [ -n "$main" ] && echo "$main" > "${destbase}.main.sha"
-          }
-
-          # PDFs
-          if [ "$PDF_OK" = true ]; then
-            if [ "$PDF_OBS" = "bytes_changed" ] && [ -f receipts/doj-cwa/current.pdf ]; then
-              mv receipts/doj-cwa/current.pdf "receipts/doj-cwa/archive/guidance.pdf.$TS_FILE"
-              mv receipts/doj-cwa/current.pdf.sha "receipts/doj-cwa/archive/guidance.pdf.$TS_FILE.sha"
-            fi
-            cp /tmp/guidance.pdf receipts/doj-cwa/current.pdf
-            echo "$PDF_HASH" > receipts/doj-cwa/current.pdf.sha
-          fi
-          if [ "$FAQ_PDF_OK" = true ]; then
-            if [ "$FAQ_PDF_OBS" = "bytes_changed" ] && [ -f receipts/doj-cwa/current.faq-pdf.pdf ]; then
-              mv receipts/doj-cwa/current.faq-pdf.pdf "receipts/doj-cwa/archive/faq.pdf.$TS_FILE"
-              mv receipts/doj-cwa/current.faq-pdf.sha "receipts/doj-cwa/archive/faq.pdf.$TS_FILE.sha"
-            fi
-            cp /tmp/faq.pdf receipts/doj-cwa/current.faq-pdf.pdf
-            echo "$FAQ_PDF_HASH" > receipts/doj-cwa/current.faq-pdf.sha
-          fi
-
-          # HTML
-          archive_and_update $PAGE_OK "$PAGE_OBS" /tmp/landing.html receipts/doj-cwa/current.page "$PAGE_HASH" "$PAGE_MAIN"
-          archive_and_update $FAQ_OK "$FAQ_OBS" /tmp/faq.html receipts/doj-cwa/current.faq "$FAQ_HASH" "$FAQ_MAIN"
-          archive_and_update $PORTAL_OK "$PORTAL_OBS" /tmp/portal.html receipts/doj-cwa/current.portal "$PORTAL_HASH" "$PORTAL_MAIN"
-          archive_and_update $PROCESS_OK "$PROCESS_OBS" /tmp/process.html receipts/doj-cwa/current.process "$PROCESS_HASH" "$PROCESS_MAIN"
-          archive_and_update $RESOURCES_OK "$RESOURCES_OBS" /tmp/resources.html receipts/doj-cwa/current.resources "$RESOURCES_HASH" "$RESOURCES_MAIN"
-
-          # Overall
-          if echo "$PDF_OBS $FAQ_PDF_OBS $PAGE_OBS $FAQ_OBS $PORTAL_OBS $PROCESS_OBS $RESOURCES_OBS" | grep -q "fetch_failed"; then
-            OVERALL="INCOMPLETE_HOLD"
-          elif echo "$PDF_OBS $FAQ_PDF_OBS $PAGE_OBS $FAQ_OBS $PORTAL_OBS $PROCESS_OBS $RESOURCES_OBS" | grep -q "bytes_changed"; then
-            OVERALL="bytes_changed"
-          elif echo "$PDF_OBS $FAQ_PDF_OBS $PAGE_OBS $FAQ_OBS $PORTAL_OBS $PROCESS_OBS $RESOURCES_OBS" | grep -q "first_observation"; then
-            OVERALL="first_observation"
-          else
-            OVERALL="unchanged"
-          fi
-
-          # Receipt
-          cat > receipts/doj-cwa/latest_receipt.json <<JSON
-          {
-            "timestamp_utc": "$TS",
-            "pdf_url": "$PDF_URL",
-            "pdf_hash_sha256": "$PDF_HASH",
-            "pdf_observation": "$PDF_OBS",
-            "issued_revised_line": "$ISSUED",
-            "faq_pdf_url": "$FAQ_PDF_URL",
-            "faq_pdf_hash_sha256": "$FAQ_PDF_HASH",
-            "faq_pdf_observation": "$FAQ_PDF_OBS",
-            "page_url": "$PAGE_URL",
-            "page_hash_sha256": "$PAGE_HASH",
-            "page_main_hash_sha256": "$PAGE_MAIN",
-            "page_observation": "$PAGE_OBS",
-            "faq_url": "$FAQ_URL",
-            "faq_hash_sha256": "$FAQ_HASH",
-            "faq_main_hash_sha256": "$FAQ_MAIN",
-            "faq_observation": "$FAQ_OBS",
-            "portal_url": "$PORTAL_URL",
-            "portal_hash_sha256": "$PORTAL_HASH",
-            "portal_main_hash_sha256": "$PORTAL_MAIN",
-            "portal_observation": "$PORTAL_OBS",
-            "process_url": "$PROCESS_URL",
-            "process_hash_sha256": "$PROCESS_HASH",
-            "process_main_hash_sha256": "$PROCESS_MAIN",
-            "process_observation": "$PROCESS_OBS",
-            "resources_url": "$RESOURCES_URL",
-            "resources_hash_sha256": "$RESOURCES_HASH",
-            "resources_main_hash_sha256": "$RESOURCES_MAIN",
-            "resources_observation": "$RESOURCES_OBS",
-            "overall_observation": "$OVERALL",
-            "reward_eligibility": "NOT_ESTABLISHED",
-            "submission": "NONE",
-            "authority_created": false,
-            "note": "PDF hashes are raw bytes. HTML change detection uses main-content hash (title to Updated line); whole-page hash is secondary. Does not establish eligibility or authority."
-          }
-          JSON
-
-          echo "$TS | overall=$OVERALL | pdf=$PDF_OBS | faqpdf=$FAQ_PDF_OBS | page=$PAGE_OBS | faq=$FAQ_OBS | portal=$PORTAL_OBS | process=$PROCESS_OBS | resources=$RESOURCES_OBS | issued=$ISSUED" >> receipts/doj-cwa/check_log.txt
-
-          echo "Receipt written. Overall: $OVERALL"
-
-      - name: Commit and push receipts
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add receipts/doj-cwa/
-          if git diff --staged --quiet; then
-            echo "No changes to commit."
-          else
-            git commit -m "chore(doj-cwa): update rule check receipt [skip ci]"
-            git push
-          fi
+          echo "::error::DOJ CWA rule check is INCOMPLETE_HOLD. See receipts/doj-cwa/latest_receipt.json"
+          exit 1
