@@ -1,0 +1,36 @@
+name: Three Daughters Billing Paperwork Gate
+
+on:
+  pull_request:
+    paths:
+      - "corporate/billing/three_daughters/**"
+      - "tools/billing-paperwork/**"
+      - ".github/workflows/three-daughters-billing-paperwork.yml"
+  push:
+    branches:
+      - master
+    paths:
+      - "corporate/billing/three_daughters/**"
+      - "tools/billing-paperwork/**"
+      - ".github/workflows/three-daughters-billing-paperwork.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  fail-closed-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out exact revision
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+
+      - name: Validate public template
+        run: >-
+          python3 tools/billing-paperwork/validate_three_daughters_billing_manifest.py
+          corporate/billing/three_daughters/paperwork_manifest.template.json
+
+      - name: Run negative-path tests
+        working-directory: tools/billing-paperwork
+        run: python3 -m unittest -v test_validate_three_daughters_billing_manifest.py
+
+
