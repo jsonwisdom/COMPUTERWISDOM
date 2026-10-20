@@ -30,11 +30,13 @@ jobs:
 
           PDF_URL="https://www.justice.gov/criminal/media/1454776/dl?inline"
           PAGE_URL="https://www.justice.gov/criminal/criminal-division-corporate-whistleblower-awards-pilot-program"
+          FAQ_URL="https://www.justice.gov/criminal/whistleblower/frequently-asked-questions"
+          PORTAL_URL="https://www.justice.gov/criminal/whistleblower/submitting-information-doj"
 
           TS=$(date -u +%Y-%m-%dT%H:%M:%SZ)
           TS_FILE=$(date -u +%Y%m%dT%H%M%SZ)
 
-          # --- PDF ---
+          # --- PDF (guidance) ---
           PDF_OK=false
           PDF_HASH=""
           ISSUED="NOT_EXTRACTED"
@@ -52,15 +54,33 @@ jobs:
             PAGE_OK=true
           fi
 
-          PREV_PDF_HASH=""
-          PREV_PAGE_HASH=""
-          if [ -f receipts/doj-cwa/current.pdf.sha ]; then
-            PREV_PDF_HASH=$(cat receipts/doj-cwa/current.pdf.sha)
-          fi
-          if [ -f receipts/doj-cwa/current.page.sha ]; then
-            PREV_PAGE_HASH=$(cat receipts/doj-cwa/current.page.sha)
+          # --- FAQ ---
+          FAQ_OK=false
+          FAQ_HASH=""
+          if curl -fsSL --max-time 60 -o /tmp/faq.html "$FAQ_URL"; then
+            FAQ_HASH=$(sha256sum /tmp/faq.html | awk '{print $1}')
+            FAQ_OK=true
           fi
 
+          # --- Submission portal page ---
+          PORTAL_OK=false
+          PORTAL_HASH=""
+          if curl -fsSL --max-time 60 -o /tmp/portal.html "$PORTAL_URL"; then
+            PORTAL_HASH=$(sha256sum /tmp/portal.html | awk '{print $1}')
+            PORTAL_OK=true
+          fi
+
+          # Load previous hashes
+          PREV_PDF_HASH=""
+          PREV_PAGE_HASH=""
+          PREV_FAQ_HASH=""
+          PREV_PORTAL_HASH=""
+          [ -f receipts/doj-cwa/current.pdf.sha ] && PREV_PDF_HASH=$(cat receipts/doj-cwa/current.pdf.sha)
+          [ -f receipts/doj-cwa/current.page.sha ] && PREV_PAGE_HASH=$(cat receipts/doj-cwa/current.page.sha)
+          [ -f receipts/doj-cwa/current.faq.sha ] && PREV_FAQ_HASH=$(cat receipts/doj-cwa/current.faq.sha)
+          [ -f receipts/doj-cwa/current.portal.sha ] && PREV_PORTAL_HASH=$(cat receipts/doj-cwa/current.portal.sha)
+
+          # PDF observation + archive on change
           if [ "$PDF_OK" = true ]; then
             if [ -z "$PREV_PDF_HASH" ]; then
               PDF_OBS="first_observation"
@@ -72,17 +92,14 @@ jobs:
                 mv receipts/doj-cwa/current.pdf "receipts/doj-cwa/archive/guidance.pdf.$TS_FILE"
                 mv receipts/doj-cwa/current.pdf.sha "receipts/doj-cwa/archive/guidance.pdf.$TS_FILE.sha"
               fi
-              cp /tmp/guidance.pdf receipts/doj-cwa/current.pdf
-              echo "$PDF_HASH" > receipts/doj-cwa/current.pdf.sha
             fi
-            if [ "$PDF_OBS" = "first_observation" ] || [ "$PDF_OBS" = "unchanged" ]; then
-              cp /tmp/guidance.pdf receipts/doj-cwa/current.pdf
-              echo "$PDF_HASH" > receipts/doj-cwa/current.pdf.sha
-            fi
+            cp /tmp/guidance.pdf receipts/doj-cwa/current.pdf
+            echo "$PDF_HASH" > receipts/doj-cwa/current.pdf.sha
           else
             PDF_OBS="fetch_failed"
           fi
 
+          # Page
           if [ "$PAGE_OK" = true ]; then
             if [ -z "$PREV_PAGE_HASH" ]; then
               PAGE_OBS="first_observation"
@@ -94,27 +111,63 @@ jobs:
                 mv receipts/doj-cwa/current.page.html "receipts/doj-cwa/archive/landing.html.$TS_FILE"
                 mv receipts/doj-cwa/current.page.sha "receipts/doj-cwa/archive/landing.html.$TS_FILE.sha"
               fi
-              cp /tmp/landing.html receipts/doj-cwa/current.page.html
-              echo "$PAGE_HASH" > receipts/doj-cwa/current.page.sha
             fi
-            if [ "$PAGE_OBS" = "first_observation" ] || [ "$PAGE_OBS" = "unchanged" ]; then
-              cp /tmp/landing.html receipts/doj-cwa/current.page.html
-              echo "$PAGE_HASH" > receipts/doj-cwa/current.page.sha
-            fi
+            cp /tmp/landing.html receipts/doj-cwa/current.page.html
+            echo "$PAGE_HASH" > receipts/doj-cwa/current.page.sha
           else
             PAGE_OBS="fetch_failed"
           fi
 
-          if [ "$PDF_OK" = false ] || [ "$PAGE_OK" = false ]; then
+          # FAQ
+          if [ "$FAQ_OK" = true ]; then
+            if [ -z "$PREV_FAQ_HASH" ]; then
+              FAQ_OBS="first_observation"
+            elif [ "$FAQ_HASH" = "$PREV_FAQ_HASH" ]; then
+              FAQ_OBS="unchanged"
+            else
+              FAQ_OBS="bytes_changed"
+              if [ -f receipts/doj-cwa/current.faq.html ]; then
+                mv receipts/doj-cwa/current.faq.html "receipts/doj-cwa/archive/faq.html.$TS_FILE"
+                mv receipts/doj-cwa/current.faq.sha "receipts/doj-cwa/archive/faq.html.$TS_FILE.sha"
+              fi
+            fi
+            cp /tmp/faq.html receipts/doj-cwa/current.faq.html
+            echo "$FAQ_HASH" > receipts/doj-cwa/current.faq.sha
+          else
+            FAQ_OBS="fetch_failed"
+          fi
+
+          # Portal
+          if [ "$PORTAL_OK" = true ]; then
+            if [ -z "$PREV_PORTAL_HASH" ]; then
+              PORTAL_OBS="first_observation"
+            elif [ "$PORTAL_HASH" = "$PREV_PORTAL_HASH" ]; then
+              PORTAL_OBS="unchanged"
+            else
+              PORTAL_OBS="bytes_changed"
+              if [ -f receipts/doj-cwa/current.portal.html ]; then
+                mv receipts/doj-cwa/current.portal.html "receipts/doj-cwa/archive/portal.html.$TS_FILE"
+                mv receipts/doj-cwa/current.portal.sha "receipts/doj-cwa/archive/portal.html.$TS_FILE.sha"
+              fi
+            fi
+            cp /tmp/portal.html receipts/doj-cwa/current.portal.html
+            echo "$PORTAL_HASH" > receipts/doj-cwa/current.portal.sha
+          else
+            PORTAL_OBS="fetch_failed"
+          fi
+
+          # Overall
+          if [ "$PDF_OK" = false ] || [ "$PAGE_OK" = false ] || [ "$FAQ_OK" = false ] || [ "$PORTAL_OK" = false ]; then
             OVERALL="INCOMPLETE_HOLD"
-          elif [ "$PDF_OBS" = "first_observation" ] && [ "$PAGE_OBS" = "first_observation" ]; then
+          elif echo "$PDF_OBS $PAGE_OBS $FAQ_OBS $PORTAL_OBS" | grep -q "first_observation" && ! echo "$PDF_OBS $PAGE_OBS $FAQ_OBS $PORTAL_OBS" | grep -q "bytes_changed"; then
             OVERALL="first_observation"
-          elif [ "$PDF_OBS" = "bytes_changed" ] || [ "$PAGE_OBS" = "bytes_changed" ]; then
+          elif echo "$PDF_OBS $PAGE_OBS $FAQ_OBS $PORTAL_OBS" | grep -q "bytes_changed"; then
             OVERALL="bytes_changed"
           else
             OVERALL="unchanged"
           fi
 
+          # Receipt
           cat > receipts/doj-cwa/latest_receipt.json <<JSON
           {
             "timestamp_utc": "$TS",
@@ -125,6 +178,12 @@ jobs:
             "page_url": "$PAGE_URL",
             "page_hash_sha256": "$PAGE_HASH",
             "page_observation": "$PAGE_OBS",
+            "faq_url": "$FAQ_URL",
+            "faq_hash_sha256": "$FAQ_HASH",
+            "faq_observation": "$FAQ_OBS",
+            "portal_url": "$PORTAL_URL",
+            "portal_hash_sha256": "$PORTAL_HASH",
+            "portal_observation": "$PORTAL_OBS",
             "overall_observation": "$OVERALL",
             "reward_eligibility": "NOT_ESTABLISHED",
             "submission": "NONE",
@@ -133,7 +192,7 @@ jobs:
           }
           JSON
 
-          echo "$TS | overall=$OVERALL | pdf=$PDF_OBS ($PDF_HASH) | page=$PAGE_OBS ($PAGE_HASH) | issued=$ISSUED" >> receipts/doj-cwa/check_log.txt
+          echo "$TS | overall=$OVERALL | pdf=$PDF_OBS | page=$PAGE_OBS | faq=$FAQ_OBS | portal=$PORTAL_OBS | issued=$ISSUED" >> receipts/doj-cwa/check_log.txt
 
           echo "Receipt written. Overall: $OVERALL"
 
