@@ -1,0 +1,21 @@
+name: prsidecar-v0
+on:
+  pull_request:
+    paths:
+      - prsidecar/**
+      - tests/test_prsidecar.py
+      - .github/workflows/prsidecar-v0.yml
+  push:
+    branches:
+      - prsidecar-v0-fixture-576
+    paths:
+      - prsidecar/**
+      - tests/test_prsidecar.py
+      - .github/workflows/prsidecar-v0.yml
+jobs:
+  schema-and-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run PRSideCar schema and replay tests
+        run: python3 tests/test_prsidecar.py
