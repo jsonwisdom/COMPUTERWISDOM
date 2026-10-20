@@ -1,0 +1,62 @@
+{
+  "format": "JAYS_STUDIES_REPLAY_INDEX_V0.2",
+  "classification": "PERSONAL_RESEARCH_AND_CIVIC_EVIDENCE_LEARNING_INDEX",
+  "title": "Jay's Studies — Replay Curriculum Index v0.2",
+  "author_label": "jaywisdom.base.eth",
+  "extends": "JAYS_STUDIES_REPLAY_INDEX_V0.1",
+  "base_index_path": "fixtures/jaywisdom/studies/JAYS_STUDIES_REPLAY_INDEX_V0_1.json",
+  "delta": "ADD_S13_MINNESOTA_STATE_SCOPE_AND_SUPREME_SUBSTRATES",
+  "new_source_binding": {
+    "id": "MINNESOTA_SUPREME_SUBSTRATES_STATE_SCOPE_V0_1",
+    "path": "fixtures/jaywisdom/studies/minnesota/MINNESOTA_SUPREME_SUBSTRATES_STATE_SCOPE_REPLAY_V0_1.json"
+  },
+  "new_track": {
+    "id": "S13",
+    "name": "Minnesota State Scope + SupremeSubstrates",
+    "goal": "Replay how Minnesota governmental and judicial scope changes across constitution, statute, jurisdiction, court rule, precedent, administration, reversal, repeal, and supersession without collapsing those mechanisms together.",
+    "skills": [
+      "MINNESOTA_CONSTITUTION",
+      "SEPARATION_OF_POWERS",
+      "SUPREME_COURT_JURISDICTION",
+      "COURT_OF_APPEALS_ERROR_CORRECTION",
+      "DISTRICT_COURT_ORIGINAL_JURISDICTION",
+      "STATE_SCOPE_EXPANSION",
+      "STATE_SCOPE_CONTRACTION",
+      "RULE_VS_STATUTE",
+      "PRECEDENT_EFFECT",
+      "SUPERSESSION",
+      "TIME_VERSION",
+      "SAINT_CLOUD_OBSERVATION_REPLAY"
+    ],
+    "completion": "Learner can identify the exact legal mechanism that changed state or court scope, bind its effective time and authority, and explain both the resulting reach and its limits."
+  },
+  "minnesota_lineage": [
+    "MINNESOTA_PUBLIC_SANDBOX",
+    "BOXD_MINNESOTA",
+    "JAYS_MINNESOTA_GAMBIT",
+    "SAINT_CLOUD_OBSERVATION_ANCHOR",
+    "MINNESOTA_SUPREMESUBSTRATES",
+    "RUNTIME_V0_2",
+    "SOURCE_NODES",
+    "VERSIONED_PUBLIC_VIEWS",
+    "S13_MINNESOTA_STATE_SCOPE"
+  ],
+  "new_invariants": [
+    "STATE_EXPANDS != UNLIMITED_POWER",
+    "STATE_CONTRACTS != STATE_DISAPPEARS",
+    "SCOPE_CHANGE_REQUIRES_MECHANISM",
+    "COURT_RULE != STATUTE",
+    "COURT_INTERPRETATION != LEGISLATIVE_ENACTMENT",
+    "JURISDICTION != MERITS",
+    "ANNOUNCED_SUCCESSOR != CURRENT_OFFICEHOLDER",
+    "MINNESOTA_SUBSTRATE != AUTHORITY"
+  ],
+  "runtime": {
+    "openai_required": false,
+    "api_key_required": false,
+    "agent_required": false,
+    "authority_created": false
+  },
+  "terminal": "S13_OPEN_UNMERGED",
+  "authority_created": false
+}

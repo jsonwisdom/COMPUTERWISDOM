@@ -1,0 +1,162 @@
+{
+  "format": "JAYS_STUDIES_REPLAY_INDEX_V0.1",
+  "classification": "PERSONAL_RESEARCH_AND_CIVIC_EVIDENCE_LEARNING_INDEX",
+  "title": "Jay's Studies — Replay Curriculum Index v0.1",
+  "author_label": "jaywisdom.base.eth",
+  "purpose": "ORGANIZE_REPLAY_NATIVE_STUDY_TRACKS_WITHOUT_PROMOTING_CLAIMS_OR_AUTHORITY",
+  "source_bindings": {
+    "github_repo": "jsonwisdom/COMPUTERWISDOM",
+    "github_pr": 487,
+    "base_head": "d112061aa0261057ec9cc4d9e774460ac0b4f17a",
+    "women_in_justice_v0_1": "fixtures/jaywisdom/fraud_ledger/DICE_WITH_PAM_BONDI_WOMEN_IN_JUSTICE_LEARNING_V0_1.json",
+    "women_in_justice_v0_2": "fixtures/jaywisdom/fraud_ledger/DICE_WITH_PAM_BONDI_WOMEN_IN_JUSTICE_LEARNING_V0_2.json",
+    "stack_clerk_replay": "fixtures/jaywisdom/fraud_ledger/STACK_TERMS_CLERK_REPLAY_V0_1.json",
+    "drive_curriculum_document_id": "1ZVxBIv2vX4F0cqlTZIxsToNiy6NWtiW5we9zYdt1Nng"
+  },
+  "master_invariants": [
+    "QUESTION != CLAIM",
+    "TERM != CLAIM",
+    "CLAIM != FACT",
+    "SOURCE != INTERPRETATION",
+    "PERSON != OFFICE != AUTHORITY",
+    "STATEMENT != ACTION",
+    "ACTION != RECEIPT",
+    "ROLL != EVIDENCE",
+    "PASS != WORLD_TRUE",
+    "HOLD_IS_A_VALID_SKILLFUL_RESULT",
+    "CONFLICT_MAY_REMAIN_UNRESOLVED",
+    "REPLAY != VERDICT",
+    "SUBSTRATE_INJECTION != CLAIM_PROMOTION",
+    "AUTHORITY_CREATED = FALSE"
+  ],
+  "study_tracks": [
+    {
+      "id": "S01",
+      "name": "Verification Basics",
+      "goal": "Turn broad narratives into narrow testable propositions.",
+      "skills": ["EXACT_CLAIM", "KNOWN_UNKNOWN_SPLIT", "PRIMARY_SOURCE_PRIORITY", "UNCERTAINTY_LANGUAGE"],
+      "completion": "Learner can explain both what a record supports and what it does not support."
+    },
+    {
+      "id": "S02",
+      "name": "Source and Provenance",
+      "goal": "Bind records to publisher, URL, date, version, bytes, and hash where available.",
+      "skills": ["SOURCE_IDENTITY", "ARCHIVE_STATE", "VERSION_LOCK", "FALSE_CORROBORATION_DETECTION"],
+      "completion": "Learner can distinguish independent sources from mirrors or quotations."
+    },
+    {
+      "id": "S03",
+      "name": "Person Office Authority",
+      "goal": "Prevent identity, title, office, delegation, and authority from collapsing together.",
+      "skills": ["PERSON_OFFICE_SPLIT", "ACTING_STATUS", "DELEGATION", "OFFICE_SWITCH"],
+      "completion": "Learner replays office state at the relevant date instead of inheriting stale state."
+    },
+    {
+      "id": "S04",
+      "name": "Money and State Math",
+      "goal": "Preserve the state of a number through budgets, obligations, outlays, recoveries, and audits.",
+      "skills": ["MONEY_STATE", "TIME_PERIOD", "CATEGORY_SPLIT", "DIRTY_MATH_DETECTION"],
+      "completion": "Learner can state what a number represents before comparing it."
+    },
+    {
+      "id": "S05",
+      "name": "ForwardReplay and ReverseReplay",
+      "goal": "Trace provenance forward from origin and backward from newest record.",
+      "skills": ["FORWARD_REPLAY", "REVERSE_REPLAY", "DELTA_CHAIN", "ORIGIN_BINDING"],
+      "completion": "Learner can reconstruct a record chain in both directions without adding unstated claims."
+    },
+    {
+      "id": "S06",
+      "name": "PlayBook Pincer",
+      "goal": "Test one edge from LAW_TO_RECORD and RECORD_TO_LAW directions.",
+      "skills": ["TOP_DOWN", "BOTTOM_UP", "CONVERGENCE", "DIVERGENCE_ROUTING"],
+      "completion": "Learner routes mismatch to HOLD or CONFLICT rather than forcing agreement."
+    },
+    {
+      "id": "S07",
+      "name": "Clerk",
+      "goal": "Classify typed evidence edges without caller-supplied verdicts.",
+      "skills": ["IDENTITY_GATE", "PROVENANCE_GATE", "TEMPORAL_GATE", "DELTA_GATE", "DEPENDENCY_GATE", "SCOPE_GATE", "AUTHORITY_GATE"],
+      "completion": "Learner can distinguish evidence-gate disposition from legal or world-truth conclusions."
+    },
+    {
+      "id": "S08",
+      "name": "Conflict Replay",
+      "goal": "Detect, classify, preserve, and replay valid disagreement between bound records.",
+      "skills": ["EXACT_CLAIM_SPLIT", "TIME_VERSION", "SCOPE_SPLITTER", "KEEP_BOTH", "APPEAL_CHAIN"],
+      "completion": "Learner can finish with CONFLICT when no bound superseding receipt resolves the edge."
+    },
+    {
+      "id": "S09",
+      "name": "Justice Dice",
+      "goal": "Use precommitted randomness to select an audit lane without selecting truth, guilt, or authority.",
+      "skills": ["LANE_SELECTION", "ANTI_CHERRY_PICKING", "PROCESS_SCORING", "CORRECT_HOLD"],
+      "completion": "Learner understands that the roll chooses attention only."
+    },
+    {
+      "id": "S10",
+      "name": "Public Role Case Studies",
+      "goal": "Use public officials and institutions as bounded case-study surfaces without biography drift or accusation mechanics.",
+      "skills": ["PUBLIC_ROLE_BOUNDARY", "OFFICE_STATE", "SOURCE_CRISSCROSS", "NONPARTISAN_SCORING"],
+      "completion": "Learner can study a politically salient record while scoring only verification behavior."
+    },
+    {
+      "id": "S11",
+      "name": "Court OIG Congress Replay",
+      "goal": "Keep institutional procedural states distinct.",
+      "skills": ["ALLEGATION_VS_FINDING", "AUDIT_SCOPE_VS_FINDING", "HEARING_VS_PROOF", "APPEAL_VS_FINALITY"],
+      "completion": "Learner can name the exact procedural state without semantic widening."
+    },
+    {
+      "id": "S12",
+      "name": "Receipt Engineering",
+      "goal": "Represent study outputs as replayable receipts and immutable or versioned artifacts.",
+      "skills": ["SOURCE_BINDING", "HASHING", "VERSIONING", "EXACT_HEAD", "READBACK"],
+      "completion": "Learner can reproduce the study state from its bound artifacts."
+    }
+  ],
+  "study_loop": [
+    "OBSERVE",
+    "QUESTION",
+    "NARROW_CLAIM",
+    "BIND_SOURCE",
+    "RUN_RELEVANT_TRACK",
+    "REPLAY",
+    "CLERK",
+    "PASS_OR_HOLD_OR_CONFLICT_OR_REJECT",
+    "EXPLAIN_SUPPORT",
+    "EXPLAIN_LIMITS",
+    "WRITE_STUDY_RECEIPT",
+    "TEACH_BACK"
+  ],
+  "progress_model": {
+    "LEVEL_1": "CAN_IDENTIFY_EXACT_CLAIM_AND_SOURCE",
+    "LEVEL_2": "CAN_BIND_PERSON_OFFICE_AUTHORITY_AND_TIME",
+    "LEVEL_3": "CAN_RUN_FORWARD_REVERSE_AND_PINCER",
+    "LEVEL_4": "CAN_PRESERVE_HOLD_AND_CONFLICT_WITHOUT_DRIFT",
+    "LEVEL_5": "CAN_BUILD_REPLAYABLE_RECEIPTS_AND_TEACH_BACK"
+  },
+  "study_receipt_fields": [
+    "study_id",
+    "question",
+    "exact_claim",
+    "source_objects",
+    "track_ids",
+    "replay_path",
+    "gate_results",
+    "terminal",
+    "support",
+    "limits",
+    "corrections",
+    "authority_created"
+  ],
+  "women_in_justice_role": "MODULE_WITHIN_JAYS_STUDIES_NOT_ROOT_AUTHORITY",
+  "openai_runtime": {
+    "required": false,
+    "api_key_required": false,
+    "agent_required": false,
+    "authority_created": false
+  },
+  "terminal": "INDEX_CREATED_UNMERGED",
+  "authority_created": false
+}

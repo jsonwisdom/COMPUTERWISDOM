@@ -1,0 +1,181 @@
+{
+  "format": "OIG_OVERSIGHT_CERTIFICATE_TEST_VECTORS_V0.1",
+  "classification": "SYNTHETIC_EVIDENCE_CLASSIFICATION_TESTS_ONLY",
+  "result_precedence": ["REJECTED", "DIVERGENCE", "HOLD", "PROVEN"],
+  "vectors": [
+    {
+      "id": "T01_BYTES_PROVEN_SEMANTIC_HOLD",
+      "edge": {
+        "source_objects": [{"source_id":"WH","url":"https://example.invalid/white-house","sha256":"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa","byte_length":10,"observed_at":"2026-08-16T20:00:00Z"}],
+        "scope_claimed": true
+      },
+      "expected_result": "HOLD",
+      "expected_gates": {"provenance":"PROVEN","scope":"HOLD"}
+    },
+    {
+      "id": "T02_OVERSIGHT_CANNOT_CREATE_AUTHORITY",
+      "edge": {
+        "source_objects": [{"source_id":"DOJ","url":"https://example.invalid/doj","sha256":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","observed_at":"2026-08-16T20:00:00Z"}],
+        "authority_claimed": true,
+        "authority_evidence_source_ids": ["DOJ"]
+      },
+      "expected_result": "PROVEN",
+      "expected_false_fields": ["authority_created"]
+    },
+    {
+      "id": "T03_OVERSIGHT_CANNOT_CREATE_AUTHORIZATION",
+      "edge": {
+        "source_objects": [{"source_id":"DOJ","url":"https://example.invalid/doj/authorization","sha256":"cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc","observed_at":"2026-08-16T20:00:00Z"}],
+        "authorization_claimed": true,
+        "authority_evidence_source_ids": ["DOJ"]
+      },
+      "expected_result": "PROVEN",
+      "expected_false_fields": ["authorization_created"]
+    },
+    {
+      "id": "T04_OVERSIGHT_CANNOT_CREATE_LEGAL_CONCLUSION",
+      "edge": {
+        "source_objects": [{"source_id":"DOJ","url":"https://example.invalid/doj/legal","sha256":"dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd","observed_at":"2026-08-16T20:00:00Z"}],
+        "legal_conclusion_claimed": true,
+        "authority_evidence_source_ids": ["DOJ"]
+      },
+      "expected_result": "PROVEN",
+      "expected_false_fields": ["legal_finding_created"]
+    },
+    {
+      "id": "T05_OVERSIGHT_CANNOT_CREATE_POLICY",
+      "edge": {
+        "source_objects": [{"source_id":"OIG","url":"https://example.invalid/oig/policy","sha256":"eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee","observed_at":"2026-08-16T20:00:00Z"}],
+        "policy_claimed": true,
+        "authority_evidence_source_ids": ["OIG"]
+      },
+      "expected_result": "PROVEN",
+      "expected_false_fields": ["policy_created"]
+    },
+    {
+      "id": "T06_REJECTED_PRECEDENCE",
+      "edge": {
+        "source_objects": [
+          {"source_id":"X","url":"https://example.invalid/a","sha256":"not-a-sha","observed_at":"bad-time"},
+          {"source_id":"X","url":"https://example.invalid/b","sha256":"ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff","observed_at":"2026-08-16T20:00:00Z"}
+        ],
+        "scope_claimed": true
+      },
+      "expected_result": "REJECTED"
+    },
+    {
+      "id": "T07_DIVERGENCE_PRECEDENCE",
+      "edge": {
+        "source_objects": [
+          {"source_id":"X","url":"https://example.invalid/a","sha256":"1111111111111111111111111111111111111111111111111111111111111111","observed_at":"2026-08-16T20:00:00Z"},
+          {"source_id":"X","url":"https://example.invalid/b","sha256":"2222222222222222222222222222222222222222222222222222222222222222","observed_at":"2026-08-16T20:00:01Z"}
+        ],
+        "scope_claimed": true
+      },
+      "expected_result": "DIVERGENCE"
+    },
+    {
+      "id": "T08_HOLD_PRECEDENCE",
+      "edge": {
+        "source_objects": [{"source_id":"WH","url":"https://example.invalid/wh","sha256":"3333333333333333333333333333333333333333333333333333333333333333","observed_at":"2026-08-16T20:00:00Z"}],
+        "scope_claimed": true
+      },
+      "expected_result": "HOLD"
+    },
+    {
+      "id": "T09_PROVEN_BASELINE",
+      "edge": {
+        "source_objects": [{"source_id":"DOJ","url":"https://example.invalid/doj/baseline","sha256":"4444444444444444444444444444444444444444444444444444444444444444","observed_at":"2026-08-16T20:00:00Z"}]
+      },
+      "expected_result": "PROVEN"
+    },
+    {
+      "id": "T10_DELTA_WITHOUT_EVIDENCE_HOLD_DELTA",
+      "edge": {
+        "source_objects": [
+          {"source_id":"WH","url":"https://example.invalid/wh/delta","sha256":"5555555555555555555555555555555555555555555555555555555555555555","observed_at":"2026-08-16T20:00:00Z"},
+          {"source_id":"DOJ","url":"https://example.invalid/doj/delta","sha256":"6666666666666666666666666666666666666666666666666666666666666666","observed_at":"2026-08-16T20:00:01Z"}
+        ],
+        "delta_claimed": true
+      },
+      "expected_result": "HOLD",
+      "expected_gates": {"delta":"HOLD_DELTA"}
+    },
+    {
+      "id": "T11_IDENTICAL_SHA_DISTINCT_SOURCE_IDENTITIES",
+      "edge": {
+        "source_objects": [
+          {"source_id":"WH","url":"https://example.invalid/wh/same","sha256":"7777777777777777777777777777777777777777777777777777777777777777","observed_at":"2026-08-16T20:00:00Z"},
+          {"source_id":"DOJ","url":"https://example.invalid/doj/same","sha256":"7777777777777777777777777777777777777777777777777777777777777777","observed_at":"2026-08-16T20:00:01Z"}
+        ]
+      },
+      "expected_result": "PROVEN",
+      "expected_source_count": 2,
+      "expected_gates": {"identity":"PROVEN"}
+    },
+    {
+      "id": "T12_MALFORMED_TEMPORAL_REJECTED",
+      "edge": {
+        "source_objects": [{"source_id":"DOJ","url":"https://example.invalid/doj/time","sha256":"8888888888888888888888888888888888888888888888888888888888888888","observed_at":"yesterday-ish"}]
+      },
+      "expected_result": "REJECTED",
+      "expected_gates": {"temporal":"REJECTED"}
+    },
+    {
+      "id": "T13_DEPENDENCY_NOT_REQUIRED",
+      "edge": {
+        "source_objects": [{"source_id":"OIG","url":"https://example.invalid/oig/no-dependency","sha256":"9999999999999999999999999999999999999999999999999999999999999999","observed_at":"2026-08-16T20:00:00Z"}],
+        "dependency_required": false
+      },
+      "expected_result": "PROVEN",
+      "expected_gates": {"dependency":"DEPENDENCY_NOT_REQUIRED"}
+    },
+    {
+      "id": "T14_EXEMPTION_WORD_IN_URL_ZERO_AUTHORITY",
+      "edge": {
+        "source_objects": [{"source_id":"WH","url":"https://example.invalid/exemption/authority","sha256":"abababababababababababababababababababababababababababababababab","observed_at":"2026-08-16T20:00:00Z"}],
+        "authority_claimed": true
+      },
+      "expected_result": "HOLD",
+      "expected_gates": {"authority":"HOLD"},
+      "expected_false_fields": ["authority_created"]
+    },
+    {
+      "id": "T15_STATUTORY_WORD_IN_URL_ZERO_LEGAL_AUTHORITY",
+      "edge": {
+        "source_objects": [{"source_id":"WH","url":"https://example.invalid/statutory/finding","sha256":"cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd","observed_at":"2026-08-16T20:00:00Z"}],
+        "legal_conclusion_claimed": true
+      },
+      "expected_result": "HOLD",
+      "expected_gates": {"authority":"HOLD"},
+      "expected_false_fields": ["legal_finding_created","authority_created"]
+    },
+    {
+      "id": "T16_SURFACE_COVERAGE_NO_SEMANTIC_WIDENING",
+      "edge": {
+        "source_objects": [{"source_id":"OIG","url":"https://example.invalid/oig/t16","sha256":"efefefefefefefefefefefefefefefefefefefefefefefefefefefefefefefef","observed_at":"2026-08-16T20:00:00Z"}]
+      },
+      "expected_result": "PROVEN",
+      "surface_contract": {
+        "semantic_type": "BOUNDED_EVIDENCE_GATE_DISPOSITION",
+        "negative_text": "fraud proven",
+        "expected_negative_result": "REJECTED",
+        "invariant": "NO_UNTYPED_PROVEN_MAY_CROSS_EXTERNAL_PRESENTATION_BOUNDARY"
+      }
+    }
+  ],
+  "laws": [
+    "BYTES_PROVEN != SCOPE_PROVEN",
+    "SCOPE_PROVEN != AUTHORITY_PROVEN",
+    "AUTHORITY_PROVEN != LEGAL_CONCLUSION",
+    "OIG_OVERSIGHT_CERTIFICATE = EVIDENCE_CLASSIFICATION",
+    "OIG_OVERSIGHT_CERTIFICATE != DOJ_DECISION",
+    "OIG_OVERSIGHT_CERTIFICATE != LEGAL_FINDING",
+    "OIG_OVERSIGHT_CERTIFICATE != WHITE_HOUSE_MISCONDUCT_FINDING",
+    "OIG_OVERSIGHT_CERTIFICATE != AUTHORITY",
+    "VALUE_PROVEN_WITHOUT_BOUNDED_EVIDENCE_GATE_DISPOSITION_TYPE = INVALID_OUTPUT",
+    "NO_UNTYPED_PROVEN_MAY_CROSS_EXTERNAL_PRESENTATION_BOUNDARY"
+  ],
+  "roll_002_live": false,
+  "authority_created": false
+}
