@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/gray_baby/operator_result.schema.json",
+  "title": "Gray Baby operator result",
+  "description": "One local operator observation. Authority is not created. Chain data is not fabricated.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "operator",
+    "object_id",
+    "status",
+    "source_tier",
+    "finding",
+    "state_effect",
+    "may_change_state",
+    "delete_requested",
+    "identity_promotion",
+    "specialist",
+    "evidence_refs",
+    "authority_created",
+    "stub",
+    "chain_data_fabricated",
+    "pass_index"
+  ],
+  "properties": {
+    "operator": {
+      "type": "string",
+      "enum": [
+        "OBJECT_SELECTOR",
+        "TEMPORAL_GUARD",
+        "SOURCE_RANKER",
+        "CHAIN_BINDER",
+        "TX_ORIGIN_FINDER",
+        "ERC4337_DECODER",
+        "CREATE2_DECODER",
+        "INITIALIZER_DECODER",
+        "EVENT_TOPIC_DECODER",
+        "METADATA_BINDER",
+        "INDEXER_DRIFT_DETECTOR",
+        "EXPORT_VERSION_GUARD",
+        "ROLE_COLLAPSE_SENTINEL",
+        "IDENTITY_MEMBRANE",
+        "RECEIPT_COMPARATOR",
+        "DELTA_CLASSIFIER",
+        "ALIEN_ROUTER",
+        "REPLAY_RECEIPT_WRITER",
+        "BATCH_SCOREKEEPER",
+        "REGRESSION_SENTINEL"
+      ]
+    },
+    "object_id": { "type": "string", "minLength": 1 },
+    "status": {
+      "type": "string",
+      "enum": ["OK", "MISSING_RECEIPT", "HOLD", "CONFLICT", "NO_OP", "ALIEN"]
+    },
+    "source_tier": {
+      "type": ["string", "null"],
+      "enum": ["RAW_CHAIN", "REPO_RECEIPTS", "DRIVE_HISTORY", "PUBLIC_INDEXES", "PAGE_LABELS", null]
+    },
+    "finding": { "type": "string", "minLength": 1 },
+    "state_effect": {
+      "type": "string",
+      "enum": ["NONE", "CONFIRM", "UPGRADE", "CORRECT", "DEMOTE", "HOLD", "CONFLICT", "DRIFT", "ALIEN"]
+    },
+    "may_change_state": { "type": "boolean" },
+    "delete_requested": { "type": "boolean" },
+    "identity_promotion": { "type": "boolean" },
+    "specialist": {
+      "type": ["string", "null"],
+      "enum": [
+        "CHAIN",
+        "ZORA",
+        "ERC4337",
+        "UNISWAP_V4",
+        "IPFS",
+        "GITHUB_RECEIPT",
+        "DRIVE_HISTORY",
+        "TEMPORAL",
+        "PROVENANCE",
+        "CONTRADICTION",
+        "SCHEMA",
+        "TEST",
+        "ADVERSARIAL",
+        "GRAY_BABY",
+        "ALIEN",
+        "HUMAN_REVIEW_GATE",
+        null
+      ]
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "authority_created": { "const": false },
+    "stub": { "type": "boolean" },
+    "chain_data_fabricated": { "const": false },
+    "pass_index": { "type": "integer", "minimum": 1 }
+  }
+}
