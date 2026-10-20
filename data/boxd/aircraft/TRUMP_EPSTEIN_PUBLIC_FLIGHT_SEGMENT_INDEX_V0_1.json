@@ -1,0 +1,133 @@
+{
+  "schema_version": "0.1",
+  "internal_query_alias": "FUCK_PLANE",
+  "public_label": "AIRCRAFT_TRAVEL_REPLAY",
+  "aggregate_receipt": {
+    "document_id": "EFTA00016732",
+    "doj_uri": "https://www.justice.gov/epstein/files/DataSet%208/EFTA00016732.pdf",
+    "key_message_date": "2020-01-07",
+    "top_reply_timestamp": "2020-01-08T01:29:20Z",
+    "claim": {
+      "trump_flights_1993_1996_min": 8,
+      "maxwell_copresence_min": 4,
+      "one_1993_epstein_trump_only": true
+    },
+    "state": "BOUND_TO_OFFICIAL_DOJ_EMAIL",
+    "row_level_manifest": false
+  },
+  "corpus_rules": {
+    "aggregate_count_is_not_row_manifest": true,
+    "same_count_is_not_same_corpus": true,
+    "tail_number_is_not_airframe_id": true,
+    "misconduct_inferred": false,
+    "authority_created": false,
+    "proof_inferred": false
+  },
+  "public_indexed_segments": [
+    {
+      "segment_id": "P1",
+      "date": "1993-04-23",
+      "origin": "TEB",
+      "destination": "PBI",
+      "tail_number_as_indexed": "N108JE",
+      "donald_trump": true,
+      "ghislaine_maxwell": false,
+      "jeffrey_epstein": true,
+      "state": "BOUND_ROW_POINTER_HOLD_PRIMARY_BYTES"
+    },
+    {
+      "segment_id": "P2",
+      "date": "1993-04-26",
+      "origin": "PBI",
+      "destination": "TEB",
+      "tail_number_as_indexed": "N108JE",
+      "donald_trump": true,
+      "ghislaine_maxwell": false,
+      "jeffrey_epstein": true,
+      "candidate_email_bridge": "1993_EPSTEIN_TRUMP_ONLY",
+      "candidate_bridge_state": "BOUND_NOT_PROVEN_SAME_SOURCE_ROW",
+      "state": "BOUND_ROW_POINTER_HOLD_PRIMARY_BYTES"
+    },
+    {
+      "segment_id": "P3",
+      "date": "1993-10-11",
+      "origin": "PBI",
+      "destination": "TEB",
+      "tail_number_as_indexed": "N108JE",
+      "donald_trump": true,
+      "ghislaine_maxwell": true,
+      "jeffrey_epstein": true,
+      "state": "BOUND_ROW_POINTER_HOLD_PRIMARY_BYTES"
+    },
+    {
+      "segment_id": "P4",
+      "date": "1993-10-17",
+      "origin": "PBI",
+      "destination": "TEB",
+      "tail_number_as_indexed": "N108JE",
+      "donald_trump": true,
+      "ghislaine_maxwell": true,
+      "jeffrey_epstein": true,
+      "state": "BOUND_ROW_POINTER_HOLD_PRIMARY_BYTES"
+    },
+    {
+      "segment_id": "P5",
+      "date": "1994-05-15",
+      "origin": "PBI",
+      "destination": "DCA",
+      "tail_number_as_indexed": "N988JE",
+      "donald_trump": true,
+      "ghislaine_maxwell": false,
+      "jeffrey_epstein": true,
+      "state": "BOUND_ROW_POINTER_HOLD_PRIMARY_BYTES"
+    },
+    {
+      "segment_id": "P6",
+      "date": "1994-05-15",
+      "origin": "DCA",
+      "destination": "TEB",
+      "tail_number_as_indexed": "N988JE",
+      "donald_trump": true,
+      "ghislaine_maxwell": false,
+      "jeffrey_epstein": true,
+      "state": "BOUND_ROW_POINTER_HOLD_PRIMARY_BYTES"
+    },
+    {
+      "segment_id": "P7",
+      "date": "1995-08-13",
+      "origin": "PBI",
+      "destination": "TEB",
+      "tail_number_as_indexed": "N908JC",
+      "donald_trump": true,
+      "ghislaine_maxwell": true,
+      "jeffrey_epstein": true,
+      "source_pointer": "DOJ-OGR-00015952",
+      "state": "BOUND_ARCHIVE_POINTER_HOLD_PRIMARY_BYTES"
+    },
+    {
+      "segment_id": "P8",
+      "date": "1997-01-05",
+      "origin": "PBI",
+      "destination": "EWR",
+      "tail_number_as_indexed": "N908JE",
+      "donald_trump": true,
+      "ghislaine_maxwell": true,
+      "jeffrey_epstein": true,
+      "state": "BOUND_ROW_POINTER_HOLD_PRIMARY_BYTES",
+      "outside_efta_email_window": true
+    }
+  ],
+  "comparison": {
+    "indexed_segment_count": 8,
+    "indexed_window": "1993-1997",
+    "efta_email_window": "1993-1996",
+    "corpus_equivalence": "HOLD",
+    "reason": "The indexed eight-segment set includes a 1997 row and therefore cannot be assumed to be the same at-least-eight rows referenced by EFTA00016732."
+  },
+  "next_gate": [
+    "Acquire the row-level source bytes reviewed by SDNY or the matching released log pages.",
+    "Hash each source page and normalized row.",
+    "Bind registration to event date and airframe serial where available.",
+    "Only then promote source-bound routes into GeoJSON."
+  ]
+}

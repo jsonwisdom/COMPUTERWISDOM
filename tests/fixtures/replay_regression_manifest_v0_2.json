@@ -1,0 +1,13 @@
+{
+  "registry_version": "REPLAY_REGISTRY_V0_2",
+  "artifacts": [
+    {
+      "path": "examples/event_example.json",
+      "expected_replay_hash": "sha256:bfff60a86ae755628934d14ca1d4cb3838ea8e059f9fc45aca85e21733e30f9c"
+    },
+    {
+      "path": "examples/observation_example.json",
+      "expected_replay_hash": "sha256:0b218c6c4cfac697e37f89c9f67bea9779ed6ada90dd9a9cb221a828211e80d8"
+    }
+  ]
+}

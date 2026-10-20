@@ -1,0 +1,24 @@
+{
+  "artifact": "AMERICAN_GRAY_BABY_ONION_ALLIES_PAYLOAD_VALIDATION_RECEIPT_V0_1",
+  "version": "0.1.0",
+  "observed_date": "2026-08-19",
+  "source_filename": "AMERICAN_GRAY_BABY_ONION_ALLIES_PAYLOAD_V0_1.json",
+  "source_bytes": 6542,
+  "uploaded_raw_sha256": "4c616adf66f748521a587d4389e1b123c602aa64b6207317756ad8490a0a460b",
+  "declared_payload_sha256": "a4d5d9e2c1e3f58e3b32d64ac59c791359761b20d68cbe00d417f589b2dd5d0e",
+  "declared_canonicalization": "JSON_SORTED_KEYS_COMPACT_UTF8_V0_1",
+  "recomputed_canonical_sha256_excluding_payload_sha256_ensure_ascii_false": "542bfac0aa490b4cfb2f4ee81d692a4bfa76d80a85e876eff9ba53365d69b0e2",
+  "recomputed_canonical_sha256_excluding_payload_sha256_ensure_ascii_true": "32d5add396eed097da6ee1f77dde49722a00d4f036ddceac37c6a0d2320df560",
+  "declared_hash_matches_uploaded_raw": false,
+  "declared_hash_matches_tested_canonical_views": false,
+  "status": "CONFLICT_HOLD",
+  "repo_mirror": {
+    "path": "docs/gray-baby/leahprime/AMERICAN_GRAY_BABY_ONION_ALLIES_PAYLOAD_V0_1.json",
+    "commit": "1d1d9e67e6b2d6988a78db31fc98bf4b6fc608d8",
+    "byte_identical_to_upload_claimed": false,
+    "note": "Repository mirror preserves the semantic payload but was formatted through the GitHub text write path; it is not asserted as the uploaded raw-byte object."
+  },
+  "authority_created": false,
+  "proof_inferred": false,
+  "promotion_rule": "Do not treat payload_sha256 as verified until the producing canonicalization recipe reproduces the declared digest."
+}
