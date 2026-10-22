@@ -47,23 +47,37 @@
 
 ```text
 jsonwisdom/GPKMONSTER
-jsonwisdom/BRIGHTHOUSE
-jsonwisdom/UNCLED
 jsonwisdom/0
-jsonwisdom/ABS
-jsonwisdom/AU
 jsonwisdom/COMPUTERWIZARD
 jsonwisdom/DESTINEE
-jsonwisdom/ELMORE
-jsonwisdom/GRANDADDY
-jsonwisdom/MONTGOMERY
-jsonwisdom/NASTYNICK
-jsonwisdom/PAPA
-jsonwisdom/PRATTVILLE
 jsonwisdom/software
 ```
 
 Status: `UNKNOWN_PENDING_REVIEW` until audited.
+
+---
+
+## Empty — SCAN_EXCLUDED (2026-10-22)
+
+Observed empty: no commits (HTTP 409) and zero branches. Removed from future scan lanes so they do not burn API/scan budget. Not deleted. Not a disposal finding. Purpose still unknown.
+
+```text
+jsonwisdom/UNCLED
+jsonwisdom/global-zne-hybrid
+jsonwisdom/PRATTVILLE
+jsonwisdom/Jason-USB-OFFICE-PC
+jsonwisdom/ABS
+jsonwisdom/AU
+jsonwisdom/GRANDADDY
+jsonwisdom/BRIGHTHOUSE
+jsonwisdom/mint-engine-zero
+jsonwisdom/ELMORE
+jsonwisdom/NASTYNICK
+jsonwisdom/MONTGOMERY
+jsonwisdom/PAPA
+```
+
+Status: `SCAN_EXCLUDED` / `EMPTY_REPOSITORY`.
 
 ---
 
@@ -107,7 +121,22 @@ ALMS candidate repos
     "index_repo_readme",
     "receipt_memory"
   ],
-  "authority": false
+  "authority": false,
+  "scan_exclude": [
+    "UNCLED",
+    "global-zne-hybrid",
+    "PRATTVILLE",
+    "Jason-USB-OFFICE-PC",
+    "ABS",
+    "AU",
+    "GRANDADDY",
+    "BRIGHTHOUSE",
+    "mint-engine-zero",
+    "ELMORE",
+    "NASTYNICK",
+    "MONTGOMERY",
+    "PAPA"
+  ]
 }
 ```
 
@@ -118,6 +147,8 @@ ALMS candidate repos
 No repo is promoted to canonical ALMS until audited.
 
 No family, feminine, court, or README/index surface may be skipped in repo discovery.
+
+SCAN_EXCLUDED empty repositories are not scanned. They remain visible in the exclusion list.
 
 Mrs Wisdom remains a role placeholder unless and until a dedicated repo is found or created.
 
