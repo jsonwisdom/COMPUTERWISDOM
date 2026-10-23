@@ -1,0 +1,32 @@
+{
+  "schema": "JSONWISDOM_CURRENT_ESTATE_SNAPSHOT_V0_1",
+  "mode": "REVIEW_ONLY",
+  "status": "HOLD",
+  "observed_date": "2026-10-09",
+  "source_owner": "jsonwisdom",
+  "target_repository": "jsonwisdom/COMPUTERWISDOM",
+  "source_kind": "CURRENT_GITHUB_REPOSITORY_ENUMERATION",
+  "historical_manifest_equivalence": false,
+  "historical_identity_manifest_status": "UNRESOLVED_SEPARATE_P0_PROCEDURE",
+  "totals": {
+    "owned": 87,
+    "public": 80,
+    "private": 7,
+    "empty": 18,
+    "public_nonempty": 64
+  },
+  "migrated_files": [],
+  "migrated_file_count": 0,
+  "private_to_public_allowed": false,
+  "source_repositories_mutated": false,
+  "git_default_branch_mutated": false,
+  "canon": false,
+  "authority_created": false,
+  "human_decision": "PENDING",
+  "warnings": [
+    "CURRENT INVENTORY DOES NOT RECONSTRUCT HISTORICAL ORIGINAL_72_MANIFEST_V1",
+    "REPOSITORY COUNT DOES NOT PROVE FILE COVERAGE",
+    "PRIVATE_REPOSITORY CONTENT EXCLUDED FROM PUBLIC DESTINATION",
+    "COPY REQUIRES SOURCE-BYTE HASHES, LICENSE AND PRIVACY REVIEW, COLLISION CHECK, AND HUMAN AUTHORIZATION"
+  ]
+}
