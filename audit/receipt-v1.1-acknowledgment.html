@@ -11,11 +11,12 @@
   .stamp { display:inline-block; background:#3a1a1a; color:var(--red); padding:4px 10px; border-radius:4px; font-weight:700; letter-spacing:.05em; }
   .box { border:1px solid #29465f; border-radius:8px; padding:16px; margin:16px 0; background:#11263b; }
   code { word-break:break-all; color:var(--gold); }
-  button { background:#1a3a5c; color:var(--fg); border:1px solid var(--cyan); padding:10px 16px; border-radius:6px; cursor:pointer; font:inherit; }
+  button { background:#1a3a5c; color:var(--fg); border:1px solid var(--cyan); padding:10px 16px; border-radius:6px; cursor:pointer; font:inherit; margin-right:8px; }
   button:disabled { opacity:.5; cursor:not-allowed; }
   .warn { color:var(--red); }
   .ok { color:var(--green); }
   ul { margin:8px 0; padding-left:20px; }
+  .status { font-size:0.9rem; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -41,8 +42,7 @@
 </div>
 
 <div class="box warn">
-  <strong>Not a verified project-specific signing URL.</strong><br>
-  Do not sign an unrelated wallet request. This local page is a candidate binding surface only. No chain action is performed by this page.
+  <strong>HTTPS warning:</strong> This custom domain currently fails TLS name matching (certificate is *.github.io). Do not connect a wallet or sign until Enforce HTTPS is enabled and the certificate matches jsonwisdom.com. Connecting on an insecure page is not safe.
 </div>
 
 <div class="box">
@@ -50,6 +50,15 @@
   <pre id="message"></pre>
   <button id="copy" type="button">Copy acknowledgment message</button>
   <p id="note" class="muted"></p>
+</div>
+
+<div class="box">
+  <strong>Wallet connection (optional, acknowledgment only)</strong>
+  <p class="status" id="wallet-status">Wallet: not connected</p>
+  <button id="connect" type="button">Connect Wallet</button>
+  <button id="sign" type="button" disabled>Sign acknowledgment</button>
+  <button id="disconnect" type="button" disabled>Disconnect</button>
+  <p id="signature-result" class="status"></p>
 </div>
 
 <script>
@@ -72,11 +81,62 @@ document.getElementById("message").textContent = MESSAGE;
 document.getElementById("copy").addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText(MESSAGE);
-    document.getElementById("note").textContent = "Copied. This is an acknowledgment message only. Do not sign it on an unrelated request.";
+    document.getElementById("note").textContent = "Copied. This is an acknowledgment message only.";
   } catch (e) {
     document.getElementById("note").textContent = "Clipboard blocked. Select the message manually.";
   }
 });
+
+let currentAccount = null;
+
+function setStatus(text) {
+  document.getElementById("wallet-status").textContent = text;
+}
+
+async function connectWallet() {
+  if (!window.ethereum) {
+    setStatus("No injected wallet found. Open this page in Coinbase Wallet or a browser with an injected provider.");
+    return;
+  }
+  try {
+    const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+    currentAccount = accounts[0];
+    setStatus("Connected: " + currentAccount);
+    document.getElementById("sign").disabled = false;
+    document.getElementById("disconnect").disabled = false;
+    document.getElementById("connect").disabled = true;
+  } catch (e) {
+    setStatus("Connection rejected or failed: " + (e.message || e));
+  }
+}
+
+async function signAcknowledgment() {
+  if (!currentAccount || !window.ethereum) return;
+  try {
+    const signature = await window.ethereum.request({
+      method: "personal_sign",
+      params: [MESSAGE, currentAccount]
+    });
+    document.getElementById("signature-result").textContent =
+      "Signature (acknowledgment only): " + signature;
+  } catch (e) {
+    document.getElementById("signature-result").textContent =
+      "Signing rejected or failed: " + (e.message || e);
+  }
+}
+
+function disconnectWallet() {
+  currentAccount = null;
+  setStatus("Wallet: not connected");
+  document.getElementById("sign").disabled = true;
+  document.getElementById("disconnect").disabled = true;
+  document.getElementById("connect").disabled = false;
+  document.getElementById("signature-result").textContent = "";
+}
+
+document.getElementById("connect").addEventListener("click", connectWallet);
+document.getElementById("sign").addEventListener("click", signAcknowledgment);
+document.getElementById("disconnect").addEventListener("click", disconnectWallet);
 </script>
 </body>
 </html>
