@@ -41,8 +41,9 @@
   </ul>
 </div>
 
-<div class="box warn">
-  <strong>HTTPS warning:</strong> This custom domain currently fails TLS name matching (certificate is *.github.io). Do not connect a wallet or sign until Enforce HTTPS is enabled and the certificate matches jsonwisdom.com. Connecting on an insecure page is not safe.
+<div class="box warn" id="origin-warning">
+  <strong>Secure origin required.</strong><br>
+  Wallet connection is disabled unless this page is served over HTTPS with a valid certificate for the current host.
 </div>
 
 <div class="box">
@@ -55,17 +56,19 @@
 <div class="box">
   <strong>Wallet connection (optional, acknowledgment only)</strong>
   <p class="status" id="wallet-status">Wallet: not connected</p>
-  <button id="connect" type="button">Connect Wallet</button>
+  <p class="status" id="origin-status"></p>
+  <button id="connect" type="button" disabled>Connect Wallet</button>
   <button id="sign" type="button" disabled>Sign acknowledgment</button>
-  <button id="disconnect" type="button" disabled>Disconnect</button>
+  <button id="disconnect" type="button" disabled>Clear local session</button>
+  <p class="status">Clear local session only resets this page. It does not revoke wallet permissions. Revoke in the wallet app if needed.</p>
   <p id="signature-result" class="status"></p>
 </div>
 
 <script>
-const HASH = "ff37fa8f7777be53c5d50ef28d426e9af0a5b1c7b1d9e553aaf77d566a78da2c";
+const EXPECTED_HASH = "ff37fa8f7777be53c5d50ef28d426e9af0a5b1c7b1d9e553aaf77d566a78da2c";
 const MESSAGE = [
   "COMPUTERWISDOM Audit Receipt v1.1 acknowledgment",
-  "SHA-256: " + HASH,
+  "SHA-256: " + EXPECTED_HASH,
   "Meaning: receipt acknowledged",
   "NOT production authorized",
   "NOT deployment",
@@ -77,6 +80,30 @@ const MESSAGE = [
 ].join("\n");
 
 document.getElementById("message").textContent = MESSAGE;
+
+const displayed = document.getElementById("hash").textContent.trim();
+if (displayed !== EXPECTED_HASH) {
+  document.getElementById("origin-warning").innerHTML =
+    "<strong>Hash mismatch.</strong> Signing is disabled.";
+}
+
+function isSecureOrigin() {
+  return window.isSecureContext === true;
+}
+
+function updateOriginUI() {
+  const secure = isSecureOrigin();
+  const status = document.getElementById("origin-status");
+  const connectBtn = document.getElementById("connect");
+  if (!secure) {
+    status.textContent = "Insecure origin: wallet connection disabled.";
+    connectBtn.disabled = true;
+    document.getElementById("sign").disabled = true;
+  } else {
+    status.textContent = "Secure origin: wallet connection allowed.";
+    if (!currentAccount) connectBtn.disabled = false;
+  }
+}
 
 document.getElementById("copy").addEventListener("click", async () => {
   try {
@@ -93,25 +120,49 @@ function setStatus(text) {
   document.getElementById("wallet-status").textContent = text;
 }
 
+function setConnected(account) {
+  currentAccount = account || null;
+  if (currentAccount) {
+    setStatus("Connected: " + currentAccount);
+    document.getElementById("sign").disabled = !isSecureOrigin();
+    document.getElementById("disconnect").disabled = false;
+    document.getElementById("connect").disabled = true;
+  } else {
+    setStatus("Wallet: not connected");
+    document.getElementById("sign").disabled = true;
+    document.getElementById("disconnect").disabled = true;
+    document.getElementById("connect").disabled = !isSecureOrigin();
+  }
+}
+
 async function connectWallet() {
+  if (!isSecureOrigin()) {
+    setStatus("Blocked: insecure origin.");
+    return;
+  }
   if (!window.ethereum) {
     setStatus("No injected wallet found. Open this page in Coinbase Wallet or a browser with an injected provider.");
     return;
   }
   try {
     const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
-    currentAccount = accounts[0];
-    setStatus("Connected: " + currentAccount);
-    document.getElementById("sign").disabled = false;
-    document.getElementById("disconnect").disabled = false;
-    document.getElementById("connect").disabled = true;
+    setConnected(accounts[0] || null);
   } catch (e) {
     setStatus("Connection rejected or failed: " + (e.message || e));
+    setConnected(null);
   }
 }
 
 async function signAcknowledgment() {
+  if (!isSecureOrigin()) {
+    document.getElementById("signature-result").textContent = "Blocked: insecure origin.";
+    return;
+  }
   if (!currentAccount || !window.ethereum) return;
+  if (document.getElementById("hash").textContent.trim() !== EXPECTED_HASH) {
+    document.getElementById("signature-result").textContent = "Blocked: hash mismatch.";
+    return;
+  }
   try {
     const signature = await window.ethereum.request({
       method: "personal_sign",
@@ -125,18 +176,23 @@ async function signAcknowledgment() {
   }
 }
 
-function disconnectWallet() {
-  currentAccount = null;
-  setStatus("Wallet: not connected");
-  document.getElementById("sign").disabled = true;
-  document.getElementById("disconnect").disabled = true;
-  document.getElementById("connect").disabled = false;
-  document.getElementById("signature-result").textContent = "";
+function clearLocalSession() {
+  setConnected(null);
+  document.getElementById("signature-result").textContent =
+    "Local session cleared. Wallet permissions were not revoked.";
+}
+
+if (window.ethereum && window.ethereum.on) {
+  window.ethereum.on("accountsChanged", (accounts) => {
+    setConnected(accounts && accounts[0] ? accounts[0] : null);
+  });
 }
 
 document.getElementById("connect").addEventListener("click", connectWallet);
 document.getElementById("sign").addEventListener("click", signAcknowledgment);
-document.getElementById("disconnect").addEventListener("click", disconnectWallet);
+document.getElementById("disconnect").addEventListener("click", clearLocalSession);
+
+updateOriginUI();
 </script>
 </body>
 </html>
