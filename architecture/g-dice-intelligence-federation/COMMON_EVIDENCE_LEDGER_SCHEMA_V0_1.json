@@ -1,0 +1,54 @@
+{
+  "schema": "g-dice-intelligence-federation/common-evidence-ledger/v0.1",
+  "status": "FROZEN_REPLAY_GRADE",
+  "authority_created": false,
+  "canonical_object": {
+    "receipt_id": "",
+    "hypothesis_id": "",
+    "lens_id": "",
+    "source_type": "",
+    "source_uri_or_identifier": "",
+    "source_title": "",
+    "publisher_or_origin": "",
+    "publication_date": "",
+    "retrieval_timestamp": "",
+    "content_hash": "",
+    "claim_tested": "",
+    "evidence_observed": "",
+    "evidence_missing": "",
+    "supports": [],
+    "contradicts": [],
+    "falsifiability_condition": "",
+    "reproducibility_status": "",
+    "provenance_status": "",
+    "conflict_refs": [],
+    "parent_receipt_refs": [],
+    "notes": ""
+  },
+  "source_state_triple": [
+    "content_hash",
+    "retrieval_timestamp",
+    "source_uri_or_identifier"
+  ],
+  "semantic_freezes": [
+    "RECEIPT_NOT_TRUTH",
+    "SOURCE_NOT_ENDORSEMENT",
+    "HASH_NOT_SEMANTIC_VALIDITY",
+    "PUBLICATION_NOT_AUTHORITY",
+    "SUPPORT_NOT_PROOF",
+    "CONTRADICTION_NOT_DISPROOF",
+    "MISSING_NOT_FALSE",
+    "MULTIPLE_SOURCES_NOT_NECESSARILY_INDEPENDENT_SOURCES"
+  ],
+  "write_boundary": [
+    "D01_D18_MAY_PROPOSE_RECEIPTS",
+    "COMMON_LEDGER_OWNS_ACCEPTED_RECEIPTS",
+    "LENSES_MAY_NOT_ALTER_PRIOR_RECEIPTS",
+    "CORRECTIONS_APPEND_THEY_DO_NOT_ERASE",
+    "D19_READS_LEDGER_STATE",
+    "D19_DOES_NOT_MODIFY_SOURCE_EVIDENCE",
+    "D19_DOES_NOT_CREATE_FACTS",
+    "AUTHORITY_CREATED_FALSE"
+  ],
+  "promotion_rule": "RECEIPTS_RETURN_TO_COMMON_LEDGER"
+}
