@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Democracy Dice — demo (SYNTHETIC, HOLD)</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 40rem; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; color: #111; background: #fff; }
+  .banner { border: 2px solid #8a5a00; background: #fff4d6; padding: .75rem; }
+  button { font-size: 1.1rem; padding: .6rem 1.2rem; }
+  button:focus-visible, select:focus-visible { outline: 3px solid #0b57d0; outline-offset: 2px; }
+  .dice { font-size: 2rem; letter-spacing: .5rem; }
+  .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Democracy Dice</h1>
+  <p class="banner" role="note"><strong>Demo mode.</strong> Every roll here is <strong>SYNTHETIC</strong>.
+    STATUS=HOLD. AUTHORITY_CREATED=false. FINAL_AUTHORITY=JASON. No real civic, financial, or approval action happens.</p>
+  <p>Three six-sided dice pick one of 216 civic prompts. Each die uses rejection sampling: a random byte of 252 or more is thrown away and redrawn, so every face is equally likely.</p>
+  <label for="topic">Prompt deck</label>
+  <select id="topic">
+    <option value="budget">Local budget</option>
+    <option value="transit">Transit</option>
+    <option value="schools">Schools</option>
+  </select>
+  <p><button id="roll" type="button">Roll three dice</button></p>
+  <section aria-labelledby="result-h">
+    <h2 id="result-h">Result</h2>
+    <p id="result" aria-live="polite">No roll yet.</p>
+    <p class="dice" id="dice" aria-hidden="true"></p>
+  </section>
+  <section aria-labelledby="hist-h">
+    <h2 id="hist-h">History (this page only)</h2>
+    <ol id="history"></ol>
+  </section>
+</main>
+<script src="dice-ui.js"></script>
+</body>
+</html>
