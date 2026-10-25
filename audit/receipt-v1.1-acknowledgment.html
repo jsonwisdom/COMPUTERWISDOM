@@ -43,7 +43,7 @@
 
 <div class="box warn" id="origin-warning">
   <strong>Secure origin required.</strong><br>
-  Wallet connection is disabled unless this page is served over HTTPS with a valid certificate for the current host.
+  Wallet connection is disabled unless this page is served over HTTPS with a valid certificate for the current host. Localhost and file: origins are rejected.
 </div>
 
 <div class="box">
@@ -82,12 +82,26 @@ const MESSAGE = [
 
 document.getElementById("message").textContent = MESSAGE;
 
+function toUtf8Hex(str) {
+  const encoder = new TextEncoder();
+  const bytes = encoder.encode(str);
+  let hex = "0x";
+  for (let i = 0; i < bytes.length; i++) {
+    hex += bytes[i].toString(16).padStart(2, "0");
+  }
+  return hex;
+}
+
 function hashValid() {
   return document.getElementById("hash").textContent.trim() === EXPECTED_HASH;
 }
 
 function isSecureOrigin() {
-  return window.isSecureContext === true;
+  if (window.location.protocol !== "https:") return false;
+  if (window.isSecureContext !== true) return false;
+  const host = window.location.hostname;
+  if (host === "localhost" || host === "127.0.0.1" || host === "::1") return false;
+  return true;
 }
 
 function canSign() {
@@ -102,14 +116,17 @@ function updateGates() {
   const secure = isSecureOrigin();
   const hashOk = hashValid();
   document.getElementById("origin-status").textContent = secure
-    ? "Secure origin: yes"
-    : "Insecure origin: wallet connection disabled.";
+    ? "Secure origin: yes (HTTPS + isSecureContext, non-localhost)"
+    : "Insecure origin: wallet connection disabled (HTTPS required; localhost/file rejected).";
   document.getElementById("hash-status").textContent = hashOk
     ? "Hash binding: valid"
     : "Hash mismatch: signing disabled.";
   if (!hashOk) {
     document.getElementById("origin-warning").innerHTML =
       "<strong>Hash mismatch.</strong> Signing and connection are disabled.";
+  } else if (!secure) {
+    document.getElementById("origin-warning").innerHTML =
+      "<strong>Secure origin required.</strong><br>Wallet connection is disabled unless this page is served over HTTPS with a valid certificate. Localhost and file: origins are rejected.";
   }
   document.getElementById("connect").disabled = !canConnect();
   document.getElementById("sign").disabled = !canSign();
@@ -125,13 +142,23 @@ document.getElementById("copy").addEventListener("click", async () => {
 });
 
 let currentAccount = null;
+let sessionGeneration = 0;
 
 function setStatus(text) {
   document.getElementById("wallet-status").textContent = text;
 }
 
+function clearSignatureDisplay() {
+  document.getElementById("signature-result").textContent = "";
+}
+
 function setConnected(account) {
+  const previous = currentAccount;
   currentAccount = account || null;
+  if (previous !== currentAccount) {
+    clearSignatureDisplay();
+    sessionGeneration++;
+  }
   if (currentAccount) {
     setStatus("Connected: " + currentAccount);
     document.getElementById("disconnect").disabled = false;
@@ -168,14 +195,23 @@ async function signAcknowledgment() {
     updateGates();
     return;
   }
+  const accountAtStart = currentAccount;
+  const genAtStart = sessionGeneration;
+  const messageHex = toUtf8Hex(MESSAGE);
   try {
     const signature = await window.ethereum.request({
       method: "personal_sign",
-      params: [MESSAGE, currentAccount]
+      params: [messageHex, accountAtStart]
     });
+    if (currentAccount !== accountAtStart || sessionGeneration !== genAtStart) {
+      return;
+    }
     document.getElementById("signature-result").textContent =
       "Signature (acknowledgment only): " + signature;
   } catch (e) {
+    if (currentAccount !== accountAtStart || sessionGeneration !== genAtStart) {
+      return;
+    }
     document.getElementById("signature-result").textContent =
       "Signing rejected or failed: " + (e.message || e);
   }
