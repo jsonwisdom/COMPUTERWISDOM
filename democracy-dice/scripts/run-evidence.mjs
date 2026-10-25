@@ -1,4 +1,4 @@
-// Runs the suite, writes evidence/{junit.xml,test-output.tap,summary.json,vectors.json,SHA256SUMS}.
+// Runs the suite, writes evidence/{junit.xml,test-output.tap,summary.json,SHA256SUMS}.
 import { spawnSync, execSync } from 'node:child_process';
 import { writeFileSync, readFileSync, readdirSync } from 'node:fs';
 import { createHash } from 'node:crypto';
