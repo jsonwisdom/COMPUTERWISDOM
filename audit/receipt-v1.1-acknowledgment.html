@@ -57,6 +57,7 @@
   <strong>Wallet connection (optional, acknowledgment only)</strong>
   <p class="status" id="wallet-status">Wallet: not connected</p>
   <p class="status" id="origin-status"></p>
+  <p class="status" id="hash-status"></p>
   <button id="connect" type="button" disabled>Connect Wallet</button>
   <button id="sign" type="button" disabled>Sign acknowledgment</button>
   <button id="disconnect" type="button" disabled>Clear local session</button>
@@ -81,28 +82,37 @@ const MESSAGE = [
 
 document.getElementById("message").textContent = MESSAGE;
 
-const displayed = document.getElementById("hash").textContent.trim();
-if (displayed !== EXPECTED_HASH) {
-  document.getElementById("origin-warning").innerHTML =
-    "<strong>Hash mismatch.</strong> Signing is disabled.";
+function hashValid() {
+  return document.getElementById("hash").textContent.trim() === EXPECTED_HASH;
 }
 
 function isSecureOrigin() {
   return window.isSecureContext === true;
 }
 
-function updateOriginUI() {
+function canSign() {
+  return isSecureOrigin() && hashValid() && !!currentAccount;
+}
+
+function canConnect() {
+  return isSecureOrigin() && hashValid() && !currentAccount;
+}
+
+function updateGates() {
   const secure = isSecureOrigin();
-  const status = document.getElementById("origin-status");
-  const connectBtn = document.getElementById("connect");
-  if (!secure) {
-    status.textContent = "Insecure origin: wallet connection disabled.";
-    connectBtn.disabled = true;
-    document.getElementById("sign").disabled = true;
-  } else {
-    status.textContent = "Secure origin: wallet connection allowed.";
-    if (!currentAccount) connectBtn.disabled = false;
+  const hashOk = hashValid();
+  document.getElementById("origin-status").textContent = secure
+    ? "Secure origin: yes"
+    : "Insecure origin: wallet connection disabled.";
+  document.getElementById("hash-status").textContent = hashOk
+    ? "Hash binding: valid"
+    : "Hash mismatch: signing disabled.";
+  if (!hashOk) {
+    document.getElementById("origin-warning").innerHTML =
+      "<strong>Hash mismatch.</strong> Signing and connection are disabled.";
   }
+  document.getElementById("connect").disabled = !canConnect();
+  document.getElementById("sign").disabled = !canSign();
 }
 
 document.getElementById("copy").addEventListener("click", async () => {
@@ -124,20 +134,18 @@ function setConnected(account) {
   currentAccount = account || null;
   if (currentAccount) {
     setStatus("Connected: " + currentAccount);
-    document.getElementById("sign").disabled = !isSecureOrigin();
     document.getElementById("disconnect").disabled = false;
-    document.getElementById("connect").disabled = true;
   } else {
     setStatus("Wallet: not connected");
-    document.getElementById("sign").disabled = true;
     document.getElementById("disconnect").disabled = true;
-    document.getElementById("connect").disabled = !isSecureOrigin();
   }
+  updateGates();
 }
 
 async function connectWallet() {
-  if (!isSecureOrigin()) {
-    setStatus("Blocked: insecure origin.");
+  if (!canConnect()) {
+    setStatus("Blocked: secure origin and valid hash required.");
+    updateGates();
     return;
   }
   if (!window.ethereum) {
@@ -154,13 +162,10 @@ async function connectWallet() {
 }
 
 async function signAcknowledgment() {
-  if (!isSecureOrigin()) {
-    document.getElementById("signature-result").textContent = "Blocked: insecure origin.";
-    return;
-  }
-  if (!currentAccount || !window.ethereum) return;
-  if (document.getElementById("hash").textContent.trim() !== EXPECTED_HASH) {
-    document.getElementById("signature-result").textContent = "Blocked: hash mismatch.";
+  if (!canSign()) {
+    document.getElementById("signature-result").textContent =
+      "Blocked: secure origin, valid hash, and connected account required.";
+    updateGates();
     return;
   }
   try {
@@ -192,7 +197,7 @@ document.getElementById("connect").addEventListener("click", connectWallet);
 document.getElementById("sign").addEventListener("click", signAcknowledgment);
 document.getElementById("disconnect").addEventListener("click", clearLocalSession);
 
-updateOriginUI();
+updateGates();
 </script>
 </body>
 </html>
