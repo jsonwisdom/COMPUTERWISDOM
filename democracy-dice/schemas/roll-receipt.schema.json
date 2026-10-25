@@ -1,0 +1,13 @@
+{ "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "roll-receipt", "title": "RollReceipt", "type": "object", "additionalProperties": false,
+  "required": ["type","version","rollId","seedDigest","dice","outcomeIndex","rawBytes","rejectedBytes","dataLabel","status","AUTHORITY_CREATED","FINAL_AUTHORITY"],
+  "properties": {
+    "type": {"const":"RollReceipt"}, "version": {"const":"1.6"},
+    "rollId": {"type":"string","minLength":1,"maxLength":128},
+    "seedDigest": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/sha256"},
+    "dice": {"type":"array","minItems":3,"maxItems":3,"items":{"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/die"}},
+    "outcomeIndex": {"type":"integer","minimum":0,"maximum":215},
+    "rawBytes": {"type":"array","items":{"type":"integer","minimum":0,"maximum":255}},
+    "rejectedBytes": {"type":"array","items":{"type":"integer","minimum":252,"maximum":255}},
+    "dataLabel": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/label"},
+    "status": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/status"}, "AUTHORITY_CREATED": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/authority"}, "FINAL_AUTHORITY": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/finalAuthority"}
+  } }

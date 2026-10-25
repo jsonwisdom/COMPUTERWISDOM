@@ -1,0 +1,16 @@
+{ "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "approval-receipt", "title": "ApprovalReceipt", "type": "object", "additionalProperties": false,
+  "required": ["type","approvalId","subjectDigest","approver","issuedAt","nonce","mac","HUMAN_APPROVAL_RECORDED","CRYPTOGRAPHIC_IDENTITY_VERIFIED","consumed","status","AUTHORITY_CREATED","FINAL_AUTHORITY"],
+  "properties": {
+    "type": {"const":"ApprovalReceipt"},
+    "approvalId": {"type":"string","pattern":"^[0-9a-f]{32}$"},
+    "subjectDigest": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/sha256"},
+    "approver": {"type":"string","minLength":1},
+    "issuedAt": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/isoTime"},
+    "nonce": {"type":"string","pattern":"^[0-9a-f]{32}$"},
+    "mac": {"type":"string","pattern":"^hmac-sha256:[0-9a-f]{64}$"},
+    "HUMAN_APPROVAL_RECORDED": {"type":"boolean"},
+    "CRYPTOGRAPHIC_IDENTITY_VERIFIED": {"type":"boolean"},
+    "identityEvidence": {"type":["object","null"]},
+    "consumed": {"type":"boolean"},
+    "status": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/status"}, "AUTHORITY_CREATED": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/authority"}, "FINAL_AUTHORITY": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/finalAuthority"}
+  } }
