@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>COMPUTERWISDOM — Operator Workbench</title>
+<style>html{color-scheme:dark;background:#0b1425;color:#e6f1fc;font:16px/1.55 system-ui,sans-serif}
+main{max-width:970px;margin:auto;padding:32px 18px 100px}
+h1{font-size:clamp(2rem,5vw,3rem)}.warning{border-left:5px solid #e6b251;padding:14px;background:#322816}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(265px,1fr));gap:12px}
+article{border:1px solid #3a556f;padding:18px;border-radius:14px;background:#13263c}
+label{font-size:12px;letter-spacing:1px;color:#86e3cb}a{color:#7cf3d7}p{color:#c0d3e4}code{font-family:ui-monospace,monospace}
+li{margin:8px 0}.badge{font-size:12px;color:#ffd38b}</style></head><body><main>
+<label>COMPUTERWISDOM / OPERATOR WORKBENCH / REVIEW CANDIDATE</label>
+<h1>Your actual signing surfaces and what to do next</h1>
+<p class="warning"><b>STOP:</b> The former JayWisdom Base signing page was disabled by PR #649. Do not use that page or an unreviewed substitute to get around containment. The new workbench below is a draft candidate, not an approved live signing route.</p>
+<h2>Live repository inventory (observed at merge commit 1c85eec4)</h2><div class="cards">
+<article><label>EXISTING / UNREVIEWED</label><h3>Wallet Control</h3><p>Base wallet-control message signing. External JavaScript dependencies.</p><a href="https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/wallet-control/index.html">Inspect source</a></article>
+<article><label>EXISTING / UNREVIEWED</label><h3>HW25 JSON Signer</h3><p>Packet-specific signing; separately scoped, not interchangeable.</p><a href="https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/wallet-control/hw25-json-signer/index.html">Inspect source</a></article>
+<article><label>EXISTING / UNREVIEWED</label><h3>Neutral Signer</h3><p>Connected-wallet challenge with no baked-in pointer.</p><a href="https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/wallet-control/neutral/index.html">Inspect source</a></article>
+<article><label>EXISTING / UNREVIEWED</label><h3>Zora Signer</h3><p>Typed-data signing and a separate ERC-1271 verification boundary.</p><a href="https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/wallet-control/zora-signer/index.html">Inspect source</a></article>
+<article><label>SECURITY HOLD</label><h3>JayWisdom Base</h3><p>The old signing implementation is replaced with a static disabled page.</p><a href="https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/wallet-control/jaywisdom-base/index.html">Inspect lockdown</a></article>
+<article><label>DRAFT / NEEDS REVIEW</label><h3>Neutral Workbench</h3><p>Same post-sign expiry checks, but expected-address input is blank and no human identity is assumed.</p><a href="sign-neutral/index.html">Review neutral candidate</a></article>
+<article><label>DRAFT / NEEDS REVIEW</label><h3>New Workbench</h3><p>Dependency-free EIP-191 message capture with expiry checks after signing; creates a local JSON receipt marked NOT_INDEPENDENTLY_VERIFIED.</p><a href="sign/index.html">Open candidate (only after approved deployment)</a></article>
+</div>
+<h2>Morning checklist</h2><ol>
+<li>Read the latest <a href="https://github.com/jsonwisdom/COMPUTERWISDOM/actions/workflows/operator-morning.yml">Operator Morning workflow</a> artifact (when this proposed workflow is reviewed and merged).</li>
+<li>Keep #649 protection in place and PROCESS-649 open. Verify any hosted route separately.</li>
+<li>Review and approve a safe replacement only after an independent reviewer evaluates the exact commit.</li>
+<li>For any requested wallet proof, review the exact message, sign from your wallet only, download JSON locally, then obtain independent signature verification.</li>
+<li>For #650, do not merge until the CI trust boundary, PASS semantics, receipts, and rebase are reviewed.</li>
+</ol>
+<p>This directory creates no ENS, wallet, legal, human identity or canonical authority. <b>Source file ≠ hosted app; signature ≠ identity.</b></p>
+</main></body></html>
