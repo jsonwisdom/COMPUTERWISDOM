@@ -1,0 +1,65 @@
+name: JaySpace Wallet Public Audit
+on:
+  pull_request:
+    paths:
+      - "index.html"
+      - "docs/jayspace-wallet/**"
+      - ".github/workflows/jayspace-wallet-public-audit.yml"
+  push:
+    branches: ["master"]
+    paths:
+      - "index.html"
+      - "docs/jayspace-wallet/**"
+      - ".github/workflows/jayspace-wallet-public-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  public-safe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Check static public privacy and authority boundaries
+        shell: bash
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json, re, sys
+          root = Path('docs/jayspace-wallet')
+          html = (root / 'index.html').read_text('utf-8')
+          readme = (root / 'README.md').read_text('utf-8')
+          raw_contract = (root / 'public-reconciliation-contract.v0.1.json').read_text('utf-8')
+          index = Path('index.html').read_text('utf-8')
+          contract = json.loads(raw_contract)
+          failures = []
+          if 'href="./docs/jayspace-wallet/"' not in index:
+              failures.append('ROOT_INDEX_LINK_MISSING')
+          for term in ['Purpose', 'Function', 'Public strategy', 'DESIGN_HOLD', 'NOT A LIVE WALLET CONNECTOR']:
+              if term not in html:
+                  failures.append('HTML_MISSING_' + term.replace(' ','_'))
+          if contract.get('status') != 'DESIGN_HOLD' or contract.get('human_adoption') is not False:
+              failures.append('CONTRACT_NOT_HOLD')
+          if contract.get('authority_created') is not False or contract.get('no_fake_green') is not True:
+              failures.append('AUTHORITY_BOUNDARY')
+          if any(contract['execution'].get(k) is not False for k in
+                 ['automated_trading','wallet_connection','fund_transfer','signing']):
+              failures.append('EXECUTION_ENABLED')
+          if not contract.get('private_never_autopublish') or contract.get('gates',{}).get('public_privacy_review') is not False:
+              failures.append('PRIVACY_GATE_INCORRECT')
+          combined = '\n'.join([html,readme,raw_contract])
+          if re.search(r'0x[0-9a-fA-F]{40}',combined):
+              failures.append('PUBLIC_WALLET_ADDRESS_DETECTED')
+          if re.search(r'[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}',combined):
+              failures.append('PUBLIC_EMAIL_DETECTED')
+          if re.search(r'(?:\$\s*\d|\b(?:USD|USDC|BTC|ETH)\s+\d)',combined):
+              failures.append('PUBLIC_MONEY_AMOUNT_DETECTED')
+          if failures:
+              print('PUBLIC_AUDIT_HOLD',','.join(failures))
+              sys.exit(1)
+          print('SCOPED_PUBLIC_STATIC_CHECK_PASS; FINANCIAL_RECONCILIATION=HOLD; HUMAN_VISUAL_ACCEPTANCE=HOLD')
+          PY
