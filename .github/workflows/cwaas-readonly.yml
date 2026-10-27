@@ -1,0 +1,75 @@
+# CWaaS fixture-only contract. No payment or wallet signing; no external API requests.
+name: CWaaS Read-Only Fixture Contract
+on:
+  push:
+    branches: [master, main]
+    paths: ['fixtures/cwaas/**', 'scripts/cwaas/validate-readonly-fixture.cjs', '.github/workflows/cwaas-readonly.yml']
+  pull_request:
+    branches: [master, main]
+    paths: ['fixtures/cwaas/**', 'scripts/cwaas/validate-readonly-fixture.cjs', '.github/workflows/cwaas-readonly.yml']
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  fixture-contract:
+    name: Validate checked-in fixture and adversarial cases
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Confirm schema, fixture, hash and verifier exist
+        run: |
+          test -f fixtures/cwaas/readonly-report-schema.json
+          test -f fixtures/cwaas/readonly-report-v0.1.json
+          test -f fixtures/cwaas/readonly-report-v0.1.sha256
+          test -f scripts/cwaas/validate-readonly-fixture.cjs
+      - name: Validate actual fixture and raw-byte SHA-256
+        run: node scripts/cwaas/validate-readonly-fixture.cjs
+  no-payment-boundary:
+    name: Check declared payment and execution boundaries
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Structured policy inventory
+        run: |
+          node <<'NODE'
+          const fs=require('node:fs'),path=require('node:path');
+          const roots=['fixtures/cwaas'];
+          let inspected=0;
+          function walk(p){for(const e of fs.readdirSync(p,{withFileTypes:true})){const f=path.join(p,e.name);if(e.isDirectory()){if(!e.name.startsWith('.'))walk(f);continue;}if(!f.endsWith('readonly-report-v0.1.json'))continue;const x=JSON.parse(fs.readFileSync(f,'utf8'));inspected++;function scan(v,k=''){if(v===null)return;if(Array.isArray(v)){v.forEach(z=>scan(z,k));return;}if(typeof v==='object'){for(const [a,b] of Object.entries(v)){const q=a.toLowerCase();if(q==='authority'&&b!==false)throw Error(f+': authority not false');if(q==='payment_settlement'&&b!=='NONE')throw Error(f+': settlement not NONE');if(q==='external_requests'&&b!==false)throw Error(f+': external requests not false');if(q==='signing_enabled'&&b!==false)throw Error(f+': signing enabled');if(q==='x402_enabled'&&b!==false)throw Error(f+': x402 enabled');scan(b,a);}return;}}
+          scan(x);}}
+          for(const p of roots)if(fs.existsSync(p))walk(p);
+          console.log('Structured JSON inspected:',inspected);
+          NODE
+      - name: Boundary statement
+        run: |
+          echo 'Production x402: HOLD' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Wallet signing: HOLD' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Authority: false' >> "$GITHUB_STEP_SUMMARY"
+          echo 'NOTE: Policy inventory is not a complete security scan.' >> "$GITHUB_STEP_SUMMARY"
+  execution-boundary:
+    name: Explicit execution HOLD
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo 'GitHub Actions workflow execution: verification test only' >> "$GITHUB_STEP_SUMMARY"
+          echo 'CWaaS service execution: HOLD' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Production x402: HOLD' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Authority: false' >> "$GITHUB_STEP_SUMMARY"
+  report-summary:
+    name: Summarize scoped check results
+    if: always()
+    needs: [fixture-contract, no-payment-boundary, execution-boundary]
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo '### CWaaS Fixture-Only CI' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Contract: ${{ needs.fixture-contract.result }}' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Boundary inventory: ${{ needs.no-payment-boundary.result }}' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Execution HOLD statement: ${{ needs.execution-boundary.result }}' >> "$GITHUB_STEP_SUMMARY"
+          echo 'Production x402: HOLD · Authority: false · No real payments' >> "$GITHUB_STEP_SUMMARY"
+          test '${{ needs.fixture-contract.result }}' = 'success'
+          test '${{ needs.no-payment-boundary.result }}' = 'success'
+          test '${{ needs.execution-boundary.result }}' = 'success'

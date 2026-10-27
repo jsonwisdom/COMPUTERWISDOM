@@ -1,0 +1,147 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "CWaaS Read-Only Report v0.1",
+  "type": "object",
+  "required": [
+    "artifact",
+    "status",
+    "authority",
+    "scope",
+    "gates",
+    "summary",
+    "reproducibility",
+    "payment",
+    "receipt"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "artifact": {
+      "const": "CWaaS_READONLY_REPORT_FIXTURE_V0_1"
+    },
+    "status": {
+      "const": "FIXTURE"
+    },
+    "authority": {
+      "const": false
+    },
+    "scope": {
+      "type": "object",
+      "required": [
+        "repository",
+        "commit_sha",
+        "requested"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "repository": {
+          "type": "string",
+          "minLength": 1
+        },
+        "commit_sha": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "requested": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "gates": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "description",
+          "result",
+          "evidence"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "result": {
+            "enum": [
+              "PASS",
+              "HOLD",
+              "CONFLICT",
+              "FAIL"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "string"
+    },
+    "reproducibility": {
+      "type": "object",
+      "required": [
+        "method",
+        "tools_required",
+        "external_requests"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "type": "string"
+        },
+        "tools_required": {
+          "type": "string"
+        },
+        "external_requests": {
+          "const": false
+        }
+      }
+    },
+    "payment": {
+      "type": "object",
+      "required": [
+        "status",
+        "amount",
+        "receiver",
+        "note"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "status": {
+          "const": "HOLD"
+        },
+        "amount": {
+          "type": "null"
+        },
+        "receiver": {
+          "type": "null"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "receipt": {
+      "type": "object",
+      "required": [
+        "service_delivery",
+        "payment_settlement"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "service_delivery": {
+          "const": "FIXTURE_ONLY"
+        },
+        "payment_settlement": {
+          "const": "NONE"
+        }
+      }
+    }
+  }
+}

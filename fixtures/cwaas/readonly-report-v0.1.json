@@ -1,0 +1,40 @@
+{
+  "artifact": "CWaaS_READONLY_REPORT_FIXTURE_V0_1",
+  "status": "FIXTURE",
+  "authority": false,
+  "scope": {
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "commit_sha": "182a7d4e72dd3518426097a7f656e86eb4440521",
+    "requested": "Positive Education example, illustrative claims only"
+  },
+  "gates": [
+    {
+      "id": "source_present",
+      "description": "Example source exists (fixture assertion only)",
+      "result": "HOLD",
+      "evidence": "No external source fetched by this fixture"
+    },
+    {
+      "id": "learning_outcomes",
+      "description": "Observed learning improvement",
+      "result": "HOLD",
+      "evidence": "Not measured"
+    }
+  ],
+  "summary": "Contract sample; no independent source verification executed.",
+  "reproducibility": {
+    "method": "Run local fixture validation, compare raw UTF-8 bytes SHA-256",
+    "tools_required": "Node 20",
+    "external_requests": false
+  },
+  "payment": {
+    "status": "HOLD",
+    "amount": null,
+    "receiver": null,
+    "note": "No production payment path"
+  },
+  "receipt": {
+    "service_delivery": "FIXTURE_ONLY",
+    "payment_settlement": "NONE"
+  }
+}
