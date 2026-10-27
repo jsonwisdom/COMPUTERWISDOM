@@ -1,0 +1,97 @@
+{
+  "schema_version": "family-fullmath-inverted-v0.1",
+  "title": "Family-first Maxwell Shannon Jason AL ALMS JOSHUA public replay",
+  "state": "DESIGN_HOLD",
+  "identity_join": false,
+  "authority_created": false,
+  "public_family_details": false,
+  "publication_authorized": false,
+  "onchain_transaction_created": false,
+  "workflow": [
+    {
+      "layer": 0,
+      "id": "FAMILY",
+      "purpose": "Human dignity, consent and privacy; children private by default",
+      "visibility": "private_by_default"
+    },
+    {
+      "layer": 1,
+      "id": "JASON",
+      "purpose": "Human decision authority and author of final approvals",
+      "visibility": "public_role_only"
+    },
+    {
+      "layer": 2,
+      "id": "MAXWELL",
+      "purpose": "Sort observed state from speculation; preserve physical limits and source scope",
+      "visibility": "public_method"
+    },
+    {
+      "layer": 3,
+      "id": "SHANNON",
+      "purpose": "Model information, transmission, uncertainty and evidence loss; information is not truth",
+      "visibility": "public_method"
+    },
+    {
+      "layer": 4,
+      "id": "AL",
+      "purpose": "Alabama/registry and jurisdiction research rail; label not authority",
+      "visibility": "public_role"
+    },
+    {
+      "layer": 5,
+      "id": "ALMS",
+      "purpose": "Automated layered replay, validation, receipt and audit machinery; signal verification",
+      "visibility": "public_method"
+    },
+    {
+      "layer": 6,
+      "id": "JOSHUA",
+      "purpose": "Deterministic playback of receipts, gaps, deltas, and corrections",
+      "visibility": "public_method"
+    },
+    {
+      "layer": 7,
+      "id": "PUBLIC_ANCHOR",
+      "purpose": "Publish project-version SHA256 digest and public source commit, no private record contents",
+      "visibility": "public_metadata_only"
+    }
+  ],
+  "proof_boundary": [
+    "NO_FAKE_GREEN",
+    "UNKNOWN_NOT_ZERO",
+    "COVERAGE_NOT_TRUTH",
+    "INFORMATION_NOT_AUTHORITY",
+    "NO_BACKWARD_MUTATION",
+    "HUMAN_APPROVAL_REQUIRED",
+    "FAMILY_PRIVACY_FIRST"
+  ],
+  "onchain_plan": {
+    "chain": "Base",
+    "status": "HOLD_NOT_SIGNED",
+    "publishable_data": [
+      "schema_version",
+      "project_digest_sha256",
+      "git_commit_ref",
+      "timestamp_utc",
+      "proof_scope"
+    ],
+    "excluded": [
+      "family_names",
+      "children",
+      "health_information",
+      "private_addresses",
+      "personal_relationships",
+      "private_records",
+      "wallet_signatures"
+    ],
+    "required": [
+      "human-approved final digest",
+      "verified target chain and contract",
+      "verified signing authority",
+      "gas and transaction preview",
+      "tx hash and independently confirmed receipt"
+    ]
+  },
+  "educational_note": "FullMath replay creates no military, government, court or financial authority. No signature, transaction, deployment or child-data publication is implied."
+}
