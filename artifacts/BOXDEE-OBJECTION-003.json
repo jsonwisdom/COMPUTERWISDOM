@@ -1,0 +1,23 @@
+{
+  "object_id": "BOXDEE-OBJECTION-003",
+  "operator": "JAY",
+  "objection_class": "OBJECT_IDENTITY",
+  "claim_under_test": "Two distinct objects may be merged because they appear under one creator or profile.",
+  "missing_edge": "OBJECT_IDENTITY_BINDING",
+  "disposition": "HOLD",
+  "ruling_state": "NOT_ADJUDICATED",
+  "required_receipts": [
+    "exact_object_id",
+    "contract_or_object_pointer",
+    "per-object provenance"
+  ],
+  "invariants": [
+    "OBJECT_IDENTITY before narrative",
+    "RELATED != SAME_OBJECT",
+    "ONE_PROFILE != ONE_OBJECT"
+  ],
+  "source_artifact": "Jay’s Objection Proofs & Naming Conventions — ReverseReply v0.1.md",
+  "source_status": "FILE_READBACK",
+  "canon": false,
+  "authority_created": false
+}
