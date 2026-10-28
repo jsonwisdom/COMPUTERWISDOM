@@ -1,4 +1,4 @@
-name: Workdesk Auth — Manual Staging Deploy
+name: Workdesk Auth — Manual Staging Deploy (HOLD until provisioned)
 on:
   workflow_dispatch:
 permissions:
@@ -8,7 +8,8 @@ concurrency:
   cancel-in-progress: false
 jobs:
   staging:
-    if: github.ref_name == 'build/workdesk-yubikey-echo-002'
+    # Fail closed. Requires approval plus an explicit environment variable set in GitHub.
+    if: github.ref_name == 'build/workdesk-yubikey-echo-002' && vars.WORKDESK_STAGING_DEPLOY_APPROVED == 'true'
     runs-on: ubuntu-latest
     environment: workdesk-auth-staging
     defaults:
