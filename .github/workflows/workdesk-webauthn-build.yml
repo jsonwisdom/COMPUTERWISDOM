@@ -29,5 +29,12 @@ jobs:
         run: node --test src/index.test.js
       - name: Bundle Cloudflare Worker without deploying
         run: npx wrangler deploy --dry-run --outdir ./bundle-validation
+      - name: Store compiled Worker bundle as build artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: workdesk-auth-worker-bundle
+          path: workdesk/auth-worker/bundle-validation/
+          retention-days: 2
+          if-no-files-found: error
       - name: Confirm no public site or funds were modified
         run: echo "Build-only gate. Not a security audit. No production deployment."
