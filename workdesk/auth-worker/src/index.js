@@ -36,6 +36,8 @@ export default {
   const url=new URL(request.url);
   const origin=request.headers.get('origin');
   const headers={...noStore,'access-control-allow-origin':env.EXPECTED_ORIGIN,'access-control-allow-credentials':'true','vary':'Origin'};
+  // Never grant browser-facing APIs access from an unconfigured or mismatched host.
+  if(url.hostname!=='auth.jsonwisdom.com' && !url.hostname.endsWith('.workers.dev') && url.hostname!=='localhost' && url.hostname!=='127.0.0.1')return denied();
   if(origin && origin!==env.EXPECTED_ORIGIN)return denied();
   // Browser writes must declare the configured first-party origin; reject opaque POSTs.
   if(request.method==='POST' && origin!==env.EXPECTED_ORIGIN)return denied();
