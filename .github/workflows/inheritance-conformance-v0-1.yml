@@ -1,0 +1,28 @@
+name: Inheritance Conformance V0.1
+
+on:
+  pull_request:
+    paths:
+      - 'tools/conformance/inheritance_v0_1.py'
+      - 'tests/test_inheritance_conformance_v0_1.py'
+      - '.github/workflows/inheritance-conformance-v0-1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-conformance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout proposed source
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run isolated conformance suite
+        run: python -m unittest discover -s tests -p 'test_inheritance_conformance_v0_1.py' -v
