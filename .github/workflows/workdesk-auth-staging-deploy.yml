@@ -1,4 +1,4 @@
-name: Workdesk Auth — Manual Staging Deploy (HOLD until provisioned)
+name: Workdesk Auth — Staging Preflight (NO DEPLOY)
 on:
   workflow_dispatch:
 permissions:
@@ -9,31 +9,20 @@ concurrency:
 jobs:
   staging:
     # Fail closed. Requires approval plus an explicit environment variable set in GitHub.
-    if: github.ref_name == 'build/workdesk-yubikey-echo-002' && vars.WORKDESK_STAGING_DEPLOY_APPROVED == 'true'
+    if: github.ref_name == 'build/workdesk-yubikey-echo-002'
     runs-on: ubuntu-latest
-    environment: workdesk-auth-staging
     defaults:
       run:
         working-directory: workdesk/auth-worker
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '22'
-      - name: Require Cloudflare credentials without printing secrets
-        env:
-          CF_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CF_ACCOUNT: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-        run: |
-          test -n "$CF_TOKEN" || { echo "HOLD: CLOUDFLARE_API_TOKEN GitHub secret missing"; exit 1; }
-          test -n "$CF_ACCOUNT" || { echo "HOLD: CLOUDFLARE_ACCOUNT_ID GitHub secret missing"; exit 1; }
+      # No secrets may be consumed from a feature-branch workflow under DEPLOYMENT_SECURITY_POLICY_V1.
       - run: npm install --no-audit --no-fund
       - run: node --test src/index.test.js
       - run: npx wrangler deploy --dry-run --outdir ./staging-bundle
-      - name: Deploy isolated Worker, no production routes
-        run: npx wrangler deploy --name jsonwisdom-workdesk-auth-staging --compatibility-date 2026-10-28
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      # Real deployment requires a separately reviewed, protected deployment branch.
       - name: Record limits of this gate
         run: echo "Staging upload only. No custom domain, no key enrolled, no private records. Do not call this production-ready."
