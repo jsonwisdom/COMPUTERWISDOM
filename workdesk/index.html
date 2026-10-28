@@ -1,8 +1,35 @@
 <!doctype html>
-<html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
-<title>Workdesk Gateway | Computer Wisdom</title>
-<style>
-:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;background:radial-gradient(circle at 80% 0%,#17434c,#071219 55%);color:#ecfaf8;font:17px/1.6 system-ui,Segoe UI,sans-serif;padding:24px}main{max-width:650px;background:#102630;border:1px solid #28464e;border-radius:20px;padding:clamp(24px,5vw,54px)}.k{font:bold 12px monospace;letter-spacing:.15em;color:#72e9cf}h1{font-size:clamp(2.3rem,6vw,4rem);line-height:1.1}p{color:#abc7c9}.hold{color:#ffd08a;font-weight:800}a{color:#72e9cf}.wallet-entry{display:inline-block;background:#72e9cf;color:#061820;font-weight:900;padding:14px 18px;border-radius:12px;text-decoration:none}a:focus-visible{outline:3px solid #72e9cf}small{display:block;margin-top:30px;color:#abc7c9}
-</style></head>
-<body><main><div class="k">JASON'S DIGITAL HOME / GATEWAY</div><h1>The private Workdesk.</h1><p class="hold">SECURITY GATE NOT ENABLED - ACCESS ON HOLD</p><p>This is a public gateway notice, not a login page. No private workspace, credentials, wallet tools, or personal records are published here.</p><p>After server-enforced WebAuthn / security-key authentication is installed and independently tested, this entry point can direct authorized users to a separate private application.</p><p><a class="wallet-entry" href="../wallet-control/index.html">🔑 Open Coinbase Wallet — Sign a Control Message</a></p><p>This opens the existing public, voluntary wallet-control proof. It requests a wallet connection and a message signature only when you press the controls there. It does not unlock this private Workdesk or authorize a transaction.</p><p><a href="../index.html">Return to public homepage</a></p><small>COMPUTER WISDOM - Wallet control message signing available separately. No payments or transaction signing enabled.</small></main></body></html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex">
+<title>Jason Workdesk | YubiKey Authentication</title>
+<style>:root{color-scheme:dark}*{box-sizing:border-box}body{min-height:100vh;margin:0;display:grid;place-items:center;background:radial-gradient(circle at 80% 0%,#17434c,#071219 55%);color:#ecfaf8;font:17px/1.55 system-ui,Segoe UI,sans-serif;padding:24px}main{max-width:680px;width:100%;background:#102630;border:1px solid #28464e;border-radius:20px;padding:clamp(24px,5vw,50px)}h1{font-size:clamp(2rem,5vw,3.4rem);line-height:1.1;margin:22px 0}.k{font:700 12px monospace;letter-spacing:.15em;color:#72e9cf}p{color:#b8d1d4}button{border:0;background:#72e9cf;color:#061820;border-radius:12px;padding:15px 22px;font:800 17px system-ui;cursor:pointer;width:100%}button:disabled{opacity:.6;cursor:wait}.status{margin:22px 0;padding:14px;background:#091a22;border:1px solid #355761;border-radius:10px;color:#ffd08a;white-space:pre-wrap}a{color:#72e9cf}small{display:block;margin-top:28px;color:#abc7c9}</style>
+</head><body><main><div class="k">JSONWISDOM.COM / JASON WORKDESK</div><h1>🔑 Sign in with YubiKey</h1>
+<p>Your security key verifies your identity. No Coinbase login, email code, wallet import, or blockchain signature is required.</p>
+<button id="login">Authenticate with YubiKey</button>
+<div class="status" id="status" role="status" aria-live="polite">Checking the authentication service…</div>
+<p><a href="../index.html">Return to homepage</a></p><small>Private content stays server-protected. Wallet signing and payments are separate and disabled here.</small></main>
+<script>
+(()=>{'use strict';
+const API='https://auth.jsonwisdom.com';
+const button=document.getElementById('login'),state=document.getElementById('status');
+const report=s=>state.textContent=s;
+function decode(s){const b=atob(s.replace(/-/g,'+').replace(/_/g,'/')+'='.repeat((4-s.length%4)%4));return Uint8Array.from(b,c=>c.charCodeAt(0))}
+async function post(path,body={}){const r=await fetch(API+path,{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await r.json();if(!r.ok)throw Error(data.error||'Authentication denied');return data}
+async function health(){try{const r=await fetch(API+'/health',{cache:'no-store'});if(!r.ok)throw Error('Unavailable');const d=await r.json();if(d.configured!==true)throw Error('Not configured');report('Authentication service available. Use your YubiKey to sign in.')}catch{report('AUTHENTICATION UNAVAILABLE — The protected server is not yet deployed. No access has been granted.')}}
+button.addEventListener('click',async()=>{button.disabled=true;try{
+if(!window.PublicKeyCredential||!navigator.credentials)throw Error('WebAuthn not supported in this browser');
+report('Requesting a one-time YubiKey challenge…');
+const {challengeId,options}=await post('/login/options');
+options.challenge=decode(options.challenge);
+options.allowCredentials=(options.allowCredentials||[]).map(x=>({...x,id:decode(x.id)}));
+report('Confirm the browser security-key prompt. Use PIN and touch when requested.');
+const credential=await navigator.credentials.get({publicKey:options});
+if(!credential||typeof credential.toJSON!=='function')throw Error('Browser does not support credential serialization');
+await post('/login/verify',{challengeId,response:credential.toJSON()});
+const check=await fetch(API+'/private',{credentials:'include',cache:'no-store'});
+if(!check.ok)throw Error('Protected session verification failed');
+report('YubiKey VERIFIED. Protected session active. Open your private page on the authenticated server.');
+const link=document.createElement('a');link.href=API+'/private';link.textContent='Open authenticated private Workdesk';link.style.display='block';link.style.marginTop='16px';state.append(document.createTextNode('\n'));state.append(link);
+}catch(e){report('ACCESS DENIED / '+(e.message||'Authentication unavailable'))}finally{button.disabled=false}});
+health();
+})();
+</script></body></html>
