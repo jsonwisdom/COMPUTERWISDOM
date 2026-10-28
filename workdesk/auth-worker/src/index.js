@@ -118,7 +118,7 @@ export default {
     if(!session)return denied();
     if(url.pathname==='/wallet/readiness')return json({ownerAuthenticated:true,chain:'eip155:8453',mode:'READ_ONLY',walletConnected:false,signingEnabled:false,paymentsEnabled:false,authority:'separate in-wallet human confirmation required',next:'Connect wallet client-side only after an approved signed transaction-review build.'},200,headers);
     return new Response('<!doctype html><meta charset="utf-8"><title>Private Workdesk</title><h1>Jason Workdesk</h1><p>Authenticated session. Wallet signing and x402 payments remain disabled.</p><p>Read-only wallet readiness is exposed at /wallet/readiness only to authenticated sessions.</p>',{
-     headers:{...noStore,'content-type':'text/html; charset=utf-8','content-security-policy':"default-src 'none'; style-src 'unsafe-inline'",'vary':'Cookie'}
+     headers:{...headers,'content-type':'text/html; charset=utf-8','content-security-policy':"default-src 'none'; style-src 'unsafe-inline'",'vary':'Origin, Cookie'}
     });
    }
    if(url.pathname==='/logout' && request.method==='POST') {
