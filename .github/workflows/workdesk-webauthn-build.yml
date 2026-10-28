@@ -3,6 +3,7 @@ on:
   pull_request:
     paths:
       - 'workdesk/auth-worker/**'
+      - 'workdesk/WALLET_SIGNING_CONTRACT_V0.1.md'
       - '.github/workflows/workdesk-webauthn-build.yml'
   workflow_dispatch:
 permissions:
