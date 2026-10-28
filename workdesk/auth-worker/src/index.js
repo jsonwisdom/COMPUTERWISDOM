@@ -23,10 +23,8 @@ async function challenge(db,purpose,value) {
  return id;
 }
 async function consume(db,id,purpose) {
- const c=await db.prepare('SELECT challenge FROM challenges WHERE id=? AND purpose=? AND expires_at>?').bind(id,purpose,now()).first();
- if(!c)return null;
- const del=await db.prepare('DELETE FROM challenges WHERE id=? AND purpose=? AND expires_at>?').bind(id,purpose,now()).run();
- return del.meta.changes===1?c.challenge:null;
+ const c=await db.prepare('DELETE FROM challenges WHERE id=? AND purpose=? AND expires_at>? RETURNING challenge').bind(id,purpose,now()).first();
+ return c?.challenge||null;
 }
 async function parse(request) {
  if((Number(request.headers.get('content-length')||0)>32768))throw Error('too big');
@@ -39,6 +37,8 @@ export default {
   const origin=request.headers.get('origin');
   const headers={...noStore,'access-control-allow-origin':env.EXPECTED_ORIGIN,'access-control-allow-credentials':'true','vary':'Origin'};
   if(origin && origin!==env.EXPECTED_ORIGIN)return denied();
+  // Browser writes must declare the configured first-party origin; reject opaque POSTs.
+  if(request.method==='POST' && origin!==env.EXPECTED_ORIGIN)return denied();
   if(request.method==='OPTIONS')return origin===env.EXPECTED_ORIGIN
    ? new Response(null,{status:204,headers:{...headers,'access-control-allow-methods':'POST, GET','access-control-allow-headers':'Content-Type, X-Bootstrap-Token'}})
    : denied();
@@ -70,8 +70,9 @@ export default {
     if(!check.verified||!check.registrationInfo)return denied();
     const {credential}=check.registrationInfo;
     // Enrollment can succeed once, even under competing requests.
-    await db.prepare('INSERT INTO credentials(id,public_key,counter,transports,created_at) SELECT ?,?,?,?,? WHERE NOT EXISTS (SELECT 1 FROM credentials)')
+    const inserted=await db.prepare('INSERT INTO credentials(id,public_key,counter,transports,created_at) SELECT ?,?,?,?,? WHERE NOT EXISTS (SELECT 1 FROM credentials)')
       .bind(credential.id,credential.publicKey,credential.counter,JSON.stringify(credential.transports||[]),now()).run();
+    if(inserted.meta.changes!==1)return denied();
     return json({enrolled:true},200,headers);
    }
    if(url.pathname==='/login/options' && request.method==='POST') {
@@ -95,7 +96,13 @@ export default {
      credential:{id:c.id,publicKey:new Uint8Array(c.public_key),counter:c.counter,transports:c.transports}
     });
     if(!check.verified)return denied();
-    await db.prepare('UPDATE credentials SET counter=? WHERE id=?').bind(check.authenticationInfo.newCounter,c.id).run();
+    // Atomically advance the authenticator counter, refusing stale or concurrent assertions.
+    const oldCounter=c.counter;
+    const newCounter=check.authenticationInfo.newCounter;
+    if(oldCounter!==0 && newCounter!==0 && newCounter<=oldCounter)return denied();
+    const updated=await db.prepare('UPDATE credentials SET counter=? WHERE id=? AND counter=?')
+      .bind(newCounter,c.id,oldCounter).run();
+    if(updated.meta.changes!==1)return denied();
     const token=b64url(bytes(32)),expiry=now()+900;
     await db.prepare('INSERT INTO sessions(token_hash,expires_at) VALUES(?,?)').bind(await sha256(token),expiry).run();
     return json({authenticated:true,sessionExpiresIn:900},200,{
