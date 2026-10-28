@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Workdesk YubiKey Echo — Build 002 HOLD</title>
+<style>:root{color-scheme:dark}body{background:#08161e;color:#edfaf8;font:17px/1.6 system-ui,sans-serif;padding:2rem;max-width:720px;margin:auto}button,input{font:inherit;padding:.7rem;margin:.3rem 0}button{background:#72e9cf;color:#061820;border:0;border-radius:9px;cursor:pointer}input{background:#152b33;color:white;border:1px solid #52777e;width:100%}.hold{color:#ffcf8a}pre{white-space:pre-wrap;background:#142b33;padding:1rem;border-radius:8px}a{color:#72e9cf}</style>
+</head><body><h1>🔑 YubiKey challenge / echo</h1>
+<p class="hold"><strong>BUILD 002 — HOLD:</strong> Security backend is not deployed or verified. No private data is accessible here.</p>
+<p>Registration must be an owner-only, one-time process. Never paste a token into chat or commit it to GitHub.</p>
+<label for="api">Authentication service URL</label><input id="api" value="https://auth.jsonwisdom.com" autocomplete="off">
+<button id="login">Request YubiKey challenge</button>
+<button id="private">Open protected endpoint</button>
+<button id="logout">Logout</button>
+<details><summary>Owner enrollment (only after server setup)</summary><label for="bootstrap">One-time owner bootstrap token</label><input type="password" id="bootstrap" autocomplete="off">
+<button id="register">Enroll my YubiKey</button></details>
+<pre id="status" role="status" aria-live="polite">NOT CONFIGURED — no request sent.</pre><p><a href="./index.html">Return to Workdesk gateway</a></p>
+<script type="module">
+const $=id=>document.getElementById(id);
+const status=x=>$('status').textContent=x;
+function api(){const u=new URL($('api').value.trim());if(u.protocol!=='https:'||u.username||u.password||u.pathname!=='/'||u.search||u.hash)throw Error('Use a dedicated HTTPS authentication origin only');return u.origin;}
+async function post(path,body={},token){
+ const res=await fetch(api()+path,{method:'POST',credentials:'include',headers:{'Content-Type':'application/json',...(token?{'X-Bootstrap-Token':token}:{})},body:JSON.stringify(body)});
+ const obj=await res.json();if(!res.ok)throw Error(obj.error||'Request denied');return obj;
+}
+function decode(s){const b=atob(s.replace(/-/g,'+').replace(/_/g,'/')+'='.repeat((4-s.length%4)%4));return Uint8Array.from(b,c=>c.charCodeAt(0));}
+async function run(kind){
+ if(!window.PublicKeyCredential||!navigator.credentials)throw Error('WebAuthn unavailable in this browser');
+ const token=kind==='register'?$('bootstrap').value:undefined;
+ if(kind==='register'&&!token)throw Error('Owner bootstrap token required');
+ status('Requesting one-time server challenge…');
+ const {challengeId,options}=await post('/'+kind+'/options',{},token);
+ options.challenge=decode(options.challenge);
+ if(kind==='register'){
+   options.user.id=decode(options.user.id);
+   options.excludeCredentials=(options.excludeCredentials||[]).map(x=>({...x,id:decode(x.id)}));
+ }else{
+   options.allowCredentials=(options.allowCredentials||[]).map(x=>({...x,id:decode(x.id)}));
+ }
+ status('Confirm the browser YubiKey prompt. PIN and touch may be required.');
+ const cred=kind==='register'
+   ? await navigator.credentials.create({publicKey:options})
+   : await navigator.credentials.get({publicKey:options});
+ if(!cred||typeof cred.toJSON!=='function')throw Error('Browser credential JSON serialization unsupported');
+ const answer=await post('/'+kind+'/verify',{challengeId,response:cred.toJSON()},token);
+ status(kind==='login'?'Server verified YubiKey response. Private endpoint available for this session.':'Enrollment response submitted. Verify key record server-side before accepting.');
+ if(kind==='register')$('bootstrap').value='';
+}
+$('login').onclick=()=>run('login').catch(e=>status('HOLD / '+e.message));
+$('register').onclick=()=>run('register').catch(e=>status('HOLD / '+e.message));
+$('private').onclick=async()=>{
+ try{const r=await fetch(api()+'/private',{credentials:'include'});if(!r.ok)throw Error('Access denied: HTTP '+r.status);status('Private endpoint response received. Open '+api()+'/private in this browser to inspect.');}catch(e){status('HOLD / '+e.message);}
+};
+$('logout').onclick=()=>post('/logout').then(()=>status('Session revoked.')).catch(e=>status('HOLD / '+e.message));
+</script></body></html>
