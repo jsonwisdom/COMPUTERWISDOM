@@ -46,7 +46,7 @@ jobs:
         run: |
           python3 - <<'PY'
           import json, urllib.request, urllib.error
-          checks=[('homepage','https://jsonwisdom.com/',200),('workdesk','https://jsonwisdom.com/workdesk/index.html',200),('auth-health','https://auth.jsonwisdom.com/health',200),('private-denied','https://auth.jsonwisdom.com/private',401)]
+          checks=[('homepage','https://jsonwisdom.com/',200),('workdesk','https://jsonwisdom.com/workdesk/index.html',200),('auth-health','https://auth.jsonwisdom.com/health',200),('private-denied','https://auth.jsonwisdom.com/private',403)]
           failures=[]
           for name,url,expected in checks:
               try:
