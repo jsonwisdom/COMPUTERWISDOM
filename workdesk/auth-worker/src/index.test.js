@@ -41,3 +41,18 @@ test('healthy response never implies authenticated',async()=>{
  assert.equal(response.status,200);
  assert.deepEqual(await response.json(),{configured:true,authenticated:false});
 });
+
+test('wallet readiness cannot be fetched without Jason session',async()=>{
+ const response=await call('/wallet/readiness');
+ assert.equal(response.status,403);
+});
+test('read-only wallet endpoint rejects forged bearer authorization',async()=>{
+ const response=await call('/wallet/readiness','GET',{authorization:'Bearer forged'});
+ assert.equal(response.status,403);
+});
+test('public HTTP API does not offer wallet signing or payments',async()=>{
+ for(const endpoint of ['/wallet/sign','/wallet/send','/x402/pay']){
+  const response=await call(endpoint,'POST',{origin:'https://jsonwisdom.com'});
+  assert.equal(response.status,404);
+ }
+});
