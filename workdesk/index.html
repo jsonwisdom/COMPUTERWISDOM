@@ -13,7 +13,7 @@ const API='https://auth.jsonwisdom.com';
 const button=document.getElementById('login'),state=document.getElementById('status');
 const report=s=>state.textContent=s;
 function decode(s){const b=atob(s.replace(/-/g,'+').replace(/_/g,'/')+'='.repeat((4-s.length%4)%4));return Uint8Array.from(b,c=>c.charCodeAt(0))}
-async function post(path,body={}){const r=await fetch(API+path,{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await r.json();if(!r.ok)throw Error(data.error||'Authentication denied');return data}
+async function post(path,body={}){const r=await fetch(API+path,{method:'POST',credentials:'include',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)});const data=await r.json();if(!r.ok)throw Error(data.error==='WEBAUTHN_BACKEND_NOT_DEPLOYED'?'authentication backend not installed':(data.error||'Authentication denied'));return data}
 async function health(){try{const r=await fetch(API+'/health',{cache:'no-store'});if(!r.ok)throw Error('Unavailable');const d=await r.json();if(d.configured!==true)throw Error('Not configured');report('Authentication service available. Use your YubiKey to sign in.')}catch{report('AUTHENTICATION UNAVAILABLE — The protected server is not yet deployed. No access has been granted.')}}
 button.addEventListener('click',async()=>{button.disabled=true;try{
 if(!window.PublicKeyCredential||!navigator.credentials)throw Error('WebAuthn not supported in this browser');
@@ -29,7 +29,7 @@ const check=await fetch(API+'/private',{credentials:'include',cache:'no-store'})
 if(!check.ok)throw Error('Protected session verification failed');
 report('YubiKey VERIFIED. Protected session active. Open your private page on the authenticated server.');
 const link=document.createElement('a');link.href=API+'/private';link.textContent='Open authenticated private Workdesk';link.style.display='block';link.style.marginTop='16px';state.append(document.createTextNode('\n'));state.append(link);
-}catch(e){report('ACCESS DENIED / '+(e.message||'Authentication unavailable'))}finally{button.disabled=false}});
+}catch(e){report('YubiKey login is not available: '+(e.message||'Authentication server unavailable')+'. No authentication was attempted or granted.')}finally{button.disabled=false}});
 health();
 })();
 </script></body></html>
