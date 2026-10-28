@@ -1,0 +1,12 @@
+name = "jsonwisdom-workdesk-auth"
+main = "src/index.js"
+compatibility_date = "2026-10-28"
+workers_dev = false
+
+[vars]
+RP_ID = "jsonwisdom.com"
+EXPECTED_ORIGIN = "https://jsonwisdom.com"
+# Configure a dedicated HTTPS custom domain auth.jsonwisdom.com after review.
+# Do NOT enable a route on the public homepage or payments.
+# Bind a D1 database named AUTH_DB after creation.
+# Set BOOTSTRAP_TOKEN as a Worker secret before the first key enrollment.
