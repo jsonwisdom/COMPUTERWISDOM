@@ -207,16 +207,33 @@ function updateUi(){
   ui.signBtn.disabled = !(challenge && account && onBase() && ui.understand.checked) || !!receipt;
 }
 
+// EIP-6963 distinguishes wallets when Phantom, MetaMask and Coinbase coexist.
+const discoveredWallets = new Map();
+window.addEventListener('eip6963:announceProvider', event => {
+  const detail=event.detail;
+  if(detail?.info?.uuid && detail.provider?.request) discoveredWallets.set(detail.info.uuid,detail);
+});
+function requestWalletDiscovery(){
+  window.dispatchEvent(new Event('eip6963:requestProvider'));
+}
+requestWalletDiscovery();
+function coinbaseProvider(){
+  const found=[...discoveredWallets.values()].filter(x=>
+    x.info?.rdns==='com.coinbase.wallet' || x.info?.rdns==='org.coinbase.wallet');
+  if(found.length===1)return found[0].provider;
+  if(found.length>1)throw Error('Multiple Coinbase providers announced; select one in your wallet extension.');
+  // Legacy fallback only for explicitly marked Coinbase injected providers.
+  const injected=window.ethereum;
+  const candidates=Array.isArray(injected?.providers)?injected.providers:(injected?[injected]:[]);
+  return candidates.find(p=>p?.isCoinbaseWallet===true && !p?.isMetaMask && !p?.isPhantom) || null;
+}
 async function connectCoinbase(){
   try{
     // Coinbase Wallet browser extension only: do not trigger Base Account
     // passkey/email onboarding. YubiKey Workdesk authentication is separate.
-    const injected = window.ethereum;
-    const candidates = Array.isArray(injected?.providers) ? injected.providers : (injected ? [injected] : []);
-    const coinbase = candidates.find(p => p && p.isCoinbaseWallet === true);
-    if(!coinbase || typeof coinbase.request !== 'function') {
-      throw new Error('Installed Coinbase Wallet browser extension not detected. Unlock the extension in this browser and reload; no email or authenticator-app login is required by this page.');
-    }
+    requestWalletDiscovery();
+    const coinbase = coinbaseProvider();
+    if(!coinbase)throw new Error('Coinbase Wallet extension not available to this page. Phantom and MetaMask are not Coinbase. Open/unlock the Coinbase Wallet extension and refresh; this site cannot force the extension to install or expose a provider.');
     provider = coinbase;
     providerMode = 'COINBASE_WALLET_INJECTED_EXTENSION';
     attachListeners(provider);
@@ -232,7 +249,7 @@ async function connectCoinbase(){
 
 async function connectBrowser(){
   try{
-    if(!window.ethereum || typeof window.ethereum.request !== 'function') throw new Error('No injected browser wallet found.');
+    if(!window.ethereum || typeof window.ethereum.request !== 'function') throw new Error('No injected browser wallet found. Phantom/MetaMask may be installed; this does not connect Coinbase Wallet.');
     provider = window.ethereum;
     providerMode = 'INJECTED_EIP1193';
     attachListeners(provider);
