@@ -22,6 +22,8 @@ jobs:
         run: node --check src/index.js
       - name: Install dependencies (no deploy)
         run: npm install --no-audit --no-fund
+      - name: Execute fail-closed runtime tests
+        run: node --test src/index.test.js
       - name: Bundle Cloudflare Worker without deploying
         run: npx wrangler deploy --dry-run --outdir ./bundle-validation
       - name: Confirm no public site or funds were modified
