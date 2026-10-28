@@ -1,0 +1,28 @@
+name: Workdesk WebAuthn Build Gate (read-only)
+on:
+  pull_request:
+    paths:
+      - 'workdesk/auth-worker/**'
+      - '.github/workflows/workdesk-webauthn-build.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-only:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: workdesk/auth-worker
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate JavaScript syntax
+        run: node --check src/index.js
+      - name: Install dependencies (no deploy)
+        run: npm install --no-audit --no-fund
+      - name: Bundle Cloudflare Worker without deploying
+        run: npx wrangler deploy --dry-run --outdir ./bundle-validation
+      - name: Confirm no public site or funds were modified
+        run: echo "Build-only gate. Not a security audit. No production deployment."
