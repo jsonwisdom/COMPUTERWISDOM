@@ -55,10 +55,10 @@ pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#111;color:#f8f3e8;bo
     <span class="pill warn" id="verifyStatus">CONTROL: NOT VERIFIED</span>
   </div>
 
-  <div id="notice" class="notice">Choose Coinbase Wallet first if that is the smart wallet you want to prove. MetaMask/browser injection is a separate fallback.</div>
+  <div id="notice" class="notice">This uses the installed Coinbase Wallet extension only. YubiKey/Workdesk identity is a separate security gate. Do not enter email or authenticator codes to use this page.</div>
 
   <div class="controls">
-    <button id="coinbaseBtn" class="primary">1A — CONNECT COINBASE WALLET</button>
+    <button id="coinbaseBtn" class="primary">1A — CONNECT INSTALLED COINBASE EXTENSION</button>
     <button id="browserBtn">1B — CONNECT BROWSER WALLET</button>
   </div>
   <div class="controls">
@@ -209,19 +209,23 @@ function updateUi(){
 
 async function connectCoinbase(){
   try{
-    if(typeof window.createBaseAccountSDK !== 'function') throw new Error('Coinbase Wallet / Base Account SDK failed to load.');
-    provider = window.createBaseAccountSDK({
-      appName: 'Computer Wisdom Wallet Control',
-      appChainIds: [8453]
-    }).getProvider();
-    providerMode = 'COINBASE_WALLET_BASE_ACCOUNT_SDK_2.5.10';
+    // Coinbase Wallet browser extension only: do not trigger Base Account
+    // passkey/email onboarding. YubiKey Workdesk authentication is separate.
+    const injected = window.ethereum;
+    const candidates = Array.isArray(injected?.providers) ? injected.providers : (injected ? [injected] : []);
+    const coinbase = candidates.find(p => p && p.isCoinbaseWallet === true);
+    if(!coinbase || typeof coinbase.request !== 'function') {
+      throw new Error('Installed Coinbase Wallet browser extension not detected. Unlock the extension in this browser and reload; no email or authenticator-app login is required by this page.');
+    }
+    provider = coinbase;
+    providerMode = 'COINBASE_WALLET_INJECTED_EXTENSION';
     attachListeners(provider);
     const accounts = await provider.request({method:'eth_requestAccounts'});
     account = accounts && accounts[0] ? accounts[0] : null;
     if(!account) throw new Error('Coinbase Wallet returned no account.');
     chainId = await provider.request({method:'eth_chainId'});
     resetEvidence();
-    setNotice('Coinbase Wallet connected. Connected address is only a candidate until a fresh challenge is signed and verified.', 'good');
+    setNotice('Installed Coinbase Wallet connected. A fresh message signature is still required to prove address control. This does not prove YubiKey identity.', 'good');
     updateUi();
   }catch(err){ setNotice(err?.message || String(err), 'bad'); }
 }
