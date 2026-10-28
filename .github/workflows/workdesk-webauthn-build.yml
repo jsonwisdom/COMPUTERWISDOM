@@ -42,5 +42,29 @@ jobs:
           path: workdesk/auth-worker/bundle-validation/
           retention-days: 2
           if-no-files-found: error
+      - name: Verify public Workdesk and authentication endpoints (live HTTP)
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request, urllib.error
+          checks=[('homepage','https://jsonwisdom.com/',200),('workdesk','https://jsonwisdom.com/workdesk/index.html',200),('auth-health','https://auth.jsonwisdom.com/health',200),('private-denied','https://auth.jsonwisdom.com/private',401)]
+          failures=[]
+          for name,url,expected in checks:
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'jsonwisdom-ci-smoke'}),timeout=15) as response:
+                      status=response.status; body=response.read(4096).decode('utf-8','replace')
+              except urllib.error.HTTPError as e:
+                  status=e.code; body=e.read(4096).decode('utf-8','replace')
+              except Exception as e:
+                  failures.append(name+': '+str(e));print('LIVE',name,'ERROR',str(e));continue
+              print('LIVE',name,'HTTP',status,'BODY',body[:120].replace('\\n',' '))
+              if status!=expected:failures.append(name+': expected '+str(expected)+', got '+str(status))
+              if name=='auth-health' and status==200:
+                  try:
+                      data=json.loads(body)
+                      if data.get('configured') is not True:failures.append('auth-health: configured not true')
+                  except Exception:failures.append('auth-health: invalid JSON')
+          if failures:raise SystemExit('FAIL: '+'; '.join(failures))
+          print('LIVE_HTTP_SMOKE_PASS')
+          PY
       - name: Confirm no public site or funds were modified
         run: echo "Build-only gate. Not a security audit. No production deployment."
