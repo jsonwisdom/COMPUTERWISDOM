@@ -1,0 +1,74 @@
+{
+  "receipt_id": "CWG-BUILDER-0002",
+  "version": "2",
+  "timestamp_utc": "2026-10-28T16:32:00Z",
+  "action": "APPEND_HOLD_RECEIPT",
+  "denominator": "Jason Wisdom",
+  "replay_engine": "Supreme Seymour",
+  "authorization": {
+    "human_confirm": "CONFIRM append HOLD receipt only — no deployment, no promotion",
+    "repo_write_request": "Can you add this to the repo",
+    "scope": "HOLD_RECEIPT_ONLY",
+    "deployment": false,
+    "promotion": false,
+    "wallet_signing": false,
+    "payments": false
+  },
+  "predecessor": {
+    "status": "PREDECESSOR_UNVERIFIED",
+    "note": "No verified v1 package bytes or content SHA-256 recovered. Conversational declaration only."
+  },
+  "seymour_replay": {
+    "replay_id": "SEYMOUR-CWG-BUILDER-0002-2026-10-28",
+    "v1_distinctions": "PASS",
+    "v2_hidden_coupling": "HOLD",
+    "v3_collision_preservation": "PASS",
+    "v4_resolution_attempts": "HOLD",
+    "aggregate": "HOLD",
+    "authority": false
+  },
+  "resolution_candidates": {
+    "R1": "REJECTED",
+    "R2": "REJECTED",
+    "R3": "LOCAL_OBSERVATION_ONLY"
+  },
+  "references": {
+    "classes_with_glasses": {
+      "path": "docs/classes-with-glasses/index.html",
+      "github_blob_sha": "a0a545a9b71561066ca6c7d309fa499a12fa881b",
+      "content_sha256_utf8": "8c3954d163bf833764dbf1d527537f7dd6c0fddc9601828648e0817371a4a060"
+    },
+    "prior_art": [
+      {
+        "name": "LINEAGE_APPEND_ONLY_V1",
+        "repo": "jsonwisdom/AL",
+        "attribution": "separately identified prior art"
+      },
+      {
+        "name": "Receipt Vault Append-Only Semantics V2",
+        "commit": "86e38cc03ae29570452193a8c0571f22fcec09d4",
+        "attribution": "separately identified prior art — not Builder v2"
+      }
+    ]
+  },
+  "contract_delta": "receipts/classes-with-glasses/BUILDER_CONTRACT_V2.md",
+  "invariants": {
+    "APPEND_ONLY": true,
+    "PRIVATE_COINBASE_DATA_PUBLICATION": false,
+    "AUTO_TRADING": false,
+    "WALLET_SIGNING_REQUIRED": false,
+    "PRODUCTION_DEPLOY": false,
+    "HUMAN_APPROVAL_REQUIRED": true,
+    "AUTHORITY_CREATED": false
+  },
+  "disposition": "HOLD",
+  "blockchain_proof": "HOLD",
+  "website_publishing": "HOLD",
+  "notes": [
+    "V2 HOLD — predecessor bytes not independently recovered",
+    "V4 HOLD — unresolved collision remains",
+    "Previous receipts immutable",
+    "No promotion performed",
+    "GitHub store and replay artifacts; GitHub does not make them true"
+  ]
+}
