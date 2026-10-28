@@ -11,11 +11,12 @@
   .stamp { display:inline-block; background:#3a1a1a; color:var(--red); padding:4px 10px; border-radius:4px; font-weight:700; letter-spacing:.05em; }
   .box { border:1px solid #29465f; border-radius:8px; padding:16px; margin:16px 0; background:#11263b; }
   code { word-break:break-all; color:var(--gold); }
-  button { background:#1a3a5c; color:var(--fg); border:1px solid var(--cyan); padding:10px 16px; border-radius:6px; cursor:pointer; font:inherit; }
+  button { background:#1a3a5c; color:var(--fg); border:1px solid var(--cyan); padding:10px 16px; border-radius:6px; cursor:pointer; font:inherit; margin-right:8px; }
   button:disabled { opacity:.5; cursor:not-allowed; }
   .warn { color:var(--red); }
   .ok { color:var(--green); }
   ul { margin:8px 0; padding-left:20px; }
+  .status { font-size:0.9rem; color:var(--muted); }
 </style>
 </head>
 <body>
@@ -40,9 +41,9 @@
   </ul>
 </div>
 
-<div class="box warn">
-  <strong>Not a verified project-specific signing URL.</strong><br>
-  Do not sign an unrelated wallet request. This local page is a candidate binding surface only. No chain action is performed by this page.
+<div class="box warn" id="origin-warning">
+  <strong>Secure origin required.</strong><br>
+  Wallet connection is disabled unless this page is served over HTTPS with a valid certificate for the current host. Localhost and file: origins are rejected.
 </div>
 
 <div class="box">
@@ -52,11 +53,23 @@
   <p id="note" class="muted"></p>
 </div>
 
+<div class="box">
+  <strong>Wallet connection (optional, acknowledgment only)</strong>
+  <p class="status" id="wallet-status">Wallet: not connected</p>
+  <p class="status" id="origin-status"></p>
+  <p class="status" id="hash-status"></p>
+  <button id="connect" type="button" disabled>Connect Wallet</button>
+  <button id="sign" type="button" disabled>Sign acknowledgment</button>
+  <button id="disconnect" type="button" disabled>Clear local session</button>
+  <p class="status">Clear local session only resets this page. It does not revoke wallet permissions. Revoke in the wallet app if needed.</p>
+  <p id="signature-result" class="status"></p>
+</div>
+
 <script>
-const HASH = "ff37fa8f7777be53c5d50ef28d426e9af0a5b1c7b1d9e553aaf77d566a78da2c";
+const EXPECTED_HASH = "ff37fa8f7777be53c5d50ef28d426e9af0a5b1c7b1d9e553aaf77d566a78da2c";
 const MESSAGE = [
   "COMPUTERWISDOM Audit Receipt v1.1 acknowledgment",
-  "SHA-256: " + HASH,
+  "SHA-256: " + EXPECTED_HASH,
   "Meaning: receipt acknowledged",
   "NOT production authorized",
   "NOT deployment",
@@ -69,14 +82,158 @@ const MESSAGE = [
 
 document.getElementById("message").textContent = MESSAGE;
 
+function toUtf8Hex(str) {
+  const encoder = new TextEncoder();
+  const bytes = encoder.encode(str);
+  let hex = "0x";
+  for (let i = 0; i < bytes.length; i++) {
+    hex += bytes[i].toString(16).padStart(2, "0");
+  }
+  return hex;
+}
+
+function hashValid() {
+  return document.getElementById("hash").textContent.trim() === EXPECTED_HASH;
+}
+
+function isSecureOrigin() {
+  if (window.location.protocol !== "https:") return false;
+  if (window.isSecureContext !== true) return false;
+  const host = window.location.hostname;
+  if (host === "localhost" || host === "127.0.0.1" || host === "::1") return false;
+  return true;
+}
+
+function canSign() {
+  return isSecureOrigin() && hashValid() && !!currentAccount;
+}
+
+function canConnect() {
+  return isSecureOrigin() && hashValid() && !currentAccount;
+}
+
+function updateGates() {
+  const secure = isSecureOrigin();
+  const hashOk = hashValid();
+  document.getElementById("origin-status").textContent = secure
+    ? "Secure origin: yes (HTTPS + isSecureContext, non-localhost)"
+    : "Insecure origin: wallet connection disabled (HTTPS required; localhost/file rejected).";
+  document.getElementById("hash-status").textContent = hashOk
+    ? "Hash binding: valid"
+    : "Hash mismatch: signing disabled.";
+  if (!hashOk) {
+    document.getElementById("origin-warning").innerHTML =
+      "<strong>Hash mismatch.</strong> Signing and connection are disabled.";
+  } else if (!secure) {
+    document.getElementById("origin-warning").innerHTML =
+      "<strong>Secure origin required.</strong><br>Wallet connection is disabled unless this page is served over HTTPS with a valid certificate. Localhost and file: origins are rejected.";
+  }
+  document.getElementById("connect").disabled = !canConnect();
+  document.getElementById("sign").disabled = !canSign();
+}
+
 document.getElementById("copy").addEventListener("click", async () => {
   try {
     await navigator.clipboard.writeText(MESSAGE);
-    document.getElementById("note").textContent = "Copied. This is an acknowledgment message only. Do not sign it on an unrelated request.";
+    document.getElementById("note").textContent = "Copied. This is an acknowledgment message only.";
   } catch (e) {
     document.getElementById("note").textContent = "Clipboard blocked. Select the message manually.";
   }
 });
+
+let currentAccount = null;
+let sessionGeneration = 0;
+
+function setStatus(text) {
+  document.getElementById("wallet-status").textContent = text;
+}
+
+function clearSignatureDisplay() {
+  document.getElementById("signature-result").textContent = "";
+}
+
+function setConnected(account) {
+  const previous = currentAccount;
+  currentAccount = account || null;
+  if (previous !== currentAccount) {
+    clearSignatureDisplay();
+    sessionGeneration++;
+  }
+  if (currentAccount) {
+    setStatus("Connected: " + currentAccount);
+    document.getElementById("disconnect").disabled = false;
+  } else {
+    setStatus("Wallet: not connected");
+    document.getElementById("disconnect").disabled = true;
+  }
+  updateGates();
+}
+
+async function connectWallet() {
+  if (!canConnect()) {
+    setStatus("Blocked: secure origin and valid hash required.");
+    updateGates();
+    return;
+  }
+  if (!window.ethereum) {
+    setStatus("No injected wallet found. Open this page in Coinbase Wallet or a browser with an injected provider.");
+    return;
+  }
+  try {
+    const accounts = await window.ethereum.request({ method: "eth_requestAccounts" });
+    setConnected(accounts[0] || null);
+  } catch (e) {
+    setStatus("Connection rejected or failed: " + (e.message || e));
+    setConnected(null);
+  }
+}
+
+async function signAcknowledgment() {
+  if (!canSign()) {
+    document.getElementById("signature-result").textContent =
+      "Blocked: secure origin, valid hash, and connected account required.";
+    updateGates();
+    return;
+  }
+  const accountAtStart = currentAccount;
+  const genAtStart = sessionGeneration;
+  const messageHex = toUtf8Hex(MESSAGE);
+  try {
+    const signature = await window.ethereum.request({
+      method: "personal_sign",
+      params: [messageHex, accountAtStart]
+    });
+    if (currentAccount !== accountAtStart || sessionGeneration !== genAtStart) {
+      return;
+    }
+    document.getElementById("signature-result").textContent =
+      "Signature (acknowledgment only): " + signature;
+  } catch (e) {
+    if (currentAccount !== accountAtStart || sessionGeneration !== genAtStart) {
+      return;
+    }
+    document.getElementById("signature-result").textContent =
+      "Signing rejected or failed: " + (e.message || e);
+  }
+}
+
+function clearLocalSession() {
+  setConnected(null);
+  document.getElementById("signature-result").textContent =
+    "Local session cleared. Wallet permissions were not revoked.";
+}
+
+if (window.ethereum && window.ethereum.on) {
+  window.ethereum.on("accountsChanged", (accounts) => {
+    setConnected(accounts && accounts[0] ? accounts[0] : null);
+  });
+}
+
+document.getElementById("connect").addEventListener("click", connectWallet);
+document.getElementById("sign").addEventListener("click", signAcknowledgment);
+document.getElementById("disconnect").addEventListener("click", clearLocalSession);
+
+updateGates();
 </script>
 </body>
 </html>
