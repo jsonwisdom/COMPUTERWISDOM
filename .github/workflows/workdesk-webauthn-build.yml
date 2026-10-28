@@ -29,6 +29,12 @@ jobs:
         run: node --test src/index.test.js
       - name: Bundle Cloudflare Worker without deploying
         run: npx wrangler deploy --dry-run --outdir ./bundle-validation
+      - name: Emit deployable bundled source to authenticated CI logs (no secrets)
+        run: |
+          npx esbuild bundle-validation/index.js --minify --target=es2022 --outfile=bundle-validation/index.min.js
+          echo CW_BUNDLE_BEGIN
+          base64 -w 4096 bundle-validation/index.min.js | sed 's/^/CWCHUNK:/'
+          echo CW_BUNDLE_END
       - name: Store compiled Worker bundle as build artifact
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
