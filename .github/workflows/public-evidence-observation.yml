@@ -59,6 +59,20 @@ jobs:
 
           # A HEAD check only establishes endpoint reachability, never ledger correctness.
           sol=fetch("https://api.mainnet-beta.solana.com",method="HEAD")
+          rpc={}
+          for method in ("getHealth","getEpochInfo"):
+              payload=json.dumps({"jsonrpc":"2.0","id":1,"method":method}).encode("utf-8")
+              req=urllib.request.Request("https://api.mainnet-beta.solana.com",data=payload,headers={"Content-Type":"application/json","User-Agent":"jsonwisdom-readonly-observation/0.2"},method="POST")
+              try:
+                  with urllib.request.urlopen(req,timeout=12,context=ssl.create_default_context()) as response:
+                      document=json.loads(response.read(100000))
+                      if document.get("error"):
+                          rpc[method]={"status":"HOLD","rpc_error":document["error"]}
+                      else:
+                          rpc[method]={"status":"OBSERVED","result":document.get("result"),"http_status":response.status}
+              except Exception as e:
+                  rpc[method]={"status":"HOLD","error_type":type(e).__name__}
+
           data={
             "schema":"JSONWisdom-Public-Observation-V0.1",
             "observed_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),
@@ -70,6 +84,8 @@ jobs:
             "public_inventory_errors":inventory_errors,
             "sites":sites,
             "solana_rpc_reachability_only":{k:v for k,v in sol.items() if k!="body"},
+            "solana_readonly_rpc_observations":rpc,
+            "solana_finality_independently_verified":False,
             "flywheel_x402_settlement":"NOT_TESTED",
             "flywheel_production_deployment":"NOT_VERIFIED",
             "wallet_signing":"NONE",
