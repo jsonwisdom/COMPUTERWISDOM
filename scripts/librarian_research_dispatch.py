@@ -43,7 +43,9 @@ if token:
             item=max(valid,key=lambda a:a["id"])
             blob=github(item["archive_download_url"])
             with zipfile.ZipFile(io.BytesIO(blob)) as archive:
-                raw=archive.read("cases.json")
+                members=[n for n in archive.namelist() if n.endswith("/cases.json") or n=="cases.json"]
+                if not members:raise KeyError("cases.json not in prior artifact")
+                raw=archive.read(members[0])
                 if len(raw)>8_000_000:raise ValueError("oversized historical ledger")
                 prior=json.loads(raw)
             baseline={"state":"READ","artifact_id":item["id"],"cases":prior}
