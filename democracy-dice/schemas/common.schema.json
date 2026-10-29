@@ -1,0 +1,10 @@
+{ "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json",
+  "$defs": {
+    "sha256": { "type": "string", "pattern": "^sha256:[0-9a-f]{64}$" },
+    "label": { "enum": ["LIVE", "MOCK", "SYNTHETIC", "LIVE_UNAVAILABLE"] },
+    "status": { "const": "HOLD" },
+    "authority": { "const": false },
+    "finalAuthority": { "const": "JASON" },
+    "die": { "type": "integer", "minimum": 1, "maximum": 6 },
+    "isoTime": { "type": "string", "format": "date-time" }
+  } }

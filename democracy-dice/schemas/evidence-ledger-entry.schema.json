@@ -1,0 +1,13 @@
+{ "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "evidence-ledger-entry", "title": "EvidenceLedgerEntry", "type": "object", "additionalProperties": false,
+  "required": ["type","seq","prevDigest","kind","contentDigest","content","dataLabel","entryDigest","AUTHORITY_CREATED"],
+  "properties": {
+    "type": {"const":"EvidenceLedgerEntry"},
+    "seq": {"type":"integer","minimum":0},
+    "prevDigest": {"anyOf":[{"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/sha256"},{"const":"GENESIS"}]},
+    "kind": {"enum":["ROLL","REPLAY","FINANCE_PROVENANCE","SOURCE_AVAILABILITY","APPROVAL","NOTE"]},
+    "contentDigest": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/sha256"},
+    "content": {"type":"object"},
+    "dataLabel": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/label"},
+    "entryDigest": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/sha256"},
+    "AUTHORITY_CREATED": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/authority"}
+  } }

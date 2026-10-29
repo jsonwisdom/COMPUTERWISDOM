@@ -1,0 +1,14 @@
+{
+  "name": "democracy-dice",
+  "version": "1.6.0-hold",
+  "private": true,
+  "description": "Democracy Dice v1.6 implementation. STATUS=HOLD. AUTHORITY_CREATED=false. FINAL_AUTHORITY=JASON.",
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test --test-concurrency=1 test/",
+    "evidence": "node scripts/run-evidence.mjs"
+  },
+  "dependencies": { "ajv": "8.17.1", "ajv-formats": "3.0.1" },
+  "license": "MIT"
+}

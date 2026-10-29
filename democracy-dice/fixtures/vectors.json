@@ -1,0 +1,9 @@
+{
+  "AUTHORITY_CREATED": false,
+  "vectors": [
+    {"id": "TV-001", "file": "TV-001.json", "expected": "sha256:4d576d03882834f86fbb2a8bf44bdc271e1deddf0873f7aa681e330f22ca6836", "objectStatus": "SEARCH_MISS"},
+    {"id": "TV-002", "file": "TV-002.json", "expected": "sha256:492445467a47b08155cb4cc6564e4823fd86ad390e5f657fcc8dabd0b52603fe", "objectStatus": "SEARCH_MISS"},
+    {"id": "SYN-001", "file": "SYN-001.json", "expected": "sha256:e9709c411e0bebcef268bff3cf3c38a0d0dff57ff731a93a61a5a342418659dd", "objectStatus": "SYNTHETIC"},
+    {"id": "SYN-002", "file": "SYN-002.json", "expected": "sha256:14cfa76eff37bd0fdebfb52b16ba6710e4ef6ab4b7705d7ef3177b9e6a5c0eff", "objectStatus": "SYNTHETIC"}
+  ]
+}
