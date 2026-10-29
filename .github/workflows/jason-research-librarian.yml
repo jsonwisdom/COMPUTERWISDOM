@@ -1,0 +1,49 @@
+name: Jason Research Librarian — Dispatch Replay Ledger
+on:
+  pull_request:
+    paths:
+      - 'scripts/audit_hold_inventory.py'
+      - 'scripts/librarian_research_dispatch.py'
+      - '.github/workflows/jason-research-librarian.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '45 9 * * *'
+permissions:
+  contents: read
+  actions: read
+jobs:
+  librarian:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Check out evidence
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Compute HOLD inventory
+        run: python3 scripts/audit_hold_inventory.py
+      - name: Dispatch cases and compare previous run
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 scripts/librarian_research_dispatch.py
+      - name: Report successes, failures and HOLDs
+        run: |
+          python3 - <<'PY'
+          import json,os
+          s=json.load(open('research-ledger/report.json'))
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('# Jason Research Librarian — evidence ledger\n\n')
+              f.write(f"**{s['case_count']} candidate status lines dispatched for triage.**\n\n")
+              for k,v in s['assignments'].items():f.write(f"- {k}: {v}\n")
+              f.write(f"\nBaseline: {s['prior_artifact']['state']} | Continuing candidates: {s['comparison']['continuing_candidates']}\n")
+              f.write('\n**PASS** inventory/dispatch computation. **HOLD** source research, independent proofs, case closure and any financial authority. No claim that bots independently investigated.\n')
+          PY
+      - name: Persist replayable ledger
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: school-of-wisdom-research-ledger
+          path: |
+            hold-inventory/
+            research-ledger/
+          if-no-files-found: error
