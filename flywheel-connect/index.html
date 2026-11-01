@@ -33,13 +33,21 @@ function select(){
  throw Error(list.length>1?'Multiple wallets detected. Open this page inside the intended wallet app.':'No wallet provider found. Tap “Open in Coinbase Wallet”, or paste this page into the wallet app browser.');
 }
 $('connect').onclick=async()=>{
- $('connect').disabled=true;clear();const attempt=epoch;
+ $('connect').disabled=true;clear();
  try{
  const selected=select();
- if(provider!==selected){provider=selected;provider.on?.('accountsChanged',clear);provider.on?.('chainChanged',clear);}
- const accounts=await provider.request({method:'eth_requestAccounts'});
- const chain=await provider.request({method:'eth_chainId'});
- if(attempt!==epoch)throw Error('Wallet changed during connection. Connect again.');
+ if(provider!==selected){provider=selected;provider.on?.('accountsChanged',clear);provider.on?.('chainChanged',clear);provider.on?.('disconnect',clear);}
+ await provider.request({method:'eth_requestAccounts'});
+ // Initial authorization may emit accountsChanged. Read a fresh, stable
+ // snapshot after it completes instead of rejecting that expected event.
+ let accounts,chain,stable=false;
+ for(let retry=0;retry<3;retry++){
+ const snapshotEpoch=epoch;
+ accounts=await provider.request({method:'eth_accounts'});
+ chain=await provider.request({method:'eth_chainId'});
+ if(snapshotEpoch===epoch){stable=true;break;}
+ }
+ if(!stable)throw Error('Wallet is still changing. Wait a moment, then connect again.');
  const address=accounts?.[0];if(!/^0x[0-9a-f]{40}$/i.test(address||''))throw Error('No valid wallet address returned.');
  const chainId=Number(BigInt(chain));const match=address.toLowerCase()===EXPECTED.toLowerCase();
  record={format:'FLYWHEEL_CONNECTION_OBSERVATION_V1',connected_address:address,expected_address:EXPECTED,address_match:match,chain_id:chainId,base_mainnet:chainId===8453,observed_at:new Date().toISOString(),page:canonical,signature_verified:false,exchange_account_connected:false,transaction_requested:false,server_configuration_changed:false};
