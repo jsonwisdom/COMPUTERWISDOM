@@ -63,9 +63,17 @@ $('connect').onclick=async()=>{
  const freshAccounts=await provider.request({method:'eth_accounts'});
  const freshChain=await provider.request({method:'eth_chainId'});
  if(attempt!==epoch)throw Error('Wallet changed during connection. Connect again.');
- const address=freshAccounts?.[0]||accounts?.[0];
+ // Fail-closed: require nonempty fresh account list
+ if(!Array.isArray(freshAccounts)||freshAccounts.length===0)throw Error('No valid wallet address returned.');
+ const address=freshAccounts[0];
  if(!/^0x[0-9a-f]{40}$/i.test(address||''))throw Error('No valid wallet address returned.');
- const chainId=Number(BigInt(freshChain||chain));
+ // Compare directly with the account returned by eth_requestAccounts
+ if(accounts?.[0]&&accounts[0].toLowerCase()!==address.toLowerCase())throw Error('Wallet changed during connection. Connect again.');
+ // Reject any mismatch between initial and freshly observed chain IDs
+ const initialChainId=Number(BigInt(chain));
+ const freshChainId=Number(BigInt(freshChain||chain));
+ if(chain&&freshChain&&initialChainId!==freshChainId)throw Error('Wallet changed during connection. Connect again.');
+ const chainId=freshChainId;
  // If pendingChange fired, verify the final state matches the returned values; reject only genuine mismatch
  if(pendingChange){
   const finalAccounts=await provider.request({method:'eth_accounts'});
