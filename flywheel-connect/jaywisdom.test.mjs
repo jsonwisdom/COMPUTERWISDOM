@@ -13,7 +13,7 @@ const WRONG=new Wallet('0x'+'88'.repeat(32));
 const REAL='0xa380552a27b0a5a2874ea7aa52cac09f542002e8';
 const ERC1271=new Interface(['function isValidSignature(bytes32,bytes) view returns (bytes4)']);
 const EXPECTED_DECL="const EXPECTED='"+REAL+"';";
-function harness({owner=SYNTHETIC,wrong=false,smart=false,contractValid=true,abort=false,correctOrigin=true,initialChain='0x1'}={}){
+function harness({owner=SYNTHETIC,wrong=false,smart=false,contractValid=true,abort=false,correctOrigin=true,initialChain='0x1',changeDuringIndex=false}={}){
   const ids=['connect','sign','notice','account','preview','previewWrap',
     'proofHero','proofAddress','proofMethod','proofDigest','index','indexList','indexStatus','copyReceipt','receiptView'];
   const els=Object.fromEntries(ids.map(id=>{
@@ -69,7 +69,10 @@ function harness({owner=SYNTHETIC,wrong=false,smart=false,contractValid=true,abo
       children:[],append(...args){this.children.push(...args)}};
   }};
   const manifest={...INDEX,basename_controller:owner.address.toLowerCase()};
-  const fetch=async()=>({ok:true,json:async()=>manifest});
+  const fetch=async()=>{
+    if(changeDuringIndex){address=WRONG.address;emitted.accountsChanged?.([address]);}
+    return {ok:true,json:async()=>manifest};
+  };
   let clipboard='';
   const navigator={clipboard:{async writeText(value){clipboard=value}}};
   class Event{constructor(type){this.type=type}}
@@ -171,4 +174,15 @@ test('M8 signed receipt exists only after validation, is copyable by explicit us
   await h.copy();
   assert.equal(JSON.parse(h.getClipboard()).typed_data_digest,receipt.typed_data_digest);
   assert.ok(!h.calls.some(x=>/sendTransaction|personal_sign|wallet_sendCalls/.test(x.method)));
+});
+
+test('M9 wallet account changed during async index fetch clears the already verified badge and receipt immediately',async()=>{
+  const h=harness({changeDuringIndex:true});
+  await h.connect();await h.sign();
+  assert.equal(h.els.proofHero.hidden,true);
+  assert.equal(h.els.index.hidden,true);
+  assert.equal(h.els.copyReceipt.hidden,true);
+  assert.equal(h.els.receiptView.textContent,'');
+  assert.equal(h.els.indexList.children.length,0);
+  assert.match(h.els.notice.textContent,/Wallet or network changed/);
 });
