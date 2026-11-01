@@ -1,0 +1,105 @@
+{
+  "schema": "COINBASEKID_PUBLIC_RECOVERY_INDEX_V1",
+  "version": "1.0.0",
+  "created_utc": "2026-11-01",
+  "project": "Computer Wisdom / CoinBaseKid / Classes with Glasses",
+  "website": "https://wallet.jsonwisdom.com/jaywisdom",
+  "public_repository": "https://github.com/jsonwisdom/COMPUTERWISDOM",
+  "basename": "jaywisdom.base.eth",
+  "basename_controller": "0xa380552a27b0a5a2874ea7aa52cac09f542002e8",
+  "desktop_signer": "0x0f7018fea1dc9ba32ae817d896211f72f1197ad8",
+  "cryptographic_status": "FRESH_MOBILE_SIGNATURE_MUST_BE_PERFORMED_BY_USER",
+  "reputation_status": "NOT_CERTIFIED",
+  "publication_status": "PUBLIC_READ_ONLY_LINKS;NO_AUTOMATIC_SIGNATURE_OR_GITHUB_WRITE",
+  "scope": "Evidence catalog only. No account recovery, no wallet custody, no login, no payment, no GitHub write rights.",
+  "audit_rule": "New claims must reference dated source evidence and preserve older assertions; an unresolved claim stays OPEN, a HOLD stays HOLD until explicitly approved.",
+  "append_only": {
+    "design_intent": "Append dated, source-anchored claims instead of rewriting history",
+    "cryptographically_enforced": false,
+    "git_commit_history_is_not_unconditionally_immutable": true,
+    "automatic_private_signature_publication": false
+  },
+  "layers": [
+    {
+      "id": "01",
+      "title": "The penny: Base USDC self-transfer",
+      "status": "USER_REPORTED_SUCCESS",
+      "why": "The user supplied BaseScan receipt: 0.01 USDC sent from jaywisdom.base.eth to itself via one account-abstraction UserOp. Explorer receipt has not been independently rechecked in this index.",
+      "url": "https://basescan.org/tx/0x076b073b4481ef38ea0c68327206b1c5a00a60e8acb774027a6ba6a87851fd0a",
+      "source": "USER_SUPPLIED_BASESCAN_TX",
+      "evidence_type": "onchain_tx_receipt"
+    },
+    {
+      "id": "02",
+      "title": "Basename controller binding: still unsigned",
+      "status": "PENDING",
+      "why": "Repository V2 prepared binding links jaywisdom.base.eth with controller 0xA380... but explicitly says SHOW_WALLET_PROOF=PENDING and PREPARED_NOT_SIGNED.",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/8f253bcc99872da0b0ccb1f7c26da84d6b706caa/receipts/wallet_binding_v2.md",
+      "source": "receipts/wallet_binding_v2.md",
+      "evidence_type": "prepared_unsigned_receipt"
+    },
+    {
+      "id": "03",
+      "title": "Original desktop EIP-712 v2 wallet-control tests",
+      "status": "CI_PASS",
+      "why": "Merged PR #719 pins Base 8453, origin, domain name/version/salt and the separate desktop signer. This does not authorize the @jaywisdom controller account.",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/719",
+      "source": "PR_719",
+      "evidence_type": "merged_automated_tests"
+    },
+    {
+      "id": "04",
+      "title": "§4 Replay ledger and signature ordering",
+      "status": "CI_PASS_LOCAL_SCOPE",
+      "why": "Merged PR #720 verified cryptographic-before-DB ordering, nonce replay rejection and atomic SQLite writes. Single-host ledger; no cross-instance protection.",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/720",
+      "source": "PR_720",
+      "evidence_type": "merged_automated_tests"
+    },
+    {
+      "id": "05",
+      "title": "§5a Independent witness candidate",
+      "status": "CI_PASS_ACTIVATION_HOLD",
+      "why": "Merged PR #721: distinct synthetic witness role; zero real-world witness identities enrolled; created block provenance OPEN.",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/721",
+      "source": "PR_721",
+      "evidence_type": "merged_automated_tests"
+    },
+    {
+      "id": "06",
+      "title": "§5b Recipient-only encrypted export candidate",
+      "status": "CI_PASS_ACTIVATION_HOLD",
+      "why": "Merged PR #722 tested X25519/AES-GCM encryption and wrong-key failure. No real export authority, recipient-key identity chain or HTTP export.",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/722",
+      "source": "PR_722",
+      "evidence_type": "merged_automated_tests"
+    },
+    {
+      "id": "07",
+      "title": "REPLAY 008: operational trust policies",
+      "status": "DRAFT_UNAPPROVED",
+      "why": "Merged PR #723 documents proposed finality and DID binding policy, but no approver, verified trust roots or recipient enrollment.",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/723",
+      "source": "PR_723",
+      "evidence_type": "published_draft_policy"
+    },
+    {
+      "id": "08",
+      "title": "Wallet-control story: local proof only",
+      "status": "LOCAL_PROOF_ONLY",
+      "why": "This page creates a fresh Base-domain signature in your wallet and checks EOA recovery or deployed ERC-1271. It never uploads signatures or changes GitHub access; verification is only on this device.",
+      "url": "https://wallet.jsonwisdom.com/jaywisdom",
+      "source": "COINBASEKID_MOBILE_PROOF_V1",
+      "evidence_type": "browser_local_signature_check"
+    },
+    {
+      "id": "09",
+      "title": "x402 checkout, settlement and iPhone authorization",
+      "status": "HOLD",
+      "why": "G2–G7 and the payment/checkout specification remain unverified and unapproved. A wallet-control signature cannot authorize a charge.",
+      "url": "https://github.com/jsonwisdom/flywheel-of-wisdom/pull/7",
+      "source": "FLYWHEEL_X402_HOLD",
+      "evidence_type": "security_gate"
+    }
+  ]
+}
