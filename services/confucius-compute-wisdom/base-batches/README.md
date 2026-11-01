@@ -66,3 +66,10 @@ Future multi-instance support requires an independently reviewed centralized tra
 
 This review also confirms the stronger invalid-proof ordering assertion: the test checks SQLite `consumed_nonces` counts before and after tampering **and** asserts that a fresh, invalid EIP-712 proof leaves no SQLite, WAL or SHM file. The production code returns `PROOF_INVALID` before `openDb()` and before `BEGIN IMMEDIATE`.
 
+
+## REPLAY 007 operational trust specifications (review-only)
+
+- [Base finality/reorg and creator provenance policy](REPLAY007_BASE_FINALITY_POLICY.md) — proposed N=12 *plus* finalized L2 head and matching block hash; observation and finality are distinct; signed creator provenance and independently enrolled witness remain OPEN. This is a **candidate**, not an approved operational finality threshold.
+- [Recipient identity → X25519 key binding specification](REPLAY007_RECIPIENT_KEY_BINDING_SPEC.md) — require a controller-signed DID-to-key fingerprint chain and reject a substituted database key before encryption; transport ACL remains deployment-time OPEN.
+
+**Code complete; operational trust roots not established.** These documentation-only specifications do not activate signing, exporting, publishing, multi-instance nonce coordination or x402 payments. Production remains HOLD.
