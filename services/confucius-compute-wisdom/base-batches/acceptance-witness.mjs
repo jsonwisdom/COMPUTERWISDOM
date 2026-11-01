@@ -167,6 +167,10 @@ function inspectPublication(bundle,{dbPath:sqliteFile,nowSec=Math.floor(Date.now
     if(bundle?.publication!==true)throw Error('PUBLICATION_NOT_REQUESTED');
     const base={...bundle,publication:false};
     const context=validateInputs(base,nowSec,db);
+    // Orphan publication is an explicit NO_WITNESS, including databases where
+    // the witness tables have never been created. Do not leak SQL internals.
+    const witnessTable=db.prepare("SELECT 1 FROM sqlite_master WHERE type='table' AND name='witness_attestations'").get();
+    if(!witnessTable)throw Error('NO_WITNESS');
     const row=db.prepare("SELECT * FROM witness_attestations WHERE root=?").get(bundle.root);
     if(!row)throw Error('NO_WITNESS');
     if(row.witness_signer!==address(base.witnesses[0].expectedSigner)||
