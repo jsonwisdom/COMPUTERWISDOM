@@ -24,13 +24,16 @@
   const accountLabel=$('account'),preview=$('preview'),previewWrap=$('previewWrap');
   const proofHero=$('proofHero'),proofAddress=$('proofAddress'),proofMethod=$('proofMethod'),proofDigest=$('proofDigest');
   const index=$('index'),indexList=$('indexList'),indexStatus=$('indexStatus');
+  const copyButton=$('copyReceipt'),receiptView=$('receiptView');
   const known=new Map();
   let provider=null,connection=null,challenge=null,busy=false,epoch=0,changes=0;
+  let lastReceipt=null;
   const same=(a,b)=>String(a||'').toLowerCase()===String(b||'').toLowerCase();
   const err=e=>String(e?.message||e||'Unknown wallet error').slice(0,320);
   function message(s,kind=''){notice.textContent=s;notice.className='notice '+kind;}
   function reset(s='Disconnected. No signature requested.'){
-    epoch++;connection=null;challenge=null;proofHero.hidden=true;index.hidden=true;
+    epoch++;connection=null;challenge=null;lastReceipt=null;proofHero.hidden=true;index.hidden=true;
+    copyButton.hidden=true;receiptView.hidden=true;receiptView.textContent='';
     indexList.replaceChildren();indexStatus.textContent='Waiting for local proof.';
     signButton.disabled=true;signButton.hidden=true;previewWrap.hidden=true;
     preview.textContent='';accountLabel.textContent='';
@@ -203,6 +206,19 @@
         throw Error('Account, network or challenge changed. No verified proof.');
       proofAddress.textContent=EXPECTED;proofMethod.textContent=proof.method;
       proofDigest.textContent=proof.digest;
+      lastReceipt={
+        schema:'COINBASEKID_JAYWISDOM_LOCAL_SIGNED_RECEIPT_V1',
+        claimed_basename:'jaywisdom.base.eth',account:EXPECTED,
+        chain_id:CHAIN,verification_method:proof.method,
+        typed_data:request.typedData,signature,typed_data_digest:proof.digest,
+        locally_verified_at:new Date().toISOString(),
+        backend_witnessed:false,issuer_nonce_confirmed:false,
+        identity_certified:false,reputation_certified:false,
+        export_approved:false,payment_authority:false,
+        note:'Copied manually by wallet user if desired. A self-reported local receipt is not independently time-attested or globally replay-proof.'
+      };
+      copyButton.hidden=false;receiptView.hidden=false;
+      receiptView.textContent=JSON.stringify(lastReceipt,null,2);
       proofHero.hidden=false;index.hidden=false;
       message('Locally verified. Your public evidence index is open below. No funds moved.','ok');
       await revealIndex(attempt);
@@ -217,5 +233,13 @@
   }
   connectButton.addEventListener('click',connect);
   signButton.addEventListener('click',sign);
+  copyButton.addEventListener('click',async()=>{
+    if(!lastReceipt)return;
+    try{
+      if(!navigator?.clipboard?.writeText)throw Error('Clipboard unavailable');
+      await navigator.clipboard.writeText(JSON.stringify(lastReceipt,null,2));
+      message('Signed receipt copied. Share it only if you choose; GitHub remains unchanged.','ok');
+    }catch(e){message('Clipboard unavailable. Select the visible receipt text to copy it manually.','bad');}
+  });
   announce();
 })();
