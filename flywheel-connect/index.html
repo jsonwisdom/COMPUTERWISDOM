@@ -7,7 +7,7 @@
 <button id="connect" class="secondary">2 · Connect wallet</button>
 <details><summary>App did not open?</summary><p>Copy this page link and paste it into your wallet’s app browser. The Coinbase exchange app does not expose a wallet provider here.</p><a id="scheme">Try the iPhone app link</a><button id="copy" class="secondary">Copy page link</button></details>
 <section aria-live="polite"><strong id="status">Not connected</strong><p id="limit">Connection shares your public address. It does not prove wallet control by signature or connect your exchange account.</p><p id="feedback" role="status">After connecting, save or copy your local JSON receipt.</p></section>
-<button id="download" class="secondary" disabled>3 · Share / save connection record</button><section id="receiptPanel" hidden><small>LOCAL RECORD · JSON</small><p>The record stays on this device unless you choose to share or save it.</p><textarea id="receiptText" readonly aria-label="Connection record JSON"></textarea><button id="copyRecord" class="secondary">Copy record JSON</button><button id="downloadFile" class="secondary">Download JSON file (desktop)</button></section>
+<button id="download" class="secondary" disabled>3 · Show JSON connection record</button><section id="receiptPanel" hidden><small>LOCAL RECORD · JSON</small><p>The record stays on this device unless you choose to copy, share, or save it. For ChatGPT: tap Copy JSON, return to your conversation, and paste it. Some iPhone share destinations silently drop attachments.</p><textarea id="receiptText" readonly aria-label="Connection record JSON"></textarea><button id="copyRecord" class="secondary">4 · Copy JSON for ChatGPT / Notes</button><button id="shareText" class="secondary">Share JSON text (optional)</button><button id="downloadFile" class="secondary">Download JSON file (desktop)</button></section>
 <p>No seed phrase, API key, message signature, transaction, or token approval is requested. Nothing is uploaded by this page. Your local Flywheel settings are not changed.</p></main>
 <script>
 'use strict';
@@ -118,19 +118,23 @@ async function copyText(text){
 $('open').onclick=e=>{if(window.ethereum||discovered.size){e.preventDefault();message('A wallet provider is already available. Use step 2 to refresh your wallet observation.');}};
 $('scheme').onclick=e=>{if(window.ethereum||discovered.size){e.preventDefault();message('Already in a wallet-enabled browser. Use step 2.');}};
 $('copy').onclick=async()=>{const ok=await copyText(canonical);message(ok?'Wallet page link copied.':'Copy is blocked in this browser. Copy the URL from the address bar.');$('copy').textContent=ok?'Page link copied':'Copy page link';};
-$('download').onclick=async()=>{
+
+$('download').onclick=()=>{
  const json=revealRecord();if(!json)return;
- message('Receipt displayed below. Use Copy record JSON, or the iPhone share sheet if supported.');
- if(typeof navigator.share!=='function')return;
+ message('Full JSON is visible below. Tap Copy JSON for ChatGPT / Notes, then paste it. This button does not open the iPhone share sheet.');
+};
+$('shareText').onclick=async()=>{
+ const json=revealRecord();if(!json)return;
+ if(typeof navigator.share!=='function'){
+  message('Share sheet unavailable. Use Copy JSON and paste into your destination.');return;
+ }
  try{
-  let data={title:'Flywheel wallet connection record',text:json};
-  if(typeof File==='function'&&typeof navigator.canShare==='function'){
-   const file=new File([json],'flywheel-wallet-connection.json',{type:'application/json'});
-   if(navigator.canShare({files:[file]}))data={title:'Flywheel wallet connection record',files:[file]};
-  }
-  await navigator.share(data);
-  message('Share sheet closed. Check the app where you chose to save it. JSON remains visible below.');
- }catch(e){message(e?.name==='AbortError'?'Share canceled. JSON remains visible below.':'Sharing unavailable. Use Copy record JSON below.');}
+  // Send TEXT ONLY. iOS share targets may import only the title of a mixed file+title payload.
+  await navigator.share({text:json});
+  message('Share dialog closed. Verify the destination received the full JSON; otherwise use Copy JSON.');
+ }catch(e){
+  message(e?.name==='AbortError'?'Share canceled. JSON remains visible.':'This app did not accept the shared JSON. Use Copy JSON instead.');
+ }
 };
 $('copyRecord').onclick=async()=>{
  const json=revealRecord();if(!json)return;
