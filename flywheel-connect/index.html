@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="dark"><title>Flywheel · Connect wallet</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#101a29;color:#ecf1f7;font:17px/1.6 system-ui,sans-serif;padding:32px 20px}main{max-width:530px;margin:5vh auto}small{color:#a6bad0;letter-spacing:.08em}h1{font:500 42px/1.1 Georgia,serif;margin:20px 0}p{color:#bfccdc}section{border:1px solid #354860;padding:22px;border-radius:20px;margin:25px 0;background:#17263a}code{display:block;overflow-wrap:anywhere;font-size:14px;color:#dfc38e}button,.button{display:block;width:100%;border:0;border-radius:13px;background:#d7bb86;color:#101a29;font:600 17px system-ui;padding:17px;margin:13px 0;text-align:center;text-decoration:none;cursor:pointer}button:disabled{opacity:.5}.secondary{background:#263c56;color:#eef4fb}#status{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#cbdcf1}button:focus-visible,a:focus-visible{outline:3px solid white;outline-offset:4px}</style></head>
+<body><main><small>COMPUTER WISDOM / FLYWHEEL</small><h1>Your wallet.<br>Your connection.</h1><p>Open this page inside Coinbase Wallet / Base app, then connect your existing wallet.</p>
+<section><small>EXPECTED RECEIVING ADDRESS</small><code id="expected"></code><p>Base mainnet · chain 8453</p></section>
+<a id="open" class="button">1 · Open in Coinbase Wallet</a>
+<button id="connect" class="secondary">2 · Connect wallet</button>
+<details><summary>App did not open?</summary><p>Copy this page link and paste it into your wallet’s app browser. The Coinbase exchange app does not expose a wallet provider here.</p><a id="scheme">Try the iPhone app link</a><button id="copy" class="secondary">Copy page link</button></details>
+<section aria-live="polite"><strong id="status">Not connected</strong><p id="limit">Connection shares your public address. It does not prove wallet control by signature or connect your exchange account.</p></section>
+<button id="download" class="secondary" disabled>Save connection record</button>
+<p>No seed phrase, API key, message signature, transaction, or token approval is requested. Nothing is uploaded by this page. Your local Flywheel settings are not changed.</p></main>
+<script>
+'use strict';
+const EXPECTED='0x0F7018fea1dc9ba32aE817D896211f72f1197AD8';
+const $=id=>document.getElementById(id);
+const canonical=location.origin+location.pathname;
+$('expected').textContent=EXPECTED;
+$('open').href='https://go.cb-w.com/dapp?cb_url='+encodeURIComponent(canonical);
+$('scheme').href='cbwallet://dapp?url='+encodeURIComponent(canonical);
+let provider=null,record=null,epoch=0;
+const discovered=new Map();
+window.addEventListener('eip6963:announceProvider',e=>{if(e.detail?.provider?.request&&e.detail?.info?.uuid)discovered.set(e.detail.info.uuid,e.detail);});
+window.dispatchEvent(new Event('eip6963:requestProvider'));
+function clear(){epoch++;record=null;$('download').disabled=true;$('status').textContent='Wallet or network changed. Connect again to refresh.';}
+function select(){
+ const cb=[...discovered.values()].filter(x=>/coinbase|base/i.test(x.info.rdns+' '+x.info.name));
+ if(cb.length===1)return cb[0].provider;
+ const injected=window.ethereum;
+ const list=injected?.providers|| (injected?[injected]:[]);
+ const marked=list.filter(x=>x.isCoinbaseWallet);
+ if(marked.length===1)return marked[0];
+ if(list.length===1)return list[0];
+ throw Error(list.length>1?'Multiple wallets detected. Open this page inside the intended wallet app.':'No wallet provider found. Tap “Open in Coinbase Wallet”, or paste this page into the wallet app browser.');
+}
+$('connect').onclick=async()=>{
+ $('connect').disabled=true;clear();const attempt=epoch;
+ try{
+ const selected=select();
+ if(provider!==selected){provider=selected;provider.on?.('accountsChanged',clear);provider.on?.('chainChanged',clear);}
+ const accounts=await provider.request({method:'eth_requestAccounts'});
+ const chain=await provider.request({method:'eth_chainId'});
+ if(attempt!==epoch)throw Error('Wallet changed during connection. Connect again.');
+ const address=accounts?.[0];if(!/^0x[0-9a-f]{40}$/i.test(address||''))throw Error('No valid wallet address returned.');
+ const chainId=Number(BigInt(chain));const match=address.toLowerCase()===EXPECTED.toLowerCase();
+ record={format:'FLYWHEEL_CONNECTION_OBSERVATION_V1',connected_address:address,expected_address:EXPECTED,address_match:match,chain_id:chainId,base_mainnet:chainId===8453,observed_at:new Date().toISOString(),page:canonical,signature_verified:false,exchange_account_connected:false,transaction_requested:false,server_configuration_changed:false};
+ $('status').textContent=(match?'Address matches':'Different wallet address')+'\n'+address+'\n'+(chainId===8453?'Base mainnet selected':'Current chain: '+chainId+' · Base mainnet expected')+'\nSignature proof: not performed';
+ $('download').disabled=false;
+ }catch(e){$('status').textContent=e.code===4001?'Connection declined. You can try again.':e.message||'Connection failed';}
+ finally{$('connect').disabled=false;}
+};
+$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(canonical);$('copy').textContent='Link copied';}catch{$('status').textContent='Copy the page URL from your browser address bar.';}};
+$('download').onclick=()=>{if(!record)return;const url=URL.createObjectURL(new Blob([JSON.stringify(record,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='flywheel-wallet-connection.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);};
+</script></body></html>
