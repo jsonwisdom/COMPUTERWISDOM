@@ -1,0 +1,23 @@
+{
+  "schema": "COINBASEKID_PRIVATE_EXPORT_POLICY_V1",
+  "version": "1.0.0",
+  "productionEnabled": false,
+  "authorizedExportAuthorities": [],
+  "externalAuthorityVerification": "NOT_ESTABLISHED",
+  "domain": {
+    "name": "CoinBaseKid Scoped Proof Bundle Export",
+    "version": "1",
+    "chainId": 8453,
+    "salt": "0xf3921894e03776c88fc680f62dfa1224a64b66fa0686bfd5dca48349e4ac9877"
+  },
+  "origin": "https://wallet.jsonwisdom.com",
+  "purpose": "Read-only encrypted bundle export; no token, DNS/ENS, API or payment authority",
+  "maxLifetimeSeconds": 300,
+  "allowedScopes": [
+    "root_only",
+    "proofs_only",
+    "full"
+  ],
+  "crypto": "X25519+HKDF-SHA256+AES-256-GCM",
+  "note": "Recipient DID/0x label must be bound out-of-band to X25519 public key. No external identity is established in this prototype. Production export remains HOLD until an independent witness and export authority are configured."
+}
