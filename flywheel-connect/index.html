@@ -2,7 +2,7 @@
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="dark"><title>Flywheel · Connect wallet</title>
 <style>*{box-sizing:border-box}body{margin:0;background:#101a29;color:#ecf1f7;font:17px/1.6 system-ui,sans-serif;padding:32px 20px}main{max-width:530px;margin:5vh auto}small{color:#a6bad0;letter-spacing:.08em}h1{font:500 42px/1.1 Georgia,serif;margin:20px 0}p{color:#bfccdc}section{border:1px solid #354860;padding:22px;border-radius:20px;margin:25px 0;background:#17263a}code{display:block;overflow-wrap:anywhere;font-size:14px;color:#dfc38e}button,.button{display:block;width:100%;border:0;border-radius:13px;background:#d7bb86;color:#101a29;font:600 17px system-ui;padding:17px;margin:13px 0;text-align:center;text-decoration:none;cursor:pointer}button:disabled{opacity:.5}.secondary{background:#263c56;color:#eef4fb}#status{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#cbdcf1}button:focus-visible,a:focus-visible{outline:3px solid white;outline-offset:4px}</style></head>
 <body><main><small>COMPUTER WISDOM / FLYWHEEL</small><h1>Your wallet.<br>Your connection.</h1><p>Open this page inside Coinbase Wallet / Base app, then connect your existing wallet.</p>
-<section><small>EXPECTED RECEIVING ADDRESS</small><code id="expected"></code><p>Base mainnet · chain 8453</p></section>
+<section><small>PRIMARY WALLET · IPHONE / ENS REFERENCE</small><code id="expected"></code><p>Primary iPhone account observed on Base (8453).</p><p><small>DESKTOP ALTERNATIVE · CHROME EXTENSION</small><code id="desktop"></code></p><p>Wallet addresses and networks are separate. The desktop extension can use Ethereum (1) without becoming the iPhone wallet.</p></section>
 <a id="open" class="button">1 · Open in Coinbase Wallet</a>
 <button id="connect" class="secondary">2 · Connect wallet</button>
 <details><summary>App did not open?</summary><p>Copy this page link and paste it into your wallet’s app browser. The Coinbase exchange app does not expose a wallet provider here.</p><a id="scheme">Try the iPhone app link</a><button id="copy" class="secondary">Copy page link</button></details>
@@ -11,10 +11,12 @@
 <p>No seed phrase, API key, message signature, transaction, or token approval is requested. Nothing is uploaded by this page. Your local Flywheel settings are not changed.</p></main>
 <script>
 'use strict';
-const EXPECTED='0x0F7018fea1dc9ba32aE817D896211f72f1197AD8';
+const EXPECTED='0xa380552a27b0a5a2874ea7aa52cac09f542002e8';
+const DESKTOP='0x0F7018fea1dc9ba32aE817D896211f72f1197AD8';
 const $=id=>document.getElementById(id);
 const canonical=location.origin+location.pathname;
 $('expected').textContent=EXPECTED;
+$('desktop').textContent=DESKTOP;
 $('open').href='https://go.cb-w.com/dapp?cb_url='+encodeURIComponent(canonical);
 $('scheme').href='cbwallet://dapp?url='+encodeURIComponent(canonical);
 let provider=null,record=null,epoch=0;
@@ -84,9 +86,11 @@ $('connect').onclick=async()=>{
    throw Error('Wallet changed during connection. Connect again.');
   }
  }
- const match=address.toLowerCase()===EXPECTED.toLowerCase();
- record={format:'FLYWHEEL_CONNECTION_OBSERVATION_V1',connected_address:address,expected_address:EXPECTED,address_match:match,chain_id:chainId,base_mainnet:chainId===8453,observed_at:new Date().toISOString(),page:canonical,signature_verified:false,exchange_account_connected:false,transaction_requested:false,server_configuration_changed:false};
- $('status').textContent=(match?'Address matches':'Different wallet address')+'\n'+address+'\n'+(chainId===8453?'Base mainnet selected':'Current chain: '+chainId+' · Base mainnet expected')+'\nSignature proof: not performed';
+ const primaryMatch=address.toLowerCase()===EXPECTED.toLowerCase();
+ const desktopMatch=address.toLowerCase()===DESKTOP.toLowerCase();
+ const walletRole=primaryMatch?'primary_iphone_ens_reference':desktopMatch?'desktop_chrome_reference':'unrecognized';
+ record={format:'FLYWHEEL_CONNECTION_OBSERVATION_V1',connected_address:address,expected_address:EXPECTED,desktop_reference_address:DESKTOP,address_match:primaryMatch,recognized_wallet:primaryMatch||desktopMatch,wallet_role:walletRole,chain_id:chainId,base_mainnet:chainId===8453,observed_at:new Date().toISOString(),page:canonical,signature_verified:false,exchange_account_connected:false,transaction_requested:false,server_configuration_changed:false};
+ $('status').textContent=(primaryMatch?'Primary iPhone / ENS reference address recognized':desktopMatch?'Desktop Chrome extension address recognized':'Unrecognized wallet address')+'\n'+address+'\n'+(chainId===8453?'Base mainnet selected':chainId===1?'Ethereum mainnet selected':'Current chain: '+chainId)+'\nSignature proof: not performed';
  $('download').disabled=false;
  }catch(e){$('status').textContent=e.code===4001?'Connection declined. You can try again.':e.message||'Connection failed';}
  finally{
