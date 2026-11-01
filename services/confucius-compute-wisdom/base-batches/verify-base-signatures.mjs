@@ -154,15 +154,9 @@ export function verifyBaseProof(record,{nowSec=Math.floor(Date.now()/1000)}={}){
   return verifyBaseProofScoped(record,nowSec,CONTRACT.authorizedSigners);
 }
 
-/** Test-only alternate signer set. NEVER import into a production service. */
-export const __testing=Object.freeze({
-  verifyBaseProof:(record,{nowSec=Math.floor(Date.now()/1000),testSignerSet=[]}={})=>
-    verifyBaseProofScoped(record,nowSec,testSignerSet.map(s=>addressOf(s)))
-});
-
 function verifyBaseProofBatchScoped(records,nowSec,allowedSigners){
   if(!Array.isArray(records)||records.length===0||records.length>CONTRACT.maxBatchSize)
-    return {status:'HOLD',reason:'BATCH_SIZE_OUT_OF_RANGE',count:Array.isArray(records)?records.length:0,items:[],root:null,authorization:false,onchain:false};
+    return {status:'HOLD',reason:Array.isArray(records)&&records.length===0?'EMPTY_BATCH':'BATCH_SIZE_OUT_OF_RANGE',count:Array.isArray(records)?records.length:0,items:[],root:null,authorization:false,onchain:false};
   const now=normalizeNow(nowSec);
   const items=[];
   const nonces=new Set();
@@ -200,9 +194,13 @@ export function verifyBaseProofBatch(records,{nowSec=Math.floor(Date.now()/1000)
   return verifyBaseProofBatchScoped(records,nowSec,CONTRACT.authorizedSigners);
 }
 
-// Internal testing gate; results must never be promoted to production approvals.
-__testing.verifyBaseProofBatch=(records,{nowSec=Math.floor(Date.now()/1000),testSignerSet=[]}={})=>
-  verifyBaseProofBatchScoped(records,nowSec,testSignerSet.map(s=>addressOf(s)));
+// Internal test-only API: synthetic test accounts are NEVER in the production allowlist.
+export const __testing=Object.freeze({
+  verifyBaseProof:(record,{nowSec=Math.floor(Date.now()/1000),testSignerSet=[]}={})=>
+    verifyBaseProofScoped(record,nowSec,testSignerSet.map(s=>addressOf(s))),
+  verifyBaseProofBatch:(records,{nowSec=Math.floor(Date.now()/1000),testSignerSet=[]}={})=>
+    verifyBaseProofBatchScoped(records,nowSec,testSignerSet.map(s=>addressOf(s)))
+});
 
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
   try{
