@@ -48,7 +48,11 @@ function address(value){if(typeof value!=='string'||!ADDRESS.test(value))throw E
 function hash(value){return '0x'+createHash('sha256').update(Buffer.from(value.slice(2),'hex')).digest('hex');}
 function dbPath(file){if(typeof file!=='string'||!file.trim()||file===':memory:'||file.startsWith('file:')||file.includes('\0'))throw Error('DURABLE_DB_REQUIRED');return resolve(file);}
 function validInt(x){return Number.isSafeInteger(x)&&x>=0;}
-function openedDb(file){return new DatabaseSync(dbPath(file),{readOnly:false});}
+function openedDb(file){
+  const db=new DatabaseSync(dbPath(file),{readOnly:false});
+  try{db.exec('PRAGMA foreign_keys=ON; PRAGMA busy_timeout=5000; PRAGMA synchronous=FULL;');return db;}
+  catch(e){db.close();throw e;}
+}
 function readLedgerBatch(db,root){
   const batch=db.prepare('SELECT root, reserved_at, chain_id FROM replay_batches WHERE root=?').get(root);
   if(!batch)throw Error('BATCH_NOT_RESERVED');
