@@ -103,6 +103,16 @@ test('REPLAY007 §4: true EIP712 verification precedes atomic durable SQLite rep
       nowSec:NOW,testSignerSet:[TEST_SIGNER.address]});
     assert.equal(candidate.status,'HOLD');
     assert.equal(candidate.items[0].reason,'INVALID_RECOVERED_SIGNER');
+    // Stronger ordering guard: for a fresh path, a cryptographically invalid
+    // proof must not even OPEN SQLite (no file, no WAL, no lock acquisition).
+    const unopened=join(dir,'invalid-must-not-open.sqlite');
+    assert.equal(existsSync(unopened),false);
+    const unopenedResult=reserve([invalid],unopened);
+    assert.equal(unopenedResult.status,'HOLD');
+    assert.equal(unopenedResult.reason,'PROOF_INVALID');
+    assert.equal(existsSync(unopened),false);
+    assert.equal(existsSync(unopened+'-wal'),false);
+    assert.equal(existsSync(unopened+'-shm'),false);
 
     // 5. Second independent SQLite connection. Same proof remains rejected,
     // and an attempted direct INSERT with a different digest demonstrates that
