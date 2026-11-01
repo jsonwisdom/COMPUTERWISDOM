@@ -1,20 +1,14 @@
-# REPLAY 007 — §5b recipient identity → X25519 encryption key trust specification
+# REPLAY 007 — §5b Recipient identity ↔ encryption-key binding
 
-**Status:** Candidate authentication specification only. Recipient identity binding is **NOT implemented or independently enrolled**. Production export remains **HOLD**. No new API, key, wallet transaction, or payment authority.
+**Spec candidate; not implemented.** Production §5b is HOLD. Existing X25519/HKDF/AES-GCM ciphertext confidentiality tests PASS, but the local exporter accepts a caller-supplied public key; encryption does **not** establish which person/DID controls it.
 
-## What exists and what does not
+## Required authentication chain
 
-The merged exporter accepts a caller-supplied X25519 public key; a signed `ExportAuthorization` binds its SHA-256 SPKI fingerprint, recipient label, root, scope, nonce and expiry. The local export test proves authenticated ciphertext decrypts with the matching private key and not an unrelated key. **This does not prove that the supplied key belongs to the named recipient.** A writable `recipient → key` database map is untrusted input.
+`recipient DID` → `authenticated DID controller and verification method` → `controller-signed X25519 key binding` → `SHA-256(SPKI DER)` → `signed ExportAuthorization(recipient, fingerprint, root, scope)` → `authenticated ciphertext`.
 
-The activation trust chain must be:
+A writable `recipient → key` database row is **untrusted data**, never the trust root. A resolver/controller policy must be independently approved and versioned. Resolve the correct DID method, authenticate its controller and authorized verification method, and check revocation/rotation. Reference: [W3C DID Core](https://www.w3.org/TR/did-core/).
 
-`recipient DID / identity` → `authenticated controller / verification method` → `controller-signed encryption-key binding` → `X25519 SPKI DER bytes (SHA-256)` → `signed export authorization's recipient + fingerprint` → `authenticated ciphertext` → `recipient private-key decryption`.
-
-See W3C DID Core, including verification-method rotation and revocation: https://www.w3.org/TR/did-core/ . The existing X25519/HKDF/AES-GCM implementation is **custom envelope code**, not claimed RFC 9180 HPKE interoperability. RFC 9180 is background only: https://www.rfc-editor.org/rfc/rfc9180.html .
-
-## Required recipient-key attestation (future protocol)
-
-A versioned signed binding MUST contain exact fields:
+## Mandatory signed key binding (future format)
 
 ```json
 {
@@ -23,34 +17,37 @@ A versioned signed binding MUST contain exact fields:
   "controller_id": "did:example:controller",
   "verification_method": "did:example:controller#key-1",
   "encryption_key_type": "X25519-SPKI-DER",
-  "recipient_key_sha256": "0x<32-byte-sha256-of-DER>",
+  "recipient_key_sha256": "0x<sha256-SPKI-DER>",
   "issued_at": "<unix-seconds>",
   "expires_at": "<unix-seconds>",
-  "binding_nonce": "0x<32-byte-random>",
+  "binding_nonce": "0x<bytes32>",
   "policy_version": "1",
   "purpose": "COINBASEKID_RECIPIENT_EXPORT_DECRYPTION_ONLY",
-  "signature": "<controller-signature-over-all-fields-above>"
+  "signature": "<controller signature>"
 }
 ```
 
-**No invented DID, controller, or key is enrolled by this example.** Require a specified canonical encoding and controller-supported signature algorithm before implementation; the signature field must not be treated as covering itself. A DID document or signed registry entry MUST establish that the verification method is authorized by the resolved controller **as of the relevant issuance time**, with revocation and rotation checks. The registry/resolver trust root and independently authenticated retrieval channel must be named and versioned. DNS/ENS labels or database rows alone never establish the identity-to-X25519-key binding.
+The signature MUST cover every field **except itself** with a documented canonical serialization and DID-method-approved algorithm. These are format placeholders, **not enrolled identities**. Controller ownership, fresh validity, binding nonce history, current revocation, key rotation and independently authenticated DID resolution must be established before use.
 
-## Fail-closed export decision
+## Export decision — fail closed
 
-1. Resolve recipient identity through the explicitly approved DID method / controller trust source. Retrieve and independently validate the controller-signed binding. Validate dates, nonce/replay status, version, purpose, issuer authority, revocation and key rotation. Missing, stale, malformed, conflicting, self-issued without authority, or unverifiable evidence → **HOLD / RECIPIENT_BINDING_UNVERIFIED**.
-2. Parse the **exact supplied X25519 SPKI DER bytes** and calculate the SHA-256 fingerprint. Require both `binding.recipient_id == ExportAuthorization.recipient` and `binding.recipient_key_sha256 == ExportAuthorization.recipientKeyFingerprint == SHA256(DER)`. Any difference → **HOLD / RECIPIENT_KEY_BINDING_MISMATCH**, before encryption or export-ledger write.
-3. Require an independently enrolled export-authority signature, distinct from creator, batch signers and witness, over root, recipient, fingerprint, scope, time and nonce. Require independently witnessed accepted root and independently verified creator provenance. Any missing link → HOLD. Existing `authorizedExportAuthorities: []` correctly blocks production.
-4. Encrypt only to the verified recipient key, authenticate metadata, and log a separate signed export event. Apply scope to plaintext before encryption. `root_only` must never contain signature fields, even after authorized decryption.
-5. Never fall back to a raw user-supplied key, an operator-edited mapping, guessed wallet public key, unsigned registry row or an unvalidated DID document. Key loss or verification outages mean HOLD, not bypass. Rotation requires a fresh, controller-authorized binding; expired/revoked keys cannot receive new exports. Existing ciphertext cannot be recalled after recipient-key compromise.
+1. Independently verify the DID/controller signature and binding validity. Missing, stale, conflicting, revoked, rotated, unresolvable or unsigned identity-to-key evidence → `RECIPIENT_BINDING_UNVERIFIED` / **HOLD**.
+2. Parse exact X25519 SPKI DER bytes and recompute the fingerprint. Require **binding.recipient_id == signed ExportAuthorization.recipient** and **binding.recipient_key_sha256 == signed ExportAuthorization.recipientKeyFingerprint == SHA256(SPKI DER)**. Mismatch → `RECIPIENT_KEY_BINDING_MISMATCH` before encryption, network delivery or any export-log write.
+3. Separately verify witnessed root, authenticated creator provenance, independent export-authority signature, root/scope, expiration and nonce. The current production authority/witness key lists are empty; all production exports continue to HOLD.
+4. Scope plaintext *before* encryption: `root_only` must contain no signatures, `proofs_only` only matching proofs, `full` the approved bundle. Encrypt only to the **verified recipient's X25519 key** using fresh ephemeral key agreement and authenticated metadata. Existing implementation is custom, not asserted RFC 9180 HPKE compliant.
 
-## Adversarial acceptance tests for implementation
+Never fall back to operator-edited key mappings, unsigned keys, unverified DID documents, an Ethereum wallet address misused as an X25519 key, or stale attestations. After approved key rotation, **new** exports require a **new** signed authorization binding the new fingerprint; old encrypted files cannot be recalled.
 
-**Key substitution (load-bearing):** A valid signed export authorization names recipient `R` and fingerprint of key `K_R`. Attacker with database write access replaces the mapping with `K_A`. The export MUST refuse the substituted key **before encryption** with `RECIPIENT_KEY_BINDING_MISMATCH`; zero new export events. A tampered or expired controller signature → HOLD. A valid controller rotation to `K_R2` requires a new signed authorization naming `K_R2`'s fingerprint; old export authorization cannot be silently upgraded.
+## Adversarial acceptance tests
 
-**Existing crypto checks remain mandatory:** correct private key decrypts; wrong private key fails; ciphertext or AAD change fails; signed root/recipient/scope cannot be altered; expired export authorizations and reused nonces are rejected.
+**Key-substitution test:** Signed authorization names recipient R + key fingerprint `K_R`. Attacker can change a DB mapping to `K_A`. The export MUST reject `K_A` with `RECIPIENT_KEY_BINDING_MISMATCH`, **before encrypting**; export-event row count unchanged. Revoked controller, expired binding and modified attestation → HOLD. A legitimate rotation to `K_R2` cannot reuse an authorization signed for `K_R`.
 
-## Transport and operational boundary (not implemented)
+Existing tests remain required: correct private key decrypts; unrelated key cannot; tampered authenticated ciphertext fails; scope and root are signed; expired authorizations/reused export nonces fail.
 
-A future export HTTP endpoint requires **authenticated recipient delivery + scoped, rate-limited ACL + audit logging**. Encrypted ciphertext may be observable without exposing plaintext; transport ACL prevents bulk harvesting and abuse but does not replace cryptography. TLS, request authentication, denial-of-service limits, and ciphertext-access logging require separate deployment review.
+## Transport/custody — separate deployment gate
 
-**Trust concentration:** one enrolled export authority or identity controller is a single-key trust root unless custody/threshold policy proves otherwise. Store signer keys separately; no code or test demonstrates independent human custodians today. Production remains disabled until externally verified recipient binding, witness/creator provenance, authority enrollment and the transport gate have all passed.
+A future export endpoint must authenticate the recipient, apply scoped/rate-limited transport ACLs and log ciphertext access. Encryption protects plaintext, while ACLs mitigate unauthorized ciphertext harvesting; **neither substitutes for the other**. Any holder of the recipient private key can decrypt, regardless of the operator's ACL; revocation cannot retroactively remove already delivered ciphertext.
+
+One controller key or one export-authority key is a **single-key trust root** until independent custody/threshold governance exists. Signed controller key registration, real export-authority enrollment, independent witness/block/creator provenance and reviewed transport deployment are OPEN.
+
+**Disposition:** §5b cryptographic code PASS; authenticated recipient identity-to-key chain NOT ESTABLISHED; production export/payments HOLD.
