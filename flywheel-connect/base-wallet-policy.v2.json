@@ -1,0 +1,25 @@
+{
+  "schema": "COINBASEKID_WALLET_CONTROL_POLICY_V2",
+  "policyVersion": "2.0.0",
+  "signerSetVersion": "desktop-v1",
+  "scope": "offchain_wallet_control_only",
+  "authority": false,
+  "origin": "https://wallet.jsonwisdom.com",
+  "domain": {
+    "name": "Flywheel Base Wallet Control",
+    "version": "2",
+    "chainId": 8453,
+    "salt": "0xf09262a7cdc2a8dd05f80ed656604534efaba598f0d9a1b7016a60af6f1ec275"
+  },
+  "purpose": "Prove control of this account on Base ONLY",
+  "policyText": "No transaction, token approval, payment, login, ENS/DNS ownership proof or Coinbase API authorization",
+  "expirySeconds": 300,
+  "maxFutureSkewSeconds": 30,
+  "authorizedSigners": [
+    "0x0f7018fea1dc9ba32ae817d896211f72f1197ad8"
+  ],
+  "references": {
+    "saltDerivation": "SHA256 UTF-8 'COINBASEKID_BASE_WALLET_CONTROL_V2|https://wallet.jsonwisdom.com|8453'",
+    "note": "A versioned signer policy is NOT evidence of ENS, legal identity, funds or Coinbase API access."
+  }
+}

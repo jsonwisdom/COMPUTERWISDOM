@@ -1,48 +1,46 @@
-# CoinBaseKidSignatureProofExactMatch — Base Batch Cryptographic Gate V1
+# CoinBaseKidSignatureProofExactMatch — REPLAY 005 v2
 
-Status: OFFLINE REVIEW CANDIDATE ONLY. Not x402 settlement, an onchain receipt, ENS ownership, production payment batch, or delegated authorization.
+Status: **OFFLINE CRYPTOGRAPHIC CANDIDATE ONLY** · x402/production/publishing HOLD.
 
-This checker independently verifies the EIP-712 signing format deployed at https://wallet.jsonwisdom.com, and composes candidate proof hashes into a Merkle root only after every input is accepted.
+Canonical signed policy: [flywheel-connect/base-wallet-policy.v2.json](../../../flywheel-connect/base-wallet-policy.v2.json). The Flywheel page embeds a checked mirror; both are compared in CI. A change to signer membership requires a reviewed policy revision and matching website deployment. The test harness injects **synthetic-only** accounts into an internal `__testing` path; the public verifier never grants those test accounts production approval.
 
-## Exact contract
+## REPLAY 005 seven gates
 
-- Signed EIP-712 domain name: Flywheel Base Wallet Control; version: 1; numeric chainId: 8453. Ethereum-mainnet chain 1 NEVER passes.
-- Typed-data primaryType: WalletControl. Strict ordered fields: origin (string), wallet (address), purpose (string), nonce (bytes32), issuedAt (uint256), expiresAt (uint256), policy (string). Exact EIP712Domain types are name, version and chainId.
-- Signed origin: https://wallet.jsonwisdom.com. Signed purpose: Prove control of this account on Base ONLY.
-- Signed policy: No transaction, token approval, payment, login, ENS/DNS ownership proof or Coinbase API authorization
-- Each proof requires explicit expectedSigner, full typedData, and a 65-byte ECDSA signature. Verifier independently recomputes the digest and recovered signer. All three addresses (expectedSigner, typedData.message.wallet, recovered signer) must match.
-- Nonce: 32 bytes, unique across the batch. Signed challenge duration: 300 seconds; future tolerance: 30 seconds.
-- The entire batch is HOLD if any record is invalid or duplicated. There is no partial accepted root. Maximum 1,000 proof rows.
-- This checker uses no wallet API, RPC, network requests, seed phrases, API keys, transactions, transfers, signing, ENS or DNS lookup. No history or receipt files are written.
-- Output never echoes raw signature bytes. CANDIDATE_ROOT_READY is not verified historical provenance, authorization, production readiness, onchain status, or evidence authenticity.
+1. **Domain isolation — v2:** The signed EIP-712 domain pins `name: Flywheel Base Wallet Control`, `version: 2`, `chainId: 8453`, and the exact 32-byte app-specific `salt` from the versioned policy. No onchain verifying contract is deployed for this **off-chain** EOA control check. EIP-712 makes `verifyingContract` optional, and `salt` is the standard substitute for protocol-specific disambiguation. A supplied `verifyingContract`, missing/wrong salt, wrong name/version, chain 1 or 84532 all cause **HOLD**, not implicit trust. An arbitrary other application with the same public domain fields could technically mimic them; no cryptographic domain can prevent deliberate exact copying.
+2. **Authorized signer — v2:** Verifier must confirm `recovered == typedData.message.wallet == expectedSigner` and signer membership in the canonical *versioned* allowlist. Membership is restricted to the known laptop account and to **off-chain control checks only**. It proves no ENS ownership, API authorization, contract permission or payment rights.
+3. **Signed origin — already cryptographic:** `origin` is a `string` member of the signed `WalletControl` struct; it is hashed by EIP-712. Exact `https://wallet.jsonwisdom.com` required. An HTTP Origin header is never used as the proof. The verifier rejects origin changes even when the signature otherwise matches.
+4. **Cross-batch nonce — OPEN:** One batch rejects duplicate 32-byte nonces and duplicate proof digests. The offline verifier has **no durable nonce-consumption ledger**, issuer confirmation, cross-batch uniqueness check, or globally replay-proof signature lifetime. A 5-minute window is not replay prevention; a production builder requires atomic issuer-side nonce consumption keyed by signer, chain, and nonce.
+5. **Public proof-list publication — OPEN:** A candidate root can be reproduced only when independently obtained input proofs and the documented leaf order are available. This tool does **not** automatically publish the raw signatures or proofs. Publication needs explicit privacy review and user authorization. A root by itself is not publicly auditable evidence.
+6. **Empty batch — closed:** Explicit `n >= 1` and `n <= 1000` check, with distinct `EMPTY_BATCH` HOLD. No vacuous pass.
+7. **Legacy signer — v2 gated:** Former EIP-191 signatures and v1 EIP-712 signatures are **not accepted by this v2 verifier**. The current Flywheel website code uses v2 only after its release is deployed. Previously opened tabs, downloaded signatures, or third-party systems using older protocols cannot be revoked solely by updating this verifier.
 
-## JSON input
+## Exact immutable proof requirements
 
-Top level must have exactly one field: proofs (an array of 1–1,000 objects).
-Each proof has exactly expectedSigner, typedData, signature fields.
-The typedData shape is the EIP-712 object supplied to eth_signTypedData_v4 (types, primaryType, domain, message).
+Each item includes exactly `expectedSigner`, `typedData`, and `signature`. Typed data includes exactly `types`, `primaryType`, `domain`, and `message`.
 
-Do not submit synthetic test keys as production keys, or put private keys, Coinbase API credentials or personal information into inputs.
+Domain must contain exactly `name`, `version`, `chainId`, `salt`. EIP712Domain field order: name, version, chainId, salt. WalletControl field order: origin, wallet, purpose, nonce, issuedAt, expiresAt, policy. Missing or extra fields are rejected.
 
-## Local read-only command
+Exactly 65-byte ECDSA signature and recovered EOA address are checked using pinned `ethers@6.17.0`. **Contract-wallet/EIP-1271 signatures are outside this gate** and must not be mislabeled EOA proofs. Nonce length: 32 bytes. Expiry exactly 300 seconds after issue, with max +30 seconds clock skew.
 
-After installing pinned ethers@6.17.0 in this folder, run:
-  node services/confucius-compute-wisdom/base-batches/verify-base-signatures.mjs < local-proofs.json
+The verifier **never contacts a wallet, chain, or network**; never signs, transfers, publishes, or writes a receipt. Its output does not echo the signature. Neither a cryptographic pass nor candidate batch Merkle root establishes historical issuer provenance or actual Base blockchain state. No real wallet keys are present in tests.
 
-Run regression tests:
-  node --test services/confucius-compute-wisdom/base-batches/verify-base-signatures.test.mjs
+## Replay format and deterministic Merkle math
 
-## Deterministic candidate Merkle format
+Top-level input `{"proofs":[...]}` (one to 1000 rows); source records must match the EIP-712 format displayed by the live website, including the current salt and version.
 
-For each independently matched proof:
-  typedDataDigest = lowercase EIP-712 digest
-  signatureHash = 0x + SHA256(raw 65-byte signature)
-  tuple = JSON.stringify(["COINBASEKID_BASE_SIGNATURE_EXACT_MATCH_V1",lowercaseSigner,typedDataDigest,signatureHash])
-  leaf = SHA256(0x00 || UTF8(tuple))
-  parent = SHA256(0x01 || leftNode32 || rightNode32)
+Usage after installing the pinned local dependency:
 
-Duplicate the final node at odd-width levels. Root is a lowercase 0x-prefixed digest. Leaf order matters. The candidate Merkle root is NOT published to Base and does NOT authorize anything.
+```bash
+node --test services/confucius-compute-wisdom/base-batches/verify-base-signatures.test.mjs
+node services/confucius-compute-wisdom/base-batches/verify-base-signatures.mjs < local-proofs.json
+```
 
-Bulk builder Base batches still require separate artifact byte hashes, original source evidence, independent reproduction, and explicit approvals before publishing or settlement. Signatures authenticate only their exact signed messages.
+For each valid proof, recompute EIP-712 digest and `signatureHash = 0x + SHA256(raw signature bytes)`. Leaf = SHA256(0x00 || JSON UTF-8 tuple of `[COINBASEKID_BASE_SIGNATURE_EXACT_MATCH_V2, lowercaseSigner, lowercaseEIP712Digest, signatureHash]`). Internal parent = SHA256(0x01 || left32 || right32), duplicate odd last element. Root only if EVERY row matches and batch size is valid. The root is merely a private **candidate** until independent evidence publication and verification.
 
-IMPORTANT: Proofs imported offline cannot alone prove that an origin server really generated the nonce or that a signature hasn't been replayed in another batch. Only per-batch uniqueness is enforced. Fresh issuer-side nonce storage/replay rejection is a separate gate.
+## Residuals
+
+- An original issuer challenge and nonce consumption are not independently proven by self-reported typed-data fields.
+- Membership in a local signer allowlist is a policy decision, not proof of legal identity, ENS control or permission to move funds.
+- A versioned signature policy cannot disable already-running older browser tabs by itself.
+- Wallet-extension/CDN telemetry may occur outside this verifier; no site code check can establish the wallet vendor's data-retention behavior.
+- Mainnet funds and all x402 settlement remain HOLD.

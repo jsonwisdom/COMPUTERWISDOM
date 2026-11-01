@@ -43,7 +43,10 @@ function harness({race=false, signer=null, rejected=false, wrongSignature=false,
      const typed=JSON.parse(params[1]);
      assert.equal(typed.domain.chainId,8453,'Base domain chainId must be 8453');
      assert.equal(typed.domain.name,'Flywheel Base Wallet Control');
-     assert.equal(typed.domain.version,'1');
+     assert.equal(typed.domain.version,'2');
+     assert.equal(typed.domain.salt,'0xf09262a7cdc2a8dd05f80ed656604534efaba598f0d9a1b7016a60af6f1ec275');
+     assert.ok(!Object.hasOwn(typed.domain,'verifyingContract'));
+     assert.equal(typed.domain.version,'2');
      assert.equal(typed.primaryType,'WalletControl');
      assert.equal(typed.message.origin,'https://wallet.jsonwisdom.com');
      assert.equal(typed.message.wallet.toLowerCase(),signer.address.toLowerCase());
@@ -63,7 +66,7 @@ function harness({race=false, signer=null, rejected=false, wrongSignature=false,
  const document={getElementById:id=>fields[id]};
  class Event{constructor(type){this.type=type}}
  let script=match[0].replace(/^<script>/,'').replace(/<\/script>$/,'');
- if(signer)script=script.replace(ADDRESS,signer.address);
+ if(signer)script=script.replace(ADDRESS.toLowerCase(),signer.address.toLowerCase());
  runInNewContext(script,{window,document,Event,crypto:webcrypto,TextEncoder,location:{origin:'https://wallet.jsonwisdom.com'},Date,BigInt,Uint8Array,Array},{timeout:2500});
  return {fields,calls,click:()=>fields.connect.events.get('click')(),sign:()=>fields.verify.events.get('click')(),
   setAddress(next){address=next;walletEvents.accountsChanged?.([next]);},
@@ -108,7 +111,7 @@ test('G4 synthetic wallet signs Base-8453 EIP-712 typed data, independently reco
  assert.equal(h.calls.filter(c=>c.method==='eth_signTypedData_v4').length,0);
  assert.equal(h.fields.verify.disabled,false);
  await h.sign();
- assert.match(h.fields.verification.textContent,/VERIFIED: Base-only EIP-712 domain \(chainId 8453\)/);
+ assert.match(h.fields.verification.textContent,/VERIFIED: Base-only EIP-712 domain v2 \(chainId 8453, Flywheel salt\)/);
  assert.match(h.fields.verification.textContent,/No Ethereum-mainnet request, ENS\/DNS ownership, API-key access/);
  assert.equal(h.calls.filter(c=>c.method==='eth_signTypedData_v4').length,1);
  assert.equal(h.fields.verify.disabled,true);
@@ -158,4 +161,28 @@ test('G10 switching from Base to Ethereum mainnet clears optional signature perm
  assert.equal(h.fields.challengePreview.textContent,'');
  await h.sign();
  assert.equal(h.calls.filter(c=>c.method==='eth_signTypedData_v4').length,0);
+});
+
+test('G11 browser and offline signer policies pin the exact same v2 account, salt, version and origin',()=>{
+ const policy=JSON.parse(readFileSync(new URL('./base-wallet-policy.v2.json',import.meta.url),'utf8'));
+ assert.equal(policy.policyVersion,'2.0.0');
+ assert.equal(policy.signerSetVersion,'desktop-v1');
+ assert.deepEqual(policy.authorizedSigners,[ADDRESS.toLowerCase()]);
+ assert.ok(html.includes(policy.domain.salt));
+ assert.match(html,/const ALLOWED_SIGNERS=Object.freeze\(\['0x0f7018fea1dc9ba32ae817d896211f72f1197ad8'\]\)/);
+ assert.equal(policy.domain.chainId,8453);
+ assert.equal(policy.domain.version,'2');
+ assert.equal(policy.scope,'offchain_wallet_control_only');
+});
+test('G12 EIP712 browser challenge is contract-free with app salt; not a cross-chain sign-in or payment',async()=>{
+ const h=harness({signer:TEST_SIGNER});
+ await h.click();
+ const t=JSON.parse(h.fields.challengePreview.textContent);
+ assert.equal(t.domain.chainId,8453);
+ assert.equal(t.domain.version,'2');
+ assert.equal(t.domain.salt,'0xf09262a7cdc2a8dd05f80ed656604534efaba598f0d9a1b7016a60af6f1ec275');
+ assert.equal(t.message.origin,'https://wallet.jsonwisdom.com');
+ assert.equal(t.message.wallet.toLowerCase(),TEST_SIGNER.address.toLowerCase());
+ assert.ok(!Object.hasOwn(t.domain,'verifyingContract'));
+ assert.equal(t.message.purpose,'Prove control of this account on Base ONLY');
 });
