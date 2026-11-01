@@ -3,8 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { runInNewContext } from 'node:vm';
 import { webcrypto } from 'node:crypto';
-import { TextEncoder } from 'node:util';
-import { Wallet, verifyMessage } from 'ethers';
+import { Wallet, verifyTypedData } from 'ethers';
 
 const html=readFileSync(new URL('./index.html',import.meta.url),'utf8');
 const match=html.match(/<script>\s*'use strict';([\s\S]*?)<\/script>/);
@@ -14,7 +13,7 @@ const OTHER='0x'+'aa'.repeat(20);
 const TEST_SIGNER=new Wallet('0x'+'77'.repeat(32)); // Public, unfunded synthetic key. NEVER use with actual funds.
 const WRONG_SIGNER=new Wallet('0x'+'88'.repeat(32));
 
-function harness({race=false, signer=null, rejected=false, wrongSignature=false, changeOnSignature=false}={}){
+function harness({race=false, signer=null, rejected=false, wrongSignature=false, changeOnSignature=false, signWrongChain=false}={}){
  const fields=Object.fromEntries(['connect','status','address','verify','verification','challengePreview','previewHint']
   .map(id=>[id,{textContent:'',className:'',disabled:id==='verify',hidden:id==='challengePreview'||id==='previewHint',events:new Map(),
    addEventListener(name,fn){this.events.set(name,fn)}}]));
@@ -36,24 +35,31 @@ function harness({race=false, signer=null, rejected=false, wrongSignature=false,
     case 'wallet_switchEthereumChain':
      assert.equal(params?.[0]?.chainId,'0x2105');
      chain='0x2105';walletEvents.chainChanged?.(chain);return null;
-    case 'personal_sign':
+    case 'eth_signTypedData_v4': {
      if(rejected)throw Object.assign(Error('User declined'),{code:4001});
      assert.ok(signer,'Never sign with real desktop wallet in CI');
-     assert.equal(params?.[1].toLowerCase(),signer.address.toLowerCase());
-     assert.match(params[0],/^0x[0-9a-f]+$/);
-     const message=Buffer.from(params[0].slice(2),'hex').toString('utf8');
-     assert.match(message,/Flywheel Wallet Control Check/);
-     assert.match(message,/Network: Base mainnet \(8453\)/);
-     assert.match(message,/Origin: https:\/\/wallet\.jsonwisdom\.com/);
-     assert.match(message,/Nonce: 0x[0-9a-f]{32}/);
-     assert.match(message,/not a transaction|Not a transaction/i);
+     assert.equal(params?.[0].toLowerCase(),signer.address.toLowerCase());
+     assert.equal(typeof params?.[1],'string');
+     const typed=JSON.parse(params[1]);
+     assert.equal(typed.domain.chainId,8453,'Base domain chainId must be 8453');
+     assert.equal(typed.domain.name,'Flywheel Base Wallet Control');
+     assert.equal(typed.domain.version,'1');
+     assert.equal(typed.primaryType,'WalletControl');
+     assert.equal(typed.message.origin,'https://wallet.jsonwisdom.com');
+     assert.equal(typed.message.wallet.toLowerCase(),signer.address.toLowerCase());
+     assert.match(typed.message.purpose,/Base ONLY/);
+     assert.match(typed.message.nonce,/^0x[0-9a-f]{64}$/);
+     assert.match(typed.message.policy,/No transaction, token approval, payment/);
+     assert.equal(typed.message.expiresAt-typed.message.issuedAt,300);
      if(changeOnSignature){address=OTHER;walletEvents.accountsChanged?.([address]);}
-     return (wrongSignature?WRONG_SIGNER:signer).signMessage(message);
+     const domain=signWrongChain?{...typed.domain,chainId:1}:typed.domain;
+     return (wrongSignature?WRONG_SIGNER:signer).signTypedData(domain,{WalletControl:typed.types.WalletControl},typed.message);
+    }
     default:throw Error('Unexpected wallet method: '+method);
    }
   }
  };
- const window={ethereum:provider,ethers:{verifyMessage},addEventListener(){},dispatchEvent(){}};
+ const window={ethereum:provider,ethers:{verifyTypedData},addEventListener(){},dispatchEvent(){}};
  const document={getElementById:id=>fields[id]};
  class Event{constructor(type){this.type=type}}
  let script=match[0].replace(/^<script>/,'').replace(/<\/script>$/,'');
@@ -72,7 +78,9 @@ test('G1 one click connects Coinbase and switches to Base; never signs or pays',
  assert.match(h.fields.status.textContent,/Desktop address matches/);
  assert.equal(h.fields.address.textContent,ADDRESS);
  assert.equal(h.fields.verify.disabled,false);
- assert.match(h.fields.challengePreview.textContent,/Not a transaction, token approval, payment, login, DNS\/ENS ownership proof or Coinbase API authorization/);
+ assert.match(h.fields.challengePreview.textContent,/No transaction, token approval, payment, login, ENS\/DNS ownership proof or Coinbase API authorization/);
+ assert.match(h.fields.challengePreview.textContent,/"chainId": 8453/);
+ assert.doesNotMatch(html,/personal_sign|verifyMessage|eip155:1/);
  assert.equal(h.calls.filter(c=>/sign|send|transfer|approve|personal/i.test(c.method)).length,0);
 });
 test('G2 clears old wallet result, challenge and signature state; no receipts or stored sessions',async()=>{
@@ -94,19 +102,19 @@ test('G3 stale account from final network read cannot be falsely matched',async(
  assert.equal(h.fields.address.textContent,'');
  assert.equal(h.fields.verify.disabled,true);
 });
-test('G4 synthetic wallet signs exact EIP-191 challenge; ethers independently recovers signer, no funds',async()=>{
+test('G4 synthetic wallet signs Base-8453 EIP-712 typed data, independently recovers signer, no funds',async()=>{
  const h=harness({signer:TEST_SIGNER});
  await h.click();
- assert.equal(h.calls.filter(c=>c.method==='personal_sign').length,0);
+ assert.equal(h.calls.filter(c=>c.method==='eth_signTypedData_v4').length,0);
  assert.equal(h.fields.verify.disabled,false);
  await h.sign();
- assert.match(h.fields.verification.textContent,/VERIFIED: EIP-191/);
- assert.match(h.fields.verification.textContent,/No ENS\/DNS ownership, API-key access/);
- assert.equal(h.calls.filter(c=>c.method==='personal_sign').length,1);
+ assert.match(h.fields.verification.textContent,/VERIFIED: Base-only EIP-712 domain \(chainId 8453\)/);
+ assert.match(h.fields.verification.textContent,/No Ethereum-mainnet request, ENS\/DNS ownership, API-key access/);
+ assert.equal(h.calls.filter(c=>c.method==='eth_signTypedData_v4').length,1);
  assert.equal(h.fields.verify.disabled,true);
  assert.equal(h.calls.filter(c=>/eth_sendTransaction|eth_signTransaction|wallet_sendCalls|approve|transfer/i.test(c.method)).length,0);
  await h.sign();
- assert.equal(h.calls.filter(c=>c.method==='personal_sign').length,1,'challenge must be one-use');
+ assert.equal(h.calls.filter(c=>c.method==='eth_signTypedData_v4').length,1,'challenge must be one-use');
 });
 test('G5 wrong cryptographic signer fails closed',async()=>{
  const h=harness({signer:TEST_SIGNER,wrongSignature:true});
@@ -132,5 +140,22 @@ test('G8 unrecognized address cannot request signing',async()=>{
  await h.click();
  assert.equal(h.fields.verify.disabled,true);
  assert.match(h.fields.status.textContent,/DIFFERENT wallet address/);
- assert.equal(h.calls.filter(c=>c.method==='personal_sign').length,0);
+ assert.equal(h.calls.filter(c=>c.method==='eth_signTypedData_v4').length,0);
+});
+
+test('G9 signature with Ethereum mainnet EIP-712 domain chain 1 cannot verify as Base 8453',async()=>{
+ const h=harness({signer:TEST_SIGNER,signWrongChain:true});
+ await h.click();await h.sign();
+ assert.doesNotMatch(h.fields.verification.textContent,/VERIFIED:/);
+ assert.match(h.fields.verification.textContent,/Signature recovered a different address/);
+});
+test('G10 switching from Base to Ethereum mainnet clears optional signature permission',async()=>{
+ const h=harness({signer:TEST_SIGNER});
+ await h.click();
+ assert.equal(h.fields.verify.disabled,false);
+ h.setChain('0x1');
+ assert.equal(h.fields.verify.disabled,true);
+ assert.equal(h.fields.challengePreview.textContent,'');
+ await h.sign();
+ assert.equal(h.calls.filter(c=>c.method==='eth_signTypedData_v4').length,0);
 });
