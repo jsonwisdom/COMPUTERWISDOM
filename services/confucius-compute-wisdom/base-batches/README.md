@@ -57,3 +57,12 @@ For each valid proof, recompute EIP-712 digest and `signatureHash = 0x + SHA256(
 - A fresh legitimate proof after rejected tampering still commits; synthetic key never passes the production policy.
 
 **Open:** multi-host coordination, issuer-signed nonce origin, real-wallet production integration, acceptance-time independent witness, proof-list release, signed export authorization, encryption-to-recipient, global replay protection. The test makes **no** mainnet, x402, fund-transfer or publication claim.
+
+### Deployment boundary — SINGLE-WRITER LOCAL SQLITE ONLY
+
+The file-backed nonce ledger is scoped to **one authoritative process/host sharing one durable SQLite file**. A pool of two replicas behind a load balancer with separate local DB files **will accept the same valid proof twice**: the composite primary key only serializes writes within the same database. A shared SQLite file over network storage is **not** an approved production workaround. Do **not** deploy multiple replicas.
+
+Future multi-instance support requires an independently reviewed centralized transaction store (e.g., PostgreSQL with unique `(chain_id, signer, nonce)`, atomic insert and conflict handling) or an issuer-controlled nonce service. Neither exists in this PR. All signatures/receipts continue to have `authority=false` and payments HOLD.
+
+This review also confirms the stronger invalid-proof ordering assertion: the test checks SQLite `consumed_nonces` counts before and after tampering **and** asserts that a fresh, invalid EIP-712 proof leaves no SQLite, WAL or SHM file. The production code returns `PROOF_INVALID` before `openDb()` and before `BEGIN IMMEDIATE`.
+
