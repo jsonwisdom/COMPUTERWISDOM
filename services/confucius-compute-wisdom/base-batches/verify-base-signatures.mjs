@@ -1,28 +1,41 @@
 /**
- * CoinBaseKidSignatureProofExactMatch v1
+ * CoinBaseKidSignatureProofExactMatch v2
  * Offline-only EIP-712 Base 8453 cryptographic proof gate.
  * No wallet interactions, RPC, transactions, key material, ENS resolutions, or publishing.
  */
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
+import { readFileSync as readPolicyFile } from 'node:fs';
 import { getAddress, verifyTypedData, TypedDataEncoder } from 'ethers';
 
-export const CONTRACT = Object.freeze({
-  label:'COINBASEKID_BASE_SIGNATURE_EXACT_MATCH_V1',
-  chainId:8453,
-  name:'Flywheel Base Wallet Control',
-  version:'1',
-  origin:'https://wallet.jsonwisdom.com',
-  purpose:'Prove control of this account on Base ONLY',
-  policy:'No transaction, token approval, payment, login, ENS/DNS ownership proof or Coinbase API authorization',
-  expirySeconds:300,
-  maxFutureSkewSeconds:30,
+const sourcePolicy=JSON.parse(readPolicyFile(new URL('../../../flywheel-connect/base-wallet-policy.v2.json',import.meta.url),'utf8'));
+if(sourcePolicy.schema!=='COINBASEKID_WALLET_CONTROL_POLICY_V2'||sourcePolicy.policyVersion!=='2.0.0'||
+   sourcePolicy.signerSetVersion!=='desktop-v1'||sourcePolicy.authority!==false||
+   sourcePolicy.scope!=='offchain_wallet_control_only'||sourcePolicy.domain?.chainId!==8453||
+   sourcePolicy.domain?.version!=='2'||!Array.isArray(sourcePolicy.authorizedSigners)||
+   sourcePolicy.authorizedSigners.length!==1)
+  throw Error('INVALID_SIGNER_POLICY_VERSION');
+export const CONTRACT=Object.freeze({
+  label:'COINBASEKID_BASE_SIGNATURE_EXACT_MATCH_V2',
+  policyVersion:sourcePolicy.policyVersion,
+  signerSetVersion:sourcePolicy.signerSetVersion,
+  chainId:sourcePolicy.domain.chainId,
+  name:sourcePolicy.domain.name,
+  version:sourcePolicy.domain.version,
+  salt:sourcePolicy.domain.salt,
+  origin:sourcePolicy.origin,
+  purpose:sourcePolicy.purpose,
+  policy:sourcePolicy.policyText,
+  expirySeconds:sourcePolicy.expirySeconds,
+  maxFutureSkewSeconds:sourcePolicy.maxFutureSkewSeconds,
   maxBatchSize:1000,
+  authorizedSigners:Object.freeze(sourcePolicy.authorizedSigners.map(x=>x.toLowerCase()))
 });
 
 const DOMAIN_FIELDS=[
-  {name:'name',type:'string'},{name:'version',type:'string'},{name:'chainId',type:'uint256'}
+  {name:'name',type:'string'},{name:'version',type:'string'},
+  {name:'chainId',type:'uint256'},{name:'salt',type:'bytes32'}
 ];
 const CONTROL_FIELDS=[
   {name:'origin',type:'string'},
@@ -84,7 +97,7 @@ export function merkleRoot(leaves){
  * Inputs can be replayed offline until expiry; the caller must establish provenance
  * and fresh challenge issuance separately.
  */
-export function verifyBaseProof(record,{nowSec=Math.floor(Date.now()/1000)}={}){
+function verifyBaseProofScoped(record,nowSec,allowedSigners){
   try{
     const now=normalizeNow(nowSec);
     exactKeys(record,['expectedSigner','typedData','signature'],'INVALID_PROOF_FIELDS');
@@ -96,9 +109,10 @@ export function verifyBaseProof(record,{nowSec=Math.floor(Date.now()/1000)}={}){
     matchFields(td.types.EIP712Domain,DOMAIN_FIELDS,'DOMAIN_TYPE_MISMATCH');
     matchFields(td.types.WalletControl,CONTROL_FIELDS,'CONTROL_TYPE_MISMATCH');
     insist(td.primaryType==='WalletControl','PRIMARY_TYPE_MISMATCH');
-    exactKeys(td.domain,['name','version','chainId'],'INVALID_DOMAIN_FIELDS');
+    exactKeys(td.domain,['name','version','chainId','salt'],'INVALID_DOMAIN_FIELDS');
     insist(td.domain.name===CONTRACT.name&&td.domain.version===CONTRACT.version,'DOMAIN_MISMATCH');
     insist(typeof td.domain.chainId==='number'&&td.domain.chainId===CONTRACT.chainId,'NOT_BASE_8453');
+    insist(typeof td.domain.salt==='string'&&td.domain.salt.toLowerCase()===CONTRACT.salt,'DOMAIN_SALT_MISMATCH');
     exactKeys(td.message,CONTROL_FIELDS.map(x=>x.name),'INVALID_MESSAGE_FIELDS');
     const m=td.message;
     insist(m.origin===CONTRACT.origin,'ORIGIN_MISMATCH');
@@ -114,10 +128,13 @@ export function verifyBaseProof(record,{nowSec=Math.floor(Date.now()/1000)}={}){
     const types={WalletControl:td.types.WalletControl};
     const recovered=addressOf(verifyTypedData(domain,types,m,record.signature));
     insist(recovered===expected,'INVALID_RECOVERED_SIGNER');
+    insist(allowedSigners.includes(expected),'SIGNER_NOT_AUTHORIZED');
     const digest=TypedDataEncoder.hash(domain,types,m).toLowerCase();
     const signatureHash=sha256(Buffer.from(record.signature.slice(2),'hex'));
     const result={
       status:'EXACT_CRYPTOGRAPHIC_MATCH',
+      policyVersion:CONTRACT.policyVersion,
+      signerSetVersion:CONTRACT.signerSetVersion,
       signer:expected,
       typedDataDigest:digest,
       signatureHash,
@@ -133,7 +150,17 @@ export function verifyBaseProof(record,{nowSec=Math.floor(Date.now()/1000)}={}){
  * Every item must validate, every nonce must be unique.
  * No partial green batch, no authorization by mere batch membership.
  */
-export function verifyBaseProofBatch(records,{nowSec=Math.floor(Date.now()/1000)}={}){
+export function verifyBaseProof(record,{nowSec=Math.floor(Date.now()/1000)}={}){
+  return verifyBaseProofScoped(record,nowSec,CONTRACT.authorizedSigners);
+}
+
+/** Test-only alternate signer set. NEVER import into a production service. */
+export const __testing=Object.freeze({
+  verifyBaseProof:(record,{nowSec=Math.floor(Date.now()/1000),testSignerSet=[]}={})=>
+    verifyBaseProofScoped(record,nowSec,testSignerSet.map(s=>addressOf(s)))
+});
+
+function verifyBaseProofBatchScoped(records,nowSec,allowedSigners){
   if(!Array.isArray(records)||records.length===0||records.length>CONTRACT.maxBatchSize)
     return {status:'HOLD',reason:'BATCH_SIZE_OUT_OF_RANGE',count:Array.isArray(records)?records.length:0,items:[],root:null,authorization:false,onchain:false};
   const now=normalizeNow(nowSec);
@@ -141,7 +168,7 @@ export function verifyBaseProofBatch(records,{nowSec=Math.floor(Date.now()/1000)
   const nonces=new Set();
   const digests=new Set();
   for(let i=0;i<records.length;i++){
-    const result=verifyBaseProof(records[i],{nowSec:now});
+    const result=verifyBaseProofScoped(records[i],now,allowedSigners);
     if(result.status!=='EXACT_CRYPTOGRAPHIC_MATCH'){
       items.push({index:i,status:'HOLD',reason:result.reason});continue;
     }
@@ -163,9 +190,19 @@ export function verifyBaseProofBatch(records,{nowSec=Math.floor(Date.now()/1000)
     authorization:false,
     onchain:false,
     fundsMoved:false,
-    productionApproved:false
+    productionApproved:false,
+    policyVersion:CONTRACT.policyVersion,
+    signerSetVersion:CONTRACT.signerSetVersion
   };
 }
+
+export function verifyBaseProofBatch(records,{nowSec=Math.floor(Date.now()/1000)}={}){
+  return verifyBaseProofBatchScoped(records,nowSec,CONTRACT.authorizedSigners);
+}
+
+// Internal testing gate; results must never be promoted to production approvals.
+__testing.verifyBaseProofBatch=(records,{nowSec=Math.floor(Date.now()/1000),testSignerSet=[]}={})=>
+  verifyBaseProofBatchScoped(records,nowSec,testSignerSet.map(s=>addressOf(s)));
 
 if(process.argv[1]&&import.meta.url===pathToFileURL(process.argv[1]).href){
   try{
