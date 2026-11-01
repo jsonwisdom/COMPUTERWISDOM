@@ -10,7 +10,7 @@ h1{font:500 clamp(2rem,7vw,3rem)/1.12 Georgia,serif;margin:14px 0}p{color:#b9c8d
 small,.eyebrow{color:#9db9d4;letter-spacing:.08em}
 .panel{padding:22px;background:#17263a;border:1px solid #3a5270;border-radius:19px;margin:22px 0}
 button{width:100%;background:#dbbc83;color:#101a29;border:0;border-radius:12px;font:700 17px system-ui;padding:17px;cursor:pointer}
-button:disabled{opacity:.65;cursor:wait}button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+button:disabled{opacity:.65;cursor:wait}.secondary{background:#29425c;color:#edf4fd}pre{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.55 ui-monospace,monospace;background:#0b1523;border:1px solid #344a63;border-radius:10px;padding:14px}button:focus-visible{outline:3px solid #fff;outline-offset:3px}
 #status{font-weight:700;white-space:pre-wrap;overflow-wrap:anywhere}
 #address{overflow-wrap:anywhere;color:#f0d397;font:14px/1.6 ui-monospace,monospace}
 .ok{color:#a8f1c9!important}.warn{color:#ffdf9b!important}.bad{color:#ffb8bd!important}
@@ -22,27 +22,41 @@ hr{border:0;border-top:1px solid #344a63;margin:18px 0}
 <p>Windows Chrome extension already installed? Use the button below. No manual network menus.</p>
 <section class="panel">
 <div class="eyebrow">DEFAULT NETWORK</div><strong>Base mainnet · Chain ID 8453</strong>
-<p>Connection and network selection only. No signature, token approval, transfer or payment.</p>
+<p>Step 1 connects the extension and selects Base. Step 2 is an <strong>optional, explicit off-chain message signature</strong> proving control of that address only. No token approvals, transfers, payments, or Coinbase API-key access.</p>
 <button id="connect" type="button">Connect Coinbase Wallet + use Base</button>
 <hr><div id="status" role="status" aria-live="polite">Ready. No wallet checked yet.</div>
 <div id="address"></div>
+<hr>
+<button id="verify" class="secondary" type="button" disabled>Verify wallet control · Sign message (no gas)</button>
+<p id="previewHint" hidden>Read this exact message before approving the Coinbase Wallet signature:</p>
+<pre id="challengePreview" hidden></pre>
+<div id="verification" role="status" aria-live="polite">Signature proof: not performed.</div>
 </section>
-<p><small>Each click clears the previous result. No JSON receipts, saved history, downloads or reused observations. Coinbase may not show a connection popup if the site is already authorized; network switching can require approval.</small></p>
+<p><small>Priority: connect → select Base → optional wallet-control signature. Each connection clears prior results. The fresh, one-use challenge is bound to this site, chain and address, and expires after 5 minutes. No JSON receipts, saved history, downloads or reused observations. A signature is not proof of ENS/DNS control or Coinbase API access, and cannot authorize payment.</small></p>
 <p><small>AUTHORITY=false · REAL_USDC_UNTOUCHED · X402_PAYMENT_HOLD</small></p>
+<script src="https://cdn.jsdelivr.net/npm/ethers@6.17.0/dist/ethers.umd.min.js" integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi" crossorigin="anonymous"></script>
 <script>
 'use strict';
 (() => {
  const BASE='0x2105', CHAIN=8453;
  const EXPECTED_DESKTOP='0x0F7018fea1dc9ba32aE817D896211f72f1197AD8'.toLowerCase();
  const button=document.getElementById('connect');
+ const verifyButton=document.getElementById('verify');
+ const verification=document.getElementById('verification');
+ const challengePreview=document.getElementById('challengePreview');
+ const previewHint=document.getElementById('previewHint');
  const status=document.getElementById('status');
  const address=document.getElementById('address');
  const known=new Map();
  let active=null,epoch=0,busy=false,changeCount=0;
+ let challenge=null,connectedAddress=null;
  const same=(a,b)=>String(a||'').toLowerCase()===String(b||'').toLowerCase();
  function clear(){
    epoch++;status.textContent='Ready. No wallet checked yet.';
    status.className='';address.textContent='';
+   connectedAddress=null;challenge=null;verifyButton.disabled=true;
+   verification.textContent='Signature proof: not performed.';verification.className='';
+   challengePreview.textContent='';challengePreview.hidden=true;previewHint.hidden=true;
  }
  function changed(){
    changeCount++;
@@ -118,10 +132,67 @@ hr{border:0;border-top:1px solid #344a63;margin:18px 0}
      }
      status.textContent='Coinbase Wallet connected on Base (8453).\nDesktop address matches.\nNo signature or payment requested.';
      status.className='ok';address.textContent=current;
+     connectedAddress=current;
+     // One-time, human-readable, origin-bound EIP-191 message. No signing yet.
+     const nonceBytes=crypto.getRandomValues(new Uint8Array(16));
+     const nonce='0x'+Array.from(nonceBytes,x=>x.toString(16).padStart(2,'0')).join('');
+     const issued=Date.now();
+     const message=[
+       'Flywheel Wallet Control Check',
+       'Origin: '+location.origin,
+       'Purpose: off-chain control of the account below ONLY',
+       'Wallet: '+current,
+       'Network: Base mainnet (8453)',
+       'Nonce: '+nonce,
+       'Issued: '+new Date(issued).toISOString(),
+       'Expires: '+new Date(issued+300000).toISOString(),
+       'Not a transaction, token approval, payment, login, DNS/ENS ownership proof or Coinbase API authorization.'
+     ].join('\n');
+     challenge={message,account:current,issued,network:CHAIN};
+     challengePreview.textContent=message;challengePreview.hidden=false;previewHint.hidden=false;
+     verifyButton.disabled=false;
    }catch(e){
      status.className='bad';address.textContent='';
      status.textContent=e?.code===4001?'Wallet request declined. No payment made.':String(e?.message||e).slice(0,250);
    }finally{busy=false;button.disabled=false;}
+ });
+ verifyButton.addEventListener('click',async()=>{
+   if(busy||verifyButton.disabled||!challenge||!active||!connectedAddress)return;
+   busy=true;button.disabled=true;verifyButton.disabled=true;
+   verification.className='';verification.textContent='Checking wallet and requesting an off-chain message signature…';
+   const signing=challenge;challenge=null;const attempt=epoch;
+   const before=changeCount;
+   try{
+     if(Date.now()-signing.issued>300000)throw Error('Challenge expired. Reconnect for a new message.');
+     if(!window.ethers?.verifyMessage)throw Error('Signature verification library unavailable; do not trust a signature.');
+     const initial=await checkedAddress(active);
+     const network=Number(BigInt(await active.request({method:'eth_chainId'})));
+     if(changeCount!==before||attempt!==epoch||!same(initial,signing.account)||network!==CHAIN)
+       throw Error('Wallet or network changed. Reconnect before signing.');
+     const encoded='0x'+Array.from(new TextEncoder().encode(signing.message),b=>b.toString(16).padStart(2,'0')).join('');
+     // Only this explicit button invokes personal_sign. No transaction or token approval methods.
+     const signature=await active.request({method:'personal_sign',params:[encoded,signing.account]});
+     if(typeof signature!=='string'||!/^0x[0-9a-fA-F]{130}$/.test(signature))
+       throw Error('Signature format not supported for local EOA verification. No control proof established.');
+     const recovered=window.ethers.verifyMessage(signing.message,signature);
+     if(!same(recovered,signing.account))throw Error('Signature recovered a different address. Verification rejected.');
+     // Recheck BOTH address and chain twice and reject any event during the reads.
+     const countBefore=changeCount;
+     const a1=await checkedAddress(active);
+     const c1=Number(BigInt(await active.request({method:'eth_chainId'})));
+     const a2=await checkedAddress(active);
+     const c2=Number(BigInt(await active.request({method:'eth_chainId'})));
+     if(countBefore!==changeCount||before!==changeCount||epoch!==attempt||
+        !same(a1,a2)||!same(a1,signing.account)||c1!==CHAIN||c2!==CHAIN)
+       throw Error('Wallet changed during signature verification. No proof established.');
+     if(Date.now()-signing.issued>300000)throw Error('Challenge expired before verification.');
+     verification.textContent='VERIFIED: EIP-191 message signature matches this connected address on Base 8453.\n' +
+       'No ENS/DNS ownership, API-key access, account login, or payment authority established.';
+     verification.className='ok';
+   }catch(e){
+     verification.className='bad';
+     verification.textContent=e?.code===4001?'Signature declined. No proof established.':String(e?.message||e).slice(0,280);
+   }finally{busy=false;button.disabled=false;verifyButton.disabled=true;}
  });
 })();
 </script></main></body></html>
