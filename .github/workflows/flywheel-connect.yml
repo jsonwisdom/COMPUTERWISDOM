@@ -56,3 +56,16 @@ jobs:
         run: npm install --ignore-scripts --no-audit --no-fund --no-package-lock
       - name: REPLAY 007 independent acceptance witness, durable nonce, orphan rejection
         run: node --test services/confucius-compute-wisdom/base-batches/acceptance-witness.test.mjs
+
+  encrypted-export:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install pinned ethers for test-only independent export signatures
+        working-directory: services/confucius-compute-wisdom/base-batches
+        run: npm install --ignore-scripts --no-audit --no-fund --no-package-lock
+      - name: REPLAY 007 encrypted recipient-only export, scope and independent witness
+        run: node --test services/confucius-compute-wisdom/base-batches/encrypted-export.test.mjs
