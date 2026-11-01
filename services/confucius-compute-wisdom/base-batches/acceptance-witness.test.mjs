@@ -215,3 +215,14 @@ test('W12 stored attestation cannot be replaced or read as valid if payload chan
   assert.deepEqual(witnessCounts(c.file),{attestations:1,nonces:1});
  }finally{c.cleanup()}
 });
+
+test('W13 publication with plausible signed witness but no persisted witness table returns NO_WITNESS',async()=>{
+ const c=context();try{
+  const root=await reserve(c.file,115),w=await witnessProof(root,219);
+  assert.deepEqual(witnessCounts(c.file),{attestations:0,nonces:0});
+  const r=review(bundle(root,w,{publication:true}),c.file);
+  assert.equal(r.status,'HOLD');
+  assert.equal(r.reason,'NO_WITNESS');
+  assert.deepEqual(witnessCounts(c.file),{attestations:0,nonces:0});
+ }finally{c.cleanup()}
+});
