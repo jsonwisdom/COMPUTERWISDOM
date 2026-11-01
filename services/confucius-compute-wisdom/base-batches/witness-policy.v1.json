@@ -1,0 +1,19 @@
+{
+  "schema": "COINBASEKID_ACCEPTANCE_WITNESS_POLICY_V1",
+  "version": "1.0.0",
+  "productionEnabled": false,
+  "witnessedPurpose": "I independently observed this candidate batch root at the signed Base block height; no payment or export authority.",
+  "domain": {
+    "name": "CoinBaseKid Independent Acceptance Witness",
+    "version": "1",
+    "chainId": 8453,
+    "salt": "0x1beab13af0396ad2275cc6ac755cfdccaaf9d39d1ac0ac5fa07689f42a1a39d0"
+  },
+  "origin": "https://wallet.jsonwisdom.com",
+  "maximumBlockWindow": 12,
+  "maximumAcceptanceLagSeconds": 300,
+  "maximumClockSkewSeconds": 30,
+  "authorizedWitnesses": [],
+  "externalKeyRegistration": "NOT_ESTABLISHED",
+  "note": "A witness key MUST be different from every batch signer and the authenticated bundle creator; no production witness is enrolled. Creator and block origin provenance still require external verification. This policy is not payment, export, production or publication authorization."
+}
