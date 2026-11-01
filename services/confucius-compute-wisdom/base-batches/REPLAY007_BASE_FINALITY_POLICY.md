@@ -1,34 +1,37 @@
-# REPLAY 007 — §5a Base finality, reorg and creator provenance policy
+# REPLAY 007 — §5a Base finality / reorg policy
 
-**Status:** Candidate policy for independent security review. **Not activated.** Base mainnet chain ID 8453 only. Payment, public proof release and production witness enrollment: **HOLD**.
+**Review candidate only · chain 8453 · NOT ACTIVE.** Witness/publication/export enrollment and x402 payments remain HOLD.
 
-## Exact distinction: acceptance vs finality
+## Decision rule
 
-The current signed `AcceptanceWitness` records an off-chain root and claimed `createdAtBlock` / `observedAtBlock`. The code checks `observedAtBlock ∈ [createdAtBlock, createdAtBlock + 12]` and a time window near SQLite `reserved_at`. It does **not** establish that the block was canonical/finalized, that the creator signed the root, or that the root was committed onchain. **A Base finalized block can be used as a reference clock; it cannot prove that an entirely off-chain Merkle root was published on Base.**
+Base distinguishes **unsafe**, **safe**, and **finalized** L2 blocks. A descendant-count alone is not L1-derived finality. Candidate operator threshold:
 
-Base uses L2 **unsafe**, **safe**, and **finalized** forkchoice states. Unsafe sequencer visibility and an arbitrary number of L2 descendants do not, by themselves, equal L1-derived finality. Base derivation and L1 reorg handling are described in https://docs.base.org/base-chain/specs/protocol/consensus/derivation .
+**N = 12 subsequent L2 blocks AND the observed block is included in an independently verified `finalized` L2 head**, with its *exact block hash*, correct Base chain ID and canonical L1-origin hash. N is an additional policy margin, **not** a Base protocol finality guarantee. Independent operator approval of N, the node sources and key custody is **PENDING**, so no production finality verdict may pass. Reference: [Base L2 derivation/forkchoice](https://docs.base.org/base-chain/specs/protocol/consensus/derivation).
 
-## Proposed activation threshold (not approved)
+At acceptance, record block height **and hash**, L1-origin height/hash, source identifier, observation time, root, and the independently signed witness attestation. Cross-check against an independently retrieved finalized view before changing status. Verify hashes and canonical origins, not just heights.
 
-- **N = 12 L2 descendant blocks** beyond the exact observed block **AND** the observed block must be at or below the independently read **`finalized` L2 head** with the same immutable block hash and correct chain ID 8453. N=12 is an additional policy margin, **not a claim** that 12 confirmations produce Base/L1 finality; the `finalized` requirement controls.
-- Gather block number **and hash** and corresponding L1 origin number/hash at acceptance from a trusted chain source. Compare against an independently retrieved canonical/finalized view before any status is upgraded. Keep the source, query time and header hashes in a signed, versioned **finality decision**. A claimed height alone fails.
-- The existing witness signature must be issued near acceptance (current maximum lag 300 seconds). Base L2 finality may take longer than that. **Do not wait for finality and backdate the existing witness.** Treat the acceptance witness as `OBSERVED_UNFINALIZED`, and add a **separate later finalized-chain review** before claiming `FINALITY_REVIEW_PASSED`. This requires a future code/schema review; it is **not implemented** by the current witness module.
-- Version the approved N and finality source in an operator-signed policy. Until an independently authorized operator approves sources, threshold and custody, `FINALITY_REVIEW_PASSED = false` and publication/export activation stay HOLD.
+**Critical separation:** the root is an *off-chain* candidate. A finalized Base block can authenticate a reference block/time; **it cannot prove that this root was ever included onchain** without an independently verifiable inclusion commitment.
 
-## Reorg and invalid-reference response
+## Acceptance now, finality later
 
-1. **Before finality:** hash mismatch, head regression, RPC disagreement, L1 origin reorg or unavailable trusted source → **HOLD / BLOCK_REFERENCE_UNFINALIZED**. No export or publication. Append a signed incident/quarantine record; never silently replace previously signed root/block evidence.
-2. **After a previously reported finality:** unexpected conflicting finality evidence → freeze new exports, mark the prior decision **DISPUTED**, preserve both histories, and require independent incident review. Do not delete consumed nonces or rewrite existing witness signatures.
-3. A new canonical block or new candidate root requires **fresh** signed attribution and independent observation; no signature or nonce reuse across the replacement.
+The existing witness signs `root`, `createdAtBlock`, `observedAtBlock` and `observedAt` inside a ~300-second acceptance window. Base finality may occur after that window.
 
-## Creator provenance and signer independence
+1. Accept a valid independent witness promptly as **`OBSERVED_UNFINALIZED`**. Never backdate it.
+2. Later record a separately authenticated **`FINALITY_REVIEW_PASSED`** decision once the proposed N **and** finalized-head/hash conditions pass. This later decision requires a reviewed addition; it is **not implemented** by current §5a code.
+3. No witness, no approved threshold, no verified finalized view, or no authenticated block hash → **HOLD**. Existing `maximumBlockWindow: 12` constrains witness timing; it is **not** the finality policy.
 
-- Creator identity is **OPEN**: current `bundle.creator` is a claimed address column. Activation requires a separate **creator EIP-712 signature** committing to `bundle_root`, origin, chain 8453, creator identity, purpose, policy version, issued time and unique nonce. Verify the recovered address against a versioned creator authorization policy; no DB-column-only attribution.
-- Witness is **not** the creator or any batch signer (existing test `W3`). A dedicated witness key must be enrolled through an out-of-band authenticated public-key record, with an independent custodian, rotation, compromise/revocation response and audit log. A single key is a **single-witness trust root**, not threshold security; threshold custody is a possible v2 mitigation.
-- An attestation never authorizes payments, identity claims, or publication. Preserve separately: **(a) cryptographic proof, (b) acceptance observation, (c) finalized-chain review, (d) verified creator attribution**.
+## Reorg and provenance response
 
-## Acceptance assertions for later code/operations
+- Before finalization: disagreeing RPCs, block-hash/parent change, L1-origin reorg or node outage → `BLOCK_REFERENCE_UNFINALIZED`; quarantine root and refuse export. Append a signed incident, retaining original evidence.
+- After a prior finality decision: any authenticated contradictory evidence → `DISPUTED`, freeze future exports, preserve both histories and require an independent incident reviewer. Never erase the nonce ledger or silently replace a witness record.
+- New canonical reference or replacement root needs fresh attribution, witness and nonces.
 
-`WITNESS_IS_BATCH_SIGNER` / `WITNESS_IS_CREATOR` → HOLD; a block-number-only claim or unsafe/safe-only block → HOLD; fewer than N descendants → HOLD; no finalized-head/hash agreement → HOLD; L1 reorg or hash conflict → HOLD; missing signed creator attribution → HOLD; witness signed after the 300-second acceptance window → HOLD (not backdated); finality review not completed → no export/publication.
+**Creator attribution is still OPEN.** `bundle.creator` is currently a claimed database/input address. Before activation, require a **creator-signed EIP-712 statement** over root, creator address, origin, chain 8453, purpose, policy version, issued time and unique nonce; verify against a versioned creator authorization policy. An unsigned DB column is insufficient.
 
-**Deployment restriction:** §4 SQLite remains one authoritative local writer, not a multi-replica nonce service. This document changes no runtime. The candidate finality policy and creator identity chain require approval before activation.
+**Witness independence is an existing tested assertion** (`W3`: witness equals batch signer → `WITNESS_IS_BATCH_SIGNER`; `W4`: witness equals creator → `WITNESS_IS_CREATOR`). Enroll a dedicated real-world witness key only by independently authenticated out-of-band publication. One witness key means a **single-witness trust root**; use separate custody, revocation/rotation and incident records, with threshold custody a v2 option.
+
+## Activation tests (future)
+
+Unsafe/safe-only block, fewer than N descendants, missing finalized hash, reorg, untrusted witness, unsigned creator attribution or expired acceptance-time witness → **HOLD**. All finality attestations must include hashes and trusted source evidence. Multi-host SQLite replay protection remains NOT established.
+
+**Code status:** §5a cryptographic tests PASS; finality source, creator signature, approved N, independent key enrollment and operational activation OPEN. No payment or publication authority.
