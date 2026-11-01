@@ -41,3 +41,5 @@ jobs:
         run: npm install --ignore-scripts --no-audit --no-fund --no-package-lock
       - name: Test exact Base 8453 batch proof mathematics, rejection and Merkle behavior
         run: node --test services/confucius-compute-wisdom/base-batches/verify-base-signatures.test.mjs
+      - name: REPLAY 007 actual EIP712 signatures into durable SQLite nonce ledger
+        run: node --test services/confucius-compute-wisdom/base-batches/replay-ledger.crypto.integration.test.mjs
