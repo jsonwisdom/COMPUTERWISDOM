@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1421">
+<meta name="color-scheme" content="dark">
+<meta name="description" content="CoinBaseKid: verify control of @jaywisdom on Base, then open a machine-readable public evidence index. No transactions or payment permissions.">
+<title>CoinBaseKid · Sign @jaywisdom · Classes with Glasses</title>
+<style>
+:root{font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#0b1421;color:#edf3ff;font-synthesis:none}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% -5%,#253e5b 0,transparent 45%),#0b1421}
+main{width:min(100% - 32px,580px);margin:0 auto;padding:32px 0 80px}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.17em;color:#efc887;text-transform:uppercase}
+h1{font:500 clamp(2.2rem,9vw,3.3rem)/1.06 Georgia,"Times New Roman",serif;letter-spacing:-.05em;margin:14px 0}
+h2{font:500 1.65rem/1.16 Georgia,serif;margin:10px 0}
+p{color:#bbcade;line-height:1.55}
+.lede{font-size:1.05rem;margin-bottom:23px}
+.panel{background:linear-gradient(142deg,#1a2b42,#142338);border:1px solid #37506d;border-radius:18px;padding:21px;margin:18px 0;box-shadow:0 10px 28px #02081422}
+.tag{display:inline-flex;border:1px solid #ba995f;border-radius:50px;color:#f5d79b;padding:5px 11px;font-size:11px;font-weight:800;letter-spacing:.1em}
+button{appearance:none;display:block;width:100%;padding:17px;border:0;border-radius:12px;background:#f4cc88;color:#111a2a;font:750 16px system-ui;cursor:pointer;text-align:center}
+button.secondary{background:#2a4564;color:#eef4ff;border:1px solid #587694}
+button:disabled{opacity:.5;cursor:not-allowed}
+button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #fff;outline-offset:3px}
+.notice{min-height:45px;color:#bbcade;white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;margin:15px 0}
+.notice.ok{color:#ade9ca}.notice.bad{color:#ffc0bc}
+.account{font:13px/1.6 ui-monospace,Menlo,monospace;color:#efcc8f;overflow-wrap:anywhere}
+details{margin:12px 0}
+summary{cursor:pointer;color:#dde9f9}
+pre{background:#091423;border:1px solid #344c68;border-radius:10px;padding:14px;overflow-wrap:anywhere;white-space:pre-wrap;max-height:260px;overflow:auto;font:11px/1.55 ui-monospace,Menlo,monospace}
+small,.hint{font-size:12px;color:#9cafc7;line-height:1.65}
+#proofHero{scroll-margin-top:20px;border:1px solid #8ec9ae;background:linear-gradient(145deg,#153f3f,#172f3d)}
+#proofHero .eyebrow{color:#a7f0ca}
+#proofHero h2{color:#e3fff4}
+.hash{font:12px/1.6 ui-monospace,Menlo,monospace;color:#b7eed8;overflow-wrap:anywhere}
+.result-line{border-top:1px solid #517375;padding-top:12px;margin-top:12px}
+#index{padding-top:8px}
+.index-row{list-style:none;margin:0 0 12px;padding:18px;border:1px solid #344b67;border-radius:14px;background:#15253a;display:flex;align-items:flex-start;gap:8px;flex-direction:column;opacity:0;animation:land .35s forwards}
+.index-row a{color:#ddebff;text-decoration:underline;text-underline-offset:3px;font-weight:750}
+.index-row p{font-size:13px;margin:1px 0 0}
+.index-row .state{font-size:10px;letter-spacing:.12em;border-radius:4px;background:#2e435a;color:#f6d99f;padding:4px 7px;font-weight:800}
+ol{margin:17px 0;padding:0}
+@keyframes land{from{opacity:0;transform:translateY(-14px)}to{opacity:1;transform:translateY(0)}}
+.footer{border-top:1px solid #2b425d;margin-top:36px;padding-top:16px}
+a{color:#f0cb91}
+[hidden]{display:none!important}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;scroll-behavior:auto!important}.index-row{opacity:1}}
+</style>
+<script defer src="https://cdn.jsdelivr.net/npm/ethers@6.17.0/dist/ethers.umd.min.js" integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi" crossorigin="anonymous"></script>
+<script defer src="/jaywisdom.js"></script>
+</head>
+<body><main>
+<header>
+<div class="eyebrow">Computer Wisdom · CoinbaseKid · Classes with Glasses</div>
+<h1>Recover your proof.<br>Sign your wallet.</h1>
+<p class="lede">Kid walks into work: “Recover my Coinbase Wallet.” No seed phrases. No penny payment. Just reconnect, approve one clear signature, then watch your evidence index open. 🕶️</p>
+<span class="tag">BASE ONLY · 8453 · ZERO GAS SIGNATURE</span>
+</header>
+<section id="proofHero" class="panel" hidden aria-live="polite">
+<div class="eyebrow">01 / The proof rises to the top</div>
+<h2>✓ Wallet control verified locally</h2>
+<p>This device verified a fresh off-chain Base-domain signature for the selected account. This is <strong>not</strong> a legal-identity or reputation certification and has not been published to GitHub.</p>
+<p class="hint">Account</p><div id="proofAddress" class="account"></div>
+<div class="result-line"><div class="hint">Cryptographic verification method</div><div id="proofMethod"></div></div>
+<div class="result-line"><div class="hint">EIP-712 signed digest</div><div id="proofDigest" class="hash"></div></div>
+<details><summary>View signed JSON proof receipt (contains signature)</summary><pre id="receiptView" hidden></pre></details>
+<button id="copyReceipt" class="secondary" type="button" hidden>Copy signed JSON receipt · Your choice</button>
+<p class="hint">This signed receipt stays in your browser memory; it is not uploaded, automatically published, or independently timestamped. Copy and share only if you intend to.</p>
+</section>
+<section class="panel">
+<div class="eyebrow">02 / Reconnect and sign</div>
+<h2>@jaywisdom</h2>
+<p class="hint">Expected controller account for <strong>jaywisdom.base.eth</strong></p>
+<div class="account">0xa380552a27b0a5a2874ea7aa52cac09f542002e8</div>
+<p>Open this page in the <strong>Coinbase Wallet in-app browser</strong> on iPhone, select your @jaywisdom account, and tap Connect. A separate Sign button opens the wallet's signing popup.</p>
+<button id="connect" type="button">1 · Connect Coinbase Wallet (Base)</button>
+<div id="notice" class="notice" role="status" aria-live="polite">Not connected. Nothing requested.</div>
+<div id="account" class="account"></div>
+<div id="previewWrap" hidden>
+<details><summary>Read the exact message before signing</summary>
+<pre id="preview"></pre>
+</details>
+<button id="sign" class="secondary" type="button" disabled hidden>2 · Sign free proof · Open wallet popup</button>
+</div>
+<p class="hint"><strong>Only</strong> eth_requestAccounts, Base network selection, EIP-712 signing and read-only verification are used. Never approve a transaction or token permission here.</p>
+</section>
+<section id="index" hidden>
+<div class="eyebrow">03 / The evidence comes down in order</div>
+<h2>📚 The Wisdom Index</h2>
+<p>Machine-readable, status-labeled public evidence: PASS, HOLD, OPEN and their supporting reasons. Your signature reveals this view locally; it does not automatically modify GitHub or change repository visibility.</p>
+<p id="indexStatus" class="hint">Waiting for local proof.</p>
+<ol id="indexList" aria-label="Public evidence and decision index"></ol>
+<p><a href="/recovery-index.json" target="_blank" rel="noopener noreferrer">Open the machine-readable JSON index ↗</a></p>
+</section>
+<footer class="footer">
+<p class="hint">Account control ≠ control of the other CoinBaseKid desktop wallet ≠ public reputation. Public repo evidence is read-only. No recovery phrases are used or collected, no signature is uploaded, and a browser-local nonce is not an issuer-authorized, globally replay-proof credential. Smart account checks use ERC-1271 when a deployed contract is detected. Undeployed EIP-6492 and other unsupported signature forms fail closed.</p>
+<p class="hint">BATCH_PROOF_CODE_COMPLETE / GOVERNANCE_PENDING / TRUST_ROOTS_UNENROLLED / X402_HOLD</p>
+<p><a href="/" rel="noopener">Original desktop CoinBaseKid page</a> · <a href="https://github.com/jsonwisdom/COMPUTERWISDOM" target="_blank" rel="noopener noreferrer">Public GitHub source</a></p>
+</footer>
+</main></body></html>
