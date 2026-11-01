@@ -15,9 +15,9 @@ const ERC1271=new Interface(['function isValidSignature(bytes32,bytes) view retu
 const EXPECTED_DECL="const EXPECTED='"+REAL+"';";
 function harness({owner=SYNTHETIC,wrong=false,smart=false,contractValid=true,abort=false,correctOrigin=true,initialChain='0x1'}={}){
   const ids=['connect','sign','notice','account','preview','previewWrap',
-    'proofHero','proofAddress','proofMethod','proofDigest','index','indexList','indexStatus'];
+    'proofHero','proofAddress','proofMethod','proofDigest','index','indexList','indexStatus','copyReceipt','receiptView'];
   const els=Object.fromEntries(ids.map(id=>{
-    const el={id,hidden:['sign','previewWrap','proofHero','index'].includes(id),
+    const el={id,hidden:['sign','previewWrap','proofHero','index','copyReceipt','receiptView'].includes(id),
       disabled:id==='sign',textContent:'',className:'',style:{},
       listeners:{},children:[], addEventListener(name,fn){this.listeners[name]=fn},
       replaceChildren(){this.children=[]},appendChild(x){this.children.push(x)},
@@ -70,12 +70,15 @@ function harness({owner=SYNTHETIC,wrong=false,smart=false,contractValid=true,abo
   }};
   const manifest={...INDEX,basename_controller:owner.address.toLowerCase()};
   const fetch=async()=>({ok:true,json:async()=>manifest});
+  let clipboard='';
+  const navigator={clipboard:{async writeText(value){clipboard=value}}};
   class Event{constructor(type){this.type=type}}
-  runInNewContext(source,{window,document,Event,crypto:webcrypto,fetch,
+  runInNewContext(source,{window,document,Event,crypto:webcrypto,fetch,navigator,
     location:{origin:correctOrigin?'https://wallet.jsonwisdom.com':'https://phishing.invalid'},
     Date,BigInt,Uint8Array,Array,Buffer,console},{timeout:3000});
   return {els,calls,connect:()=>els.connect.listeners.click(),
-    sign:()=>els.sign.listeners.click(),changeAccount(a){address=a;emitted.accountsChanged?.([a])},
+    sign:()=>els.sign.listeners.click(),copy:()=>els.copyReceipt.listeners.click(),getClipboard:()=>clipboard,
+    changeAccount(a){address=a;emitted.accountsChanged?.([a])},
     changeChain(c){chain=c;emitted.chainChanged?.(c)}};
 }
 test('M1 iPhone proof-first page is mobile-friendly and never contains secret entry or send controls',()=>{
@@ -148,4 +151,24 @@ test('M7 public JSON index distinguishes historical CI, claims, unsigned binding
   assert.ok(INDEX.layers.some(x=>x.status==='PENDING'));
   assert.ok(INDEX.layers.some(x=>x.status==='HOLD'));
   assert.ok(INDEX.layers.every(x=>/^https:\/\//.test(x.url)));
+});
+
+test('M8 signed receipt exists only after validation, is copyable by explicit user click, and never auto-published',async()=>{
+  const h=harness();
+  assert.equal(h.els.copyReceipt.hidden,true);
+  await h.connect();
+  assert.equal(h.els.copyReceipt.hidden,true);
+  await h.sign();
+  assert.equal(h.els.copyReceipt.hidden,false);
+  const receipt=JSON.parse(h.els.receiptView.textContent);
+  assert.equal(receipt.schema,'COINBASEKID_JAYWISDOM_LOCAL_SIGNED_RECEIPT_V1');
+  assert.equal(receipt.account.toLowerCase(),SYNTHETIC.address.toLowerCase());
+  assert.equal(receipt.backend_witnessed,false);
+  assert.equal(receipt.payment_authority,false);
+  assert.equal(receipt.typed_data_digest,TypedDataEncoder.hash(receipt.typed_data.domain,
+    {JayWisdomControl:receipt.typed_data.types.JayWisdomControl},receipt.typed_data.message));
+  assert.equal(h.getClipboard(),'');
+  await h.copy();
+  assert.equal(JSON.parse(h.getClipboard()).typed_data_digest,receipt.typed_data_digest);
+  assert.ok(!h.calls.some(x=>/sendTransaction|personal_sign|wallet_sendCalls/.test(x.method)));
 });
