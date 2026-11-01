@@ -43,3 +43,16 @@ jobs:
         run: node --test services/confucius-compute-wisdom/base-batches/verify-base-signatures.test.mjs
       - name: REPLAY 007 actual EIP712 signatures into durable SQLite nonce ledger
         run: node --test services/confucius-compute-wisdom/base-batches/replay-ledger.crypto.integration.test.mjs
+
+  acceptance-witness:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install pinned EIP-712 witness verifier (synthetic test keys only)
+        working-directory: services/confucius-compute-wisdom/base-batches
+        run: npm install --ignore-scripts --no-audit --no-fund --no-package-lock
+      - name: REPLAY 007 independent acceptance witness, durable nonce, orphan rejection
+        run: node --test services/confucius-compute-wisdom/base-batches/acceptance-witness.test.mjs
