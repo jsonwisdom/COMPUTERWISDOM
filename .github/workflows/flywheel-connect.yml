@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - "flywheel-connect/**"
+      - "services/confucius-compute-wisdom/base-batches/**"
       - ".github/workflows/flywheel-connect.yml"
   push:
     branches: ["master"]
@@ -27,3 +28,16 @@ jobs:
         run: npm install --no-save --no-package-lock --ignore-scripts --no-audit --no-fund ethers@6.17.0
       - name: Test Coinbase Base switch, Base-only EIP-712 domain-bound signature, and negative cases
         run: node --test flywheel-connect/connect.test.mjs
+
+  base-batch-exact:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Install pinned offline EIP-712 batch verifier
+        working-directory: services/confucius-compute-wisdom/base-batches
+        run: npm install --ignore-scripts --no-audit --no-fund --no-package-lock
+      - name: Test exact Base 8453 batch proof mathematics, rejection and Merkle behavior
+        run: node --test services/confucius-compute-wisdom/base-batches/verify-base-signatures.test.mjs
