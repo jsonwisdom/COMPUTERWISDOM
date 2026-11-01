@@ -1,13 +1,13 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="color-scheme" content="dark"><title>Flywheel · Connect wallet</title>
-<style>*{box-sizing:border-box}body{margin:0;background:#101a29;color:#ecf1f7;font:17px/1.6 system-ui,sans-serif;padding:32px 20px}main{max-width:530px;margin:5vh auto}small{color:#a6bad0;letter-spacing:.08em}h1{font:500 42px/1.1 Georgia,serif;margin:20px 0}p{color:#bfccdc}section{border:1px solid #354860;padding:22px;border-radius:20px;margin:25px 0;background:#17263a}code{display:block;overflow-wrap:anywhere;font-size:14px;color:#dfc38e}button,.button{display:block;width:100%;border:0;border-radius:13px;background:#d7bb86;color:#101a29;font:600 17px system-ui;padding:17px;margin:13px 0;text-align:center;text-decoration:none;cursor:pointer}button:disabled{opacity:.5}.secondary{background:#263c56;color:#eef4fb}#status{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#cbdcf1}button:focus-visible,a:focus-visible{outline:3px solid white;outline-offset:4px}</style></head>
+<style>*{box-sizing:border-box}body{margin:0;background:#101a29;color:#ecf1f7;font:17px/1.6 system-ui,sans-serif;padding:32px 20px}main{max-width:530px;margin:5vh auto}small{color:#a6bad0;letter-spacing:.08em}h1{font:500 42px/1.1 Georgia,serif;margin:20px 0}p{color:#bfccdc}section{border:1px solid #354860;padding:22px;border-radius:20px;margin:25px 0;background:#17263a}code{display:block;overflow-wrap:anywhere;font-size:14px;color:#dfc38e}button,.button{display:block;width:100%;border:0;border-radius:13px;background:#d7bb86;color:#101a29;font:600 17px system-ui;padding:17px;margin:13px 0;text-align:center;text-decoration:none;cursor:pointer}button:disabled{opacity:.5}.secondary{background:#263c56;color:#eef4fb}#status{white-space:pre-wrap;overflow-wrap:anywhere}a{color:#cbdcf1}button:focus-visible,a:focus-visible{outline:3px solid white;outline-offset:4px}textarea{width:100%;min-height:240px;background:#0c1522;color:#ecf1f7;font:16px/1.5 ui-monospace,monospace;border:1px solid #597293;border-radius:12px;padding:12px}[hidden]{display:none!important}</style></head>
 <body><main><small>COMPUTER WISDOM / FLYWHEEL</small><h1>Your wallet.<br>Your connection.</h1><p>Open this page inside Coinbase Wallet / Base app, then connect your existing wallet.</p>
 <section><small>PRIMARY WALLET · IPHONE / ENS REFERENCE</small><code id="expected"></code><p>Primary iPhone account observed on Base (8453).</p><p><small>DESKTOP ALTERNATIVE · CHROME EXTENSION</small><code id="desktop"></code></p><p>Wallet addresses and networks are separate. The desktop extension can use Ethereum (1) without becoming the iPhone wallet.</p></section>
-<a id="open" class="button">1 · Open in Coinbase Wallet</a>
+<a id="open" class="button">1 · Open in Coinbase Wallet (if needed)</a>
 <button id="connect" class="secondary">2 · Connect wallet</button>
 <details><summary>App did not open?</summary><p>Copy this page link and paste it into your wallet’s app browser. The Coinbase exchange app does not expose a wallet provider here.</p><a id="scheme">Try the iPhone app link</a><button id="copy" class="secondary">Copy page link</button></details>
-<section aria-live="polite"><strong id="status">Not connected</strong><p id="limit">Connection shares your public address. It does not prove wallet control by signature or connect your exchange account.</p></section>
-<button id="download" class="secondary" disabled>Save connection record</button>
+<section aria-live="polite"><strong id="status">Not connected</strong><p id="limit">Connection shares your public address. It does not prove wallet control by signature or connect your exchange account.</p><p id="feedback" role="status">After connecting, save or copy your local JSON receipt.</p></section>
+<button id="download" class="secondary" disabled>3 · Share / save connection record</button><section id="receiptPanel" hidden><small>LOCAL RECORD · JSON</small><p>The record stays on this device unless you choose to share or save it.</p><textarea id="receiptText" readonly aria-label="Connection record JSON"></textarea><button id="copyRecord" class="secondary">Copy record JSON</button><button id="downloadFile" class="secondary">Download JSON file (desktop)</button></section>
 <p>No seed phrase, API key, message signature, transaction, or token approval is requested. Nothing is uploaded by this page. Your local Flywheel settings are not changed.</p></main>
 <script>
 'use strict';
@@ -25,7 +25,7 @@ let pendingChange=false;
 const discovered=new Map();
 window.addEventListener('eip6963:announceProvider',e=>{if(e.detail?.provider?.request&&e.detail?.info?.uuid)discovered.set(e.detail.info.uuid,e.detail);});
 window.dispatchEvent(new Event('eip6963:requestProvider'));
-function clear(){epoch++;record=null;$('download').disabled=true;$('status').textContent='Wallet or network changed. Connect again to refresh.';}
+function clear(){epoch++;record=null;$('download').disabled=true;$('receiptPanel').hidden=true;$('receiptText').value='';$('connect').textContent='2 · Connect wallet';$('status').textContent='Wallet or network changed. Connect again to refresh.';$('feedback').textContent='Wallet observation cleared. Tap Connect to read your current wallet.';}
 function onAccountsChanged(accounts){
   if(connecting){pendingChange=true;return;}
   clear();
@@ -50,6 +50,8 @@ $('connect').onclick=async()=>{
  connecting=true;
  pendingChange=false;
  clear();
+ $('status').textContent='Checking wallet…';
+ $('feedback').textContent='Reading your public address and network; no signing requested.';
  const attempt=epoch;
  try{
  const selected=select();
@@ -92,13 +94,59 @@ $('connect').onclick=async()=>{
  record={format:'FLYWHEEL_CONNECTION_OBSERVATION_V1',connected_address:address,expected_address:EXPECTED,desktop_reference_address:DESKTOP,address_match:primaryMatch,recognized_wallet:primaryMatch||desktopMatch,wallet_role:walletRole,chain_id:chainId,base_mainnet:chainId===8453,observed_at:new Date().toISOString(),page:canonical,signature_verified:false,exchange_account_connected:false,transaction_requested:false,server_configuration_changed:false};
  $('status').textContent=(primaryMatch?'Primary iPhone / ENS reference address recognized':desktopMatch?'Desktop Chrome extension address recognized':'Unrecognized wallet address')+'\n'+address+'\n'+(chainId===8453?'Base mainnet selected':chainId===1?'Ethereum mainnet selected':'Current chain: '+chainId)+'\nSignature proof: not performed';
  $('download').disabled=false;
- }catch(e){$('status').textContent=e.code===4001?'Connection declined. You can try again.':e.message||'Connection failed';}
+ $('connect').textContent='2 · Refresh wallet observation';
+ $('feedback').textContent='Observation refreshed: '+record.observed_at+'. You can share or copy the receipt.';
+ }catch(e){$('status').textContent=e.code===4001?'Connection declined. You can try again.':e.message||'Connection failed';$('feedback').textContent='No connection receipt available. Review the wallet message above.';}
  finally{
   connecting=false;
   pendingChange=false;
   $('connect').disabled=false;
  }
 };
-$('copy').onclick=async()=>{try{await navigator.clipboard.writeText(canonical);$('copy').textContent='Link copied';}catch{$('status').textContent='Copy the page URL from your browser address bar.';}};
-$('download').onclick=()=>{if(!record)return;const url=URL.createObjectURL(new Blob([JSON.stringify(record,null,2)],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='flywheel-wallet-connection.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),3000);};
+
+function message(text){$('feedback').textContent=text;}
+function revealRecord(){
+ if(!record){message('Connect to your wallet first.');return null;}
+ const json=JSON.stringify(record,null,2);
+ $('receiptText').value=json;$('receiptPanel').hidden=false;
+ return json;
+}
+async function copyText(text){
+ try{if(navigator.clipboard?.writeText){await navigator.clipboard.writeText(text);return true;}}catch{}
+ try{const item=document.createElement('textarea');item.value=text;item.style.position='fixed';item.style.opacity='0';document.body.appendChild(item);item.focus();item.select();const ok=document.execCommand?.('copy')===true;item.remove();return ok;}catch{return false;}
+}
+$('open').onclick=e=>{if(window.ethereum||discovered.size){e.preventDefault();message('A wallet provider is already available. Use step 2 to refresh your wallet observation.');}};
+$('scheme').onclick=e=>{if(window.ethereum||discovered.size){e.preventDefault();message('Already in a wallet-enabled browser. Use step 2.');}};
+$('copy').onclick=async()=>{const ok=await copyText(canonical);message(ok?'Wallet page link copied.':'Copy is blocked in this browser. Copy the URL from the address bar.');$('copy').textContent=ok?'Page link copied':'Copy page link';};
+$('download').onclick=async()=>{
+ const json=revealRecord();if(!json)return;
+ message('Receipt displayed below. Use Copy record JSON, or the iPhone share sheet if supported.');
+ if(typeof navigator.share!=='function')return;
+ try{
+  let data={title:'Flywheel wallet connection record',text:json};
+  if(typeof File==='function'&&typeof navigator.canShare==='function'){
+   const file=new File([json],'flywheel-wallet-connection.json',{type:'application/json'});
+   if(navigator.canShare({files:[file]}))data={title:'Flywheel wallet connection record',files:[file]};
+  }
+  await navigator.share(data);
+  message('Share sheet closed. Check the app where you chose to save it. JSON remains visible below.');
+ }catch(e){message(e?.name==='AbortError'?'Share canceled. JSON remains visible below.':'Sharing unavailable. Use Copy record JSON below.');}
+};
+$('copyRecord').onclick=async()=>{
+ const json=revealRecord();if(!json)return;
+ const ok=await copyText(json);
+ if(ok){message('JSON record copied. Paste it into Notes or Files.');return;}
+ $('receiptText').focus();$('receiptText').select();
+ message('Clipboard blocked. The JSON is selected below. Long-press it and choose Copy.');
+};
+$('downloadFile').onclick=()=>{
+ const json=revealRecord();if(!json)return;
+ try{
+  const blobUrl=URL.createObjectURL(new Blob([json],{type:'application/json'}));
+  const a=document.createElement('a');a.href=blobUrl;a.download='flywheel-wallet-connection.json';a.click();
+  setTimeout(()=>URL.revokeObjectURL(blobUrl),3000);
+  message('Download requested. If the in-app browser blocked it, use Copy record JSON.');
+ }catch{message('File download unavailable. Use Copy record JSON above.');}
+};
+
 </script></body></html>
