@@ -21,7 +21,7 @@ hr{border:0;border-top:1px solid #344a63;margin:18px 0}
 <h1>Connect Coinbase Wallet to Base</h1>
 <p>Windows Chrome extension already installed? Use the button below. No manual network menus.</p>
 <section class="panel">
-<div class="eyebrow">DEFAULT NETWORK</div><strong>Base mainnet · Chain ID 8453</strong>
+<div class="eyebrow">DEFAULT NETWORK</div><strong>Base mainnet · Chain ID 8453 · Signature policy v2</strong>
 <p>Step 1 connects the extension and selects Base. Step 2 is an <strong>optional Base-domain EIP-712 signature</strong> proving control of that address only. It cannot authorize payment. No token approvals, transfers, payments, or Coinbase API-key access.</p>
 <button id="connect" type="button">Connect Coinbase Wallet + use Base</button>
 <hr><div id="status" role="status" aria-live="polite">Ready. No wallet checked yet.</div>
@@ -32,14 +32,21 @@ hr{border:0;border-top:1px solid #344a63;margin:18px 0}
 <pre id="challengePreview" hidden></pre>
 <div id="verification" role="status" aria-live="polite">Signature proof: not performed.</div>
 </section>
-<p><small>Priority: connect → select Base → optional wallet-control signature. Each connection clears prior results. The fresh, one-use EIP-712 domain includes Base chain ID 8453, and the challenge is bound to this site and address for 5 minutes. No Ethereum mainnet RPC is requested. No JSON receipts, saved history, downloads or reused observations. A signature is not proof of ENS/DNS control or Coinbase API access, and cannot authorize payment.</small></p>
+<p><small>Priority: connect → select Base → optional wallet-control signature. Each connection clears prior results. The fresh, one-use EIP-712 domain pins Base 8453, name, version 2 and a Flywheel-specific salt; no imaginary verifying-contract address. Old v1 signatures are rejected by the batch verifier. The challenge is signed to this origin and account for 5 minutes. No Ethereum mainnet RPC is requested. No JSON receipts, saved history, downloads or reused observations. A signature is not proof of ENS/DNS control or Coinbase API access, and cannot authorize payment.</small></p>
 <p><small>AUTHORITY=false · REAL_USDC_UNTOUCHED · X402_PAYMENT_HOLD</small></p>
 <script src="https://cdn.jsdelivr.net/npm/ethers@6.17.0/dist/ethers.umd.min.js" integrity="sha384-lApM4ELRuFNT7NgNqnXB2zFWgSDdhVvmnOHov2DPJz/2zuNpZImXBeklFr18ilvi" crossorigin="anonymous"></script>
 <script>
 'use strict';
 (() => {
  const BASE='0x2105', CHAIN=8453;
- const EXPECTED_DESKTOP='0x0F7018fea1dc9ba32aE817D896211f72f1197AD8'.toLowerCase();
+ // Generated mirror of flywheel-connect/base-wallet-policy.v2.json.
+ // CI rejects any mismatch between the page and the offline verifier's policy.
+ const SIGNER_POLICY_VERSION='2.0.0', SIGNER_SET_VERSION='desktop-v1';
+ const ALLOWED_SIGNERS=Object.freeze(['0x0f7018fea1dc9ba32ae817d896211f72f1197ad8']);
+ const FLYWHEEL_DOMAIN=Object.freeze({
+   name:'Flywheel Base Wallet Control',version:'2',chainId:8453,
+   salt:'0xf09262a7cdc2a8dd05f80ed656604534efaba598f0d9a1b7016a60af6f1ec275'
+ });
  const button=document.getElementById('connect');
  const verifyButton=document.getElementById('verify');
  const verification=document.getElementById('verification');
@@ -126,7 +133,7 @@ hr{border:0;border-top:1px solid #344a63;margin:18px 0}
      if(attempt!==epoch)throw Error('Wallet state changed. Click Connect to retry.');
      if(!same(granted[0],current))throw Error('Wallet account changed while connecting. Click Connect again.');
      if(finalChain!==CHAIN)throw Error('Wallet did not switch to Base 8453.');
-     if(!same(current,EXPECTED_DESKTOP)){
+     if(!ALLOWED_SIGNERS.includes(current.toLowerCase())){
        status.textContent='Base 8453 selected, but this is a DIFFERENT wallet address. No payment allowed.';
        status.className='warn';address.textContent=current;return;
      }
@@ -138,7 +145,7 @@ hr{border:0;border-top:1px solid #344a63;margin:18px 0}
      const nonce='0x'+Array.from(nonceBytes,x=>x.toString(16).padStart(2,'0')).join('');
      const issued=Math.floor(Date.now()/1000);
      const expires=issued+300;
-     const domain={name:'Flywheel Base Wallet Control',version:'1',chainId:CHAIN};
+     const domain={...FLYWHEEL_DOMAIN};
      const controlTypes=[
        {name:'origin',type:'string'},
        {name:'wallet',type:'address'},
@@ -163,7 +170,8 @@ hr{border:0;border-top:1px solid #344a63;margin:18px 0}
          EIP712Domain:[
            {name:'name',type:'string'},
            {name:'version',type:'string'},
-           {name:'chainId',type:'uint256'}
+           {name:'chainId',type:'uint256'},
+           {name:'salt',type:'bytes32'}
          ],
          WalletControl:controlTypes
        },
@@ -189,7 +197,13 @@ hr{border:0;border-top:1px solid #344a63;margin:18px 0}
    try{
      if(Math.floor(Date.now()/1000)>signing.expires)throw Error('Challenge expired. Reconnect for a new Base-domain request.');
      if(!window.ethers?.verifyTypedData)throw Error('Typed-signature verification library unavailable; no proof established.');
-     if(signing.domain.chainId!==CHAIN||signing.typedData.domain.chainId!==CHAIN||signing.message.origin!==location.origin||
+     if(signing.domain.chainId!==CHAIN||signing.typedData.domain.chainId!==CHAIN||
+        signing.domain.name!==FLYWHEEL_DOMAIN.name||signing.domain.version!==FLYWHEEL_DOMAIN.version||
+        signing.domain.salt!==FLYWHEEL_DOMAIN.salt||
+        Object.keys(signing.typedData.domain).sort().join()!=='chainId,name,salt,version'||
+        Object.keys(signing.domain).sort().join()!=='chainId,name,salt,version'||
+        signing.message.origin!==location.origin||
+        !ALLOWED_SIGNERS.includes(signing.account.toLowerCase())||
         !same(signing.message.wallet,signing.account)||signing.network!==CHAIN||
         signing.typedData.primaryType!=='WalletControl')
        throw Error('Base-only signing domain invalid. Fail closed.');
@@ -217,7 +231,7 @@ hr{border:0;border-top:1px solid #344a63;margin:18px 0}
         !same(a1,a2)||!same(a1,signing.account)||c1!==CHAIN||c2!==CHAIN)
        throw Error('Wallet changed during signature verification. No proof established.');
      if(Math.floor(Date.now()/1000)>signing.expires)throw Error('Challenge expired before verification.');
-     verification.textContent='VERIFIED: Base-only EIP-712 domain (chainId 8453); signature matches this address.\n' +
+     verification.textContent='VERIFIED: Base-only EIP-712 domain v2 (chainId 8453, Flywheel salt); signature matches this authorized control-check address.\n' +
        'No Ethereum-mainnet request, ENS/DNS ownership, API-key access, login, or payment authority established.';
      verification.className='ok';
    }catch(e){
