@@ -1,0 +1,26 @@
+name: Flywheel Wallet Connect
+
+on:
+  pull_request:
+    paths:
+      - "flywheel-connect/**"
+      - ".github/workflows/flywheel-connect.yml"
+  push:
+    branches: ["master"]
+    paths:
+      - "flywheel-connect/**"
+      - ".github/workflows/flywheel-connect.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  wallet-connect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Test Coinbase Base switch, fresh state, and race rejection
+        run: node --test flywheel-connect/connect.test.mjs
