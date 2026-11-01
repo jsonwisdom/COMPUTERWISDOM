@@ -46,7 +46,7 @@ async function proof(n=1,options={}){
   return {
     expectedSigner:signer.address,
     typedData:{
-      types:{EIP712Domain:DOMAIN_FIELDS,WalletControl:CONTROL},
+      types:{EIP712Domain:structuredClone(DOMAIN_FIELDS),WalletControl:structuredClone(CONTROL)},
       primaryType:'WalletControl',domain,message:m
     },
     signature
