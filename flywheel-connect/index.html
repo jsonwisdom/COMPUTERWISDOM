@@ -38,14 +38,15 @@ hr{border:0;border-top:1px solid #344a63;margin:18px 0}
  const status=document.getElementById('status');
  const address=document.getElementById('address');
  const known=new Map();
- let active=null,epoch=0,busy=false,changedDuringRequest=false;
+ let active=null,epoch=0,busy=false,changeCount=0;
  const same=(a,b)=>String(a||'').toLowerCase()===String(b||'').toLowerCase();
  function clear(){
    epoch++;status.textContent='Ready. No wallet checked yet.';
    status.className='';address.textContent='';
  }
  function changed(){
-   if(busy){changedDuringRequest=true;return;}
+   changeCount++;
+   if(busy)return;
    clear();status.textContent='Wallet or network changed. Click Connect again.';
  }
  window.addEventListener('eip6963:announceProvider',e=>{
@@ -76,7 +77,7 @@ hr{border:0;border-top:1px solid #344a63;margin:18px 0}
  }
  button.addEventListener('click',async()=>{
    if(busy)return;
-   busy=true;changedDuringRequest=false;
+   busy=true;
    clear();const attempt=epoch;
    button.disabled=true;status.textContent='Requesting Coinbase Wallet connection…';
    try{
@@ -94,16 +95,23 @@ hr{border:0;border-top:1px solid #344a63;margin:18px 0}
        status.textContent='Requesting Base 8453 from Coinbase Wallet…';
        await provider.request({method:'wallet_switchEthereumChain',params:[{chainId:BASE}]});
      }
-     const current=await checkedAddress(provider);
-     selected=await provider.request({method:'eth_chainId'});
+     // Re-read address and chain twice. Any account/network event during ANY
+     // async read invalidates that attempt, including the final chain read.
+     // Monotonic changeCount prevents a late event being silently discarded.
+     let current=null,finalChain=null,stable=false;
+     for(let i=0;i<3;i++){
+       const before=changeCount;
+       const first=await checkedAddress(provider);
+       const firstChain=Number(BigInt(await provider.request({method:'eth_chainId'})));
+       const second=await checkedAddress(provider);
+       const secondChain=Number(BigInt(await provider.request({method:'eth_chainId'})));
+       if(changeCount!==before||!same(first,second)||firstChain!==secondChain)continue;
+       current=second;finalChain=secondChain;stable=true;break;
+     }
+     if(!stable)throw Error('Wallet changed during validation. Click Connect again.');
      if(attempt!==epoch)throw Error('Wallet state changed. Click Connect to retry.');
      if(!same(granted[0],current))throw Error('Wallet account changed while connecting. Click Connect again.');
-     if(Number(BigInt(selected))!==CHAIN)throw Error('Wallet did not switch to Base 8453.');
-     if(changedDuringRequest){
-       const again=await checkedAddress(provider);
-       const finalChain=await provider.request({method:'eth_chainId'});
-       if(!same(again,current)||Number(BigInt(finalChain))!==CHAIN)throw Error('Wallet state changed during request. Click Connect again.');
-     }
+     if(finalChain!==CHAIN)throw Error('Wallet did not switch to Base 8453.');
      if(!same(current,EXPECTED_DESKTOP)){
        status.textContent='Base 8453 selected, but this is a DIFFERENT wallet address. No payment allowed.';
        status.className='warn';address.textContent=current;return;
@@ -113,7 +121,7 @@ hr{border:0;border-top:1px solid #344a63;margin:18px 0}
    }catch(e){
      status.className='bad';address.textContent='';
      status.textContent=e?.code===4001?'Wallet request declined. No payment made.':String(e?.message||e).slice(0,250);
-   }finally{busy=false;changedDuringRequest=false;button.disabled=false;}
+   }finally{busy=false;button.disabled=false;}
  });
 })();
 </script></main></body></html>
