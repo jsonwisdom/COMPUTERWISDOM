@@ -37,7 +37,7 @@
     proofAddress.textContent='';proofMethod.textContent='';proofDigest.textContent='';
     message(s);
   }
-  function onChange(){changes++;reset('Wallet or network changed. Connect again.');}
+  function onChange(){changes++;if(busy)return;reset('Wallet or network changed. Connect again.');}
   window.addEventListener('eip6963:announceProvider',event=>{
     if(event?.detail?.info?.uuid&&event.detail.provider?.request)
       known.set(event.detail.info.uuid,event.detail);
