@@ -1,11 +1,18 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Wallet, TypedDataEncoder } from 'ethers';
-import { CONTRACT, verifyBaseProof, verifyBaseProofBatch, merkleRoot } from './verify-base-signatures.mjs';
+import { CONTRACT, verifyBaseProof as verifyProductionProof, verifyBaseProofBatch as verifyProductionBatch, merkleRoot, __testing } from './verify-base-signatures.mjs';
+import { readFileSync } from 'node:fs';
 
 const RIGHT=new Wallet('0x'+'77'.repeat(32)); // deterministic TEST ONLY, public and never funded
 const WRONG=new Wallet('0x'+'88'.repeat(32)); // deterministic TEST ONLY
 const NOW=1700000000;
+const TEST_ALLOWLIST=[RIGHT.address,WRONG.address]; // Synthetic keys NEVER production authorized.
+const verifyBaseProof=(record,{nowSec}={})=>
+  __testing.verifyBaseProof(record,{nowSec,testSignerSet:TEST_ALLOWLIST});
+const verifyBaseProofBatch=(records,{nowSec}={})=>
+  __testing.verifyBaseProofBatch(records,{nowSec,testSignerSet:TEST_ALLOWLIST});
+const policy=JSON.parse(readFileSync(new URL('../../../flywheel-connect/base-wallet-policy.v2.json',import.meta.url),'utf8'));
 const CONTROL=[
   {name:'origin',type:'string'},
   {name:'wallet',type:'address'},
@@ -16,14 +23,15 @@ const CONTROL=[
   {name:'policy',type:'string'}
 ];
 const DOMAIN_FIELDS=[
-  {name:'name',type:'string'},{name:'version',type:'string'},{name:'chainId',type:'uint256'}
+  {name:'name',type:'string'},{name:'version',type:'string'},
+  {name:'chainId',type:'uint256'},{name:'salt',type:'bytes32'}
 ];
 const copy=x=>structuredClone(x);
 
 async function proof(n=1,options={}){
   const signer=options.signer??RIGHT;
   const issue=options.issuedAt??(NOW-10);
-  const domain={name:CONTRACT.name,version:CONTRACT.version,chainId:options.chainId??8453};
+  const domain={name:CONTRACT.name,version:CONTRACT.version,chainId:options.chainId??8453,salt:options.salt??CONTRACT.salt};
   const m={
     origin:CONTRACT.origin,
     wallet:signer.address,
@@ -89,7 +97,7 @@ test('C7 wrong origin / domain version / message purpose / chain as string all r
   const original=await proof(7);
   const cases=[
     {fn:p=>p.typedData.message.origin='https://example.com',reason:'ORIGIN_MISMATCH'},
-    {fn:p=>p.typedData.domain.version='2',reason:'DOMAIN_MISMATCH'},
+    {fn:p=>p.typedData.domain.version='3',reason:'DOMAIN_MISMATCH'},
     {fn:p=>p.typedData.message.purpose='Authorize batch transfer',reason:'SCOPE_MISMATCH'},
     {fn:p=>p.typedData.domain.chainId='8453',reason:'NOT_BASE_8453'},
     {fn:p=>p.typedData.message.wallet=WRONG.address,reason:'SIGNER_ADDRESS_MISMATCH'},
@@ -160,4 +168,68 @@ test('C15 odd number of independently signed leaves yields reproducible determin
   assert.equal(x.status,'CANDIDATE_ROOT_READY');
   assert.equal(x.root,merkleRoot(x.items.map(y=>y.leafSha256)));
   assert.match(x.root,/^0x[0-9a-f]{64}$/);
+});
+
+test('C16 signer set is durable, versioned and identical to the Flywheel browser policy',()=>{
+ assert.equal(CONTRACT.policyVersion,policy.policyVersion);
+ assert.equal(CONTRACT.signerSetVersion,policy.signerSetVersion);
+ assert.deepEqual([...CONTRACT.authorizedSigners],policy.authorizedSigners);
+ const html=readFileSync(new URL('../../../flywheel-connect/index.html',import.meta.url),'utf8');
+ assert.match(html,/const SIGNER_POLICY_VERSION='2.0.0', SIGNER_SET_VERSION='desktop-v1'/);
+ assert.match(html,/const ALLOWED_SIGNERS=Object.freeze\(\['0x0f7018fea1dc9ba32ae817d896211f72f1197ad8'\]\)/);
+ assert.match(html,/version:'2',chainId:8453/);
+ assert.ok(html.includes(policy.domain.salt));
+ assert.ok(html.includes("method:'eth_signTypedData_v4'"));
+});
+test('C17 production policy rejects any valid synthetic signer, even if claimed account and recovery match',async()=>{
+ const p=await proof(21);
+ const v=verifyProductionProof(p,{nowSec:NOW});
+ assert.equal(v.status,'HOLD');
+ assert.equal(v.reason,'SIGNER_NOT_AUTHORIZED');
+ const batch=verifyProductionBatch([p],{nowSec:NOW});
+ assert.equal(batch.status,'HOLD');
+ assert.equal(batch.root,null);
+});
+test('C18 EIP712 verifyingContract is not configured for this offchain protocol; injected contract is rejected',async()=>{
+ const p=await proof(22);
+ p.typedData.domain.verifyingContract='0x000000000000000000000000000000000000dEaD';
+ assert.equal(verifyBaseProof(p,{nowSec:NOW}).reason,'INVALID_DOMAIN_FIELDS');
+ const q=await proof(23);
+ q.typedData.types.EIP712Domain.push({name:'verifyingContract',type:'address'});
+ assert.equal(verifyBaseProof(q,{nowSec:NOW}).reason,'DOMAIN_TYPE_MISMATCH');
+});
+test('C19 valid signature for another Base EIP712 salt is rejected',async()=>{
+ const p=await proof(24,{salt:'0x'+'aa'.repeat(32)});
+ assert.equal(verifyBaseProof(p,{nowSec:NOW}).reason,'DOMAIN_SALT_MISMATCH');
+});
+test('C20 old v1 EIP712 signatures are cleanly rejected; format version is mandatory',async()=>{
+ const p=await proof(25);
+ p.typedData.domain.version='1';
+ delete p.typedData.domain.salt;
+ p.typedData.types.EIP712Domain.pop();
+ p.signature=await RIGHT.signTypedData(p.typedData.domain,{WalletControl:CONTROL},p.typedData.message);
+ assert.equal(verifyBaseProof(p,{nowSec:NOW}).reason,'DOMAIN_TYPE_MISMATCH');
+});
+test('C21 signed origin is part of the EIP712 hash: cross-origin and altered-after-signing proofs fail',async()=>{
+ const p=await proof(26);
+ const q=structuredClone(p);
+ q.typedData.message.origin='https://evil.example';
+ assert.equal(verifyBaseProof(q,{nowSec:NOW}).reason,'ORIGIN_MISMATCH');
+ const r=await proof(27);
+ r.typedData.message.origin='https://evil.example';
+ r.signature=await RIGHT.signTypedData(r.typedData.domain,{WalletControl:CONTROL},r.typedData.message);
+ assert.equal(verifyBaseProof(r,{nowSec:NOW}).reason,'ORIGIN_MISMATCH');
+});
+test('C22 empty batch distinct from size violation, not vacuous proof',()=>{
+ const result=verifyProductionBatch([],{nowSec:NOW});
+ assert.equal(result.status,'HOLD');
+ assert.equal(result.reason,'EMPTY_BATCH');
+ assert.equal(result.root,null);
+});
+test('C23 canonical policy has only explicitly scoped desktop signer, never public synthetic test keys',()=>{
+ assert.equal(policy.authority,false);
+ assert.equal(policy.scope,'offchain_wallet_control_only');
+ assert.equal(policy.authorizedSigners.length,1);
+ assert.ok(!policy.authorizedSigners.includes(RIGHT.address.toLowerCase()));
+ assert.ok(!policy.authorizedSigners.includes(WRONG.address.toLowerCase()));
 });
