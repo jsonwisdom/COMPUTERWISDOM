@@ -12,5 +12,9 @@
   "payments_enabled": false,
   "fulfillment_state": "NOT_VERIFIED",
   "payment_pull_request": "https://github.com/jsonwisdom/flywheel-of-wisdom/pull/8",
-  "notes": "No checkout links generated while endpoint origin or independent verification is missing."
+  "notes": "No checkout links generated while endpoint origin or independent verification is missing.",
+  "staging_gate_url": "https://cwaas-order-gate-staging.jaywisdom44.workers.dev/release",
+  "staging_gate_deployed": true,
+  "staging_gate_public_http_verified": false,
+  "staging_database": "cwaas_orders_staging"
 }
