@@ -1,0 +1,20 @@
+{
+  "schema_version": "1.0",
+  "product_id": "cwaas-verification-report",
+  "price_reference_usd": "89.00",
+  "settlement_asset": "USDC",
+  "settlement_chain": "eip155:8453",
+  "payment_rail_repository": "jsonwisdom/flywheel-of-wisdom",
+  "endpoint_path": "/cwaas/report",
+  "endpoint_origin": null,
+  "checkout_state": "HOLD",
+  "release_proof": "NOT_ESTABLISHED",
+  "payments_enabled": false,
+  "fulfillment_state": "NOT_VERIFIED",
+  "payment_pull_request": "https://github.com/jsonwisdom/flywheel-of-wisdom/pull/8",
+  "notes": "No checkout links generated while endpoint origin or independent verification is missing.",
+  "staging_gate_url": "https://cwaas-order-gate-staging.jaywisdom44.workers.dev/release",
+  "staging_gate_deployed": true,
+  "staging_gate_public_http_verified": false,
+  "staging_database": "cwaas_orders_staging"
+}
