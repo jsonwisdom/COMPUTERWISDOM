@@ -15,7 +15,7 @@ function validateBundle(b){
  for(const c of b.challenges){
  if(canon(Object.keys(c).sort())!==canon(allowed.sort())||typeof c.prompt!=='string'||!Number.isSafeInteger(c.version))err(503,'bundle_schema_invalid');
  if(c.id==='CH-001'&&(!Array.isArray(c.fixture.values)||c.fixture.values.some(v=>!Number.isSafeInteger(v))||c.fixture.synthetic!==true||canon(Object.keys(c.fixture).sort())!==canon(['synthetic','values'])))err(503,'bundle_schema_invalid');
- if(c.id==='CH-002'&&(canon(Object.keys(c.fixture).sort())!==canon(['definitions','items'])||canon(Object.keys(c.fixture.items).sort())!==canon(['a','b','c','d'])||Object.values(c.fixture.items).some(v=>typeof v!=='string')||Object.values(c.fixture.definitions).some(v=>typeof v!=='string')))err(503,'bundle_schema_invalid');
+ if(c.id==='CH-002'&&(canon(Object.keys(c.fixture).sort())!==canon(['definitions','items'])||canon(Object.keys(c.fixture.items).sort())!==canon(['a','b','c','d'])||Object.values(c.fixture.items).some(v=>typeof v!=='string')||canon(Object.keys(c.fixture.definitions).sort())!==canon(['ASSUMPTION','DOCUMENTED','SATIRE','UNVERIFIED'])||Object.values(c.fixture.definitions).some(v=>typeof v!=='string')))err(503,'bundle_schema_invalid');
  if(c.id==='CH-003'&&(canon(Object.keys(c.fixture))!==canon(['format'])||typeof c.fixture.format!=='string'))err(503,'bundle_schema_invalid');
  }
 }

@@ -42,13 +42,13 @@ Cloudflare Cron is installed as */5 * * * *. All triggers run bounded light prob
 
 Wolfram independently evaluated the cadence arithmetic: six checks every five minutes imply 1,728 planned probe invocations/day; every minute would imply 8,640. These are workload estimates, not measured billable requests or performance capacity. Five minutes was chosen instead of unnecessary minute polling. Browser refresh occurs once per minute only while the page is visible.
 
-A separate hourly ChatGPT audit creation was attempted and rejected because five of five task slots are occupied. No existing task was changed. Cloudflare Cron installation is independent of that task cap. Distinguish installed schedule from an observed scheduled execution; the checkpoint records what was actually read back. Manual audit execution and persistence were observed.
+A separate hourly ChatGPT audit creation was attempted and rejected because five of five task slots are occupied. No existing task was changed. Cloudflare Cron installation is independent of that task cap. Scheduled execution was observed at 2026-11-02T17:10:10.756Z, receipt 46da2d49-5026-4862-8587-69d5c599316d: six PASS / two HOLD.
 
 ## Verification
 
-- node regressions.mjs: 6 local authentication/privacy/history/integrity regression groups.
+- node regressions.mjs: 7 local authentication/privacy/history/integrity regression groups.
 - node method-tests.mjs: 14 local synthetic method checks.
-- python http-e2e.py: 9 actual HTTP/D1 fixture groups passed, 14 persisted receipts replayed in this run.
+- final-validation-report.json: 9 actual HTTP/D1 fixture groups passed. Eight passed in the last full suite; an empty-response transport failure affected replay, then a separate bounded read-only recheck reproduced all 14 receipts. The failed full-suite report is retained.
 - python integration.py: 5 live inventory/proposal/observer/leaderboard/page groups passed.
 - Browser: real titles and SKU-500 present; five roles 800→900; search preserved selections; sixth-card alert preserved five cards and score; dashboard showed live timestamps and scoped HOLDs. Mobile and full accessibility certification were not run.
 - All nine deployed module digests matched local source bytes. The large inventory module was hashed before tool-response truncation; truncated response text is not an integrity baseline.

@@ -11,6 +11,6 @@
   "name": "jasons-game-fixture-e2e",
   "vars": {
     "BUNDLE_DIGEST": "3edbbaa0c4fa9e2fc54570ef251103c5e6bb98b93e0341872225ade5495447e7",
-    "BUILD_SHA": "3395aea02e5f6e25ab801cd539656728b1231e1bc8989a14072ec887c111966a"
+    "BUILD_SHA": "67dd0a7e79dd15f1c7402e9b1340ecf7cc10940a2c5af839863cd87a8d63f312"
   }
 }
