@@ -1,6 +1,6 @@
 // CWaaS staging reconciliation Worker. No payment collection without separate release.
 // Bind D1 as ORDERS. Set ADMIN_TOKEN (secret), BASE_RPC_URL, PAY_TO, and
-// REPORT_HMAC_KEY (secret). Defaults refuse all state-changing operations.
+// an operator secret. Defaults refuse all state-changing operations.
 const USDC = "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913";
 const TRANSFER = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef";
 const PRICE = 89000000n;
@@ -15,7 +15,7 @@ export default {async fetch(req,env) {
  const url=new URL(req.url);
  if(req.method==="GET"&&(url.pathname==="/health"||url.pathname==="/release")) {let schema=false;try{schema=Boolean((await env.ORDERS.prepare("SELECT count(*) n FROM sqlite_master WHERE type='table' AND name='orders'").first())?.n)}catch{}return response({phase:"STAGING",checkout:"HOLD",payments_enabled:false,verified_settlement:false,order_schema_ready:schema,price_atomic:"89000000",network:"eip155:8453",report_delivery:"GATED"},schema?200:503);}
  if(req.method==="GET"&&url.pathname.startsWith("/report/")) {
-   const id=url.pathname.slice(8),token=url.searchParams.get("token");
+   const id=url.pathname.slice(8),token=req.headers.get("x-cwaas-delivery-token");
    if(!/^[a-f0-9-]{36}$/.test(id)||!token)return response({error:"NOT_FOUND"},404);
    const order=await env.ORDERS.prepare("SELECT state, delivery_sha256, receipt_sha256, report_body, download_token_sha256 FROM orders WHERE order_id=?").bind(id).first();
    if(!order||order.state!=="DELIVERED"||!order.report_body||!safeEqual(await digest(token),order.download_token_sha256))return response({error:"NOT_AUTHORIZED"},403);
@@ -25,7 +25,7 @@ export default {async fetch(req,env) {
  // In staging, public POST can never initiate a payment, even with admin token.
  if(req.method!=="POST"||!["/internal/orders","/internal/reconcile","/internal/deliver"].includes(url.pathname))return response({error:"PAYMENT_DISABLED",checkout:"HOLD"},503);
  if(!env.ADMIN_TOKEN||!safeEqual(req.headers.get("authorization"),"Bearer "+env.ADMIN_TOKEN))return response({error:"UNAUTHORIZED"},401);
- if(!env.BASE_RPC_URL||!HEX40.test(env.PAY_TO)||!env.REPORT_HMAC_KEY)return response({error:"NOT_CONFIGURED"},503);
+ if(!env.BASE_RPC_URL||!HEX40.test(env.PAY_TO)||!env.MIN_CONFIRMATIONS)return response({error:"NOT_CONFIGURED"},503);
  let data;try{data=await req.json()}catch{return response({error:"INVALID_JSON"},400)}
  if(url.pathname==="/internal/orders") {
    if(!HEX40.test(data.payer))return response({error:"INVALID_PAYER"},400);
@@ -38,7 +38,8 @@ export default {async fetch(req,env) {
  if(url.pathname==="/internal/reconcile"){
    const tx=normalize(data.tx_hash);if(!HEX64.test(tx))return response({error:"INVALID_TX"},400);
    if(order.state==="PAYMENT_VERIFIED"||order.state==="DELIVERED")return response({error:"ALREADY_VERIFIED"},409);
-   let receipt,tip;try{[receipt,tip]=await Promise.all([rpc(env,"eth_getTransactionReceipt",[tx]),rpc(env,"eth_blockNumber",[])])}catch{return response({error:"RPC_UNAVAILABLE"},503)}
+   let receipt,tip,chain;try{[receipt,tip,chain]=await Promise.all([rpc(env,"eth_getTransactionReceipt",[tx]),rpc(env,"eth_blockNumber",[]),rpc(env,"eth_chainId",[])])}catch{return response({error:"RPC_UNAVAILABLE"},503)}
+   if(chain!=="0x2105")return response({error:"WRONG_RPC_CHAIN"},422);
    if(!receipt||receipt.status!=="0x1"||normalize(receipt.transactionHash)!==tx)return response({error:"NOT_SETTLED"},422);
    const confirmations=Number(BigInt(tip)-BigInt(receipt.blockNumber))+1;if(confirmations<Number(env.MIN_CONFIRMATIONS||6))return response({error:"CONFIRMATIONS_PENDING",confirmations},409);
    let matching=0;
@@ -61,5 +62,5 @@ export default {async fetch(req,env) {
  const tokenHash=await digest(token);
  const x=await env.ORDERS.prepare("UPDATE orders SET report_body=?,delivery_sha256=?,download_token_sha256=?,state='DELIVERED',updated_at=CURRENT_TIMESTAMP WHERE order_id=? AND state='PAYMENT_VERIFIED'").bind(report,deliveryHash,tokenHash,id).run();
  if(x.meta.changes!==1)return response({error:"DELIVERY_CONFLICT"},409);
- return response({order_id:id,state:"DELIVERED",delivery_sha256:deliveryHash,report_url:new URL("/report/"+id+"?token="+token,req.url).toString()});
+ return response({order_id:id,state:"DELIVERED",delivery_sha256:deliveryHash,report_url:new URL("/report/"+id,req.url).toString(),download_token:token,download_header:"x-cwaas-delivery-token"});
  }};
