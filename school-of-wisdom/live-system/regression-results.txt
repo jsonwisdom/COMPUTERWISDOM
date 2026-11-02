@@ -1,0 +1,7 @@
+PASS Missing or empty secret fails closed
+PASS Incorrect credential rejected
+PASS Nested CH-001 private object rejected before projection
+PASS Nested CH-002 private object rejected before projection
+PASS Historical A receipt replays while active bundle B differs
+PASS Bundle mutation fails runtime integrity
+{"passed":6,"failed":0,"scope":"LOCAL_REGRESSION_EXECUTION"}

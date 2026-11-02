@@ -1,0 +1,14 @@
+import assert from 'node:assert/strict';
+import worker,{canon,hash} from './game-worker.mjs';
+import {bundle} from './bundle.mjs';
+import {registry} from './registry.mjs';
+const token='x'.repeat(64),digest=await hash(canon(bundle));
+let assertions=0;
+async function run(name,fn){await fn();console.log('PASS '+name);assertions++}
+await run('Missing or empty secret fails closed',async()=>{for(const key of [undefined,'']){const r=await worker.fetch(new Request('https://test/catalog',{headers:{Authorization:'Bearer '+key}}),{BUNDLE_DIGEST:digest,TEST_TOKEN:key});assert.equal(r.status,503)}});
+await run('Incorrect credential rejected',async()=>{const r=await worker.fetch(new Request('https://test/catalog',{headers:{Authorization:'Bearer wrong'}}),{BUNDLE_DIGEST:digest,TEST_TOKEN:token});assert.equal(r.status,401)});
+await run('Nested CH-001 private object rejected before projection',async()=>{const old=bundle.challenges[0].fixture.values;bundle.challenges[0].fixture.values=[{private_key:'SECRET'}];const r=await worker.fetch(new Request('https://test/catalog',{headers:{Authorization:'Bearer '+token}}),{BUNDLE_DIGEST:await hash(canon(bundle)),TEST_TOKEN:token});bundle.challenges[0].fixture.values=old;assert.equal(r.status,503);assert.ok(!(await r.text()).includes('SECRET'))});
+await run('Nested CH-002 private object rejected before projection',async()=>{const old=bundle.challenges[1].fixture.items.a;bundle.challenges[1].fixture.items.a={private_key:'SECRET'};const r=await worker.fetch(new Request('https://test/catalog',{headers:{Authorization:'Bearer '+token}}),{BUNDLE_DIGEST:await hash(canon(bundle)),TEST_TOKEN:token});bundle.challenges[1].fixture.items.a=old;assert.equal(r.status,503)});
+await run('Historical A receipt replays while active bundle B differs',async()=>{const old=bundle.challenges[2].prompt;bundle.challenges[2].prompt='TEST FIXTURE B';const receipt={receipt_id:'old-A',attempt:{challenge_id:'CH-003',version:1,bundle_digest:digest,input:'6/8',result:{earned:1,possible:1}}};const DB={prepare:()=>({bind:()=>({first:async()=>({receipt:JSON.stringify(receipt)})})})};const r=await worker.fetch(new Request('https://test/replay',{method:'POST',headers:{Authorization:'Bearer '+token},body:JSON.stringify({receipt_id:'old-A'})}),{BUNDLE_DIGEST:await hash(canon(bundle)),TEST_TOKEN:token,DB});bundle.challenges[2].prompt=old;assert.equal(r.status,200);assert.equal((await r.json()).reproduced,true);assert.equal(await hash(canon(registry[0].bundle)),digest)});
+await run('Bundle mutation fails runtime integrity',async()=>{const r=await worker.fetch(new Request('https://test/health'),{BUNDLE_DIGEST:'0'.repeat(64)});assert.equal(r.status,503)});
+console.log(JSON.stringify({passed:assertions,failed:0,scope:'LOCAL_REGRESSION_EXECUTION'}));

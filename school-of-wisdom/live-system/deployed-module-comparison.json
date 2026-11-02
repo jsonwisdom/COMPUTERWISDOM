@@ -1,0 +1,65 @@
+[
+  {
+    "worker": "jasons-game-fixture-e2e",
+    "module": "archive-bundle-v1.mjs",
+    "bytes": 1938,
+    "sha256": "fb54f0acf6b0737dabac1bc7c5d797244fbbea812e405c179068e663876925c3",
+    "local_match": true
+  },
+  {
+    "worker": "jasons-game-fixture-e2e",
+    "module": "bundle.mjs",
+    "bytes": 1938,
+    "sha256": "fb54f0acf6b0737dabac1bc7c5d797244fbbea812e405c179068e663876925c3",
+    "local_match": true
+  },
+  {
+    "worker": "jasons-game-fixture-e2e",
+    "module": "game-worker.mjs",
+    "bytes": 6070,
+    "sha256": "3395aea02e5f6e25ab801cd539656728b1231e1bc8989a14072ec887c111966a",
+    "local_match": true
+  },
+  {
+    "worker": "jasons-game-fixture-e2e",
+    "module": "registry.mjs",
+    "bytes": 314,
+    "sha256": "b703d4cb29859fb95b3ee8c52b8552afed528f3230863e3903d1bfff63bfe7b6",
+    "local_match": true
+  },
+  {
+    "worker": "wisdom-catalog-curator",
+    "module": "catalog-worker.mjs",
+    "bytes": 4185,
+    "sha256": "25eb80fe29dc034088591dc694a7615e5e78344946911ba1ad9849d9cfd377a0",
+    "local_match": true
+  },
+  {
+    "worker": "wisdom-catalog-curator",
+    "module": "inventory.mjs",
+    "bytes": 109952,
+    "sha256": "a8ebe245d1859d67b4d7ba2089367d0e35f610ec3c4c6d23e54a9def4a7a072d",
+    "local_match": true
+  },
+  {
+    "worker": "wisdom-live-observer",
+    "module": "wisdom-method.mjs",
+    "bytes": 1397,
+    "sha256": "b7324cf59f3bb9e8377d3cd3e45db24ab5b29c04cf6ddbb0bbfdc0cacd0d3703",
+    "local_match": true
+  },
+  {
+    "worker": "wisdom-live-observer",
+    "module": "arena.mjs",
+    "bytes": 8314,
+    "sha256": "04b8a52dbddaf8b84b16811a7453d1e60e6f8c4f3ea7be6671cec2f3c7ae155b",
+    "local_match": true
+  },
+  {
+    "worker": "wisdom-live-observer",
+    "module": "observer-worker.mjs",
+    "bytes": 9768,
+    "sha256": "e127c021ab72ce8be35852eb036a4cf864ba6fad9d8b4839b894385f44225c98",
+    "local_match": true
+  }
+]

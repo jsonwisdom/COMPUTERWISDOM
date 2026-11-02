@@ -1,0 +1,84 @@
+{
+  "timestamp_utc": "2026-11-02T17:02:43Z",
+  "checks": [
+    {
+      "name": "All four inventory lenses preserve 500 unique SKU identities",
+      "status": "PASS",
+      "executed": true,
+      "detail": [
+        {
+          "view": "learning",
+          "records": 500
+        },
+        {
+          "view": "readiness",
+          "records": 500
+        },
+        {
+          "view": "commerce",
+          "records": 500
+        },
+        {
+          "view": "provenance",
+          "records": 500
+        }
+      ]
+    },
+    {
+      "name": "Authenticated stale-safe metadata proposal with receipt; no application",
+      "status": "PASS",
+      "executed": true,
+      "detail": {
+        "proposal_id": "07dec960-867c-423d-add2-0c0182969d87",
+        "persisted_proposal": true,
+        "applied": false,
+        "catalog_unchanged": true
+      }
+    },
+    {
+      "name": "Live observer executes bounded estate audit and records scoped results",
+      "status": "PASS",
+      "executed": true,
+      "detail": {
+        "receipt_id": "8cca7275-9b8d-479e-a5a4-fcf9a75c8a14",
+        "checks": 9,
+        "statuses": {
+          "game-worker": "PASS",
+          "catalog-500": "PASS",
+          "jsonwisdom-website": "PASS",
+          "classes-with-glasses": "PASS",
+          "game-public-http": "PASS",
+          "dns-jsonwisdom": "PASS",
+          "x402-source-observation": "PASS",
+          "authored-challenge-content": "HOLD",
+          "x402-payment-receipts": "HOLD"
+        }
+      }
+    },
+    {
+      "name": "Live system leaderboard preserves missing-evidence HOLDs",
+      "status": "PASS",
+      "executed": true,
+      "detail": {
+        "freshness": "FRESH",
+        "holds_visible": true,
+        "receipt_id": "8cca7275-9b8d-479e-a5a4-fcf9a75c8a14"
+      }
+    },
+    {
+      "name": "Dashboard and free arena HTTP surfaces are live",
+      "status": "PASS",
+      "executed": true,
+      "detail": {
+        "dashboard": 200,
+        "arena": 200,
+        "real_catalog_fetch": true,
+        "certified_learner_rankings": false
+      }
+    }
+  ],
+  "summary": {
+    "passed": 5,
+    "failed": 0
+  }
+}
