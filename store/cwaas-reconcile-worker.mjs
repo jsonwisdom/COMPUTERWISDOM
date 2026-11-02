@@ -1,6 +1,10 @@
 // CWaaS staging reconciliation Worker. No payment collection without separate release.
 // Bind D1 as ORDERS. Set ADMIN_TOKEN (secret), BASE_RPC_URL, PAY_TO, and
 // an operator secret. Defaults refuse all state-changing operations.
+//
+// FACILITATOR SCAFFOLD: Optional facilitator_proof is accepted and lightly checked.
+// On-chain USDC Transfer remains the authoritative settlement ground truth.
+// Full x402 facilitator /verify + /settle integration is still required before release.
 const USDC = "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913";
 const TRANSFER = "0xddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef";
 const PRICE = 89000000n;
@@ -11,9 +15,22 @@ const topicAddress=v=>"0x"+v.slice(-40).toLowerCase();
 const safeEqual=(a,b)=>{ if(!a||!b)return false;const x=new TextEncoder().encode(a),y=new TextEncoder().encode(b);let z=x.length^y.length;for(let i=0;i<Math.max(x.length,y.length);i++)z|=(x[i]||0)^(y[i]||0);return z===0;};
 async function rpc(env,method,params) { const r=await fetch(env.BASE_RPC_URL,{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({jsonrpc:"2.0",id:1,method,params})}); if(!r.ok)throw Error("RPC_HTTP");const x=await r.json();if(x.error)throw Error("RPC_ERROR");return x.result; }
 async function digest(v) {const h=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(v));return Array.from(new Uint8Array(h),x=>x.toString(16).padStart(2,"0")).join("");}
+
+// SCAFFOLD: lightweight facilitator-proof check. Replace with real /verify call + schema validation.
+function checkFacilitatorProof(proof, order, tx) {
+  if (!proof || typeof proof !== "object") return { ok: false, error: "FACILITATOR_PROOF_REQUIRED" };
+  // Expect at minimum: scheme, network, txHash or paymentPayload reference, and isValid
+  if (proof.isValid !== true && proof.valid !== true) return { ok: false, error: "FACILITATOR_INVALID" };
+  if (proof.network && proof.network !== "eip155:8453") return { ok: false, error: "FACILITATOR_WRONG_NETWORK" };
+  if (proof.txHash && normalize(proof.txHash) !== tx) return { ok: false, error: "FACILITATOR_TX_MISMATCH" };
+  // Order correlation stub: if orderId present it must match
+  if (proof.orderId && proof.orderId !== order.order_id) return { ok: false, error: "FACILITATOR_ORDER_MISMATCH" };
+  return { ok: true };
+}
+
 export default {async fetch(req,env) {
  const url=new URL(req.url);
- if(req.method==="GET"&&(url.pathname==="/health"||url.pathname==="/release")) {let schema=false;try{schema=Boolean((await env.ORDERS.prepare("SELECT count(*) n FROM sqlite_master WHERE type='table' AND name='orders'").first())?.n)}catch{}return response({phase:"STAGING",checkout:"HOLD",payments_enabled:false,verified_settlement:false,order_schema_ready:schema,price_atomic:"89000000",network:"eip155:8453",report_delivery:"GATED"},schema?200:503);}
+ if(req.method==="GET"&&(url.pathname==="/health"||url.pathname==="/release")) {let schema=false;try{schema=Boolean((await env.ORDERS.prepare("SELECT count(*) n FROM sqlite_master WHERE type='table' AND name='orders'").first())?.n)}catch{}return response({phase:"STAGING",checkout:"HOLD",payments_enabled:false,verified_settlement:false,order_schema_ready:schema,price_atomic:"89000000",network:"eip155:8453",report_delivery:"GATED",facilitator_proof:"SCAFFOLD"},schema?200:503);}
  if(req.method==="GET"&&url.pathname.startsWith("/report/")) {
    const id=url.pathname.slice(8),token=req.headers.get("x-cwaas-delivery-token");
    if(!/^[a-f0-9-]{36}$/.test(id)||!token)return response({error:"NOT_FOUND"},404);
@@ -38,6 +55,15 @@ export default {async fetch(req,env) {
  if(url.pathname==="/internal/reconcile"){
    const tx=normalize(data.tx_hash);if(!HEX64.test(tx))return response({error:"INVALID_TX"},400);
    if(order.state==="PAYMENT_VERIFIED"||order.state==="DELIVERED")return response({error:"ALREADY_VERIFIED"},409);
+
+   // SCAFFOLD: require or accept facilitator proof when present
+   if (data.facilitator_proof) {
+     const fp = checkFacilitatorProof(data.facilitator_proof, order, tx);
+     if (!fp.ok) return response({error: fp.error}, 422);
+   } else if (env.REQUIRE_FACILITATOR_PROOF === "true") {
+     return response({error: "FACILITATOR_PROOF_REQUIRED"}, 422);
+   }
+
    let receipt,tip,chain;try{[receipt,tip,chain]=await Promise.all([rpc(env,"eth_getTransactionReceipt",[tx]),rpc(env,"eth_blockNumber",[]),rpc(env,"eth_chainId",[])])}catch{return response({error:"RPC_UNAVAILABLE"},503)}
    if(chain!=="0x2105")return response({error:"WRONG_RPC_CHAIN"},422);
    if(!receipt||receipt.status!=="0x1"||normalize(receipt.transactionHash)!==tx)return response({error:"NOT_SETTLED"},422);
@@ -53,7 +79,7 @@ export default {async fetch(req,env) {
    const fingerprint=await digest(JSON.stringify({order_id:id,tx,asset:USDC,price:"89000000",chain:8453,payer:order.payer_address,pay_to:normalize(env.PAY_TO)}));
    try {const x=await env.ORDERS.prepare("UPDATE orders SET state='PAYMENT_VERIFIED',settlement_tx=?,receipt_sha256=?,updated_at=CURRENT_TIMESTAMP WHERE order_id=? AND state='CREATED' AND settlement_tx IS NULL").bind(tx,fingerprint,id).run();if(x.meta.changes!==1)return response({error:"RECONCILIATION_CONFLICT"},409)}
    catch{return response({error:"DUPLICATE_SETTLEMENT_OR_DB_FAILURE"},409)}
-   return response({order_id:id,state:"PAYMENT_VERIFIED",tx_hash:tx,receipt_sha256:fingerprint,confirmations});
+   return response({order_id:id,state:"PAYMENT_VERIFIED",tx_hash:tx,receipt_sha256:fingerprint,confirmations,facilitator_checked:Boolean(data.facilitator_proof)});
  }
  if(order.state!=="PAYMENT_VERIFIED")return response({error:"PAYMENT_NOT_VERIFIED"},409);
  if(!data.report||typeof data.report!=="object"||Array.isArray(data.report))return response({error:"REPORT_REQUIRED"},400);
