@@ -1,0 +1,34 @@
+name: ETF Audit — HOLD Placeholder
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  hold:
+    name: ETF audit not implemented — HOLD
+    runs-on: ubuntu-latest
+    outputs:
+      audit_executed: ${{ steps.state.outputs.audit_executed }}
+      state: ${{ steps.state.outputs.state }}
+    steps:
+      - name: Record explicit HOLD state
+        id: state
+        shell: bash
+        run: |
+          echo "audit_executed=false" >> "$GITHUB_OUTPUT"
+          echo "state=HOLD" >> "$GITHUB_OUTPUT"
+          echo "::warning title=ETF audit not implemented::HOLD — this workflow is a valid placeholder only; no ETF audit was executed."
+          {
+            echo "## ETF Audit — HOLD"
+            echo ""
+            echo "- audit_executed: false"
+            echo "- state: HOLD"
+            echo "- authority_created: false"
+            echo ""
+            echo "This workflow intentionally performs no ETF audit. It replaces an empty workflow file so GitHub Actions can produce a real job instead of FAIL_NO_JOBS."
+          } >> "$GITHUB_STEP_SUMMARY"
