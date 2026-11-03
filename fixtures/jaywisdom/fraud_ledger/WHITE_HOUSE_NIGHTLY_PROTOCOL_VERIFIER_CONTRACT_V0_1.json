@@ -1,0 +1,55 @@
+{
+  "format": "WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_CONTRACT_V0.1",
+  "classification": "MECHANICAL_CROSS_RECEIPT_INTEGRITY_CONTRACT",
+  "verifier": "WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_V0.1",
+  "inputs": [
+    {"id": "PROTOCOL_OBJECT", "required": true},
+    {"id": "FROZEN_LANE_MAP_BYTES", "required": true},
+    {"id": "PRESERVED_SOURCE_BYTES", "required": true}
+  ],
+  "checks": [
+    {"ordinal": 1, "id": "RECEIPT_SHA256_RECOMPUTE", "class_on_violation": "HASH_VIOLATION"},
+    {"ordinal": 2, "id": "DIE_A_PAIR_BINDING", "class_on_violation": "BINDING_VIOLATION"},
+    {"ordinal": 3, "id": "DIE_B_PAIR_BINDING", "class_on_violation": "BINDING_VIOLATION"},
+    {"ordinal": 4, "id": "RNG_PAIR_MATCH", "class_on_violation": "BINDING_VIOLATION"},
+    {"ordinal": 5, "id": "LANE_MAP_SHA256", "class_on_violation": "LANE_MAP_VIOLATION"},
+    {"ordinal": 6, "id": "RECORDED_LANE_MATCH", "class_on_violation": "LANE_MAP_VIOLATION"},
+    {"ordinal": 7, "id": "DISPOSITION_CLAIM_MATCH", "class_on_violation": "BINDING_VIOLATION"},
+    {"ordinal": 8, "id": "DISPOSITION_LANE_MATCH", "class_on_violation": "BINDING_VIOLATION"},
+    {"ordinal": 9, "id": "SOURCE_BYTES_BINDING", "class_on_violation": "HASH_VIOLATION_OR_BINDING_VIOLATION"},
+    {"ordinal": 10, "id": "DEPENDENCY_TIMESTAMP_ORDER", "class_on_violation": "ORDERING_VIOLATION"},
+    {"ordinal": 11, "id": "AUTHORITY_CREATED_FALSE_EVERYWHERE", "class_on_violation": "AUTHORITY_VIOLATION"}
+  ],
+  "violation_classes": [
+    "HASH_VIOLATION",
+    "BINDING_VIOLATION",
+    "ORDERING_VIOLATION",
+    "LANE_MAP_VIOLATION",
+    "AUTHORITY_VIOLATION"
+  ],
+  "terminal_integrity_states": {
+    "PASS": "Every required mechanical relationship replayed and no violation was observed.",
+    "FAIL": "At least one definite protocol-integrity violation was observed.",
+    "UNVERIFIABLE": "One or more required inputs, receipts, stamps, or dependency timestamps were absent, so no complete integrity conclusion is computable."
+  },
+  "missing_input_rule": "MISSING_REQUIRED_EVIDENCE=>UNVERIFIABLE_NOT_FAIL",
+  "receipt_hash_rule": {
+    "algorithm": "SHA-256",
+    "canonicalization": "RFC8785_JCS",
+    "preimage": "receipt object with receipt_sha256 member omitted"
+  },
+  "ordering_rule": "claim.timestamp <= rng.timestamp <= lane.timestamp <= source.fetched_at <= disposition.timestamp",
+  "output_scope": "VERIFIER_RECEIPT_ONLY",
+  "invariants": [
+    "VERIFIER_PASS != INPUT_RECEIPTS_TRUE",
+    "VERIFIER_PASS = INPUT_RECEIPTS_ARE_INTERNALLY_COHERENT",
+    "PROTOCOL_INTEGRITY != EVIDENCE_CORROBORATION",
+    "PROTOCOL_INTEGRITY != CLAIM_TRUTH",
+    "PROTOCOL_INTEGRITY != HUMAN_GUILT",
+    "PROTOCOL_INTEGRITY != AUTHORITY",
+    "MISSING_EVIDENCE != VIOLATION",
+    "RECEIPT != AUTHORITY"
+  ],
+  "roll_002_live": false,
+  "authority_created": false
+}

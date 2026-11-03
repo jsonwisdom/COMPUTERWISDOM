@@ -1,0 +1,87 @@
+{
+  "format": "DOJ_CRISSCROSS_PLAYBOOKPINCER_CLERK_LANE_BINDINGS_V0.2",
+  "classification": "ANALYTICAL_ROUTING_BINDINGS_ONLY",
+  "title": "DOJ CrissCross PlayBookPincer — Clerk Lane Bindings v0.2",
+  "author_label": "jaywisdom.base.eth",
+  "extends": [
+    "docs/jaywisdom/DOJ_CRISSCROSS_PLAYBOOKPINCER_GLOSSARY_V0_1.md",
+    "fixtures/jaywisdom/fraud_ledger/STACK_TERMS_CLERK_REPLAY_V0_1.json"
+  ],
+  "rules": [
+    "GLOSSARY_TERM != DOJ_TERMINOLOGY",
+    "ROUTING != EVIDENCE",
+    "ROUTING != TERMINAL",
+    "CHECKPOINT != APPROVAL",
+    "FLAG != FINDING",
+    "HYPOTHESIS != FACT",
+    "REPLAY != VERDICT",
+    "AUDIT != ACCUSATION",
+    "NO_CLAIM_OUTRANKS_ITS_RECEIPTS",
+    "CALLER_SUPPLIED_TERMINAL_FORBIDDEN = TRUE",
+    "AUTHORITY_CREATED = FALSE"
+  ],
+  "allowed_clerk_lanes": [
+    "EXACT_CLAIM",
+    "SOURCE_PROVENANCE",
+    "IDENTITY_ACTOR",
+    "OFFICE_AUTHORITY",
+    "ACTION_RECEIPT",
+    "TIME_VERSION",
+    "SCOPE_JURISDICTION",
+    "DOCUMENT_STATE_DELTA",
+    "INDEPENDENCE_DEPENDENCY",
+    "INSTITUTIONAL_RECORD",
+    "UNCERTAINTY_LIMITS"
+  ],
+  "routing": [
+    {"term":"CRISSCROSS","source_clerk_state":"PASS","lanes":["EXACT_CLAIM","SOURCE_PROVENANCE","INDEPENDENCE_DEPENDENCY","UNCERTAINTY_LIMITS"]},
+    {"term":"PLAYBOOK","source_clerk_state":"PASS","lanes":["EXACT_CLAIM","SOURCE_PROVENANCE","UNCERTAINTY_LIMITS"]},
+    {"term":"PINCER","source_clerk_state":"PASS","lanes":["SOURCE_PROVENANCE","OFFICE_AUTHORITY","ACTION_RECEIPT","SCOPE_JURISDICTION"]},
+    {"term":"REVERSE_REPLAY","source_clerk_state":"PASS","lanes":["SOURCE_PROVENANCE","TIME_VERSION","DOCUMENT_STATE_DELTA"]},
+    {"term":"FORWARD_REPLAY","source_clerk_state":"PASS","lanes":["SOURCE_PROVENANCE","TIME_VERSION","ACTION_RECEIPT","DOCUMENT_STATE_DELTA"]},
+    {"term":"CLAIM_NODE","source_clerk_state":"PASS","lanes":["EXACT_CLAIM","UNCERTAINTY_LIMITS"]},
+    {"term":"SOURCE_NODE","source_clerk_state":"PASS","lanes":["SOURCE_PROVENANCE"]},
+    {"term":"AUTHORITY_NODE","source_clerk_state":"PASS","lanes":["OFFICE_AUTHORITY","SCOPE_JURISDICTION"]},
+    {"term":"ACTION_NODE","source_clerk_state":"PASS","lanes":["IDENTITY_ACTOR","ACTION_RECEIPT"]},
+    {"term":"RECEIPT_NODE","source_clerk_state":"PASS","lanes":["SOURCE_PROVENANCE","ACTION_RECEIPT"]},
+    {"term":"ACTOR_BINDING","source_clerk_state":"PASS","lanes":["IDENTITY_ACTOR","ACTION_RECEIPT"]},
+    {"term":"OFFICE_BINDING","source_clerk_state":"PASS","lanes":["IDENTITY_ACTOR","OFFICE_AUTHORITY","TIME_VERSION"]},
+    {"term":"TODDBLANCHE_APPROVED","source_clerk_state":"HOLD","lanes":["SOURCE_PROVENANCE","IDENTITY_ACTOR","OFFICE_AUTHORITY","ACTION_RECEIPT","TIME_VERSION","UNCERTAINTY_LIMITS"],"promotion_condition":"SPECIFIC_SOURCE_BOUND_APPROVAL_RECEIPT_REQUIRED"},
+    {"term":"BONDI_LANE","source_clerk_state":"PASS","lanes":["SOURCE_PROVENANCE","IDENTITY_ACTOR","OFFICE_AUTHORITY","ACTION_RECEIPT","TIME_VERSION"]},
+    {"term":"TRUMPFILES","source_clerk_state":"PASS","lanes":["EXACT_CLAIM","SOURCE_PROVENANCE","DOCUMENT_STATE_DELTA","UNCERTAINTY_LIMITS"]},
+    {"term":"EPSTEIN_FILES","source_clerk_state":"PASS","lanes":["SOURCE_PROVENANCE","DOCUMENT_STATE_DELTA","INDEPENDENCE_DEPENDENCY","UNCERTAINTY_LIMITS"]},
+    {"term":"RELEASE_STATE","source_clerk_state":"PASS","lanes":["TIME_VERSION","DOCUMENT_STATE_DELTA","UNCERTAINTY_LIMITS"]},
+    {"term":"REDACTION_GATE","source_clerk_state":"PASS","lanes":["SOURCE_PROVENANCE","OFFICE_AUTHORITY","SCOPE_JURISDICTION","ACTION_RECEIPT"]},
+    {"term":"MISSING_RECORD","source_clerk_state":"PASS","lanes":["EXACT_CLAIM","SOURCE_PROVENANCE","DOCUMENT_STATE_DELTA","UNCERTAINTY_LIMITS"]},
+    {"term":"702_SWITCHEROO","source_clerk_state":"HOLD","lanes":["SOURCE_PROVENANCE","OFFICE_AUTHORITY","TIME_VERSION","SCOPE_JURISDICTION","DOCUMENT_STATE_DELTA","UNCERTAINTY_LIMITS"],"promotion_condition":"ACTUAL_LEGAL_AUTHORITY_AND_BOUND_RECORDS_REQUIRED"},
+    {"term":"SUPERSECRET_SYNTAX","source_clerk_state":"PASS","lanes":["EXACT_CLAIM","SOURCE_PROVENANCE","UNCERTAINTY_LIMITS"]},
+    {"term":"INTERNAL_THREAT_FLAG","source_clerk_state":"HOLD","lanes":["EXACT_CLAIM","SOURCE_PROVENANCE","IDENTITY_ACTOR","ACTION_RECEIPT","UNCERTAINTY_LIMITS"],"promotion_condition":"BOUND_EVIDENCE_REQUIRED_AND_FLAG_MAY_NOT_SELF_PROMOTE"},
+    {"term":"OIG_GATE","source_clerk_state":"PASS","lanes":["SOURCE_PROVENANCE","INSTITUTIONAL_RECORD","TIME_VERSION","ACTION_RECEIPT","DOCUMENT_STATE_DELTA"]},
+    {"term":"CONGRESSIONAL_GATE","source_clerk_state":"PASS","lanes":["SOURCE_PROVENANCE","INSTITUTIONAL_RECORD","TIME_VERSION","ACTION_RECEIPT","UNCERTAINTY_LIMITS"]},
+    {"term":"COURT_GATE","source_clerk_state":"PASS","lanes":["SOURCE_PROVENANCE","INSTITUTIONAL_RECORD","TIME_VERSION","SCOPE_JURISDICTION","DOCUMENT_STATE_DELTA"]},
+    {"term":"SWITCHEROO_DETECTOR","source_clerk_state":"PASS","lanes":["IDENTITY_ACTOR","OFFICE_AUTHORITY","TIME_VERSION","SCOPE_JURISDICTION","DOCUMENT_STATE_DELTA"]},
+    {"term":"DIRTY_MATH","source_clerk_state":"PASS","lanes":["EXACT_CLAIM","SOURCE_PROVENANCE","TIME_VERSION","DOCUMENT_STATE_DELTA","UNCERTAINTY_LIMITS"]},
+    {"term":"PINKY_PROMISE","source_clerk_state":"PASS","lanes":["SOURCE_PROVENANCE","OFFICE_AUTHORITY","ACTION_RECEIPT","UNCERTAINTY_LIMITS"]},
+    {"term":"SUBSTRATE_INJECTION","source_clerk_state":"PASS","lanes":["SOURCE_PROVENANCE","INDEPENDENCE_DEPENDENCY","SCOPE_JURISDICTION","UNCERTAINTY_LIMITS"]},
+    {"term":"THE_STACK","source_clerk_state":"PASS","lanes":["EXACT_CLAIM","SOURCE_PROVENANCE","INDEPENDENCE_DEPENDENCY","UNCERTAINTY_LIMITS"]}
+  ],
+  "held_terms_must_remain": [
+    "TODDBLANCHE_APPROVED",
+    "702_SWITCHEROO",
+    "INTERNAL_THREAT_FLAG"
+  ],
+  "derived_terminal_policy": {
+    "routing_layer_may_assign_terminal": false,
+    "terminal_states": ["PASS","HOLD","CONFLICT","REJECT"],
+    "rule": "TERMINAL_MUST_BE_DERIVED_FROM_BOUND_EVIDENCE_BY_THE_CLERK_NOT_FROM_GLOSSARY_ROUTING"
+  },
+  "expected_summary": {
+    "terms": 30,
+    "source_pass_terms": 27,
+    "source_hold_terms": 3,
+    "world_fact_promotions": 0,
+    "legal_findings_created": 0,
+    "doj_decisions_created": 0,
+    "authority_created": false
+  }
+}

@@ -1,0 +1,73 @@
+name: Jason's Dice 12 Justice Lanes v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'fixtures/jaywisdom/fraud_ledger/JASONS_DICE_12_JUSTICE_LANES_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_CONTRACT_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_TEST_VECTORS_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_OVERSIGHT_RECEIPT_TEMPLATE_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/OIG_OVERSIGHT_CERTIFICATE_TEST_VECTORS_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/T16_SURFACE_COVERAGE_AUDIT_V0_1.json'
+      - 'schemas/jaywisdom/white_house_nightly_protocol.v0_1.schema.json'
+      - 'schemas/jaywisdom/white_house_nightly_protocol_oversight_verifier.v0_1.schema.json'
+      - 'schemas/jaywisdom/oig_oversight_certificate.v0_1.schema.json'
+      - 'tools/verify_jasons_dice_12_justice_lanes_v0_1.py'
+      - 'tools/verify_white_house_nightly_protocol_v0_1.py'
+      - 'tools/verify_white_house_nightly_protocol_oversight_v0_1.py'
+      - 'tools/verify_oig_oversight_certificate_v0_1.py'
+      - '.github/workflows/jasons-dice-12-justice-lanes-v0-1.yml'
+  push:
+    branches:
+      - 'agent/fraud-ledger-jasons-dice-game-v0-1'
+    paths:
+      - 'fixtures/jaywisdom/fraud_ledger/JASONS_DICE_12_JUSTICE_LANES_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_CONTRACT_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_TEST_VECTORS_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/WHITE_HOUSE_NIGHTLY_PROTOCOL_OVERSIGHT_RECEIPT_TEMPLATE_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/OIG_OVERSIGHT_CERTIFICATE_TEST_VECTORS_V0_1.json'
+      - 'fixtures/jaywisdom/fraud_ledger/T16_SURFACE_COVERAGE_AUDIT_V0_1.json'
+      - 'schemas/jaywisdom/white_house_nightly_protocol.v0_1.schema.json'
+      - 'schemas/jaywisdom/white_house_nightly_protocol_oversight_verifier.v0_1.schema.json'
+      - 'schemas/jaywisdom/oig_oversight_certificate.v0_1.schema.json'
+      - 'tools/verify_jasons_dice_12_justice_lanes_v0_1.py'
+      - 'tools/verify_white_house_nightly_protocol_v0_1.py'
+      - 'tools/verify_white_house_nightly_protocol_oversight_v0_1.py'
+      - 'tools/verify_oig_oversight_certificate_v0_1.py'
+      - '.github/workflows/jasons-dice-12-justice-lanes-v0-1.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  ci-primary:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact PR head
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify 36 outcomes map evenly to 12 lanes
+        run: python tools/verify_jasons_dice_12_justice_lanes_v0_1.py
+      - name: Verify primary White House nightly clerk vectors
+        run: python tools/verify_white_house_nightly_protocol_v0_1.py --self-test
+
+  ci-oversight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact PR head independently
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify oversight White House nightly clerk vectors
+        run: python tools/verify_white_house_nightly_protocol_oversight_v0_1.py --self-test
+
+  ci-doj-oig:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout exact PR head for DOJ OIG observer
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      - name: Verify DOJ OIG fail-closed T01-T16 + surface coverage
+        run: python tools/verify_oig_oversight_certificate_v0_1.py --self-test

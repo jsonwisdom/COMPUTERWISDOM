@@ -1,0 +1,105 @@
+{
+  "artifact_id": "T16_SURFACE_COVERAGE_AUDIT_V0_1",
+  "classification": "EXECUTABLE_SURFACE_COVERAGE_AUDIT_RECEIPT",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "pull_request": 487,
+  "pre_t16_head": "30f72787cb36ef1e87e9f969d993ac4bfda9be7d",
+  "t16_implementation_head": "c957901376e9e82897efa32ae7a6428a786d2a49",
+  "semantic_type": "BOUNDED_EVIDENCE_GATE_DISPOSITION",
+  "invariant": "NO_UNTYPED_PROVEN_MAY_CROSS_EXTERNAL_PRESENTATION_BOUNDARY",
+  "surface_inventory": [
+    {
+      "surface": "CERTIFICATE_JSON_SERIALIZER",
+      "pre_t16": "T16_BYPASS_POSSIBLE",
+      "post_t16": "T16_ENFORCED",
+      "reason": "Pre-T16 as_dict emitted observer_result as a primitive string. Post-T16 emits semantic_type + value + bounded rendering and validates before return."
+    },
+    {
+      "surface": "CLI_CI_SELF_TEST_JSON",
+      "pre_t16": "T16_BYPASS_POSSIBLE",
+      "post_t16": "T16_ENFORCED",
+      "reason": "Pre-T16 self-test copied the primitive result into observed_result. Post-T16 expected and observed terminal dispositions are typed objects and the summary is checked before print."
+    },
+    {
+      "surface": "MARKDOWN_HUMAN_TEXT_RENDERER",
+      "pre_t16": "T16_UNKNOWN",
+      "post_t16": "T16_ENFORCED",
+      "reason": "A bounded text renderer now emits only the semantic type plus EVIDENCE_GATE_* rendering and rejects bare PROVEN or semantic widening."
+    },
+    {
+      "surface": "WHITE_HOUSE_NIGHTLY_PROTOCOL_RENDERERS",
+      "pre_t16": "T16_NOT_ROUTED",
+      "post_t16": "T16_NOT_ROUTED",
+      "reason": "The current White House primary and independent oversight clerks do not consume or emit OIG observer_result."
+    },
+    {
+      "surface": "REPORT_TEMPLATE",
+      "pre_t16": "T16_NOT_ROUTED",
+      "post_t16": "T16_NOT_ROUTED",
+      "reason": "No current report/template path was found consuming OIG observer_result."
+    },
+    {
+      "surface": "API_EXPORT_ADAPTER",
+      "pre_t16": "T16_NOT_ROUTED",
+      "post_t16": "T16_NOT_ROUTED",
+      "reason": "No current API/export adapter was found consuming OIG observer_result."
+    },
+    {
+      "surface": "LEGACY_OBSERVER_RESULT_PATHS",
+      "pre_t16": "T16_NOT_ROUTED",
+      "post_t16": "T16_NOT_ROUTED",
+      "reason": "Repository default-branch code search returned no observer_result occurrence; PR-wide occurrence audit localized the new terminal value to the OIG verifier/schema path."
+    }
+  ],
+  "negative_tests": {
+    "raw_json": {
+      "input": {"observer_result": "PROVEN"},
+      "expected": "T16_UNTYPED_OBSERVER_RESULT",
+      "result": "PASS"
+    },
+    "alternative_text": {
+      "observer_value": "PROVEN",
+      "text": "fraud proven",
+      "expected": "T16_SEMANTIC_WIDENING_REJECTED",
+      "result": "PASS"
+    },
+    "alternative_payload": {
+      "typed_observer_result": true,
+      "additional_human_summary": "fraud proven",
+      "expected": "T16_SEMANTIC_WIDENING_REJECTED",
+      "result": "PASS"
+    }
+  },
+  "serializer_conformance": {
+    "semantic_type_present": true,
+    "bounded_rendering_present": true,
+    "bare_observer_result_proven_absent": true,
+    "result": "PASS"
+  },
+  "pre_post_diff": {
+    "status": "AHEAD",
+    "commits": 4,
+    "files_changed": 4,
+    "files": [
+      ".github/workflows/jasons-dice-12-justice-lanes-v0-1.yml",
+      "fixtures/jaywisdom/fraud_ledger/OIG_OVERSIGHT_CERTIFICATE_TEST_VECTORS_V0_1.json",
+      "schemas/jaywisdom/oig_oversight_certificate.v0_1.schema.json",
+      "tools/verify_oig_oversight_certificate_v0_1.py"
+    ]
+  },
+  "ci_receipt": {
+    "workflow": "Jason's Dice 12 Justice Lanes v0.1",
+    "run_id": 31984916720,
+    "job_id": 95258111186,
+    "verified_head": "c957901376e9e82897efa32ae7a6428a786d2a49",
+    "t01_t16": "16_OF_16_PASS",
+    "t16_checks": "7_OF_7_PASS",
+    "job_step_conclusion": "SUCCESS"
+  },
+  "limits": {
+    "repository_wide_future_routes_auto_governed": false,
+    "new_output_paths_require_t16_registration": true,
+    "not_routed_does_not_mean_permanently_safe": true
+  },
+  "authority_created": false
+}
