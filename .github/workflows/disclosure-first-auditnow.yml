@@ -1,0 +1,35 @@
+name: AuditNow — Disclosure First (review only)
+on:
+  pull_request:
+    paths:
+      - 'auditnow/**'
+      - 'tools/auditnow/**'
+      - 'tests/test_auditnow_disclosure.py'
+      - '.github/workflows/disclosure-first-auditnow.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  disclosure-audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Test reducer and privacy boundaries
+        run: python -m unittest discover -s tests -p 'test_auditnow_disclosure.py' -v
+      - name: Disclose before auditing
+        run: python tools/auditnow/disclosure_first.py --cases-dir auditnow/cases --out "$RUNNER_TEMP/auditnow"
+      - name: Attach review-only reports
+        uses: actions/upload-artifact@v4
+        with:
+          name: auditnow-disclosure-review
+          path: ${{ runner.temp }}/auditnow/
+          retention-days: 7
+          if-no-files-found: error
