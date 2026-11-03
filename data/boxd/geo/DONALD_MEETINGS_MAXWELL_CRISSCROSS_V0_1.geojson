@@ -1,0 +1,79 @@
+{
+  "type": "FeatureCollection",
+  "name": "DONALD_MEETINGS_MAXWELL_CRISSCROSS_V0_1",
+  "boxd": {
+    "version": "0.1",
+    "authority_created": false,
+    "proof_inferred": false,
+    "victim_safe": true,
+    "purpose": "Public-record time/place relationship replay. A geographic or temporal match is not a misconduct finding."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "id": "BRIDGE-TRUMP-MAXWELL-FLIGHTS-1993-1996",
+      "geometry": null,
+      "properties": {
+        "stack": "bridge",
+        "event_type": "CO_TRAVEL_SUMMARY",
+        "actors": ["Donald J. Trump", "Ghislaine Maxwell", "Jeffrey Epstein"],
+        "time_start": "1993-01-01",
+        "time_end": "1996-12-31",
+        "time_precision": "YEAR_RANGE_FROM_RELEASED_DOJ_EMAIL",
+        "place_id": null,
+        "place_state": "ROUTE_NOT_PARSED_IN_THIS_SEED",
+        "source_kind": "DOJ_RELEASED_INTERNAL_EMAIL",
+        "source_uri": "https://www.justice.gov/epstein/files/DataSet%208/EFTA00028716.pdf",
+        "source_id": "EFTA00028716",
+        "claim": "Released DOJ email states Trump was listed on at least eight Epstein-jet flights between 1993 and 1996, including at least four flights on which Maxwell was also present.",
+        "evidence_state": "BOUND",
+        "primary_log_rows_acquired": false,
+        "misconduct_inferred": false
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "MAXWELL-MAR-A-LAGO-VISIT-UNDATE",
+      "geometry": {
+        "type": "Point",
+        "coordinates": [-80.0366, 26.6771]
+      },
+      "properties": {
+        "stack": "maxwell",
+        "event_type": "VENUE_VISIT_RECOLLECTION",
+        "actors": ["Ghislaine Maxwell"],
+        "time_start": null,
+        "time_end": null,
+        "time_precision": "UNKNOWN",
+        "place_id": "MAR_A_LAGO_PALM_BEACH",
+        "place_name": "Mar-a-Lago, Palm Beach, Florida",
+        "coordinate_precision": "VENUE_APPROXIMATION_NOT_EVENT_POSITION",
+        "source_kind": "DOJ_INTERVIEW_TRANSCRIPT",
+        "source_uri": "https://www.justice.gov/storage/audio-files/Interview%20Transcript/Interview%20Transcript%20-%20Maxwell%202025.07.24%20%28Redacted%29.pdf?ftag=MSF0951a18",
+        "claim": "Maxwell stated in a DOJ interview that she had been to Mar-a-Lago; the excerpt does not provide a date.",
+        "evidence_state": "BOUND_RECOLLECTION",
+        "simultaneous_trump_presence": "HOLD",
+        "misconduct_inferred": false
+      }
+    },
+    {
+      "type": "Feature",
+      "id": "MAXWELL-TRUMP-EPSTEIN-SOCIAL-OBSERVATION-UNDATE",
+      "geometry": null,
+      "properties": {
+        "stack": "bridge",
+        "event_type": "SOCIAL_OBSERVATION_RECOLLECTION",
+        "actors": ["Donald J. Trump", "Ghislaine Maxwell", "Jeffrey Epstein"],
+        "time_start": null,
+        "time_end": null,
+        "time_precision": "UNKNOWN",
+        "place_id": null,
+        "source_kind": "DOJ_INTERVIEW_TRANSCRIPT",
+        "source_uri": "https://www.justice.gov/storage/audio-files/Interview%20Transcript/Interview%20Transcript%20-%20Maxwell%202025.07.24%20%28Redacted%29.pdf?ftag=MSF0951a18",
+        "claim": "Maxwell stated she saw Trump and Epstein together a few times and recalled social, not private, settings.",
+        "evidence_state": "BOUND_RECOLLECTION",
+        "misconduct_inferred": false
+      }
+    }
+  ]
+}

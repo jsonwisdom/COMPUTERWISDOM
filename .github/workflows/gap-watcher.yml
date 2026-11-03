@@ -1,0 +1,101 @@
+name: Gap Watcher
+
+on:
+  push:
+    paths:
+      - "data/gap-watch/**"
+      - "docs/gray-baby/GITHUB_GAP_WORKFLOW_V0_1.md"
+      - ".github/workflows/gap-watcher.yml"
+  pull_request:
+    paths:
+      - "data/gap-watch/**"
+      - "docs/gray-baby/GITHUB_GAP_WORKFLOW_V0_1.md"
+      - ".github/workflows/gap-watcher.yml"
+  workflow_dispatch:
+
+jobs:
+  gap-watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Validate Gap Watch manifests
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import glob, json, sys
+
+          allowed_states = {"PROVEN", "BOUND", "HOLD", "CONFLICT", "REJECT", "PARTIAL"}
+          required = {
+              "gap_id",
+              "proposition",
+              "source_surface",
+              "authority_source",
+              "record_status",
+              "access_status",
+              "evidence_state",
+              "authority_created",
+              "proof_inferred",
+          }
+
+          files = sorted(glob.glob("data/gap-watch/*.json"))
+          if not files:
+              print("No Gap Watch manifests found; failing closed.")
+              sys.exit(1)
+
+          errors = []
+          for path in files:
+              with open(path, "r", encoding="utf-8") as fh:
+                  row = json.load(fh)
+
+              missing = sorted(required - row.keys())
+              if missing:
+                  errors.append(f"{path}: missing keys {missing}")
+                  continue
+
+              if row["evidence_state"] not in allowed_states:
+                  errors.append(f"{path}: invalid evidence_state {row['evidence_state']!r}")
+
+              if row["authority_created"] is not False:
+                  errors.append(f"{path}: authority_created must be false")
+
+              if row["proof_inferred"] is not False:
+                  errors.append(f"{path}: proof_inferred must be false")
+
+              if row.get("access_status") == "HTTP_404" and row.get("record_status") in {
+                  "DELETED", "DESTROYED", "CONCEALED"
+              }:
+                  errors.append(
+                      f"{path}: HTTP_404 cannot by itself promote record_status to "
+                      f"{row.get('record_status')}"
+                  )
+
+              if row.get("source_surface", "").lower() in {"doj.gov", "dow.gov"}:
+                  if row.get("source_surface_state") != "UNRESOLVED_USER_LABEL":
+                      errors.append(
+                          f"{path}: unresolved source label requires "
+                          "source_surface_state=UNRESOLVED_USER_LABEL"
+                      )
+
+              if row.get("budget_amount_state") == "PROVEN" and not row.get("budget_receipt_uri"):
+                  errors.append(f"{path}: PROVEN budget amount requires budget_receipt_uri")
+
+              if row.get("authority_edge_state") == "PROVEN" and not row.get("authority_source"):
+                  errors.append(f"{path}: PROVEN authority edge requires authority_source")
+
+          if errors:
+              print("GAP WATCH FAILED CLOSED")
+              for err in errors:
+                  print(" -", err)
+              sys.exit(1)
+
+          print(f"GAP WATCH PASS: {len(files)} manifest(s) validated")
+          PY
+
+      - name: Print standing order
+        run: |
+          echo "404 != deletion"
+          echo "budget claim != budget receipt"
+          echo "domain != authority"
+          echo "missing record = new custody proposition"
+          echo "Gray Baby observes; GitHub validates structure; neither creates authority"

@@ -1,0 +1,134 @@
+{
+  "registry_version": "0.1",
+  "proposition_id": "FBI-TOM-HOMAN-50000-001",
+  "subject": "Thomas D. Homan",
+  "authority_created": false,
+  "proof_inferred": false,
+  "current_state": {
+    "investigation_existed": "PROVEN",
+    "investigation_closed": "PROVEN",
+    "official_closure_reason": "BOUND",
+    "reported_50000_transfer": "BOUND_MULTI_SOURCE_HOLD_PRIMARY",
+    "reported_recording": "BOUND_MULTI_SOURCE_HOLD_PRIMARY",
+    "quid_pro_quo": "HOLD",
+    "criminal_bribery_finding": "REJECT",
+    "close_date_public": "HOLD",
+    "close_decision_maker_public": "HOLD",
+    "money_disposition_public": "HOLD",
+    "white_house_communications_public": "HOLD",
+    "primary_recording_publicly_acquired": false,
+    "overall": "HOLD"
+  },
+  "sources": [
+    {
+      "source_id": "OFFICIAL-001",
+      "kind": "congressional_qfr",
+      "publisher": "U.S. Senate Judiciary Committee",
+      "date": "2026-07-15",
+      "uri": "https://www.judiciary.senate.gov/imo/media/doc/98781d53-bdcc-75d8-c507-1b1bca492142/2026-07-15_QFR-Responses_Blanche_687007f1-363d-40d9-b7da-356b52dc448d.pdf",
+      "authority_role": "oversight_record",
+      "expected_claims": [
+        "DOJ declines to disclose non-public close date or close-out materials",
+        "DOJ does not publicly answer what became of reported $50,000",
+        "DOJ repeats no-credible-evidence closure rationale"
+      ]
+    },
+    {
+      "source_id": "OFFICIAL-002",
+      "kind": "congressional_qfr",
+      "publisher": "U.S. House Judiciary Committee",
+      "date": "2025-09-17",
+      "uri": "https://docs.house.gov/meetings/JU/JU00/20250917/118612/HHRG-119-JU00-20250917-QFR001-U1.pdf",
+      "authority_role": "oversight_questions",
+      "expected_claims": [
+        "Congress asks whether FBI possesses recordings",
+        "Congress asks what became of reported $50,000",
+        "Congress asks who and when closed investigation"
+      ]
+    },
+    {
+      "source_id": "OFFICIAL-003",
+      "kind": "senate_press_release",
+      "publisher": "U.S. Senate",
+      "date": "2025-10-07",
+      "uri": "https://www.schiff.senate.gov/news/press-releases/watch-sen-schiff-presses-attorney-general-pam-bondi-on-releasing-homan-investigation-tape-condemns-stonewalling-on-key-questions-regarding-weaponization-of-justice-department/",
+      "authority_role": "oversight_statement",
+      "expected_claims": [
+        "Senator sought release of reported tape",
+        "oversight questions remained unresolved"
+      ]
+    },
+    {
+      "source_id": "OFFICIAL-004",
+      "kind": "congressional_foia_request",
+      "publisher": "U.S. Senate",
+      "date": "2025-11-21",
+      "uri": "https://www.whitehouse.senate.gov/wp-content/uploads/2025/11/Homan-FOIA-.pdf",
+      "authority_role": "oversight_access_request",
+      "expected_claims": [
+        "Senators request close-out memoranda and related FBI/DOJ records"
+      ]
+    },
+    {
+      "source_id": "MEDIA-001",
+      "kind": "news_report",
+      "publisher": "Reuters",
+      "date": "2025-09-21",
+      "uri": "https://www.reuters.com/world/us/trump-aide-homan-accepted-50000-bribery-sting-operation-sources-say-2025-09-21/",
+      "authority_role": "secondary_reporting",
+      "expected_claims": [
+        "reported undercover operation",
+        "reported $50,000 cash transfer",
+        "reported recording",
+        "reported future-contract discussion"
+      ]
+    },
+    {
+      "source_id": "MEDIA-002",
+      "kind": "news_report",
+      "publisher": "Associated Press",
+      "date": "2025-09-22",
+      "uri": "https://apnews.com/article/461cc66955e2ba25445a9bf931250580",
+      "authority_role": "secondary_reporting",
+      "expected_claims": [
+        "reports cash acceptance allegation and closed probe",
+        "records White House defense and political-motivation framing"
+      ]
+    },
+    {
+      "source_id": "MEDIA-003",
+      "kind": "news_report",
+      "publisher": "ABC News",
+      "date": "2025-09-21",
+      "uri": "https://abcnews.com/Politics/doj-ended-probe-border-czar-tom-homan-allegedly/story?id=125781386",
+      "authority_role": "secondary_reporting_with_official_statement",
+      "expected_claims": [
+        "quotes Patel/Blanche joint closure statement",
+        "reports alleged $50,000 operation"
+      ]
+    },
+    {
+      "source_id": "ACCESS-001",
+      "kind": "foia_litigation_page",
+      "publisher": "Democracy Forward",
+      "date": "2025-10-06",
+      "uri": "https://democracyforward.org/work/legal/foia-lawsuit-challenging-the-trump-vance-administrations-refusal-to-release-alleged-recording-of-border-czar-homan-accepting-cash-from-undercover-agents/",
+      "authority_role": "access_litigation_pointer",
+      "expected_claims": [
+        "D.D.C. FOIA litigation seeking reported recording"
+      ]
+    },
+    {
+      "source_id": "ACCESS-002",
+      "kind": "foia_litigation_update",
+      "publisher": "Democracy Defenders Fund",
+      "date": "2026-02-17",
+      "uri": "https://www.democracydefendersfund.org/prs/02.17.26-pr",
+      "authority_role": "access_litigation_pointer",
+      "expected_claims": [
+        "FBI denial in full reported by requester",
+        "lawsuit seeks audio/video/investigative records"
+      ]
+    }
+  ]
+}
