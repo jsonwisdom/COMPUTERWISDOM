@@ -1,5 +1,35 @@
 # Computer Wisdom: Sovereign OS Broadcast Hub
 
+## Garbage General — narrative build surface
+
+**Creator / architect:** Jason Wisdom / Jay Wisdom  
+**Role:** top-level story / explainer / build mirror  
+**Authority:** false
+
+```text
+GARBAGE GENERAL
+        ↓
+JASON WISDOM / JAY WISDOM
+        ↓
+RIGHT-SIZED ROOT KNOWLEDGE OBJECT
+        ↓
+TASK | KERNEL/RUNTIME | PERSONNEL | DOCTRINE | RENDER
+        ↓
+PROVENANCE + BOXD + RECEIPT + REPLAY
+```
+
+Garbage General is the narrative cap for telling the build story across kernels, Space Force / Air Force public-record research, voice reputation/provenance, BoxD training, and render gates. It does not replace the operational control plane or canonical proof root.
+
+See [`docs/garbage-general/GARBAGE_GENERAL_BUILD_MIRROR_2026-09-02.md`](./docs/garbage-general/GARBAGE_GENERAL_BUILD_MIRROR_2026-09-02.md) for the dated build mirror, including the **AppleBlossom Awesome Audit** human-readable audit surface.
+
+```text
+GARBAGE_GENERAL != HOST_KERNEL
+GARBAGE_GENERAL != MILITARY_AUTHORITY
+GARBAGE_GENERAL != BOXD_VERDICT
+STORY != STATE
+AUTHORITY_CREATED = false
+```
+
 > **Status:** OPERATIONAL CONTROL PLANE  
 > **Classification:** CORPORATE_OPERATIONS_ROOT_QUALIFIED  
 > **Authority:** false by default  
