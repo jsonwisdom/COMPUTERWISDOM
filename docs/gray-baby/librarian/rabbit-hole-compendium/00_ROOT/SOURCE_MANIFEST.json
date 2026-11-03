@@ -1,0 +1,17 @@
+{
+  "schema": "GRAY_BABY_SOURCE_MANIFEST_V0_1",
+  "authority": false,
+  "primary": {
+    "artifact_id": "youtube:E2u8wtuVOOM",
+    "url": "https://www.youtube.com/watch?v=E2u8wtuVOOM",
+    "title": "The Complete Rabbit Hole Compendium Iceberg",
+    "channel": "Maker",
+    "published_page_date_utc": "2024-05-28T04:22:42Z",
+    "published_receipt_local": "2024-05-27"
+  },
+  "surfaces": {
+    "github_math": "docs/gray-baby/GRAY_BABY_LIBRARIAN_MATH_YOUTUBE_E2u8wtuVOOM_V0_1.md",
+    "github_pr": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/562",
+    "drive_doc": "https://docs.google.com/document/d/1pwD9APfyR2kE9ZJsiQgFOXZoDfL1ErCMrsSXroEYeaE/edit"
+  }
+}

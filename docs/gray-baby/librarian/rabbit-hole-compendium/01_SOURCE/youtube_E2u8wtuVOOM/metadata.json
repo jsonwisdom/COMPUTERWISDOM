@@ -1,0 +1,20 @@
+{
+  "artifact_id": "youtube:E2u8wtuVOOM",
+  "artifact_type": "video",
+  "title": "The Complete Rabbit Hole Compendium Iceberg",
+  "channel": "Maker",
+  "url": "https://www.youtube.com/watch?v=E2u8wtuVOOM",
+  "retrieval": {
+    "video_metadata": "RETRIEVED",
+    "chapter_index": "RETRIEVED",
+    "full_transcript": "NOT_RETRIEVED",
+    "pinned_index": "PARTIAL_HASH_TO_C"
+  },
+  "party_reported": {
+    "topics_750_plus": true,
+    "ai_used_in_production": true,
+    "entertainment_not_certainty": true
+  },
+  "authority": false,
+  "promotion_allowed": false
+}
