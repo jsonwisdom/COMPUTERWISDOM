@@ -1,0 +1,109 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/contracts/arena/ArenaReport.v0.1.0.json",
+  "title": "COMPUTERWISDOM Sentinel Arena State of Reality Report v0.1.0",
+  "type": "object",
+  "required": [
+    "contract_version",
+    "arena_id",
+    "round_id",
+    "generated_at",
+    "generated_by",
+    "authority",
+    "remediation_applied",
+    "question",
+    "status",
+    "state_of_reality",
+    "confidence",
+    "confidence_margin",
+    "critical_evidence",
+    "missing_evidence_refs",
+    "scores",
+    "dissent",
+    "recommended_actions",
+    "escalate"
+  ],
+  "properties": {
+    "contract_version": { "const": "v0.1" },
+    "arena_id": { "type": ["string", "null"] },
+    "round_id": { "type": ["string", "null"] },
+    "generated_at": { "type": "string", "format": "date-time" },
+    "generated_by": { "const": "COMPUTERWISDOM Sentinel Arena v0.1" },
+    "authority": { "const": false },
+    "remediation_applied": { "const": false },
+    "question": { "type": ["string", "null"] },
+    "status": { "enum": ["resolved", "contested", "insufficient_evidence", "escalate"] },
+    "state_of_reality": { "type": "string", "minLength": 1 },
+    "winning_instrument": { "type": ["string", "null"] },
+    "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+    "confidence_margin": { "type": "number", "minimum": 0, "maximum": 1 },
+    "critical_evidence": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    },
+    "missing_evidence_refs": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": { "type": "string" }
+    },
+    "scores": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": [
+          "instrument_id",
+          "hypothesis",
+          "declared_confidence",
+          "calibrated_confidence",
+          "support_weight",
+          "contradiction_weight",
+          "evidence_count",
+          "missing_evidence_refs"
+        ],
+        "properties": {
+          "instrument_id": { "type": "string" },
+          "hypothesis": { "type": "string" },
+          "declared_confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "calibrated_confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "support_weight": { "type": "number", "minimum": 0 },
+          "contradiction_weight": { "type": "number", "minimum": 0 },
+          "evidence_count": { "type": "integer", "minimum": 0 },
+          "missing_evidence_refs": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": { "type": "string" }
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "dissent": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["instrument_id", "hypothesis", "calibrated_confidence"],
+        "properties": {
+          "instrument_id": { "type": "string" },
+          "hypothesis": { "type": "string" },
+          "calibrated_confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+        },
+        "additionalProperties": false
+      }
+    },
+    "recommended_actions": { "type": "array", "items": { "type": "string" } },
+    "escalate": { "type": "boolean" }
+  },
+  "allOf": [
+    {
+      "if": { "properties": { "status": { "enum": ["contested", "insufficient_evidence"] } } },
+      "then": { "properties": { "winning_instrument": { "type": "null" } } }
+    },
+    {
+      "if": { "properties": { "status": { "const": "escalate" } } },
+      "then": { "properties": { "escalate": { "const": true } } }
+    }
+  ],
+  "additionalProperties": false
+}
