@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jaywisdom.base.eth/contracts/RESULT_CONTRACT_V1_OUTPUT.schema.json",
+  "title": "RESULT_CONTRACT_V1_OUTPUT",
+  "description": "Verifier-emitted deterministic result object. Caller input MUST NOT contain these output-only fields.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "standard",
+    "verifier",
+    "claimClass",
+    "inputDigest",
+    "internalFlags",
+    "burdenSatisfied",
+    "derivedResult",
+    "authority"
+  ],
+  "properties": {
+    "standard": {"const": "GBS-BOXDEE-BURDEN-V001"},
+    "verifier": {"const": "P1_VERIFIER_SPEC_V1"},
+    "claimClass": {
+      "enum": ["FACT_CLAIM", "SELF_REPORT", "RELATION_LABEL", "INTENT_INFERENCE", "MIXED"],
+      "description": "Class-scopes the meaning of derivedResult. MIXED is not PASS-eligible in P1 V1."
+    },
+    "inputDigest": {
+      "type": "string",
+      "pattern": "^[A-Fa-f0-9]{64}$",
+      "description": "SHA-256 of RFC 8785 canonicalized INPUT_EVIDENCE_V1 bytes."
+    },
+    "internalFlags": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "hasInvariantViolation",
+        "hasContradictoryReceipts",
+        "hasMismatch",
+        "hasPartialChain",
+        "hasPartialReplay",
+        "hasMissingEvidence"
+      ],
+      "properties": {
+        "hasInvariantViolation": {"type": "boolean"},
+        "hasContradictoryReceipts": {"type": "boolean"},
+        "hasMismatch": {"type": "boolean"},
+        "hasPartialChain": {"type": "boolean"},
+        "hasPartialReplay": {"type": "boolean"},
+        "hasMissingEvidence": {"type": "boolean"}
+      }
+    },
+    "burdenSatisfied": {"type": "boolean"},
+    "derivedResult": {
+      "enum": ["PASS", "HOLD", "DELTA", "FAIL"],
+      "description": "Output-only disposition derived by P1 using FAIL > DELTA > HOLD > PASS precedence."
+    },
+    "authority": {
+      "const": false,
+      "description": "PASS does not create authority. Authority remains FALSE under GBS-V001."
+    },
+    "reasons": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1},
+      "uniqueItems": true
+    }
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"derivedResult": {"const": "PASS"}}, "required": ["derivedResult"]},
+      "then": {
+        "properties": {
+          "burdenSatisfied": {"const": true},
+          "authority": {"const": false},
+          "internalFlags": {
+            "properties": {
+              "hasInvariantViolation": {"const": false},
+              "hasContradictoryReceipts": {"const": false},
+              "hasMismatch": {"const": false},
+              "hasPartialChain": {"const": false},
+              "hasPartialReplay": {"const": false},
+              "hasMissingEvidence": {"const": false}
+            }
+          }
+        }
+      }
+    },
+    {
+      "if": {"properties": {"claimClass": {"const": "MIXED"}}, "required": ["claimClass"]},
+      "then": {
+        "properties": {
+          "burdenSatisfied": {"const": false},
+          "derivedResult": {"const": "HOLD"},
+          "authority": {"const": false}
+        }
+      }
+    },
+    {
+      "if": {"properties": {"derivedResult": {"const": "FAIL"}}, "required": ["derivedResult"]},
+      "then": {"properties": {"burdenSatisfied": {"const": false}, "authority": {"const": false}}}
+    },
+    {
+      "if": {"properties": {"derivedResult": {"enum": ["DELTA", "HOLD"]}}, "required": ["derivedResult"]},
+      "then": {"properties": {"burdenSatisfied": {"const": false}, "authority": {"const": false}}}
+    }
+  ]
+}
