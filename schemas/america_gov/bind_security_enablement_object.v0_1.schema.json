@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bind_security_enablement_object.v0_1.schema.json",
+  "title": "Bind_Security_enablement_object",
+  "description": "Schema-only, non-authoritative constraint contract. Validation of this definition does not validate an archive receipt or authorize execution.",
+  "type": "object",
+  "required": [
+    "object_id", "version", "purpose_rail", "enablement_class", "status",
+    "authority", "capabilities", "actor_binding", "receipts_issued",
+    "rail_effect", "boundaries", "gates", "external_enforcement"
+  ],
+  "properties": {
+    "object_id": {"const": "Bind_Security_enablement_object"},
+    "version": {"const": "0.1"},
+    "purpose_rail": {"const": "SuperIntelligence America.gov Purpose"},
+    "enablement_class": {"const": "SECURITY"},
+    "status": {"const": "SCHEMA_ONLY"},
+    "authority": {"const": false},
+    "capabilities": {"const": []},
+    "actor_binding": {"type": "null"},
+    "receipts_issued": {"const": false},
+    "rail_effect": {"const": "NONE"},
+    "boundaries": {
+      "type": "object",
+      "required": ["legacy", "security", "lfg", "evidentiary_promotion"],
+      "properties": {
+        "legacy": {"const": "CONTINUITY_ONLY_NO_NARRATIVE_SYNTHESIS"},
+        "security": {"const": "PROCESS_INTEGRITY_ONLY_NO_SURVEILLANCE_OR_ENFORCEMENT"},
+        "lfg": {"const": "MECHANICAL_MOMENTUM_ONLY_NO_DECISION_OR_POLICY_ACCELERATION"},
+        "evidentiary_promotion": {"const": "NONE"}
+      },
+      "additionalProperties": false
+    },
+    "gates": {
+      "type": "object",
+      "required": ["receipt_integrity", "provenance_integrity", "evidence_class_integrity", "revision_integrity", "answer_capture_integrity"],
+      "properties": {
+        "receipt_integrity": {"$ref": "#/$defs/gate"},
+        "provenance_integrity": {"$ref": "#/$defs/gate"},
+        "evidence_class_integrity": {"$ref": "#/$defs/gate"},
+        "revision_integrity": {"$ref": "#/$defs/gate"},
+        "answer_capture_integrity": {"$ref": "#/$defs/gate"}
+      },
+      "additionalProperties": false
+    },
+    "external_enforcement": {
+      "type": "object",
+      "required": ["status", "reason", "claim"],
+      "properties": {
+        "status": {"const": "UNWIRED"},
+        "reason": {"const": "Cross-object resolution, snapshot binding, and event-history checks require a bounded corpus and explicit validator."},
+        "claim": {"const": "DEFINITION_VALIDITY_NE_CANDIDATE_VALIDITY"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "gate": {
+      "type": "object",
+      "required": ["reject_if", "required_outcome", "evaluation_status"],
+      "properties": {
+        "reject_if": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "minLength": 1}
+        },
+        "required_outcome": {"const": "REJECT"},
+        "evaluation_status": {"const": "DEFINED_UNWIRED"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
