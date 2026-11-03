@@ -20,6 +20,7 @@ import urllib.error
 import urllib.request
 
 from person_first_sources_v0_1 import evaluate, not_configured_summary, safe_public_summary
+from jason_os_candidate_pipeline_v0_1 import compile_private_candidates, safe_public_pipeline_summary
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 BASELINE = ROOT / "MASTER_ROOM" / "SNAPSHOT_INDEX_V1.json"
@@ -133,14 +134,22 @@ def main():
     if manifest_name:
         try:
             manifest = json.loads(pathlib.Path(manifest_name).read_text(encoding="utf-8"))
-            private_replay = evaluate(manifest, os.environ.get("JASON_SOURCE_ROOT"))
+            source_root = os.environ.get("JASON_SOURCE_ROOT")
+            private_replay = evaluate(manifest, source_root)
+            private_candidates = compile_private_candidates(manifest, source_root)
             person_first = safe_public_summary(private_replay)
-            # The GitHub Action uploads ONLY the two public report files below.
-            # Never add this private directory to an artifact or repository.
+            person_first["jason_os_candidate_pipeline"] = safe_public_pipeline_summary(
+                private_candidates
+            )
+            # These files contain private candidate text and provenance.
+            # Never include private/ in GitHub artifact uploads or public summaries.
             private_dir = OUTDIR / "private"
             private_dir.mkdir(parents=True, exist_ok=True)
             (private_dir / "person-first-recovery.json").write_text(
                 json.dumps(private_replay, indent=2) + "\n", encoding="utf-8"
+            )
+            (private_dir / "jason-os-candidates.json").write_text(
+                json.dumps(private_candidates, indent=2) + "\n", encoding="utf-8"
             )
         except (OSError, ValueError, TypeError) as exc:
             # Source input errors do not block unrelated, supported GitHub observations.
