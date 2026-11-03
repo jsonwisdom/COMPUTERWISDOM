@@ -1,0 +1,184 @@
+# VOICE_RECEIPT_v0.yaml
+# PROPOSED / NOT CAPTURED / NOT BINDING
+# Lane-specific provenance envelope for voice -> text -> question -> answer -> render.
+# This schema does not create a transcript, event, corroboration, or confidence promotion.
+
+voice_receipt:
+  schema_version: "0.1.0"
+  kind: voice_receipt
+  binding: proposed
+
+  started_at: null        # annotation only
+  finished_at: null       # annotation only
+
+  structural_properties:
+    VOICE_AUDIO_NOT_SERVER_INPUT: true
+
+  voice:
+    voice_source_class: unavailable   # client_raw | unavailable | server_payload
+    voice_hash: null                  # h_V; client_raw only
+    voice_raw_capture_id: null
+    client_device_ref: null           # label only; never a capture id
+
+  text:
+    text_source_class: unavailable    # client_transcript | server_transcript | unavailable
+    text_hash: null
+    text_raw_capture_id: null
+
+  question:
+    question_source_class: unavailable  # client_raw | server_payload | unavailable
+    question_hash: null
+    question_raw_capture_id: null
+
+  answer:
+    answer_source_class: unavailable    # server_payload | client_raw | unavailable
+    answer_hash: null
+    answer_raw_capture_id: null
+
+  render:
+    render_source_class: unavailable    # client_raw | server_payload | unavailable
+    render_hash: null
+    render_raw_capture_id: null
+
+  verification:
+    status: observed
+    verifier: null
+    promotion_authority: false
+
+# NAMED STRUCTURAL PROPERTY
+#
+# VOICE_AUDIO_NOT_SERVER_INPUT is not an error.
+# It records the architecture's asymmetry:
+#
+#   voice audio may be absent from the server-side record even when text exists.
+#
+# It creates no inference that the text matches unavailable audio.
+
+# VOICE LANE
+#
+# voice_source_class == client_raw:
+# - voice_hash MUST match ^sha256:[0-9a-f]{64}$
+# - voice_raw_capture_id MUST resolve to captured bytes
+# - captured bytes hash MUST equal voice_hash
+#
+# voice_source_class == unavailable:
+# - voice_hash MUST be null
+# - voice_raw_capture_id MUST be null
+#
+# voice_source_class == server_payload:
+# - server MUST NOT mint voice_hash merely because text was received
+# - without voice_raw_capture_id resolving to the original voice bytes,
+#   voice_hash MUST be null
+# - a server-supplied h_V without client_raw + resolving capture is META FAIL
+#
+# client_device_ref:
+# - label only
+# - MUST NOT satisfy voice_raw_capture_id
+# - MUST NOT promote unavailable/server_payload to captured
+#
+# MAPPING:
+# client_raw + resolving capture => captured FOR THE VOICE LANE ONLY
+# unavailable => first-class absence; not captured
+# server_payload without WORM bytes => non-captured / capped below corroborated
+
+# TEXT LANE
+#
+# text_source_class == client_transcript:
+# - text_raw_capture_id REQUIRED
+# - text_hash REQUIRED and MUST match captured transcript bytes
+#
+# text_source_class == server_transcript:
+# - text_hash MAY be non-null only when it hashes exact transcript bytes
+#   actually stored by the server and text_raw_capture_id resolves to them
+# - otherwise text_hash MUST be null
+#
+# text_source_class == unavailable:
+# - text_hash MUST be null
+# - text_raw_capture_id MUST be null
+#
+# A text hash proves only captured text bytes.
+# It does not prove correspondence with unavailable audio.
+
+# QUESTION / ANSWER / RENDER LANES
+#
+# Each lane is independent.
+# A non-null *_hash proves only exact bytes in that lane whose *_raw_capture_id resolves.
+# A null sibling hash MUST NOT inherit proof from another lane.
+#
+# Examples:
+# - voice_hash == null does not weaken or strengthen text_hash.
+# - text_hash != null does not prove voice fidelity.
+# - answer_hash != null does not prove render fidelity.
+# - render_hash != null does not prove legal or governmental correctness.
+#
+# Any non-null hash without a resolving raw_capture_id is invalid for captured provenance.
+
+# ABSENCE
+#
+# Null is explicit absence, not inherited proof.
+#
+#   voice_hash: null
+#   text_hash: null
+#   question_hash: null
+#   answer_hash: null
+#   render_hash: null
+#
+# is a valid empty envelope.
+#
+# It is NOT:
+# - a transcript
+# - evidence of voice/text equivalence
+# - evidence of question/answer equivalence
+# - evidence of answer/render equivalence
+# - corroboration
+# - a Merkle leaf
+# - a distortion measurement
+
+# SOURCE-CLASS ALIGNMENT
+#
+# captured provenance is lane-local.
+# Captured voice does not capture text.
+# Captured text does not capture question.
+# Captured question does not capture answer.
+# Captured answer does not capture render.
+#
+# unavailable is equivalent in force to an explicit absence lane, not to captured.
+#
+# server_payload / server_transcript without corresponding WORM bytes:
+# - cannot exceed observed
+# - cannot corroborate
+# - cannot serve as source_receipt_id for confidence above provisional
+#
+# authored / operator_relayed claims about any lane remain non-captured.
+
+# TIMING
+#
+# started_at and finished_at are annotations only.
+# Time annotations do not create capture provenance.
+
+# FIREWALLS
+#
+# VOICE_HASH != TRANSCRIPT_PROOF
+# TEXT_HASH != VOICE_MATCH_PROOF
+# QUESTION_HASH != INTENT_PROOF
+# ANSWER_HASH != TRUTH
+# RENDER_HASH != ANSWER_EQUIVALENCE
+# CLIENT_DEVICE_REF != RAW_CAPTURE_ID
+# NULL != FALSE
+# NULL != MATCH
+# NULL != CORROBORATION
+# STARTED_AT/FINISHED_AT != CAPTURE
+# VOICE_RECEIPT != MERIDIAN_EVENT
+# VOICE_RECEIPT != COLLIDER_RESULT
+# VOICE_RECEIPT != VALIDATION_RUN
+# VOICE_RECEIPT != AUTHORITY
+
+# DOWNSTREAM BLOCKS
+#
+# Merkle_USA_v0 = NOT SPECIFIED
+# DISTORTION_v0 = NOT SPECIFIED
+#
+# Neither may be specified from this lane until each participating hash lane
+# is either:
+#   (a) captured with resolving bytes and matching hash, or
+#   (b) explicit absence.

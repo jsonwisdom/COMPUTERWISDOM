@@ -1,0 +1,37 @@
+# PROPOSED / SYNTHETIC / NOT CAPTURED / NOT BINDING
+fixture:
+  schema_version: "0.1.0"
+  kind: validation_fixture
+  binding: proposed
+  source_class: authored_in_conversation
+  content_hash: null
+  raw_capture_id: null
+  synthetic: true
+  vector: "V13b"
+
+  registry:
+    collider_results:
+      - id: "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+        kind: collider_result
+
+  target:
+    schema_version: "0.2.0"
+    kind: collider_result_addendum
+    id: null
+    collider_result_id: "sha256:bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb"
+    supersedes: null
+    input_source_classes:
+      - { ref: "sha256:3333333333333333333333333333333333333333333333333333333333333333", source_class: "operator_relayed" }
+    confidence: "provisional"
+
+  expected:
+    outcome: pass
+    failure_code: null
+    rejected_failure_codes:
+      - "NON_CAPTURED_CONFIDENCE_PROMOTION"
+      - "COLLIDER_RESULT_NOT_FOUND"
+      - "INPUT_SOURCE_CLASS_UNKNOWN"
+
+  notes: >
+    At-cap negative control. If NON_CAPTURED_CONFIDENCE_PROMOTION fires here,
+    the validator is over-broad.

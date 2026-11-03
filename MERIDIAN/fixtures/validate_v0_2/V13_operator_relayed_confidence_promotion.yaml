@@ -1,0 +1,30 @@
+# PROPOSED / SYNTHETIC VALIDATOR FIXTURE
+# Deliberately invalid downstream/materialized Collider candidate.
+# confidence is test input only; canonical Collider has no confidence field.
+
+fixture:
+  fixture_id: "V13_OPERATOR_RELAYED_CONFIDENCE_PROMOTION"
+  vector_id: "V13"
+  schema_target: "Collider_v0_1_PROVENANCE_ADDENDUM"
+  synthetic: true
+  binding: proposed
+  content_hash: null
+
+  candidate:
+    schema_version: "0.1.0"
+    kind: collider_result_candidate
+    event_id: "00000000-0000-7000-8000-000000001300"
+    graph_snapshot_hash: "sha256:2222222222222222222222222222222222222222222222222222222222222222"
+
+    input_source_classes:
+      - source_receipt_id: "synthetic-receipt-1"
+        source_class: operator_relayed
+      - source_receipt_id: "synthetic-receipt-2"
+        source_class: operator_relayed
+
+    confidence: strong
+
+  assertions:
+    expected_result: fail
+    expected_failure_code: "OPERATOR_RELAYED_CONFIDENCE_PROMOTION"
+    canonical_confidence_field_created: false
