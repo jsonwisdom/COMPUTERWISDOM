@@ -1,0 +1,91 @@
+{
+  "schema": "jason-evidence-boundary/1",
+  "observed_date": "2026-11-03",
+  "classification": "configuration_observation",
+  "disposition": "HOLD_CHECKABLE",
+  "project": "JASON_FIRST",
+  "inventory_completeness": "connected_account_only",
+  "source_channels": [
+    "Cloudflare authenticated connector",
+    "GitHub authenticated connector"
+  ],
+  "source_capture": {
+    "raw_http_bytes": null,
+    "raw_http_sha256": null,
+    "fetched_at": null,
+    "meaning": "connector-normalized responses inspected, upstream raw bytes not captured; cannot assert byte-for-byte source capture"
+  },
+  "cloudflare": {
+    "accessible_accounts": 1,
+    "active_zones": [
+      "jsonwisdom.com",
+      "jsonwisdom.io"
+    ],
+    "zone_counts": {
+      "jsonwisdom_com_dns_records": 14,
+      "jsonwisdom_io_dns_records": 0
+    },
+    "worker_scripts": 16,
+    "route_patterns": 0,
+    "custom_domain_bindings": 9,
+    "custom_domains": {
+      "auth.jsonwisdom.com": "jsonwisdom-workdesk-auth-staging",
+      "wallet.jsonwisdom.com": "jsonwisdom-wallet-connect",
+      "triggerdeck.jsonwisdom.com": "political-triggerdeck-2026",
+      "gallery.jsonwisdom.com": "jasons-art-gallery",
+      "classes.jsonwisdom.com": "classes-with-glasses",
+      "audit.jsonwisdom.com": "cwaas-receipt-first-audit",
+      "game.jsonwisdom.com": "wisdom-live-observer",
+      "inventory.jsonwisdom.com": "wisdom-catalog-curator",
+      "evidence.jsonwisdom.com": "minnesota-zero-day-evidence-v1"
+    },
+    "evidence_subdomain": {
+      "dns_record_type": "AAAA",
+      "dns_record_content": "100::",
+      "proxied": true,
+      "custom_domain_enabled": true,
+      "worker_environment": "production",
+      "independent_http_health_verified": false
+    },
+    "pages_listing": {
+      "status": "attempted_blocked",
+      "reason": "Cloudflare API rejected list pagination options"
+    }
+  },
+  "org_claim": {
+    "count_reported": 6,
+    "count_verified": null,
+    "names": null,
+    "attempt_state": "attempted_blocked",
+    "reason": "not present in connected zone inventory; names not supplied",
+    "absence_asserted": false
+  },
+  "organizational_chain": {
+    "registrar_verified": false,
+    "rdap_verified": false,
+    "independent_dns_verified": false,
+    "domain_wallet_signature_verified": false,
+    "onchain_org_binding_verified": false,
+    "external_anchor": null
+  },
+  "github": {
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "protected_branch": "master",
+    "direct_write_attempt": "rejected_409",
+    "required_process": "pull_request_plus_verify_ci",
+    "evidence_document": "evidence/jason-first-domain-boundary-2026-11-03.md",
+    "evidence_document_git_blob_sha1": "c1c34bca465cbd48e40334b83d42cc6f6c57b013",
+    "public_ci_run": null
+  },
+  "publication": {
+    "github_branch": "evidence/jason-first-domain-boundary-20261103",
+    "github_pr": null,
+    "cloudflare_worker_changed": false,
+    "live_subdomain_report_published": false
+  },
+  "assertions": {
+    "configured_worker_mapping": true,
+    "organization_ownership_verified": false,
+    "raw_byte_for_byte_audit_completed": false
+  }
+}
