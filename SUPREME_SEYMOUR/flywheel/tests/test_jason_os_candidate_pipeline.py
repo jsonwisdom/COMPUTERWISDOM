@@ -53,6 +53,7 @@ class JASONOSCandidateTests(unittest.TestCase):
         self.assertEqual(o["recovery_action"], "REPAIR_AUDIO_REFERENCE")
         self.assertEqual(o["evidence_verdict"], "UNKNOWN")
         self.assertFalse(o["event_time_verified"])
+        self.assertTrue(all(o[k] is None for k in ("observation_time", "generation_time", "delivery_time", "operator_acknowledgment_time")))
 
     def test_voice_link_to_original_audio_bytes_not_identity(self):
         m = sample()
