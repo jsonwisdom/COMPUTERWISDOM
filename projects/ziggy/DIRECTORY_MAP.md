@@ -10,6 +10,10 @@ projects/ziggy/
 ├── ens/
 ├── voice/
 ├── imagination/
+├── profiles/
+│   └── ziggyprime/
+├── lessons/
+│   └── wisconsin/
 ├── github-control/
 ├── launches/
 │   └── main/
@@ -32,6 +36,8 @@ No directory creates authority merely by existing.
 - `ens/` — ENS names, addresses, forward/reverse resolution results, and identity gaps.
 - `voice/` — voice input becomes reviewable text before any action is proposed.
 - `imagination/` — speculative/generated work stays outside preserved originals and protected release lanes.
+- `profiles/` — bounded applied-skill profiles that extend Ziggy capabilities without creating a new character, identity, operator, or authority. `profiles/ziggyprime/` contains the advanced public-provenance profile.
+- `lessons/` — replayable child-facing applications of Ziggy substrates and profiles. `lessons/wisconsin/` contains Wisconsin local-learning replays.
 - `github-control/` — proposal, branch, PR, status-check, and merge rules.
 - `launches/main/` — canonical repository launch manifests. `main` here means the primary launch lane, **not Base Mainnet**.
 - `test-runs/base-sepolia/` — test-only chain runs targeting Base Sepolia / chain ID 84532.
@@ -63,6 +69,10 @@ Authority is not the automatic next state after identity. It requires an explici
 `VOICE ≠ COMMAND` until transcription is shown and confirmed.
 
 `IMAGINED ≠ VERIFIED`.
+
+`APPLIED_PROFILE ≠ NEW_IDENTITY`.
+
+`LESSON_RECEIPT ≠ SOURCE_TRUTH`.
 
 `MERGED ≠ ON_CHAIN`.
 
