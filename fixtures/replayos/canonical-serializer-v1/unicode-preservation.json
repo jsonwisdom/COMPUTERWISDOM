@@ -1,0 +1,7 @@
+{
+  "name": "unicode-preservation",
+  "valid": true,
+  "inputs": [
+    "{\"schema_version\":\"replayos-snapshot/1\",\"serializer_version\":\"rfc8785-jcs-int53/1\",\"builder_version\":\"replayos-snapshot-builder/1\",\"lanes\":{\"text\":\"é / 😀\"}}"
+  ]
+}

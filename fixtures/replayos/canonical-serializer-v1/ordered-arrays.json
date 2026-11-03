@@ -1,0 +1,9 @@
+{
+  "name": "ordered-arrays",
+  "valid": true,
+  "inputs": [
+    "{\"schema_version\":\"replayos-snapshot/1\",\"serializer_version\":\"rfc8785-jcs-int53/1\",\"builder_version\":\"replayos-snapshot-builder/1\",\"lanes\":{\"values\":[3,2,1]}}",
+    "{\"schema_version\":\"replayos-snapshot/1\",\"serializer_version\":\"rfc8785-jcs-int53/1\",\"builder_version\":\"replayos-snapshot-builder/1\",\"lanes\":{\"values\":[1,2,3]}}"
+  ],
+  "expect_distinct": true
+}
