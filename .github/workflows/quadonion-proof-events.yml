@@ -1,0 +1,50 @@
+name: QuadOnion — Proof Events (draft review only)
+
+# EVENT-DRIVEN. No cron, schedule, or repeating task.
+on:
+  pull_request:
+    paths:
+      - 'quadonion/**'
+      - 'tools/quadonion/**'
+      - 'tests/test_quadonion_events.py'
+      - '.github/workflows/quadonion-proof-events.yml'
+  push:
+    branches: [master]
+    paths:
+      - 'quadonion/cases/**'
+      - 'tools/quadonion/**'
+      - '.github/workflows/quadonion-proof-events.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: quadonion-proof-events-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  review-evidence-events:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Read-only checkout
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Python environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Synthetic test harness — proof boundaries
+        run: python -m unittest discover -s tests -p 'test_quadonion_events.py' -v
+      - name: Bounded proof rotation over admitted case events
+        run: python tools/quadonion/event_proof_rotation.py --cases-dir quadonion/cases --out "$RUNNER_TEMP/quadonion"
+      - name: Upload review-only machine metadata
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: quadonion-proof-event-review
+          path: ${{ runner.temp }}/quadonion/
+          retention-days: 7
+          if-no-files-found: warn
