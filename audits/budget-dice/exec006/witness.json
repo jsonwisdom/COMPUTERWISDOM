@@ -1,0 +1,17 @@
+{
+  "schema": "budget-dice-external-witness-v2",
+  "receipt_id": "budget-dice-exec-006",
+  "receipt_filename": "budget_dice_execution_006.json",
+  "receipt_sha256": "c8dc561fcb960bc6a0b52dcececbcbbab8fc9837679f424501719ea59120a6f1",
+  "prior_receipt_sha256": "c0e1e5f275cc251ee0b5cc71743014757474d08faeacf305cc9b219fd8cd188a",
+  "prior_witness_commit": "134fda901060d4bcd337c7799eb994e16a561489",
+  "witness_class": "self_published_timestamped",
+  "verification_method": "remote_retrieval_match_pending",
+  "independence": "none",
+  "original_gao_bytes_captured": false,
+  "software_heritage_archive_confirmed": false,
+  "source_capture": "blocked_persistently",
+  "local_tests": "9/9 PASS",
+  "scope": "Self-published hash witness only. Not source authenticity or independent attestation.",
+  "status": "UNSEALED"
+}
