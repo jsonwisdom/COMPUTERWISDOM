@@ -100,6 +100,45 @@ Required invariants:
 - EAS witnesses, but does not create global legitimacy;
 - ENS discovers, but does not create authority.
 
+## Classification-Debt Intercept Safeguards (Issue #453)
+
+The system SHALL apply the following safeguards whenever a classification-debt intercept is detected:
+
+1. **LABEL_PROVISIONAL**
+   - A classification derived from an observation MUST remain `PROVISIONAL` until source-bound, contradiction-aware validation is complete.
+   - Interface or connector failure MUST NOT be promoted into a capability, permission, role, or identity claim.
+
+2. **CLAIM_SOURCE_REQUIRED**
+   - No capability, permission, role, or identity MAY be inferred from an observation alone.
+   - Every classification MUST include an explicit, human-auditable `CLAIM_SOURCE` and evidence reference.
+
+3. **CONTRADICTION-DRIVEN_RECLASSIFICATION**
+   - A material contradiction SHALL trigger reclassification and replay through the Epistemic Stack validators.
+   - The prior label MUST remain append-only evidence and MUST be marked superseded by a new reclassification receipt; it MUST NOT be silently erased or mutated.
+
+### Human Appeal Path (Six Questions)
+
+The system SHALL provide a human appeal path that answers:
+
+1. Who labeled me?
+2. From what evidence?
+3. When?
+4. Under which rule?
+5. What changed because of it?
+6. How do I correct it?
+
+The answers and resulting reclassification MUST be preserved as replayable receipts. Neither classification nor reclassification creates authority.
+
+```json
+{
+  "label_provisional": true,
+  "claim_source_required": true,
+  "contradiction_reclassification": "REQUIRED",
+  "appeal_path": "MANDATORY",
+  "authority": false
+}
+```
+
 ## Operator Quick Rule
 
 ```text
