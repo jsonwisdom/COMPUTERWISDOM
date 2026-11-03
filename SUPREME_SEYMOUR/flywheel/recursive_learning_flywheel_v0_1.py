@@ -20,6 +20,7 @@ import urllib.error
 import urllib.request
 
 from person_first_sources_v0_1 import evaluate, not_configured_summary, safe_public_summary
+from ceo_graph_fold_query_candidate_v0_1 import compile_pipeline, safe_public_summary as safe_pipeline_summary
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 BASELINE = ROOT / "MASTER_ROOM" / "SNAPSHOT_INDEX_V1.json"
@@ -142,6 +143,29 @@ def main():
             (private_dir / "person-first-recovery.json").write_text(
                 json.dumps(private_replay, indent=2) + "\n", encoding="utf-8"
             )
+            # A candidate CEO/GRAPH/FOLD/QUERY replay is opt-in and LOCAL-PRIVATE.
+            # JSON claim proposals are annotations; no claim can be promoted by parse.
+            claims_file = os.environ.get("JASON_CLAIMS_MANIFEST")
+            if claims_file:
+                claim_packet = json.loads(pathlib.Path(claims_file).read_text(encoding="utf-8"))
+                previous_packet = None
+                previous_path = os.environ.get("JASON_PREVIOUS_PRIVATE_CANDIDATE")
+                if previous_path:
+                    previous_packet = json.loads(pathlib.Path(previous_path).read_text(encoding="utf-8"))
+                detailed = compile_pipeline(
+                    manifest, os.environ.get("JASON_SOURCE_ROOT"),
+                    claim_packet.get("proposed_claims"), previous=previous_packet,
+                )
+                (private_dir / "ceo-graph-fold-query-candidate.json").write_text(
+                    json.dumps(detailed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
+                )
+                person_first["provenance_pipeline"] = safe_pipeline_summary(detailed)
+            else:
+                person_first["provenance_pipeline"] = {
+                    "scope": "NO_LOCAL_CLAIM_ANNOTATIONS_CONFIGURED",
+                    "historical_completeness": "UNKNOWN",
+                    "authority_created": False,
+                }
         except (OSError, ValueError, TypeError) as exc:
             # Source input errors do not block unrelated, supported GitHub observations.
             # Only exception class, not confidential paths/source content, is emitted.
