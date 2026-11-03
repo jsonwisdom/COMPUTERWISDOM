@@ -1,0 +1,69 @@
+{
+  "schema_version": "THREE_DAUGHTERS_BILLING_PAPERWORK_V0_1",
+  "artifact_id": "UNSET",
+  "status": "DRAFT_OBSERVER_ORGANIZER",
+  "authority": false,
+  "default_disposition": "HOLD",
+  "document_class": "UNKNOWN",
+  "source_pointer": {
+    "provider": "NONE",
+    "opaque_id": "UNSET",
+    "content_sha256": "UNSET"
+  },
+  "public_boundary": {
+    "private_content_committed": false,
+    "public_metadata_only": true,
+    "connector_accounts_assumed_unified": false
+  },
+  "family_superposition": {
+    "mode": "SUPERPOSITION",
+    "participants_named": false,
+    "public_assignment_collapse_allowed": false,
+    "session_local_choice_required": true,
+    "authorized_adult_supervision_required": true,
+    "silence_is_consent": false,
+    "refusal_penalty": false,
+    "mirrors": [
+      {
+        "mirror_id": "A",
+        "state": "UNASSIGNED",
+        "allowed_choices": ["RECEIPT_READER", "QUESTION_KEEPER", "REPLAY_WITNESS", "NONE"]
+      },
+      {
+        "mirror_id": "B",
+        "state": "UNASSIGNED",
+        "allowed_choices": ["RECEIPT_READER", "QUESTION_KEEPER", "REPLAY_WITNESS", "NONE"]
+      },
+      {
+        "mirror_id": "C",
+        "state": "UNASSIGNED",
+        "allowed_choices": ["RECEIPT_READER", "QUESTION_KEEPER", "REPLAY_WITNESS", "NONE"]
+      }
+    ]
+  },
+  "financial_state": {
+    "document_approved": false,
+    "payment_authorized": false,
+    "payment_executed": false,
+    "transaction_witness_present": false,
+    "settlement_claimed": false
+  },
+  "connector_boundaries": {
+    "github_public_schema_only": true,
+    "google_drive_mutation_authorized": false,
+    "google_drive_target_folder_id": "UNSET",
+    "openai_advisory_only": true,
+    "openai_private_content_allowed": false
+  },
+  "leeloo_multi_pass": {
+    "record_reality": "HOLD",
+    "authority_law": "HOLD",
+    "execution_resources_money": "HOLD",
+    "oversight_correction": "HOLD",
+    "time_gap_version": "HOLD",
+    "cross_edges": "HOLD",
+    "overall": "HOLD"
+  }
+}
+
+
