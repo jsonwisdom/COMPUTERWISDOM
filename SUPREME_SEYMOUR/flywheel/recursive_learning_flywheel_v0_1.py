@@ -19,6 +19,8 @@ import pathlib
 import urllib.error
 import urllib.request
 
+from person_first_sources_v0_1 import evaluate, not_configured_summary, safe_public_summary
+
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 BASELINE = ROOT / "MASTER_ROOM" / "SNAPSHOT_INDEX_V1.json"
 OUTDIR = ROOT / "build" / "supreme-seymour-flywheel"
@@ -124,6 +126,35 @@ def main():
                 "note": "Enumeration miss is not deletion proof.",
             })
 
+    # Person-first inputs are local/private and separate from public GitHub deltas.
+    # No manifest configured does not mean no originals exist.
+    person_first = not_configured_summary()
+    manifest_name = os.environ.get("JASON_SOURCE_MANIFEST")
+    if manifest_name:
+        try:
+            manifest = json.loads(pathlib.Path(manifest_name).read_text(encoding="utf-8"))
+            private_replay = evaluate(manifest, os.environ.get("JASON_SOURCE_ROOT"))
+            person_first = safe_public_summary(private_replay)
+            # The GitHub Action uploads ONLY the two public report files below.
+            # Never add this private directory to an artifact or repository.
+            private_dir = OUTDIR / "private"
+            private_dir.mkdir(parents=True, exist_ok=True)
+            (private_dir / "person-first-recovery.json").write_text(
+                json.dumps(private_replay, indent=2) + "\n", encoding="utf-8"
+            )
+        except (OSError, ValueError, TypeError) as exc:
+            # Source input errors do not block unrelated, supported GitHub observations.
+            # Only exception class, not confidential paths/source content, is emitted.
+            person_first = {
+                "denominator": "JASON",
+                "scope": "LOCAL_INPUT_ERROR",
+                "original_history_completeness": "UNKNOWN",
+                "recovery_action": "REPAIR_PRIVATE_SOURCE_MANIFEST",
+                "error_type": type(exc).__name__,
+                "independent_supported_work_continues": True,
+                "authority_created": False,
+            }
+
     report = {
         "schema": "SUPREME_SEYMOUR_RECURSIVE_LEARNING_FLYWHEEL_REPORT_V0_1",
         "observed_at": observed_at,
@@ -132,6 +163,7 @@ def main():
         "authority_created": False,
         "canon": False,
         "mode": "READ_ONLY_DELTA_OBSERVER",
+        "person_first_sources": person_first,
         "baseline": {
             "path": "MASTER_ROOM/SNAPSHOT_INDEX_V1.json",
             "observed_at": baseline.get("observed_at"),
@@ -176,6 +208,8 @@ def main():
         f"- Unchanged: **{len(unchanged)}**",
         f"- Unknowns: **{len(unknowns)}**",
         "- Authority created: **false**",
+        "- Person-first source status: **" + person_first["scope"] + "**",
+        "- Historical voice/chat coverage: **UNKNOWN** (no original source assumed)",
         "- Final decision: **Jason**",
         "",
         "## Delta queue",

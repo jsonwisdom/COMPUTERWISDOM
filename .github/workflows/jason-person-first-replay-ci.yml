@@ -1,0 +1,41 @@
+name: JASON Person-First Source Recovery CI
+
+on:
+  pull_request:
+    paths:
+      - "SUPREME_SEYMOUR/flywheel/**"
+      - ".github/workflows/jason-person-first-replay-ci.yml"
+  push:
+    branches:
+      - repair/jason-person-first-source-replay-20261103
+    paths:
+      - "SUPREME_SEYMOUR/flywheel/**"
+      - ".github/workflows/jason-person-first-replay-ci.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  person-first-scoped-replay:
+    name: Private-source fixture replay (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-24.04]
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Replay only synthetic voice/chat fixtures
+        run: python -m unittest discover -s SUPREME_SEYMOUR/flywheel/tests -p "test_*.py" -v
+      - name: Verify no private source manifest was configured
+        shell: python
+        run: |
+          import os
+          assert not os.environ.get("JASON_SOURCE_MANIFEST"), "private source manifest should not be in CI"
+          assert not os.environ.get("JASON_SOURCE_ROOT"), "private source root should not be in CI"
