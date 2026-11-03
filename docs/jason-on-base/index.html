@@ -19,6 +19,11 @@ input,textarea,select{background:#081421;border:1px solid #899fb4;color:var(--in
 [data-view=arcade]{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;--bg:#060c15;--panel:#091a22;--edge:#7ad4fa;--aqua:#83f8cf;--gold:#fff489}[data-view=arcade] header,[data-view=arcade] section,[data-view=arcade] .panel{border-radius:3px;box-shadow:4px 4px 0 #254c5d}
 [data-view=evidence] main{max-width:1280px}[data-view=evidence] section{padding:18px}[data-view=evidence] p,[data-view=evidence] li{font-size:.95rem}[data-view=evidence] .grid{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}@media(max-width:550px){button{width:100%}nav{display:grid}main{padding:12px 12px 60px}}
+
+.matrix-display{display:inline-flex;flex-direction:column;gap:6px;margin:12px 0;padding:16px;background:#071322;border:1px solid var(--aqua);border-radius:8px;max-width:100%}
+.matrix-row{display:flex;gap:6px}.matrix-pixel{display:block;width:18px;height:18px;flex-shrink:1;background:#1a3247;border:1px solid #52667a;border-radius:2px}
+.matrix-pixel.lit{background:var(--gold);border-color:var(--gold);box-shadow:0 0 6px #ffe08e}
+@media(max-width:550px){.matrix-pixel{width:min(4vw,18px);height:min(4vw,18px)}.matrix-display{padding:10px}.matrix-row{gap:5px}}
 </style>
 </head>
 <body data-view="boomer">
@@ -29,10 +34,52 @@ input,textarea,select{background:#081421;border:1px solid #899fb4;color:var(--in
   <p>History, money, emergency preparedness, math, research, and arcade-style learning. Different views of the same evidence—with private data kept private.</p>
   <span class="status">DESIGN HOLD · FREE DEMO · NO LIVE ACCOUNT CONNECTION</span>
   <nav aria-label="Site navigation">
-    <a href="#justice">⚖️ Supreme Seymour</a><a href="#librarian">Ask the Librarian</a><a href="#movie">Movie replay</a><a href="#quarters">Quarter Day</a><a href="#lenses">Knowledge views</a><a href="#sources">Primary sources</a>
+    <a href="#wallet">🔗 Connect Coinbase Wallet</a><a href="#sentinel">🪙 Matrix Sentinel</a><a href="#justice">⚖️ Supreme Seymour</a><a href="#librarian">Ask the Librarian</a><a href="#movie">Movie replay</a><a href="#quarters">Quarter Day</a><a href="#lenses">Knowledge views</a><a href="#sources">Primary sources</a>
     <a href="../../index.html">COMPUTERWISDOM</a>
   </nav>
 </header>
+<section id="wallet" aria-labelledby="wallettitle">
+  <div class="top">Opt-in / account-only · Coinbase Wallet connection preview</div>
+  <h2 id="wallettitle">🔗 Talk to the wallet—not a corporation.</h2>
+  <p>Connect a compatible <strong>Coinbase Wallet</strong> injected browser provider to display a masked account and current chain. This is a user-permissioned wallet connection, <em>not</em> a Coinbase exchange login, Coinbase transaction history sync, brokerage connection, identity proof, or account custody transfer.</p>
+  <div class="grid">
+    <div class="panel">
+      <h3>Wallet window</h3>
+      <div class="controls"><button type="button" id="coinbase-connect">Connect Coinbase Wallet</button><button type="button" id="coinbase-disconnect" class="secondary" disabled>Clear local connection</button></div>
+      <p id="wallet-status" role="status" aria-live="polite">Wallet not connected. Explicit permission needed.</p>
+      <p><strong>Account:</strong> <span id="wallet-account">Not connected</span></p>
+      <p><strong>Network:</strong> <span id="wallet-chain">No network requested</span></p>
+      <p class="small" id="wallet-boundary">Nothing linked. No RPC permission request until you click Connect.</p>
+    </div>
+    <div class="panel">
+      <h3>Connection rules</h3>
+      <p>Only <code>eth_requestAccounts</code> on your click and <code>eth_chainId</code> for network identification. EIP-6963 discovery handles Coinbase-style injected providers. No automatic signatures, approvals, transactions, recurring billing, balance imports, chain switching, or wallet-address uploads.</p>
+      <p class="small">Wallet identity labels are self-reported by browser providers. <strong>This site cannot independently authenticate a wallet provider.</strong> An address is public onchain; linking it to your visit is a privacy decision. Clearing this page's connection does not necessarily revoke the permission granted inside the wallet.</p>
+      <p class="small">In iPhone Safari without a wallet provider, open this page inside the Coinbase Wallet/Base app's in-app browser. Desktop users can use the Coinbase Wallet browser extension. QR/mobile SDK pairing is not implemented in this first version.</p>
+      <p><a href="https://help.coinbase.com/en-gb/wallet/other-topics/mobile-app-sign-in-discontinued" target="_blank" rel="noopener noreferrer">Current Coinbase/Base app connection guidance ↗</a></p>
+    </div>
+  </div>
+</section>
+<section id="sentinel" aria-labelledby="sentineltitle">
+  <div class="top">ClawBackJackMickJagger · Matrix Sentinel · proposal only</div>
+  <h2 id="sentineltitle">🕹️ Sentinel Charging Matrix</h2>
+  <p>Learning puts light into the matrix: virtual quarter score = <strong>level²</strong>. “Charging” is a future billing and reconciliation design, <strong>not a live payment rail</strong>. There is no payee, invoice, consented subscription, enforceable price, or contract deployment.</p>
+  <div class="grid">
+    <div class="panel">
+      <h3>8 × 8 learning matrix</h3>
+      <div id="clawback-matrix" class="matrix-display" role="img" aria-label="0 of 64 learning indicators illuminated"></div>
+      <p id="clawback-quote" class="stat" aria-live="polite">QUOTE ONLY · NO BILLING</p>
+      <p class="small">Use the Quarter Day level slider below to explore this display. The illuminated cells are virtual teaching points, not fungible tokens or paid credits.</p>
+    </div>
+    <div class="panel">
+      <h3>Charging is locked until verified</h3>
+      <p><span class="status">PAYMENT=DISABLED · SUBSCRIPTION=DISABLED</span></p>
+      <p>Future billing needs a disclosed price and terms, user authorization, authenticated payer and payee, a payment processor, auditable invoice/refund rules, privacy and legal review, and an independently verified reconciliation trail. No charge, refund or “clawback” is implied by a name.</p>
+      <p class="small">“ClawBackJackMickJagger” is a project label; no affiliation with or endorsement by any performer, exchange, government, or payment network is claimed.</p>
+      <p><a href="clawbackjackmickjagger-v0.1.json">Open the read-only Matrix Sentinel contract ↗</a></p>
+    </div>
+  </div>
+</section>
 <section aria-labelledby="viewtitle">
   <h2 id="viewtitle">A view that fits the learner</h2>
   <p>Simple text for boomers. Pixel arcade for players. Dense evidence view for researchers. Display changes do not alter underlying provenance.</p>
@@ -193,5 +240,6 @@ input,textarea,select{background:#081421;border:1px solid #899fb4;color:var(--in
 <footer><p class="small">DESIGN_HOLD · SOURCE-LINKED DEMONSTRATION · NO WALLET EXECUTION · NO COHORT TRACKING · NO AUTOMATIC UPLOAD · NO AUTHORITY CREATED</p></footer>
 </main>
 <script defer src="app.js"></script>
+<script defer src="wallet.js"></script>
 </body>
 </html>

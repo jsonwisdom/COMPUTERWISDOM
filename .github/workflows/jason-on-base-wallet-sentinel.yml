@@ -1,0 +1,56 @@
+name: Jason on Base Wallet Sentinel (no-spend)
+
+on:
+  pull_request:
+    paths:
+      - "docs/jason-on-base/**"
+      - ".github/workflows/jason-on-base-wallet-sentinel.yml"
+  push:
+    branches: ["master"]
+    paths:
+      - "docs/jason-on-base/**"
+      - ".github/workflows/jason-on-base-wallet-sentinel.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  wallet-sentinel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check wallet JavaScript syntax
+        run: node --check docs/jason-on-base/wallet.js
+      - name: Run wallet and sentinel no-spend mock tests
+        run: node docs/jason-on-base/wallet.test.cjs
+      - name: Verify fail-closed charging contract and static UI
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path("docs/jason-on-base")
+          contract=json.loads((root/"clawbackjackmickjagger-v0.1.json").read_text(encoding="utf-8"))
+          page=(root/"index.html").read_text(encoding="utf-8")
+          src=(root/"wallet.js").read_text(encoding="utf-8")
+          must=lambda test,msg: test or (_ for _ in ()).throw(AssertionError(msg))
+          must(contract["status"]=="DESIGN_HOLD" and not contract["authority_created"],"Status/authority")
+          a=contract["architecture"]
+          must(a["allowed_provider_rpc_methods"]==["eth_requestAccounts","eth_chainId"],"RPC allowlist")
+          must(a["server_account_collection"] is False and a["persist_connected_account"] is False,"Privacy")
+          must(a["centralized_coinbase_exchange_api_connection"] is False,"Exchange vs wallet distinction")
+          s=contract["sentinel"]
+          for flag in ("no_auto_spend","no_signature_requests","no_request_to_switch_chain"):
+            must(s[flag] is True,flag)
+          for flag in ("charge_attempts_allowed",):
+            must(s[flag] is False,flag)
+          must(s["payment_processor"]=="NONE" and s["smart_contract_address"]=="NONE","No payment contract")
+          must(s["payment_receipt_count"]==0,"No payment receipts")
+          must(a["mobile_sdk_or_qr_pairing"]=="NOT_IMPLEMENTED","No false mobile claim")
+          must(all(token in page for token in ('id="coinbase-connect"','id="coinbase-disconnect"','id="clawback-matrix"','src="wallet.js"')),"Missing UI")
+          must(all(word not in src.lower() for word in ("eth_sendtransaction","personal_sign","wallet_sendcalls","wallet_switchethereumchain","fetch(","localstorage","sessionstorage")),"Forbidden behavior in JS")
+          print("JASON_ON_BASE_WALLET_SENTINEL_SCOPED_PASS; HUMAN_REVIEW=HOLD; REAL_WALLET_QA=HOLD; CHARGING=DISABLED")
+          PY
