@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "document_type": "computerwisdom.wisdom_index",
+  "version": "0.1.0",
+  "status": "DRAFT_UNFROZEN",
+  "operator": "APPLY_WISDOM",
+  "pipeline": [
+    "observe",
+    "verify",
+    "understand",
+    "care",
+    "decide",
+    "act",
+    "learn",
+    "replay"
+  ],
+  "questions": [
+    "is_it_true",
+    "is_it_useful",
+    "is_it_kind",
+    "is_it_replayable",
+    "will_it_still_make_sense_in_50_years"
+  ],
+  "authority": {
+    "human": true,
+    "ai_decision_authority": false,
+    "ai_execution_authority": false
+  },
+  "ai_role": [
+    "search",
+    "organize",
+    "compare",
+    "draft"
+  ],
+  "planes": {
+    "ALMS": "Can we prove it?",
+    "JOY": "Why does it matter?",
+    "COMPUTERWISDOM": "How do we teach and share it?",
+    "WISDOM": "Should we do it at all?"
+  },
+  "release_rule": "No public release without human Wisdom Review. Family Review is additionally required when family identity, memory, dignity, privacy, or legacy is affected.",
+  "operational_claims": {
+    "runtime_enforced": false,
+    "independently_verified": false,
+    "signed": false,
+    "hash_frozen": false
+  }
+}
