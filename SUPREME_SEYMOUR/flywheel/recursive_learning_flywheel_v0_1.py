@@ -21,6 +21,9 @@ import urllib.request
 
 from person_first_sources_v0_1 import evaluate, not_configured_summary, safe_public_summary
 from jason_os_candidate_pipeline_v0_1 import compile_private_candidates, safe_public_pipeline_summary
+from canonical_schema_gate_v0_1 import (
+    verify_canonical_schema_bundle, private_ingestion_receipt, public_gate_summary,
+)
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 BASELINE = ROOT / "MASTER_ROOM" / "SNAPSHOT_INDEX_V1.json"
@@ -141,7 +144,16 @@ def main():
             person_first["jason_os_candidate_pipeline"] = safe_public_pipeline_summary(
                 private_candidates
             )
-            # These files contain private candidate text and provenance.
+            schema_gate = verify_canonical_schema_bundle(
+                private_candidates, os.environ.get("JASON_CANONICAL_SCHEMA_ROOT")
+            )
+            person_first["jason_os_canonical_schema_gate"] = public_gate_summary(
+                schema_gate
+            )
+            ingestion_receipt = private_ingestion_receipt(
+                manifest, private_candidates, observed_at_utc=observed_at
+            )
+            # These files contain private candidate text, source pointers and provenance.
             # Never include private/ in GitHub artifact uploads or public summaries.
             private_dir = OUTDIR / "private"
             private_dir.mkdir(parents=True, exist_ok=True)
@@ -150,6 +162,12 @@ def main():
             )
             (private_dir / "jason-os-candidates.json").write_text(
                 json.dumps(private_candidates, indent=2) + "\n", encoding="utf-8"
+            )
+            (private_dir / "jason-os-canonical-schema-gate.json").write_text(
+                json.dumps(schema_gate, indent=2) + "\n", encoding="utf-8"
+            )
+            (private_dir / "jason-os-local-ingestion-receipt.json").write_text(
+                json.dumps(ingestion_receipt, indent=2) + "\n", encoding="utf-8"
             )
         except (OSError, ValueError, TypeError) as exc:
             # Source input errors do not block unrelated, supported GitHub observations.
