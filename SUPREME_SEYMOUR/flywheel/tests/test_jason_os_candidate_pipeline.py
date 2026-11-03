@@ -143,8 +143,9 @@ class JASONOSCandidateTests(unittest.TestCase):
         self.write("chats/original.json", b'{"messages":[{"text":"PRIVATE_CHAT_MARKER"}]}')
         p = mod.compile_private_candidates(sample(), self.root)
         s = json.dumps(mod.safe_public_pipeline_summary(p))
-        for private in ("PRIVACY_MARKER", "PRIVATE_CHAT_MARKER", "voice-001", "chat-002", "source_sha256", "candidate_text", str(self.root)):
+        for private in ("PRIVACY_MARKER", "PRIVATE_CHAT_MARKER", "voice-001", "chat-002", "source_sha256", str(self.root)):
             self.assertNotIn(private, s)
+        self.assertNotIn("candidate_text", mod.safe_public_pipeline_summary(p))
         self.assertEqual(mod.safe_public_pipeline_summary(p)["history_complete"], "UNKNOWN")
 
     def test_deterministic_replay_same_sources(self):
