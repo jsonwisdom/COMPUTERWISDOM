@@ -1,0 +1,19 @@
+{
+  "AUTHORITY_CREATED": false,
+  "PUBLICATION_URL": "https://jsonwisdom.github.io/JOY/",
+  "STOP": "DELTA",
+  "append_only": true,
+  "files": {
+    "manifest.json": "c4be605efee1cc5b8a0839b7f4ffd252aac8a5a2b814fd5455e07e493e0695a4",
+    "publication-response.json": "6f4d368948de01c53cd9102743c12c7d4ee78c7619298c4ea53550e000754bdf",
+    "raw/github-index.html": "b3010a715b9b33c8b3d3f39d1e41925a09e80a4f4d747cba0a533c9bf9195e80",
+    "raw/message.bin": "3fbb91cc99e807e5a5376dbf5c8a8aed7e4055dac851e6b345a97639775b1d4e",
+    "raw/publication-response.json": "6f4d368948de01c53cd9102743c12c7d4ee78c7619298c4ea53550e000754bdf",
+    "raw/publication.html": "3fbb91cc99e807e5a5376dbf5c8a8aed7e4055dac851e6b345a97639775b1d4e",
+    "raw/readback.html": "3fbb91cc99e807e5a5376dbf5c8a8aed7e4055dac851e6b345a97639775b1d4e",
+    "receipt.json": "db030bda126f2cf56f669df1369213734e0a49d5ffa7f1745b34d9e5a64e3b2c"
+  },
+  "overwrite_historical_raw": false,
+  "package_path": "receipts/publications/2026-08-28/github-pages/joy/",
+  "schema": "JSONWISDOM.publication-manifest.v1"
+}

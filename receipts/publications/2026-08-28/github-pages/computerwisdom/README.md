@@ -1,0 +1,17 @@
+# Publication receipt — computerwisdom
+
+STOP: PASS
+AUTHORITY_CREATED: false
+RECEIPT != TRUTH
+GITHUB_COMMIT != AUTHORITY
+
+PUBLICATION_URL: https://jsonwisdom.github.io/COMPUTERWISDOM/
+PLATFORM: github-pages
+ACCOUNT_STRING: jsonwisdom
+LIVE_SHA256: fec471547a2f925ff6d417ca02313a08e27a047edc90e4c78f697c538099acb3
+LIVE_GIT_BLOB: ce3c959fc89355dfa66e03446d75d834e4c61baf
+READBACK_SHA256: fec471547a2f925ff6d417ca02313a08e27a047edc90e4c78f697c538099acb3
+DEFAULT_BRANCH_INDEX_GIT_BLOB: ce3c959fc89355dfa66e03446d75d834e4c61baf
+MATCH_RESULT: MATCH
+
+Raw HTML is in `raw/publication.html`. Do not treat this receipt as canon.
