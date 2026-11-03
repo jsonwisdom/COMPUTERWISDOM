@@ -1,0 +1,15 @@
+{
+  "schema": "budget-dice-external-witness-v1",
+  "receipt_id": "budget-dice-exec-005",
+  "receipt_filename": "budget_dice_execution_005.json",
+  "receipt_sha256": "c0e1e5f275cc251ee0b5cc71743014757474d08faeacf305cc9b219fd8cd188a",
+  "validator_sha256": "ec6671b18326fe459ca865b89f9028c97da4911ff110c647728adbb63a32da6b",
+  "tests_sha256": "270ae4f6674e2c10e42e3c18a574fee7b1cfdc2e33b2f98a85f2999de71492fe",
+  "prior_receipt_sha256": "8e076fd60aab6928b58040cac4a706d0c000e78321b4b3893a2f7d8e404e794f",
+  "source_url": "https://www.gao.gov/products/b-337204.1",
+  "source_capture_assurance": "excerpt_only_lower_than_byte",
+  "source_original_bytes_captured": false,
+  "local_validator_tests": "7/7 passed",
+  "scope": "externally published hash witness only; not independent verification or cryptographic timestamp authority",
+  "disposition": "UNSEALED_PENDING_INDEPENDENT_SOURCE_CAPTURE"
+}
