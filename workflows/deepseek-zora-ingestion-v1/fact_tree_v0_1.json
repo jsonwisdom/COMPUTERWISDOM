@@ -1,0 +1,196 @@
+{
+  "schema_id": "FACT_TREE_V0_1",
+  "schema_version": "v0.1",
+  "class": "SEMANTIC_PREDICATE_RECEIPT_TREE",
+  "composite_view_label": "FULLMATH_MERKLE_FORESTS_FACTS",
+  "composite_view_status": "PROPOSED_LABEL",
+  "existing_literal_github_object_before_this_write": false,
+  "parent_forest": "COMPUTER_WISDOM_MERKLE_FOREST_V1",
+  "state": "CANDIDATE",
+  "structure_state": "FROZEN_CANDIDATE_STRUCTURE",
+  "root": "PENDING_HASH",
+  "truth": "PENDING_RECEIPT",
+  "canon": false,
+  "authority": "NONE",
+  "authority_created": false,
+  "ens_before_dns": true,
+  "human_author_operator": "JASON",
+  "layers": {
+    "JASON": "HUMAN_AUTHOR_OPERATOR",
+    "ENS": "IDENTITY_LABEL_LAYER",
+    "FULLMATH": "COMPUTATION_REPLAY_LAYER",
+    "MERKLE_FOREST": "BINDING_INTEGRITY_LAYER",
+    "FACT_TREE": "SEMANTIC_PREDICATE_RECEIPT_LAYER",
+    "DNS": "ROUTING_PUBLICATION_LAYER"
+  },
+  "gate_axiom": {
+    "predicate_id": "JASON_NE_ENS",
+    "left": {
+      "type": "HUMAN_AUTHOR_OPERATOR",
+      "value": "JASON"
+    },
+    "right": {
+      "type": "ENS_NAME",
+      "value": "jaywisdom.eth"
+    },
+    "relation": "NOT_IDENTICAL",
+    "receipt": {
+      "source": "Human-lane declaration + ENS label separation",
+      "witness": "PENDING",
+      "hash": "PENDING_HASH"
+    },
+    "truth_status": "PENDING_RECEIPT",
+    "authority_status": "NONE"
+  },
+  "fact_leaf_count": 5,
+  "tree_gate_count": 1,
+  "total_required_predicates": 6,
+  "canonical_leaf_order": [
+    "ENS_NE_REPOSITORY",
+    "REPOSITORY_NE_MERKLE_ROOT",
+    "MERKLE_ROOT_NE_FACT",
+    "HASH_MATCH_NE_TRUTH",
+    "PUBLICATION_NE_AUTHORITY"
+  ],
+  "leaves": [
+    {
+      "schema": "FACT_PREDICATE_LEAF_V0_1",
+      "predicate_id": "ENS_NE_REPOSITORY",
+      "left": {
+        "type": "ENS_NAME",
+        "value": "jaywisdom.eth"
+      },
+      "right": {
+        "type": "GITHUB_REPOSITORY",
+        "value": "jsonwisdom/COMPUTERWISDOM"
+      },
+      "relation": "NOT_IDENTICAL",
+      "receipt": {
+        "source": "ENS resolution + GitHub readback",
+        "witness": "PENDING",
+        "hash": "PENDING_HASH"
+      },
+      "truth_status": "PENDING_RECEIPT",
+      "authority_status": "NONE"
+    },
+    {
+      "schema": "FACT_PREDICATE_LEAF_V0_1",
+      "predicate_id": "REPOSITORY_NE_MERKLE_ROOT",
+      "left": {
+        "type": "GITHUB_REPOSITORY",
+        "value": "jsonwisdom/COMPUTERWISDOM"
+      },
+      "right": {
+        "type": "MERKLE_ROOT",
+        "value": "PENDING_HASH"
+      },
+      "relation": "NOT_IDENTICAL",
+      "receipt": {
+        "source": "GitHub repository object + Merkle root receipt",
+        "witness": "PENDING",
+        "hash": "PENDING_HASH"
+      },
+      "truth_status": "PENDING_RECEIPT",
+      "authority_status": "NONE"
+    },
+    {
+      "schema": "FACT_PREDICATE_LEAF_V0_1",
+      "predicate_id": "MERKLE_ROOT_NE_FACT",
+      "left": {
+        "type": "MERKLE_ROOT",
+        "value": "PENDING_HASH"
+      },
+      "right": {
+        "type": "SEMANTIC_FACT",
+        "value": "PENDING_RECEIPT"
+      },
+      "relation": "NOT_IDENTICAL",
+      "receipt": {
+        "source": "Merkle integrity receipt + semantic fact receipt",
+        "witness": "PENDING",
+        "hash": "PENDING_HASH"
+      },
+      "truth_status": "PENDING_RECEIPT",
+      "authority_status": "NONE"
+    },
+    {
+      "schema": "FACT_PREDICATE_LEAF_V0_1",
+      "predicate_id": "HASH_MATCH_NE_TRUTH",
+      "left": {
+        "type": "HASH_MATCH",
+        "value": "PENDING"
+      },
+      "right": {
+        "type": "TRUTH_STATUS",
+        "value": "PENDING_RECEIPT"
+      },
+      "relation": "NOT_IDENTICAL",
+      "receipt": {
+        "source": "Hash replay receipt + semantic truth receipt",
+        "witness": "PENDING",
+        "hash": "PENDING_HASH"
+      },
+      "truth_status": "PENDING_RECEIPT",
+      "authority_status": "NONE"
+    },
+    {
+      "schema": "FACT_PREDICATE_LEAF_V0_1",
+      "predicate_id": "PUBLICATION_NE_AUTHORITY",
+      "left": {
+        "type": "PUBLICATION_STATE",
+        "value": "PENDING"
+      },
+      "right": {
+        "type": "AUTHORITY_STATUS",
+        "value": "NONE"
+      },
+      "relation": "NOT_IDENTICAL",
+      "receipt": {
+        "source": "Publication receipt + authority receipt",
+        "witness": "PENDING",
+        "hash": "PENDING_HASH"
+      },
+      "truth_status": "PENDING_RECEIPT",
+      "authority_status": "NONE"
+    }
+  ],
+  "reducer": {
+    "state_values": {
+      "DELTA": 0,
+      "HOLD": 1,
+      "PASS": 2
+    },
+    "operation": "MIN",
+    "expression": "MIN(JASON_NE_ENS, ENS_NE_REPOSITORY, REPOSITORY_NE_MERKLE_ROOT, MERKLE_ROOT_NE_FACT, HASH_MATCH_NE_TRUTH, PUBLICATION_NE_AUTHORITY)",
+    "current_state": "HOLD"
+  },
+  "wolfram_structure_check": {
+    "scope": "STRUCTURE_ONLY",
+    "boolean_equivalent": true,
+    "total_configurations": 729,
+    "delta_count": 665,
+    "hold_count": 63,
+    "pass_count": 1,
+    "unique_pass_condition": "ALL_6_PREDICATES_PASS"
+  },
+  "root_formula": "H(schema || canonical_leaf_order || leaf_hashes)",
+  "leaf_hashes": [
+    "PENDING_HASH",
+    "PENDING_HASH",
+    "PENDING_HASH",
+    "PENDING_HASH",
+    "PENDING_HASH"
+  ],
+  "bridge_receipts": [],
+  "invariants": [
+    "JASON != ENS",
+    "ENS != REPOSITORY",
+    "REPOSITORY != MERKLE_ROOT",
+    "MERKLE_ROOT != FACT",
+    "HASH_MATCH != TRUTH",
+    "PUBLICATION != AUTHORITY",
+    "BOOLEAN_EQUIVALENT != MERKLE_IDENTICAL"
+  ],
+  "mutation_scope": "NEW_CANDIDATE_CHILD_OBJECT_ONLY",
+  "parent_forest_mutated": false
+}
