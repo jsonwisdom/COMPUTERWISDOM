@@ -1,0 +1,15 @@
+{
+  "artifact": "REPLAY_MAP_128x128_V1",
+  "status": "SHELL_ONLY",
+  "authority": false,
+  "row_capacity": 128,
+  "column_capacity": 128,
+  "logical_cell_capacity": 16384,
+  "dense_assumption": false,
+  "sparse_allowed": true,
+  "default_cell_state": "UNRESOLVED",
+  "cell_states": ["MATCH", "PARTIAL", "UNRESOLVED", "CONFLICT", "NOT_APPLICABLE"],
+  "source_invention": false,
+  "bindings_populated": false,
+  "active_cells": 0
+}

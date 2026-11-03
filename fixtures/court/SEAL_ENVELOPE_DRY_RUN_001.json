@@ -1,0 +1,16 @@
+{
+  "seal_version": "0.1",
+  "receipt_hash": "sha256:c117f476b50d4c6cbd362cd57799c80387b68a9d972b25e0a597daf5b937e730",
+  "method": "EAS",
+  "network": "base",
+  "chain_id": 8453,
+  "schema_uid": "0xc90097ca9f787edcc5fa2ce0920032abe4c4417cc8356198fa12d397c46a453c",
+  "attestation_uid": null,
+  "attester": null,
+  "transaction_hash": null,
+  "block_number": null,
+  "sealed_at": null,
+  "status": "PENDING",
+  "dry_run_validated": true,
+  "authority": false
+}

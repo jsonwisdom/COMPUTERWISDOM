@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jsonwisdom.example/replay/genesis/receipt_schema_v0_1.json",
+  "title": "REPLAY_COURT_PROVENANCE_RECEIPT_V0_1",
+  "type": "object",
+  "additionalProperties": true,
+  "required": [
+    "receipt_version",
+    "receipt_id",
+    "schema",
+    "created_at",
+    "created_by",
+    "lineage_id",
+    "subject",
+    "evidence_state",
+    "retrieval_state",
+    "authority_chain",
+    "provenance",
+    "integrity",
+    "authority"
+  ],
+  "properties": {
+    "receipt_version": {"const": "0.1"},
+    "schema": {"const": "replay.court.provenance.v0.1"},
+    "lineage_id": {"type": "string", "minLength": 1},
+    "evidence_state": {"enum": ["UNRESOLVED", "PARTIAL", "MATCH", "NOT_APPLICABLE"]},
+    "retrieval_state": {"enum": ["COMPLETE", "FAILED", "AUTH_BLOCKED", "BUDGET_EXHAUSTED", "NOT_ATTEMPTED"]},
+    "authority": {"const": false},
+    "subject": {
+      "type": "object",
+      "required": ["cell", "jurisdiction", "case_ref"],
+      "properties": {
+        "cell": {"type": "string"},
+        "jurisdiction": {"type": "string"},
+        "case_ref": {"type": "string"},
+        "genesis_key": {"type": ["string", "null"]},
+        "docket_entry": {"type": ["integer", "null"]}
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "required": ["official_ref", "source_url", "content_hash", "content_hash_scope", "retrieval_timestamp", "cost_billed_microusd", "currency"],
+      "properties": {
+        "content_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "cost_billed_microusd": {"type": "integer", "minimum": 0},
+        "currency": {"const": "USD"}
+      }
+    },
+    "integrity": {
+      "type": "object",
+      "required": ["prev_receipt_hash", "self_hash"],
+      "properties": {
+        "prev_receipt_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "self_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+      }
+    }
+  },
+  "x-replay-invariants": {
+    "canonicalization": "RFC8785_JCS_V0_1_NO_FLOAT_PROFILE",
+    "hash": "SHA-256",
+    "seal_envelope_separate": true,
+    "float_money_prohibited": true,
+    "secret_derived_hashes_prohibited_by_default": true,
+    "authority_created": false
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "receipt_version": "0.1",
+  "receipt_id": "rcpt_20260807T234355Z_recap_001",
+  "schema": "replay.court.provenance.v0.1",
+  "created_at": "2026-08-07T23:43:55.525Z",
+  "created_by": "replay.court.adapter.recap",
+  "lineage_id": "court:US-DCD:1:26-cv-01417",
+  "subject": {
+    "cell": "D078_F052",
+    "jurisdiction": "US-DCD",
+    "genesis_key": null,
+    "case_ref": "1:26-cv-01417",
+    "docket_entry": null
+  },
+  "evidence_state": "UNRESOLVED",
+  "retrieval_state": "FAILED",
+  "authority_chain": {
+    "primary": "PACER_CMECF",
+    "index_used": "RECAP_COURTLISTENER",
+    "enrichment_used": null,
+    "secondary_summary": false
+  },
+  "provenance": {
+    "official_ref": "court=US-DCD;case=1:26-cv-01417;query=RECAP_DOCKET",
+    "source_url": "https://www.courtlistener.com/docket/73246595/phang-v-blanche/",
+    "content_hash": "sha256:5dc8953f77dd0f69bdb0845fe4970d8d2009ae31ce5651b509e313550e2cc81d",
+    "content_hash_scope": "RETRIEVAL_ARTIFACT_NOT_COURT_DOCUMENT",
+    "content_length": 96,
+    "mime_type": "text/plain",
+    "retrieval_timestamp": "2026-08-07T23:43:55.525Z",
+    "cost_billed_microusd": 0,
+    "currency": "USD",
+    "pacer_pages": null
+  },
+  "auth_context": {
+    "credential_event_receipt": null,
+    "account_type": "public_recap",
+    "mfa_used": false,
+    "environment": "public"
+  },
+  "integrity": {
+    "prev_receipt_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+    "self_hash": "sha256:c117f476b50d4c6cbd362cd57799c80387b68a9d972b25e0a597daf5b937e730"
+  },
+  "authority": false,
+  "failure": {
+    "http_status": 403,
+    "category": "SOURCE_FETCH_NON_SUCCESS",
+    "retryable": false
+  }
+}

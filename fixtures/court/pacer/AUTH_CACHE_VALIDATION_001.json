@@ -1,0 +1,29 @@
+{
+  "fixture_id": "PACER_AUTH_CACHE_VALIDATION_001",
+  "version": "0.1",
+  "executed_at": "2026-08-08T00:04:58Z",
+  "execution_scope": "LOCAL_OFFLINE_FAKE_TRANSPORT_AND_SECRET_STORE",
+  "network_calls": 0,
+  "real_credentials_used": false,
+  "real_pacer_qa_used": false,
+  "checks": {
+    "auth_response_cached": true,
+    "second_auth_call_avoided": true,
+    "metadata_contains_token": false,
+    "metadata_contains_password": false,
+    "metadata_contains_otp": false,
+    "metadata_contains_client_code": false,
+    "cached_server_validity_claim": "UNKNOWN",
+    "reissued_token_replaced": true,
+    "missing_secret_fail_closed": true,
+    "logout_invalidated": true,
+    "filer_redact_flag": true,
+    "runtime_otp_supported": true,
+    "password_day_179_reminder": true,
+    "password_day_180_required": true
+  },
+  "result": "GREEN",
+  "pacer_qa_validation": "NOT_RUN",
+  "production_ready": false,
+  "authority": false
+}
