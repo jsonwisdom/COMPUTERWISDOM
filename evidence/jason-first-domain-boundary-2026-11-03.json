@@ -13,7 +13,9 @@
     "raw_http_bytes": null,
     "raw_http_sha256": null,
     "fetched_at": null,
-    "meaning": "connector-normalized responses inspected, upstream raw bytes not captured; cannot assert byte-for-byte source capture"
+    "meaning": "connector-normalized responses inspected, upstream raw bytes not captured; cannot assert byte-for-byte source capture",
+    "raw_api_response_preservation": "not_preserved",
+    "transformation": "connector_normalized_selected_fields"
   },
   "cloudflare": {
     "accessible_accounts": 1,
@@ -160,7 +162,8 @@
           "cert_id": "4dfb88c9-7cfd-4031-a765-d5600f6f7dfb",
           "previews_enabled": false
         }
-      ]
+      ],
+      "raw_api_response_preservation": "not_preserved"
     }
   },
   "org_claim": {
@@ -181,7 +184,8 @@
       "description": "six reported domains vs no .org zones observable within one connected account; comparison scopes differ, so this is an inventory coverage discrepancy, not a contradiction about world-state",
       "count_reported": 6,
       "count_observed_in_connected_account": 0,
-      "global_count": null
+      "global_count": null,
+      "scope_clarification": "The completed_discrepant finding concerns connected-account inventory coverage, not whether the six reported domains exist."
     }
   },
   "organizational_chain": {
@@ -192,13 +196,14 @@
     "onchain_org_binding_verified": false,
     "external_anchor": null,
     "qualifying_ownership_schemes": {
-      "scheme_list_version": "undefined_pending_definition",
+      "scheme_list_version": "not_yet_defined",
       "scheme_list_is_closed": true,
       "qualifying_schemes": [],
       "qualifying_attempt_permitted": false,
       "revision_history": [],
       "scheme_status": "not_defined",
-      "rule": "No on-chain organizational ownership proof can qualify until a versioned authorization/identity/signature scheme is defined and tested before evidence acceptance"
+      "rule": "No on-chain organizational ownership proof can qualify until a versioned authorization/identity/signature scheme is defined and tested before evidence acceptance",
+      "empty_list_meaning": "none_defined_yet"
     }
   },
   "github": {
@@ -228,7 +233,8 @@
       "workflow_path": ".github/workflows/verify.yml",
       "workflow_source_ref": "master",
       "finding_authentication": false
-    }
+    },
+    "original_reviewed_commit_sha": "1c7c948892dfeafc2532e12fc8ebaee8e0f75ae5"
   },
   "publication": {
     "github_branch": "evidence/jason-first-domain-boundary-20261103",
@@ -266,13 +272,24 @@
     "dns_error_class": null,
     "http_status": null,
     "raw_error": "URL https://evidence.jsonwisdom.com/ is not accessible via this tool",
-    "interpretation": "does not distinguish NXDOMAIN, SERVFAIL, timeout, TLS, HTTP rejection, or tool/network policy"
+    "interpretation": "does not distinguish NXDOMAIN, SERVFAIL, timeout, TLS, HTTP rejection, or tool/network policy",
+    "probe_environment": "ChatGPT web reader",
+    "probe_method": "web.open URL",
+    "probe_time": null,
+    "resolver": null,
+    "dns_rcode": null,
+    "transport_error": null,
+    "failure_class": "reader_access_error",
+    "dns_cause": "unknown",
+    "reproducibility": "repeat with independently recorded DNS resolver, timestamp, network, and raw HTTP status"
   },
   "amendment": {
     "scope": "PR #729 receipt correction; no protocol version increment",
     "prior_file_blob_sha1": "9c7930bebcf89ecd92eb4207ae28f53b57878259",
     "reviewed_at_commit": "1c7c948892dfeafc2532e12fc8ebaee8e0f75ae5",
     "content_authentic": "pending",
-    "external_anchor": null
+    "external_anchor": null,
+    "original_reviewed_commit_sha": "1c7c948892dfeafc2532e12fc8ebaee8e0f75ae5",
+    "pinned_original_commit_in_receipt": true
   }
 }
