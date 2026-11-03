@@ -154,7 +154,7 @@ def main():
                     previous_packet = json.loads(pathlib.Path(previous_path).read_text(encoding="utf-8"))
                 detailed = compile_pipeline(
                     manifest, os.environ.get("JASON_SOURCE_ROOT"),
-                    claim_packet["proposed_claims"], previous=previous_packet,
+                    claim_packet.get("proposed_claims"), previous=previous_packet,
                 )
                 (private_dir / "ceo-graph-fold-query-candidate.json").write_text(
                     json.dumps(detailed, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
