@@ -1,0 +1,39 @@
+name: JaySpace Replay SDK v0.1
+
+on:
+  pull_request:
+    paths:
+      - 'jayspace-replay-sdk/**'
+      - '.github/workflows/jayspace-replay-sdk-v0-1.yml'
+  push:
+    branches:
+      - product/jayspace-replay-sdk-v0-1
+    paths:
+      - 'jayspace-replay-sdk/**'
+      - '.github/workflows/jayspace-replay-sdk-v0-1.yml'
+
+jobs:
+  deterministic-replay:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Unit tests
+        run: python -m unittest discover -s jayspace-replay-sdk/tests -p 'test_*.py' -v
+      - name: Fixture replay
+        run: |
+          python jayspace-replay-sdk/src/replay_engine.py \
+            < jayspace-replay-sdk/fixtures/GENERIC_SEVEN_NODE_MEMBRANE_V0_1.json \
+            > /tmp/replay-receipt.json
+          python - <<'PY'
+          import json
+          with open('/tmp/replay-receipt.json', encoding='utf-8') as handle:
+              receipt = json.load(handle)
+          assert receipt['disposition'] == 'REJECT'
+          assert receipt['authority_created'] is False
+          print(json.dumps(receipt, sort_keys=True))
+          PY
