@@ -36,3 +36,11 @@ Wallet activity, DNS control, and registered organization identity require separ
 `inventory_completeness: connected_account_only`; `raw_http_sha256: null`; `independent_dns_verified: false`; `registrar_verified: false`; `organization_verified: false`; `onchain_org_binding_verified: false`; `external_anchor: null`. A GitHub PR is evidence publication, **not proof of correctness or production deployment**. Do not overwrite the existing `evidence.jsonwisdom.com` Worker without inspecting and preserving its existing behavior.
 
 **No privileged domain. No privileged Worker. No privileged auditor.**
+
+## Receipt clarification — seven-item amendment closure
+- The nine-binding SHA-256 covers **connector-normalized selected fields**; the raw upstream Cloudflare HTTP response was **not preserved** and has no claimed raw-byte hash.
+- The attempted HTTP probe has failure class `reader_access_error`; DNS RCODE, resolver, status, and precise probe timestamp remain `null`. This is **not** a verified NXDOMAIN or outage.
+- The organizational ownership scheme list is **empty because no qualifying scheme has yet been defined**; no on-chain ownership assertion can qualify.
+- **The `completed_discrepant` finding concerns the connected-account inventory boundary, not whether six reported .org domains exist.** The six names remain `null`.
+- The receipt's `original_reviewed_commit_sha` and `reviewed_at_commit` both pin `1c7c948892dfeafc2532e12fc8ebaee8e0f75ae5`, the prior PR head, while subsequent amendments form new commits.
+- The GitHub `verify` workflow checks selected repository proof-artifact JSON and honesty flags; **passing it does not authenticate Cloudflare observations, domain ownership, or the evidence receipt's factual findings**.
