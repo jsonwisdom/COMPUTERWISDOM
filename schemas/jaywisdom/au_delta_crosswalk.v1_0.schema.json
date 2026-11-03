@@ -1,0 +1,250 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://replay.comms/au-delta-crosswalk/v1.0",
+  "title": "Air University — DELTA Training Crosswalk",
+  "description": "A conceptual mapping from observed Air University PME structure to the DELTA training design, with explicit boundary enforcement.",
+  "type": "object",
+  "required": [
+    "crosswalk_id",
+    "institution_observation",
+    "conceptual_mapping",
+    "delta_component",
+    "training_profile",
+    "boundary",
+    "evidence_reference",
+    "adoption_state",
+    "authority_state",
+    "constitutional_invariants"
+  ],
+  "properties": {
+    "crosswalk_id": {
+      "type": "string",
+      "description": "Unique identifier for this crosswalk document.",
+      "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$"
+    },
+    "institution_observation": {
+      "type": "object",
+      "description": "SOURCE_BOUND — Observed institutional facts about Air University PME.",
+      "required": ["source_type", "source_reference", "observed_features"],
+      "properties": {
+        "source_type": {
+          "type": "string",
+          "enum": ["PUBLIC_DOCUMENT", "PUBLISHED_CURRICULUM", "OFFICIAL_WEBSITE", "HISTORICAL_ARCHIVE"],
+          "description": "Type of source."
+        },
+        "source_reference": {
+          "type": "string",
+          "description": "Citation or URL for the observed facts."
+        },
+        "observed_features": {
+          "type": "object",
+          "description": "Specific institutional features observed.",
+          "properties": {
+            "instructional_method": {
+              "type": "string",
+              "enum": ["guided_discussion", "lecture", "case_study", "experiential"],
+              "description": "Primary pedagogical method."
+            },
+            "class_size_observed": {
+              "anyOf": [
+                { "type": "integer", "minimum": 1 },
+                { "type": "null" }
+              ],
+              "description": "Typical class size if explicitly stated; otherwise null."
+            },
+            "evaluation_method": {
+              "type": "string",
+              "description": "How student performance is assessed."
+            },
+            "curriculum_authority": {
+              "type": "string",
+              "description": "Who develops and oversees the curriculum."
+            }
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "conceptual_mapping": {
+      "type": "object",
+      "description": "ANALYTICAL_MAPPING — How observed features are abstracted into DELTA concepts.",
+      "required": ["mapping_rules", "applied_framework"],
+      "properties": {
+        "mapping_rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["observed_feature", "delta_concept", "rationale"],
+            "properties": {
+              "observed_feature": { "type": "string" },
+              "delta_concept": { "type": "string" },
+              "rationale": { "type": "string" }
+            },
+            "additionalProperties": false
+          }
+        },
+        "applied_framework": {
+          "type": "string",
+          "description": "Analytical framework applied to the conceptual crosswalk."
+        }
+      },
+      "additionalProperties": false
+    },
+    "delta_component": {
+      "type": "object",
+      "description": "DELTA_COMPONENT — The specific DELTA design elements mapped.",
+      "required": ["components"],
+      "properties": {
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "description", "role"],
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "role": {
+                "type": "string",
+                "enum": ["scenario", "discussion", "challenge", "evidence", "decision", "delta", "debrief"]
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "participant_count_conceptual": {
+          "type": "integer",
+          "description": "Conceptual design count (e.g., 10).",
+          "minimum": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "training_profile": {
+      "type": "object",
+      "description": "TRAINING_PROFILE — Intended learning outcomes and target audiences.",
+      "required": ["level", "learning_objectives"],
+      "properties": {
+        "level": {
+          "type": "string",
+          "enum": ["ALS", "NCOA", "SNCOA", "OFFICER_PME", "CIVILIAN", "GRADUATE", "TPS", "OTHER"],
+          "description": "PME level mapped."
+        },
+        "learning_objectives": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "List of learning objectives."
+        },
+        "assessment_criteria": {
+          "type": "array",
+          "items": { "type": "string" },
+          "description": "How success is measured."
+        }
+      },
+      "additionalProperties": false
+    },
+    "boundary": {
+      "type": "object",
+      "description": "BOUNDARY — Explicit constraints on interpretation.",
+      "required": [
+        "class_size_10_is_conceptual",
+        "official_affiliation_claimed",
+        "institutional_adoption_proven",
+        "dice_verdict_authority",
+        "human_consequential_authority"
+      ],
+      "properties": {
+        "class_size_10_is_conceptual": {
+          "type": "boolean",
+          "const": true,
+          "description": "The ≈10-person cell is a DELTA design choice, not an institutional fact."
+        },
+        "official_affiliation_claimed": {
+          "type": "boolean",
+          "const": false,
+          "description": "No claim that DELTA is endorsed or used by Air University."
+        },
+        "institutional_adoption_proven": {
+          "type": "boolean",
+          "const": false,
+          "description": "No evidence of actual adoption by Air University is established by this fixture."
+        },
+        "dice_verdict_authority": {
+          "type": "boolean",
+          "const": false,
+          "description": "DICE outputs are not verdicts; they inform human judgment."
+        },
+        "human_consequential_authority": {
+          "type": "boolean",
+          "const": true,
+          "description": "Human retains authority over all consequential decisions."
+        }
+      },
+      "additionalProperties": false
+    },
+    "evidence_reference": {
+      "type": "object",
+      "description": "EVIDENCE_REF — References to supporting evidence.",
+      "required": ["evidence_objects"],
+      "properties": {
+        "evidence_objects": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "description": "Identifiers for evidence objects."
+          },
+          "default": []
+        }
+      },
+      "additionalProperties": false
+    },
+    "adoption_state": {
+      "type": "object",
+      "description": "ADOPTION_STATE — Status of any actual use.",
+      "required": ["status"],
+      "properties": {
+        "status": {
+          "type": "string",
+          "enum": ["NOT_ESTABLISHED", "PROPOSED", "PILOT", "ADOPTED", "REJECTED"],
+          "description": "Current adoption status; the example fixture remains NOT_ESTABLISHED."
+        },
+        "notes": {
+          "type": "string",
+          "description": "Additional commentary on adoption."
+        }
+      },
+      "additionalProperties": false
+    },
+    "authority_state": {
+      "type": "object",
+      "description": "AUTHORITY_STATE — Declaration of authority.",
+      "required": ["authority_created", "interception_authority", "official_affiliation_claimed"],
+      "properties": {
+        "authority_created": { "type": "boolean", "const": false },
+        "interception_authority": { "type": "boolean", "const": false },
+        "official_affiliation_claimed": { "type": "boolean", "const": false }
+      },
+      "additionalProperties": false
+    },
+    "constitutional_invariants": {
+      "type": "object",
+      "description": "Constitutional guarantees frozen at crosswalk creation.",
+      "required": [
+        "DELTA_NEQ_TRUTH",
+        "DELTA_NEQ_CAUSATION",
+        "DELTA_NEQ_AUTHORITY",
+        "DICE_NEQ_VERDICT_GENERATOR",
+        "HUMAN_RETAINS_CONSEQUENTIAL_AUTHORITY"
+      ],
+      "properties": {
+        "DELTA_NEQ_TRUTH": { "type": "boolean", "const": true },
+        "DELTA_NEQ_CAUSATION": { "type": "boolean", "const": true },
+        "DELTA_NEQ_AUTHORITY": { "type": "boolean", "const": true },
+        "DICE_NEQ_VERDICT_GENERATOR": { "type": "boolean", "const": true },
+        "HUMAN_RETAINS_CONSEQUENTIAL_AUTHORITY": { "type": "boolean", "const": true }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

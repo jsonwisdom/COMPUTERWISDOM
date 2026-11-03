@@ -1,0 +1,59 @@
+name: Mind the Gap Challenge Replay v0.1
+
+on:
+  push:
+    branches:
+      - agent/mind-the-gap-challenge-dice-v0-1
+    paths:
+      - "schemas/jaywisdom/challenge_membrane.v0_1.schema.json"
+      - "schemas/jaywisdom/gamification_membrane.v0_1.schema.json"
+      - "schemas/jaywisdom/au_delta_crosswalk.v1_0.schema.json"
+      - "fixtures/jaywisdom/challenge/**"
+      - "tools/verify_challenge_membrane_v0_1.py"
+      - "tools/verify_gamification_membrane_v0_1.py"
+      - "tools/verify_delta_work_replay_v0_1.py"
+      - "tools/verify_au_delta_crosswalk_v1_0.py"
+      - ".github/workflows/mind-the-gap-challenge-v0-1.yml"
+  pull_request:
+    paths:
+      - "schemas/jaywisdom/challenge_membrane.v0_1.schema.json"
+      - "schemas/jaywisdom/gamification_membrane.v0_1.schema.json"
+      - "schemas/jaywisdom/au_delta_crosswalk.v1_0.schema.json"
+      - "fixtures/jaywisdom/challenge/**"
+      - "tools/verify_challenge_membrane_v0_1.py"
+      - "tools/verify_gamification_membrane_v0_1.py"
+      - "tools/verify_delta_work_replay_v0_1.py"
+      - "tools/verify_au_delta_crosswalk_v1_0.py"
+      - ".github/workflows/mind-the-gap-challenge-v0-1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify-q1-q2-game-delta-and-au-crosswalk:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    steps:
+      - name: Checkout exact commit
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Verify dice selection and deterministic binding replay
+        run: python tools/verify_challenge_membrane_v0_1.py
+
+      - name: Verify Dice LeahPrime gamification membrane
+        run: python tools/verify_gamification_membrane_v0_1.py
+
+      - name: Verify DELTA work replay membrane
+        run: python tools/verify_delta_work_replay_v0_1.py
+
+      - name: Verify Air University DELTA crosswalk boundary
+        run: python tools/verify_au_delta_crosswalk_v1_0.py
