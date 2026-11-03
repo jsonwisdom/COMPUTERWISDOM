@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - repair/jason-person-first-source-replay-20261103
+      - repair/jason-provenance-pipeline-20261103
     paths:
       - "SUPREME_SEYMOUR/flywheel/**"
       - ".github/workflows/jason-person-first-replay-ci.yml"
