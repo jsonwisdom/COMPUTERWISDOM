@@ -344,3 +344,26 @@ This blueprint must not claim:
   "membrane": "HOLDS"
 }
 ```
+
+---
+
+## Wisdom Family Human-Speed Brake
+
+Machine speed may prepare, sort, replay, compare, and surface one next candidate. It may not outrun the human family loop.
+
+`ONE_RENDER -> HUMAN_FEEDBACK -> ONE_REVISION`
+
+`AUTORENDER_1000X = FORBIDDEN` for family creative publication.
+
+Always-on anomaly detection is scoped to recorded game/publication events. Hidden family surveillance is forbidden.
+
+`MACHINE_SPEED_SORTS`
+`RECEIPTS_INFORM`
+`FAMILY_REVIEWS`
+`HUMANS_APPROVE`
+
+A non-transferable `WISDOM_SEED` reputation point may score replay skill, kindness, critique, and forecast calibration. It is not cash, not a wager, not ownership, and not a financial claim on a child or artist.
+
+`POINTS != MONEY`
+`FANS != INVESTORS`
+`TOKEN != AUTHORITY`
