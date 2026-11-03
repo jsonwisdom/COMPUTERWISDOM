@@ -1,0 +1,49 @@
+{
+  "artifact": "COMPUTERWISDOM_REPLAY_PACKET_V1",
+  "protocol_version": "v1",
+  "claim_id": "GRAY_BABY_OBSERVE_0001",
+  "claim_text": "No agent identity or affordance claim is promoted before observation receipts exist.",
+  "claim_hash": "sha256:0000000000000000000000000000000000000000000000000000000000000000",
+  "evidence_layers": {},
+  "routing_layers": {},
+  "replay_steps": [
+    "Inspect OBSERVE packet",
+    "Confirm no identity has been promoted",
+    "Confirm missing observation receipt holds progression"
+  ],
+  "failure_rules": {
+    "routing_failure": "non_fatal",
+    "evidence_failure": "critical",
+    "partial_evidence": "trigger_recovery"
+  },
+  "classification": {
+    "status": "CANDIDATE_SCHEMA_EXAMPLE",
+    "promotion_allowed": false,
+    "authority": false
+  },
+  "authority": false,
+  "promotion_allowed": false,
+  "counter_receipt_refs": [],
+  "gray_baby": {
+    "step": "OBSERVE",
+    "claim_category": "HOLD",
+    "action": "Record only observed affordances; do not identify the agent yet.",
+    "receipt_refs": [],
+    "state_change": "NO_TRANSITION",
+    "status": "HOLD",
+    "agency_intact": true,
+    "labyrinth_branches": [],
+    "bound_violations": [],
+    "replay_reconstructible": false,
+    "required_branch_open": false,
+    "home_reached": false,
+    "phone_home": {
+      "source": null,
+      "message": null,
+      "channel": null,
+      "destination": null,
+      "ack_present": false,
+      "ack_receipt_ref": null
+    }
+  }
+}
