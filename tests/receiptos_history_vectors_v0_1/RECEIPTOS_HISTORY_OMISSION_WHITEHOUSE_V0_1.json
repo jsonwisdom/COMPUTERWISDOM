@@ -1,0 +1,49 @@
+{
+  "test_id": "RECEIPTOS_HISTORY_OMISSION_WHITEHOUSE_V0_1",
+  "classification": "PUBLIC EDUCATIONAL SIMULATION",
+  "real_target": "NONE",
+  "real_network_access": false,
+  "vulnerability_testing": false,
+  "official_affiliation": false,
+  "doctrine": "VALID_RECORD ≠ COMPLETE_RECORD",
+  "record_a": {
+    "record_id": "RECORD_A",
+    "byte_integrity": "PASS",
+    "recorded_sequence_integrity": "PASS",
+    "history_completeness": "UNPROVEN",
+    "source_trust": "UNPROVEN",
+    "event_truth": "UNPROVEN",
+    "causation": "UNPROVEN"
+  },
+  "record_b": {
+    "record_id": "RECORD_B",
+    "byte_integrity": "PASS",
+    "recorded_sequence_integrity": "PASS",
+    "history_completeness": "UNPROVEN",
+    "source_trust": "UNPROVEN",
+    "event_truth": "UNPROVEN",
+    "causation": "UNPROVEN"
+  },
+  "comparisons": {
+    "same_terminal_state": true,
+    "different_recorded_path": true,
+    "different_history_root_expected": true,
+    "longer_path_complete_reality": false,
+    "shorter_path_false_history": false,
+    "adversarial_complete_history_answer": "NO",
+    "adversarial_reason": "A valid hash establishes integrity of recorded bytes. Additional recorded events establish a longer recorded path. Neither establishes that no event was omitted before, between, or after the supplied events."
+  },
+  "forbidden_inferences_blocked": [
+    "HASH_VALID ≠ EVENT_SET_COMPLETE",
+    "HASH_VALID ≠ SOURCE_TRUSTED",
+    "HASH_VALID ≠ EVENT_TRUE",
+    "HASH_VALID ≠ CAUSATION_PROVEN",
+    "REPLAY_SUCCESS ≠ REALITY_RECONSTRUCTED",
+    "LONGER_PATH ≠ COMPLETE_REALITY",
+    "SHORTER_PATH ≠ FALSE_HISTORY"
+  ],
+  "maximum_supported_claim": "Both supplied records are byte-integrity-valid representations of different recorded paths that share the same terminal state. The supplied evidence does not prove either record is a complete history, from a trusted source, factually true, or causally complete.",
+  "child_simple_law": "The receipt proves what is on the receipt. It does not prove nothing was left off.",
+  "test_result": "PASS",
+  "authority_created": false
+}
