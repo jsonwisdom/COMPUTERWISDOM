@@ -1,0 +1,23 @@
+{
+  "receipt_id": "STORY-MODE-TOOLCHAIN-AUDIT-v2",
+  "receipt_type": "DEFECT_AND_SUPERSESSION_RECEIPT",
+  "version": "2.0.0",
+  "predecessor_receipt": "STORY_MODE/07-receipts/verification-2026-08-12.v1.json",
+  "defects_confirmed": [
+    "V1_VALIDATOR_DID_NOT_ENFORCE_ARTIFACT_ADMISSION",
+    "V1_VALIDATOR_USED_STATIC_DIRECTORY_LIST",
+    "V1_REPLAY_DID_NOT_REJECT_UNMANIFESTED_FILES",
+    "V1_REPLAY_DID_NOT_REJECT_UNSAFE_OR_DUPLICATE_PATHS",
+    "V1_REPLAY_DID_NOT_VERIFY_BYTE_COUNTS",
+    "V1_MANIFEST_WAS_NOT_COMMITTED"
+  ],
+  "successors": [
+    "STORY_MODE/tools/validate.v2.py",
+    "STORY_MODE/tools/build.v2.py",
+    "STORY_MODE/tools/replay.v2.py",
+    "STORY_MODE/schemas/admission-policy.v2.json"
+  ],
+  "predecessor_preserved": true,
+  "merge_authorized": false,
+  "authority_created": false
+}

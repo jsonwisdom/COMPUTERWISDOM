@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jsonwisdom/COMPUTERWISDOM/STORY_MODE/schemas/agent-work-report.schema.v1.json",
+  "title": "JSONWisdom Story Mode Agent Work Report",
+  "type": "object",
+  "required": [
+    "agent",
+    "branch_head_before",
+    "branch_head_after",
+    "files_created",
+    "files_modified",
+    "commits_created",
+    "repositories_directly_traversed",
+    "private_repository_names_published",
+    "jasons_rubric",
+    "validation",
+    "merkle_root",
+    "replay",
+    "pr_updated",
+    "human_reviews",
+    "merge_authorized",
+    "authority_created"
+  ],
+  "properties": {
+    "agent": {
+      "type": "string"
+    },
+    "branch_head_before": {
+      "type": "string"
+    },
+    "branch_head_after": {
+      "type": "string"
+    },
+    "files_created": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "files_modified": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "commits_created": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "repositories_directly_traversed": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "private_repository_names_published": {
+      "const": 0
+    },
+    "jasons_rubric": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "HOLD"
+      ]
+    },
+    "validation": {
+      "enum": [
+        "PASS",
+        "FAIL",
+        "HOLD"
+      ]
+    },
+    "merkle_root": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "replay": {
+      "enum": [
+        "PASS",
+        "FAIL_CLOSED",
+        "HOLD"
+      ]
+    },
+    "pr_updated": {
+      "type": "boolean"
+    },
+    "human_reviews": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "merge_authorized": {
+      "const": false
+    },
+    "authority_created": {
+      "const": false
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "additionalProperties": false
+}

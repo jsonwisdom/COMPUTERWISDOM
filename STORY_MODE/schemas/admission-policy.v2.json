@@ -1,0 +1,70 @@
+{
+  "object_id": "policy:story-mode-admission:v2",
+  "object_type": "ARTIFACT_ADMISSION_POLICY",
+  "version": "2.0.0",
+  "predecessor": "implicit v1 directory-contract-only admission",
+  "supersedes": "validator behavior in STORY_MODE/tools/validate.py",
+  "rationale": "v1 parsed JSON and checked required contract keys but did not enforce admitted artifact paths.",
+  "directories": {
+    ".": [
+      "CONSTITUTION*.json",
+      "DIRECTORY_CONTRACT*.json",
+      "README*.md"
+    ],
+    "00-identity": [
+      "DIRECTORY_CONTRACT*.json",
+      "*.json"
+    ],
+    "01-worlds": [
+      "DIRECTORY_CONTRACT*.json",
+      "*.json"
+    ],
+    "02-characters": [
+      "DIRECTORY_CONTRACT*.json",
+      "*.json"
+    ],
+    "03-projects": [
+      "DIRECTORY_CONTRACT*.json",
+      "*.json"
+    ],
+    "03-projects/repositories": [
+      "DIRECTORY_CONTRACT*.json",
+      "*.json"
+    ],
+    "04-scenes": [
+      "DIRECTORY_CONTRACT*.json",
+      "*.json"
+    ],
+    "05-claims": [
+      "DIRECTORY_CONTRACT*.json",
+      "*.json"
+    ],
+    "06-evidence": [
+      "DIRECTORY_CONTRACT*.json",
+      "*.json"
+    ],
+    "07-receipts": [
+      "DIRECTORY_CONTRACT*.json",
+      "*.json"
+    ],
+    "08-replay": [
+      "DIRECTORY_CONTRACT*.json",
+      "*.json"
+    ],
+    "09-publication": [
+      "DIRECTORY_CONTRACT*.json",
+      "*.json",
+      "*.md"
+    ],
+    "schemas": [
+      "DIRECTORY_CONTRACT*.json",
+      "*.json"
+    ],
+    "tools": [
+      "DIRECTORY_CONTRACT*.json",
+      "*.py",
+      "TOOLCHAIN*.json"
+    ]
+  },
+  "authority_created": false
+}

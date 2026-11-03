@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jsonwisdom/COMPUTERWISDOM/STORY_MODE/schemas/story-object.schema.json",
+  "title": "JSONWisdom Story Object",
+  "type": "object",
+  "required": [
+    "object_id",
+    "object_type",
+    "version"
+  ],
+  "properties": {
+    "object_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "object_type": {
+      "type": "string",
+      "minLength": 3
+    },
+    "version": {
+      "type": "string",
+      "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+$"
+    },
+    "predecessor": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "authority_created": {
+      "const": false
+    }
+  },
+  "additionalProperties": true
+}

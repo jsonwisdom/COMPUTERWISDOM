@@ -1,0 +1,19 @@
+{
+  "receipt_id": "STORY-MODE-VERIFICATION-2026-08-12-v1",
+  "receipt_type": "VERIFICATION_RECEIPT",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "agent/story-mode-directories-first",
+  "proposal_issue": 459,
+  "checks": {
+    "python_compile": "PASS",
+    "directory_contracts": 13,
+    "json_parse": "PASS",
+    "deterministic_manifest_build": "PASS",
+    "governed_files_replayed": 23,
+    "sha256_replay": "PASS"
+  },
+  "historical_files_mutated": false,
+  "all_80_propagated": false,
+  "merge_authorized": false,
+  "authority_created": false
+}

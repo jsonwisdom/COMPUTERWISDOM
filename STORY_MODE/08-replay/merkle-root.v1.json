@@ -1,0 +1,12 @@
+{
+  "algorithm": "sha256",
+  "authority_created": false,
+  "commit_binding": "ROOT_IS_COMMITTED_BY_THE_GIT_COMMIT_CONTAINING_THIS_FILE",
+  "eas_attestation": "NOT_CREATED",
+  "leaf_count": 44,
+  "manifest": "story-mode.manifest.v3.json",
+  "merkle_root": "7b602edefbbfe66e95a46d7decc117b6181dcb387093ff8af52188ca827f3e1a",
+  "object_id": "merkle:jsonwisdom-story-mode:v1",
+  "object_type": "PUBLIC_MERKLE_ROOT",
+  "version": "1.0.0"
+}
