@@ -1,0 +1,125 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jsonwisdom/COMPUTERWISDOM/mn/law-monitor/schema/bill_event.v0_1.schema.json",
+  "title": "Minnesota Law Monitor Bill Event v0.1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "event_id",
+    "version",
+    "authority",
+    "fraud_status",
+    "chamber",
+    "number",
+    "title_short",
+    "phase",
+    "observed_at",
+    "source_url",
+    "source_root"
+  ],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "description": "Canonical event id, e.g. 2025-HF12-PASSED_HOUSE-2025-05-20",
+      "minLength": 8
+    },
+    "version": {
+      "type": "string",
+      "const": "0.1"
+    },
+    "authority": {
+      "type": "boolean",
+      "const": false
+    },
+    "fraud_status": {
+      "type": "string",
+      "const": "UNKNOWN"
+    },
+    "session_year": {
+      "type": ["integer", "null"],
+      "minimum": 1849
+    },
+    "chamber": {
+      "type": "string",
+      "enum": ["HF", "SF", "HF_SF", "CHAPTER", "EO", "OTHER"]
+    },
+    "number": {
+      "type": "string",
+      "description": "Bill or chapter number as published, e.g. 12 or 1123"
+    },
+    "title_short": {
+      "type": "string",
+      "maxLength": 200
+    },
+    "topic": {
+      "type": ["string", "null"],
+      "maxLength": 80
+    },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "INTRODUCED",
+        "COMMITTEE",
+        "PASSED_HOUSE",
+        "PASSED_SENATE",
+        "CONFERENCE",
+        "ENROLLED",
+        "PRESENTED",
+        "SIGNED",
+        "VETOED",
+        "EFFECTIVE",
+        "CHAPTERED",
+        "OTHER"
+      ]
+    },
+    "phase_detail": {
+      "type": ["string", "null"],
+      "description": "Optional human-readable phase note, e.g. Committee Rep. or Senate File",
+      "maxLength": 120
+    },
+    "status_date": {
+      "type": ["string", "null"],
+      "description": "Date of the legislative action if known (YYYY-MM-DD), not observation time"
+    },
+    "effective_date": {
+      "type": ["string", "null"],
+      "description": "Statutory effective date if published (YYYY-MM-DD)"
+    },
+    "observed_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO8601 UTC when the operator observed the source"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "source_root": {
+      "type": "string",
+      "enum": [
+        "revisor.mn.gov",
+        "house.mn.gov",
+        "senate.mn",
+        "leg.mn.gov",
+        "mn.gov"
+      ]
+    },
+    "source_label": {
+      "type": ["string", "null"],
+      "maxLength": 120
+    },
+    "corrects": {
+      "type": ["string", "null"],
+      "description": "Prior event_id this entry corrects, if any"
+    },
+    "notes": {
+      "type": ["string", "null"],
+      "maxLength": 2000,
+      "description": "Observation notes only — no intent, guilt, or policy claims"
+    },
+    "sha256_of_snapshot": {
+      "type": ["string", "null"],
+      "pattern": "^[a-f0-9]{64}$"
+    }
+  }
+}
