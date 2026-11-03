@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Jay's independent Zora concept arcade: free scratch-art reveals, local replay and an optional read-only Coinbase Wallet account display.">
+<title>Jay's Satire Scratch Lab · CoinBaseKidsWebDesign</title>
+<link rel="stylesheet" href="./style.css"></head>
+<body>
+<header class="shell" id="top">
+<div class="kicker">JAYWISDOM / ZORA CONCEPT ARCADE / REPLAY WISDOM</div>
+<h1>🎮 Jay's Satire Scratch Lab</h1>
+<p class="tagline">Concepts become games. Games become questions. Questions become receipts.</p>
+<div class="pills"><span>FREE PLAY · $0</span><span>WALLET OPTIONAL</span><span>NO CLOUD PREFERENCE LOG</span><span>REVIEW BETA</span></div>
+<nav aria-label="Page sections"><a href="#play">Scratch art</a><a href="#creator">Creator index</a><a href="#wallet">Wallet</a><a href="#toolbox-zone">Seymour</a><a href="#feedback-zone">Build feedback</a></nav>
+</header>
+<main class="shell">
+<section class="panel summary" aria-labelledby="boundary">
+<h2 id="boundary">Two corridors. No data grab.</h2>
+<div class="columns"><p><strong>Public corridor:</strong> browse Jay's published concepts, play a free scratch-card reveal, like themes, learn and replay a receipt locally. The wallet is entirely optional.</p>
+<p><strong>Builder corridor:</strong> find Seymour's public toolbox, test an idea, copy a feedback note and independently choose whether to send it. Private family assets remain in permission-controlled storage outside this site.</p></div>
+<p class="fine">A wallet address is not a person's verified identity or evidence of family access. This public GitHub Pages app does not send a preference history or wallet address to its own backend; hosting and wallet providers may process ordinary connection metadata.</p>
+</section>
+<section class="panel" id="play" aria-labelledby="play-title">
+<div class="split"><div class="play-side">
+<div class="kicker">01 / FREE ENTERTAINMENT</div><h2 id="play-title">Scratch an idea. Reveal some art.</h2>
+<p>Every successful draw reveals a 3:4 satire card. The randomized concept is the joke, not a valuable prize. No entries, tickets, wagers or cash redemption.</p>
+<div class="actions"><button id="draw" type="button" disabled>Start free scratch</button><button id="reveal" type="button" class="quiet" disabled>Reveal without scratching</button></div>
+<p id="status" role="status" aria-live="polite">Loading six public concepts.</p>
+<p class="fine" id="current-concept">Zero draws so far.</p>
+<div class="actions"><button id="like" type="button" class="quiet" disabled>♡ I like this concept</button><button id="download-art" type="button" class="quiet" disabled>Save 3:4 SVG art</button></div>
+</div><div class="preview"><div class="scratch-area">
+<div id="art" class="art" role="img" aria-label="Original satirical concept card artwork"></div>
+<canvas id="scratch-cover" width="360" height="480" hidden aria-label="Scratch surface. Swipe or use Reveal without scratching." style="touch-action:none"></canvas>
+</div><p class="fine">Original teaching art · no Zora mint · no promise of resale value.</p></div></div>
+</section>
+<section class="panel" id="creator" aria-labelledby="creator-title">
+<div class="kicker">02 / CREATOR LIBRARY</div><h2 id="creator-title">Jay's Zora work → public concepts</h2>
+<p>Concept index from a historical public-link snapshot, not a real-time ownership, trading or profile-activity feed.</p>
+<p id="catalog-status" class="fine" role="status">Loading catalog.</p>
+<div id="creator-items" class="concept-grid"></div>
+<p><a href="https://zora.co/@jaywisdom" target="_blank" rel="noopener noreferrer">Open @jaywisdom on Zora ↗</a></p>
+</section>
+<section class="panel" id="wallet" aria-labelledby="wallet-title">
+<div class="kicker">03 / OPTIONAL IDENTITY DISPLAY</div><h2 id="wallet-title">Connect Coinbase Wallet — or stay anonymous</h2>
+<p>The button asks an injected Coinbase-style wallet for account visibility only when clicked. The page may then display a masked public address and network. <strong>It does not sign messages, move tokens, read balances, retain wallet IDs, authenticate builders, or upload what you like.</strong></p>
+<div class="actions"><button id="wallet-connect" type="button">Connect Coinbase Wallet</button><button id="wallet-clear" type="button" class="quiet" disabled>Clear local display</button></div>
+<p id="wallet-status" role="status" aria-live="polite">No wallet permission requested.</p>
+<div class="metrics"><div><small>Account</small><strong id="wallet-account">Anonymous / not connected</strong></div><div><small>Network</small><strong id="wallet-chain">No network requested</strong></div></div>
+<p class="fine">The wallet provider's identity label is self-reported and may be spoofed. Plain iPhone Safari may have no injected provider; use a compatible wallet in-app browser to test. This beta does not implement QR pairing. For adults testing wallet features; no child wallet required.</p>
+</section>
+<section class="panel" id="local-log" aria-labelledby="log-title">
+<div class="kicker">04 / ZERO-SERVER PLAY RECEIPTS</div><h2 id="log-title">Your session, your choice</h2>
+<div class="metrics"><div><small>Reveals</small><strong id="play-count">0</strong></div><div><small>Likes</small><strong id="like-count">0</strong></div><div><small>Price</small><strong>$0.00</strong></div></div>
+<ol id="session-log" aria-label="Local session concept choices"></ol>
+<div class="actions"><button id="export" type="button" class="quiet" disabled>Export local replay JSON</button></div>
+<label for="import">Verify a previous local replay file (no server upload)</label>
+<input id="import" type="file" accept=".json,application/json">
+<p id="replay-status" role="status" aria-live="polite" class="fine">A receipt can reproduce the selected concept, not prove the randomness was secret or externally witnessed.</p>
+</section>
+<section class="panel" id="toolbox-zone" aria-labelledby="toolbox-title">
+<div class="kicker">05 / THE PUPPY WITH A PERMISSION BELL</div><h2 id="toolbox-title">Seymour's Easter egg toolbox</h2>
+<p>After three reveals the game points to Seymour's public learning toolbox. This is a <strong>game discovery mechanic, not access control</strong>. A builder can also open the public toolbox directly without any wallet.</p>
+<p id="toolbox-status" class="fine">Three reveals unlock the hint. No private privileges exist here.</p>
+<div id="toolbox" hidden><a class="toolbox-link" href="../index.html#justice">⚖️ Found Seymour! Open the existing evidence replay ↗</a></div>
+<details><summary>Can I open Seymour without the Easter egg?</summary><p>Yes. <a href="../index.html#justice">Open the public Seymour tool</a>. It does not provide access to private family records or professional legal advice.</p></details>
+<button id="puppy" type="button" class="quiet">⚠️ Report a possible security problem</button><p id="puppy-note" role="status" hidden></p>
+</section>
+<section class="panel" id="feedback-zone" aria-labelledby="feedback-title">
+<div class="kicker">06 / BUILDER → HUMAN FEEDBACK</div><h2 id="feedback-title">Ask for a beta review, keep the humans in charge</h2>
+<p>Write a short, non-sensitive note, copy it, and decide whether to submit it to the project's GitHub issues. This does not contact Coinbase Support, promise a reviewer, or automatically create an issue.</p>
+<label for="feedback">What's useful, confusing or missing?</label><textarea id="feedback" rows="3" maxlength="1200" placeholder="Example: I want a better way to compare two public sources."></textarea>
+<div class="actions"><button id="feedback-copy" type="button" class="quiet">Copy feedback note for review</button><a class="button-link" href="https://github.com/jsonwisdom/COMPUTERWISDOM/issues/new/choose" target="_blank" rel="noopener noreferrer">Open GitHub issue options ↗</a></div>
+<p id="feedback-status" role="status" aria-live="polite" class="fine">No report submitted.</p><p class="fine">Never post private wallet keys, family records or an unpatched exploit in a public issue. Sensitive security reports need private maintainer disclosure.</p>
+</section>
+</main>
+<footer class="shell"><p>Independent educational experiment. Not affiliated with or endorsed by Coinbase or Zora. No betting, purchases, paid lottery entries, token distribution or financial advice. Family privacy overrides game progression. Machine suggests; human decides.</p><p><a href="../">← Jason on Base</a></p></footer>
+<script type="module" src="./app.mjs"></script>
+</body></html>
