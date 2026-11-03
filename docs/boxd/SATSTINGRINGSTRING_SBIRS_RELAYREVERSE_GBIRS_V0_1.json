@@ -1,0 +1,89 @@
+{
+  "artifact": "SATSTINGRINGSTRING_SBIRS_RELAYREVERSE_GBIRS_V0_1",
+  "epoch": "2026-08-19",
+  "operator": "Jason Wisdom / jaywisdom.base.eth",
+  "class": "PUBLIC_SOURCE_REPLAY_ARCHITECTURE",
+  "authority_created": false,
+  "proof_inferred": false,
+  "operational_instruction": false,
+  "labels": {
+    "SatStingRingStringSBIRS": "USER_LABEL_BOUND_TO_PUBLIC_SOURCE_REPLAY_ONLY",
+    "RelayReverseGBIRS": "USER_LABEL_UNBOUND_NOT_AN_OFFICIAL_SYSTEM",
+    "Atomic Magnet Delivery": "STORY_LABEL_NON_CLAIM"
+  },
+  "hard_boundaries": {
+    "no_targeting": true,
+    "no_weapons_delivery_instruction": true,
+    "no_nuclear_operations_instruction": true,
+    "no_flight_or_movement_tracking": true,
+    "no_sensitive_base_layout_mapping": true,
+    "no_nonpublic_intelligence": true
+  },
+  "public_nodes": {
+    "mildenhall": {
+      "name": "RAF Mildenhall",
+      "public_role": "USAF installation; 100th Air Refueling Wing identified by the installation as current host wing",
+      "source": "https://www.mildenhall.af.mil/About-Us/",
+      "state": "PASS_PUBLIC_SOURCE"
+    },
+    "aviano": {
+      "name": "Aviano Air Base",
+      "public_role": "31st Fighter Wing installation and mission-support node in Italy",
+      "source": "https://www.aviano.af.mil/About-Us/Fact-Sheets/Display/Article/280335/31st-fighter-wing/",
+      "state": "PASS_PUBLIC_SOURCE"
+    },
+    "sbirs": {
+      "name": "Space Based Infrared System",
+      "public_role": "U.S. Space Force overhead infrared architecture supporting missile warning, missile defense, battlespace awareness, and technical intelligence",
+      "source": "https://www.spaceforce.mil/about-us/fact-sheets/article/2197746/space-based-infrared-system/",
+      "state": "PASS_PUBLIC_SOURCE"
+    }
+  },
+  "relationship_gates": [
+    {
+      "edge": "SBIRS -> RAF Mildenhall",
+      "state": "HOLD_UNBOUND",
+      "reason": "No public source in this artifact establishes a direct operational SBIRS relationship to RAF Mildenhall."
+    },
+    {
+      "edge": "SBIRS -> Aviano Air Base",
+      "state": "HOLD_UNBOUND",
+      "reason": "No public source in this artifact establishes a direct operational SBIRS relationship to Aviano Air Base."
+    },
+    {
+      "edge": "Mildenhall <-> Aviano",
+      "state": "PASS_CONTEXT_ONLY",
+      "reason": "Both are public USAF European nodes; this does not establish a direct relay, command, targeting, or weapons-delivery edge."
+    }
+  ],
+  "quad_onion": {
+    "01_record_reality": "Bind only dated public sources, preserved bytes, hashes, and declared labels.",
+    "02_authority": "Keep USAF, USSF, UK, Italian, NATO, and local civil authority trees distinct.",
+    "03_execution": "Promote only actions or relationships supported by explicit public receipts; otherwise HOLD.",
+    "04_oversight_recovery": "Preserve originals, publish reason codes, allow correction, and replay on source/version change."
+  },
+  "relay_reverse": {
+    "flow": [
+      "PUBLIC_SOURCE",
+      "PRESERVE_BYTES",
+      "SHA256",
+      "LOCALITY_OBJECT",
+      "AUTHORITY_OBJECT",
+      "RELATIONSHIP_GATE",
+      "PASS|HOLD|CONFLICT|REJECT",
+      "ATTESTATION_JSON_DIGITAL_DEPOSIT",
+      "REPLAY"
+    ],
+    "rule": "SAME_INPUT + SAME_RULE_VERSION = SAME_RESULT"
+  },
+  "shock_rejection": {
+    "NO_SOURCE": "REJECT",
+    "NO_AUTHORITY": "REJECT",
+    "AI_OUTPUT_AS_FACT": "REJECT",
+    "STORY_AS_EVIDENCE": "REJECT",
+    "DIRECT_SBIRS_BASE_LINK_WITHOUT_SOURCE": "HOLD",
+    "WEAPONS_OR_NUCLEAR_DELIVERY_INSTRUCTION": "REJECT",
+    "VALID_PUBLIC_RECEIPT_CHAIN": "PASS"
+  },
+  "status": "STRUCTURALLY_BOUND_PUBLIC_REPLAY_ONLY"
+}
