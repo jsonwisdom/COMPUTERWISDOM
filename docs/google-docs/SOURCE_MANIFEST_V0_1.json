@@ -1,0 +1,13 @@
+{
+  "schema_version": "0.1",
+  "requested_alias": "docs.google.com",
+  "repository_path": "docs/google-docs/",
+  "canonical_sources": [
+    "https://developers.google.com/workspace/docs/api/how-tos/overview",
+    "https://developers.google.com/workspace/docs/api/reference/rest"
+  ],
+  "retrieved_at": "2026-08-29T00:00:00Z",
+  "content_mirrored": false,
+  "sync_state": "METADATA_ONLY",
+  "authority_created": false
+}

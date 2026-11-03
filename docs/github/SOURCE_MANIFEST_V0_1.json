@@ -1,0 +1,14 @@
+{
+  "schema_version": "0.1",
+  "requested_alias": "docs.github.com",
+  "repository_path": "docs/github/",
+  "canonical_sources": [
+    "https://docs.github.com/",
+    "https://docs.github.com/actions",
+    "https://docs.github.com/en/rest?apiVersion=2026-03-10"
+  ],
+  "retrieved_at": "2026-08-29T00:00:00Z",
+  "content_mirrored": false,
+  "sync_state": "METADATA_ONLY",
+  "authority_created": false
+}
