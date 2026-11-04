@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="FraudFinder9000: Citizen Audit Vortex Machine, a fictional evidence-first civic learning game.">
+<title>FraudFinder9000 | Citizen Audit Vortex Machine</title>
+<style>
+:root{color-scheme:dark;--bg:#071219;--panel:#132d38;--edge:#38606a;--ink:#eafbf8;--mint:#8bf1ce;--sun:#ffd88f}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top right,#1b4250,#071219 60%);color:var(--ink);font:16px/1.55 system-ui,Arial,sans-serif}
+main,header,footer{max-width:1070px;margin:auto;padding:22px}header{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}h1{font-size:clamp(2.1rem,5vw,4.4rem);line-height:1.05;margin:16px 0}.tiny,.muted{color:#bdd2d4}.tiny{font-size:.82rem}a{color:var(--mint)}.deck{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.card,.pane{border:1px solid var(--edge);background:var(--panel);padding:21px;border-radius:16px}.card h2{margin:6px 0}.eyebrow{color:var(--mint);letter-spacing:.12em;text-transform:uppercase;font-size:.8rem;font-weight:bold}
+button,select{font:inherit;border-radius:10px;padding:11px 14px;border:1px solid var(--mint);background:#0b2028;color:var(--ink);cursor:pointer}button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--sun);outline-offset:3px}button:hover{background:#1c4953}button[disabled]{opacity:.5;cursor:not-allowed}.choices{display:flex;gap:9px;flex-wrap:wrap}.pane{margin-top:18px}.score{color:var(--sun);font-weight:750}.quote{border-left:3px solid var(--mint);padding-left:13px}.pill{display:inline-block;background:#29434a;border-radius:100px;padding:4px 12px;margin:3px}#response{white-space:pre-line;min-height:62px}#receipt{white-space:pre-wrap;overflow-wrap:anywhere;font-size:.85rem;background:#09191f;padding:14px;border-radius:10px}.footnote{color:var(--sun)}
+</style></head><body>
+<header><a href="../">← Audits &amp; Business</a><span class="eyebrow">JASON's Brain · Citizen Root · DEMOCRACY NOW</span></header>
+<main><div class="eyebrow">Training simulation · No live ballots · No accusations</div>
+<h1>FraudFinder<span style="color:var(--mint)">9000</span><br><small>Citizen Audit Vortex Machine</small></h1>
+<p class="muted">A tiny American town has questions. Can you inspect the paperwork before the rumor machine eats City Hall? Meet Sophia, JASON's Brain, the checkpoint Librarians, AMY, ALISON and Colonel Jessup. Play both sides of the corridor.</p>
+<div class="deck">
+<section class="card"><div class="eyebrow">Sophia / Signal</div><h2>Listen first</h2><p>Turn a citizen's story into a clear, respectful question. A concern is not a verdict.</p></section>
+<section class="card"><div class="eyebrow">JASON's Brain / Router</div><h2>Classify</h2><p>Which jurisdiction? Which record? Which decision is missing? Keep provenance tied to every checkpoint.</p></section>
+<section class="card"><div class="eyebrow">Librarians / Every checkpoint</div><h2>Retrieve</h2><p>Ask for original source, date, scope and counterevidence before any claim is promoted.</p></section>
+<section class="card"><div class="eyebrow">Jessup / Challenge</div><h2>Prove it</h2><p>“Show me the receipt.” A suspicious pattern may justify a question, not an allegation of fraud.</p></section>
+</div>
+<section class="pane" aria-labelledby="scenario-title"><div class="eyebrow">Citizen town hall / Case file 001</div>
+<h2 id="scenario-title">The Mystery of the $900 Park Bench</h2>
+<p id="story">In fictional Apple Blossom, the town ledger lists a $900 park-bench purchase. A citizen says: “Nine hundred dollars? The bench better sing karaoke!”</p>
+<label for="stage">Checkpoint </label><span id="stage" class="score" aria-live="polite">1 / 4 · Listen</span>
+<p id="librarian" class="quote">Librarian: “What exactly is in the original purchase record?”</p>
+<div class="choices" id="choices">
+<button data-choice="rumor">Declare fraud!</button>
+<button data-choice="request">Request the invoice and procurement record</button>
+<button data-choice="delete">Delete the embarrassing ledger</button>
+</div><p id="response" role="status" aria-live="polite"></p>
+<button id="next" disabled>Next checkpoint →</button>
+</section>
+<section class="pane"><h2>Citizen click privileges — practice town vote</h2>
+<p>This is a <strong>fictional civic-priority poll</strong> about which public information would help residents. It is not voter registration, a government election, a ballot, or a real vote; no answers leave your device.</p>
+<div class="choices"><button class="poll" data-vote="invoice">Publish procurement explanations</button><button class="poll" data-vote="meeting">Offer accessible meeting summaries</button><button class="poll" data-vote="education">Teach evidence literacy in schools</button></div><p id="poll-outcome" role="status" aria-live="polite">Choose a priority to see the local result.</p></section>
+<section class="pane"><h2>Receipt Console</h2><p>Fictional training receipt, generated only in this browser. It proves no actual government record was inspected.</p>
+<pre id="receipt" aria-live="polite"></pre>
+<div class="choices"><button id="copy">Copy training receipt</button><button id="reset">Restart case</button></div>
+<p class="footnote">Safety: never post private case files, children's identities, protected personal data or unverified accusations to public forums. For real research, collect sources privately and seek an appropriate authority or qualified professional.</p></section>
+</main><footer>Computer Wisdom · Receipts First · Audit First · Constitution Friendly · Kid Friendly · Two Sides of the Corridor · Draft interactive learning experience; no live backend, voting service or fraud finding.</footer>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id);
+const stages=[
+{label:'Listen',librarian:'Librarian: “What exactly is in the original purchase record?”',choices:[['rumor','Declare fraud!'],['request','Request the invoice and procurement record'],['delete','Delete the embarrassing ledger']],correct:'request',feedback:'Correct. Record the concern, then request the underlying invoice and procurement record. The $900 line alone proves no misconduct.'},
+{label:'Locate',librarian:'Librarian: “The invoice says $900 for a bench, shipping and installation. Now inspect both sides.”',choices:[['claim','The vendor is guilty'],['compare','Compare itemized costs, contract terms and comparable purchases'],['ignore','Assume the price is always fair']],correct:'compare',feedback:'Correct. Compare the full purchase scope, not a screenshot of one number. Preserve the original and the town response.'},
+{label:'Challenge',librarian:'Librarian: “No bid documents are in this training packet. How do we classify the missing evidence?”',choices:[['proof','Fraud proven'],['unknown','UNKNOWN: procurement process not established'],['pass','PASS: town fully exonerated']],correct:'unknown',feedback:'Correct. The missing record leaves this predicate UNKNOWN, not FAIL and not PASS. Jessup wants scope and date.'},
+{label:'Publish',librarian:'Librarian: “The public deserves a fair explanation, including the town’s opportunity to respond.”',choices:[['accuse','Publish names and accusations immediately'],['fair','Publish a question, known records, gaps and a correction path'],['hide','Keep every public issue secret']],correct:'fair',feedback:'Correct. Citizen-first reporting includes verified sources, counterevidence, privacy review and an accessible right to correct.'}
+];
+let step=0,score=0,answers=[],ready=false;
+const choiceBox=$('choices');
+function receipt(){const obj={kind:'SIMULATION_ONLY',case_id:'APPLE_BLOSSOM_BENCH_001',real_world_evidence:false,steps_completed:answers.length,total_steps:4,correct_steps:score,answers,assessment:answers.length===4?'TRAINING_COMPLETE':'TRAINING_IN_PROGRESS',production_authorization:false,created_in_browser:true};$('receipt').textContent=JSON.stringify(obj,null,2);}
+function render(){$('stage').textContent=(step+1)+' / 4 · '+stages[step].label;$('librarian').textContent=stages[step].librarian;choiceBox.replaceChildren();for(const [value,label] of stages[step].choices){const b=document.createElement('button');b.textContent=label;b.dataset.choice=value;choiceBox.appendChild(b)}$('response').textContent='';$('next').disabled=true;ready=false;receipt();}
+choiceBox.addEventListener('click',e=>{const b=e.target.closest('button[data-choice]');if(!b||ready)return;ready=true;const correct=b.dataset.choice===stages[step].correct;if(correct)score++;answers.push({checkpoint:stages[step].label,choice:b.dataset.choice,result:correct?'PASS':'LEARNING_RETRY_NEEDED'});$('response').textContent=(correct?'✅ Evidence gate PASS. ':'🟡 Recheck the source. ')+stages[step].feedback;$('next').disabled=false;for(const x of choiceBox.querySelectorAll('button'))x.disabled=true;receipt();});
+$('next').addEventListener('click',()=>{if(!ready)return;if(step===stages.length-1){$('response').textContent='Training complete: '+score+' of 4 evidence decisions correct. This is not a fraud determination or real election.';$('next').disabled=true;return;}step++;render();});
+document.querySelectorAll('.poll').forEach(b=>b.addEventListener('click',()=>{$('poll-outcome').textContent='Practice selection recorded locally: '+b.textContent+'. No vote was transmitted. No real-world election was affected.';}));
+$('reset').addEventListener('click',()=>{step=0;score=0;answers=[];$('poll-outcome').textContent='Choose a priority to see the local result.';render();});
+$('copy').addEventListener('click',async()=>{try{await navigator.clipboard.writeText($('receipt').textContent);$('response').textContent='Training receipt copied.';}catch(e){$('response').textContent='Clipboard unavailable; select the receipt text and copy manually.';}});
+render();
+})();
+</script></body></html>
