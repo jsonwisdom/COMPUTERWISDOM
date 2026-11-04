@@ -1,0 +1,20 @@
+name: citizen-audit-vortex
+services:
+  citizen-audit-vortex:
+    build: .
+    image: citizen-audit-vortex:local
+    container_name: citizen-audit-vortex
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8787:8080"
+    read_only: true
+    tmpfs:
+      - /tmp
+      - /var/cache/nginx
+      - /var/run
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    pids_limit: 100
+    mem_limit: 128m

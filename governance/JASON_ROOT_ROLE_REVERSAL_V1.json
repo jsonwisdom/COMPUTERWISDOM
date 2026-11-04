@@ -1,0 +1,61 @@
+{
+  "schema": "JASON_ROOT_ROLE_REVERSAL_PROPOSAL_V1",
+  "proposal_date": "2026-11-04",
+  "status": "DRAFT_UNAPPROVED",
+  "supersedes_if_approved": [
+    "COMPUTERWISDOM as operational control plane",
+    "Welcome-to-JSONWISDOM as canonical proof root"
+  ],
+  "proposed_roles": [
+    {
+      "repo": "jsonwisdom/Welcome-to-JSONWISDOM",
+      "role": "OPERATIONAL_ROOT",
+      "identity_label": "jaywisdom.base.eth",
+      "reason": "public onboarding, routable operations and continuity orientation",
+      "verification": "REPO_DECLARATION_ONLY"
+    },
+    {
+      "repo": "jsonwisdom/COMPUTERWISDOM",
+      "role": "CANONICAL_PROOF_ROOT_DESIGNATED",
+      "identity_label": "jaywisdom.eth",
+      "reason": "source-based evidence and constitutional proof review, separate from operations",
+      "verification": "PROPOSED_GOVERNANCE_ROLE_NOT_INDEPENDENT_PROOF"
+    }
+  ],
+  "preserved_roles": {
+    "AL": "registry/receipts",
+    "receiptos_base": "replay/docket",
+    "receipts_engine_v1": "proof verifier",
+    "JOY": "human continuity"
+  },
+  "required_checks": [
+    "inspect existing repo role claims and archived predecessors",
+    "confirm both repos' technical capability for assigned roles",
+    "identify all links that would become stale",
+    "verify name resolution and wallet controller independently",
+    "confirm publication rights and privacy controls for proof material",
+    "obtain Jason's explicit review before merge, release or onchain write"
+  ],
+  "onchain": {
+    "jaywisdom_eth": {
+      "name": "jaywisdom.eth",
+      "target_repo": "jsonwisdom/COMPUTERWISDOM",
+      "controller_verified": false,
+      "resolver_record_changed": false
+    },
+    "jaywisdom_base_eth": {
+      "name": "jaywisdom.base.eth",
+      "target_repo": "jsonwisdom/Welcome-to-JSONWISDOM",
+      "controller_verified": false,
+      "resolver_record_changed": false
+    }
+  },
+  "publication": {
+    "github_pr_draft_only": true,
+    "merge_authorized": false,
+    "cloudflare_deploy_authorized": false,
+    "ens_or_base_transaction_authorized": false,
+    "live_payment_authorized": false
+  },
+  "caveat": "Identity labels are project routing proposals, not assertions of current DNS/ENS/Basename resolver configuration, ownership, or authority."
+}

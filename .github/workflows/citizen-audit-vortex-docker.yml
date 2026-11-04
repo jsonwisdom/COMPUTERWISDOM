@@ -1,0 +1,37 @@
+name: Citizen Audit Vortex Docker Gate
+on:
+  pull_request:
+    paths:
+      - 'citizen-audit-vortex/**'
+      - '.github/workflows/citizen-audit-vortex-docker.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-and-probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate compose
+        run: docker compose -f citizen-audit-vortex/compose.yaml config -q
+      - name: Build local image
+        run: docker compose -f citizen-audit-vortex/compose.yaml build
+      - name: Start isolated localhost service
+        run: docker compose -f citizen-audit-vortex/compose.yaml up -d
+      - name: HTTP and safety smoke tests
+        shell: bash
+        run: |
+          set -euo pipefail
+          for n in $(seq 1 30); do
+            if curl --fail --silent http://127.0.0.1:8787/ > /tmp/citizen-vortex-response.html; then break; fi
+            sleep 2
+          done
+          grep -q 'Citizen Audit Vortex' /tmp/citizen-vortex-response.html
+          grep -q 'SIMULATION_ONLY' /tmp/citizen-vortex-response.html
+          grep -q 'verified_gate_count:0' /tmp/citizen-vortex-response.html
+          grep -q 'authority_created:false' /tmp/citizen-vortex-response.html
+          docker compose -f citizen-audit-vortex/compose.yaml ps
+      - name: Stop isolated service
+        if: always()
+        run: docker compose -f citizen-audit-vortex/compose.yaml down

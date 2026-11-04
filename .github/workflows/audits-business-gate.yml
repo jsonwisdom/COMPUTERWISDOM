@@ -1,0 +1,35 @@
+name: Audits Business Source Gate
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'audits-business/**'
+      - '.github/workflows/audits-business-gate.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check public publication boundaries
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          homepage = Path("index.html").read_text(encoding="utf-8")
+          landing = Path("audits-business/index.html").read_text(encoding="utf-8")
+          assert 'href="./audits-business/"' in homepage, "Audits & Business missing from primary navigation"
+          assert homepage.find('Audits &amp; Business') < homepage.find('The public puzzle.'), "Audits & Business not first"
+          for phrase in ("SERVICE BACKEND: NOT VERIFIED LIVE", "Evidence before conclusions", "Public research is not law enforcement"):
+              assert phrase in landing, f"Missing evidence boundary: {phrase}"
+          assert "No payments, attestations or adjudications performed" in landing
+          game = Path("audits-business/fraudfinder9000/index.html").read_text(encoding="utf-8")
+          assert 'href="./fraudfinder9000/"' in landing, "Citizen game absent from audit-first landing"
+          for phrase in ("JASON's Brain", "Librarian", "SIMULATION_ONLY", "No vote was transmitted", "not a fraud determination", "production_authorization:false"):
+              assert phrase in game, f"Citizen safety or brain checkpoint absent: {phrase}"
+          assert "https://www" not in game, "Game embeds an unexpected external URL"
+          print("PASS: citizen game simulation and evidence language")
+          print("PASS: public wording and navigation contract")
+          PY
