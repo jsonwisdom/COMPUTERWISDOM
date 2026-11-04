@@ -21,7 +21,7 @@ jobs:
           homepage = Path("index.html").read_text(encoding="utf-8")
           landing = Path("audits-business/index.html").read_text(encoding="utf-8")
           assert 'href="./audits-business/"' in homepage, "Audits & Business missing from primary navigation"
-          assert homepage.find('Audits & Business') < homepage.find('The public puzzle.'), "Audits & Business not first"
+          assert homepage.find('Audits &amp; Business') < homepage.find('The public puzzle.'), "Audits & Business not first"
           for phrase in ("SERVICE BACKEND: NOT VERIFIED LIVE", "Evidence before conclusions", "Public research is not law enforcement"):
               assert phrase in landing, f"Missing evidence boundary: {phrase}"
           assert "No payments, attestations or adjudications performed" in landing
