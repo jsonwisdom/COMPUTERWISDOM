@@ -14,16 +14,16 @@ printf 'source\trepository\tlocator\tsha256\tbytes\ttarget\n' > "$INDEX"
 exec > >(tee "$LOG") 2>&1
 OLD_STATE="0aa3d075ba6d4e200211474c9b280258aacc66058684db71cff57c5206cc6427"
 LIVE_STATE="d2a77b7decc7c7ef5a9fc23968a1c1fe203948f998a25949cdedf4bcd611ba24"
-# Validator target is a partial prefix: never assert equality from prefix alone.
-OLD_VALIDATOR_PREFIX="e0a623d0"
-LIVE_VALIDATOR_PREFIX="d771785d"
+# Full validator receipt SHA-256 digests recovered from reported receipt bundle.
+OLD_VALIDATOR="e0a623d06ff1424b53e5f552aa5298b033786aade385168a4168e9f766612b92"
+LIVE_VALIDATOR="d771785d49d6c5aec06dd1ec420a36b5d84d8e84ad41c5254efde20f56ab6dc0"
 sha() { sha256sum | awk '{print tolower($1)}'; }
 classify() {
   case "$1" in
     "$OLD_STATE") echo "MATCH_ORIGINAL_STATE" ;;
     "$LIVE_STATE") echo "MATCH_LIVE_STATE" ;;
-    "$OLD_VALIDATOR_PREFIX"*) echo "POSSIBLE_ORIGINAL_VALIDATOR_PREFIX_ONLY" ;;
-    "$LIVE_VALIDATOR_PREFIX"*) echo "POSSIBLE_LIVE_VALIDATOR_PREFIX_ONLY" ;;
+    "$OLD_VALIDATOR") echo "MATCH_ORIGINAL_VALIDATOR" ;;
+    "$LIVE_VALIDATOR") echo "MATCH_LIVE_VALIDATOR" ;;
     *) echo "RELATED_CANDIDATE_NOT_TARGET" ;;
   esac
 }
@@ -79,7 +79,7 @@ for repo in "$ROOT"/*; do
       # deep mode checks <=1 MB to avoid huge media objects.
       [[ "$size" -le 1048576 ]] || continue
       digest="$(git -C "$repo" cat-file blob "$oid" | sha)"
-      if [[ "$digest" == "$OLD_STATE" || "$digest" == "$LIVE_STATE" || "$digest" == "$OLD_VALIDATOR_PREFIX"* || "$digest" == "$LIVE_VALIDATOR_PREFIX"* ]]; then
+      if [[ "$digest" == "$OLD_STATE" || "$digest" == "$LIVE_STATE" || "$digest" == "$OLD_VALIDATOR" || "$digest" == "$LIVE_VALIDATOR" ]]; then
         mark="$(classify "$digest")"
         printf 'deep_blob\t%s\t%s\t%s\t%s\t%s\n' "$repo" "$oid" "$digest" "$size" "$mark" >> "$INDEX"
         echo "DEEP HIT $mark $(basename "$repo") $oid"
@@ -89,7 +89,7 @@ for repo in "$ROOT"/*; do
 done
 echo "repos_scanned=$repc worktree_candidates=$filec path_agnostic_named_blobs=$blobc"
 echo "independent_recovery=NOT_ESTABLISHED_UNLESS_EXACT_DIGEST_MATCH"
-echo "original_validator_digest=PREFIX_ONLY_NEEDS_FULL_HASH_FROM_RECEIPT"
+echo "original_validator_digest=FULL_SHA256_EXACT_MATCH_ONLY"
 echo "CANON=false AUTHORITY_CREATED=false"
 echo "INDEX=$INDEX"
 echo "LOG=$LOG"
