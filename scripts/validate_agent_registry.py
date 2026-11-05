@@ -5,6 +5,13 @@ This validator intentionally treats AgentDefinition as the schema for one
 agent entry and validates the registry wrapper separately.
 
 Authority remains false. This script validates structure only.
+
+ID rules (updated):
+- Legacy form (historical aliases): ^[a-z0-9][a-z0-9-]*$
+- Strict form (new): ^(CHAR|PERSONA|AGENT|ROLE):[A-Z0-9_]{1,64}:(?!000)[0-9]{3}$
+  Rejects version 000. Permits 001-999.
+Four-part invariant: Valid = Syntax ∧ UniqueID ∧ ValidVersion ∧ AuthorityCheck
+Syntax alone is insufficient.
 """
 
 import json
@@ -15,7 +22,8 @@ from typing import Any, Dict, List
 
 SCHEMA_URI = "https://jsonwisdom.org/schemas/AgentDefinition/v0.1"
 ISSUE_310 = "https://github.com/jsonwisdom/COMPUTERWISDOM/issues/310"
-AGENT_ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
+LEGACY_ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
+STRICT_ID_RE = re.compile(r"^(CHAR|PERSONA|AGENT|ROLE):[A-Z0-9_]{1,64}:(?!000)[0-9]{3}$")
 EXPECTED_AGENTS = {"navigator", "custody", "replay", "ci-gate", "clerk"}
 
 
@@ -36,6 +44,11 @@ def require_string(value: Any, field: str) -> None:
     require(isinstance(value, str) and len(value) > 0, f"{field} must be a non-empty string")
 
 
+def is_valid_agent_id(agent_id: str) -> bool:
+    """Accept legacy historical aliases or strict new form (rejects 000)."""
+    return bool(LEGACY_ID_RE.match(agent_id) or STRICT_ID_RE.match(agent_id))
+
+
 def validate_agent(agent: Dict[str, Any], index: int) -> str:
     allowed = {"agent_id", "purpose", "inputs", "outputs", "authority", "manifest_issue", "activated_at"}
     extra = set(agent) - allowed
@@ -43,7 +56,7 @@ def validate_agent(agent: Dict[str, Any], index: int) -> str:
 
     require_string(agent.get("agent_id"), f"agent[{index}].agent_id")
     agent_id = agent["agent_id"]
-    require(bool(AGENT_ID_RE.match(agent_id)), f"agent[{index}].agent_id has invalid format: {agent_id}")
+    require(is_valid_agent_id(agent_id), f"agent[{index}].agent_id has invalid format: {agent_id}")
 
     require_string(agent.get("purpose"), f"agent[{index}].purpose")
     require(agent.get("authority") is False, f"agent[{index}].authority must be false")
@@ -98,6 +111,7 @@ def main() -> int:
 
     print("VALIDATION_PASSED: JSONWisdom agent registry v0.1")
     print("authority=false")
+    print("ID rules: legacy historical aliases preserved; strict form rejects version 000")
     return 0
 
 
