@@ -1,0 +1,20 @@
+{ "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "finance-provenance", "title": "FinanceProvenance", "type": "object", "additionalProperties": false,
+  "required": ["type","subject","claims","sources","independence","liveSpend","walletSigning","dataLabel","AUTHORITY_CREATED"],
+  "properties": {
+    "type": {"const":"FinanceProvenance"},
+    "subject": {"type":"string","minLength":1},
+    "claims": {"type":"array","items":{"type":"object","additionalProperties":false,"required":["field","value","sourceId"],
+      "properties":{"field":{"type":"string"},"value":{"type":["string","number","null"]},"sourceId":{"type":"string"}}}},
+    "sources": {"type":"array","minItems":1,"items":{"type":"object","additionalProperties":false,
+      "required":["sourceId","adapter","availability","retrievedDigest","operator"],
+      "properties":{"sourceId":{"type":"string"},"adapter":{"enum":["FEC","OPENSECRETS","THIRD_SOURCE"]},
+        "availability":{"enum":["AVAILABLE","RATE_LIMITED","AUTH_REQUIRED","NOT_CONFIGURED","ERROR"]},
+        "retrievedDigest":{"anyOf":[{"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/sha256"},{"type":"null"}]},
+        "operator":{"type":"string","minLength":1}}}},
+    "independence": {"type":"object","additionalProperties":false,"required":["declared","distinctOperators","basis"],
+      "properties":{"declared":{"type":"boolean"},"distinctOperators":{"type":"integer","minimum":0},"basis":{"type":"string"}}},
+    "liveSpend": {"const": false},
+    "walletSigning": {"const": false},
+    "dataLabel": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/label"},
+    "AUTHORITY_CREATED": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/authority"}
+  } }

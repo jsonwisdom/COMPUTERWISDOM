@@ -1,0 +1,47 @@
+{
+  "project": "democracy-dice",
+  "version": "1.6.0-hold",
+  "status": "HOLD",
+  "AUTHORITY_CREATED": false,
+  "FINAL_AUTHORITY": "JASON",
+  "generatedAt": "2026-10-25T13:25:39.576Z",
+  "node": "v20.19.2",
+  "python": "Python 3.13.5",
+  "baseCommit": "7e432f155373d87d8ec62654956ece734fb0b239",
+  "exitCode": 0,
+  "tests": {
+    "total": 38,
+    "pass": 38,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "vectors": [
+    {
+      "id": "TV-001",
+      "result": "SEARCH_MISS",
+      "actual": "sha256:c69d48fc3e26a6d283f7bfd1c40d7d05c51d5b171b55ddff272bd5b00e330baa"
+    },
+    {
+      "id": "TV-002",
+      "result": "SEARCH_MISS",
+      "actual": "sha256:45a8adb19249c304c704f69e1b60e43de1e414b1d02844c2e0dbf755aa3f810b"
+    },
+    {
+      "id": "SYN-001",
+      "result": "MATCH",
+      "actual": "sha256:e9709c411e0bebcef268bff3cf3c38a0d0dff57ff731a93a61a5a342418659dd"
+    },
+    {
+      "id": "SYN-002",
+      "result": "MATCH",
+      "actual": "sha256:14cfa76eff37bd0fdebfb52b16ba6710e4ef6ab4b7705d7ef3177b9e6a5c0eff"
+    }
+  ],
+  "syn002PythonCrosscheck": "sha256:14cfa76eff37bd0fdebfb52b16ba6710e4ef6ab4b7705d7ef3177b9e6a5c0eff",
+  "labels": {
+    "rolls": "SYNTHETIC",
+    "adapters": "LIVE_UNAVAILABLE (NOT_CONFIGURED)",
+    "adapterStatusMappingTests": "MOCK fetch"
+  }
+}

@@ -1,0 +1,10 @@
+{ "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "replay-packet", "title": "ReplayPacket", "type": "object", "additionalProperties": false,
+  "required": ["type","version","seedDigest","rolls","packetDigest","dataLabel","status","AUTHORITY_CREATED","FINAL_AUTHORITY"],
+  "properties": {
+    "type": {"const":"ReplayPacket"}, "version": {"const":"1.6"},
+    "seedDigest": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/sha256"},
+    "rolls": {"type":"array","items":{"$ref":"roll-receipt"}},
+    "packetDigest": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/sha256"},
+    "dataLabel": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/label"},
+    "status": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/status"}, "AUTHORITY_CREATED": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/authority"}, "FINAL_AUTHORITY": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/finalAuthority"}
+  } }
