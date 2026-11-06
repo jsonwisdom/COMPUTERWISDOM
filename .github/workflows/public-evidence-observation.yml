@@ -1,0 +1,107 @@
+name: Public Evidence Observation Lane (HOLD)
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - '.github/workflows/public-evidence-observation.yml'
+permissions:
+  contents: read
+jobs:
+  observe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - name: Capture public-only observations
+        env:
+          GH_READ_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import datetime, hashlib, json, os, socket, ssl, urllib.request, urllib.error
+          from pathlib import Path
+
+          def fetch(url, method="GET", extra_headers=None):
+              headers={"User-Agent":"jsonwisdom-readonly-observation/0.1"}
+              if extra_headers: headers.update(extra_headers)
+              req=urllib.request.Request(url,headers=headers,method=method)
+              try:
+                  with urllib.request.urlopen(req,timeout=12,context=ssl.create_default_context()) as r:
+                      body=r.read(700000)
+                      return {"http_status":r.status,"body":body.decode("utf-8","replace")}
+              except urllib.error.HTTPError as e:
+                  return {"http_status":e.code,"error":"HTTP response"}
+              except Exception as e:
+                  return {"status":"HOLD","error_type":type(e).__name__}
+
+          headers={"Accept":"application/vnd.github+json","Authorization":"Bearer "+os.environ["GH_READ_TOKEN"]}
+          repos=[]
+          inventory_errors=[]
+          for page in range(1,11):
+              response=fetch("https://api.github.com/users/jsonwisdom/repos?type=public&per_page=100&page="+str(page),extra_headers=headers)
+              if response.get("http_status")!=200:
+                  inventory_errors.append({"page":page,"response":{k:v for k,v in response.items() if k!="body"}})
+                  break
+              try: entries=json.loads(response["body"])
+              except ValueError:
+                  inventory_errors.append({"page":page,"error":"INVALID_JSON"});break
+              repos += [{"full_name":r.get("full_name"),"default_branch":r.get("default_branch"),"archived":r.get("archived"),"updated_at":r.get("updated_at")} for r in entries]
+              if len(entries)<100: break
+              if page==10: inventory_errors.append({"error":"PAGINATION_CAP_REACHED"})
+
+          sites={}
+          for host in ["jsonwisdom.com","www.jsonwisdom.com","auth.jsonwisdom.com"]:
+              try:
+                  addr=sorted({x[4][0] for x in socket.getaddrinfo(host,443,type=socket.SOCK_STREAM)})
+                  dns={"resolved":True,"addresses":addr}
+              except Exception as e:
+                  dns={"resolved":False,"error_type":type(e).__name__}
+              check=fetch("https://"+host,method="HEAD")
+              sites[host]={"dns":dns,"https_head":{k:v for k,v in check.items() if k!="body"}}
+
+          # A HEAD check only establishes endpoint reachability, never ledger correctness.
+          sol=fetch("https://api.mainnet-beta.solana.com",method="HEAD")
+          rpc={}
+          for method in ("getHealth","getEpochInfo"):
+              payload=json.dumps({"jsonrpc":"2.0","id":1,"method":method}).encode("utf-8")
+              req=urllib.request.Request("https://api.mainnet-beta.solana.com",data=payload,headers={"Content-Type":"application/json","User-Agent":"jsonwisdom-readonly-observation/0.2"},method="POST")
+              try:
+                  with urllib.request.urlopen(req,timeout=12,context=ssl.create_default_context()) as response:
+                      document=json.loads(response.read(100000))
+                      if document.get("error"):
+                          rpc[method]={"status":"HOLD","rpc_error":document["error"]}
+                      else:
+                          rpc[method]={"status":"OBSERVED","result":document.get("result"),"http_status":response.status}
+              except Exception as e:
+                  rpc[method]={"status":"HOLD","error_type":type(e).__name__}
+
+          data={
+            "schema":"JSONWisdom-Public-Observation-V0.1",
+            "observed_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "authority":False,"governance":"HOLD",
+            "historical_75_3_72_reconciliation":"NOT_ATTEMPTED",
+            "historical_manifest_authority":"NOT_GRANTED",
+            "public_github_repositories":repos,
+            "public_inventory_complete":not inventory_errors,
+            "public_inventory_errors":inventory_errors,
+            "sites":sites,
+            "solana_rpc_reachability_only":{k:v for k,v in sol.items() if k!="body"},
+            "solana_readonly_rpc_observations":rpc,
+            "solana_finality_independently_verified":False,
+            "flywheel_x402_settlement":"NOT_TESTED",
+            "flywheel_production_deployment":"NOT_VERIFIED",
+            "wallet_signing":"NONE",
+            "payments":"NONE",
+            "publication_authority":False
+          }
+          out=Path("observation");out.mkdir(exist_ok=True)
+          raw=(json.dumps(data,indent=2,sort_keys=True)+"\n").encode()
+          (out/"public-observation.json").write_bytes(raw)
+          (out/"public-observation.sha256").write_text(hashlib.sha256(raw).hexdigest()+"  public-observation.json\n")
+          print("OBSERVATION COMPLETE; GOVERNANCE HOLD; PUBLIC REPOS:",len(repos),"INVENTORY COMPLETE:",not inventory_errors)
+          PY
+      - name: Attach observation receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-observation-HOLD
+          path: observation/
+          if-no-files-found: warn
