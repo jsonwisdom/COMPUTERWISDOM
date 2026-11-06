@@ -47,13 +47,14 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Install Playwright
-        run: npx --yes playwright@1.49.0 install --with-deps chromium
+      - name: Install Playwright and browsers
+        run: |
+          npm init -y
+          npm install --save-dev @playwright/test@1.49.0
+          npx playwright install --with-deps chromium
 
       - name: Run browser smoke test
-        run: |
-          npx --yes playwright@1.49.0 test tests/mmr-browser.spec.js --project=chromium || true
-          # Non-blocking for first wiring; receipt still produced
+        run: npx playwright test tests/mmr-browser.spec.js --project=chromium
 
       - name: Upload browser results
         if: always()
