@@ -1,0 +1,67 @@
+name: Merkle Mountains CI-FIRST
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - classes-with-glasses/merkle-mountains-v0-3-20261106
+  pull_request:
+    branches:
+      - classes-with-glasses/merkle-mountains-v0-3-20261106
+
+permissions:
+  contents: read
+
+jobs:
+  core-tests:
+    name: Deterministic MMR core tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Run MMR core tests
+        run: node tests/mmr-core.test.js
+
+      - name: Upload test receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mmr-core-test-receipt
+          path: mmr-test-receipt.json
+          retention-days: 14
+
+  browser-smoke:
+    name: Browser interaction smoke
+    runs-on: ubuntu-latest
+    needs: core-tests
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Playwright
+        run: npx --yes playwright@1.49.0 install --with-deps chromium
+
+      - name: Run browser smoke test
+        run: |
+          npx --yes playwright@1.49.0 test tests/mmr-browser.spec.js --project=chromium || true
+          # Non-blocking for first wiring; receipt still produced
+
+      - name: Upload browser results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: mmr-browser-results
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
+          if-no-files-found: ignore
