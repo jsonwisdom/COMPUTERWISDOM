@@ -7,12 +7,17 @@ name: Gray Baby Bulk Replay V1
 on:
   workflow_dispatch:
     inputs:
+      replay_from_beginning:
+        description: "Replay the entire inventory from the first object. Overrides batch_start and batch_size."
+        required: false
+        default: false
+        type: boolean
       batch_start:
-        description: "Start index into the inventory (zero-based)"
+        description: "Start index into the inventory (zero-based). Ignored when replay_from_beginning is true."
         required: false
         default: "0"
       batch_size:
-        description: "Objects per batch"
+        description: "Objects per batch. Ignored when replay_from_beginning is true."
         required: false
         default: "32"
       mode:
@@ -59,14 +64,20 @@ jobs:
           BATCH_START: ${{ inputs.batch_start }}
           BATCH_SIZE: ${{ inputs.batch_size }}
           MODE: ${{ inputs.mode }}
+          REPLAY_FROM_BEGINNING: ${{ inputs.replay_from_beginning }}
         run: |
           set -eu
+          FULL_FLAG=""
+          if [ "$REPLAY_FROM_BEGINNING" = "true" ]; then
+            FULL_FLAG="--full"
+          fi
           python tools/gray_baby/build_batch.py \
             --workdir "$RUNNER_TEMP/gray-baby" \
             --inventory fixtures/gray_baby/synthetic_inventory_v1.json \
             --batch-start "$BATCH_START" \
             --batch-size "$BATCH_SIZE" \
-            --mode "$MODE"
+            --mode "$MODE" \
+            $FULL_FLAG
 
       - name: replay_batch
         env:

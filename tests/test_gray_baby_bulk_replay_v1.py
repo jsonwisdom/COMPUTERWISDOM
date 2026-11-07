@@ -10,7 +10,7 @@ import jsonschema
 import pytest
 
 from src.replay_kernel_v0_1 import AUTHORITY, canonical_json, sha256_text
-from tools.gray_baby.build_batch import build_batch
+from tools.gray_baby.build_batch import FULL_REPLAY_BATCH_ID, build_batch
 from tools.gray_baby.build_scoreboard import build_scoreboard
 from tools.gray_baby.classify_deltas import classify_batch, preliminary_state
 from tools.gray_baby.constants import (
@@ -479,3 +479,73 @@ def test_workflow_is_manual_read_only_and_additive():
     ):
         assert step in text
     assert "upload-artifact" in text
+
+
+def test_workflow_exposes_replay_from_beginning_input():
+    text = WORKFLOW.read_text(encoding="utf-8")
+    assert "replay_from_beginning:" in text
+    assert "type: boolean" in text
+    assert "--full" in text
+    assert "REPLAY_FROM_BEGINNING" in text
+
+
+def test_full_flag_selects_entire_inventory_from_position_zero():
+    inventory = _inventory()
+    all_objects = inventory["objects"]
+    batch = build_batch(
+        inventory,
+        batch_start=99,
+        batch_size=1,
+        mode=REPLAY_MODE,
+        inventory_uri=str(INVENTORY_PATH),
+        full=True,
+    )
+    assert batch["batch_id"] == FULL_REPLAY_BATCH_ID
+    assert batch["batch_start"] == 0
+    assert batch["batch_size"] == len(all_objects)
+    assert batch["selected_count"] == len(all_objects)
+    assert batch["full_replay"] is True
+    assert len(batch["objects"]) == len(all_objects)
+    assert batch["authority_created"] is False
+
+
+def test_full_flag_end_to_end(tmp_path: Path):
+    inventory = _inventory()
+    batch = build_batch(
+        inventory,
+        batch_start=0,
+        batch_size=32,
+        mode=REPLAY_MODE,
+        inventory_uri=str(INVENTORY_PATH),
+        full=True,
+    )
+    assert batch["batch_id"] == FULL_REPLAY_BATCH_ID
+    replay = replay_loaded_batch(batch)
+    assert len(replay["objects"]) == len(inventory["objects"])
+    membranes = validate_batch(batch, replay)
+    classified = classify_batch(batch, replay, membranes)
+    receipt = write_all(batch, classified, tmp_path)
+    scoreboard = build_scoreboard(receipt, classified)
+    assert scoreboard["INPUT_OBJECTS"] == len(inventory["objects"])
+    assert scoreboard["AUTHORITY_CREATED"] is False
+
+
+def test_full_flag_overrides_batch_start_in_cli(tmp_path: Path):
+    inventory = _inventory()
+    workdir = tmp_path / "workdir"
+    workdir.mkdir()
+    import sys
+    from tools.gray_baby.build_batch import main as build_main
+
+    build_main([
+        "--workdir", str(workdir),
+        "--inventory", str(INVENTORY_PATH),
+        "--batch-start", "500",
+        "--batch-size", "1",
+        "--mode", REPLAY_MODE,
+        "--full",
+    ])
+    result = json.loads((workdir / "batch_input.json").read_text(encoding="utf-8"))
+    assert result["batch_id"] == FULL_REPLAY_BATCH_ID
+    assert result["batch_start"] == 0
+    assert result["selected_count"] == len(inventory["objects"])

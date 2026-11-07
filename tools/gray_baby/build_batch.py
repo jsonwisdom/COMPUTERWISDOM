@@ -21,6 +21,8 @@ from tools.gray_baby.constants import (
 
 DEFAULT_INVENTORY = Path("fixtures/gray_baby/synthetic_inventory_v1.json")
 
+FULL_REPLAY_BATCH_ID = "GRAY_BABY_FULL_REPLAY"
+
 
 def batch_id_for(batch_start: int, batch_size: int) -> str:
     index = (batch_start // batch_size) + 1
@@ -34,6 +36,7 @@ def build_batch(
     batch_size: int,
     mode: str,
     inventory_uri: str,
+    full: bool = False,
 ) -> dict[str, Any]:
     if mode != REPLAY_MODE:
         raise ValueError(f"unsupported mode: {mode}")
@@ -43,12 +46,22 @@ def build_batch(
         inventory.get("objects") or [],
         key=lambda obj: (str(obj.get("observed_at") or ""), str(obj.get("object_id") or "")),
     )
-    selected = objects[batch_start : batch_start + batch_size]
+    if full:
+        effective_start = 0
+        effective_size = len(objects) if objects else 1
+        selected = objects
+        bid = FULL_REPLAY_BATCH_ID
+    else:
+        effective_start = batch_start
+        effective_size = batch_size
+        selected = objects[effective_start : effective_start + effective_size]
+        bid = batch_id_for(effective_start, effective_size)
     inventory_class = str(inventory.get("inventory_class") or "UNSPECIFIED")
     return {
-        "batch_id": batch_id_for(batch_start, batch_size),
-        "batch_start": batch_start,
-        "batch_size": batch_size,
+        "batch_id": bid,
+        "batch_start": effective_start,
+        "batch_size": effective_size,
+        "full_replay": full,
         "mode": mode,
         "inventory_class": inventory_class,
         "inventory_count": len(objects),
@@ -74,6 +87,15 @@ def main(argv: list[str] | None = None) -> None:
     parser.add_argument("--batch-start", type=int, default=0)
     parser.add_argument("--batch-size", type=int, default=DESIGN_BATCH_SIZE)
     parser.add_argument("--mode", default=REPLAY_MODE)
+    parser.add_argument(
+        "--full",
+        action="store_true",
+        default=False,
+        help=(
+            "Replay the entire inventory from the first object. "
+            "Overrides --batch-start and --batch-size."
+        ),
+    )
     args = parser.parse_args(argv)
     inventory_path = Path(args.inventory)
     inventory = json.loads(inventory_path.read_text(encoding="utf-8"))
@@ -84,6 +106,7 @@ def main(argv: list[str] | None = None) -> None:
             batch_size=args.batch_size,
             mode=args.mode,
             inventory_uri=args.inventory,
+            full=args.full,
         )
     except ValueError as exc:
         raise SystemExit(str(exc)) from exc
