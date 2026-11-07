@@ -1,0 +1,55 @@
+name: Jason's DNS — CI-FIRST Fail-Closed
+
+on:
+  pull_request:
+    paths:
+      - 'security/jasons-dns-ci/**'
+      - '.github/workflows/jasons-dns-ci-first.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '17 11 * * *'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Zero-dependency deterministic mathematics / negative CI fixtures
+        run: node --test security/jasons-dns-ci/JASONS_DNS_CI_TESTS.mjs
+      - name: Independent public static-byte / RDAP checks (fail closed)
+        if: always()
+        run: |
+          set +e
+          node security/jasons-dns-ci/JASONS_DNS_CI_RUNNER.mjs public "$RUNNER_TEMP/jasons-dns-public.json"; PUBLIC=$?
+          node security/jasons-dns-ci/JASONS_DNS_CI_RUNNER.mjs rdap "$RUNNER_TEMP/jasons-dns-rdap.json"; RDAP=$?
+          echo "public_exit=$PUBLIC rdap_exit=$RDAP"
+          if [ "$PUBLIC" -ne 0 ] || [ "$RDAP" -ne 0 ]; then exit 1; fi
+      - name: Private Cloudflare and human gates (missing credentials => UNKNOWN, never green)
+        if: always()
+        env:
+          CF_API_TOKEN: ${{ secrets.JASONS_DNS_CF_READ_ONLY }}
+          CF_ACCOUNT_ID: ${{ secrets.JASONS_DNS_CF_ACCOUNT_ID }}
+          CF_ZONE_COM: ${{ secrets.JASONS_DNS_CF_ZONE_COM }}
+          CF_ZONE_IO: ${{ secrets.JASONS_DNS_CF_ZONE_IO }}
+        run: |
+          set +e
+          node security/jasons-dns-ci/JASONS_DNS_CI_RUNNER.mjs private "$RUNNER_TEMP/jasons-dns-private.json"; PRIVATE=$?
+          node security/jasons-dns-ci/JASONS_DNS_CI_RUNNER.mjs human "$RUNNER_TEMP/jasons-dns-human.json"; HUMAN=$?
+          echo "private_exit=$PRIVATE human_exit=$HUMAN"
+          if [ "$PRIVATE" -ne 0 ] || [ "$HUMAN" -ne 0 ]; then exit 1; fi
+      - name: Preserve explicit failure/unknown JSON receipts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jasons-dns-ci-first-receipts
+          if-no-files-found: error
+          path: |
+            ${{ runner.temp }}/jasons-dns-*.json
+            ${{ runner.temp }}/jasons-dns-*.json.sha256

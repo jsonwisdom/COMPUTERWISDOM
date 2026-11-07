@@ -1,0 +1,30 @@
+{
+  "schema": "JASONS_DNS_CI_CONTRACT_V1",
+  "baselineObservedUTC": "2026-11-07T00:21:54.420Z",
+  "scope": "Public static delivery + Cloudflare security posture + public RDAP + human approvals",
+  "noAutomaticPromotion": true,
+  "publicHosts": [
+    "proof.jsonwisdom.com",
+    "proof.jsonwisdom.io",
+    "seymour.jsonwisdom.com",
+    "seymour.jsonwisdom.io"
+  ],
+  "assets": {
+    "/": {"bytes":22440,"sha256":"414b438e794986a101fc9ddbb4cc1c507cd3bb5be8b97bc5a867860b1cd1824e"},
+    "/app.css": {"bytes":11249,"sha256":"79e490513a347fee6f05b36f986b585549e1e78ef3c5244f41faf7471dbe362a"},
+    "/app.js": {"bytes":10815,"sha256":"fe8cdf081031713d6d6e30e11847bdb50c209d74b20d19bff39c912d843eb849"},
+    "/engine.mjs": {"bytes":7485,"sha256":"e50cf286b3996b743f19345cc5f3203c0afc72f2297b13ee145428f95421b553"}
+  },
+  "rdap": {
+    "jsonwisdom.com": "https://rdap.verisign.com/com/v1/domain/jsonwisdom.com",
+    "jsonwisdom.io": "https://rdap.identitydigital.services/rdap/domain/jsonwisdom.io"
+  },
+  "inventoryMinimum": 23,
+  "requiredWorkers": ["jasons-dns-burden-of-proof","seymour-supreme-public","seymour-swarm-orchestrator"],
+  "separation": {
+    "public": "read-only app; local session only",
+    "private": "no credentials or exhibits in URLs or public GitHub",
+    "payments": "x402 off, wallet signing off",
+    "authority": "human only; tests never authorize deployment"
+  }
+}
