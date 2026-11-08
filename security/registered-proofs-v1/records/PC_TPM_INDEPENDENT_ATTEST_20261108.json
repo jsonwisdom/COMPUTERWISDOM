@@ -1,0 +1,42 @@
+{
+  "schema": "CW_REGISTERED_PROOF_V1",
+  "id": "PC_TPM_INDEPENDENT_ATTEST_20261108",
+  "claim": "A live Windows AMD TPM read-only probe succeeded; independent nonce-bound hardware attestation is not established.",
+  "scope": "HARDWARE_ATTESTATION",
+  "record_created_utc": "2026-11-08T19:34:03Z",
+  "evidence": [
+    {
+      "source": "https://github.com/jsonwisdom/COMPUTERWISDOM/issues/748",
+      "raw_bytes_sha256": null,
+      "assertion": "User-reported local PowerShell readback: TPM open AMD firmware 6.31, BitLocker fully encrypted ON, RecoveryPassword/Tpm protectors. No TPM signed quote verified; original PC output not uploaded."
+    }
+  ],
+  "checks": [
+    {
+      "id": "user_reported_tpm_probe",
+      "status": "PASS",
+      "reason": "User supplied successful output from locally hash-checked CW probe; not independently observed by this cloud runner."
+    },
+    {
+      "id": "independent_nonce_ak_pcr_eventlog_verification",
+      "status": "UNKNOWN",
+      "reason": "No independent verifier receipt or credential activation provided."
+    },
+    {
+      "id": "trusted_amd_root",
+      "status": "UNKNOWN",
+      "reason": "Windows chain status UntrustedRoot; external chain certification unresolved."
+    }
+  ],
+  "ci_verdict": "UNKNOWN",
+  "not_proven": [
+    "Signed TPM quote",
+    "EK-to-AK binding",
+    "Third-party hardware certification",
+    "Recovery key backup location",
+    "Absence of compromise"
+  ],
+  "authority_created": false,
+  "external_certification": false,
+  "payment_authorized": false
+}
