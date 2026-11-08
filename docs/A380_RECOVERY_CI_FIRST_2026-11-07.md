@@ -139,3 +139,23 @@ These timestamps are user-reported from earlier chats, not independently authent
 - The recorded Oct 9 origin and Nov 1 custom domain **differ**. No claim of resolved login or recovery by this source-only work.
 - Earlier Coinbase support transcript calls `jwisdom44` a passkey login in November; it does **not** map the Oct 9 A380 account to an individual credential ID.
 - Next gate is runtime synthetic test + independent SDK security review. Do not merge, publish, or initiate new authentication on user's device from this file. 
+
+## 2026-11-07 CST — A380 Recovery Bridge (dual-route, no signing)
+
+A separate **draft-only** connection diagnostic has been created at
+`wallet-control/A380_RECOVERY_BRIDGE_READONLY_2026-11-07.txt`.
+Its exact original-site origin is `https://jsonwisdom.github.io` (from the 2026-10-09 proof), and its SDK app name/SRI matches the Oct 6 revision. Two independent routes on deliberate user interaction:
+
+1. **Historical Base Account SDK** `@base-org/account@2.5.10`, read `eth_accounts`; request `eth_requestAccounts` only if no current authorization; read `eth_chainId`.
+2. **Existing injected Coinbase provider** via EIP-6963 where available, otherwise explicitly marked Coinbase EIP-1193 (never generic MetaMask/Phantom); same three allowed RPC methods.
+
+Both compare the observed address to target A380 and the two previously observed A380 direct owner addresses. Address-only matches **never mean signing authority**. The two-owner historical snapshot is explicitly labeled and not misrepresented as freshly re-read. No seed, passkey, YubiKey, custody, signing, payment, network switch, wallet creation, registration, file upload, or credential changes.
+
+**CI-FIRST synthetic tests (run in an isolated JavaScript browser mock): 9/9 PASS**:
+matching A380; Base-SDK wrong account; injected-provider wrong account; direct-owner address only; wrong origin; SDK missing; non-Coinbase provider; existing-account connection permission; wrong chain. All observed RPC calls were within `eth_accounts`, `eth_requestAccounts`, `eth_chainId`. A separate test suite is stored at `wallet-control/A380_RECOVERY_BRIDGE_READONLY_2026-11-07.test.mjs`, not yet exercised by a GitHub CI runner.
+
+Wolfram SHA-256 UTF-8 readback:
+- Bridge `.txt`: `5cc35bb2b2a88eb3ba5b8a872107edfcc52409686c9f6a1a8b46afd2b4af97be`
+- Node synthetic test source: `3a20be6e5dc07701e25c63bc8295fa2271149c69c2e19cda37f9bc0d39f5b010`
+
+**IMPORTANT LIMIT:** The user is currently signed into a DIFFERENT iPhone Coinbase wallet `0x5727…9BfD`. This bridge cannot sign for A380 using that other wallet, cannot discover the hidden passkey behind the returned address, and cannot create or recover lost signing keys. It only tests which wallet address each existing connection route returns. **No live deployment, no iPhone interaction, no signing proof, no actual wallet recovery**. A future deployment requires independent SDK/SRI/CSP review and explicit authorization, with no modification to the quarantined PR #649 signer.
