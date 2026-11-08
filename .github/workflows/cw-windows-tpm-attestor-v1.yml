@@ -1,0 +1,49 @@
+name: CW Windows TPM Attestor V1 Build
+
+on:
+  pull_request:
+    paths:
+      - "tools/cw-tpm-attestor-v1/**"
+      - ".github/workflows/cw-windows-tpm-attestor-v1.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  cross-build-and-negative-tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    defaults:
+      run:
+        working-directory: tools/cw-tpm-attestor-v1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.25.3"
+          cache: false
+      - name: Resolve exact direct dependency and lock transitive modules for this run
+        run: go mod tidy
+      - name: Verify deterministic negative tests without TPM keys
+        run: go test -count=1 ./...
+      - name: Go vet
+        run: go vet ./...
+      - name: Build Windows x64 TPM client + verifier
+        run: GOOS=windows GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -o cw-tpm-v1-windows-amd64.exe .
+      - name: Build portable Linux verifier
+        run: GOOS=linux GOARCH=amd64 CGO_ENABLED=0 go build -trimpath -o cw-tpm-v1-linux-amd64 .
+      - name: Emit SHA-256 and dependency lock used for build
+        run: |
+          sha256sum cw-tpm-v1-windows-amd64.exe cw-tpm-v1-linux-amd64 | tee BUILD_SHA256.txt
+          cp go.sum BUILD_GO_SUM.txt
+      - name: Upload unsigned build and dependency evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: cw-tpm-attestor-v1-unsigned-build
+          path: |
+            tools/cw-tpm-attestor-v1/cw-tpm-v1-windows-amd64.exe
+            tools/cw-tpm-attestor-v1/cw-tpm-v1-linux-amd64
+            tools/cw-tpm-attestor-v1/BUILD_SHA256.txt
+            tools/cw-tpm-attestor-v1/BUILD_GO_SUM.txt
+          retention-days: 7
