@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>A380 Base Account SDK diagnostic - DRAFT ONLY / NOT DEPLOYED</title>
+<!--
+CI-FIRST DRAFT. Not production-ready.
+This reproduces only the Base Account SDK 2.5.10 connection path
+from GitHub commit 8de2525d (Oct 5 2026).
+Third-party script integrity/CSP/security review required before deployment.
+NO SIGNATURE, NO TRANSACTIONS, NO OWNER MODIFICATIONS.
+Never enter a seed phrase. Cancel if prompted to create another wallet.
+-->
+<script src="https://unpkg.com/@base-org/account@2.5.10/dist/base-account.min.js"></script>
+</head>
+<body>
+<main>
+<h1>CI-FIRST A380 connection diagnostic</h1>
+<p><strong>Draft only. Not deployed or approved.</strong> Existing wallet only; cancel any offer to create a new wallet. This requests wallet connection permission but never signs or moves assets.</p>
+<p>Expected: <code>0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8</code></p>
+<button id="connect" type="button">Inspect existing Base Account</button>
+<pre id="result">UNKNOWN: no attempt</pre>
+</main>
+<script>
+'use strict';
+(() => {
+  const ORIGIN = 'https://wallet.jsonwisdom.com';
+  const EXPECTED = '0xa380552a27b0a5a2874ea7aa52cac09f542002e8';
+  const out = document.getElementById('result');
+  const btn = document.getElementById('connect');
+  const show = (status, detail) => { out.textContent = status + '\n' + detail; };
+  btn.addEventListener('click', async () => {
+    btn.disabled = true;
+    try {
+      if (location.origin !== ORIGIN) throw Error('FAIL_ORIGIN: Not on reviewed target origin');
+      if (typeof window.createBaseAccountSDK !== 'function') throw Error('UNKNOWN_SDK: Original SDK unavailable');
+      const sdk = window.createBaseAccountSDK({
+        appName: 'Computer Wisdom A380 CI-FIRST Diagnostic',
+        appChainIds: [8453]
+      });
+      const provider = sdk.getProvider();
+      // Read existing authorization first; only ask for consent if not already connected.
+      let accounts = await provider.request({method: 'eth_accounts'});
+      if (!Array.isArray(accounts) || accounts.length === 0) {
+        show('CONSENT_REQUIRED', 'Use an EXISTING wallet. Cancel any wallet-creation prompt.');
+        accounts = await provider.request({method: 'eth_requestAccounts'});
+      }
+      const address = Array.isArray(accounts) ? String(accounts[0] || '') : '';
+      if (!/^0x[0-9a-fA-F]{40}$/.test(address)) throw Error('UNKNOWN_ACCOUNT: No address returned');
+      const chain = await provider.request({method: 'eth_chainId'});
+      const match = address.toLowerCase() === EXPECTED;
+      const correctChain = String(chain).toLowerCase() === '0x2105';
+      show(match && correctChain ? 'PASS_CONNECTED_ADDRESS_MATCH' : 'FAIL_IDENTITY_OR_NETWORK_MISMATCH',
+        'Observed UTC: ' + new Date().toISOString() +
+        '\nProvider: BASE_ACCOUNT_SDK_2.5.10' +
+        '\nAddress: ' + address +
+        '\nNetwork: ' + chain +
+        '\nExpected: ' + EXPECTED +
+        '\nSigning authority: UNKNOWN; NO SIGNATURE REQUESTED');
+    } catch (e) {
+      show('UNKNOWN_NO_RECOVERY_PROVEN', String(e && e.message || e).slice(0,320));
+    } finally { btn.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>
