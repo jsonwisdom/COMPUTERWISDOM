@@ -166,6 +166,8 @@ if __name__ == "__main__":
     parser.add_argument("--self-test", action="store_true")
     args = parser.parse_args()
     if args.self_test:
-        unittest.main(argv=["CIAdversarialTests"], exit=False, verbosity=2)
+        suite = unittest.defaultTestLoader.loadTestsFromTestCase(CIAdversarialTests)
+        result = unittest.TextTestRunner(verbosity=2).run(suite)
+        raise SystemExit(0 if result.wasSuccessful() else 1)
     else:
         print(json.dumps(evaluate(FIXTURE.read_bytes()), indent=2, sort_keys=True))
