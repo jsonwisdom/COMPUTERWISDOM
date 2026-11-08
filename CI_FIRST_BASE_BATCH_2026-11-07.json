@@ -1,0 +1,20 @@
+{
+  "schema": "jsonwisdom.ci-first.batch-input.v1",
+  "chain_id": 8453,
+  "proofs": [
+    {
+      "id": "Wallet2-Address2-2026-11-07",
+      "scheme": "eip191_personal_sign",
+      "expected_address": "0x65891F97db01C8fC9F76f4DFE65Bd44F8261f1B0",
+      "message": "Computer Wisdom CI-FIRST Wallet2 Proof 2026-11-07. Address: 0x65891F97db01C8fC9F76f4DFE65Bd44F8261f1B0. Purpose: prove control of this address only. No payments, transactions, ENS changes, contract approvals, or authority transfer. Historical A380 identity remains separate.",
+      "signature": "0xd1a7e8093d4c248fd5833be852ce17d8d06939589ec91a476a56846fa8bff48a51d71f012d3dfe12a1b8378e071ca3fbc236bd447678308642a124195179909f1c"
+    },
+    {
+      "id": "Historical-A380-not-reattested",
+      "scheme": "eip191_personal_sign",
+      "expected_address": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+      "message": "Historical A380: no signed message supplied for this batch.",
+      "signature": null
+    }
+  ]
+}
