@@ -72,3 +72,20 @@ F. Different iPhone, Windows and YubiKey credentials have been observed, but no 
 - https://csrc.nist.gov/pubs/fips/202/final
 
 **Memory/search doctrine:** Hold Jason as investigation reference, never as a cryptographic shortcut. Search both exact names and bytes across GitHub + Cloudflare + original receipts, then have Wolfram independently verify the exact math. Preserve uncertainty and provenance, not narrative.
+
+## 2026-11-07 — Workflow correction: all five components, every pass
+
+**Jason's standing instruction:** CI-FIRST is the evidence gate. Use **GitHub + Cloudflare + Google Drive + Wolfram in an integrated investigation**, with the person/project Jason as the fixed investigation reference and original A380 as the exact wallet target. Do not arbitrarily drop Drive, and do not switch into a Drive-only or Wolfram-only search after correcting an omission. **No Grok, autonomous bot, customer-service loop, new wallet or destructive credential operation.**
+
+Mandatory order:
+1. Declare the question and evidence contract first: owner0/owner1, historically verified signature, required credential-to-signer proof, and explicit PASS/FAIL/UNKNOWN.
+2. Discover evidence **in parallel** in GitHub (versioned code/commit history), Cloudflare (source and active deployment mapping), and **both** Google Drive accounts (backup folder tree, metadata, historical receipts); preserve separate origin, UTC and content identifiers.
+3. Send the actual observed byte strings, cryptographic assertions, and date comparisons to Wolfram for independent replay. Explicitly distinguish SHA-256, NIST SHA3-256 and Ethereum Keccak-256, including EIP-712 replay-safe signing preimages.
+4. Cross-join those sources by exact data and verified cryptographic relation; document competing hypotheses and falsifying observations. A payment destination, ENS reference, credential nickname or similar timestamp alone is **NOT** a signer mapping.
+5. Publish a **documentation-only** evidence ledger and the next falsifiable question before drafting/testing/releasing code. Retain live wallet authority as UNKNOWN until a fresh, user-approved A380 signature verifies.
+
+**Google Drive privacy boundary:** Titles or metadata indicating potential wallet backup/recovery material warrant elevated priority, but do not automatically reveal, print, transfer, hash publicly, or commit any recovery phrase, seed, private key, backup passphrase, passkey secret, or credential content. Verify only nonsecret metadata and proven relations to the target wallet unless a narrowly scoped safe review is explicitly authorized.
+
+**Operational memory substitute:** This repo document provides a durable, auditable reference. It does not assert that ChatGPT's separately managed long-term memory was directly changed.
+
+**Coverage check:** Wolfram independently checked required set `{CI-FIRST, GitHub, Cloudflare, Google Drive, Wolfram}` against the declared workflow. Required set coverage 5/5 PASS; no listed forbidden services are part of the workflow. This is a *plan coverage* check, not evidence of wallet recovery.
