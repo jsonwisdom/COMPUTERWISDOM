@@ -129,3 +129,13 @@ Coinbase official recovery doc https://help.coinbase.com/en-sg/wallet/getting-st
 These timestamps are user-reported from earlier chats, not independently authenticated credential-to-wallet bindings, and do **not** prove YubiKey caused A380 access loss.
 
 **Next executable recovery gate:** independent review of the Oct 6 pinned SDK against the draft; only then a separately authorized, same-origin browser test of an EXISTING account, with wrong-address fail closed. The test is address observation, not access restoration. No production deployment, wallet signature, transfer, on-chain owner update or passkey mutation authorized by this PR.
+
+## Draft diagnostic static audit — 2026-11-07
+
+**PASS (static checks only, not browser authentication):** 10/10 checks confirmed the separate `.txt` candidate pins the historically observed Oct 9 `https://jsonwisdom.github.io` origin, the original app name, recorded Oct 6 SDK SRI, A380 target, only `eth_accounts`, `eth_requestAccounts` and `eth_chainId`, wrong-account fail-closed, click-only initiation and no signing, on-chain writes, passkey mutation or network upload. These checks do **NOT** validate CDN bytes, CSP, browser behavior or current signer control.
+
+- Draft file SHA-256 recalculated by Wolfram from full UTF-8 bytes: `a6156ae92d9c678c75152dfa38a996f4b3e16c49df15fcf1150c5f3bcebd9b14`.
+- Old signed Oct 9 message SHA-256 independently rechecked: `b832a9ae64fdd673b8ed0a83164171e6f0279f30e60c595cdd5325d6c42ec625`.
+- The recorded Oct 9 origin and Nov 1 custom domain **differ**. No claim of resolved login or recovery by this source-only work.
+- Earlier Coinbase support transcript calls `jwisdom44` a passkey login in November; it does **not** map the Oct 9 A380 account to an individual credential ID.
+- Next gate is runtime synthetic test + independent SDK security review. Do not merge, publish, or initiate new authentication on user's device from this file. 
