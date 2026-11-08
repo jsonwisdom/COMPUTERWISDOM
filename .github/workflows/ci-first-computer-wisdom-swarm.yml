@@ -1,0 +1,41 @@
+name: CI-FIRST Computer Wisdom Agent Swarm
+on:
+  pull_request:
+    paths:
+      - 'computer-wisdom/ci-first-swarm/**'
+      - '.github/workflows/ci-first-computer-wisdom-swarm.yml'
+  push:
+    paths:
+      - 'computer-wisdom/ci-first-swarm/**'
+      - '.github/workflows/ci-first-computer-wisdom-swarm.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  offline-replay:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 4
+    defaults:
+      run:
+        working-directory: computer-wisdom/ci-first-swarm
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Syntax and evidence replay
+        run: |
+          node --check src/contracts.mjs
+          node --check src/roles.mjs
+          node --check src/swarm.mjs
+          node --check src/cli.mjs
+          node --test
+          npm run replay
+      - name: Generate receipt for independent inspection
+        run: node src/cli.mjs fixtures/io-worker-separation.json --expect FAIL --output audit-receipt.json
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        if: always()
+        with:
+          name: computer-wisdom-ci-first-receipt
+          path: computer-wisdom/ci-first-swarm/audit-receipt.json
+          if-no-files-found: error
