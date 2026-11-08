@@ -1,0 +1,192 @@
+{
+  "schema": "CI_FIRST_MUSIC_LIBRARIANS_V1",
+  "status": "DRAFT_ONLY",
+  "scope": "Public-safe Chicago house music educational index",
+  "authority": false,
+  "principles": {
+    "organization_not_judgment": true,
+    "feelings_are_subjective": true,
+    "original_recordings_unchanged": true,
+    "human_listener_controls_tags": true,
+    "privacy": "shareable-public-only",
+    "copyright": "metadata and lawful short excerpts only; never bulk song lyrics or audio",
+    "historical_provenance_required": true
+  },
+  "beat_target": {
+    "bpm": 128,
+    "beat_microseconds": 468750,
+    "beats_per_bar": 4,
+    "bar_microseconds": 1875000,
+    "notes": "Curated mix grid, NOT measured historical recording BPM"
+  },
+  "shelves": [
+    {
+      "id": "JOY",
+      "label": "Joy / celebration",
+      "keywords": [
+        "uplifting",
+        "gospel-piano",
+        "bright"
+      ],
+      "emoji": "✨"
+    },
+    {
+      "id": "RELEASE",
+      "label": "Release / movement",
+      "keywords": [
+        "driving",
+        "jackin",
+        "kinetic"
+      ],
+      "emoji": "🔥"
+    },
+    {
+      "id": "LONGING",
+      "label": "Longing / connection",
+      "keywords": [
+        "soulful",
+        "yearning",
+        "intimate"
+      ],
+      "emoji": "💜"
+    },
+    {
+      "id": "RESISTANCE",
+      "label": "Resistance / determination",
+      "keywords": [
+        "raw",
+        "insistent",
+        "defiant"
+      ],
+      "emoji": "🛡️"
+    },
+    {
+      "id": "WONDER",
+      "label": "Wonder / exploration",
+      "keywords": [
+        "experimental",
+        "acid",
+        "hypnotic"
+      ],
+      "emoji": "🌌"
+    },
+    {
+      "id": "BELONGING",
+      "label": "Belonging / community",
+      "keywords": [
+        "communal",
+        "club",
+        "together"
+      ],
+      "emoji": "🤝"
+    }
+  ],
+  "librarians": [
+    {
+      "role": "Provenance",
+      "duty": "Record source URL, author, date, catalog identifier; keep contested claims UNKNOWN"
+    },
+    {
+      "role": "Rhythm",
+      "duty": "Separate reference mix BPM from measured source tempo; require audio and beat analysis"
+    },
+    {
+      "role": "Feeling",
+      "duty": "Organize voluntary listener tags without inferring emotional health or intent"
+    },
+    {
+      "role": "Lyrical Constitution",
+      "duty": "Verify attribution and legal excerpts; never claim similarity proves plagiarism"
+    },
+    {
+      "role": "Replay",
+      "duty": "Re-run deterministic tests and produce PASS FAIL UNKNOWN receipts"
+    }
+  ],
+  "catalog": [
+    {
+      "id": "CHICAGO-HOUSE-1984-ON-AND-ON",
+      "title": "On and On",
+      "artist": "Jesse Saunders",
+      "year_claim": 1984,
+      "shelves_candidate": [
+        "RELEASE",
+        "BELONGING"
+      ],
+      "feeling_status": "UNVERIFIED_CANDIDATE",
+      "feeling_source": "editorial suggestion; no listener vote",
+      "original_bpm": null,
+      "original_bpm_verdict": "UNKNOWN",
+      "mix_target_bpm": 128,
+      "source_url": null,
+      "year_verdict": "UNKNOWN",
+      "license_status": "UNKNOWN",
+      "lyrics_hash": null
+    },
+    {
+      "id": "CHICAGO-HOUSE-1985-ITS-HOUSE",
+      "title": "It's House",
+      "artist": "Chip E",
+      "year_claim": 1985,
+      "shelves_candidate": [
+        "RELEASE",
+        "WONDER"
+      ],
+      "feeling_status": "UNVERIFIED_CANDIDATE",
+      "feeling_source": "editorial suggestion; no listener vote",
+      "original_bpm": null,
+      "original_bpm_verdict": "UNKNOWN",
+      "mix_target_bpm": 128,
+      "source_url": null,
+      "year_verdict": "UNKNOWN",
+      "license_status": "UNKNOWN",
+      "lyrics_hash": null
+    },
+    {
+      "id": "CHICAGO-HOUSE-1986-MOVE-YOUR-BODY",
+      "title": "Move Your Body",
+      "artist": "Marshall Jefferson",
+      "year_claim": 1986,
+      "shelves_candidate": [
+        "JOY",
+        "BELONGING"
+      ],
+      "feeling_status": "UNVERIFIED_CANDIDATE",
+      "feeling_source": "editorial suggestion; no listener vote",
+      "original_bpm": null,
+      "original_bpm_verdict": "UNKNOWN",
+      "mix_target_bpm": 128,
+      "source_url": null,
+      "year_verdict": "UNKNOWN",
+      "license_status": "UNKNOWN",
+      "lyrics_hash": null
+    },
+    {
+      "id": "CHICAGO-HOUSE-1987-ACID-TRACKS",
+      "title": "Acid Tracks",
+      "artist": "Phuture",
+      "year_claim": 1987,
+      "shelves_candidate": [
+        "WONDER",
+        "RELEASE"
+      ],
+      "feeling_status": "UNVERIFIED_CANDIDATE",
+      "feeling_source": "editorial suggestion; no listener vote",
+      "original_bpm": null,
+      "original_bpm_verdict": "UNKNOWN",
+      "mix_target_bpm": 128,
+      "source_url": null,
+      "year_verdict": "UNKNOWN",
+      "license_status": "UNKNOWN",
+      "lyrics_hash": null
+    }
+  ],
+  "source_refs": [
+    "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/WISDOM/computerwisdom_mirror_v0_1.md",
+    "https://github.com/jsonwisdom/JOY/blob/main/WISDOM/node_level_audit_v0_1.md"
+  ],
+  "deployment": {
+    "music_jsonwisdom_com": "UNKNOWN_PENDING_NEW_AUDIT",
+    "published": false
+  }
+}
