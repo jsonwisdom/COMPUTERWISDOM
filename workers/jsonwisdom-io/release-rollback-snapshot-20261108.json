@@ -1,0 +1,112 @@
+{
+  "schema": "computerwisdom.ci-first.io-production-rollback.v1",
+  "observed_at": "2026-11-08T22:26:26.797Z",
+  "phase": "BEFORE_PRODUCTION_SWITCH",
+  "account_id": "b37a8803e8a363bf067fc04a8e7d2cc5",
+  "zone_ids": {
+    "jsonwisdom.io": "c80e620bebd2512b708072391d613740",
+    "jsonwisdom.com": "07fc56195fd53449f5c818bef9b46d95"
+  },
+  "pre_cutover_domains": {
+    "proof.jsonwisdom.com": {
+      "id": "0720e733475e7c5b0ca9a5b385cd84200ec16688",
+      "hostname": "proof.jsonwisdom.com",
+      "service": "jasons-dns-burden-of-proof",
+      "zone_id": "07fc56195fd53449f5c818bef9b46d95",
+      "zone_name": "jsonwisdom.com",
+      "cert_id": "802c8198-6346-463c-b008-ba52cab37849",
+      "environment": "production",
+      "enabled": true,
+      "previews_enabled": false
+    },
+    "proof.jsonwisdom.io": {
+      "id": "50cd193da296208022e5a2e0ab57f2898924a3ea",
+      "hostname": "proof.jsonwisdom.io",
+      "service": "jasons-dns-burden-of-proof",
+      "zone_id": "c80e620bebd2512b708072391d613740",
+      "zone_name": "jsonwisdom.io",
+      "cert_id": "3aeab35a-9b4a-4540-a249-31d7103b47a0",
+      "environment": "production",
+      "enabled": true,
+      "previews_enabled": false
+    },
+    "seymour.jsonwisdom.com": {
+      "id": "7fbcb56e53653eb9fb0419f2a955d360d424bd9d",
+      "hostname": "seymour.jsonwisdom.com",
+      "service": "jasons-dns-burden-of-proof",
+      "zone_id": "07fc56195fd53449f5c818bef9b46d95",
+      "zone_name": "jsonwisdom.com",
+      "cert_id": "457212ce-eaf9-4811-91e1-3c061b5b0979",
+      "environment": "production",
+      "enabled": true,
+      "previews_enabled": false
+    },
+    "seymour.jsonwisdom.io": {
+      "id": "bf88a2583a11687679afa6bba8583c104ec2932a",
+      "hostname": "seymour.jsonwisdom.io",
+      "service": "jasons-dns-burden-of-proof",
+      "zone_id": "c80e620bebd2512b708072391d613740",
+      "zone_name": "jsonwisdom.io",
+      "cert_id": "d554d4a6-bf63-4712-9cd8-c5dce7056f6c",
+      "environment": "production",
+      "enabled": true,
+      "previews_enabled": false
+    },
+    "supreme.jsonwisdom.com": {
+      "id": "5f18e40b4617ff300c444158b913a92ce8f82034",
+      "hostname": "supreme.jsonwisdom.com",
+      "service": "seymour-supreme-public",
+      "zone_id": "07fc56195fd53449f5c818bef9b46d95",
+      "zone_name": "jsonwisdom.com",
+      "cert_id": "a526abcd-cbfd-4c01-8395-4da09fda52a0",
+      "environment": "production",
+      "enabled": true,
+      "previews_enabled": false
+    },
+    "supreme.jsonwisdom.io": {
+      "id": "443d4189df79a31c2fffe85b5635eacfc48c079b",
+      "hostname": "supreme.jsonwisdom.io",
+      "service": "seymour-supreme-public",
+      "zone_id": "c80e620bebd2512b708072391d613740",
+      "zone_name": "jsonwisdom.io",
+      "cert_id": "f6f873b4-0ce0-4e30-89ca-1382c09d9e77",
+      "environment": "production",
+      "enabled": true,
+      "previews_enabled": false
+    },
+    "ci-proof-20261108.jsonwisdom.io": {
+      "id": "2e96321dbab2a7ac134554e4288f87b33b82a311",
+      "hostname": "ci-proof-20261108.jsonwisdom.io",
+      "service": "jw-io-proof-seymour-v1",
+      "zone_id": "c80e620bebd2512b708072391d613740",
+      "zone_name": "jsonwisdom.io",
+      "cert_id": "eff0df1f-a7c5-46a0-9efb-aa4d3c176adf",
+      "environment": "production",
+      "enabled": true,
+      "previews_enabled": false
+    },
+    "ci-supreme-20261108.jsonwisdom.io": {
+      "id": "6edd5b658ddf56abd53bb32f380cf32f417488f5",
+      "hostname": "ci-supreme-20261108.jsonwisdom.io",
+      "service": "jw-io-supreme-v1",
+      "zone_id": "c80e620bebd2512b708072391d613740",
+      "zone_name": "jsonwisdom.io",
+      "cert_id": "1cee40c3-b473-4f52-9030-50ae8fee2304",
+      "environment": "production",
+      "enabled": true,
+      "previews_enabled": false
+    }
+  },
+  "target_services": {
+    "proof.jsonwisdom.io": "jw-io-proof-seymour-v1",
+    "seymour.jsonwisdom.io": "jw-io-proof-seymour-v1",
+    "supreme.jsonwisdom.io": "jw-io-supreme-v1"
+  },
+  "replay_workflow": "https://github.com/jsonwisdom/COMPUTERWISDOM/actions/runs/42530145396",
+  "rollback_method": "Use Cloudflare Workers custom-domain PUT with preserved hostname, zone_id, and pre_cutover_domains[hostname].service; immediately verify three .io domains and all unchanged .com domains; production switch only if candidate HTTP 200 and byte parity PASS.",
+  "canary_http_pass": true,
+  "production_certified": false,
+  "independent_provider_failover": false,
+  "canon": false,
+  "authority_created": false
+}
