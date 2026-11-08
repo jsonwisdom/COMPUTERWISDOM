@@ -18,7 +18,7 @@ jobs:
       - name: Cryptographic self-test
         run: python jsonwisdom_ci_first.py --self-test
       - name: Replay signed evidence
-        run: python jsonwisdom_ci_first.py CI_FIRST_BASE_BATCH_2026-11-07.json --output wallet2_replay.json
+        run: python jsonwisdom_ci_first.py CI_FIRST_BASE_BATCH_2026-11-07.json --output wallet2_replay.json || test "$?" -eq 2
       - name: Compare original receipt
         shell: python
         run: |
@@ -31,3 +31,6 @@ jobs:
           assert replay["counts"] == {"PASS": 1, "FAIL": 0, "UNKNOWN": 1}
           assert replay["authority_granted"] is False
           print("PASS: Wallet2 EIP-191 replay matches original receipt")
+
+
+
