@@ -1,0 +1,39 @@
+{
+  "schema": "JASON_DENOMINATOR_STORY_REPAIR_V1",
+  "date": "2026-11-07",
+  "scope": "read_only_draft",
+  "human_denominator": "Jason Wisdom",
+  "repo_snapshot": {
+    "owner": "jsonwisdom",
+    "repos": 88,
+    "public": 81,
+    "private": 7,
+    "nonzero_metadata": 70,
+    "zero_metadata": 18
+  },
+  "selected_packet": {
+    "verified_files": 3,
+    "expected_files": 3,
+    "full_repos_verified": 0
+  },
+  "unknown_denominators": [
+    "complete git tree versions and PRs",
+    "both Drive documents and revisions",
+    "all ChatGPT conversations",
+    "all external ENS/Base/Zora/Cloudflare/x402 records"
+  ],
+  "repair_verdict": "FAIL_PRIOR_SCOPE_OMISSION",
+  "estate_coverage": "UNKNOWN_NOT_COMPUTABLE",
+  "owner_display_A380": "USER_REPORTED_NOT_ONCHAIN_VERIFIED",
+  "pc_wallet2_historical_eip191": "PASS_NOT_CURRENT_CONTROL",
+  "current_ens_control": "UNKNOWN",
+  "forward": [
+    "purpose",
+    "evidence"
+  ],
+  "backward": [
+    "originals",
+    "recovery"
+  ],
+  "authority_created": false
+}
