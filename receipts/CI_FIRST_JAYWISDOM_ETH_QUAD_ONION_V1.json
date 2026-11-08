@@ -1,0 +1,112 @@
+{
+  "schema": "computerwisdom.ci-first.ens-quad-onion.v1",
+  "created_date": "2026-11-07",
+  "audit_scope": "jaywisdom.eth (Ethereum mainnet only)",
+  "design_mode": "READ_ONLY_FIRST_PUSH_DRAFT",
+  "chain_id": 1,
+  "target_name": "jaywisdom.eth",
+  "ens_namehash_wolfram": "0x611c283ca81f9d335749611d7b09f9809fd390244cb61a9d77318ba5612aae8e",
+  "ens_labelhash_wolfram": "0xaaf305b2426a3fcc248aaed7de5b4fd5e1324ef9e99d94b003070d9ea69b2d7c",
+  "onchain_queries": {
+    "ens_version": "UNKNOWN",
+    "registered_owner": "UNKNOWN",
+    "manager_or_controller": "UNKNOWN",
+    "resolver": "UNKNOWN",
+    "forward_address": "UNKNOWN",
+    "expiry": "UNKNOWN",
+    "record_provenance": "UNKNOWN"
+  },
+  "wallet_candidates": [
+    {
+      "role": "historical_ens_base_identity_controller_claim",
+      "address": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+      "status": "UNKNOWN",
+      "source": "receipts/wallet_binding_v2.md",
+      "source_status": "PREPARED_NOT_SIGNED"
+    },
+    {
+      "role": "Windows_PC_Wallet2_historical_EIP191_signer",
+      "address": "0x65891F97db01C8fC9F76f4DFE65Bd44F8261f1B0",
+      "status": "PASS_HISTORICAL_MESSAGE_ONLY",
+      "source": "CI_FIRST_BASE_BATCH_2026-11-07.json",
+      "source_commit": "5ba3b7515a966de420f3fbea067bab317cc99fd0",
+      "present_signing_access": "UNKNOWN",
+      "ens_control": "UNKNOWN"
+    },
+    {
+      "role": "Cloudflare_Flywheel_desktop_signer_policy_v2",
+      "address": "0x0f7018fea1dc9ba32ae817d896211f72f1197ad8",
+      "status": "PASS_DECLARED_POLICY_ONLY",
+      "source": "flywheel-connect/base-wallet-policy.v2.json",
+      "source_commit": "243c395e713e331bad22828c577107f39b65ac95",
+      "ens_control": "UNKNOWN"
+    },
+    {
+      "role": "EAS_browser_signer_prepared_sepolia",
+      "address": "0x1dB2C056c7DeCD9f9fC574692b05F62aE34Fb8b5",
+      "status": "UNKNOWN_MAINNET_AUTHORITY",
+      "source": "receipts/wallet_binding_v2.md"
+    }
+  ],
+  "quad_onion": {
+    "F1_ens_registry": "Verify live onchain owner, manager, resolver, registration and ENSv1/ENSv2 path; currently UNKNOWN.",
+    "F2_windows_wallet": "Observe presently selected existing Windows PC account and verify only optional non-transaction EIP-191/EIP-712 proof if user explicitly authorizes. Existing historical signature is NOT a current session.",
+    "B1_evidence_replay": "Recover previous claims and source bytes from GitHub immutable commit/blob IDs; never promote unsigned claim.",
+    "B2_independent_restore": "Compare exact source bytes restored from independent Drive/Cloudflare archives with SHA-256 and Git blob SHA-1; recover candidates only, never rewrite historical source."
+  },
+  "critical_boundaries": {
+    "ens_record_points_to_wallet_is_not_registration_ownership": true,
+    "historical_signature_is_not_live_signing_access": true,
+    "wallet_signing_is_not_ens_owner_or_manager_permission": true,
+    "hash_does_not_reconstruct_missing_private_key": true,
+    "no_wallet_reset_or_import_or_export": true,
+    "no_ens_transfer": true,
+    "no_signing_requested": true,
+    "no_payment_or_transaction": true,
+    "no_merge_or_production_deploy": true,
+    "authority_created": false
+  },
+  "ci_first": {
+    "passes": [
+      "Historical PC Wallet2 EIP-191 signed message was independently verified in prior Wolfram audit.",
+      "Wolfram computes deterministic namehash.",
+      "Distinct address inventory is preserved without joining identities."
+    ],
+    "failures": [],
+    "unknowns": [
+      "Live jaywisdom.eth ownership and controller under ENSv1/ENSv2",
+      "Current connected Windows extension address",
+      "Current signing capability",
+      "Authorized path to recover/restore ENS control",
+      "Whether any previous owner has recoverable signing access"
+    ],
+    "next_evidence": "Fresh screenshot of the existing Windows Coinbase Wallet extension showing its selected account; independent ENS onchain owner/manager/expiry lookup is required before any action."
+  },
+  "provenance": [
+    {
+      "kind": "GitHub",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/receipts/wallet_binding_v2.md",
+      "claimed_state": "PREPARED_NOT_SIGNED"
+    },
+    {
+      "kind": "GitHub",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/745",
+      "claimed_state": "Historical Wallet2 EIP-191 signature PASS"
+    },
+    {
+      "kind": "GitHub",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/746",
+      "claimed_state": "Draft Wolfram verifier, CI runtime unproven"
+    },
+    {
+      "kind": "official",
+      "url": "https://app.ens.domains/jaywisdom.eth",
+      "claimed_state": "Read-only ownership view to inspect; onchain state NOT fetched in this pass"
+    },
+    {
+      "kind": "official",
+      "url": "https://docs.ens.domains/registry/eth/",
+      "claimed_state": "ENSv1/ENSv2 ownership systems may differ"
+    }
+  ]
+}
