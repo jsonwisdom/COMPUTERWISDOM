@@ -1,1 +1,83 @@
 
+name: CI-FIRST Wolfram Quad Onion
+
+on:
+  push:
+    branches:
+      - ci-first/wolfram-quad-onion-v1-1
+  pull_request:
+    paths:
+      - 'COMPUTER_WISDOM_*V1_1*.wl'
+      - '.github/workflows/wolfram-quad-onion-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  wolfram-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check Wolfram runtime
+        shell: bash
+        run: |
+          if ! command -v wolframscript >/dev/null 2>&1; then
+            echo "::error::UNKNOWN: WolframScript unavailable; tests not executed."
+            exit 1
+          fi
+          wolframscript -code 'Print[2+2]' | grep -qx '4' || {
+            echo "::error::UNKNOWN: Wolfram runtime not usable."
+            exit 1
+          }
+
+      - name: Execute Quad Onion tests
+        shell: bash
+        run: |
+          wolframscript -file COMPUTER_WISDOM_QUAD_ONION_V1_1_TESTS.wl | tee wolfram-results.json
+
+      - name: Validate test results
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+
+          lines = Path("wolfram-results.json").read_text().splitlines()
+          records = []
+          for line in lines:
+              try:
+                  value = json.loads(line)
+                  if isinstance(value, dict):
+                      records.append(value)
+              except json.JSONDecodeError:
+                  pass
+
+          if not records:
+              raise SystemExit("FAIL: No parseable Wolfram test receipt")
+
+          results = records[-1]
+          required = [
+              "message_bytes", "sha256", "eip191_keccak256",
+              "missing_signature_is_unknown",
+              "malformed_signature_is_unknown",
+              "invalid_r_is_fail",
+          ]
+          failed = [key for key in required if results.get(key) != "PASS"]
+          for key in required:
+              print(f"{key}: {results.get(key, 'MISSING')}")
+          if failed:
+              raise SystemExit("FAIL: " + ", ".join(failed))
+          print("PASS: Six defined tests")
+          print("UNKNOWN: Live signature recovery and signer-negative fixtures")
+
+      - name: Preserve execution receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: wolfram-quad-onion-receipt
+          path: wolfram-results.json
+          if-no-files-found: ignore
+
