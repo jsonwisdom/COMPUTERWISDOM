@@ -1,0 +1,51 @@
+name: CI-FIRST Quad Onion Recovery Rehearsal
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  production-regression:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4 pinned
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4 pinned
+        with:
+          node-version: "22"
+      - name: Validate audit script syntax
+        run: |
+          node --check scripts/audit/ci-first-io-production-regression.mjs
+          node --check scripts/audit/ci-first-io-staging-restore.mjs
+          node --check scripts/audit/ci-first-io-recovery.test.mjs
+      - name: Read-only replay all production .io bytes against pinned SHA256 receipt
+        run: node scripts/audit/ci-first-io-production-regression.mjs
+      - name: Preserve per-run receipt as GitHub Actions artifact
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4 pinned
+        with:
+          name: ci-first-io-regression-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .ci-first/receipts/CI_FIRST_IO_REGRESSION_*.json
+          if-no-files-found: error
+          retention-days: 30
+  staging-recovery-rehearsal:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 8
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4 pinned
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4 pinned
+        with:
+          node-version: "22"
+      - name: Run positive, negative and no-approval tests
+        run: node --test scripts/audit/ci-first-io-recovery.test.mjs
+      - name: Simulate loss and restore from preserved GitHub source bytes alone
+        run: node scripts/audit/ci-first-io-staging-restore.mjs --simulate
+      - name: Preserve staging rehearsal evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4 pinned
+        with:
+          name: ci-first-io-staging-restore-${{ github.run_id }}-${{ github.run_attempt }}
+          path: .ci-first/receipts/CI_FIRST_IO_STAGING_RESTORE_*.json
+          if-no-files-found: error
+          retention-days: 30

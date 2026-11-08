@@ -1,0 +1,51 @@
+{
+  "schema": "computerwisdom.ci-first.io-production-baseline.v1",
+  "captured_date_utc": "2026-11-08T22:33:34Z",
+  "source": "independent GitHub Actions production-http-and-parity job",
+  "source_workflow": "https://github.com/jsonwisdom/COMPUTERWISDOM/actions/runs/42530790545",
+  "source_commit": "958a35af21c37fa491b4de0402a683a6d29ec869",
+  "scope": "PUBLIC_HTTP_BYTES_ONLY",
+  "rules": {
+    "http_status": 200,
+    "identity_status": 200,
+    "compare_to_com": true,
+    "fail_closed": true,
+    "max_response_bytes": 1048576,
+    "authority_created": false,
+    "canon": false
+  },
+  "resources": [
+    {
+      "hostname": "proof.jsonwisdom.io",
+      "com_control": "proof.jsonwisdom.com",
+      "worker": "jw-io-proof-seymour-v1",
+      "source_key": "proof",
+      "path": "/",
+      "expected_sha256": "414b438e794986a101fc9ddbb4cc1c507cd3bb5be8b97bc5a867860b1cd1824e",
+      "expected_bytes": 22440
+    },
+    {
+      "hostname": "seymour.jsonwisdom.io",
+      "com_control": "seymour.jsonwisdom.com",
+      "worker": "jw-io-proof-seymour-v1",
+      "source_key": "proof",
+      "path": "/",
+      "expected_sha256": "414b438e794986a101fc9ddbb4cc1c507cd3bb5be8b97bc5a867860b1cd1824e",
+      "expected_bytes": 22440
+    },
+    {
+      "hostname": "supreme.jsonwisdom.io",
+      "com_control": "supreme.jsonwisdom.com",
+      "worker": "jw-io-supreme-v1",
+      "source_key": "supreme",
+      "path": "/",
+      "expected_sha256": "72d8b8937f561a45931a11713af3a3f8eda6e0c42dff79b8bba1b2c0d120b81a",
+      "expected_bytes": 48091
+    }
+  ],
+  "independent_storage_proven": false,
+  "r2_usable": false,
+  "cloudflare_same_account": true,
+  "payment_or_wallet_authority_proven": false,
+  "promotion": "EXPLICIT_REVIEW_ONLY"
+}
