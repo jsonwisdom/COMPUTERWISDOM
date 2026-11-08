@@ -6,8 +6,8 @@ import { readFileSync } from "node:fs";
 
 const expected = JSON.parse(readFileSync(new URL("../../workers/jsonwisdom-io/backend-contract.json",import.meta.url),"utf8"));
 const staging = [
- {host:"jw-io-proof-seymour-v1.jaywisdom44.workers.dev",service:"jw-io-proof-seymour-v1",origin:"proof",parity:"https://proof.jsonwisdom.com/"},
- {host:"jw-io-supreme-v1.jaywisdom44.workers.dev",service:"jw-io-supreme-v1",origin:"supreme",parity:"https://supreme.jsonwisdom.com/"}
+ {host:"ci-proof-20261108.jsonwisdom.io",service:"jw-io-proof-seymour-v1",origin:"proof",parity:"https://proof.jsonwisdom.com/"},
+ {host:"ci-supreme-20261108.jsonwisdom.io",service:"jw-io-supreme-v1",origin:"supreme",parity:"https://supreme.jsonwisdom.com/"}
 ];
 const digest = (bytes) => createHash("sha256").update(bytes).digest("hex");
 async function get(url,method="GET") {
