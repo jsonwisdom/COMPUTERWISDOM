@@ -27,6 +27,8 @@ jobs:
           node --check workers/jsonwisdom-io/supreme-origin.mjs
           node --check workers/jsonwisdom-io/proof-backend.mjs
           node --check workers/jsonwisdom-io/supreme-backend.mjs
+          node --check scripts/audit/ci-first-jsonwisdom-io-stage.mjs
+          node --check scripts/audit/ci-first-jsonwisdom-io-live.mjs
       - name: Verify copy digests, namespace separation and HTTP behavior
         run: node --test scripts/audit/ci-first-jsonwisdom-io.test.mjs
   live-routing-proof:
