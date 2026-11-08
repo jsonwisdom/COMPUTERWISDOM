@@ -20,7 +20,26 @@ for(const {host,service,origin,parity} of staging){
  const identity=await get(target+expected.identity_path);
  const rootDiagnostic=await get(target+"/");
  console.log(JSON.stringify({gate:"STAGING_PROBE_DIAGNOSTIC",host,identity_status:identity.status,root_status:rootDiagnostic.status,identity_body_sample:identity.bytes.toString("utf8").slice(0,350),root_body_sample:rootDiagnostic.bytes.toString("utf8").slice(0,180),identity_cf_ray:identity.headers.get("cf-ray"),identity_server:identity.headers.get("server"),identity_type:identity.headers.get("content-type")}));
- assert.equal(identity.status,200,host+" identity endpoint must be HTTP 200");
+ if(identity.status!==200){
+  for(const control of [
+    "https://jasons-dns-burden-of-proof.jaywisdom44.workers.dev/",
+    "https://seymour-supreme-public.jaywisdom44.workers.dev/",
+    "https://proof.jsonwisdom.com/",
+    "https://proof.jsonwisdom.io/",
+    "https://www.cloudflare.com/"
+  ]) {
+    try {
+      const r=await get(control);
+      const str=r.bytes.toString("utf8");
+      const title=(str.match(/<title[^>]*>([\\s\\S]*?)<\\/title>/i)||[])[1]||"";
+      const errorCode=(str.match(/Error\\s*(1\\d{3})/i)||[])[1]||null;
+      console.log(JSON.stringify({gate:"CONTROL_HTTP",url:control,status:r.status,server:r.headers.get("server"),title:title.slice(0,120),errorCode}));
+    } catch(err) {console.error(JSON.stringify({gate:"CONTROL_HTTP",url:control,error:String(err).slice(0,180)}));}
+  }
+  const page=identity.bytes.toString("utf8");
+  console.error(JSON.stringify({gate:"STAGING_ERROR_DETAILS",title:(page.match(/<title[^>]*>([\\s\\S]*?)<\\/title>/i)||[])[1]||"",codes:[...page.matchAll(/Error\\s*(1\\d{3})/gi)].map(x=>x[1]).slice(0,5),end:page.slice(-400)}));
+}
+assert.equal(identity.status,200,host+" identity endpoint must be HTTP 200");
  assert.match(identity.headers.get("content-type")||"",/application\/json/);
  const record=JSON.parse(identity.bytes.toString("utf8"));
  assert.equal(record.worker_service,service);
