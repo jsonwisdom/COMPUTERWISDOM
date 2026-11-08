@@ -1,0 +1,34 @@
+{
+  "schema": "jsonwisdom.ci-first.batch-proof.v1",
+  "generated_utc": "2026-11-08T01:12:27.357936+00:00",
+  "mode": "read-only/offline",
+  "network_context": "Base mainnet 8453",
+  "verifier": "pure-python-stdlib/EIP-191",
+  "checks": [
+    {
+      "id": "Wallet2-Address2-2026-11-07",
+      "chain": "Base (EVM / EIP-191)",
+      "status": "PASS",
+      "authority_granted": false,
+      "message_sha256": "0x71d49b8ef059fafa003d3b6160ba5d3be8f3ea5a866fd67bdcaef28e28b628c8",
+      "message_eip191_keccak256": "0x4fc1135eed8659d5500c9be5b00274d18aefab883fb0c9e7e2e7e8f368264dfe",
+      "signature_sha256": "0xba91664bc60e743af2a1b80ae46734ec4de2d282f8de3c01b680f46a33130478",
+      "recovered_address": "0x65891f97db01c8fc9f76f4dfe65bd44f8261f1b0",
+      "reason": "signer matches expected address"
+    },
+    {
+      "id": "Historical-A380-not-reattested",
+      "chain": "Base (EVM / EIP-191)",
+      "status": "UNKNOWN",
+      "authority_granted": false,
+      "reason": "signature not supplied"
+    }
+  ],
+  "counts": {
+    "PASS": 1,
+    "FAIL": 0,
+    "UNKNOWN": 1
+  },
+  "authority_granted": false,
+  "note": "Proves control of an EVM key for an exact message only. No ENS, deployment, payment, or historical other-wallet authority."
+}
