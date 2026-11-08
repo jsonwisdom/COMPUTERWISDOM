@@ -1,0 +1,33 @@
+name: CI-FIRST Wallet2 Replay
+on:
+  pull_request:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  wallet2-replay:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Cryptographic self-test
+        run: python jsonwisdom_ci_first.py --self-test
+      - name: Replay signed evidence
+        run: python jsonwisdom_ci_first.py CI_FIRST_BASE_BATCH_2026-11-07.json --output wallet2_replay.json
+      - name: Compare original receipt
+        shell: python
+        run: |
+          import json
+          from pathlib import Path
+          original = json.loads(Path("CI_FIRST_BASE_RECEIPT_2026-11-07.json").read_text())
+          replay = json.loads(Path("wallet2_replay.json").read_text())
+          for key in ("schema", "checks", "counts", "authority_granted"):
+              assert original[key] == replay[key], f"DIVERGE: {key}"
+          assert replay["counts"] == {"PASS": 1, "FAIL": 0, "UNKNOWN": 1}
+          assert replay["authority_granted"] is False
+          print("PASS: Wallet2 EIP-191 replay matches original receipt")
