@@ -7,17 +7,18 @@
 <!--
 CI-FIRST DRAFT. Not production-ready.
 This reproduces only the Base Account SDK 2.5.10 connection path
-from GitHub commit 8de2525d (Oct 5 2026).
-Third-party script integrity/CSP/security review required before deployment.
+from GitHub commit 5f32f98b (Oct 6 2026); its integrity pin is preserved.
+Original signed 2026-10-09T09:09:08.189Z on https://jsonwisdom.github.io.
+SRI is copied from the Oct 6 source; reverify dependency bytes and CSP before deployment.
 NO SIGNATURE, NO TRANSACTIONS, NO OWNER MODIFICATIONS.
 Never enter a seed phrase. Cancel if prompted to create another wallet.
 -->
-<script src="https://unpkg.com/@base-org/account@2.5.10/dist/base-account.min.js"></script>
+<script src="https://unpkg.com/@base-org/account@2.5.10/dist/base-account.min.js" integrity="sha384-Jcaa5XJIs34lC6Co7Ye/mAuxCGLTEdUYQuIyl4UrwRduYb6mOmW7SUCOPX/jdsKV" crossorigin="anonymous"></script>
 </head>
 <body>
 <main>
 <h1>CI-FIRST A380 connection diagnostic</h1>
-<p><strong>Draft only. Not deployed or approved.</strong> Existing wallet only; cancel any offer to create a new wallet. This requests wallet connection permission but never signs or moves assets.</p>
+<p><strong>Draft only. Not deployed or approved.</strong> Intended original site: https://jsonwisdom.github.io (October 9 receipt). Existing account only; cancel offers to create a new account. Email OTP, a passkey, or another already-enrolled method may be offered; no credentials entered in this diagnostic.</p>
 <p>Expected: <code>0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8</code></p>
 <button id="connect" type="button">Inspect existing Base Account</button>
 <pre id="result">UNKNOWN: no attempt</pre>
@@ -25,7 +26,7 @@ Never enter a seed phrase. Cancel if prompted to create another wallet.
 <script>
 'use strict';
 (() => {
-  const ORIGIN = 'https://wallet.jsonwisdom.com';
+  const ORIGIN = 'https://jsonwisdom.github.io';
   const EXPECTED = '0xa380552a27b0a5a2874ea7aa52cac09f542002e8';
   const out = document.getElementById('result');
   const btn = document.getElementById('connect');
@@ -36,7 +37,7 @@ Never enter a seed phrase. Cancel if prompted to create another wallet.
       if (location.origin !== ORIGIN) throw Error('FAIL_ORIGIN: Not on reviewed target origin');
       if (typeof window.createBaseAccountSDK !== 'function') throw Error('UNKNOWN_SDK: Original SDK unavailable');
       const sdk = window.createBaseAccountSDK({
-        appName: 'Computer Wisdom A380 CI-FIRST Diagnostic',
+        appName: 'Computer Wisdom Wallet Control',
         appChainIds: [8453]
       });
       const provider = sdk.getProvider();
