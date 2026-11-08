@@ -1,0 +1,40 @@
+// CI-FIRST independent HTTP evidence from GitHub-hosted runner; no secrets or writes.
+// Public routes only. Do not infer separate vendor fault domains from distinct Worker IDs.
+import assert from "node:assert/strict";
+import { createHash } from "node:crypto";
+import { readFileSync } from "node:fs";
+
+const expected = JSON.parse(readFileSync(new URL("../../workers/jsonwisdom-io/backend-contract.json",import.meta.url),"utf8"));
+const staging = [
+ {host:"jw-io-proof-seymour-v1.jaywisdom44.workers.dev",service:"jw-io-proof-seymour-v1",origin:"proof",parity:"https://proof.jsonwisdom.com/"},
+ {host:"jw-io-supreme-v1.jaywisdom44.workers.dev",service:"jw-io-supreme-v1",origin:"supreme",parity:"https://supreme.jsonwisdom.com/"}
+];
+const digest = (bytes) => createHash("sha256").update(bytes).digest("hex");
+async function get(url,method="GET") {
+ const result=await fetch(url,{method,redirect:"manual",signal:AbortSignal.timeout(18000),headers:{"user-agent":"CI-FIRST-jsonwisdom-io-replay/1"}});
+ const buf=Buffer.from(await result.arrayBuffer());
+ return {status:result.status,headers:result.headers,bytes:buf,sha256:digest(buf)};
+}
+for(const {host,service,origin,parity} of staging){
+ const target="https://"+host;
+ const identity=await get(target+expected.identity_path);
+ assert.equal(identity.status,200,host+" identity endpoint must be HTTP 200");
+ assert.match(identity.headers.get("content-type")||"",/application\/json/);
+ const record=JSON.parse(identity.bytes.toString("utf8"));
+ assert.equal(record.worker_service,service);
+ assert.equal(record.namespace,"jsonwisdom.io");
+ assert.equal(record.source_sha256,expected.sources[origin].sha256);
+ assert.equal(record.authority_created,false);
+ assert.equal(record.canon,false);
+ const head=await get(target+expected.identity_path,"HEAD");
+ assert.equal(head.status,200);
+ assert.equal(head.bytes.length,0);
+ const app=await get(target+"/");
+ assert.equal(app.status,200,host+" homepage must be HTTP 200");
+ assert.match(app.bytes.toString("utf8",0,80),/<!DOCTYPE html>/i);
+ const known=await get(parity);
+ assert.equal(known.status,200,parity+" existing production homepage must be HTTP 200");
+ assert.equal(app.sha256,known.sha256,host+" homepage must have equal bytes to .com");
+ console.log(JSON.stringify({gate:"STAGING_HTTP_AND_PARITY",status:"PASS",host,service,origin_sha256:record.source_sha256,homepage_sha256:app.sha256,homepage_bytes:app.bytes.length}));
+}
+console.log("CI_FIRST_STAGING_HTTP=PASS");
