@@ -83,3 +83,49 @@ Official Coinbase Help (retrieved 2026-11-07):
 The proposed SDK diagnostic is **NOT a wallet recovery credential**. It only compares a returned address with A380 on Base chain 8453. Even PASS_CONNECTED_ADDRESS_MATCH would not prove fresh signing until a separately approved, fresh signing operation succeeds. No offchain Github/Drive/Cloudflare tools can substitute for existing signing credentials or reassign wallet owners.
 
 **Safe next step:** independent SDK and domain review, synthetic-only tests in isolated/non-production environment, then user-approved connection to **existing** Smart Wallet via same-device browser, without resets, wallet creation, QR-device sign-in, or seed entry. Do not deploy the PR or alter the locked-down historical signing page merely to make the test clickable.
+
+## 2026-11-07T18:07 CST+ — original proof rehydrated, SDK/origin candidate corrected
+
+**Primary receipt:** `JAYWISDOM_BASE_WALLET_CONTROL_2026-10-09.json` (private ChatGPT Library; do not publish full historical signature with this draft). Fields observed:
+
+- `created_at = 2026-10-09T09:09:08.189Z` (2026-10-09 04:09:08.189 CDT).
+- `connected_address = 0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8`.
+- `wallet_provider = BASE_ACCOUNT_SDK_2_5_10`.
+- `challenge.page_origin = https://jsonwisdom.github.io` **NOT** `https://wallet.jsonwisdom.com`.
+- `verification.verification_method = ERC1271_IS_VALID_SIGNATURE` and `verification.verified=true`.
+- `signed_message_sha256 = 0xb832a9ae64fdd673b8ed0a83164171e6f0279f30e60c595cdd5325d6c42ec625`. **Wolfram independently recomputed this exact SHA-256 from the signed message UTF-8 bytes: PASS.**
+- No passkey credential ID, original login email, or device identification is included. Cannot infer them from the historical signature or hash.
+
+The SDK code **in place on Oct 9** was GitHub commit `5f32f98b65352a247f57a2af0901480fdba5f8fb` (Oct 6 2026 00:27:41Z), not the original Oct 5 `8de2525` draft. Exact prior working settings:
+- App: `Computer Wisdom Wallet Control`
+- SDK: `@base-org/account@2.5.10` from pinned unpkg path
+- Recorded SRI: `sha384-Jcaa5XJIs34lC6Co7Ye/mAuxCGLTEdUYQuIyl4UrwRduYb6mOmW7SUCOPX/jdsKV`
+- Chain: 8453
+- Account-selection API: `eth_requestAccounts`
+- Original signing-site origin: `https://jsonwisdom.github.io`.
+
+**Corrected the inert diagnostic** to pin that original site origin, app name, SDK URL, and recorded SRI. Remote library integrity has NOT been independently re-fetched and checked; code is not deployed, and no live wallet was queried.
+
+### Coinbase Smart Wallet authentication and QR nuance
+
+As of Nov 7, 2026, Coinbase's Base Account help states existing accounts can use email OTP, registered passkey, or recovery phrase (only if previously set up):
+https://help.coinbase.com/en/wallet/getting-started/smart-wallet-passkeys
+
+This same official documentation describes cross-device QR **passkey** authentication as a supported configuration for certain devices. Do not generalize another Coinbase-app's discontinued QR *connection method* into a blanket statement that all passkey QR authentication is unsupported. Distinguish:
+- an existing Base Smart Wallet account's passkey authentication,
+- an extension wallet or dapp cross-device login,
+- Coinbase exchange or Prime authentication.
+
+Original Oct 9 receipt does not identify whether the signer was reached through an Apple passkey, Google passkey, YubiKey, or email OTP. The credential remains **UNKNOWN**.
+
+Coinbase official recovery doc https://help.coinbase.com/en-sg/wallet/getting-started/smart-wallet-recovery says a new recovery phrase can only be generated **while original passkey is accessible**. Therefore do not pretend that creating one now could recover A380, or recommend wallet reset/new account. Existing previously configured recovery method, if any, remains UNKNOWN.
+
+### Supplementary Nov 5 security chronology — user-reported notice times (CST)
+
+- Nov 4 09:24 CST — user-provided receipt for 1,000 USDC transfer to A380; this is a payment observation, not proof of current signing.
+- Nov 5 11:41 CST — notice of passkey added to `computerwisdom408@gmail.com`.
+- Nov 5 12:29/12:48 CST — notices of 2FA changes to `jaywisdom44@gmail.com`.
+
+These timestamps are user-reported from earlier chats, not independently authenticated credential-to-wallet bindings, and do **not** prove YubiKey caused A380 access loss.
+
+**Next executable recovery gate:** independent review of the Oct 6 pinned SDK against the draft; only then a separately authorized, same-origin browser test of an EXISTING account, with wrong-address fail closed. The test is address observation, not access restoration. No production deployment, wallet signature, transfer, on-chain owner update or passkey mutation authorized by this PR.
