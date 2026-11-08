@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "schemas/gray_baby/object_state.schema.json",
+  "title": "Gray Baby object state",
+  "description": "Factual classification of one object after membrane checks. This record does not delete, promote a wallet to a human, or create authority.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "object_id",
+    "batch_id",
+    "game_state",
+    "route",
+    "specialists",
+    "bound_source_tier",
+    "prior_game_state",
+    "prior_claim_tier",
+    "prior_bound_tier",
+    "prior_payload_hash",
+    "operators_selected",
+    "passes",
+    "deleted",
+    "human_identity",
+    "wallet_ref",
+    "identity_promoted",
+    "authority_created",
+    "gaps",
+    "prior_preserved",
+    "chain_data_fabricated",
+    "prevented_rules",
+    "promotion_performed",
+    "falsification_applied",
+    "source_hashes",
+    "fixture_class"
+  ],
+  "properties": {
+    "object_id": { "type": "string", "minLength": 1 },
+    "batch_id": { "type": "string", "pattern": "^GRAY_BABY_BATCH_[0-9]{3}$" },
+    "game_state": {
+      "type": "string",
+      "enum": [
+        "CLEAN",
+        "UPGRADED",
+        "CORRECTED",
+        "DEMOTED",
+        "HOLD",
+        "CONFLICT",
+        "INDEXER_DRIFT",
+        "TEMPORAL_DRIFT",
+        "ROLE_COLLAPSE",
+        "MISSING_RECEIPT",
+        "ALIEN"
+      ]
+    },
+    "route": {
+      "type": "string",
+      "enum": ["RECEIPT", "QUEUE", "SPECIALIST", "DEEP_REPLAY"]
+    },
+    "specialists": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "CHAIN",
+          "ZORA",
+          "ERC4337",
+          "UNISWAP_V4",
+          "IPFS",
+          "GITHUB_RECEIPT",
+          "DRIVE_HISTORY",
+          "TEMPORAL",
+          "PROVENANCE",
+          "CONTRADICTION",
+          "SCHEMA",
+          "TEST",
+          "ADVERSARIAL",
+          "GRAY_BABY",
+          "ALIEN",
+          "HUMAN_REVIEW_GATE"
+        ]
+      }
+    },
+    "bound_source_tier": {
+      "type": ["string", "null"],
+      "enum": ["RAW_CHAIN", "REPO_RECEIPTS", "DRIVE_HISTORY", "PUBLIC_INDEXES", "PAGE_LABELS", null]
+    },
+    "prior_game_state": { "type": ["string", "null"] },
+    "prior_claim_tier": {
+      "type": ["string", "null"],
+      "enum": ["RAW_CHAIN", "REPO_RECEIPTS", "DRIVE_HISTORY", "PUBLIC_INDEXES", "PAGE_LABELS", null]
+    },
+    "prior_bound_tier": {
+      "type": ["string", "null"],
+      "enum": ["RAW_CHAIN", "REPO_RECEIPTS", "DRIVE_HISTORY", "PUBLIC_INDEXES", "PAGE_LABELS", null]
+    },
+    "prior_payload_hash": { "type": ["string", "null"] },
+    "operators_selected": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "OBJECT_SELECTOR",
+          "TEMPORAL_GUARD",
+          "SOURCE_RANKER",
+          "CHAIN_BINDER",
+          "TX_ORIGIN_FINDER",
+          "ERC4337_DECODER",
+          "CREATE2_DECODER",
+          "INITIALIZER_DECODER",
+          "EVENT_TOPIC_DECODER",
+          "METADATA_BINDER",
+          "INDEXER_DRIFT_DETECTOR",
+          "EXPORT_VERSION_GUARD",
+          "ROLE_COLLAPSE_SENTINEL",
+          "IDENTITY_MEMBRANE",
+          "RECEIPT_COMPARATOR",
+          "DELTA_CLASSIFIER",
+          "ALIEN_ROUTER",
+          "REPLAY_RECEIPT_WRITER",
+          "BATCH_SCOREKEEPER",
+          "REGRESSION_SENTINEL"
+        ]
+      }
+    },
+    "passes": { "type": "integer", "minimum": 1, "maximum": 2 },
+    "deleted": { "const": false },
+    "human_identity": { "type": "null" },
+    "wallet_ref": { "type": ["string", "null"] },
+    "identity_promoted": { "const": false },
+    "authority_created": { "const": false },
+    "gaps": { "type": "array", "items": { "type": "string" } },
+    "prior_preserved": { "const": true },
+    "chain_data_fabricated": { "const": false },
+    "prevented_rules": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "SEARCH_MISS_CANNOT_DELETE",
+          "WEAKER_SOURCE_CANNOT_OVERRIDE",
+          "WALLET_CANNOT_PROMOTE_TO_HUMAN",
+          "OLD_SNAPSHOT_CANNOT_FALSIFY_LATER",
+          "MISSING_DATA_CANNOT_BE_FABRICATED"
+        ]
+      }
+    },
+    "promotion_performed": { "const": false },
+    "falsification_applied": { "const": false },
+    "source_hashes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["tier", "payload_hash"],
+        "properties": {
+          "tier": { "type": "string" },
+          "payload_hash": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "fixture_class": { "type": ["string", "null"] }
+  }
+}
