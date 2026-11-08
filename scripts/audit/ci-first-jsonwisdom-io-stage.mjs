@@ -31,13 +31,13 @@ for(const {host,service,origin,parity} of staging){
     try {
       const r=await get(control);
       const str=r.bytes.toString("utf8");
-      const title=(str.match(/<title[^>]*>([\\s\\S]*?)<\\/title>/i)||[])[1]||"";
-      const errorCode=(str.match(/Error\\s*(1\\d{3})/i)||[])[1]||null;
+      const start=str.toLowerCase().indexOf("<title"); const open=start>=0?str.indexOf(">",start):-1; const end=start>=0?str.toLowerCase().indexOf("</title>",start):-1; const title=open>=0&&end>open?str.slice(open+1,end):"";
+      const errorCode=null;
       console.log(JSON.stringify({gate:"CONTROL_HTTP",url:control,status:r.status,server:r.headers.get("server"),title:title.slice(0,120),errorCode}));
     } catch(err) {console.error(JSON.stringify({gate:"CONTROL_HTTP",url:control,error:String(err).slice(0,180)}));}
   }
   const page=identity.bytes.toString("utf8");
-  console.error(JSON.stringify({gate:"STAGING_ERROR_DETAILS",title:(page.match(/<title[^>]*>([\\s\\S]*?)<\\/title>/i)||[])[1]||"",codes:[...page.matchAll(/Error\\s*(1\\d{3})/gi)].map(x=>x[1]).slice(0,5),end:page.slice(-400)}));
+  console.error(JSON.stringify({gate:"STAGING_ERROR_DETAILS",body_tail:page.slice(-600)}));
 }
 assert.equal(identity.status,200,host+" identity endpoint must be HTTP 200");
  assert.match(identity.headers.get("content-type")||"",/application\/json/);
