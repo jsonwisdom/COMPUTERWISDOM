@@ -64,3 +64,22 @@ It requests `eth_accounts`, optionally `eth_requestAccounts` (user connection co
 - https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/flywheel-connect/recovery-index.json
 - https://github.com/jsonwisdom/COMPUTERWISDOM/pull/649
 - https://docs.google.com/document/d/1YvHPZ3YesjgcG-P4P5kvIw7qi2PTrqfJ9UkdL8_uVmw/edit
+
+## 2026-11-07 official Coinbase login documentation clarification
+
+Official Coinbase Help (retrieved 2026-11-07):
+- https://help.coinbase.com/en/wallet/other-topics/mobile-app-sign-in-discontinued — Cross-device app connections using an external desktop/mobile browser QR code are no longer supported. Stop the prior Windows-PC QR-to-iPhone loop; it cannot be used as evidence a specific credential fails.
+- https://help.coinbase.com/en/wallet/getting-started/smart-wallet — Smart wallets are passkey-based, can be managed via wallet.coinbase.com, and **cannot** be accessed through the Coinbase exchange app or Wallet extension.
+- https://help.coinbase.com/en-sg/wallet/getting-started/smart-wallet-passkeys — Smart-wallet login supports existing email credentials, passkeys, and any previously configured recovery method. Passkey deletion risks account access. Apple passkeys are distinguished by their creation dates; the credential controlling A380 remains UNKNOWN.
+
+### Device/account credential ledger (observed in previous PowerShell and iPhone reviews)
+- iPhone Safari currently shows `0x5727…9BfD` associated with an Apple passkey dated 2024-08-17. **Not A380.**
+- Windows Chrome Google Password Manager credential dated 2025-01-24 selected `0x0dAC…40cD`. **Not A380.**
+- Hardware YubiKey FIDO2 inventory: `demo.yubico.com` / `jaywisdom44`; `vercel.com` / `jsonwisdom`; `coinbase.com` / `jaywisdom44@gmail.com`. The Coinbase RP credential was observed but **has not demonstrated A380 signing**. The Yubico demo credential is unrelated to wallet custody.
+- Apple Passwords inventory of eight `keys.coinbase.com` passkeys reviewed already. Creation dates alone cannot cryptographically prove which is tied to A380. **Do not repeat this inventory or delete credentials.**
+
+### What the application-layer fix can and cannot prove
+
+The proposed SDK diagnostic is **NOT a wallet recovery credential**. It only compares a returned address with A380 on Base chain 8453. Even PASS_CONNECTED_ADDRESS_MATCH would not prove fresh signing until a separately approved, fresh signing operation succeeds. No offchain Github/Drive/Cloudflare tools can substitute for existing signing credentials or reassign wallet owners.
+
+**Safe next step:** independent SDK and domain review, synthetic-only tests in isolated/non-production environment, then user-approved connection to **existing** Smart Wallet via same-device browser, without resets, wallet creation, QR-device sign-in, or seed entry. Do not deploy the PR or alter the locked-down historical signing page merely to make the test clickable.
