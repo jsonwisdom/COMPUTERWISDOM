@@ -57,3 +57,22 @@ E. Does an old Chrome extension or account provide access to `owner_0` or `owner
 `WALLET_MUTATION_AUTHORIZED=false`
 
 **CI-FIRST conclusion:** We have a verified historic A380 signature and a source-code drift; we do **not** have a verified surviving signer binding. Document that distinction before changing code.
+
+## 2026-11-07 · Two independent clocks: 2024 backup vs 2026 A380 signing
+
+**Correction:** Do not equate a file's creation timestamp with the wallet's creation date or signing-key origin. A 2024 backup *could* relate to a wallet used in 2026, but metadata alone cannot prove or disprove that relation.
+
+**2024 security/backup clock (verified read-only metadata, private sources held separately):**
+- 2024-10-14T03:49:53Z: Coinbase new-device confirmation email (Safari).
+- 2024-10-14T04:06:02Z: Two Coinbase two-factor settings-change notices. They do not identify the exact changed security factor or smart-wallet signer.
+- 2024-10-14T04:11:42.091Z: A private, unshared Google Drive document titled "Coinbase Recovery Phrase" was created under the `jaywisdom44` account.
+- 2024-10-14T04:11:48.654Z: Document last modified; two native Drive revision timestamps available. **Contents were NOT read, exported, or hashed**; no secrets included here.
+- Wolfram verified security notice to document creation = **340.091 seconds (5m40.091s)**, and same UTC calendar date. This is temporal correlation only, **not proof the document controls A380**.
+
+**2026 A380 signing clock (independent primary signed JSON, already verified):**
+- 2026-10-09T09:09:08.189Z: A380 signed via Base Account SDK 2.5.10, original origin `https://jsonwisdom.github.io`, historical ERC-1271 PASS.
+- The interval from the 2024 Drive file creation to this 2026 signed proof is **725.206552 days**, independently calculated by Wolfram.
+- October 9 signing uses `ownerIndex=0` and the recovered Ethereum signing address `0xe13c4abd8e4d3caf5a84238e047e1b7e8632d180` after Coinbase Smart Wallet replay-safe EIP-712 hashing, not simply the raw EIP-191 message digest.
+- Neither the 2024 Drive metadata nor the 2026 receipt includes a public credential-to-owner binding.
+
+**CI-FIRST:** PASS for each timeline and interval; UNKNOWN for cross-timeline key ownership. Never infer that a 2024 recovery phrase is irrelevant because of age, or relevant because of a matching Coinbase account name. Do not open or publish recovery secrets to resolve this. Focus the next investigation on nonsecret records associating the recovered owner0 address to a device, derivation account or previously enrolled recovery method.
