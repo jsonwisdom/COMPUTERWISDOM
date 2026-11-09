@@ -1,0 +1,11 @@
+{
+  "name": "computer-wisdom-ci-first-adapter-v03",
+  "private": true,
+  "version": "0.3.0",
+  "type": "module",
+  "engines": {"node": ">=22"},
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "demo": "node src/demo.mjs"
+  }
+}

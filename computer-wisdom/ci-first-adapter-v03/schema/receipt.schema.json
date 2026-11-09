@@ -1,0 +1,21 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://jsonwisdom.io/schemas/ci-first-adapter-receipt-v0.3.json",
+  "type":"object","additionalProperties":false,
+  "required":["schema","contract_version","adapter_version","case_id","invocation_id","idempotency_key","model_id","model_revision_requested","model_revision_reported","model_revision_verification","endpoint_id_requested","endpoint_id_reported","provider_request_id","provider_claim_scope","prompt_sha256","parameters_sha256","tool_allowlist_sha256","price_schedule_sha256","response_bytes_sha256","stream_completed","response_truncated","usage_reported","reserved_micro_usd","charged_micro_usd","cost_outcome","verdict","error","canon","authority_created","payment","wallet_signing","model_api_calls","sequence","prev_receipt_sha256","receipt_sha256"],
+  "properties": {
+    "schema":{"const":"computerwisdom.ci-first.adapter-receipt.v0.3"},"contract_version":{"const":"computerwisdom.ci-first.adapter.v0.3"},"adapter_version":{"const":"0.3.0-mock"},
+    "case_id":{"type":"string"},"invocation_id":{"type":"string"},"idempotency_key":{"type":"string"},"model_id":{"type":"string"},
+    "model_revision_requested":{"type":"string"},"model_revision_reported":{"type":["string","null"]},
+    "model_revision_verification":{"enum":["verified","unverified","mismatch"]},
+    "endpoint_id_requested":{"type":"string"},"endpoint_id_reported":{"type":["string","null"]},
+    "provider_request_id":{"type":["string","null"]},"provider_claim_scope":{"const":"MOCK_ONLY_NOT_ATTESTED"},
+    "prompt_sha256":{"$ref":"#/$defs/sha256"},"parameters_sha256":{"$ref":"#/$defs/sha256"},"tool_allowlist_sha256":{"$ref":"#/$defs/sha256"},"price_schedule_sha256":{"$ref":"#/$defs/sha256"},
+    "response_bytes_sha256":{"anyOf":[{"$ref":"#/$defs/sha256"},{"type":"null"}]},
+    "stream_completed":{"type":"boolean"},"response_truncated":{"type":["boolean","null"]},
+    "usage_reported":{"type":["object","null"]},"reserved_micro_usd":{"type":"integer","minimum":0},"charged_micro_usd":{"type":"integer","minimum":0},
+    "cost_outcome":{"enum":["RECONCILED","UNKNOWN_COST","FAILED_DISPATCH","RECONCILIATION_FAILED"]},"verdict":{"enum":["PASS","FAIL","UNKNOWN"]},
+    "error":{"type":["string","null"]},"canon":{"const":false},"authority_created":{"const":false},"payment":{"const":false},"wallet_signing":{"const":false},"model_api_calls":{"const":0},
+    "sequence":{"type":"integer","minimum":1},"prev_receipt_sha256":{"$ref":"#/$defs/sha256"},"receipt_sha256":{"$ref":"#/$defs/sha256"}
+  },"$defs":{"sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"}}
+}

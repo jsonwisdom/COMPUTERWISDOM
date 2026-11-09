@@ -1,0 +1,13 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://jsonwisdom.io/schemas/ci-first-checkpoint-v0.3.json",
+ "type":"object","additionalProperties":false,
+ "required":["schema","ledger_head_sha256","case_heads","canon","authority_created","checkpoint_sha256"],
+ "properties":{
+  "schema":{"const":"computerwisdom.ci-first.checkpoint.v0.3"},
+  "ledger_head_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+  "case_heads":{"type":"object","additionalProperties":{"type":"string","pattern":"^[a-f0-9]{64}$"}},
+  "canon":{"const":false},"authority_created":{"const":false},
+  "checkpoint_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"}
+ }
+}
