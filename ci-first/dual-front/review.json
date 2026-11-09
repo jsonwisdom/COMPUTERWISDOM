@@ -1,0 +1,34 @@
+{
+  "schema": "ci-first-dual-front-review-v1",
+  "date": "2026-11-09",
+  "mode": "DRAFT_READ_ONLY",
+  "frontA": {
+    "ens": [
+      "jaywisdom.eth",
+      "jaywisdom.base.eth"
+    ],
+    "historical_pc_signer": "0x65891F97db01C8fC9F76f4DFE65Bd44F8261f1B0",
+    "historical_basename_recipient": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+    "historical_pc_eip191": "PASS",
+    "live_pc_eip191": "UNKNOWN",
+    "ens_control": "UNKNOWN",
+    "eas_auth_claimed": false,
+    "eas_uids": [
+      "0xed2eed117f8b888d597910ed88cda166217babfcdcfc54e4c70b02a49ee2dc25",
+      "0x0e60a3cc445f273d8af207cbec821d45f4731f2eeca04b02e5d01553847c4d93"
+    ]
+  },
+  "frontB": {
+    "ek_cert_sha256": "c8b7bdd0ee8a85323d2953e3be811cc1806a8e92f14b1328bf7ed10075be7ec1",
+    "intermediate_sha256": "56be53aab397ef95b520c4342b9fe7b326f1fc971f6955b00f5284b3e94a6ca3",
+    "root_sha256": "67bd2472a546751caca5f358a78f80727531671338960a9bcfdfbe6a34d0c6a1",
+    "fingerprint_format": "PASS",
+    "original_der_bytes": "UNKNOWN",
+    "manufacturer_root": "UNKNOWN",
+    "revocation": "UNKNOWN",
+    "credential_activation": "UNKNOWN",
+    "pcr_quote": "UNKNOWN"
+  },
+  "authority_created": false,
+  "deployed": false
+}
