@@ -1,4 +1,4 @@
-name: CI-FIRST Dual Front (draft evidence policy)
+name: CI-FIRST Dual Front (quadruple onion)
 on:
   pull_request:
     paths:
@@ -17,3 +17,7 @@ jobs:
           node-version: '22'
       - name: Validate static review-only guardrails
         run: node ci-first/dual-front/verify.mjs
+      - name: Install pinned standalone verifier dependency (no production deploy)
+        run: npm install --prefix ci-first/dual-front --no-package-lock --ignore-scripts --no-audit --no-fund
+      - name: Quadruple Onion synthetic signature and negative tests
+        run: npm --prefix ci-first/dual-front test
