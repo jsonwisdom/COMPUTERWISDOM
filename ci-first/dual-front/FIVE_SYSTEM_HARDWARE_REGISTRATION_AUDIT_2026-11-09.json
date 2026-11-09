@@ -1,0 +1,69 @@
+{
+  "schema": "ci-first-five-system-hardware-registration-audit-v1",
+  "date": "2026-11-09",
+  "classification_rule": "PASS/FAIL/UNKNOWN apply only to explicitly defined assertions; deployment, access and passing unrelated tests are not TPM verification",
+  "mode": "READ_ONLY_EVIDENCE_REPLAY",
+  "identity_binding": {
+    "chain": "Base eip155:8453",
+    "name": "jaywisdom.base.eth",
+    "wallet": "0x65891F97db01C8fC9F76f4DFE65Bd44F8261f1B0",
+    "name_controller_authorization": "UNKNOWN",
+    "wallet_hardware_link": "UNKNOWN",
+    "onchain_attestation": "UNKNOWN"
+  },
+  "assessments": {
+    "wolfram": {
+      "fingerprint_format": "PASS",
+      "sha256_abc_known_answer": "PASS",
+      "synthetic_invalid_hex_rejection": "PASS",
+      "original_der_hash_replay": "UNKNOWN",
+      "certificate_signatures": "UNKNOWN",
+      "manufacturer_root": "UNKNOWN",
+      "revocation": "UNKNOWN",
+      "evidence": "WolframLanguageEvaluator 2026-11-09; 3 fingerprints valid format, known-answer and negative-format tests True; no original DER supplied"
+    },
+    "github": {
+      "draft_pr": "PASS",
+      "synthetic_eip191_tests": "PASS",
+      "synthetic_test_count": 11,
+      "hardware_certificate_chain_verifier": "FAIL",
+      "tpm_ak_activatecredential_verifier": "FAIL",
+      "pcr_quote_verifier": "FAIL",
+      "evidence": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/756; GitHub Actions run 42641908520 job 129244913690 11 synthetic Base-signature tests passed, verify.mjs checks policy syntax only"
+    },
+    "google_drive": {
+      "private_signer_proof_document": "PASS",
+      "original_raw_der_evidence": "UNKNOWN",
+      "hash_and_provenance_original_der": "UNKNOWN",
+      "evidence": "COMPUTER_WISDOM_ALMS_PC_SIGNER_PROOF_GATE_V2_2026-11-09 metadata: shared=false, single owner permission; Drive filename search ek.der gave no results (not proof no file exists)"
+    },
+    "cloudflare": {
+      "windows_pc_sign_proof_worker_exists": "PASS",
+      "deployed_worker": "PASS",
+      "tpm_oneshot_challenge_and_consumption": "FAIL",
+      "tpm_quote_validation": "FAIL",
+      "atomic_replay_protection": "FAIL",
+      "evidence": "cw-ci-first-windows-pc-sign-proof; deployment 773e5db6-a098-4edf-b573-7b8b339b152e; source exposes client-side personal_sign and no server-side activation/quote validator; script settings bindings=[]"
+    },
+    "chatgpt": {
+      "cross_system_reconciliation": "PASS",
+      "direct_tpm_proof": "UNKNOWN",
+      "hardware_to_ens_attestation": "UNKNOWN",
+      "evidence": "2026-11-09 read-only examination. No signing, certificate bytes, TPM mutation, payment or chain transaction."
+    }
+  },
+  "required_distinct_proofs": {
+    "hardware_key_possession": "UNKNOWN",
+    "hardware_manufacturer_and_cert_chain": "UNKNOWN",
+    "fresh_ak_activation": "UNKNOWN",
+    "fresh_signed_quote_and_pcr_eventlog_replay": "UNKNOWN",
+    "ens_controller_current_state": "UNKNOWN",
+    "wallet_approval_of_domain_separated_privacy_commitment": "UNKNOWN"
+  },
+  "privacy_guard": "Never publish raw EK certificate or stable EK fingerprint on chain; nonce-bound domain-separated commitment after verified authorization",
+  "overall": "UNKNOWN",
+  "gate_satisfied": false,
+  "onchain_registration_performed": false,
+  "source_documents_private": true,
+  "next_evidence": "Original ek.der intermediate.der root.der plus trusted manufacturer root provenance, revocation source, AK activation/quote/PCR log and independent Base ENS controller authorization; preserve raw bytes privately and verify before any Base transaction"
+}
