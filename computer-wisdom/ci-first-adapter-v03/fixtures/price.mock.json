@@ -1,0 +1,10 @@
+{
+  "schema":"computerwisdom.ci-first.price.v0.3",
+  "currency":"USD","unit":"per_1000_tokens",
+  "input_usd_per_1k":"0.003","output_usd_per_1k":"0.015","cached_input_usd_per_1k":"0.0003",
+  "effective_from":"2026-01-01T00:00:00.000Z",
+  "effective_to":"2027-01-01T00:00:00.000Z",
+  "source_url":"https://example.com/mock-pricing-no-claim",
+  "fetched_at":"2026-11-08T21:58:00.000Z",
+  "fetched_by":"test-fixture","fetch_method":"MOCK_LOCAL_FIXTURE"
+}

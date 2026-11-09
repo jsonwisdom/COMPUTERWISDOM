@@ -1,0 +1,12 @@
+{
+  "schema":"computerwisdom.ci-first.budget.v0.3",
+  "budget_context_id":"budget-mock-001",
+  "owner":"ci-owner-001",
+  "authorized_callers":["ci-owner-001"],
+  "global_cap_micro_usd":30000,
+  "agent_caps_micro_usd":{"provenance":30000,"mathematics":30000},
+  "created_at":"2026-01-01T00:00:00.000Z",
+  "expires_at":"2027-01-01T00:00:00.000Z",
+  "authorization":"MOCK_FIXTURE_ONLY",
+  "authority_created":false
+}

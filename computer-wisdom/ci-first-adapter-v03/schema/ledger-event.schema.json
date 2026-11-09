@@ -1,0 +1,18 @@
+{
+ "$schema":"https://json-schema.org/draft/2020-12/schema",
+ "$id":"https://jsonwisdom.io/schemas/ci-first-ledger-event-v0.3.json",
+ "type":"object", "additionalProperties":true,
+ "required":["type","seq","timestamp","prev_sha256","sha256","invocation_id","budget_remaining_micro_usd"],
+ "properties":{
+  "type":{"enum":["RESERVED","DISPATCHED","RECONCILED","REJECTED","EXPIRED_UNDISPATCHED","UNKNOWN_COST","FAILED_DISPATCH","RECONCILIATION_FAILED"]},
+  "seq":{"type":"integer","minimum":1},
+  "timestamp":{"type":"string","format":"date-time"},
+  "prev_sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+  "sha256":{"type":"string","pattern":"^[a-f0-9]{64}$"},
+  "invocation_id":{"type":"string","minLength":3},
+  "budget_remaining_micro_usd":{"type":"integer"},
+  "charged_micro_usd":{"type":"integer","minimum":0},
+  "reserved_micro_usd":{"type":"integer","minimum":0},
+  "reason":{"type":"string"}
+ }
+}
