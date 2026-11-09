@@ -1,0 +1,75 @@
+{
+  "schema": "computerwisdom.ci-first.eth-base-child-gate.reconciliation.v1",
+  "evidence_date": "2026-11-09",
+  "input_classes": {
+    "explorer": "USER_SUPPLIED_EXPLORER_TEXT",
+    "ens": "HISTORICAL_REPORTED_RESOLUTION",
+    "wallet": "USER_SCREENSHOT",
+    "attestation": "UNSIGNED_REPO_DECLARATION"
+  },
+  "timeline": [
+    {
+      "date": "2026-08-18",
+      "event": "Living Sync Ledger: jaywisdom.eth and jaywisdom.base.eth are operator/anchor labels",
+      "verdict": "PASS_DOCUMENTED_POLICY_NOT_AUTHORITY",
+      "source": "Google Drive COMPUTERWISDOM Living Sync Ledger"
+    },
+    {
+      "date": "2026-11-05_to_2026-11-07",
+      "event": "Prior conversations reported both name resolutions to historical A380 wallet; current onchain event/record readback incomplete",
+      "verdict": "UNKNOWN_LIVE_OWNERSHIP_RECORD_CHANGES",
+      "source": "GitHub PR 747 and linked Google Drive snapshot"
+    },
+    {
+      "date": "2026-11-07",
+      "event": "Historical EIP-191 signature for PC Wallet2 replayed",
+      "verdict": "PASS_HISTORICAL_MESSAGE_ONLY",
+      "source": "GitHub COMPUTERWISDOM PR 745"
+    },
+    {
+      "date": "2026-11-07",
+      "event": "Coinbase Ethereum mainnet internal ETH transfer to PC Wallet2",
+      "verdict": "PASS_USER_SUPPLIED_EXPLORER_RECEIPT_ONLY",
+      "source": "https://etherscan.io/tx/0xbcd5090543b918aae7c715acc6c1a36939e05e63169bc713465de8edf6f29b5a",
+      "amount_eth": "0.00224757",
+      "receiver": "0x65891F97db01C8fC9F76f4DFE65Bd44F8261f1B0",
+      "ethereum_block_reported": 26365593,
+      "tx_hash": "0xbcd5090543b918aae7c715acc6c1a36939e05e63169bc713465de8edf6f29b5a"
+    },
+    {
+      "date": "2026-11-09",
+      "event": "Computer Wisdom PC selected in Windows wallet UI and copied address matches the ETH receipt",
+      "verdict": "PASS_UI_DISPLAY_ONLY",
+      "source": "User screenshots and copied address"
+    }
+  ],
+  "identities": [
+    {
+      "name": "jaywisdom.eth",
+      "chain": "Ethereum",
+      "historical_reported_forward": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+      "current_control": "UNKNOWN"
+    },
+    {
+      "name": "jaywisdom.base.eth",
+      "chain": "Base",
+      "historical_reported_forward": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+      "current_control": "UNKNOWN"
+    },
+    {
+      "name": "Computer Wisdom PC",
+      "chain": "EVM_ACCOUNT",
+      "address": "0x65891F97db01C8fC9F76f4DFE65Bd44F8261f1B0",
+      "current_signing_control": "UNKNOWN"
+    }
+  ],
+  "mismatch_summary": "Coinbase sent ETH directly to PC, not to the historical reported ENS forward address. It does not prove an ENS resolver write, ownership transfer, Ethereum attestation or x402 settlement.",
+  "historical_EAS": {
+    "network": "ethereum-sepolia",
+    "repo_status": "PREPARED_NOT_SIGNED",
+    "mainnet_authority": "UNKNOWN"
+  },
+  "dual_rail_release": "HOLD",
+  "authority_created": false,
+  "canon": false
+}
