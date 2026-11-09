@@ -1,0 +1,67 @@
+name: DOJ CWA Rule Check
+
+on:
+  schedule:
+    - cron: '0 12 * * 1'   # Mondays 12:00 UTC (runs from the default branch only)
+  workflow_dispatch:
+  # Temporary, for pre-merge testing on the feature branch. Remove after merge.
+  # push:
+  #   branches: [doj-cwa-rule-check]
+  #   paths: ['.github/workflows/doj-cwa-rule-check.yml', 'scripts/**']
+
+concurrency:
+  group: doj-cwa-rule-check
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install tools
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq poppler-utils jq python3-bs4
+
+      - name: Fetch, hash, receipt
+        id: check
+        env:
+          DEADLINE_SECONDS: '600'
+        run: bash scripts/doj-cwa-check.sh
+
+      # Runs only if the script succeeded, so a crash never commits a
+      # half-updated baseline. A HOLD receipt is a normal, committed result.
+      - name: Commit receipts
+        run: bash scripts/doj-cwa-commit.sh normal
+
+      # On failure, commit ONLY the crash receipt. The script first resets the
+      # tree to the remote tip, so anything staged or committed locally earlier
+      # in the job cannot ride along.
+      - name: Commit crash receipt only
+        if: failure()
+        run: bash scripts/doj-cwa-commit.sh crash
+
+      - name: Upload receipts (always)
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: doj-cwa-receipts-${{ github.run_id }}
+          if-no-files-found: warn
+          path: |
+            receipts/doj-cwa/latest_receipt.json
+            receipts/doj-cwa/history/
+            receipts/doj-cwa/crash/
+            receipts/doj-cwa/check_log.txt
+            receipts/doj-cwa/promotion_log.jsonl
+
+      - name: Fail visibly on HOLD
+        if: steps.check.outputs.overall == 'INCOMPLETE_HOLD'
+        run: |
+          echo "::error::DOJ CWA rule check is INCOMPLETE_HOLD. See receipts/doj-cwa/latest_receipt.json"
+          exit 1
