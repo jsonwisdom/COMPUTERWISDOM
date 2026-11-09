@@ -1,0 +1,23 @@
+name: CI-FIRST Dual Front (quadruple onion)
+on:
+  pull_request:
+    paths:
+      - 'ci-first/dual-front/**'
+      - '.github/workflows/ci-first-dual-front.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence-policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate static review-only guardrails
+        run: node ci-first/dual-front/verify.mjs
+      - name: Install pinned standalone verifier dependency (no production deploy)
+        run: npm install --prefix ci-first/dual-front --no-package-lock --ignore-scripts --no-audit --no-fund
+      - name: Quadruple Onion synthetic signature and negative tests
+        run: npm --prefix ci-first/dual-front test

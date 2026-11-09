@@ -1,0 +1,45 @@
+{
+  "schema": "ci-first-ensv2-mainnet-signing-handoff-deployment-v1",
+  "date": "2026-11-09",
+  "name": "jaywisdom.eth",
+  "network": "ethereum-mainnet",
+  "chain_id": 1,
+  "ethereum_record_coin_type": 60,
+  "historical_destination": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+  "requested_destination": "0x65891F97db01C8fC9F76f4DFE65Bd44F8261f1B0",
+  "cloudflare": {
+    "account": "b37a8803e8a363bf067fc04a8e7d2cc5",
+    "worker": "cw-ens-cutover-20261109",
+    "workers_dev_enabled": true,
+    "deployment_id": "ad9a06e3-c2a6-44ce-841d-aa06c1e8c609",
+    "version_id": "58113707-e457-44de-9041-c9dbb128f4e2",
+    "traffic_percentage": 100,
+    "url": "https://cw-ens-cutover-20261109.jaywisdom44.workers.dev/",
+    "external_http_readback": "UNKNOWN_DNS_RESTRICTED_IN_RUNTIME"
+  },
+  "github": {
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "pr_number": 756,
+    "source_path": "ci-first/dual-front/live-ens-handoff-worker.mjs",
+    "source_commit": "340499798bc9dde738e6f8faba047a29c3784fc7",
+    "source_blob_sha": "fa6523f9bbaea4114c2bd3e2fcbf4840268fc983",
+    "policy_workflow_run": 42637461617,
+    "policy_workflow_conclusion": "success_static_guardrails_only"
+  },
+  "security": {
+    "wallet_read_only": true,
+    "requests_wallet_signature": false,
+    "requests_wallet_transaction": false,
+    "handles_private_keys": false,
+    "no_payment_destination_changes": true,
+    "no_existing_workers_modified": true,
+    "official_ens_app": "https://app.ens.domains/jaywisdom.eth"
+  },
+  "on_chain": {
+    "destination_changed": false,
+    "ens_owner_or_role_of_pc_wallet": "UNKNOWN",
+    "mainnet_transaction_hash": null,
+    "existing_usdc_moved": false
+  },
+  "next_gate": "Open live handoff in wallet browser, then official ENS editor; if Edit Profile absent, authenticate name-controller role rather than sign invalid transaction."
+}
