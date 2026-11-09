@@ -1,0 +1,19 @@
+name: CI-FIRST Dual Front (draft evidence policy)
+on:
+  pull_request:
+    paths:
+      - 'ci-first/dual-front/**'
+      - '.github/workflows/ci-first-dual-front.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  evidence-policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Validate static review-only guardrails
+        run: node ci-first/dual-front/verify.mjs
