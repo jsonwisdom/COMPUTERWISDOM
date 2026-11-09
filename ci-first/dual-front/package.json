@@ -1,0 +1,12 @@
+{
+  "name": "@computerwisdom/ci-first-base-play-audit",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test verify-base-play-receipt.test.mjs"
+  },
+  "dependencies": {
+    "viem": "2.57.17"
+  }
+}
