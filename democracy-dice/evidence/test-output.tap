@@ -1,0 +1,200 @@
+TAP version 13
+# Subtest: /workspace/democracy-dice-build/COMPUTERWISDOM/democracy-dice/test/helpers.js
+ok 1 - /workspace/democracy-dice-build/COMPUTERWISDOM/democracy-dice/test/helpers.js
+  ---
+  duration_ms: 76.800448
+  ...
+# Subtest: integration: replay reproduces identical rolls and packet digest
+ok 2 - integration: replay reproduces identical rolls and packet digest
+  ---
+  duration_ms: 16.260445
+  ...
+# Subtest: negative: tampered roll in packet -> mismatch
+ok 3 - negative: tampered roll in packet -> mismatch
+  ---
+  duration_ms: 0.795093
+  ...
+# Subtest: negative: wrong seed -> mismatch
+ok 4 - negative: wrong seed -> mismatch
+  ---
+  duration_ms: 0.354809
+  ...
+# Subtest: integration+negative: ledger chain verifies; tamper detected
+ok 5 - integration+negative: ledger chain verifies; tamper detected
+  ---
+  duration_ms: 3.877993
+  ...
+# Subtest: integration: adapters default NOT_CONFIGURED / LIVE_UNAVAILABLE, no fetch attempted
+ok 6 - integration: adapters default NOT_CONFIGURED / LIVE_UNAVAILABLE, no fetch attempted
+  ---
+  duration_ms: 2.973747
+  ...
+# Subtest: integration: adapter status mapping with MOCK fetch (labeled MOCK in test only)
+ok 7 - integration: adapter status mapping with MOCK fetch (labeled MOCK in test only)
+  ---
+  duration_ms: 0.497642
+  ...
+# Subtest: integration: finance provenance from unavailable sources is LIVE_UNAVAILABLE, not independent
+ok 8 - integration: finance provenance from unavailable sources is LIVE_UNAVAILABLE, not independent
+  ---
+  duration_ms: 7.131924
+  ...
+# Subtest: integration: approval recorded -> consumed once; identity NOT verified
+ok 9 - integration: approval recorded -> consumed once; identity NOT verified
+  ---
+  duration_ms: 5.008717
+  ...
+# Subtest: schema: produced RollReceipt validates
+ok 10 - schema: produced RollReceipt validates
+  ---
+  duration_ms: 12.843494
+  ...
+# Subtest: security: AUTHORITY_CREATED=true rejected
+ok 11 - security: AUTHORITY_CREATED=true rejected
+  ---
+  duration_ms: 0.545501
+  ...
+# Subtest: security: status other than HOLD rejected
+ok 12 - security: status other than HOLD rejected
+  ---
+  duration_ms: 0.383399
+  ...
+# Subtest: negative: dice not derivable from bytes rejected
+ok 13 - negative: dice not derivable from bytes rejected
+  ---
+  duration_ms: 0.396242
+  ...
+# Subtest: negative: unknown property rejected (strict)
+ok 14 - negative: unknown property rejected (strict)
+  ---
+  duration_ms: 0.373609
+  ...
+# Subtest: negative: data label outside LIVE|MOCK|SYNTHETIC|LIVE_UNAVAILABLE rejected
+ok 15 - negative: data label outside LIVE|MOCK|SYNTHETIC|LIVE_UNAVAILABLE rejected
+  ---
+  duration_ms: 0.50288
+  ...
+# Subtest: security: CRYPTOGRAPHIC_IDENTITY_VERIFIED=true without evidence rejected
+ok 16 - security: CRYPTOGRAPHIC_IDENTITY_VERIFIED=true without evidence rejected
+  ---
+  duration_ms: 3.833377
+  ...
+# Subtest: security: finance provenance cannot claim liveSpend or walletSigning
+ok 17 - security: finance provenance cannot claim liveSpend or walletSigning
+  ---
+  duration_ms: 5.955105
+  ...
+# Subtest: security: approval reuse fails (ALREADY_CONSUMED)
+ok 18 - security: approval reuse fails (ALREADY_CONSUMED)
+  ---
+  duration_ms: 8.986739
+  ...
+# Subtest: security: forged MAC / tampered fields rejected
+ok 19 - security: forged MAC / tampered fields rejected
+  ---
+  duration_ms: 0.656861
+  ...
+# Subtest: security: receipt from another store (different key) rejected
+ok 20 - security: receipt from another store (different key) rejected
+  ---
+  duration_ms: 0.356467
+  ...
+# Subtest: security: subject substitution rejected
+ok 21 - security: subject substitution rejected
+  ---
+  duration_ms: 0.46554
+  ...
+# Subtest: security: flipping CRYPTOGRAPHIC_IDENTITY_VERIFIED on a receipt does not create identity
+ok 22 - security: flipping CRYPTOGRAPHIC_IDENTITY_VERIFIED on a receipt does not create identity
+  ---
+  duration_ms: 0.278563
+  ...
+# Subtest: security: short HMAC key refused
+ok 23 - security: short HMAC key refused
+  ---
+  duration_ms: 0.277474
+  ...
+# Subtest: concurrency: 500 concurrent async consumers -> exactly 1 success
+ok 24 - concurrency: 500 concurrent async consumers -> exactly 1 success
+  ---
+  duration_ms: 20.450578
+  ...
+# Subtest: concurrency: 8 worker threads racing on a shared-memory claim -> exactly 1 winner
+ok 25 - concurrency: 8 worker threads racing on a shared-memory claim -> exactly 1 winner
+  ---
+  duration_ms: 40.707921
+  ...
+# Subtest: ui: accessibility basics present
+ok 26 - ui: accessibility basics present
+  ---
+  duration_ms: 1.099343
+  ...
+# Subtest: ui: SYNTHETIC + HOLD + AUTHORITY_CREATED=false labeled; rejection@252 used
+ok 27 - ui: SYNTHETIC + HOLD + AUTHORITY_CREATED=false labeled; rejection@252 used
+  ---
+  duration_ms: 0.141605
+  ...
+# Subtest: unit: JCS key order is UTF-16 code-unit order (RFC 8785 §3.2.3)
+ok 28 - unit: JCS key order is UTF-16 code-unit order (RFC 8785 §3.2.3)
+  ---
+  duration_ms: 0.99701
+  ...
+# Subtest: unit: JCS number serialization (RFC 8785 Appendix B samples)
+ok 29 - unit: JCS number serialization (RFC 8785 Appendix B samples)
+  ---
+  duration_ms: 0.257807
+  ...
+# Subtest: unit: JCS string escaping
+ok 30 - unit: JCS string escaping
+  ---
+  duration_ms: 0.111148
+  ...
+# Subtest: unit: SYN-001/SYN-002 MATCH; TV-001/TV-002 SEARCH_MISS (fail closed)
+ok 31 - unit: SYN-001/SYN-002 MATCH; TV-001/TV-002 SEARCH_MISS (fail closed)
+  ---
+  duration_ms: 1.585412
+  ...
+# Subtest: negative: a forged TV object cannot be reported as MATCH
+ok 32 - negative: a forged TV object cannot be reported as MATCH
+  ---
+  duration_ms: 0.168041
+  ...
+# Subtest: unit: exactly 216 distinct outcomes, index bijection
+ok 33 - unit: exactly 216 distinct outcomes, index bijection
+  ---
+  duration_ms: 1.776462
+  ...
+# Subtest: unit: rejection@252 exhaustive over all 256 byte values
+ok 34 - unit: rejection@252 exhaustive over all 256 byte values
+  ---
+  duration_ms: 0.295894
+  ...
+# Subtest: unit: every one of 216 triples reachable with exactly the uniform byte mass (42^3 each)
+ok 35 - unit: every one of 216 triples reachable with exactly the uniform byte mass (42^3 each)
+  ---
+  duration_ms: 0.29956
+  ...
+# Subtest: unit: rejected bytes are skipped and recorded
+ok 36 - unit: rejected bytes are skipped and recorded
+  ---
+  duration_ms: 0.293348
+  ...
+# Subtest: unit: statistical uniformity over 216000 seeded rolls (chi-square, df=215)
+ok 37 - unit: statistical uniformity over 216000 seeded rolls (chi-square, df=215)
+  ---
+  duration_ms: 60.857972
+  ...
+# Subtest: unit: digest is stable across key insertion order
+ok 38 - unit: digest is stable across key insertion order
+  ---
+  duration_ms: 0.213061
+  ...
+1..38
+# tests 38
+# suites 0
+# pass 38
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1085.987159

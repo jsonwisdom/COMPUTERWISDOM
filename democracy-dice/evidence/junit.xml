@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<testsuites>
+	<testcase name="/workspace/democracy-dice-build/COMPUTERWISDOM/democracy-dice/test/helpers.js" time="0.076800" classname="test"/>
+	<testcase name="integration: replay reproduces identical rolls and packet digest" time="0.016260" classname="test"/>
+	<testcase name="negative: tampered roll in packet -> mismatch" time="0.000795" classname="test"/>
+	<testcase name="negative: wrong seed -> mismatch" time="0.000355" classname="test"/>
+	<testcase name="integration+negative: ledger chain verifies; tamper detected" time="0.003878" classname="test"/>
+	<testcase name="integration: adapters default NOT_CONFIGURED / LIVE_UNAVAILABLE, no fetch attempted" time="0.002974" classname="test"/>
+	<testcase name="integration: adapter status mapping with MOCK fetch (labeled MOCK in test only)" time="0.000498" classname="test"/>
+	<testcase name="integration: finance provenance from unavailable sources is LIVE_UNAVAILABLE, not independent" time="0.007132" classname="test"/>
+	<testcase name="integration: approval recorded -> consumed once; identity NOT verified" time="0.005009" classname="test"/>
+	<testcase name="schema: produced RollReceipt validates" time="0.012843" classname="test"/>
+	<testcase name="security: AUTHORITY_CREATED=true rejected" time="0.000546" classname="test"/>
+	<testcase name="security: status other than HOLD rejected" time="0.000383" classname="test"/>
+	<testcase name="negative: dice not derivable from bytes rejected" time="0.000396" classname="test"/>
+	<testcase name="negative: unknown property rejected (strict)" time="0.000374" classname="test"/>
+	<testcase name="negative: data label outside LIVE|MOCK|SYNTHETIC|LIVE_UNAVAILABLE rejected" time="0.000503" classname="test"/>
+	<testcase name="security: CRYPTOGRAPHIC_IDENTITY_VERIFIED=true without evidence rejected" time="0.003833" classname="test"/>
+	<testcase name="security: finance provenance cannot claim liveSpend or walletSigning" time="0.005955" classname="test"/>
+	<testcase name="security: approval reuse fails (ALREADY_CONSUMED)" time="0.008987" classname="test"/>
+	<testcase name="security: forged MAC / tampered fields rejected" time="0.000657" classname="test"/>
+	<testcase name="security: receipt from another store (different key) rejected" time="0.000356" classname="test"/>
+	<testcase name="security: subject substitution rejected" time="0.000466" classname="test"/>
+	<testcase name="security: flipping CRYPTOGRAPHIC_IDENTITY_VERIFIED on a receipt does not create identity" time="0.000279" classname="test"/>
+	<testcase name="security: short HMAC key refused" time="0.000277" classname="test"/>
+	<testcase name="concurrency: 500 concurrent async consumers -> exactly 1 success" time="0.020451" classname="test"/>
+	<testcase name="concurrency: 8 worker threads racing on a shared-memory claim -> exactly 1 winner" time="0.040708" classname="test"/>
+	<testcase name="ui: accessibility basics present" time="0.001099" classname="test"/>
+	<testcase name="ui: SYNTHETIC + HOLD + AUTHORITY_CREATED=false labeled; rejection@252 used" time="0.000142" classname="test"/>
+	<testcase name="unit: JCS key order is UTF-16 code-unit order (RFC 8785 §3.2.3)" time="0.000997" classname="test"/>
+	<testcase name="unit: JCS number serialization (RFC 8785 Appendix B samples)" time="0.000258" classname="test"/>
+	<testcase name="unit: JCS string escaping" time="0.000111" classname="test"/>
+	<testcase name="unit: SYN-001/SYN-002 MATCH; TV-001/TV-002 SEARCH_MISS (fail closed)" time="0.001585" classname="test"/>
+	<testcase name="negative: a forged TV object cannot be reported as MATCH" time="0.000168" classname="test"/>
+	<testcase name="unit: exactly 216 distinct outcomes, index bijection" time="0.001776" classname="test"/>
+	<testcase name="unit: rejection@252 exhaustive over all 256 byte values" time="0.000296" classname="test"/>
+	<testcase name="unit: every one of 216 triples reachable with exactly the uniform byte mass (42^3 each)" time="0.000300" classname="test"/>
+	<testcase name="unit: rejected bytes are skipped and recorded" time="0.000293" classname="test"/>
+	<testcase name="unit: statistical uniformity over 216000 seeded rolls (chi-square, df=215)" time="0.060858" classname="test"/>
+	<testcase name="unit: digest is stable across key insertion order" time="0.000213" classname="test"/>
+	<!-- tests 38 -->
+	<!-- suites 0 -->
+	<!-- pass 38 -->
+	<!-- fail 0 -->
+	<!-- cancelled 0 -->
+	<!-- skipped 0 -->
+	<!-- todo 0 -->
+	<!-- duration_ms 1085.987159 -->
+</testsuites>

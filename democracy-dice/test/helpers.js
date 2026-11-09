@@ -1,0 +1,1 @@
+export const SEED = 'DEMOCRACY_DICE_SYNTHETIC_SEED_v1.6';

@@ -1,0 +1,12 @@
+{ "$schema": "https://json-schema.org/draft/2020-12/schema", "$id": "source-availability", "title": "SourceAvailability", "type": "object", "additionalProperties": false,
+  "required": ["type","adapter","availability","dataLabel","checkedAt","liveFinancialActivity","detail","AUTHORITY_CREATED"],
+  "properties": {
+    "type": {"const":"SourceAvailability"},
+    "adapter": {"enum":["FEC","OPENSECRETS","THIRD_SOURCE"]},
+    "availability": {"enum":["AVAILABLE","RATE_LIMITED","AUTH_REQUIRED","NOT_CONFIGURED","ERROR"]},
+    "dataLabel": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/label"},
+    "checkedAt": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/isoTime"},
+    "liveFinancialActivity": {"const": false},
+    "detail": {"type":"string"},
+    "AUTHORITY_CREATED": {"$ref":"https://jsonwisdom.github.io/COMPUTERWISDOM/democracy-dice/schemas/common.schema.json#/$defs/authority"}
+  } }
