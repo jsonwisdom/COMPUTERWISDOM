@@ -1,0 +1,62 @@
+{
+  "scope": "Existing pre-upgrade real D1 receipts via live HTTP",
+  "results": [
+    {
+      "receipt_id": "dba86de1-f951-4345-9a75-c6859f8e8689",
+      "reproduced": true
+    },
+    {
+      "receipt_id": "10a28e8a-53f6-484a-bbd5-18a4cbd0b4a7",
+      "reproduced": true
+    },
+    {
+      "receipt_id": "3f2dcb0d-c4d4-4924-9543-01ec249bdd2c",
+      "reproduced": true
+    },
+    {
+      "receipt_id": "f5f2f75c-376d-475c-88eb-7a4f58271057",
+      "reproduced": true
+    },
+    {
+      "receipt_id": "7441dc92-4588-4e16-89b8-3fccf961c409",
+      "reproduced": true
+    },
+    {
+      "receipt_id": "1a478d2b-dc7d-411d-ad88-ddd844fb2c6a",
+      "reproduced": true
+    },
+    {
+      "receipt_id": "f48e2eaa-8616-4fd0-ab51-3ff4917bbed0",
+      "reproduced": true
+    },
+    {
+      "receipt_id": "5bba1cf2-fe65-470e-9a0a-31292599430f",
+      "reproduced": true
+    },
+    {
+      "receipt_id": "01ad9181-a657-468d-82cc-2a33dba9c8fe",
+      "reproduced": true
+    },
+    {
+      "receipt_id": "300d603e-28bf-4e33-b5bd-3c5f8f6a7f18",
+      "reproduced": true
+    },
+    {
+      "receipt_id": "b01ecd63-7081-4b7a-93a1-0b2015963b15",
+      "reproduced": true
+    },
+    {
+      "receipt_id": "9d80134d-03f0-4309-894b-f2a45d3cef90",
+      "reproduced": true
+    },
+    {
+      "receipt_id": "624a5e79-df43-46bb-b0f7-7db9bc70ace3",
+      "reproduced": true
+    },
+    {
+      "receipt_id": "76ec7993-094e-4c18-a116-8ae95c073376",
+      "reproduced": true
+    }
+  ],
+  "passed": 14
+}

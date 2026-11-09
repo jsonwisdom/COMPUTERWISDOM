@@ -1,0 +1,38 @@
+{
+  "result": [
+    {
+      "results": [
+        {
+          "id": "46da2d49-5026-4862-8587-69d5c599316d",
+          "finished_at": "2026-11-02T17:10:10.756Z",
+          "cadence": "light",
+          "checks_json": "[{\"id\":\"game-worker\",\"status\":\"PASS\",\"observed_at\":\"2026-11-02T17:10:10.708Z\",\"scope\":\"SERVICE_BINDING_HEALTH\",\"build_sha\":\"67dd0a7e79dd15f1c7402e9b1340ecf7cc10940a2c5af839863cd87a8d63f312\",\"bundle_digest\":\"3edbbaa0c4fa9e2fc54570ef251103c5e6bb98b93e0341872225ade5495447e7\"},{\"id\":\"catalog-500\",\"status\":\"PASS\",\"observed_at\":\"2026-11-02T17:10:10.708Z\",\"scope\":\"CATALOG_METADATA\",\"catalog_records\":500,\"approved_playable\":0},{\"id\":\"jsonwisdom-website\",\"url\":\"https://jsonwisdom.com/\",\"http_status\":200,\"status\":\"PASS\",\"observed_at\":\"2026-11-02T17:10:10.708Z\",\"latency_ms\":113,\"observation_sha256\":\"c6750c17e9f624fafe90cd022c0aa6df56fd81f933d1bd077caaa9ad9a6f4a33\",\"scope\":\"HTTP_OBSERVATION\"},{\"id\":\"classes-with-glasses\",\"url\":\"https://classes.jsonwisdom.com/health\",\"http_status\":200,\"status\":\"PASS\",\"observed_at\":\"2026-11-02T17:10:10.712Z\",\"latency_ms\":117,\"observation_sha256\":\"7d3191cb5b06628c2c6db934cf849fa128ce97ecc8821a0064a6c2dd873e854f\",\"scope\":\"HTTP_OBSERVATION\"},{\"id\":\"game-public-http\",\"url\":\"https://jasons-game-fixture-e2e.jaywisdom44.workers.dev/health\",\"http_status\":200,\"status\":\"PASS\",\"observed_at\":\"2026-11-02T17:10:10.712Z\",\"latency_ms\":117,\"observation_sha256\":\"c500ed07ad2d8836320ce7f6b9d7c7baa4ae248c20ac2f5d02f3f21a983c7604\",\"scope\":\"HTTP_OBSERVATION\"},{\"id\":\"dns-jsonwisdom\",\"url\":\"https://cloudflare-dns.com/dns-query?name=jsonwisdom.com&type=A\",\"http_status\":200,\"status\":\"PASS\",\"observed_at\":\"2026-11-02T17:10:10.614Z\",\"latency_ms\":19,\"observation_sha256\":\"ccf21d16f14d0bfa319b5a72312184aa0d2351b51714cd1c6de6392fe77d68c2\",\"scope\":\"HTTP_OBSERVATION\"},{\"id\":\"authored-challenge-content\",\"status\":\"HOLD\",\"observed_at\":\"2026-11-02T17:10:10.712Z\",\"scope\":\"CONTENT_APPROVAL\",\"reason\":\"Approved CH bundles and mappings not located\"},{\"id\":\"x402-payment-receipts\",\"status\":\"HOLD\",\"observed_at\":\"2026-11-02T17:10:10.712Z\",\"scope\":\"PAYMENT_INFRASTRUCTURE\",\"reason\":\"Source inspected; no verified public deployment URL or live settlement replay. Payment execution disabled.\"}]",
+          "delta": "MATERIAL_DELTA",
+          "receipt_sha256": "b2cb2f6674f0c3ed92372cba313976694b90734b943115b3d92056d6305208a2",
+          "trigger": "cloudflare-cron"
+        }
+      ],
+      "success": true,
+      "meta": {
+        "served_by": "v3-prod",
+        "served_by_region": "ENAM",
+        "served_by_colo": "ATL",
+        "served_by_primary": true,
+        "timings": {
+          "sql_duration_ms": 0.202
+        },
+        "duration": 0.202,
+        "changes": 0,
+        "last_row_id": 0,
+        "changed_db": false,
+        "size_after": 102400,
+        "rows_read": 1,
+        "rows_written": 0,
+        "total_attempts": 1
+      }
+    }
+  ],
+  "errors": [],
+  "messages": [],
+  "success": true
+}

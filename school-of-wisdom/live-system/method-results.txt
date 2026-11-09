@@ -1,0 +1,11 @@
+PASS duplicate-source inflation
+PASS unknown denominator
+PASS conflicting rules
+PASS missing eligibility
+PASS staged but unsettled payment
+PASS reversed settlement
+PASS wrong-scope receipt
+PASS allegation vs conviction
+PASS privacy leakage
+PASS correct HOLD
+{"passed":14,"failed":0,"scope":"LOCAL_SYNTHETIC_REVIEW_POLICY; not live legal/financial classification"}
