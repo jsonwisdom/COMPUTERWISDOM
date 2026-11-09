@@ -1,0 +1,70 @@
+name: Workdesk WebAuthn Build Gate (read-only)
+on:
+  pull_request:
+    paths:
+      - 'workdesk/auth-worker/**'
+      - 'workdesk/WALLET_SIGNING_CONTRACT_V0.1.md'
+      - '.github/workflows/workdesk-webauthn-build.yml'
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build-only:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: workdesk/auth-worker
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '22'
+      - name: Validate JavaScript syntax
+        run: node --check src/index.js
+      - name: Install dependencies (no deploy)
+        run: npm install --no-audit --no-fund
+      - name: Execute fail-closed runtime tests
+        run: node --test src/index.test.js
+      - name: Bundle Cloudflare Worker without deploying
+        run: npx wrangler deploy --dry-run --outdir ./bundle-validation
+      - name: Emit deployable bundled source to authenticated CI logs (no secrets)
+        run: |
+          npx esbuild bundle-validation/index.js --minify --target=es2022 --outfile=bundle-validation/index.min.js
+          echo CW_BUNDLE_BEGIN
+          base64 -w 4096 bundle-validation/index.min.js | sed 's/^/CWCHUNK:/'
+          echo CW_BUNDLE_END
+      - name: Store compiled Worker bundle as build artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: workdesk-auth-worker-bundle
+          path: workdesk/auth-worker/bundle-validation/
+          retention-days: 2
+          if-no-files-found: error
+      - name: Verify public Workdesk and authentication endpoints (live HTTP)
+        run: |
+          python3 - <<'PY'
+          import json, urllib.request, urllib.error
+          checks=[('homepage','https://jsonwisdom.com/',200),('workdesk','https://jsonwisdom.com/workdesk/index.html',200),('auth-health','https://auth.jsonwisdom.com/health',200),('private-denied','https://auth.jsonwisdom.com/private',403)]
+          failures=[]
+          for name,url,expected in checks:
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(url,headers={'User-Agent':'jsonwisdom-ci-smoke'}),timeout=15) as response:
+                      status=response.status; body=response.read(4096).decode('utf-8','replace')
+              except urllib.error.HTTPError as e:
+                  status=e.code; body=e.read(4096).decode('utf-8','replace')
+              except Exception as e:
+                  failures.append(name+': '+str(e));print('LIVE',name,'ERROR',str(e));continue
+              print('LIVE',name,'HTTP',status,'BODY',body[:120].replace('\\n',' '))
+              if status!=expected:failures.append(name+': expected '+str(expected)+', got '+str(status))
+              if name=='auth-health' and status==200:
+                  try:
+                      data=json.loads(body)
+                      if data.get('configured') is not True:failures.append('auth-health: configured not true')
+                  except Exception:failures.append('auth-health: invalid JSON')
+          if failures:raise SystemExit('FAIL: '+'; '.join(failures))
+          print('LIVE_HTTP_SMOKE_PASS')
+          PY
+      - name: Confirm no public site or funds were modified
+        run: echo "Build-only gate. Not a security audit. No production deployment."
