@@ -1,0 +1,176 @@
+{
+  "audit_id": "BLACKBARPRESS-MN-ROOT-TO-ROOF-20261110",
+  "as_of": "2026-11-10",
+  "scope": "Minnesota public subsidies, project announcements, federal funding cancellations, PPP/EIDL suspensions, and job-count claims; initial source-backed snapshot, not exhaustive",
+  "evidence_policy": "Public records only; preserve raw document hashes and timestamps on independent capture. No guilt or fraud attribution without independently verified case evidence.",
+  "sources": [
+    {
+      "id": "DEED-JCF-OCT21",
+      "url": "https://mn.gov/deed/newscenter/press-releases/?id=1045-772342",
+      "document_date": "2026-10-21",
+      "type": "official project announcement",
+      "status": "PASS"
+    },
+    {
+      "id": "DEED-2025-REPORT",
+      "url": "https://mn.gov/deed/government/business-subsidy/legislative-reports/",
+      "document_date": "2025",
+      "type": "official aggregate agreements report",
+      "status": "PASS"
+    },
+    {
+      "id": "SBA-ANNUAL",
+      "url": "https://www.sba.gov/annual-report/",
+      "document_date": "2026",
+      "type": "official annual report claims about suspended borrowers",
+      "status": "PASS"
+    },
+    {
+      "id": "MMB-CANCELLED",
+      "url": "https://mn.gov/mmb/budget/federal-investments/data-and-reporting/",
+      "document_date": null,
+      "type": "live federal grant cancellations tracker; separate from business contracts",
+      "status": "PASS"
+    },
+    {
+      "id": "DEED-JCF-FAQ",
+      "url": "https://mn.gov/deed/business/financing-business/deed-programs/mn-jcf/faqs.jsp",
+      "document_date": null,
+      "type": "official program policy",
+      "status": "PASS"
+    },
+    {
+      "id": "BLS-METHOD",
+      "url": "https://www.bls.gov/news.release/empsit.faq.htm",
+      "document_date": "2026-11",
+      "type": "federal employment measurement methodology",
+      "status": "PASS"
+    }
+  ],
+  "october_21_2026_announcements": [
+    {
+      "organization": "Aircorps Aviation LLC",
+      "place": "Bemidji, Minnesota",
+      "program_awards_usd": {
+        "JCF": 175000
+      },
+      "jobs_planned": 14,
+      "jobs_qualifier": "expected 3 years",
+      "capital_investment_min_usd": 4650000
+    },
+    {
+      "organization": "Atscott Mfg Inc.",
+      "place": "Pine City, Minnesota",
+      "program_awards_usd": {
+        "JCF": 175000
+      },
+      "jobs_planned": 15,
+      "jobs_qualifier": "expected 1 year",
+      "capital_investment_min_usd": 3000000
+    },
+    {
+      "organization": "RES Specialty Pyrotechnics Inc.",
+      "place": "Le Sueur County, Minnesota",
+      "program_awards_usd": {
+        "JCF": 140000
+      },
+      "jobs_planned": 7,
+      "jobs_qualifier": "expected 3 years",
+      "capital_investment_min_usd": 625000
+    },
+    {
+      "organization": "rms Company",
+      "place": "Coon Rapids, Minnesota",
+      "program_awards_usd": {
+        "JCF": 800000,
+        "MIF": 600000
+      },
+      "jobs_planned": 75,
+      "jobs_qualifier": "expected 2 years",
+      "capital_investment_min_usd": 11000000
+    },
+    {
+      "organization": "Ryder Integrated Logistics Inc.",
+      "place": "Shakopee, Minnesota",
+      "program_awards_usd": {
+        "JCF": 175000
+      },
+      "jobs_planned_min": 31,
+      "jobs_qualifier": "release states over 30 jobs, expected 3 years",
+      "capital_investment_min_usd": 1800000,
+      "capital_qualifier": "release states more than $1.8 million"
+    }
+  ],
+  "published_headline": {
+    "jobs_announced": 141,
+    "public_assistance_usd_description": "more than $2 million",
+    "private_investment_usd_description": "more than $19 million"
+  },
+  "checks": [
+    {
+      "id": "OCT21-AWARDS",
+      "proposition": "Itemized award totals add to $2,065,000",
+      "verdict": "PASS",
+      "method": "sum listed JCF and MIF amounts; Wolfram evaluated",
+      "value_usd": 2065000
+    },
+    {
+      "id": "OCT21-JOBS-CONSISTENCY",
+      "proposition": "The literal itemized new-job counts are consistent with exactly 141 jobs",
+      "verdict": "FAIL",
+      "method": "14+15+7+75+minimum(31)=142, compared with published headline 141; possible editorial rounding, not fraud",
+      "minimum_itemized_jobs": 142
+    },
+    {
+      "id": "OCT21-PROJECT-OUTCOME",
+      "proposition": "The five projects have already delivered the announced new jobs",
+      "verdict": "UNKNOWN",
+      "reason": "No corroborating project-level payroll/performance records inspected"
+    },
+    {
+      "id": "OCT21-PROJECT-DISBURSEMENT",
+      "proposition": "All announced assistance has been paid out",
+      "verdict": "UNKNOWN",
+      "reason": "Awards and disbursement not equivalent; JCF payments are contingent on documented performance"
+    },
+    {
+      "id": "DEED-HISTORIC-DISCONTINUED",
+      "proposition": "92 of 1,418 1999-2024 business assistance agreements were terminated",
+      "verdict": "PASS",
+      "value": 92,
+      "denominator": 1418,
+      "source_id": "DEED-2025-REPORT"
+    },
+    {
+      "id": "MMB-FEDERAL-CANCELLATIONS",
+      "proposition": "MMB currently displays $157,195,889 as federal funding cancellations through state agencies",
+      "verdict": "PASS",
+      "value_usd": 157195889,
+      "source_id": "MMB-CANCELLED",
+      "warning": "Not municipal/private-business contract cancellations; tracker not statewide universe"
+    },
+    {
+      "id": "SBA-MN-SUSPENSIONS",
+      "proposition": "SBA reports suspending 6,900 Minnesota borrowers related to about $400m in suspected PPP/EIDL fraud",
+      "verdict": "PASS",
+      "value_borrowers": 6900,
+      "approx_value_usd": 400000000,
+      "warning": "Suspension/suspicion is not conviction"
+    },
+    {
+      "id": "POLITICAL-JOBS-FABRICATION",
+      "proposition": "Named politicians fabricated federal jobs numbers through false Minnesota businesses",
+      "verdict": "UNKNOWN",
+      "reason": "No direct causal documentary evidence reviewed; payroll estimates do not simply total announced jobs"
+    }
+  ],
+  "unverified_dependencies": [
+    "grant award agreements and amendments",
+    "local approval resolutions",
+    "payment vouchers and recoupment",
+    "job counts and payroll verification reports",
+    "cancellation/termination dates and legal basis",
+    "PPP/EIDL borrower case records",
+    "external independent archival snapshot with SHA-256 of downloaded originals"
+  ]
+}
