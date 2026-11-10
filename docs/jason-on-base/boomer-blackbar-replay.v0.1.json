@@ -1,0 +1,150 @@
+{
+  "schema": "JSONWISDOM_I_DIDNT_KNOW_BOOMER_CIVIC_SOURCE_REPLAY_V0_1",
+  "status": "DRAFT_HUMAN_REVIEW",
+  "created": "2026-11-10",
+  "category": "I_DIDNT_KNOW_BOOMER",
+  "alias": "Self Justice / BlackBar Press — independent civic education",
+  "authority_created": false,
+  "official_justice_dot_gov": false,
+  "legal_case_closed": false,
+  "reported_on_tv_is_proof": false,
+  "primary_question": "When a TV program quotes a president, what independently verifiable government, university, and securities records support each distinct claim?",
+  "sources": [
+    {
+      "id": "cbs_60minutes_20261108",
+      "title": "60 Minutes — Trump November 8, 2026 interview transcript",
+      "organization": "CBS News",
+      "date": "2026-11-08",
+      "url": "https://www.cbsnews.com/news/donald-trump-2026-post-midterm-elections-interview-60-minutes-transcript/",
+      "source_type": "JOURNALISM_TRANSCRIPT",
+      "claim": "A CBS transcript documents President Trump's 2026 post-midterm interview; publication is evidence that words were reported, not legal authentication of their accuracy or other allegations.",
+      "status": "PASS_FOR_PUBLICATION_NOT_FOR_UNRELATED_ALLEGATIONS"
+    },
+    {
+      "id": "blanche_doj",
+      "title": "Meet the Attorney General — Todd Blanche",
+      "organization": "U.S. Department of Justice",
+      "date": "2026-10-06",
+      "url": "https://www.justice.gov/ag/staff-profile/meet-attorney-general",
+      "source_type": "OFFICIAL_GOVERNMENT_BIOGRAPHY",
+      "claim": "Todd Blanche serves as Attorney General in 2026 and previously represented Trump in criminal cases.",
+      "status": "PASS_FOR_BIOGRAPHY"
+    },
+    {
+      "id": "epstein_disclosure",
+      "title": "DOJ disclosures — Epstein files and redaction notices",
+      "organization": "U.S. Department of Justice",
+      "date": "2026-01-30",
+      "url": "https://www.justice.gov/epstein/doj-disclosures",
+      "source_type": "OFFICIAL_DISCLOSURE_INDEX",
+      "claim": "DOJ supplies public disclosure records and describes efforts to protect victims' identities; the index cannot prove every decision was correct.",
+      "status": "PASS_FOR_SOURCE_INDEX"
+    },
+    {
+      "id": "barr",
+      "title": "Attorney General William Barr statement on Epstein's death",
+      "organization": "U.S. Department of Justice",
+      "date": "2019-08-10",
+      "url": "https://www.justice.gov/archives/opa/pr/statement-attorney-general-william-p-barr-death-jeffrey-epstein",
+      "source_type": "OFFICIAL_STATEMENT",
+      "claim": "Barr's 2019 statement sought FBI and DOJ Inspector General investigations; it does not prove a claimed conspiracy.",
+      "status": "PASS_FOR_STATEMENT"
+    },
+    {
+      "id": "oig",
+      "title": "DOJ OIG report on detention and supervision",
+      "organization": "DOJ Office of Inspector General",
+      "date": "2023-06-27",
+      "url": "https://oig.justice.gov/reports/23-085",
+      "source_type": "OFFICIAL_INSPECTOR_GENERAL_FINDINGS",
+      "claim": "OIG found serious failures in Bureau of Prisons custody, care and supervision, which must be distinguished from unrelated financial allegations.",
+      "status": "PASS_FOR_PUBLISHED_FINDING"
+    },
+    {
+      "id": "mit",
+      "title": "MIT releases independent fact-finding on Epstein ties",
+      "organization": "MIT",
+      "date": "2020-01-10",
+      "url": "https://news.mit.edu/2020/mit-releases-results-fact-finding-report-jeffrey-epstein-0110",
+      "source_type": "INSTITUTIONAL_FACT_FINDING",
+      "claim": "MIT reported 10 Epstein donations totaling $850,000 between 2002 and 2017 and acknowledged serious institutional errors of judgment.",
+      "status": "PASS_FOR_PUBLISHED_FINDING"
+    },
+    {
+      "id": "american_bitcoin",
+      "title": "American Bitcoin 2026 Q3 SEC exhibit",
+      "organization": "American Bitcoin Corp / SEC EDGAR",
+      "date": "2026-11-04",
+      "url": "https://www.sec.gov/Archives/edgar/data/1755953/000119312526447441/abtc-ex99_1.htm",
+      "source_type": "SEC_FILED_COMPANY_RELEASE",
+      "claim": "American Bitcoin filed a 2026 quarterly company release. Eric Trump is described as co-founder and chief strategy officer; a company statement is not proof of ties to Epstein or MIT.",
+      "status": "PASS_FOR_COMPANY_DISCLOSURE"
+    }
+  ],
+  "questions": [
+    {
+      "id": "tv",
+      "text": "Does a Sunday CBS transcript independently prove everything said on television?",
+      "answer": "No. It records what CBS reports; validate material claims with independent evidence.",
+      "status": "FAIL_FOR_AUTO_VERIFICATION"
+    },
+    {
+      "id": "appointed",
+      "text": "Can we identify who holds the Attorney General's office?",
+      "answer": "Yes, DOJ lists Todd Blanche as Attorney General as of October 2026.",
+      "status": "PASS"
+    },
+    {
+      "id": "barr",
+      "text": "Does a 2019 Barr statement establish which investigations began?",
+      "answer": "The statement establishes what Barr announced; separate reports establish subsequent investigative findings.",
+      "status": "PASS_LIMITED"
+    },
+    {
+      "id": "mit_money",
+      "text": "Did MIT publicly account for specific Epstein donations?",
+      "answer": "Yes. MIT's commissioned review identified ten gifts totaling $850,000.",
+      "status": "PASS"
+    },
+    {
+      "id": "bitcoin",
+      "text": "Does an SEC filing for American Bitcoin prove cooperation with Epstein, MIT or DOJ?",
+      "answer": "No. Separate specific transactional or communications evidence would be necessary.",
+      "status": "UNKNOWN_FOR_CAUSAL_CONNECTION"
+    },
+    {
+      "id": "blackbar",
+      "text": "Does a redaction automatically prove corruption or censorship?",
+      "answer": "No. Determine the legal basis, exact redacted record, review authority and any lawful appeal or challenge process.",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": "closure",
+      "text": "Does this lesson issue a court judgment or close a real case?",
+      "answer": "No; this is a research lesson only.",
+      "status": "FAIL_FOR_LEGAL_CLOSURE"
+    }
+  ],
+  "boundaries": {
+    "adult_sensitive_subject": true,
+    "sexual_abuse_descriptions_excluded": true,
+    "victim_identifiers_excluded": true,
+    "children_can_only_view_generalized_evidence_concepts": true,
+    "avoid_unfounded_personal_accusations": true,
+    "third_party_transcript_copied": false,
+    "third_party_media_embedded": false,
+    "government_website_impersonation": false,
+    "crypto_investment_solicitation": false,
+    "external_network_fetch_in_demo": false,
+    "local_only_interaction": true,
+    "publication_hold": true
+  },
+  "integrity": {
+    "raw_source_bytes_acquired": false,
+    "source_file_sha256": null,
+    "source_links_are_locators_not_verified_byte_captures": true,
+    "asserted_coordinated_epstein_mit_barr_blanche_bitcoin_operation": "UNKNOWN",
+    "tv_is_presidential_verification": false
+  },
+  "readme": "The sources are independently grounded URLs. No third-party source was copied into the classroom. A functioning lesson doesn't establish primary-source bytes, permissions, payments, or guilt."
+}
