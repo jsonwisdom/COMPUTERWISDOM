@@ -1,0 +1,190 @@
+{
+  "schema": "COMPUTERWISDOM_SCHOOL_ENDOWMENT_AUDIT_V0_1",
+  "date": "2026-11-10",
+  "status": "DRAFT_REVIEW_ONLY",
+  "authority_created": false,
+  "public_release_authorized": false,
+  "school_enrollment_or_partnership": false,
+  "scope": "Educational institution and school-associated foundation financial records where disclosure, consent, or lawful audit authority exists. Financial and governance audit, not a criminal allegation engine.",
+  "taxonomy": {
+    "endowment": "Restricted or board-designated investment fund for sustained institutional use; distinguish donor-restricted vs board-designated.",
+    "ordinary_donation": "Current-use charitable gift not necessarily invested in an endowment.",
+    "grant": "Government or private grant with specific award terms; not automatically an endowment.",
+    "pledge": "Commitment to give; not necessarily collected cash.",
+    "foundation": "Potentially separate legal reporting entity from a school district; cannot automatically combine receipts.",
+    "related_party": "Board member, officer, their certain family member or business connection subject to applicable conflict rules; not guilt or misconduct per se."
+  },
+  "roles": {
+    "librarian": "Locate and preserve primary-source identifiers, dates, access conditions and hashes; never infer private donor names.",
+    "mathematician": "Recompute integer-cent balances, year-to-year continuity and coverage; explain assumptions.",
+    "auditor": "Evaluate legal scope, source authenticity, restrictions, exceptions and reviewer sign-off with access authority.",
+    "student": "Review de-identified or synthetic examples, question gaps; never exposed to private records.",
+    "human_reviewer": "Approve corrections, releases, lawful escalations; automated PASS never grants legal authority."
+  },
+  "controls": [
+    {
+      "id": "01-entity-scope",
+      "name": "Identify institution and legal entity",
+      "test": "Record governing district/college, separate related foundation/entity, EIN where lawfully public, fiscal period, jurisdiction, auditor authority.",
+      "failure": "Wrong entity, unverified school identity or no legal audit authority"
+    },
+    {
+      "id": "02-collection-provenance",
+      "name": "Preserve source records and context",
+      "test": "Attach original annual audited statement, IRS Form 990 where filed, Schedule D where applicable, signed gift instrument or permitted redacted copy; URLs, capture dates, exact byte hashes.",
+      "failure": "Synthetic or secondhand claim presented as independent source"
+    },
+    {
+      "id": "03-fund-type",
+      "name": "Classify every funding stream",
+      "test": "Distinguish endowment, restricted current-use gift, unrestricted donation, grant, pledge, investment return and inter-entity transfer; tag amounts as cash/accrual.",
+      "failure": "Treat all donations or uncollected pledges as endowment cash"
+    },
+    {
+      "id": "04-donor-intent",
+      "name": "Test donor restrictions and permitted use",
+      "test": "Match purpose, time horizon and restrictions in authorized gift instruments to board appropriations, UPMIFA/state law and general ledger.",
+      "failure": "Restricted gifts spent without justified authority or missing governing instruments"
+    },
+    {
+      "id": "05-reconciliation",
+      "name": "Recompute endowment rollforward",
+      "test": "For explicitly gross investment return: closing = opening + received gifts + gross gains/losses + signed transfers − spending − fees, in integer cents, each fund and fiscal year.",
+      "failure": "Negative/unexplained residual, missing year continuity or fee double count"
+    },
+    {
+      "id": "06-investment",
+      "name": "Inspect manager, investment and custody controls",
+      "test": "Reconcile investment statements to general ledger, returns, fees, related investment-manager contracts, approvals and portfolio restrictions.",
+      "failure": "Material investment balances unsupported or no independent custody trail"
+    },
+    {
+      "id": "07-related-party",
+      "name": "Review documented interests and conflicts",
+      "test": "Compare board register, approved contracts and disclosed compensation; inspect Form 990 Schedule L/R when applicable and independent conflict recusal.",
+      "failure": "Apparent related-party transaction with no documented impartial approval or review"
+    },
+    {
+      "id": "08-cross-entity",
+      "name": "Trace transfers without duplicate counting",
+      "test": "Reconcile source and recipient records for school district, foundations, grant sponsors, intermediary entities and contractors, using identifiers and dates.",
+      "failure": "Same transfer counted as two donations or connection inferred from names/religion/ethnicity"
+    },
+    {
+      "id": "09-outcome",
+      "name": "Check spending and educational purpose",
+      "test": "Compare grants/appropriations to actual invoices, scholarships or services using appropriately redacted or aggregate evidence.",
+      "failure": "Proof of receipt misrepresented as proof of intended services"
+    },
+    {
+      "id": "10-foreign-disclosure",
+      "name": "Apply foreign-source reporting only in scope",
+      "test": "For covered higher-education institutions, test 20 USC 1011f $250,000 annual per-source aggregate reporting and applicable deadlines; do not assert it covers K-12.",
+      "failure": "Misapply college-only Section 117 to elementary schools or miss aggregation"
+    },
+    {
+      "id": "11-privacy",
+      "name": "Protect students, donors and nonpublic records",
+      "test": "Apply FERPA, applicable state privacy/open-records rules and IRS Schedule B public disclosure limits; avoid child identities, donor home addresses and unsupported family graphs.",
+      "failure": "Publish protected student/donor data or privately infer networks"
+    },
+    {
+      "id": "12-review",
+      "name": "Evidence judgment and correction",
+      "test": "Mark distinct checks PASS/FAIL/UNKNOWN; require independent human review and documented rationale, correction path and legal referral when warranted.",
+      "failure": "Automatically declare a person guilty, a case closed or a vendor/school authorized"
+    }
+  ],
+  "calculation_definition": {
+    "currency": "USD",
+    "unit": "integer cents",
+    "gross_return_includes_fees": false,
+    "formula": "closing_cents = opening_cents + received_gifts_cents + gross_investment_return_cents + signed_transfers_cents - spending_cents - fees_cents",
+    "sample": {
+      "type": "SYNTHETIC_CLASSROOM_FIXTURE",
+      "opening_cents": 100000,
+      "received_gifts_cents": 30000,
+      "gross_investment_return_cents": 10000,
+      "signed_transfers_cents": 0,
+      "spending_cents": 6000,
+      "fees_cents": 1000,
+      "closing_cents": 133000,
+      "verified_source": false,
+      "real_transaction": false
+    },
+    "replay": "Recompute and then reverse closing by subtracting received gifts and gross return and signed transfers, adding spending and fees; do not infer donor intent from amount."
+  },
+  "historical_evidence": {
+    "three_years_of_daily_findings": "USER_REPORTED_NOT_INGESTED",
+    "source_observation_count": "UNKNOWN",
+    "eligible_day_coverage": "UNKNOWN",
+    "method": "Accept only authorized historical daily findings with capture time, scope, source locator, SHA-256 of bytes actually seen, original/corrected version relation, independent reproduction status and missing-day report.",
+    "anti_conflation": "GitHub commit PASS != real endowment financial audit PASS; a named donor != wrongdoing; a TV report != court finding."
+  },
+  "applicability": {
+    "minnesota_k12": "District UFARS and independent financial audits apply where covered; associated foundation may be separate.",
+    "nonprofit_schools": "IRS Form 990, Schedule D endowment reporting when applicable; public donor names commonly redacted.",
+    "higher_education": "20 USC 1011f covered institutions, $250,000 foreign source aggregate per calendar year; donor rules not automatic K-12 rule.",
+    "school_students": "FERPA student information protected; de-identified simulated examples only in public classroom."
+  },
+  "source_registry": [
+    {
+      "id": "MN_AUDITS",
+      "url": "https://education.mn.gov/MDE/dse/schfin/fin/ifa/",
+      "type": "OFFICIAL"
+    },
+    {
+      "id": "MN_UPMIFA",
+      "url": "https://www.ag.state.mn.us/Consumer/Handbooks/CharitiesLaws/CH7.asp",
+      "type": "OFFICIAL"
+    },
+    {
+      "id": "IRS_SCHEDULE_D",
+      "url": "https://www.irs.gov/instructions/i990sd",
+      "type": "OFFICIAL"
+    },
+    {
+      "id": "IRS_SCHEDULE_B",
+      "url": "https://www.irs.gov/instructions/i990sb",
+      "type": "OFFICIAL"
+    },
+    {
+      "id": "IRS_SCHEDULE_L",
+      "url": "https://www.irs.gov/instructions/i990sl",
+      "type": "OFFICIAL"
+    },
+    {
+      "id": "HEA_117",
+      "url": "https://fsapartners.ed.gov/knowledge-center/topics/section-117-foreign-gift-and-contract-reporting",
+      "type": "OFFICIAL"
+    },
+    {
+      "id": "FERPA",
+      "url": "https://studentprivacy.ed.gov/ferpa",
+      "type": "OFFICIAL"
+    },
+    {
+      "id": "MN_CONFLICT",
+      "url": "https://www.ag.state.mn.us/consumer/publications/fiduciaryduties.asp",
+      "type": "OFFICIAL"
+    }
+  ],
+  "excluded": [
+    "No restricted school/student files collected",
+    "No children or family lineage mapped",
+    "No automatically published donor identities",
+    "No inference of wrongdoing from protected class or social connection",
+    "No hacking or bypass of proprietary controls",
+    "No accusation score or guilt ranking",
+    "No legal enforcement/court authority claimed",
+    "No actual district or college ledger examined",
+    "No public posting of sensitive allegations without independent records"
+  ],
+  "ci_first": {
+    "fixture_contract": "TESTABLE",
+    "institutional_financial_audit": "NOT_PERFORMED",
+    "real_donor_to_education_reconciliation": "UNKNOWN",
+    "legal_authority": "NOT_GRANTED",
+    "release": "HOLD"
+  }
+}
