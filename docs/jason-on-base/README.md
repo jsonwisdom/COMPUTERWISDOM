@@ -65,3 +65,17 @@ The serious study of "I didn't know" investigates bounded knowledge and responsi
 `PROVENANCE != AUTHORITY`  
 `HUMAN_APPROVAL_REQUIRED=true`  
 `AUTHORITY_CREATED=false`
+
+## Proposed V0.2 addon: Coinbase Wallet + ClawBackJackMickJagger
+
+**Branch/PR review only until separately merged.** This section documents a candidate extension; it is not a retroactive change to the original V0.1 release receipt.
+
+- `wallet.js` supplies one `Connect Coinbase Wallet` button. It discovers Coinbase-style injected EIP-1193 providers using EIP-6963 and an explicitly Coinbase-identified legacy fallback. An account permission dialog appears **only on click**. Only `eth_requestAccounts` and `eth_chainId` RPC calls are allowed. The page shows a masked EVM address and current chain, with a local-session clear button. Provider discovery metadata and flags are self-asserted and should not be construed as cryptographic provider authentication.
+- The supported path is Coinbase Wallet injected provider in the wallet app's built-in browser or desktop extension. Plain iPhone Safari without injection receives instructions, NOT a fake wallet connection. SDK-driven cross-app/QR pairing is not implemented.
+- No wallet balances, Coinbase exchange transactions, seed phrases, signatures, spending permissions, approvals, network changes, blockchain writes or wallet data uploads. The account lives only in webpage memory; the original privacy boundaries stay intact. Local disconnect does not necessarily revoke the wallet's retained permission.
+- `ClawBackJackMickJagger` Matrix Sentinel displays 8×8 virtual learning pixels and `level^2` (0–64) virtual quarters. **All prices are $0; no actual charge, checkout, subscription, wallet payment or clawback/reversal exists.** No celebrity endorsement or partnership is implied.
+- `clawbackjackmickjagger-v0.1.json` contains explicit future billing gates. These need verified price, consent, payer/payee, law, exact preview, authorization, receipts, privacy and human release before any separate implementation.
+- `wallet.test.cjs` exercises consent-first behavior, Coinbase-only provider, account/network change, rejection, address validation, local disconnect, EIP-6963, virtual matrix and denied provider RPC classes. Actual injected-wallet/real-phone QA remains HOLD.
+- No PR #660 or #661 merge, wallet trading authority, or actual user finance records implied by this extension.
+
+Original public V0.1 docs remain separately auditable. `NO_AUTO_SPENDING=TRUE`; `CHARGING_SYSTEM=DESIGN_HOLD`; `HUMAN_RELEASE_REQUIRED=TRUE`.
