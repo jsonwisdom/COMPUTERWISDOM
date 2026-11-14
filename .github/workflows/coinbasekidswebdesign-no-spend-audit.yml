@@ -1,0 +1,73 @@
+name: Jay Creator No-Spend Replay Audit
+
+on:
+  pull_request:
+    paths:
+      - "docs/jason-on-base/coinbasekidswebdesign/**"
+      - ".github/workflows/coinbasekidswebdesign-no-spend-audit.yml"
+  push:
+    branches: ["master"]
+    paths:
+      - "docs/jason-on-base/coinbasekidswebdesign/**"
+      - ".github/workflows/coinbasekidswebdesign-no-spend-audit.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  replay-and-privacy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: docs/jason-on-base/coinbasekidswebdesign
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Check module syntax
+        run: |
+          node --check engine.mjs
+          node --check app.mjs
+          node --check server.mjs
+          node --check test.mjs
+      - name: Verify no-spend math, replay, SVG and privacy constraints
+        run: node --test test.mjs
+      - name: Inspect static design gates
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          c=json.loads(Path("catalog.v0.1.json").read_text())
+          page=Path("index.html").read_text()
+          src=Path("app.mjs").read_text()
+          eng=Path("engine.mjs").read_text()
+          assert len(c["items"])==6 and c["public_only"] is True
+          assert c["schema"]=="JAYWISDOM_PUBLIC_ZORA_CONCEPT_SNAPSHOT_V0_1"
+          for x in c["items"]:
+              assert x["url"].startswith("https://zora.co/coin/base:0x")
+          for id in ('draw','reveal','scratch-cover','wallet-connect','wallet-clear','art','toolbox','session-log','feedback-copy','import','export'):
+              assert 'id="'+id+'"' in page,id
+          assert 'src="./app.mjs"' in page
+          for phrase in ('eth_sendTransaction','personal_sign','localStorage','sessionStorage','signTypedData','wallet_sendCalls'):
+              assert phrase not in src,phrase
+          assert 'wallet_identity:null' in eng and 'prize_value_usd:0' in eng
+          assert 'no_money:true' in eng
+          assert '<script src="https:' not in page
+          print("SCOPED_REPLAY_PASS; MONEY=DISABLED; PUBLIC_QA=MOCK_ONLY; HUMAN_APPROVAL=HOLD")
+          PY
+      - name: Verify Node preview serves exact local files and denies unknown paths
+        shell: bash
+        run: |
+          set -euo pipefail
+          node server.mjs >/tmp/jay-preview.txt 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          sleep 1
+          for filename in index.html style.css app.mjs engine.mjs catalog.v0.1.json; do
+            curl -fsS "http://127.0.0.1:8787/$filename" | cmp - "$filename"
+          done
+          status=$(curl -s -o /dev/null -w "%{http_code}" "http://127.0.0.1:8787/private-recovery-phrase.txt")
+          test "$status" = 404
+          echo "LOCAL_NODE_HTTP_200_PARITY=PASS; PRIVATE_PATH=404; LIVE_PAGES_DEPLOYMENT=NOT_CLAIMED"
