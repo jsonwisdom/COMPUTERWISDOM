@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="color-scheme" content="dark">
+<title>THE ART OF LEARING — Classes with Glasses</title>
+<style>
+:root{color-scheme:dark;--bg:#101725;--panel:#19263b;--edge:#3b526e;--text:#edf3fb;--muted:#b3c4d8;--amber:#ffc45b}*{box-sizing:border-box}body{margin:0;background:linear-gradient(140deg,#111927,#192941);color:var(--text);font:16px/1.5 system-ui,sans-serif}main{max-width:780px;padding:2rem 1rem 4rem;margin:auto}h1{font-size:clamp(2rem,6vw,3.3rem);margin:.1em 0}.eyebrow{font-size:.8rem;letter-spacing:.14em;color:var(--amber);font-weight:800}.subtitle{font-size:1.05rem;color:var(--muted)}.row{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}.tag{border:1px solid var(--edge);border-radius:999px;padding:.3em .7em;color:var(--muted);font-size:.83rem}.tag.hold{color:#ffe1a5;border-color:#9e7738}.card{background:var(--panel);border:1px solid var(--edge);border-radius:18px;padding:1.5rem;margin-top:1.4rem;box-shadow:0 14px 40px #0003}.lesson-number{color:var(--amber);font-size:.9rem;font-weight:700}.options{display:grid;gap:.7rem;margin-top:1.1rem}button{border:1px solid #647f9c;background:#243750;color:var(--text);border-radius:12px;padding:.85rem 1rem;text-align:left;cursor:pointer;font:inherit}button:hover:not(:disabled),button:focus-visible{border-color:var(--amber);outline:2px solid transparent;background:#2a4663}button:disabled{opacity:.58;cursor:not-allowed}.primary{background:var(--amber);color:#17202c;font-weight:800;border-color:var(--amber)}.primary:disabled{opacity:.5}.feedback{margin-top:1rem;min-height:3em;font-weight:600}.good{color:#b6eabf}.warn{color:#ffcb93}small,footer{color:var(--muted)}footer{margin-top:2rem;font-size:.84rem}a{color:#9bc7ff}.score{font-variant-numeric:tabular-nums;font-weight:700}#finish{display:none}.rule{border-top:1px solid var(--edge);margin-top:1.5rem;padding-top:1rem}@media (max-width:450px){main{padding:1rem}.card{padding:1rem}}
+</style>
+</head>
+<body><main>
+<div class="eyebrow">JASON WISDOM · SCHOOL OF WISDOM</div>
+<h1>THE ART OF LEARING</h1>
+<p class="subtitle">Make Them Laugh. Make Them Think. Make Them LEAR.</p>
+<div class="row"><span class="tag hold">MINNESOTA REPLAY: HOLD</span><span class="tag">FULLMATH 8/13 · 61.54%</span><span class="tag">PRACTICE GAME · FICTIONAL</span></div>
+<section class="card" id="game" aria-labelledby="classroom">
+<p class="row"><span id="progress" class="score" aria-live="polite">Classroom 1 of 4</span><span id="score" class="tag">0 correct</span></p>
+<div id="classroom" class="lesson-number"></div>
+<h2 id="question"></h2>
+<p id="context" class="subtitle"></p>
+<div id="options" class="options" role="group" aria-label="Choose one answer"></div>
+<p id="feedback" class="feedback" aria-live="polite"></p>
+<div class="row"><button id="next" class="primary" disabled>Next classroom</button><button id="reset">Restart</button></div>
+</section>
+<section id="finish" class="card" aria-labelledby="done-title">
+<h2 id="done-title">Your LEARING replay is complete 🦫</h2>
+<p id="final-score"></p>
+<p>This practice result is not a government record, legal finding, FullMath gate exercise, or wallet proof.</p>
+<button id="download" class="primary">Download local practice receipt (JSON)</button>
+</section>
+<section class="card">
+<h2>Two rails. No fake green.</h2>
+<p><strong>Civic discovery:</strong> Read the original laws, source documents, and publication dates.</p>
+<p><strong>Proof admission:</strong> Requires authenticated evidence, context, legal authority, counterevidence, and human review. This game cannot admit proof.</p>
+<div class="rule"><p>Primary references: <a href="https://www.revisor.mn.gov/statutes/2026/cite/13/full" target="_blank" rel="noopener noreferrer">Minnesota Chapter 13 (2026)</a> · <a href="https://github.com/jsonwisdom/AL/blob/master/docs/public/minnesota/MN_STATUTES_13_GOVERNMENT_DATA_PRACTICES_INDEX.md" target="_blank" rel="noopener noreferrer">Public civic index</a> · <a href="https://github.com/jsonwisdom/COMPUTERWISDOM/blob/agent/minnesota-full-math-rubric-v1-1/public-question-router/extensions/shock-gloves/boxdee/minnesota/receipts/MINNESOTA_REPLAY_VALIDATION_REGISTRY_V0_1.json" target="_blank" rel="noopener noreferrer">FullMath registry</a>.</p></div>
+</section>
+<footer>Offline practice: no cookies, analytics, login, wallet connection, charging, or submissions. No real-world allegations. AUTHORITY_CREATED=false.</footer>
+</main>
+<script>
+"use strict";
+const lessons=[
+{room:"Learing the Law",question:"A Minnesota Chapter 13 records request was drafted but never sent. What can the receipt prove?",context:"A draft is an internal document—not an agency response.",options:["The agency denied the request","Only that a draft exists","The requested records do not exist"],correct:1,why:"MNK-007: Drafted ≠ Sent ≠ Received ≠ Produced. Nothing about the agency's response is established."},
+{room:"Learing the Press",question:"A short media clip makes a large claim. What should QARE11/KARE11 verify first?",context:"Replay the original source before writing a headline.",options:["Full original transcript, speaker, and timestamp","The clip's popularity","A satirical caption"],correct:0,why:"Locate the complete source, preserve its clocks and context, and search for counterevidence before scoring claims."},
+{room:"Minnesota Math Algorithms",question:"Receipt 0002 recorded 7/13 gates. Receipt 0003 added one distinct gate. What is current metadata coverage?",context:"Old receipts stay immutable. Coverage counts distinct gates, not truth.",options:["7/13 (53.85%)","13/13 (100%)","8/13 (61.54%)"],correct:2,why:"MNK-002 was exercised by 0003: 8 distinct gates of 13. Five remain, and overall HOLD continues."},
+{room:"Applied Wisdom",question:"An imaginary six-clock fixture passes the synthetic clock check. Does that establish fraud or exercise MNK-003 against a real Minnesota case?",context:"A fictional demonstration is not a real-case receipt.",options:["Yes; promote the case to PASS","No; keep real-case gate status unchanged","Yes; publish a finding immediately"],correct:1,why:"Synthetic results test software behavior only. Real MNK-003 remains unexercised; no real accusation or authority is generated."}
+];
+let step=0,correct=0,answers=[];
+const el=id=>document.getElementById(id);
+function render(){
+ const lesson=lessons[step];el("progress").textContent="Classroom "+(step+1)+" of "+lessons.length;el("score").textContent=correct+" correct";
+ el("classroom").textContent=lesson.room;el("question").textContent=lesson.question;el("context").textContent=lesson.context;
+ el("feedback").textContent="";el("feedback").className="feedback";el("next").disabled=true;el("next").textContent=step===lessons.length-1?"See my result":"Next classroom";
+ el("options").replaceChildren();
+ lesson.options.forEach((answer,i)=>{const b=document.createElement("button");b.type="button";b.textContent=answer;b.addEventListener("click",()=>choose(i));el("options").appendChild(b)});
+}
+function choose(i){
+ if(answers.some(a=>a.classroom===step))return;
+ const lesson=lessons[step],ok=i===lesson.correct;if(ok)correct++;
+ answers.push({classroom:step,room:lesson.room,selected:i,correct:ok});
+ el("feedback").textContent=(ok?"Correct. ":"Not quite. ")+lesson.why;el("feedback").className="feedback "+(ok?"good":"warn");
+ el("options").querySelectorAll("button").forEach(b=>b.disabled=true);el("next").disabled=false;el("score").textContent=correct+" correct";
+}
+function reset(){step=0;correct=0;answers=[];el("game").hidden=false;el("finish").style.display="none";render()}
+el("next").addEventListener("click",()=>{if(!answers.some(a=>a.classroom===step))return;if(step<lessons.length-1){step++;render()}else{el("game").hidden=true;el("finish").style.display="block";el("final-score").textContent=correct+" out of "+lessons.length+" practice questions correct."}});
+el("reset").addEventListener("click",reset);
+el("download").addEventListener("click",()=>{
+ const receipt={classification:"LOCAL_PRACTICE_ONLY",project:"THE ART OF LEARING",source:"Classes with Glasses demo",answers,score:correct,total:lessons.length,gate_coverage_before:"8/13",gate_coverage_after:"8/13",proof_admission:false,real_mn_gates_exercised:0,authority_created:false,facts_promoted:0,generated_at:new Date().toISOString()};
+ const blob=new Blob([JSON.stringify(receipt,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download="art-of-learing-practice-receipt.json";a.click();URL.revokeObjectURL(url);
+});
+render();
+</script>
+</body></html>
