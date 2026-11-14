@@ -22,6 +22,6 @@ test("four classroom demo is offline, explicitly non-authoritative",()=>{
  assert.equal((html.match(/room:"/g)||[]).length,4);
  assert.ok(html.includes("LOCAL_PRACTICE_ONLY"));
  assert.ok(html.includes("authority_created:false"));
- assert.doesNotMatch(html,/fetch\\s*\\(/);
+ assert.ok(!html.includes("fetch("));
  assert.doesNotMatch(html,/<script[^>]+src=/);
 });
