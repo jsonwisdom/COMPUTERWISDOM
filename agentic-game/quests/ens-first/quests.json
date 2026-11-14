@@ -1,0 +1,59 @@
+{
+  "version": "ENS_FIRST_QUESTS_V0_1",
+  "classification": "NON_CANONICAL_GAMIFICATION",
+  "authority_created": false,
+  "quests": [
+    {
+      "id": "ENS_MAP",
+      "title": "Name Cartographer",
+      "points": 10,
+      "requires": [],
+      "task": "Capture forward and reverse resolution separately, with chain, block, resolver, timestamp and match/mismatch. Start with jaywisdom.eth as an unverified input label; do not substitute a Base name silently."
+    },
+    {
+      "id": "ENS_CONTROL",
+      "title": "Control Detective",
+      "points": 20,
+      "requires": [
+        "ENS_MAP"
+      ],
+      "task": "Review a scoped signature proof: exact challenge, repository, name, chain, nonce, expiration and recovered signer. Distinguish resolved address, controller and signer. No signing action is requested by this board."
+    },
+    {
+      "id": "REPO_BIND",
+      "title": "Repository Librarian",
+      "points": 20,
+      "requires": [
+        "ENS_CONTROL"
+      ],
+      "task": "Bind a receipt to jsonwisdom/COMPUTERWISDOM, an immutable commit and artifact path. A wallet signature does not prove GitHub account control; capture that proof separately if claimed."
+    },
+    {
+      "id": "CI_REPLAY",
+      "title": "Check Run Sleuth",
+      "points": 20,
+      "requires": [
+        "REPO_BIND"
+      ],
+      "task": "Capture workflow run and job IDs, exact head SHA, event, result and coverage. Repeated job names are not identities. Use PR #590 as a read-only case study; successful CI does not imply merge or trade."
+    },
+    {
+      "id": "COUNTER_RECEIPT",
+      "title": "Double-O-HOLD",
+      "points": 20,
+      "requires": [
+        "CI_REPLAY"
+      ],
+      "task": "Preserve a mismatch or missing receipt and explain the resulting HOLD. Correctly finding an open edge earns game feedback without creating a factual PASS."
+    },
+    {
+      "id": "TEACH_BACK",
+      "title": "Replay Guide",
+      "points": 10,
+      "requires": [
+        "COUNTER_RECEIPT"
+      ],
+      "task": "Explain to another player why ENS, signature, repository binding, CI and merge are different claims. Record reflection: what did you believe, and what survived?"
+    }
+  ]
+}
