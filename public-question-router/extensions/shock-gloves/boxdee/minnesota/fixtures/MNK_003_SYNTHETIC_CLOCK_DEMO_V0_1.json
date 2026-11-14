@@ -1,0 +1,33 @@
+{
+  "fixture_id": "MNK_003_SYNTHETIC_CLOCK_DEMO_20261114",
+  "classification": "SYNTHETIC_ONLY",
+  "proof_admission": false,
+  "authority_created": false,
+  "description": "Fictional timestamps only; not a real event, actor, allegation, agency decision or Minnesota evidence",
+  "clocks": {
+    "event_time": "2026-10-01T12:00:00Z",
+    "document_time": "2026-10-03T12:00:00Z",
+    "publication_time": "2026-10-05T12:00:00Z",
+    "effective_time": "2026-10-01T12:00:00Z",
+    "update_time": "2026-10-06T12:00:00Z",
+    "retrieval_time": "2026-11-14T12:00:00Z"
+  },
+  "expected_order": [
+    [
+      "event_time",
+      "document_time"
+    ],
+    [
+      "document_time",
+      "publication_time"
+    ],
+    [
+      "publication_time",
+      "update_time"
+    ],
+    [
+      "update_time",
+      "retrieval_time"
+    ]
+  ]
+}
