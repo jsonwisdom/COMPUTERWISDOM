@@ -1,0 +1,157 @@
+{
+  "schema": "APPLE_BLOSSOM_AWESOME_AUDIT_JAY_V0_1",
+  "checkpoint_id": "CRISSCROSS_JASON_PRIMARY_NAME_001",
+  "case_id": "CRISSCROSS_JASON_PRIMARY_NAME_001",
+  "topic": "general",
+  "exact_claim": "Screenshot reports successful set-primary-name transaction for jaywisdom.eth and shows a truncated address 0xA3...2E8 and 'Your primary name' badge. Independent name-to-address resolution for jaywisdom.eth and jaywisdom.base.eth returned the same full address. Onchain reverse primary-name and wallet controller are NOT verified by this fixture.",
+  "source_type": "USER_UPLOADED_SCREENSHOT_PLUS_SEPARATE_EXTERNAL_RESOLUTION",
+  "input_screenshot": {
+    "file_sha256": "2a93d4157e2e17b66137d3a1d589cf488ffc53cc662450cf1a7f6b341c0fa363",
+    "file_size_bytes": 419727,
+    "dimensions_px": [
+      1170,
+      2532
+    ],
+    "raw_media_in_public_repo": false,
+    "site_visible": "app.ens.eth.limo",
+    "ui_strings_observed": [
+      "Transaction Successful",
+      "Your \"Set primary name\" transaction was successful",
+      "jaywisdom.eth",
+      "Your primary name"
+    ],
+    "wallet_address_truncated": "0xA3...2E8",
+    "screenshot_wallet_suffix_prefix_match": true,
+    "transaction_hash_visible": false,
+    "chain_id_visible": false,
+    "original_transaction_timestamp_visible": false,
+    "receipt_class": "SCREENSHOT_OF_DISPLAYED_APP_STATE_NOT_ONCHAIN_TRANSACTION_PROOF"
+  },
+  "candidate_wallet_address": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+  "onchain_external_resolution": {
+    "source_tool": "Blockscout Blockchain Data get_address_by_ens_name",
+    "lookup_network_or_coin_type": "NOT_EXPLICITLY_SPECIFIED_BY_CONNECTOR",
+    "ens_name": "jaywisdom.eth",
+    "ens_resolved_address": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+    "basename": "jaywisdom.base.eth",
+    "basename_resolved_address": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8",
+    "both_forward_to_same_address": true,
+    "verified_personal_control": false,
+    "ens_registry_owner_checked": false,
+    "basename_registry_owner_checked": false,
+    "cross_chain_reverse_record_verified": false,
+    "resolution_observed_in_conversation": true
+  },
+  "address_classification": {
+    "source_tool": "Blockscout get_address_info chain_id 1",
+    "is_contract": true,
+    "wallet_implementation": "CoinbaseSmartWallet",
+    "blockscout_domain_label_observed": "jaywisdom.base.eth",
+    "wallet_owner_signers_verified": false,
+    "eip1271_or_other_signature_challenge_verified": false
+  },
+  "proposed_order": [
+    {
+      "index": 1,
+      "rail": "RECEIPT",
+      "name": "Screenshot / chain-independent raw evidence with hash",
+      "gate": "SCREENSHOT_CONTENT_OBSERVED"
+    },
+    {
+      "index": 2,
+      "rail": "ADDRESS",
+      "name": "Exact 20-byte smart-wallet address",
+      "gate": "ADDRESS_FORMAT_AND_FORWARD_LINK_OBSERVED"
+    },
+    {
+      "index": 3,
+      "rail": "ENS",
+      "name": "jaywisdom.eth — requested primary identity display",
+      "gate": "FORWARD_RESOLVES_TO_ADDRESS__REVERSE_HOLD"
+    },
+    {
+      "index": 4,
+      "rail": "BASENAME",
+      "name": "jaywisdom.base.eth — distinct Base operator name",
+      "gate": "FORWARD_RESOLVES_TO_ADDRESS__OWNER_HOLD"
+    },
+    {
+      "index": 5,
+      "rail": "REVERSE",
+      "name": "Verify Ethereum default and Base chain-specific reverse records separately",
+      "gate": "NOT_OBSERVED"
+    },
+    {
+      "index": 6,
+      "rail": "CONTROLLER",
+      "name": "Verify smart wallet owner/controller or EIP-1271 challenge, ENS/Basename ownership distinctly",
+      "gate": "NOT_OBSERVED"
+    },
+    {
+      "index": 7,
+      "rail": "X",
+      "name": "@jaywisdom12 candidate social identity — independent authenticated X receipt required",
+      "gate": "NOT_VERIFIED"
+    },
+    {
+      "index": 8,
+      "rail": "MARYDEE",
+      "name": "Purpose, role questions, privacy and event-only challenge/replay",
+      "gate": "PROPOSED_SEAT_NOT_LIVE_DISPATCH"
+    },
+    {
+      "index": 9,
+      "rail": "JASON",
+      "name": "Optional explicit editorial approval and TriggerDeck release after full separate audit",
+      "gate": "HUMAN_FINAL_DECISION"
+    }
+  ],
+  "status": {
+    "ens_forward_resolution": "OBSERVED_PASS",
+    "basename_forward_resolution": "OBSERVED_PASS",
+    "primary_reverse_resolution": "HOLD",
+    "set_primary_name_transaction": "SCREENSHOT_REPORTED__TX_HASH_NOT_INSPECTED",
+    "ens_registry_ownership": "HOLD",
+    "basename_ownership": "HOLD",
+    "smart_wallet_controller": "HOLD",
+    "social_x_handle_binding": "HOLD",
+    "case_state": "HOLD",
+    "gate_001_execution": "HOLD",
+    "deployment_state": "DEPLOYMENT_HOLD",
+    "publication_enabled": false,
+    "joy_deployment_enabled": false,
+    "authority_created": false,
+    "no_schedule": true
+  },
+  "sources": [
+    {
+      "medium": "USER_UPLOADED_SCREENSHOT",
+      "declared_origin_id": "ENS_APP_SCREENSHOT_001",
+      "content_sha256": "2a93d4157e2e17b66137d3a1d589cf488ffc53cc662450cf1a7f6b341c0fa363",
+      "witness_independent": false,
+      "raw_media_in_public_repo": false
+    },
+    {
+      "medium": "EXTERNAL_NAME_RESOLUTION",
+      "declared_origin_id": "BLOCKSCOUT_CONNECTOR_NAME_RESOLUTION",
+      "content_sha256": null,
+      "witness_independent": false,
+      "data_type": "LIVE_LOOKUP_RESULT_NOT_SIGNED_RAW_ONCHAIN_RECEIPT"
+    }
+  ],
+  "contrary_receipts": [],
+  "events": [
+    {
+      "event_id": "crisscross_jay_primary_001",
+      "kind": "REVIEW_RECEIPT_ADDED",
+      "receipt_ref": "CHAT_UPLOAD_IMG_4868_LOCAL_SHA256_2A93D415",
+      "receipt_sha256": "2a93d4157e2e17b66137d3a1d589cf488ffc53cc662450cf1a7f6b341c0fa363"
+    }
+  ],
+  "human_review_receipt": null,
+  "independent_origin_review_receipt": null,
+  "source_bytes_inspected": true,
+  "external_chain_tx_bytes_inspected": false,
+  "no_preexisting_historical_records_overwritten": true,
+  "final_release_authority": "Jason"
+}

@@ -1,0 +1,9 @@
+{
+  "case_id": "SYNTHETIC_WOMEN_RECORDS_001",
+  "topic": "women_public_accountability",
+  "exact_claim": "Synthetic workflow fixture only; makes no assertion about a real person.",
+  "fixture_only": true,
+  "sources": [],
+  "contrary_receipts": [],
+  "events": []
+}
