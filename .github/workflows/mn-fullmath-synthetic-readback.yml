@@ -6,6 +6,7 @@ on:
       - 'public-question-router/extensions/shock-gloves/boxdee/minnesota/tools/**'
       - 'public-question-router/extensions/shock-gloves/boxdee/minnesota/tests/test_fullmath_readback_v0_1.mjs'
       - 'public-question-router/extensions/shock-gloves/boxdee/minnesota/fixtures/MNK_003_SYNTHETIC_CLOCK_DEMO_V0_1.json'
+      - 'public-question-router/extensions/shock-gloves/boxdee/minnesota/classes-with-glasses/the-art-of-learing-demo.html'
       - 'public-question-router/extensions/shock-gloves/boxdee/minnesota/receipts/MINNESOTA_REPLAY_VALIDATION_REGISTRY_V0_1.json'
   workflow_dispatch:
 
