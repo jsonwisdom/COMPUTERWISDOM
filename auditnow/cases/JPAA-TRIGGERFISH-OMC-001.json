@@ -1,0 +1,74 @@
+{
+  "schema": "AUDITNOW_DISCLOSURE_V0_1",
+  "case_id": "JPAA-TRIGGERFISH-OMC-001",
+  "canon": false,
+  "authority_created": false,
+  "disclosure": {
+    "purpose": "Check the documented historical connection between Operation Midnight Climax and MKULTRA, without asserting present-day activity.",
+    "scope": "Public historical-source metadata; adult audit only.",
+    "known_limits": "Senate hearing and mirrors are one hearing source; original pages, bytes and date-specific source proof require independent replay.",
+    "privacy": "PUBLIC_SAFE_METADATA_ONLY",
+    "identity_boundary": "JPAA::TRIGGERFISH is Jason's accountability codename; not an official CIA identity, modern program or cell-site simulator.",
+    "not_claimed": "No present-day continuation, private-person targeting, CIA affiliation, liability finding or public release.",
+    "release_permission": "HUMAN_REVIEW_REQUIRED"
+  },
+  "claims": [
+    {
+      "claim_id": "OMC-1977-HEARING",
+      "proposition": "The August 3, 1977 joint Senate hearing reports seven recovered boxes of MKULTRA financial records and 149 subprojects.",
+      "mandatory_tests": [
+        "existence",
+        "provenance",
+        "content_match",
+        "conclusion_fit"
+      ],
+      "tests": {
+        "existence": "HOLD",
+        "provenance": "HOLD",
+        "integrity": "HOLD",
+        "content_match": "HOLD",
+        "corroboration": "HOLD",
+        "attribution": "HOLD",
+        "legal_significance": "HOLD",
+        "conclusion_fit": "HOLD"
+      },
+      "sources": [
+        {
+          "url": "https://www.intelligence.senate.gov/wp-content/uploads/2024/08/sites-default-files-hearings-95mkultra.pdf",
+          "underlying_record_id": "SENATE-1977-MKULTRA-HEARING",
+          "inspection": "NOT_INSPECTED_IN_THIS_RUN",
+          "independent": false
+        }
+      ]
+    },
+    {
+      "claim_id": "OMC-SUBPROJECT-LINK",
+      "proposition": "MKULTRA subprojects 3, 16, 42, 149 document related covert field-testing work.",
+      "mandatory_tests": [
+        "existence",
+        "provenance",
+        "content_match",
+        "attribution",
+        "conclusion_fit"
+      ],
+      "tests": {
+        "existence": "HOLD",
+        "provenance": "HOLD",
+        "integrity": "HOLD",
+        "content_match": "HOLD",
+        "corroboration": "HOLD",
+        "attribution": "HOLD",
+        "legal_significance": "HOLD",
+        "conclusion_fit": "HOLD"
+      },
+      "sources": [
+        {
+          "url": "https://www.cia.gov/readingroom/",
+          "underlying_record_id": "CIA-1976-MKULTRA-BRIEFING-BOOK",
+          "inspection": "NOT_INSPECTED_IN_THIS_RUN",
+          "independent": false
+        }
+      ]
+    }
+  ]
+}
