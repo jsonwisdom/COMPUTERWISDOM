@@ -1,0 +1,132 @@
+# PROPOSED / SYNTHETIC VALIDATOR FIXTURE
+# This is not a Meridian event receipt and not a real-world claim.
+# It exists only to exercise V7's intended validator branch.
+
+fixture:
+  fixture_id: "V7_SUPERSEDE_REQUIRES_CAPTURED_SOURCE"
+  schema_target: "Meridian_Event_v0_2"
+  vector_id: "V7"
+  synthetic: true
+  binding: proposed
+  content_hash: null
+
+  registry:
+    raw_captures:
+      - schema_version: "0.1.0"
+        kind: raw_capture
+        id: "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+        capture_method: http
+        url: "https://example.invalid/meridian/v7/target"
+        final_url: "https://example.invalid/meridian/v7/target"
+        redirects: []
+        captured_at: "2026-10-01T00:00:00Z"
+        bytes_ref: "storage://synthetic/v7/target"
+        byte_length: 1
+        content_hash: "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+        response:
+          http_status: 200
+          headers_ref: null
+        manual_attestation:
+          provided_by: null
+          local_hash_before_upload: null
+          attested_at: null
+
+    events:
+      - schema_version: "0.2.0"
+        id: "00000000-0000-7000-8000-000000000700"
+        type: court_order
+        record_operation: emit
+        supersedes: null
+        correction:
+          patch: []
+          reason_code: null
+          reason_text: null
+          public_note: null
+        event_time: null
+        observed_time: "2026-10-01T00:00:01Z"
+        jurisdiction: [minnesota]
+        source:
+          source_class: captured
+          url: "https://example.invalid/meridian/v7/target"
+          content_hash: "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+          raw_capture_id: "sha256:1111111111111111111111111111111111111111111111111111111111111111"
+          operator: null
+          relay_note: null
+          capture_failure_id: null
+        verification:
+          status: observed
+          verifier: null
+          method: null
+          corroborating_sources: []
+          transition_log: []
+        entities: []
+        collide:
+          roles: []
+          funding: []
+          litigation: []
+          lobbying: []
+          appointments: []
+          publications: []
+        notes: "synthetic V7 target"
+        right_of_reply:
+          requested: false
+          requested_at: null
+          response: null
+          response_url: null
+
+  candidate:
+    schema_version: "0.2.0"
+    id: "00000000-0000-7000-8000-000000000701"
+    type: null
+    record_operation: supersede
+    supersedes: "00000000-0000-7000-8000-000000000700"
+    correction:
+      patch: []
+      reason_code: operator_error
+      reason_text: "synthetic V7 supersede candidate"
+      public_note: null
+    event_time: null
+    observed_time: "2026-10-01T00:00:02Z"
+    jurisdiction: [minnesota]
+    source:
+      source_class: operator_relayed
+      url: null
+      content_hash: null
+      raw_capture_id: null
+      operator: "synthetic-operator"
+      relay_note: "synthetic fixture only"
+      capture_failure_id: null
+    verification:
+      status: observed
+      verifier: null
+      method: null
+      corroborating_sources: []
+      transition_log: []
+    entities: []
+    collide:
+      roles: []
+      funding: []
+      litigation: []
+      lobbying: []
+      appointments: []
+      publications: []
+    notes: "synthetic V7 candidate"
+    right_of_reply:
+      requested: false
+      requested_at: null
+      response: null
+      response_url: null
+
+  assertions:
+    preconditions:
+      - "supersedes target exists"
+      - "target source_class == captured"
+      - "target raw_capture_id resolves"
+      - "target content_hash matches raw capture"
+      - "candidate source_class != captured"
+    expected_result: fail
+    expected_reason: "SUPERSEDE_REQUIRES_CAPTURED_SOURCE"
+    forbidden_reasons:
+      - "SUPERSEDE_TARGET_MISSING"
+      - "RAW_CAPTURE_NOT_FOUND"
+      - "CAPTURE_HASH_MISMATCH"

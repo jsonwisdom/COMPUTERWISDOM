@@ -1,0 +1,19 @@
+raw_capture:
+  schema_version: 0.1.0
+  kind: raw_capture
+  id: sha256:8ac18779aa768bff7b0fd286a1ec0253a54ccb5ddb36ac7a88b8ad2d6b03c6a0
+  capture_method: manual_upload
+  url: null
+  final_url: null
+  redirects: []
+  captured_at: '2026-10-01T19:35:28Z'
+  bytes_ref: run_artifact/ValidationRun_v0.yaml
+  byte_length: 5199
+  content_hash: sha256:8ac18779aa768bff7b0fd286a1ec0253a54ccb5ddb36ac7a88b8ad2d6b03c6a0
+  response:
+    http_status: null
+    headers_ref: null
+  manual_attestation:
+    provided_by: github_actions
+    local_hash_before_upload: sha256:8ac18779aa768bff7b0fd286a1ec0253a54ccb5ddb36ac7a88b8ad2d6b03c6a0
+    attested_at: '2026-10-01T19:35:28Z'

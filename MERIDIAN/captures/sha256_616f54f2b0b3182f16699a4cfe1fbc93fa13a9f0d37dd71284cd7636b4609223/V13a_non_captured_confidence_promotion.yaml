@@ -1,0 +1,42 @@
+# PROPOSED / SYNTHETIC / NOT CAPTURED / NOT BINDING
+fixture:
+  schema_version: "0.1.0"
+  kind: validation_fixture
+  binding: proposed
+  source_class: authored_in_conversation
+  content_hash: null
+  raw_capture_id: null
+  synthetic: true
+  vector: "V13a"
+  supersedes_fixture_ref: "MERIDIAN/fixtures/validate_v0_2/V13_operator_relayed_confidence_promotion.yaml"
+
+  registry:
+    collider_results:
+      - id: "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        kind: collider_result
+
+  target:
+    schema_version: "0.2.0"
+    kind: collider_result_addendum
+    id: null
+    collider_result_id: "sha256:aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+    supersedes: null
+    input_source_classes:
+      - { ref: "sha256:1111111111111111111111111111111111111111111111111111111111111111", source_class: "operator_relayed" }
+      - { ref: "sha256:2222222222222222222222222222222222222222222222222222222222222222", source_class: "migrated_legacy" }
+    confidence: "strong"
+
+  expected:
+    outcome: fail
+    failure_code: "NON_CAPTURED_CONFIDENCE_PROMOTION"
+    rejected_failure_codes:
+      - "COLLIDER_RESULT_NOT_FOUND"
+      - "INPUT_SOURCE_CLASS_UNKNOWN"
+      - "CONFIDENCE_VALUE_INVALID"
+      - "ADDENDUM_SCHEMA_MISMATCH"
+
+  notes: >
+    Any non-captured input caps confidence at provisional. This fixture uses
+    valid addendum shape, a resolvable collider_result_id, known source classes,
+    and a valid confidence enum value so the intended promotion rule is the
+    only expected failure path.
