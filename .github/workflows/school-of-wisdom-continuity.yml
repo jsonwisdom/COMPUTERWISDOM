@@ -1,0 +1,77 @@
+name: School of Wisdom Continuity Audit (HOLD)
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '17 9 * * *'
+  pull_request:
+    paths:
+      - '.github/workflows/school-of-wisdom-continuity.yml'
+permissions:
+  contents: read
+  pull-requests: read
+jobs:
+  continuity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Gather non-authoritative continuity report
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import datetime, hashlib, json, os, pathlib, ssl, urllib.request, urllib.error
+          root=pathlib.Path("continuity"); root.mkdir()
+          def get(url, auth=False, method="GET"):
+              h={"User-Agent":"school-of-wisdom-continuity/0.1","Accept":"application/vnd.github+json"}
+              if auth: h["Authorization"]="Bearer "+os.environ["GH_TOKEN"]
+              try:
+                  with urllib.request.urlopen(urllib.request.Request(url,headers=h,method=method),timeout=15,context=ssl.create_default_context()) as res:
+                      data=res.read(600000)
+                      return {"http_status":res.status,"json":json.loads(data) if data and data[:1] in (b'{',b'[') else None}
+              except urllib.error.HTTPError as e: return {"http_status":e.code,"status":"HOLD"}
+              except Exception as e: return {"status":"HOLD","error_type":type(e).__name__}
+          base="https://api.github.com/repos/jsonwisdom/COMPUTERWISDOM"
+          prs={}
+          for n in (709,710):
+              r=get(base+"/pulls/"+str(n),True)
+              d=r.get("json") or {}
+              prs[str(n)]={"http_status":r.get("http_status"),"state":d.get("state"),"draft":d.get("draft"),"merged":d.get("merged"),"head_sha":(d.get("head") or {}).get("sha"),"status":"OBSERVED" if r.get("http_status")==200 else "HOLD"}
+          candidate=get(base+"/contents/receipts/candidate/CW_WALLET_LOCAL_PROOF_CANDIDATE_20261029_001.json?ref=audit%2Fcoinbase-wallet-local-proof-candidate-20261029",True)
+          observation=get(base+"/contents/.github/workflows/public-evidence-observation.yml?ref=audit%2Fread-only-observation-lane-20261029",True)
+          flywheel=get("https://api.github.com/repos/jsonwisdom/flywheel-of-wisdom",True)
+          sites={}
+          for host in ("jsonwisdom.com","www.jsonwisdom.com","auth.jsonwisdom.com"):
+              r=get("https://"+host,method="HEAD")
+              sites[host]={"http_status":r.get("http_status"),"status":"REACHABILITY_OBSERVED" if isinstance(r.get("http_status"),int) else "HOLD"}
+          result={
+            "schema":"SOW-CONTINUITY-0.1",
+            "observed_at_utc":datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "governance":"HOLD","authority_created":False,
+            "read_only":True,"private_wallet_material_collected":False,
+            "pull_requests":prs,
+            "wallet_candidate_source":{"http_status":candidate.get("http_status"),"verification":"USER_REPORTED_NOT_INDEPENDENTLY_REPLAYED"},
+            "observation_workflow_source":{"http_status":observation.get("http_status"),"production_merged":"NOT_ESTABLISHED"},
+            "flywheel_repo":{"http_status":flywheel.get("http_status"),"runtime":"NOT_VERIFIED","x402_settlement":"NOT_TESTED"},
+            "web_reachability_only":sites,
+            "historical_72_manifest":"HOLD_UNCHANGED",
+            "wallet_identity_equivalence":"NOT_ESTABLISHED",
+            "coinbase_yubikey_link":"NOT_PROVEN",
+            "payments":"NONE","signatures":"NONE","merges":"NONE","deployments":"NONE",
+            "next_action":"Human review separate signature replay, x402 nonpaying tests and historical manifest."
+          }
+          raw=(json.dumps(result,sort_keys=True,indent=2)+"\n").encode()
+          (root/"continuity.json").write_bytes(raw)
+          (root/"continuity.sha256").write_text(hashlib.sha256(raw).hexdigest()+"  continuity.json\n")
+          with open(os.environ["GITHUB_STEP_SUMMARY"],"a") as f:
+              f.write("## School of Wisdom — continuity observation\n\n**GOVERNANCE HOLD.** No identity, payment or production authority created.\n\n")
+              for n,d in prs.items(): f.write("- PR #"+n+": "+str(d["status"])+" / "+str(d["state"])+" / draft="+str(d["draft"])+"\n")
+              f.write("\nWallet proof remains locally reported; independent replay not performed. Flywheel x402 production NOT VERIFIED.\n")
+          print("CONTINUITY OBSERVATION COMPLETE — GOVERNANCE HOLD")
+          PY
+      - name: Preserve observation artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: school-of-wisdom-continuity-HOLD
+          path: continuity/
+          if-no-files-found: error
