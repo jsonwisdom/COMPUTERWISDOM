@@ -1,0 +1,13 @@
+{
+  "receipt_id": "WIKIATOM_BOMB_V1_CI_ATTEMPT_001",
+  "workflow_run_id": 37237218081,
+  "workflow_name": "wikiatom-bomb-v1-test",
+  "conclusion": "FAILURE",
+  "failure_class": "TEST_HARNESS_DEPENDENCY_MISSING",
+  "failing_step": "python -m pytest -q tests/test_wikiatom_bomb_v1.py",
+  "observed_error": "No module named pytest",
+  "implementation_test_failure_observed": false,
+  "implementation_semantics_changed_by_fix": false,
+  "fix": "Add python -m pip install pytest before test execution",
+  "authority_created": false
+}

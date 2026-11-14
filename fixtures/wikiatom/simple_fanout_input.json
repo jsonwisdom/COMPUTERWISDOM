@@ -1,0 +1,26 @@
+{
+  "atom": {
+    "atom_id": "ATOM-001",
+    "claim_or_object": "Drive-observed protocol candidate replay",
+    "source_pointer": "fixture://simple-fanout",
+    "observed_clock": "2026-10-04T21:30:00Z",
+    "version": "1",
+    "state": "OBSERVED"
+  },
+  "branch_payloads": {
+    "RECORD": "record-receipt",
+    "PROVENANCE": "source-receipt",
+    "AUTHORITY": null,
+    "CUSTODY": null,
+    "CLOCK": "2026-10-04T21:30:00Z",
+    "IDENTITY": null,
+    "METRIC": null,
+    "CONTRADICTION": {"conflict": true, "values": ["claim-A", "claim-B"]},
+    "CHALLENGE": null,
+    "MIGRATION": null,
+    "UNKNOWN": "unresolved-edge",
+    "NEXT_RECEIPT": "github-binding"
+  },
+  "max_depth": 1,
+  "promotion_requested": false
+}
