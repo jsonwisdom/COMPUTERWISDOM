@@ -15,3 +15,13 @@ test("missing clock means HOLD",()=>{const x=copy(fixture);delete x.clocks.event
 test("missing ordering rules means HOLD",()=>{const x=copy(fixture);x.expected_order=[];assert.equal(inspectClockFixture(x).status,"HOLD");});
 test("fixture cannot claim proof admission",()=>{const x=copy(fixture);x.proof_admission=true;assert.equal(inspectClockFixture(x).status,"HOLD");});
 test("real-event fixture cannot be smuggled through synthetic gate",()=>{const x=copy(fixture);x.classification="PUBLIC_CASE";assert.equal(inspectClockFixture(x).status,"HOLD");});
+
+test("four classroom demo is offline, explicitly non-authoritative",()=>{
+ const html=readFileSync(new URL("classes-with-glasses/the-art-of-learing-demo.html",base),"utf8");
+ for(const room of ["Learing the Law","Learing the Press","Minnesota Math Algorithms","Applied Wisdom"])assert.ok(html.includes(room));
+ assert.equal((html.match(/room:"/g)||[]).length,4);
+ assert.ok(html.includes("LOCAL_PRACTICE_ONLY"));
+ assert.ok(html.includes("authority_created:false"));
+ assert.doesNotMatch(html,/fetch\\s*\\(/);
+ assert.doesNotMatch(html,/<script[^>]+src=/);
+});
