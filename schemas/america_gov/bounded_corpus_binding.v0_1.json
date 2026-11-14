@@ -1,0 +1,37 @@
+{
+  "object_id": "Define_bounded_corpus_binding",
+  "version": "0.1",
+  "purpose_rail": "SuperIntelligence America.gov Purpose",
+  "status": "DEFINED_UNBOUND",
+  "authority": false,
+  "runtime_activation": false,
+  "corpus": {
+    "manifest_id": null,
+    "manifest_hash": null,
+    "member_count": 0,
+    "members": [],
+    "completeness_method": null,
+    "state": "UNBOUND"
+  },
+  "required_candidate_bindings": {
+    "source": ["source_id", "original_language", "source_url", "retrieved_at_utc", "snapshot_sha256", "snapshot_byte_length", "retained_byte_locator"],
+    "translation": ["translation_id", "source_id", "source_snapshot_sha256", "translator_reference", "translation_sha256", "retained_byte_locator"],
+    "claim": ["claim_id", "translation_id", "proposition", "status", "verified_by_evidence"],
+    "evidence": ["evidence_id", "claim_id", "retained_byte_locator", "sha256", "relation_type"],
+    "revision": ["revision_id", "prior_revision_id", "changed_object_id", "append_event_id", "reevaluation_event_id"]
+  },
+  "resolution_rules": {
+    "membership": "EVERY_REFERENCED_ID_MUST_RESOLVE_TO_EXACTLY_ONE_MANIFEST_MEMBER",
+    "bytes": "RECOMPUTE_HASH_AND_LENGTH_FROM_RETAINED_BYTES",
+    "relations": "VERIFY_RELATION_ENDPOINTS_AND_EVIDENCE_CLASS_WITHIN_SAME_MANIFEST",
+    "revision": "CLEAR_STALE_ONLY_WITH_APPENDED_REEVALUATION_EVENT",
+    "missing": "REJECT_CANDIDATE_NO_INFERENCE_NO_PROMOTION",
+    "evaluation_status": "DEFINED_UNWIRED"
+  },
+  "promotion": {
+    "definition_is_binding": false,
+    "manifest_is_capture": false,
+    "schema_pass_is_truth": false,
+    "requires": "SEPARATE_CAPTURED_CORPUS_PLUS_INDEPENDENT_LOCAL_REPLAY"
+  }
+}

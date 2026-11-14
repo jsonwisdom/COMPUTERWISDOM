@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "bounded_corpus_binding.v0_1.schema.json",
+  "title": "Define_bounded_corpus_binding",
+  "description": "Defines a closed corpus boundary for future Security gate evaluation. This empty definition neither binds bytes nor activates a checker.",
+  "type": "object",
+  "required": [
+    "object_id", "version", "purpose_rail", "status", "authority",
+    "runtime_activation", "corpus", "required_candidate_bindings",
+    "resolution_rules", "promotion"
+  ],
+  "properties": {
+    "object_id": {"const": "Define_bounded_corpus_binding"},
+    "version": {"const": "0.1"},
+    "purpose_rail": {"const": "SuperIntelligence America.gov Purpose"},
+    "status": {"const": "DEFINED_UNBOUND"},
+    "authority": {"const": false},
+    "runtime_activation": {"const": false},
+    "corpus": {
+      "type": "object",
+      "required": ["manifest_id", "manifest_hash", "member_count", "members", "completeness_method", "state"],
+      "properties": {
+        "manifest_id": {"type": "null"},
+        "manifest_hash": {"type": "null"},
+        "member_count": {"const": 0},
+        "members": {"const": []},
+        "completeness_method": {"type": "null"},
+        "state": {"const": "UNBOUND"}
+      },
+      "additionalProperties": false
+    },
+    "required_candidate_bindings": {
+      "type": "object",
+      "required": ["source", "translation", "claim", "evidence", "revision"],
+      "properties": {
+        "source": {"const": ["source_id", "original_language", "source_url", "retrieved_at_utc", "snapshot_sha256", "snapshot_byte_length", "retained_byte_locator"]},
+        "translation": {"const": ["translation_id", "source_id", "source_snapshot_sha256", "translator_reference", "translation_sha256", "retained_byte_locator"]},
+        "claim": {"const": ["claim_id", "translation_id", "proposition", "status", "verified_by_evidence"]},
+        "evidence": {"const": ["evidence_id", "claim_id", "retained_byte_locator", "sha256", "relation_type"]},
+        "revision": {"const": ["revision_id", "prior_revision_id", "changed_object_id", "append_event_id", "reevaluation_event_id"]}
+      },
+      "additionalProperties": false
+    },
+    "resolution_rules": {
+      "type": "object",
+      "required": ["membership", "bytes", "relations", "revision", "missing", "evaluation_status"],
+      "properties": {
+        "membership": {"const": "EVERY_REFERENCED_ID_MUST_RESOLVE_TO_EXACTLY_ONE_MANIFEST_MEMBER"},
+        "bytes": {"const": "RECOMPUTE_HASH_AND_LENGTH_FROM_RETAINED_BYTES"},
+        "relations": {"const": "VERIFY_RELATION_ENDPOINTS_AND_EVIDENCE_CLASS_WITHIN_SAME_MANIFEST"},
+        "revision": {"const": "CLEAR_STALE_ONLY_WITH_APPENDED_REEVALUATION_EVENT"},
+        "missing": {"const": "REJECT_CANDIDATE_NO_INFERENCE_NO_PROMOTION"},
+        "evaluation_status": {"const": "DEFINED_UNWIRED"}
+      },
+      "additionalProperties": false
+    },
+    "promotion": {
+      "type": "object",
+      "required": ["definition_is_binding", "manifest_is_capture", "schema_pass_is_truth", "requires"],
+      "properties": {
+        "definition_is_binding": {"const": false},
+        "manifest_is_capture": {"const": false},
+        "schema_pass_is_truth": {"const": false},
+        "requires": {"const": "SEPARATE_CAPTURED_CORPUS_PLUS_INDEPENDENT_LOCAL_REPLAY"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
