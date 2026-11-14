@@ -1,0 +1,26 @@
+name: Minnesota FullMath readback (synthetic only)
+
+on:
+  pull_request:
+    paths:
+      - 'public-question-router/extensions/shock-gloves/boxdee/minnesota/tools/**'
+      - 'public-question-router/extensions/shock-gloves/boxdee/minnesota/tests/test_fullmath_readback_v0_1.mjs'
+      - 'public-question-router/extensions/shock-gloves/boxdee/minnesota/fixtures/MNK_003_SYNTHETIC_CLOCK_DEMO_V0_1.json'
+      - 'public-question-router/extensions/shock-gloves/boxdee/minnesota/receipts/MINNESOTA_REPLAY_VALIDATION_REGISTRY_V0_1.json'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-readback:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test read-only FullMath registry and synthetic clock demonstration
+        run: node --test public-question-router/extensions/shock-gloves/boxdee/minnesota/tests/test_fullmath_readback_v0_1.mjs
+      - name: Generate local JSON readback (not a proof receipt)
+        run: node public-question-router/extensions/shock-gloves/boxdee/minnesota/tools/run_fullmath_readback_v0_1.mjs
