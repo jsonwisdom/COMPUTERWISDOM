@@ -1,0 +1,2259 @@
+{
+  "object": "MASTER_ROOM_GIT_TREE_SNAPSHOT_BATCH_010",
+  "observed_at": "2026-09-23",
+  "repos": [
+    {
+      "repo": "jsonwisdom/verifygate",
+      "default_branch": "main",
+      "head_commit": "225692c748de8597aa14e8be4737068aee2fb693",
+      "tree_sha": "7b28b9b07c9aa2a568d1ab5494a04412ecad6605",
+      "entry_count": 15,
+      "truncated": false,
+      "entries": [
+        {
+          "path": "AUDIT-20260328.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "296ef0259551219777ef963519ee53a84d7b66a0",
+          "size": 1218
+        },
+        {
+          "path": "README.MD",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e8aa7dbd0191a43cab4de1fba1f9661dc5909570",
+          "size": 1013
+        },
+        {
+          "path": "docket_hold_gate",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d0fca4f964fe873036cab808c6ca94f2b312a24f",
+          "size": null
+        },
+        {
+          "path": "docket_hold_gate/gate.py",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "1b37e55f17e778cba583b58ab1565639a23c2e87",
+          "size": 5438
+        },
+        {
+          "path": "docket_hold_gate/invariant_H-JW-01.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "36020ada2ade2c80927752b66ea3e3611e3544aa",
+          "size": 2390
+        },
+        {
+          "path": "docket_hold_gate/vectors",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "656c9b178223c8ac759bb6147490ec980487f47e",
+          "size": null
+        },
+        {
+          "path": "docket_hold_gate/vectors/C-DKT-01.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ac0353c2d04c75f32dd8641c7280fe1fd7b48e19",
+          "size": 1246
+        },
+        {
+          "path": "docket_hold_gate/vectors/C-DKT-02.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fa0c8f6593673e17d3c1f5cd084a24d10e8b5686",
+          "size": 2508
+        },
+        {
+          "path": "docket_hold_gate/vectors/C-DKT-03.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cd075112471e1da9c76611229e4445b6cd33199b",
+          "size": 1889
+        },
+        {
+          "path": "docket_hold_gate/vectors/suite.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c25c1a273fbd437b62a041efb17765d0de2446e8",
+          "size": 291
+        },
+        {
+          "path": "index.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c8c42b97e20dc6b7e5d9ffdca3208cb932d657c1",
+          "size": 6399
+        },
+        {
+          "path": "leaf_001",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "e9ec2c642feb524ffcfdd5ad21ad3fd2fb377524",
+          "size": null
+        },
+        {
+          "path": "leaf_001/artifact.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2e389833f8eda1b4432cdffc34268dc9def1ed56",
+          "size": 344
+        },
+        {
+          "path": "leaf_001/receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "df22917ae8e8aafc3437f97fc3b46df6c09f989e",
+          "size": 219
+        },
+        {
+          "path": "leaf_001/verify_leaf_001.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "024b19c3d32cf4d57c840708b17f46bd754e69b5",
+          "size": 710
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/GENESIS",
+      "default_branch": "main",
+      "head_commit": "174c3b2b6e5a8bd5d953aba8ec03273964220b3b",
+      "tree_sha": "d9092b5d44db978d01ecf768fc7c4f68944052eb",
+      "entry_count": 107,
+      "truncated": false,
+      "entries": [
+        {
+          "path": "AUTHORITY",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "278755b3169c85f413ca8cdf74a84881761a32b4",
+          "size": 16
+        },
+        {
+          "path": "MANIFEST.INTEGRITY.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fcc31103a1bdca985c397e170e1d72fb28e09409",
+          "size": 290
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c8fb01270dfd62bc880e40fb166cb61ed0718080",
+          "size": 2721
+        },
+        {
+          "path": "TRAJECTORY_EVENT_V0_1.schema.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4f880f922cb3302d91a1b5873c78211e2cea7b05",
+          "size": 2307
+        },
+        {
+          "path": "clean-report-source-commit.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e3af8be8a0f0f26d8d4528fbd34c83e808aa9789",
+          "size": 41
+        },
+        {
+          "path": "contracts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "fb5968c9b153d595b5967e4ebc2beee5bf27cd4f",
+          "size": null
+        },
+        {
+          "path": "contracts/ENTRY_0001.merkle.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ea0ba5f19e6444584ddd1fa62baca01c13971aa7",
+          "size": 222
+        },
+        {
+          "path": "docs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f8db74d011cb20800a99f40035127d82532b2cde",
+          "size": null
+        },
+        {
+          "path": "docs/IDEA_FACTORY_MENU.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6c798d266506b6e178a001afd32281ed8f411660",
+          "size": 2836
+        },
+        {
+          "path": "docs/literature",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "0ff610a9df0eedacbd57183a7fc4617295e5a0ba",
+          "size": null
+        },
+        {
+          "path": "docs/literature/WHY_LAB_002_LITERATURE_PACKET_v1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0a010660b36c893d931d942ef222309bdc3455a9",
+          "size": 1296
+        },
+        {
+          "path": "docs/visuals",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "b80c7875c0f06b79e2d30430a7c6c127573a9b9a",
+          "size": null
+        },
+        {
+          "path": "docs/visuals/state-law",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "333965969875ebbcc483e0ae88bf561e97f9d79e",
+          "size": null
+        },
+        {
+          "path": "docs/visuals/state-law/state-law-v2-repaired-registry-manifest.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "efd5f771095cda24f0cfbccc1661f37fdf5c93dd",
+          "size": 2113
+        },
+        {
+          "path": "docs/visuals/state-law/state-law-v2-repaired-registry.png",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1eeb2d64a095af6d1e676f20d95e4013dc9be2e0",
+          "size": 2187899
+        },
+        {
+          "path": "exit-code.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56",
+          "size": 2
+        },
+        {
+          "path": "fixtures",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "2f741a6bbf21c38be1054e8fd99eca41d68e4ddb",
+          "size": null
+        },
+        {
+          "path": "fixtures/itp",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "ec8367afc58b199b981f31486ec537249d92bb90",
+          "size": null
+        },
+        {
+          "path": "fixtures/itp/negative-fixtures-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4064143503f4d71338b0ab337be2f04b8b51630a",
+          "size": 5646
+        },
+        {
+          "path": "fixtures/itp/payload-integrity",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9525bfbaf287e409b5e5d19069a1a9c7938393ad",
+          "size": null
+        },
+        {
+          "path": "fixtures/itp/payload-integrity/bytes",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "1f8dc9b21f1d0d066c4269969983a206d975b0fe",
+          "size": null
+        },
+        {
+          "path": "fixtures/itp/payload-integrity/bytes/payload-positive-v0.1.bin",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "de4b022bc574874ec90262b014629b96cf215a6e",
+          "size": 19
+        },
+        {
+          "path": "fixtures/itp/payload-integrity/payload-fixtures-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "90a99128541474c4af7c925aadd963c9792bc373",
+          "size": 2242
+        },
+        {
+          "path": "fixtures/itp/positive-fixtures-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "78dda7173d566fda3a0dba0364a29b1000a6bc46",
+          "size": 2356
+        },
+        {
+          "path": "fixtures/itp/state-law",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9fa399a6dc0aa4e9592368af1dd51d4f01cc9d9e",
+          "size": null
+        },
+        {
+          "path": "fixtures/itp/state-law/.gitkeep",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "fixtures/itp/state-law/negative-fixtures-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "43862e75d0157caf8e99cc61f6868841af957f21",
+          "size": 8383
+        },
+        {
+          "path": "fixtures/itp/state-law/positive-fixtures-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a7fe8a4e7f222f3d73ab124f5d1da11ab43c52fd",
+          "size": 1573
+        },
+        {
+          "path": "fixtures/itp/trajectory-replay",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "c2f4c66a5a67e519e70c5f79eca0f3bc535eb67b",
+          "size": null
+        },
+        {
+          "path": "fixtures/itp/trajectory-replay/replay-negative-fixtures-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5e57b6507331d96fb1d583dc67ec282974d3026e",
+          "size": 4647
+        },
+        {
+          "path": "fixtures/itp/trajectory-replay/replay-positive-fixtures-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "32b2171fd2256545ac55795b8e31c0edb2948f09",
+          "size": 2081
+        },
+        {
+          "path": "gray-babies",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "30b092d2a553517b5087184cc525591d74a64ff0",
+          "size": null
+        },
+        {
+          "path": "gray-babies/evidence",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8ce028f4675d4a4c787a6e4c15ad8d6deb0fca6f",
+          "size": null
+        },
+        {
+          "path": "gray-babies/evidence/UPLOAD_BATCH_0001.manifest.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ec483f8c0fbfec6a3d33b182d55a2e6892bc6cf8",
+          "size": 3819
+        },
+        {
+          "path": "integrity-checks.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "774be02e9f6cc4d48a777bc5f6bca5a0e00a4f0f",
+          "size": 2555
+        },
+        {
+          "path": "lessons",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "1209f15246e9d6218003919fda3e1fb6c0a99055",
+          "size": null
+        },
+        {
+          "path": "lessons/WHY_LAB_001.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "00b66657fec9a79eea3eb8da050e6d0d45d820d0",
+          "size": 3056
+        },
+        {
+          "path": "lessons/WHY_LAB_002.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "853897b66b2f8d526eb6608a2c57c184eec84426",
+          "size": 6487
+        },
+        {
+          "path": "media",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "64af139352b4be66777e9b05bafb464c175b621e",
+          "size": null
+        },
+        {
+          "path": "media/itp",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "837e32fd6c2c3870565ae7a6fa872df7e85a6366",
+          "size": null
+        },
+        {
+          "path": "media/itp/state-law",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "5e98846f66a19b4e2f8ff3694636a0abbb65b227",
+          "size": null
+        },
+        {
+          "path": "media/itp/state-law/.gitkeep",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "media/itp/state-law/the-state-law-threshold-widescreen-v0.1.png",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b40ad0758600f5e87adff38c26257ab6defae821",
+          "size": 2152219
+        },
+        {
+          "path": "media/itp/state-law/the-state-law-threshold-widescreen-v0.1.provenance.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "523bd8426e6d2f41b8c58dd59a8136b5892d633e",
+          "size": 593
+        },
+        {
+          "path": "node-version.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "eb6ead3cf55ae04f9e2c639f68121fb716c64c70",
+          "size": 9
+        },
+        {
+          "path": "package-lock.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d7fe807345aa6def029872c228579c6eb5e98ba2",
+          "size": 2935
+        },
+        {
+          "path": "package.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f8f3831c2f23b8c179aaf1af28c3dcad21ba10bc",
+          "size": 414
+        },
+        {
+          "path": "receipts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "4427b8dc2e350c50026c0a078344e56e69b15a4b",
+          "size": null
+        },
+        {
+          "path": "receipts/ENTRY_0001.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c5d7654c9bd0c0360adf7337ab9c9c4478f4641c",
+          "size": 415
+        },
+        {
+          "path": "receipts/ENTRY_0001.json.sig",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "24a7069973b110b5680fa6b73a45a91e889a5552",
+          "size": 306
+        },
+        {
+          "path": "receipts/GENESIS_SIGNING_KEY.pub",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a6ede19662325133974e8bd0d5b64d856e7baf08",
+          "size": 104
+        },
+        {
+          "path": "receipts/itp",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "a6ec99a91149049ee12a668413e9b196c8e57af8",
+          "size": null
+        },
+        {
+          "path": "receipts/itp/payload-integrity",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "4882963dd6b04caddf41b15e7971cdacdb160c12",
+          "size": null
+        },
+        {
+          "path": "receipts/itp/payload-integrity/payload-integrity-report-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cec03ff83c05512c6d854c5b85a5d943ae1b6f20",
+          "size": 2604
+        },
+        {
+          "path": "receipts/itp/registry-repair-v0.1",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "1843e27ec5b810b1ddabba303c389411d634a28c",
+          "size": null
+        },
+        {
+          "path": "receipts/itp/registry-repair-v0.1/node-version.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "eb6ead3cf55ae04f9e2c639f68121fb716c64c70",
+          "size": 9
+        },
+        {
+          "path": "receipts/itp/registry-repair-v0.1/repair-receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4fda45ef050b3d257d7baba279126164ba18c052",
+          "size": 547
+        },
+        {
+          "path": "receipts/itp/registry-repair-v0.1/replay-exit-code.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56",
+          "size": 2
+        },
+        {
+          "path": "receipts/itp/registry-repair-v0.1/replay-report.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "52989d9fe9037dc7b5844ebefc29add9c1075fe1",
+          "size": 7670
+        },
+        {
+          "path": "receipts/itp/registry-repair-v0.1/replay-stderr.log",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "receipts/itp/registry-repair-v0.1/source-commit.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "20be4c5e9bc97d80b8741284d57bdeb872564a84",
+          "size": 41
+        },
+        {
+          "path": "receipts/itp/registry-repair-v0.1/state-exit-code.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56",
+          "size": 2
+        },
+        {
+          "path": "receipts/itp/registry-repair-v0.1/state-report.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "12d74607487399510b89325b06e3f8f0e21dc70b",
+          "size": 4077
+        },
+        {
+          "path": "receipts/itp/registry-repair-v0.1/state-stderr.log",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "receipts/itp/state-law",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8d7473a2561f38d8ae043fd93cfe5b0417992680",
+          "size": null
+        },
+        {
+          "path": "receipts/itp/state-law/.gitkeep",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "receipts/itp/state-law/exit-code.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56",
+          "size": 2
+        },
+        {
+          "path": "receipts/itp/state-law/node-version.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "eb6ead3cf55ae04f9e2c639f68121fb716c64c70",
+          "size": 9
+        },
+        {
+          "path": "receipts/itp/state-law/source-commit.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1463d324022f98334d214507b35620c9eb73c5b3",
+          "size": 41
+        },
+        {
+          "path": "receipts/itp/state-law/state-verifier-report-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "be0e2d6d1e0b3b5c55f7fac429eeae51b6cdf655",
+          "size": 3558
+        },
+        {
+          "path": "receipts/itp/state-law/stderr-v0.1.log",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "receipts/itp/state-law/stdout-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f88959a658a8395f706438e7846a848bb0e961da",
+          "size": 3559
+        },
+        {
+          "path": "receipts/itp/trajectory-replay",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "a289ae979534b7b23df4992f17af823c5ee03e23",
+          "size": null
+        },
+        {
+          "path": "receipts/itp/trajectory-replay/exit-code.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "573541ac9702dd3969c9bc859d2b91ec1f7e6e56",
+          "size": 2
+        },
+        {
+          "path": "receipts/itp/trajectory-replay/node-version.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "eb6ead3cf55ae04f9e2c639f68121fb716c64c70",
+          "size": 9
+        },
+        {
+          "path": "receipts/itp/trajectory-replay/replay-report-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "52989d9fe9037dc7b5844ebefc29add9c1075fe1",
+          "size": 7670
+        },
+        {
+          "path": "receipts/itp/trajectory-replay/source-commit.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1df4a11ac5172edad77d531c4d593bd440e5f742",
+          "size": 41
+        },
+        {
+          "path": "receipts/itp/trajectory-replay/stderr-v0.1.log",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "receipts/itp/trajectory-replay/stdout-v0.1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "52989d9fe9037dc7b5844ebefc29add9c1075fe1",
+          "size": 7670
+        },
+        {
+          "path": "research",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "17f0eb95b1cec99363bdec0fa86835362f34dd62",
+          "size": null
+        },
+        {
+          "path": "research/categorized-scalar",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "e93d1a0fb1a58213161c000fb5ff36ed1ad790d8",
+          "size": null
+        },
+        {
+          "path": "research/categorized-scalar/sod-125",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "2c4a7336db5b30a7358352d5ae34972199f51f96",
+          "size": null
+        },
+        {
+          "path": "research/categorized-scalar/sod-125/COMMIT_A.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "de8b8a2636654b146fc5a26e2ca8b9c543fc54da",
+          "size": 601
+        },
+        {
+          "path": "research/categorized-scalar/sod-125/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c662ddfc77aa5bfa6d5bb37780be9da774c449bc",
+          "size": 1300
+        },
+        {
+          "path": "research/categorized-scalar/sod-125/SOD-125-v0.1.0.pdf",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2916a433db782167f33a73bef4b47a0d34912814",
+          "size": 16293
+        },
+        {
+          "path": "research/categorized-scalar/sod-125/manifest.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d0487d49945b61d8ced88d780246b7abcf9ae532",
+          "size": 1448
+        },
+        {
+          "path": "research/categorized-scalar/sod-125/source",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d64363157954675e5fe74cfbe43f73e6174d799c",
+          "size": null
+        },
+        {
+          "path": "research/categorized-scalar/sod-125/source/SOD-125-source.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d55990392dae239f352697126431c18a91764e04",
+          "size": 6035
+        },
+        {
+          "path": "schemas",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "2f0509d9d6e5a75ef81295ed0332e77ee8ff0598",
+          "size": null
+        },
+        {
+          "path": "schemas/gray-babies",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "acbd6cb83038e0e665275d3eca2b0dadab7818be",
+          "size": null
+        },
+        {
+          "path": "schemas/gray-babies/GBCS_v1.schema.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "3fa17a7bc1b14fca80a79858fb1b7f6f9fe46eac",
+          "size": 2514
+        },
+        {
+          "path": "shape-verifier-errors.log",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "shape-verifier-report.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c3658b1888077c4bb2932ea55a81f004bb22326a",
+          "size": 4310
+        },
+        {
+          "path": "source-commit.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cd1cd88b89640be3c78a391cf4b43e8e70c8bb75",
+          "size": 41
+        },
+        {
+          "path": "state",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "cce59f9ffd2efef51cc97f2462d07fb123f3515b",
+          "size": null
+        },
+        {
+          "path": "state/boot.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0967ef424bce6791893e9a57bb952f80fd536e93",
+          "size": 3
+        },
+        {
+          "path": "tools",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9aa275523bc76ffe6d481d26ee42a29eac73238b",
+          "size": null
+        },
+        {
+          "path": "tools/verify_entry_0001.py",
+          "mode": "100755",
+          "type": "blob",
+          "sha": "df094f2e69951ae6af591dad358d16b4c027fed6",
+          "size": 61
+        },
+        {
+          "path": "verifier",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "117d86e38ae5e261884df77977063bd7c4f42cd8",
+          "size": null
+        },
+        {
+          "path": "verifier/payload-integrity",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f21c87e7bfc2e191eff75fb73beff00ccb2aac1d",
+          "size": null
+        },
+        {
+          "path": "verifier/payload-integrity/payload-integrity-verifier-v0.1.js",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "64961ff8049e4ebff0c075d8a4fe0ec6a22aa1e2",
+          "size": 2845
+        },
+        {
+          "path": "verifier/shape-verifier-v0.1.js",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "faabc065653249fff367aa5e1c055cbeeedcde34",
+          "size": 3086
+        },
+        {
+          "path": "verifier/state-law",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "bb5796916a8eb20ac59db257c66241bc25bdfc55",
+          "size": null
+        },
+        {
+          "path": "verifier/state-law/.gitkeep",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "verifier/state-law/state-verifier-v0.1.js",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9899852749773f8b27a4610774fd7c2577c5ec3d",
+          "size": 3712
+        },
+        {
+          "path": "verifier/trajectory-replay",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "1f8a6308fdcb8af6995fb090d5647ef555621f52",
+          "size": null
+        },
+        {
+          "path": "verifier/trajectory-replay/trajectory-replay-verifier-v0.1.js",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e11c562ea568fbe76020bbbaf75c2234dc98267c",
+          "size": 10392
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/software",
+      "default_branch": "master",
+      "head_commit": "d2f8aefb0885ce5207bea3eb77615b769a24a47c",
+      "tree_sha": "544f3256ee7d93e33a9d6775e4ecde5b4acad049",
+      "entry_count": 1,
+      "truncated": false,
+      "entries": [
+        {
+          "path": "shopify-ecommerce-shopping-cart.1.1.3.zip",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0dd5c70b9bdd978a3ee590d0379b900f69e9e10f",
+          "size": 932673
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/-replayos-receiptos-spec",
+      "default_branch": "main",
+      "head_commit": "882042cb704bdd825c2139cf04cdf4829487e6a9",
+      "tree_sha": "7b73213d352fc6e2d2d8d08a2474c74d54624a82",
+      "entry_count": 121,
+      "truncated": false,
+      "entries": [
+        {
+          "path": ".github",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "59ce90c0bc02f616bf9b494d0fbe658077a742f8",
+          "size": null
+        },
+        {
+          "path": ".github/workflows",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9258364319691658a82cfe947180ac71498f3143",
+          "size": null
+        },
+        {
+          "path": ".github/workflows/wormscrew-execution-receipt.yml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2ecb501f4da4c205eaaa251de6459dfed2647890",
+          "size": 5408
+        },
+        {
+          "path": "CONFORMANCE.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e224ba084e29e88d839bb0cd57abe5a93b66ba93",
+          "size": 1747
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5aa680a0e3836890d429f4996041d6047bd600df",
+          "size": 5344
+        },
+        {
+          "path": "constitutional_vm_audit",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "ca02576a476ad97f4df2cd3ce6ffc8500bde4ab2",
+          "size": null
+        },
+        {
+          "path": "constitutional_vm_audit/Cargo.toml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "11350930d2f8e53dfb16853ad7f800c596c66fe1",
+          "size": 210
+        },
+        {
+          "path": "constitutional_vm_audit/EXECUTION_RECEIPT_TEMPLATE.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e12f80371196a3466d1bb4a1b050738f55b82937",
+          "size": 2995
+        },
+        {
+          "path": "constitutional_vm_audit/scripts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f358373ee7557ac7586c24626652a62ba95ac18f",
+          "size": null
+        },
+        {
+          "path": "constitutional_vm_audit/scripts/collect_execution_receipt.sh",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "01d9d9932a2af161a80277745ba83383fe970f87",
+          "size": 3496
+        },
+        {
+          "path": "constitutional_vm_audit/src",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "b134c8111fd4ccc406103192b184cc3816825936",
+          "size": null
+        },
+        {
+          "path": "constitutional_vm_audit/src/lib.rs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7f26a7f2e8d18bc32dca5586d8654867ad787ab9",
+          "size": 6744
+        },
+        {
+          "path": "constitutional_vm_audit/tests",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "080962dce6a94bfcb2ce25a1cdd9aaad1e5e4860",
+          "size": null
+        },
+        {
+          "path": "constitutional_vm_audit/tests/auditlayer_is_append_only.rs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fd575826023064b888a2aa5371e769920f0a861a",
+          "size": 5017
+        },
+        {
+          "path": "context",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8ab3fd0af2790814d7a150a5bdbe3af1732eb2a1",
+          "size": null
+        },
+        {
+          "path": "context/raa-urp-1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a248420e4308961de3aec64ec91b87f523b6c217",
+          "size": 906
+        },
+        {
+          "path": "docs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9fc22d60a4aa365e63dd7bf9934e989580191df8",
+          "size": null
+        },
+        {
+          "path": "docs/replay-court",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d0e8b591200080cf4a20d258333b7a784f960697",
+          "size": null
+        },
+        {
+          "path": "docs/replay-court/byte-equality.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dbe8342ab9d47d956e8cb738a7299d9b6d3d8517",
+          "size": 4181
+        },
+        {
+          "path": "experiments",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "bace705473daeb537eae55f5e0adfcbcbf30a1fb",
+          "size": null
+        },
+        {
+          "path": "experiments/declassification-timer",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8219b941932cf14d8642704849b898880564169f",
+          "size": null
+        },
+        {
+          "path": "experiments/declassification-timer/Cargo.toml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cd613692dd16925075de340767ee9bcb1d22c117",
+          "size": 159
+        },
+        {
+          "path": "experiments/declassification-timer/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d18efb9e81a4496fcb3a98c222e33904c9143554",
+          "size": 1946
+        },
+        {
+          "path": "experiments/declassification-timer/src",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "6bfe9b3f173175b8f4902105f81203e279f2d118",
+          "size": null
+        },
+        {
+          "path": "experiments/declassification-timer/src/lib.rs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e30e9eb23e4b02fd76ea12ecfe7469e93ce6a451",
+          "size": 9134
+        },
+        {
+          "path": "experiments/olc-semantic-drift",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "2d200ff9893d87331939c45b9fac6e4667ae5880",
+          "size": null
+        },
+        {
+          "path": "experiments/olc-semantic-drift/Cargo.toml",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "783e83250cd12c793f66599e3d06a6401b71c1b2",
+          "size": 116
+        },
+        {
+          "path": "experiments/olc-semantic-drift/src",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "90afd4d51c225e0970d6a1baa0d4baa0c4d16b00",
+          "size": null
+        },
+        {
+          "path": "experiments/olc-semantic-drift/src/lib.rs",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "765c212a092bf32bc795b1f7f6b20a5160d20181",
+          "size": 5249
+        },
+        {
+          "path": "fixtures",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "79889d9c7dc335bf7f2602b20317df653476a51e",
+          "size": null
+        },
+        {
+          "path": "fixtures/m7",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "6bf5397c9c1e4dcd3bc5adbfdf038f7f0ba0fd98",
+          "size": null
+        },
+        {
+          "path": "fixtures/m7/invalid",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "bebbfbbc8a7400c48f03114277afa02956e6a374",
+          "size": null
+        },
+        {
+          "path": "fixtures/m7/invalid/cycle_in_graph.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1bbd577bfac08da2e296361062dfde4bfb3f7d22",
+          "size": 612
+        },
+        {
+          "path": "fixtures/m7/invalid/missing_authorization.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "22d216c4451f9237e9c8bcaaab6a18ac5b95d564",
+          "size": 430
+        },
+        {
+          "path": "fixtures/m7/invalid/override_without_tombstone.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2f302e7ad8194f0531b81a5287d0bd23cb864238",
+          "size": 371
+        },
+        {
+          "path": "fixtures/m7/valid",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "a35a244ec8cd74bd14664cd54351542af077fb17",
+          "size": null
+        },
+        {
+          "path": "fixtures/m7/valid/authorization_receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c9abb06df4aa0d765843f5a03e9f4e8b43110b56",
+          "size": 532
+        },
+        {
+          "path": "fixtures/m7/valid/lock_graph.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "ef59197b0ba25713c69749ad7367c0b8c4340eca",
+          "size": 1065
+        },
+        {
+          "path": "gray-baby",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "2a23c11c99b48004823a2aead4e224bfdfe6f139",
+          "size": null
+        },
+        {
+          "path": "gray-baby/common-knowledge",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "6edcc4d4803c1491371225c4bb3f427f583ff1b8",
+          "size": null
+        },
+        {
+          "path": "gray-baby/common-knowledge/simple-physics-v1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "96e5dbe4d149291ee82cccd5102e49a3e0bf2ad4",
+          "size": 2752
+        },
+        {
+          "path": "manifests",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "a4c6d9c923932dfe66b4ca649d7725679425879e",
+          "size": null
+        },
+        {
+          "path": "manifests/normative-set.manifest.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a9dacabc26e8b25a18fb9b5375e155950e2fc013",
+          "size": 4413
+        },
+        {
+          "path": "open-goblin-courts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "09dbc269dc65137316ec7ba50d073c3fa484f611",
+          "size": null
+        },
+        {
+          "path": "open-goblin-courts/mn",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "212e7534216187ee325cc655ce06d6d124b07194",
+          "size": null
+        },
+        {
+          "path": "open-goblin-courts/mn/OGC-MN-001.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0ed877e7b6a698101776281b03988831aac8bd50",
+          "size": 1809
+        },
+        {
+          "path": "open-goblin-courts/mn/OGC-MN-003.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1891eda9f12b3c9786422a533ca4d50e8cda1dcf",
+          "size": 3303
+        },
+        {
+          "path": "open-goblin-courts/mn/OGC-MN-005-stay-in-your-lane-protocol.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "585af5735218d75e3aa9796f2f168260a45055b5",
+          "size": 3375
+        },
+        {
+          "path": "schema",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "85adb6b671ef921093be3bb2739bcd2e8216385a",
+          "size": null
+        },
+        {
+          "path": "schema/raa-metadata-base-v1.schema.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9b687d9a332ed090fc3692a73cdd9edd8d875340",
+          "size": 1408
+        },
+        {
+          "path": "schema/raa-receipt-v1.schema.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e639d2e8f6f35b4b6b0aab0170ac81fd3a4b4e7a",
+          "size": 5926
+        },
+        {
+          "path": "schemas",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "4667eb6bdbcbeedb55901f119c0170d112b9187b",
+          "size": null
+        },
+        {
+          "path": "schemas/authorization-receipt.schema.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c2b094fe177747d0380cf9f3a5ce5fe3e0b61fef",
+          "size": 2114
+        },
+        {
+          "path": "spec",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "f057244f5e4ef4839384f95393ca23472ae1f500",
+          "size": null
+        },
+        {
+          "path": "spec/LIGHT_SOCIETY_REPLAY_TERMINAL_POSTURE_V1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "adf7db97c41e905c829fc0707a4932271e75dc91",
+          "size": 2012
+        },
+        {
+          "path": "spec/THEOLOGY_ATOM_009.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "18253ee9a7d78724274e28075647876596048fe2",
+          "size": 3249
+        },
+        {
+          "path": "spec/appeals-artifact-v0.1.1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6731e69257cddf69a7ff44626bc763b962513d43",
+          "size": 1329
+        },
+        {
+          "path": "spec/audit-finding-artifact-v0.1.1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f5d744489c4caa5ff59d1f61e163bf9becfe9e5d",
+          "size": 1150
+        },
+        {
+          "path": "spec/authorization-receipt.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "cb2c82fec64f1e6536d337cc8b3085e5cfa0e484",
+          "size": 1617
+        },
+        {
+          "path": "spec/contract-artifact-v0.1.1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4778013ba8955d3afeca8bfbe6b8b5b8c9576d99",
+          "size": 1340
+        },
+        {
+          "path": "spec/evidence-record-artifact-v0.1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e472d7045331e18a436e6ef460a0c0e9e9c2f0e9",
+          "size": 846
+        },
+        {
+          "path": "spec/initiating-record-artifact-v0.1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "56be834f304635807672c0071b706fd973e2f37d",
+          "size": 746
+        },
+        {
+          "path": "spec/lock-evidence-graph.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "23dcc7b94d29db8b556561b2af272dde31455e83",
+          "size": 1413
+        },
+        {
+          "path": "spec/policy-artifact-v0.1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2592de303ed15570b966735454e6fcd4fa706f8e",
+          "size": 682
+        },
+        {
+          "path": "spec/procurement-artifact-v0.1.1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a469ebfa3c17f61edf7ac02fb9a89b64291745d5",
+          "size": 1257
+        },
+        {
+          "path": "spec/public-record-artifact-v0.1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e910aab984d13136b2e2f382f73fd648f0039e45",
+          "size": 723
+        },
+        {
+          "path": "spec/underlying-decision-artifact-v0.1.1.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bc0bb5342ee9baaa897d430fc46f04f0fdb0a214",
+          "size": 1663
+        },
+        {
+          "path": "spec/universal-receipt-protocol-v1.0.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "845056ef5d93025f5baf76fb7e12d0c0300af58a",
+          "size": 1867
+        },
+        {
+          "path": "vectors",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "801c82263632aa35c62ec5157b3179803a8b3cc0",
+          "size": null
+        },
+        {
+          "path": "vectors/001-key-genesis",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "bb7353aec8f137399d88276ed547136fc8eb6b09",
+          "size": null
+        },
+        {
+          "path": "vectors/001-key-genesis/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "84310b3d730b0d94a3b85e3256f27c7383134531",
+          "size": 1257
+        },
+        {
+          "path": "vectors/001-key-genesis/conformance-seed.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "54ebeec5dbc84377017e8ef810ae6ba10e30af08",
+          "size": 932
+        },
+        {
+          "path": "vectors/001-key-genesis/content-hash.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "300bb7b52ff960ead6c5541a4101e60fca68dd5b",
+          "size": 72
+        },
+        {
+          "path": "vectors/001-key-genesis/public-key.raw.base64.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c5defe075dd2058b436bd1eab263366a329c4ce5",
+          "size": 45
+        },
+        {
+          "path": "vectors/001-key-genesis/receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "899a49939dd3e457f6a35e5a4932ce158a6db9e5",
+          "size": 2398
+        },
+        {
+          "path": "vectors/002-standard-chain",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9822bdf6058c0126fd915a896aac45e1c747f979",
+          "size": null
+        },
+        {
+          "path": "vectors/002-standard-chain/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fbc2b50f19e6de29fdbd3b072b69e9cc531cc95a",
+          "size": 2239
+        },
+        {
+          "path": "vectors/002-standard-chain/content-hash.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "db8a400b9df0deb36c99ce19c5e0a69bd84c00d7",
+          "size": 72
+        },
+        {
+          "path": "vectors/002-standard-chain/prior-receipt-content-hash.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "300bb7b52ff960ead6c5541a4101e60fca68dd5b",
+          "size": 72
+        },
+        {
+          "path": "vectors/002-standard-chain/receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "95a9b696c48b1bcd4a62079a75631f3fe797202e",
+          "size": 2140
+        },
+        {
+          "path": "vectors/003-terminal-chain",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "768ca3ae48b5ce4dd924cb5e38a0b102268f755f",
+          "size": null
+        },
+        {
+          "path": "vectors/003-terminal-chain/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d2bbc4dbda823ecb8ecbfa688ce63e5333f72be0",
+          "size": 1287
+        },
+        {
+          "path": "vectors/003-terminal-chain/content-hash.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "49f07a2da619b208891dbbc8acaa983fe69a60a9",
+          "size": 72
+        },
+        {
+          "path": "vectors/003-terminal-chain/prior-receipt-content-hash.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "db8a400b9df0deb36c99ce19c5e0a69bd84c00d7",
+          "size": 72
+        },
+        {
+          "path": "vectors/003-terminal-chain/receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "d5f8cb6df8cda98b582a76b6f09103546c8b0ca5",
+          "size": 2132
+        },
+        {
+          "path": "vectors/invalid",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "6dacd2ff6134fe8b57572f195ce322bbff748056",
+          "size": null
+        },
+        {
+          "path": "vectors/invalid/001-mutated-payload",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "6164cce85a534c330752846a0984f38316b0f121",
+          "size": null
+        },
+        {
+          "path": "vectors/invalid/001-mutated-payload/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "208ab7e524c72a46da5b9eaef4991260d2f62d89",
+          "size": 370
+        },
+        {
+          "path": "vectors/invalid/001-mutated-payload/case.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "096b05eea4e7df423cb27f6e9d51c5ffc41b0909",
+          "size": 2124
+        },
+        {
+          "path": "vectors/invalid/001-mutated-payload/expected-error.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1a6897469a3a39d20acc391f80ae39e5f83cc179",
+          "size": 22
+        },
+        {
+          "path": "vectors/invalid/001-mutated-payload/receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6093b1775e456366ccc447a9a62acda3a48ab50d",
+          "size": 1847
+        },
+        {
+          "path": "vectors/invalid/002-wrong-prior-hash",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "a7e59770644e339e2310ccf6efccce0eb4952110",
+          "size": null
+        },
+        {
+          "path": "vectors/invalid/002-wrong-prior-hash/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "63741a010a0c8fdd8cd82750629571794b8db9f8",
+          "size": 414
+        },
+        {
+          "path": "vectors/invalid/002-wrong-prior-hash/expected-error.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dd089b1d2fabd47b529405261d68f4b7853c76ef",
+          "size": 21
+        },
+        {
+          "path": "vectors/invalid/002-wrong-prior-hash/receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f5ce6eab7c624d80c6b446e31d6fa28d55ecbeaf",
+          "size": 1983
+        },
+        {
+          "path": "vectors/invalid/003-sequence-skip",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "17b2f6a4c092a99f13829adf39aa2da16afbe41d",
+          "size": null
+        },
+        {
+          "path": "vectors/invalid/003-sequence-skip/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "07199bb64d262da5b96084d33f48329686ca6b39",
+          "size": 247
+        },
+        {
+          "path": "vectors/invalid/003-sequence-skip/expected-error.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "baa02d5b9aac2863d548998c96940040a9d0476d",
+          "size": 13
+        },
+        {
+          "path": "vectors/invalid/003-sequence-skip/receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "876ba5fbf1b60fe6673edfbebdb1fe276fa300f7",
+          "size": 1773
+        },
+        {
+          "path": "vectors/invalid/004-sequence-repeat",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d1f1841023d28334d169b5d84f4338db852d5edb",
+          "size": null
+        },
+        {
+          "path": "vectors/invalid/004-sequence-repeat/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2c9b78fd2aeff60a851c70cc3a94a6eb96cfbb14",
+          "size": 259
+        },
+        {
+          "path": "vectors/invalid/004-sequence-repeat/expected-error.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7320f4bd67ced1aa9560325782a0738c100e026c",
+          "size": 19
+        },
+        {
+          "path": "vectors/invalid/004-sequence-repeat/receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a2a9ffdc83de46e7878fb85f87d4e84b15d6e5b8",
+          "size": 1773
+        },
+        {
+          "path": "vectors/invalid/005-unauthorized-key",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "5fb8e2ae1b0769157161bebbfe971793e5802a28",
+          "size": null
+        },
+        {
+          "path": "vectors/invalid/005-unauthorized-key/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5705175005edb16bf4fb21521934183c723c9664",
+          "size": 375
+        },
+        {
+          "path": "vectors/invalid/005-unauthorized-key/expected-error.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9f72f215bfcb21dd9b33732d26d5cee22def50f1",
+          "size": 20
+        },
+        {
+          "path": "vectors/invalid/005-unauthorized-key/receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c51a5b41b21c9c29504c73debe486d9faeec431b",
+          "size": 1749
+        },
+        {
+          "path": "vectors/invalid/006-post-terminal-extension",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "b205d768ccb9d29119dfca73a77b03e3436116ce",
+          "size": null
+        },
+        {
+          "path": "vectors/invalid/006-post-terminal-extension/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c607c40e526585aeb2c124b6ebe87ed5a01adb2d",
+          "size": 317
+        },
+        {
+          "path": "vectors/invalid/006-post-terminal-extension/expected-error.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "7b4c32afbc7cdcea62fb6a19e67e1a1fd34de29d",
+          "size": 23
+        },
+        {
+          "path": "vectors/invalid/006-post-terminal-extension/receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1c374e2b12af40670f7791238dfb12f03fd643d7",
+          "size": 1773
+        },
+        {
+          "path": "vectors/invalid/007-wrong-context",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "cc4a538aa62f8d53025ee51a4bb34e1f90d08c76",
+          "size": null
+        },
+        {
+          "path": "vectors/invalid/007-wrong-context/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0097f62c294e90fba4aaed17cc086f9dd88b456d",
+          "size": 269
+        },
+        {
+          "path": "vectors/invalid/007-wrong-context/expected-error.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a9f1a81dd5fc8a78ca5dbdbb6f8436025dd3b8fa",
+          "size": 23
+        },
+        {
+          "path": "vectors/invalid/007-wrong-context/receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0b134accda06bce3dd4a520db5e604c65823c530",
+          "size": 1773
+        },
+        {
+          "path": "vectors/invalid/008-domain-separator",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9a1575209c5704743c5e082a4eec47262d7ed145",
+          "size": null
+        },
+        {
+          "path": "vectors/invalid/008-domain-separator/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b2a830fb8e1acedf04eff28b1be6d7870e5a72b8",
+          "size": 327
+        },
+        {
+          "path": "vectors/invalid/008-domain-separator/expected-error.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "78abfecd8e5f8e94eb892c762c89841905811cf5",
+          "size": 26
+        },
+        {
+          "path": "vectors/invalid/008-domain-separator/receipt.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "49f4b3b5d272fa22fc15dc5633d875ee93815e33",
+          "size": 1773
+        },
+        {
+          "path": "vectors/invalid/COMPLETE.txt",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "124a10f00dc01eca1031eebe02483b5c7d3f8cd3",
+          "size": 114
+        },
+        {
+          "path": "vectors/invalid/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b1ef0722089c4e25552ca42968a1caf60094f168",
+          "size": 942
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/boss-brenda-crawler",
+      "default_branch": "main",
+      "head_commit": "85ca22031759fc5f6106868ed91d0a0a9b934f40",
+      "tree_sha": "65fef016c2af045088bf41838b4763edb76e83ec",
+      "entry_count": 41,
+      "truncated": false,
+      "entries": [
+        {
+          "path": ".gitignore",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "69cac2e0e98ce320115df654888e94889d465568",
+          "size": 31
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "fb734d056378f398cb2b29fa957148d514fa5e45",
+          "size": 22
+        },
+        {
+          "path": "config",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8d801a7f5d4d81479f367e771778c250d5d20523",
+          "size": null
+        },
+        {
+          "path": "config/boss-brenda-scope.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5f4de1fd688865a60ef7833b9e6d4138bdd04df1",
+          "size": 660
+        },
+        {
+          "path": "config/jay-wallet-constellation.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "a0631df9521da558858d220817001331a029d689",
+          "size": 750
+        },
+        {
+          "path": "data",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "c98a71031925ca7bc11e5f53d216a67cb9f76311",
+          "size": null
+        },
+        {
+          "path": "data/zora",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d17e41a5cf459de3bba6313db6902ff6df36a5ac",
+          "size": null
+        },
+        {
+          "path": "data/zora/.gitkeep",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "data/zora/EV-BBC-008-CREATOR-LANE.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bb704f3b6896679704e44d1756c98aa9823551c7",
+          "size": 1555
+        },
+        {
+          "path": "data/zora/EV-BBC-008-CREATOR-LANE.json.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e20c868cea1113ee1f3e2b599593e5019e6d402c",
+          "size": 105
+        },
+        {
+          "path": "data/zora/boss-brenda-zora-registry.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "eeab137a8efbe2a558a1a3631c6fa880d17ae201",
+          "size": 300
+        },
+        {
+          "path": "data/zora/jay-contract-graph.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5aac3aeaa5dc206289c489d152a0cfc41703e429",
+          "size": 378
+        },
+        {
+          "path": "data/zora/jay-contract-graph.json.sha256",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "37c499f5df3825f17d1b9479f98b74a17cb94657",
+          "size": 100
+        },
+        {
+          "path": "data/zora/jay-known-nodes.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "dc6c03ee4f5e665d73566837dd3b2dc9a942c01b",
+          "size": 666
+        },
+        {
+          "path": "doctrine",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "9855c9570f7389828fdc55bcb6280f33ea536afe",
+          "size": null
+        },
+        {
+          "path": "doctrine/BOSS_BRENDA_JAY_ONLY_DOCTRINE.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "5a674557641d8e1029ca0fe72a8d0d2de7896005",
+          "size": 406
+        },
+        {
+          "path": "doctrine/EV-BBC-005-JAY-NODE-CLASSIFICATION.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "0ce97ed4ab29fbda5c911ec9d7145e74b8b0f31a",
+          "size": 702
+        },
+        {
+          "path": "evidence",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "5a4a25c427f917298cc564b41656a6fda8336cac",
+          "size": null
+        },
+        {
+          "path": "evidence/EV-BBC-003A-JAYWISDOM-TOKEN-TRANSFERS.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "62b5a141bafb4c4d9abc2d36c4a24a0d42bb7634",
+          "size": 353
+        },
+        {
+          "path": "evidence/KNOWN_JAY_ZORA_SPECIMEN_001.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4623ad06fc49ec6302a8827e67f4956583123d68",
+          "size": 393
+        },
+        {
+          "path": "exports",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d564d0bc3dd917926892c55e3706cc116d5b165e",
+          "size": null
+        },
+        {
+          "path": "exports/.gitkeep",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "receipts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "7a7c70cbfcda3efa1d005905e1bde8624f6c37a8",
+          "size": null
+        },
+        {
+          "path": "receipts/boss-brenda",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "dc96df8223cbda30d8e06230f7e4d5c91ed634ea",
+          "size": null
+        },
+        {
+          "path": "receipts/boss-brenda/.gitkeep",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "receipts/boss-brenda/EV-BBC-001-MOCK-EXECUTION.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "14b01fb22f47c922cf32c7006a1e19420f48cf78",
+          "size": 225
+        },
+        {
+          "path": "receipts/boss-brenda/EV-BBC-002B-LIVE-FACTORY-GETLOGS.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "81f59aa475a4c6fde10e08fce67ecced2f459a07",
+          "size": 319
+        },
+        {
+          "path": "receipts/boss-brenda/EV-BBC-006-KNOWN-NODE-CLASSIFICATION.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "f4f9f045886ab7be152650eaecff7786614e6872",
+          "size": 249
+        },
+        {
+          "path": "receipts/boss-brenda/EV-BBC-CORRECT-JAYWISDOM-CREATOR-COIN.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "6dddfde0a9909c4a5022255bc1e0ff67dc35de2d",
+          "size": 404
+        },
+        {
+          "path": "receipts/boss-brenda/EV-BBC-REQ3-SCHEMA-LOCK.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "386d7739da13d03cb0d06b9fa375b101602be8d9",
+          "size": 370
+        },
+        {
+          "path": "receipts/boss-brenda/EV-BBC-SCOPE-JAY-ONLY.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "04a00fa287510aba08cb50e9d98f464d99f69d69",
+          "size": 298
+        },
+        {
+          "path": "receipts/boss-brenda/EV-BBC-WALLET-CONSTELLATION-LOCK.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bd65e907385831d58ed4ca9f7a846cac439a045b",
+          "size": 351
+        },
+        {
+          "path": "schema",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "475aecbec5440359404fa1129193ebbaa0ea39fd",
+          "size": null
+        },
+        {
+          "path": "schema/REQUIREMENT_3_EVIDENCE_SCHEMA_V0_1.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "551c7638a83d90efd412019554b7c09fa51f19fd",
+          "size": 979
+        },
+        {
+          "path": "src",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "8a204f4d1212029ed3e78c7051ca82e370f63e31",
+          "size": null
+        },
+        {
+          "path": "src/.gitkeep",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+          "size": 0
+        },
+        {
+          "path": "src/boss_brenda_crawler.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bb4b45d0aee64c728a5d95d0a1a19ab9d7c0a999",
+          "size": 1623
+        },
+        {
+          "path": "src/expand_creator_lane.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "bbe87fbf6fceca65ba8c874fc26f0d3ca712ca84",
+          "size": 2141
+        },
+        {
+          "path": "src/jay_graph_discovery.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b8878b655b62f49fc952647382e21396ca90950d",
+          "size": 2465
+        },
+        {
+          "path": "src/jaywisdom_token_transfers.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "2822f8a9c555fb22ad69565d50b3fd291bccaa73",
+          "size": 1981
+        },
+        {
+          "path": "src/wallet_jaywisdom_scan.py",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8bcd0f78d290eccdc003a83ebcfec7b1c2106612",
+          "size": 2083
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/PAPA",
+      "default_branch": "master",
+      "snapshot_state": "EMPTY_OR_UNAVAILABLE",
+      "error": "CONFLICT: Error code: CONFLICT; Error: GitHub API error 409: {\"message\":\"Git Repository is empty.\",\"documentation_url\":\"https://docs.github.com/rest/commits/commits#get-a-commit\",\"status\":\"409\"}"
+    },
+    {
+      "repo": "jsonwisdom/snapback-mirror",
+      "default_branch": "main",
+      "head_commit": "94821e35de856e359524779a5d1fb38ca42bd9a6",
+      "tree_sha": "f7be5880d5021e18d21383e4f5050ce4a73cc66c",
+      "entry_count": 13,
+      "truncated": false,
+      "entries": [
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e4e159d28549281a31485c17bd10780057c2b551",
+          "size": 59
+        },
+        {
+          "path": "docs",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "de538cb77915ca669f9f1c2b6b27964868fe7e5f",
+          "size": null
+        },
+        {
+          "path": "docs/.placeholder",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+          "size": 1
+        },
+        {
+          "path": "docs/oracle",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "1f93fc5879c524ca59f7eeb31c671b0cb309f58a",
+          "size": null
+        },
+        {
+          "path": "docs/oracle/queue",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "b89ce5cf75cff7f486d1a5da5b6ec28d10714d10",
+          "size": null
+        },
+        {
+          "path": "docs/oracle/queue/index.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "1c205a95e2b8721ed297e4889e2003d1792013f6",
+          "size": 305
+        },
+        {
+          "path": "docs/oracle/tribunal",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "dbc0fd2183b687fb803f0c38382af7f2c6b738cb",
+          "size": null
+        },
+        {
+          "path": "docs/oracle/tribunal/tribunal_homepage_manifest_clean.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+          "size": 1
+        },
+        {
+          "path": "docs/snapback",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "a22088ddf0515f494ab6bbb3629914167d6a6696",
+          "size": null
+        },
+        {
+          "path": "docs/snapback/catcoinz",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d8ae88ef8d051f7ff51e4705fe1b454f151adc43",
+          "size": null
+        },
+        {
+          "path": "docs/snapback/catcoinz/.placeholder",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "8b137891791fe96927ad78e64b0aad7bded08bdc",
+          "size": 1
+        },
+        {
+          "path": "docs/snapback/catcoinz/catcoinz_deployment_log.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "e6b75f34b25b6793924b65bc4604fabd7d92029d",
+          "size": 350
+        },
+        {
+          "path": "docs/snapback/catcoinz/manifest.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "eb2b1128b133dcfe2acaf30331696096785c2d62",
+          "size": 380
+        }
+      ]
+    },
+    {
+      "repo": "jsonwisdom/signal-multisig-zora",
+      "default_branch": "main",
+      "head_commit": "d2b947f7d54fc5e830c67a5fc7e614157878382c",
+      "tree_sha": "bd50806b8eeee0125fb7279b5837ba7a8ff2445c",
+      "entry_count": 13,
+      "truncated": false,
+      "entries": [
+        {
+          "path": "LICENSE",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c80dae657862cf2c0d2e3055c5137acf549bb5e2",
+          "size": 1063
+        },
+        {
+          "path": "README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "26de9f346db61df5259b1378f5e20c578b7ff178",
+          "size": 2238
+        },
+        {
+          "path": "receipts",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "84ead61e69d361a861b7c2973e787139c793cd2a",
+          "size": null
+        },
+        {
+          "path": "receipts/2026-04-15-first-proof.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c046a659d3b37214058c68e57828328d46123a28",
+          "size": 481
+        },
+        {
+          "path": "receipts/2026-04-15-second-proof.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "c07cba7b42645843ed699661af961aeb41dcdf9b",
+          "size": 986
+        },
+        {
+          "path": "receipts/2026-04-20-second-proof.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "50bd017bea9c20c709c9a877012fecdb046fff23",
+          "size": 1025
+        },
+        {
+          "path": "receipts/receipt-003-public-watcher-live.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "918fb4012eb98af77301d2fa4976806e820df931",
+          "size": 1086
+        },
+        {
+          "path": "receipts/receipt-005-cost-lock-active.json",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "25fb54c5986d0561907011f683b0dbe3f1ec2e12",
+          "size": 821
+        },
+        {
+          "path": "signals",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "d63c0dbbbe0de73cb8ae71430e23f2b484b1a4c7",
+          "size": null
+        },
+        {
+          "path": "signals/README.md",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "b79d47fcf3292fdceac466921fec9a736543fbb7",
+          "size": 660
+        },
+        {
+          "path": "signals/signal-log.jsonl",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "4d8a7eb9357361cdfe4858f31e18dadb8ccaf876",
+          "size": 1492
+        },
+        {
+          "path": "site",
+          "mode": "040000",
+          "type": "tree",
+          "sha": "dfa4c843fcbd473931d7be899a68e2b431174708",
+          "size": null
+        },
+        {
+          "path": "site/spine-visualizer.html",
+          "mode": "100644",
+          "type": "blob",
+          "sha": "9c5faed12c4d30361456291a72a4aec2d163e16b",
+          "size": 10867
+        }
+      ]
+    }
+  ]
+}

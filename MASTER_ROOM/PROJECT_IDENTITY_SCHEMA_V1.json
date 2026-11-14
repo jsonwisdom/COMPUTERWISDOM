@@ -1,0 +1,256 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "MASTER_ROOM/PROJECT_IDENTITY_SCHEMA_V1.json",
+  "title": "Master Room Project Identity V1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "repo",
+    "default_branch",
+    "snapshot",
+    "purpose",
+    "function",
+    "lineage",
+    "identity",
+    "external_pointers",
+    "open_gaps",
+    "audit_state",
+    "receipts"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "PROJECT_IDENTITY_SCHEMA_V1"
+    },
+    "repo": {
+      "type": "string",
+      "pattern": "^jsonwisdom/[^/]+$"
+    },
+    "default_branch": {
+      "type": "string",
+      "minLength": 1
+    },
+    "snapshot": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "head_commit",
+        "tree_sha",
+        "tree_state",
+        "entry_count"
+      ],
+      "properties": {
+        "head_commit": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tree_sha": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "tree_state": {
+          "enum": [
+            "FULL_RECURSIVE_TREE_CAPTURED",
+            "SHARDED_DEEP_AUDIT_REQUIRED",
+            "EMPTY_OR_UNAVAILABLE"
+          ]
+        },
+        "entry_count": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "purpose": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "statement",
+        "evidence"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "PROVEN",
+            "PARTIAL",
+            "UNKNOWN",
+            "CONFLICT"
+          ]
+        },
+        "statement": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "function": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "execution_surfaces",
+        "evidence"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "PROVEN",
+            "PARTIAL",
+            "NONE_OBSERVED",
+            "UNKNOWN",
+            "CONFLICT"
+          ]
+        },
+        "execution_surfaces": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "lineage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "version_pointers"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "PROVEN",
+            "PARTIAL",
+            "UNKNOWN",
+            "CONFLICT"
+          ]
+        },
+        "version_pointers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "identity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "pointers"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "PROVEN_WITHIN_DECLARED_SCOPE",
+            "PARTIAL",
+            "NOT_MATERIAL",
+            "UNKNOWN",
+            "CONFLICT"
+          ]
+        },
+        "pointers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "external_pointers": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "state",
+        "pointers"
+      ],
+      "properties": {
+        "state": {
+          "enum": [
+            "RESOLVED",
+            "PARTIAL",
+            "NONE_OBSERVED",
+            "UNKNOWN",
+            "CONFLICT"
+          ]
+        },
+        "pointers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "open_gaps": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "gap",
+          "affects_project_identity",
+          "next_trigger"
+        ],
+        "properties": {
+          "gap": {
+            "type": "string",
+            "minLength": 1
+          },
+          "affects_project_identity": {
+            "type": "boolean"
+          },
+          "next_trigger": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "audit_state": {
+      "enum": [
+        "DEEP_AUDIT",
+        "SNAPSHOT_ELIGIBLE",
+        "SNAPSHOT_COMPLETE",
+        "DELTA_MODE"
+      ]
+    },
+    "receipts": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "operator_disposition": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "description": "Optional Jason disposition after project identity reconstruction. Never an audit stop condition."
+    }
+  }
+}
