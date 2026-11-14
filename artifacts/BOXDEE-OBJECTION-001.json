@@ -1,0 +1,25 @@
+{
+  "object_id": "BOXDEE-OBJECTION-001",
+  "operator": "JAY",
+  "objection_class": "SEARCH_FAILURE",
+  "claim_under_test": "A failed lookup establishes that the object does not exist.",
+  "missing_edge": "EXHAUSTIVE_EXISTENCE_PROOF",
+  "disposition": "HOLD",
+  "ruling_state": "SUSTAINED",
+  "required_receipts": [
+    "searched_surface",
+    "scope",
+    "query_expression",
+    "coverage_state",
+    "independent absence proof when absence is claimed"
+  ],
+  "invariants": [
+    "SEARCH_MISS != ABSENCE",
+    "CACHE_MISS != DELETION",
+    "UNOBSERVED != FALSE"
+  ],
+  "source_artifact": "Jay’s Objection Proofs & Naming Conventions — ReverseReply v0.1.md",
+  "source_status": "FILE_READBACK",
+  "canon": false,
+  "authority_created": false
+}

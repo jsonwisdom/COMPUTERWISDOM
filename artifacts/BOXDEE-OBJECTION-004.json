@@ -1,0 +1,27 @@
+{
+  "object_id": "BOXDEE-OBJECTION-004",
+  "operator": "JAY",
+  "objection_class": "CONNECTIVITY",
+  "claim_under_test": "Connectivity or access proves build, deployment, runtime, authority, or the next state.",
+  "missing_edge": "STATE_TRANSITION_RECEIPT",
+  "disposition": "HOLD",
+  "ruling_state": "NOT_ADJUDICATED",
+  "required_receipts": [
+    "exact_transition",
+    "source_receipt",
+    "readback",
+    "authority_basis when authority is claimed"
+  ],
+  "invariants": [
+    "GITHUB_CONNECTED != BUILD",
+    "DRIVE_CONNECTED != DEPLOYMENT",
+    "OPENAI_ACCESS != RUNTIME",
+    "ENS_BINDING != AUTHORITY",
+    "ZORA_PUBLICATION != AUTHORITY",
+    "CI_PASS != AUTHORITY"
+  ],
+  "source_artifact": "Jay’s Objection Proofs & Naming Conventions — ReverseReply v0.1.md",
+  "source_status": "FILE_READBACK",
+  "canon": false,
+  "authority_created": false
+}
