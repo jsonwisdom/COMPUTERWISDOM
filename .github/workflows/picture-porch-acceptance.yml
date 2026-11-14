@@ -1,0 +1,133 @@
+name: Picture Porch Acceptance (No Release)
+
+on:
+  pull_request:
+    branches:
+      - master
+    paths:
+      - 'COMPUTERWISDOM/picture-porch/**'
+      - '.github/workflows/picture-porch-acceptance.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  local-first-browser-acceptance:
+    # This is a controlled, source-only draft PR. No secrets, no deployment,
+    # no child/family data and no PR- or repo-write permissions.
+    if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: COMPUTERWISDOM/picture-porch
+    steps:
+      - name: Checkout exact PR head without persisted credentials
+        id: checkout
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      - name: Setup Python
+        id: python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify exact HTML source bytes and source identity
+        id: bytes
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib, subprocess
+          path = pathlib.Path('index.html')
+          data = path.read_bytes()
+          expected_sha256 = '853da020c2f4befa1674f37234b81c9ba3fa316884bc083d759a97aa0700a087'
+          expected_git_blob = '8f89e5a605522abda190838f6772bd53e133487d'
+          actual_sha256 = hashlib.sha256(data).hexdigest()
+          actual_git_blob = hashlib.sha1(b'blob ' + str(len(data)).encode() + b'\0' + data).hexdigest()
+          print('HTML_SHA256', actual_sha256)
+          print('HTML_GIT_BLOB', actual_git_blob)
+          print('HEAD', subprocess.check_output(['git', 'rev-parse', 'HEAD'], text=True).strip())
+          assert actual_sha256 == expected_sha256, 'Committed HTML SHA-256 diverged'
+          assert actual_git_blob == expected_git_blob, 'Committed HTML Git blob diverged'
+          print('PASS: exact committed HTML bytes')
+          PY
+
+      - name: Install Playwright and managed Chromium
+        id: install
+        run: |
+          python -m pip install --disable-pip-version-check 'playwright==1.55.0'
+          python -m playwright install --with-deps chromium
+          python -m playwright --version
+
+      - name: Test storage-unavailable fallback and JOY prompt
+        id: fallback
+        shell: bash
+        run: |
+          mkdir -p _acceptance
+          set -o pipefail
+          python -u test_fallback.py 2>&1 | tee _acceptance/fallback.log
+
+      - name: Test real-origin Shelf, quota, two-tab race and downloads
+        id: acceptance
+        shell: bash
+        run: |
+          mkdir -p _acceptance
+          set -o pipefail
+          python -u test_picture_porch.py 2>&1 | tee _acceptance/normal_origin.log
+
+      - name: Capture honest execution receipt (not family approval)
+        if: always()
+        shell: bash
+        env:
+          FALLBACK_OUTCOME: ${{ steps.fallback.outcome }}
+          NORMAL_ORIGIN_OUTCOME: ${{ steps.acceptance.outcome }}
+          SOURCE_BYTES_OUTCOME: ${{ steps.bytes.outcome }}
+          INSTALL_OUTCOME: ${{ steps.install.outcome }}
+          PR_HEAD: ${{ github.event.pull_request.head.sha }}
+          RUN_ID: ${{ github.run_id }}
+          RUN_ATTEMPT: ${{ github.run_attempt }}
+        run: |
+          mkdir -p _acceptance
+          python - <<'PY'
+          import datetime, hashlib, json, os, pathlib, subprocess
+          root = pathlib.Path('.')
+          sha = lambda path: hashlib.sha256(path.read_bytes()).hexdigest() if path.exists() else None
+          outcomes = {name: os.environ.get(name + '_OUTCOME', 'unavailable') for name in
+                      ('SOURCE_BYTES', 'INSTALL', 'FALLBACK', 'NORMAL_ORIGIN')}
+          actual_all_pass = all(outcomes[key] == 'success' for key in outcomes)
+          receipt = {
+              'schema': 'PICTURE_PORCH_BROWSER_ACCEPTANCE_V0_1',
+              'mode': 'CI_SYNTHETIC_ONLY',
+              'github_pr': 645,
+              'head_sha_claim': os.environ.get('PR_HEAD'),
+              'checkout_head': subprocess.run(['git', 'rev-parse', 'HEAD'], capture_output=True, text=True).stdout.strip(),
+              'run_id': os.environ.get('RUN_ID'),
+              'run_attempt': os.environ.get('RUN_ATTEMPT'),
+              'observed_utc': datetime.datetime.now(datetime.timezone.utc).isoformat(),
+              'source_html_sha256': sha(root / 'index.html'),
+              'test_fallback_sha256': sha(root / 'test_fallback.py'),
+              'test_normal_origin_sha256': sha(root / 'test_picture_porch.py'),
+              'steps': outcomes,
+              'technical_acceptance': 'PASS' if actual_all_pass else 'HOLD_OR_FAIL',
+              'family_review': 'HOLD',
+              'merge': 'HOLD',
+              'deployment': 'HOLD',
+              'authority_created': False,
+              'no_child_data': True
+          }
+          dest = root / '_acceptance/receipt.json'
+          dest.write_text(json.dumps(receipt, sort_keys=True, indent=2) + '\n', encoding='utf-8')
+          print(json.dumps(receipt, sort_keys=True, indent=2))
+          PY
+
+      - name: Upload synthetic test logs and receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: picture-porch-acceptance-receipt-${{ github.run_id }}
+          path: COMPUTERWISDOM/picture-porch/_acceptance/
+          retention-days: 14
+          if-no-files-found: warn
