@@ -1,0 +1,70 @@
+JUDICIAL_MERIT_AUDITORS:
+  module: SUPREME_SEYMOUR_V0_1
+  function: JUDICIAL_MERIT_AUDIT
+  architecture: BOT_SWARM
+  doctrine: VERIFICATION_OVER_NARRATIVE
+  lane: HOLD
+  canon: FALSE
+  authority_created: FALSE
+SEYMOUR_CATALOG_V0_4:
+  artifact: INVESTIGATOR_LEDGER
+  schema_disposition:
+    factual_walkback: PASS
+    schema_walkback: PASS
+    taxonomy_walkback: PASS
+  walkbacks_applied:
+    - WALKBACK_01
+    - WALKBACK_02
+    - WALKBACK_03
+    - WALKBACK_04
+  retired_unsupported_claims:
+    - claim: "SEC admitted misinterpretation of securities laws"
+      disposition: REMOVED
+      receipt_status: NOT_LOCATED
+  monetary_rule:
+    pending_or_informational_record:
+      monetary_disposition: NOT_ESTABLISHED
+    invariant:
+      - NO_MONETARY_DISPOSITION != NO_ECONOMIC_EFFECT
+      - LEGAL_COST != JUDICIAL_DISPOSITION
+      - COMPLIANCE_COST != JUDICIAL_DISPOSITION
+      - ECONOMIC_EFFECT != PAYMENT_RECEIPT
+WALKBACK_04:
+  corrections:
+    - HEADER_STATE != STALE_STATE
+    - RETIRED_CLAIM != OPEN_RECEIPT_GAP
+    - NO_MONETARY_DISPOSITION != NO_ECONOMIC_EFFECT
+  resulting_state:
+    lane: HOLD
+    factual_walkback: PASS
+    schema_walkback: PASS
+    taxonomy_walkback: PASS
+    canon: FALSE
+    authority_created: FALSE
+EVIDENCE_SPINE:
+  sequence:
+    - RECORD
+    - JURISDICTION
+    - FINDING
+    - JUDGMENT
+    - DISPOSITION
+    - PAYMENT_RECEIPT
+  inheritance_rule: |
+    No node inherits the evidentiary status of the next node.
+  invariants:
+    - RECORD != FINDING
+    - FINDING != JUDGMENT
+    - JUDGMENT != DISPOSITION
+    - DISPOSITION != PAYMENT
+    - ORDERED != PAID
+    - DISMISSED != EXONERATED
+    - SUBPOENA != ENFORCEMENT_FINDING
+    - REGULATORY_ORDER != COURT_JUDGMENT
+    - COORDINATED_ACTIONS != JOINT_SUIT
+AUDITOR_SIGNATURE:
+  - "Show me the jurisdiction."
+  - "Show me the judgment."
+  - "Show me the disposition."
+  - "If money moved, show me the receipt."
+SCHEMA_STATE: INTERNALLY_COHERENT
+PROMOTION: NONE
