@@ -25,14 +25,17 @@
       "public_welfare": 22592,
       "public_safety": 10962,
       "transportation": 16211
-    }
+    },
+    "source_sha256": null,
+    "line_receipts": {}
   },
   "page_geometry": {
     "standard": "ISO_216_A4",
     "width_mm": 210,
     "height_mm": 297,
     "width_pt": 595.2755905511812,
-    "height_pt": 841.8897637795276
+    "height_pt": 841.8897637795276,
+    "safe_margin_mm": 15
   },
   "archive": {
     "target_pdfa": "2u",
