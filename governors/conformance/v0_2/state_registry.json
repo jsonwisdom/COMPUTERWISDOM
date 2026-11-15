@@ -454,5 +454,26 @@
   ],
   "structural_reference_count": 1,
   "verified_emergency_source_count": 0,
-  "authority_created": false
+  "authority_created": false,
+  "registry_kind": "50_STATE_METADATA_SCAFFOLD_NOT_50_VERIFIED_NODES",
+  "registered_states_count": 0,
+  "notes": "50 state codes enumerated; 1 NY structural reference; 0 G0-complete states; 0 emergency-source-verified states.",
+  "regulatory_references": [
+    {
+      "scope": "digitized permanent federal paper records only",
+      "citation": "36 CFR § 1236.48(b), Table 1",
+      "url": "https://www.ecfr.gov/current/title-36/section-1236.48",
+      "rule": "PDF/A-3 and PDF/A-4 embedded attachments not permitted by this table"
+    },
+    {
+      "scope": "digitization quality (not format attachment prohibition)",
+      "citation": "36 CFR § 1236.50",
+      "url": "https://www.ecfr.gov/current/title-36/section-1236.50"
+    },
+    {
+      "scope": "general transfer format guidance",
+      "citation": "NARA Bulletin 2014-04, revised format guidance",
+      "url": "https://www.archives.gov/records-mgmt/bulletins/2014/2014-04.html"
+    }
+  ]
 }
