@@ -8,7 +8,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "AK",
@@ -17,7 +25,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "AZ",
@@ -26,7 +42,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "AR",
@@ -35,7 +59,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "CA",
@@ -44,7 +76,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "CO",
@@ -53,7 +93,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "CT",
@@ -62,7 +110,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "DE",
@@ -71,7 +127,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "OFFICIAL_FY2025_PUBLISHER_AND_PDF_LINK_OBSERVED",
+      "publisher_landing_url": "https://accounting.delaware.gov/reports-transparency/annual-comprehensive-financial-reports/",
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "FL",
@@ -80,7 +144,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "GA",
@@ -89,7 +161,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "HI",
@@ -98,7 +178,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "ID",
@@ -107,7 +195,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "IL",
@@ -116,7 +212,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "IN",
@@ -125,7 +229,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "IA",
@@ -134,7 +246,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "KS",
@@ -143,7 +263,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "KY",
@@ -152,7 +280,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "LA",
@@ -161,7 +297,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "ME",
@@ -170,7 +314,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "MD",
@@ -179,7 +331,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "OFFICIAL_FY2025_PUBLISHER_AND_PDF_LINK_OBSERVED",
+      "publisher_landing_url": "https://www.marylandcomptroller.gov/reports/annual-comprehensive-financial-report-acfr.html",
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "MA",
@@ -188,7 +348,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "MI",
@@ -197,7 +365,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "MN",
@@ -206,7 +382,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "MS",
@@ -215,7 +399,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "MO",
@@ -224,7 +416,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "MT",
@@ -233,7 +433,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "NE",
@@ -242,7 +450,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "NV",
@@ -251,7 +467,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "NH",
@@ -260,7 +484,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "NJ",
@@ -269,7 +501,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "NM",
@@ -278,7 +518,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "NY",
@@ -287,7 +535,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "NC",
@@ -296,7 +552,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "OFFICIAL_FY2025_PUBLISHER_AND_PDF_LINK_OBSERVED",
+      "publisher_landing_url": "https://www.ncosc.gov/public-information/2025-annual-comprehensive-financial-report",
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "ND",
@@ -305,7 +569,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "OH",
@@ -314,7 +586,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "OK",
@@ -323,7 +603,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "OR",
@@ -332,7 +620,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "PA",
@@ -341,7 +637,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "RI",
@@ -350,7 +654,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "SC",
@@ -359,7 +671,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "OFFICIAL_FY2025_PUBLISHER_AND_PDF_LINK_OBSERVED",
+      "publisher_landing_url": "https://cg.sc.gov/financial-reports/annual-comprehensive-financial-reports-acfrs",
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "SD",
@@ -368,7 +688,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "TN",
@@ -377,7 +705,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "TX",
@@ -386,7 +722,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "UT",
@@ -395,7 +739,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "VT",
@@ -404,7 +756,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "VA",
@@ -413,7 +773,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "WA",
@@ -422,7 +790,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "WV",
@@ -431,7 +807,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "WI",
@@ -440,7 +824,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     },
     {
       "state": "WY",
@@ -449,7 +841,15 @@
       "publication_lag_days": null,
       "transfer_convention": null,
       "pdfa_source_claim": null,
-      "function_taxonomy_mapping": null
+      "function_taxonomy_mapping": null,
+      "publisher_url_status": "UNKNOWN",
+      "publisher_landing_url": null,
+      "source_original_pdf_bytes_captured": false,
+      "source_original_pdf_sha256": null,
+      "G0": "UNKNOWN",
+      "G1_source_bound": "UNKNOWN",
+      "emergency_linkage": "UNKNOWN",
+      "release": "CLOSED"
     }
   ],
   "structural_reference_count": 1,
@@ -475,5 +875,9 @@
       "citation": "NARA Bulletin 2014-04, revised format guidance",
       "url": "https://www.archives.gov/records-mgmt/bulletins/2014/2014-04.html"
     }
-  ]
+  ],
+  "publisher_pdf_candidates_non_NY_count": 4,
+  "pending_publisher_mapping_non_NY_count": 45,
+  "original_pdf_byte_captures_current_count": 0,
+  "current_registry_role": "SCAFFOLD_ONLY_NOT_50_G0_VERIFIED_STATES"
 }
