@@ -210,8 +210,8 @@ def safe_margin_test(pdf, margin_mm):
         return "UNKNOWN", {"reason": "safe_margin_mm has not been declared"}
     try:
         margin = dec(margin_mm) * Decimal(72) / Decimal("25.4")
-        if margin < 0 or margin > Decimal(50):
-            return "FAIL", {"reason": "safe margin outside supported range (0..50 pt)"}
+        if dec(margin_mm) < 0 or dec(margin_mm) > Decimal(50):
+            return "FAIL", {"reason": "safe margin outside supported range (0..50 mm)"}
         import fitz
         with fitz.open(str(pdf)) as doc:
             if doc.page_count < 1:
