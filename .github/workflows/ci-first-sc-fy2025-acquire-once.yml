@@ -1,0 +1,79 @@
+name: CI-FIRST SC FY2025 Original ACFR Acquisition (Single-State)
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/ci-first-sc-fy2025-acquire-once.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  south-carolina-only:
+    if: github.event.pull_request.head.ref == 'audit/ny-governor-node-2026-11-14-v01'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install PDF page-index reader
+        run: python -m pip install 'pymupdf>=1.24,<2'
+      - name: Explicit single-state HTTPS fetch and first-acquisition SHA-256
+        run: |
+          python governors/conformance/v0_2/capture_one.py --state SC --root ./sc-source-cas --ack-remote-access
+      - name: Independent offline CAS readback and page receipts
+        run: |
+          python - <<'PY'
+          import glob, hashlib, json, pathlib
+          import fitz
+          root=pathlib.Path('sc-source-cas')
+          receipts=list((root/'receipts').glob('SC_*.json'))
+          assert len(receipts)==1, 'Need exactly one SC receipt'
+          receipt=json.loads(receipts[0].read_text())
+          assert receipt['state']=='SC'
+          raw=root/receipt['cas_path']
+          observed=hashlib.sha256(raw.read_bytes()).hexdigest()
+          assert observed==receipt['sha256']
+          assert raw.stat().st_size==receipt['byte_count']
+          doc=fitz.open(str(raw))
+          assert doc.page_count==316, f'Unexpected pages: {doc.page_count}'
+          checks=[
+            {'page_index':27,'printed_page':28,'section':'Exhibit 2 Government-wide Changes in Net Position','keywords':['Government-wide Changes in Net Position','Total revenues','Change in net position']},
+            {'page_index':41,'printed_page':42,'section':'Exhibit A-2 Statement of Activities first page','keywords':['Statement of Activities','Total governmental activities','Total primary government']},
+            {'page_index':42,'printed_page':43,'section':'Exhibit A-2 Statement of Activities continuation','keywords':['Change in net position','Transfers','Net position at end of year']},
+          ]
+          for c in checks:
+            text=' '.join(doc[c['page_index']].get_text(sort=True).split())
+            c['keyword_matches']={k:(k.lower() in text.lower()) for k in c.pop('keywords')}
+            c['text_readback']='PASS' if text else 'UNKNOWN'
+            c['page_digest_sha256']=hashlib.sha256(doc[c['page_index']].get_text(sort=True).encode()).hexdigest()
+            c['page_binding_status']='PAGE_TEXT_LOCATED' if text and any(c['keyword_matches'].values()) else 'UNKNOWN'
+          report={
+            'schema':'ci-first.sc-fy2025.source-page-readback.v0.1',
+            'source_sha256':receipt['sha256'],
+            'raw_byte_count':receipt['byte_count'],
+            'source_acquisition_receipt':str(receipts[0]),
+            'independent_byte_readback':'PASS',
+            'financial_page_locations':checks,
+            'fiscal_line_value_binding':'PENDING_HUMAN_REVIEW',
+            'issuer_hash_signature':'UNKNOWN',
+            'trusted_external_timestamp':'UNKNOWN',
+            'G1_source_bound':'UNKNOWN',
+            'emergency_source_coverage':'UNKNOWN',
+            'release':'CLOSED',
+            'authority_created':False
+          }
+          out=root/'SC_FY2025_PAGE_READBACK.json'
+          out.write_text(json.dumps(report,indent=2,sort_keys=True)+'\n')
+          print(json.dumps({k:report[k] for k in ('source_sha256','raw_byte_count','independent_byte_readback','financial_page_locations','G1_source_bound','release')},indent=2))
+          PY
+      - name: Retain original bytes and detached receipts for independent review
+        uses: actions/upload-artifact@v4
+        with:
+          name: SC-FY2025-Original-ACFR-CAS-and-Receipts
+          path: sc-source-cas/
+          retention-days: 7
+          if-no-files-found: error
+          compression-level: 0
