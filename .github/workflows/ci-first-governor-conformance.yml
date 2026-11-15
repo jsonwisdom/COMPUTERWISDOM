@@ -1,0 +1,55 @@
+name: CI-FIRST Governor Conformance (Read-Only)
+on:
+  pull_request:
+    paths:
+      - 'governors/conformance/v0_2/**'
+      - '.github/workflows/ci-first-governor-conformance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Run fail-closed New York invariant regression tests
+        run: |
+          python -m unittest discover -v -s governors/conformance/v0_2 -p 'test_*.py'
+      - name: Validate schema and NY reference instance
+        run: |
+          python -m pip install 'jsonschema>=4.0,<5'
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from jsonschema import Draft202012Validator, FormatChecker
+          folder = Path('governors/conformance/v0_2')
+          schema = json.loads((folder / 'schema.json').read_text())
+          packet = json.loads((folder / 'NY_REFERENCE.json').read_text())
+          Draft202012Validator.check_schema(schema)
+          Draft202012Validator(schema, format_checker=FormatChecker()).validate(packet)
+          print('Schema + NY example: PASS. Source-byte/PDF archival release gates remain UNKNOWN.')
+          PY
+      - name: Check synthetic NY packet remains fail-closed
+        run: |
+          set +e
+          python governors/conformance/v0_2/validate.py \
+            governors/conformance/v0_2/NY_REFERENCE.json > /tmp/gov-report.json
+          rc=$?
+          set -e
+          cat /tmp/gov-report.json
+          test "$rc" -eq 2
+          python - <<'PY'
+          import json
+          result = json.load(open('/tmp/gov-report.json'))
+          assert result['release'] == 'CLOSED'
+          assert result['gates']['G1'] == 'PASS'
+          assert result['gates']['G2'] == 'PASS'
+          for gate in ('G0', 'G3', 'G4', 'G5'):
+              assert result['gates'][gate] == 'UNKNOWN'
+          PY
