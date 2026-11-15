@@ -122,6 +122,23 @@ class GovernorConformanceTests(unittest.TestCase):
             packet["reconciliation"]["line_receipts"]["revenues"]["excerpt"] = "Wrong line 283957"
             self.assertEqual(check_lineage(packet, root)[0], "FAIL")
 
+    def test_new_york_primary_government_is_distinct_scope(self):
+        packet = json.loads((DATA.parent / "NY_FY2025_SCOPE_ROLLUP_REFERENCE.json").read_text(encoding="utf-8"))
+        scopes = packet["scope_rows"]
+        gov = scopes["governmental_activities"]
+        business = scopes["business_type"]
+        primary = scopes["primary_government"]
+        for group in (gov, business, primary):
+            self.assertEqual(group["revenues"] - group["expenses"], group["before_transfers"])
+            self.assertEqual(group["before_transfers"] + group["transfers"], group["change_in_net_position"])
+        for field in ("revenues", "expenses", "before_transfers", "transfers", "change_in_net_position"):
+            self.assertEqual(gov[field] + business[field], primary[field], field)
+        self.assertEqual(primary["change_in_net_position"], 15435)
+        self.assertEqual(packet["source_original_sha256"], None)
+        self.assertEqual(packet["validation"]["byte_bound_reconciliation"], "UNKNOWN")
+        self.assertEqual(packet["validation"]["state_coverage"]["structural_reference"], 1)
+        self.assertEqual(packet["release"], "CLOSED")
+
     def test_a4_exact_conversion(self):
         p = NY["page_geometry"]
         self.assertAlmostEqual(p["width_pt"], 595.27559055, places=6)
