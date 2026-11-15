@@ -71,8 +71,14 @@ def verify_receipt(receipt):
    data=json.loads(raw)
   except Exception:
    return False
+  # Never accept claimed fields that disagree with the actual captured HTTP body.
+  if r.get("schema") != data.get("schema") or r.get("state_count") != data.get("state_count"):
+   return False
+  if r.get("source_bundles_verified") != data.get("source_bundles_verified"):
+   return False
   if r.get("status")=="PASS" and not (
-   r.get("http")==200 and data.get("schema")==EXPECTED
+   r.get("http")==200 and data.get("status")=="OK"
+   and data.get("schema")==EXPECTED
    and type(data.get("state_count")) is int and data["state_count"]==50
    and type(data.get("source_bundles_verified")) is int
    and data["source_bundles_verified"]>=0
