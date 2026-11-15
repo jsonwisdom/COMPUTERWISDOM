@@ -45,6 +45,47 @@ def probe(target):
   r["error"]=type(e).__name__+": "+str(e)[:150]
  return r
 
+def verify_receipt(receipt):
+ """Integrity and scope checks; not government-source authentication."""
+ if receipt.get("schema") != "cw-dual-route-probe/0.2":
+  return False
+ digest = receipt.get("canonical_sha256")
+ unsigned = {k:v for k,v in receipt.items() if k != "canonical_sha256"}
+ if not isinstance(digest,str) or digest != sha(canonical(unsigned).encode("utf-8")):
+  return False
+ routes=receipt.get("routes")
+ if not isinstance(routes,list) or len(routes)!=2:
+  return False
+ if [r.get("role") for r in routes]!=["PRIMARY","REPLICA"]:
+  return False
+ for r in routes:
+  encoded=r.get("body_base64")
+  if encoded is None:
+   if r.get("body_sha256") is not None:
+    return False
+   continue
+  try:
+   raw=base64.b64decode(encoded,validate=True)
+   if sha(raw)!=r.get("body_sha256"):
+    return False
+   data=json.loads(raw)
+  except Exception:
+   return False
+  if r.get("status")=="PASS" and not (
+   r.get("http")==200 and data.get("schema")==EXPECTED
+   and type(data.get("state_count")) is int and data["state_count"]==50
+   and type(data.get("source_bundles_verified")) is int
+   and data["source_bundles_verified"]>=0
+   and data.get("authority_created") is False
+   and data.get("live_alerts") is False
+  ):
+   return False
+ if receipt.get("authority_created") is not False:
+  return False
+ if receipt.get("live_emergency_feed")!="NOT_ESTABLISHED":
+  return False
+ return True
+
 def main():
  paths=Path(os.getenv("CW_RECEIPT_DIR","cw-two-route-logs"))
  routes=[probe(t) for t in TARGETS]
@@ -58,6 +99,7 @@ def main():
  receipt["canonical_sha256"]=sha(canonical(receipt).encode("utf-8"))
  paths.mkdir(parents=True,exist_ok=True)
  name="cw-ooda-"+dt.datetime.now(dt.timezone.utc).strftime("%Y%m%dT%H%M%S%fZ")+".json"
+ if not verify_receipt(receipt): raise RuntimeError("Receipt integrity check failed")
  dest=paths/name;dest.write_text(canonical(receipt)+"\n",encoding="utf-8")
  print(canonical({"file":str(dest),"status":receipt["two_route_status"],"parity":receipt["parity"],"hash":receipt["canonical_sha256"]}))
 if __name__=="__main__":main()
