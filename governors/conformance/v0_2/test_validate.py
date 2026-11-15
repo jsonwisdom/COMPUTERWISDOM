@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from validate import validate, check_source_receipts, check_fiscal, check_labels
+from validate import validate, check_source_receipts, check_fiscal, check_labels, check_lineage, safe_margin_test
 
 
 DATA = Path(__file__).with_name("NY_REFERENCE.json")
@@ -14,7 +14,8 @@ NY = json.loads(DATA.read_text(encoding="utf-8"))
 class GovernorConformanceTests(unittest.TestCase):
     def test_ny_reconciliation_passes_but_release_closed(self):
         result = validate(NY)
-        self.assertEqual(result["gates"]["G1"], "PASS")
+        self.assertEqual(result["gates"]["G1"], "UNKNOWN")
+        self.assertEqual(result["detail"]["math"]["arithmetic_only_status"], "PASS")
         self.assertEqual(result["gates"]["G2"], "PASS")
         self.assertEqual(result["gates"]["G0"], "UNKNOWN")
         self.assertEqual(result["gates"]["G3"], "UNKNOWN")
@@ -53,6 +54,73 @@ class GovernorConformanceTests(unittest.TestCase):
 
     def test_unknown_without_payment_samples(self):
         self.assertIsNone(validate(NY)["detail"]["linkage"]["coverage"])
+
+    def test_safe_margin_geometry_and_painted_content(self):
+        try:
+            import fitz
+        except ImportError:
+            self.skipTest("fitz unavailable")
+        with tempfile.TemporaryDirectory() as tmp:
+            path = Path(tmp) / "safe.pdf"
+            doc = fitz.open()
+            pg = doc.new_page(width=NY["page_geometry"]["width_pt"],
+                              height=NY["page_geometry"]["height_pt"])
+            pg.insert_text((65, 65), "Text inside A4 safety box")
+            doc.save(str(path))
+            doc.close()
+            self.assertEqual(safe_margin_test(path, 15)[0], "PASS")
+            doc = fitz.open()
+            pg = doc.new_page(width=NY["page_geometry"]["width_pt"],
+                              height=NY["page_geometry"]["height_pt"])
+            pg.insert_text((65, 65), "Text inside A4 safety box")
+            pg.draw_rect(fitz.Rect(0, 0, 200, 12), color=(0, 0, 0), fill=(0, 0, 0))
+            doc.save(str(path), incremental=False)
+            doc.close()
+            self.assertEqual(safe_margin_test(path, 15)[0], "FAIL")
+
+    def test_hashed_synthetic_pdf_fiscal_lineage(self):
+        import hashlib
+        try:
+            import fitz
+        except ImportError:
+            self.skipTest("fitz unavailable")
+        labels = (
+            ("revenues", "Total revenues 283957"),
+            ("expenses", "Total expenses 266785"),
+            ("balance_before_transfers", "Balance before transfers 17172"),
+            ("net_transfers", "Net transfers -5107"),
+            ("change_in_net_position", "Change in net position 12065"),
+        )
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            original = root / "synthetic.pdf"
+            d = fitz.open()
+            p = d.new_page(width=595.2756, height=841.8898)
+            for i, (_, text) in enumerate(labels):
+                p.insert_text((60, 70 + 22 * i), text)
+            d.save(str(original))
+            d.close()
+            digest = hashlib.sha256(original.read_bytes()).hexdigest()
+            raw = root / "sha256" / digest
+            raw.parent.mkdir()
+            raw.write_bytes(original.read_bytes())
+            packet = copy.deepcopy(NY)
+            packet["sources"] = [{
+                "source_id": "NY_ACFR_FY2025", "url": "https://example.test/synthetic.pdf",
+                "observed_at": "2026-11-14T10:00:00Z", "sha256": digest,
+                "byte_count": len(raw.read_bytes()), "cas_path": "sha256/" + digest
+            }]
+            packet["reconciliation"]["source_sha256"] = digest
+            packet["reconciliation"]["line_receipts"] = {
+                key: {"page_index": 0, "excerpt": text} for key, text in labels
+            }
+            self.assertEqual(check_source_receipts(packet, root)[0], "PASS")
+            self.assertEqual(check_lineage(packet, root)[0], "PASS")
+            result = validate(packet, source_root=root)
+            self.assertEqual(result["gates"]["G1"], "PASS")
+            self.assertEqual(result["release"], "CLOSED")
+            packet["reconciliation"]["line_receipts"]["revenues"]["excerpt"] = "Wrong line 283957"
+            self.assertEqual(check_lineage(packet, root)[0], "FAIL")
 
     def test_a4_exact_conversion(self):
         p = NY["page_geometry"]
