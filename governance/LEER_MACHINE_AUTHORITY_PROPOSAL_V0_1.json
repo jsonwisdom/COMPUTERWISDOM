@@ -1,0 +1,27 @@
+{
+  "schema": "computerwisdom/authority-proposal/v0.1",
+  "name": "LEER_PARENT_CHILD_CLASSES_WITH_GLASSES",
+  "status": "PROPOSAL_HOLD",
+  "authority": false,
+  "legal_authority": false,
+  "requested_machine_capabilities": [
+    "read_synthetic_lesson_nodes",
+    "compute_classroom_quadratic_vote_credits",
+    "render_source_prompts",
+    "calculate_local_synthetic_replay_sha256"
+  ],
+  "forbidden": [
+    "read_private_minor_records",
+    "automatically_discover_family_members",
+    "profile_political_beliefs",
+    "change_election_ballots",
+    "execute_payments",
+    "alter_court_or_government_records",
+    "claim_government_authority"
+  ],
+  "human_review_required": true,
+  "privacy_review_required": true,
+  "revocable": true,
+  "reference": "CHARTER.md / ROOT_BINDING.md",
+  "merging_grants_authority": false
+}
