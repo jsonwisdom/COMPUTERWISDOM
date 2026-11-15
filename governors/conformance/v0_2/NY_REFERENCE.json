@@ -1,0 +1,64 @@
+{
+  "schema_version": "ci-first.governors.v0.2",
+  "state": "NY",
+  "fiscal_year": 2025,
+  "fiscal_year_end": "2025-03-31",
+  "reconciliation": {
+    "scope": "governmental_activities",
+    "statement": "ACFR Statement of Activities / Table 2",
+    "source_page": null,
+    "source_id": "NY_ACFR_FY2025",
+    "transfers_presentation": "net",
+    "unit": "USD_millions",
+    "reported": {
+      "revenues": 283957,
+      "expenses": 266785,
+      "balance_before_transfers": 17172,
+      "net_transfers": -5107,
+      "change_in_net_position": 12065
+    },
+    "special_items_before_transfers": 0,
+    "special_items_after_transfers": 0,
+    "functions": {
+      "education": 50679,
+      "public_health": 128608,
+      "public_welfare": 22592,
+      "public_safety": 10962,
+      "transportation": 16211
+    }
+  },
+  "page_geometry": {
+    "standard": "ISO_216_A4",
+    "width_mm": 210,
+    "height_mm": 297,
+    "width_pt": 595.2755905511812,
+    "height_pt": 841.8897637795276
+  },
+  "archive": {
+    "target_pdfa": "2u",
+    "target_pdfua": "ua1",
+    "validator": "veraPDF",
+    "pdfa_validation": "UNKNOWN",
+    "pdfua_validation": "UNKNOWN"
+  },
+  "sources": [
+    {
+      "source_id": "NY_ACFR_FY2025",
+      "url": "https://www.osc.ny.gov/files/reports/finance/pdf/annual-comprehensive-financial-report-2025.pdf",
+      "observed_at": null,
+      "sha256": null,
+      "byte_count": null,
+      "cas_path": null
+    }
+  ],
+  "payment_sample": {
+    "sampled_count": 0,
+    "payments": []
+  },
+  "artifact_receipts": {
+    "pdf_sha256": null,
+    "manifest_sha256_external": null,
+    "readback_verified": false
+  },
+  "release": "CLOSED"
+}
