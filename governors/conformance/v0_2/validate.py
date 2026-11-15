@@ -92,6 +92,63 @@ def check_fiscal(packet):
     }
 
 
+
+def check_lineage(packet, source_root):
+    """Proof that typed G1 inputs occur in a specific page of hashed source bytes.
+
+    A hand-typed fixture by itself can only prove arithmetic, not source correctness.
+    Exact text-excerpt matching remains a mechanical check, NOT government authentication.
+    """
+    r = packet.get("reconciliation", {})
+    digest = r.get("source_sha256")
+    references = r.get("line_receipts", {})
+    expected = r.get("reported", {})
+    keys = ("revenues", "expenses", "balance_before_transfers",
+            "net_transfers", "change_in_net_position")
+    if not digest or not isinstance(references, dict) or source_root is None:
+        return "UNKNOWN", {"reason": "source-bound line receipts absent"}
+    if not HEX64.fullmatch(digest):
+        return "FAIL", {"reason": "invalid source SHA-256"}
+    sources = {a.get("source_id"): a for a in packet.get("sources", [])}
+    source_id = r.get("source_id")
+    source = sources.get(source_id)
+    if not source or source.get("sha256") != digest:
+        return "FAIL", {"reason": "fixture digest differs from source receipt"}
+    file = (source_root / "sha256" / digest).resolve()
+    if not file.is_relative_to(source_root.resolve()):
+        return "FAIL", {"reason": "unsafe source path"}
+    if not file.is_file():
+        return "UNKNOWN", {"reason": "original bytes unavailable"}
+    if sha(file) != digest:
+        return "FAIL", {"reason": "source bytes fail SHA-256"}
+    if any(k not in references for k in keys):
+        return "UNKNOWN", {"reason": "some ACFR line receipts unavailable"}
+    try:
+        import fitz
+        with fitz.open(str(file)) as doc:
+            if not doc.is_pdf:
+                return "FAIL", {"reason": "the evidence source is not a PDF"}
+            for key in keys:
+                e = references[key]
+                page_index = e.get("page_index")
+                excerpt = e.get("excerpt", "")
+                if not isinstance(page_index, int) or not (0 <= page_index < doc.page_count):
+                    return "FAIL", {"reason": f"bad page index for {key}"}
+                if not isinstance(excerpt, str) or len(excerpt.strip()) < 10:
+                    return "FAIL", {"reason": f"missing exact source text for {key}"}
+                raw = " ".join(doc[page_index].get_text(sort=True).split())
+                needle = " ".join(excerpt.split())
+                numeric = str(expected[key])
+                number_forms = {numeric, f"{int(numeric):,}"} if numeric.lstrip("-").isdigit() else {numeric}
+                if needle not in raw or not any(x in needle for x in number_forms):
+                    return "FAIL", {"reason": f"no matching labeled value on source page for {key}"}
+    except ImportError:
+        return "UNKNOWN", {"reason": "PyMuPDF not available to bind source text"}
+    except (ValueError, OSError, RuntimeError, KeyError, TypeError) as e:
+        return "UNKNOWN", {"reason": f"source parse/readback incomplete: {type(e).__name__}"}
+    return "PASS", {"source_sha256": digest, "line_receipts_matched": len(keys),
+                    "scope_note": "verified bytes + text excerpts; document authenticity still UNKNOWN"}
+
 def check_labels(packet):
     """G2: scopes/labels never silently collapse; unit is explicit."""
     r = packet.get("reconciliation", {})
@@ -124,8 +181,6 @@ def vera_test(pdf, flavour):
 
 def geometry_test(pdf):
     """Check EVERY page; no automatic U.S. Letter normalization."""
-    if not shutil.which("pdfinfo"):
-        return "UNKNOWN", "pdfinfo not available"
     try:
         # pdfinfo -box all-page line output from Poppler; use PyMuPDF only if available
         import fitz
@@ -143,22 +198,72 @@ def geometry_test(pdf):
         return "UNKNOWN", str(e)
 
 
+
+def safe_margin_test(pdf, margin_mm):
+    """Check all rendered paint bboxes, not merely the A4 MediaBox.
+
+    Conservative by design: full-bleed decorative content fails too, unless
+    separately redesigned. A clipping loss outside the page still needs visual
+    inspection and a human reviewed capture, so this is not a complete proof of fit.
+    """
+    if margin_mm is None:
+        return "UNKNOWN", {"reason": "safe_margin_mm has not been declared"}
+    try:
+        margin = dec(margin_mm) * Decimal(72) / Decimal("25.4")
+        if margin < 0 or margin > Decimal(50):
+            return "FAIL", {"reason": "safe margin outside supported range (0..50 pt)"}
+        import fitz
+        with fitz.open(str(pdf)) as doc:
+            if doc.page_count < 1:
+                return "FAIL", {"reason": "empty PDF"}
+            checked = 0
+            for i, pg in enumerate(doc, 1):
+                r = pg.mediabox
+                allowed = (float(margin), float(margin), r.width - float(margin), r.height - float(margin))
+                ops = pg.get_bboxlog()
+                if not ops:
+                    return "UNKNOWN", {"reason": f"page {i} contains no inspectable rendered marks"}
+                for typ, box in ops:
+                    if typ not in {"fill-text", "stroke-text", "fill-path", "stroke-path", "fill-image", "fill-shade"}:
+                        continue
+                    checked += 1
+                    if (box[0] < allowed[0] - .05 or box[1] < allowed[1] - .05 or
+                        box[2] > allowed[2] + .05 or box[3] > allowed[3] + .05):
+                        return "FAIL", {"page": i, "type": typ, "bounding_box_pt": [round(v,2) for v in box],
+                                        "safe_box_pt": [round(v,2) for v in allowed]}
+            if checked == 0:
+                return "UNKNOWN", {"reason": "no visible paint operations inspected"}
+            return "PASS", {"pages": doc.page_count, "paint_operations_checked": checked,
+                            "safe_margin_mm": float(dec(margin_mm)),
+                            "limitation": "bboxlog cannot rule out content clipped outside the MediaBox"}
+    except ImportError:
+        return "UNKNOWN", {"reason": "PyMuPDF unavailable"}
+    except (ValueError, OSError, RuntimeError, InvalidOperation) as e:
+        return "UNKNOWN", {"reason": f"margin inspection unavailable: {type(e).__name__}"}
+
 def check_pdf(packet, pdf):
-    """G3: true PDF/A-2u AND PDF/UA-1 machine checks, plus page geometry."""
+    """G3: PDF/A and PDF/UA checks + safe margins + independent 2nd reader."""
     if not pdf or not pdf.is_file():
         return "UNKNOWN", {"geometry": "UNKNOWN", "pdfa": "UNKNOWN", "pdfua": "UNKNOWN"}
     archive = packet.get("archive", {})
     geom, geonote = geometry_test(pdf)
+    margin, margindetail = safe_margin_test(pdf, packet.get("page_geometry", {}).get("safe_margin_mm"))
     target = archive.get("target_pdfa")
     if target not in {"2u", "2b"}:
         return "FAIL", {"geometry": geom, "reason": "unsupported packet PDF/A target"}
     a, anote = vera_test(pdf, target)
     u, unote = vera_test(pdf, "ua1")
-    components = [geom, a, u]
+    # A second, independent PDF/UA reader such as PAC (plus human checkpoints)
+    # must be separately evidenced; veraPDF invoked twice is not two tools.
+    independent_reader = "UNKNOWN"
+    components = [geom, margin, a, u, independent_reader]
     status = "FAIL" if "FAIL" in components else "UNKNOWN" if "UNKNOWN" in components else "PASS"
     return status, {"geometry": geom, "geometry_note": geonote,
+                    "safe_margin": margin, "safe_margin_report": margindetail,
                     "pdfa": a, "pdfa_report": anote,
-                    "pdfua": u, "pdfua_report": unote}
+                    "pdfua": u, "pdfua_report": unote,
+                    "secondary_pdfua_reader": independent_reader,
+                    "human_accessibility_review": "UNKNOWN"}
 
 
 def check_linkage(packet, verified_sources):
@@ -204,13 +309,20 @@ def check_readback(packet, pdf, manifest, ext_manifest_digest, readback_pdf, rea
 def validate(packet, source_root=None, pdf=None, manifest=None, root_digest=None,
              readback_pdf=None, readback_manifest=None):
     g0, source_detail = check_source_receipts(packet, source_root)
-    g1, math = check_fiscal(packet)
+    calc, math = check_fiscal(packet)
+    source_match, source_match_detail = check_lineage(packet, source_root)
+    g1 = "FAIL" if "FAIL" in (calc, source_match) else "PASS" if calc == source_match == g0 == "PASS" else "UNKNOWN"
+    math["arithmetic_only_status"] = calc
+    math["source_bound_status"] = source_match
+    math["source_bound_detail"] = source_match_detail
     g2, labels = check_labels(packet)
     g3, pdf_detail = check_pdf(packet, pdf)
     g4, coverage = check_linkage(packet, g0)
     g5, readback = check_readback(packet, pdf, manifest, root_digest, readback_pdf, readback_manifest)
     gates = {"G0": g0, "G1": g1, "G2": g2, "G3": g3, "G4": g4, "G5": g5}
-    releasable = all(gates[k] == "PASS" for k in ("G0", "G1", "G2", "G3", "G5")) and coverage.get("denominator", 0) > 0
+    # User has not approved a coverage threshold or independently trusted root receipt.
+    # A complete test suite must never silently authorize a release.
+    releasable = False
     return {"state": packet.get("state"), "gates": gates, "releasable": releasable,
             "release": "ELIGIBLE_FOR_REVIEW" if releasable else "CLOSED",
             "detail": {"source_receipts": source_detail, "math": math, "labels": labels,
