@@ -1,0 +1,316 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jsonwisdom/COMPUTERWISDOM/governors/conformance/v0_2/schema.json",
+  "title": "CI-FIRST Governors state evidence packet v0.2",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "state",
+    "fiscal_year",
+    "fiscal_year_end",
+    "reconciliation",
+    "page_geometry",
+    "archive",
+    "sources",
+    "payment_sample",
+    "artifact_receipts",
+    "release"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "ci-first.governors.v0.2"
+    },
+    "state": {
+      "type": "string",
+      "pattern": "^[A-Z]{2}$"
+    },
+    "fiscal_year": {
+      "type": "integer",
+      "minimum": 1900,
+      "maximum": 3000
+    },
+    "fiscal_year_end": {
+      "type": "string",
+      "format": "date"
+    },
+    "reconciliation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope",
+        "statement",
+        "source_page",
+        "source_id",
+        "transfers_presentation",
+        "unit",
+        "reported",
+        "special_items_before_transfers",
+        "special_items_after_transfers"
+      ],
+      "properties": {
+        "scope": {
+          "enum": [
+            "governmental_activities",
+            "primary_government",
+            "business_type",
+            "component_units"
+          ]
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_page": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 1
+        },
+        "source_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "transfers_presentation": {
+          "enum": [
+            "net",
+            "gross"
+          ]
+        },
+        "unit": {
+          "const": "USD_millions"
+        },
+        "reported": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "revenues",
+            "expenses",
+            "balance_before_transfers",
+            "net_transfers",
+            "change_in_net_position"
+          ],
+          "properties": {
+            "revenues": {
+              "type": "number"
+            },
+            "expenses": {
+              "type": "number"
+            },
+            "balance_before_transfers": {
+              "type": "number"
+            },
+            "net_transfers": {
+              "type": "number"
+            },
+            "change_in_net_position": {
+              "type": "number"
+            }
+          }
+        },
+        "special_items_before_transfers": {
+          "type": "number"
+        },
+        "special_items_after_transfers": {
+          "type": "number"
+        },
+        "functions": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "number"
+          }
+        }
+      }
+    },
+    "page_geometry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "standard",
+        "width_mm",
+        "height_mm",
+        "width_pt",
+        "height_pt"
+      ],
+      "properties": {
+        "standard": {
+          "const": "ISO_216_A4"
+        },
+        "width_mm": {
+          "const": 210
+        },
+        "height_mm": {
+          "const": 297
+        },
+        "width_pt": {
+          "type": "number"
+        },
+        "height_pt": {
+          "type": "number"
+        }
+      }
+    },
+    "archive": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "target_pdfa",
+        "target_pdfua",
+        "validator",
+        "pdfa_validation",
+        "pdfua_validation"
+      ],
+      "properties": {
+        "target_pdfa": {
+          "enum": [
+            "2u",
+            "2b"
+          ]
+        },
+        "target_pdfua": {
+          "const": "ua1"
+        },
+        "validator": {
+          "const": "veraPDF"
+        },
+        "pdfa_validation": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "UNKNOWN"
+          ]
+        },
+        "pdfua_validation": {
+          "enum": [
+            "PASS",
+            "FAIL",
+            "UNKNOWN"
+          ]
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source_id",
+          "url",
+          "observed_at",
+          "sha256",
+          "byte_count",
+          "cas_path"
+        ],
+        "properties": {
+          "source_id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "observed_at": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "format": "date-time"
+          },
+          "sha256": {
+            "type": [
+              "string",
+              "null"
+            ],
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "byte_count": {
+            "type": [
+              "integer",
+              "null"
+            ],
+            "minimum": 0
+          },
+          "cas_path": {
+            "type": [
+              "string",
+              "null"
+            ]
+          }
+        }
+      }
+    },
+    "payment_sample": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sampled_count",
+        "payments"
+      ],
+      "properties": {
+        "sampled_count": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "payments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "payment_id",
+              "edges"
+            ],
+            "properties": {
+              "payment_id": {
+                "type": "string"
+              },
+              "edges": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "pattern": "^[0-9a-f]{64}$"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "artifact_receipts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "pdf_sha256",
+        "manifest_sha256_external",
+        "readback_verified"
+      ],
+      "properties": {
+        "pdf_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "manifest_sha256_external": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "readback_verified": {
+          "type": "boolean"
+        }
+      }
+    },
+    "release": {
+      "const": "CLOSED"
+    }
+  }
+}
