@@ -36,3 +36,22 @@
 **Result:** Source observations support the arithmetic and category labels, but only arithmetic-only PASS is established. G0 and full G1 remain UNKNOWN. No EO-to-payment linkage, external timestamp, certified PDF/A/UA, government authority, production deployment or payment is claimed.
 
 **AUTHORITY_CREATED=false · PR #765 DRAFT / UNMERGED · RELEASE CLOSED**
+
+
+## Correction: PRIMARY GOVERNMENT +1 scope (2026-11-14, Wolfram cross-check)
+The previous checkpoint was **incomplete** because it summarized governmental activities without treating **Total Primary Government** as a distinct reconciliation scope. This is an additional accounting row, **not a second state or another government node**.
+
+Official OSC FY2025 **Basic Financial Statements** (printed page 17, Table 2):
+https://www.osc.ny.gov/files/reports/finance/pdf/nys-basic-financial-statements-2025.pdf
+
+| USD millions | Governmental activities | Business-type activities | Total primary government |
+|---|---:|---:|---:|
+| Total revenues | 283,957 | 27,278 | **311,235** |
+| Total expenses | 266,785 | 27,865 | **294,650** |
+| Before transfers | 17,172 | (587) | **16,585** |
+| Net transfers | (5,107) | +3,957 | **(1,150)** |
+| Change in net position | 12,065 | +3,370 | **15,435** |
+
+Wolfram independent arithmetic + cross-column sums: **PASS**. Business-type operations include a date-convention footnote: **SUNY/CUNY activities as of June 30, 2024**. Discretely presented component units do not belong inside the sum of the two primary-government columns. The broader end-of-year total primary-government net position is 60,796 million (Table 2), a stock, **not** the 15,435 million annual change.
+
+**Source gate remains unchanged:** primary ACFR original bytes NOT CAPTURED; original SHA-256 UNKNOWN; actual G0 and source-bound G1 UNKNOWN. The OSC basic-financial-statements URL was text-accessible through an external web index but raw download from the execution environment was blocked. Do not pretend the text excerpt is an acquired PDF. Reference fixture: `governors/conformance/v0_2/NY_FY2025_SCOPE_ROLLUP_REFERENCE.json`.
