@@ -18,12 +18,13 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
+      - name: Install conformance test dependencies
+        run: python -m pip install "pymupdf>=1.24,<2" "jsonschema>=4,<5"
       - name: Run fail-closed New York invariant regression tests
         run: |
           python -m unittest discover -v -s governors/conformance/v0_2 -p 'test_*.py'
       - name: Validate schema and NY reference instance
         run: |
-          python -m pip install 'jsonschema>=4.0,<5'
           python - <<'PY'
           import json
           from pathlib import Path
@@ -48,7 +49,8 @@ jobs:
           import json
           result = json.load(open('/tmp/gov-report.json'))
           assert result['release'] == 'CLOSED'
-          assert result['gates']['G1'] == 'PASS'
+          assert result['gates']['G1'] == 'UNKNOWN'
+          assert result['detail']['math']['arithmetic_only_status'] == 'PASS'
           assert result['gates']['G2'] == 'PASS'
           for gate in ('G0', 'G3', 'G4', 'G5'):
               assert result['gates'][gate] == 'UNKNOWN'
