@@ -1,0 +1,55 @@
+{
+  "schema_version": "ci-first.governors.scope-rollup.v0.2",
+  "state": "SC",
+  "fiscal_year_end": "2025-06-30",
+  "unit": "USD_thousands",
+  "source_sha256": "5aab29d6a6d5f3561e7870339180594bbe2e068428772712ec538ddaff7a36b1",
+  "source_byte_count": 8651483,
+  "source_observed_at_utc": "2026-11-15T03:07:55.520021Z",
+  "source_url": "https://cg.sc.gov/sites/cg/files/documents/FinancialReports/AnnualComprehensiveFinancialReports%28ACFRs%29/AnnualComprehensiveFinancialReports%282010-2019%29/ACFRCurrentYear/001-316-ACFR-FY2025.pdf",
+  "source_page_index": 27,
+  "source_printed_page": 28,
+  "scope_values_usd_thousands": {
+    "governmental_activities": {
+      "revenues": 45402095,
+      "expenses": 43929746,
+      "before_transfers": 1472349,
+      "net_transfers": 4409,
+      "change_in_net_position": 1476758
+    },
+    "business_type": {
+      "revenues": 387714,
+      "expenses": 223405,
+      "before_transfers": 164309,
+      "net_transfers": -4409,
+      "change_in_net_position": 159900
+    },
+    "primary_government": {
+      "revenues": 45789809,
+      "expenses": 44153151,
+      "before_transfers": 1636658,
+      "net_transfers": 0,
+      "change_in_net_position": 1636658
+    }
+  },
+  "source_lines": {
+    "revenues": "Total revenues ......................................   45,402,095    41,338,522       387,714       384,149    45,789,809    41,722,671     9.7%",
+    "expenses": "Total expenses ......................................   43,929,746    40,469,812       223,405       297,288    44,153,151    40,767,100     8.3%",
+    "balance_before_transfers": "Excess (deficiency) before transfers .............    1,472,349       868,710       164,309        86,861     1,636,658       955,571     71.3%",
+    "net_transfers": "Net transfers .....................................................        4,409         5,440         (4,409)        (5,440)     —     —   —%",
+    "change_in_net_position": "Change in net position ...................................    1,476,758       874,150       159,900        81,421     1,636,658       955,571     71.3%"
+  },
+  "raw_byte_capture": "PASS",
+  "local_cross_environment_sha256_readback": "PASS",
+  "fiscal_three_scope_arithmetic": "PASS",
+  "exact_value_page28_binding": "PASS",
+  "verified_sha256_issuer_authenticity": "UNKNOWN",
+  "trusted_timestamp": "UNKNOWN",
+  "original_pdf_google_drive": "https://drive.google.com/file/d/186hkpuy2yUtKl2FQxhpeDpvQwE4q0fkx/view?usp=drivesdk",
+  "downloaded_archive_zip_sha256": "64c7c01f010526655679cf336c64331ef829322f1480b63edb800e03740ff64f",
+  "independent_page_binding_manifest_sha256": "1706a8183effd34e5f9f64fe0745b666f4f82d5c2f876b85fa94c06c051e9ff8",
+  "github_acquisition_run": 43670925379,
+  "github_artifact": 14143649038,
+  "release": "CLOSED",
+  "authority_created": false
+}

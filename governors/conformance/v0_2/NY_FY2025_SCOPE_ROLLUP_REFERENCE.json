@@ -1,0 +1,51 @@
+{
+  "schema_version": "ci-first.governors.scope-rollup.v0.2",
+  "state": "NY",
+  "year_ended": "2025-03-31",
+  "source_title": "State of New York - Basic Financial Statements and Other Supplementary Information FY2025",
+  "source_url": "https://www.osc.ny.gov/files/reports/finance/pdf/nys-basic-financial-statements-2025.pdf",
+  "source_statement": "Management's Discussion and Analysis, Table 2 (Changes in Net Position), printed page 17; statement cross-reference printed page 27",
+  "source_original_sha256": null,
+  "source_original_byte_count": null,
+  "original_byte_capture": "UNKNOWN",
+  "units": "USD_millions",
+  "scope_rows": {
+    "governmental_activities": {
+      "revenues": 283957,
+      "expenses": 266785,
+      "before_transfers": 17172,
+      "transfers": -5107,
+      "change_in_net_position": 12065
+    },
+    "business_type": {
+      "revenues": 27278,
+      "expenses": 27865,
+      "before_transfers": -587,
+      "transfers": 3957,
+      "change_in_net_position": 3370
+    },
+    "primary_government": {
+      "revenues": 311235,
+      "expenses": 294650,
+      "before_transfers": 16585,
+      "transfers": -1150,
+      "change_in_net_position": 15435
+    }
+  },
+  "government_wide_rollup_note": "Primary government = governmental activities + business-type activities for the presented 2025 table; discretely presented component units are not counted as another column in this primary-government total.",
+  "source_footnote": "SUNY and CUNY business-type activities are as of June 30, 2024, per 2025 table footnote.",
+  "validation": {
+    "wolfram_scope_arithmetic": "PASS",
+    "wolfram_cross_scope_sum": "PASS",
+    "web_primary_statement_text_located": "PASS",
+    "byte_bound_reconciliation": "UNKNOWN",
+    "state_coverage": {
+      "structural_reference": 1,
+      "verified_emergency_source": 0,
+      "total_states": 50
+    }
+  },
+  "release": "CLOSED",
+  "authority_created": false,
+  "payment_authorized": false
+}

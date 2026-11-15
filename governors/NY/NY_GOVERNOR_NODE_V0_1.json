@@ -1,0 +1,79 @@
+{
+  "schema": "ci-first.governor-evidence.v0.1",
+  "state": "NY",
+  "review_date": "2026-11-14",
+  "scope": "GAAP government activities FY ended 2025-03-31",
+  "units": "USD_millions",
+  "fiscal": {
+    "governmental": {
+      "program_revenues": 133802,
+      "general_revenues": 150155,
+      "total_revenues": 283957,
+      "expenses": 266785,
+      "before_transfers": 17172,
+      "transfers": -5107,
+      "change_net_position": 12065
+    },
+    "primary_government": {
+      "expenses": 294650,
+      "change_net_position": 15435
+    },
+    "expense_functions": {
+      "education": 50679,
+      "public_health": 128608,
+      "public_welfare": 22592,
+      "public_safety": 10962,
+      "transportation": 16211
+    }
+  },
+  "invariants": [
+    "133802 + 150155 = 283957",
+    "283957 - 266785 = 17172",
+    "17172 - 5107 = 12065",
+    "128608 million USD = 128.608 billion USD = 1286.08 hundred-million USD"
+  ],
+  "budget_scope_memo": "FY 2025 SOF ~132.0 billion (projected) is not SFY2025-26 enacted All Funds ~254.0 billion, nor FY2025 GAAP expenditures.",
+  "orders": [
+    {
+      "number": "47",
+      "date": "2025-02-19",
+      "topic": "correctional facilities National Guard emergency",
+      "financial_disbursement_link": "UNKNOWN"
+    },
+    {
+      "number": "52",
+      "date": "2025-09-05",
+      "topic": "COVID vaccine access pharmacist emergency",
+      "financial_disbursement_link": "UNKNOWN"
+    }
+  ],
+  "evidence": {
+    "public_source_locations": "PASS",
+    "original_pdf_bytes_sha256": null,
+    "original_pdf_byte_authenticity": "UNKNOWN",
+    "eo_to_payment_receipts": "UNKNOWN",
+    "legal_violation": "NOT_ALLEGED"
+  },
+  "coverage": {
+    "structural_state_templates": {
+      "count": 1,
+      "total": 50
+    },
+    "verified_emergency_source": {
+      "count": 0,
+      "total": 50
+    }
+  },
+  "authority_created": false,
+  "pay": false,
+  "release": "CLOSED",
+  "sources": [
+    "https://www.osc.ny.gov/files/reports/finance/pdf/annual-comprehensive-financial-report-2025.pdf",
+    "https://www.osc.ny.gov/files/reports/finance/pdf/2025-financial-condition-report.pdf",
+    "https://www.nysenate.gov/legislation/laws/CNS/A7S3",
+    "https://www.governor.ny.gov/executive-order/no-47-declaring-disaster-emergency-state-new-york-and-ordering-active-service-new",
+    "https://www.governor.ny.gov/executive-order/no-52-declaring-disaster-state-new-york-due-federal-actions-related-vaccine-access",
+    "https://www.osc.ny.gov/press/releases/2025/06/dinapoli-releases-analysis-enacted-state-budget",
+    "https://www.osc.ny.gov/files/debt/pdf/nys-go-2025abc-os.pdf"
+  ]
+}

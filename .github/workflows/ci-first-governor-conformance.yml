@@ -1,0 +1,84 @@
+name: CI-FIRST Governor Conformance (Read-Only)
+on:
+  pull_request:
+    paths:
+      - 'governors/conformance/v0_2/**'
+      - '.github/workflows/ci-first-governor-conformance.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install conformance test dependencies
+        run: python -m pip install "pymupdf>=1.24,<2" "jsonschema>=4,<5"
+      - name: Run fail-closed New York invariant regression tests
+        run: |
+          python -m unittest discover -v -s governors/conformance/v0_2 -p 'test_*.py'
+      - name: Verify 49-state acquisition metadata without external network
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          folder = Path('governors/conformance/v0_2')
+          registry = json.loads((folder / 'state_registry.json').read_text())
+          seeds = json.loads((folder / 'official_pdf_candidates_v0_1.json').read_text())
+          codes = [r['state'] for r in registry['states']]
+          assert len(codes) == len(set(codes)) == 50
+          assert set(seeds['states']) == {'SC', 'DE', 'NC', 'MD'}
+          assert 'NY' not in seeds['states']
+          assert seeds['states']['SC']['status'] == 'SOURCE_BYTE_CAPTURED_SELF_ATTESTED'
+          assert all(seeds['states'][state]['status'] == 'URL_VERIFIED_BYTES_UNKNOWN' for state in ('DE','NC','MD'))
+          assert seeds['state_G0_complete_count'] == 1
+          assert registry['registered_states_count'] == 0
+          assert registry['structural_reference_count'] == 1
+          assert registry['verified_emergency_source_count'] == 0
+          assert registry['G0_byte_captured_state_count'] == 1
+          sc = next(x for x in registry['states'] if x['state'] == 'SC')
+          assert sc['G0'] == 'PASS_BYTE_CAPTURE_SHA256_READBACK'
+          assert sc['issuer_authenticity'] == 'UNKNOWN'
+          print('OFFICIAL LINK CANDIDATES: 4 / 49; G0 SC: 1 / 50; NO NETWORK')
+          PY
+      - name: Validate schema and NY plus SC reference instances
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          from jsonschema import Draft202012Validator, FormatChecker
+          folder = Path('governors/conformance/v0_2')
+          schema = json.loads((folder / 'schema.json').read_text())
+          packet = json.loads((folder / 'NY_REFERENCE.json').read_text())
+          sc_packet = json.loads((folder / 'SC_FY2025_REFERENCE.json').read_text())
+          Draft202012Validator.check_schema(schema)
+          validator = Draft202012Validator(schema, format_checker=FormatChecker())
+          validator.validate(packet)
+          validator.validate(sc_packet)
+          print('Schema NY+SC: PASS. SC source bytes are archived separately; offline CI leaves G1 UNKNOWN.')
+          PY
+      - name: Check synthetic NY packet remains fail-closed
+        run: |
+          set +e
+          python governors/conformance/v0_2/validate.py \
+            governors/conformance/v0_2/NY_REFERENCE.json > /tmp/gov-report.json
+          rc=$?
+          set -e
+          cat /tmp/gov-report.json
+          test "$rc" -eq 2
+          python - <<'PY'
+          import json
+          result = json.load(open('/tmp/gov-report.json'))
+          assert result['release'] == 'CLOSED'
+          assert result['gates']['G1'] == 'UNKNOWN'
+          assert result['detail']['math']['arithmetic_only_status'] == 'PASS'
+          assert result['gates']['G2'] == 'PASS'
+          for gate in ('G0', 'G3', 'G4', 'G5'):
+              assert result['gates'][gate] == 'UNKNOWN'
+          PY

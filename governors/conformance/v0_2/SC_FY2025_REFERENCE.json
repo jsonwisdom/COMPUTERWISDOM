@@ -1,0 +1,82 @@
+{
+  "schema_version": "ci-first.governors.v0.2",
+  "state": "SC",
+  "fiscal_year": 2025,
+  "fiscal_year_end": "2025-06-30",
+  "reconciliation": {
+    "scope": "governmental_activities",
+    "statement": "Exhibit 2 — Government-wide Changes in Net Position",
+    "source_page": 28,
+    "source_id": "SC_ACFR_FY2025",
+    "transfers_presentation": "net",
+    "unit": "USD_thousands",
+    "reported": {
+      "revenues": 45402095,
+      "expenses": 43929746,
+      "net_transfers": 4409,
+      "change_in_net_position": 1476758,
+      "balance_before_transfers": 1472349
+    },
+    "special_items_before_transfers": 0,
+    "special_items_after_transfers": 0,
+    "functions": {},
+    "source_sha256": "5aab29d6a6d5f3561e7870339180594bbe2e068428772712ec538ddaff7a36b1",
+    "line_receipts": {
+      "revenues": {
+        "page_index": 27,
+        "excerpt": "Total revenues ......................................   45,402,095    41,338,522       387,714       384,149    45,789,809    41,722,671     9.7%"
+      },
+      "expenses": {
+        "page_index": 27,
+        "excerpt": "Total expenses ......................................   43,929,746    40,469,812       223,405       297,288    44,153,151    40,767,100     8.3%"
+      },
+      "balance_before_transfers": {
+        "page_index": 27,
+        "excerpt": "Excess (deficiency) before transfers .............    1,472,349       868,710       164,309        86,861     1,636,658       955,571     71.3%"
+      },
+      "net_transfers": {
+        "page_index": 27,
+        "excerpt": "Net transfers .....................................................        4,409         5,440         (4,409)        (5,440)     —     —   —%"
+      },
+      "change_in_net_position": {
+        "page_index": 27,
+        "excerpt": "Change in net position ...................................    1,476,758       874,150       159,900        81,421     1,636,658       955,571     71.3%"
+      }
+    }
+  },
+  "page_geometry": {
+    "standard": "ISO_216_A4",
+    "width_mm": 210,
+    "height_mm": 297,
+    "width_pt": 595.2755905511812,
+    "height_pt": 841.8897637795276,
+    "safe_margin_mm": 15
+  },
+  "archive": {
+    "target_pdfa": "2u",
+    "target_pdfua": "ua1",
+    "validator": "veraPDF",
+    "pdfa_validation": "UNKNOWN",
+    "pdfua_validation": "UNKNOWN"
+  },
+  "sources": [
+    {
+      "source_id": "SC_ACFR_FY2025",
+      "url": "https://cg.sc.gov/sites/cg/files/documents/FinancialReports/AnnualComprehensiveFinancialReports%28ACFRs%29/AnnualComprehensiveFinancialReports%282010-2019%29/ACFRCurrentYear/001-316-ACFR-FY2025.pdf",
+      "observed_at": "2026-11-15T03:07:55.520021Z",
+      "sha256": "5aab29d6a6d5f3561e7870339180594bbe2e068428772712ec538ddaff7a36b1",
+      "byte_count": 8651483,
+      "cas_path": "sha256/5aab29d6a6d5f3561e7870339180594bbe2e068428772712ec538ddaff7a36b1"
+    }
+  ],
+  "payment_sample": {
+    "sampled_count": 0,
+    "payments": []
+  },
+  "artifact_receipts": {
+    "pdf_sha256": null,
+    "manifest_sha256_external": null,
+    "readback_verified": false
+  },
+  "release": "CLOSED"
+}
