@@ -35,3 +35,11 @@ OFFICIAL_URL_CANDIDATE → SOURCE_BYTE_CAPTURED_SELF_ATTESTED → SOURCE_PAGE_EX
 States never advance merely because a tool runs. GitHub CI uses offline synthetic tests and registry consistency checks. No GitHub workflow makes live requests to state servers or writes production storage.
 
 **RELEASE CLOSED · AUTHORITY_CREATED=false · NY STRUCTURAL 1/50 · ORIGINAL SOURCE G0 0/50 · EMERGENCY SOURCE 0/50.**
+
+## South Carolina G0 CAPTURE UPDATE — 2026-11-15 UTC
+Single-state acquisition GitHub Actions run `43670925379`: SUCCESS, original ACFR 316 pages, 8,651,483 bytes, SHA-256 `5aab29d6a6d5f3561e7870339180594bbe2e068428772712ec538ddaff7a36b1`.
+Cross-environment artifact download and rehash: PASS. Printed page 28, Exhibit 2: five source rows × three accounting scopes, 15 figures with row-label and page-coordinate checks: PASS. Printed pages 42–43 (Exhibit A-2): located.
+Immutable original bytes and first-receipt ZIP are retained in Google Drive: https://drive.google.com/file/d/186hkpuy2yUtKl2FQxhpeDpvQwE4q0fkx/view
+Downloaded ZIP SHA-256 `64c7c01f010526655679cf336c64331ef829322f1480b63edb800e03740ff64f`; independently computed page-binding manifest SHA-256 `1706a8183effd34e5f9f64fe0745b666f4f82d5c2f876b85fa94c06c051e9ff8`.
+**COUNTERS UPDATED:** official PDF URL mapped 4/49 (SC, DE, NC, MD), state G0 source-byte acquisition+readback **1/50 SC**; NY structural **1/50**; verified emergency-source payments **0/50**; publisher mapping pending **45/49**. The remaining 3 mapped states are URL-only. External agency-signed digest and trusted timestamp: UNKNOWN.
+**No production, merge, payment, government authority or archival PDF/A certification. RELEASE=CLOSED.**
