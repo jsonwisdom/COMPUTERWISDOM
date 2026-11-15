@@ -1,7 +1,7 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 import {createHash} from "node:crypto";
-import {BORDER,inspectOne,inspectBatch,shannonBits} from "./maxwell-gate.mjs";
+import {BORDER,inspectOne,inspectBatch,shannonBits,shannonChannel} from "./maxwell-gate.mjs";
 const source_text="MN classroom fixture source, no external fetch.";
 const sha256=createHash("sha256").update(source_text).digest("hex");
 const record={scope:"US-MN-EDUCATION",kind:"classroom_fixture",claim:"Verify the example",
@@ -11,3 +11,17 @@ test("valid bytes are bounded only",async()=>{const x=await inspectOne(record);a
 test("no cross-border scope or personal data",async()=>{assert.equal((await inspectOne({...record,scope:"GLOBAL"})).state,"REJECT");assert.equal((await inspectOne({...record,contains_pii:true})).state,"REJECT")});
 test("missing and conflicting receipts stay unresolved",async()=>{assert.equal((await inspectOne({...record,sha256:undefined})).state,"HOLD");assert.equal((await inspectOne({...record,source_text:"other"})).state,"CONFLICT")});
 test("limits and Shannon model",async()=>{assert.equal((await inspectBatch(Array(51).fill(record))).state,"REJECT");assert.equal((await inspectOne({...record,source_text:"x".repeat(32769)})).state,"REJECT");assert.equal(shannonBits([.5,.5]),1);assert.equal(shannonBits([1,0]),0)});
+
+test("Air University Shannon replay: entropy is not a reject condition",async()=>{
+  const maxEntropy=shannonBits([0.5,0.5]);
+  assert.equal(maxEntropy,1);
+  assert.equal((await inspectOne(record)).state,"BOUND_READ_ONLY");
+});
+test("Shannon binary channel: information reduces expected uncertainty",()=>{
+  const c=shannonChannel(0.5,0.1);
+  assert.ok(Math.abs(c.noiseEntropyBits-0.4689955935892812)<1e-12);
+  assert.ok(Math.abs(c.mutualInformationBits-0.5310044064107188)<1e-12);
+  assert.ok(c.posteriorEntropyBits<c.sourceEntropyBits);
+  assert.equal(c.sourceAuthenticated,false);
+  assert.equal(c.evidenceVerified,false);
+});
