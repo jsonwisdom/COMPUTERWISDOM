@@ -23,6 +23,25 @@ jobs:
       - name: Run fail-closed New York invariant regression tests
         run: |
           python -m unittest discover -v -s governors/conformance/v0_2 -p 'test_*.py'
+      - name: Verify 49-state acquisition metadata without external network
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          folder = Path('governors/conformance/v0_2')
+          registry = json.loads((folder / 'state_registry.json').read_text())
+          seeds = json.loads((folder / 'official_pdf_candidates_v0_1.json').read_text())
+          codes = [r['state'] for r in registry['states']]
+          assert len(codes) == len(set(codes)) == 50
+          assert set(seeds['states']) == {'SC', 'DE', 'NC', 'MD'}
+          assert 'NY' not in seeds['states']
+          assert all(item['status'] == 'URL_VERIFIED_BYTES_UNKNOWN' for item in seeds['states'].values())
+          assert seeds['state_G0_complete_count'] == 0
+          assert registry['registered_states_count'] == 0
+          assert registry['structural_reference_count'] == 1
+          assert registry['verified_emergency_source_count'] == 0
+          print('OFFICIAL LINK CANDIDATES: 4 / 49; G0: 0 / 50; NO NETWORK')
+          PY
       - name: Validate schema and NY reference instance
         run: |
           python - <<'PY'
