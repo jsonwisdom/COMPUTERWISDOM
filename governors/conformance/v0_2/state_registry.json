@@ -666,7 +666,7 @@
     },
     {
       "state": "SC",
-      "state_record_status": "UNMAPPED",
+      "state_record_status": "G0_CAPTURED_FISCAL_SOURCE_PAGE_BOUND",
       "fiscal_year_end_month_day": null,
       "publication_lag_days": null,
       "transfer_convention": null,
@@ -674,12 +674,20 @@
       "function_taxonomy_mapping": null,
       "publisher_url_status": "OFFICIAL_FY2025_PUBLISHER_AND_PDF_LINK_OBSERVED",
       "publisher_landing_url": "https://cg.sc.gov/financial-reports/annual-comprehensive-financial-reports-acfrs",
-      "source_original_pdf_bytes_captured": false,
-      "source_original_pdf_sha256": null,
-      "G0": "UNKNOWN",
-      "G1_source_bound": "UNKNOWN",
+      "source_original_pdf_bytes_captured": true,
+      "source_original_pdf_sha256": "5aab29d6a6d5f3561e7870339180594bbe2e068428772712ec538ddaff7a36b1",
+      "G0": "PASS_BYTE_CAPTURE_SHA256_READBACK",
+      "G1_source_bound": "PASS_LOCAL_15_VALUE_PAGE28_REPLAY",
       "emergency_linkage": "UNKNOWN",
-      "release": "CLOSED"
+      "release": "CLOSED",
+      "source_original_pdf_byte_count": 8651483,
+      "observed_at_utc": "2026-11-15T03:07:55.520021Z",
+      "issuer_authenticity": "UNKNOWN",
+      "signed_issuer_sha256": "UNKNOWN",
+      "trusted_timestamp": "UNKNOWN",
+      "source_stored_drive_id": "186hkpuy2yUtKl2FQxhpeDpvQwE4q0fkx",
+      "source_archive_zip_sha256": "64c7c01f010526655679cf336c64331ef829322f1480b63edb800e03740ff64f",
+      "source_manifest_sha256": "1706a8183effd34e5f9f64fe0745b666f4f82d5c2f876b85fa94c06c051e9ff8"
     },
     {
       "state": "SD",
@@ -878,6 +886,10 @@
   ],
   "publisher_pdf_candidates_non_NY_count": 4,
   "pending_publisher_mapping_non_NY_count": 45,
-  "original_pdf_byte_captures_current_count": 0,
-  "current_registry_role": "SCAFFOLD_ONLY_NOT_50_G0_VERIFIED_STATES"
+  "original_pdf_byte_captures_current_count": 1,
+  "current_registry_role": "SCAFFOLD_ONLY_NOT_50_G0_VERIFIED_STATES",
+  "G0_byte_captured_state_count": 1,
+  "G1_source_page_arithmetic_replay_local_count": 1,
+  "original_byte_capture_scope": "Self-attested retrieved bytes from official HTTPS issuer portal; NOT agency-signed digest or trusted timestamp",
+  "registered_states_count_meaning": "Fully registered release-ready states; a G0 receipt is not a release-ready state"
 }
