@@ -79,7 +79,10 @@
           ]
         },
         "unit": {
-          "const": "USD_millions"
+          "enum": [
+            "USD_millions",
+            "USD_thousands"
+          ]
         },
         "reported": {
           "type": "object",
