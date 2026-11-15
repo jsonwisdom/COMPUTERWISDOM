@@ -1,0 +1,44 @@
+name: CI-FIRST OODA Emergency Dual Route
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: cw-ooda-emergency-ledger
+  cancel-in-progress: false
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read-only dual endpoint probe
+        env:
+          CW_RECEIPT_DIR: ${{ runner.temp }}/receipts
+        run: python3 scripts/ooda_emergency_probe.py
+      - name: Preserve per-run evidence artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: cw-ooda-emergency-${{ github.run_id }}
+          path: ${{ runner.temp }}/receipts/*.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Append permanent receipt to separate GitHub ledger branch
+        shell: bash
+        env:
+          LEDGER_BRANCH: ledger/ooda-emergency-observations
+        run: |
+          set -euo pipefail
+          git fetch origin "refs/heads/${LEDGER_BRANCH}:refs/remotes/origin/${LEDGER_BRANCH}"
+          git switch --detach "refs/remotes/origin/${LEDGER_BRANCH}"
+          folder="receipts/ooda-emergency/$(date -u +%Y/%m/%d)"
+          mkdir -p "$folder"
+          cp "$RUNNER_TEMP"/receipts/*.json "$folder"/
+          git add "$folder"
+          if git diff --cached --quiet; then exit 0; fi
+          git -c user.name='computer-wisdom-evidence-bot' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -m 'audit: append OODA observation [skip ci]'
+          git push origin "HEAD:refs/heads/${LEDGER_BRANCH}"
