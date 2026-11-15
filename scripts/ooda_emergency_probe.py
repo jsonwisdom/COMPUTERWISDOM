@@ -61,7 +61,7 @@ def verify_receipt(receipt):
  for r in routes:
   encoded=r.get("body_base64")
   if encoded is None:
-   if r.get("body_sha256") is not None:
+   if r.get("body_sha256") is not None or r.get("status")=="PASS":
     return False
    continue
   try:
@@ -86,6 +86,12 @@ def verify_receipt(receipt):
    and data.get("live_alerts") is False
   ):
    return False
+ derived_good = all(r.get("status")=="PASS" for r in routes)
+ derived_parity = derived_good and routes[0].get("body_sha256")==routes[1].get("body_sha256")
+ if receipt.get("two_route_status") != ("PASS" if derived_good else "UNKNOWN"):
+  return False
+ if receipt.get("parity") != ("PASS" if derived_parity else "UNKNOWN"):
+  return False
  if receipt.get("authority_created") is not False:
   return False
  if receipt.get("live_emergency_feed")!="NOT_ESTABLISHED":
