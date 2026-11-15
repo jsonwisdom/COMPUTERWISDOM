@@ -37,3 +37,23 @@ export function shannonBits(p){
  if(!Array.isArray(p)||!p.length||p.some(x=>!Number.isFinite(x)||x<0||x>1)||Math.abs(p.reduce((a,b)=>a+b,0)-1)>1e-10)throw Error("INVALID_DISTRIBUTION");
  return -p.reduce((a,x)=>a+(x?x*Math.log2(x):0),0);
 }
+
+/**
+ * Shannon's BSC model. This measures uncertainty and information transfer,
+ * NOT truth, legal authority, source authenticity, or a screening threshold.
+ * Input source bit probability p and crossover/error probability e.
+ */
+export function shannonChannel(p=0.5,e=0.1){
+ if(!Number.isFinite(p)||!Number.isFinite(e)||p<0||p>1||e<0||e>1)throw Error("INVALID_CHANNEL");
+ const h=q=>shannonBits([q,1-q]);
+ const outputOne=p*(1-e)+(1-p)*e;
+ const source=h(p), noise=h(e), output=h(outputOne);
+ const mutual=output-noise;
+ return {
+  sourceEntropyBits:source,noiseEntropyBits:noise,
+  outputEntropyBits:output,mutualInformationBits:mutual,
+  posteriorEntropyBits:source-mutual,measurementUnit:"bits",
+  sourceAuthenticated:false,evidenceVerified:false,
+  interpretation:"INFORMATION_THEORY_ONLY"
+ };
+}
