@@ -42,3 +42,17 @@ A different Cloudflare-tool sandbox `fetch()` returned HTTP 403 `Forbidden: requ
 ## Scope / next evidence gate
 
 Treat this as a **single successful public HTTP observation**, not an uptime guarantee. Next gate is authenticated per-state public-source ingestion (FEMA/state EMA/FCC/etc.), provenance, freshness, time-window labeling, and human-governed congressional oversight, all fail-closed on missing records. No operational commands, dispatch actions, payments, wallet actions, or government authority established.
+
+## November 15 UTC — secondary route and mathematical replay
+
+A second independent script in the **same Cloudflare account** was deployed as `cw-ooda-emergency-50state-replica-v01` and bound to `https://emergency.jsonwisdom.io/api/v1/health`.
+
+Wolfram URLRead tested BOTH exact endpoints from its external runtime: **HTTP 200** each, matched `cw-ooda-emergency-estate/0.1`, confirmed state count 50, and produced matching SHA-256 of the returned JSON bodies:
+
+`8257726cd3865a73be64c09a6c1c749bd09517463d6e5f4fe385a532cf459fdc`
+
+The replay returned **5/5 verification tests succeeded**. Cloudflare Rays recorded: primary `a5aa879f4b596164-ORD`, replica `a5aa87a0c9a4c6f1-ORD`. A separate synthetic Wolfram JSON/base64 replay verified the digest and schema comparison logic, but did not authenticate third-party agency records.
+
+A five-minute GitHub Action and portable Windows/Google Drive desktop mirror are **proposed in this draft PR; NOT ACTIVATED**. GitHub ledger branch `ledger/ooda-emergency-observations` has been created. An action run and a successful Google Drive cloud sync are not yet evidenced.
+
+Cross-provider redundancy, 24–72-hour uptime, independent-geography coverage, actual emergency feed ingestion, and 50-state source coverage remain **UNKNOWN/NOT ESTABLISHED**. The recorded second route is a separate Worker and domain, **not** independent infrastructure.
