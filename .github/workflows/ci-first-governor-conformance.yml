@@ -35,11 +35,16 @@ jobs:
           assert len(codes) == len(set(codes)) == 50
           assert set(seeds['states']) == {'SC', 'DE', 'NC', 'MD'}
           assert 'NY' not in seeds['states']
-          assert all(item['status'] == 'URL_VERIFIED_BYTES_UNKNOWN' for item in seeds['states'].values())
-          assert seeds['state_G0_complete_count'] == 0
+          assert seeds['states']['SC']['status'] == 'SOURCE_BYTE_CAPTURED_SELF_ATTESTED'
+          assert all(seeds['states'][state]['status'] == 'URL_VERIFIED_BYTES_UNKNOWN' for state in ('DE','NC','MD'))
+          assert seeds['state_G0_complete_count'] == 1
           assert registry['registered_states_count'] == 0
           assert registry['structural_reference_count'] == 1
           assert registry['verified_emergency_source_count'] == 0
+          assert registry['G0_byte_captured_state_count'] == 1
+          sc = next(x for x in registry['states'] if x['state'] == 'SC')
+          assert sc['G0'] == 'PASS_BYTE_CAPTURE_SHA256_READBACK'
+          assert sc['issuer_authenticity'] == 'UNKNOWN'
           print('OFFICIAL LINK CANDIDATES: 4 / 49; G0: 0 / 50; NO NETWORK')
           PY
       - name: Validate schema and NY reference instance
@@ -51,9 +56,12 @@ jobs:
           folder = Path('governors/conformance/v0_2')
           schema = json.loads((folder / 'schema.json').read_text())
           packet = json.loads((folder / 'NY_REFERENCE.json').read_text())
+          sc_packet = json.loads((folder / 'SC_FY2025_REFERENCE.json').read_text())
           Draft202012Validator.check_schema(schema)
-          Draft202012Validator(schema, format_checker=FormatChecker()).validate(packet)
-          print('Schema + NY example: PASS. Source-byte/PDF archival release gates remain UNKNOWN.')
+          validator = Draft202012Validator(schema, format_checker=FormatChecker())
+          validator.validate(packet)
+          validator.validate(sc_packet)
+          print('Schema NY+SC: PASS. SC source bytes are archived separately; offline CI leaves G1 UNKNOWN.')
           PY
       - name: Check synthetic NY packet remains fail-closed
         run: |
