@@ -139,6 +139,30 @@ class GovernorConformanceTests(unittest.TestCase):
         self.assertEqual(packet["validation"]["state_coverage"]["structural_reference"], 1)
         self.assertEqual(packet["release"], "CLOSED")
 
+    def test_sc_reference_arithmetic_only_in_ci(self):
+        from validate import check_fiscal, check_labels
+        sc = json.loads((DATA.parent / "SC_FY2025_REFERENCE.json").read_text(encoding="utf-8"))
+        self.assertEqual(sc["reconciliation"]["unit"], "USD_thousands")
+        self.assertEqual(check_fiscal(sc)[0], "PASS")
+        self.assertEqual(check_labels(sc)[0], "PASS")
+        result = validate(sc)
+        self.assertEqual(result["gates"]["G0"], "UNKNOWN")
+        self.assertEqual(result["gates"]["G1"], "UNKNOWN")
+        self.assertEqual(result["release"], "CLOSED")
+
+    def test_sc_three_scope_rollup_reported_values(self):
+        row = json.loads((DATA.parent / "SC_FY2025_SCOPE_ROLLUP.json").read_text(encoding="utf-8"))
+        vals = row["scope_values_usd_thousands"]
+        gov = vals["governmental_activities"]
+        bus = vals["business_type"]
+        primary = vals["primary_government"]
+        for scope in (gov, bus, primary):
+            self.assertEqual(scope["revenues"] - scope["expenses"], scope["before_transfers"])
+            self.assertEqual(scope["before_transfers"] + scope["net_transfers"], scope["change_in_net_position"])
+        for key in gov:
+            self.assertEqual(gov[key] + bus[key], primary[key])
+        self.assertEqual(row["verified_sha256_issuer_authenticity"], "UNKNOWN")
+
     def test_a4_exact_conversion(self):
         p = NY["page_geometry"]
         self.assertAlmostEqual(p["width_pt"], 595.27559055, places=6)
