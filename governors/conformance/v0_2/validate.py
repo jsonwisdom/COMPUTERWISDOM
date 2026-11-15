@@ -154,7 +154,7 @@ def check_labels(packet):
     r = packet.get("reconciliation", {})
     p = r.get("reported", {})
     required = ("balance_before_transfers", "net_transfers", "change_in_net_position")
-    valid = (r.get("scope") in VALID_SCOPES and r.get("unit") == "USD_millions"
+    valid = (r.get("scope") in VALID_SCOPES and r.get("unit") in {"USD_millions", "USD_thousands"}
              and r.get("transfers_presentation") in {"gross", "net"}
              and all(k in p for k in required)
              and bool(r.get("statement")) and bool(r.get("source_id"))
