@@ -1,0 +1,458 @@
+{
+  "schema_version": "ci-first.governors.registry.v0.2",
+  "states": [
+    {
+      "state": "AL",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "AK",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "AZ",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "AR",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "CA",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "CO",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "CT",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "DE",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "FL",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "GA",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "HI",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "ID",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "IL",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "IN",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "IA",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "KS",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "KY",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "LA",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "ME",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "MD",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "MA",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "MI",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "MN",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "MS",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "MO",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "MT",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "NE",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "NV",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "NH",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "NJ",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "NM",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "NY",
+      "state_record_status": "STRUCTURAL_REFERENCE_ONLY",
+      "fiscal_year_end_month_day": "03-31",
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "NC",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "ND",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "OH",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "OK",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "OR",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "PA",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "RI",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "SC",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "SD",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "TN",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "TX",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "UT",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "VT",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "VA",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "WA",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "WV",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "WI",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    },
+    {
+      "state": "WY",
+      "state_record_status": "UNMAPPED",
+      "fiscal_year_end_month_day": null,
+      "publication_lag_days": null,
+      "transfer_convention": null,
+      "pdfa_source_claim": null,
+      "function_taxonomy_mapping": null
+    }
+  ],
+  "structural_reference_count": 1,
+  "verified_emergency_source_count": 0,
+  "authority_created": false
+}
