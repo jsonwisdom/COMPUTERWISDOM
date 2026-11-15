@@ -2,7 +2,7 @@
   "schema": "ci-first.governors.official-pdf-candidates.v0.1",
   "reviewed_date_utc": "2026-11-14",
   "classification": "OFFICIAL_PUBLISHER_PDF_URL_CANDIDATE_NOT_CAPTURED",
-  "note": "Publisher pages and direct links observed on official sites. URLs are candidates, not byte-hashed G0 receipts. Never report these as G0 PASS.",
+  "note": "FY2025 SC acquired as self-attested original HTTPS bytes with SHA256 and cross-environment readback; no government-signed digest. DE NC MD remain URL-only. G1 fiscal-page values checked locally.",
   "states": {
     "SC": {
       "fiscal_year": 2025,
@@ -12,7 +12,13 @@
       "allowed_hosts": [
         "cg.sc.gov"
       ],
-      "status": "URL_VERIFIED_BYTES_UNKNOWN"
+      "status": "SOURCE_BYTE_CAPTURED_SELF_ATTESTED",
+      "official_source_sha256": "5aab29d6a6d5f3561e7870339180594bbe2e068428772712ec538ddaff7a36b1",
+      "source_byte_count": 8651483,
+      "acquisition_run": 43670925379,
+      "drive_receipt_archive_id": "186hkpuy2yUtKl2FQxhpeDpvQwE4q0fkx",
+      "source_page_value_bindings": "PASS_LOCAL",
+      "issuer_signed_hash": "UNKNOWN"
     },
     "DE": {
       "fiscal_year": 2025,
@@ -47,7 +53,7 @@
     }
   },
   "states_covered_as_official_pdf_candidates": 4,
-  "state_G0_complete_count": 0,
+  "state_G0_complete_count": 1,
   "emergency_source_coverage_count": 0,
   "authority_created": false,
   "release": "CLOSED"
