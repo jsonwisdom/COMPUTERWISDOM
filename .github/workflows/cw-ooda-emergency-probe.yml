@@ -1,5 +1,11 @@
 name: CI-FIRST OODA Emergency Dual Route
 on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/cw-ooda-emergency-probe.yml'
+      - 'scripts/ooda_emergency_probe.py'
+      - 'tests/test_ooda_emergency_probe.py'
   schedule:
     - cron: '*/5 * * * *'
   workflow_dispatch:
@@ -14,6 +20,8 @@ jobs:
     timeout-minutes: 4
     steps:
       - uses: actions/checkout@v4
+      - name: Mechanical regression tests (synthetic; not live evidence)
+        run: python3 -m unittest discover -s tests -p 'test_ooda_emergency_probe.py' -v
       - name: Read-only dual endpoint probe
         env:
           CW_RECEIPT_DIR: ${{ runner.temp }}/receipts
