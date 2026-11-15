@@ -120,6 +120,33 @@
           "additionalProperties": {
             "type": "number"
           }
+        },
+        "source_sha256": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "line_receipts": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "required": [
+              "page_index",
+              "excerpt"
+            ],
+            "properties": {
+              "page_index": {
+                "type": "integer",
+                "minimum": 0
+              },
+              "excerpt": {
+                "type": "string",
+                "minLength": 10
+              }
+            }
+          }
         }
       }
     },
@@ -131,7 +158,8 @@
         "width_mm",
         "height_mm",
         "width_pt",
-        "height_pt"
+        "height_pt",
+        "safe_margin_mm"
       ],
       "properties": {
         "standard": {
@@ -148,6 +176,11 @@
         },
         "height_pt": {
           "type": "number"
+        },
+        "safe_margin_mm": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 50
         }
       }
     },
