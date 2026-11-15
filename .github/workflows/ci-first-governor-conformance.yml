@@ -45,9 +45,9 @@ jobs:
           sc = next(x for x in registry['states'] if x['state'] == 'SC')
           assert sc['G0'] == 'PASS_BYTE_CAPTURE_SHA256_READBACK'
           assert sc['issuer_authenticity'] == 'UNKNOWN'
-          print('OFFICIAL LINK CANDIDATES: 4 / 49; G0: 0 / 50; NO NETWORK')
+          print('OFFICIAL LINK CANDIDATES: 4 / 49; G0 SC: 1 / 50; NO NETWORK')
           PY
-      - name: Validate schema and NY reference instance
+      - name: Validate schema and NY plus SC reference instances
         run: |
           python - <<'PY'
           import json
