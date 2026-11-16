@@ -1,0 +1,191 @@
+{
+  "schema": "JASON_HOLD_EVIDENCE_SAMPLE_V0_1",
+  "denominator": {
+    "person": "JASON",
+    "coverage": "BOUNDED_EVIDENCE_SAMPLE",
+    "population": "14 selected source-linked cases, not all holdings or projects",
+    "exclusions": [
+      "Unreviewed repositories/branches and historic records",
+      "Private original voice/chat bytes",
+      "Current live status not rechecked"
+    ]
+  },
+  "source_order": [
+    "PERSON_AND_VOICE",
+    "CHATGPT_ORIGINAL",
+    "GITHUB_VERSIONED",
+    "DRIVE_ORIGINAL",
+    "RETROSPECTIVE"
+  ],
+  "notes": "Source_gate retains exact observed status family; remediation workflow_gate HOLD is applied now. Status may be historical. One reason per case. No proof of whole-estate completeness, new execution or personal learning.",
+  "cases": [
+    {
+      "id": "CHAT_ORIGINAL_CORPUS",
+      "reason_class": "SOURCE_COVERAGE",
+      "evidence_verdict": "UNKNOWN",
+      "workflow_gate": "HOLD",
+      "protective_gate": false,
+      "provenance_class": "DATED_RECORD",
+      "source_gate": "HOLD",
+      "source_locator": "artifacts/JASON_OS_CONVERSATION_COMPILER_INGESTION_STATUS_V0_1.md",
+      "source_observation": "70-message fixture does not establish full original history",
+      "next_test": "Recover genuine original export, then hash source bytes"
+    },
+    {
+      "id": "PR165_RULE",
+      "reason_class": "GOVERNANCE_PROCESS",
+      "evidence_verdict": "UNKNOWN",
+      "workflow_gate": "HOLD",
+      "protective_gate": false,
+      "provenance_class": "DATED_RECORD",
+      "source_gate": "BLOCKED",
+      "source_locator": "reports/PR_165_MERGE_READINESS_REPORT_V0_1.md",
+      "source_observation": "Historical report: verification passing but branch rule reference blocked merge",
+      "next_test": "Recheck current PR/check names and branch protection; never bypass safety rules"
+    },
+    {
+      "id": "CREDENTIAL_PRECEDENCE",
+      "reason_class": "ENVIRONMENT_ACCESS",
+      "evidence_verdict": "UNKNOWN",
+      "workflow_gate": "HOLD",
+      "protective_gate": false,
+      "provenance_class": "DATED_RECORD",
+      "source_gate": "BLOCKED",
+      "source_locator": "docs/runbooks/GITHUB_DIRECT_FIX_V0_1.md",
+      "source_observation": "Runbook describes stale token env overriding GH CLI login; current state not checked",
+      "next_test": "Inspect auth environment without exposing tokens, then run a bounded auth test"
+    },
+    {
+      "id": "IPE_SOURCE_BYTES",
+      "reason_class": "SOURCE_COVERAGE",
+      "evidence_verdict": "UNKNOWN",
+      "workflow_gate": "HOLD",
+      "protective_gate": true,
+      "provenance_class": "DATED_RECORD",
+      "source_gate": "BLOCKED",
+      "source_locator": "docs/ipe-receipt-001-artifact-validation.md",
+      "source_observation": "Original official charter bytes/hash/size/time missing in recorded protocol",
+      "next_test": "Fetch official PDF and independently recompute byte hash before minting"
+    },
+    {
+      "id": "FLYWHEEL_PERSON_INPUT",
+      "reason_class": "SOURCE_COVERAGE",
+      "evidence_verdict": "FAIL",
+      "workflow_gate": "HOLD",
+      "protective_gate": false,
+      "provenance_class": "DIRECT",
+      "source_gate": "NOT_CLAIMED",
+      "source_locator": "SUPREME_SEYMOUR/flywheel/recursive_learning_flywheel_v0_1.py@supreme-seymour/flywheel-v0-1",
+      "source_observation": "Code observes public GitHub heads but does not ingest original voice or chat records",
+      "next_test": "Introduce person-first source manifest and original event-time joins on owning branch"
+    },
+    {
+      "id": "OPERATOR_DELIVERY",
+      "reason_class": "DELIVERY_CONTINUITY",
+      "evidence_verdict": "UNKNOWN",
+      "workflow_gate": "HOLD",
+      "protective_gate": false,
+      "provenance_class": "DIRECT",
+      "source_gate": "NOT_CLAIMED",
+      "source_locator": ".github/workflows/supreme-seymour-flywheel-v0-1.yml@supreme-seymour/flywheel-v0-1",
+      "source_observation": "Workflow uploads ephemeral artifact, not Drive/Gmail delivery or user learning",
+      "next_test": "Preserve durable source-bound receipt and separately test delivery and acknowledgment"
+    },
+    {
+      "id": "ARTIFACT_CURRENTLY_MISSING",
+      "reason_class": "DELIVERY_CONTINUITY",
+      "evidence_verdict": "UNKNOWN",
+      "workflow_gate": "HOLD",
+      "protective_gate": false,
+      "provenance_class": "OPERATOR_OUTPUT",
+      "source_gate": "NOT_LISTED",
+      "source_locator": "GitHub run 35909470288 / PowerShell 2026-11-03",
+      "source_observation": "Original upload logged success, current artifact count zero; cause unknown",
+      "next_test": "Investigate retention audit event; preserve original upload proof"
+    },
+    {
+      "id": "PS_PATH_PRECONDITION",
+      "reason_class": "ENVIRONMENT_ACCESS",
+      "evidence_verdict": "FAIL",
+      "workflow_gate": "HOLD",
+      "protective_gate": false,
+      "provenance_class": "OPERATOR_OUTPUT",
+      "source_gate": "PRECONDITION_FAILED",
+      "source_locator": "PowerShell 2026-11-03 missing Downloads script",
+      "source_observation": "Assistant gave path to file not present on Jason's machine",
+      "next_test": "Check Test-Path before invoking files, prefer inline read-only probes"
+    },
+    {
+      "id": "FIVE_HUNDRED_DAY_COMPLETENESS",
+      "reason_class": "REPLAY_VALIDATION",
+      "evidence_verdict": "FAIL",
+      "workflow_gate": "HOLD",
+      "protective_gate": false,
+      "provenance_class": "DIRECT",
+      "source_gate": "INCOMPLETE",
+      "source_locator": "JASON_AUDIT_OF_THE_AUDIT_ADDENDUM_2026-11-03.json",
+      "source_observation": "500 generated date rows; only 8 with events, zero completely verified",
+      "next_test": "Recover source events, bind each day's prior checkpoint and clocks"
+    },
+    {
+      "id": "ENS_NAME_CONTROL",
+      "reason_class": "IDENTITY_PROOF",
+      "evidence_verdict": "UNKNOWN",
+      "workflow_gate": "HOLD",
+      "protective_gate": true,
+      "provenance_class": "DATED_RECORD",
+      "source_gate": "UNRESOLVED",
+      "source_locator": "ENS_FIRST_RESEARCH_CHECKPOINT_20261001_V0_1.md",
+      "source_observation": "No name-specific signature or ENS control check in Oct 1 research snapshot",
+      "next_test": "Read exact name's registry/resolver on recorded chain/block, verify control separately"
+    },
+    {
+      "id": "CHAIN_LEDGER_JOIN",
+      "reason_class": "IDENTITY_PROOF",
+      "evidence_verdict": "UNKNOWN",
+      "workflow_gate": "HOLD",
+      "protective_gate": true,
+      "provenance_class": "SECONDARY",
+      "source_gate": "HOLD",
+      "source_locator": "FULLMATH_ROOT_TO_ROOF_REPORT.md",
+      "source_observation": "Historical zero common-block inventory+ledger+chain reconciliations",
+      "next_test": "Obtain independent common-block proofs before custody or amount claims"
+    },
+    {
+      "id": "RPC_CONNECTIVITY",
+      "reason_class": "ENVIRONMENT_ACCESS",
+      "evidence_verdict": "UNKNOWN",
+      "workflow_gate": "HOLD",
+      "protective_gate": false,
+      "provenance_class": "SECONDARY",
+      "source_gate": "HOLD",
+      "source_locator": "FULLMATH_ROOT_TO_ROOF_REPORT.md",
+      "source_observation": "Historical network/DNS failure prevented live RPC reads",
+      "next_test": "Read-only retry from accessible endpoint and record exact error/block"
+    },
+    {
+      "id": "VOICE_IMPLEMENTATION",
+      "reason_class": "SOURCE_COVERAGE",
+      "evidence_verdict": "UNKNOWN",
+      "workflow_gate": "HOLD",
+      "protective_gate": false,
+      "provenance_class": "DIRECT",
+      "source_gate": "NOT_IMPLEMENTED",
+      "source_locator": "layers/VOICE_REPUTATION_LAYER_V0_1.json",
+      "source_observation": "Source explicitly declares future vision not implemented or voice authorization verified",
+      "next_test": "Bind original audio/transcript and confirmation, never infer identity from voiceprint"
+    },
+    {
+      "id": "PAYMENT_PROTECTION",
+      "reason_class": "IDENTITY_PROOF",
+      "evidence_verdict": "UNKNOWN",
+      "workflow_gate": "HOLD",
+      "protective_gate": true,
+      "provenance_class": "DATED_RECORD",
+      "source_gate": "BLOCKED",
+      "source_locator": "projects/cwaas/specs/COINBASE_MCP_READINESS_CHECKLIST_V1.md",
+      "source_observation": "Uncompleted checklist protects payments from premature signing",
+      "next_test": "Keep financial action blocked; audit verdict needs no human permission"
+    }
+  ]
+}
