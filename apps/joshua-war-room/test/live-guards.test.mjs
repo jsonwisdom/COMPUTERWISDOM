@@ -1,9 +1,9 @@
 import test from "node:test";
 import assert from "node:assert/strict";
 
-// Immutable staging deployment of JOSHUA owner-enforcement build.
+// Live production deployment of JOSHUA owner-enforcement build.
 // Read-only network tests: do not use a real wallet or any credential.
-const origin="https://joshua-war-room-q8e2x5w6r-jsonwisdoms-projects.vercel.app";
+const origin="https://joshua-war-room.vercel.app";
 test("GET owner attestation is not allowed",async()=>{
  const r=await fetch(origin+"/api/auth?mode=attest");
  assert.equal(r.status,405);
