@@ -1,0 +1,9 @@
+{
+  "name": "joshua-war-room",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "viem": "^2.37.0"
+  }
+}
