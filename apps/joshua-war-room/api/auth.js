@@ -1,3 +1,4 @@
+import {canAuthorize,verifyReplay} from "../lib/authority.js";
 
 import { createHmac, randomBytes, timingSafeEqual, createHash } from "node:crypto";
 import { verifyMessage, createPublicClient, http } from "viem";
@@ -57,14 +58,32 @@ export default async function handler(req,res){
  if(!/^[a-z0-9.-]+(?::[0-9]+)?$/.test(host))return json(res,400,{error:"Invalid host"});
  if(mode==="session"&&req.method==="GET"){
    const session=unseal(cookies(req).joshua_session);
-   if(!session||session.expiresAt<=Date.now()||!validAddress(session.address)||session.host!==host)return json(res,200,{authenticated:false});
+   if(!canAuthorize(session,host))return json(res,200,{authenticated:false});
    return json(res,200,{authenticated:true,address:session.address,verifiedAt:session.verifiedAt,expiresAt:session.expiresAt,proofDigest:session.proofDigest,verification:session.verification,chainId:8453});
  }
- if(!["challenge","verify","logout"].includes(mode)||req.method!=="POST")return json(res,405,{error:"Method not allowed"});
+ if(!["challenge","verify","logout","attest"].includes(mode)||req.method!=="POST")return json(res,405,{error:"Method not allowed"});
  if(!originValid(req,host))return json(res,403,{error:"Origin verification failed."});
  if(mode==="logout"){
   res.setHeader("Set-Cookie",[cookie("joshua_session","",0),cookie("joshua_challenge","",0)]);
   return json(res,200,{authenticated:false});
+ }
+
+ if(mode==="attest"){
+  const session=unseal(cookies(req).joshua_session);
+  if(!canAuthorize(session,host))return json(res,403,{error:"OWNER_DENIED: valid Computer Wisdom PC session required."});
+  const input=req.body&&typeof req.body==="object"?req.body:{};
+  if(input.action!=="attest-replay"||!input.replay||typeof input.replay!=="object")
+   return json(res,400,{error:"Only attest-replay is authorized."});
+  const raw=JSON.stringify(input.replay);
+  if(raw.length>20000)return json(res,413,{error:"Replay too large."});
+  const verified=verifyReplay(input.replay);
+  if(!verified.ok)return json(res,422,{error:"Replay rejected: "+verified.reason});
+  const replayDigest=digest(JSON.stringify(input.replay.state.history)+"|"+JSON.stringify(verified.final));
+  const issuedAt=new Date().toISOString();
+  const witness={case:"CW-JOSHUA-STACK-001",action:"attest-replay",address:session.address,sessionProofDigest:session.proofDigest,
+   replayDigest,turns:verified.turns,final:verified.final,issuedAt,
+   scope:"Server-certified game arithmetic under a wallet-authenticated session. NOT a wallet signature over game turns, original-action proof, or public digital signature."};
+  return json(res,200,{authorized:true,attested:true,receipt:witness,serverMac:seal({kind:"rules-attestation-v1",...witness})});
  }
  const body=req.body&&typeof req.body==="object"?req.body:{};
  if(!validAddress(body.address))return json(res,403,{error:"Select Computer Wisdom PC; a different wallet cannot sign in."});
