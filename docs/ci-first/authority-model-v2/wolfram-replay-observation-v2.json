@@ -1,0 +1,17 @@
+{
+  "authority_created": false,
+  "configurations": 1024,
+  "eligible": 1,
+  "github_actions_execution": "NOT_PERFORMED",
+  "independently_signed": false,
+  "malformed_blocked": 13,
+  "malformed_test_cases": 13,
+  "note": "Recorded from Wolfram tool output. Not a signed external provenance or verification of the bundled file in GitHub Actions.",
+  "production_enforcement": "UNKNOWN",
+  "result": "PASS",
+  "schema": "computerwisdom.ci-first.wolfram-replay-observation.v2",
+  "scope": "separate read-only Wolfram model evaluation",
+  "tool": "WolframLanguageEvaluator",
+  "unauthorized": 0,
+  "unsigned_mutant_leaks": 1
+}

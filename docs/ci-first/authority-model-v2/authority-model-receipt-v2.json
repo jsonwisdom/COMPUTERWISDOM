@@ -1,0 +1,35 @@
+{
+  "authority_created": false,
+  "ci_only": true,
+  "classification_errors": 0,
+  "configurations": 1024,
+  "eligible_configurations": 1,
+  "fixture_classifications": {
+    "all_model_gates_pass": "PASS",
+    "citizen_root_preflight_fail": "FAIL",
+    "human_gate_closed": "HOLD",
+    "issue760_original_bytes_unknown": "UNKNOWN",
+    "pr752_live_unknown": "UNKNOWN",
+    "signing_gate_closed": "HOLD"
+  },
+  "github_actions_run": "NOT_PERFORMED",
+  "independent_wolfram": "SEPARATE_VERIFICATION_REQUIRED",
+  "negative_controls": {
+    "detected": true,
+    "missing_schema_leaks": 9,
+    "missing_signature_leaks": 1
+  },
+  "production_checkout": "NOT_ESTABLISHED",
+  "production_enforcement": "UNKNOWN",
+  "required_branch_check": "NOT_CONFIGURED_BY_PACKAGE",
+  "result": "PASS",
+  "schema": "computerwisdom.ci-first.authority-model.v2",
+  "scope": "synthetic-source-only",
+  "strict_input_validation": {
+    "blocked": 17,
+    "malformed_cases": 17,
+    "result": "PASS"
+  },
+  "unauthorized_eligibility": 0,
+  "wallet_signing_authority": "UNKNOWN"
+}
