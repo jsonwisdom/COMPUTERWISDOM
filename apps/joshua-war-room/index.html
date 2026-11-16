@@ -33,6 +33,12 @@ footer{padding:27px 24px 44px;color:var(--muted);font-size:.78rem;border-top:1px
 <p class="muted" style="font-size:.88rem">Only this address may authenticate. Sign a one-time, five-minute message. The server verifies the signature and issues a 30-minute session. This demonstrates wallet control at signing time—not legal ownership, access to another wallet, or spending authority.</p>
 <div class="row space"><span class="tag" id="proof">SIGNED PROOF: NONE</span><button id="copy-proof" class="tiny subtle" disabled>COPY RECEIPT</button></div>
 </section>
+<section class="panel" id="owner-authority">
+<div class="row space"><div><div class="eyebrow">OWNER AUTHORITY / PROTECTED ACTION</div><h2 style="margin-top:10px">Attest a game replay</h2></div><span class="pill">SERVER-ENFORCED</span></div>
+<p class="model">Only a valid Computer Wisdom PC login may ask the server to independently recompute your fictional D20 game history. It returns an HMAC-authenticated server receipt, not a blockchain transaction or wallet signature on each turn.</p>
+<div class="row"><button class="primary" id="attest" disabled>ATTEST CURRENT REPLAY</button><button class="subtle tiny" id="copy-attestation" hidden>COPY SERVER RECEIPT</button></div>
+<div class="mono" role="status" id="attest-status" style="margin-top:12px;color:var(--gold)">OWNER ACTION LOCKED · SIGN IN FIRST</div>
+</section>
 <section><div class="row space"><div><div class="eyebrow">02 / LIVE SIMULATION</div><h2 style="margin:9px 0 15px">Command the next turn</h2></div><div class="pill">FICTIONAL · NON-OPERATIONAL</div></div>
 <div class="grid">
 <div class="panel"><div class="tag">🛡 DEFENSE READINESS</div><div class="metric" id="defense">60</div><div class="bar"><div class="fill" id="defense-bar" style="width:60%"></div></div><p class="model">Preserve infrastructure and resilience.</p></div>
@@ -74,7 +80,7 @@ function displaySession(s){
  session=s&&s.authenticated?s:null;
  const on=!!session;const badge=on?"SERVER VERIFIED":"UNVERIFIED";
  for(const id of ["top-status","auth-badge"]){const el=$(id);el.classList.toggle("good",on);el.querySelector("span").textContent=badge}
- $("connect").hidden=on;$("logout").hidden=!on;$("copy-proof").disabled=!on;
+ $("connect").hidden=on;$("logout").hidden=!on;$("copy-proof").disabled=!on;$("attest").disabled=!on;
  $("proof").textContent=on?"PROOF SHA-256: "+session.proofDigest.slice(0,20)+"…":"SIGNED PROOF: NONE";
  if(on)notice("Verified: "+session.verification+". Session expires "+new Date(session.expiresAt).toLocaleTimeString()+".");
 }
@@ -115,6 +121,25 @@ async function connect(){
 }
 $("connect").addEventListener("click",connect);
 $("logout").addEventListener("click",async()=>{try{await api("logout","POST",{});displaySession(null);notice("Logged out. Your wallet remains yours.")}catch(e){notice(e.message,true)}});
+
+let lastAttestation=null;
+$("attest").addEventListener("click",async()=>{
+ if(!session){$("attest-status").textContent="OWNER_DENIED: sign in with Computer Wisdom PC.";return;}
+ const button=$("attest");button.disabled=true;
+ $("attest-status").textContent="Verifying replay arithmetic and owner session on the server…";
+ try{
+  const replay={case:"CW-JOSHUA-STACK-001",simulation:"fictional",state};
+  const r=await api("attest","POST",{action:"attest-replay",replay});
+  lastAttestation={...r,verifiedScope:"server HMAC receipt only; not independently verifiable without server key"};
+  $("attest-status").textContent="OWNER PASS · "+r.receipt.turns+" turns recomputed · SHA-256 "+r.receipt.replayDigest.slice(0,18)+"…";
+  $("copy-attestation").hidden=false;
+ }catch(e){$("attest-status").textContent="ATTESTATION FAILED · "+(e.message||String(e));$("copy-attestation").hidden=true;}
+ finally{button.disabled=!session;}
+});
+$("copy-attestation").addEventListener("click",async()=>{
+ if(!lastAttestation)return;
+ try{await navigator.clipboard.writeText(JSON.stringify(lastAttestation,null,2));notice("Owner-authorized rules attestation copied.")}catch{notice("Clipboard unavailable.",true);}
+});
 $("copy-proof").addEventListener("click",async()=>{if(!session)return;const proof={case:"CW-JOSHUA-STACK-001",address:session.address,chainId:8453,verifiedAt:session.verifiedAt,expiresAt:session.expiresAt,verification:session.verification,proofDigest:session.proofDigest,scope:"Login control at signing time; no spending authorization"};try{await navigator.clipboard.writeText(JSON.stringify(proof,null,2));notice("Receipt copied (hash only; no secret or private key).")}catch{notice("Clipboard unavailable.",true)}});
 api("session").then(displaySession).catch(()=>notice("Authentication service unavailable; game remains playable.",true));
 const fresh=()=>({turn:1,defense:60,trust:60,intel:30,points:0,roll:null,status:"TRAINING READY",history:[]});
