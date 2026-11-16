@@ -32,3 +32,12 @@ Case: CW-JOSHUA-STACK-001
 ## Review required before extended release
 - Authenticated real-wallet browser end-to-end test, expired/replayed challenge and origin rejection tests, verification of EIP-1271/6492 behavior if the account is smart-contract based.
 - Cookie/session threat model, rate limits, dependency audit, CI, deterministic scenario replay and receipt provenance.
+
+## Explicit replay selection gate (review branch only)
+- The owner action requires an explicitly previewed **and confirmed** replay; it no longer silently uses browser localStorage.
+- **LOAD VERIFIED 7-TURN FIXTURE** calls read-only `GET /api/fixture`, checks the full original file bytes against SHA-256 `397ea9f7240523f436c4abf3db2a9e115b833a1a7e658fc3a8f728b8095dada3`, previews the seven-turn totals, and requires **CONFIRM THIS REPLAY**.
+- **PREVIEW LOCAL GAME** snapshots the current browser game separately; changes to the local game invalidate that pending/confirmed local selection.
+- `POST /api/auth?mode=attest` requires `source` and `sourceDigest`; the server verifies game rules, compares archived selections to the exact pinned JSON, and binds source + digest into its HMAC-backed receipt.
+- An archive selector does not prove an original human game action; a browser-local selector does not prove original exported file bytes. Neither selector creates public signatures or durable receipts.
+- The live Vercel site remains an inline deployment, not linked to Git CI; publishing these branch edits does **not** change production.
+- Run Node tests and verify Vercel serverless fixture inclusion/end-to-end behavior before considering deployment.

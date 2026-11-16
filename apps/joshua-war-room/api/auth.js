@@ -1,4 +1,5 @@
-import {canAuthorize,verifyReplay} from "../lib/authority.js";
+import {canAuthorize} from "../lib/authority.js";
+import {validateReplaySelection} from "../lib/evidence.js";
 
 import { createHmac, randomBytes, timingSafeEqual, createHash } from "node:crypto";
 import { verifyMessage, createPublicClient, http } from "viem";
@@ -76,13 +77,14 @@ export default async function handler(req,res){
    return json(res,400,{error:"Only attest-replay is authorized."});
   const raw=JSON.stringify(input.replay);
   if(raw.length>20000)return json(res,413,{error:"Replay too large."});
-  const verified=verifyReplay(input.replay);
-  if(!verified.ok)return json(res,422,{error:"Replay rejected: "+verified.reason});
+  const selected=validateReplaySelection(input.replay,input.source,input.sourceDigest);
+  if(!selected.ok)return json(res,422,{error:"Replay selection rejected: "+selected.reason});
+  const verified=selected.rules;
   const replayDigest=digest(JSON.stringify(input.replay.state.history)+"|"+JSON.stringify(verified.final));
   const issuedAt=new Date().toISOString();
   const witness={case:"CW-JOSHUA-STACK-001",action:"attest-replay",address:session.address,sessionProofDigest:session.proofDigest,
-   replayDigest,turns:verified.turns,final:verified.final,issuedAt,
-   scope:"Server-certified game arithmetic under a wallet-authenticated session. NOT a wallet signature over game turns, original-action proof, or public digital signature."};
+   source:selected.source,sourceDigest:selected.sourceDigest,replayDigest,turns:verified.turns,final:verified.final,issuedAt,
+   scope:"Server-validated explicitly selected replay under a wallet-authenticated session. Archive source digest pins exact uploaded file bytes. NOT a wallet signature over game turns, original-action proof, durable record, or public digital signature."};
   return json(res,200,{authorized:true,attested:true,receipt:witness,serverMac:seal({kind:"rules-attestation-v1",...witness})});
  }
  const body=req.body&&typeof req.body==="object"?req.body:{};

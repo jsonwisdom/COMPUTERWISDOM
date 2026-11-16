@@ -36,7 +36,10 @@ footer{padding:27px 24px 44px;color:var(--muted);font-size:.78rem;border-top:1px
 <section class="panel" id="owner-authority">
 <div class="row space"><div><div class="eyebrow">OWNER AUTHORITY / PROTECTED ACTION</div><h2 style="margin-top:10px">Attest a game replay</h2></div><span class="pill">SERVER-ENFORCED</span></div>
 <p class="model">Only a valid Computer Wisdom PC login may ask the server to independently recompute your fictional D20 game history. It returns an HMAC-authenticated server receipt, not a blockchain transaction or wallet signature on each turn.</p>
-<div class="row"><button class="primary" id="attest" disabled>ATTEST CURRENT REPLAY</button><button class="subtle tiny" id="copy-attestation" hidden>COPY SERVER RECEIPT</button></div>
+<p class="model">Choose the exact replay to attest. The archived fixture is read from the server and its original SHA-256 is checked before it can be confirmed. Browser-local game state is never selected automatically.</p>
+<div class="row"><button id="preview-fixture" class="tiny">LOAD VERIFIED 7-TURN FIXTURE</button><button id="preview-local" class="tiny subtle">PREVIEW LOCAL GAME</button><button id="confirm-replay" class="tiny primary" hidden>CONFIRM THIS REPLAY</button></div>
+<div class="mono" id="selection-status" role="status" style="margin:12px 0;color:var(--gold)">NO REPLAY SELECTED</div>
+<div class="row"><button class="primary" id="attest" disabled>ATTEST SELECTED REPLAY</button><button class="subtle tiny" id="copy-attestation" hidden>COPY SERVER RECEIPT</button></div>
 <div class="mono" role="status" id="attest-status" style="margin-top:12px;color:var(--gold)">OWNER ACTION LOCKED · SIGN IN FIRST</div>
 </section>
 <section><div class="row space"><div><div class="eyebrow">02 / LIVE SIMULATION</div><h2 style="margin:9px 0 15px">Command the next turn</h2></div><div class="pill">FICTIONAL · NON-OPERATIONAL</div></div>
@@ -70,6 +73,8 @@ footer{padding:27px 24px 44px;color:var(--muted);font-size:.78rem;border-top:1px
 const OWNER="0x65891F97db01C8fC9F76f4DFE65Bd44F8261f1B0";
 const $=id=>document.getElementById(id);
 let session=null,busy=false,announced=[];
+let selectedReplay=null,pendingReplay=null;
+const PINNED_FIXTURE_SHA256="397ea9f7240523f436c4abf3db2a9e115b833a1a7e658fc3a8f728b8095dada3";
 window.addEventListener("eip6963:announceProvider",e=>{if(e.detail&&e.detail.provider&&!announced.includes(e.detail.provider))announced.push(e.detail.provider)});
 const notice=(s,error=false)=>{const el=$("notice");el.textContent=s;el.className=error?"warn":"ok"};
 async function api(mode,method="GET",body){
@@ -80,7 +85,7 @@ function displaySession(s){
  session=s&&s.authenticated?s:null;
  const on=!!session;const badge=on?"SERVER VERIFIED":"UNVERIFIED";
  for(const id of ["top-status","auth-badge"]){const el=$(id);el.classList.toggle("good",on);el.querySelector("span").textContent=badge}
- $("connect").hidden=on;$("logout").hidden=!on;$("copy-proof").disabled=!on;$("attest").disabled=!on;
+ $("connect").hidden=on;$("logout").hidden=!on;$("copy-proof").disabled=!on;$("attest").disabled=!(on&&selectedReplay);
  $("proof").textContent=on?"PROOF SHA-256: "+session.proofDigest.slice(0,20)+"…":"SIGNED PROOF: NONE";
  if(on)notice("Verified: "+session.verification+". Session expires "+new Date(session.expiresAt).toLocaleTimeString()+".");
 }
@@ -122,19 +127,75 @@ async function connect(){
 $("connect").addEventListener("click",connect);
 $("logout").addEventListener("click",async()=>{try{await api("logout","POST",{});displaySession(null);notice("Logged out. Your wallet remains yours.")}catch(e){notice(e.message,true)}});
 
+// Replay preview and confirmation are distinct. Never attest an implicit localStorage value.
+async function sha256Hex(bytes){
+ const d=await crypto.subtle.digest("SHA-256",bytes);
+ return Array.from(new Uint8Array(d),b=>b.toString(16).padStart(2,"0")).join("");
+}
+function showReplayPreview(replay,source,sourceDigest){
+ if(!replay||replay.case!=="CW-JOSHUA-STACK-001"||replay.simulation!=="fictional"||
+    !replay.state||!Array.isArray(replay.state.history))throw Error("Invalid replay fixture");
+ if(source==="archived-seven-turn"&&(replay.state.history.length!==7||replay.state.turn!==8||
+    replay.state.defense!==32||replay.state.trust!==47||replay.state.intel!==58||replay.state.points!==110))
+    throw Error("Seven-turn archived fixture metrics do not match");
+ pendingReplay={source,sourceDigest,replay};
+ selectedReplay=null;
+ $("attest").disabled=true;
+ $("copy-attestation").hidden=true;
+ $("confirm-replay").hidden=false;
+ $("selection-status").textContent="PREVIEW · "+source+" · "+replay.state.history.length+" turns · D/T/I "+
+  replay.state.defense+"/"+replay.state.trust+"/"+replay.state.intel+
+  " · points "+replay.state.points+" · SHA-256 "+sourceDigest+". Confirm to select.";
+}
+$("preview-fixture").addEventListener("click",async()=>{
+ const button=$("preview-fixture");button.disabled=true;
+ try {
+  const response=await fetch("/api/fixture",{cache:"no-store",credentials:"same-origin"});
+  if(!response.ok)throw Error("Archive endpoint unavailable: HTTP "+response.status);
+  const bytes=await response.arrayBuffer(), hash=await sha256Hex(bytes);
+  if(hash!==PINNED_FIXTURE_SHA256)throw Error("Archived fixture byte-integrity mismatch");
+  showReplayPreview(JSON.parse(new TextDecoder().decode(bytes)),"archived-seven-turn",hash);
+ }catch(e){pendingReplay=null;selectedReplay=null;$("confirm-replay").hidden=true;$("attest").disabled=true;
+  $("selection-status").textContent="FIXTURE REJECTED · "+(e.message||String(e));}
+ finally{button.disabled=false}
+});
+$("preview-local").addEventListener("click",async()=>{
+ try {
+  const replay=JSON.parse(JSON.stringify({case:"CW-JOSHUA-STACK-001",simulation:"fictional",state}));
+  const bytes=new TextEncoder().encode(JSON.stringify(replay));
+  showReplayPreview(replay,"browser-local",await sha256Hex(bytes));
+ }catch(e){$("selection-status").textContent="LOCAL PREVIEW REJECTED · "+(e.message||String(e))}
+});
+$("confirm-replay").addEventListener("click",()=>{
+ if(!pendingReplay)return;
+ selectedReplay=pendingReplay;pendingReplay=null;
+ $("confirm-replay").hidden=true;
+ $("attest").disabled=!session;
+ $("selection-status").textContent="CONFIRMED · "+selectedReplay.source+" · "+
+   selectedReplay.replay.state.history.length+" turns · "+selectedReplay.replay.state.points+
+   " points · SHA-256 "+selectedReplay.sourceDigest+". Ready to attest selected snapshot.";
+});
+function invalidateLocalSelection(){
+ if((selectedReplay&&selectedReplay.source==="browser-local")||(pendingReplay&&pendingReplay.source==="browser-local")){
+  pendingReplay=null;selectedReplay=null;$("confirm-replay").hidden=true;$("attest").disabled=true;
+  $("selection-status").textContent="LOCAL GAME CHANGED · preview and confirm again.";
+ }
+}
+
 let lastAttestation=null;
 $("attest").addEventListener("click",async()=>{
  if(!session){$("attest-status").textContent="OWNER_DENIED: sign in with Computer Wisdom PC.";return;}
+ if(!selectedReplay){$("attest-status").textContent="REPLAY_DENIED: preview and confirm a replay first.";return;}
  const button=$("attest");button.disabled=true;
  $("attest-status").textContent="Verifying replay arithmetic and owner session on the server…";
  try{
-  const replay={case:"CW-JOSHUA-STACK-001",simulation:"fictional",state};
-  const r=await api("attest","POST",{action:"attest-replay",replay});
+  const {replay,source,sourceDigest}=selectedReplay;
+  const r=await api("attest","POST",{action:"attest-replay",replay,source,sourceDigest});
   lastAttestation={...r,verifiedScope:"server HMAC receipt only; not independently verifiable without server key"};
   $("attest-status").textContent="OWNER PASS · "+r.receipt.turns+" turns recomputed · SHA-256 "+r.receipt.replayDigest.slice(0,18)+"…";
   $("copy-attestation").hidden=false;
  }catch(e){$("attest-status").textContent="ATTESTATION FAILED · "+(e.message||String(e));$("copy-attestation").hidden=true;}
- finally{button.disabled=!session;}
+ finally{button.disabled=!(session&&selectedReplay);}
 });
 $("copy-attestation").addEventListener("click",async()=>{
  if(!lastAttestation)return;
@@ -166,10 +227,10 @@ function act(type){
  const loss=5+(state.turn%3)*2;state.defense=clamp(state.defense-loss);state.trust=clamp(state.trust-(state.turn%2?2:4));
  state.status=state.trust===0||state.defense===0?"SCENARIO LOST — REBUILD TRUST":state.points>=240?"SCENARIO WON — CONFLICT DE-ESCALATED":success?"PASS — CIVILIAN SAFETY IMPROVED":"SETBACK — RETRY STRATEGY";
  state.history.push("T"+state.turn+" "+m.name+" d20="+roll+" +"+m.mod+" => "+(success?"PASS":"FAIL")+" | "+ai);
- state.turn++;render();if(state.points>=240)notice("Victory threshold reached. Continue practicing or export replay.");
+ state.turn++;invalidateLocalSelection();render();if(state.points>=240)notice("Victory threshold reached. Continue practicing or export replay.");
 }
 document.querySelectorAll("[data-move]").forEach(b=>b.addEventListener("click",()=>act(b.dataset.move)));
-$("reset").addEventListener("click",()=>{state=fresh();render();notice("Simulation reset. No wallet or chain changes.")});
+$("reset").addEventListener("click",()=>{state=fresh();invalidateLocalSelection();render();notice("Simulation reset. No wallet or chain changes.")});
 $("export").addEventListener("click",()=>{const data={case:"CW-JOSHUA-STACK-001",simulation:"fictional",exportedAt:new Date().toISOString(),walletAuthenticated:!!session,state};const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const u=URL.createObjectURL(blob);const a=document.createElement("a");a.href=u;a.download="joshua-war-room-replay.json";a.click();setTimeout(()=>URL.revokeObjectURL(u),500)});
 render();
 })();
