@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#08121e"><title>JOSHUA / WAR ROOM — Computer Wisdom</title>
+<style>
+:root{color-scheme:dark;--bg:#080f19;--panel:#111e2c;--line:#29394a;--text:#edf5f9;--muted:#9eb0bc;--mint:#a5ffd1;--gold:#fbd88b;--red:#fc858d}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 65% 0,#18324a 0,transparent 40%),var(--bg);color:var(--text);font-family:Inter,ui-sans-serif,system-ui,Arial,sans-serif;line-height:1.45}
+header,main,footer{max-width:1160px;margin:auto;padding:0 24px}header{display:flex;align-items:center;justify-content:space-between;min-height:86px;border-bottom:1px solid #263747;gap:12px}
+.logo{font-weight:850;letter-spacing:.19em;font-size:1.25rem}.logo span{color:var(--mint)}.tag{font:600 .68rem ui-monospace,monospace;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(2.5rem,6vw,5rem);letter-spacing:-.065em;line-height:1.04;margin:10px 0 14px}h2{letter-spacing:-.035em;font-size:1.3rem;margin:0 0 15px}h3{font-size:1rem;margin:0 0 10px}.accent{color:var(--mint)}.lead{color:#c2d0d8;max-width:610px;font-size:1.07rem}
+.hero{padding:56px 0 34px}.eyebrow{color:var(--mint);letter-spacing:.2em;text-transform:uppercase;font:700 .77rem ui-monospace,monospace}
+button{font:700 .9rem inherit;font-family:inherit;font-weight:750;letter-spacing:.025em;border:1px solid #435b6e;border-radius:8px;background:#1b3042;color:var(--text);padding:12px 18px;cursor:pointer;transition:.15s}button:hover:not(:disabled){transform:translateY(-1px);border-color:var(--mint)}button:disabled{cursor:wait;opacity:.6}.primary{background:var(--mint);color:#092319;border-color:var(--mint)}.subtle{background:transparent}.tiny{font-size:.8rem;padding:8px 11px}.row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}.space{justify-content:space-between}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.panel{border:1px solid var(--line);background:linear-gradient(150deg,#142438 0%,#0f1b2a 100%);border-radius:14px;padding:22px;box-shadow:0 14px 50px #0002}.panel.light{background:#17293a}
+.status{display:inline-flex;align-items:center;gap:8px;border:1px solid #486076;border-radius:99px;padding:7px 12px;font:700 .71rem ui-monospace,monospace;color:var(--muted)}.dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}.status.good{color:var(--mint);border-color:#37765f}.status.good .dot{background:var(--mint)}
+section{margin:28px 0 34px}.metric{font-size:2rem;font-weight:830;letter-spacing:-.07em}.muted{color:var(--muted)}.mono{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;overflow-wrap:anywhere;font-size:.88rem}
+.divider{height:1px;background:var(--line);margin:18px 0}.pill{font:700 .71rem ui-monospace,monospace;color:var(--gold);letter-spacing:.09em}
+.bar{height:8px;background:#27394b;border-radius:10px;overflow:hidden;margin:8px 0 15px}.fill{height:100%;background:linear-gradient(90deg,#50a891,var(--mint));transition:width .28s}
+.turn{font-size:3rem;font-weight:850;letter-spacing:-.05em}.controls{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}.controls button{min-height:65px}.log{background:#080f19;border:1px solid var(--line);padding:16px;border-radius:9px;max-height:200px;overflow:auto;min-height:100px}.log p{font: .82rem/1.5 ui-monospace,monospace;margin:0 0 8px;color:#bacdd5}
+#notice{margin-top:12px;min-height:25px;font-size:.88rem;color:var(--gold);white-space:pre-wrap}.warn{color:var(--red)}.ok{color:var(--mint)}
+.wallet-id{font: .83rem ui-monospace,monospace;background:#08131f;border:1px solid #2b4050;border-radius:6px;padding:11px;overflow-wrap:anywhere}
+footer{padding:27px 24px 44px;color:var(--muted);font-size:.78rem;border-top:1px solid var(--line)}.price{font-size:1.8rem;font-weight:800}.model{color:var(--muted);font-size:.89rem}
+@media(max-width:760px){header{padding:16px 18px;flex-wrap:wrap}.grid{grid-template-columns:1fr}.hero{padding-top:40px}.controls{grid-template-columns:1fr}main{padding:0 17px}.row.space{align-items:flex-start}h1{font-size:3rem}}
+</style></head>
+<body>
+<header><div><div class="logo">JOSHUA<span> / </span>WAR ROOM</div><div class="tag">A Computer Wisdom research system</div></div>
+<div id="top-status" class="status"><i class="dot"></i><span>WALLET NOT VERIFIED</span></div></header>
+<main>
+<section class="hero"><div class="eyebrow">CW-JOSHUA-STACK-001 · SIMULATION V1</div><h1>THE ONLY WINNING MOVE<br><span class="accent">IS TO BUILD BETTER.</span></h1>
+<p class="lead">A playable strategy lab with dice, AI counter-moves, evidence receipts, and a cryptographically verified Computer Wisdom PC sign-in. Fictional simulations. Real verification.</p>
+<div class="row" style="margin-top:22px"><button class="primary" id="connect">CONNECT & SIGN · BASE</button><button id="logout" class="subtle" hidden>LOG OUT</button><span class="tag">EIP-191 · NO TRANSACTIONS · NO GAS</span></div><div id="notice" role="status" aria-live="polite"></div>
+</section>
+<section class="panel light" id="identity"><div class="row space"><div><div class="eyebrow">01 / WALLET AUTHORITY</div><h2 style="margin:10px 0">Computer Wisdom PC</h2></div><span id="auth-badge" class="status"><i class="dot"></i><span>UNVERIFIED</span></span></div>
+<div class="wallet-id" id="address">0x65891F97db01C8fC9F76f4DFE65Bd44F8261f1B0</div>
+<p class="muted" style="font-size:.88rem">Only this address may authenticate. Sign a one-time, five-minute message. The server verifies the signature and issues a 30-minute session. This demonstrates wallet control at signing time—not legal ownership, access to another wallet, or spending authority.</p>
+<div class="row space"><span class="tag" id="proof">SIGNED PROOF: NONE</span><button id="copy-proof" class="tiny subtle" disabled>COPY RECEIPT</button></div>
+</section>
+<section><div class="row space"><div><div class="eyebrow">02 / LIVE SIMULATION</div><h2 style="margin:9px 0 15px">Command the next turn</h2></div><div class="pill">FICTIONAL · NON-OPERATIONAL</div></div>
+<div class="grid">
+<div class="panel"><div class="tag">🛡 DEFENSE READINESS</div><div class="metric" id="defense">60</div><div class="bar"><div class="fill" id="defense-bar" style="width:60%"></div></div><p class="model">Preserve infrastructure and resilience.</p></div>
+<div class="panel"><div class="tag">🤝 CIVILIAN TRUST</div><div class="metric" id="trust">60</div><div class="bar"><div class="fill" id="trust-bar" style="width:60%"></div></div><p class="model">Keep legitimacy above zero.</p></div>
+<div class="panel"><div class="tag">🧠 VERIFIED INTEL</div><div class="metric" id="intel">30</div><div class="bar"><div class="fill" id="intel-bar" style="width:30%"></div></div><p class="model">Improve decisions, not escalation.</p></div>
+</div>
+</section>
+<section class="grid" style="grid-template-columns: minmax(0,2fr) minmax(260px,1fr)">
+<div class="panel">
+<div class="row space"><div><span class="tag">TURN <span id="turn">01</span> / STRATEGY</span><h2 style="margin-top:10px">Make your move</h2></div><span class="pill" id="rank">CADET</span></div>
+<p class="model">Roll d20 + your strategy modifier vs. difficulty 12. Falken counters each move. Scores are fictional and saved locally.</p>
+<div class="controls" style="margin:22px 0"><button data-move="diplomacy">🤝 DIPLOMACY<br><span class="tag">+4 · TRUST</span></button><button data-move="fortify">🛡 FORTIFY<br><span class="tag">+3 · DEFENSE</span></button><button data-move="recon">🔎 RECON<br><span class="tag">+2 · INTEL</span></button></div>
+<div class="divider"></div><div class="row space"><div><span class="tag">D20 / LAST ROLL</span><div class="turn" id="roll">—</div></div><div><span class="tag">TOTAL POINTS</span><div class="turn" id="points">0</div></div></div>
+<div class="row" style="margin-top:15px"><button id="reset" class="tiny subtle">RESET SIMULATION</button><button id="export" class="tiny subtle">EXPORT LOCAL REPLAY</button></div>
+</div>
+<div class="panel"><div class="eyebrow">FALKEN / COUNTER-MOVE</div><h2 style="margin-top:10px">Scenario feed</h2><div class="log" id="log" aria-live="polite"><p>NO ACTIVE ORDERS. SELECT A STRATEGY TO BEGIN.</p></div><div class="divider"></div>
+<div class="tag">GAME STATE</div><p id="outcome" class="mono" style="color:var(--mint)">TRAINING READY</p>
+<p class="model">No military system, real-world targeting, financial transaction, or blockchain state is controlled here.</p></div>
+</section>
+<section><div class="eyebrow">03 / BUSINESS MODEL · PROPOSED</div><h2 style="margin:10px 0 16px">Build the economy after trust</h2>
+<div class="grid"><div class="panel"><div class="tag">FREE / LEARN</div><div class="price">$0</div><p class="model">Public practice missions, dice, and reproducible local replays.</p></div>
+<div class="panel"><div class="tag">CREATOR / FUTURE</div><div class="price">PLANNED</div><p class="model">Scenario editor, private campaigns, and collaborative rooms. No payment collection.</p></div>
+<div class="panel"><div class="tag">INSTITUTIONAL / FUTURE</div><div class="price">PLANNED</div><p class="model">Audited training licenses and integrity reporting. No contracts or checkout live.</p></div></div>
+</section>
+</main><footer>JOSHUA WAR ROOM · Computer Wisdom · CI-FIRST · Wallet verification is not transfer authorization. Separate from JOSHUA/Falken research PR #768 and the local Solidity evidence registry.</footer>
+<script>
+(function(){
+"use strict";
+const OWNER="0x65891F97db01C8fC9F76f4DFE65Bd44F8261f1B0";
+const $=id=>document.getElementById(id);
+let session=null,busy=false,announced=[];
+window.addEventListener("eip6963:announceProvider",e=>{if(e.detail&&e.detail.provider&&!announced.includes(e.detail.provider))announced.push(e.detail.provider)});
+const notice=(s,error=false)=>{const el=$("notice");el.textContent=s;el.className=error?"warn":"ok"};
+async function api(mode,method="GET",body){
+ const r=await fetch("/api/auth?mode="+mode,{method,headers:method==="POST"?{"Content-Type":"application/json"}:{},body:body?JSON.stringify(body):undefined,credentials:"same-origin",cache:"no-store"});
+ const j=await r.json().catch(()=>({error:"Invalid server reply"}));if(!r.ok)throw Error(j.error||"Authentication request failed");return j;
+}
+function displaySession(s){
+ session=s&&s.authenticated?s:null;
+ const on=!!session;const badge=on?"SERVER VERIFIED":"UNVERIFIED";
+ for(const id of ["top-status","auth-badge"]){const el=$(id);el.classList.toggle("good",on);el.querySelector("span").textContent=badge}
+ $("connect").hidden=on;$("logout").hidden=!on;$("copy-proof").disabled=!on;
+ $("proof").textContent=on?"PROOF SHA-256: "+session.proofDigest.slice(0,20)+"…":"SIGNED PROOF: NONE";
+ if(on)notice("Verified: "+session.verification+". Session expires "+new Date(session.expiresAt).toLocaleTimeString()+".");
+}
+function provider(){
+ const arr=[...announced];
+ if(window.ethereum&&Array.isArray(window.ethereum.providers))arr.push(...window.ethereum.providers);
+ if(window.ethereum)arr.push(window.ethereum);
+ if(window.coinbaseWalletExtension)arr.push(window.coinbaseWalletExtension);
+ return arr.find(p=>p&&p.isCoinbaseWallet)||arr.find(p=>p&&typeof p.request==="function")||null;
+}
+async function connect(){
+ if(busy)return;busy=true;$("connect").disabled=true;
+ try {
+  notice("Finding Coinbase Wallet…");
+  window.dispatchEvent(new Event("eip6963:requestProvider"));
+  await new Promise(r=>setTimeout(r,160));
+  const p=provider();if(!p)throw Error("No browser wallet found. Open this site in Chrome with the Coinbase Wallet extension.");
+  const accounts=await p.request({method:"eth_requestAccounts"});
+  const address=accounts.find(a=>a.toLowerCase()===OWNER.toLowerCase());
+  if(!address)throw Error("Different account selected. In Coinbase Wallet select Computer Wisdom PC ("+OWNER.slice(0,8)+"…"+OWNER.slice(-6)+") and retry.");
+  let chain=await p.request({method:"eth_chainId"});
+  if(parseInt(chain,16)!==8453){
+    notice("Confirm switching to Base in your wallet…");
+    try{await p.request({method:"wallet_switchEthereumChain",params:[{chainId:"0x2105"}]})}
+    catch(e){
+      if(e.code!==4902)throw Error("Base network selection was not approved.");
+      await p.request({method:"wallet_addEthereumChain",params:[{chainId:"0x2105",chainName:"Base",rpcUrls:["https://mainnet.base.org"],nativeCurrency:{name:"Ether",symbol:"ETH",decimals:18},blockExplorerUrls:["https://basescan.org"]}]});
+    }
+  }
+  notice("Requesting a single, non-transactional login signature…");
+  const challenge=await api("challenge","POST",{address});
+  const signature=await p.request({method:"personal_sign",params:[challenge.message,address]});
+  notice("Verifying signature on the server…");
+  const verified=await api("verify","POST",{address,message:challenge.message,signature});
+  displaySession(verified);
+ } catch(e){notice(e.message||String(e),true)}
+ finally{busy=false;$("connect").disabled=false}
+}
+$("connect").addEventListener("click",connect);
+$("logout").addEventListener("click",async()=>{try{await api("logout","POST",{});displaySession(null);notice("Logged out. Your wallet remains yours.")}catch(e){notice(e.message,true)}});
+$("copy-proof").addEventListener("click",async()=>{if(!session)return;const proof={case:"CW-JOSHUA-STACK-001",address:session.address,chainId:8453,verifiedAt:session.verifiedAt,expiresAt:session.expiresAt,verification:session.verification,proofDigest:session.proofDigest,scope:"Login control at signing time; no spending authorization"};try{await navigator.clipboard.writeText(JSON.stringify(proof,null,2));notice("Receipt copied (hash only; no secret or private key).")}catch{notice("Clipboard unavailable.",true)}});
+api("session").then(displaySession).catch(()=>notice("Authentication service unavailable; game remains playable.",true));
+const fresh=()=>({turn:1,defense:60,trust:60,intel:30,points:0,roll:null,status:"TRAINING READY",history:[]});
+let state;try{state=Object.assign(fresh(),JSON.parse(localStorage.getItem("joshua-game-v1")||"null")||{});if(!Array.isArray(state.history)||!Number.isInteger(state.turn))state=fresh()}catch{state=fresh()}
+const clamp=n=>Math.max(0,Math.min(100,n));
+function render(){
+ for(const k of ["defense","trust","intel"]){$(k).textContent=state[k];$(k+"-bar").style.width=state[k]+"%"}
+ $("turn").textContent=String(state.turn).padStart(2,"0");$("points").textContent=state.points;$("roll").textContent=state.roll??"—";
+ $("rank").textContent=state.points>=200?"COMMANDER":state.points>=100?"STRATEGIST":state.points>=40?"ANALYST":"CADET";
+ $("outcome").textContent=state.status;
+ const log=$("log");log.replaceChildren();
+ if(!state.history.length){const p=document.createElement("p");p.textContent="NO ACTIVE ORDERS. SELECT A STRATEGY TO BEGIN.";log.append(p)}
+ for(const item of state.history.slice(-9).reverse()){const p=document.createElement("p");p.textContent=item;log.append(p)}
+ try{localStorage.setItem("joshua-game-v1",JSON.stringify(state))}catch{}
+}
+const moves={diplomacy:{mod:4,key:"trust",name:"DIPLOMACY"},fortify:{mod:3,key:"defense",name:"FORTIFY"},recon:{mod:2,key:"intel",name:"RECON"}};
+function d20(){const b=new Uint32Array(1);const lim=Math.floor(4294967296/20)*20;do{crypto.getRandomValues(b)}while(b[0]>=lim);return b[0]%20+1}
+function act(type){
+ const m=moves[type];if(!m)return;if(state.trust===0||state.defense===0){notice("Scenario closed. Reset simulation to play again.",true);return}
+ const roll=d20(),total=roll+m.mod,success=total>=12;
+ state.roll=roll;state.points+=success?20:5;
+ state[m.key]=clamp(state[m.key]+(success?14:-7));
+ const ai=["Falken launches an information challenge.","Falken increases resource pressure.","Falken offers a difficult compromise."][(state.turn-1)%3];
+ const loss=5+(state.turn%3)*2;state.defense=clamp(state.defense-loss);state.trust=clamp(state.trust-(state.turn%2?2:4));
+ state.status=state.trust===0||state.defense===0?"SCENARIO LOST — REBUILD TRUST":state.points>=240?"SCENARIO WON — CONFLICT DE-ESCALATED":success?"PASS — CIVILIAN SAFETY IMPROVED":"SETBACK — RETRY STRATEGY";
+ state.history.push("T"+state.turn+" "+m.name+" d20="+roll+" +"+m.mod+" => "+(success?"PASS":"FAIL")+" | "+ai);
+ state.turn++;render();if(state.points>=240)notice("Victory threshold reached. Continue practicing or export replay.");
+}
+document.querySelectorAll("[data-move]").forEach(b=>b.addEventListener("click",()=>act(b.dataset.move)));
+$("reset").addEventListener("click",()=>{state=fresh();render();notice("Simulation reset. No wallet or chain changes.")});
+$("export").addEventListener("click",()=>{const data={case:"CW-JOSHUA-STACK-001",simulation:"fictional",exportedAt:new Date().toISOString(),walletAuthenticated:!!session,state};const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const u=URL.createObjectURL(blob);const a=document.createElement("a");a.href=u;a.download="joshua-war-room-replay.json";a.click();setTimeout(()=>URL.revokeObjectURL(u),500)});
+render();
+})();
+</script></body></html>
