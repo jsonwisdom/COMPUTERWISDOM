@@ -1,0 +1,39 @@
+{
+  "schema":"CW_WOPR89_P2_TEST_RECEIPT_V1",
+  "case_id":"CW-JOSHUA-ENGLAND-WOPR-89",
+  "execution_date_utc":"2026-11-16",
+  "p1_seal_commit":"85ed3fbf63e115f6493a571512d6a406499c2fd3",
+  "executor":"local CPython unittest, independent implementation from documented proposed algorithm",
+  "input_class":"synthetic deterministic public-safe fixtures ONLY",
+  "tests_executed":14,
+  "tests_passed":14,
+  "tests_failed":0,
+  "result":"PASS_SYNTHETIC_ONLY",
+  "test_file_sha256":"8c7d8c9425e930f0571997776f62c3d9ef8974aa3fb854d51047ae8a73152657",
+  "test_report_sha256":"73fe5e1a20be458166c408802b0d26fdc6b5386cab874fd224977c542718ad85",
+  "coverage":[
+    "89_day_epoch_boundaries",
+    "day45_reverse_fixed_point",
+    "forward_reverse_89_day_fixture",
+    "epoch_increment_without_erasure",
+    "prime17_prime89_and_count_24",
+    "joint_17x89_phase_1513_days",
+    "delta17_matching_bytes",
+    "delta17_same_length_mutation",
+    "delta17_missing_or_untrusted_bytes_unknown",
+    "contradictory_evidence_preserved",
+    "unsupported_claim_unknown",
+    "pass_requires_source_and_independent_replay",
+    "fail_requires_verified_counterevidence"
+  ],
+  "limitations":{
+    "external_independent_execution":"NOT_RUN",
+    "full_public_source_historical_89_day_inputs":"NOT_AVAILABLE_IN_THIS_TEST",
+    "onchain_verification":"NOT_RUN",
+    "real_world_intelligence_claims":"UNKNOWN",
+    "operational_circuit_readiness":"UNKNOWN"
+  },
+  "authority_created":false,
+  "promotion":"HOLD_REAL_WORLD_CLAIMS",
+  "default_branch_unchanged":true
+}
