@@ -1,0 +1,10 @@
+﻿{
+    "artifact":  "CLAUDE_CODE_20_GATE",
+    "observed_state":  "BLOCKED_BY_EXTERNAL_SUBSCRIPTION",
+    "requested_by_jay":  false,
+    "paid":  false,
+    "repo_blocked":  false,
+    "profits_machine_blocked":  false,
+    "disposition":  "BYPASS",
+    "authority_created":  false
+}

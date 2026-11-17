@@ -89,5 +89,52 @@
     "central_authority": false,
     "promotion_status": false,
     "independently_verified_by_assistant": false
+  },
+  "family_creative_loop": {
+    "doctrine": "WISDOM_FAMILY_CREATIVE_COVENANT_V0_1",
+    "source_repo": "jsonwisdom/JOY",
+    "source_path": "docs/games/WISDOM_FAMILY_CREATIVE_COVENANT_V0_1.md",
+    "goal": "MAKE_ONE_THING_WORTHY_TOGETHER",
+    "loop": [
+      "ARTIST_PITCH",
+      "ONE_RENDER",
+      "CHILD_REACTION",
+      "PARENT_REVIEW",
+      "REVISION_MISSION",
+      "FAMILY_VOTE",
+      "CREATOR_CONSENT",
+      "PARENT_GUARDIAN_APPROVAL_WHEN_REQUIRED",
+      "DEPICTED_PERSON_CONSENT_WHEN_REQUIRED",
+      "PUBLIC_RELEASE"
+    ],
+    "unattended_render_loop": false,
+    "human_feedback_between_renders": true,
+    "vote_overrides_personal_consent": false,
+    "always_on_audit": "EVENT_LOG_AUDIT_ONLY",
+    "hidden_family_surveillance": false,
+    "token": {
+      "id": "WISDOM_SEED",
+      "class": "NON_TRANSFERABLE_REPUTATION_POINT",
+      "cash_value": false,
+      "transferable": false,
+      "redeemable_for_money": false,
+      "wagering": false,
+      "fans_are_investors": false
+    },
+    "prediction_game": {
+      "form": "FORECAST_TO_REPUTATION",
+      "real_money_market": false,
+      "child_outcome_wagering": false
+    },
+    "family_values": {
+      "mothers_sacred": "FAMILY_HONOR_LANGUAGE",
+      "fathers_godly": "FAMILY_HONOR_LANGUAGE",
+      "literal_divinity": false,
+      "conduct_claims_receipt_bound": true,
+      "human_worth_scoring": false
+    },
+    "full_math_first": true,
+    "ens_before_dns": true,
+    "authority": false
   }
 }

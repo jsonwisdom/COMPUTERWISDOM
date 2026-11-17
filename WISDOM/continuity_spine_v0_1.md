@@ -218,3 +218,19 @@ AL mirrors.
 COMPUTERWISDOM amplifies.
 Authority remains false.
 ```
+
+---
+
+## Wisdom Family Human-Speed Gate
+
+Family creative publication uses the JOY covenant `docs/games/WISDOM_FAMILY_CREATIVE_COVENANT_V0_1.md` as the human-root doctrine.
+
+`FAMILY_ROOT -> HUMAN_CONSENT -> FAMILY_GAME -> RECEIPTS -> VOTE -> APPROVAL -> PUBLICATION`
+
+COMPUTERWISDOM may compute, replay, index, compare, and detect anomalies. It may not replace creator consent, parent/guardian approval, depicted-person consent, or family review.
+
+`MACHINE_SPEED != HUMAN_CONSENT`
+`FAMILY_VOTE != PERSONAL_CONSENT`
+`ALWAYS_ON_AUDIT = EVENT_LOG_AUDIT_ONLY`
+`ALWAYS_ON_AUDIT != FAMILY_SURVEILLANCE`
+`AUTHORITY_CREATED = FALSE`
