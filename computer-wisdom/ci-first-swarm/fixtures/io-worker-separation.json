@@ -1,0 +1,61 @@
+{
+  "schema": "computerwisdom.ci-first.case.v1",
+  "case_id": "jsonwisdom-io-separation-20261108",
+  "mode": "offline_fixture",
+  "canon": false,
+  "authority_created": false,
+  "evidence": [
+    {
+      "id": "cf-worker-domain-snapshot",
+      "kind": "historical_fixture",
+      "uri": "fixture://cloudflare/2026-11-08/custom-domain-mapping",
+      "content": "proof.jsonwisdom.io=jasons-dns-burden-of-proof\nseymour.jsonwisdom.io=jasons-dns-burden-of-proof\nsupreme.jsonwisdom.io=seymour-supreme-public\n",
+      "sha256": "7025582fa5200acb6b7cb0cb24f58b0796ac899fd916bd5c55fa4ee624edf073"
+    }
+  ],
+  "claims": [
+    {
+      "id": "existing-io-independent",
+      "subject": "current-io-mapping",
+      "evidence_ids": [
+        "cf-worker-domain-snapshot"
+      ],
+      "rule": "disjoint",
+      "left": [
+        "jasons-dns-burden-of-proof",
+        "seymour-supreme-public"
+      ],
+      "right": [
+        "jasons-dns-burden-of-proof",
+        "seymour-supreme-public"
+      ],
+      "expect": true
+    },
+    {
+      "id": "candidate-io-independent-script-ids",
+      "subject": "proposed-io-mapping",
+      "evidence_ids": [
+        "cf-worker-domain-snapshot"
+      ],
+      "rule": "disjoint",
+      "left": [
+        "jw-io-proof-seymour-v1",
+        "jw-io-supreme-v1"
+      ],
+      "right": [
+        "jasons-dns-burden-of-proof",
+        "seymour-supreme-public"
+      ],
+      "expect": true
+    },
+    {
+      "id": "live-runtime-evidence",
+      "subject": "production-http",
+      "evidence_ids": [
+        "cf-worker-domain-snapshot"
+      ],
+      "rule": "requires_live_http",
+      "expect": true
+    }
+  ]
+}
