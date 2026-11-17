@@ -1,0 +1,15 @@
+import fs from 'node:fs';
+import assert from 'node:assert/strict';
+const path = new URL('./review.json', import.meta.url);
+const data=JSON.parse(fs.readFileSync(path,'utf8'));
+const isHash=(x)=>/^[0-9a-f]{64}$/i.test(x);
+const valid=new Set(['PASS','FAIL','UNKNOWN']);
+for(const x of [data.frontB.ek_cert_sha256,data.frontB.intermediate_sha256,data.frontB.root_sha256]) assert.ok(isHash(x),'Malformed SHA256 fingerprint');
+for(const x of [data.frontA.historical_pc_eip191,data.frontA.live_pc_eip191,data.frontA.ens_control,data.frontB.original_der_bytes,data.frontB.manufacturer_root,data.frontB.revocation,data.frontB.credential_activation,data.frontB.pcr_quote]) assert.ok(valid.has(x),'Unsupported verdict');
+assert.notEqual(data.frontA.historical_pc_signer.toLowerCase(),data.frontA.historical_basename_recipient.toLowerCase(),'Do not conflate wallets');
+assert.equal(data.frontA.eas_auth_claimed,false);
+assert.equal(data.authority_created,false);
+assert.equal(data.deployed,false);
+assert.notEqual(data.frontB.manufacturer_root,'PASS','Never assert manufacturer PASS without DER and independent validation');
+assert.notEqual(data.frontB.credential_activation,'PASS','Never assert TPM activation PASS without a verified ceremony');
+console.log('PASS: review-only policy and fingerprint syntax; manufacturer, ENS control and hardware attestation remain UNKNOWN');
