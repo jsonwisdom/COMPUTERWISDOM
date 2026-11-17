@@ -1,0 +1,42 @@
+{
+  "schema": "computerwisdom.ci-first.io-backend.v1",
+  "date": "2026-11-08",
+  "state": "CANDIDATE_NOT_ROUTED",
+  "hostnames": {
+    "proof.jsonwisdom.io": "jw-io-proof-seymour-v1",
+    "seymour.jsonwisdom.io": "jw-io-proof-seymour-v1",
+    "supreme.jsonwisdom.io": "jw-io-supreme-v1"
+  },
+  "original_com": {
+    "proof.jsonwisdom.com": "jasons-dns-burden-of-proof",
+    "seymour.jsonwisdom.com": "jasons-dns-burden-of-proof",
+    "supreme.jsonwisdom.com": "seymour-supreme-public"
+  },
+  "sources": {
+    "proof": {
+      "original_service": "jasons-dns-burden-of-proof",
+      "source_path": "workers/jsonwisdom-io/proof-origin.mjs",
+      "sha256": "b33621b81641f5e8bed1d27fc9a63c9064b4ff809cc858660be40edaa04ed253",
+      "bytes": 55503
+    },
+    "supreme": {
+      "original_service": "seymour-supreme-public",
+      "source_path": "workers/jsonwisdom-io/supreme-origin.mjs",
+      "sha256": "5708a044da58fdca3ec53eef0469eab0d97607b693483534f6cb7dd411516c93",
+      "bytes": 51064
+    }
+  },
+  "identity_path": "/.well-known/ci-first-backend.json",
+  "same_cloudflare_account": true,
+  "independent_provider": false,
+  "live_routing_promoted": false,
+  "canon": false,
+  "authority_created": false,
+  "gates": {
+    "offline_source_sha256": "REQUIRED",
+    "offline_syntax_and_smoke": "REQUIRED",
+    "staged_worker_runtime": "REQUIRED",
+    "public_io_routing": "NOT_PROMOTED",
+    "independent_provider_failover": "UNKNOWN"
+  }
+}
