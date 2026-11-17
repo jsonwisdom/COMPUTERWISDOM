@@ -1,0 +1,98 @@
+{
+  "schema": "CW_TRINITY_MOTION_CI_FIRST_RECEIPT_V1",
+  "date_utc": "2026-11-08",
+  "repository": "jsonwisdom/COMPUTERWISDOM",
+  "branch": "ci-first/trinity-motion-media-20261108",
+  "source_base_commit": "243c395e713e331bad22828c577107f39b65ac95",
+  "mode": "DRAFT_ONLY_READ_ONLY_MATH_VALIDATION",
+  "evidence_files": [
+    {
+      "path": "security/trinity-motion-v1/CI_FIRST_TRINITY_MOTION_MEDIA_THESIS_V1.md",
+      "bytes": 9096,
+      "sha256": "d7ada5d7c279cb69fce3685d72223aae6088579828030a53dbee38a09baefe3f"
+    },
+    {
+      "path": "security/trinity-motion-v1/SYNTHETIC_MOTION_128BPM_V1.json",
+      "bytes": 549,
+      "sha256": "9c5b24e2e889db86412155631df33aea6ec13e9d0d4c59c28f48b13dc4988d0c"
+    },
+    {
+      "path": "security/trinity-motion-v1/replay.py",
+      "bytes": 7679,
+      "sha256": "e99c428164706e730bdd6abe547885a6bbe3fdba863aa785d1fa49f9b1f3c5ae"
+    }
+  ],
+  "independent_replay": {
+    "engine": "Python 3 standard library local isolated environment; no network",
+    "test_count": 10,
+    "tests_passed": 10,
+    "tests_failed": 0,
+    "script_bytes_equal_committed_source": true,
+    "script_sha256_checked_against_independent_Wolfram_result": true,
+    "expected_fixture_hash_verified": true,
+    "synthetic_speed_m_s": "16/15",
+    "synthetic_speed_km_h": 3.84,
+    "bpm": 128,
+    "fps": 30,
+    "real_human_observed": false
+  },
+  "external_observations": {
+    "cloudflare": {
+      "zone": "jsonwisdom.com",
+      "zone_active": true,
+      "missing_exact_dns": [
+        "music.jsonwisdom.com",
+        "movies.jsonwisdom.com",
+        "live.jsonwisdom.com"
+      ],
+      "wildcard_dns_found": false,
+      "corresponding_worker_domains_found": false,
+      "wildcard_worker_routes_found": false,
+      "existing_unmapped_worker": "wisdom-live-observer",
+      "verdict": "FAIL_FOR_DEPLOYMENT_PREREQUISITE"
+    },
+    "google_drive": {
+      "video_policy": "School of Wisdom Production — Video Editor Operator V0.1 (DRAFT)",
+      "release": "HUMAN_APPROVAL_REQUIRED",
+      "bns_definition": "UNEXPANDED_USER_LABEL",
+      "identity_control": "UNKNOWN"
+    },
+    "github": {
+      "music_librarians_pr": 750,
+      "windows_tpm_attestor_pr": 749,
+      "both_draft_unmerged_at_audit": true
+    },
+    "ens": {
+      "names_resolved": [
+        "jaywisdom.base.eth",
+        "computerwisdom.base.eth"
+      ],
+      "observed_resolution": "HISTORICAL_A380_WALLET",
+      "signing_control": "UNKNOWN",
+      "newer_pc_wallet_binding": "UNKNOWN"
+    }
+  },
+  "scoped_ci_verdicts": {
+    "reference_bpm_mathematics": "PASS",
+    "synthetic_fixture_byte_integrity": "PASS",
+    "synthetic_adversarial_test_execution": "PASS",
+    "official_identification_from_gait": "UNKNOWN",
+    "consented_real_video_input": "UNKNOWN",
+    "independent_tpm_ek_ak_binding": "UNKNOWN",
+    "authenticated_encrypted_media_sync_to_windows": "UNKNOWN",
+    "current_media_site_dns_and_worker_mapping": "FAIL",
+    "live_media_delivery": "UNKNOWN",
+    "ens_resolver_result": "PASS",
+    "ens_signing_control": "UNKNOWN",
+    "bns_identity_and_protocol_binding": "UNKNOWN"
+  },
+  "overall": "UNKNOWN",
+  "failure_does_not_imply_infection_or_offense": true,
+  "no_identification_or_legal_findings": true,
+  "no_real_biometrics_collected": true,
+  "no_public_footage_published": true,
+  "no_prod_changes": true,
+  "no_tpm_or_bitlocker_changes": true,
+  "no_wallet_signature_or_payments": true,
+  "next_review": "Review human-approved media rights, secure destination, baseline security, attestation verifier, and site deployment prerequisites separately"
+}

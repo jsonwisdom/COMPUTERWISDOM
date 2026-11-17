@@ -1,0 +1,16 @@
+{
+  "schema": "CW_SYNTHETIC_MOTION_TRACE_V1",
+  "synthetic": true,
+  "person_present": false,
+  "consent_required_for_real_people": true,
+  "coordinate_system": "METRES_LOCAL_SYNTHETIC",
+  "tempo_reference_bpm": 128,
+  "camera_fps_reference_only": 30,
+  "observations": [
+    {"t_seconds": 0.0, "x_metres": 0.0, "y_metres": 0.0, "z_metres": 0.0},
+    {"t_seconds": 0.46875, "x_metres": 0.5, "y_metres": 0.0, "z_metres": 0.0}
+  ],
+  "rights": "SYNTHETIC_CREATED_FOR_MATHEMATICAL_TEST_ONLY",
+  "identity_derived": false,
+  "real_attestation": false
+}
