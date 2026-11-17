@@ -1,0 +1,40 @@
+{
+  "schema": "CW_CASE_SEAL_V1",
+  "case_id": "CW-JOSHUA-ENGLAND-WOPR-89",
+  "record_date_utc": "2026-11-16",
+  "source": "user-provided acknowledged case disposition in ChatGPT conversation",
+  "scope": "fictional educational design case only",
+  "fictional_design_round": "CLOSED",
+  "shannon_leadership": "DEFINED_IN_DESIGN",
+  "women_and_girls_participation": "INCLUDED_IN_DESIGN_NOT_OBSERVED",
+  "civilian_protection_rule": "DEFINED_IN_DESIGN",
+  "epoch_days": 89,
+  "epoch_center_day_one_based": 45,
+  "delta17": "PROPOSED_DAILY_EVIDENCE_REPLAY_NOT_DEPLOYED",
+  "forward_reverse": "MATHEMATICALLY_SPECIFIED_NOT_INDEPENDENTLY_VERIFIED",
+  "independent_implementation_tests_at_seal": "NOT_RUN",
+  "real_world_intelligence_claims": "NOT_VERIFIED",
+  "operational_deployment": "NOT_AUTHORIZED",
+  "circuit_status": "UNKNOWN",
+  "unknowns": [
+    "independent_implementation_validation",
+    "externally_reproduced_provenance_chain",
+    "real_world_source_authenticity",
+    "operational_circuit_readiness"
+  ],
+  "evidence_boundaries": [
+    "SHA256_DOES_NOT_ESTABLISH_AUTHENTICITY",
+    "NO_REAL_WORLD_CLAIM_PROMOTED",
+    "NO_LIVE_MILITARY_DISPATCH_OR_CYBER_ACCESS",
+    "NO_WALLET_SIGNING",
+    "NO_CHILD_PRIVATE_DATA",
+    "UNKNOWN_NEVER_EQUALS_ZERO"
+  ],
+  "source_refs": [
+    "https://github.com/jsonwisdom/JOY/blob/3bbe0e4eb49f6f4aa4b589a103ba430010a77b9b/joyspace/DELTA17_DAILY_REPLAY_V0_1.md",
+    "https://github.com/jsonwisdom/JOY/blob/3bbe0e4eb49f6f4aa4b589a103ba430010a77b9b/FAMILY/receipts/ALABAMA_STATE_REVERSE_REPLAY_BOUNDARY_COLLAPSE_V0_1.md"
+  ],
+  "promotion": "HOLD_UNTIL_INDEPENDENT_TESTS",
+  "authority_created": false,
+  "no_fake_green": true
+}
