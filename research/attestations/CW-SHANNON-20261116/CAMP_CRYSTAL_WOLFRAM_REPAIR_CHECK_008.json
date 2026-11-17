@@ -1,0 +1,45 @@
+{
+  "case_family": "CW-SHANNON-20261116",
+  "record": "CAMP_CRYSTAL_WOLFRAM_REPAIR_CHECK_008",
+  "source": "KERNEL_V0_1(1).md supplied by user, hash 23e40d5baacd38e0f0035908afc279643a4c5bffc8144833eec71e879ba11f70",
+  "wolfram_result": {
+    "seedMatches": [
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "prevChainMatches": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "genesisZero": true,
+    "hashShape": true,
+    "fullReplayPerformed": false
+  },
+  "verifier": {
+    "description": "Read-only Python exact-byte verifier and expected-hashes JSON produced in this conversation and tested against missing originals; requires both files together",
+    "dry_run_exit_code": 3,
+    "dry_run_status": "NOT_RUN",
+    "dry_run_reason": "ORIGINAL_FILES_MISSING",
+    "algorithm": "SHA-256 for exact receipt bytes, canonical JSON (sort_keys, separators, ensure_ascii), declared input/state/receipt hashes, prev_hash links, CHAIN.json exact byte SHA-256",
+    "limitations": [
+      "Does not synthesize original JSON receipts",
+      "Does not independently replay domain-specific transition functions; hashes declared state_preimage only",
+      "Does not recalculate CHAIN index_hash because preimage details unavailable",
+      "Not validated using original six JSON files"
+    ]
+  },
+  "status": {
+    "five_seeds": "PASS",
+    "four_reported_pointer_links": "PASS",
+    "source_kernel_sha256": "PASS",
+    "original_receipts": "NOT_RECOVERED",
+    "exact_byte_replay": "NOT_RUN",
+    "merge": "HOLD"
+  },
+  "authority": "NO SIGNING / NO DEPLOYMENT / NO PAYMENT / NO MERGE"
+}
