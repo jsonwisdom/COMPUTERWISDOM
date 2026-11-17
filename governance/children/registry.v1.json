@@ -1,0 +1,85 @@
+{
+  "schema": "computerwisdom.parent-child-oversight.registry.v1",
+  "evidence_date": "2026-11-09",
+  "parent_repo": "jsonwisdom/COMPUTERWISDOM",
+  "parent_role": "REVIEW_ONLY_NO_AUTOMATIC_AUTHORITY",
+  "child_repo_semantics": "Public repository existence and protected project lane; does not assert age, custody, consent, or legal guardianship",
+  "family_repos": [
+    {
+      "id": "FAMILY_JAYCEE",
+      "repository": "jsonwisdom/JAYCEE",
+      "github_repo_exist_readback": true,
+      "private_person_data_authorized": false,
+      "publication_authorized": false,
+      "authority_created": false
+    },
+    {
+      "id": "FAMILY_HEIDEE",
+      "repository": "jsonwisdom/HEIDEE",
+      "github_repo_exist_readback": true,
+      "private_person_data_authorized": false,
+      "publication_authorized": false,
+      "authority_created": false
+    },
+    {
+      "id": "FAMILY_LEEANN",
+      "repository": "jsonwisdom/LEEANN",
+      "github_repo_exist_readback": true,
+      "private_person_data_authorized": false,
+      "publication_authorized": false,
+      "authority_created": false
+    },
+    {
+      "id": "FAMILY_MARYDEE",
+      "repository": "jsonwisdom/MARYDEE",
+      "github_repo_exist_readback": true,
+      "private_person_data_authorized": false,
+      "publication_authorized": false,
+      "authority_created": false
+    },
+    {
+      "id": "FAMILY_GAGA",
+      "repository": "jsonwisdom/GAGA",
+      "github_repo_exist_readback": true,
+      "private_person_data_authorized": false,
+      "publication_authorized": false,
+      "authority_created": false
+    },
+    {
+      "id": "FAMILY_GRAMMY",
+      "repository": "jsonwisdom/GRAMMY",
+      "github_repo_exist_readback": true,
+      "private_person_data_authorized": false,
+      "publication_authorized": false,
+      "authority_created": false
+    }
+  ],
+  "protected_lane_index": {
+    "id": "JOY_PROTECTED_LANES",
+    "repository": "jsonwisdom/JOY",
+    "index_path": "FAMILY/FAMILY_INDEX_V0_1.md",
+    "safety_gate_path": "receipts/mn_audit/PROTECT_CHILDREN_FROM_AI_SYSTEMS_JAYWISDOM_GATE_V0_1.md",
+    "not_a_guardian_consent_receipt": true
+  },
+  "unverified_separate_family_repo": {
+    "name": "BRIANNA",
+    "state": "UNKNOWN_REPO_NOT_FOUND",
+    "protected_JOY_lane_exists": true
+  },
+  "machine_controls": {
+    "enabled_actions": [
+      "inventory",
+      "observe",
+      "replay",
+      "compare",
+      "draft"
+    ],
+    "cross_rail_bridge_enabled": false,
+    "mutations_enabled": false,
+    "child_fund_access_enabled": false,
+    "child_identity_publication_enabled": false,
+    "parent_approval_automated": false
+  },
+  "authority_created": false,
+  "canon": false
+}
