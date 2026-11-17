@@ -1,0 +1,54 @@
+{
+  "case_family": "CW-SHANNON-20261116",
+  "version": "0.1",
+  "observed_local_date": "2026-11-16",
+  "timezone": "America/Chicago",
+  "kind": "UNSIGNED_EVIDENCE_BASELINE",
+  "human_approval": "REQUIRED",
+  "signature": "NOT_SIGNED",
+  "merge": "HOLD",
+  "public_release": "HOLD",
+  "payment_authority": "NONE",
+  "id": "A03",
+  "title": "LeahPrime / Camp Crystal sandbox",
+  "sources": [
+    {
+      "type": "local_source_bytes",
+      "filename": "KERNEL_V0_1.md",
+      "sha256": "23e40d5baacd38e0f0035908afc279643a4c5bffc8144833eec71e879ba11f70",
+      "method": "SHA-256 of attached file bytes checked using local sha256sum"
+    },
+    {
+      "type": "github_document",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/quad-onion-librarian-20261116-v1/docs/librarian/CAMP_CRYSTAL_CLOUDFLARE_NEGATIVE_SANDBOX_V0_1.md",
+      "github_blob_sha1": "4fa0061b7619a343771f58e086627efa60b0c253"
+    },
+    {
+      "type": "cloudflare_worker",
+      "id": "cw-camp-crystal-negative-sandbox-v01",
+      "created_utc": "2026-11-17T00:58:33.659569Z",
+      "observed_subdomain_enabled": false,
+      "observed_previews_enabled": false,
+      "bindings": []
+    }
+  ],
+  "checks": [
+    {
+      "claim": "Kernel document exact bytes locally hashed",
+      "status": "PASS"
+    },
+    {
+      "claim": "Cloudflare Worker exists; public workers.dev subdomain and previews disabled; no bindings",
+      "status": "PASS"
+    },
+    {
+      "claim": "No zone routes or alternative public reachability",
+      "status": "NOT_RECHECKED_THIS_ATTESTATION"
+    },
+    {
+      "claim": "Original five JSON turn receipts and CHAIN.json independently replayed",
+      "status": "NOT_RUN"
+    }
+  ],
+  "boundary": "Fictional negative sandbox; uploaded Worker exists but not proven public or production enabled. No real-world authority."
+}
