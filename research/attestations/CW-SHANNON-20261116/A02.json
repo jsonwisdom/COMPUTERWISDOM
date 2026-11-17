@@ -1,0 +1,44 @@
+{
+  "case_family": "CW-SHANNON-20261116",
+  "version": "0.1",
+  "observed_local_date": "2026-11-16",
+  "timezone": "America/Chicago",
+  "kind": "UNSIGNED_EVIDENCE_BASELINE",
+  "human_approval": "REQUIRED",
+  "signature": "NOT_SIGNED",
+  "merge": "HOLD",
+  "public_release": "HOLD",
+  "payment_authority": "NONE",
+  "id": "A02",
+  "title": "TRINARY / Falken fictional educational circuit",
+  "sources": [
+    {
+      "type": "github_pr",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/768",
+      "head_commit": "05b26ea578df04043be42552d7218db3366caf3b",
+      "observed": "open, draft, unmerged"
+    },
+    {
+      "type": "google_doc",
+      "url": "https://docs.google.com/document/d/1yUUjR94S3qmAyEAV6t9pB9KRGo_1OKJhbO16JUDFMuo/edit",
+      "title": "CW-JOSHUA-TRINARY-001 - Joshua Falken Verification Baseline v1.0",
+      "exact_revision_hash": "UNKNOWN"
+    }
+  ],
+  "checks": [
+    {
+      "claim": "PR metadata and Drive baseline document inspected",
+      "status": "PASS"
+    },
+    {
+      "claim": "Drive baseline marks CIRCUIT_STATUS",
+      "status": "UNKNOWN",
+      "basis": "Document explicitly says CIRCUIT_STATUS: UNKNOWN"
+    },
+    {
+      "claim": "Original Python tests and operational circuit independently executed",
+      "status": "NOT_RUN"
+    }
+  ],
+  "boundary": "Fictional, civilian, non-operational exercise. No military command, targeting or diplomatic authority."
+}
