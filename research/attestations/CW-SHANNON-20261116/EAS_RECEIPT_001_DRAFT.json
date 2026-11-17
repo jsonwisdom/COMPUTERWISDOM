@@ -1,0 +1,48 @@
+{
+  "record": "CW-SHANNON-20261116-EAS-RECEIPT-001",
+  "source": "User-supplied EAS offchain URL fragment serialized payload; independently Base64-decoded and zlib-decompressed, and compared with pinned GitHub manifest",
+  "chain_id": 8453,
+  "eas_contract": "0x4200000000000000000000000000000000000021",
+  "offchain_attestation_version": 2,
+  "sdk_serialization_version": "1.4.1-beta.3",
+  "schema_uid": "0x851cc88a4aa9998fdcd2088e6c22984652631bc5f804c48b81651ebdbe0b81fa",
+  "attestation_uid": "0x86885e665c3ad02c1b2f3e52747babda58a95c26634f1f25033bed263ca4d2a9",
+  "reported_signer": "0x0F7018fea1dc9ba32aE817D896211f72f1197AD8",
+  "created_timestamp_unix": 1794880298,
+  "created_utc": "2026-11-17T01:51:38Z",
+  "expiration_time": 0,
+  "revocable": true,
+  "data": {
+    "manifest_root": "0x7f33b42f063229ad3d1ab83a346d8e2ad656483e2c2f1edbda4b3309da211652",
+    "case_id": "CW-SHANNON-20261116",
+    "leaf_count": 5,
+    "manifest_version": "0.1",
+    "evidence_scope": "SYNTHETIC_AND_DOCUMENTARY_ONLY",
+    "verification_status_note": "String includes U+200B ZERO WIDTH SPACE between UNSIGN and ED; preserve exact decoded bytes, do not canonicalize silently"
+  },
+  "manifest_commit": "20cc321808240935f631a97edc0de0f79a212690",
+  "checks": [
+    {
+      "claim": "Serialized fragment decodes to EAS offchain signature components",
+      "status": "PASS"
+    },
+    {
+      "claim": "Keccak-256 EAS v2 UID independently recomputed against full serialized data and salt",
+      "status": "PASS"
+    },
+    {
+      "claim": "Decoded manifest root matches pinned Github manifest",
+      "status": "PASS"
+    },
+    {
+      "claim": "Signature EIP712 signer recovery agrees with displayed signer",
+      "status": "UNKNOWN",
+      "reason": "Custom local verification attempt did not reproduce displayed signer; do not claim valid signature. Use official EAS SDK verification against the exact payload before promotion."
+    },
+    {
+      "claim": "Claims of customer loss or project execution certified",
+      "status": "NOT_ESTABLISHED"
+    }
+  ],
+  "authority": "OFFCHAIN_RECORD_ONLY; UNSIGNED_ARCHIVE_OF_RECEIPT; NO EAS REGISTRATION OR PAYMENT BY ASSISTANT; MERGE HOLD"
+}

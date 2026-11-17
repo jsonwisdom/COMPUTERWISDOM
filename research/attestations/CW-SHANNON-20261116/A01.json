@@ -1,0 +1,43 @@
+{
+  "case_family": "CW-SHANNON-20261116",
+  "version": "0.1",
+  "observed_local_date": "2026-11-16",
+  "timezone": "America/Chicago",
+  "kind": "UNSIGNED_EVIDENCE_BASELINE",
+  "human_approval": "REQUIRED",
+  "signature": "NOT_SIGNED",
+  "merge": "HOLD",
+  "public_release": "HOLD",
+  "payment_authority": "NONE",
+  "id": "A01",
+  "title": "JOSHUA War Room replay and authority",
+  "sources": [
+    {
+      "type": "github_pr",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/769",
+      "head_commit": "36f3dd1e1b35b38286ba406018fa0a5eeb5bafa9",
+      "observed": "open, draft, unmerged"
+    }
+  ],
+  "checks": [
+    {
+      "claim": "PR exists and remains open, draft and unmerged at lookup",
+      "status": "PASS",
+      "basis": "GitHub PR metadata"
+    },
+    {
+      "claim": "Reported deterministic replay / denial CI claims",
+      "status": "REPORTED_NOT_INDEPENDENTLY_EXECUTED",
+      "basis": "prior supplied CI review descriptions; not equivalent to original fixture replay"
+    },
+    {
+      "claim": "Live browser replay state matches archived fixture",
+      "status": "UNKNOWN"
+    },
+    {
+      "claim": "Owner digital signature independently verified",
+      "status": "UNKNOWN"
+    }
+  ],
+  "boundary": "Do not treat synthetic CI evidence as owner authorization or live wallet signing."
+}

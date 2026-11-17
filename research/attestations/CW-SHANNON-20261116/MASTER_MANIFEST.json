@@ -1,0 +1,77 @@
+{
+  "case_family": "CW-SHANNON-20261116",
+  "version": "0.1",
+  "observed_local_date": "2026-11-16",
+  "timezone": "America/Chicago",
+  "kind": "UNSIGNED_EVIDENCE_BASELINE",
+  "human_approval": "REQUIRED",
+  "signature": "NOT_SIGNED",
+  "merge": "HOLD",
+  "public_release": "HOLD",
+  "payment_authority": "NONE",
+  "document": "MASTER_MANIFEST",
+  "algorithm": "UTF8 exact bytes of JSON files written with JSON.stringify(object,null,2) plus LF; sha256 leaf hashes lowercase hex; sort leaves lexicographically by A01..A05; NODE hash=SHA256(ASCII 'NODE|'+left_hex+'|'+right_hex); if odd last item duplicate; iterate until one root. Leaf content hashes cover complete JSON leaf bytes, not Git commit SHA.",
+  "root_sha256_merkle": "7f33b42f063229ad3d1ab83a346d8e2ad656483e2c2f1edbda4b3309da211652",
+  "leaf_count": 5,
+  "leaves": [
+    {
+      "id": "A01",
+      "path": "research/attestations/CW-SHANNON-20261116/A01.json",
+      "sha256_utf8": "d28759b4fb53416d59cfb7e53c61770827353be689aa9881e0100a4466c392d0"
+    },
+    {
+      "id": "A02",
+      "path": "research/attestations/CW-SHANNON-20261116/A02.json",
+      "sha256_utf8": "3e0063fd4d0bcdd603dc8b008d3f0c9b0329e9b5a45a73cf962f4f867cbd5e97"
+    },
+    {
+      "id": "A03",
+      "path": "research/attestations/CW-SHANNON-20261116/A03.json",
+      "sha256_utf8": "a87ca15a872c2a95dabea23b81b2ed4067a16287a7a82863e2b32ea992012cec"
+    },
+    {
+      "id": "A04",
+      "path": "research/attestations/CW-SHANNON-20261116/A04.json",
+      "sha256_utf8": "31a341c29c7c2342c25c8bafa676fc8acbf8d954016d7fbfa4545407b146d085"
+    },
+    {
+      "id": "A05",
+      "path": "research/attestations/CW-SHANNON-20261116/A05.json",
+      "sha256_utf8": "0d2fe653b37bf1f89e2433f0d6df789c33e35471fc9e186d6e6f719494459f72"
+    }
+  ],
+  "levels_hashes": [
+    [
+      "d28759b4fb53416d59cfb7e53c61770827353be689aa9881e0100a4466c392d0",
+      "3e0063fd4d0bcdd603dc8b008d3f0c9b0329e9b5a45a73cf962f4f867cbd5e97",
+      "a87ca15a872c2a95dabea23b81b2ed4067a16287a7a82863e2b32ea992012cec",
+      "31a341c29c7c2342c25c8bafa676fc8acbf8d954016d7fbfa4545407b146d085",
+      "0d2fe653b37bf1f89e2433f0d6df789c33e35471fc9e186d6e6f719494459f72"
+    ],
+    [
+      "4fb4c54e79b7bb28eba62bf9fafcff955c02a429e0db6f270c1887286a8bfc2e",
+      "8d1b0f18d59d7f6f7a57500faa24fba462c9fed694412119ba780e867f53a1b3",
+      "70cabe02d0cfaf06b12e63ab9e55ca96676fb284a797bfe91b52d24edac81cce"
+    ],
+    [
+      "5b03de1814d53f33ea23bc13895283c226fcb06ae02e5429520908960a91035c",
+      "1af50250f7cefe91c2dbe5b45b48e85f55c09a6ff48eaf8c5e98763e6870f428"
+    ],
+    [
+      "7f33b42f063229ad3d1ab83a346d8e2ad656483e2c2f1edbda4b3309da211652"
+    ]
+  ],
+  "limitations": [
+    "Evidence manifest attestations are UNSIGNED; hashes provide integrity, not author identity or truth.",
+    "Repo docs are draft/unmerged; no real customer receipts and no independent full project replay.",
+    "This manifest is not a completed EAS on-chain attestation.",
+    "EAS should be used only after exact-byte validation and owner approval; on-chain publication may be public and immutable.",
+    "Private personal details and credentials should not be placed on-chain."
+  ],
+  "review_gate": {
+    "exact_byte_readback": "PENDING",
+    "independent_merkle_recalculation": "PENDING",
+    "human_signer": "NOT_VERIFIED",
+    "eas_transaction": "NOT_EXECUTED"
+  }
+}

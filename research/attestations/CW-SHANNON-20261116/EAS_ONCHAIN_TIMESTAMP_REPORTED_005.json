@@ -1,0 +1,41 @@
+{
+  "record": "CW-SHANNON-20261116-EAS-ONCHAIN-TIMESTAMP-005",
+  "evidence_source": "User-provided independent BaseScan transaction result with status, decoded timestamp(bytes32) input, and matching Timestamped event",
+  "verification_level": "SECONDARY_USER_REPORTED_BASESCAN_VERIFICATION; LIVE_EXTERNAL_EXPLORER_DIRECT_FETCH_UNAVAILABLE",
+  "chain": "Base",
+  "chain_id": 8453,
+  "contract": "0x4200000000000000000000000000000000000021",
+  "from": "0x0F7018fea1dc9ba32aE817D896211f72f1197AD8",
+  "transactions": [
+    {
+      "hash": "0x4c121cc978bd02dd3a535d1c8d0243b36836260d29780d1cb19d26ad69ebd57a",
+      "block_number": 58456343,
+      "reported_status": "Success",
+      "method": "timestamp(bytes32)",
+      "input_bytes32": "0x86885e665c3ad02c1b2f3e52747babda58a95c26634f1f25033bed263ca4d2a9",
+      "event": "Timestamped",
+      "reported_event_data_matches_input": true,
+      "role": "Direct timestamp of signed EAS offchain attestation UID"
+    },
+    {
+      "hash": "0xecccdc97692e4a8344c76f1cd7524c7f43a91321690c57dace9894e2b794b674",
+      "block_number": 58456712,
+      "reported_status": "Success",
+      "method": "timestamp(bytes32)",
+      "input_bytes32": "0x1dff9aa4b838d3b297c7db60f816d2c078fed462ea4ec4bc03ce0439cb1a60e2",
+      "event": "Timestamped",
+      "reported_event_data_matches_input": true,
+      "role": "Timestamp of separate batch identifier"
+    }
+  ],
+  "attestation_uid": "0x86885e665c3ad02c1b2f3e52747babda58a95c26634f1f25033bed263ca4d2a9",
+  "batch_identifier": "0x1dff9aa4b838d3b297c7db60f816d2c078fed462ea4ec4bc03ce0439cb1a60e2",
+  "manifest_merkle_root": "0x7f33b42f063229ad3d1ab83a346d8e2ad656483e2c2f1edbda4b3309da211652",
+  "conclusion": "According to user-provided BaseScan decoded receipt details, both timestamp(bytes32) transactions succeeded; the first directly timestamps the attestation UID and the second timestamps a batch identifier. No more EAS signing needed for timestamp goal.",
+  "open_gates": [
+    "Real-world identity linkage UNKNOWN",
+    "Original source claims not independently proven",
+    "PR draft/unmerged awaiting review"
+  ],
+  "action_control": "DOCUMENTARY ONLY; NO NEW SIGNATURE, MERGE, PAYMENT OR DEPLOYMENT"
+}

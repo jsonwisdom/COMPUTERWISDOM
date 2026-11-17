@@ -1,0 +1,59 @@
+{
+  "record": "CW-SHANNON-20261116-EAS-SIGNATURE-VERIFICATION-002",
+  "status": "PASS_SIGNER_RECOVERY",
+  "purpose": "Correct earlier UNKNOWN signature recovery in EAS_RECEIPT_001_DRAFT.json; append-only audit trail; review branch only.",
+  "record_source": "User-supplied EAS tools page raw sig JSON and encoded data, from this conversation.",
+  "signed_attestation_uid": "0x86885e665c3ad02c1b2f3e52747babda58a95c26634f1f25033bed263ca4d2a9",
+  "schema_uid": "0x851cc88a4aa9998fdcd2088e6c22984652631bc5f804c48b81651ebdbe0b81fa",
+  "manifest_merkle_root": "0x7f33b42f063229ad3d1ab83a346d8e2ad656483e2c2f1edbda4b3309da211652",
+  "pinned_manifest_commit": "20cc321808240935f631a97edc0de0f79a212690",
+  "signature": {
+    "r": "0xfa05cc94edd40a3c718e4ed810c84253c528ef992d0140c5871ce6c9fbbaf830",
+    "s": "0x1ee142fdc785d3ae7ab0bdfd055f971813f48337ec8b31b6142db336bdc9295b",
+    "v": 27
+  },
+  "domain": {
+    "name": "EAS Attestation",
+    "version": "1.4.1-beta.3",
+    "chainId": 8453,
+    "verifyingContract": "0x4200000000000000000000000000000000000021"
+  },
+  "method": "Local independent Python Keccak-256 and secp256k1 ECDSA public-key recovery for EIP-712 Attest(uint16 version,bytes32 schema,address recipient,uint64 time,uint64 expirationTime,bool revocable,bytes32 refUID,bytes data,bytes32 salt). Reconstruct ABI data from decoded field values; status string contains U+200B. Recover pubkey for v=27, r,s, eip712 digest; derive Ethereum address as last 20 bytes of keccak256(uncompressed_pubkey_xy).",
+  "derived_eip712_domain_separator": "0x9ffefedb1e61578fa731cb36c6c6727370820b9c26751b801b1c9c601a5958a2",
+  "derived_eip712_struct_hash": "0x63d48a2447f43493cec1ac35c1085dc78d0191be58ea05a1a6867d65d8d9bcd8",
+  "derived_eip712_digest": "0x27a663dc509ca562520c843db6bdfa8b9155fc202cd1089c7c2c9354ed5b20f1",
+  "recovered_signer": "0x0F7018fea1dc9ba32aE817D896211f72f1197AD8",
+  "signed_payload_signer": "0x0F7018fea1dc9ba32aE817D896211f72f1197AD8",
+  "checks": [
+    {
+      "check": "Keccak-256 reference test vectors",
+      "status": "PASS"
+    },
+    {
+      "check": "EIP-712 signer recovery v=27",
+      "status": "PASS"
+    },
+    {
+      "check": "Signer matches claimed address",
+      "status": "PASS"
+    },
+    {
+      "check": "Manifest root matches pinned source",
+      "status": "PASS"
+    },
+    {
+      "check": "Identity of human controlling signer",
+      "status": "UNKNOWN"
+    },
+    {
+      "check": "Original third-party billing claims or real-world military claims",
+      "status": "NOT_ESTABLISHED"
+    },
+    {
+      "check": "Onchain timestamp registered",
+      "status": "NOT_ESTABLISHED"
+    }
+  ],
+  "limitations": "This verifies cryptographic signature over the attestation payload. It does not prove who holds the key in real life, validity of source claims, on-chain timestamp, or that the off-chain attestation was made immutable on-chain.",
+  "authority": "Documentation only; draft PR, no merge, no deployment, no payment, no new wallet signatures."
+}

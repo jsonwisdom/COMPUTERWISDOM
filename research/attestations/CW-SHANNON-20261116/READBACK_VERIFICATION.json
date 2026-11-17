@@ -1,0 +1,26 @@
+{
+  "case_family": "CW-SHANNON-20261116",
+  "kind": "READBACK_HASH_RECOMPUTATION",
+  "status": "PASS",
+  "scope": "Five signed-off? NO: five UNSIGNED exact-byte attestation leaves only",
+  "method": "Read back A01..A05 and MASTER_MANIFEST.json from the new GitHub branch. Compute SHA-256 over exact UTF-8 content, compare manifest sha256_utf8 per leaf, independently build NODE|left_hex|right_hex Merkle tree duplicating last odd leaf, compare root and all levels.",
+  "files_checked": [
+    "A01.json",
+    "A02.json",
+    "A03.json",
+    "A04.json",
+    "A05.json",
+    "MASTER_MANIFEST.json"
+  ],
+  "all_five_file_hashes_match": true,
+  "merkle_root_matches": true,
+  "merkle_levels_match": true,
+  "verified_merkle_root": "7f33b42f063229ad3d1ab83a346d8e2ad656483e2c2f1edbda4b3309da211652",
+  "limitations": [
+    "This technical readback does not verify original sources' truth or missing underlying receipts.",
+    "This is an unsigned verification note; EAS attestation NOT MADE.",
+    "Source-of-truth status is bound to observed GitHub branch snapshot; reverify against pinned PR head SHA.",
+    "No actual customer payments, public military authorization, live wallet signatures or private records validated."
+  ],
+  "authority": "human review required; no merge; no payments; no deployment"
+}

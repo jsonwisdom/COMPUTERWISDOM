@@ -1,0 +1,47 @@
+{
+  "case_family": "CW-SHANNON-20261116",
+  "version": "0.1",
+  "observed_local_date": "2026-11-16",
+  "timezone": "America/Chicago",
+  "kind": "UNSIGNED_EVIDENCE_BASELINE",
+  "human_approval": "REQUIRED",
+  "signature": "NOT_SIGNED",
+  "merge": "HOLD",
+  "public_release": "HOLD",
+  "payment_authority": "NONE",
+  "id": "A04",
+  "title": "WOPR billing loss arithmetic and sampling boundary",
+  "sources": [
+    {
+      "type": "github_pr",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/770",
+      "head_commit": "bcd23ae00cd45cc83a08b9f68e9730b2ec97d2e7",
+      "observed": "open, draft, unmerged"
+    },
+    {
+      "type": "github_document",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/research/wopr-stack-flip-001-evidence-draft/research/wopr-stack-flip/WOPR-STACK-FLIP-001_DRAFT.md",
+      "github_blob_sha1": "ea6e33736754737c3cced14fde73dba2dd12ed09"
+    },
+    {
+      "type": "wolfram_language",
+      "code": "With[{c={100,100},r={0,120}},<|\"net\"->Total[c-r],\"loss\"->Total[MapThread[Max[0,#1-#2]&,{c,r}]],\"overrefund\"->Total[MapThread[Max[0,#2-#1]&,{c,r}]],\"ceilingConditional\"->342000000*100|>]"
+    }
+  ],
+  "checks": [
+    {
+      "claim": "Synthetic c={100,100}, r={0,120} => net=80, floored_case_loss=100, over_refund=20",
+      "status": "PASS",
+      "method": "Wolfram Language independently executed"
+    },
+    {
+      "claim": "342000000*100=34200000000 conditional illustration",
+      "status": "PASS_ARITHMETIC_ONLY"
+    },
+    {
+      "claim": "Actual unjustified charges, representative population, national loss, vendor intent",
+      "status": "UNKNOWN"
+    }
+  ],
+  "boundary": "Do not extrapolate from selected complainants or represent $34.2B as verified fraud or national loss."
+}

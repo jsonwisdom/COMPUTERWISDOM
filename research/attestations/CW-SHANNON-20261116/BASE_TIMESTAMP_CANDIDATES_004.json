@@ -1,0 +1,33 @@
+{
+  "record": "CW-SHANNON-20261116-BASE-TIMESTAMP-CANDIDATES-004",
+  "source": "User-supplied BaseScan address transaction listing for 0x0F7018fea1dc9ba32aE817D896211f72f1197AD8",
+  "recorded_candidates": [
+    {
+      "tx_hash": "0x4c121cc978bd02dd3a535d1c8d0243b36836260d29780d1cb19d26ad69ebd57a",
+      "block": 58456343,
+      "method": "Timestamp",
+      "to": "Base: EAS",
+      "value_eth": "0",
+      "reported_fee_eth": "0.0000003"
+    },
+    {
+      "tx_hash": "0xecccdc97692e4a8344c76f1cd7524c7f43a91321690c57dace9894e2b794b674",
+      "block": 58456712,
+      "method": "Timestamp",
+      "to": "Base: EAS",
+      "value_eth": "0",
+      "reported_fee_eth": "0.0000003"
+    }
+  ],
+  "attestation_uid": "0x86885e665c3ad02c1b2f3e52747babda58a95c26634f1f25033bed263ca4d2a9",
+  "reported_batch_identifier": "0x1dff9aa4b838d3b297c7db60f816d2c078fed462ea4ec4bc03ce0439cb1a60e2",
+  "status": {
+    "timestamps_in_user_supplied_wallet_history": "TWO_CANDIDATES",
+    "independent_transaction_receipt": "UNKNOWN",
+    "exact_uid_to_transaction_match": "UNKNOWN",
+    "signature_recovery": "PASS_PREVIOUS_RECORD",
+    "merge": "DRAFT_HOLD"
+  },
+  "source_limitations": "Blockscout direct transaction info blocked by exhausted API credits; BaseScan public transaction pages inaccessible to assistant browsing. Do not claim independent on-chain confirmation from UI or interpret EAS batch identifier as tx hash.",
+  "next_check": "Fetch each transaction receipt and logs from canonical Base RPC, verify receipt.status==1, EAS address 0x4200000000000000000000000000000000000021, and timestamp event UID or batch digest."
+}
