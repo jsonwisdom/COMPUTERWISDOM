@@ -1,0 +1,17 @@
+COMPUTER WISDOM — OWNER INTENT V0.3.1
+Date: 2026-11-18
+Owner: Jason Wisdom
+Repository: jsonwisdom/COMPUTERWISDOM
+Draft PR: #773
+Development branch: oodleloop/quadratic-restoration-v0.3.0
+Authority: Human command authority remains with Jason Wisdom.
+Delegation: JSONWisdom may draft, build, test, replay and document on this existing development branch.
+Merge to master: NOT AUTHORIZED.
+Deployment, payments, transfers, account changes, external publication: NOT AUTHORIZED BY THIS MESSAGE.
+Global hold: FALSE. Local read-only development continues.
+Security posture: No repeated wallet authentication or secret export is required to build.
+Signature scope: OPTIONAL attestation of this exact statement of intent ONLY.
+This message is NOT proof of ENS ownership, Base name control, A380 wallet control,
+signing authority for another account, or cryptographic linking of identities.
+No transaction or token transfer is requested.
+END OWNER INTENT V0.3.1
