@@ -1,0 +1,37 @@
+{
+  "schema": "computerwisdom.quadratic-architecture.v0.3.0",
+  "system": "OODLELOOP_COMPUTER_WISDOM",
+  "operator": "Jason Wisdom",
+  "build_authority": "ENABLED",
+  "global_project_hold": false,
+  "source_commit": "0a474308e6eb51a67a0c42b5fddfe6859e865f5d",
+  "source_references": [
+    "docs/jaywisdom/JAYWISDOM_VELOCITY_ARCS_V0_1.md",
+    "docs/layered-machine-speed-scale-blueprint-v0-1.md",
+    "receipts/wallet_binding_v2.md",
+    "docs/base_has_purpose_v0_1.md"
+  ],
+  "rails": {
+    "secure": {
+      "identity": "jaywisdom.eth",
+      "purpose": "identity context, confidential designs, IP, human governance, recovery metadata",
+      "visibility": "PRIVATE_BY_DEFAULT",
+      "allowed": ["local_build", "authorized_private_analysis", "private_evidence_storage", "redacted_receipt_publication"],
+      "forbidden": ["publish_secrets", "export_credentials", "silent_signing"]
+    },
+    "public": {
+      "identity": "jaywisdom.base.eth",
+      "purpose": "public discovery, Base receipts, verification references, public results, replay",
+      "visibility": "PUBLIC_BY_DESIGN",
+      "allowed": ["public_report", "public_receipt", "public_replay", "read_only_observation"],
+      "forbidden": ["publish_secrets", "unapproved_transfer", "unapproved_identity_changes"]
+    }
+  },
+  "wallets": {
+    "a380": {"address": "0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8", "role": "historical_Base_smart_wallet", "access": "REPORTED_UNAVAILABLE", "binding": "NOT_PROVEN_BY_PREPARED_V2_RECEIPT"},
+    "pc": {"address": "0x65891F97db01C8fC9F76f4DFE65Bd44F8261f1B0", "role": "computer_wisdom_pc_signer", "historical_eip191": "VERIFIED_IN_NOVEMBER_7_RECEIPT"}
+  },
+  "continuity": {"existing_receipts": "REUSE", "duplicate_authentication": false, "test_and_build": "CONTINUE", "financial_actions": "EXPLICIT_HUMAN_APPROVAL", "publication_or_deployment": "AUTHORIZED_SCOPE_ONLY"},
+  "integrity_invariant": "Public rail never receives private secrets; neither rail implies wallet signing authority merely from a name or receipt",
+  "restoration_scope": "LOCAL_ARCHITECTURE_ARTIFACT_ONLY_NOT_LIVE_WALLET_RESTORATION"
+}
