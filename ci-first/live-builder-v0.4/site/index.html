@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Computer Wisdom CI-FIRST: public project discovery, evidence-linked Merkle forest work, and inclusive contribution paths.">
+  <meta name="color-scheme" content="dark">
+  <title>Computer Wisdom | Discover. Build. Verify.</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script src="./app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to projects</a>
+  <header class="site-header shell">
+    <a class="brand" href="#top" aria-label="Computer Wisdom home"><span class="brand-mark" aria-hidden="true">CW</span> COMPUTER <strong>WISDOM</strong></a>
+    <nav aria-label="Primary navigation"><a href="#projects">Projects</a><a href="#forest">Merkle forest</a><a href="#contribute">Contribute</a></nav>
+    <span class="mode">CI-FIRST · DEV PREVIEW</span>
+  </header>
+  <main id="main">
+    <section class="hero shell" id="top" aria-labelledby="hero-title">
+      <div class="eyebrow">DISCOVER / CREATE / TEST / LEARN</div>
+      <h1 id="hero-title">The research forest is <em>open for building.</em></h1>
+      <p>Explore real GitHub projects, inspect unresolved Merkle work, and help build transparent civic technology. No tokens, wallet, or fee required.</p>
+      <div class="hero-actions"><a class="primary-link" href="#projects">Explore projects</a><a class="secondary-link" href="#contribute">Start contributing</a></div>
+      <dl class="stats" aria-label="Snapshot overview">
+        <div><dt>Public projects</dt><dd id="repo-count">—</dd></div>
+        <div><dt>Forest trees</dt><dd id="tree-count">—</dd></div>
+        <div><dt>Private excluded</dt><dd id="private-count">—</dd></div>
+      </dl>
+      <p class="snapshot" id="snapshot">Loading GitHub discovery snapshot…</p>
+    </section>
+    <section class="section shell" id="projects" aria-labelledby="projects-heading">
+      <div class="section-heading"><div><span class="eyebrow">01 / PROJECT DISCOVERY</span><h2 id="projects-heading">Explore the public repositories</h2></div><p>Source-linked records. Observation times are snapshot times, not last-commit dates.</p></div>
+      <div class="controls">
+        <label class="search-box">Search public repositories <input type="search" id="search" placeholder="Try AL, receipts, quantum, Seymour…" autocomplete="off"></label>
+        <label class="select-box">Repository content <select id="size-filter"><option value="all">All public repositories</option><option value="nonempty">Nonempty repositories</option><option value="empty">Empty repositories</option></select></label>
+      </div>
+      <p class="result-count" id="result-count" role="status" aria-live="polite">Loading public records…</p>
+      <div id="projects-list" class="project-grid" aria-label="Public project results"></div>
+    </section>
+    <section class="section forest-band" id="forest" aria-labelledby="forest-heading">
+      <div class="shell">
+        <div class="section-heading"><div><span class="eyebrow">02 / MERKLE FOREST</span><h2 id="forest-heading">Unknown leaves stay visible</h2></div><p>Candidate trees are not verified roots. A pending hash is a concrete work item, never a fabricated leaf.</p></div>
+        <div class="forest-counts" id="forest-summary" role="status" aria-live="polite">Loading forest state…</div>
+        <div class="forest-grid" id="forest-list"></div>
+        <p class="source-note">Original lineage: <a href="https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/workflows/deepseek-zora-ingestion-v1/merkle_forest_schema_v1.json" rel="noopener noreferrer">MERKLE_FOREST_SCHEMA_V1</a>. This is a discovery visualization, not an asserted cryptographic proof.</p>
+      </div>
+    </section>
+    <section class="section shell" id="contribute" aria-labelledby="contribute-heading">
+      <div class="section-heading"><div><span class="eyebrow">03 / EVERYBODY BUILDS</span><h2 id="contribute-heading">Your contribution counts</h2></div><p>Women and girls are welcome as learners, designers, researchers, builders, and reviewers—not merely spectators.</p></div>
+      <div class="path-grid">
+        <article class="path-card"><span class="path-icon" aria-hidden="true">✦</span><h3>Learn</h3><p>Explore source documentation, trace project links, and practice evidence-based research without an account or cryptocurrency.</p></article>
+        <article class="path-card"><span class="path-icon" aria-hidden="true">⌘</span><h3>Build</h3><p>Propose accessibility improvements, code, tests, research notes, and design ideas through normal GitHub collaboration.</p></article>
+        <article class="path-card"><span class="path-icon" aria-hidden="true">◈</span><h3>Verify</h3><p>Check source links, examine pending tree roots, and help distinguish original receipts from candidate claims.</p></article>
+      </div>
+      <div class="safety-note"><strong>Protect younger contributors.</strong> Never post a minor's full name, contact information, school, wallet, location, or private evidence. Use age-appropriate participation with trusted adults where applicable.</div>
+    </section>
+    <section class="section shell evidence" aria-labelledby="evidence-heading">
+      <span class="eyebrow">04 / RECEIPTS, NOT REPEATED GATES</span>
+      <h2 id="evidence-heading">Existing proof rails</h2>
+      <p>The historical November 7 EIP-191 proof is a referenced engineering input. It does not grant current wallet, ENS, treasury, or production authority.</p>
+      <div class="evidence-links">
+        <a href="https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/CI_FIRST_BASE_BATCH_2026-11-07.json" rel="noopener noreferrer">Original signed-message fixture <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/CI_FIRST_BASE_RECEIPT_2026-11-07.json" rel="noopener noreferrer">Archived verification receipt <span aria-hidden="true">↗</span></a>
+        <a href="https://github.com/jsonwisdom/COMPUTERWISDOM/pull/774" rel="noopener noreferrer">Review live development PR #774 <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+  <footer class="footer shell"><p>COMPUTER WISDOM · CI-FIRST · PUBLIC PREVIEW ONLY</p><p>Development is live. Production promotion, wallet signing, spending, and protected merges remain human-authorized.</p></footer>
+  <noscript><div class="shell no-js">Enable JavaScript to browse the local JSON project index. Original records remain available on GitHub.</div></noscript>
+</body>
+</html>
