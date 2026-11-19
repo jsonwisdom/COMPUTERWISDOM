@@ -1,0 +1,32 @@
+name: CI-FIRST Front Door
+on:
+  pull_request:
+    paths:
+      - "ci-first/live-builder-v0.4/**"
+      - ".github/workflows/ci-first-frontdoor.yml"
+  push:
+    branches:
+      - "ci-first/live-builder-inclusive-v0.4"
+    paths:
+      - "ci-first/live-builder-v0.4/**"
+      - ".github/workflows/ci-first-frontdoor.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify-static-frontdoor:
+    name: Validate public-only index and Merkle states
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Validate snapshot, privacy, sources and HTML
+        run: python -m unittest discover -s ci-first/live-builder-v0.4/tests -p "test_*.py" -v
+      - name: Check browser JavaScript syntax
+        run: node --check ci-first/live-builder-v0.4/site/app.js

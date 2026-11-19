@@ -1,0 +1,69 @@
+name: CI-FIRST Front Door Metadata Refresh
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - ci-first/live-builder-inclusive-v0.4
+    paths:
+      - ci-first/live-builder-v0.4/scripts/refresh_commit_metadata.py
+      - ci-first/live-builder-v0.4/site/projects.json
+      - ci-first/live-builder-v0.4/tests/test_metadata_refresh.py
+      - .github/workflows/ci-first-metadata-refresh.yml
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-commit-metadata:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Fetch public default-branch commit metadata (review artifact)
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          python ci-first/live-builder-v0.4/scripts/refresh_commit_metadata.py \
+            --input ci-first/live-builder-v0.4/site/projects.json \
+            --output ci-first/live-builder-v0.4/site/projects.refreshed.json \
+            --preserve-snapshot --null-for-empty --require-complete
+      - name: Validate unchanged source and refreshed artifact
+        run: |
+          python -m unittest discover -s ci-first/live-builder-v0.4/tests -p "test_*.py" -v
+          python - <<'PY'
+          import importlib.util, json, pathlib
+          root=pathlib.Path('ci-first/live-builder-v0.4')
+          s=importlib.util.spec_from_file_location('refresh',root/'scripts/refresh_commit_metadata.py')
+          m=importlib.util.module_from_spec(s); s.loader.exec_module(m)
+          orig=json.loads((root/'site/projects.json').read_text())
+          new=json.loads((root/'site/projects.refreshed.json').read_text())
+          m.validate(new)
+          assert orig['snapshot_utc']==new['snapshot_utc']
+          assert [(r['repository'],r['last_seen_utc']) for r in orig['projects']]==[(r['repository'],r['last_seen_utc']) for r in new['projects']]
+          assert new['commit_metadata']['retrieved_count']==65
+          assert new['commit_metadata']['missing_count']==0
+          print('Refresh artifact PASS, 65/65')
+          PY
+      - name: Upload review-only metadata artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ci-first-projects-refreshed
+          path: ci-first/live-builder-v0.4/site/projects.refreshed.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Commit validated refreshed index only to development branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/ci-first/live-builder-inclusive-v0.4'
+        run: |
+          cp ci-first/live-builder-v0.4/site/projects.refreshed.json ci-first/live-builder-v0.4/site/projects.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ci-first/live-builder-v0.4/site/projects.json
+          if git diff --cached --quiet; then
+            echo "Refreshed inventory matches committed version"
+          else
+            git commit -m "data(frontdoor): commit verified 65 default-branch timestamps"
+            git push origin HEAD:refs/heads/ci-first/live-builder-inclusive-v0.4
+          fi
