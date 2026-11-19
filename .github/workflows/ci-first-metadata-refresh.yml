@@ -11,7 +11,7 @@ on:
       - .github/workflows/ci-first-metadata-refresh.yml
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   refresh-commit-metadata:
@@ -54,3 +54,16 @@ jobs:
           path: ci-first/live-builder-v0.4/site/projects.refreshed.json
           if-no-files-found: error
           retention-days: 14
+      - name: Commit validated refreshed index only to development branch
+        if: github.event_name == 'push' && github.ref == 'refs/heads/ci-first/live-builder-inclusive-v0.4'
+        run: |
+          cp ci-first/live-builder-v0.4/site/projects.refreshed.json ci-first/live-builder-v0.4/site/projects.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ci-first/live-builder-v0.4/site/projects.json
+          if git diff --cached --quiet; then
+            echo "Refreshed inventory matches committed version"
+          else
+            git commit -m "data(frontdoor): commit verified 65 default-branch timestamps"
+            git push origin HEAD:refs/heads/ci-first/live-builder-inclusive-v0.4
+          fi
