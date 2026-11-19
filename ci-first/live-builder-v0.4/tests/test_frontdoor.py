@@ -43,12 +43,17 @@ class TestFrontDoor(unittest.TestCase):
                 self.assertEqual(r["url"], "https://github.com/" + r["repository"])
                 self.assertEqual(urlparse(r["url"]).hostname, "github.com")
                 self.assertEqual(r["last_seen_utc"], data["snapshot_utc"])
-                if r["nonempty"] and r["last_commit_utc"] is not None:
+                if r["nonempty"]:
+                    self.assertIsNotNone(r["last_commit_utc"])
+                    self.assertTrue(r["last_commit_utc"].endswith("Z"))
                     stamp = datetime.datetime.fromisoformat(r["last_commit_utc"].replace("Z", "+00:00"))
                     self.assertIsNotNone(stamp.tzinfo)
+                    self.assertEqual(len(r["last_commit_sha"]), 40)
                     self.assertEqual(r["last_commit_url"], r["url"] + "/commit/" + r["last_commit_sha"])
-                if not r["nonempty"]:
+                else:
                     self.assertIsNone(r["last_commit_utc"])
+                    self.assertIsNone(r.get("last_commit_sha"))
+                    self.assertIsNone(r.get("last_commit_url"))
                 self.assertIsNone(r["merkle_root"])
                 self.assertEqual(r["nonempty"], r["size_kb"] > 0)
 
