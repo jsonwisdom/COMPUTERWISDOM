@@ -45,8 +45,14 @@
       title.append(link(p.name, p.url));
       const description = node("p", "", p.nonempty ? "Repository contains files · " + p.size_kb + " KB reported" : "Empty repository · available for a new build");
       const time = node("p", "", seen(p.last_seen_utc));
-      const badge = node("span", "tag", "Commit timestamp not asserted");
-      card.append(tag, title, description, time, badge);
+      const commitLabel = p.last_commit_utc
+        ? "Default-branch commit: " + p.last_commit_utc.replace("T", " ").replace("Z", " UTC")
+        : "No default-branch commit recorded";
+      const commit = node("p", "commit-date", commitLabel);
+      const evidence = p.last_commit_url && p.last_commit_sha
+        ? link("Source commit " + p.last_commit_sha.slice(0, 9) + " ↗", p.last_commit_url)
+        : node("span", "tag", "No commit source available");
+      card.append(tag, title, description, time, commit, evidence);
       return card;
     });
     if (!cards.length) cards.push(node("p", "empty-state", "No public repositories match this search. Clear the filter to explore the full index."));
@@ -80,10 +86,12 @@
       if (!Array.isArray(pData.projects) || pData.public_count !== pData.projects.length) throw new Error("Inventory count mismatch");
       if (new Set(pData.projects.map((p) => p.repository)).size !== pData.projects.length) throw new Error("Duplicate repository");
       if (pData.projects.some((p) => p.visibility !== "public" || !safeRepoUrl(p.url))) throw new Error("Non-public or invalid project source");
+      if (pData.projects.some((p) => (p.nonempty && (!p.last_commit_utc || !p.last_commit_sha || !safeRepoUrl(p.last_commit_url))) || (!p.nonempty && p.last_commit_utc !== null))) throw new Error("Missing or invalid default-branch commit provenance");
       projects = pData.projects;
       byId("repo-count").textContent = String(projects.length);
       byId("private-count").textContent = String(pData.private_excluded_count);
-      byId("snapshot").textContent = "GitHub observation: " + seen(pData.snapshot_utc) + ". Private repository identities excluded; last commit times not asserted.";
+      const dated = projects.filter((p) => p.last_commit_utc !== null).length;
+      byId("snapshot").textContent = "GitHub inventory observation: " + seen(pData.snapshot_utc) + ". Default-branch commit metadata: " + dated + " of " + projects.filter((p) => p.nonempty).length + " nonempty public repositories. Private identities excluded.";
       renderProjects();
       renderForest(fData);
     } catch (error) {
