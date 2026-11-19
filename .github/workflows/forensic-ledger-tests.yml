@@ -1,0 +1,23 @@
+name: CI-FIRST Forensic Ledger Synthetic Tests
+
+on:
+  pull_request:
+    paths:
+      - "forensic-ledger/**"
+      - ".github/workflows/forensic-ledger-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  synthetic-validation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run synthetic tests only
+        run: python -m unittest discover -s forensic-ledger -p 'test_*.py' -v
