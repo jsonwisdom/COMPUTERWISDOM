@@ -18,8 +18,11 @@
       "nonempty": true,
       "size_kb": 108,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-08-10T03:03:58Z",
+      "merkle_root": null,
+      "last_commit_sha": "882042cb704bdd825c2139cf04cdf4829487e6a9",
+      "last_commit_url": "https://github.com/jsonwisdom/-replayos-receiptos-spec/commit/882042cb704bdd825c2139cf04cdf4829487e6a9",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436420",
@@ -32,8 +35,11 @@
       "nonempty": true,
       "size_kb": 29,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2016-11-09T22:19:14Z",
+      "merkle_root": null,
+      "last_commit_sha": "27b1ebca51685cf3fbd52c3a85f5e16cdc2c7ac4",
+      "last_commit_url": "https://github.com/jsonwisdom/0/commit/27b1ebca51685cf3fbd52c3a85f5e16cdc2c7ac4",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436443",
@@ -47,7 +53,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "1307587942",
@@ -60,8 +68,11 @@
       "nonempty": true,
       "size_kb": 9,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-07-21T11:52:52Z",
+      "merkle_root": null,
+      "last_commit_sha": "04ae559bab977d28abfcfbd7ec43b39938cd4417",
+      "last_commit_url": "https://github.com/jsonwisdom/agentos/commit/04ae559bab977d28abfcfbd7ec43b39938cd4417",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1295653235",
@@ -74,8 +85,11 @@
       "nonempty": true,
       "size_kb": 5562,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-08-27T11:38:29Z",
+      "merkle_root": null,
+      "last_commit_sha": "c4a176d24db192c6dee93e2f3c795777ef89f103",
+      "last_commit_url": "https://github.com/jsonwisdom/agents/commit/c4a176d24db192c6dee93e2f3c795777ef89f103",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436459",
@@ -88,8 +102,11 @@
       "nonempty": true,
       "size_kb": 182920,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-11-19T04:23:57Z",
+      "merkle_root": null,
+      "last_commit_sha": "5d55d13790c69998737a6acd4d7b3faf2dbb4113",
+      "last_commit_url": "https://github.com/jsonwisdom/AL/commit/5d55d13790c69998737a6acd4d7b3faf2dbb4113",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "73418877",
@@ -102,8 +119,11 @@
       "nonempty": true,
       "size_kb": 398,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2016-06-05T00:30:01Z",
+      "merkle_root": null,
+      "last_commit_sha": "f03b3ce5cba02549945368ff82db9bd7cde06cad",
+      "last_commit_url": "https://github.com/jsonwisdom/AppleGuice/commit/f03b3ce5cba02549945368ff82db9bd7cde06cad",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436487",
@@ -117,7 +137,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "1249603357",
@@ -130,8 +152,11 @@
       "nonempty": true,
       "size_kb": 81231,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-05-25T22:42:16Z",
+      "merkle_root": null,
+      "last_commit_sha": "2eb95aa4042826cf10c4148cf20df61a3e6d4072",
+      "last_commit_url": "https://github.com/jsonwisdom/base/commit/2eb95aa4042826cf10c4148cf20df61a3e6d4072",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1187508530",
@@ -144,8 +169,11 @@
       "nonempty": true,
       "size_kb": 4,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-05-22T06:24:17Z",
+      "merkle_root": null,
+      "last_commit_sha": "7f62d0c378cf384930960c4b8b74723dcdab41b7",
+      "last_commit_url": "https://github.com/jsonwisdom/base-live/commit/7f62d0c378cf384930960c4b8b74723dcdab41b7",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1272882658",
@@ -158,8 +186,11 @@
       "nonempty": true,
       "size_kb": 18,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-06-18T05:03:41Z",
+      "merkle_root": null,
+      "last_commit_sha": "85ca22031759fc5f6106868ed91d0a0a9b934f40",
+      "last_commit_url": "https://github.com/jsonwisdom/boss-brenda-crawler/commit/85ca22031759fc5f6106868ed91d0a0a9b934f40",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436504",
@@ -172,8 +203,11 @@
       "nonempty": true,
       "size_kb": 1,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-06-04T19:14:34Z",
+      "merkle_root": null,
+      "last_commit_sha": "3336e0929af34367ead4830ac2055b3879090b4d",
+      "last_commit_url": "https://github.com/jsonwisdom/BRAELEE/commit/3336e0929af34367ead4830ac2055b3879090b4d",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436516",
@@ -186,8 +220,11 @@
       "nonempty": true,
       "size_kb": 1,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-06-02T18:26:54Z",
+      "merkle_root": null,
+      "last_commit_sha": "64dba8504a73790b26e63b741fd4bdc6787ef2f1",
+      "last_commit_url": "https://github.com/jsonwisdom/BREANN/commit/64dba8504a73790b26e63b741fd4bdc6787ef2f1",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436371",
@@ -201,7 +238,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "1191437927",
@@ -214,8 +253,11 @@
       "nonempty": true,
       "size_kb": 115,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-03-06T10:35:34Z",
+      "merkle_root": null,
+      "last_commit_sha": "3864170d0f422b9378340de5732ac8572e786ffa",
+      "last_commit_url": "https://github.com/jsonwisdom/chainlink-agent-skills/commit/3864170d0f422b9378340de5732ac8572e786ffa",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1346806893",
@@ -228,8 +270,11 @@
       "nonempty": true,
       "size_kb": 257,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-11-04T11:05:37Z",
+      "merkle_root": null,
+      "last_commit_sha": "add9a2bb5912f6d213f0801106268c7a9f78df31",
+      "last_commit_url": "https://github.com/jsonwisdom/CITIZEN_ROOT/commit/add9a2bb5912f6d213f0801106268c7a9f78df31",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436533",
@@ -242,8 +287,11 @@
       "nonempty": true,
       "size_kb": 78410,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-11-15T01:47:39Z",
+      "merkle_root": null,
+      "last_commit_sha": "0a474308e6eb51a67a0c42b5fddfe6859e865f5d",
+      "last_commit_url": "https://github.com/jsonwisdom/COMPUTERWISDOM/commit/0a474308e6eb51a67a0c42b5fddfe6859e865f5d",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436544",
@@ -256,8 +304,11 @@
       "nonempty": true,
       "size_kb": 89,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-08-27T10:56:36Z",
+      "merkle_root": null,
+      "last_commit_sha": "7c5d4380c1bb84c5ddc4d84e121d68312bd6115e",
+      "last_commit_url": "https://github.com/jsonwisdom/COMPUTERWIZARD/commit/7c5d4380c1bb84c5ddc4d84e121d68312bd6115e",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1303983407",
@@ -270,8 +321,11 @@
       "nonempty": true,
       "size_kb": 13,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-07-17T13:23:36Z",
+      "merkle_root": null,
+      "last_commit_sha": "f4ea268010da3c73850bb7426fbfb91bc1b17a09",
+      "last_commit_url": "https://github.com/jsonwisdom/crp-v0.1/commit/f4ea268010da3c73850bb7426fbfb91bc1b17a09",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1305856629",
@@ -284,8 +338,11 @@
       "nonempty": true,
       "size_kb": 1,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-07-19T16:24:03Z",
+      "merkle_root": null,
+      "last_commit_sha": "c403e5bf9ee87a653e3c7e28c7cc12e3e416f8e9",
+      "last_commit_url": "https://github.com/jsonwisdom/DDR/commit/c403e5bf9ee87a653e3c7e28c7cc12e3e416f8e9",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1164081989",
@@ -298,8 +355,11 @@
       "nonempty": true,
       "size_kb": 2,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-02-22T16:06:45Z",
+      "merkle_root": null,
+      "last_commit_sha": "71198d28946a2c07dc2a9a39d8a2265c3a2123d7",
+      "last_commit_url": "https://github.com/jsonwisdom/debate-judge-tee-v1/commit/71198d28946a2c07dc2a9a39d8a2265c3a2123d7",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436555",
@@ -312,8 +372,11 @@
       "nonempty": true,
       "size_kb": 1,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-06-04T22:37:25Z",
+      "merkle_root": null,
+      "last_commit_sha": "d38d277d0cea236ab4e72a0d012a68586e91d015",
+      "last_commit_url": "https://github.com/jsonwisdom/DESTINEE/commit/d38d277d0cea236ab4e72a0d012a68586e91d015",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "80624396",
@@ -327,7 +390,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "71436561",
@@ -341,7 +406,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "1199185476",
@@ -354,8 +421,11 @@
       "nonempty": true,
       "size_kb": 40,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-08-12T22:24:45Z",
+      "merkle_root": null,
+      "last_commit_sha": "9c0ff08c74801e57c70a163f3c9eea0711566d4a",
+      "last_commit_url": "https://github.com/jsonwisdom/ENS/commit/9c0ff08c74801e57c70a163f3c9eea0711566d4a",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1282316854",
@@ -368,8 +438,11 @@
       "nonempty": true,
       "size_kb": 10,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-06-27T17:45:48Z",
+      "merkle_root": null,
+      "last_commit_sha": "8a5b91ef2b4aebe0c117c5cd51a8dc9b6995b4bd",
+      "last_commit_url": "https://github.com/jsonwisdom/EV-012-ZORA-MARKET-SNAPSHOT/commit/8a5b91ef2b4aebe0c117c5cd51a8dc9b6995b4bd",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71438049",
@@ -382,8 +455,11 @@
       "nonempty": true,
       "size_kb": 1614,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2016-10-20T07:51:24Z",
+      "merkle_root": null,
+      "last_commit_sha": "bb7d6caae807ec1f6b96ff82fe76ae9c7802e410",
+      "last_commit_url": "https://github.com/jsonwisdom/fastenal/commit/bb7d6caae807ec1f6b96ff82fe76ae9c7802e410",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1321926288",
@@ -396,8 +472,11 @@
       "nonempty": true,
       "size_kb": 469,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-11-04T21:25:43Z",
+      "merkle_root": null,
+      "last_commit_sha": "590f4c30bee2886b643bc90d98442c4abb2e2bee",
+      "last_commit_url": "https://github.com/jsonwisdom/flywheel-of-wisdom/commit/590f4c30bee2886b643bc90d98442c4abb2e2bee",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436573",
@@ -410,8 +489,11 @@
       "nonempty": true,
       "size_kb": 1,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-06-02T18:36:12Z",
+      "merkle_root": null,
+      "last_commit_sha": "4d2324de91791e18d9e743efaf0d5ec55b1ac7a9",
+      "last_commit_url": "https://github.com/jsonwisdom/GAGA/commit/4d2324de91791e18d9e743efaf0d5ec55b1ac7a9",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1297134535",
@@ -424,8 +506,11 @@
       "nonempty": true,
       "size_kb": 22356,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-07-13T15:53:06Z",
+      "merkle_root": null,
+      "last_commit_sha": "174c3b2b6e5a8bd5d953aba8ec03273964220b3b",
+      "last_commit_url": "https://github.com/jsonwisdom/GENESIS/commit/174c3b2b6e5a8bd5d953aba8ec03273964220b3b",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1155007430",
@@ -439,7 +524,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "69578623",
@@ -452,8 +539,11 @@
       "nonempty": true,
       "size_kb": 30705,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-11-16T13:30:44Z",
+      "merkle_root": null,
+      "last_commit_sha": "86baf2cf39ecc25b89d52e01affa1ee0726d59a9",
+      "last_commit_url": "https://github.com/jsonwisdom/GPKMONSTER/commit/86baf2cf39ecc25b89d52e01affa1ee0726d59a9",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436600",
@@ -466,8 +556,11 @@
       "nonempty": true,
       "size_kb": 9,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-06-27T02:13:03Z",
+      "merkle_root": null,
+      "last_commit_sha": "a6b824e04aa17093b54e8f6224ac6ba00e287cbe",
+      "last_commit_url": "https://github.com/jsonwisdom/GRAMMY/commit/a6b824e04aa17093b54e8f6224ac6ba00e287cbe",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436608",
@@ -481,7 +574,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "71436618",
@@ -494,8 +589,11 @@
       "nonempty": true,
       "size_kb": 219,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-11-15T20:48:09Z",
+      "merkle_root": null,
+      "last_commit_sha": "8e61fc2ce623b59feca2a3b231390bd5c968dbe7",
+      "last_commit_url": "https://github.com/jsonwisdom/HEIDEE/commit/8e61fc2ce623b59feca2a3b231390bd5c968dbe7",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1182053861",
@@ -508,8 +606,11 @@
       "nonempty": true,
       "size_kb": 993,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-03-13T05:51:23Z",
+      "merkle_root": null,
+      "last_commit_sha": "515a7b9eb502c42e7d59736702b05e70ef735249",
+      "last_commit_url": "https://github.com/jsonwisdom/heretic/commit/515a7b9eb502c42e7d59736702b05e70ef735249",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1314251485",
@@ -522,8 +623,11 @@
       "nonempty": true,
       "size_kb": 65,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-07-27T21:19:14Z",
+      "merkle_root": null,
+      "last_commit_sha": "8dcbf40365c082be8fb3dfeafdd92c44521ce204",
+      "last_commit_url": "https://github.com/jsonwisdom/jason-parallel-drift-auditor/commit/8dcbf40365c082be8fb3dfeafdd92c44521ce204",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71440204",
@@ -536,8 +640,11 @@
       "nonempty": true,
       "size_kb": 12758,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2017-02-08T01:45:38Z",
+      "merkle_root": null,
+      "last_commit_sha": "0ef101566e1098b442a323941479b194a61601bd",
+      "last_commit_url": "https://github.com/jsonwisdom/Jason-t-PL3X/commit/0ef101566e1098b442a323941479b194a61601bd",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "81049216",
@@ -551,7 +658,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "156995284",
@@ -564,8 +673,11 @@
       "nonempty": true,
       "size_kb": 13,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2018-11-10T15:42:21Z",
+      "merkle_root": null,
+      "last_commit_sha": "a72d961bc6b2317091b7fa1698b86ce17310eea2",
+      "last_commit_url": "https://github.com/jsonwisdom/Jasons-1st-repository/commit/a72d961bc6b2317091b7fa1698b86ce17310eea2",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1242026995",
@@ -578,8 +690,11 @@
       "nonempty": true,
       "size_kb": 4529,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-10-04T07:25:35Z",
+      "merkle_root": null,
+      "last_commit_sha": "5962509e6f75f6e4b98100a42ae7b40d8d3031ae",
+      "last_commit_url": "https://github.com/jsonwisdom/jay-zora-portal/commit/5962509e6f75f6e4b98100a42ae7b40d8d3031ae",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436631",
@@ -592,8 +707,11 @@
       "nonempty": true,
       "size_kb": 4833,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-06-02T18:14:08Z",
+      "merkle_root": null,
+      "last_commit_sha": "a85ba7dfec5e9e9d996293f630c2483d3fec44f4",
+      "last_commit_url": "https://github.com/jsonwisdom/JAYCEE/commit/a85ba7dfec5e9e9d996293f630c2483d3fec44f4",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1252644307",
@@ -606,8 +724,11 @@
       "nonempty": true,
       "size_kb": 5468,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-11-19T03:20:48Z",
+      "merkle_root": null,
+      "last_commit_sha": "9eec8f3e04227af35ce6c5c0b6357f64b511676a",
+      "last_commit_url": "https://github.com/jsonwisdom/JOY/commit/9eec8f3e04227af35ce6c5c0b6357f64b511676a",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1343502441",
@@ -620,8 +741,11 @@
       "nonempty": true,
       "size_kb": 13,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-10-31T16:39:32Z",
+      "merkle_root": null,
+      "last_commit_sha": "8b0b11b87d1e467788a25f9fb1a6d76c75db8016",
+      "last_commit_url": "https://github.com/jsonwisdom/jsonwisdom-packet-workbench/commit/8b0b11b87d1e467788a25f9fb1a6d76c75db8016",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1228243790",
@@ -634,8 +758,11 @@
       "nonempty": true,
       "size_kb": 67,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-06-12T21:31:49Z",
+      "merkle_root": null,
+      "last_commit_sha": "866c2083116a31dd77773e1f15cdd4a05fe13e35",
+      "last_commit_url": "https://github.com/jsonwisdom/layered-proofing-state-level-alms/commit/866c2083116a31dd77773e1f15cdd4a05fe13e35",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "73330061",
@@ -648,8 +775,11 @@
       "nonempty": true,
       "size_kb": 374,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2016-11-09T23:54:55Z",
+      "merkle_root": null,
+      "last_commit_sha": "a109dbb31c863bb04c8e19893bcb5ed688d69b3b",
+      "last_commit_url": "https://github.com/jsonwisdom/Learning-GitHub/commit/a109dbb31c863bb04c8e19893bcb5ed688d69b3b",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436642",
@@ -662,8 +792,11 @@
       "nonempty": true,
       "size_kb": 480,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-11-18T21:27:09Z",
+      "merkle_root": null,
+      "last_commit_sha": "16150c2c0b40d2fdd0f3fef6bc36d2e4ad98471d",
+      "last_commit_url": "https://github.com/jsonwisdom/LEEANN/commit/16150c2c0b40d2fdd0f3fef6bc36d2e4ad98471d",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436651",
@@ -676,8 +809,11 @@
       "nonempty": true,
       "size_kb": 58,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-08-05T00:05:55Z",
+      "merkle_root": null,
+      "last_commit_sha": "44fdfa24056e2c8b4ad51f4454f2861bf206a69b",
+      "last_commit_url": "https://github.com/jsonwisdom/MARYDEE/commit/44fdfa24056e2c8b4ad51f4454f2861bf206a69b",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "979434617",
@@ -691,7 +827,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "1205098567",
@@ -704,8 +842,11 @@
       "nonempty": true,
       "size_kb": 3046,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-11-19T03:58:37Z",
+      "merkle_root": null,
+      "last_commit_sha": "2b25269ff36f4c568be7eb0df93120afedbc4dd1",
+      "last_commit_url": "https://github.com/jsonwisdom/mn-ago-entropy-ledger/commit/2b25269ff36f4c568be7eb0df93120afedbc4dd1",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436657",
@@ -719,7 +860,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "71436666",
@@ -733,7 +876,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "978397498",
@@ -746,8 +891,11 @@
       "nonempty": true,
       "size_kb": 10,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2025-10-05T22:32:44Z",
+      "merkle_root": null,
+      "last_commit_sha": "24401d4eab9c817f874b2984ea1797ec6731858e",
+      "last_commit_url": "https://github.com/jsonwisdom/nuke-launchpad/commit/24401d4eab9c817f874b2984ea1797ec6731858e",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1239292036",
@@ -760,8 +908,11 @@
       "nonempty": true,
       "size_kb": 862,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-03-27T21:05:30Z",
+      "merkle_root": null,
+      "last_commit_sha": "9cf32e6b264095591523fb026d6fa5e97f4bb20e",
+      "last_commit_url": "https://github.com/jsonwisdom/openai-chatkit-starter-app/commit/9cf32e6b264095591523fb026d6fa5e97f4bb20e",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436677",
@@ -775,7 +926,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "73329559",
@@ -788,8 +941,11 @@
       "nonempty": true,
       "size_kb": 12,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2016-11-09T23:31:44Z",
+      "merkle_root": null,
+      "last_commit_sha": "caeb45c93b36aa5fa65113c3a6ca13d07dec8193",
+      "last_commit_url": "https://github.com/jsonwisdom/Plesk-Onyx-17.0.17/commit/caeb45c93b36aa5fa65113c3a6ca13d07dec8193",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436687",
@@ -803,7 +959,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "1343570263",
@@ -816,8 +974,11 @@
       "nonempty": true,
       "size_kb": 1708,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-08-23T09:03:57Z",
+      "merkle_root": null,
+      "last_commit_sha": "73f310b1ac75fe165ea450c2aa0b1be5153c5eea",
+      "last_commit_url": "https://github.com/jsonwisdom/prism-brush-spruce-lake/commit/73f310b1ac75fe165ea450c2aa0b1be5153c5eea",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1183900874",
@@ -830,8 +991,11 @@
       "nonempty": true,
       "size_kb": 29,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-05-01T19:17:38Z",
+      "merkle_root": null,
+      "last_commit_sha": "68c284cebc771d2cc22bf389a2ad957312acb854",
+      "last_commit_url": "https://github.com/jsonwisdom/prooflayer-repo/commit/68c284cebc771d2cc22bf389a2ad957312acb854",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1271656733",
@@ -844,8 +1008,11 @@
       "nonempty": true,
       "size_kb": 201,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-08-24T16:18:41Z",
+      "merkle_root": null,
+      "last_commit_sha": "e7615463f7339ee84774fb6a339f736145596869",
+      "last_commit_url": "https://github.com/jsonwisdom/provenance-audit-kit/commit/e7615463f7339ee84774fb6a339f736145596869",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1188995711",
@@ -858,8 +1025,11 @@
       "nonempty": true,
       "size_kb": 2874,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-11-12T23:11:11Z",
+      "merkle_root": null,
+      "last_commit_sha": "cd86c1c5ead3d27401b266cd14d315f5480d944a",
+      "last_commit_url": "https://github.com/jsonwisdom/public-proof/commit/cd86c1c5ead3d27401b266cd14d315f5480d944a",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1244983807",
@@ -872,8 +1042,11 @@
       "nonempty": true,
       "size_kb": 2,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-05-20T19:47:12Z",
+      "merkle_root": null,
+      "last_commit_sha": "5725bc19d20780fa1607060990f68205aa40db87",
+      "last_commit_url": "https://github.com/jsonwisdom/receipt-arcade/commit/5725bc19d20780fa1607060990f68205aa40db87",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1317734689",
@@ -886,8 +1059,11 @@
       "nonempty": true,
       "size_kb": 19,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-08-11T02:44:29Z",
+      "merkle_root": null,
+      "last_commit_sha": "8938537aaf14d8b947340c33e3070a89b5cf7460",
+      "last_commit_url": "https://github.com/jsonwisdom/ReceiptOS/commit/8938537aaf14d8b947340c33e3070a89b5cf7460",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1282575239",
@@ -900,8 +1076,11 @@
       "nonempty": true,
       "size_kb": 11497,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-09-05T20:10:16Z",
+      "merkle_root": null,
+      "last_commit_sha": "e49b946f516e43cd55d79a40c0c21779e3adef59",
+      "last_commit_url": "https://github.com/jsonwisdom/receiptos-base/commit/e49b946f516e43cd55d79a40c0c21779e3adef59",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1321765823",
@@ -914,8 +1093,11 @@
       "nonempty": true,
       "size_kb": 36,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-08-05T15:28:17Z",
+      "merkle_root": null,
+      "last_commit_sha": "a0c9df5a89f1ad5edde03ca78749691452d86663",
+      "last_commit_url": "https://github.com/jsonwisdom/receiptos-replay-proof/commit/a0c9df5a89f1ad5edde03ca78749691452d86663",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1209673595",
@@ -928,8 +1110,11 @@
       "nonempty": true,
       "size_kb": 472,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-11-01T20:17:59Z",
+      "merkle_root": null,
+      "last_commit_sha": "69684daca3be4eb7cfa990cf5b521442c4a33143",
+      "last_commit_url": "https://github.com/jsonwisdom/receipts-engine-v1/commit/69684daca3be4eb7cfa990cf5b521442c4a33143",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1240563996",
@@ -943,7 +1128,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "1240565438",
@@ -956,8 +1143,11 @@
       "nonempty": true,
       "size_kb": 36,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-05-16T11:46:06Z",
+      "merkle_root": null,
+      "last_commit_sha": "13bf291a4c745eeac851fa702ffa6ecd4be87ca5",
+      "last_commit_url": "https://github.com/jsonwisdom/replay-membrane-v0/commit/13bf291a4c745eeac851fa702ffa6ecd4be87ca5",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1181336681",
@@ -970,8 +1160,11 @@
       "nonempty": true,
       "size_kb": 4188,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-07-30T00:26:44Z",
+      "merkle_root": null,
+      "last_commit_sha": "7dbe2850b04298c7bd8b06716e756e8062c00256",
+      "last_commit_url": "https://github.com/jsonwisdom/RMT/commit/7dbe2850b04298c7bd8b06716e756e8062c00256",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "74156297",
@@ -984,8 +1177,11 @@
       "nonempty": true,
       "size_kb": 10458,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-05-01T19:27:14Z",
+      "merkle_root": null,
+      "last_commit_sha": "4c71393e18fd63009485034da56f90e30a021317",
+      "last_commit_url": "https://github.com/jsonwisdom/Server/commit/4c71393e18fd63009485034da56f90e30a021317",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1445299343",
@@ -998,8 +1194,11 @@
       "nonempty": true,
       "size_kb": 151,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-11-04T11:11:21Z",
+      "merkle_root": null,
+      "last_commit_sha": "0c7ba1fae914bac67de76a5aba90b70d5e868657",
+      "last_commit_url": "https://github.com/jsonwisdom/seymour-swarm-orchestrator/commit/0c7ba1fae914bac67de76a5aba90b70d5e868657",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "968974508",
@@ -1012,8 +1211,11 @@
       "nonempty": true,
       "size_kb": 17,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-04-20T22:27:16Z",
+      "merkle_root": null,
+      "last_commit_sha": "d2b947f7d54fc5e830c67a5fc7e614157878382c",
+      "last_commit_url": "https://github.com/jsonwisdom/signal-multisig-zora/commit/d2b947f7d54fc5e830c67a5fc7e614157878382c",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "969419104",
@@ -1026,8 +1228,11 @@
       "nonempty": true,
       "size_kb": 92,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2025-04-20T11:52:41Z",
+      "merkle_root": null,
+      "last_commit_sha": "94821e35de856e359524779a5d1fb38ca42bd9a6",
+      "last_commit_url": "https://github.com/jsonwisdom/snapback-mirror/commit/94821e35de856e359524779a5d1fb38ca42bd9a6",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436917",
@@ -1040,8 +1245,11 @@
       "nonempty": true,
       "size_kb": 849,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2016-10-20T07:40:51Z",
+      "merkle_root": null,
+      "last_commit_sha": "d2f8aefb0885ce5207bea3eb77615b769a24a47c",
+      "last_commit_url": "https://github.com/jsonwisdom/software/commit/d2f8aefb0885ce5207bea3eb77615b769a24a47c",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "967660940",
@@ -1055,7 +1263,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "1208671038",
@@ -1068,8 +1278,11 @@
       "nonempty": true,
       "size_kb": 2,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-05-01T19:41:29Z",
+      "merkle_root": null,
+      "last_commit_sha": "0fc4913a60e6124f040bc8475893efe8dcde836d",
+      "last_commit_url": "https://github.com/jsonwisdom/system-risk-detector/commit/0fc4913a60e6124f040bc8475893efe8dcde836d",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1349392044",
@@ -1082,8 +1295,11 @@
       "nonempty": true,
       "size_kb": 35110,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-08-27T01:41:19Z",
+      "merkle_root": null,
+      "last_commit_sha": "c04c5afee401df40e620db8ae108e957ae07bcd9",
+      "last_commit_url": "https://github.com/jsonwisdom/tailcat/commit/c04c5afee401df40e620db8ae108e957ae07bcd9",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "1319987967",
@@ -1096,8 +1312,11 @@
       "nonempty": true,
       "size_kb": 3,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-08-02T09:14:34Z",
+      "merkle_root": null,
+      "last_commit_sha": "771263f565a19a9e36cc3ac98082165f0c002d9e",
+      "last_commit_url": "https://github.com/jsonwisdom/the-gap/commit/771263f565a19a9e36cc3ac98082165f0c002d9e",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71436403",
@@ -1111,7 +1330,9 @@
       "size_kb": 0,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
       "last_commit_utc": null,
-      "merkle_root": null
+      "merkle_root": null,
+      "last_commit_sha": null,
+      "last_commit_url": null
     },
     {
       "id": "1194187430",
@@ -1124,8 +1345,11 @@
       "nonempty": true,
       "size_kb": 67,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-10-26T19:22:31Z",
+      "merkle_root": null,
+      "last_commit_sha": "6f46acaae7eff174f86e8a06dcbd4bbe26b7e368",
+      "last_commit_url": "https://github.com/jsonwisdom/verifygate/commit/6f46acaae7eff174f86e8a06dcbd4bbe26b7e368",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     },
     {
       "id": "71435805",
@@ -1138,8 +1362,20 @@
       "nonempty": true,
       "size_kb": 2895,
       "last_seen_utc": "2026-11-19T04:45:29.213Z",
-      "last_commit_utc": null,
-      "merkle_root": null
+      "last_commit_utc": "2026-11-19T03:57:39Z",
+      "merkle_root": null,
+      "last_commit_sha": "2d7d4d84f2ea36b2abb080dad21d236ebca8e3d2",
+      "last_commit_url": "https://github.com/jsonwisdom/Welcome-to-JSONWISDOM/commit/2d7d4d84f2ea36b2abb080dad21d236ebca8e3d2",
+      "last_commit_source": "GitHub GET /repos/{owner}/{repo}/commits/{default_branch}"
     }
-  ]
+  ],
+  "commit_metadata": {
+    "source": "GitHub REST default-branch commit endpoint",
+    "retrieved_count": 65,
+    "missing_count": 0,
+    "requested_count": 65,
+    "failed_repositories": [],
+    "observation_timestamp_preserved": "2026-11-19T04:45:29.213Z",
+    "meaning": "last_commit_utc is the committer date on the latest commit at the observed default branch; it may postdate the original inventory observation"
+  }
 }
