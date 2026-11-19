@@ -1,0 +1,102 @@
+{
+  "schema": "computerwisdom.frontdoor.forest.v0.4",
+  "snapshot_utc": "2026-11-19T04:45:29.213Z",
+  "source_url": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/master/workflows/deepseek-zora-ingestion-v1/merkle_forest_schema_v1.json",
+  "source_schema_id": "MERKLE_FOREST_SCHEMA_V1",
+  "canonical_states": [
+    "CANDIDATE",
+    "HELD",
+    "REJECTED",
+    "VERIFIED_RECEIPT",
+    "CANON"
+  ],
+  "forest_id": "COMPUTER_WISDOM_MERKLE_FOREST_V1",
+  "forest_root": "PENDING_HASH",
+  "forest_state": "CANDIDATE",
+  "bridge_receipts_count": 0,
+  "trees": [
+    {
+      "id": "TREE_WORKFLOWS_DEEPSEEK_ZORA_INGESTION_V1",
+      "type": "WORKFLOW_TREE",
+      "path": "workflows/deepseek-zora-ingestion-v1",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/tree/master/workflows/deepseek-zora-ingestion-v1",
+      "state": "CANDIDATE",
+      "root": "PENDING_HASH",
+      "verified_leaf_count": null,
+      "evidence": "ROOT_NOT_COMPUTED",
+      "work_item": "Recompute from ordered authenticated leaf receipts; placeholders are not leaf hashes."
+    },
+    {
+      "id": "TREE_RECEIPTS",
+      "type": "RECEIPT_VAULT_TREE",
+      "path": "receipts",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/tree/master/receipts",
+      "state": "CANDIDATE",
+      "root": "PENDING_HASH",
+      "verified_leaf_count": null,
+      "evidence": "ROOT_NOT_COMPUTED",
+      "work_item": "Recompute from ordered authenticated leaf receipts; placeholders are not leaf hashes."
+    },
+    {
+      "id": "TREE_SERVICES",
+      "type": "ARTIFACT_FAMILY_TREE",
+      "path": "services",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/tree/master/services",
+      "state": "CANDIDATE",
+      "root": "PENDING_HASH",
+      "verified_leaf_count": null,
+      "evidence": "ROOT_NOT_COMPUTED",
+      "work_item": "Recompute from ordered authenticated leaf receipts; placeholders are not leaf hashes."
+    },
+    {
+      "id": "TREE_AUDITS",
+      "type": "CONTRADICTION_LOG_TREE",
+      "path": "audits",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/tree/master/audits",
+      "state": "CANDIDATE",
+      "root": "PENDING_HASH",
+      "verified_leaf_count": null,
+      "evidence": "ROOT_NOT_COMPUTED",
+      "work_item": "Recompute from ordered authenticated leaf receipts; placeholders are not leaf hashes."
+    },
+    {
+      "id": "TREE_CANDIDATES",
+      "type": "ARTIFACT_FAMILY_TREE",
+      "path": "candidates",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/tree/master/candidates",
+      "state": "CANDIDATE",
+      "root": "PENDING_HASH",
+      "verified_leaf_count": null,
+      "evidence": "ROOT_NOT_COMPUTED",
+      "work_item": "Recompute from ordered authenticated leaf receipts; placeholders are not leaf hashes."
+    }
+  ],
+  "groves": [
+    {
+      "id": "GROVE_PROTOCOL",
+      "member_tree_ids": [
+        "TREE_WORKFLOWS_DEEPSEEK_ZORA_INGESTION_V1"
+      ],
+      "state": "CANDIDATE",
+      "root": "PENDING_HASH"
+    },
+    {
+      "id": "GROVE_RECEIPTS_AND_AUDITS",
+      "member_tree_ids": [
+        "TREE_RECEIPTS",
+        "TREE_AUDITS"
+      ],
+      "state": "CANDIDATE",
+      "root": "PENDING_HASH"
+    },
+    {
+      "id": "GROVE_PUBLIC_ARTIFACTS",
+      "member_tree_ids": [
+        "TREE_SERVICES",
+        "TREE_CANDIDATES"
+      ],
+      "state": "CANDIDATE",
+      "root": "PENDING_HASH"
+    }
+  ]
+}
