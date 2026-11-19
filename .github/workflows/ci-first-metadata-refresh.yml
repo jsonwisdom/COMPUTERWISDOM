@@ -1,6 +1,14 @@
 name: CI-FIRST Front Door Metadata Refresh
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - ci-first/live-builder-inclusive-v0.4
+    paths:
+      - ci-first/live-builder-v0.4/scripts/refresh_commit_metadata.py
+      - ci-first/live-builder-v0.4/site/projects.json
+      - ci-first/live-builder-v0.4/tests/test_metadata_refresh.py
+      - .github/workflows/ci-first-metadata-refresh.yml
 
 permissions:
   contents: read
