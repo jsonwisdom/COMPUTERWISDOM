@@ -1,0 +1,45 @@
+{
+  "schema": "computerwisdom.owner-policy.v0.3.1",
+  "owner": {
+    "name": "Jason Wisdom",
+    "role": "HUMAN_COMMAND_AUTHORITY",
+    "github_namespace": "jsonwisdom",
+    "proof": "DECLARED_GOVERNANCE_POLICY_NOT_WALLET_CONTROL"
+  },
+  "builder": {
+    "name": "JSONWisdom",
+    "role": "DRAFT_BUILD_TEST_ANALYZE_NO_FINANCIAL_AUTHORITY"
+  },
+  "target": {
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "branch": "oodleloop/quadratic-restoration-v0.3.0",
+    "pr": 773,
+    "base": "master",
+    "merge_authorized": false
+  },
+  "permissions": {
+    "read": true,
+    "scaffold": true,
+    "build": true,
+    "test": true,
+    "write_to_this_draft_branch": true,
+    "merge": false,
+    "deploy": false,
+    "sign": false,
+    "spend": false,
+    "identity_change": false,
+    "external_publication": false
+  },
+  "safeguards": {
+    "global_hold": false,
+    "signature_required_for_build": false,
+    "require_explicit_human_authorization_for": "merge, sign, spend, deploy, identity changes, consequential publication",
+    "reuse_existing_receipts": true,
+    "duplicate_authentication": false
+  },
+  "signature": {
+    "status": "OPTIONAL_OWNER_INTENT_ONLY",
+    "message_file": "oodleloop/quadratic-restoration-v0.3.0/OWNER_INTENT_MESSAGE.txt",
+    "does_not_prove": "wallet or ENS control, Base binding, ownership of A380"
+  }
+}

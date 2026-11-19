@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Jason Command Center | CI-FIRST</title>
+<style>
+:root{color-scheme:dark;font:16px/1.5 system-ui,Segoe UI,Arial,sans-serif;background:#081017;color:#eef5f7}
+*{box-sizing:border-box}body{margin:0;padding:clamp(14px,3vw,36px);max-width:1080px;margin:auto}
+header{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:14px}
+h1{font-size:clamp(26px,4vw,42px);margin:.25rem 0}h2{font-size:1.1rem;margin:.35rem 0 1rem}
+small,.muted{color:#a8b8c3}.kicker{color:#7bd2ce;text-transform:uppercase;letter-spacing:.12em;font-size:.8rem}
+section{background:#101e28;border:1px solid #2d4956;border-radius:16px;padding:20px;margin-top:15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px}
+.metric{background:#09151f;border:1px solid #29424e;border-radius:12px;padding:12px}
+.metric strong{display:block;font-size:1.04rem;overflow-wrap:anywhere}
+.label{color:#a6bac5;font-size:.85rem}
+.pill{display:inline-block;border:1px solid #4f7d8d;border-radius:20px;padding:4px 10px;margin:3px 4px 3px 0}
+.good{color:#a3f0c5}.warn{color:#ffd28a}.unknown{color:#c3d0dc}
+button,a.action{background:#1f6d75;color:white;border:1px solid #63a4a9;padding:10px 13px;border-radius:10px;font:inherit;cursor:pointer;text-decoration:none}
+button:focus-visible,a:focus-visible{outline:3px solid #ffe6a0;outline-offset:3px}
+button.secondary{background:#182b3a}
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:15px}
+code{font-family:ui-monospace,Consolas,monospace;color:#a2e0ea;word-break:break-all}
+.edge{padding:10px;border-top:1px solid #29424e}
+.edge:first-child{border-top:0}
+textarea{width:100%;min-height:180px;background:#081017;color:#e7f3f6;border:1px solid #315366;border-radius:9px;padding:12px}
+a{color:#8fd8ea}footer{padding:20px 3px;color:#9fb1bc}
+</style></head><body>
+<header><div><div class="kicker">Computer Wisdom · CI-FIRST v0.3.1</div><h1>⚙️ Jason's Command Center</h1><div>Human commands. JSONWisdom builds. Evidence speaks.</div></div><span class="pill good">BUILD ALLOWED</span></header>
+<section aria-label="Authority"><h2>Authority and isolation</h2><div class="grid">
+<div class="metric"><span class="label">Owner / Command</span><strong>Jason Wisdom</strong><small>Declarative governance role, not a wallet-control claim</small></div>
+<div class="metric"><span class="label">Builder</span><strong>JSONWisdom</strong><small>Draft · build · test · replay</small></div>
+<div class="metric"><span class="label">Secure identity context</span><strong>jaywisdom.eth</strong><small>Private-by-default architectural rail</small></div>
+<div class="metric"><span class="label">Public execution context</span><strong>jaywisdom.base.eth</strong><small>Public-by-design architectural rail</small></div></div>
+<p><span class="pill good">Global HOLD: FALSE</span><span class="pill warn">Merge: NOT AUTHORIZED</span><span class="pill">Sign-to-build: NOT REQUIRED</span></p></section>
+<section aria-label="Live repository"><h2>Public GitHub status <small>(read-only refresh)</small></h2>
+<div class="grid">
+<div class="metric"><span class="label">Pull request</span><strong id="pr">Checking…</strong></div>
+<div class="metric"><span class="label">Draft branch head</span><strong id="head">—</strong></div>
+<div class="metric"><span class="label">master vs original checkpoint</span><strong id="master">Checking…</strong></div>
+<div class="metric"><span class="label">Last refresh</span><strong id="refreshed">—</strong></div></div>
+<p id="live-note" class="muted" role="status">Live GitHub queries never assert wallet control.</p>
+<div class="controls"><button id="refresh">Refresh GitHub</button><a class="action" href="https://github.com/jsonwisdom/COMPUTERWISDOM/pull/773" target="_blank" rel="noreferrer">Open PR #773</a></div></section>
+<section aria-label="Quadratic relationship audit"><h2>4 nodes → 6 candidate edges</h2>
+<p class="muted">UNKNOWN means cryptographic/control binding was not independently proven. Baseline consistency is not identity verification.</p>
+<div id="edges">
+<div class="edge">E01 · Jason ↔ jaywisdom.eth <b class="unknown">UNKNOWN</b></div>
+<div class="edge">E02 · Jason ↔ jaywisdom.base.eth <b class="unknown">UNKNOWN</b></div>
+<div class="edge">E03 · Jason ↔ PC signer evidence <b class="unknown">UNKNOWN</b></div>
+<div class="edge">E04 · jaywisdom.eth ↔ jaywisdom.base.eth <b class="unknown">UNKNOWN</b></div>
+<div class="edge">E05 · jaywisdom.eth ↔ PC signer evidence <b class="unknown">UNKNOWN</b></div>
+<div class="edge">E06 · jaywisdom.base.eth ↔ PC signer evidence <b class="unknown">UNKNOWN</b></div>
+</div><p>PC EIP-191: <span class="good">PASS for exact message (historic receipt)</span> · A380: <span class="unknown">NOT REATTESTED</span> · Dual-name receipt: <span class="warn">PREPARED_NOT_SIGNED</span>.</p>
+<code>python -m unittest -v test_audit test_quadratic</code></section>
+<section aria-label="Optional scoped signing"><h2>Optional owner-intent signature</h2>
+<p>Sign only to attest the displayed governance statement, never as a condition of building. A signature does not establish ENS binding or authorize any transaction. No keys or signature receipts are uploaded by this page.</p>
+<textarea id="intent" readonly aria-label="Exact owner intent message">COMPUTER WISDOM — OWNER INTENT V0.3.1
+Date: 2026-11-18
+Owner: Jason Wisdom
+Repository: jsonwisdom/COMPUTERWISDOM
+Draft PR: #773
+Development branch: oodleloop/quadratic-restoration-v0.3.0
+Authority: Human command authority remains with Jason Wisdom.
+Delegation: JSONWisdom may draft, build, test, replay and document on this existing development branch.
+Merge to master: NOT AUTHORIZED.
+Deployment, payments, transfers, account changes, external publication: NOT AUTHORIZED BY THIS MESSAGE.
+Global hold: FALSE. Local read-only development continues.
+Security posture: No repeated wallet authentication or secret export is required to build.
+Signature scope: OPTIONAL attestation of this exact statement of intent ONLY.
+This message is NOT proof of ENS ownership, Base name control, A380 wallet control,
+signing authority for another account, or cryptographic linking of identities.
+No transaction or token transfer is requested.
+END OWNER INTENT V0.3.1
+</textarea>
+<div class="controls"><button id="copy">Copy exact message</button><button class="secondary" id="sign">Sign exact message with browser wallet (optional)</button></div><p id="sign-note" role="status" class="muted">Only approve if the wallet displays this exact statement. Never enter a seed phrase or private key.</p>
+</section><footer>Development artifact only · No deployments, payments or authority grants · Branch-scoped CI-FIRST</footer>
+<script>
+'use strict';
+const repo='jsonwisdom/COMPUTERWISDOM', pr=773, baseline='0a474308e6eb51a67a0c42b5fddfe6859e865f5d';
+const el=id=>document.getElementById(id);
+async function getJSON(url){const r=await fetch(url,{headers:{Accept:'application/vnd.github+json'}});if(!r.ok)throw new Error('GitHub HTTP '+r.status);return r.json()}
+async function refresh(){
+ el('pr').textContent='Checking…';el('master').textContent='Checking…';
+ try{
+ const [p,m]=await Promise.all([
+ getJSON('https://api.github.com/repos/'+repo+'/pulls/'+pr),
+ getJSON('https://api.github.com/repos/'+repo+'/commits/master')
+ ]);
+ el('pr').textContent='#773 · '+(p.draft?'DRAFT':p.state.toUpperCase())+' · '+(p.merged?'MERGED':p.state.toUpperCase());
+ el('head').textContent=(p.head?.sha||'UNKNOWN').slice(0,12);
+ el('master').textContent=m.sha===baseline?'UNCHANGED from checkpoint':'CHANGED since checkpoint · '+m.sha.slice(0,12);
+ el('live-note').textContent=p.draft&&!p.merged&&p.state==='open'?'PR remains draft and unmerged. Signing has not been requested.':'PR state changed: review before any further operations.';
+ }catch(e){
+ el('pr').textContent='UNKNOWN';el('head').textContent='UNKNOWN';el('master').textContent='UNKNOWN';
+ el('live-note').textContent='Cannot verify public GitHub now: '+e.message+'. Do not infer PASS.';
+ }
+ el('refreshed').textContent=new Date().toLocaleString();
+}
+el('refresh').addEventListener('click',refresh);
+el('copy').addEventListener('click',async()=>{
+ try{await navigator.clipboard.writeText(el('intent').value);el('sign-note').textContent='Exact message copied. Signing is optional.'}
+ catch(e){el('intent').focus();el('intent').select();el('sign-note').textContent='Clipboard blocked; message selected for manual copy.'}
+});
+el('sign').addEventListener('click',async()=>{
+ const provider=window.ethereum;
+ if(!provider){el('sign-note').textContent='No browser EVM wallet detected. Building remains enabled; do not install anything merely to sign.';return}
+ try{
+ let accounts=await provider.request({method:'eth_accounts'});
+ if(!accounts?.length) accounts=await provider.request({method:'eth_requestAccounts'});
+ if(!accounts?.length) throw Error('No account selected');
+ const message=el('intent').value;
+ const encoded='0x'+Array.from(new TextEncoder().encode(message),x=>x.toString(16).padStart(2,'0')).join('');
+ const signature=await provider.request({method:'personal_sign',params:[encoded,accounts[0]]});
+ const receipt={schema:'computerwisdom.optional-owner-intent-signature.v0.3.1',scope:'OWNER_INTENT_ONLY_NOT_WALLET_BINDING',address:accounts[0],message,signature,independent_verification:'NOT_PERFORMED',authority_granted:false};
+ const blob=new Blob([JSON.stringify(receipt,null,2)+'\n'],{type:'application/json'});
+ const url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='owner-intent-local-receipt.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
+ el('sign-note').textContent='Signature receipt saved locally. Independent verification still required. Do not share it unless you choose to.';
+ }catch(e){el('sign-note').textContent='Signing not completed: '+(e.message||String(e))+'. Build remains enabled.'}
+});
+refresh();
+</script></body></html>

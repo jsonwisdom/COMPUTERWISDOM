@@ -1,0 +1,32 @@
+name: CI-FIRST Quadratic Restoration
+on:
+  push:
+    branches:
+      - oodleloop/quadratic-restoration-v0.3.0
+    paths:
+      - "oodleloop/quadratic-restoration-v0.3.0/**"
+      - ".github/workflows/ci-first-quadratic.yml"
+  pull_request:
+    paths:
+      - "oodleloop/quadratic-restoration-v0.3.0/**"
+      - ".github/workflows/ci-first-quadratic.yml"
+permissions:
+  contents: read
+jobs:
+  quadratic-read-only:
+    name: Read-only architecture, six-edge and continuity regressions
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: oodleloop/quadratic-restoration-v0.3.0
+    steps:
+      - name: Checkout current development revision
+        uses: actions/checkout@v4
+      - name: Verify Python runtime
+        run: python3 --version
+      - name: Run existing, quadratic and continuity regression suites
+        run: python3 -m unittest -v test_audit test_quadratic test_continuity
+      - name: Validate original architecture baseline
+        run: python3 audit.py architecture.json
+      - name: Review six candidate edges and governance invariants
+        run: python3 quadratic.py

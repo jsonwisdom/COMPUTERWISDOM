@@ -1,0 +1,93 @@
+{
+  "schema": "computerwisdom.identity-evidence-matrix.v0.3.1",
+  "scope": "SIX_CANDIDATE_RELATIONSHIPS_NOT_SIX_VERIFIED_BINDINGS",
+  "nodes": [
+    {
+      "id": "HUMAN",
+      "label": "Jason Wisdom — human intent",
+      "role": "HUMAN_COMMAND"
+    },
+    {
+      "id": "ENS",
+      "label": "jaywisdom.eth — confidential identity context",
+      "role": "SECURE_ARCHITECTURAL_RAIL"
+    },
+    {
+      "id": "BASE",
+      "label": "jaywisdom.base.eth — public execution/replay context",
+      "role": "PUBLIC_ARCHITECTURAL_RAIL"
+    },
+    {
+      "id": "SIGNER",
+      "label": "Computer Wisdom PC EIP-191 evidence",
+      "role": "MESSAGE_SPECIFIC_SIGNER_EVIDENCE"
+    }
+  ],
+  "edges": [
+    {
+      "id": "E01",
+      "from": "HUMAN",
+      "to": "ENS",
+      "status": "UNKNOWN",
+      "reason": "Human-to-ENS account-control proof not independently verified",
+      "independent_check": "NOT_COMPLETED",
+      "authority_granted": false
+    },
+    {
+      "id": "E02",
+      "from": "HUMAN",
+      "to": "BASE",
+      "status": "UNKNOWN",
+      "reason": "Human-to-Base name-control proof not independently verified",
+      "independent_check": "NOT_COMPLETED",
+      "authority_granted": false
+    },
+    {
+      "id": "E03",
+      "from": "HUMAN",
+      "to": "SIGNER",
+      "status": "UNKNOWN",
+      "reason": "A valid EIP-191 signer receipt does not identify the human operator",
+      "independent_check": "NOT_COMPLETED",
+      "authority_granted": false
+    },
+    {
+      "id": "E04",
+      "from": "ENS",
+      "to": "BASE",
+      "status": "UNKNOWN",
+      "reason": "No independently verified signed dual-name binding",
+      "independent_check": "NOT_COMPLETED",
+      "authority_granted": false
+    },
+    {
+      "id": "E05",
+      "from": "ENS",
+      "to": "SIGNER",
+      "status": "UNKNOWN",
+      "reason": "ENS ownership/control is not established by PC signer receipt",
+      "independent_check": "NOT_COMPLETED",
+      "authority_granted": false
+    },
+    {
+      "id": "E06",
+      "from": "BASE",
+      "to": "SIGNER",
+      "status": "UNKNOWN",
+      "reason": "Base name controller-to-PC-wallet binding not independently verified",
+      "independent_check": "NOT_COMPLETED",
+      "authority_granted": false
+    }
+  ],
+  "references": [
+    "oodleloop/quadratic-restoration-v0.3.0/architecture.json",
+    "receipts/wallet_binding_v2.md",
+    "CI_FIRST_BASE_RECEIPT_2026-11-07.json"
+  ],
+  "receipt_context": {
+    "pc_message_signature": "REPORTED_PASS_FOR_EXACT_MESSAGE_ONLY",
+    "historical_a380": "NOT_REATTESTED",
+    "dual_name_binding": "PREPARED_NOT_SIGNED"
+  },
+  "promotion_policy": "No PASS without independently replayable primary cryptographic/control evidence; do not use a manual status edit as proof"
+}
