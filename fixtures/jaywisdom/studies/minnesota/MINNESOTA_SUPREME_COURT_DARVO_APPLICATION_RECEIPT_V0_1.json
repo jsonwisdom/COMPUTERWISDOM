@@ -1,0 +1,118 @@
+{
+  "format": "MINNESOTA_SUPREME_COURT_DARVO_APPLICATION_RECEIPT_V0.1",
+  "classification": "PERSONAL_RESEARCH_PUBLIC_RECORD_CIVIC_LEARNING_ONLY",
+  "author_label": "jaywisdom.base.eth",
+  "observed_date": "2026-08-17",
+  "authority_created": false,
+  "title": "Minnesota Supreme Court — DARVO Application Receipt v0.1",
+  "question": "What does Minnesota Supreme Court doctrine say about DARVO?",
+  "short_answer": "No official Minnesota Supreme Court opinion adopting DARVO as a named legal doctrine was located in the official indexed sources searched. Minnesota law nonetheless provides evidence, credibility, witness-protection, domestic-conduct, burden, and review rules that can test the underlying conduct without treating the DARVO label itself as proof.",
+  "search_result": {
+    "darvo_named_doctrine": "NOT_LOCATED_IN_OFFICIAL_INDEXED_MINNESOTA_APPELLATE_OPINIONS_SEARCHED",
+    "search_surfaces": [
+      "MINNESOTA_JUDICIAL_BRANCH",
+      "MINNESOTA_STATE_LAW_LIBRARY_OPINION_ARCHIVE",
+      "MINNESOTA_REVISOR_STATUTES_AND_COURT_RULES"
+    ],
+    "caution": "NOT_LOCATED != NEVER_APPEARED_IN_ANY_TRIAL_COURT_FILING_BRIEF_TRANSCRIPT_OR_SEALED_RECORD"
+  },
+  "congressional_receipt": {
+    "status": "PROVEN_RECEIVED_AS_WITNESS_TESTIMONY",
+    "hearing": "THE_CENSORSHIP_INDUSTRIAL_COMPLEX",
+    "body": "U_S_SENATE_JUDICIARY_COMMITTEE_SUBCOMMITTEE_ON_THE_CONSTITUTION",
+    "hearing_date": "2025-03-25",
+    "witness": "MARY_ANNE_FRANKS",
+    "testimony_submitted": "2025-03-24",
+    "darvo_reference": "Franks states that psychologist Jennifer Freyd created the acronym DARVO for deny, attack, reverse victim and offender and cites Freyd's 1997 work.",
+    "boundaries": [
+      "DARVO_DISCUSSION_IN_CONGRESSIONAL_TESTIMONY = PROVEN",
+      "DARVO_DEFINED_IN_SENATE_HOSTED_TESTIMONY = PROVEN",
+      "CONGRESS_ADOPTED_DARVO_AS_LAW = FALSE",
+      "CONGRESSIONAL_TESTIMONY != MINNESOTA_PRECEDENT",
+      "WITNESS_ANALYSIS != JUDICIAL_FINDING"
+    ]
+  },
+  "minnesota_legal_bridges": {
+    "domestic_abuse_act_518B_01": {
+      "rule": "Minnesota defines domestic abuse through specified conduct and requires an OFP petition to allege domestic abuse with a sworn affidavit stating specific facts and circumstances.",
+      "darvo_application": "DARVO label alone is not a statutory element; underlying acts and facts must be bound."
+    },
+    "domestic_conduct_634_20": {
+      "rule": "Evidence of domestic conduct may be admissible unless probative value is substantially outweighed by unfair prejudice, confusion, delay, waste, or needless cumulative evidence.",
+      "supreme_court_bridge": "State v. McCoy, 682 N.W.2d 153 (Minn. 2004), is repeatedly cited in Minnesota appellate decisions as the Minnesota Supreme Court's express adoption of section 634.20 as an evidence rule.",
+      "pattern_note": "Minnesota appellate sources quoting McCoy explain that domestic abuse can be distinctive because it often occurs privately, may involve escalating patterns, and is underreported.",
+      "darvo_application": "Pattern evidence can matter, but pattern evidence still does not automatically prove motive, intent, or every alleged act."
+    },
+    "rule_611": {
+      "rule": "Court exercises reasonable control over interrogation and presentation to ascertain truth, avoid needless time, and protect witnesses from harassment or undue embarrassment.",
+      "darvo_application": "ATTACK mechanics are auditable: questioning that becomes harassment or undue embarrassment is not simply exempt from judicial control because credibility is disputed."
+    },
+    "rule_608": {
+      "rule": "Credibility attacks based on character for truthfulness are constrained; specific instances are limited and criminal-case cross-examination requires evidentiary support and probative-value review.",
+      "darvo_application": "ATTACK_ON_CREDIBILITY != UNLIMITED_CHARACTER_ATTACK"
+    },
+    "rule_404": {
+      "rule": "Character evidence generally may not be used merely to prove conduct in conformity with character, subject to stated exceptions.",
+      "darvo_application": "BAD_PERSON_LABEL != PROOF_OF_SPECIFIC_ACT"
+    },
+    "rule_616": {
+      "rule": "Bias, prejudice, or interest may be used to attack witness credibility.",
+      "darvo_application": "A court may examine bias while still requiring the underlying claim and evidence to remain separately adjudicated."
+    }
+  },
+  "darvo_clerk_mechanic": {
+    "D_DENY": {
+      "record": ["EXACT_DENIAL", "WHO_DENIED", "DATE", "WHAT_FACT_WAS_DENIED", "EVIDENCE_CITED"],
+      "rule": "DENIAL != GUILT_AND_DENIAL != INNOCENCE"
+    },
+    "A_ATTACK": {
+      "record": ["EXACT_CREDIBILITY_OR_CHARACTER_ATTACK", "LEGAL_RELEVANCE", "EVIDENTIARY_SUPPORT", "RULE_608_611_616_GATE"],
+      "rule": "CREDIBILITY_CHALLENGE != SUBSTITUTION_FOR_MERITS_EVIDENCE"
+    },
+    "RVO_REVERSE_VICTIM_OFFENDER": {
+      "record": ["BURDEN_BEFORE", "BURDEN_AFTER", "WHO_NOW_MUST_PROVE_WHAT", "AUTHORITY_FOR_BURDEN_SHIFT", "NOTICE", "REVIEW_PATH"],
+      "rule": "RHETORICAL_ROLE_REVERSAL != LEGAL_BURDEN_SHIFT_UNLESS_AUTHORITY_ACTUALLY_MOVES_THE_BURDEN"
+    }
+  },
+  "proof_pincer_promise": {
+    "claim_lane": ["EXACT_CLAIM", "SOURCE", "FACTS", "EVIDENCE", "LEGAL_ELEMENT", "FINDING", "RECEIPT"],
+    "response_lane": ["DENIAL", "CREDIBILITY_ATTACK", "BURDEN_SHIFT", "CORRECTION", "CROSS_EXAMINATION", "NEUTRAL_REVIEW", "RECEIPT"],
+    "convergence": "DARVO_PATTERN_MAY_DESCRIBE_INTERACTION_BUT_LEGAL_RESULT_REQUIRES_FACTS_ELEMENTS_EVIDENCE_AND_AUTHORIZED_FINDING"
+  },
+  "core_membrane": [
+    "DARVO != MINNESOTA_CAUSE_OF_ACTION_LOCATED",
+    "DARVO != CRIME_LOCATED",
+    "DARVO != AUTOMATIC_ADMISSIBILITY",
+    "DARVO_PATTERN != GUILT",
+    "DARVO_PATTERN != LIABILITY",
+    "ACADEMIC_CONCEPT != LEGAL_ELEMENT",
+    "CONGRESSIONAL_TESTIMONY != MINNESOTA_PRECEDENT",
+    "DENIAL != GUILT",
+    "ATTACK != MERITS_PROOF",
+    "ROLE_REVERSAL != AUTHORIZED_BURDEN_SHIFT",
+    "PROCESS_PASS != PROOF"
+  ],
+  "clerk_answer": "Minnesota Supreme Court doctrine does not need to say the acronym DARVO to audit the mechanics. Translate the acronym into evidence questions: what was denied, what credibility attack occurred, whether that attack is legally relevant and properly supported, whether the burden actually shifted under law, whether the witness was protected from harassment, and what specific underlying conduct satisfies a statute or claim.",
+  "source_urls": [
+    "https://www.judiciary.senate.gov/committee-activity/hearings/the-censorship-industrial-complex",
+    "https://www.judiciary.senate.gov/download/2025-03-25_testimony_franks",
+    "https://www.revisor.mn.gov/statutes/cite/518b.01",
+    "https://www.revisor.mn.gov/statutes/cite/634.20",
+    "https://www.revisor.mn.gov/court_rules/ev/id/611/",
+    "https://www.revisor.mn.gov/court_rules/ev/id/608/",
+    "https://www.revisor.mn.gov/court_rules/rule/ev-404/",
+    "https://www.revisor.mn.gov/court_rules/ev/id/616/",
+    "https://mn.gov/law-library/search/"
+  ],
+  "terminal_states": [
+    "PASS_UNDERLYING_CONDUCT_BOUND",
+    "HOLD_DARVO_LABEL_ONLY",
+    "CONFLICT_CREDIBILITY_OR_RECORD",
+    "ATTACK_RELEVANCE_REVIEW_REQUIRED",
+    "BURDEN_SHIFT_AUTHORITY_REVIEW_REQUIRED",
+    "DARVO_PATTERN_CANDIDATE_NOT_GUILT_PROVEN",
+    "PROOF_BOUND_TO_LEGAL_ELEMENTS_AND_RECORD"
+  ],
+  "terminal": "MINNESOTA_SUPREME_DARVO_APPLICATION_RECEIPT_OPEN_UNMERGED",
+  "authority_created": false
+}

@@ -1,0 +1,18 @@
+{
+  "format": "WHITE_HOUSE_NIGHTLY_PROTOCOL_OVERSIGHT_RECEIPT_V0.1",
+  "classification": "INDEPENDENT_PROTOCOL_CROSS_CHECK_ONLY",
+  "primary_verifier": "WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_V0.1",
+  "oversight_verifier": "WHITE_HOUSE_NIGHTLY_PROTOCOL_VERIFIER_V0.1_OVERSIGHT",
+  "implementation_dependency_on_primary": false,
+  "oversight_run_performed": false,
+  "primary_integrity": null,
+  "oversight_integrity": null,
+  "oversight_consistent": null,
+  "oversight_alerts": [],
+  "receipt_sha256": "45be86b711762af27f0bb7b4e8034adf1f01b4cba29780aae2b2fb73432a1197",
+  "claim_truth_proven": false,
+  "source_authenticity_proven": false,
+  "human_guilt_determined": false,
+  "randomness_quality_proven": false,
+  "authority_created": false
+}

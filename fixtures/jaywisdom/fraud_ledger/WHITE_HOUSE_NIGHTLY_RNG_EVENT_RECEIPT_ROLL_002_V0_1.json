@@ -1,0 +1,18 @@
+{
+  "event_id": "ROLL_002_RNG_FIXTURE_UNEXECUTED",
+  "die_a": 2,
+  "die_b": 4,
+  "ordered_pair": [
+    2,
+    4
+  ],
+  "generator_type": "UNVERIFIED_FIXTURE",
+  "generator_implementation": "NOT_EXECUTED",
+  "raw_output": "UNAVAILABLE_NOT_EXECUTED",
+  "timestamp": "2026-08-16T15:56:00-05:00",
+  "independently_observable": false,
+  "rng_source_verified": false,
+  "randomness_quality_proven": false,
+  "authority_created": false,
+  "receipt_sha256": "97ac737cccc47b13d4bccfb7132881a6c6dbf1c6d6f7438144c830555172d53a"
+}
