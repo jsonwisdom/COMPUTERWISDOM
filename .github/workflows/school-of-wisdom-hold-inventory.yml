@@ -1,0 +1,36 @@
+name: School of Wisdom HOLD and Proof Gap Inventory
+on:
+  pull_request:
+    paths:
+      - 'scripts/audit_hold_inventory.py'
+      - '.github/workflows/school-of-wisdom-hold-inventory.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '33 9 * * *'
+permissions:
+  contents: read
+jobs:
+  inventory:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Scan source for every scoped marker
+        run: python3 scripts/audit_hold_inventory.py
+      - name: Output summary and scope limits
+        run: |
+          python3 - <<'PY'
+          import json,os
+          d=json.load(open('hold-inventory/summary.json'))
+          with open(os.environ['GITHUB_STEP_SUMMARY'],'a') as f:
+              f.write('# School of Wisdom HOLD / proof-gap inventory\n\n')
+              f.write(f"Files scanned: {d['files_scanned']}; marker-bearing lines: {d['marker_occurrences_by_line']}; potential status lines: {d['status_candidate_lines']}\n\n")
+              f.write('**Not an exhaustive audit of all repos or historical branches.** Examples and safety HOLDs are not treated as absent research. See CSV per-file lines and summary JSON. No authority or production promotion.\n')
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: school-of-wisdom-hold-inventory
+          path: hold-inventory/
+          if-no-files-found: error
