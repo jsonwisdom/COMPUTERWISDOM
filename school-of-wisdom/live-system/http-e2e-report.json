@@ -1,0 +1,132 @@
+{
+  "run_id": "jg-6a38b2e5a46540c490371de87e383752",
+  "timestamp_utc": "2026-11-02T16:59:54Z",
+  "url": "https://jasons-game-fixture-e2e.jaywisdom44.workers.dev",
+  "scope": "TEST_FIXTURES_ONLY",
+  "http_executed": true,
+  "d1_worker_binding_executed": true,
+  "approved_content_validation": "PENDING",
+  "commerce": "HOLD",
+  "checks": [
+    {
+      "category": "integrity_checks",
+      "name": "Live build and bundle identities",
+      "status": "PASS",
+      "actually_ran": true,
+      "evidence": {
+        "service": "jasons-game-fixture-e2e",
+        "scope": "TEST_FIXTURES_ONLY",
+        "content_status": "DRAFT",
+        "approved_content_validation": "PENDING",
+        "commerce": "HOLD",
+        "build_sha": "3395aea02e5f6e25ab801cd539656728b1231e1bc8989a14072ec887c111966a",
+        "bundle_digest": "3edbbaa0c4fa9e2fc54570ef251103c5e6bb98b93e0341872225ade5495447e7"
+      }
+    },
+    {
+      "category": "content_validation",
+      "name": "Live fixture catalog linkage and public privacy projection",
+      "status": "PASS",
+      "actually_ran": true,
+      "evidence": {
+        "linked_fixture_challenges": 3,
+        "synthetic": true,
+        "private_fields_excluded": true
+      }
+    },
+    {
+      "category": "http_integration",
+      "name": "Missing credentials rejected",
+      "status": "PASS",
+      "actually_ran": true,
+      "evidence": null
+    },
+    {
+      "category": "scoring_tests",
+      "name": "All fixture scorers and exact integer edge cases over HTTPS",
+      "status": "PASS",
+      "actually_ran": true,
+      "evidence": {
+        "scored_receipts": 12,
+        "exact_large_integer_cases": 2,
+        "four_classifications_exercised": true
+      }
+    },
+    {
+      "category": "scoring_tests",
+      "name": "Malformed fraction requests rejected over HTTPS",
+      "status": "PASS",
+      "actually_ran": true,
+      "evidence": {
+        "invalid_fraction_inputs_rejected": 17
+      }
+    },
+    {
+      "category": "integrity_checks",
+      "name": "Wrong bundle/version and client score injection rejected",
+      "status": "PASS",
+      "actually_ran": true,
+      "evidence": {
+        "bundle_mismatch": 409,
+        "unknown_version": 400,
+        "forged_score": 400
+      }
+    },
+    {
+      "category": "persistence_integration_tests",
+      "name": "Eight simultaneous HTTP submissions preserve one D1 receipt",
+      "status": "PASS",
+      "actually_ran": true,
+      "evidence": {
+        "key": "jg-6a38b2e5a46540c490371de87e383752-duplicates",
+        "statuses": [
+          200,
+          200,
+          200,
+          200,
+          200,
+          201,
+          200,
+          200
+        ],
+        "receipt_id": "9773033c-a216-432f-a5f2-6cbb26a5b9d5",
+        "retry_preserved": true
+      }
+    },
+    {
+      "category": "persistence_integration_tests",
+      "name": "Concurrent conflicting reuse returns HTTP 409",
+      "status": "PASS",
+      "actually_ran": true,
+      "evidence": {
+        "key": "jg-6a38b2e5a46540c490371de87e383752-conflicts",
+        "statuses": [
+          200,
+          409,
+          200,
+          409,
+          201,
+          409,
+          200,
+          409
+        ],
+        "receipt_id": "a6877259-a712-44a8-a4fb-bbeed634555f",
+        "original_preserved": true
+      }
+    },
+    {
+      "category": "reproducibility_checks",
+      "name": "Persisted D1 attempts recomputed via live HTTP",
+      "status": "PASS",
+      "actually_ran": true,
+      "evidence": {
+        "persisted_receipts_replayed": 14
+      }
+    }
+  ],
+  "receipt_count": 14,
+  "summary": {
+    "passed": 9,
+    "failed": 0
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "main": "observer-worker.mjs",
+  "compatibility_date": "2026-11-01",
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "jasons_game_fixture_e2e_20261102",
+      "database_id": "6d95daba-d9d6-4fdf-bd8c-9219410efb2b"
+    }
+  ],
+  "name": "wisdom-live-observer",
+  "compatibility_flags": [
+    "global_fetch_strictly_public"
+  ],
+  "services": [
+    {
+      "binding": "GAME",
+      "service": "jasons-game-fixture-e2e"
+    },
+    {
+      "binding": "CATALOG",
+      "service": "wisdom-catalog-curator"
+    }
+  ],
+  "triggers": {
+    "crons": [
+      "*/5 * * * *"
+    ]
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "scope": "Live read-only replay recheck after transient empty response; no new attempts written",
+  "passed": 14,
+  "failed": 0,
+  "results": [
+    {
+      "receipt_id": "32d9c42e-b69f-4efe-8fc7-641bf8afa323",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    },
+    {
+      "receipt_id": "f4e01f72-ff1f-4ab2-a4bb-0a91cbc2a534",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    },
+    {
+      "receipt_id": "1830e8ac-f5cd-43a2-a0a3-f33283303a26",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    },
+    {
+      "receipt_id": "d0bc9f46-cc78-4f77-814a-ad141e81f7ef",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    },
+    {
+      "receipt_id": "e5a2a497-0b12-4091-9ef6-64a02b349a84",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    },
+    {
+      "receipt_id": "8cce5561-29e1-4701-b3aa-74fc1fdff0ab",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    },
+    {
+      "receipt_id": "9d74da48-2c46-440f-a141-dc3b4fdba823",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    },
+    {
+      "receipt_id": "1fefe34d-2951-4fa1-b9d2-0140c42294b8",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    },
+    {
+      "receipt_id": "a3688c78-b184-4e6c-8667-0d66a5cf7e1b",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    },
+    {
+      "receipt_id": "97d0c386-8ddf-442a-a684-647fdab5dfe9",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    },
+    {
+      "receipt_id": "23d305ca-0d8e-4192-9146-693fdc4146f1",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    },
+    {
+      "receipt_id": "0082a214-b8f4-441a-afd1-11ddd9c2c135",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    },
+    {
+      "receipt_id": "5ebd2ecc-5a2a-4c41-a3d8-fb6520454426",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    },
+    {
+      "receipt_id": "1879ef34-8177-4952-8135-e766dd505c44",
+      "reproduced": true,
+      "request_attempts": 1,
+      "transport_failures": []
+    }
+  ]
+}
