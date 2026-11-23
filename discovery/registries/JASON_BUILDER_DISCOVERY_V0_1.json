@@ -1,0 +1,129 @@
+{
+  "registry_id": "JASON_BUILDER_DISCOVERY_REGISTRY_V0_1",
+  "scope": "read_only_discovery_index_not_canonical_receipt_registry",
+  "as_of": "2026-11-04",
+  "source_search_scope": "jsonwisdom GitHub default branch code search, 12 term queries, capped 15 results per query",
+  "search_limits": [
+    "GitHub code search covers indexed default branches; misses feature branches, unindexed files, cloud-preview source, local Docker images, untracked files, past Git history",
+    "No result is not proof of absence"
+  ],
+  "items": [
+    {
+      "id": "FF9000-SIX-SCREEN",
+      "type": "application_candidate",
+      "title": "Fraud Finder 9000 Minnesota Citizen Edition — six-screen preview",
+      "aliases": [
+        "FraudFinder9000",
+        "Fraud Finder",
+        "Citizen Audit Vortex",
+        "Gopher Math",
+        "Garbage Press",
+        "Evidence Registry",
+        "Desk Finder Registry Math Press Receipt"
+      ],
+      "source_repo": null,
+      "source_path": null,
+      "source_commit": null,
+      "preview_location": "UNKNOWN_CLOUD_PREVIEW",
+      "source_status": "NOT_LOCATED",
+      "runtime_status": "REPORTED_RUNNING_IN_PREVIEW",
+      "independent_build": "NOT_TESTED",
+      "fixtures": "NOT_RUN",
+      "authority_created": false,
+      "fraud_finding_created": false,
+      "build_workers_next_action": "Find preview builder/export, compare source signatures, preserve exact bytes before execution"
+    },
+    {
+      "id": "CAV-DOCKER",
+      "type": "application",
+      "title": "Citizen Audit Vortex — local Docker five-gate app",
+      "source_repo": "jsonwisdom/COMPUTERWISDOM",
+      "source_branch": "agent/governance-corridor-audit-20261104",
+      "source_commit": "6806cf0ca07d425f115bb193203d5e2fb557b5a1",
+      "source_path": "citizen-audit-vortex/index.html",
+      "runtime_status": "LOCAL_DOCKER_HEALTHY_HTTP_200_USER_OBSERVED",
+      "source_container_sha256": "ffe98302beda3b00d964dacc8b1acd97319d3c360e36a03787aac46cda407f14",
+      "source_status": "BOUND_TO_LOCAL_CONTAINER_FILE",
+      "equal_to_six_screen_preview": "NOT_ESTABLISHED",
+      "authority_created": false
+    },
+    {
+      "id": "CW-REPLAY-KERNEL",
+      "type": "code_component",
+      "title": "Replay kernel",
+      "source_repo": "jsonwisdom/COMPUTERWISDOM",
+      "source_path": "src/replay_kernel_v0_1.py",
+      "source_ref": "master",
+      "status": "CODE_SEARCH_LOCATED_NOT_TESTED"
+    },
+    {
+      "id": "CW-GOV-JOYSTICK",
+      "type": "design_precedent",
+      "title": "Governance by Joystick",
+      "source_repo": "jsonwisdom/COMPUTERWISDOM",
+      "source_path": "docs/game/governance_by_joystick_v0_1.md",
+      "source_ref": "master",
+      "status": "DOCUMENT_LOCATED"
+    },
+    {
+      "id": "CW-RECEIPT-REGISTRY",
+      "type": "registry_precedent",
+      "title": "Matrix Jay Canon Receipt Registry V0.1",
+      "source_repo": "jsonwisdom/COMPUTERWISDOM",
+      "source_path": "docs/matrix_jay/canon_receipt_registry_v0_1.md",
+      "source_ref": "master",
+      "status": "SCAFFOLD_ONLY_NOT_CRYPTOGRAPHICALLY_BOUND"
+    },
+    {
+      "id": "JOY-CRP-REGISTRY",
+      "type": "registry_precedent",
+      "title": "CRP Replay Registry V0.2",
+      "source_repo": "jsonwisdom/JOY",
+      "source_path": "artifacts/crp/CRP_REPLAY_REGISTRY_V0_2.json",
+      "source_ref": "main",
+      "status": "SEPARATE_REGISTRY_NOT_A_SOURCE_LOCATION_PROOF"
+    },
+    {
+      "id": "JOY-OLA-PORTAL",
+      "type": "research_reference",
+      "title": "Minnesota OLA BHA Portal",
+      "source_repo": "jsonwisdom/JOY",
+      "source_path": "docs/goblin-courts/OLA_BHA_PORTAL.md",
+      "source_ref": "main",
+      "status": "SOURCE_DOC_LOCATED_NOT_APP"
+    },
+    {
+      "id": "CW-DEPENDENCY",
+      "type": "registry_precedent",
+      "title": "Constitutional dependency registry",
+      "source_repo": "jsonwisdom/COMPUTERWISDOM",
+      "source_path": "docs/constitutional_dependency_registry_v1.md",
+      "source_ref": "master",
+      "status": "DEPENDENCIES_DOCUMENTED_NOT_CROSS_REPO_ANCHORED"
+    }
+  ],
+  "negative_exact_searches": [
+    "fraudFindingCreated",
+    "STATED_FIGURE_GAP",
+    "LARGE_PERCENT_CHANGE"
+  ],
+  "positive_discovery_terms": [
+    "replay match",
+    "Governance by Joystick",
+    "GOBLIN",
+    "receiptos",
+    "evidence registry",
+    "restitution",
+    "Office of the Legislative Auditor",
+    "source_url",
+    "canonical_json"
+  ],
+  "protected_boundaries": {
+    "canon": false,
+    "authority_created": false,
+    "public_deployment_authorized": false,
+    "root_role_reversal_approved": false,
+    "automatic_fraud_conclusion": false
+  },
+  "human_decision": "JASON"
+}

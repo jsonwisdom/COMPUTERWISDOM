@@ -1,0 +1,68 @@
+{
+  "dispatch_id": "APPLEBLOSSOM_ORIGINAL_WORKSPACE_RECOVERY_2026_11_04",
+  "status": "PREPARED_NOT_TRANSMITTED_TO_GROK",
+  "authority_created": false,
+  "canon": false,
+  "no_fake_green": true,
+  "scope": "Read-only investigation of original /workspace or archived snapshots, not Windows 44-repository rescan",
+  "targets": [
+    {
+      "file": "surfaces/appleblossom/state.json",
+      "original_sha256": "0aa3d075ba6d4e200211474c9b280258aacc66058684db71cff57c5206cc6427",
+      "original_bytes": 3486,
+      "live_sha256": "d2a77b7decc7c7ef5a9fc23968a1c1fe203948f998a25949cdedf4bcd611ba24",
+      "live_bytes": 3611,
+      "recovery": "NOT_RECOVERED"
+    },
+    {
+      "file": "artifacts/wisdom/receipts/runs/VALIDATOR_REPLAY.json",
+      "original_sha256": "e0a623d06ff1424b53e5f552aa5298b033786aade385168a4168e9f766612b92",
+      "live_sha256": "d771785d49d6c5aec06dd1ec420a36b5d84d8e84ad41c5254efde20f56ab6dc0",
+      "recovery": "REPORTED_RECOVERED_AT_DIFFERENT_WORKSPACE",
+      "candidate": "artifacts/wisdom/receipts/runs/VALIDATOR_REPLAY.2026-08-25T20-22-31Z.json",
+      "not_rechecked_by_this_dispatch": true
+    }
+  ],
+  "assignments": [
+    {
+      "seat": "FullMath Librarian",
+      "task": "Read-only inventory of original /workspace, archives, snapshot manifests and backup locators. Inspect named dated validator candidate bytes; report absolute path, byte size, full sha256, time, repo or archive identity and retrieval method. Search for original state full digest. No blind rehash of 44 Windows Git clones.",
+      "return": "locator manifest and exact-match verdict per file"
+    },
+    {
+      "seat": "Apple Blossom receipt gate",
+      "task": "Compare found full digests to receipt index and bundle. Keep FOUND_BYTES, INDEX_HASH_MATCH, INDEPENDENT_REPLAY, CANON, and AUTHORITY separate. Reject prefix-only match and reconstructed JSON as historical original.",
+      "return": "per-file PASS/FAIL/UNKNOWN evidence ledger, HASH_COMMIT=CLOSED"
+    },
+    {
+      "seat": "HeiDeeBot helper",
+      "task": "Inventory recovery leads in original workspace, never impersonate Heidee, never inspect three-daughters-billing paperwork. Build kid-safe trace of why 3486 vs 3611 bytes is a byte delta not proof of writer/cause.",
+      "return": "simple non-authoritative explanation and exclusions"
+    },
+    {
+      "seat": "LEAHPRIME187",
+      "task": "Maintain story/fact and human/bot separation. Review recovery narration for unjustified ownership, date, cause, or legal conclusions.",
+      "return": "boundary check no promotion"
+    },
+    {
+      "seat": "PURPOSE_KEEPER",
+      "task": "Protect purpose and strict no-write/no-canon scope. Track unanswered recovery questions without green status or deleting older receipts.",
+      "return": "purpose and HOLD review"
+    },
+    {
+      "seat": "Grok Master Room",
+      "task": "Coordinate the five seats; aggregate independent observations only, label source each, reconcile discrepancies, return machine-readable manifest. Do not claim this dispatch was executed before actual bot replies.",
+      "return": "single bounded RECOVERY_WORKSPACE_REPORT.json"
+    }
+  ],
+  "prohibited": [
+    "no file overwrite, restore or checkout",
+    "no validator execution",
+    "no new technical seal or HASH_COMMIT",
+    "no merge CW #736/Welcome #45",
+    "no wallet/ENS/Cloudflare/Stripe actions",
+    "no family billing paperwork"
+  ],
+  "acceptance": "The state.json original 3486-byte raw file is located and SHA256 matches the full indexed hash, or explicitly record SEARCH_MISS scoped to examined original workspace/archive. Validator recovered only after reading dated-copy exact bytes and confirming full digest.",
+  "final_decision": "JASON"
+}
