@@ -1,0 +1,38 @@
+{
+  "schema": "CW_REGISTERED_PROOF_V1",
+  "id": "GH_TPM_CLIENT_BUILD_20261108",
+  "claim": "GitHub Actions completed CW Windows TPM Attestor V1 Build successfully for commit 5db2b80c75da0b906e4ee4fa4908bc2098f6a625.",
+  "scope": "CI_BUILD_EXECUTION_ONLY",
+  "record_created_utc": "2026-11-08T19:34:03Z",
+  "evidence": [
+    {
+      "source": "https://github.com/jsonwisdom/COMPUTERWISDOM/actions/runs/42512665845",
+      "raw_bytes_sha256": null,
+      "assertion": "GitHub API workflow run conclusion success; step results show go test, vet, Windows and Linux compilation, binary artifact creation. Windows sha256 0b74f080b1ee4598b037209443e1cb382cb328c0f64c6a1dc26a2b97319611b8 is reported in CI log, not rehashed here."
+    }
+  ],
+  "checks": [
+    {
+      "id": "github_workflow_conclusion",
+      "status": "PASS",
+      "reason": "GitHub Actions API completed and returned conclusion success."
+    },
+    {
+      "id": "github_artifact_created",
+      "status": "PASS",
+      "reason": "GitHub Actions artifact 13629268973 present with reported archive hash."
+    }
+  ],
+  "ci_verdict": "PASS",
+  "not_proven": [
+    "Executable code signing",
+    "Deployment of compiled client",
+    "Nonce-bound quote",
+    "EK-to-AK manufacturer trust",
+    "BitLocker recovery backup",
+    "Hardware certificate"
+  ],
+  "authority_created": false,
+  "external_certification": false,
+  "payment_authorized": false
+}

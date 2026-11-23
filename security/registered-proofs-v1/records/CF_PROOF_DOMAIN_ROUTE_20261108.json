@@ -1,0 +1,42 @@
+{
+  "schema": "CW_REGISTERED_PROOF_V1",
+  "id": "CF_PROOF_DOMAIN_ROUTE_20261108",
+  "claim": "Cloudflare control plane lists proof.jsonwisdom.com on production Worker jasons-dns-burden-of-proof.",
+  "scope": "CLOUDFLARE_CONFIGURED_ROUTE_ONLY",
+  "record_created_utc": "2026-11-08T19:34:03Z",
+  "evidence": [
+    {
+      "source": "https://proof.jsonwisdom.com/",
+      "raw_bytes_sha256": null,
+      "assertion": "Connected Cloudflare account readback: custom domain service jasons-dns-burden-of-proof, DNS AAAA 100:: proxied."
+    }
+  ],
+  "checks": [
+    {
+      "id": "cloudflare_custom_domain_mapping",
+      "status": "PASS",
+      "reason": "Read through authenticated Cloudflare control-plane API."
+    },
+    {
+      "id": "public_https_response_independently_fetched",
+      "status": "UNKNOWN",
+      "reason": "Public HTTP probe failed in current tooling due DNS resolution; no response bytes captured."
+    },
+    {
+      "id": "server_side_receipt_store",
+      "status": "UNKNOWN",
+      "reason": "Current Worker has no bindings and is isolated read-only; no durable proof storage observed."
+    }
+  ],
+  "ci_verdict": "UNKNOWN",
+  "not_proven": [
+    "Public TLS response",
+    "Durable receipt registration",
+    "Independent certificate",
+    "Domain registrant authority",
+    "Legal proof of any allegation"
+  ],
+  "authority_created": false,
+  "external_certification": false,
+  "payment_authorized": false
+}

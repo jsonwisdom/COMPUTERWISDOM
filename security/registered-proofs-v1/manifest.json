@@ -1,0 +1,58 @@
+{
+  "schema": "CW_REGISTERED_PROOFS_MANIFEST_V1",
+  "hashing": "SHA-256 of exact raw record bytes (no normalization)",
+  "merkle_spec": "SHA256(CW_PROOF_LEAF_V1\\0 + id + \\0 + digest bytes); nodes SHA256(CW_PROOF_NODE_V1\\0 + left 32 bytes + right 32 bytes), duplicate last on odd level",
+  "root_sha256": "138b54e72f8999659cbfd3f952b33ad78630811edba60730f56dfd3461835f3e",
+  "records": [
+    {
+      "id": "CF_PROOF_DOMAIN_ROUTE_20261108",
+      "sha256": "020b6398156119853e9e2ca8abe387f76e2de4db47911e16edf39084b8cac653",
+      "ci_verdict": "UNKNOWN",
+      "scope": "CLOUDFLARE_CONFIGURED_ROUTE_ONLY",
+      "inclusion_proof": [
+        {
+          "hash": "87acd1b11b3cb28adb41a0628cccd62252aea6a95a60c9004d1d25a43822ae4b",
+          "side": "right"
+        },
+        {
+          "hash": "b9980f6422572a96c8e9684ffd5232ecd3705e751c973a63f2d5157cd675f99a",
+          "side": "right"
+        }
+      ]
+    },
+    {
+      "id": "GH_TPM_CLIENT_BUILD_20261108",
+      "sha256": "6f606203719486b76489441a7c901da8cf542a4786ca882239358705332eb460",
+      "ci_verdict": "PASS",
+      "scope": "CI_BUILD_EXECUTION_ONLY",
+      "inclusion_proof": [
+        {
+          "hash": "c2795c5c8fc32e63e07487f13a56e699689b255498dfa56ab92d277be4b7fab6",
+          "side": "left"
+        },
+        {
+          "hash": "b9980f6422572a96c8e9684ffd5232ecd3705e751c973a63f2d5157cd675f99a",
+          "side": "right"
+        }
+      ]
+    },
+    {
+      "id": "PC_TPM_INDEPENDENT_ATTEST_20261108",
+      "sha256": "9c78d793bae3dc06a761886d2175bdaa974c78e936dd58cc10d1a5d09e7a65ad",
+      "ci_verdict": "UNKNOWN",
+      "scope": "HARDWARE_ATTESTATION",
+      "inclusion_proof": [
+        {
+          "hash": "001649347a08b5cbc6cd26820fe9c6d8101eded36135f4b82b7368f256638ab8",
+          "side": "right"
+        },
+        {
+          "hash": "740185677d702a3d4875ea93c9cba44d529fa6fcc7ffb608ae16fd8a177fdf5e",
+          "side": "left"
+        }
+      ]
+    }
+  ],
+  "authority_created": false,
+  "external_certification": false
+}

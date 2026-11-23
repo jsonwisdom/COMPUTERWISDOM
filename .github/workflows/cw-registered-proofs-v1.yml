@@ -1,0 +1,39 @@
+name: CW Registered Proofs V1 - CI-FIRST
+
+on:
+  pull_request:
+    paths:
+      - 'security/registered-proofs-v1/**'
+      - '.github/workflows/cw-registered-proofs-v1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  register-and-replay:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Baseline only permits additive new records
+        if: github.event_name == 'pull_request'
+        run: |
+          git diff --name-status "${{ github.event.pull_request.base.sha }}" "${{ github.event.pull_request.head.sha }}" -- security/registered-proofs-v1/records/ | awk '$1 != "A" {print "FAIL: evidence modified/deleted/renamed: " $0; bad=1} END {exit bad}'
+      - name: Adversarial cryptographic and API tests
+        run: node --test security/registered-proofs-v1/proof.test.mjs security/registered-proofs-v1/worker.test.mjs
+      - name: Read raw receipts and replay Merkle root
+        run: node security/registered-proofs-v1/proof-core.mjs verify
+      - name: Preserve CI receipt even on failure
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: registered-proofs-v1-ci-receipt
+          if-no-files-found: warn
+          path: security/registered-proofs-v1/ci-out/verification.json
+          retention-days: 30
