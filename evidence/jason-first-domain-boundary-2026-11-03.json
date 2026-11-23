@@ -1,0 +1,295 @@
+{
+  "schema": "jason-evidence-boundary/1",
+  "observed_date": "2026-11-03",
+  "classification": "configuration_observation",
+  "disposition": "HOLD_CHECKABLE",
+  "project": "JASON_FIRST",
+  "inventory_completeness": "connected_account_only",
+  "source_channels": [
+    "Cloudflare authenticated connector",
+    "GitHub authenticated connector"
+  ],
+  "source_capture": {
+    "raw_http_bytes": null,
+    "raw_http_sha256": null,
+    "fetched_at": null,
+    "meaning": "connector-normalized responses inspected, upstream raw bytes not captured; cannot assert byte-for-byte source capture",
+    "raw_api_response_preservation": "not_preserved",
+    "transformation": "connector_normalized_selected_fields"
+  },
+  "cloudflare": {
+    "accessible_accounts": 1,
+    "active_zones": [
+      "jsonwisdom.com",
+      "jsonwisdom.io"
+    ],
+    "zone_counts": {
+      "jsonwisdom_com_dns_records": 14,
+      "jsonwisdom_io_dns_records": 0
+    },
+    "worker_scripts": 16,
+    "route_patterns": 0,
+    "custom_domain_bindings": 9,
+    "custom_domains": {
+      "auth.jsonwisdom.com": "jsonwisdom-workdesk-auth-staging",
+      "wallet.jsonwisdom.com": "jsonwisdom-wallet-connect",
+      "triggerdeck.jsonwisdom.com": "political-triggerdeck-2026",
+      "gallery.jsonwisdom.com": "jasons-art-gallery",
+      "classes.jsonwisdom.com": "classes-with-glasses",
+      "audit.jsonwisdom.com": "cwaas-receipt-first-audit",
+      "game.jsonwisdom.com": "wisdom-live-observer",
+      "inventory.jsonwisdom.com": "wisdom-catalog-curator",
+      "evidence.jsonwisdom.com": "minnesota-zero-day-evidence-v1"
+    },
+    "evidence_subdomain": {
+      "dns_record_type": "AAAA",
+      "dns_record_content": "100::",
+      "proxied": true,
+      "custom_domain_enabled": true,
+      "worker_environment": "production",
+      "independent_http_health_verified": false
+    },
+    "pages_listing": {
+      "status": "attempted_blocked",
+      "reason": "Cloudflare API rejected list pagination options"
+    },
+    "binding_snapshot": {
+      "origin": "authenticated_cloudflare_connector",
+      "raw_api_bytes_sha256": null,
+      "verbatim_api_response_hash": null,
+      "representation": "selected API fields preserved verbatim, not original raw HTTP",
+      "canonicalization": "sort evidence.jsonwisdom.com first, remaining entries lexicographically by hostname; serialize UTF-8 JSON.stringify without whitespace; keys hostname,service,environment,enabled,zone_name,zone_id,id,cert_id,previews_enabled",
+      "sha256": "53052405a4164f941552065d186fb5c692e5f1e694f2b930a46116476dc3e052",
+      "hash_scope": "connector-normalized selected binding fields",
+      "hash_type": "local_integrity_claim",
+      "entries": [
+        {
+          "hostname": "evidence.jsonwisdom.com",
+          "service": "minnesota-zero-day-evidence-v1",
+          "environment": "production",
+          "enabled": true,
+          "zone_name": "jsonwisdom.com",
+          "zone_id": "07fc56195fd53449f5c818bef9b46d95",
+          "id": "27df81becb9d639d715a8e7a8d02d6d560d45f55",
+          "cert_id": "fcb95411-040d-4e88-92cf-8d68d1ed5f3d",
+          "previews_enabled": false
+        },
+        {
+          "hostname": "audit.jsonwisdom.com",
+          "service": "cwaas-receipt-first-audit",
+          "environment": "production",
+          "enabled": true,
+          "zone_name": "jsonwisdom.com",
+          "zone_id": "07fc56195fd53449f5c818bef9b46d95",
+          "id": "9454811b7e7e0d913d3f28adf1b14ac0af24c627",
+          "cert_id": "c9ff90e1-50c3-487a-8655-1cd78ce5a78e",
+          "previews_enabled": false
+        },
+        {
+          "hostname": "auth.jsonwisdom.com",
+          "service": "jsonwisdom-workdesk-auth-staging",
+          "environment": "production",
+          "enabled": true,
+          "zone_name": "jsonwisdom.com",
+          "zone_id": "07fc56195fd53449f5c818bef9b46d95",
+          "id": "12e687e29fdbbd67124db5b3f97098825e697e3b",
+          "cert_id": "f4d1e4d4-8ff9-4935-8bc1-7b2894358e3b",
+          "previews_enabled": false
+        },
+        {
+          "hostname": "classes.jsonwisdom.com",
+          "service": "classes-with-glasses",
+          "environment": "production",
+          "enabled": true,
+          "zone_name": "jsonwisdom.com",
+          "zone_id": "07fc56195fd53449f5c818bef9b46d95",
+          "id": "acf33a1fa1cd8ae3179cc64f767cbfc8befad664",
+          "cert_id": "fb4ad5e4-c22c-4457-8c5c-9672669cfed9",
+          "previews_enabled": false
+        },
+        {
+          "hostname": "gallery.jsonwisdom.com",
+          "service": "jasons-art-gallery",
+          "environment": "production",
+          "enabled": true,
+          "zone_name": "jsonwisdom.com",
+          "zone_id": "07fc56195fd53449f5c818bef9b46d95",
+          "id": "98f0297262a1befd36e2cc97b52850762387e42c",
+          "cert_id": "14cf45bc-1785-4ac6-b928-434c00aa9fcc",
+          "previews_enabled": false
+        },
+        {
+          "hostname": "game.jsonwisdom.com",
+          "service": "wisdom-live-observer",
+          "environment": "production",
+          "enabled": true,
+          "zone_name": "jsonwisdom.com",
+          "zone_id": "07fc56195fd53449f5c818bef9b46d95",
+          "id": "adcb3c2894b7e5a3ef0276f6a929dac9e092c3f3",
+          "cert_id": "fa3544fe-697e-4757-b796-577cdfdf2b0c",
+          "previews_enabled": false
+        },
+        {
+          "hostname": "inventory.jsonwisdom.com",
+          "service": "wisdom-catalog-curator",
+          "environment": "production",
+          "enabled": true,
+          "zone_name": "jsonwisdom.com",
+          "zone_id": "07fc56195fd53449f5c818bef9b46d95",
+          "id": "1fea75ca2c950b49fd07bda03ae8af58d8f1373d",
+          "cert_id": "0b7f727f-b5a3-4fab-bf70-2383e6c90c03",
+          "previews_enabled": false
+        },
+        {
+          "hostname": "triggerdeck.jsonwisdom.com",
+          "service": "political-triggerdeck-2026",
+          "environment": "production",
+          "enabled": true,
+          "zone_name": "jsonwisdom.com",
+          "zone_id": "07fc56195fd53449f5c818bef9b46d95",
+          "id": "f6e74f7c25f6c3be305d3de75fd4452b1351aec0",
+          "cert_id": "1ece0ef0-58ab-41fd-b1e4-adfe4a1a3902",
+          "previews_enabled": false
+        },
+        {
+          "hostname": "wallet.jsonwisdom.com",
+          "service": "jsonwisdom-wallet-connect",
+          "environment": "production",
+          "enabled": true,
+          "zone_name": "jsonwisdom.com",
+          "zone_id": "07fc56195fd53449f5c818bef9b46d95",
+          "id": "3c1143405910765ad29249899be246875d312334",
+          "cert_id": "4dfb88c9-7cfd-4031-a765-d5600f6f7dfb",
+          "previews_enabled": false
+        }
+      ],
+      "raw_api_response_preservation": "not_preserved"
+    }
+  },
+  "org_claim": {
+    "count_reported": 6,
+    "count_verified": null,
+    "names": null,
+    "attempt_state": "attempted_blocked",
+    "reason": "not present in connected zone inventory; names not supplied",
+    "absence_asserted": false,
+    "connected_account_org_zone_count": 0,
+    "lookup": {
+      "status": "attempted_blocked",
+      "reason": "six names not provided or found in connected account; absence of names does not imply nonexistence"
+    },
+    "governance_boundary": {
+      "process_type": "inventory_boundary_reconciliation",
+      "status": "completed_discrepant",
+      "description": "six reported domains vs no .org zones observable within one connected account; comparison scopes differ, so this is an inventory coverage discrepancy, not a contradiction about world-state",
+      "count_reported": 6,
+      "count_observed_in_connected_account": 0,
+      "global_count": null,
+      "scope_clarification": "The completed_discrepant finding concerns connected-account inventory coverage, not whether the six reported domains exist."
+    }
+  },
+  "organizational_chain": {
+    "registrar_verified": false,
+    "rdap_verified": false,
+    "independent_dns_verified": false,
+    "domain_wallet_signature_verified": false,
+    "onchain_org_binding_verified": false,
+    "external_anchor": null,
+    "qualifying_ownership_schemes": {
+      "scheme_list_version": "not_yet_defined",
+      "scheme_list_is_closed": true,
+      "qualifying_schemes": [],
+      "qualifying_attempt_permitted": false,
+      "revision_history": [],
+      "scheme_status": "not_defined",
+      "rule": "No on-chain organizational ownership proof can qualify until a versioned authorization/identity/signature scheme is defined and tested before evidence acceptance",
+      "empty_list_meaning": "none_defined_yet"
+    }
+  },
+  "github": {
+    "repository": "jsonwisdom/COMPUTERWISDOM",
+    "protected_branch": "master",
+    "direct_write_attempt": "rejected_409",
+    "required_process": "pull_request_plus_verify_ci",
+    "evidence_document": "evidence/jason-first-domain-boundary-2026-11-03.md",
+    "evidence_document_git_blob_sha1": "c1c34bca465cbd48e40334b83d42cc6f6c57b013",
+    "public_ci_run": {
+      "run_status": "observed_for_prior_head",
+      "pass_scope": "repository workflow status only; not domain verification",
+      "head_sha": "1c7c948892dfeafc2532e12fc8ebaee8e0f75ae5",
+      "new_head_ci_status": "pending_after_amendment"
+    },
+    "reviewed_at_commit": "1c7c948892dfeafc2532e12fc8ebaee8e0f75ae5",
+    "reviewed_commit_role": "PR #729 prior head before seven-item receipt amendment; immutable commit identifier, not current PR head",
+    "after_merge_compare": {
+      "merge_commit_sha": null,
+      "diverges_from_reviewed_at_commit": null,
+      "status": "not_applicable_until_merge"
+    },
+    "verify_check": {
+      "name": "verify",
+      "status_at_reviewed_commit": "success",
+      "scope": "CI workflow checks JSON validity and selected honesty flags of PUBLIC_PROOF.json and MEME_COURT_PRECEDENT_LEDGER.json if present; skips missing files; creates verify_receipt.json and status; does NOT check this evidence receipt, DNS, bindings or ownership",
+      "workflow_path": ".github/workflows/verify.yml",
+      "workflow_source_ref": "master",
+      "finding_authentication": false
+    },
+    "original_reviewed_commit_sha": "1c7c948892dfeafc2532e12fc8ebaee8e0f75ae5"
+  },
+  "publication": {
+    "github_branch": "evidence/jason-first-domain-boundary-20261103",
+    "github_pr": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/729",
+    "cloudflare_worker_changed": false,
+    "live_subdomain_report_published": false
+  },
+  "assertions": {
+    "configured_worker_mapping": true,
+    "organization_ownership_verified": false,
+    "raw_byte_for_byte_audit_completed": false
+  },
+  "inventory_completeness_required_for_future_domain_receipts": true,
+  "reconciliations": [
+    {
+      "process_type": "reconciliation",
+      "subject": "conventional_worker_routes_vs_custom_domains",
+      "status": "completed_consistent",
+      "hypothesis": "nonzero route patterns required for Worker-served hostnames",
+      "observed": {
+        "conventional_route_patterns": 0,
+        "enabled_worker_custom_domains": 9
+      },
+      "explanation": "Custom Domains and route patterns are distinct routing mechanisms; the former bind Worker as hostname origin",
+      "evidence_level": "connected_account_configuration",
+      "does_not_prove": "HTTP health"
+    }
+  ],
+  "http_probe": {
+    "target": "https://evidence.jsonwisdom.com/",
+    "attempted": true,
+    "tool": "web open URL",
+    "result": "not_accessible_via_tool",
+    "error_class": "reader_access_error",
+    "dns_error_class": null,
+    "http_status": null,
+    "raw_error": "URL https://evidence.jsonwisdom.com/ is not accessible via this tool",
+    "interpretation": "does not distinguish NXDOMAIN, SERVFAIL, timeout, TLS, HTTP rejection, or tool/network policy",
+    "probe_environment": "ChatGPT web reader",
+    "probe_method": "web.open URL",
+    "probe_time": null,
+    "resolver": null,
+    "dns_rcode": null,
+    "transport_error": null,
+    "failure_class": "reader_access_error",
+    "dns_cause": "unknown",
+    "reproducibility": "repeat with independently recorded DNS resolver, timestamp, network, and raw HTTP status"
+  },
+  "amendment": {
+    "scope": "PR #729 receipt correction; no protocol version increment",
+    "prior_file_blob_sha1": "9c7930bebcf89ecd92eb4207ae28f53b57878259",
+    "reviewed_at_commit": "1c7c948892dfeafc2532e12fc8ebaee8e0f75ae5",
+    "content_authentic": "pending",
+    "external_anchor": null,
+    "original_reviewed_commit_sha": "1c7c948892dfeafc2532e12fc8ebaee8e0f75ae5",
+    "pinned_original_commit_in_receipt": true
+  }
+}
