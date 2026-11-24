@@ -1,0 +1,38 @@
+name: CI-FIRST v2 authority model regression (source-only)
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  model-invariant:
+    name: CI-FIRST v2 model invariant
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout source without persistent credentials
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          persist-credentials: false
+      - name: Evaluate all 1,024 configurations and malformed inputs
+        run: python3 scripts/ci-first/authority_invariant.py --out authority-model-receipt-v2.json
+      - name: Hash deterministic receipt
+        if: always()
+        run: |
+          test -f authority-model-receipt-v2.json
+          sha256sum authority-model-receipt-v2.json > authority-model-receipt-v2.sha256
+      - name: Upload model receipts for review (30 days)
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
+        with:
+          name: ci-first-authority-model-v2-${{ github.run_id }}
+          path: |
+            authority-model-receipt-v2.json
+            authority-model-receipt-v2.sha256
+          if-no-files-found: error
+          retention-days: 30
