@@ -1,0 +1,95 @@
+name: CI-FIRST OODA Emergency Dual Route v2 (SHADOW)
+# SHADOW MODE: runs beside cw-ooda-emergency-probe.yml. It does NOT replace, edit or disable it.
+# Writes only to its own ledger branch. Cutover is a separate human decision after parity.
+on:
+  push:
+    branches: [master]
+    paths:
+      - '.github/workflows/cw-ooda-emergency-probe-v2.yml'
+      - 'scripts/ooda_emergency_probe.py'
+      - 'scripts/ooda_receipt_gate.py'
+      - 'tests/test_ooda_emergency_probe.py'
+      - 'tests/test_ooda_receipt_gate.py'
+  pull_request:
+    paths:
+      - 'scripts/ooda_emergency_probe.py'
+      - 'scripts/ooda_receipt_gate.py'
+      - 'tests/test_ooda_emergency_probe.py'
+      - 'tests/test_ooda_receipt_gate.py'
+  schedule:
+    - cron: '*/5 * * * *'   # DECISION D1: kept equal to the current probe during shadow so parity is comparable
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: cw-ooda-emergency-ledger-v2
+  cancel-in-progress: false
+env:
+  HEARTBEAT_HOURS: '6'      # DECISION D2: recommended default 6; 1 is also reasonable
+  LEDGER_BRANCH: ledger/ooda-emergency-observations-v2   # must be created by Jason first
+jobs:
+  regression:
+    # Event-driven: never on schedule.
+    if: github.event_name != 'schedule'
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - name: Mechanical regression tests (synthetic; not live evidence)
+        run: python3 -m unittest discover -s tests -p 'test_ooda_*.py' -v
+  probe:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read-only dual endpoint probe (each route recorded independently)
+        env:
+          CW_RECEIPT_DIR: ${{ runner.temp }}/receipts
+        run: python3 scripts/ooda_emergency_probe.py
+      - name: Per-route summary (no route implies the other)
+        shell: bash
+        run: |
+          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import glob, json, os
+          f = sorted(glob.glob(os.environ["RUNNER_TEMP"] + "/receipts/*.json"))[-1]
+          for r in json.load(open(f))["routes"]:
+              print(f"- {r['role']}: http={r['http']} status={r['status']} body_sha256={r['body_sha256']} error={r['error']}")
+          PY
+      - name: Change-only gate (route-keyed) plus heartbeat
+        id: gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin "refs/heads/${LEDGER_BRANCH}:refs/remotes/origin/${LEDGER_BRANCH}"
+          git switch --detach "refs/remotes/origin/${LEDGER_BRANCH}"
+          # scripts live on the default branch; use the copy checked out at the start
+          git show "${GITHUB_SHA}:scripts/ooda_receipt_gate.py" > "$RUNNER_TEMP/ooda_receipt_gate.py"
+          receipt="$(ls "$RUNNER_TEMP"/receipts/*.json | tail -n1)"
+          out="$(python3 "$RUNNER_TEMP/ooda_receipt_gate.py" "$receipt" receipts/ooda-emergency-v2/STATE.json "$HEARTBEAT_HOURS")"
+          echo "$out"
+          echo "decision=$(python3 -c 'import json,sys;print(json.loads(sys.argv[1])["decision"])' "$out")" >> "$GITHUB_OUTPUT"
+      - name: Preserve evidence artifact (only when a receipt is appended)
+        if: steps.gate.outputs.decision == 'APPEND'
+        uses: actions/upload-artifact@v4
+        with:
+          name: cw-ooda-emergency-v2-${{ github.run_id }}
+          path: ${{ runner.temp }}/receipts/*.json
+          if-no-files-found: error
+          retention-days: 90
+      - name: Append receipt to the v2 ledger branch (append-only)
+        if: steps.gate.outputs.decision == 'APPEND'
+        shell: bash
+        run: |
+          set -euo pipefail
+          folder="receipts/ooda-emergency-v2/$(date -u +%Y/%m/%d)"
+          mkdir -p "$folder"
+          cp "$RUNNER_TEMP"/receipts/*.json "$folder"/
+          git add "$folder" receipts/ooda-emergency-v2/STATE.json
+          if git diff --cached --quiet; then exit 0; fi
+          git -c user.name='computer-wisdom-evidence-bot' \
+              -c user.email='41898282+github-actions[bot]@users.noreply.github.com' \
+              commit -m 'audit: append OODA observation v2 [skip ci]'
+          git push origin "HEAD:refs/heads/${LEDGER_BRANCH}"
