@@ -12,6 +12,7 @@ on:
 # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
 permissions:
   contents: read
+  actions: read
   pages: write
   id-token: write
 
@@ -41,6 +42,30 @@ jobs:
         with:
           # Upload entire repository
           path: '.'
+          name: github-pages-${{ github.run_attempt }}
+      - name: Verify artifact visibility
+        shell: bash
+        timeout-minutes: 2
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARTIFACT_NAME: github-pages-${{ github.run_attempt }}
+        run: |
+          set -euo pipefail
+          for attempt in {1..6}; do
+            if count=$(gh api --method GET "repos/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID/artifacts" -f name="$ARTIFACT_NAME" --paginate --jq '.artifacts[] | select(.expired == false) | .id' | awk 'END {print NR}'); then
+              if [[ "$count" == 1 ]]; then
+                exit 0
+              elif [[ "$count" -gt 1 ]]; then
+                echo "::error::Multiple matching Pages artifacts"
+                exit 1
+              fi
+            fi
+            if [[ "$attempt" -lt 6 ]]; then sleep 10; fi
+          done
+          echo "::error::Pages artifact not uniquely visible within retry budget"
+          exit 1
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+        with:
+          artifact_name: github-pages-${{ github.run_attempt }}
