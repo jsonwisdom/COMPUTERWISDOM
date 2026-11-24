@@ -60,7 +60,7 @@ def _candidates(query: str) -> list[dict]:
     text = normalize(query)
     possible = []
     for phrase, code, lane, operation in LEXICON:
-        pattern = r'(?<!\\w)' + re.escape(normalize(phrase)).replace(r'\\ ', r'\\s+') + r'(?!\\w)'
+        pattern = r'(?<!\w)' + re.escape(normalize(phrase)).replace(r'\ ', r'\s+') + r'(?!\w)'
         for match in re.finditer(pattern, text):
             possible.append({'span': (match.start(), match.end()), 'phrase': phrase, 'code': code,
                              'lane': lane, 'operation': operation})
