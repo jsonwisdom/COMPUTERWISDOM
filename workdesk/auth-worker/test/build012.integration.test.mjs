@@ -44,6 +44,12 @@ async function grant(signer,session,opts={}){
  if(o.status!==200)return o;
  return call('/enroll/authorize/verify',{session,body:{challengeId:o.data.challengeId,response:signer.get(o.data.options,{origin:ORIGIN,...opts})}});
 }
+// Removal: step-up assertion (any enrolled key) bound to session + target, then remove.
+async function removeKey(signer,session,credentialId,opts={}){
+ const o=await call('/credentials/remove/options',{session,body:{credentialId}});
+ if(o.status!==200)return o;
+ return call('/credentials/remove',{session,body:{credentialId,challengeId:o.data.challengeId,response:signer.get(o.data.options,{origin:ORIGIN,...opts})}});
+}
 const enroll=(key,g,session,opts={})=>call('/register/verify',{session,body:{challengeId:g.data.challengeId,response:key.create(g.data.options,{origin:ORIGIN,...opts})}});
 const rows=async()=>(await db.prepare('SELECT id,label,counter,aaguid,transports,enrolled_by FROM credentials ORDER BY label,created_at,id').all()).results;
 async function bluePlusPurple(){
@@ -130,7 +136,7 @@ test('T09 replay rejected: authorization assertion and enrollment grant are sing
  assert.equal((await call('/enroll/authorize/verify',{session:s,body})).status,403,'assertion replay');
  const attestation=purple.create(g.data.options,{origin:ORIGIN});
  assert.equal((await call('/register/verify',{session:s,body:{challengeId:g.data.challengeId,response:attestation}})).status,200);
- await call('/credentials/remove',{session:s,body:{credentialId:purple.id}});
+ assert.equal((await removeKey(blue,s,purple.id)).status,200);
  assert.equal((await call('/register/verify',{session:s,body:{challengeId:g.data.challengeId,response:attestation}})).status,403,'grant replay after removal');
  assert.equal((await rows()).length,1);
 });
@@ -188,24 +194,24 @@ test('T15 counter regression rejected per credential, without affecting the othe
 });
 test('T16 removal: requires session; one key removable; last key refused; removed key sessions revoked',async()=>{
  const {blue,purple}=await bluePlusPurple();
- assert.equal((await call('/credentials/remove',{body:{credentialId:purple.id}})).status,403,'no session');
+ assert.equal((await call('/credentials/remove/options',{body:{credentialId:purple.id}})).status,403,'no session');
  const pS=(await login(purple)).cookie,bS=(await login(blue)).cookie;
- const r=await call('/credentials/remove',{session:bS,body:{credentialId:purple.id}});
+ const r=await removeKey(blue,bS,purple.id);
  assert.equal(r.status,200);
  assert.equal((await call('/private',{method:'GET',session:pS,origin:null})).status,403,'Purple session revoked');
  assert.equal((await login(purple)).status,403,'Purple no longer authenticates');
- const last=await call('/credentials/remove',{session:bS,body:{credentialId:blue.id}});
+ const last=await call('/credentials/remove/options',{session:bS,body:{credentialId:blue.id}});
  assert.equal(last.status,409);assert.equal(last.data.error,'LAST_CREDENTIAL_PROTECTED');
  assert.equal((await login(blue)).status,200);
 });
 test('T17 concurrent removal of both keys leaves exactly one',async()=>{
  const {blue,purple}=await bluePlusPurple();const s=(await login(blue)).cookie;
- const res=await Promise.all([blue,purple].map(k=>call('/credentials/remove',{session:s,body:{credentialId:k.id}})));
+ const res=await Promise.all([removeKey(blue,s,purple.id),removeKey(purple,s,blue.id)]);
  assert.deepEqual(res.map(r=>r.status).sort(),[200,409]);assert.equal((await rows()).length,1);
 });
 test('T18 recovery: lost Blue removed using Purple; Purple then authorizes a replacement primary',async()=>{
  const {blue,purple}=await bluePlusPurple();const s=(await login(purple)).cookie;
- assert.equal((await call('/credentials/remove',{session:s,body:{credentialId:blue.id}})).status,200);
+ assert.equal((await removeKey(purple,s,blue.id)).status,200);
  assert.equal((await login(blue)).status,403);
  const s2=(await login(purple)).cookie;const replacement=new SoftAuthenticator('Blue-2');
  const r=await enroll(replacement,await grant(purple,s2),s2);
@@ -236,4 +242,62 @@ test('T21 migration 0002 on a Build 011 database preserves the enrolled key, the
  assert.equal((await db.prepare('SELECT COUNT(*) n FROM sessions').first()).n,1,'sessions preserved');
  const s=(await login(blue)).cookie;assert.ok(s);
  assert.equal((await enroll(new SoftAuthenticator('Purple'),await grant(blue,s),s)).status,200);
+});
+
+// ---- Step 1 hardening: fresh hardware-key verification for removal ----
+test('T22 removal without a fresh assertion is refused (session alone not enough)',async()=>{
+ const {blue,purple}=await bluePlusPurple();const s=(await login(blue)).cookie;
+ assert.equal((await call('/credentials/remove',{session:s,body:{credentialId:purple.id}})).status,403,'no challenge, no assertion');
+ const o=await call('/credentials/remove/options',{session:s,body:{credentialId:purple.id}});
+ assert.equal((await call('/credentials/remove',{session:s,body:{credentialId:purple.id,challengeId:o.data.challengeId}})).status,403,'challenge but no assertion');
+ assert.equal((await rows()).length,2);
+});
+test('T23 stale (expired) removal challenge refused',async()=>{
+ const {blue,purple}=await bluePlusPurple();const s=(await login(blue)).cookie;
+ const o=await call('/credentials/remove/options',{session:s,body:{credentialId:purple.id}});
+ assert.equal(o.data.expiresIn,120);
+ await db.prepare('UPDATE challenges SET expires_at=expires_at-121 WHERE id=?').bind(o.data.challengeId).run();
+ assert.equal((await call('/credentials/remove',{session:s,body:{credentialId:purple.id,challengeId:o.data.challengeId,response:blue.get(o.data.options,{origin:ORIGIN})}})).status,403);
+ assert.equal((await rows()).length,2);
+});
+test('T24 replayed removal assertion refused',async()=>{
+ const aaguid=randomBytes(16);await fresh();
+ const blue=new SoftAuthenticator('Blue',{aaguid}),purple=new SoftAuthenticator('Purple',{aaguid});
+ await bootstrap(blue);let s=(await login(blue)).cookie;await enroll(purple,await grant(blue,s),s);
+ s=(await login(blue)).cookie;
+ const o=await call('/credentials/remove/options',{session:s,body:{credentialId:purple.id}});
+ const body={credentialId:purple.id,challengeId:o.data.challengeId,response:blue.get(o.data.options,{origin:ORIGIN})};
+ assert.equal((await call('/credentials/remove',{session:s,body})).status,200);
+ // Re-enroll Purple, then replay the captured removal request.
+ assert.equal((await enroll(purple,await grant(blue,s),s)).status,200);
+ assert.equal((await call('/credentials/remove',{session:s,body})).status,403,'replay');
+ assert.equal((await rows()).length,2);
+});
+test('T25 foreign-session and retargeted removal challenges refused',async()=>{
+ const {blue,purple}=await bluePlusPurple();
+ const s1=(await login(blue)).cookie,s2=(await login(blue)).cookie;
+ const o=await call('/credentials/remove/options',{session:s1,body:{credentialId:purple.id}});
+ assert.equal((await call('/credentials/remove',{session:s2,body:{credentialId:purple.id,challengeId:o.data.challengeId,response:blue.get(o.data.options,{origin:ORIGIN})}})).status,403,'other session');
+ const o2=await call('/credentials/remove/options',{session:s1,body:{credentialId:purple.id}});
+ assert.equal((await call('/credentials/remove',{session:s1,body:{credentialId:blue.id,challengeId:o2.data.challengeId,response:purple.get(o2.data.options,{origin:ORIGIN})}})).status,403,'target swapped after challenge');
+ assert.equal((await call('/credentials/remove/options',{session:s1,body:{credentialId:'not-enrolled'}})).status,403,'unknown target');
+ assert.equal((await rows()).length,2);
+});
+test('T26 removal assertion with UV missing, forged signature, or wrong origin refused',async()=>{
+ const {blue,purple}=await bluePlusPurple();const s=(await login(blue)).cookie;const mallory=new SoftAuthenticator('Mallory');
+ assert.equal((await removeKey(blue,s,purple.id,{uv:false})).status,403,'UV missing');
+ assert.equal((await removeKey(blue,s,purple.id,{signWith:mallory})).status,403,'forged signature');
+ assert.equal((await removeKey(mallory,s,purple.id)).status,403,'unenrolled key');
+ assert.equal((await removeKey(blue,s,purple.id,{origin:'https://evil.example'})).status,403,'wrong origin');
+ assert.equal((await rows()).length,2);
+});
+test('T27 valid removal: any enrolled key may verify, including the key being removed; never the last',async()=>{
+ let {blue,purple}=await bluePlusPurple();let s=(await login(blue)).cookie;
+ const self=await removeKey(purple,s,purple.id);
+ assert.equal(self.status,200);assert.equal(self.data.verifiedBy,'recovery');
+ const ev=(await db.prepare("SELECT credential_id,actor FROM credential_events WHERE event='removed'").all()).results;
+ assert.deepEqual(ev.map(e=>[e.credential_id,e.actor]),[[purple.id,purple.id]]);
+ const last=await call('/credentials/remove/options',{session:s,body:{credentialId:blue.id}});
+ assert.equal(last.status,409);assert.equal(last.data.error,'LAST_CREDENTIAL_PROTECTED');
+ assert.equal((await login(blue)).status,200);
 });

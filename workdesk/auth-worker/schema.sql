@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS credentials (
 CREATE TABLE IF NOT EXISTS challenges (
  id TEXT PRIMARY KEY,
  challenge TEXT NOT NULL,
- purpose TEXT NOT NULL CHECK(purpose IN ('register','login','enroll_auth','register_secondary')),
+ purpose TEXT NOT NULL CHECK(purpose IN ('register','login','enroll_auth','register_secondary','remove_auth')),
  expires_at INTEGER NOT NULL,
  session_hash TEXT,
  authorized_by TEXT

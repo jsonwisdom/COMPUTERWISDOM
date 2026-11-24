@@ -191,11 +191,31 @@ export default {
     const {results}=await db.prepare('SELECT id,label,transports,aaguid,created_at,last_used_at FROM credentials ORDER BY label,created_at,id').all();
     return json({credentials:results.map(r=>({...r,transports:JSON.parse(r.transports),current:r.id===session.credential_id}))},200,headers);
    }
+   if(url.pathname==='/credentials/remove/options' && request.method==='POST') {
+    // Removal step 1: live session required; issues a single-use, session-bound, target-bound assertion challenge.
+    const session=await activeSession(db,request);
+    if(!session)return denied();
+    const body=await parse(request);
+    if(typeof body.credentialId!=='string'||!credentials.some(c=>c.id===body.credentialId))return denied();
+    if(credentials.length<2)return json({error:'LAST_CREDENTIAL_PROTECTED'},409,headers);
+    const options=await generateAuthenticationOptions({
+     rpID:env.RP_ID,userVerification:'required',
+     allowCredentials:credentials.map(c=>({id:c.id,transports:c.transports}))
+    });
+    const id=await challenge(db,'remove_auth',options.challenge,{sessionHash:session.token_hash,authorizedBy:body.credentialId,lifetime:enrollGrantTtl});
+    return json({challengeId:id,options,expiresIn:enrollGrantTtl},200,headers);
+   }
    if(url.pathname==='/credentials/remove' && request.method==='POST') {
+    // Removal step 2: session AND a fresh user-verified assertion from ANY enrolled key (including the key
+    // being removed), for the exact target named at step 1. The last key can never be removed.
     const session=await activeSession(db,request);
     if(!session)return denied();
     const body=await parse(request);
     if(typeof body.credentialId!=='string')return denied();
+    const grant=await consume(db,body.challengeId,'remove_auth');
+    if(!grant||grant.session_hash!==session.token_hash||grant.authorized_by!==body.credentialId)return denied();
+    const asserter=await verifyAssertion(env,db,credentials,body,grant.challenge);
+    if(!asserter)return denied();
     // Last-credential protection is enforced inside the same statement, so concurrent removals cannot reach zero.
     const removed=await db.prepare('DELETE FROM credentials WHERE id=? AND (SELECT COUNT(*) FROM credentials)>1').bind(body.credentialId).run();
     if(removed.meta.changes!==1) {
@@ -204,8 +224,8 @@ export default {
     }
     // Sessions created by the removed key end with it.
     await db.prepare('DELETE FROM sessions WHERE credential_id=?').bind(body.credentialId).run();
-    await event(db,'removed',body.credentialId,session.credential_id);
-    return json({removed:true},200,headers);
+    await event(db,'removed',body.credentialId,asserter.id);
+    return json({removed:true,verifiedBy:asserter.label},200,headers);
    }
    if((url.pathname==='/private' || url.pathname==='/wallet/readiness') && request.method==='GET') {
     const session=await activeSession(db,request);
