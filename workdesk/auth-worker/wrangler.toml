@@ -1,4 +1,4 @@
-name = "jsonwisdom-workdesk-auth"
+name = "jsonwisdom-workdesk-auth-staging"
 main = "src/index.js"
 compatibility_date = "2026-10-28"
 workers_dev = false
