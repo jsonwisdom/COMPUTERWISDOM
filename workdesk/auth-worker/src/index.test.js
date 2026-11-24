@@ -4,7 +4,7 @@ import worker from './index.js';
 
 function emptyDB() {
  return {prepare(sql) {
-  if (!/^SELECT id,public_key,counter,transports FROM credentials$/.test(sql)) {
+  if (!/^SELECT id,public_key,counter,transports,label FROM credentials ORDER BY created_at,id$/.test(sql)) {
    throw new Error('Unexpected database query: ' + sql);
   }
   return {all: async () => ({results: []})};
