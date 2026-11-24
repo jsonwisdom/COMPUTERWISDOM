@@ -1,0 +1,51 @@
+{
+  "record": "CW-SHANNON-CAMP-CRYSTAL-KERNEL-DOCUMENT-006",
+  "source_file": "KERNEL_V0_1.md",
+  "source_sha256": "23e40d5baacd38e0f0035908afc279643a4c5bffc8144833eec71e879ba11f70",
+  "source_sha256_match_A03": true,
+  "observed_source": "Exact local mounted conversation file; hash recomputed independently in this session",
+  "seed_formula": "SHA256(UTF8('camp-crystal-kernel-v0-1|lost-camper-safe-return-drill-v0-1|turn={n}|seed-v0'))",
+  "seed_results": [
+    {
+      "turn": 1,
+      "seed": "8b55696dfd2d6063edbab673cddd4aea449f28ca2edf21a14e8a1ac178b5c68a"
+    },
+    {
+      "turn": 2,
+      "seed": "9ba2e9626dfa915683dd2dbdf0c99614126272bf79898d3c8c7db51f288d0ac2"
+    },
+    {
+      "turn": 3,
+      "seed": "3e42659fe4fcd2d82b47e433c16560cadc8d71f3472bdd3340a8089b2cb8a76e"
+    },
+    {
+      "turn": 4,
+      "seed": "14f0358ca9ffa696128d378715942fa7962a5fabba63f669c3c88c8cd29c5fb3"
+    },
+    {
+      "turn": 5,
+      "seed": "704e546cf85d0669945d733441ec694d550f8c6074f0b31ad1b05530bf3b7a39"
+    }
+  ],
+  "checks": {
+    "source_document_sha256": "PASS",
+    "five_seeds_SHA256_recomputation": "PASS_PYTHON_AND_WOLFRAM",
+    "five_reported_prev_hash_pointer_matches": "PASS_TABLE_INTERNAL_ONLY",
+    "full_original_six_json_bytes": "NOT_AVAILABLE_IN_CURRENT_SESSION",
+    "input_hash_state_hash_receipt_hash_exact_byte_replay": "NOT_RUN",
+    "cloudflare_worker_runtime": "NOT_TESTED",
+    "authority": "NONE",
+    "merge": "HOLD"
+  },
+  "document_reported_receipt_path": "/workspace/receipts/leahprime/camp-crystal-kernel-v0-1/receipts/",
+  "missing_files": [
+    "TURN_01.json",
+    "TURN_02.json",
+    "TURN_03.json",
+    "TURN_04.json",
+    "TURN_05.json",
+    "CHAIN.json"
+  ],
+  "context": "Source document says these files were local-only, not pushed. This execution's mounted environment lacks /workspace; no reconstruction or substitution claimed.",
+  "next_gate": "Recover original six files and rerun exact canonical JSON and raw-file SHA256, check all input/state/receipt hashes, prev pointers, chain index."
+}

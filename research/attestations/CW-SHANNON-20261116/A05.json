@@ -1,0 +1,48 @@
+{
+  "case_family": "CW-SHANNON-20261116",
+  "version": "0.1",
+  "observed_local_date": "2026-11-16",
+  "timezone": "America/Chicago",
+  "kind": "UNSIGNED_EVIDENCE_BASELINE",
+  "human_approval": "REQUIRED",
+  "signature": "NOT_SIGNED",
+  "merge": "HOLD",
+  "public_release": "HOLD",
+  "payment_authority": "NONE",
+  "id": "A05",
+  "title": "Identity separation and evidentiary governance",
+  "sources": [
+    {
+      "type": "local_source_bytes",
+      "filename": "return(1).md",
+      "sha256": "ce6e726d472ee30afb17c1982cfc9d2dcda0d3d7ff3fa46c224473959f9d1fff",
+      "method": "SHA-256 of attached file bytes checked using local sha256sum"
+    },
+    {
+      "type": "github_pr",
+      "url": "https://github.com/jsonwisdom/COMPUTERWISDOM/pull/767",
+      "head_commit": "bd9c3aab5ef0f1d75cd00107e9ccf0ab861b5d94",
+      "observed": "open, draft, unmerged"
+    }
+  ],
+  "checks": [
+    {
+      "claim": "Attached identity/public-record audit bytes locally hashed",
+      "status": "PASS"
+    },
+    {
+      "claim": "Fictional LEAHPRIME187 is not proven to equal real LEEANN_H_CHAVERS",
+      "status": "IDENTITY_JOIN_REJECTED",
+      "basis": "Source document separates synthetic and real-person identifiers"
+    },
+    {
+      "claim": "Historical public-person listing proves present position or rank",
+      "status": "UNKNOWN"
+    },
+    {
+      "claim": "All legal research citations independently confirmed against original sources",
+      "status": "NOT_RUN"
+    }
+  ],
+  "boundary": "Separate fictional names from real persons; only public evidence; no causal accusation or person identification from name matches."
+}

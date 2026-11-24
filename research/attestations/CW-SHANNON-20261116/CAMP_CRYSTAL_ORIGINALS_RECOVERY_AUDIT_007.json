@@ -1,0 +1,54 @@
+{
+  "case_family": "CW-SHANNON-20261116",
+  "evidence_scope": "CAMP_CRYSTAL_ORIGINAL_RECEIPTS_RECOVERY",
+  "verification": "READ_ONLY",
+  "kernel_sha256": "23e40d5baacd38e0f0035908afc279643a4c5bffc8144833eec71e879ba11f70",
+  "source_reported_original_location": "/workspace/receipts/leahprime/camp-crystal-kernel-v0-1/receipts/",
+  "required_originals": [
+    "TURN_01.json",
+    "TURN_02.json",
+    "TURN_03.json",
+    "TURN_04.json",
+    "TURN_05.json",
+    "CHAIN.json"
+  ],
+  "sources_checked": [
+    {
+      "source": "ChatGPT conversation and Library indexed files",
+      "result": "KERNEL_V0_1.md present; original six JSON files not located"
+    },
+    {
+      "source": "Prior conversation retrieval",
+      "result": "Kernel origin date around 2026-11-16; no originating execution session ID or six JSON bytes resolved"
+    },
+    {
+      "source": "Gmail associated source retrieval",
+      "result": "No matching messages"
+    },
+    {
+      "source": "Current session mounted original attachments",
+      "result": "Kernel file present and byte hash matches; no original six JSON files in /mnt/data"
+    },
+    {
+      "source": "Windows C drive, WSL, Docker container, volumes",
+      "result": "User-reported searches found no matching six originals; unrelated Gambit CHAIN.json explicitly excluded"
+    },
+    {
+      "source": "Prior GitHub and Google Drive searches",
+      "result": "No exact Camp Crystal six-file source set recovered"
+    }
+  ],
+  "results": {
+    "kernel_integrity": "PASS",
+    "seed_math": "PASS_PRIOR_RECORDED",
+    "original_receipts": "NOT_RECOVERED",
+    "original_receipt_provenance": "UNRESOLVED",
+    "exact_byte_replay": "NOT_RUN",
+    "synthetic_reconstruction": "PROHIBITED_AS_SUBSTITUTE",
+    "merge": "HOLD",
+    "deploy": "NO",
+    "payment": "NO",
+    "wallet": "NO"
+  },
+  "boundary": "Search miss does not establish deletion or nonexistence. Do not claim ChatGPT provider-side execution filesystem remains accessible. Do not fabricate or derive original JSON from kernel hash tables."
+}
