@@ -1,0 +1,8 @@
+# Test-only config: local Miniflare D1, no remote bindings, never deployed.
+name = "workdesk-auth-local-test"
+main = "../src/index.js"
+compatibility_date = "2026-10-28"
+[[d1_databases]]
+binding = "AUTH_DB"
+database_name = "local_test_only"
+database_id = "00000000-0000-0000-0000-000000000000"
