@@ -1,0 +1,24 @@
+{
+  "case": "CW-JOSHUA-STACK-001",
+  "simulation": "fictional",
+  "exportedAt": "2026-11-16T23:36:32.897Z",
+  "walletAuthenticated": true,
+  "state": {
+    "turn": 8,
+    "defense": 32,
+    "trust": 47,
+    "intel": 58,
+    "points": 110,
+    "roll": 15,
+    "status": "PASS — CIVILIAN SAFETY IMPROVED",
+    "history": [
+      "T1 DIPLOMACY d20=1 +4 => FAIL | Falken launches an information challenge.",
+      "T2 FORTIFY d20=12 +3 => PASS | Falken increases resource pressure.",
+      "T3 RECON d20=13 +2 => PASS | Falken offers a difficult compromise.",
+      "T4 FORTIFY d20=14 +3 => PASS | Falken launches an information challenge.",
+      "T5 DIPLOMACY d20=8 +4 => PASS | Falken increases resource pressure.",
+      "T6 FORTIFY d20=3 +3 => FAIL | Falken offers a difficult compromise.",
+      "T7 RECON d20=15 +2 => PASS | Falken launches an information challenge."
+    ]
+  }
+}
