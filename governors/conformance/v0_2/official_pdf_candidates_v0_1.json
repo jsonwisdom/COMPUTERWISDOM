@@ -1,0 +1,60 @@
+{
+  "schema": "ci-first.governors.official-pdf-candidates.v0.1",
+  "reviewed_date_utc": "2026-11-14",
+  "classification": "OFFICIAL_PUBLISHER_PDF_URL_CANDIDATE_NOT_CAPTURED",
+  "note": "FY2025 SC acquired as self-attested original HTTPS bytes with SHA256 and cross-environment readback; no government-signed digest. DE NC MD remain URL-only. G1 fiscal-page values checked locally.",
+  "states": {
+    "SC": {
+      "fiscal_year": 2025,
+      "publisher": "South Carolina Office of the Comptroller General",
+      "landing": "https://cg.sc.gov/financial-reports/annual-comprehensive-financial-reports-acfrs",
+      "pdf_url": "https://cg.sc.gov/sites/cg/files/documents/FinancialReports/AnnualComprehensiveFinancialReports%28ACFRs%29/AnnualComprehensiveFinancialReports%282010-2019%29/ACFRCurrentYear/001-316-ACFR-FY2025.pdf",
+      "allowed_hosts": [
+        "cg.sc.gov"
+      ],
+      "status": "SOURCE_BYTE_CAPTURED_SELF_ATTESTED",
+      "official_source_sha256": "5aab29d6a6d5f3561e7870339180594bbe2e068428772712ec538ddaff7a36b1",
+      "source_byte_count": 8651483,
+      "acquisition_run": 43670925379,
+      "drive_receipt_archive_id": "186hkpuy2yUtKl2FQxhpeDpvQwE4q0fkx",
+      "source_page_value_bindings": "PASS_LOCAL",
+      "issuer_signed_hash": "UNKNOWN"
+    },
+    "DE": {
+      "fiscal_year": 2025,
+      "publisher": "Delaware Division of Accounting",
+      "landing": "https://accounting.delaware.gov/reports-transparency/annual-comprehensive-financial-reports/",
+      "pdf_url": "https://accountingfiles.delaware.gov/docs/2025acfr.pdf",
+      "allowed_hosts": [
+        "accountingfiles.delaware.gov"
+      ],
+      "status": "URL_VERIFIED_BYTES_UNKNOWN"
+    },
+    "NC": {
+      "fiscal_year": 2025,
+      "publisher": "North Carolina Office of the State Controller",
+      "landing": "https://www.ncosc.gov/public-information/2025-annual-comprehensive-financial-report",
+      "pdf_url": "https://www.ncosc.gov/sites/default/files/2025-12/2025_Annual_Comprehensive_Financial_Report.pdf",
+      "allowed_hosts": [
+        "www.ncosc.gov"
+      ],
+      "status": "URL_VERIFIED_BYTES_UNKNOWN"
+    },
+    "MD": {
+      "fiscal_year": 2025,
+      "publisher": "Comptroller of Maryland",
+      "landing": "https://www.marylandcomptroller.gov/reports/annual-comprehensive-financial-report-acfr.html",
+      "pdf_url": "https://www.marylandcomptroller.gov/content/dam/mdcomp/md/reports/financial/acfr2025.pdf",
+      "allowed_hosts": [
+        "www.marylandcomptroller.gov"
+      ],
+      "status": "URL_VERIFIED_BYTES_UNKNOWN",
+      "note": "2025, 2024 and 2023 online. Older years not listed are request-only according to publisher."
+    }
+  },
+  "states_covered_as_official_pdf_candidates": 4,
+  "state_G0_complete_count": 1,
+  "emergency_source_coverage_count": 0,
+  "authority_created": false,
+  "release": "CLOSED"
+}
