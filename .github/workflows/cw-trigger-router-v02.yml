@@ -1,0 +1,30 @@
+name: CI-FIRST trigger router (synthetic read-only)
+on:
+  push:
+    paths:
+      - 'tools/ci_first_trigger_router_v02/**'
+      - '.github/workflows/cw-trigger-router-v02.yml'
+  pull_request:
+    paths:
+      - 'tools/ci_first_trigger_router_v02/**'
+      - '.github/workflows/cw-trigger-router-v02.yml'
+permissions:
+  contents: read
+jobs:
+  deterministic:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: tools/ci_first_trigger_router_v02
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Synthetic tests (no credentials)
+        run: python -m unittest discover -s tests -v
+      - name: Determinism check
+        run: |
+          python -m cw_router 'Giant Replay OODA LeahPrime' --records fixtures/public_metadata.json > /tmp/cw1.json
+          python -m cw_router 'Giant Replay OODA LeahPrime' --records fixtures/public_metadata.json > /tmp/cw2.json
+          cmp /tmp/cw1.json /tmp/cw2.json
