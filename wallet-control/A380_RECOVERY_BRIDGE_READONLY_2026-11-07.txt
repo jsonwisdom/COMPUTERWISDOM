@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="color-scheme" content="light">
+<title>Computer Wisdom A380 Recovery Bridge — DRAFT, NOT DEPLOYED</title>
+<!--
+CI-FIRST DRAFT ONLY. NOT REVIEWED, NOT LIVE, NOT APPROVED TO DEPLOY.
+Historical origin: https://jsonwisdom.github.io (2026-10-09T09:09:08.189Z).
+Dependency/SRI from Oct 6 2026 GitHub commit 5f32f98b; independent fetch and CSP review still required.
+No signatures; no transactions; no seed/PIN/recovery phrase; no owner or passkey edits.
+Never continue if asked to create a new wallet or replace an existing passkey.
+-->
+<style>
+body {font: 16px/1.5 system-ui, sans-serif; background:#f6f5f0; color:#14212b; margin:0; padding:18px}
+main {max-width:700px; margin:auto; border:2px solid #243945; background:white; border-radius:15px; padding:20px}
+h1 {font-size:1.55rem} code,pre {overflow-wrap:anywhere}
+button {padding:12px 14px; border:2px solid #243945; border-radius:9px; background:white; color:#14212b; font:700 1rem system-ui; width:100%; margin:7px 0}
+button:disabled {opacity:.5}
+pre {white-space:pre-wrap; background:#f0f4f5; border-radius:10px; padding:14px; overflow-wrap:anywhere}
+</style>
+<script src="https://unpkg.com/@base-org/account@2.5.10/dist/base-account.min.js"
+  integrity="sha384-Jcaa5XJIs34lC6Co7Ye/mAuxCGLTEdUYQuIyl4UrwRduYb6mOmW7SUCOPX/jdsKV"
+  crossorigin="anonymous"></script>
+</head>
+<body>
+<main>
+<h1>A380 Recovery Bridge</h1>
+<p><strong>Draft only — not deployed.</strong> Checks the address returned by an existing wallet. A correct address does not, by itself, prove signing access.</p>
+<p>Target on Base (8453):<br><code>0xA380552a27b0a5a2874Ea7AA52CAC09f542002E8</code></p>
+<button type="button" id="base">1 — Check original Base Account route</button>
+<button type="button" id="coinbase">2 — Check currently connected Coinbase wallet</button>
+<pre role="status" aria-live="polite" id="receipt">UNKNOWN — no account inspected.</pre>
+<p><small>Existing account only. Cancel a new-account, seed phrase or passkey-replacement prompt. No transaction, signature, owner change, passkey change or automatic upload is supported here.</small></p>
+</main>
+<script>
+'use strict';
+(() => {
+  const ORIGINAL_ORIGIN = 'https://jsonwisdom.github.io';
+  const A380 = '0xa380552a27b0a5a2874ea7aa52cac09f542002e8';
+  const OWNER_0 = '0xe13c4abd8e4d3caf5a84238e047e1b7e8632d180';
+  const OWNER_1 = '0x9d8b34122fcda3bd6d84eff4b921e9f68e6b201c';
+  const out = document.getElementById('receipt');
+  const baseButton = document.getElementById('base');
+  const coinbaseButton = document.getElementById('coinbase');
+  const discovered = new Map();
+  const asAddress = a => typeof a === 'string' && /^0x[0-9a-fA-F]{40}$/.test(a) ? a.toLowerCase() : null;
+  const receipt = (status, source, address, chain, detail) => {
+    out.textContent = JSON.stringify({
+      schema: 'A380_EXISTING_WALLET_ADDRESS_OBSERVATION_V1',
+      observed_at_utc: new Date().toISOString(),
+      source, status, observed_address: address || null,
+      chain_id_hex: chain || null,
+      target_A380: A380,
+      historical_owner0: OWNER_0,
+      historical_owner1: OWNER_1,
+      historical_owners_checked_utc: '2026-11-07 (prior PowerShell snapshots)',
+      current_signing_authority: 'UNKNOWN — NO SIGNATURE REQUESTED',
+      note: detail
+    }, null, 2);
+  };
+  const onAnnounce = e => {
+    const info = e && e.detail && e.detail.info;
+    const provider = e && e.detail && e.detail.provider;
+    if (info && provider && typeof provider.request === 'function' &&
+        (info.rdns === 'com.coinbase.wallet' || info.rdns === 'org.coinbase.wallet')) {
+      discovered.set(info.uuid || info.rdns, provider);
+    }
+  };
+  window.addEventListener('eip6963:announceProvider', onAnnounce);
+  window.dispatchEvent(new Event('eip6963:requestProvider'));
+  function currentCoinbaseProvider() {
+    const selected = [...new Set(discovered.values())];
+    if (selected.length > 1) throw Error('UNKNOWN_MULTIPLE_COINBASE_PROVIDERS');
+    if (selected.length === 1) return selected[0];
+    const eth = window.ethereum;
+    const candidates = Array.isArray(eth && eth.providers) ? eth.providers : (eth ? [eth] : []);
+    const matches = candidates.filter(p => p && typeof p.request === 'function' &&
+      p.isCoinbaseWallet === true && !p.isMetaMask && !p.isPhantom);
+    if (matches.length !== 1) throw Error('UNKNOWN_NO_UNAMBIGUOUS_COINBASE_PROVIDER');
+    return matches[0];
+  }
+  async function inspect(route) {
+    const source = route === 'base' ? 'HISTORICAL_BASE_ACCOUNT_SDK_2.5.10' : 'EXISTING_INJECTED_COINBASE_PROVIDER';
+    baseButton.disabled = true;
+    coinbaseButton.disabled = true;
+    try {
+      if (location.origin !== ORIGINAL_ORIGIN) throw Error('FAIL_ORIGIN_MISMATCH');
+      let provider;
+      if (route === 'base') {
+        if (typeof window.createBaseAccountSDK !== 'function') throw Error('UNKNOWN_SDK_UNAVAILABLE');
+        provider = window.createBaseAccountSDK({
+          appName: 'Computer Wisdom Wallet Control',
+          appChainIds: [8453]
+        }).getProvider();
+      } else {
+        provider = currentCoinbaseProvider();
+      }
+      let accounts = await provider.request({method:'eth_accounts'});
+      if (!Array.isArray(accounts) || accounts.length === 0) {
+        receipt('UNKNOWN_CONSENT_REQUIRED', source, null, null,
+          'A request to connect an EXISTING wallet may appear. Cancel any new-wallet prompt.');
+        accounts = await provider.request({method:'eth_requestAccounts'});
+      }
+      const address = asAddress(Array.isArray(accounts) && accounts[0]);
+      if (!address) throw Error('UNKNOWN_NO_VALID_ADDRESS');
+      const chain = String(await provider.request({method:'eth_chainId'})).toLowerCase();
+      const onBase = chain === '0x2105';
+      const target = address === A380;
+      const directOwner = address === OWNER_0 || address === OWNER_1;
+      const status = !onBase ? 'FAIL_NOT_BASE_8453' :
+        target ? 'PASS_TARGET_ADDRESS_RETURNED_NO_SIGNING_PROOF' :
+        directOwner ? 'OWNER_ADDRESS_MATCH_ONLY_SIGNING_UNPROVEN' :
+        'FAIL_DIFFERENT_WALLET_ADDRESS';
+      receipt(status, source, address, chain,
+        'Address-only comparison. Direct owner matches are historical; an underlying passkey or alternate owner cannot be inferred from the account address.');
+    } catch (e) {
+      receipt('UNKNOWN_CONNECT_FAILED', source, null, null,
+        String(e && e.message || e).slice(0,200));
+    } finally {
+      baseButton.disabled = false;
+      coinbaseButton.disabled = false;
+    }
+  }
+  baseButton.addEventListener('click', () => inspect('base'));
+  coinbaseButton.addEventListener('click', () => inspect('coinbase'));
+})();
+</script>
+</body>
+</html>
