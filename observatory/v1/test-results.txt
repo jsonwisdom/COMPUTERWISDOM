@@ -1,0 +1,22 @@
+test_anchor_tamper (test_verify.Cases.test_anchor_tamper) ... ok
+test_changed_claim (test_verify.Cases.test_changed_claim) ... ok
+test_duplicate_lane (test_verify.Cases.test_duplicate_lane) ... ok
+test_float (test_verify.Cases.test_float) ... ok
+test_hash_mismatch (test_verify.Cases.test_hash_mismatch) ... ok
+test_history_append (test_verify.Cases.test_history_append) ... ok
+test_history_delete (test_verify.Cases.test_history_delete) ... ok
+test_history_edit (test_verify.Cases.test_history_edit) ... ok
+test_hold (test_verify.Cases.test_hold) ... ok
+test_lane12 (test_verify.Cases.test_lane12) ... ok
+test_lane_range (test_verify.Cases.test_lane_range) ... ok
+test_missing_replay (test_verify.Cases.test_missing_replay) ... ok
+test_placeholder (test_verify.Cases.test_placeholder) ... ok
+test_publication (test_verify.Cases.test_publication) ... ok
+test_remedy_edit (test_verify.Cases.test_remedy_edit) ... ok
+test_stale_replay (test_verify.Cases.test_stale_replay) ... ok
+test_verified (test_verify.Cases.test_verified) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 0.950s
+
+OK
