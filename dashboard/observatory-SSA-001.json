@@ -1,0 +1,25 @@
+{
+  "id": "SSA-001",
+  "lanes": [
+    2,
+    6
+  ],
+  "report": "042638",
+  "report_date": "2026-11-06",
+  "source": "https://oig.ssa.gov/~assets/audits/full/042638.pdf",
+  "printed_page": 2,
+  "pdf_page": 8,
+  "fiscal_year": 2025,
+  "calls_without_service_approx": 25000000,
+  "unit": "CALL_EVENTS",
+  "claim_status": "SOURCE_SUPPORTED",
+  "wait_metric_exclusions": [
+    "abandoned",
+    "busy"
+  ],
+  "initial_callback_hold_seconds": 0,
+  "unique_citizens": null,
+  "citizen_remedy": "UNKNOWN",
+  "publication": "HOLD",
+  "government_authority": false
+}

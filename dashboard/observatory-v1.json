@@ -1,0 +1,89 @@
+﻿{
+    "build":  "016",
+    "checkpoint":  "016-018",
+    "utc":  "2026-11-26T01:41:44.6941018Z",
+    "mode":  "HISTORICAL_SNAPSHOT",
+    "base_commit":  "16bd292479b40a89e59d73017017bbf71a95ecda",
+    "sessions":  1727,
+    "fragments":  39143,
+    "hash_pass":  39143,
+    "unique_fragments":  38902,
+    "unique_candidates":  4483,
+    "multi_lane":  916,
+    "citizen_remedy":  "UNVERIFIED",
+    "publication":  "HOLD",
+    "lanes":  [
+                  {
+                      "id":  1,
+                      "name":  "Congressional oversight",
+                      "unique_candidates":  883,
+                      "findings_status":  "UNVERIFIED"
+                  },
+                  {
+                      "id":  2,
+                      "name":  "Inspectors General",
+                      "unique_candidates":  417,
+                      "findings_status":  "UNVERIFIED"
+                  },
+                  {
+                      "id":  3,
+                      "name":  "Department of Justice",
+                      "unique_candidates":  1087,
+                      "findings_status":  "UNVERIFIED"
+                  },
+                  {
+                      "id":  4,
+                      "name":  "Federal courts",
+                      "unique_candidates":  225,
+                      "findings_status":  "UNVERIFIED"
+                  },
+                  {
+                      "id":  5,
+                      "name":  "State courts",
+                      "unique_candidates":  95,
+                      "findings_status":  "UNVERIFIED"
+                  },
+                  {
+                      "id":  6,
+                      "name":  "Social Security",
+                      "unique_candidates":  188,
+                      "findings_status":  "UNVERIFIED"
+                  },
+                  {
+                      "id":  7,
+                      "name":  "Veterans Affairs",
+                      "unique_candidates":  244,
+                      "findings_status":  "UNVERIFIED"
+                  },
+                  {
+                      "id":  8,
+                      "name":  "Treasury and spending",
+                      "unique_candidates":  743,
+                      "findings_status":  "UNVERIFIED"
+                  },
+                  {
+                      "id":  9,
+                      "name":  "State government",
+                      "unique_candidates":  156,
+                      "findings_status":  "UNVERIFIED"
+                  },
+                  {
+                      "id":  10,
+                      "name":  "County government",
+                      "unique_candidates":  694,
+                      "findings_status":  "UNVERIFIED"
+                  },
+                  {
+                      "id":  11,
+                      "name":  "Corporate contracts",
+                      "unique_candidates":  311,
+                      "findings_status":  "UNVERIFIED"
+                  },
+                  {
+                      "id":  12,
+                      "name":  "Reciprocal self-audit",
+                      "unique_candidates":  662,
+                      "findings_status":  "UNVERIFIED"
+                  }
+              ]
+}

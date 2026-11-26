@@ -1,0 +1,71 @@
+{
+  "checkpoint": "016-037",
+  "utc": "2026-11-26T01:49:58.999314+00:00",
+  "scope": "PRE_REPAIR_BASELINE",
+  "artifacts": [
+    {
+      "file": ".github/workflows/observatory-ci-v1.yml",
+      "physical_sha256": "61f1ba276d4a1c0ccf5a0914498be73540fcd0500d8e51c5ecbdec42136770f5",
+      "canonical_sha256": "cabf9625316f5227354ae19c0fba6fb9ef811ca33281320a1ff15bd4e81c2d33",
+      "physical_bytes": 813,
+      "canonical_bytes": 812,
+      "transformation": "CRLF_TO_LF"
+    },
+    {
+      "file": "dashboard/observatory-SSA-001.json",
+      "physical_sha256": "1da2641351b8b15e8f3b91d02cbba6ed78ea4dd796e111eccf5b06071fc26e76",
+      "canonical_sha256": "0e43735fc24e6ed0f1c2089d426b710be8de3d8c101251230650560eb4373a96",
+      "physical_bytes": 580,
+      "canonical_bytes": 556,
+      "transformation": "CRLF_TO_LF"
+    },
+    {
+      "file": "dashboard/observatory-build-receipt.json",
+      "physical_sha256": "b5e640a24b83e70bf80a2188b4aa0b2391d9313717c6f79afceeec769c5f1449",
+      "canonical_sha256": "a59f07e92d6d0feb88b5c1c0720b27ed87720773101448a6d2545663def0f1b6",
+      "physical_bytes": 468,
+      "canonical_bytes": 451,
+      "transformation": "CRLF_TO_LF"
+    },
+    {
+      "file": "dashboard/observatory-preview-v2.html",
+      "physical_sha256": "a2ba6f37c7919f24e1d6f53148bc442b35050cfd4f38b97e4a145254f9c14c35",
+      "canonical_sha256": "675b00a1c72f162531c64d1aaf6dbd73468c850789d4b2cbbeb41d67c9e4b980",
+      "physical_bytes": 3164,
+      "canonical_bytes": 3131,
+      "transformation": "CRLF_TO_LF"
+    },
+    {
+      "file": "dashboard/observatory-preview.html",
+      "physical_sha256": "cf6561eea9ada10e95826a1a887c511366fc25acda701dc981d302dd73c7f770",
+      "canonical_sha256": "d2df857e5d6af00a8184ea9ff07211e6646673916cb6c571f8f0fe9cadf8a397",
+      "physical_bytes": 2601,
+      "canonical_bytes": 2583,
+      "transformation": "CRLF_TO_LF"
+    },
+    {
+      "file": "dashboard/observatory-sources-v1.json",
+      "physical_sha256": "94d32759107759bb23ebf307d0bba90a56260f14dc94fc55df32f383e41e5b62",
+      "canonical_sha256": "89b02d0f1baeb1d9fe43ab3c6ef0a5c85632fb0b1efc319fb63ec0de56949426",
+      "physical_bytes": 1071,
+      "canonical_bytes": 1029,
+      "transformation": "CRLF_TO_LF"
+    },
+    {
+      "file": "dashboard/observatory-v1.json",
+      "physical_sha256": "b5ea645e31904ea55e197d8f8194ff6cb6ccb46f9a7b3833850d1e9a7c48e7e7",
+      "canonical_sha256": "1a904d630cb51c764c605cc2dfc056e806e917b7984aaa9d312163eeea766cdf",
+      "physical_bytes": 3308,
+      "canonical_bytes": 3219,
+      "transformation": "CRLF_TO_LF"
+    },
+    {
+      "file": "dashboard/validate_observatory.py",
+      "physical_sha256": "8245678b5d7e7295c4495cb6f4434ef4904213361aab58d5c7e17e2ad62da3ec",
+      "canonical_sha256": "de106c0bd063729fbfbc4eaf8dedfbda60d85ce225fa6a348df2fa80fc105060",
+      "physical_bytes": 1115,
+      "canonical_bytes": 1087,
+      "transformation": "CRLF_TO_LF"
+    }
+  ]
+}

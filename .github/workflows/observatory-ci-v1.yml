@@ -1,0 +1,32 @@
+﻿name: People's Observatory CI
+on:
+  push:
+    branches:
+      - build/peoples-observatory-016
+    paths:
+      - 'dashboard/observatory-*'
+      - 'dashboard/validate_observatory.py'
+      - '.github/workflows/observatory-ci-v1.yml'
+  pull_request:
+    paths:
+      - 'dashboard/observatory-*'
+      - 'dashboard/validate_observatory.py'
+      - '.github/workflows/observatory-ci-v1.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - name: Validate Observatory
+        run: python dashboard/validate_observatory.py
+      - name: Evidence fingerprints
+        run: sha256sum dashboard/observatory-*

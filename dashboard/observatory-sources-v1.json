@@ -1,0 +1,43 @@
+{
+  "build": "016",
+  "checkpoint": "016-027",
+  "utc": "2026-11-26T01:46:03.976870+00:00",
+  "publication": "HOLD",
+  "sources": [
+    {
+      "lane": 6,
+      "url": "https://www.ssa.gov/ssa-performance",
+      "status": "DISCOVERED",
+      "claim_verification": "PENDING",
+      "evidence_sha256": null
+    },
+    {
+      "lane": 6,
+      "url": "https://www.ssa.gov/finance/",
+      "status": "DISCOVERED",
+      "claim_verification": "PENDING",
+      "evidence_sha256": null
+    },
+    {
+      "lane": 2,
+      "url": "https://oig.ssa.gov/audit-reports/",
+      "status": "DISCOVERED",
+      "claim_verification": "PENDING",
+      "evidence_sha256": null
+    },
+    {
+      "lane": 7,
+      "url": "https://benefits.va.gov/REPORTS/abr/",
+      "status": "DISCOVERED",
+      "claim_verification": "PENDING",
+      "evidence_sha256": null
+    },
+    {
+      "lane": 11,
+      "url": "https://sam.gov/contract-data",
+      "status": "DISCOVERED",
+      "claim_verification": "PENDING",
+      "evidence_sha256": null
+    }
+  ]
+}

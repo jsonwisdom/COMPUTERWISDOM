@@ -1,0 +1,18 @@
+{
+  "build": "016",
+  "checkpoint": "016-025",
+  "utc": "2026-11-26T01:45:16.066895+00:00",
+  "publication": "HOLD",
+  "artifacts": [
+    {
+      "file": "observatory-v1.json",
+      "bytes": 3308,
+      "sha256": "b5ea645e31904ea55e197d8f8194ff6cb6ccb46f9a7b3833850d1e9a7c48e7e7"
+    },
+    {
+      "file": "observatory-preview.html",
+      "bytes": 2601,
+      "sha256": "cf6561eea9ada10e95826a1a887c511366fc25acda701dc981d302dd73c7f770"
+    }
+  ]
+}
