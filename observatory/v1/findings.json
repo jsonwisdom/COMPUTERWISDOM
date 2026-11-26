@@ -1,0 +1,63 @@
+[
+  {
+    "schema_version": "1.0",
+    "finding_id": "SSA-001",
+    "revision": 1,
+    "previous_revision_sha256": null,
+    "claim": "BUILD 016 reports approximately 25 million FY 2025 SSA telephone call events without service, citing OIG report 042638, printed page 2 (PDF page 8). Unique citizens and remedy remain unknown; primary source not independently replayed for BUILD 017.4.",
+    "primary_lane_id": 6,
+    "cross_lane_ids": [
+      2
+    ],
+    "jurisdiction": {
+      "scope": "FEDERAL",
+      "code": "US"
+    },
+    "source": {
+      "uri": "https://oig.ssa.gov/~assets/audits/full/042638.pdf",
+      "acquired_at": null,
+      "sha256": null
+    },
+    "metrics": [
+      {
+        "name": "calls_without_service_fy2025",
+        "atomic_value": "25000000",
+        "scale": 0,
+        "unit": "CALL_EVENTS",
+        "qualifier": "APPROXIMATE"
+      },
+      {
+        "name": "unique_citizens",
+        "atomic_value": null,
+        "scale": 0,
+        "unit": "PERSONS",
+        "qualifier": "UNKNOWN"
+      }
+    ],
+    "replay_id": null,
+    "verification_status": "OPERATOR_DECLARED_UNTIL_REPLAYED",
+    "verification": {
+      "integrity": {
+        "status": "UNKNOWN",
+        "receipt_id": null
+      },
+      "mathematics": {
+        "status": "UNKNOWN",
+        "receipt_id": null
+      },
+      "authenticity": {
+        "status": "UNKNOWN",
+        "receipt_id": null
+      },
+      "accountability": {
+        "status": "UNKNOWN",
+        "receipt_id": null
+      }
+    },
+    "correction_stream_id": "SSA-001-corrections",
+    "remedy_stream_id": "SSA-001-remedies",
+    "source_commit": "1a4baa89ed249d35b70890f91f3d4daccd9f39d7",
+    "ci_receipt_id": null,
+    "publication": "HOLD"
+  }
+]

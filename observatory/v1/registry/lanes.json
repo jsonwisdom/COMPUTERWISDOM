@@ -1,0 +1,96 @@
+{
+  "source_commit": "1a4baa89ed249d35b70890f91f3d4daccd9f39d7",
+  "source": "https://github.com/jsonwisdom/COMPUTERWISDOM/blob/1a4baa89ed249d35b70890f91f3d4daccd9f39d7/dashboard/observatory-v1.json",
+  "publication": "HOLD",
+  "unique_candidates": 4483,
+  "multi_lane_candidates": 916,
+  "sessions": 1727,
+  "fragments": 39143,
+  "membership_count": 5705,
+  "lanes": [
+    {
+      "id": 1,
+      "name": "Congressional oversight",
+      "historical_candidate_memberships": 883,
+      "findings_status": "UNVERIFIED",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": 2,
+      "name": "Inspectors General",
+      "historical_candidate_memberships": 417,
+      "findings_status": "UNVERIFIED",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": 3,
+      "name": "Department of Justice",
+      "historical_candidate_memberships": 1087,
+      "findings_status": "UNVERIFIED",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": 4,
+      "name": "Federal courts",
+      "historical_candidate_memberships": 225,
+      "findings_status": "UNVERIFIED",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": 5,
+      "name": "State courts",
+      "historical_candidate_memberships": 95,
+      "findings_status": "UNVERIFIED",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": 6,
+      "name": "Social Security",
+      "historical_candidate_memberships": 188,
+      "findings_status": "UNVERIFIED",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": 7,
+      "name": "Veterans Affairs",
+      "historical_candidate_memberships": 244,
+      "findings_status": "UNVERIFIED",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": 8,
+      "name": "Treasury and spending",
+      "historical_candidate_memberships": 743,
+      "findings_status": "UNVERIFIED",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": 9,
+      "name": "State government",
+      "historical_candidate_memberships": 156,
+      "findings_status": "UNVERIFIED",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": 10,
+      "name": "County government",
+      "historical_candidate_memberships": 694,
+      "findings_status": "UNVERIFIED",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": 11,
+      "name": "Corporate contracts",
+      "historical_candidate_memberships": 311,
+      "findings_status": "UNVERIFIED",
+      "status": "UNKNOWN"
+    },
+    {
+      "id": 12,
+      "name": "Reciprocal self-audit",
+      "historical_candidate_memberships": 662,
+      "findings_status": "UNVERIFIED",
+      "status": "UNKNOWN"
+    }
+  ]
+}

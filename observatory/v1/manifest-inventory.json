@@ -1,0 +1,50 @@
+{
+  "publication": "HOLD",
+  "files": [
+    {
+      "path": "anchor.json",
+      "sha256": "93a964e4dff031ee3a434cec12ac930c7d13e9381c8d3c594c803f31757891ac",
+      "bytes": 336
+    },
+    {
+      "path": "baseline/corrections.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "baseline/remedies.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "corrections.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    },
+    {
+      "path": "findings.json",
+      "sha256": "d6397e93bb88f2cd89e497ffb8e4e3770754d6508ef0752c39bbba237c25c4dd",
+      "bytes": 1722
+    },
+    {
+      "path": "receipts.json",
+      "sha256": "50dafe875801a66864d849c907042ee8dff297f693e0c57c94d52d3bd5d14b8c",
+      "bytes": 932
+    },
+    {
+      "path": "registry/lanes.json",
+      "sha256": "ac882e09614a19e009d2af8da8fa27ca086aef9c794b3b708b98601c2450387f",
+      "bytes": 2487
+    },
+    {
+      "path": "registry/states.json",
+      "sha256": "99186fee65c95fea79e3591973cff02d390fffdf9767415fef739f3b45876376",
+      "bytes": 5768
+    },
+    {
+      "path": "remedies.json",
+      "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+      "bytes": 3
+    }
+  ]
+}

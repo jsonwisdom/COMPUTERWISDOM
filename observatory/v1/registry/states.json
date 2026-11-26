@@ -1,0 +1,305 @@
+{
+  "publication": "HOLD",
+  "states": [
+    {
+      "code": "AL",
+      "name": "Alabama",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "AK",
+      "name": "Alaska",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "AZ",
+      "name": "Arizona",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "AR",
+      "name": "Arkansas",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "CA",
+      "name": "California",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "CO",
+      "name": "Colorado",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "CT",
+      "name": "Connecticut",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "DE",
+      "name": "Delaware",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "FL",
+      "name": "Florida",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "GA",
+      "name": "Georgia",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "HI",
+      "name": "Hawaii",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "ID",
+      "name": "Idaho",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "IL",
+      "name": "Illinois",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "IN",
+      "name": "Indiana",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "IA",
+      "name": "Iowa",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "KS",
+      "name": "Kansas",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "KY",
+      "name": "Kentucky",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "LA",
+      "name": "Louisiana",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "ME",
+      "name": "Maine",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "MD",
+      "name": "Maryland",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "MA",
+      "name": "Massachusetts",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "MI",
+      "name": "Michigan",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "MN",
+      "name": "Minnesota",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "MS",
+      "name": "Mississippi",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "MO",
+      "name": "Missouri",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "MT",
+      "name": "Montana",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "NE",
+      "name": "Nebraska",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "NV",
+      "name": "Nevada",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "NH",
+      "name": "New Hampshire",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "NJ",
+      "name": "New Jersey",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "NM",
+      "name": "New Mexico",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "NY",
+      "name": "New York",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "NC",
+      "name": "North Carolina",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "ND",
+      "name": "North Dakota",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "OH",
+      "name": "Ohio",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "OK",
+      "name": "Oklahoma",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "OR",
+      "name": "Oregon",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "PA",
+      "name": "Pennsylvania",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "RI",
+      "name": "Rhode Island",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "SC",
+      "name": "South Carolina",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "SD",
+      "name": "South Dakota",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "TN",
+      "name": "Tennessee",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "TX",
+      "name": "Texas",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "UT",
+      "name": "Utah",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "VT",
+      "name": "Vermont",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "VA",
+      "name": "Virginia",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "WA",
+      "name": "Washington",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "WV",
+      "name": "West Virginia",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "WI",
+      "name": "Wisconsin",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    },
+    {
+      "code": "WY",
+      "name": "Wyoming",
+      "coverage": "UNKNOWN",
+      "status": "UNKNOWN"
+    }
+  ]
+}

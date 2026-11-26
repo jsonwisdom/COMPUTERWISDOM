@@ -23,3 +23,5 @@ jobs:
           python-version: '3.13'
       - run: pip install -r requirements.txt
       - run: python -m unittest discover -s tests -v
+      - name: Validate evidence manifests
+        run: python verify.py . --anchor-sha256 93a964e4dff031ee3a434cec12ac930c7d13e9381c8d3c594c803f31757891ac
