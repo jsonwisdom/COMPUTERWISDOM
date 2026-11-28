@@ -1,0 +1,234 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Government Movie Weekly Episode V1",
+  "type": "object",
+  "required": [
+    "episode_id",
+    "run_date",
+    "prior_episode_id",
+    "replay_state",
+    "scenes",
+    "episode_delta",
+    "authority_created",
+    "final_decision"
+  ],
+  "properties": {
+    "episode_id": {
+      "type": "string"
+    },
+    "run_date": {
+      "type": "string",
+      "format": "date"
+    },
+    "prior_episode_id": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "replay_state": {
+      "enum": [
+        "PASS",
+        "HOLD",
+        "CONFLICT",
+        "NOT_RUN"
+      ]
+    },
+    "scenes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "scene_id",
+          "scene_class",
+          "title",
+          "evidence_roots",
+          "reporting_roots",
+          "time_roots",
+          "state_transition",
+          "invariants_asserted",
+          "unknown_fields",
+          "negative_observations",
+          "replay_delta"
+        ],
+        "properties": {
+          "scene_id": {
+            "type": "string"
+          },
+          "scene_class": {
+            "enum": [
+              "SCENE_PROCEDURE",
+              "SCENE_ENACTMENT",
+              "SCENE_JUDICIAL_TRANSITION",
+              "SCENE_EXECUTIVE_ACTION",
+              "SCENE_OVERSIGHT",
+              "SCENE_DISCLOSURE",
+              "SCENE_MEDIA_ROOT",
+              "SCENE_ARCHIVE_DELTA",
+              "SCENE_SATIRE"
+            ]
+          },
+          "title": {
+            "type": "string"
+          },
+          "claim_scope": {
+            "type": "string"
+          },
+          "evidence_roots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "source_id",
+                "source_class",
+                "uri",
+                "observed_at"
+              ],
+              "properties": {
+                "source_id": {
+                  "type": "string"
+                },
+                "source_class": {
+                  "type": "string"
+                },
+                "uri": {
+                  "type": "string"
+                },
+                "observed_at": {
+                  "type": "string"
+                },
+                "hash": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "reporting_roots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "source_id",
+                "uri"
+              ],
+              "properties": {
+                "source_id": {
+                  "type": "string"
+                },
+                "uri": {
+                  "type": "string"
+                },
+                "independent_root": {
+                  "type": [
+                    "boolean",
+                    "null"
+                  ]
+                }
+              }
+            }
+          },
+          "time_roots": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "clock",
+                "timestamp"
+              ],
+              "properties": {
+                "clock": {
+                  "type": "string"
+                },
+                "timestamp": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "state_transition": {
+            "type": "string"
+          },
+          "invariants_asserted": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "unknown_fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "negative_observations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "required": [
+                "proposition",
+                "scope",
+                "result"
+              ],
+              "properties": {
+                "proposition": {
+                  "type": "string"
+                },
+                "query_text": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "scope": {
+                  "type": "string"
+                },
+                "evaluator": {
+                  "type": [
+                    "string",
+                    "null"
+                  ]
+                },
+                "result": {
+                  "enum": [
+                    "NOT_FOUND_IN_SCOPE",
+                    "NO_JOIN",
+                    "UNRESOLVED",
+                    "CONTRADICTED",
+                    "SEARCH_METHOD_ERROR"
+                  ]
+                }
+              }
+            }
+          },
+          "replay_delta": {
+            "type": "string"
+          },
+          "satire_frame": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "political_verdict": {
+            "const": "NOT_EMITTED"
+          }
+        }
+      }
+    },
+    "episode_delta": {
+      "type": "string"
+    },
+    "no_material_delta": {
+      "type": "boolean"
+    },
+    "authority_created": {
+      "const": false
+    },
+    "final_decision": {
+      "const": "HUMAN"
+    }
+  }
+}
